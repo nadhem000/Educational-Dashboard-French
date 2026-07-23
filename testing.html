@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test final (sans Service Worker)</title>
+    <title>Test final (environnement propre)</title>
     <style>
         :root {
             --bg: #f9f7f1; --card: #ffffff; --text: #2b2416;
@@ -53,7 +53,7 @@
 
 <header class="topbar">
     <div class="breadcrumb">
-        <a href="index.html">🏠 Accueil</a> › <strong>Test final</strong>
+        <a href="index.html">🏠 Accueil</a> › <strong>Test final propre</strong>
     </div>
     <button id="themeToggle" class="theme-btn">
         <span id="themeIcon">🌙</span> <span id="themeLabel">Mode sombre</span>
@@ -61,9 +61,9 @@
 </header>
 
 <main class="container">
-    <h1>🔍 Diagnostic sans Service Worker</h1>
+    <h1>🔍 Diagnostic final (sans SW)</h1>
     <div id="statusArea" class="status-box">
-        <p>Suppression des SW et test réseau…</p>
+        <p>Préparation de l'environnement…</p>
     </div>
     <h2>Journal</h2>
     <div id="logArea" class="status-box"></div>
@@ -81,69 +81,78 @@
             </div>`).join('');
     }
 
-    window.onerror = (message, source, lineno, colno, error) =>
-        log(`ERREUR: ${message} (${source}:${lineno})`, 'error');
-
-    const status = document.getElementById('statusArea');
-
-    async function cleanAllSW() {
-        if (!('serviceWorker' in navigator)) return;
-        const registrations = await navigator.serviceWorker.getRegistrations();
-        for (const reg of registrations) {
-            await reg.unregister();
-            log(`SW désinstallé: ${reg.scope}`, 'success');
+    async function cleanAndReload() {
+        if (!('serviceWorker' in navigator)) return false;
+        const regs = await navigator.serviceWorker.getRegistrations();
+        if (regs.length > 0 || navigator.serviceWorker.controller) {
+            log('Service worker actif détecté. Nettoyage et rechargement...', 'warn');
+            for (const reg of regs) await reg.unregister();
+            const keys = await caches.keys();
+            for (const key of keys) await caches.delete(key);
+            log('Nettoyage terminé, rechargement dans 1 seconde.', 'success');
+            setTimeout(() => location.reload(true), 1000);
+            return true;
         }
-        const keys = await caches.keys();
-        for (const key of keys) {
-            await caches.delete(key);
-            log(`Cache supprimé: ${key}`, 'success');
-        }
+        return false;
     }
 
-    async function testScript() {
-        log('Tentative de chargement de ED-French-ini.js via balise script...');
-        const script = document.createElement('script');
-        script.src = 'ED-French-ini.js';
-        script.onload = () => {
-            log('Script chargé avec succès !', 'success');
-            setTimeout(() => {
-                const hdr = document.querySelector('.site-header');
-                const ftr = document.querySelector('.site-footer');
-                if (hdr && ftr) {
-                    status.innerHTML = '<p class="success">✅ Injection réussie sans SW.</p>';
-                    log('Injection confirmée.', 'success');
-                } else {
-                    status.innerHTML = '<p class="fail">❌ Injection échouée malgré le chargement.</p>';
-                    log('Header/Footer introuvables.', 'error');
-                }
-            }, 300);
-        };
-        script.onerror = async () => {
-            log('Échec du chargement. Analyse réseau...', 'error');
-            try {
-                const resp = await fetch('ED-French-ini.js');
-                const text = await resp.text();
-                log(`Statut: ${resp.status}`, resp.ok ? 'success' : 'error');
-                log(`Content-Type: ${resp.headers.get('Content-Type')}`, 'info');
-                log(`Premiers caractères: ${text.substring(0, 80)}`, 'info');
-                log(`Est du HTML: ${text.trim().startsWith('<!') ? 'OUI' : 'NON'}`, text.trim().startsWith('<!') ? 'error' : 'success');
-                if (text.trim().startsWith('<!')) {
-                    status.innerHTML = '<p class="fail">❌ Le serveur renvoie du HTML au lieu du JS. Vérifiez les redirections Netlify.</p>';
-                } else {
-                    status.innerHTML = '<p class="fail">❌ Le script semble correct mais n’a pas été exécuté (problème de MIME ou de sécurité).</p>';
-                }
-            } catch (e) {
-                log(`Erreur fetch: ${e.message}`, 'error');
-                status.innerHTML = '<p class="fail">❌ Impossible de joindre le fichier.</p>';
+    async function runTest() {
+        // First, check if SW is still controlling the page
+        if (navigator.serviceWorker && navigator.serviceWorker.controller) {
+            log('Service worker contrôle toujours la page. Nettoyage...', 'warn');
+            await cleanAndReload();
+            return;
+        }
+
+        log('Aucun service worker actif. Test du chargement...', 'success');
+        const statusDiv = document.getElementById('statusArea');
+
+        try {
+            // Fetch the file directly, bypass cache
+            const resp = await fetch('ED-French-ini.js', { cache: 'no-store' });
+            const text = await resp.text();
+            log(`Statut HTTP: ${resp.status}`, resp.ok ? 'success' : 'warn');
+            log(`Taille: ${text.length} octets`, 'info');
+            const isHtml = text.trim().startsWith('<!') || text.trim().startsWith('<html');
+            log(`Contenu HTML: ${isHtml ? 'OUI' : 'NON'}`, isHtml ? 'error' : 'success');
+
+            if (isHtml) {
+                statusDiv.innerHTML = '<p class="fail">❌ Le fichier est toujours servi en HTML. Vérifiez le déploiement et les redirections.</p>';
+                return;
             }
-        };
-        document.head.appendChild(script);
+
+            // Execute the JS content
+            log('Exécution du script...');
+            try {
+                new Function(text)();
+                log('Exécution réussie.', 'success');
+                // Wait a bit for DOM updates
+                setTimeout(() => {
+                    const hdr = document.querySelector('.site-header');
+                    const ftr = document.querySelector('.site-footer');
+                    if (hdr && ftr) {
+                        statusDiv.innerHTML = '<p class="success">✅ Injection réussie ! Le header et le footer sont visibles.</p>';
+                        log('Injection confirmée.', 'success');
+                    } else {
+                        statusDiv.innerHTML = '<p class="fail">❌ Le script s’est exécuté mais les éléments ne sont pas apparus.</p>';
+                        log('Échec de l’injection après exécution.', 'error');
+                    }
+                }, 300);
+            } catch (execErr) {
+                log('Erreur d’exécution: ' + execErr.message, 'error');
+                statusDiv.innerHTML = '<p class="fail">❌ Le fichier contient des erreurs JavaScript.</p>';
+            }
+        } catch (netErr) {
+            log('Erreur réseau: ' + netErr.message, 'error');
+            statusDiv.innerHTML = '<p class="fail">❌ Impossible de charger le fichier.</p>';
+        }
     }
 
     (async () => {
-        await cleanAllSW();
-        log('SW et caches nettoyés.', 'success');
-        testScript();
+        const needsReload = await cleanAndReload();
+        if (!needsReload) {
+            runTest();
+        }
     })();
 </script>
 </body>
