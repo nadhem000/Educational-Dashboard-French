@@ -1,7 +1,35 @@
 (function() {
     'use strict';
 
-    /* ── Styles for injected elements ── */
+    const headerHTML = `\
+<header class="site-header">
+    <div class="header-left">
+        <img src="icon-96x96.png" alt="Logo" width="32" height="32" class="header-icon">
+        <span class="site-title">Révisions Tunisie</span>
+    </div>
+    <button id="settingsBtn" class="settings-btn" title="Paramètres">⚙️</button>
+</header>
+<div id="settingsModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <p>⚙️ Paramètres – Bientôt disponible</p>
+    </div>
+</div>`;
+
+    const footerHTML = `\
+<footer class="site-footer">
+    <p>Développé par <strong>Mejri Ziad</strong><br>Hébergé sur GitHub &amp; Netlify</p>
+    <div class="footer-links">
+        <a href="#">Contact</a> &nbsp;|&nbsp;
+        <a href="#">Politique de confidentialité</a> &nbsp;|&nbsp;
+        <a href="#">Conditions d’utilisation</a>
+    </div>
+    <p class="version">Version 0.0.1</p>
+</footer>`;
+
+    /* ============================================================
+       CSS for injected elements
+       ============================================================ */
     const styles = `
     .site-header {
         display: flex; align-items: center; justify-content: space-between;
@@ -59,14 +87,9 @@
     .version { margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.7; }
     `;
 
-    /* ── Fetch HTML file and return text ── */
-    async function fetchHTML(url) {
-        const resp = await fetch(url);
-        if (!resp.ok) throw new Error(`Impossible de charger ${url} (status ${resp.status})`);
-        return resp.text();
-    }
-
-    /* ── Setup settings modal after injection ── */
+    /* ============================================================
+       Helper functions
+       ============================================================ */
     function setupModal() {
         const modal = document.getElementById('settingsModal');
         const btn = document.getElementById('settingsBtn');
@@ -76,16 +99,17 @@
         window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
     }
 
-    /* ── Apply saved theme (dark/light) ── */
     function applyTheme() {
         if (localStorage.getItem('theme') === 'dark') {
             document.body.classList.add('dark');
         }
     }
 
-    /* ── Main injection function ── */
-    async function injectAll() {
-        // Add stylesheet
+    /* ============================================================
+       Main injection (no fetch – everything is inline)
+       ============================================================ */
+    function injectAll() {
+        // Add styles
         const styleEl = document.createElement('style');
         styleEl.textContent = styles;
         document.head.appendChild(styleEl);
@@ -93,30 +117,20 @@
         // Inject header
         const headerContainer = document.getElementById('header-container');
         if (headerContainer) {
-            try {
-                const headerHTML = await fetchHTML('ED-French-header.html');
-                headerContainer.innerHTML = headerHTML;
-            } catch (e) {
-                console.warn(e.message);
-            }
+            headerContainer.innerHTML = headerHTML;
         }
 
         // Inject footer
         const footerContainer = document.getElementById('footer-container');
         if (footerContainer) {
-            try {
-                const footerHTML = await fetchHTML('ED-French-footer.html');
-                footerContainer.innerHTML = footerHTML;
-            } catch (e) {
-                console.warn(e.message);
-            }
+            footerContainer.innerHTML = footerHTML;
         }
 
         setupModal();
         applyTheme();
     }
 
-    // Run after DOM is fully parsed
+    // Run when DOM is ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', injectAll);
     } else {
