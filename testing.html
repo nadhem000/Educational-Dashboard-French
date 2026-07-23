@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test avec nouveau Service Worker</title>
+    <title>Test final (sans Service Worker)</title>
     <style>
         :root {
             --bg: #f9f7f1; --card: #ffffff; --text: #2b2416;
@@ -53,7 +53,7 @@
 
 <header class="topbar">
     <div class="breadcrumb">
-        <a href="index.html">🏠 Accueil</a> › <strong>Test SW fix</strong>
+        <a href="index.html">🏠 Accueil</a> › <strong>Test final</strong>
     </div>
     <button id="themeToggle" class="theme-btn">
         <span id="themeIcon">🌙</span> <span id="themeLabel">Mode sombre</span>
@@ -61,11 +61,11 @@
 </header>
 
 <main class="container">
-    <h1>🔍 Nettoyage du Service Worker + Test</h1>
+    <h1>🔍 Diagnostic sans Service Worker</h1>
     <div id="statusArea" class="status-box">
-        <p>Nettoyage du cache et mise à jour du service worker…</p>
+        <p>Suppression des SW et test réseau…</p>
     </div>
-    <h2>Journal détaillé</h2>
+    <h2>Journal</h2>
     <div id="logArea" class="status-box"></div>
 </main>
 
@@ -86,77 +86,64 @@
 
     const status = document.getElementById('statusArea');
 
-    async function cleanAndRegister() {
-        // 1. Unregister any existing service worker
-        if ('serviceWorker' in navigator) {
-            const registrations = await navigator.serviceWorker.getRegistrations();
-            log(`Nombre de SW trouvés: ${registrations.length}`);
-            for (const reg of registrations) {
-                const deleted = await reg.unregister();
-                log(`SW "${reg.scope}" désinstallé: ${deleted}`, deleted ? 'success' : 'warn');
-            }
-            // 2. Clear all caches
-            const cacheNames = await caches.keys();
-            log(`Caches trouvés: ${cacheNames.length}`);
-            for (const name of cacheNames) {
-                await caches.delete(name);
-                log(`Cache "${name}" supprimé`, 'success');
-            }
-            // 3. Register the new service worker (sw.js)
-            try {
-                const registration = await navigator.serviceWorker.register('/sw.js');
-                log('Nouveau SW enregistré: ' + registration.scope, 'success');
-                // Wait for activation
-                if (registration.installing) {
-                    const sw = registration.installing;
-                    await new Promise((resolve) => {
-                        sw.addEventListener('statechange', () => {
-                            if (sw.state === 'activated') resolve();
-                        });
-                    });
-                } else if (registration.waiting) {
-                    registration.waiting.postMessage('skipWaiting');
-                }
-                log('SW activé et prêt.', 'success');
-            } catch (err) {
-                log('Erreur enregistrement SW: ' + err.message, 'error');
-            }
+    async function cleanAllSW() {
+        if (!('serviceWorker' in navigator)) return;
+        const registrations = await navigator.serviceWorker.getRegistrations();
+        for (const reg of registrations) {
+            await reg.unregister();
+            log(`SW désinstallé: ${reg.scope}`, 'success');
+        }
+        const keys = await caches.keys();
+        for (const key of keys) {
+            await caches.delete(key);
+            log(`Cache supprimé: ${key}`, 'success');
         }
     }
 
-    async function testInjection() {
-        log('Chargement du script externe…');
-        // Remove any existing script tag to avoid double loading
-        const oldScript = document.querySelector('script[src="ED-French-ini.js"]');
-        if (oldScript) oldScript.remove();
-
+    async function testScript() {
+        log('Tentative de chargement de ED-French-ini.js via balise script...');
         const script = document.createElement('script');
         script.src = 'ED-French-ini.js';
         script.onload = () => {
-            log('Script chargé et exécuté.', 'success');
+            log('Script chargé avec succès !', 'success');
             setTimeout(() => {
                 const hdr = document.querySelector('.site-header');
                 const ftr = document.querySelector('.site-footer');
                 if (hdr && ftr) {
-                    status.innerHTML = '<p class="success">✅ Injection réussie après nettoyage SW. Header et footer visibles.</p>';
-                    log('Injection confirmée !', 'success');
+                    status.innerHTML = '<p class="success">✅ Injection réussie sans SW.</p>';
+                    log('Injection confirmée.', 'success');
                 } else {
-                    status.innerHTML = '<p class="fail">❌ Injection toujours échouée.</p>';
-                    log('Échec.', 'error');
+                    status.innerHTML = '<p class="fail">❌ Injection échouée malgré le chargement.</p>';
+                    log('Header/Footer introuvables.', 'error');
                 }
             }, 300);
         };
-        script.onerror = () => {
-            log('Erreur de chargement du script.', 'error');
-            status.innerHTML = '<p class="fail">❌ Le script n’a pas pu être chargé.</p>';
+        script.onerror = async () => {
+            log('Échec du chargement. Analyse réseau...', 'error');
+            try {
+                const resp = await fetch('ED-French-ini.js');
+                const text = await resp.text();
+                log(`Statut: ${resp.status}`, resp.ok ? 'success' : 'error');
+                log(`Content-Type: ${resp.headers.get('Content-Type')}`, 'info');
+                log(`Premiers caractères: ${text.substring(0, 80)}`, 'info');
+                log(`Est du HTML: ${text.trim().startsWith('<!') ? 'OUI' : 'NON'}`, text.trim().startsWith('<!') ? 'error' : 'success');
+                if (text.trim().startsWith('<!')) {
+                    status.innerHTML = '<p class="fail">❌ Le serveur renvoie du HTML au lieu du JS. Vérifiez les redirections Netlify.</p>';
+                } else {
+                    status.innerHTML = '<p class="fail">❌ Le script semble correct mais n’a pas été exécuté (problème de MIME ou de sécurité).</p>';
+                }
+            } catch (e) {
+                log(`Erreur fetch: ${e.message}`, 'error');
+                status.innerHTML = '<p class="fail">❌ Impossible de joindre le fichier.</p>';
+            }
         };
         document.head.appendChild(script);
     }
 
     (async () => {
-        await cleanAndRegister();
-        // Wait a moment for SW activation, then test
-        setTimeout(testInjection, 500);
+        await cleanAllSW();
+        log('SW et caches nettoyés.', 'success');
+        testScript();
     })();
 </script>
 </body>
