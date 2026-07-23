@@ -1,13 +1,18 @@
 [build]
   publish = "."
 
-# Force no caching for the script file (ensures browsers always get the latest)
+# Explicitly set correct MIME types for JS and CSS
 [[headers]]
-  for = "/ED-French-ini.js"
+  for = "/*.js"
   [headers.values]
-    Cache-Control = "no-cache, must-revalidate"
+    Content-Type = "application/javascript; charset=utf-8"
 
-# Security headers for all files
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Content-Type = "text/css; charset=utf-8"
+
+# Security headers
 [[headers]]
   for = "/*"
   [headers.values]

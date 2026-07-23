@@ -3,156 +3,250 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test final (environnement propre)</title>
+    <title>Diagnostic complet – French Hub</title>
+    <link rel="stylesheet" href="ED-French-headerandfooter.css">
     <style>
         :root {
             --bg: #f9f7f1; --card: #ffffff; --text: #2b2416;
-            --text-light: #5c5344; --heading: #382e1e; --accent: #c75b2c;
-            --accent-hover: #a3441d; --border: #e5ddd0;
-            --button-bg: #f0e8d8; --button-hover: #e3d5bc;
+            --text-light: #5c5344; --accent: #c75b2c;
+            --border: #e5ddd0; --radius: 12px;
         }
         body.dark {
             --bg: #1e1b17; --card: #2a2620; --text: #e8dfd2;
-            --text-light: #b9aa95; --heading: #f0e4d2; --accent: #e07b4a;
-            --accent-hover: #f08c5c; --border: #3e3830;
-            --button-bg: #3a3329; --button-hover: #4e4437;
+            --text-light: #b9aa95; --accent: #e07b4a;
+            --border: #3e3830;
         }
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family: 'Segoe UI', Georgia, serif; background: var(--bg); color: var(--text); line-height: 1.7; transition: background 0.25s, color 0.25s; }
-        .topbar {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0.8rem 1.6rem; background: var(--card);
-            border-bottom: 1px solid var(--border); box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-            position: sticky; top:0; z-index:10;
+        body { font-family: 'Segoe UI', Georgia, serif; background: var(--bg); color: var(--text); line-height: 1.5; transition: 0.25s; margin:0; }
+        .container { max-width: 960px; margin: 0 auto; padding: 1.5rem; }
+        .panel {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 1.2rem; margin-bottom: 1.2rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
         }
-        .breadcrumb { font-size:0.85rem; color:var(--text-light); }
-        .breadcrumb a { color:var(--accent); text-decoration:none; font-weight:600; }
-        .theme-btn {
-            display:inline-flex; align-items:center; gap:0.4rem;
-            padding:0.45rem 0.9rem; border-radius:20px;
-            border:1px solid var(--border); background: var(--button-bg);
-            color:var(--text); cursor:pointer; font-size:0.85rem; font-weight:600;
-            transition: all 0.25s;
+        .panel h2 { font-size: 1.2rem; margin-bottom: 0.8rem; color: var(--accent); }
+        .status { font-weight: bold; }
+        .ok { color: #2e7d32; }
+        .warn { color: #e65100; }
+        .err { color: #c62828; }
+        .log-entry { padding: 0.2rem 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; word-break: break-all; }
+        .log-timestamp { color: var(--text-light); margin-right: 0.5rem; }
+        .preview { background: #f5f5f5; padding: 0.5rem; border-radius: 6px; font-family: monospace; font-size: 0.8rem; overflow-x: auto; }
+        body.dark .preview { background: #1a1a1a; }
+        button { 
+            background: var(--accent); color: #fff; border: none; padding: 0.5rem 1rem; 
+            border-radius: 20px; cursor: pointer; font-weight: 600; margin-top: 0.5rem;
         }
-        .theme-btn:hover { background: var(--button-hover); }
-        .container { max-width:800px; margin:0 auto; padding:2rem 1.4rem; }
-        .status-box {
-            background: var(--card); border:1px solid var(--border);
-            border-radius:12px; padding:1.2rem; margin:1rem 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            word-break: break-all;
-        }
-        .success { color: #2e7d32; font-weight: bold; }
-        .fail { color: #c62828; font-weight: bold; }
-        .log { font-size:0.85rem; margin:0.5rem 0; }
-        .log-entry { padding:0.2rem 0; border-bottom:1px solid var(--border); }
+        hr { border: 0.5px solid var(--border); margin: 1rem 0; }
     </style>
 </head>
 <body>
 <div id="header-container"></div>
-
-<header class="topbar">
-    <div class="breadcrumb">
-        <a href="index.html">🏠 Accueil</a> › <strong>Test final propre</strong>
-    </div>
-    <button id="themeToggle" class="theme-btn">
-        <span id="themeIcon">🌙</span> <span id="themeLabel">Mode sombre</span>
-    </button>
-</header>
-
 <main class="container">
-    <h1>🔍 Diagnostic final (sans SW)</h1>
-    <div id="statusArea" class="status-box">
-        <p>Préparation de l'environnement…</p>
+    <h1>🩺 Diagnostic complet du site</h1>
+    <div class="panel" id="status-panel">
+        <h2>Résumé</h2>
+        <div id="summary">Lancement des vérifications…</div>
     </div>
-    <h2>Journal</h2>
-    <div id="logArea" class="status-box"></div>
+    <div class="panel" id="log-panel">
+        <h2>Journal détaillé</h2>
+        <div id="log-container"></div>
+    </div>
+    <div class="panel">
+        <h2>Actions</h2>
+        <button onclick="location.reload()">🔄 Recharger la page</button>
+        <button onclick="clearSiteData()">🧹 Effacer toutes les données du site</button>
+    </div>
 </main>
-
 <div id="footer-container"></div>
 
+<script src="ED-French-ini.js"></script>
 <script>
-    const logEntries = [];
-    function log(msg, type) {
-        logEntries.push({ msg, type: type || 'info', time: new Date().toLocaleTimeString() });
-        document.getElementById('logArea').innerHTML = logEntries.map(e =>
-            `<div class="log-entry" style="color:${e.type==='error'?'red':e.type==='success'?'green':e.type==='warn'?'orange':'inherit'}">
-                [${e.time}] ${e.msg}
-            </div>`).join('');
-    }
+    // ──────────────────────────────────────
+    // Advanced diagnostic and logging engine
+    // ──────────────────────────────────────
+    (function() {
+        const logContainer = document.getElementById('log-container');
+        const summaryDiv = document.getElementById('summary');
+        const overall = { ok: 0, warn: 0, err: 0 };
 
-    async function cleanAndReload() {
-        if (!('serviceWorker' in navigator)) return false;
-        const regs = await navigator.serviceWorker.getRegistrations();
-        if (regs.length > 0 || navigator.serviceWorker.controller) {
-            log('Service worker actif détecté. Nettoyage et rechargement...', 'warn');
-            for (const reg of regs) await reg.unregister();
-            const keys = await caches.keys();
-            for (const key of keys) await caches.delete(key);
-            log('Nettoyage terminé, rechargement dans 1 seconde.', 'success');
-            setTimeout(() => location.reload(true), 1000);
-            return true;
-        }
-        return false;
-    }
-
-    async function runTest() {
-        // First, check if SW is still controlling the page
-        if (navigator.serviceWorker && navigator.serviceWorker.controller) {
-            log('Service worker contrôle toujours la page. Nettoyage...', 'warn');
-            await cleanAndReload();
-            return;
+        function log(msg, level = 'info') {
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            const now = new Date().toLocaleTimeString();
+            entry.innerHTML = `<span class="log-timestamp">[${now}]</span> ${escapeHtml(msg)}`;
+            if (level === 'success') entry.classList.add('ok');
+            else if (level === 'warn') entry.classList.add('warn');
+            else if (level === 'error') entry.classList.add('err');
+            logContainer.appendChild(entry);
+            logContainer.scrollTop = logContainer.scrollHeight;
+            if (level === 'error') overall.err++;
+            else if (level === 'warn') overall.warn++;
+            else if (level === 'success') overall.ok++;
         }
 
-        log('Aucun service worker actif. Test du chargement...', 'success');
-        const statusDiv = document.getElementById('statusArea');
+        function escapeHtml(text) {
+            const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
 
-        try {
-            // Fetch the file directly, bypass cache
-            const resp = await fetch('ED-French-ini.js', { cache: 'no-store' });
-            const text = await resp.text();
-            log(`Statut HTTP: ${resp.status}`, resp.ok ? 'success' : 'warn');
-            log(`Taille: ${text.length} octets`, 'info');
-            const isHtml = text.trim().startsWith('<!') || text.trim().startsWith('<html');
-            log(`Contenu HTML: ${isHtml ? 'OUI' : 'NON'}`, isHtml ? 'error' : 'success');
+        function updateSummary() {
+            summaryDiv.innerHTML = `
+                <p>✅ OK: ${overall.ok} &nbsp; ⚠️ Avertissements: ${overall.warn} &nbsp; ❌ Erreurs: ${overall.err}</p>
+                <p>${overall.err === 0 ? 'Tous les tests critiques sont passés.' : 'Des problèmes détectés, voir le journal.'}</p>
+            `;
+        }
 
-            if (isHtml) {
-                statusDiv.innerHTML = '<p class="fail">❌ Le fichier est toujours servi en HTML. Vérifiez le déploiement et les redirections.</p>';
+        // Capture global errors
+        window.onerror = (msg, src, line, col, err) => {
+            log(`Erreur JS: ${msg} (${src}:${line})`, 'error');
+            updateSummary();
+            return false;
+        };
+        window.onunhandledrejection = (evt) => {
+            log(`Promesse rejetée: ${evt.reason}`, 'error');
+            updateSummary();
+        };
+
+        // Utility to fetch and log details
+        async function checkUrl(url, label) {
+            try {
+                const resp = await fetch(url, { cache: 'no-store' });
+                const text = await resp.text();
+                const preview = text.substring(0, 120).replace(/\n/g, ' ');
+                const isHtml = text.trim().startsWith('<!') || text.trim().startsWith('<html');
+                log(`${label}: statut ${resp.status}, type ${resp.headers.get('Content-Type')}, taille ${text.length} o, HTML=${isHtml}`, isHtml ? 'warn' : 'success');
+                log(`   Aperçu: ${preview}...`, 'info');
+                return { ok: resp.ok && !isHtml, status: resp.status, contentType: resp.headers.get('Content-Type'), text };
+            } catch(e) {
+                log(`${label}: échec réseau - ${e.message}`, 'error');
+                return { ok: false };
+            }
+        }
+
+        // Check service worker status
+        function checkServiceWorker() {
+            if (!('serviceWorker' in navigator)) {
+                log('Service Worker non supporté.', 'warn');
                 return;
             }
+            navigator.serviceWorker.getRegistrations().then(regs => {
+                log(`Nombre de Service Workers: ${regs.length}`, regs.length > 0 ? 'warn' : 'success');
+                regs.forEach(reg => {
+                    log(`SW scope: ${reg.scope}, état: ${reg.active ? 'actif' : 'inactif'}`, reg.active ? 'warn' : 'success');
+                });
+                if (navigator.serviceWorker.controller) {
+                    log(`Page contrôlée par un SW (${navigator.serviceWorker.controller.scriptURL})`, 'warn');
+                } else {
+                    log('Aucun SW ne contrôle cette page.', 'success');
+                }
+                updateSummary();
+            });
+        }
 
-            // Execute the JS content
-            log('Exécution du script...');
+        // Check security headers via a fetch
+        async function checkSecurityHeaders() {
             try {
-                new Function(text)();
-                log('Exécution réussie.', 'success');
-                // Wait a bit for DOM updates
-                setTimeout(() => {
-                    const hdr = document.querySelector('.site-header');
-                    const ftr = document.querySelector('.site-footer');
-                    if (hdr && ftr) {
-                        statusDiv.innerHTML = '<p class="success">✅ Injection réussie ! Le header et le footer sont visibles.</p>';
-                        log('Injection confirmée.', 'success');
-                    } else {
-                        statusDiv.innerHTML = '<p class="fail">❌ Le script s’est exécuté mais les éléments ne sont pas apparus.</p>';
-                        log('Échec de l’injection après exécution.', 'error');
+                const resp = await fetch('/index.html', { method: 'HEAD', cache: 'no-store' });
+                const headers = {};
+                resp.headers.forEach((val, key) => headers[key] = val);
+                log('En-têtes de sécurité:', 'info');
+                for (const [k, v] of Object.entries(headers)) {
+                    if (k.startsWith('x-') || k.startsWith('referrer') || k.startsWith('content-security')) {
+                        log(`  ${k}: ${v}`, 'info');
                     }
-                }, 300);
-            } catch (execErr) {
-                log('Erreur d’exécution: ' + execErr.message, 'error');
-                statusDiv.innerHTML = '<p class="fail">❌ Le fichier contient des erreurs JavaScript.</p>';
+                }
+                const required = ['X-Frame-Options', 'X-Content-Type-Options', 'Referrer-Policy'];
+                required.forEach(h => {
+                    if (!headers[h.toLowerCase()]) log(`En-tête manquant: ${h}`, 'warn');
+                    else log(`${h}: ${headers[h.toLowerCase()]}`, 'success');
+                });
+            } catch(e) {
+                log('Impossible de vérifier les en-têtes', 'error');
             }
-        } catch (netErr) {
-            log('Erreur réseau: ' + netErr.message, 'error');
-            statusDiv.innerHTML = '<p class="fail">❌ Impossible de charger le fichier.</p>';
+            updateSummary();
         }
-    }
 
-    (async () => {
-        const needsReload = await cleanAndReload();
-        if (!needsReload) {
-            runTest();
+        // Test the injection script itself
+        function testInjection() {
+            const hdr = document.querySelector('.site-header');
+            const ftr = document.querySelector('.site-footer');
+            if (hdr && ftr) {
+                log('Header et footer détectés dans le DOM.', 'success');
+                log(`Header classes: ${hdr.className}`, 'info');
+                log(`Footer classes: ${ftr.className}`, 'info');
+                updateSummary();
+            } else {
+                log('Header ou footer manquants après chargement de ED-French-ini.js.', 'error');
+                updateSummary();
+                // Fallback: fetch header/footer manually and inject
+                log('Tentative d’injection manuelle...', 'warn');
+                Promise.all([
+                    fetch('ED-French-header.html').then(r => r.text()).catch(() => null),
+                    fetch('ED-French-footer.html').then(r => r.text()).catch(() => null)
+                ]).then(([h, f]) => {
+                    if (h) {
+                        document.getElementById('header-container').innerHTML = h;
+                        log('Header injecté manuellement.', 'success');
+                    }
+                    if (f) {
+                        document.getElementById('footer-container').innerHTML = f;
+                        log('Footer injecté manuellement.', 'success');
+                    }
+                    if (h || f) updateSummary();
+                });
+            }
         }
+
+        // Main execution after page load
+        window.addEventListener('load', async () => {
+            log('Diagnostic démarré.', 'info');
+            checkServiceWorker();
+
+            // Check containers
+            const hc = document.getElementById('header-container');
+            const fc = document.getElementById('footer-container');
+            log(`#header-container: ${hc ? 'présent' : 'ABSENT'}`, hc ? 'success' : 'error');
+            log(`#footer-container: ${fc ? 'présent' : 'ABSENT'}`, fc ? 'success' : 'error');
+
+            // Check CSS loading
+            const testDiv = document.createElement('div');
+            testDiv.className = 'site-header';
+            document.body.appendChild(testDiv);
+            const style = getComputedStyle(testDiv);
+            log(`CSS site-header display: ${style.display}`, style.display === 'flex' ? 'success' : 'warn');
+            document.body.removeChild(testDiv);
+
+            // Check files
+            await checkUrl('ED-French-header.html', 'Fichier header');
+            await checkUrl('ED-French-footer.html', 'Fichier footer');
+            await checkUrl('ED-French-ini.js', 'Script injection');
+
+            // Security headers
+            await checkSecurityHeaders();
+
+            // Injection check
+            setTimeout(testInjection, 600);
+
+            updateSummary();
+        });
+
+        // Clear site data function
+        window.clearSiteData = async function() {
+            if (confirm('Effacer toutes les données du site (cache, SW, localStorage) ?')) {
+                if ('caches' in window) {
+                    const keys = await caches.keys();
+                    for (const key of keys) await caches.delete(key);
+                }
+                if ('serviceWorker' in navigator) {
+                    const regs = await navigator.serviceWorker.getRegistrations();
+                    for (const reg of regs) await reg.unregister();
+                }
+                localStorage.clear();
+                sessionStorage.clear();
+                log('Données effacées, rechargez la page.', 'success');
+                updateSummary();
+            }
+        };
     })();
 </script>
 </body>
