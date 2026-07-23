@@ -1,16 +1,12 @@
 [build]
   publish = "."
 
-# Explicitly set correct MIME types for JS and CSS
-[[headers]]
-  for = "/*.js"
-  [headers.values]
-    Content-Type = "application/javascript; charset=utf-8"
-
-[[headers]]
-  for = "/*.css"
-  [headers.values]
-    Content-Type = "text/css; charset=utf-8"
+# Prevent SPA fallback for the script file
+[[redirects]]
+  from = "/ED-French-ini.js"
+  to = "/ED-French-ini.js"
+  status = 200
+  force = true
 
 # Security headers
 [[headers]]
