@@ -342,6 +342,58 @@
             .lesson-header h1 { font-size:1.5rem; }
             .container { padding:1rem 0.8rem 2rem; }
         }
+/* ═════ RÈGLES / MÉTHODE – à ajouter à toutes les leçons ═════ */
+.valeurs-section,
+.methode-section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.6rem 1.8rem;
+    margin: 2rem 0;
+    box-shadow: var(--shadow);
+}
+.valeurs-section h2,
+.methode-section h2 {
+    font-size: 1.5rem;
+    color: var(--heading);
+    margin-bottom: 1rem;
+    border-bottom: 3px solid var(--accent);
+    display: inline-block;
+    padding-bottom: 0.3rem;
+}
+.valeur-card {
+    background: var(--audio-bg);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.2rem;
+    margin-bottom: 1rem;
+}
+.valeur-card h3 {
+    color: var(--accent);
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+}
+.valeur-card ul {
+    list-style: none;
+    padding: 0;
+}
+.valeur-card li {
+    padding: 0.3rem 0;
+    padding-left: 1.4rem;
+    position: relative;
+    color: var(--text-light);
+}
+.valeur-card li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.5rem;
+    top: 0.5rem;
+}
+/* optionnel : espace sous les paragraphes dans ces cartes */
+.valeur-card p {
+    margin: 0.5rem 0;
+}
     </style>
 </head>
 <body>
@@ -401,6 +453,42 @@
             </p>
             <div class="author">— Crépuscule d'automne, anonyme</div>
         </div>
+<!-- ═════ RÈGLES : LES FONCTIONS ESSENTIELLES ═════ -->
+<div class="valeurs-section">
+    <h2>📖 Les fonctions grammaticales dans la phrase</h2>
+    <p style="margin-bottom:1.2rem;">La <strong>fonction</strong> d’un mot ou d’un groupe de mots indique le rôle qu’il joue dans la phrase (sujet, complément, etc.), contrairement à la nature qui est fixe.</p>
+
+    <div class="valeur-card">
+        <h3>🔹 Le sujet</h3>
+        <p>Il fait l’action ou subit l’état exprimé par le verbe. On le trouve en posant la question <em>« Qui est-ce qui ? »</em> ou <em>« Qu’est-ce qui ? »</em>.</p>
+        <p><em>Le soleil couchant embrasait l’horizon.</em> → <strong>Le soleil couchant</strong> est sujet de « embrasait ».</p>
+    </div>
+
+    <div class="valeur-card">
+        <h3>🔹 Le COD (complément d’objet direct)</h3>
+        <p>Il complète directement le verbe, sans préposition. Question : <em>« qui ? »</em> ou <em>« quoi ? »</em> après le verbe.</p>
+        <p><em>J’offris mon écharpe.</em> → <strong>mon écharpe</strong> est COD de « offris ».</p>
+    </div>
+
+    <div class="valeur-card">
+        <h3>🔹 Le COI (complément d’objet indirect)</h3>
+        <p>Il est introduit par une préposition (à, de, avec…). Question : <em>« à qui ? », « à quoi ? », « de qui ? », « de quoi ? »</em>.</p>
+        <p><em>J’offris mon écharpe à la jeune fille.</em> → <strong>à la jeune fille</strong> est COI de « offris ».</p>
+    </div>
+
+    <div class="valeur-card">
+        <h3>🔹 Les compléments circonstanciels (CC)</h3>
+        <p>Ils précisent les circonstances de l’action (temps, lieu, manière, cause…). Ils sont souvent supprimables ou déplaçables.</p>
+        <ul>
+            <li><strong>CC de temps :</strong> <em>Chaque matin, il sort.</em></li>
+            <li><strong>CC de lieu :</strong> <em>Il se promène dans la forêt.</em></li>
+            <li><strong>CC de manière :</strong> <em>Elle parle doucement.</em></li>
+            <li><strong>CC de cause :</strong> <em>Il tremble de froid.</em></li>
+        </ul>
+    </div>
+
+    <p style="margin-top:1rem; font-style:italic; color:var(--text-light);">💡 Un même mot peut avoir une nature invariable mais des fonctions différentes selon la phrase.</p>
+</div>
 
         <!-- ═════ EXERCISES ═════ -->
         <div class="exercises-section">

@@ -342,6 +342,58 @@
             .lesson-header h1 { font-size:1.5rem; }
             .container { padding:1rem 0.8rem 2rem; }
         }
+/* ═════ RÈGLES / MÉTHODE – à ajouter à toutes les leçons ═════ */
+.valeurs-section,
+.methode-section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.6rem 1.8rem;
+    margin: 2rem 0;
+    box-shadow: var(--shadow);
+}
+.valeurs-section h2,
+.methode-section h2 {
+    font-size: 1.5rem;
+    color: var(--heading);
+    margin-bottom: 1rem;
+    border-bottom: 3px solid var(--accent);
+    display: inline-block;
+    padding-bottom: 0.3rem;
+}
+.valeur-card {
+    background: var(--audio-bg);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.2rem;
+    margin-bottom: 1rem;
+}
+.valeur-card h3 {
+    color: var(--accent);
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+}
+.valeur-card ul {
+    list-style: none;
+    padding: 0;
+}
+.valeur-card li {
+    padding: 0.3rem 0;
+    padding-left: 1.4rem;
+    position: relative;
+    color: var(--text-light);
+}
+.valeur-card li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.5rem;
+    top: 0.5rem;
+}
+/* optionnel : espace sous les paragraphes dans ces cartes */
+.valeur-card p {
+    margin: 0.5rem 0;
+}
     </style>
 </head>
 <body>
@@ -403,6 +455,34 @@
             <div class="author">— Promenade automnale, anonyme</div>
         </div>
 
+<!-- ═════ RÈGLES : LES CLASSES GRAMMATICALES ═════ -->
+<div class="valeurs-section">
+    <h2>📖 Les classes grammaticales (natures)</h2>
+    <p style="margin-bottom:1.2rem;">La <strong>nature</strong> (ou classe grammaticale) d’un mot est son identité fixe, indépendamment de son rôle dans la phrase. On distingue les mots <strong>variables</strong> (ils changent de forme) et <strong>invariables</strong>.</p>
+
+    <div class="valeur-card">
+        <h3>🔹 Mots variables</h3>
+        <ul>
+            <li><strong>Le nom :</strong> désigne un être, une chose, une idée. <em>vent, feuille, automne, Tunis</em></li>
+            <li><strong>Le déterminant :</strong> précède le nom et indique son genre et son nombre. <em>le, la, les, un, une, mon, cette</em></li>
+            <li><strong>L’adjectif qualificatif :</strong> qualifie le nom. <em>léger, doré, rapide, silencieuse</em></li>
+            <li><strong>Le pronom :</strong> remplace un nom ou un groupe nominal. <em>je, me, il, elle, le mien</em></li>
+            <li><strong>Le verbe :</strong> exprime une action ou un état. <em>caressait, est, traversa, remplit</em></li>
+        </ul>
+    </div>
+
+    <div class="valeur-card">
+        <h3>🔹 Mots invariables</h3>
+        <ul>
+            <li><strong>L’adverbe :</strong> modifie le sens d’un verbe, d’un adjectif ou d’un autre adverbe. <em>doucement, lentement, très</em></li>
+            <li><strong>La préposition :</strong> introduit un complément. <em>dans, avec, derrière, de, à</em></li>
+            <li><strong>La conjonction de coordination :</strong> relie des mots ou propositions de même nature. <em>mais, ou, et, donc, or, ni, car</em></li>
+            <li><strong>L’interjection :</strong> exprime une émotion, une réaction. <em>Ah !, Oh !, Hélas !</em></li>
+        </ul>
+    </div>
+
+    <p style="margin-top:1rem; font-style:italic; color:var(--text-light);">💡 Ne pas confondre <strong>nature</strong> (ce qu’est le mot) et <strong>fonction</strong> (ce qu’il fait dans la phrase).</p>
+</div>
         <!-- ═════ EXERCISES ═════ -->
         <div class="exercises-section">
             <h2>✍️ Exercices</h2>

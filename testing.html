@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test injection externe (ED‑French‑ini.js)</title>
+    <title>Test injection fichiers header/footer externes</title>
     <style>
         :root {
             --bg: #f9f7f1; --card: #ffffff; --text: #2b2416;
@@ -52,7 +52,7 @@
 
 <header class="topbar">
     <div class="breadcrumb">
-        <a href="index.html">🏠 Accueil</a> › <strong>Test script externe</strong>
+        <a href="index.html">🏠 Accueil</a> › <strong>Test fichiers externes</strong>
     </div>
     <button id="themeToggle" class="theme-btn">
         <span id="themeIcon">🌙</span> <span id="themeLabel">Mode sombre</span>
@@ -60,9 +60,9 @@
 </header>
 
 <main class="container">
-    <h1>🔍 Test du script externe (ED‑French‑ini.js)</h1>
+    <h1>🔍 Test du chargement des fichiers externes</h1>
     <div id="statusArea" class="status-box">
-        <p>Chargement du script externe…</p>
+        <p>Chargement de ED‑French‑header.html et ED‑French‑footer.html…</p>
     </div>
     <h2>Logs</h2>
     <div id="logArea" class="status-box"></div>
@@ -70,50 +70,61 @@
 
 <div id="footer-container"></div>
 
-<!-- Chargement du script externe avec cache-busting -->
-<script>
-fetch('ED-French-ini.js?v=2')
-  .then(r => r.text())
-  .then(t => new Function(t)());
-</script>
-
-<!-- Vérification post-chargement -->
+<!-- Minuscule script de chargement -->
 <script>
     const logEntries = [];
     function log(msg, type) {
         logEntries.push({ msg, type: type || 'info', time: new Date().toLocaleTimeString() });
-        renderLogs();
-    }
-    function renderLogs() {
-        const area = document.getElementById('logArea');
-        area.innerHTML = logEntries.map(e =>
+        document.getElementById('logArea').innerHTML = logEntries.map(e =>
             `<div class="log-entry" style="color:${e.type==='error'?'red':e.type==='success'?'green':'inherit'}">
                 [${e.time}] ${e.msg}
-            </div>`
-        ).join('');
+            </div>`).join('');
     }
 
-    window.onerror = function(message, source, lineno, colno, error) {
-        log('ERREUR: ' + message + ' (' + source + ' ligne ' + lineno + ')', 'error');
-        return false;
-    };
+    async function loadAndInject() {
+        const status = document.getElementById('statusArea');
+        try {
+            const [headerText, footerText] = await Promise.all([
+                fetch('ED-French-header.html').then(r => r.text()),
+                fetch('ED-French-footer.html').then(r => r.text())
+            ]);
 
-    log('Test démarré. Attente de l’exécution du script externe…');
+            document.getElementById('header-container').innerHTML = headerText;
+            document.getElementById('footer-container').innerHTML = footerText;
+            log('Header et footer injectés depuis les fichiers externes.', 'success');
 
-    // Vérifier après un court délai que l'injection a bien eu lieu
-    setTimeout(() => {
-        const siteHeader = document.querySelector('.site-header');
-        const siteFooter = document.querySelector('.site-footer');
-        const statusArea = document.getElementById('statusArea');
+            // Active la modale après injection
+            const modal = document.getElementById('settingsModal');
+            const btn = document.getElementById('settingsBtn');
+            if (modal && btn) {
+                btn.onclick = () => modal.style.display = 'block';
+                modal.querySelector('.close-modal').onclick = () => modal.style.display = 'none';
+                window.onclick = (e) => { if (e.target === modal) modal.style.display = 'none'; };
+            }
 
-        if (siteHeader && siteFooter) {
-            log('✅ .site-header et .site-footer détectés. Injection réussie.', 'success');
-            statusArea.innerHTML = '<p class="success">✅ Le script externe a correctement injecté le header et le footer.</p>';
-        } else {
-            log('❌ Échec : les éléments injectés sont absents.', 'error');
-            statusArea.innerHTML = '<p class="fail">❌ Le script externe n’a pas injecté les éléments. Vérifiez la console.</p>';
+            status.innerHTML = '<p class="success">✅ Les fichiers externes ont été chargés et injectés.</p>';
+        } catch (err) {
+            log('Erreur : ' + err.message, 'error');
+            status.innerHTML = '<p class="fail">❌ Impossible de charger les fichiers externes.</p>';
         }
-    }, 500);
+    }
+
+    loadAndInject();
+</script>
+<script>
+(async function(){
+    var hc=document.getElementById('header-container');
+    var fc=document.getElementById('footer-container');
+    if(hc) hc.innerHTML = await fetch('ED-French-header.html').then(r=>r.text());
+    if(fc) fc.innerHTML = await fetch('ED-French-footer.html').then(r=>r.text());
+    var m=document.getElementById('settingsModal'),b=document.getElementById('settingsBtn');
+    if(m&&b){
+        b.onclick=function(){m.style.display='block'};
+        m.querySelector('.close-modal').onclick=function(){m.style.display='none'};
+        window.onclick=function(e){if(e.target===m)m.style.display='none'}
+    }
+    if(localStorage.getItem('theme')==='dark') document.body.classList.add('dark');
+})();
 </script>
 </body>
 </html>

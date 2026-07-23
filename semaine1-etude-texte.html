@@ -68,6 +68,58 @@
             .lesson-header h1 { font-size:1.5rem; }
             .audio-player { flex-direction: column; align-items: stretch; }
         }
+/* ═════ RÈGLES / MÉTHODE – à ajouter à toutes les leçons ═════ */
+.valeurs-section,
+.methode-section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.6rem 1.8rem;
+    margin: 2rem 0;
+    box-shadow: var(--shadow);
+}
+.valeurs-section h2,
+.methode-section h2 {
+    font-size: 1.5rem;
+    color: var(--heading);
+    margin-bottom: 1rem;
+    border-bottom: 3px solid var(--accent);
+    display: inline-block;
+    padding-bottom: 0.3rem;
+}
+.valeur-card {
+    background: var(--audio-bg);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.2rem;
+    margin-bottom: 1rem;
+}
+.valeur-card h3 {
+    color: var(--accent);
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+}
+.valeur-card ul {
+    list-style: none;
+    padding: 0;
+}
+.valeur-card li {
+    padding: 0.3rem 0;
+    padding-left: 1.4rem;
+    position: relative;
+    color: var(--text-light);
+}
+.valeur-card li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.5rem;
+    top: 0.5rem;
+}
+/* optionnel : espace sous les paragraphes dans ces cartes */
+.valeur-card p {
+    margin: 0.5rem 0;
+}
     </style>
 </head>
 <body>
@@ -112,6 +164,37 @@
             </p>
             <div class="author">— Nuit d'été, anonyme</div>
         </div>
+<!-- ═════ MÉTHODE : ÉTUDE DE TEXTE ═════ -->
+<div class="methode-section">
+    <h2>📖 Comment analyser un texte littéraire</h2>
+    <p style="margin-bottom:1.2rem;">Pour étudier un texte, on suit trois étapes : <strong>comprendre le sens général</strong>, <strong>repérer les procédés d’écriture</strong> et <strong>identifier le point de vue du narrateur</strong>.</p>
+
+    <div class="valeur-card">
+        <h3>🔹 1. Le thème et l’atmosphère</h3>
+        <p>Le <strong>thème</strong> est le sujet principal du texte (la nature, l’amour, la guerre…). L’<strong>atmosphère</strong> est l’impression qui se dégage (calme, angoissante, joyeuse). Pour la définir, on s’appuie sur le vocabulaire et les images.</p>
+    </div>
+
+    <div class="valeur-card">
+        <h3>🔹 2. Les procédés littéraires</h3>
+        <ul>
+            <li><strong>La comparaison :</strong> rapproche deux éléments avec un outil de comparaison (comme, tel, pareil à). <em>« La lune, comme un grand phare, éclairait la nuit. »</em></li>
+            <li><strong>La métaphore :</strong> compare sans outil explicite. <em>« Les montagnes en ombres chinoises. »</em></li>
+            <li><strong>La personnification :</strong> attribue des caractéristiques humaines à un animal, un objet ou une idée. <em>« Les arbres semblaient écouter. »</em></li>
+            <li><strong>Le champ lexical :</strong> ensemble de mots liés à un même thème (nuit, étoiles, lune → champ lexical du ciel nocturne).</li>
+        </ul>
+    </div>
+
+    <div class="valeur-card">
+        <h3>🔹 3. Le point de vue du narrateur</h3>
+        <ul>
+            <li><strong>Narrateur interne :</strong> il raconte à la 1<sup>ère</sup> personne et participe à l’histoire. <em>« Je contemplais ce spectacle. »</em></li>
+            <li><strong>Narrateur externe :</strong> il décrit la scène de l’extérieur, sans intervenir. <em>« La lune se reflétait dans les eaux calmes. »</em></li>
+            <li><strong>Narrateur omniscient :</strong> il sait tout des pensées et des sentiments des personnages. <em>« Un sentiment de paix profonde envahissait l’âme du promeneur. »</em></li>
+        </ul>
+    </div>
+
+    <p style="margin-top:1rem; font-style:italic; color:var(--text-light);">💡 Dans un commentaire, appuyez chaque remarque sur une citation précise du texte.</p>
+</div>
         <!-- Exercises -->
         <div class="exercises-section">
             <h2>✍️ Analyse du texte</h2>
