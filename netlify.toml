@@ -1,15 +1,25 @@
 [build]
   publish = "."
 
-# Redirect clean URLs to .html files (for pages like /revision)
+# Redirect clean URLs (like /revision) to index.html only when no matching file
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
   force = false
 
-# BUT we must exclude existing files and directories
-# Override the catch-all with exceptions for real files
+# But force true for the actual HTML pages we want to redirect (just in case)
+[[redirects]]
+  from = "/revision"
+  to = "/revision.html"
+  status = 200
+
+# Serve static files directly – these rules override the catch-all
+[[redirects]]
+  from = "/assets/*"
+  to = "/assets/:splat"
+  status = 200
+
 [[redirects]]
   from = "/ED-French-ini.js"
   to = "/ED-French-ini.js"
@@ -31,18 +41,13 @@
   status = 200
 
 [[redirects]]
-  from = "/*.jpg"
-  to = "/:splat.jpg"
-  status = 200
-
-[[redirects]]
-  from = "/*.svg"
-  to = "/:splat.svg"
-  status = 200
-
-[[redirects]]
   from = "/*.ico"
   to = "/:splat.ico"
+  status = 200
+
+[[redirects]]
+  from = "/*.json"
+  to = "/:splat.json"
   status = 200
 
 [[headers]]
