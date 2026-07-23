@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devoir de Contrôle N°1 - Français - Bac Eco & Gestion</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f2f5f9;
+            padding: 30px 20px;
+            color: #1e2a3a;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px 45px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0b2b44;
+            border-left: 6px solid #2a7de1;
+            padding-left: 18px;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .subhead {
+            color: #4a5b6e;
+            font-size: 1rem;
+            margin-bottom: 25px;
+            padding-left: 24px;
+            font-weight: 400;
+        }
+
+        /* Control Buttons (Audio & Print) */
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 30px;
+            padding: 15px 0;
+            border-bottom: 2px dashed #dce3ed;
+            justify-content: flex-start;
+        }
+
+        .controls button {
+            padding: 10px 22px;
+            border: none;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-audio {
+            background: #1d2b3f;
+            color: white;
+        }
+        .btn-audio:hover {
+            background: #2c405c;
+            transform: scale(1.02);
+        }
+        .btn-audio.playing {
+            background: #b33c3c;
+        }
+
+        .btn-print {
+            background: #0f6e4a;
+            color: white;
+        }
+        .btn-print:hover {
+            background: #0f855a;
+            transform: scale(1.02);
+        }
+
+        /* Text Block */
+        .text-block {
+            background: #f8faff;
+            padding: 25px 30px;
+            border-radius: 16px;
+            border-left: 4px solid #2a7de1;
+            margin: 20px 0 35px 0;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: #1a2634;
+            box-shadow: inset 0 0 0 1px rgba(42, 125, 225, 0.08);
+        }
+
+        .text-block p {
+            margin: 0;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 40px 0 20px 0;
+            color: #0b2b44;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title span {
+            background: #0b2b44;
+            color: white;
+            font-size: 1rem;
+            padding: 2px 14px;
+            border-radius: 40px;
+            margin-left: 15px;
+        }
+
+        .sub-section-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 30px 0 15px 0;
+            color: #1e3b5a;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #e4eaf2;
+        }
+
+        /* Question Item */
+        .question-item {
+            background: white;
+            margin: 18px 0;
+            padding: 18px 22px;
+            border-radius: 14px;
+            border: 1px solid #e3eaf1;
+            transition: border 0.2s;
+        }
+
+        .question-item:hover {
+            border-color: #b3c9e0;
+        }
+
+        .question-text {
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 12px;
+            display: flex;
+            gap: 8px;
+            align-items: baseline;
+        }
+
+        .question-text .q-label {
+            color: #2a7de1;
+            margin-right: 6px;
+        }
+
+        .toggle-btn {
+            background: #eef3f9;
+            border: 1px solid #cbd8e8;
+            color: #1a3550;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 4px;
+        }
+
+        .toggle-btn:hover {
+            background: #d6e2f0;
+            border-color: #8faccc;
+        }
+
+        .toggle-btn.active {
+            background: #2a7de1;
+            color: white;
+            border-color: #2a7de1;
+        }
+
+        .answer-box {
+            margin-top: 15px;
+            padding: 18px 22px;
+            background: #f0f6fe;
+            border-radius: 12px;
+            border-left: 5px solid #2a7de1;
+            display: none; /* hidden by default */
+        }
+
+        .answer-box.visible {
+            display: block;
+        }
+
+        .answer-box .answer {
+            font-weight: 600;
+            color: #00337a;
+            margin-bottom: 8px;
+            font-size: 1.02rem;
+        }
+
+        .answer-box .explanation {
+            color: #1f3a57;
+            line-height: 1.6;
+            font-size: 0.98rem;
+            margin-top: 6px;
+        }
+
+        .answer-box .explanation strong {
+            color: #0b2b44;
+        }
+
+        .answer-box .explanation .highlight {
+            background: #dce8f8;
+            padding: 0 4px;
+            border-radius: 4px;
+            font-style: italic;
+        }
+
+        .essay-plan {
+            background: #f7faff;
+            border: 1px solid #dce5f0;
+            border-radius: 16px;
+            padding: 20px 25px;
+            margin-top: 20px;
+        }
+
+        .essay-plan .plan-part {
+            margin: 15px 0 10px 0;
+            padding-left: 10px;
+            border-left: 3px solid #2a7de1;
+        }
+
+        .essay-plan .plan-part h4 {
+            font-size: 1.05rem;
+            color: #00337a;
+            margin-bottom: 4px;
+        }
+
+        .essay-plan .plan-part p {
+            margin: 4px 0;
+            line-height: 1.6;
+        }
+
+        .essay-plan .plan-part ul {
+            margin: 6px 0 6px 20px;
+            line-height: 1.7;
+        }
+
+        /* Print styling */
+        @media print {
+            body {
+                background: white;
+                padding: 0.2in;
+            }
+            .container {
+                box-shadow: none;
+                padding: 10px 20px;
+                border-radius: 0;
+            }
+            .controls {
+                display: none !important;
+            }
+            .toggle-btn {
+                display: none !important;
+            }
+            .answer-box {
+                display: block !important;
+                background: #f4f7fb !important;
+                border-left: 3px solid #2a7de1 !important;
+                padding: 12px 16px !important;
+                margin-top: 10px !important;
+            }
+            .question-item {
+                border: 1px solid #ccc;
+                padding: 12px 16px;
+                break-inside: avoid;
+            }
+            .text-block {
+                background: #f5f7fa !important;
+                border-left: 3px solid #1a3b5c !important;
+            }
+            .essay-plan {
+                background: #f5f7fa !important;
+                border: 1px solid #aaa;
+            }
+        }
+
+        /* responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px 15px;
+            }
+            h1 {
+                font-size: 1.4rem;
+            }
+            .text-block {
+                padding: 18px;
+                font-size: 0.98rem;
+            }
+            .question-item {
+                padding: 14px 16px;
+            }
+            .controls button {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="mainContainer">
+
+        <!-- Header -->
+        <h1>📘 Devoir de Contrôle N°1</h1>
+        <div class="subhead">Français – Bac Economie & Gestion (2016-2017) – Mr Megbli</div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <button class="btn-audio" id="audioBtn" onclick="toggleAudio()">🔊 Lire le texte (test1.mp3)</button>
+            <button class="btn-print" onclick="window.print()">🖨️ Exporter en PDF / Imprimer</button>
+        </div>
+
+        <!-- Texte -->
+        <div class="text-block">
+            <p><strong>4ème Economie et gestion</strong></p>
+            <p style="margin-top:10px;">
+                J’y vivais follement heureux et cependant, je l’ignorais. Je l’ai appris brusquement à onze ans, ce jour d’octobre où je suis entré pensionnaire dans un lycée d’une ville trop grande pour moi. Ce fut une déchirure. Une blessure profonde qui ne s’est jamais vraiment refermée, mais dont mes parents, bien-sûr, ne sont en aucun cas coupables. Ils avaient confusément deviné que la vie glissait vers les villes, que le monde rural était condamné, que les études étaient devenues indispensables. Je suis donc parti, déchiré, malheureux comme je ne l’avais jamais été. Privé de liberté dans les champs et les prés, du cocon de la famille, et jeté dans une prison enclose dans une grande ville, j’aurais pu sombrer jusqu’à l’anorexie. Je ne comprenais rien à ce monde violent, aux vexations, aux menaces quotidiennes proférées par des surveillants d’une autre époque (c’était bien avant 1968), je guettais les coins de ciel bleu, je comptais les nuages, j’attendais désespérément le samedi, je ne travaillais pas. Pourtant j’ai franchi l’obstacle. Où ai-je trouvé la force, à onze ans, de survivre à ce terrible exil ? Sans doute dans l’idée d’une île préservée du mal, à vingt kilomètres de là, et dans la souffrance de ceux qui m’aimaient assez fort pour m’éloigner d’eux alors qu’ils avaient tant besoin de moi, parce qu’il y allait de mon « avenir ». Un ami psychiatre, à qui je parlais de cette époque de ma vie et de la gravité de la blessure, m’a répondu que c’était sans doute grâce à elle que j’étais devenu romancier. C’est possible. C’est même probable. Banni du royaume de l’enfance, j’ai utilisé le moyen de l’écriture pour me l’approprier définitivement. Pour qu’on ne me le prenne plus jamais.
+            </p>
+            <p style="margin-top:12px; text-align:right; font-style:italic; color:#3b5777;">Christian SIGNOL, <em>Bonheurs d’enfance</em>, 1996</p>
+        </div>
+
+        <!-- Audio Element (hidden) -->
+        <audio id="audioPlayer" src="test1.mp3" preload="metadata"></audio>
+
+        <!-- ============ I- ÉTUDE DE TEXTE ============ -->
+        <div class="section-title">I. ÉTUDE DE TEXTE <span>10 points</span></div>
+
+        <!-- A- Compréhension -->
+        <div class="sub-section-title">A. Compréhension <span style="font-weight:400; font-size:0.9rem; color:#4a5b6e;">(7 points)</span></div>
+
+        <!-- Question 1 -->
+        <div class="question-item">
+            <div class="question-text">
+                <span class="q-label">1.</span> Pourquoi le narrateur va-t-il quitter sa famille ? Justifiez votre réponse par une phrase du texte. <span style="font-weight:400; font-size:0.85rem; color:#556b82;">(1.5 point)</span>
+            </div>
+            <button class="toggle-btn" onclick="toggleAnswer(this)">Afficher la réponse</button>
+            <div class="answer-box">
+                <div class="answer">📌 Réponse : Le narrateur quitte sa famille parce que ses parents estiment que l'éducation est devenue indispensable pour assurer son avenir, le monde rural étant condamné.</div>
+                <div class="explanation">
+                    <strong>Justification (phrase du texte) :</strong> <span class="highlight">« Ils avaient confusément deviné que la vie glissait vers les villes, que le monde rural était condamné, que les études étaient devenues indispensables. »</span>
+                    <br><br>
+                    <strong>Explication :</strong> Le narrateur est contraint de partir, non par choix personnel, mais par la nécessité imposée par l'évolution de la société. Ses parents sacrifient leur bonheur immédiat pour lui offrir une meilleure chance dans la vie moderne.
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question-item">
+            <div class="question-text">
+                <span class="q-label">2.</span> Quels sentiments le narrateur éprouve-t-il tout au long du texte ? <span style="font-weight:400; font-size:0.85rem; color:#556b82;">(1.5 point)</span>
+            </div>
+            <button class="toggle-btn" onclick="toggleAnswer(this)">Afficher la réponse</button>
+            <div class="answer-box">
+                <div class="answer">📌 Réponse : Le narrateur éprouve des sentiments contradictoires. Il ressent d'abord un profond malheur, une déchirure et un sentiment d'emprisonnement face à sa nouvelle vie. Il est rongé par la nostalgie de son enfance heureuse et par le désespoir. Cependant, il puise aussi une certaine force dans l'amour de ses parents et dans le souvenir de son "île" préservée.</div>
+                <div class="explanation">
+                    <strong>Explication :</strong> Le champ lexical de la souffrance est omniprésent (« déchirure », « blessure », « malheureux », « sombrer »), mais on note aussi une résilience (« j'ai franchi l'obstacle »). Son attachement au passé est si fort qu'il le pousse à écrire pour le reconquérir.
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question-item">
+            <div class="question-text">
+                <span class="q-label">3.</span> Pour quelles raisons le narrateur n’aime-t-il pas sa nouvelle vie ? Justifiez votre réponse par des indices textuels. <span style="font-weight:400; font-size:0.85rem; color:#556b82;">(2 points)</span>
+            </div>
+            <button class="toggle-btn" onclick="toggleAnswer(this)">Afficher la réponse</button>
+            <div class="answer-box">
+                <div class="answer">📌 Réponse : Le narrateur n'aime pas sa nouvelle vie pour trois raisons principales : la perte de liberté, l'enfermement, et la violence/vexations.</div>
+                <div class="explanation">
+                    <strong>Indices textuels :</strong>
+                    <ul style="margin:6px 0 6px 20px;">
+                        <li><span class="highlight">« Privé de liberté dans les champs et les prés »</span></li>
+                        <li><span class="highlight">« jeté dans une prison enclose dans une grande ville »</span></li>
+                        <li><span class="highlight">« je ne comprenais rien à ce monde violent, aux vexations, aux menaces quotidiennes proférées par des surveillants »</span></li>
+                    </ul>
+                    <strong>Explication :</strong> Ces expressions montrent un contraste saisissant entre son enfance champêtre, symbole de liberté, et le pensionnat, perçu comme une prison. L'accumulation des termes péjoratifs (« violent », « vexations », « menaces ») souligne son profond malaise et son rejet de ce nouvel univers.
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question-item">
+            <div class="question-text">
+                <span class="q-label">4.</span> Comment le narrateur présente-t-il son enfance ? Relevez un procédé d’écriture qui le montre. <span style="font-weight:400; font-size:0.85rem; color:#556b82;">(2 points)</span>
+            </div>
+            <button class="toggle-btn" onclick="toggleAnswer(this)">Afficher la réponse</button>
+            <div class="answer-box">
+                <div class="answer">📌 Réponse : Le narrateur présente son enfance comme un paradis perdu, un lieu idéal, pur et protégé de toute nuisance.</div>
+                <div class="explanation">
+                    <strong>Procédé d'écriture relevé :</strong> Il utilise une <strong>métaphore</strong> filée. On la retrouve dans les expressions : <span class="highlight">« le royaume de l’enfance »</span> et <span class="highlight">« une île préservée du mal »</span>.
+                    <br><br>
+                    <strong>Explication :</strong> En qualifiant son enfance de "royaume" et d'"île", il la dote de caractéristiques mythiques et sacrées. Ce procédé stylistique renforce l'idée que cet âge est pour lui un territoire merveilleux et inaccessible, qu'il a perdu mais qu'il tente de reconquérir par l'écriture.
+                </div>
+            </div>
+        </div>
+
+        <!-- B- Langue -->
+        <div class="sub-section-title" style="margin-top:40px;">B. Langue <span style="font-weight:400; font-size:0.9rem; color:#4a5b6e;">(3 points)</span></div>
+
+        <!-- Langue Q1 -->
+        <div class="question-item">
+            <div class="question-text">
+                <span class="q-label">1.</span> Transposez la phrase suivante au discours indirect : <br>
+                <span style="font-weight:400; font-style:italic; font-size:0.95rem; color:#2b4b6f;">« Le narrateur se demanda : « Est-ce que je peux vivre loin de ma mère ? Pourquoi ma mère ne va pas avec moi demain ? » »</span> <span style="font-weight:400; font-size:0.85rem; color:#556b82;">(2 points)</span>
+            </div>
+            <button class="toggle-btn" onclick="toggleAnswer(this)">Afficher la réponse</button>
+            <div class="answer-box">
+                <div class="answer">📌 Réponse : <em>Le narrateur se demanda s'il pouvait vivre loin de sa mère et pourquoi sa mère n'irait pas avec lui le lendemain.</em></div>
+                <div class="explanation">
+                    <strong>Explication des transformations :</strong>
+                    <ul style="margin:4px 0 0 20px;">
+                        <li><span class="highlight">« Est-ce que je peux »</span> → <span class="highlight">« s'il pouvait »</span> (interrogative indirecte avec "si", concordance des temps : présent de l'indicatif → imparfait).</li>
+                        <li><span class="highlight">« Pourquoi ma mère ne va pas »</span> → <span class="highlight">« pourquoi sa mère n'irait pas »</span> (présent → conditionnel présent, car il y a une idée de futur dans le passé).</li>
+                        <li><span class="highlight">« demain »</span> → <span class="highlight">« le lendemain »</span> (changement de repère temporel).</li>
+                        <li><span class="highlight">« moi »</span> → <span class="highlight">« lui »</span> (changement de repère personnel).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Langue Q2a + Q2b (grouped but separate toggles) -->
+        <div class="question-item">
+            <div class="question-text">
+                <span class="q-label">2.</span> <em>Bien qu’il (être) trop petit, ses parents le laissent seul à la ville.</em>
+            </div>
+
+            <!-- Q2a -->
+            <div style="margin-top:10px; padding-left:5px;">
+                <div style="font-weight:500;">a) Identifiez le rapport logique exprimé dans la phrase. <span style="font-weight:400; font-size:0.85rem; color:#556b82;">(0.5 point)</span></div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">Afficher la réponse (a)</button>
+                <div class="answer-box">
+                    <div class="answer">📌 Réponse : Le rapport logique exprimé est la <strong>concession</strong> (ou l'opposition).</div>
+                </div>
+            </div>
+
+            <!-- Q2b -->
+            <div style="margin-top:15px; padding-left:5px;">
+                <div style="font-weight:500;">b) Mettez le verbe entre ( ) au mode et au temps qui convient. <span style="font-weight:400; font-size:0.85rem; color:#556b82;">(0.5 point)</span></div>
+                <button class="toggle-btn" onclick="toggleAnswer(this)">Afficher la réponse (b)</button>
+                <div class="answer-box">
+                    <div class="answer">📌 Réponse : <em>Bien qu’il <strong>soit</strong> trop petit, ses parents le laissent seul à la ville.</em></div>
+                    <div class="explanation">
+                        <strong>Explication :</strong> La locution conjonctive « Bien que » est toujours suivie du <strong>subjonctif</strong>. Ici, le verbe « être » conjugué au présent du subjonctif donne <span class="highlight">« soit »</span> (car l'action est simultanée au présent de l'indicatif « laissent »).
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ II- ESSAI ============ -->
+        <div class="section-title" style="margin-top:50px;">II. ESSAI <span>10 points</span></div>
+
+        <div style="background:#f4f9ff; padding:18px 22px; border-radius:14px; border:1px solid #d0def0; margin-bottom:20px;">
+            <p style="font-weight:600; font-size:1.05rem;">Sujet :</p>
+            <p style="font-style:italic; color:#1a2f44;">Comme le narrateur, beaucoup de personnes évoquent avec nostalgie les personnes et les lieux qui ont marqué leur enfance. Pourquoi, à votre avis, l’attachement au passé est important pour l’homme ? Vous développerez votre point de vue sur cette question en vous appuyant sur des arguments et des exemples précis.</p>
+        </div>
+
+        <!-- Essay Toggle Button -->
+        <div style="margin:10px 0 20px 0;">
+            <button class="toggle-btn" onclick="toggleAnswer(this)" style="padding:10px 30px; font-size:1rem;">📝 Afficher / Masquer la planification détaillée</button>
+        </div>
+
+        <!-- Essay Planning (hidden by default) -->
+        <div class="answer-box essay-plan" id="essayPlanBox">
+            <h3 style="color:#0b2b44; margin-top:0; border-bottom:2px solid #c3d7ee; padding-bottom:8px;">📋 Planification détaillée</h3>
+
+            <div class="plan-part">
+                <h4>Introduction</h4>
+                <p><strong>Accroche :</strong> Le temps qui passe efface inévitablement les visages et les paysages de notre jeunesse, pourtant, rares sont ceux qui ne se tournent pas avec émotion vers leurs souvenirs d'enfance.</p>
+                <p><strong>Présentation du sujet :</strong> Comme le narrateur de Christian Signol, nous ressentons souvent une vive nostalgie pour ce que nous avons perdu.</p>
+                <p><strong>Problématique reformulée :</strong> Mais pourquoi cet attachement au passé occupe-t-il une place si importante dans la vie de l'homme ?</p>
+                <p><strong>Annonce du plan :</strong> Cet attachement est fondamental car il constitue le socle de notre identité, il agit comme un refuge émotionnel face aux aléas du présent, et il nous permet de transmettre un héritage pour construire l'avenir.</p>
+            </div>
+
+            <div class="plan-part">
+                <h4>Argument 1 : Le passé est le fondement de notre identité et de notre personnalité.</h4>
+                <p><strong>Idée :</strong> Nos expériences passées, notamment celles de l'enfance, forgent notre caractère, nos valeurs et nos aspirations. On ne devient pas ce que l'on est sans ce chemin parcouru.</p>
+                <ul>
+                    <li><strong>Exemple 1 (Issu du texte) :</strong> Le narrateur affirme que c'est la blessure de son "exil" qui a fait de lui un romancier. Son enfance douloureuse a déterminé sa vocation.</li>
+                    <li><strong>Exemple 2 (Culturel) :</strong> Dans <em>À la recherche du temps perdu</em> de Marcel Proust, la madeleine trempée dans le thé est le déclencheur qui fait ressurgir tout un monde passé, prouvant que nos souvenirs sont les briques de notre être intérieur.</li>
+                    <li><strong>Exemple 3 (Personnel / Général) :</strong> Une personne ayant grandi dans un environnement multiculturel développera souvent une ouverture d'esprit et une tolérance qui la suivront toute sa vie.</li>
+                </ul>
+            </div>
+
+            <div class="plan-part">
+                <h4>Argument 2 : L’attachement au passé offre un refuge et un sentiment de stabilité dans un monde changeant.</h4>
+                <p><strong>Idée :</strong> Le monde moderne est en perpétuelle évolution (technologique, sociale). Face à cette instabilité, le passé agit comme un "ancrage" affectif, un cocon rassurant où l'on se sent en sécurité.</p>
+                <ul>
+                    <li><strong>Exemple 1 (Issu du texte) :</strong> Le narrateur, perdu dans la "prison" de la grande ville, survit grâce à "l'idée d'une île préservée du mal" à vingt kilomètres. Ce souvenir est son bouclier contre la violence du présent.</li>
+                    <li><strong>Exemple 2 (Général) :</strong> Les fêtes de famille, les traditions culinaires régionales (ex: la galette des rois en janvier) ou les chants populaires sont des rituels que l'on perpétue pour retrouver les sensations de l'enfance et se sentir relié à ses racines.</li>
+                    <li><strong>Exemple 3 (Concret) :</strong> De nombreux adultes retournent visiter leur maison d'enfance ou leur école primaire. Ce pèlerinage personnel leur permet de recharger leurs batteries émotionnelles en renouant avec des sensations oubliées de paix.</li>
+                </ul>
+            </div>
+
+            <div class="plan-part">
+                <h4>Argument 3 : Le passé est une leçon et un moteur pour construire l'avenir (Devoir de mémoire).</h4>
+                <p><strong>Idée :</strong> S'attacher au passé, ce n'est pas seulement se complaire dans la nostalgie ; c'est aussi en tirer des enseignements pour éviter de répéter les erreurs et pour perpétuer un héritage culturel.</p>
+                <ul>
+                    <li><strong>Exemple 1 (Historique) :</strong> Le devoir de mémoire concernant les guerres mondiales (comme le 11 Novembre) est essentiel. Se souvenir des horreurs du passé permet aux générations futures de mesurer la valeur de la paix et de lutter contre l'oubli.</li>
+                    <li><strong>Exemple 2 (Culturel) :</strong> La préservation du patrimoine architectural (comme les châteaux de la Loire ou les cités médiévales) n'est pas une nostalgie stérile ; c'est un investissement pour l'avenir, car ces lieux attirent les touristes, créent de l'emploi et transmettent une histoire.</li>
+                    <li><strong>Exemple 3 (Scientifique) :</strong> Les scientifiques s'appuient sur les découvertes du passé (ex: les travaux de Pasteur) pour innover dans la médecine de demain. L'histoire des sciences est le tremplin du progrès.</li>
+                </ul>
+            </div>
+
+            <div class="plan-part">
+                <h4>Conclusion</h4>
+                <p><strong>Récapitulatif :</strong> En définitive, l'attachement au passé n'est pas une simple faiblesse sentimentale. Il est essentiel à l'équilibre humain car il nous donne une identité (qui suis-je ?), un réconfort (d'où je viens) et une direction (où vais-je ?).</p>
+                <p><strong>Élargissement / Ouverture :</strong> Cependant, cet attachement ne doit pas devenir une prison. Comme le narrateur qui utilise l'écriture pour s'approprier son enfance "définitivement", l'homme doit apprendre à transformer ses souvenirs en une force créatrice pour le présent, sans se laisser paralyser par eux. L'équilibre est de savoir conjuguer héritage et modernité.</p>
+            </div>
+        </div>
+
+    </div> <!-- end container -->
+
+    <script>
+        // Toggle individual answer boxes
+        function toggleAnswer(btn) {
+            const parent = btn.closest('.question-item') || btn.closest('.container'); // fallback
+            let answerBox;
+
+            // If it's the essay toggle, find the specific essay plan box
+            if (btn.textContent.includes('Planification') || btn.textContent.includes('planification')) {
+                answerBox = document.getElementById('essayPlanBox');
+            } else {
+                // Find the next sibling .answer-box within the same parent
+                // But careful, Q2 has multiple buttons. We need to find the answer-box relative to the button's parent div.
+                const parentDiv = btn.closest('div'); // the div containing the button and the answer-box
+                answerBox = parentDiv.querySelector('.answer-box');
+                // If not found, try searching in the entire .question-item
+                if (!answerBox) {
+                    const questionItem = btn.closest('.question-item');
+                    if (questionItem) {
+                        // For Q2a/b, find the answer-box that is a sibling of the button's parent
+                        const allBoxes = questionItem.querySelectorAll('.answer-box');
+                        // Find the one that is inside the same logical block
+                        // In Q2, the button is inside a div, and the answer-box is a sibling.
+                        const parentContainer = btn.parentElement;
+                        answerBox = parentContainer.querySelector('.answer-box');
+                        if (!answerBox) {
+                            // fallback: get all and assume the last one? Better: find by index.
+                            // But the easiest: loop through siblings
+                            let sibling = parentContainer.nextElementSibling;
+                            while (sibling) {
+                                if (sibling.classList.contains('answer-box')) {
+                                    answerBox = sibling;
+                                    break;
+                                }
+                                sibling = sibling.nextElementSibling;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (!answerBox) {
+                console.warn('Answer box not found for button:', btn);
+                return;
+            }
+
+            // Toggle visibility
+            const isVisible = answerBox.classList.contains('visible');
+            if (isVisible) {
+                answerBox.classList.remove('visible');
+                btn.textContent = btn.textContent.replace('Masquer', 'Afficher');
+                // Ensure the button text doesn't duplicate
+                if (btn.textContent.includes('Masquer')) {
+                    btn.textContent = btn.textContent.replace('Masquer', 'Afficher');
+                } else if (!btn.textContent.includes('Afficher')) {
+                    // If it's a custom label, set default
+                    if (btn.textContent.includes('Planification')) {
+                        btn.textContent = '📝 Afficher / Masquer la planification détaillée';
+                    } else {
+                        btn.textContent = 'Afficher la réponse';
+                    }
+                }
+            } else {
+                answerBox.classList.add('visible');
+                if (btn.textContent.includes('Afficher')) {
+                    btn.textContent = btn.textContent.replace('Afficher', 'Masquer');
+                } else if (!btn.textContent.includes('Masquer')) {
+                    if (btn.textContent.includes('Planification')) {
+                        btn.textContent = '📝 Afficher / Masquer la planification détaillée';
+                    } else {
+                        btn.textContent = 'Masquer la réponse';
+                    }
+                }
+            }
+        }
+
+        // Audio toggle
+        const audio = document.getElementById('audioPlayer');
+        const audioBtn = document.getElementById('audioBtn');
+
+        function toggleAudio() {
+            if (audio.paused) {
+                audio.play().then(() => {
+                    audioBtn.textContent = '⏸️ Pause (test1.mp3)';
+                    audioBtn.classList.add('playing');
+                }).catch(err => {
+                    alert('Impossible de lire le fichier audio. Vérifiez que "test1.mp3" est présent dans le même dossier.');
+                    console.error('Audio play error:', err);
+                });
+            } else {
+                audio.pause();
+                audioBtn.textContent = '🔊 Lire le texte (test1.mp3)';
+                audioBtn.classList.remove('playing');
+            }
+        }
+
+        // Reset audio button when audio ends
+        audio.addEventListener('ended', () => {
+            audioBtn.textContent = '🔊 Lire le texte (test1.mp3)';
+            audioBtn.classList.remove('playing');
+        });
+
+        // Auto-detect audio errors (e.g., file not found)
+        audio.addEventListener('error', () => {
+            if (audio.error) {
+                console.warn('Audio error:', audio.error);
+            }
+        });
+
+        // Ensure all answer boxes are hidden on page load (except if printing)
+        // The CSS handles this with display:none, but we want to ensure visibility is removed.
+        // The script toggles classes, so initial state is hidden.
+        // However, the essay plan has display:block set by .answer-box, but we override with display:none initially.
+        // We'll ensure it's hidden.
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ensure essay plan is hidden initially (the class 'visible' is not present)
+            const essayBox = document.getElementById('essayPlanBox');
+            if (essayBox) {
+                essayBox.classList.remove('visible');
+            }
+            // Ensure all answer boxes are hidden (just in case)
+            document.querySelectorAll('.answer-box').forEach(box => {
+                box.classList.remove('visible');
+            });
+        });
+    </script>
+
+</body>
+</html>

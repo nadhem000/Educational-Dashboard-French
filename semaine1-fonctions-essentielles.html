@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leçon 2 – Les Fonctions Essentielles | Texte littéraire & Exercices</title>
+    <style>
+        :root {
+            --bg: #f9f7f1;
+            --card: #ffffff;
+            --text: #2b2416;
+            --text-light: #5c5344;
+            --heading: #382e1e;
+            --accent: #c75b2c;
+            --accent-hover: #a3441d;
+            --border: #e5ddd0;
+            --shadow: 0 1px 4px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-hover: 0 8px 22px rgba(0,0,0,0.08);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --transition: 0.25s ease;
+            --font: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
+            --audio-bg: #f4efe4;
+            --audio-progress: #d8c9aa;
+            --button-bg: #f0e8d8;
+            --button-hover: #e3d5bc;
+            --input-bg: #fcfaf6;
+        }
+
+        body.dark {
+            --bg: #1e1b17;
+            --card: #2a2620;
+            --text: #e8dfd2;
+            --text-light: #b9aa95;
+            --heading: #f0e4d2;
+            --accent: #e07b4a;
+            --accent-hover: #f08c5c;
+            --border: #3e3830;
+            --shadow: 0 1px 4px rgba(0,0,0,0.25);
+            --shadow-hover: 0 8px 22px rgba(0,0,0,0.35);
+            --audio-bg: #26221b;
+            --audio-progress: #5a4e3c;
+            --button-bg: #3a3329;
+            --button-hover: #4e4437;
+            --input-bg: #333028;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.75;
+            transition: background var(--transition), color var(--transition);
+        }
+
+        /* ── Topbar ── */
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.8rem 1.6rem;
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top:0;
+            z-index:10;
+            flex-wrap: wrap;
+            gap:0.6rem;
+        }
+        .breadcrumb { font-size:0.85rem; color:var(--text-light); }
+        .breadcrumb a { color:var(--accent); text-decoration:none; font-weight:600; }
+        .breadcrumb a:hover { text-decoration:underline; }
+
+        .theme-btn {
+            display:inline-flex;
+            align-items:center;
+            gap:0.4rem;
+            padding:0.45rem 0.9rem;
+            border-radius:20px;
+            border:1px solid var(--border);
+            background: var(--button-bg);
+            color:var(--text);
+            cursor:pointer;
+            font-size:0.85rem;
+            font-weight:600;
+            transition: all var(--transition);
+        }
+        .theme-btn:hover { background:var(--button-hover); }
+
+        .container { max-width:860px; margin:0 auto; padding:1.8rem 1.4rem 3rem; }
+
+        /* ── Lesson Header ── */
+        .lesson-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .badge {
+            display:inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding:0.25rem 1rem;
+            border-radius:20px;
+            font-size:0.8rem;
+            font-weight:700;
+            letter-spacing:0.03em;
+            text-transform: uppercase;
+        }
+        .lesson-header h1 {
+            font-size: 2.1rem;
+            color: var(--heading);
+            margin: 0.6rem 0 0.3rem;
+            line-height: 1.3;
+        }
+        .lesson-header .meta {
+            font-size:0.9rem;
+            color:var(--text-light);
+            display: flex;
+            justify-content: center;
+            gap:1.2rem;
+            flex-wrap: wrap;
+        }
+
+        /* ── Custom Audio Player ── */
+        .audio-player {
+            background: var(--card);
+            border:1px solid var(--border);
+            border-radius: var(--radius);
+            padding:1rem 1.4rem;
+            margin: 1.5rem 0 2rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap:1rem;
+            flex-wrap: wrap;
+        }
+        .audio-player .play-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            border:none;
+            font-size:1.2rem;
+            cursor:pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background var(--transition);
+            flex-shrink: 0;
+        }
+        .play-btn:hover { background: var(--accent-hover); }
+        .audio-player .progress-area {
+            flex:1;
+            min-width:120px;
+            display: flex;
+            flex-direction: column;
+            gap:0.3rem;
+        }
+        .progress-bar {
+            width:100%;
+            height:6px;
+            background: var(--audio-progress);
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+        .time-info {
+            display: flex;
+            justify-content: space-between;
+            font-size:0.75rem;
+            color:var(--text-light);
+        }
+        .speed-selector {
+            display: flex;
+            gap:0.3rem;
+            flex-wrap: wrap;
+        }
+        .speed-btn {
+            border:1px solid var(--border);
+            background: var(--button-bg);
+            color: var(--text);
+            padding:0.25rem 0.55rem;
+            border-radius: 4px;
+            font-size:0.75rem;
+            font-weight:600;
+            cursor:pointer;
+            transition: all var(--transition);
+        }
+        .speed-btn.active {
+            background: var(--accent);
+            color:#fff;
+            border-color: var(--accent);
+        }
+        .audio-label {
+            font-weight:700;
+            font-size:0.85rem;
+            color:var(--heading);
+            white-space: nowrap;
+        }
+        @media (max-width:600px) {
+            .audio-player { flex-direction: column; align-items: stretch; }
+            .audio-label { text-align: center; }
+        }
+
+        /* ── Literary text card ── */
+        .text-card {
+            background: var(--card);
+            border:1px solid var(--border);
+            border-left:5px solid var(--accent);
+            border-radius: 0 var(--radius) var(--radius) 0;
+            padding:1.4rem 1.6rem;
+            margin:1.8rem 0;
+            font-style:italic;
+            font-size:1.05rem;
+            line-height: 1.9;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        .text-card .quote-mark {
+            position: absolute;
+            top:-12px;
+            left:14px;
+            font-size:3rem;
+            color:var(--accent);
+            opacity:0.25;
+            line-height:1;
+        }
+        .text-card .author {
+            text-align:right;
+            font-style:normal;
+            font-size:0.9rem;
+            color:var(--text-light);
+            margin-top:0.8rem;
+        }
+
+        /* ── Exercises ── */
+        .exercises-section h2 {
+            font-size:1.5rem;
+            color:var(--heading);
+            margin:2rem 0 1rem;
+            border-bottom:3px solid var(--accent);
+            display:inline-block;
+            padding-bottom:0.3rem;
+        }
+        .exercise-card {
+            background: var(--card);
+            border:1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding:1.2rem 1.4rem;
+            margin-bottom:1.4rem;
+            box-shadow: var(--shadow);
+        }
+        .exercise-card h3 {
+            font-size:1.05rem;
+            color:var(--accent);
+            margin-bottom:0.8rem;
+            display: flex;
+            align-items: center;
+            gap:0.4rem;
+        }
+        .exercise-card table {
+            width:100%;
+            border-collapse: collapse;
+            margin: 0.8rem 0;
+        }
+        .exercise-card th, .exercise-card td {
+            padding:0.55rem 0.7rem;
+            border:1px solid var(--border);
+            text-align:left;
+            font-size:0.9rem;
+        }
+        .exercise-card th {
+            background: var(--audio-bg);
+            font-weight:700;
+            color:var(--heading);
+        }
+        .exercise-card input[type="text"] {
+            width:100%;
+            padding:0.4rem 0.6rem;
+            border:1px solid var(--border);
+            border-radius:4px;
+            background: var(--input-bg);
+            color: var(--text);
+            font-family: inherit;
+            font-size:0.9rem;
+        }
+        .btn-verify {
+            background: var(--accent);
+            color:#fff;
+            border:none;
+            padding:0.5rem 1.2rem;
+            border-radius: 20px;
+            font-weight:600;
+            cursor:pointer;
+            transition: background var(--transition);
+            margin-top:0.6rem;
+            font-size:0.85rem;
+        }
+        .btn-verify:hover { background: var(--accent-hover); }
+        .answer-key {
+            display:none;
+            margin-top:0.8rem;
+            padding:0.8rem;
+            background: var(--audio-bg);
+            border-radius:6px;
+            font-size:0.85rem;
+            color: var(--text-light);
+            border:1px dashed var(--accent);
+        }
+        .answer-key.visible { display:block; }
+
+        /* ── Footer ── */
+        .lesson-footer {
+            margin-top:2.5rem;
+            padding-top:1.2rem;
+            border-top:1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap:0.8rem;
+        }
+        .lesson-footer a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight:600;
+        }
+        .lesson-footer a:hover { text-decoration:underline; }
+
+        @media (max-width:600px) {
+            .lesson-header h1 { font-size:1.5rem; }
+            .container { padding:1rem 0.8rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+<div id="header-container"></div>
+
+    <!-- ═══════ TOP BAR ═══════ -->
+    <header class="topbar">
+        <div class="breadcrumb">
+            <a href="index.html">🏠 Accueil</a> › <a href="revision.html">Révision générale</a> › <strong>Fonctions essentielles</strong>
+        </div>
+        <button id="themeToggle" class="theme-btn">
+            <span id="themeIcon">🌙</span> <span id="themeLabel">Mode sombre</span>
+        </button>
+    </header>
+
+    <main class="container">
+
+        <div class="lesson-header">
+            <span class="badge">📘 Grammaire · Leçon 2</span>
+            <h1>Les Fonctions Essentielles<br>(Sujet, COD, COI, CC)</h1>
+            <div class="meta">
+                <span>⏱️ 45 minutes</span>
+                <span>🎧 Écoutez le texte puis faites les exercices</span>
+            </div>
+        </div>
+
+        <!-- ═════ CUSTOM AUDIO PLAYER (lesson2.mp3) ═════ -->
+        <div class="audio-player" id="audioPlayer">
+            <span class="audio-label">🎧 Écoute littéraire</span>
+            <button class="play-btn" id="playBtn">▶</button>
+            <div class="progress-area">
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="time-info">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+            <div class="speed-selector" id="speedSelector">
+                <button class="speed-btn" data-speed="0.75">0.75x</button>
+                <button class="speed-btn active" data-speed="1">1x</button>
+                <button class="speed-btn" data-speed="1.25">1.25x</button>
+                <button class="speed-btn" data-speed="1.5">1.5x</button>
+            </div>
+        </div>
+
+        <!-- ═════ LITERARY TEXT ═════ -->
+        <div class="text-card">
+            <span class="quote-mark">“</span>
+            <p>
+                <u>Le</u> <u>soleil</u> <u>couchant</u> embrasait <u>l'horizon</u>.  
+                <u>Les</u> <u>oiseaux</u> <u>regagnaient</u> <u>leurs nids</u> avec <u>hâte</u>.  
+                <u>Je</u> <u>contemplais</u> ce <u>spectacle</u> magnifique <u>en silence</u>.  
+                Soudain, <u>un</u> <u>souffle</u> <u>glacial</u> <u>me</u> <u>fit</u> <u>frissonner</u>.  
+                <u>J'</u> <u>offris</u> <u>mon</u> <u>écharpe</u> <u>à</u> <u>la</u> <u>jeune</u> <u>fille</u> <u>tremblante</u>.
+            </p>
+            <div class="author">— Crépuscule d'automne, anonyme</div>
+        </div>
+
+        <!-- ═════ EXERCISES ═════ -->
+        <div class="exercises-section">
+            <h2>✍️ Exercices</h2>
+
+            <!-- Exercice 1 : fonctions des groupes soulignés -->
+            <div class="exercise-card">
+                <h3>📌 1. Identifiez la fonction des mots ou groupes soulignés</h3>
+                <p>Pour chaque élément souligné dans le texte, précisez sa fonction grammaticale : <strong>sujet</strong>, <strong>COD</strong>, <strong>COI</strong>, <strong>complément circonstanciel</strong> (CC de lieu, temps, manière…).</p>
+                <table id="exo1Table">
+                    <thead><tr><th>Groupe souligné</th><th>Fonction</th></tr></thead>
+                    <tbody>
+                        <tr><td>Le soleil couchant</td><td><input type="text" placeholder="ex: sujet"></td></tr>
+                        <tr><td>l'horizon</td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>Les oiseaux</td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>leurs nids</td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>avec hâte</td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>Je</td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>ce spectacle magnifique</td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>en silence</td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>un souffle glacial</td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>me</td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>frissonner</td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>J'</td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>mon écharpe</td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>à la jeune fille tremblante</td><td><input type="text" placeholder="..."></td></tr>
+                    </tbody>
+                </table>
+                <button class="btn-verify" onclick="toggleCorrection('exo1Key')">🔍 Voir la correction</button>
+                <div id="exo1Key" class="answer-key">
+                    <strong>Correction :</strong><br>
+                    Le soleil couchant → <em>sujet du verbe « embrasait »</em><br>
+                    l'horizon → <em>COD du verbe « embrasait »</em><br>
+                    Les oiseaux → <em>sujet du verbe « regagnaient »</em><br>
+                    leurs nids → <em>COD de « regagnaient »</em><br>
+                    avec hâte → <em>CC de manière</em><br>
+                    Je → <em>sujet de « contemplais »</em><br>
+                    ce spectacle magnifique → <em>COD de « contemplais »</em><br>
+                    en silence → <em>CC de manière</em><br>
+                    un souffle glacial → <em>sujet du verbe « fit »</em><br>
+                    me → <em>COD de « fit » (fit frissonner qui ? → me)</em><br>
+                    frissonner → <em>attribut du COD ? (infinitif complément de « fit ») – ici COD de « fit » (faire frissonner)</em><br>
+                    J' → <em>sujet de « offris »</em><br>
+                    mon écharpe → <em>COD de « offris »</em><br>
+                    à la jeune fille tremblante → <em>COI (ou COS) de « offris »</em>
+                </div>
+            </div>
+
+            <!-- Exercice 2 : distinguer nature et fonction -->
+            <div class="exercise-card">
+                <h3>📌 2. Nature ou fonction ?</h3>
+                <p>Dans la phrase « J'offris mon écharpe à la jeune fille tremblante. »</p>
+                <ol type="a">
+                    <li>Quelle est la <strong>nature</strong> de « mon » ? <input type="text" placeholder="nature"></li>
+                    <li>Quelle est la <strong>fonction</strong> de « mon écharpe » ? <input type="text" placeholder="fonction"></li>
+                    <li>Quelle est la <strong>nature</strong> de « à » ? <input type="text" placeholder="nature"></li>
+                    <li>Quelle est la <strong>fonction</strong> de « à la jeune fille tremblante » ? <input type="text" placeholder="fonction"></li>
+                    <li>Rappelez la différence entre nature et fonction en une phrase : <br><textarea rows="2" style="width:100%; padding:0.4rem;" placeholder="Votre réponse..."></textarea></li>
+                </ol>
+                <button class="btn-verify" onclick="toggleCorrection('exo2Key')">🔍 Voir la correction</button>
+                <div id="exo2Key" class="answer-key">
+                    <strong>Correction :</strong><br>
+                    a) Nature de « mon » → déterminant possessif<br>
+                    b) Fonction de « mon écharpe » → COD du verbe « offris »<br>
+                    c) Nature de « à » → préposition<br>
+                    d) Fonction de « à la jeune fille tremblante » → COI (complément d'objet indirect)<br>
+                    e) La nature est la catégorie grammaticale fixe d'un mot ; la fonction est son rôle dans la phrase.
+                </div>
+            </div>
+
+            <!-- Exercice 3 : créer des phrases avec fonctions imposées -->
+            <div class="exercise-card">
+                <h3>📌 3. Production dirigée</h3>
+                <p>Composez une phrase complète contenant : un <strong>sujet</strong>, un <strong>COD</strong>, un <strong>COI</strong> et un <strong>CC de temps</strong>. Soulignez chaque groupe et indiquez sa fonction entre parenthèses.</p>
+                <textarea rows="3" style="width:100%; padding:0.5rem;" placeholder="Écrivez votre phrase..."></textarea>
+                <p style="margin-top:0.8rem;"><em>Exemple :</em> <u>Le professeur</u> (sujet) explique <u>la leçon</u> (COD) <u>aux élèves</u> (COI) <u>chaque matin</u> (CC de temps).</p>
+            </div>
+
+            <!-- Exercice 4 : piège du pronom -->
+            <div class="exercise-card">
+                <h3>📌 4. Attention aux pronoms</h3>
+                <p>Dans la phrase « Il me les a donnés », identifiez la fonction des pronoms soulignés.</p>
+                <ul>
+                    <li><u>Il</u> : fonction <input type="text" placeholder="..."></li>
+                    <li><u>me</u> : fonction <input type="text" placeholder="..."></li>
+                    <li><u>les</u> : fonction <input type="text" placeholder="..."></li>
+                </ul>
+                <button class="btn-verify" onclick="toggleCorrection('exo4Key')">🔍 Voir la correction</button>
+                <div id="exo4Key" class="answer-key">
+                    <strong>Correction :</strong><br>
+                    <u>Il</u> → sujet du verbe « a donnés »<br>
+                    <u>me</u> → COI (il a donné à moi)<br>
+                    <u>les</u> → COD (il a donné quoi ? → les)
+                </div>
+            </div>
+        </div>
+
+        <div class="lesson-footer">
+            <a href="semaine1-classes-grammaticales.html">← Leçon précédente : Classes grammaticales</a>
+            <a href="semaine1-conjugaison-temps-simples.html">Leçon suivante : Temps simples →</a>
+        </div>
+
+<div id="footer-container"></div>
+    </main>
+
+<script src="ED-French-ini.js"></script>
+    <!-- ═══════ SCRIPTS ═══════ -->
+    <script>
+        (function() {
+            // ── THEME TOGGLE ──
+            const body = document.body;
+            const toggle = document.getElementById('themeToggle');
+            const icon = document.getElementById('themeIcon');
+            const label = document.getElementById('themeLabel');
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                body.classList.add('dark');
+                icon.textContent = '☀️';
+                label.textContent = 'Mode clair';
+            }
+            toggle.addEventListener('click', () => {
+                body.classList.toggle('dark');
+                const isDark = body.classList.contains('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                icon.textContent = isDark ? '☀️' : '🌙';
+                label.textContent = isDark ? 'Mode clair' : 'Mode sombre';
+            });
+
+            // ── CUSTOM AUDIO PLAYER ──
+            const audio = new Audio('lesson2.mp3');
+            const playBtn = document.getElementById('playBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const speedBtns = document.querySelectorAll('.speed-btn');
+
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+
+            audio.addEventListener('loadedmetadata', () => {
+                durationEl.textContent = formatTime(audio.duration);
+            });
+            audio.addEventListener('timeupdate', () => {
+                const percent = (audio.currentTime / audio.duration) * 100 || 0;
+                progressFill.style.width = percent + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            });
+            audio.addEventListener('ended', () => {
+                playBtn.textContent = '▶';
+            });
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) {
+                    audio.play();
+                    playBtn.textContent = '⏸';
+                } else {
+                    audio.pause();
+                    playBtn.textContent = '▶';
+                }
+            });
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                audio.currentTime = (clickX / width) * audio.duration;
+            });
+            speedBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    speedBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    audio.playbackRate = parseFloat(btn.dataset.speed);
+                });
+            });
+
+            // Toggle correction visibility
+            window.toggleCorrection = function(id) {
+                const el = document.getElementById(id);
+                el.classList.toggle('visible');
+            };
+        })();
+    </script>
+</body>
+</html>

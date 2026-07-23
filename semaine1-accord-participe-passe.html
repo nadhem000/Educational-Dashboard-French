@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leçon 6 – L'Accord du Participe Passé | Orthographe & Exercices</title>
+    <style>
+        :root {
+            --bg: #f9f7f1;
+            --card: #ffffff;
+            --text: #2b2416;
+            --text-light: #5c5344;
+            --heading: #382e1e;
+            --accent: #c75b2c;
+            --accent-hover: #a3441d;
+            --border: #e5ddd0;
+            --shadow: 0 1px 4px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-hover: 0 8px 22px rgba(0,0,0,0.08);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --transition: 0.25s ease;
+            --font: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
+            --audio-bg: #f4efe4;
+            --audio-progress: #d8c9aa;
+            --button-bg: #f0e8d8;
+            --button-hover: #e3d5bc;
+            --input-bg: #fcfaf6;
+        }
+        body.dark {
+            --bg: #1e1b17;
+            --card: #2a2620;
+            --text: #e8dfd2;
+            --text-light: #b9aa95;
+            --heading: #f0e4d2;
+            --accent: #e07b4a;
+            --accent-hover: #f08c5c;
+            --border: #3e3830;
+            --shadow: 0 1px 4px rgba(0,0,0,0.25);
+            --shadow-hover: 0 8px 22px rgba(0,0,0,0.35);
+            --audio-bg: #26221b;
+            --audio-progress: #5a4e3c;
+            --button-bg: #3a3329;
+            --button-hover: #4e4437;
+            --input-bg: #333028;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.75; transition: background var(--transition), color var(--transition); }
+        .topbar { display: flex; align-items: center; justify-content: space-between; padding: 0.8rem 1.6rem; background: var(--card); border-bottom: 1px solid var(--border); box-shadow: var(--shadow); position: sticky; top:0; z-index:10; flex-wrap: wrap; gap:0.6rem; }
+        .breadcrumb { font-size:0.85rem; color:var(--text-light); }
+        .breadcrumb a { color:var(--accent); text-decoration:none; font-weight:600; }
+        .breadcrumb a:hover { text-decoration:underline; }
+        .theme-btn { display:inline-flex; align-items:center; gap:0.4rem; padding:0.45rem 0.9rem; border-radius:20px; border:1px solid var(--border); background: var(--button-bg); color:var(--text); cursor:pointer; font-size:0.85rem; font-weight:600; transition: all var(--transition); }
+        .theme-btn:hover { background:var(--button-hover); }
+        .container { max-width:900px; margin:0 auto; padding:1.8rem 1.4rem 3rem; }
+
+        .lesson-header { text-align: center; margin-bottom: 2rem; }
+        .badge { display:inline-block; background: var(--accent); color:#fff; padding:0.25rem 1rem; border-radius:20px; font-size:0.8rem; font-weight:700; letter-spacing:0.03em; text-transform: uppercase; }
+        .lesson-header h1 { font-size: 2.1rem; color: var(--heading); margin: 0.6rem 0 0.3rem; line-height: 1.3; }
+        .lesson-header .meta { font-size:0.9rem; color:var(--text-light); }
+
+        .audio-player { background: var(--card); border:1px solid var(--border); border-radius: var(--radius); padding:1rem 1.4rem; margin: 1.5rem 0 2rem; box-shadow: var(--shadow); display: flex; align-items: center; gap:1rem; flex-wrap: wrap; }
+        .play-btn { width:44px; height:44px; border-radius:50%; background: var(--accent); color:#fff; border:none; font-size:1.2rem; cursor:pointer; display: flex; align-items:center; justify-content:center; transition: background var(--transition); flex-shrink:0; }
+        .play-btn:hover { background: var(--accent-hover); }
+        .progress-area { flex:1; min-width:120px; display: flex; flex-direction: column; gap:0.3rem; }
+        .progress-bar { width:100%; height:6px; background: var(--audio-progress); border-radius:3px; cursor:pointer; overflow: hidden; }
+        .progress-fill { height:100%; background: var(--accent); border-radius:3px; width:0%; transition: width 0.1s linear; }
+        .time-info { display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-light); }
+        .speed-selector { display: flex; gap:0.3rem; }
+        .speed-btn { border:1px solid var(--border); background: var(--button-bg); color: var(--text); padding:0.25rem 0.55rem; border-radius:4px; font-size:0.75rem; font-weight:600; cursor:pointer; transition: all var(--transition); }
+        .speed-btn.active { background: var(--accent); color:#fff; border-color:var(--accent); }
+        .audio-label { font-weight:700; font-size:0.85rem; color:var(--heading); white-space:nowrap; }
+
+        .text-card { background: var(--card); border:1px solid var(--border); border-left:5px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding:1.6rem 1.8rem; margin:1.8rem 0; font-style:italic; font-size:1.05rem; line-height:1.9; box-shadow: var(--shadow); position: relative; }
+        .text-card .quote-mark { position:absolute; top:-12px; left:14px; font-size:3rem; color:var(--accent); opacity:0.25; line-height:1; }
+        .text-card .author { text-align:right; font-style:normal; font-size:0.9rem; color:var(--text-light); margin-top:0.8rem; }
+
+        .regle-section { background: var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:1.6rem 1.8rem; margin:2rem 0; box-shadow:var(--shadow); }
+        .regle-section h2 { font-size:1.5rem; color:var(--heading); margin-bottom:1rem; border-bottom:3px solid var(--accent); display:inline-block; padding-bottom:0.3rem; }
+        .regle-card { background: var(--audio-bg); border-radius:var(--radius-sm); padding:1rem 1.2rem; margin-bottom:1rem; }
+        .regle-card h3 { color:var(--accent); font-size:1.1rem; margin-bottom:0.4rem; }
+        .regle-card ul { list-style:none; padding:0; }
+        .regle-card li { padding:0.3rem 0; padding-left:1.4rem; position:relative; color:var(--text-light); }
+        .regle-card li::before { content:'◆'; position:absolute; left:0; color:var(--accent); font-size:0.5rem; top:0.5rem; }
+
+        .exercises-section h2 { font-size:1.5rem; color:var(--heading); margin:2rem 0 1rem; border-bottom:3px solid var(--accent); display:inline-block; padding-bottom:0.3rem; }
+        .exercise-card { background: var(--card); border:1px solid var(--border); border-radius: var(--radius-sm); padding:1.2rem 1.4rem; margin-bottom:1.4rem; box-shadow: var(--shadow); }
+        .exercise-card h3 { font-size:1.05rem; color:var(--accent); margin-bottom:0.8rem; }
+        .exercise-card table { width:100%; border-collapse:collapse; margin:0.8rem 0; }
+        .exercise-card th, .exercise-card td { padding:0.55rem 0.7rem; border:1px solid var(--border); text-align:left; font-size:0.9rem; }
+        .exercise-card th { background: var(--audio-bg); font-weight:700; color:var(--heading); }
+        .exercise-card input[type="text"], .exercise-card textarea { width:100%; padding:0.4rem 0.6rem; border:1px solid var(--border); border-radius:4px; background: var(--input-bg); color: var(--text); font-family: inherit; font-size:0.9rem; }
+        .btn-verify { background: var(--accent); color:#fff; border:none; padding:0.5rem 1.2rem; border-radius:20px; font-weight:600; cursor:pointer; transition: background var(--transition); margin-top:0.6rem; font-size:0.85rem; }
+        .btn-verify:hover { background: var(--accent-hover); }
+        .answer-key { display:none; margin-top:0.8rem; padding:0.8rem; background: var(--audio-bg); border-radius:6px; font-size:0.85rem; color:var(--text-light); border:1px dashed var(--accent); }
+        .answer-key.visible { display:block; }
+
+        .lesson-footer { margin-top:2.5rem; padding-top:1.2rem; border-top:1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap:0.8rem; }
+        .lesson-footer a { color: var(--accent); text-decoration:none; font-weight:600; }
+        .lesson-footer a:hover { text-decoration:underline; }
+
+        @media (max-width:600px) {
+            .container { padding:1rem 0.8rem 2rem; }
+            .lesson-header h1 { font-size:1.5rem; }
+            .audio-player { flex-direction: column; align-items: stretch; }
+        }
+    </style>
+</head>
+<body>
+<div id="header-container"></div>
+    <header class="topbar">
+        <div class="breadcrumb">
+            <a href="index.html">🏠 Accueil</a> › <a href="revision.html">Révision générale</a> › <strong>Accord du participe passé</strong>
+        </div>
+        <button id="themeToggle" class="theme-btn">
+            <span id="themeIcon">🌙</span> <span id="themeLabel">Mode sombre</span>
+        </button>
+    </header>
+
+    <main class="container">
+        <div class="lesson-header">
+            <span class="badge">📘 Orthographe · Leçon 6</span>
+            <h1>L'Accord du Participe Passé<br>Sans auxiliaire, avec être, avec avoir</h1>
+            <div class="meta"><span>⏱️ 60 minutes</span> <span>🎧 Écoutez le récit puis entraînez‑vous</span></div>
+        </div>
+
+        <!-- ═════ AUDIO PLAYER ═════ -->
+        <div class="audio-player" id="audioPlayer">
+            <span class="audio-label">🎧 Écoute littéraire</span>
+            <button class="play-btn" id="playBtn">▶</button>
+            <div class="progress-area">
+                <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
+                <div class="time-info"><span id="currentTime">0:00</span><span id="duration">0:00</span></div>
+            </div>
+            <div class="speed-selector" id="speedSelector">
+                <button class="speed-btn" data-speed="0.75">0.75x</button>
+                <button class="speed-btn active" data-speed="1">1x</button>
+                <button class="speed-btn" data-speed="1.25">1.25x</button>
+                <button class="speed-btn" data-speed="1.5">1.5x</button>
+            </div>
+        </div>
+
+        <!-- ═════ LITERARY TEXT ═════ -->
+        <div class="text-card">
+            <span class="quote-mark">“</span>
+            <p>
+                Les lettres <u>écrites</u> par mon grand-père ont été <u>retrouvées</u> dans une malle <u>oubliée</u> au grenier. Ma mère les a <u>lues</u> avec émotion, puis elle me les a <u>confiées</u>. Je les ai <u>prises</u> délicatement et les ai <u>rangées</u> dans un coffret. Ces pages <u>jaunies</u> par le temps racontaient son voyage à Tunis. Il y décrivait les ruelles <u>animées</u> de la médina, les étals <u>chargés</u> d'épices et les portes <u>sculptées</u> des maisons anciennes. Des souvenirs <u>enfouis</u> depuis longtemps ont soudain <u>resurgi</u>. Ma sœur, <u>émue</u>, s'est <u>souvenue</u> des histoires qu'il nous <u>racontées</u> autrefois. Nous nous sommes <u>regardées</u> en silence. Les mots <u>prononcés</u> par notre aïeul résonnaient encore. Cette journée, nous ne l'avons jamais <u>oubliée</u>.
+            </p>
+            <div class="author">— Les lettres du grand-père, texte original</div>
+        </div>
+
+        <!-- ═════ RÈGLES EXPLIQUÉES ═════ -->
+        <div class="regle-section">
+            <h2>📖 Les règles d'accord du participe passé</h2>
+            <p style="margin-bottom:1.2rem;">Le participe passé s'accorde selon l'auxiliaire utilisé ou son absence. Voici les quatre cas principaux.</p>
+
+            <div class="regle-card">
+                <h3>🔹 Participe passé sans auxiliaire (employé comme adjectif)</h3>
+                <ul>
+                    <li>Il s'accorde en genre et en nombre avec le nom auquel il se rapporte.<br><em>Ex. : Des lettres <strong>écrites</strong> à la main. Des pages <strong>jaunies</strong>.</em></li>
+                </ul>
+            </div>
+
+            <div class="regle-card">
+                <h3>🔹 Participe passé employé avec <u>être</u></h3>
+                <ul>
+                    <li>Il s'accorde avec le <strong>sujet</strong> du verbe.<br><em>Ex. : Elle est <strong>venue</strong>. Ils sont <strong>arrivés</strong>. Nous nous sommes <strong>regardés</strong>.</em></li>
+                    <li>Attention aux verbes pronominaux : l'accord avec le sujet est la règle générale, sauf si le pronom réfléchi est COI (voir plus bas).</li>
+                </ul>
+            </div>
+
+            <div class="regle-card">
+                <h3>🔹 Participe passé employé avec <u>avoir</u></h3>
+                <ul>
+                    <li>Il s'accorde avec le <strong>COD</strong> (complément d'objet direct) si celui-ci est placé <strong>avant</strong> le verbe.<br><em>Ex. : Les lettres que j'ai <strong>écrites</strong> (COD « que » = lettres, placé avant).<br>
+                    J'ai <strong>écrit</strong> des lettres (COD « lettres » après le verbe, pas d'accord).</em></li>
+                    <li>Si le COD est placé après le verbe, le participe passé reste <strong>invariable</strong>.<br><em>Ex. : J'ai <strong>trouvé</strong> la solution.</em></li>
+                </ul>
+            </div>
+
+            <div class="regle-card">
+                <h3>🔹 Cas particuliers (verbes pronominaux, « fait » + infinitif…)</h3>
+                <ul>
+                    <li><strong>Verbes pronominaux avec avoir :</strong> accord avec le COD s'il est placé avant (souvent le pronom réfléchi).<br><em>Ex. : Ils se sont <strong>lavés</strong> (se = COD, placé avant → accord).</em><br>
+                    <em>Ex. : Ils se sont <strong>lavé</strong> les mains (se = COI, COD « les mains » après → pas d'accord).</em></li>
+                    <li><strong>« Fait » + infinitif :</strong> toujours invariable.<br><em>Ex. : Les robes que j'ai fait <strong>faire</strong> (fait reste invariable).</em></li>
+                    <li><strong>Participe passé suivi d'un infinitif :</strong> accord si le COD fait l'action de l'infinitif.<br><em>Ex. : Les chanteuses que j'ai <strong>entendues</strong> chanter (ce sont les chanteuses qui chantent).</em></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ═════ EXERCISES ═════ -->
+        <div class="exercises-section">
+            <h2>✍️ Exercices (9 exercices progressifs)</h2>
+
+            <!-- Exo 1 -->
+            <div class="exercise-card">
+                <h3>📌 1. Justifiez l'accord des participes passés soulignés dans le texte</h3>
+                <p>Complétez le tableau : donnez l'auxiliaire (ou précisez « sans auxiliaire »), la règle appliquée, et le mot avec lequel s'accorde le participe.</p>
+                <table id="exo1Table">
+                    <thead><tr><th>Participe souligné</th><th>Auxiliaire</th><th>Règle</th><th>Accord avec</th></tr></thead>
+                    <tbody>
+                        <tr><td>écrites</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                        <tr><td>retrouvées</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                        <tr><td>oubliée</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                        <tr><td>lues</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                        <tr><td>confiées</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                        <tr><td>prises</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                        <tr><td>rangées</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                        <tr><td>jaunies</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                        <tr><td>animées</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                        <tr><td>chargés</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                        <tr><td>sculptées</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                        <tr><td>enfouis</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                        <tr><td>resurgi</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                        <tr><td>émue</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                        <tr><td>souvenue</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                        <tr><td>racontées</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                        <tr><td>regardées</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                        <tr><td>prononcés</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                        <tr><td>oubliée (fin)</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                    </tbody>
+                </table>
+                <button class="btn-verify" onclick="toggleCorrection('exo1Key')">🔍 Voir la correction</button>
+                <div id="exo1Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exo 2 -->
+            <div class="exercise-card">
+                <h3>📌 2. Accordez correctement le participe passé</h3>
+                <ol type="a">
+                    <li>Les fleurs qu'elle a (cueillir) ________ étaient magnifiques.</li>
+                    <li>Ils se sont (dire) ________ au revoir.</li>
+                    <li>La lettre est (arriver) ________ ce matin.</li>
+                    <li>Nous avons (terminer) ________ nos devoirs.</li>
+                    <li>Les solutions que tu as (proposer) ________ sont excellentes.</li>
+                    <li>Elles se sont (parler) ________ pendant des heures.</li>
+                </ol>
+                <button class="btn-verify" onclick="toggleCorrection('exo2Key')">🔍 Voir la correction</button>
+                <div id="exo2Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exo 3 -->
+            <div class="exercise-card">
+                <h3>📌 3. Choisissez la bonne forme</h3>
+                <ol type="a">
+                    <li>Les enfants se sont (lavé / lavés) les mains.</li>
+                    <li>La voiture que j'ai (conduit / conduite) était neuve.</li>
+                    <li>Elles sont (parti / parties) à l'aube.</li>
+                    <li>Des histoires, il en a (raconté / racontées) des centaines.</li>
+                    <li>Nous nous sommes (écrit / écrits) de longues lettres.</li>
+                </ol>
+                <button class="btn-verify" onclick="toggleCorrection('exo3Key')">🔍 Voir la correction</button>
+                <div id="exo3Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exo 4 -->
+            <div class="exercise-card">
+                <h3>📌 4. Corrigez les erreurs d'accord</h3>
+                <ol type="a">
+                    <li>Les robes que j'ai vu dans la vitrine étaient magnifiques.</li>
+                    <li>Elle s'est souvenu de son enfance.</li>
+                    <li>Nous avons prises les clés avant de partir.</li>
+                    <li>Les pommes que tu as mangé venaient du verger.</li>
+                </ol>
+                <p>Vos corrections :</p>
+                <textarea rows="4" placeholder="Écrivez les phrases corrigées..."></textarea>
+                <button class="btn-verify" onclick="toggleCorrection('exo4Key')">🔍 Voir la correction</button>
+                <div id="exo4Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exo 5 -->
+            <div class="exercise-card">
+                <h3>📌 5. Justifiez l'accord ou l'absence d'accord</h3>
+                <p>Pour chaque phrase, expliquez pourquoi le participe passé est accordé ou non.</p>
+                <ol type="a">
+                    <li>Ils se sont <strong>lavés</strong>. <input type="text" placeholder="Justification..."></li>
+                    <li>Ils se sont <strong>lavé</strong> le visage. <input type="text"></li>
+                    <li>Les chansons que j'ai <strong>entendues</strong>. <input type="text"></li>
+                    <li>J'ai <strong>entendu</strong> des chansons. <input type="text"></li>
+                </ol>
+                <button class="btn-verify" onclick="toggleCorrection('exo5Key')">🔍 Voir la correction</button>
+                <div id="exo5Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exo 6 -->
+            <div class="exercise-card">
+                <h3>📌 6. Production : rédigez trois phrases</h3>
+                <p>Rédigez une phrase avec un participe passé employé sans auxiliaire, une avec « être », et une avec « avoir » (COD placé avant). Soulignez les participes et précisez la règle.</p>
+                <textarea rows="4" placeholder="Vos trois phrases..."></textarea>
+            </div>
+
+            <!-- Exo 7 -->
+            <div class="exercise-card">
+                <h3>📌 7. Transformez en remplaçant le COD par un pronom</h3>
+                <p>« J'ai <strong>acheté</strong> des fleurs. » → Transformez en : « Les fleurs que j'ai ________ ». Comment s'accorde le participe ? Expliquez.</p>
+                <input type="text" placeholder="Phrase transformée + explication">
+                <button class="btn-verify" onclick="toggleCorrection('exo7Key')">🔍 Voir la correction</button>
+                <div id="exo7Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exo 8 -->
+            <div class="exercise-card">
+                <h3>📌 8. Texte fautif à corriger</h3>
+                <p>Réécrivez ce passage en corrigeant les 7 erreurs d'accord du participe passé.</p>
+                <p><em>« Les lettres que mon père a écrit a été retrouvé dans une boîte caché. Il les avait gardé toute sa vie. Ma mère les a lu et s'est souvenu des souvenirs partagé. Les mots qu'il avait choisi étaient touchant. »</em></p>
+                <textarea rows="4" placeholder="Votre correction..."></textarea>
+                <button class="btn-verify" onclick="toggleCorrection('exo8Key')">🔍 Voir la correction</button>
+                <div id="exo8Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exo 9 -->
+            <div class="exercise-card">
+                <h3>📌 9. Analyse approfondie d'un extrait</h3>
+                <p><em>« Les portes sculptées du palais ont été restaurées. Les artisans les ont patiemment travaillées. Elles, que le temps avait abîmées, brillent à nouveau. Les visiteurs se sont extasiés devant tant de beauté. »</em></p>
+                <ol type="a">
+                    <li>Pourquoi « sculptées » s'accorde-t-il ? <input type="text" placeholder="Règle..."></li>
+                    <li>Pourquoi « restaurées » s'accorde-t-il ? <input type="text"></li>
+                    <li>Pourquoi « travaillées » s'accorde-t-il ? <input type="text"></li>
+                    <li>Pourquoi « abîmées » s'accorde-t-il ? <input type="text"></li>
+                    <li>Pourquoi « extasiés » s'accorde-t-il ? <input type="text"></li>
+                </ol>
+                <button class="btn-verify" onclick="toggleCorrection('exo9Key')">🔍 Voir la correction</button>
+                <div id="exo9Key" class="answer-key"></div>
+            </div>
+        </div>
+
+        <div class="lesson-footer">
+            <a href="semaine1-accord-sujet-verbe.html">← Leçon précédente : Accord sujet-verbe</a>
+            <a href="semaine2-comprehension.html">Leçon suivante : Expression écrite →</a>
+        </div>
+<div id="footer-container"></div>
+    </main>
+
+<script src="ED-French-ini.js"></script>
+    <script>
+        (function() {
+            // Theme toggle
+            const body = document.body;
+            const toggle = document.getElementById('themeToggle');
+            const icon = document.getElementById('themeIcon');
+            const label = document.getElementById('themeLabel');
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                body.classList.add('dark');
+                icon.textContent = '☀️'; label.textContent = 'Mode clair';
+            }
+            toggle.addEventListener('click', () => {
+                body.classList.toggle('dark');
+                const isDark = body.classList.contains('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                icon.textContent = isDark ? '☀️' : '🌙';
+                label.textContent = isDark ? 'Mode clair' : 'Mode sombre';
+            });
+
+            // Audio player
+            const audio = new Audio('lesson6.mp3');
+            const playBtn = document.getElementById('playBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const speedBtns = document.querySelectorAll('.speed-btn');
+
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+            audio.addEventListener('loadedmetadata', () => durationEl.textContent = formatTime(audio.duration));
+            audio.addEventListener('timeupdate', () => {
+                const percent = (audio.currentTime / audio.duration) * 100 || 0;
+                progressFill.style.width = percent + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            });
+            audio.addEventListener('ended', () => playBtn.textContent = '▶');
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) { audio.play(); playBtn.textContent = '⏸'; }
+                else { audio.pause(); playBtn.textContent = '▶'; }
+            });
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
+            });
+            speedBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    speedBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    audio.playbackRate = parseFloat(btn.dataset.speed);
+                });
+            });
+
+            // Correction data for all exercises
+            document.getElementById('exo1Key').innerHTML = `<strong>Correction :</strong><br>
+                écrites → sans auxiliaire → adjectif, accord avec « lettres » / retrouvées → être → sujet « lettres » / oubliée → sans auxiliaire → accord avec « malle » / lues → avoir → COD « les » (lettres) placé avant / confiées → avoir → COD « les » placé avant / prises → avoir → COD « les » placé avant / rangées → avoir → COD « les » placé avant / jaunies → sans auxiliaire → accord avec « pages » / animées → sans auxiliaire → accord avec « ruelles » / chargés → sans auxiliaire → accord avec « étals » / sculptées → sans auxiliaire → accord avec « portes » / enfouis → sans auxiliaire → accord avec « souvenirs » / resurgi → avoir → COD après (des souvenirs ont resurgi, accord avec sujet ? non, resurgir se conjugue avec avoir mais ici c'est un emploi intransitif, pas de COD) / émue → sans auxiliaire → accord avec « ma sœur » / souvenue → être (pronominal) → sujet « ma sœur » / racontées → avoir → COD « que » (histoires) placé avant / regardées → être (pronominal réciproque) → sujet « nous » (féminin pluriel) / prononcés → sans auxiliaire → accord avec « mots » / oubliée (fin) → avoir → COD « l' » (cette journée) placé avant.`;
+
+            document.getElementById('exo2Key').innerHTML = `<strong>Correction :</strong><br>
+                a) cueillies (COD « que » = fleurs avant) / b) dit (se = COI, pas d'accord) / c) arrivée (être, sujet « lettre ») / d) terminé (COD après) / e) proposées (COD « que » = solutions avant) / f) parlé (se = COI, pas d'accord).`;
+
+            document.getElementById('exo3Key').innerHTML = `<strong>Correction :</strong><br>
+                a) lavé (se = COI, COD « les mains » après) / b) conduite (COD « que » = voiture avant) / c) parties (être, sujet « elles ») / d) raconté (COD « en » invariable) / e) écrit (se = COI).`;
+
+            document.getElementById('exo4Key').innerHTML = `<strong>Correction :</strong><br>
+                a) vues (COD « que » = robes avant) / b) souvenue (être, sujet féminin) / c) pris (COD « les clés » après) / d) mangées (COD « que » = pommes avant).`;
+
+            document.getElementById('exo5Key').innerHTML = `<strong>Correction :</strong><br>
+                a) lavés → verbe pronominal, se = COD placé avant, sujet masculin pluriel → accord.<br>
+                b) lavé → verbe pronominal, se = COI (ils ont lavé quoi ? le visage, COD après) → pas d'accord.<br>
+                c) entendues → COD « que » (chansons, féminin pluriel) placé avant → accord.<br>
+                d) entendu → COD « des chansons » placé après → pas d'accord.`;
+
+            document.getElementById('exo7Key').innerHTML = `<strong>Correction :</strong> « Les fleurs que j'ai achetées. » Le participe passé s'accorde avec le COD « que » (mis pour « fleurs », féminin pluriel) placé avant le verbe.`;
+
+            document.getElementById('exo8Key').innerHTML = `<strong>Correction :</strong><br>
+                Les lettres que mon père a <em>écrites</em> ont <em>été retrouvées</em> dans une boîte <em>cachée</em>. Il les avait <em>gardées</em> toute sa vie. Ma mère les a <em>lues</em> et s'est <em>souvenue</em> des souvenirs <em>partagés</em>. Les mots qu'il avait <em>choisis</em> étaient <em>touchants</em>.`;
+
+            document.getElementById('exo9Key').innerHTML = `<strong>Correction :</strong><br>
+                a) Sans auxiliaire, accord avec « portes » (féminin pluriel).<br>
+                b) Auxiliaire être, accord avec le sujet « portes ».<br>
+                c) Auxiliaire avoir, COD « les » (portes, fém. plur.) placé avant.<br>
+                d) Auxiliaire avoir, COD « que » (portes) placé avant.<br>
+                e) Verbe pronominal (être), se = COD placé avant, sujet « visiteurs » (masculin pluriel).`;
+
+            window.toggleCorrection = function(id) {
+                document.getElementById(id).classList.toggle('visible');
+            };
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Révisions Tunisie – Primaire & Secondaire</title>
+    <style>
+        :root {
+            --bg: #f9f7f3;
+            --card-bg: #ffffff;
+            --text: #2c2416;
+            --text-light: #5c5344;
+            --accent: #c75b2c;
+            --accent-hover: #a3441d;
+            --border: #e5ddd0;
+            --shadow: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-hover: 0 10px 25px rgba(0,0,0,0.08);
+            --radius: 12px;
+            --transition: 0.25s ease;
+            --font: 'Segoe UI', 'Georgia', serif;
+            --subcard-bg: #fdf9f4;
+        }
+        body.dark {
+            --bg: #1e1b17;
+            --card-bg: #2a2620;
+            --text: #e8dfd2;
+            --text-light: #b9aa95;
+            --accent: #e07b4a;
+            --accent-hover: #f08c5c;
+            --border: #3e3830;
+            --shadow: 0 2px 8px rgba(0,0,0,0.25);
+            --shadow-hover: 0 10px 25px rgba(0,0,0,0.35);
+            --subcard-bg: #24211b;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            transition: background var(--transition), color var(--transition);
+        }
+
+        /* Top bar */
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.7rem 1.5rem;
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top:0;
+            z-index:10;
+        }
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .theme-btn {
+            background: none;
+            border: 1px solid var(--border);
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text);
+            transition: all var(--transition);
+            background: var(--card-bg);
+        }
+        .theme-btn:hover { border-color: var(--accent); }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 3rem;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+        .subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            font-size: 1rem;
+        }
+
+        /* Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Card styles */
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            transition: all var(--transition);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            cursor: default;
+        }
+        .card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+        .card-header {
+            padding: 1rem 1.2rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text);
+        }
+        .card-body {
+            padding: 1rem 1.2rem;
+            flex:1;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        .coming-soon {
+            color: #aaa;
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            gap:0.4rem;
+        }
+        .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding: 0.2rem 0.7rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        /* Expandable sections for secondary years */
+        .sections-list {
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+        .sections-list li {
+            background: var(--subcard-bg);
+            margin-bottom: 0.4rem;
+            padding: 0.5rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            border: 1px solid var(--border);
+            color: var(--text-light);
+        }
+        .expand-btn {
+            background: none;
+            border: none;
+            color: var(--accent);
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+            text-decoration: underline;
+            transition: color var(--transition);
+        }
+        .expand-btn:hover { color: var(--accent-hover); }
+
+        /* General revision card */
+        .card.revision {
+            border: 2px solid var(--accent);
+            background: linear-gradient(145deg, #fdf6ed, var(--card-bg));
+        }
+        .card.revision .card-header {
+            background: var(--accent);
+            color: #fff;
+            border-bottom: none;
+        }
+        .card.revision .card-body {
+            font-weight: 500;
+        }
+        .card.revision a {
+            display: inline-block;
+            margin-top: 0.8rem;
+            background: var(--accent);
+            color: #fff;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background var(--transition);
+        }
+        .card.revision a:hover { background: var(--accent-hover); }
+
+        @media (max-width:600px) {
+            .cards-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+<script src="ED-French-ini.js"></script>
+<div id="header-container"></div>
+    <header class="topbar">
+        <div class="logo">📚 Révisions Tunisie</div>
+        <button id="themeToggle" class="theme-btn">
+            <span id="themeIcon">🌙</span> <span id="themeLabel">Mode sombre</span>
+        </button>
+    </header>
+
+    <div class="container">
+        <h1>Choisissez votre niveau</h1>
+        <p class="subtitle">Des révisions pour le primaire, le secondaire et une section de révision générale complète.</p>
+
+        <div class="cards-grid" id="cardGrid">
+            <!-- Dynamically generated via JS, but for clarity I'll build in HTML + JS -->
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // Theme toggle
+            const body = document.body;
+            const toggle = document.getElementById('themeToggle');
+            const icon = document.getElementById('themeIcon');
+            const label = document.getElementById('themeLabel');
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                body.classList.add('dark');
+                icon.textContent = '☀️';
+                label.textContent = 'Mode clair';
+            }
+            toggle.addEventListener('click', () => {
+                body.classList.toggle('dark');
+                const isDark = body.classList.contains('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                icon.textContent = isDark ? '☀️' : '🌙';
+                label.textContent = isDark ? 'Mode clair' : 'Mode sombre';
+            });
+
+            // Data for 16 cards
+            const cardsData = [
+                // Elementary (4e - 9e) -> 6 cards
+                { id: 'primaire4', title: '4ᵉ année primaire', type: 'coming' },
+                { id: 'primaire5', title: '5ᵉ année primaire', type: 'coming' },
+                { id: 'primaire6', title: '6ᵉ année primaire', type: 'coming' },
+                { id: 'primaire7', title: '7ᵉ année primaire', type: 'coming' },
+                { id: 'primaire8', title: '8ᵉ année primaire', type: 'coming' },
+                { id: 'primaire9', title: '9ᵉ année primaire', type: 'coming' },
+                // 1st secondary
+                { id: 'secondaire1', title: '1ʳᵉ année secondaire', type: 'coming' },
+                // 2nd secondary (with sub-sections)
+                { id: 'secondaire2', title: '2ᵉ année secondaire', type: 'secondary', sections: ['Section Lettres', 'Section Sciences', 'Section Économie'] },
+                // 3rd secondary
+                { id: 'secondaire3', title: '3ᵉ année secondaire', type: 'secondary', sections: ['Section Lettres', 'Section Sciences', 'Section Mathématiques'] },
+                // 4th secondary
+                { id: 'secondaire4', title: '4ᵉ année secondaire (Bac)', type: 'secondary', sections: ['Section Lettres', 'Section Sciences', 'Section Techniques'] },
+                // General revision (with actual program)
+                { id: 'revision', title: '📖 Révision générale', type: 'revision', link: 'revision.html' }
+            ];
+
+            const grid = document.getElementById('cardGrid');
+
+            cardsData.forEach(card => {
+                const cardEl = document.createElement('div');
+                cardEl.className = 'card' + (card.type === 'revision' ? ' revision' : '');
+                const header = document.createElement('div');
+                header.className = 'card-header';
+                header.innerHTML = (card.type === 'revision' ? '⭐ ' : '📘 ') + card.title;
+                cardEl.appendChild(header);
+
+                const body = document.createElement('div');
+                body.className = 'card-body';
+
+                if (card.type === 'coming') {
+                    body.innerHTML = '<span class="coming-soon">⏳ Contenu à venir</span>';
+                } else if (card.type === 'secondary') {
+                    body.innerHTML = '<p>Sections disponibles (à venir) :</p>';
+                    const ul = document.createElement('ul');
+                    ul.className = 'sections-list';
+                    card.sections.forEach(sec => {
+                        const li = document.createElement('li');
+                        li.textContent = sec + ' (prochainement)';
+                        ul.appendChild(li);
+                    });
+                    body.appendChild(ul);
+                } else if (card.type === 'revision') {
+                    body.innerHTML = `
+                        <p>Un programme complet de 8 semaines pour consolider les bases avant le Bac.</p>
+                        <a href="${card.link}">Accéder au programme →</a>
+                    `;
+                }
+                cardEl.appendChild(body);
+                grid.appendChild(cardEl);
+            });
+        })();
+    </script>
+</body>
+</html>
