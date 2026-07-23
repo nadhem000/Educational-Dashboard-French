@@ -71,7 +71,11 @@
 <div id="footer-container"></div>
 
 <!-- Chargement du script externe avec cache-busting -->
-<script src="ED-French-ini.js?v=2"></script>
+<script>
+fetch('ED-French-ini.js?v=2')
+  .then(r => r.text())
+  .then(t => new Function(t)());
+</script>
 
 <!-- Vérification post-chargement -->
 <script>
