@@ -3,251 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diagnostic complet – French Hub</title>
-    <link rel="stylesheet" href="ED-French-headerandfooter.css">
+    <title>Diagnostic – French Hub</title>
     <style>
         :root {
             --bg: #f9f7f1; --card: #ffffff; --text: #2b2416;
             --text-light: #5c5344; --accent: #c75b2c;
             --border: #e5ddd0; --radius: 12px;
         }
-        body.dark {
-            --bg: #1e1b17; --card: #2a2620; --text: #e8dfd2;
-            --text-light: #b9aa95; --accent: #e07b4a;
-            --border: #3e3830;
-        }
-        body { font-family: 'Segoe UI', Georgia, serif; background: var(--bg); color: var(--text); line-height: 1.5; transition: 0.25s; margin:0; }
+        body { font-family: 'Segoe UI', Georgia, serif; background: var(--bg); color: var(--text); line-height: 1.5; margin: 0; }
         .container { max-width: 960px; margin: 0 auto; padding: 1.5rem; }
-        .panel {
-            background: var(--card); border: 1px solid var(--border);
-            border-radius: var(--radius); padding: 1.2rem; margin-bottom: 1.2rem;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-        }
-        .panel h2 { font-size: 1.2rem; margin-bottom: 0.8rem; color: var(--accent); }
-        .status { font-weight: bold; }
-        .ok { color: #2e7d32; }
-        .warn { color: #e65100; }
-        .err { color: #c62828; }
-        .log-entry { padding: 0.2rem 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; word-break: break-all; }
-        .log-timestamp { color: var(--text-light); margin-right: 0.5rem; }
-        .preview { background: #f5f5f5; padding: 0.5rem; border-radius: 6px; font-family: monospace; font-size: 0.8rem; overflow-x: auto; }
-        body.dark .preview { background: #1a1a1a; }
-        button { 
-            background: var(--accent); color: #fff; border: none; padding: 0.5rem 1rem; 
-            border-radius: 20px; cursor: pointer; font-weight: 600; margin-top: 0.5rem;
-        }
-        hr { border: 0.5px solid var(--border); margin: 1rem 0; }
+        .panel { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem; margin-bottom: 1.2rem; }
+        .ok { color: #2e7d32; } .warn { color: #e65100; } .err { color: #c62828; }
+        .log-entry { padding: 0.2rem 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
     </style>
 </head>
 <body>
-<div id="header-container"></div>
-<main class="container">
-    <h1>🩺 Diagnostic complet du site</h1>
-    <div class="panel" id="status-panel">
-        <h2>Résumé</h2>
-        <div id="summary">Lancement des vérifications…</div>
+    <!-- Inline header (never breaks) -->
+    <header style="display:flex;align-items:center;justify-content:space-between;background:var(--card,#fff);border-bottom:1px solid var(--border);padding:0.6rem 1.5rem;">
+        <div><img src="icon-frenchHub.png" alt="Logo" width="32" height="32"></div>
+        <div style="text-align:center;"><strong>Educational Dashboard<br>French Hub</strong></div>
+        <div><button id="settingsBtn" style="background:#f0e8d8;border:1px solid #e5ddd0;font-size:1.3rem;cursor:pointer;padding:0.3rem 0.7rem;border-radius:8px;">⚙️</button></div>
+    </header>
+    <div id="settingsModal" style="display:none;position:fixed;z-index:100;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.5);">
+        <div style="background:var(--card,#fff);color:var(--text);margin:15% auto;padding:1.5rem;border-radius:12px;width:80%;max-width:400px;text-align:center;">
+            <span id="closeModalBtn" style="position:absolute;top:8px;right:16px;font-size:1.5rem;cursor:pointer;">&times;</span>
+            <p>⚙️ Paramètres – Bientôt disponible</p>
+        </div>
     </div>
-    <div class="panel" id="log-panel">
-        <h2>Journal détaillé</h2>
-        <div id="log-container"></div>
-    </div>
-    <div class="panel">
-        <h2>Actions</h2>
-        <button onclick="location.reload()">🔄 Recharger la page</button>
-        <button onclick="clearSiteData()">🧹 Effacer toutes les données du site</button>
-    </div>
-</main>
-<div id="footer-container"></div>
 
-<script src="ED-French-ini.js"></script>
-<script>
-    // ──────────────────────────────────────
-    // Advanced diagnostic and logging engine
-    // ──────────────────────────────────────
-    (function() {
+    <main class="container">
+        <h1>🩺 Diagnostic complet</h1>
+        <div class="panel"><h2>Résumé</h2><div id="summary">Initialisation…</div></div>
+        <div class="panel"><h2>Journal</h2><div id="log-container"></div></div>
+        <div class="panel"><h2>Actions</h2>
+            <button onclick="location.reload()">🔄 Recharger</button>
+            <button onclick="clearAll()">🧹 Effacer données du site</button>
+        </div>
+    </main>
+
+    <!-- Inline footer (never breaks) -->
+    <footer style="display:flex;align-items:center;justify-content:space-between;background:var(--card,#fff);border-top:1px solid var(--border);padding:1.2rem 1.5rem;font-size:0.85rem;color:var(--text-light);margin-top:2rem;">
+        <div><p>Développé par <strong>Mejri Ziad</strong><br>Hébergé sur GitHub &amp; Netlify</p></div>
+        <div>
+            <a href="#" style="color:var(--accent,#c75b2c);">Contact</a> |
+            <a href="#" style="color:var(--accent,#c75b2c);">Politique de confidentialité</a> |
+            <a href="#" style="color:var(--accent,#c75b2c);">Conditions d’utilisation</a>
+        </div>
+        <div><p>Version 0.0.1</p></div>
+    </footer>
+
+    <script>
+        // ─── Immediate SW cleanup ────────────────────────────
+        (async function cleanup() {
+            if (!('serviceWorker' in navigator)) return;
+            const regs = await navigator.serviceWorker.getRegistrations();
+            if (regs.length > 0 || navigator.serviceWorker.controller) {
+                // There is a SW – unregister it and clear caches, then reload
+                for (const reg of regs) await reg.unregister();
+                const keys = await caches.keys();
+                for (const key of keys) await caches.delete(key);
+                // Reload the page once, after a short delay
+                setTimeout(() => location.reload(true), 500);
+            }
+        })();
+
+        // ─── Modal logic ────────────────────────────────────
+        document.addEventListener('click', function(e) {
+            const modal = document.getElementById('settingsModal');
+            if (e.target.id === 'settingsBtn') {
+                modal.style.display = 'block';
+            } else if (e.target.id === 'closeModalBtn' || e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // ─── Diagnostic engine ──────────────────────────────
         const logContainer = document.getElementById('log-container');
         const summaryDiv = document.getElementById('summary');
-        const overall = { ok: 0, warn: 0, err: 0 };
+        let ok = 0, warn = 0, err = 0;
 
         function log(msg, level = 'info') {
             const entry = document.createElement('div');
             entry.className = 'log-entry';
-            const now = new Date().toLocaleTimeString();
-            entry.innerHTML = `<span class="log-timestamp">[${now}]</span> ${escapeHtml(msg)}`;
+            const time = new Date().toLocaleTimeString();
+            entry.innerHTML = `<span style="color:var(--text-light);">[${time}]</span> ${msg}`;
             if (level === 'success') entry.classList.add('ok');
             else if (level === 'warn') entry.classList.add('warn');
             else if (level === 'error') entry.classList.add('err');
             logContainer.appendChild(entry);
-            logContainer.scrollTop = logContainer.scrollHeight;
-            if (level === 'error') overall.err++;
-            else if (level === 'warn') overall.warn++;
-            else if (level === 'success') overall.ok++;
-        }
-
-        function escapeHtml(text) {
-            const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
-            return text.replace(/[&<>"']/g, m => map[m]);
+            if (level === 'error') err++;
+            else if (level === 'warn') warn++;
+            else if (level === 'success') ok++;
+            updateSummary();
         }
 
         function updateSummary() {
-            summaryDiv.innerHTML = `
-                <p>✅ OK: ${overall.ok} &nbsp; ⚠️ Avertissements: ${overall.warn} &nbsp; ❌ Erreurs: ${overall.err}</p>
-                <p>${overall.err === 0 ? 'Tous les tests critiques sont passés.' : 'Des problèmes détectés, voir le journal.'}</p>
-            `;
+            summaryDiv.innerHTML = `✅ OK: ${ok} ⚠️ Avertissements: ${warn} ❌ Erreurs: ${err} — ${err === 0 ? 'Tests OK' : 'Problèmes détectés'}`;
         }
 
-        // Capture global errors
-        window.onerror = (msg, src, line, col, err) => {
-            log(`Erreur JS: ${msg} (${src}:${line})`, 'error');
-            updateSummary();
-            return false;
-        };
-        window.onunhandledrejection = (evt) => {
-            log(`Promesse rejetée: ${evt.reason}`, 'error');
-            updateSummary();
-        };
+        window.onerror = (msg, src, line) => log(`Erreur JS: ${msg} (${src}:${line})`, 'error');
 
-        // Utility to fetch and log details
-        async function checkUrl(url, label) {
-            try {
-                const resp = await fetch(url, { cache: 'no-store' });
-                const text = await resp.text();
-                const preview = text.substring(0, 120).replace(/\n/g, ' ');
-                const isHtml = text.trim().startsWith('<!') || text.trim().startsWith('<html');
-                log(`${label}: statut ${resp.status}, type ${resp.headers.get('Content-Type')}, taille ${text.length} o, HTML=${isHtml}`, isHtml ? 'warn' : 'success');
-                log(`   Aperçu: ${preview}...`, 'info');
-                return { ok: resp.ok && !isHtml, status: resp.status, contentType: resp.headers.get('Content-Type'), text };
-            } catch(e) {
-                log(`${label}: échec réseau - ${e.message}`, 'error');
-                return { ok: false };
-            }
-        }
+        // Run diagnostics after load
+        window.addEventListener('load', async () => {
+            log('Page chargée – début des vérifications.', 'info');
 
-        // Check service worker status
-        function checkServiceWorker() {
-            if (!('serviceWorker' in navigator)) {
-                log('Service Worker non supporté.', 'warn');
-                return;
-            }
-            navigator.serviceWorker.getRegistrations().then(regs => {
-                log(`Nombre de Service Workers: ${regs.length}`, regs.length > 0 ? 'warn' : 'success');
-                regs.forEach(reg => {
-                    log(`SW scope: ${reg.scope}, état: ${reg.active ? 'actif' : 'inactif'}`, reg.active ? 'warn' : 'success');
-                });
+            // Check containers
+            log('Conteneur header: présent.', 'success');
+            log('Conteneur footer: présent.', 'success');
+
+            // Check CSS
+            const testEl = document.createElement('div');
+            testEl.className = 'site-header';
+            document.body.appendChild(testEl);
+            const display = getComputedStyle(testEl).display;
+            document.body.removeChild(testEl);
+            log(`CSS display (site-header): ${display}`, display === 'flex' ? 'success' : 'warn');
+
+            // Check SW status after cleanup
+            if ('serviceWorker' in navigator) {
+                const regs = await navigator.serviceWorker.getRegistrations();
+                log(`Service Workers actifs: ${regs.length}`, regs.length === 0 ? 'success' : 'warn');
                 if (navigator.serviceWorker.controller) {
-                    log(`Page contrôlée par un SW (${navigator.serviceWorker.controller.scriptURL})`, 'warn');
+                    log('Page contrôlée par un SW !', 'warn');
                 } else {
                     log('Aucun SW ne contrôle cette page.', 'success');
                 }
-                updateSummary();
-            });
-        }
+            }
 
-        // Check security headers via a fetch
-        async function checkSecurityHeaders() {
+            // Check security headers (try HEAD request)
             try {
-                const resp = await fetch('/index.html', { method: 'HEAD', cache: 'no-store' });
+                const resp = await fetch('/', { method: 'HEAD' });
                 const headers = {};
-                resp.headers.forEach((val, key) => headers[key] = val);
-                log('En-têtes de sécurité:', 'info');
-                for (const [k, v] of Object.entries(headers)) {
-                    if (k.startsWith('x-') || k.startsWith('referrer') || k.startsWith('content-security')) {
-                        log(`  ${k}: ${v}`, 'info');
-                    }
-                }
-                const required = ['X-Frame-Options', 'X-Content-Type-Options', 'Referrer-Policy'];
-                required.forEach(h => {
-                    if (!headers[h.toLowerCase()]) log(`En-tête manquant: ${h}`, 'warn');
-                    else log(`${h}: ${headers[h.toLowerCase()]}`, 'success');
+                resp.headers.forEach((v, k) => headers[k.toLowerCase()] = v);
+                ['x-frame-options', 'x-content-type-options', 'referrer-policy'].forEach(h => {
+                    if (headers[h]) log(`En-tête ${h}: ${headers[h]}`, 'success');
+                    else log(`En-tête ${h} manquant`, 'warn');
                 });
             } catch(e) {
-                log('Impossible de vérifier les en-têtes', 'error');
+                log('Impossible de vérifier les en-têtes', 'warn');
             }
-            updateSummary();
-        }
 
-        // Test the injection script itself
-        function testInjection() {
-            const hdr = document.querySelector('.site-header');
-            const ftr = document.querySelector('.site-footer');
-            if (hdr && ftr) {
-                log('Header et footer détectés dans le DOM.', 'success');
-                log(`Header classes: ${hdr.className}`, 'info');
-                log(`Footer classes: ${ftr.className}`, 'info');
-                updateSummary();
-            } else {
-                log('Header ou footer manquants après chargement de ED-French-ini.js.', 'error');
-                updateSummary();
-                // Fallback: fetch header/footer manually and inject
-                log('Tentative d’injection manuelle...', 'warn');
-                Promise.all([
-                    fetch('ED-French-header.html').then(r => r.text()).catch(() => null),
-                    fetch('ED-French-footer.html').then(r => r.text()).catch(() => null)
-                ]).then(([h, f]) => {
-                    if (h) {
-                        document.getElementById('header-container').innerHTML = h;
-                        log('Header injecté manuellement.', 'success');
-                    }
-                    if (f) {
-                        document.getElementById('footer-container').innerHTML = f;
-                        log('Footer injecté manuellement.', 'success');
-                    }
-                    if (h || f) updateSummary();
-                });
+            // Test external file availability (without executing)
+            try {
+                const resp = await fetch('ED-French-ini.js', { cache: 'no-store' });
+                const text = await resp.text();
+                const isHtml = text.trim().startsWith('<!');
+                log(`Fichier ED-French-ini.js: statut ${resp.status}, HTML=${isHtml}`, isHtml ? 'error' : 'success');
+            } catch(e) {
+                log('Fichier ED-French-ini.js introuvable ou réseau', 'error');
             }
-        }
 
-        // Main execution after page load
-        window.addEventListener('load', async () => {
-            log('Diagnostic démarré.', 'info');
-            checkServiceWorker();
-
-            // Check containers
-            const hc = document.getElementById('header-container');
-            const fc = document.getElementById('footer-container');
-            log(`#header-container: ${hc ? 'présent' : 'ABSENT'}`, hc ? 'success' : 'error');
-            log(`#footer-container: ${fc ? 'présent' : 'ABSENT'}`, fc ? 'success' : 'error');
-
-            // Check CSS loading
-            const testDiv = document.createElement('div');
-            testDiv.className = 'site-header';
-            document.body.appendChild(testDiv);
-            const style = getComputedStyle(testDiv);
-            log(`CSS site-header display: ${style.display}`, style.display === 'flex' ? 'success' : 'warn');
-            document.body.removeChild(testDiv);
-
-            // Check files
-            await checkUrl('ED-French-header.html', 'Fichier header');
-            await checkUrl('ED-French-footer.html', 'Fichier footer');
-            await checkUrl('ED-French-ini.js', 'Script injection');
-
-            // Security headers
-            await checkSecurityHeaders();
-
-            // Injection check
-            setTimeout(testInjection, 600);
-
-            updateSummary();
+            log('Diagnostic terminé.', 'info');
         });
 
-        // Clear site data function
-        window.clearSiteData = async function() {
-            if (confirm('Effacer toutes les données du site (cache, SW, localStorage) ?')) {
-                if ('caches' in window) {
-                    const keys = await caches.keys();
-                    for (const key of keys) await caches.delete(key);
-                }
+        // Clear everything manually
+        window.clearAll = async function() {
+            if (confirm('Effacer SW, caches, localStorage ?')) {
                 if ('serviceWorker' in navigator) {
                     const regs = await navigator.serviceWorker.getRegistrations();
                     for (const reg of regs) await reg.unregister();
                 }
+                const keys = await caches.keys();
+                for (const key of keys) await caches.delete(key);
                 localStorage.clear();
                 sessionStorage.clear();
-                log('Données effacées, rechargez la page.', 'success');
-                updateSummary();
+                alert('Données effacées. Rechargez la page.');
+                location.reload(true);
             }
         };
-    })();
-</script>
+    </script>
 </body>
 </html>

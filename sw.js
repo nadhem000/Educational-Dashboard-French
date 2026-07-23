@@ -1,4 +1,4 @@
-const CACHE_NAME = 'edu-french-v2';
+const CACHE_NAME = 'edu-french-v3';
 const urlsToCache = [
     '/',
     '/index.html',
@@ -6,7 +6,7 @@ const urlsToCache = [
     '/ED-French-ini.js',
     '/ED-French-header.html',
     '/ED-French-footer.html',
-    '/icon-96x96.png'
+    '/icon-frenchHub.png'
 ];
 
 self.addEventListener('install', event => {
