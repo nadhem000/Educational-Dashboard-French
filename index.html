@@ -225,6 +225,7 @@
         </div>
     </div>
 <div id="footer-container"></div>
+<script src="ED-French-ini.js"></script>
 
     <script>
         (function() {
@@ -304,34 +305,5 @@
             });
         })();
     </script>
-	<script>
-(function() {
-    // ── Header HTML ────────────────────────────────
-    var headerHTML = '<header class="site-header" style="display:flex;align-items:center;justify-content:space-between;padding:0.6rem 1.5rem;background:var(--card,#fff);border-bottom:1px solid var(--border,#e5ddd0);box-shadow:0 1px 3px rgba(0,0,0,0.05)"><div style="display:flex;align-items:center;gap:0.6rem"><img src="icon-96x96.png" alt="Logo" width="32" height="32" style="border-radius:6px"><span style="font-weight:700;font-size:1.1rem;color:var(--heading,#382e1e)">Révisions Tunisie</span></div><button id="settingsBtn" style="background:var(--button-bg,#f0e8d8);border:1px solid var(--border,#e5ddd0);font-size:1.3rem;cursor:pointer;padding:0.3rem 0.7rem;border-radius:8px;color:var(--text,#2b2416)" title="Paramètres">⚙️</button></header><div id="settingsModal" style="display:none;position:fixed;z-index:100;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.5)"><div style="background:var(--card,#fff);color:var(--text,#2b2416);margin:15% auto;padding:1.5rem;border-radius:12px;width:80%;max-width:400px;text-align:center;position:relative"><span class="close-modal" style="position:absolute;top:8px;right:16px;font-size:1.5rem;cursor:pointer;color:var(--text-light,#5c5344)">&times;</span><p>⚙️ Paramètres – Bientôt disponible</p></div></div>';
-
-    // ── Footer HTML ────────────────────────────────
-    var footerHTML = '<footer class="site-footer" style="text-align:center;padding:1.5rem;background:var(--card,#fff);border-top:1px solid var(--border,#e5ddd0);color:var(--text-light,#5c5344);font-size:0.85rem;margin-top:2rem"><p>Développé par <strong>Mejri Ziad</strong><br>Hébergé sur GitHub &amp; Netlify</p><div class="footer-links"><a href="#" style="color:var(--accent,#c75b2c);text-decoration:none">Contact</a> &nbsp;|&nbsp;<a href="#" style="color:var(--accent,#c75b2c);text-decoration:none">Politique de confidentialité</a> &nbsp;|&nbsp;<a href="#" style="color:var(--accent,#c75b2c);text-decoration:none">Conditions d’utilisation</a></div><p style="margin-top:0.5rem;font-size:0.75rem;opacity:0.7">Version 0.0.1</p></footer>';
-
-    // Inject into containers
-    var hc = document.getElementById('header-container');
-    var fc = document.getElementById('footer-container');
-    if (hc) hc.innerHTML = headerHTML;
-    if (fc) fc.innerHTML = footerHTML;
-
-    // Settings modal functionality
-    var modal = document.getElementById('settingsModal');
-    var btn = document.getElementById('settingsBtn');
-    if (modal && btn) {
-        btn.addEventListener('click', function() { modal.style.display = 'block'; });
-        modal.querySelector('.close-modal').addEventListener('click', function() { modal.style.display = 'none'; });
-        window.addEventListener('click', function(e) { if (e.target === modal) modal.style.display = 'none'; });
-    }
-
-    // Apply saved theme on load
-    if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark');
-    }
-})();
-</script>
 </body>
 </html>
