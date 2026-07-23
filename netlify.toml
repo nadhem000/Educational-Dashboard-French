@@ -1,18 +1,13 @@
 [build]
   publish = "."
 
-# Explicitly force .js files to be served as JavaScript
+# Force no caching for the script file (ensures browsers always get the latest)
 [[headers]]
-  for = "/*.js"
+  for = "/ED-French-ini.js"
   [headers.values]
-    Content-Type = "application/javascript; charset=utf-8"
+    Cache-Control = "no-cache, must-revalidate"
 
-[[headers]]
-  for = "/*.css"
-  [headers.values]
-    Content-Type = "text/css; charset=utf-8"
-
-# Security headers for everything
+# Security headers for all files
 [[headers]]
   for = "/*"
   [headers.values]
