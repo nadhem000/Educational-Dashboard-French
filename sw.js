@@ -1,4 +1,4 @@
-const CACHE_NAME = 'revisions-tunisie-v2';
+const CACHE_NAME = 'revisions-tunisie-v3';
 const urlsToCache = [
   '/',
   '/index.html',
