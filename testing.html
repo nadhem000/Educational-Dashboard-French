@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test injection externe (debug complet)</title>
+    <title>Test réel du script externe</title>
     <style>
         :root {
             --bg: #f9f7f1; --card: #ffffff; --text: #2b2416;
@@ -53,7 +53,7 @@
 
 <header class="topbar">
     <div class="breadcrumb">
-        <a href="index.html">🏠 Accueil</a> › <strong>Test debug complet</strong>
+        <a href="index.html">🏠 Accueil</a> › <strong>Test réel</strong>
     </div>
     <button id="themeToggle" class="theme-btn">
         <span id="themeIcon">🌙</span> <span id="themeLabel">Mode sombre</span>
@@ -61,73 +61,45 @@
 </header>
 
 <main class="container">
-    <h1>🔍 Diagnostic automatique du script externe</h1>
+    <h1>🔍 Test réel (sans cache‑buster)</h1>
     <div id="statusArea" class="status-box">
-        <p>Lancement du diagnostic…</p>
+        <p>Chargement de ED‑French‑ini.js…</p>
     </div>
-    <h2>Journal détaillé</h2>
+    <h2>Journal</h2>
     <div id="logArea" class="status-box"></div>
 </main>
 
 <div id="footer-container"></div>
+
+<!-- Chargement du script comme le font les vraies pages -->
+<script src="ED-French-ini.js"></script>
 
 <script>
     const logEntries = [];
     function log(msg, type) {
         logEntries.push({ msg, type: type || 'info', time: new Date().toLocaleTimeString() });
         document.getElementById('logArea').innerHTML = logEntries.map(e =>
-            `<div class="log-entry" style="color:${e.type==='error'?'red':e.type==='success'?'green':e.type==='warn'?'orange':'inherit'}">
+            `<div class="log-entry" style="color:${e.type==='error'?'red':e.type==='success'?'green':'inherit'}">
                 [${e.time}] ${e.msg}
             </div>`).join('');
     }
 
-    window.onerror = (message, source, lineno, colno, error) => log(`ERREUR: ${message} (${source}:${lineno})`, 'error');
+    window.onerror = (message, source, lineno, colno, error) =>
+        log(`ERREUR: ${message} (${source}:${lineno})`, 'error');
 
     const status = document.getElementById('statusArea');
 
-    async function runDiagnostic() {
-        log('Téléchargement de ED-French-ini.js…');
-        try {
-            const response = await fetch('ED-French-ini.js?v=' + Date.now());
-            log(`Status HTTP: ${response.status}`, response.ok ? 'success' : 'warn');
-            log(`Content-Type: ${response.headers.get('Content-Type')}`, 'info');
-            const text = await response.text();
-            log(`Taille: ${text.length} octets`, 'info');
-            const isHtml = text.trim().startsWith('<!DOCTYPE') || text.trim().startsWith('<html');
-            log(`Contient du HTML: ${isHtml ? 'OUI' : 'NON'}`, isHtml ? 'error' : 'success');
-            if (isHtml) {
-                status.innerHTML = '<p class="fail">❌ Le fichier est servi en HTML, pas en JavaScript. Le serveur ne trouve pas le fichier ou redirige vers index.html.</p>';
-                return;
-            }
-            // Tente d'exécuter le contenu
-            log('Tentative d’exécution du script…');
-            try {
-                new Function(text)();
-                log('Script exécuté sans erreur.', 'success');
-            } catch (execErr) {
-                log('Erreur d’exécution: ' + execErr.message, 'error');
-                status.innerHTML = '<p class="fail">❌ Le fichier contient des erreurs JavaScript.</p>';
-                return;
-            }
-            // Vérification post-injection
-            setTimeout(() => {
-                const hdr = document.querySelector('.site-header');
-                const ftr = document.querySelector('.site-footer');
-                if (hdr && ftr) {
-                    status.innerHTML = '<p class="success">✅ Injection réussie – le header et le footer sont visibles.</p>';
-                    log('Injection confirmée.', 'success');
-                } else {
-                    status.innerHTML = '<p class="fail">❌ Injection échouée malgré l’exécution du script.</p>';
-                    log('Header/Footer introuvables après exécution.', 'error');
-                }
-            }, 300);
-        } catch (netErr) {
-            log('Erreur réseau: ' + netErr.message, 'error');
-            status.innerHTML = '<p class="fail">❌ Impossible de charger le fichier (problème réseau ou CORS).</p>';
+    window.addEventListener('load', () => {
+        const hdr = document.querySelector('.site-header');
+        const ftr = document.querySelector('.site-footer');
+        if (hdr && ftr) {
+            status.innerHTML = '<p class="success">✅ Le script externe fonctionne parfaitement. Header et footer injectés.</p>';
+            log('Injection confirmée.', 'success');
+        } else {
+            status.innerHTML = '<p class="fail">❌ Le script n’a pas injecté les éléments.</p>';
+            log('Header/Footer introuvables.', 'error');
         }
-    }
-
-    runDiagnostic();
+    });
 </script>
 </body>
 </html>
