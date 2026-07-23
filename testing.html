@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Injection Header / Footer</title>
+    <style>
+        :root {
+            --bg: #f9f7f1; --card: #ffffff; --text: #2b2416;
+            --text-light: #5c5344; --heading: #382e1e; --accent: #c75b2c;
+            --accent-hover: #a3441d; --border: #e5ddd0;
+            --button-bg: #f0e8d8; --button-hover: #e3d5bc;
+        }
+        body.dark {
+            --bg: #1e1b17; --card: #2a2620; --text: #e8dfd2;
+            --text-light: #b9aa95; --heading: #f0e4d2; --accent: #e07b4a;
+            --accent-hover: #f08c5c; --border: #3e3830;
+            --button-bg: #3a3329; --button-hover: #4e4437;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: 'Segoe UI', Georgia, serif; background: var(--bg); color: var(--text); line-height: 1.7; transition: background 0.25s, color 0.25s; }
+        .topbar {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0.8rem 1.6rem; background: var(--card);
+            border-bottom: 1px solid var(--border); box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+            position: sticky; top:0; z-index:10;
+        }
+        .breadcrumb { font-size:0.85rem; color:var(--text-light); }
+        .breadcrumb a { color:var(--accent); text-decoration:none; font-weight:600; }
+        .theme-btn {
+            display:inline-flex; align-items:center; gap:0.4rem;
+            padding:0.45rem 0.9rem; border-radius:20px;
+            border:1px solid var(--border); background: var(--button-bg);
+            color:var(--text); cursor:pointer; font-size:0.85rem; font-weight:600;
+            transition: all 0.25s;
+        }
+        .theme-btn:hover { background: var(--button-hover); }
+        .container { max-width:800px; margin:0 auto; padding:2rem 1.4rem; }
+        .status-box {
+            background: var(--card); border:1px solid var(--border);
+            border-radius:12px; padding:1.2rem; margin:1rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .success { color: #2e7d32; font-weight: bold; }
+        .fail { color: #c62828; font-weight: bold; }
+        .log { font-size:0.85rem; margin:0.5rem 0; }
+        .log-entry { padding:0.2rem 0; border-bottom:1px solid var(--border); }
+    </style>
+</head>
+<body>
+<div id="header-container"></div>
+
+<header class="topbar">
+    <div class="breadcrumb">
+        <a href="index.html">🏠 Accueil</a> › <strong>Test d'injection</strong>
+    </div>
+    <button id="themeToggle" class="theme-btn">
+        <span id="themeIcon">🌙</span> <span id="themeLabel">Mode sombre</span>
+    </button>
+</header>
+
+<main class="container">
+    <h1>🔍 Test d'injection du Header et Footer</h1>
+    <div id="statusArea" class="status-box">
+        <p>En attente de l'injection...</p>
+    </div>
+    <h2>Logs en temps réel</h2>
+    <div id="logArea" class="status-box"></div>
+</main>
+
+<div id="footer-container"></div>
+
+<script>
+    // Collecte des logs dans un tableau et affichage
+    const logEntries = [];
+    function log(msg, type) {
+        const entry = { msg, type: type || 'info', time: new Date().toLocaleTimeString() };
+        logEntries.push(entry);
+        renderLogs();
+    }
+    function renderLogs() {
+        const area = document.getElementById('logArea');
+        area.innerHTML = logEntries.map(e => 
+            `<div class="log-entry" style="color:${e.type==='error'?'red':e.type==='success'?'green':'inherit'}">
+                [${e.time}] ${e.msg}
+            </div>`
+        ).join('');
+    }
+    // Capture toutes les erreurs JS globales
+    window.onerror = function(message, source, lineno, colno, error) {
+        log('ERREUR GLOBALE: ' + message + ' à ' + source + ':' + lineno, 'error');
+        return false;
+    };
+    // Capture les rejets de promesses non gérées
+    window.onunhandledrejection = function(event) {
+        log('PROMISE REJECTION: ' + event.reason, 'error');
+    };
+
+    log('Page chargée. Vérification des conteneurs...');
+
+    // Vérifie la présence des conteneurs
+    const hc = document.getElementById('header-container');
+    const fc = document.getElementById('footer-container');
+    const statusArea = document.getElementById('statusArea');
+
+    function updateStatus(success, detail) {
+        if (success) {
+            statusArea.innerHTML = `<p class="success">✅ Injection réussie</p><p>${detail}</p>`;
+        } else {
+            statusArea.innerHTML = `<p class="fail">❌ Échec de l'injection</p><p>${detail}</p>`;
+        }
+    }
+
+    if (!hc) {
+        log('#header-container manquant !', 'error');
+        updateStatus(false, 'Conteneur header introuvable dans la page.');
+    } else if (!fc) {
+        log('#footer-container manquant !', 'error');
+        updateStatus(false, 'Conteneur footer introuvable.');
+    } else {
+        log('Conteneurs trouvés : header et footer.', 'success');
+        // Exécute l'injection
+        try {
+            // Script d'injection (identique à celui qui fonctionne)
+            const styles = '.site-header{display:flex;align-items:center;justify-content:space-between;padding:0.6rem 1.5rem;background:var(--card,#fff);border-bottom:1px solid var(--border,#e5ddd0);box-shadow:0 1px 3px rgba(0,0,0,0.05)}.header-left{display:flex;align-items:center;gap:0.6rem}.header-icon{border-radius:6px}.site-title{font-weight:700;font-size:1.1rem;color:var(--heading,#382e1e)}.settings-btn{background:var(--button-bg,#f0e8d8);border:1px solid var(--border,#e5ddd0);font-size:1.3rem;cursor:pointer;padding:0.3rem 0.7rem;border-radius:8px;color:var(--text,#2b2416)}.settings-btn:hover{background:var(--button-hover,#e3d5bc)}.modal{display:none;position:fixed;z-index:100;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.5)}.modal-content{background:var(--card,#fff);color:var(--text,#2b2416);margin:15% auto;padding:1.5rem;border-radius:12px;width:80%;max-width:400px;text-align:center;position:relative}.close-modal{position:absolute;top:8px;right:16px;font-size:1.5rem;cursor:pointer;color:var(--text-light,#5c5344)}.site-footer{text-align:center;padding:1.5rem;background:var(--card,#fff);border-top:1px solid var(--border,#e5ddd0);color:var(--text-light,#5c5344);font-size:0.85rem;margin-top:2rem}.site-footer a{color:var(--accent,#c75b2c);text-decoration:none}.site-footer a:hover{text-decoration:underline}.version{margin-top:0.5rem;font-size:0.75rem;opacity:0.7}';
+            const headerHTML = '<header class="site-header"><div class="header-left"><img src="icon-96x96.png" alt="Logo" width="32" height="32" class="header-icon"><span class="site-title">Révisions Tunisie</span></div><button id="settingsBtn" class="settings-btn" title="Paramètres">⚙️</button></header><div id="settingsModal" class="modal"><div class="modal-content"><span class="close-modal">&times;</span><p>⚙️ Paramètres – Bientôt disponible</p></div></div>';
+            const footerHTML = '<footer class="site-footer"><p>Développé par <strong>Mejri Ziad</strong><br>Hébergé sur GitHub &amp; Netlify</p><div class="footer-links"><a href="#">Contact</a> &nbsp;|&nbsp;<a href="#">Politique de confidentialité</a> &nbsp;|&nbsp;<a href="#">Conditions d’utilisation</a></div><p class="version">Version 0.0.1</p></footer>';
+
+            var styleEl = document.createElement('style');
+            styleEl.textContent = styles;
+            document.head.appendChild(styleEl);
+            log('Styles CSS injectés.', 'success');
+
+            hc.innerHTML = headerHTML;
+            fc.innerHTML = footerHTML;
+            log('Header et Footer injectés dans les conteneurs.', 'success');
+
+            // Vérification post-injection
+            var siteHeader = document.querySelector('.site-header');
+            var siteFooter = document.querySelector('.site-footer');
+            var modal = document.getElementById('settingsModal');
+            var btn = document.getElementById('settingsBtn');
+
+            if (siteHeader && siteFooter) {
+                log('Éléments .site-header et .site-footer trouvés dans le DOM.', 'success');
+                updateStatus(true, 'Le header et le footer sont visibles.');
+
+                // Active la modale
+                if (modal && btn) {
+                    btn.onclick = function() { modal.style.display = 'block'; };
+                    modal.querySelector('.close-modal').onclick = function() { modal.style.display = 'none'; };
+                    window.onclick = function(e) { if (e.target === modal) modal.style.display = 'none'; };
+                    log('Modale paramètres activée.', 'success');
+                }
+            } else {
+                log('Injection effectuée mais les éléments ne sont pas trouvés.', 'error');
+                updateStatus(false, 'Les éléments injectés sont absents après injection.');
+            }
+        } catch (e) {
+            log('Erreur lors de l\'injection: ' + e.message, 'error');
+            updateStatus(false, 'Exception: ' + e.message);
+        }
+    }
+
+    // Thème sombre/clair
+    const body = document.body;
+    const toggle = document.getElementById('themeToggle');
+    const icon = document.getElementById('themeIcon');
+    const label = document.getElementById('themeLabel');
+    if (localStorage.getItem('theme') === 'dark') {
+        body.classList.add('dark');
+        icon.textContent = '☀️'; label.textContent = 'Mode clair';
+        log('Thème sombre appliqué (depuis localStorage).', 'info');
+    }
+    toggle.addEventListener('click', () => {
+        body.classList.toggle('dark');
+        const isDark = body.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        icon.textContent = isDark ? '☀️' : '🌙';
+        label.textContent = isDark ? 'Mode clair' : 'Mode sombre';
+        log('Thème basculé: ' + (isDark?'sombre':'clair'), 'info');
+    });
+</script>
+</body>
+</html>
