@@ -9,7 +9,7 @@
     async function init() {
         try {
             // Injection de l'en-tête
-            const headerResp = await fetch('ed‑french-header.html');
+            const headerResp = await fetch('ed-french-header.html');
             if (!headerResp.ok) throw new Error('Header introuvable');
             const headerHTML = await headerResp.text();
             const body = document.body;
@@ -21,7 +21,7 @@
             }
 
             // Injection du pied de page
-            const footerResp = await fetch('ed‑french-footer.html');
+            const footerResp = await fetch('ed-french-footer.html');
             if (!footerResp.ok) throw new Error('Footer introuvable');
             const footerHTML = await footerResp.text();
             const footerTemp = document.createElement('div');
@@ -33,7 +33,7 @@
             initSettingsModal();
 
             // Charger dynamiquement le script de construction des cartes
-            await loadScript('ed‑french-cards-building.js');
+            await loadScript('ed-french-cards-building.js');
         } catch (error) {
             console.warn('Impossible de charger l’en-tête ou le pied de page, utilisation du fallback :', error);
             // Fallback minimal éventuel
