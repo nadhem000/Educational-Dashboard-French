@@ -13,10 +13,10 @@
 			const body = document.body;
 			const tempDiv = document.createElement('div');
 			tempDiv.innerHTML = headerHTML;
-const firstBodyChild = body.firstChild;
-while (tempDiv.firstChild) {
-    body.insertBefore(tempDiv.firstChild, firstBodyChild);
-}
+			const firstBodyChild = body.firstChild;
+			while (tempDiv.firstChild) {
+				body.insertBefore(tempDiv.firstChild, firstBodyChild);
+			}
 			
 			const footerResp = await fetch('ed-french-footer.html');
 			if (!footerResp.ok) throw new Error('Footer introuvable');
@@ -75,4 +75,16 @@ while (tempDiv.firstChild) {
 			document.head.appendChild(script);
 		});
 	}
+// Register service worker
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js')
+            .then(function(registration) {
+                console.log('[App] Service Worker registered with scope:', registration.scope);
+            })
+            .catch(function(error) {
+                console.error('[App] Service Worker registration failed:', error);
+            });
+    });
+}
 })();

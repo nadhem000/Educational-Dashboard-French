@@ -1,6 +1,6 @@
-# Révisions Tunisie — Programme de révision 4ᵉ année secondaire
+# Educational Dashboard – French
+Lessons, review and tests for French (Tunisian curriculum)
 
-Site statique de révision pour le Baccalauréat tunisien.  
 Il contient des leçons interactives de grammaire, conjugaison, orthographe, expression écrite et étude de texte, organisées sur 8 semaines.
 
 ## Structure du projet
