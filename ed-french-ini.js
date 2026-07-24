@@ -26,7 +26,7 @@
 			
 			initThemeToggle();
 			initSettingsModal();
-			await loadScript('ed-french-cards-building.js');
+			await loadScript('cards-building.js');
 			} catch (error) {
 			console.warn('Fallback :', error);
 		}
