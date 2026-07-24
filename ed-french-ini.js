@@ -13,6 +13,7 @@
 			const body = document.body;
 			const tempDiv = document.createElement('div');
 			tempDiv.innerHTML = headerHTML;
+const first = body.firstChild; // remember the original first child
 			while (tempDiv.firstChild) {
 				body.insertBefore(tempDiv.firstChild, body.firstChild);
 			}

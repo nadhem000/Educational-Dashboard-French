@@ -1,13 +1,13 @@
 // Service Worker – Révisions Tunisie
-const CACHE_NAME = 'revisions-tunisie-v1.0.8';
+const CACHE_NAME = 'revisions-tunisie-v1.0.9';
 const urlsToCache = [
   '/',
   '/index.html',
   '/revision.html',
   '/manifest.json',
-  '/icons/icon-96x96.png',
-  '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png'
+  '/assets/icons/icon-96x96.png',
+  '/assets/icons/icon-192x192.png',
+  '/assets/icons/icon-512x512.png'
 ];
 
 // Installation : pré-cache des ressources essentielles
