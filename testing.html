@@ -1,176 +1,605 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diagnostic – French Hub</title>
-    <style>
-        :root {
-            --bg: #f9f7f1; --card: #ffffff; --text: #2b2416;
-            --text-light: #5c5344; --accent: #c75b2c;
-            --border: #e5ddd0; --radius: 12px;
-        }
-        body { font-family: 'Segoe UI', Georgia, serif; background: var(--bg); color: var(--text); line-height: 1.5; margin: 0; }
-        .container { max-width: 960px; margin: 0 auto; padding: 1.5rem; }
-        .panel { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem; margin-bottom: 1.2rem; }
-        .ok { color: #2e7d32; } .warn { color: #e65100; } .err { color: #c62828; }
-        .log-entry { padding: 0.2rem 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Monitor – Educational Dashboard</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --border: #30363d;
+      --text: #c9d1d9;
+      --text-secondary: #8b949e;
+      --accent: #58a6ff;
+      --success: #3fb950;
+      --warning: #d29922;
+      --danger: #f85149;
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      display: flex;
+      height: 100vh;
+    }
+    .sidebar {
+      width: 220px;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .sidebar h2 {
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+    }
+    .sidebar button {
+      display: block;
+      width: 100%;
+      padding: 0.7rem 1rem;
+      margin-bottom: 0.4rem;
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text);
+      text-align: left;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 0.95rem;
+    }
+    .sidebar button:hover, .sidebar button.active {
+      background: var(--border);
+      border-color: var(--accent);
+    }
+    .main {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem;
+    }
+    .panel { display: none; }
+    .panel.active { display: block; }
+    h3 {
+      color: var(--accent);
+      margin-bottom: 1rem;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      text-align: center;
+    }
+    .stat-card .value {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    .stat-card .label {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    .log-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      max-height: 500px;
+      overflow-y: auto;
+      font-family: 'Cascadia Code', 'Fira Code', monospace;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+    .log-entry {
+      padding: 0.3rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .log-entry.error { color: var(--danger); }
+    .log-entry.action { color: var(--success); }
+    .log-entry.perf { color: var(--accent); }
+    .timestamp { color: var(--text-secondary); margin-right: 1rem; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    th, td {
+      padding: 0.7rem;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      font-size: 0.9rem;
+    }
+    th { background: var(--border); color: var(--accent); }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+    .badge.pass { background: var(--success); color: #000; }
+    .badge.fail { background: var(--danger); }
+    .badge.warn { background: var(--warning); color: #000; }
+    button.action-btn {
+      background: var(--accent);
+      color: #000;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+    button.action-btn:hover { opacity: 0.9; }
+    .toggle-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+    @media (max-width: 768px) {
+      body { flex-direction: column; }
+      .sidebar { width: 100%; flex-direction: row; flex-wrap: wrap; }
+      .sidebar h2 { margin-bottom: 0; margin-right: 1rem; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Inline header (never breaks) -->
-    <header style="display:flex;align-items:center;justify-content:space-between;background:var(--card,#fff);border-bottom:1px solid var(--border);padding:0.6rem 1.5rem;">
-        <div><img src="icon-frenchHub.png" alt="Logo" width="32" height="32"></div>
-        <div style="text-align:center;"><strong>Educational Dashboard<br>French Hub</strong></div>
-        <div><button id="settingsBtn" style="background:#f0e8d8;border:1px solid #e5ddd0;font-size:1.3rem;cursor:pointer;padding:0.3rem 0.7rem;border-radius:8px;">⚙️</button></div>
-    </header>
-    <div id="settingsModal" style="display:none;position:fixed;z-index:100;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.5);">
-        <div style="background:var(--card,#fff);color:var(--text);margin:15% auto;padding:1.5rem;border-radius:12px;width:80%;max-width:400px;text-align:center;">
-            <span id="closeModalBtn" style="position:absolute;top:8px;right:16px;font-size:1.5rem;cursor:pointer;">&times;</span>
-            <p>⚙️ Paramètres – Bientôt disponible</p>
-        </div>
-    </div>
+  <aside class="sidebar">
+    <h2>🧠 Admin Monitor</h2>
+    <button class="active" data-panel="overview">📊 Overview</button>
+    <button data-panel="live">📡 Live Logs</button>
+    <button data-panel="errors">🚨 Errors</button>
+    <button data-panel="actions">🖱️ Actions</button>
+    <button data-panel="performance">⚡ Performance</button>
+    <button data-panel="security">🔐 Security Audit</button>
+    <button data-panel="pwa">📱 PWA Diagnostics</button>
+    <button data-panel="export">💾 Export / Import</button>
+  </aside>
+  <main class="main" id="mainContent">
+    <!-- Panels will be generated by JavaScript -->
+  </main>
 
-    <main class="container">
-        <h1>🩺 Diagnostic complet</h1>
-        <div class="panel"><h2>Résumé</h2><div id="summary">Initialisation…</div></div>
-        <div class="panel"><h2>Journal</h2><div id="log-container"></div></div>
-        <div class="panel"><h2>Actions</h2>
-            <button onclick="location.reload()">🔄 Recharger</button>
-            <button onclick="clearAll()">🧹 Effacer données du site</button>
-        </div>
-    </main>
-
-    <!-- Inline footer (never breaks) -->
-    <footer style="display:flex;align-items:center;justify-content:space-between;background:var(--card,#fff);border-top:1px solid var(--border);padding:1.2rem 1.5rem;font-size:0.85rem;color:var(--text-light);margin-top:2rem;">
-        <div><p>Développé par <strong>Mejri Ziad</strong><br>Hébergé sur GitHub &amp; Netlify</p></div>
-        <div>
-            <a href="#" style="color:var(--accent,#c75b2c);">Contact</a> |
-            <a href="#" style="color:var(--accent,#c75b2c);">Politique de confidentialité</a> |
-            <a href="#" style="color:var(--accent,#c75b2c);">Conditions d’utilisation</a>
-        </div>
-        <div><p>Version 0.0.1</p></div>
-    </footer>
-
-    <script>
-        // ─── Immediate SW cleanup ────────────────────────────
-        (async function cleanup() {
-            if (!('serviceWorker' in navigator)) return;
-            const regs = await navigator.serviceWorker.getRegistrations();
-            if (regs.length > 0 || navigator.serviceWorker.controller) {
-                // There is a SW – unregister it and clear caches, then reload
-                for (const reg of regs) await reg.unregister();
-                const keys = await caches.keys();
-                for (const key of keys) await caches.delete(key);
-                // Reload the page once, after a short delay
-                setTimeout(() => location.reload(true), 500);
+  <script>
+    (function() {
+      // ═══════════════ INDEXEDDB SETUP ═══════════════
+      const DB_NAME = 'adminMonitorDB';
+      const DB_VERSION = 1;
+      let db;
+      
+      function openDB() {
+        return new Promise((resolve, reject) => {
+          const request = indexedDB.open(DB_NAME, DB_VERSION);
+          request.onupgradeneeded = (e) => {
+            const db = e.target.result;
+            if (!db.objectStoreNames.contains('errors')) {
+              db.createObjectStore('errors', { keyPath: 'id', autoIncrement: true });
             }
-        })();
-
-        // ─── Modal logic ────────────────────────────────────
-        document.addEventListener('click', function(e) {
-            const modal = document.getElementById('settingsModal');
-            if (e.target.id === 'settingsBtn') {
-                modal.style.display = 'block';
-            } else if (e.target.id === 'closeModalBtn' || e.target === modal) {
-                modal.style.display = 'none';
+            if (!db.objectStoreNames.contains('actions')) {
+              db.createObjectStore('actions', { keyPath: 'id', autoIncrement: true });
             }
+          };
+          request.onsuccess = (e) => {
+            db = e.target.result;
+            resolve(db);
+          };
+          request.onerror = (e) => reject(e.target.error);
         });
+      }
 
-        // ─── Diagnostic engine ──────────────────────────────
-        const logContainer = document.getElementById('log-container');
-        const summaryDiv = document.getElementById('summary');
-        let ok = 0, warn = 0, err = 0;
-
-        function log(msg, level = 'info') {
-            const entry = document.createElement('div');
-            entry.className = 'log-entry';
-            const time = new Date().toLocaleTimeString();
-            entry.innerHTML = `<span style="color:var(--text-light);">[${time}]</span> ${msg}`;
-            if (level === 'success') entry.classList.add('ok');
-            else if (level === 'warn') entry.classList.add('warn');
-            else if (level === 'error') entry.classList.add('err');
-            logContainer.appendChild(entry);
-            if (level === 'error') err++;
-            else if (level === 'warn') warn++;
-            else if (level === 'success') ok++;
-            updateSummary();
-        }
-
-        function updateSummary() {
-            summaryDiv.innerHTML = `✅ OK: ${ok} ⚠️ Avertissements: ${warn} ❌ Erreurs: ${err} — ${err === 0 ? 'Tests OK' : 'Problèmes détectés'}`;
-        }
-
-        window.onerror = (msg, src, line) => log(`Erreur JS: ${msg} (${src}:${line})`, 'error');
-
-        // Run diagnostics after load
-        window.addEventListener('load', async () => {
-            log('Page chargée – début des vérifications.', 'info');
-
-            // Check containers
-            log('Conteneur header: présent.', 'success');
-            log('Conteneur footer: présent.', 'success');
-
-            // Check CSS
-            const testEl = document.createElement('div');
-            testEl.className = 'site-header';
-            document.body.appendChild(testEl);
-            const display = getComputedStyle(testEl).display;
-            document.body.removeChild(testEl);
-            log(`CSS display (site-header): ${display}`, display === 'flex' ? 'success' : 'warn');
-
-            // Check SW status after cleanup
-            if ('serviceWorker' in navigator) {
-                const regs = await navigator.serviceWorker.getRegistrations();
-                log(`Service Workers actifs: ${regs.length}`, regs.length === 0 ? 'success' : 'warn');
-                if (navigator.serviceWorker.controller) {
-                    log('Page contrôlée par un SW !', 'warn');
-                } else {
-                    log('Aucun SW ne contrôle cette page.', 'success');
-                }
-            }
-
-            // Check security headers (try HEAD request)
-            try {
-                const resp = await fetch('/', { method: 'HEAD' });
-                const headers = {};
-                resp.headers.forEach((v, k) => headers[k.toLowerCase()] = v);
-                ['x-frame-options', 'x-content-type-options', 'referrer-policy'].forEach(h => {
-                    if (headers[h]) log(`En-tête ${h}: ${headers[h]}`, 'success');
-                    else log(`En-tête ${h} manquant`, 'warn');
-                });
-            } catch(e) {
-                log('Impossible de vérifier les en-têtes', 'warn');
-            }
-
-            // Test external file availability (without executing)
-            try {
-                const resp = await fetch('ed‑french-ini.js', { cache: 'no-store' });
-                const text = await resp.text();
-                const isHtml = text.trim().startsWith('<!');
-                log(`Fichier ed‑french-ini.js: statut ${resp.status}, HTML=${isHtml}`, isHtml ? 'error' : 'success');
-            } catch(e) {
-                log('Fichier ed‑french-ini.js introuvable ou réseau', 'error');
-            }
-
-            log('Diagnostic terminé.', 'info');
+      async function addLog(storeName, data) {
+        if (!db) await openDB();
+        return new Promise((resolve, reject) => {
+          const tx = db.transaction(storeName, 'readwrite');
+          const store = tx.objectStore(storeName);
+          const entry = { ...data, timestamp: data.timestamp || new Date().toISOString() };
+          const request = store.add(entry);
+          request.onsuccess = resolve;
+          request.onerror = reject;
         });
+      }
 
-        // Clear everything manually
-        window.clearAll = async function() {
-            if (confirm('Effacer SW, caches, localStorage ?')) {
-                if ('serviceWorker' in navigator) {
-                    const regs = await navigator.serviceWorker.getRegistrations();
-                    for (const reg of regs) await reg.unregister();
-                }
-                const keys = await caches.keys();
-                for (const key of keys) await caches.delete(key);
-                localStorage.clear();
-                sessionStorage.clear();
-                alert('Données effacées. Rechargez la page.');
-                location.reload(true);
-            }
+      async function getAllLogs(storeName) {
+        if (!db) await openDB();
+        return new Promise((resolve, reject) => {
+          const tx = db.transaction(storeName, 'readonly');
+          const store = tx.objectStore(storeName);
+          const request = store.getAll();
+          request.onsuccess = () => resolve(request.result);
+          request.onerror = reject;
+        });
+      }
+
+      async function clearStore(storeName) {
+        if (!db) await openDB();
+        return new Promise((resolve, reject) => {
+          const tx = db.transaction(storeName, 'readwrite');
+          const store = tx.objectStore(storeName);
+          const request = store.clear();
+          request.onsuccess = resolve;
+          request.onerror = reject;
+        });
+      }
+
+      // ═══════════════ GLOBAL ERROR & ACTION CAPTURE ═══════════════
+      window.addEventListener('error', async (event) => {
+        await addLog('errors', {
+          type: 'runtime',
+          message: event.message,
+          source: event.filename,
+          line: event.lineno,
+          col: event.colno,
+          stack: event.error?.stack || '',
+          timestamp: new Date().toISOString()
+        });
+      });
+
+      window.addEventListener('unhandledrejection', async (event) => {
+        await addLog('errors', {
+          type: 'promise',
+          message: event.reason?.message || String(event.reason),
+          stack: event.reason?.stack || '',
+          timestamp: new Date().toISOString()
+        });
+      });
+
+      // Action logging (optional, toggled)
+      let actionLoggingEnabled = false;
+      document.addEventListener('click', async (e) => {
+        if (!actionLoggingEnabled) return;
+        const target = e.target.closest('a, button');
+        if (!target) return;
+        const tag = target.tagName.toLowerCase();
+        const text = target.textContent?.trim().substring(0, 50) || '';
+        const url = tag === 'a' ? target.href : '';
+        await addLog('actions', {
+          tag,
+          text,
+          url,
+          id: target.id || '',
+          class: target.className || '',
+          timestamp: new Date().toISOString()
+        });
+      });
+
+      // Fetch interceptor (only logs non‑admin requests)
+      const originalFetch = window.fetch;
+      window.fetch = async function(...args) {
+        const url = typeof args[0] === 'string' ? args[0] : args[0].url;
+        const start = performance.now();
+        let response;
+        try {
+          response = await originalFetch(...args);
+          return response;
+        } finally {
+          if (!url.includes('testing.html') && !url.startsWith('blob:')) {
+            const duration = (performance.now() - start).toFixed(1);
+            const status = response ? response.status : 'network error';
+            await addLog('actions', {
+              type: 'fetch',
+              url,
+              status,
+              duration: duration + 'ms',
+              timestamp: new Date().toISOString()
+            });
+          }
+        }
+      };
+
+      // ═══════════════ UI GENERATION ═══════════════
+      const main = document.getElementById('mainContent');
+      const panels = {
+        overview: createOverviewPanel,
+        live: createLivePanel,
+        errors: createLogPanel('errors', '🚨 Error Logs'),
+        actions: createLogPanel('actions', '🖱️ Action Logs'),
+        performance: createPerformancePanel,
+        security: createSecurityPanel,
+        pwa: createPWAPanel,
+        export: createExportPanel
+      };
+
+      // Render initial panel
+      renderPanel('overview');
+
+      // Sidebar navigation
+      document.querySelectorAll('.sidebar button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.sidebar button').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          renderPanel(btn.dataset.panel);
+        });
+      });
+
+      async function renderPanel(name) {
+        main.innerHTML = '';
+        const div = document.createElement('div');
+        div.className = 'panel active';
+        if (panels[name]) {
+          await panels[name](div);
+        } else {
+          div.innerHTML = '<p>Panel not found.</p>';
+        }
+        main.appendChild(div);
+      }
+
+      // ═══════════════ PANEL CREATORS ═══════════════
+
+      async function createOverviewPanel(container) {
+        const [errors, actions] = await Promise.all([
+          getAllLogs('errors'),
+          getAllLogs('actions')
+        ]);
+        const statsHTML = `
+          <div class="stats-grid">
+            <div class="stat-card"><div class="value">${errors.length}</div><div class="label">Total Errors</div></div>
+            <div class="stat-card"><div class="value">${actions.length}</div><div class="label">Logged Actions</div></div>
+            <div class="stat-card"><div class="value">${navigator.onLine ? 'Online' : 'Offline'}</div><div class="label">Connection</div></div>
+            <div class="stat-card"><div class="value">${document.visibilityState}</div><div class="label">Page Visibility</div></div>
+            <div class="stat-card"><div class="value">${new Date().toLocaleTimeString()}</div><div class="label">Last Refresh</div></div>
+          </div>
+          <h3>Quick Actions</h3>
+          <button class="action-btn" onclick="clearStore('errors');location.reload();">Clear Errors</button>
+          <button class="action-btn" onclick="clearStore('actions');location.reload();">Clear Actions</button>
+        `;
+        container.innerHTML = statsHTML;
+      }
+
+      function createLivePanel(container) {
+        container.innerHTML = `
+          <h3>📡 Live Console (last 20 entries)</h3>
+          <div class="log-container" id="liveLog"></div>
+        `;
+        const liveDiv = document.getElementById('liveLog');
+        // Function to update live log periodically
+        async function updateLiveLog() {
+          const [errors, actions] = await Promise.all([
+            getAllLogs('errors'),
+            getAllLogs('actions')
+          ]);
+          const combined = [...errors.map(e => ({...e, type: 'error'})), ...actions.map(a => ({...a, type: 'action'}))]
+            .sort((a,b) => new Date(b.timestamp) - new Date(a.timestamp))
+            .slice(0, 20);
+          liveDiv.innerHTML = combined.map(entry => {
+            const cls = entry.type === 'error' ? 'error' : 'action';
+            return `<div class="log-entry ${cls}"><span class="timestamp">${new Date(entry.timestamp).toLocaleTimeString()}</span> ${entry.message || entry.url || entry.text || JSON.stringify(entry)}</div>`;
+          }).join('');
+        }
+        updateLiveLog();
+        setInterval(updateLiveLog, 3000); // refresh every 3s
+      }
+
+      async function createLogPanel(storeName, title) {
+        return async (container) => {
+          container.innerHTML = `
+            <h3>${title}</h3>
+            <div class="log-container" id="${storeName}Log"></div>
+          `;
+          const logs = await getAllLogs(storeName);
+          const logDiv = document.getElementById(`${storeName}Log`);
+          if (logs.length === 0) {
+            logDiv.innerHTML = '<p>No entries yet.</p>';
+            return;
+          }
+          logs.sort((a,b) => new Date(b.timestamp) - new Date(a.timestamp));
+          logDiv.innerHTML = logs.map(log => {
+            const entryClass = storeName === 'errors' ? 'error' : 'action';
+            return `<div class="log-entry ${entryClass}">
+              <span class="timestamp">${new Date(log.timestamp).toLocaleString()}</span>
+              ${storeName === 'errors' ? log.message : (log.url || log.text || 'action')}
+            </div>`;
+          }).join('');
         };
-    </script>
+      }
+
+      async function createPerformancePanel(container) {
+        const timing = performance.timing;
+        const loadTime = timing.loadEventEnd - timing.navigationStart;
+        const domContentLoaded = timing.domContentLoadedEventEnd - timing.navigationStart;
+        const resources = performance.getEntriesByType('resource')
+          .filter(r => !r.name.includes('testing.html'))
+          .slice(0, 20);
+        const memory = performance.memory || {};
+
+        container.innerHTML = `
+          <h3>⚡ Performance Metrics</h3>
+          <table>
+            <tr><th>Metric</th><th>Value</th></tr>
+            <tr><td>Page Load Time</td><td>${loadTime} ms</td></tr>
+            <tr><td>DOM Content Loaded</td><td>${domContentLoaded} ms</td></tr>
+            <tr><td>Time to First Byte</td><td>${timing.responseStart - timing.navigationStart} ms</td></tr>
+            <tr><td>Used JS Heap Size</td><td>${memory.usedJSHeapSize ? (memory.usedJSHeapSize / 1048576).toFixed(2) + ' MB' : 'N/A'}</td></tr>
+            <tr><td>Total JS Heap Size</td><td>${memory.totalJSHeapSize ? (memory.totalJSHeapSize / 1048576).toFixed(2) + ' MB' : 'N/A'}</td></tr>
+          </table>
+          <h3>📦 Resource Loading (top 20)</h3>
+          <div class="log-container" style="max-height:300px">
+            ${resources.map(r => `<div class="log-entry perf"><span class="timestamp">${(r.duration||0).toFixed(0)}ms</span> ${r.name}</div>`).join('')}
+          </div>
+        `;
+      }
+
+      async function createSecurityPanel(container) {
+        container.innerHTML = '<h3>🔐 Security Audit (running...)</h3>';
+        const results = [];
+        
+        // Test 1: HTTPS
+        results.push({
+          test: 'HTTPS Connection',
+          status: location.protocol === 'https:' ? 'pass' : 'fail',
+          details: location.protocol
+        });
+
+        // Test 2: CSP header (fetch current page)
+        try {
+          const res = await fetch(location.href + '?nocache=' + Date.now(), { cache: 'no-store' });
+          const csp = res.headers.get('Content-Security-Policy');
+          results.push({
+            test: 'Content-Security-Policy',
+            status: csp ? 'pass' : 'warn',
+            details: csp || 'Not set'
+          });
+          const xfo = res.headers.get('X-Frame-Options');
+          results.push({
+            test: 'X-Frame-Options',
+            status: xfo ? 'pass' : 'warn',
+            details: xfo || 'Not set'
+          });
+          const xcto = res.headers.get('X-Content-Type-Options');
+          results.push({
+            test: 'X-Content-Type-Options',
+            status: xcto ? 'pass' : 'warn',
+            details: xcto || 'Not set'
+          });
+          const referrer = res.headers.get('Referrer-Policy');
+          results.push({
+            test: 'Referrer-Policy',
+            status: referrer ? 'pass' : 'warn',
+            details: referrer || 'Not set'
+          });
+        } catch(e) {
+          results.push({test: 'Fetch Security Headers', status: 'fail', details: e.message});
+        }
+
+        // Test 3: Eval allowed?
+        let evalAllowed = false;
+        try {
+          new Function('return true')();
+          evalAllowed = true;
+        } catch(e) {}
+        results.push({
+          test: 'eval() / new Function allowed',
+          status: evalAllowed ? 'fail' : 'pass',
+          details: evalAllowed ? 'Allowed (CSP may be weak)' : 'Blocked (good)'
+        });
+
+        // Test 4: Mixed content scan
+        const resources = performance.getEntriesByType('resource');
+        const insecureResources = resources.filter(r => r.name.startsWith('http:'));
+        results.push({
+          test: 'Mixed Content (HTTP resources)',
+          status: insecureResources.length ? 'fail' : 'pass',
+          details: insecureResources.length ? `${insecureResources.length} insecure resources found` : 'None'
+        });
+
+        // Test 5: Service Worker registration
+        results.push({
+          test: 'Service Worker Registered',
+          status: 'serviceWorker' in navigator && navigator.serviceWorker.controller ? 'pass' : 'warn',
+          details: navigator.serviceWorker.controller ? 'Active' : 'Not controlling this page'
+        });
+
+        // Test 6: Cookies HttpOnly check (cannot fully check, but we can see if cookies are accessible)
+        const cookiesAccessible = document.cookie.length > 0;
+        results.push({
+          test: 'Cookies Accessible via JS',
+          status: cookiesAccessible ? 'warn' : 'pass',
+          details: cookiesAccessible ? 'Some cookies not HttpOnly (may be a risk)' : 'No accessible cookies (good)'
+        });
+
+        // Render
+        let tableHTML = '<table><tr><th>Test</th><th>Status</th><th>Details</th></tr>';
+        results.forEach(r => {
+          tableHTML += `<tr>
+            <td>${r.test}</td>
+            <td><span class="badge ${r.status}">${r.status.toUpperCase()}</span></td>
+            <td>${r.details}</td>
+          </tr>`;
+        });
+        tableHTML += '</table>';
+        container.innerHTML = `<h3>🔐 Security Audit</h3>${tableHTML}`;
+      }
+
+      async function createPWAPanel(container) {
+        let manifestData = '';
+        try {
+          const res = await fetch('/manifest.json');
+          manifestData = await res.json();
+        } catch(e) { manifestData = 'Failed to load'; }
+        
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+        const swStatus = navigator.serviceWorker?.controller ? 'active' : 'inactive';
+        const registration = await navigator.serviceWorker?.getRegistration();
+        const cacheNames = await caches.keys();
+        let cacheDetails = '';
+        for (const name of cacheNames) {
+          const cache = await caches.open(name);
+          const keys = await cache.keys();
+          cacheDetails += `<p><strong>${name}</strong>: ${keys.length} entries</p>`;
+        }
+
+        container.innerHTML = `
+          <h3>📱 PWA Diagnostics</h3>
+          <table>
+            <tr><td>Installable</td><td>${isStandalone ? 'Yes (standalone)' : 'Maybe (check manifest & HTTPS)'}</td></tr>
+            <tr><td>Service Worker</td><td>${swStatus}</td></tr>
+            <tr><td>Manifest</td><td><pre>${JSON.stringify(manifestData, null, 2)}</pre></td></tr>
+            <tr><td>Cache Storage</td><td>${cacheDetails || 'None'}</td></tr>
+            <tr><td>Display Mode</td><td>${window.matchMedia('(display-mode: standalone)').matches ? 'standalone' : 'browser'}</td></tr>
+          </table>
+        `;
+      }
+
+      function createExportPanel(container) {
+        container.innerHTML = `
+          <h3>💾 Export / Import Data</h3>
+          <button class="action-btn" id="exportBtn">Export All Logs (JSON)</button>
+          <button class="action-btn" id="importBtn">Import Logs</button>
+          <input type="file" id="importFile" accept=".json" style="display:none">
+          <button class="action-btn" onclick="clearStore('errors');clearStore('actions');location.reload();">Clear All Data</button>
+        `;
+        document.getElementById('exportBtn').addEventListener('click', async () => {
+          const data = {
+            errors: await getAllLogs('errors'),
+            actions: await getAllLogs('actions'),
+            exportTime: new Date().toISOString()
+          };
+          const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'admin-monitor-export.json';
+          a.click();
+        });
+        document.getElementById('importBtn').addEventListener('click', () => {
+          document.getElementById('importFile').click();
+        });
+        document.getElementById('importFile').addEventListener('change', async (e) => {
+          const file = e.target.files[0];
+          if (!file) return;
+          const reader = new FileReader();
+          reader.onload = async (ev) => {
+            const data = JSON.parse(ev.target.result);
+            if (data.errors) {
+              const tx = db.transaction('errors', 'readwrite');
+              for (const entry of data.errors) await tx.store.add(entry);
+              await tx.done;
+            }
+            if (data.actions) {
+              const tx = db.transaction('actions', 'readwrite');
+              for (const entry of data.actions) await tx.store.add(entry);
+              await tx.done;
+            }
+            alert('Import complete. Reload to see changes.');
+            location.reload();
+          };
+          reader.readAsText(file);
+        });
+      }
+
+      // ═══════════════ INIT ═══════════════
+      openDB();
+      // Toggle action logging via URL parameter or button – we'll add a global toggle later
+      // For now, enable action logging by default (can be changed)
+      actionLoggingEnabled = true;
+    })();
+  </script>
 </body>
 </html>
