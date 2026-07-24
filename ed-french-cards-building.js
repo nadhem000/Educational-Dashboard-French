@@ -12,7 +12,6 @@
            { id: 'secondaire4', title: '4ᵉ année secondaire (Bac)', type: 'secondary', sections: ['Section Lettres', 'Section Sciences', 'Section Techniques'] },
            { id: 'revision', title: '📖 Révision générale', type: 'revision', link: 'revision.html' }
        ];
-
        const grid = document.getElementById('cardGrid');
        if (!grid) return;
 
