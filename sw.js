@@ -1,171 +1,154 @@
-// Service Worker – Révisions Tunisie
-const CACHE_NAME = 'revisions-tunisie-v1.2.0';
+// Service Worker – Educational Dashboard – French
+const CACHE_NAME = 'revisions-tunisie-v1.2.1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/revision.html',
-  '/manifest.json',
-  '/assets/icons/icon-96x96.png',
-  '/assets/icons/icon-152x152.png',
-  '/assets/icons/icon-192x192.png',
-  '/assets/icons/icon-512x512.png'
+    '/',
+    '/index.html',
+    '/revision.html',
+    '/manifest.json',
+    '/assets/icons/icon-96x96.png',
+    '/assets/icons/icon-152x152.png',
+    '/assets/icons/icon-192x192.png',
+    '/assets/icons/icon-512x512.png'
 ];
 
-// Installation : pré-cache des ressources essentielles
+// ═══════════ LOG HELPER (posts to all clients) ═══════════
+async function swLog(level, message) {
+    try {
+        const allClients = await self.clients.matchAll({ includeUncontrolled: true });
+        allClients.forEach(client => {
+            client.postMessage({ type: 'SW_LOG', payload: { level, message } });
+        });
+    } catch (e) {
+        // worst case: ignore
+    }
+}
+
+// Installation
 self.addEventListener('install', event => {
-  console.log('[SW] Installation en cours...');
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        console.log('[SW] Mise en cache des ressources essentielles');
-        return cache.addAll(urlsToCache).catch(err => {
-          console.warn('[SW] Certaines ressources n\'ont pas pu être mises en cache :', err);
-        });
-      })
-      .then(() => {
-        console.log('[SW] Installation terminée, le service worker prend le contrôle');
-        return self.skipWaiting();
-      })
-  );
+    swLog('info', 'SW install start');
+    event.waitUntil(
+        caches.open(CACHE_NAME)
+            .then(cache => {
+                swLog('info', 'Caching essential resources');
+                return cache.addAll(urlsToCache).catch(err => {
+                    swLog('warn', 'Some resources failed to cache: ' + err);
+                });
+            })
+            .then(() => {
+                swLog('info', 'Install complete, skip waiting');
+                return self.skipWaiting();
+            })
+    );
 });
 
-// Activation : nettoyage des anciens caches
+// Activation
 self.addEventListener('activate', event => {
-  console.log('[SW] Activation...');
-  event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cache => {
-          if (cache !== CACHE_NAME) {
-            console.log('[SW] Suppression de l\'ancien cache :', cache);
-            return caches.delete(cache);
-          }
+    swLog('info', 'SW activate');
+    event.waitUntil(
+        caches.keys().then(cacheNames => {
+            return Promise.all(
+                cacheNames.map(cache => {
+                    if (cache !== CACHE_NAME) {
+                        swLog('info', 'Deleting old cache: ' + cache);
+                        return caches.delete(cache);
+                    }
+                })
+            );
+        }).then(() => {
+            swLog('info', 'Activation finished');
+            return self.clients.claim();
         })
-      );
-    }).then(() => {
-      console.log('[SW] Activation terminée');
-      return self.clients.claim();
-    })
-  );
+    );
 });
 
-// Stratégie de cache : Cache First pour les ressources statiques, Network First pour la navigation
+// Fetch strategy
 self.addEventListener('fetch', event => {
-  const requestUrl = new URL(event.request.url);
+    const requestUrl = new URL(event.request.url);
 
-  // Ne pas intercepter les requêtes non GET
-  if (event.request.method !== 'GET') {
-    return;
-  }
+    if (event.request.method !== 'GET') return;
 
-  // Navigation : stratégie Network First avec fallback cache
-  if (event.request.mode === 'navigate') {
+    if (event.request.mode === 'navigate') {
+        event.respondWith(
+            fetch(event.request)
+                .then(response => {
+                    const responseClone = response.clone();
+                    caches.open(CACHE_NAME).then(cache => cache.put(event.request, responseClone));
+                    return response;
+                })
+                .catch(() => {
+                    swLog('warn', 'Offline: serving from cache - ' + event.request.url);
+                    return caches.match(event.request).then(cached => cached || caches.match('/index.html'));
+                })
+        );
+        return;
+    }
+
+    if (requestUrl.pathname.match(/\.(png|jpg|jpeg|gif|svg|ico|webp)$/i)) {
+        event.respondWith(
+            caches.match(event.request).then(cached => {
+                if (cached) return cached;
+                return fetch(event.request).then(response => {
+                    const clone = response.clone();
+                    caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+                    return response;
+                }).catch(() => {
+                    swLog('warn', 'Image load failed: ' + event.request.url);
+                });
+            })
+        );
+        return;
+    }
+
+    if (requestUrl.pathname.match(/\.(json|js|css|woff2?)$/i) || requestUrl.pathname === '/manifest.json') {
+        event.respondWith(
+            caches.match(event.request).then(cached => {
+                return cached || fetch(event.request).then(response => {
+                    const clone = response.clone();
+                    caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+                    return response;
+                });
+            })
+        );
+        return;
+    }
+
     event.respondWith(
-      fetch(event.request)
-        .then(response => {
-          // Mise en cache de la page fraîchement récupérée
-          const responseClone = response.clone();
-          caches.open(CACHE_NAME).then(cache => {
-            cache.put(event.request, responseClone);
-          });
-          return response;
-        })
-        .catch(() => {
-          // Hors ligne : servir depuis le cache
-          console.log('[SW] Hors ligne, service depuis le cache :', event.request.url);
-          return caches.match(event.request).then(cachedResponse => {
-            if (cachedResponse) {
-              return cachedResponse;
-            }
-            // Page de fallback si même le cache est vide
-            return caches.match('/index.html');
-          });
+        new Promise(resolve => {
+            let didTimeout = false;
+            const timeout = setTimeout(() => {
+                didTimeout = true;
+                caches.match(event.request).then(cached => {
+                    if (cached) resolve(cached);
+                });
+            }, 3000);
+
+            fetch(event.request)
+                .then(response => {
+                    clearTimeout(timeout);
+                    if (!didTimeout) {
+                        const clone = response.clone();
+                        caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+                        resolve(response);
+                    }
+                })
+                .catch(() => {
+                    clearTimeout(timeout);
+                    caches.match(event.request).then(cached => {
+                        resolve(cached || new Response('Ressource indisponible hors ligne', { status: 503 }));
+                    });
+                });
         })
     );
-    return;
-  }
-
-  // Images et icônes : Cache First
-  if (requestUrl.pathname.match(/\.(png|jpg|jpeg|gif|svg|ico|webp)$/i)) {
-    event.respondWith(
-      caches.match(event.request).then(cachedResponse => {
-        if (cachedResponse) {
-          return cachedResponse;
-        }
-        return fetch(event.request).then(response => {
-          const responseClone = response.clone();
-          caches.open(CACHE_NAME).then(cache => {
-            cache.put(event.request, responseClone);
-          });
-          return response;
-        }).catch(() => {
-          // Image de fallback si nécessaire
-          console.warn('[SW] Impossible de charger l\'image :', event.request.url);
-        });
-      })
-    );
-    return;
-  }
-
-  // Manifest et autres ressources statiques : Cache First
-  if (requestUrl.pathname.match(/\.(json|js|css|woff2?)$/i) || 
-      requestUrl.pathname === '/manifest.json') {
-    event.respondWith(
-      caches.match(event.request).then(cachedResponse => {
-        return cachedResponse || fetch(event.request).then(response => {
-          const responseClone = response.clone();
-          caches.open(CACHE_NAME).then(cache => {
-            cache.put(event.request, responseClone);
-          });
-          return response;
-        });
-      })
-    );
-    return;
-  }
-
-  // Pour toutes les autres requêtes : Network First avec timeout
-  event.respondWith(
-    new Promise((resolve) => {
-      let didTimeout = false;
-      const timeout = setTimeout(() => {
-        didTimeout = true;
-        caches.match(event.request).then(cachedResponse => {
-          if (cachedResponse) {
-            resolve(cachedResponse);
-          }
-        });
-      }, 3000); // 3 secondes de timeout
-
-      fetch(event.request)
-        .then(response => {
-          clearTimeout(timeout);
-          if (!didTimeout) {
-            const responseClone = response.clone();
-            caches.open(CACHE_NAME).then(cache => {
-              cache.put(event.request, responseClone);
-            });
-            resolve(response);
-          }
-        })
-        .catch(() => {
-          clearTimeout(timeout);
-          caches.match(event.request).then(cachedResponse => {
-            resolve(cachedResponse || new Response('Ressource indisponible hors ligne', { status: 503 }));
-          });
-        });
-    })
-  );
 });
 
-// Écoute des messages pour forcer la mise à jour
+// Message handling
 self.addEventListener('message', event => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
-  }
-  if (event.data && event.data.type === 'CLEAR_CACHE') {
-    caches.delete(CACHE_NAME).then(() => {
-      console.log('[SW] Cache nettoyé manuellement');
-    });
-  }
+    if (event.data && event.data.type === 'SKIP_WAITING') {
+        self.skipWaiting();
+    }
+    if (event.data && event.data.type === 'CLEAR_CACHE') {
+        caches.delete(CACHE_NAME).then(() => {
+            swLog('info', 'Cache manually cleared');
+        });
+    }
 });

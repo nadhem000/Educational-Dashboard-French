@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Monitor – Educational Dashboard</title>
   <style>
-    /* same style as before – unchanged */
     :root {
       --bg: #0d1117; --surface: #161b22; --border: #30363d; --text: #c9d1d9;
       --text-secondary: #8b949e; --accent: #58a6ff; --success: #3fb950;
@@ -13,7 +12,7 @@
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; display: flex; height: 100vh; }
-    .sidebar { width: 220px; background: var(--surface); border-right: 1px solid var(--border); padding: 1rem; display: flex; flex-direction: column; }
+    .sidebar { width: 240px; background: var(--surface); border-right: 1px solid var(--border); padding: 1rem; display: flex; flex-direction: column; flex-shrink: 0; }
     .sidebar h2 { color: var(--accent); margin-bottom: 1.5rem; font-size: 1.2rem; }
     .sidebar button { display: block; width: 100%; padding: 0.7rem 1rem; margin-bottom: 0.4rem; background: transparent; border: 1px solid transparent; color: var(--text); text-align: left; border-radius: var(--radius); cursor: pointer; transition: 0.2s; font-size: 0.95rem; }
     .sidebar button:hover, .sidebar button.active { background: var(--border); border-color: var(--accent); }
@@ -27,11 +26,12 @@
     .stat-card .label { color: var(--text-secondary); font-size: 0.9rem; }
     .log-container { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; max-height: 500px; overflow-y: auto; font-family: 'Cascadia Code', 'Fira Code', monospace; font-size: 0.85rem; line-height: 1.6; }
     .log-entry { padding: 0.3rem 0; border-bottom: 1px solid var(--border); }
+    .log-entry.console { color: var(--text-secondary); }
     .log-entry.error { color: var(--danger); }
     .log-entry.action { color: var(--success); }
     .log-entry.perf { color: var(--accent); }
-    .timestamp { color: var(--text-secondary); margin-right: 1rem; }
-    table { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: var(--radius); overflow: hidden; }
+    .timestamp { color: var(--text-secondary); margin-right: 1rem; font-size: 0.8rem; }
+    table { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: var(--radius); overflow: hidden; margin-bottom: 1rem; }
     th, td { padding: 0.7rem; border-bottom: 1px solid var(--border); text-align: left; font-size: 0.9rem; }
     th { background: var(--border); color: var(--accent); }
     .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
@@ -46,22 +46,41 @@
 </head>
 <body>
   <aside class="sidebar">
-    <h2>🧠 Admin Monitor</h2>
+    <h2>🧠 Monitor</h2>
     <button class="active" data-panel="overview">📊 Overview</button>
-    <button data-panel="live">📡 Live Logs</button>
+    <button data-panel="console">📟 Console</button>
     <button data-panel="errors">🚨 Errors</button>
     <button data-panel="actions">🖱️ Actions</button>
+    <button data-panel="network">🌐 Network</button>
     <button data-panel="performance">⚡ Performance</button>
-    <button data-panel="security">🔐 Security Audit</button>
-    <button data-panel="pwa">📱 PWA Diagnostics</button>
-    <button data-panel="export">💾 Export / Import</button>
+    <button data-panel="security">🔐 Security</button>
+    <button data-panel="pwa">📱 PWA</button>
+    <button data-panel="storage">💾 Storage</button>
+    <button data-panel="dom">🏗️ DOM Audit</button>
+    <button data-panel="export">⬇️ Export</button>
   </aside>
   <main class="main" id="mainContent"></main>
 
   <script>
     (function() {
-      // ═══════════════ INDEXEDDB SETUP ═══════════════
-      const DB_NAME = 'adminMonitorDB';
+      // ═══════════ CONSOLE CAPTURE (Silences browser console) ═══════════
+      const capturedConsoleLogs = [];
+      const originalConsole = {};
+      ['log','warn','error','info','debug'].forEach(method => {
+        originalConsole[method] = console[method];
+        console[method] = function(...args) {
+          capturedConsoleLogs.push({
+            method,
+            message: args.map(a => typeof a === 'string' ? a : JSON.stringify(a)).join(' '),
+            timestamp: new Date().toISOString()
+          });
+          // Optionally, still output to browser console (toggleable) – we don't to keep it silent.
+          // originalConsole[method].apply(console, args);
+        };
+      });
+
+      // ═══════════ INDEXEDDB SETUP ═══════════
+      const DB_NAME = 'adminMonitorDB_v2';
       const DB_VERSION = 1;
       let db;
       
@@ -70,36 +89,42 @@
           const request = indexedDB.open(DB_NAME, DB_VERSION);
           request.onupgradeneeded = (e) => {
             const db = e.target.result;
-            if (!db.objectStoreNames.contains('errors')) {
-              db.createObjectStore('errors', { keyPath: 'id', autoIncrement: true });
-            }
-            if (!db.objectStoreNames.contains('actions')) {
-              db.createObjectStore('actions', { keyPath: 'id', autoIncrement: true });
-            }
+            if (!db.objectStoreNames.contains('errors')) db.createObjectStore('errors', { keyPath: 'id', autoIncrement: true });
+            if (!db.objectStoreNames.contains('actions')) db.createObjectStore('actions', { keyPath: 'id', autoIncrement: true });
+            if (!db.objectStoreNames.contains('console')) db.createObjectStore('console', { keyPath: 'id', autoIncrement: true });
           };
-          request.onsuccess = (e) => {
-            db = e.target.result;
-            resolve(db);
-          };
+          request.onsuccess = (e) => { db = e.target.result; resolve(db); };
           request.onerror = (e) => reject(e.target.error);
         });
       }
 
-      async function addLog(storeName, data) {
-        if (!db) {
-          try { await openDB(); } catch (err) { console.error('Cannot open DB:', err); return; }
-        }
+      async function addLog(storeName, data, silent = true) {
+        if (!db) { try { await openDB(); } catch(e) { return; } }
+        // Strip any 'id' to avoid constraint errors
+        const { id, ...rest } = data;
+        const entry = { ...rest, timestamp: rest.timestamp || new Date().toISOString() };
         try {
           const tx = db.transaction(storeName, 'readwrite');
           const store = tx.objectStore(storeName);
-          const entry = { ...data, timestamp: data.timestamp || new Date().toISOString() };
           await new Promise((resolve, reject) => {
-            const request = store.add(entry);
-            request.onsuccess = resolve;
-            request.onerror = reject;
+            const req = store.add(entry);
+            req.onsuccess = resolve;
+            req.onerror = reject;
           });
         } catch (err) {
-          console.error('addLog error:', err);
+          // Retry once
+          try {
+            const tx = db.transaction(storeName, 'readwrite');
+            const store = tx.objectStore(storeName);
+            await new Promise((resolve, reject) => {
+              const req = store.add(entry);
+              req.onsuccess = resolve;
+              req.onerror = reject;
+            });
+          } catch (err2) {
+            // Still fail? Just silently ignore, the data is lost but app continues.
+            // Do NOT output to console.
+          }
         }
       }
 
@@ -108,9 +133,9 @@
         const tx = db.transaction(storeName, 'readonly');
         const store = tx.objectStore(storeName);
         return new Promise((resolve, reject) => {
-          const request = store.getAll();
-          request.onsuccess = () => resolve(request.result);
-          request.onerror = reject;
+          const req = store.getAll();
+          req.onsuccess = () => resolve(req.result);
+          req.onerror = reject;
         });
       }
 
@@ -119,18 +144,19 @@
         const tx = db.transaction(storeName, 'readwrite');
         const store = tx.objectStore(storeName);
         return new Promise((resolve, reject) => {
-          const request = store.clear();
-          request.onsuccess = resolve;
-          request.onerror = reject;
+          const req = store.clear();
+          req.onsuccess = resolve;
+          req.onerror = reject;
         });
       }
 
-      // Expose clear functions globally for inline onclick
       window.clearErrors = () => clearStore('errors').then(() => location.reload());
       window.clearActions = () => clearStore('actions').then(() => location.reload());
-      window.clearAllData = () => Promise.all([clearStore('errors'), clearStore('actions')]).then(() => location.reload());
+      window.clearAllData = () => Promise.all([
+        clearStore('errors'), clearStore('actions'), clearStore('console')
+      ]).then(() => location.reload());
 
-      // ═══════════════ GLOBAL ERROR & ACTION CAPTURE ═══════════════
+      // ═══════════ GLOBAL ERROR / REJECTION CAPTURE (silent) ═══════════
       window.addEventListener('error', (event) => {
         addLog('errors', {
           type: 'runtime',
@@ -138,39 +164,33 @@
           source: event.filename,
           line: event.lineno,
           col: event.colno,
-          stack: event.error?.stack || '',
-          timestamp: new Date().toISOString()
-        }).catch(() => {});  // avoid uncaught promise loop
+          stack: event.error?.stack || ''
+        });
+        event.preventDefault(); // stop default console error
       });
 
       window.addEventListener('unhandledrejection', (event) => {
         addLog('errors', {
           type: 'promise',
           message: event.reason?.message || String(event.reason),
-          stack: event.reason?.stack || '',
-          timestamp: new Date().toISOString()
-        }).catch(() => {});
+          stack: event.reason?.stack || ''
+        });
+        event.preventDefault();
       });
 
+      // Action logging (clicks)
       let actionLoggingEnabled = true;
       document.addEventListener('click', async (e) => {
         if (!actionLoggingEnabled) return;
         const target = e.target.closest('a, button');
         if (!target) return;
         const tag = target.tagName.toLowerCase();
-        const text = target.textContent?.trim().substring(0, 50) || '';
+        const text = target.textContent?.trim().substring(0, 60) || '';
         const url = tag === 'a' ? target.href : '';
-        addLog('actions', {
-          tag,
-          text,
-          url,
-          id: target.id || '',
-          class: target.className || '',
-          timestamp: new Date().toISOString()
-        }).catch(() => {});
+        addLog('actions', { tag, text, url, id: target.id || '', class: target.className || '' });
       });
 
-      // Fetch interceptor (logs all fetch calls)
+      // Fetch interceptor (records all fetch calls)
       const originalFetch = window.fetch;
       window.fetch = async function(...args) {
         const url = typeof args[0] === 'string' ? args[0] : args[0].url;
@@ -183,37 +203,40 @@
           if (!url.includes('testing.html') && !url.startsWith('blob:')) {
             const duration = (performance.now() - start).toFixed(1);
             const status = response ? response.status : 'network error';
-            addLog('actions', {
-              type: 'fetch',
-              url,
-              status,
-              duration: duration + 'ms',
-              timestamp: new Date().toISOString()
-            }).catch(() => {});
+            addLog('actions', { type: 'fetch', url, status, duration: duration + 'ms' });
           }
         }
       };
 
-      // ═══════════════ PANEL MANAGEMENT ═══════════════
+      // Save console logs periodically to IndexedDB
+      setInterval(() => {
+        if (capturedConsoleLogs.length > 0) {
+          const logsToSave = capturedConsoleLogs.splice(0, capturedConsoleLogs.length);
+          logsToSave.forEach(log => addLog('console', log));
+        }
+      }, 2000);
+
+      // ═══════════ PANEL MANAGEMENT ═══════════
       const main = document.getElementById('mainContent');
       let currentPanel = null;
-      let liveInterval = null;  // to clear when leaving live panel
+      let liveInterval = null;
 
       const panels = {
         overview: createOverviewPanel,
-        live: createLivePanel,
+        console: createConsolePanel,
         errors: createLogPanel('errors', '🚨 Error Logs'),
         actions: createLogPanel('actions', '🖱️ Action Logs'),
+        network: createNetworkPanel,
         performance: createPerformancePanel,
         security: createSecurityPanel,
         pwa: createPWAPanel,
+        storage: createStoragePanel,
+        dom: createDOMAuditPanel,
         export: createExportPanel
       };
 
-      // Render initial panel
       renderPanel('overview');
 
-      // Sidebar navigation
       document.querySelectorAll('.sidebar button').forEach(btn => {
         btn.addEventListener('click', () => {
           document.querySelectorAll('.sidebar button').forEach(b => b.classList.remove('active'));
@@ -223,15 +246,10 @@
       });
 
       async function renderPanel(name) {
-        // Clear any running interval from live panel
-        if (liveInterval) {
-          clearInterval(liveInterval);
-          liveInterval = null;
-        }
+        if (liveInterval) { clearInterval(liveInterval); liveInterval = null; }
         main.innerHTML = '';
         const div = document.createElement('div');
         div.className = 'panel active';
-        // Attach to DOM first so getElementById works if needed (but we'll use querySelector anyway)
         main.appendChild(div);
         if (panels[name]) {
           await panels[name](div);
@@ -240,19 +258,21 @@
         }
       }
 
-      // ═══════════════ PANEL CREATORS ═══════════════
+      // ═══════════ PANEL IMPLEMENTATIONS ═══════════
 
       async function createOverviewPanel(container) {
-        const [errors, actions] = await Promise.all([
-          getAllLogs('errors'),
-          getAllLogs('actions')
+        const [errors, actions, consoleLogs] = await Promise.all([
+          getAllLogs('errors'), getAllLogs('actions'), getAllLogs('console')
         ]);
+        const online = navigator.onLine ? 'Online' : 'Offline';
+        const visibility = document.visibilityState;
         container.innerHTML = `
           <div class="stats-grid">
-            <div class="stat-card"><div class="value">${errors.length}</div><div class="label">Total Errors</div></div>
-            <div class="stat-card"><div class="value">${actions.length}</div><div class="label">Logged Actions</div></div>
-            <div class="stat-card"><div class="value">${navigator.onLine ? 'Online' : 'Offline'}</div><div class="label">Connection</div></div>
-            <div class="stat-card"><div class="value">${document.visibilityState}</div><div class="label">Page Visibility</div></div>
+            <div class="stat-card"><div class="value">${errors.length}</div><div class="label">Errors</div></div>
+            <div class="stat-card"><div class="value">${actions.length}</div><div class="label">Actions</div></div>
+            <div class="stat-card"><div class="value">${consoleLogs.length}</div><div class="label">Console entries</div></div>
+            <div class="stat-card"><div class="value">${online}</div><div class="label">Connection</div></div>
+            <div class="stat-card"><div class="value">${visibility}</div><div class="label">Visibility</div></div>
             <div class="stat-card"><div class="value">${new Date().toLocaleTimeString()}</div><div class="label">Last Refresh</div></div>
           </div>
           <h3>Quick Actions</h3>
@@ -261,30 +281,26 @@
         `;
       }
 
-      function createLivePanel(container) {
+      function createConsolePanel(container) {
         container.innerHTML = `
-          <h3>📡 Live Console (last 20 entries)</h3>
-          <div class="log-container" id="liveLog"></div>
+          <h3>📟 Browser Console (captured, silent)</h3>
+          <div class="log-container" id="consoleLogContainer"></div>
         `;
-        const liveDiv = container.querySelector('#liveLog'); // safe, container is in DOM
-        async function updateLiveLog() {
-          if (!liveDiv || !liveDiv.isConnected) return; // stop if panel removed
-          try {
-            const [errors, actions] = await Promise.all([
-              getAllLogs('errors'),
-              getAllLogs('actions')
-            ]);
-            const combined = [...errors.map(e => ({...e, type: 'error'})), ...actions.map(a => ({...a, type: 'action'}))]
-              .sort((a,b) => new Date(b.timestamp) - new Date(a.timestamp))
-              .slice(0, 20);
-            liveDiv.innerHTML = combined.map(entry => {
-              const cls = entry.type === 'error' ? 'error' : 'action';
-              return `<div class="log-entry ${cls}"><span class="timestamp">${new Date(entry.timestamp).toLocaleTimeString()}</span> ${entry.message || entry.url || entry.text || JSON.stringify(entry)}</div>`;
+        const logDiv = container.querySelector('#consoleLogContainer');
+        function update() {
+          if (!logDiv || !logDiv.isConnected) return;
+          // merge live captured + stored
+          const storedPromise = getAllLogs('console');
+          storedPromise.then(stored => {
+            const combined = [...stored, ...capturedConsoleLogs].sort((a,b) => new Date(b.timestamp) - new Date(a.timestamp)).slice(0, 50);
+            logDiv.innerHTML = combined.map(entry => {
+              const cls = entry.method === 'error' ? 'error' : 'console';
+              return `<div class="log-entry ${cls}"><span class="timestamp">${new Date(entry.timestamp).toLocaleTimeString()}</span> [${entry.method}] ${entry.message}</div>`;
             }).join('');
-          } catch (err) {}
+          });
         }
-        updateLiveLog();
-        liveInterval = setInterval(updateLiveLog, 3000);
+        update();
+        liveInterval = setInterval(update, 3000);
       }
 
       function createLogPanel(storeName, title) {
@@ -295,38 +311,64 @@
           `;
           const logDiv = container.querySelector(`#${storeName}Log`);
           const logs = await getAllLogs(storeName);
-          if (logs.length === 0) {
-            logDiv.innerHTML = '<p>No entries yet.</p>';
-            return;
-          }
+          if (logs.length === 0) { logDiv.innerHTML = '<p>No entries.</p>'; return; }
           logs.sort((a,b) => new Date(b.timestamp) - new Date(a.timestamp));
           logDiv.innerHTML = logs.map(log => {
-            const entryClass = storeName === 'errors' ? 'error' : 'action';
-            return `<div class="log-entry ${entryClass}">
-              <span class="timestamp">${new Date(log.timestamp).toLocaleString()}</span>
-              ${storeName === 'errors' ? log.message : (log.url || log.text || 'action')}
-            </div>`;
+            const cls = storeName === 'errors' ? 'error' : 'action';
+            let msg = storeName === 'errors' ? (log.message || 'Unknown error') : (log.url || log.text || 'action');
+            return `<div class="log-entry ${cls}"><span class="timestamp">${new Date(log.timestamp).toLocaleString()}</span> ${msg}</div>`;
           }).join('');
         };
+      }
+
+      async function createNetworkPanel(container) {
+        container.innerHTML = '<h3>🌐 Network Monitor (last 20 requests)</h3><div id="networkTableContainer"></div>';
+        const render = async () => {
+          const actions = await getAllLogs('actions');
+          const fetchLogs = actions.filter(a => a.type === 'fetch').slice(-20);
+          let html = '<table><tr><th>Time</th><th>URL</th><th>Status</th><th>Duration</th></tr>';
+          fetchLogs.forEach(f => {
+            html += `<tr><td>${new Date(f.timestamp).toLocaleTimeString()}</td><td>${f.url}</td><td>${f.status}</td><td>${f.duration}</td></tr>`;
+          });
+          html += '</table>';
+          document.getElementById('networkTableContainer').innerHTML = html;
+        };
+        render();
+        liveInterval = setInterval(render, 5000);
       }
 
       async function createPerformancePanel(container) {
         const timing = performance.timing;
         const loadTime = timing.loadEventEnd - timing.navigationStart;
         const domContentLoaded = timing.domContentLoadedEventEnd - timing.navigationStart;
-        const resources = performance.getEntriesByType('resource')
-          .filter(r => !r.name.includes('testing.html'))
-          .slice(0, 20);
+        const ttfb = timing.responseStart - timing.navigationStart;
         const memory = performance.memory || {};
+        // Try to get Web Vitals via PerformanceObserver
+        let lcp = 'N/A', fcp = 'N/A', fid = 'N/A', cls = 'N/A';
+        try {
+          new PerformanceObserver(list => {
+            const entries = list.getEntries();
+            const last = entries[entries.length-1];
+            if (last) lcp = last.startTime.toFixed(0)+'ms';
+          }).observe({type: 'largest-contentful-paint', buffered: true});
+          new PerformanceObserver(list => {
+            const entries = list.getEntries();
+            const first = entries[0];
+            if (first) fcp = first.startTime.toFixed(0)+'ms';
+          }).observe({type: 'paint', buffered: true});
+        } catch(e) {}
+        const resources = performance.getEntriesByType('resource').filter(r => !r.name.includes('testing.html')).slice(0, 20);
         container.innerHTML = `
           <h3>⚡ Performance Metrics</h3>
           <table>
             <tr><th>Metric</th><th>Value</th></tr>
-            <tr><td>Page Load Time</td><td>${loadTime} ms</td></tr>
+            <tr><td>Page Load</td><td>${loadTime} ms</td></tr>
             <tr><td>DOM Content Loaded</td><td>${domContentLoaded} ms</td></tr>
-            <tr><td>Time to First Byte</td><td>${timing.responseStart - timing.navigationStart} ms</td></tr>
-            <tr><td>Used JS Heap Size</td><td>${memory.usedJSHeapSize ? (memory.usedJSHeapSize / 1048576).toFixed(2) + ' MB' : 'N/A'}</td></tr>
-            <tr><td>Total JS Heap Size</td><td>${memory.totalJSHeapSize ? (memory.totalJSHeapSize / 1048576).toFixed(2) + ' MB' : 'N/A'}</td></tr>
+            <tr><td>Time to First Byte</td><td>${ttfb} ms</td></tr>
+            <tr><td>Largest Contentful Paint (LCP)</td><td>${lcp}</td></tr>
+            <tr><td>First Contentful Paint (FCP)</td><td>${fcp}</td></tr>
+            <tr><td>Used JS Heap</td><td>${memory.usedJSHeapSize ? (memory.usedJSHeapSize/1048576).toFixed(2)+' MB' : 'N/A'}</td></tr>
+            <tr><td>Total JS Heap</td><td>${memory.totalJSHeapSize ? (memory.totalJSHeapSize/1048576).toFixed(2)+' MB' : 'N/A'}</td></tr>
           </table>
           <h3>📦 Resource Loading (top 20)</h3>
           <div class="log-container" style="max-height:300px">
@@ -338,50 +380,35 @@
       async function createSecurityPanel(container) {
         container.innerHTML = '<h3>🔐 Security Audit (running...)</h3>';
         const results = [];
-        // same as before but now we can directly write results
-        // HTTPS check
-        results.push({
-          test: 'HTTPS Connection',
-          status: location.protocol === 'https:' ? 'pass' : 'fail',
-          details: location.protocol
-        });
+        results.push({ test: 'HTTPS', status: location.protocol==='https:'?'pass':'fail', details: location.protocol });
         try {
-          const res = await fetch(location.href + '?nocache=' + Date.now(), { cache: 'no-store' });
+          const res = await fetch(location.href + '?nocache='+Date.now(), {cache:'no-store'});
           const csp = res.headers.get('Content-Security-Policy');
-          results.push({ test: 'Content-Security-Policy', status: csp ? 'pass' : 'warn', details: csp || 'Not set' });
+          results.push({ test: 'CSP', status: csp?'pass':'warn', details: csp||'Not set' });
           const xfo = res.headers.get('X-Frame-Options');
-          results.push({ test: 'X-Frame-Options', status: xfo ? 'pass' : 'warn', details: xfo || 'Not set' });
+          results.push({ test: 'X-Frame-Options', status: xfo?'pass':'warn', details: xfo||'Not set' });
           const xcto = res.headers.get('X-Content-Type-Options');
-          results.push({ test: 'X-Content-Type-Options', status: xcto ? 'pass' : 'warn', details: xcto || 'Not set' });
+          results.push({ test: 'X-Content-Type-Options', status: xcto?'pass':'warn', details: xcto||'Not set' });
           const referrer = res.headers.get('Referrer-Policy');
-          results.push({ test: 'Referrer-Policy', status: referrer ? 'pass' : 'warn', details: referrer || 'Not set' });
-        } catch(e) {
-          results.push({ test: 'Fetch Security Headers', status: 'fail', details: e.message });
-        }
+          results.push({ test: 'Referrer-Policy', status: referrer?'pass':'warn', details: referrer||'Not set' });
+        } catch(e) { results.push({test:'Fetch Headers', status:'fail', details: e.message}); }
         let evalAllowed = false;
         try { new Function('return true')(); evalAllowed = true; } catch(e) {}
-        results.push({ test: 'eval() allowed', status: evalAllowed ? 'fail' : 'pass', details: evalAllowed ? 'Allowed (CSP weak)' : 'Blocked' });
-        const resources = performance.getEntriesByType('resource');
-        const insecure = resources.filter(r => r.name.startsWith('http:'));
-        results.push({ test: 'Mixed Content', status: insecure.length ? 'fail' : 'pass', details: insecure.length ? `${insecure.length} insecure` : 'None' });
-        results.push({ test: 'Service Worker', status: navigator.serviceWorker?.controller ? 'pass' : 'warn', details: navigator.serviceWorker?.controller ? 'Active' : 'Inactive' });
-        const cookiesAccessible = document.cookie.length > 0;
-        results.push({ test: 'Cookies via JS', status: cookiesAccessible ? 'warn' : 'pass', details: cookiesAccessible ? 'Some not HttpOnly' : 'No accessible cookies' });
-        
-        let tableHTML = '<table><tr><th>Test</th><th>Status</th><th>Details</th></tr>';
-        results.forEach(r => {
-          tableHTML += `<tr><td>${r.test}</td><td><span class="badge ${r.status}">${r.status.toUpperCase()}</span></td><td>${r.details}</td></tr>`;
-        });
-        tableHTML += '</table>';
-        container.innerHTML = `<h3>🔐 Security Audit</h3>${tableHTML}`;
+        results.push({ test: 'eval() allowed', status: evalAllowed?'fail':'pass', details: evalAllowed?'Allowed':'Blocked' });
+        const insecure = performance.getEntriesByType('resource').filter(r=>r.name.startsWith('http:'));
+        results.push({ test: 'Mixed Content', status: insecure.length?'fail':'pass', details: insecure.length?`${insecure.length} insecure`:'None' });
+        results.push({ test: 'Service Worker', status: navigator.serviceWorker?.controller?'pass':'warn', details: navigator.serviceWorker?.controller?'Active':'Inactive' });
+        const cookiesAccessible = document.cookie.length>0;
+        results.push({ test: 'Cookies via JS', status: cookiesAccessible?'warn':'pass', details: cookiesAccessible?'Some not HttpOnly':'None' });
+        let html = '<table><tr><th>Test</th><th>Status</th><th>Details</th></tr>';
+        results.forEach(r => html+=`<tr><td>${r.test}</td><td><span class="badge ${r.status}">${r.status.toUpperCase()}</span></td><td>${r.details}</td></tr>`);
+        html+='</table>';
+        container.innerHTML = '<h3>🔐 Security Audit</h3>'+html;
       }
 
       async function createPWAPanel(container) {
         let manifestData = '';
-        try {
-          const res = await fetch('/manifest.json');
-          manifestData = await res.json();
-        } catch(e) { manifestData = 'Failed to load'; }
+        try { const res = await fetch('/manifest.json'); manifestData = await res.json(); } catch(e){ manifestData = 'Failed to load'; }
         const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
         const swStatus = navigator.serviceWorker?.controller ? 'active' : 'inactive';
         let cacheDetails = '';
@@ -392,76 +419,103 @@
             const keys = await cache.keys();
             cacheDetails += `<p><strong>${name}</strong>: ${keys.length} entries</p>`;
           }
-        } catch(e) { cacheDetails = 'Error reading caches.'; }
+        } catch(e){ cacheDetails = 'Error'; }
         container.innerHTML = `
           <h3>📱 PWA Diagnostics</h3>
           <table>
-            <tr><td>Installable</td><td>${isStandalone ? 'Yes (standalone)' : 'Maybe (check manifest & HTTPS)'}</td></tr>
+            <tr><td>Installable</td><td>${isStandalone?'Yes (standalone)':'Maybe (check manifest & HTTPS)'}</td></tr>
             <tr><td>Service Worker</td><td>${swStatus}</td></tr>
             <tr><td>Manifest</td><td><pre>${JSON.stringify(manifestData, null, 2)}</pre></td></tr>
-            <tr><td>Cache Storage</td><td>${cacheDetails || 'None'}</td></tr>
-            <tr><td>Display Mode</td><td>${window.matchMedia('(display-mode: standalone)').matches ? 'standalone' : 'browser'}</td></tr>
+            <tr><td>Cache Storage</td><td>${cacheDetails||'None'}</td></tr>
           </table>
         `;
       }
 
-      function createExportPanel(container) {
-        // container is already in DOM (renderPanel appends first)
+      async function createStoragePanel(container) {
+        const local = localStorage.length;
+        const session = sessionStorage.length;
+        // IndexedDB size approximation
+        let dbSize = 'Calculating...';
+        if (navigator.storage && navigator.storage.estimate) {
+          const estimate = await navigator.storage.estimate();
+          dbSize = estimate.usage ? (estimate.usage/1024).toFixed(2)+' KB' : 'Unknown';
+        }
         container.innerHTML = `
-          <h3>💾 Export / Import Data</h3>
+          <h3>💾 Storage Usage</h3>
+          <table>
+            <tr><td>localStorage items</td><td>${local}</td></tr>
+            <tr><td>sessionStorage items</td><td>${session}</td></tr>
+            <tr><td>IndexedDB usage (estimate)</td><td>${dbSize}</td></tr>
+          </table>
+          <button class="action-btn" onclick="clearAllData()">Clear All IndexedDB Data</button>
+        `;
+      }
+
+      function createDOMAuditPanel(container) {
+        const links = document.querySelectorAll('a');
+        const imgs = document.querySelectorAll('img');
+        const brokenLinks = [];
+        const missingAlt = [];
+        links.forEach(link => { if (link.href && !link.href.startsWith('http') && !link.href.startsWith('/')) brokenLinks.push(link.href); });
+        imgs.forEach(img => { if (!img.alt) missingAlt.push(img.src); });
+        container.innerHTML = `
+          <h3>🏗️ DOM Audit</h3>
+          <h4>Potentially Broken Links</h4>
+          ${brokenLinks.length ? '<ul>'+brokenLinks.map(l=>`<li>${l}</li>`).join('')+'</ul>' : '<p>None found.</p>'}
+          <h4>Images Missing Alt Text</h4>
+          ${missingAlt.length ? '<ul>'+missingAlt.map(s=>`<li>${s}</li>`).join('')+'</ul>' : '<p>None.</p>'}
+        `;
+      }
+
+      function createExportPanel(container) {
+        container.innerHTML = `
+          <h3>⬇️ Export / Import / Clear</h3>
           <button class="action-btn" id="exportBtn">Export All Logs (JSON)</button>
           <button class="action-btn" id="importBtn">Import Logs</button>
           <input type="file" id="importFile" accept=".json" style="display:none">
           <button class="action-btn" onclick="clearAllData()">Clear All Data</button>
         `;
-        // Use container.querySelector to be safe
         const exportBtn = container.querySelector('#exportBtn');
         const importBtn = container.querySelector('#importBtn');
         const importFile = container.querySelector('#importFile');
-        
-        exportBtn.addEventListener('click', async () => {
+        exportBtn.onclick = async () => {
           const data = {
             errors: await getAllLogs('errors'),
             actions: await getAllLogs('actions'),
+            console: await getAllLogs('console'),
             exportTime: new Date().toISOString()
           };
-          const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
-          const url = URL.createObjectURL(blob);
+          const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
           const a = document.createElement('a');
-          a.href = url;
+          a.href = URL.createObjectURL(blob);
           a.download = 'admin-monitor-export.json';
           a.click();
-        });
-        importBtn.addEventListener('click', () => importFile.click());
-        importFile.addEventListener('change', async (e) => {
+        };
+        importBtn.onclick = () => importFile.click();
+        importFile.onchange = async (e) => {
           const file = e.target.files[0];
-          if (!file) return;
+          if(!file) return;
           const reader = new FileReader();
           reader.onload = async (ev) => {
             try {
               const data = JSON.parse(ev.target.result);
-              if (data.errors) {
-                const tx = db.transaction('errors', 'readwrite');
-                for (const entry of data.errors) await tx.store.add(entry);
-                await tx.done;
+              for (const store of ['errors','actions','console']) {
+                if (data[store]) {
+                  const tx = db.transaction(store, 'readwrite');
+                  for (const entry of data[store]) await tx.store.add(entry);
+                  await tx.done;
+                }
               }
-              if (data.actions) {
-                const tx = db.transaction('actions', 'readwrite');
-                for (const entry of data.actions) await tx.store.add(entry);
-                await tx.done;
-              }
-              alert('Import complete. Reloading...');
+              alert('Import done. Reloading.');
               location.reload();
-            } catch(e) {
-              alert('Import failed: ' + e.message);
-            }
+            } catch(e) { alert('Import failed: '+e.message); }
           };
           reader.readAsText(file);
-        });
+        };
       }
 
-      // ═══════════════ INIT ═══════════════
-      openDB().catch(console.error);
+      // ═══════════ INIT ═══════════
+      openDB().catch(e => { /* DB fail silent */ });
       actionLoggingEnabled = true;
     })();
   </script>
