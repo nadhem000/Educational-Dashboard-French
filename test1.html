@@ -340,7 +340,7 @@
         </div>
 
         <!-- Audio Element (hidden) -->
-        <audio id="audioPlayer" src="test1.mp3" preload="metadata"></audio>
+        <audio id="audioPlayer" src="lessons/revision/sounds/test1.mp3" preload="metadata"></audio>
 
         <!-- ============ I- ÉTUDE DE TEXTE ============ -->
         <div class="section-title">I. ÉTUDE DE TEXTE <span>10 points</span></div>
@@ -612,22 +612,22 @@
         function toggleAudio() {
             if (audio.paused) {
                 audio.play().then(() => {
-                    audioBtn.textContent = '⏸️ Pause (test1.mp3)';
+                    audioBtn.textContent = '⏸️ Pause (lessons/revision/sounds/test1.mp3)';
                     audioBtn.classList.add('playing');
                 }).catch(err => {
-                    alert('Impossible de lire le fichier audio. Vérifiez que "test1.mp3" est présent dans le même dossier.');
+                    alert('Impossible de lire le fichier audio. Vérifiez que "lessons/revision/sounds/test1.mp3" est présent dans le même dossier.');
                     console.error('Audio play error:', err);
                 });
             } else {
                 audio.pause();
-                audioBtn.textContent = '🔊 Lire le texte (test1.mp3)';
+                audioBtn.textContent = '🔊 Lire le texte (lessons/revision/sounds/test1.mp3)';
                 audioBtn.classList.remove('playing');
             }
         }
 
         // Reset audio button when audio ends
         audio.addEventListener('ended', () => {
-            audioBtn.textContent = '🔊 Lire le texte (test1.mp3)';
+            audioBtn.textContent = '🔊 Lire le texte (lessons/revision/sounds/test1.mp3)';
             audioBtn.classList.remove('playing');
         });
 
