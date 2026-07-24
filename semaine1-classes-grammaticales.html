@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leçon 1 – Les Classes Grammaticales | Texte littéraire & Exercices</title>
+   <link rel="stylesheet" href="shared.css">
     <style>
         :root {
             --bg: #f9f7f1;
@@ -394,21 +395,28 @@
 .valeur-card p {
     margin: 0.5rem 0;
 }
+.back-nav {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 1.5rem;
+}
+.back-nav a {
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+}
+.back-nav a:hover {
+    text-decoration: underline;
+}
     </style>
 </head>
 <body>
 
 
-    <!-- ═══════ TOP BAR ═══════ -->
-    <header class="topbar">
-        <div class="breadcrumb">
-            <a href="index.html">🏠 Accueil</a> › <span>Semaine 1</span> › <strong>Classes grammaticales</strong>
-        </div>
-        <button id="themeToggle" class="theme-btn">
-            <span id="themeIcon">🌙</span> <span id="themeLabel">Mode sombre</span>
-        </button>
-    </header>
 
+<nav class="back-nav">
+    <a href="index.html">🏠 Accueil</a> › <a href="revision.html">Révision générale</a> › <strong>Classes grammaticales</strong>
+</nav>
     <main class="container">
 
         <div class="lesson-header">
@@ -548,26 +556,6 @@
     <!-- ═══════ SCRIPTS ═══════ -->
     <script>
         (function() {
-            // ── THEME TOGGLE ──
-            const body = document.body;
-            const themeToggle = document.getElementById('themeToggle');
-            const themeIcon = document.getElementById('themeIcon');
-            const themeLabel = document.getElementById('themeLabel');
-
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                body.classList.add('dark');
-                themeIcon.textContent = '☀️';
-                themeLabel.textContent = 'Mode clair';
-            }
-
-            themeToggle.addEventListener('click', () => {
-                body.classList.toggle('dark');
-                const isDark = body.classList.contains('dark');
-                localStorage.setItem('theme', isDark ? 'dark' : 'light');
-                themeIcon.textContent = isDark ? '☀️' : '🌙';
-                themeLabel.textContent = isDark ? 'Mode clair' : 'Mode sombre';
-            });
 
             // ── CUSTOM AUDIO PLAYER ──
             const audio = new Audio('lessons/revision/sounds/lesson1.mp3');

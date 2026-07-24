@@ -1,5 +1,5 @@
 // Service Worker – Révisions Tunisie
-const CACHE_NAME = 'revisions-tunisie-v1.1.3';
+const CACHE_NAME = 'revisions-tunisie-v1.1.5';
 const urlsToCache = [
   '/',
   '/index.html',
