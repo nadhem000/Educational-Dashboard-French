@@ -145,12 +145,12 @@
 
             // Test external file availability (without executing)
             try {
-                const resp = await fetch('ED-French-ini.js', { cache: 'no-store' });
+                const resp = await fetch('ed‑french-ini.js', { cache: 'no-store' });
                 const text = await resp.text();
                 const isHtml = text.trim().startsWith('<!');
-                log(`Fichier ED-French-ini.js: statut ${resp.status}, HTML=${isHtml}`, isHtml ? 'error' : 'success');
+                log(`Fichier ed‑french-ini.js: statut ${resp.status}, HTML=${isHtml}`, isHtml ? 'error' : 'success');
             } catch(e) {
-                log('Fichier ED-French-ini.js introuvable ou réseau', 'error');
+                log('Fichier ed‑french-ini.js introuvable ou réseau', 'error');
             }
 
             log('Diagnostic terminé.', 'info');
