@@ -13,10 +13,10 @@
 			const body = document.body;
 			const tempDiv = document.createElement('div');
 			tempDiv.innerHTML = headerHTML;
-const first = body.firstChild; // remember the original first child
-			while (tempDiv.firstChild) {
-				body.insertBefore(tempDiv.firstChild, body.firstChild);
-			}
+const firstBodyChild = body.firstChild;
+while (tempDiv.firstChild) {
+    body.insertBefore(tempDiv.firstChild, firstBodyChild);
+}
 			
 			const footerResp = await fetch('ed-french-footer.html');
 			if (!footerResp.ok) throw new Error('Footer introuvable');
