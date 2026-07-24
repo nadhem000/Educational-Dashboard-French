@@ -5,151 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Monitor – Educational Dashboard</title>
   <style>
+    /* same style as before – unchanged */
     :root {
-      --bg: #0d1117;
-      --surface: #161b22;
-      --border: #30363d;
-      --text: #c9d1d9;
-      --text-secondary: #8b949e;
-      --accent: #58a6ff;
-      --success: #3fb950;
-      --warning: #d29922;
-      --danger: #f85149;
-      --radius: 8px;
+      --bg: #0d1117; --surface: #161b22; --border: #30363d; --text: #c9d1d9;
+      --text-secondary: #8b949e; --accent: #58a6ff; --success: #3fb950;
+      --warning: #d29922; --danger: #f85149; --radius: 8px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      display: flex;
-      height: 100vh;
-    }
-    .sidebar {
-      width: 220px;
-      background: var(--surface);
-      border-right: 1px solid var(--border);
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-    }
-    .sidebar h2 {
-      color: var(--accent);
-      margin-bottom: 1.5rem;
-      font-size: 1.2rem;
-    }
-    .sidebar button {
-      display: block;
-      width: 100%;
-      padding: 0.7rem 1rem;
-      margin-bottom: 0.4rem;
-      background: transparent;
-      border: 1px solid transparent;
-      color: var(--text);
-      text-align: left;
-      border-radius: var(--radius);
-      cursor: pointer;
-      transition: 0.2s;
-      font-size: 0.95rem;
-    }
-    .sidebar button:hover, .sidebar button.active {
-      background: var(--border);
-      border-color: var(--accent);
-    }
-    .main {
-      flex: 1;
-      overflow-y: auto;
-      padding: 1.5rem;
-    }
+    body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; display: flex; height: 100vh; }
+    .sidebar { width: 220px; background: var(--surface); border-right: 1px solid var(--border); padding: 1rem; display: flex; flex-direction: column; }
+    .sidebar h2 { color: var(--accent); margin-bottom: 1.5rem; font-size: 1.2rem; }
+    .sidebar button { display: block; width: 100%; padding: 0.7rem 1rem; margin-bottom: 0.4rem; background: transparent; border: 1px solid transparent; color: var(--text); text-align: left; border-radius: var(--radius); cursor: pointer; transition: 0.2s; font-size: 0.95rem; }
+    .sidebar button:hover, .sidebar button.active { background: var(--border); border-color: var(--accent); }
+    .main { flex: 1; overflow-y: auto; padding: 1.5rem; }
     .panel { display: none; }
     .panel.active { display: block; }
-    h3 {
-      color: var(--accent);
-      margin-bottom: 1rem;
-      border-bottom: 2px solid var(--border);
-      padding-bottom: 0.5rem;
-    }
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-    .stat-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1rem;
-      text-align: center;
-    }
-    .stat-card .value {
-      font-size: 2rem;
-      font-weight: bold;
-    }
-    .stat-card .label {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
-    .log-container {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1rem;
-      max-height: 500px;
-      overflow-y: auto;
-      font-family: 'Cascadia Code', 'Fira Code', monospace;
-      font-size: 0.85rem;
-      line-height: 1.6;
-    }
-    .log-entry {
-      padding: 0.3rem 0;
-      border-bottom: 1px solid var(--border);
-    }
+    h3 { color: var(--accent); margin-bottom: 1rem; border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+    .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; text-align: center; }
+    .stat-card .value { font-size: 2rem; font-weight: bold; }
+    .stat-card .label { color: var(--text-secondary); font-size: 0.9rem; }
+    .log-container { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; max-height: 500px; overflow-y: auto; font-family: 'Cascadia Code', 'Fira Code', monospace; font-size: 0.85rem; line-height: 1.6; }
+    .log-entry { padding: 0.3rem 0; border-bottom: 1px solid var(--border); }
     .log-entry.error { color: var(--danger); }
     .log-entry.action { color: var(--success); }
     .log-entry.perf { color: var(--accent); }
     .timestamp { color: var(--text-secondary); margin-right: 1rem; }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: var(--surface);
-      border-radius: var(--radius);
-      overflow: hidden;
-    }
-    th, td {
-      padding: 0.7rem;
-      border-bottom: 1px solid var(--border);
-      text-align: left;
-      font-size: 0.9rem;
-    }
+    table { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: var(--radius); overflow: hidden; }
+    th, td { padding: 0.7rem; border-bottom: 1px solid var(--border); text-align: left; font-size: 0.9rem; }
     th { background: var(--border); color: var(--accent); }
-    .badge {
-      display: inline-block;
-      padding: 0.2rem 0.6rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: bold;
-    }
+    .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
     .badge.pass { background: var(--success); color: #000; }
     .badge.fail { background: var(--danger); }
     .badge.warn { background: var(--warning); color: #000; }
-    button.action-btn {
-      background: var(--accent);
-      color: #000;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: var(--radius);
-      cursor: pointer;
-      font-weight: bold;
-      margin-right: 0.5rem;
-    }
+    button.action-btn { background: var(--accent); color: #000; border: none; padding: 0.5rem 1rem; border-radius: var(--radius); cursor: pointer; font-weight: bold; margin-right: 0.5rem; }
     button.action-btn:hover { opacity: 0.9; }
     .toggle-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
-    @media (max-width: 768px) {
-      body { flex-direction: column; }
-      .sidebar { width: 100%; flex-direction: row; flex-wrap: wrap; }
-      .sidebar h2 { margin-bottom: 0; margin-right: 1rem; }
-    }
+    @media (max-width: 768px) { body { flex-direction: column; } .sidebar { width: 100%; flex-direction: row; flex-wrap: wrap; } .sidebar h2 { margin-bottom: 0; margin-right: 1rem; } }
   </style>
 </head>
 <body>
@@ -164,9 +56,7 @@
     <button data-panel="pwa">📱 PWA Diagnostics</button>
     <button data-panel="export">💾 Export / Import</button>
   </aside>
-  <main class="main" id="mainContent">
-    <!-- Panels will be generated by JavaScript -->
-  </main>
+  <main class="main" id="mainContent"></main>
 
   <script>
     (function() {
@@ -196,22 +86,28 @@
       }
 
       async function addLog(storeName, data) {
-        if (!db) await openDB();
-        return new Promise((resolve, reject) => {
+        if (!db) {
+          try { await openDB(); } catch (err) { console.error('Cannot open DB:', err); return; }
+        }
+        try {
           const tx = db.transaction(storeName, 'readwrite');
           const store = tx.objectStore(storeName);
           const entry = { ...data, timestamp: data.timestamp || new Date().toISOString() };
-          const request = store.add(entry);
-          request.onsuccess = resolve;
-          request.onerror = reject;
-        });
+          await new Promise((resolve, reject) => {
+            const request = store.add(entry);
+            request.onsuccess = resolve;
+            request.onerror = reject;
+          });
+        } catch (err) {
+          console.error('addLog error:', err);
+        }
       }
 
       async function getAllLogs(storeName) {
         if (!db) await openDB();
+        const tx = db.transaction(storeName, 'readonly');
+        const store = tx.objectStore(storeName);
         return new Promise((resolve, reject) => {
-          const tx = db.transaction(storeName, 'readonly');
-          const store = tx.objectStore(storeName);
           const request = store.getAll();
           request.onsuccess = () => resolve(request.result);
           request.onerror = reject;
@@ -220,18 +116,23 @@
 
       async function clearStore(storeName) {
         if (!db) await openDB();
+        const tx = db.transaction(storeName, 'readwrite');
+        const store = tx.objectStore(storeName);
         return new Promise((resolve, reject) => {
-          const tx = db.transaction(storeName, 'readwrite');
-          const store = tx.objectStore(storeName);
           const request = store.clear();
           request.onsuccess = resolve;
           request.onerror = reject;
         });
       }
 
+      // Expose clear functions globally for inline onclick
+      window.clearErrors = () => clearStore('errors').then(() => location.reload());
+      window.clearActions = () => clearStore('actions').then(() => location.reload());
+      window.clearAllData = () => Promise.all([clearStore('errors'), clearStore('actions')]).then(() => location.reload());
+
       // ═══════════════ GLOBAL ERROR & ACTION CAPTURE ═══════════════
-      window.addEventListener('error', async (event) => {
-        await addLog('errors', {
+      window.addEventListener('error', (event) => {
+        addLog('errors', {
           type: 'runtime',
           message: event.message,
           source: event.filename,
@@ -239,20 +140,19 @@
           col: event.colno,
           stack: event.error?.stack || '',
           timestamp: new Date().toISOString()
-        });
+        }).catch(() => {});  // avoid uncaught promise loop
       });
 
-      window.addEventListener('unhandledrejection', async (event) => {
-        await addLog('errors', {
+      window.addEventListener('unhandledrejection', (event) => {
+        addLog('errors', {
           type: 'promise',
           message: event.reason?.message || String(event.reason),
           stack: event.reason?.stack || '',
           timestamp: new Date().toISOString()
-        });
+        }).catch(() => {});
       });
 
-      // Action logging (optional, toggled)
-      let actionLoggingEnabled = false;
+      let actionLoggingEnabled = true;
       document.addEventListener('click', async (e) => {
         if (!actionLoggingEnabled) return;
         const target = e.target.closest('a, button');
@@ -260,17 +160,17 @@
         const tag = target.tagName.toLowerCase();
         const text = target.textContent?.trim().substring(0, 50) || '';
         const url = tag === 'a' ? target.href : '';
-        await addLog('actions', {
+        addLog('actions', {
           tag,
           text,
           url,
           id: target.id || '',
           class: target.className || '',
           timestamp: new Date().toISOString()
-        });
+        }).catch(() => {});
       });
 
-      // Fetch interceptor (only logs non‑admin requests)
+      // Fetch interceptor (logs all fetch calls)
       const originalFetch = window.fetch;
       window.fetch = async function(...args) {
         const url = typeof args[0] === 'string' ? args[0] : args[0].url;
@@ -283,19 +183,22 @@
           if (!url.includes('testing.html') && !url.startsWith('blob:')) {
             const duration = (performance.now() - start).toFixed(1);
             const status = response ? response.status : 'network error';
-            await addLog('actions', {
+            addLog('actions', {
               type: 'fetch',
               url,
               status,
               duration: duration + 'ms',
               timestamp: new Date().toISOString()
-            });
+            }).catch(() => {});
           }
         }
       };
 
-      // ═══════════════ UI GENERATION ═══════════════
+      // ═══════════════ PANEL MANAGEMENT ═══════════════
       const main = document.getElementById('mainContent');
+      let currentPanel = null;
+      let liveInterval = null;  // to clear when leaving live panel
+
       const panels = {
         overview: createOverviewPanel,
         live: createLivePanel,
@@ -320,15 +223,21 @@
       });
 
       async function renderPanel(name) {
+        // Clear any running interval from live panel
+        if (liveInterval) {
+          clearInterval(liveInterval);
+          liveInterval = null;
+        }
         main.innerHTML = '';
         const div = document.createElement('div');
         div.className = 'panel active';
+        // Attach to DOM first so getElementById works if needed (but we'll use querySelector anyway)
+        main.appendChild(div);
         if (panels[name]) {
           await panels[name](div);
         } else {
           div.innerHTML = '<p>Panel not found.</p>';
         }
-        main.appendChild(div);
       }
 
       // ═══════════════ PANEL CREATORS ═══════════════
@@ -338,7 +247,7 @@
           getAllLogs('errors'),
           getAllLogs('actions')
         ]);
-        const statsHTML = `
+        container.innerHTML = `
           <div class="stats-grid">
             <div class="stat-card"><div class="value">${errors.length}</div><div class="label">Total Errors</div></div>
             <div class="stat-card"><div class="value">${actions.length}</div><div class="label">Logged Actions</div></div>
@@ -347,10 +256,9 @@
             <div class="stat-card"><div class="value">${new Date().toLocaleTimeString()}</div><div class="label">Last Refresh</div></div>
           </div>
           <h3>Quick Actions</h3>
-          <button class="action-btn" onclick="clearStore('errors');location.reload();">Clear Errors</button>
-          <button class="action-btn" onclick="clearStore('actions');location.reload();">Clear Actions</button>
+          <button class="action-btn" onclick="clearErrors()">Clear Errors</button>
+          <button class="action-btn" onclick="clearActions()">Clear Actions</button>
         `;
-        container.innerHTML = statsHTML;
       }
 
       function createLivePanel(container) {
@@ -358,33 +266,35 @@
           <h3>📡 Live Console (last 20 entries)</h3>
           <div class="log-container" id="liveLog"></div>
         `;
-        const liveDiv = document.getElementById('liveLog');
-        // Function to update live log periodically
+        const liveDiv = container.querySelector('#liveLog'); // safe, container is in DOM
         async function updateLiveLog() {
-          const [errors, actions] = await Promise.all([
-            getAllLogs('errors'),
-            getAllLogs('actions')
-          ]);
-          const combined = [...errors.map(e => ({...e, type: 'error'})), ...actions.map(a => ({...a, type: 'action'}))]
-            .sort((a,b) => new Date(b.timestamp) - new Date(a.timestamp))
-            .slice(0, 20);
-          liveDiv.innerHTML = combined.map(entry => {
-            const cls = entry.type === 'error' ? 'error' : 'action';
-            return `<div class="log-entry ${cls}"><span class="timestamp">${new Date(entry.timestamp).toLocaleTimeString()}</span> ${entry.message || entry.url || entry.text || JSON.stringify(entry)}</div>`;
-          }).join('');
+          if (!liveDiv || !liveDiv.isConnected) return; // stop if panel removed
+          try {
+            const [errors, actions] = await Promise.all([
+              getAllLogs('errors'),
+              getAllLogs('actions')
+            ]);
+            const combined = [...errors.map(e => ({...e, type: 'error'})), ...actions.map(a => ({...a, type: 'action'}))]
+              .sort((a,b) => new Date(b.timestamp) - new Date(a.timestamp))
+              .slice(0, 20);
+            liveDiv.innerHTML = combined.map(entry => {
+              const cls = entry.type === 'error' ? 'error' : 'action';
+              return `<div class="log-entry ${cls}"><span class="timestamp">${new Date(entry.timestamp).toLocaleTimeString()}</span> ${entry.message || entry.url || entry.text || JSON.stringify(entry)}</div>`;
+            }).join('');
+          } catch (err) {}
         }
         updateLiveLog();
-        setInterval(updateLiveLog, 3000); // refresh every 3s
+        liveInterval = setInterval(updateLiveLog, 3000);
       }
 
-      async function createLogPanel(storeName, title) {
+      function createLogPanel(storeName, title) {
         return async (container) => {
           container.innerHTML = `
             <h3>${title}</h3>
             <div class="log-container" id="${storeName}Log"></div>
           `;
+          const logDiv = container.querySelector(`#${storeName}Log`);
           const logs = await getAllLogs(storeName);
-          const logDiv = document.getElementById(`${storeName}Log`);
           if (logs.length === 0) {
             logDiv.innerHTML = '<p>No entries yet.</p>';
             return;
@@ -408,7 +318,6 @@
           .filter(r => !r.name.includes('testing.html'))
           .slice(0, 20);
         const memory = performance.memory || {};
-
         container.innerHTML = `
           <h3>⚡ Performance Metrics</h3>
           <table>
@@ -429,89 +338,39 @@
       async function createSecurityPanel(container) {
         container.innerHTML = '<h3>🔐 Security Audit (running...)</h3>';
         const results = [];
-        
-        // Test 1: HTTPS
+        // same as before but now we can directly write results
+        // HTTPS check
         results.push({
           test: 'HTTPS Connection',
           status: location.protocol === 'https:' ? 'pass' : 'fail',
           details: location.protocol
         });
-
-        // Test 2: CSP header (fetch current page)
         try {
           const res = await fetch(location.href + '?nocache=' + Date.now(), { cache: 'no-store' });
           const csp = res.headers.get('Content-Security-Policy');
-          results.push({
-            test: 'Content-Security-Policy',
-            status: csp ? 'pass' : 'warn',
-            details: csp || 'Not set'
-          });
+          results.push({ test: 'Content-Security-Policy', status: csp ? 'pass' : 'warn', details: csp || 'Not set' });
           const xfo = res.headers.get('X-Frame-Options');
-          results.push({
-            test: 'X-Frame-Options',
-            status: xfo ? 'pass' : 'warn',
-            details: xfo || 'Not set'
-          });
+          results.push({ test: 'X-Frame-Options', status: xfo ? 'pass' : 'warn', details: xfo || 'Not set' });
           const xcto = res.headers.get('X-Content-Type-Options');
-          results.push({
-            test: 'X-Content-Type-Options',
-            status: xcto ? 'pass' : 'warn',
-            details: xcto || 'Not set'
-          });
+          results.push({ test: 'X-Content-Type-Options', status: xcto ? 'pass' : 'warn', details: xcto || 'Not set' });
           const referrer = res.headers.get('Referrer-Policy');
-          results.push({
-            test: 'Referrer-Policy',
-            status: referrer ? 'pass' : 'warn',
-            details: referrer || 'Not set'
-          });
+          results.push({ test: 'Referrer-Policy', status: referrer ? 'pass' : 'warn', details: referrer || 'Not set' });
         } catch(e) {
-          results.push({test: 'Fetch Security Headers', status: 'fail', details: e.message});
+          results.push({ test: 'Fetch Security Headers', status: 'fail', details: e.message });
         }
-
-        // Test 3: Eval allowed?
         let evalAllowed = false;
-        try {
-          new Function('return true')();
-          evalAllowed = true;
-        } catch(e) {}
-        results.push({
-          test: 'eval() / new Function allowed',
-          status: evalAllowed ? 'fail' : 'pass',
-          details: evalAllowed ? 'Allowed (CSP may be weak)' : 'Blocked (good)'
-        });
-
-        // Test 4: Mixed content scan
+        try { new Function('return true')(); evalAllowed = true; } catch(e) {}
+        results.push({ test: 'eval() allowed', status: evalAllowed ? 'fail' : 'pass', details: evalAllowed ? 'Allowed (CSP weak)' : 'Blocked' });
         const resources = performance.getEntriesByType('resource');
-        const insecureResources = resources.filter(r => r.name.startsWith('http:'));
-        results.push({
-          test: 'Mixed Content (HTTP resources)',
-          status: insecureResources.length ? 'fail' : 'pass',
-          details: insecureResources.length ? `${insecureResources.length} insecure resources found` : 'None'
-        });
-
-        // Test 5: Service Worker registration
-        results.push({
-          test: 'Service Worker Registered',
-          status: 'serviceWorker' in navigator && navigator.serviceWorker.controller ? 'pass' : 'warn',
-          details: navigator.serviceWorker.controller ? 'Active' : 'Not controlling this page'
-        });
-
-        // Test 6: Cookies HttpOnly check (cannot fully check, but we can see if cookies are accessible)
+        const insecure = resources.filter(r => r.name.startsWith('http:'));
+        results.push({ test: 'Mixed Content', status: insecure.length ? 'fail' : 'pass', details: insecure.length ? `${insecure.length} insecure` : 'None' });
+        results.push({ test: 'Service Worker', status: navigator.serviceWorker?.controller ? 'pass' : 'warn', details: navigator.serviceWorker?.controller ? 'Active' : 'Inactive' });
         const cookiesAccessible = document.cookie.length > 0;
-        results.push({
-          test: 'Cookies Accessible via JS',
-          status: cookiesAccessible ? 'warn' : 'pass',
-          details: cookiesAccessible ? 'Some cookies not HttpOnly (may be a risk)' : 'No accessible cookies (good)'
-        });
-
-        // Render
+        results.push({ test: 'Cookies via JS', status: cookiesAccessible ? 'warn' : 'pass', details: cookiesAccessible ? 'Some not HttpOnly' : 'No accessible cookies' });
+        
         let tableHTML = '<table><tr><th>Test</th><th>Status</th><th>Details</th></tr>';
         results.forEach(r => {
-          tableHTML += `<tr>
-            <td>${r.test}</td>
-            <td><span class="badge ${r.status}">${r.status.toUpperCase()}</span></td>
-            <td>${r.details}</td>
-          </tr>`;
+          tableHTML += `<tr><td>${r.test}</td><td><span class="badge ${r.status}">${r.status.toUpperCase()}</span></td><td>${r.details}</td></tr>`;
         });
         tableHTML += '</table>';
         container.innerHTML = `<h3>🔐 Security Audit</h3>${tableHTML}`;
@@ -523,18 +382,17 @@
           const res = await fetch('/manifest.json');
           manifestData = await res.json();
         } catch(e) { manifestData = 'Failed to load'; }
-        
         const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
         const swStatus = navigator.serviceWorker?.controller ? 'active' : 'inactive';
-        const registration = await navigator.serviceWorker?.getRegistration();
-        const cacheNames = await caches.keys();
         let cacheDetails = '';
-        for (const name of cacheNames) {
-          const cache = await caches.open(name);
-          const keys = await cache.keys();
-          cacheDetails += `<p><strong>${name}</strong>: ${keys.length} entries</p>`;
-        }
-
+        try {
+          const cacheNames = await caches.keys();
+          for (const name of cacheNames) {
+            const cache = await caches.open(name);
+            const keys = await cache.keys();
+            cacheDetails += `<p><strong>${name}</strong>: ${keys.length} entries</p>`;
+          }
+        } catch(e) { cacheDetails = 'Error reading caches.'; }
         container.innerHTML = `
           <h3>📱 PWA Diagnostics</h3>
           <table>
@@ -548,14 +406,20 @@
       }
 
       function createExportPanel(container) {
+        // container is already in DOM (renderPanel appends first)
         container.innerHTML = `
           <h3>💾 Export / Import Data</h3>
           <button class="action-btn" id="exportBtn">Export All Logs (JSON)</button>
           <button class="action-btn" id="importBtn">Import Logs</button>
           <input type="file" id="importFile" accept=".json" style="display:none">
-          <button class="action-btn" onclick="clearStore('errors');clearStore('actions');location.reload();">Clear All Data</button>
+          <button class="action-btn" onclick="clearAllData()">Clear All Data</button>
         `;
-        document.getElementById('exportBtn').addEventListener('click', async () => {
+        // Use container.querySelector to be safe
+        const exportBtn = container.querySelector('#exportBtn');
+        const importBtn = container.querySelector('#importBtn');
+        const importFile = container.querySelector('#importFile');
+        
+        exportBtn.addEventListener('click', async () => {
           const data = {
             errors: await getAllLogs('errors'),
             actions: await getAllLogs('actions'),
@@ -568,36 +432,36 @@
           a.download = 'admin-monitor-export.json';
           a.click();
         });
-        document.getElementById('importBtn').addEventListener('click', () => {
-          document.getElementById('importFile').click();
-        });
-        document.getElementById('importFile').addEventListener('change', async (e) => {
+        importBtn.addEventListener('click', () => importFile.click());
+        importFile.addEventListener('change', async (e) => {
           const file = e.target.files[0];
           if (!file) return;
           const reader = new FileReader();
           reader.onload = async (ev) => {
-            const data = JSON.parse(ev.target.result);
-            if (data.errors) {
-              const tx = db.transaction('errors', 'readwrite');
-              for (const entry of data.errors) await tx.store.add(entry);
-              await tx.done;
+            try {
+              const data = JSON.parse(ev.target.result);
+              if (data.errors) {
+                const tx = db.transaction('errors', 'readwrite');
+                for (const entry of data.errors) await tx.store.add(entry);
+                await tx.done;
+              }
+              if (data.actions) {
+                const tx = db.transaction('actions', 'readwrite');
+                for (const entry of data.actions) await tx.store.add(entry);
+                await tx.done;
+              }
+              alert('Import complete. Reloading...');
+              location.reload();
+            } catch(e) {
+              alert('Import failed: ' + e.message);
             }
-            if (data.actions) {
-              const tx = db.transaction('actions', 'readwrite');
-              for (const entry of data.actions) await tx.store.add(entry);
-              await tx.done;
-            }
-            alert('Import complete. Reload to see changes.');
-            location.reload();
           };
           reader.readAsText(file);
         });
       }
 
       // ═══════════════ INIT ═══════════════
-      openDB();
-      // Toggle action logging via URL parameter or button – we'll add a global toggle later
-      // For now, enable action logging by default (can be changed)
+      openDB().catch(console.error);
       actionLoggingEnabled = true;
     })();
   </script>
