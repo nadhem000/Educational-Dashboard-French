@@ -1,5 +1,5 @@
 // Service Worker – Educational Dashboard – French
-const CACHE_NAME = 'revisions-tunisie-v1.2.2';
+const CACHE_NAME = 'revisions-tunisie-v1.2.3';
 const urlsToCache = [
     '/',
     '/index.html',
@@ -27,17 +27,16 @@ async function swLog(level, message) {
 self.addEventListener('install', event => {
     swLog('info', 'SW install start');
     event.waitUntil(
-        caches.open(CACHE_NAME)
-            .then(cache => {
-                swLog('info', 'Caching essential resources');
-                return cache.addAll(urlsToCache).catch(err => {
-                    swLog('warn', 'Some resources failed to cache: ' + err);
-                });
-            })
-            .then(() => {
-                swLog('info', 'Install complete, skip waiting');
-                return self.skipWaiting();
-            })
+        caches.open(CACHE_NAME).then(async (cache) => {
+            for (const url of urlsToCache) {
+                try {
+                    await cache.add(url);
+                } catch (err) {
+                    swLog('warn', 'Failed to cache: ' + url + ' – ' + err);
+                }
+            }
+            return self.skipWaiting();
+        })
     );
 });
 

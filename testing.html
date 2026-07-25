@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Monitor – Educational Dashboard</title>
+   <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
   <style>
     :root {
       --bg: #0d1117; --surface: #161b22; --border: #30363d; --text: #c9d1d9;
@@ -60,6 +62,7 @@
     <button data-panel="export">⬇️ Export</button>
   </aside>
   <main class="main" id="mainContent"></main>
+    <script src="ed-french-ini.js"></script>
 
   <script>
     (function() {
@@ -78,6 +81,18 @@
           // originalConsole[method].apply(console, args);
         };
       });
+
+      // ═══════════ GLOBAL MONITOR STATE (snapshots of last panel results) ═══════════
+      const monitorState = {
+        overview: null,
+        console: [],
+        security: null,
+        performance: null,
+        pwa: null,
+        domAudit: null,
+        storage: null,
+        network: []
+      };
 
       // ═══════════ INDEXEDDB SETUP ═══════════
       const DB_NAME = 'adminMonitorDB_v2';
@@ -112,7 +127,7 @@
             req.onerror = reject;
           });
         } catch (err) {
-          // Retry once
+          // Retry once silently
           try {
             const tx = db.transaction(storeName, 'readwrite');
             const store = tx.objectStore(storeName);
@@ -122,8 +137,7 @@
               req.onerror = reject;
             });
           } catch (err2) {
-            // Still fail? Just silently ignore, the data is lost but app continues.
-            // Do NOT output to console.
+            // ignore
           }
         }
       }
@@ -154,7 +168,14 @@
       window.clearActions = () => clearStore('actions').then(() => location.reload());
       window.clearAllData = () => Promise.all([
         clearStore('errors'), clearStore('actions'), clearStore('console')
-      ]).then(() => location.reload());
+      ]).then(() => {
+        // Reset monitorState
+        for (const key in monitorState) {
+          if (Array.isArray(monitorState[key])) monitorState[key] = [];
+          else monitorState[key] = null;
+        }
+        location.reload();
+      });
 
       // ═══════════ GLOBAL ERROR / REJECTION CAPTURE (silent) ═══════════
       window.addEventListener('error', (event) => {
@@ -258,7 +279,7 @@
         }
       }
 
-      // ═══════════ PANEL IMPLEMENTATIONS ═══════════
+      // ═══════════ PANEL IMPLEMENTATIONS (now saving to monitorState) ═══════════
 
       async function createOverviewPanel(container) {
         const [errors, actions, consoleLogs] = await Promise.all([
@@ -279,6 +300,15 @@
           <button class="action-btn" onclick="clearErrors()">Clear Errors</button>
           <button class="action-btn" onclick="clearActions()">Clear Actions</button>
         `;
+        // Save to monitorState
+        monitorState.overview = {
+          errorsCount: errors.length,
+          actionsCount: actions.length,
+          consoleCount: consoleLogs.length,
+          online,
+          visibility,
+          timestamp: new Date().toISOString()
+        };
       }
 
       function createConsolePanel(container) {
@@ -289,7 +319,6 @@
         const logDiv = container.querySelector('#consoleLogContainer');
         function update() {
           if (!logDiv || !logDiv.isConnected) return;
-          // merge live captured + stored
           const storedPromise = getAllLogs('console');
           storedPromise.then(stored => {
             const combined = [...stored, ...capturedConsoleLogs].sort((a,b) => new Date(b.timestamp) - new Date(a.timestamp)).slice(0, 50);
@@ -297,6 +326,8 @@
               const cls = entry.method === 'error' ? 'error' : 'console';
               return `<div class="log-entry ${cls}"><span class="timestamp">${new Date(entry.timestamp).toLocaleTimeString()}</span> [${entry.method}] ${entry.message}</div>`;
             }).join('');
+            // Save combined snapshot
+            monitorState.console = combined;
           });
         }
         update();
@@ -326,6 +357,7 @@
         const render = async () => {
           const actions = await getAllLogs('actions');
           const fetchLogs = actions.filter(a => a.type === 'fetch').slice(-20);
+          monitorState.network = fetchLogs; // save
           let html = '<table><tr><th>Time</th><th>URL</th><th>Status</th><th>Duration</th></tr>';
           fetchLogs.forEach(f => {
             html += `<tr><td>${new Date(f.timestamp).toLocaleTimeString()}</td><td>${f.url}</td><td>${f.status}</td><td>${f.duration}</td></tr>`;
@@ -343,7 +375,7 @@
         const domContentLoaded = timing.domContentLoadedEventEnd - timing.navigationStart;
         const ttfb = timing.responseStart - timing.navigationStart;
         const memory = performance.memory || {};
-        // Try to get Web Vitals via PerformanceObserver
+        // Web Vitals
         let lcp = 'N/A', fcp = 'N/A', fid = 'N/A', cls = 'N/A';
         try {
           new PerformanceObserver(list => {
@@ -375,6 +407,17 @@
             ${resources.map(r => `<div class="log-entry perf"><span class="timestamp">${(r.duration||0).toFixed(0)}ms</span> ${r.name}</div>`).join('')}
           </div>
         `;
+        // Save to monitorState
+        monitorState.performance = {
+          pageLoad: loadTime,
+          domContentLoaded,
+          ttfb,
+          lcp,
+          fcp,
+          jsHeapUsed: memory.usedJSHeapSize ? (memory.usedJSHeapSize/1048576).toFixed(2)+' MB' : 'N/A',
+          jsHeapTotal: memory.totalJSHeapSize ? (memory.totalJSHeapSize/1048576).toFixed(2)+' MB' : 'N/A',
+          resources: resources.map(r => ({ name: r.name, duration: r.duration }))
+        };
       }
 
       async function createSecurityPanel(container) {
@@ -404,6 +447,8 @@
         results.forEach(r => html+=`<tr><td>${r.test}</td><td><span class="badge ${r.status}">${r.status.toUpperCase()}</span></td><td>${r.details}</td></tr>`);
         html+='</table>';
         container.innerHTML = '<h3>🔐 Security Audit</h3>'+html;
+        // Save
+        monitorState.security = results;
       }
 
       async function createPWAPanel(container) {
@@ -429,12 +474,18 @@
             <tr><td>Cache Storage</td><td>${cacheDetails||'None'}</td></tr>
           </table>
         `;
+        // Save
+        monitorState.pwa = {
+          manifest: manifestData,
+          isStandalone,
+          swStatus,
+          cacheDetails: cacheDetails || 'None'
+        };
       }
 
       async function createStoragePanel(container) {
         const local = localStorage.length;
         const session = sessionStorage.length;
-        // IndexedDB size approximation
         let dbSize = 'Calculating...';
         if (navigator.storage && navigator.storage.estimate) {
           const estimate = await navigator.storage.estimate();
@@ -449,6 +500,12 @@
           </table>
           <button class="action-btn" onclick="clearAllData()">Clear All IndexedDB Data</button>
         `;
+        // Save
+        monitorState.storage = {
+          localStorageItems: local,
+          sessionStorageItems: session,
+          indexedDBUsage: dbSize
+        };
       }
 
       function createDOMAuditPanel(container) {
@@ -465,34 +522,78 @@
           <h4>Images Missing Alt Text</h4>
           ${missingAlt.length ? '<ul>'+missingAlt.map(s=>`<li>${s}</li>`).join('')+'</ul>' : '<p>None.</p>'}
         `;
+        // Save
+        monitorState.domAudit = {
+          brokenLinks,
+          missingAlt
+        };
       }
 
       function createExportPanel(container) {
         container.innerHTML = `
           <h3>⬇️ Export / Import / Clear</h3>
-          <button class="action-btn" id="exportBtn">Export All Logs (JSON)</button>
+          <p>Export a complete snapshot of all monitor data, panel results, and captured logs.</p>
+          <button class="action-btn" id="fullExportBtn">📦 Export Full Report (JSON)</button>
           <button class="action-btn" id="importBtn">Import Logs</button>
           <input type="file" id="importFile" accept=".json" style="display:none">
           <button class="action-btn" onclick="clearAllData()">Clear All Data</button>
+          <p style="margin-top:1rem; color:var(--text-secondary); font-size:0.8rem;">
+            The full report includes: overview, console, errors, actions, network, performance, security, PWA, DOM audit, storage, and current page metadata.
+          </p>
         `;
-        const exportBtn = container.querySelector('#exportBtn');
-        const importBtn = container.querySelector('#importBtn');
-        const importFile = container.querySelector('#importFile');
-        exportBtn.onclick = async () => {
-          const data = {
-            errors: await getAllLogs('errors'),
-            actions: await getAllLogs('actions'),
-            console: await getAllLogs('console'),
-            exportTime: new Date().toISOString()
+
+        // Full Export
+        container.querySelector('#fullExportBtn').onclick = async () => {
+          // Optionally flush any pending console logs to DB for completeness
+          if (capturedConsoleLogs.length > 0) {
+            const logsToFlush = capturedConsoleLogs.splice(0, capturedConsoleLogs.length);
+            for (const log of logsToFlush) {
+              await addLog('console', log);
+            }
+          }
+
+          // Gather IndexedDB logs
+          const [dbErrors, dbActions, dbConsole] = await Promise.all([
+            getAllLogs('errors'),
+            getAllLogs('actions'),
+            getAllLogs('console')
+          ]);
+
+          const report = {
+            exportTime: new Date().toISOString(),
+            page: {
+              url: window.location.href,
+              title: document.title,
+              userAgent: navigator.userAgent,
+              online: navigator.onLine
+            },
+            overview: monitorState.overview,
+            console: {
+              stored: dbConsole,
+              liveSnapshot: monitorState.console // from last console panel update
+            },
+            errors: {
+              stored: dbErrors
+            },
+            actions: dbActions,
+            network: monitorState.network,
+            performance: monitorState.performance,
+            security: monitorState.security,
+            pwa: monitorState.pwa,
+            domAudit: monitorState.domAudit,
+            storage: monitorState.storage
           };
-          const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+
+          const blob = new Blob([JSON.stringify(report, null, 2)], {type:'application/json'});
           const a = document.createElement('a');
           a.href = URL.createObjectURL(blob);
-          a.download = 'admin-monitor-export.json';
+          a.download = `monitor-full-report-${new Date().toISOString().slice(0,19).replace(/:/g,'-')}.json`;
           a.click();
         };
-        importBtn.onclick = () => importFile.click();
-        importFile.onchange = async (e) => {
+
+        // Import (unchanged)
+        container.querySelector('#importBtn').onclick = () => container.querySelector('#importFile').click();
+        container.querySelector('#importFile').onchange = async (e) => {
           const file = e.target.files[0];
           if(!file) return;
           const reader = new FileReader();
