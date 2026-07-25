@@ -72,8 +72,49 @@
             footerTemp.innerHTML = footerHTML;
             body.appendChild(footerTemp.firstChild);
 
+// ═══════════ PWA INSTALL BUTTON ═══════════
+async function initInstallButton() {
+    const installBtn = document.getElementById('installBtn');
+    if (!installBtn) return;
+
+    // Already installed → never show the button
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+        installBtn.style.display = 'none';
+        return;
+    }
+
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        // Prevent the mini-infobar from appearing on mobile
+        e.preventDefault();
+        deferredPrompt = e;
+        installBtn.style.display = 'inline-block';
+
+        logToDB('actions', { message: 'beforeinstallprompt fired – install button shown', type: 'pwa' });
+    });
+
+    installBtn.addEventListener('click', async () => {
+        if (!deferredPrompt) return;
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        logToDB('actions', { message: `Install prompt outcome: ${outcome}`, type: 'pwa' });
+
+        if (outcome === 'accepted') {
+            installBtn.style.display = 'none';
+            logToDB('actions', { message: 'User accepted install', type: 'pwa' });
+        }
+        deferredPrompt = null;
+    });
+
+    window.addEventListener('appinstalled', () => {
+        installBtn.style.display = 'none';
+        logToDB('actions', { message: 'App installed successfully', type: 'pwa' });
+    });
+}
             initThemeToggle();
             initSettingsModal();
+    initInstallButton();
             await loadScript('cards-building.js');
 
             // Register service worker (already done outside, but we keep it here for completeness)

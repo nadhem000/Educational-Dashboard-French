@@ -134,3 +134,33 @@ body.dark .settings-btn {
     background: #3a3329;
     color: #e8dfd2;
 }
+/* Header right grouping */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Install button – identical base to settings-btn, with slight colour variation */
+.install-btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all var(--transition);
+    white-space: nowrap;
+}
+.install-btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+/* Dark mode tweaks for install button */
+body.dark .install-btn {
+    background: #c75b2c;   /* keep accent visible */
+    color: #fff;
+}
