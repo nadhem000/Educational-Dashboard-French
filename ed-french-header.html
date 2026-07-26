@@ -1,13 +1,48 @@
 <header class="site-header">
+  <!-- LEFT: icon + site title -->
   <div class="header-left">
     <img src="assets/icons/icon-96x96.png" alt="Logo" width="32" height="32" class="header-icon">
-    <span class="site-title">Educational Dashboard – French</span>
+    <span class="site-title">Educational Dashboard<br>French Hub</span>
   </div>
+
+  <!-- RIGHT: actions + status -->
   <div class="header-right">
-    <button id="signInBtn" class="sign-btn">🔑 Sign In</button>
-    <button id="profileBtn" class="profile-btn" style="display:none;">👤 Profile</button>
-    <button id="settingsBtn" class="settings-btn" title="Settings">⚙️</button>
-    <button id="modeToggle" class="mode-btn" title="Toggle dark/light mode">🌙</button>
-    <span id="onlineStatus" class="status-dot" title="Online"></span>
+    <!-- Sign in / Profile (dummy) -->
+    <button id="signInBtn" class="header-btn sign-in-btn" title="Se connecter">🔑 Connexion</button>
+    <button id="profileBtn" class="header-btn profile-btn" title="Profil" style="display: none;">👤 Profil</button>
+
+    <!-- Settings gear -->
+    <button id="settingsBtn" class="header-btn settings-btn" title="Paramètres">⚙️</button>
+
+    <!-- Dark/Light mode icon (no text) -->
+    <button id="themeToggle" class="header-btn theme-btn" title="Changer le mode">
+      <span id="themeIcon">🌙</span>
+    </button>
+
+    <!-- Online/Offline indicator (green/red dot) -->
+    <span id="onlineStatus" class="status-dot online" title="En ligne"></span>
   </div>
 </header>
+
+<!-- Settings modal (unchanged) -->
+<div id="settingsModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <p>⚙️ Paramètres – Bientôt disponible</p>
+  </div>
+</div>
+
+<!-- Online/Offline toggle script -->
+<script>
+  (function() {
+    const dot = document.getElementById('onlineStatus');
+    function updateStatus() {
+      const online = navigator.onLine;
+      dot.className = 'status-dot ' + (online ? 'online' : 'offline');
+      dot.title = online ? 'En ligne' : 'Hors ligne';
+    }
+    window.addEventListener('online', updateStatus);
+    window.addEventListener('offline', updateStatus);
+    updateStatus();
+  })();
+</script>
