@@ -11,9 +11,26 @@
       --bg: #0d1117; --surface: #161b22; --border: #30363d; --text: #c9d1d9;
       --text-secondary: #8b949e; --accent: #58a6ff; --success: #3fb950;
       --warning: #d29922; --danger: #f85149; --radius: 8px;
+      /* ── Required by shared header & footer (dark theme) ── */
+      --card-bg: var(--surface);
+      --text-light: var(--text-secondary);
+      --accent-hover: #79c0ff;
+      --shadow: 0 1px 3px rgba(0,0,0,0.25);
+      --transition: 0.2s;
+      --font: 'Segoe UI', system-ui, sans-serif;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; display: flex; height: 100vh; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: var(--font);
+      display: flex; flex-direction: column;
+      height: 100vh;
+    }
+    .app-wrapper {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
     .sidebar { width: 240px; background: var(--surface); border-right: 1px solid var(--border); padding: 1rem; display: flex; flex-direction: column; flex-shrink: 0; }
     .sidebar h2 { color: var(--accent); margin-bottom: 1.5rem; font-size: 1.2rem; }
     .sidebar button { display: block; width: 100%; padding: 0.7rem 1rem; margin-bottom: 0.4rem; background: transparent; border: 1px solid transparent; color: var(--text); text-align: left; border-radius: var(--radius); cursor: pointer; transition: 0.2s; font-size: 0.95rem; }
@@ -43,27 +60,34 @@
     button.action-btn { background: var(--accent); color: #000; border: none; padding: 0.5rem 1rem; border-radius: var(--radius); cursor: pointer; font-weight: bold; margin-right: 0.5rem; }
     button.action-btn:hover { opacity: 0.9; }
     .toggle-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
-    @media (max-width: 768px) { body { flex-direction: column; } .sidebar { width: 100%; flex-direction: row; flex-wrap: wrap; } .sidebar h2 { margin-bottom: 0; margin-right: 1rem; } }
+    @media (max-width: 768px) {
+      .app-wrapper { flex-direction: column; }
+      .sidebar { width: 100%; flex-direction: row; flex-wrap: wrap; }
+      .sidebar h2 { margin-bottom: 0; margin-right: 1rem; }
+    }
   </style>
 </head>
 <body>
-  <aside class="sidebar">
-    <h2>🧠 Monitor</h2>
-    <button class="active" data-panel="overview">📊 Overview</button>
-    <button data-panel="console">📟 Console</button>
-    <button data-panel="errors">🚨 Errors</button>
-    <button data-panel="actions">🖱️ Actions</button>
-    <button data-panel="network">🌐 Network</button>
-    <button data-panel="performance">⚡ Performance</button>
-    <button data-panel="security">🔐 Security</button>
-    <button data-panel="pwa">📱 PWA</button>
-    <button data-panel="storage">💾 Storage</button>
-    <button data-panel="dom">🏗️ DOM Audit</button>
-    <button data-panel="export">⬇️ Export</button>
-  </aside>
-  <main class="main" id="mainContent"></main>
-    <script src="ed-french-ini.js"></script>
-
+  <!-- Header and footer are injected by ed-french-ini.js -->
+  <div class="app-wrapper">
+    <aside class="sidebar">
+      <h2>🧠 Monitor</h2>
+      <button class="active" data-panel="overview">📊 Overview</button>
+      <button data-panel="console">📟 Console</button>
+      <button data-panel="errors">🚨 Errors</button>
+      <button data-panel="actions">🖱️ Actions</button>
+      <button data-panel="network">🌐 Network</button>
+      <button data-panel="performance">⚡ Performance</button>
+      <button data-panel="security">🔐 Security</button>
+      <button data-panel="pwa">📱 PWA</button>
+      <button data-panel="storage">💾 Storage</button>
+      <button data-panel="dom">🏗️ DOM Audit</button>
+      <button data-panel="export">⬇️ Export</button>
+    </aside>
+    <main class="main" id="mainContent"></main>
+  </div>
+  <!-- Scripts -->
+  <script src="ed-french-ini.js"></script>
   <script>
     (function() {
       // ═══════════ CONSOLE CAPTURE (Silences browser console) ═══════════
