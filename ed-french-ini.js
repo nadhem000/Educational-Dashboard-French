@@ -1,4 +1,3 @@
-// ed-french-ini.js
 (function() {
     // ═══════════════ MINI LOGGER (writes to testing DB) ═══════════════
     const DB_NAME = 'adminMonitorDB_v2';
@@ -36,25 +35,28 @@
     // ═══════════ Service Worker message handler ═══════════
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.addEventListener('message', event => {
-            if (event.data && event.data.type === 'SW_LOG') {
+            if (!event.data) return;
+            if (event.data.type === 'SW_LOG') {
                 const payload = event.data.payload;
                 const storeName = payload.level === 'error' ? 'errors' : 'actions';
                 logToDB(storeName, { message: payload.message, source: 'sw', level: payload.level });
+            } else if (event.data.type === 'SW_UPDATE') {
+                // New service worker took control – offer page reload
+                showUpdateToast();
             }
         });
     }
 
     // ═══════════ GLOBAL TOAST ═══════════
-    window.showToast = function(message, type = '') {
+    window.showToast = function(message, type = '', duration = 3000) {
         const container = document.getElementById('toast-container') || createToastContainer();
         const toast = document.createElement('div');
         toast.className = 'toast ' + type;
         toast.textContent = message;
         container.appendChild(toast);
-        // Auto-remove after animation ends (3s)
         setTimeout(() => {
             if (toast.parentNode) toast.parentNode.removeChild(toast);
-        }, 3000);
+        }, duration);
     };
 
     function createToastContainer() {
@@ -62,6 +64,22 @@
         container.id = 'toast-container';
         document.body.appendChild(container);
         return container;
+    }
+
+    // Special toast for SW update with a reload button
+    function showUpdateToast() {
+        const container = document.getElementById('toast-container') || createToastContainer();
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerHTML = '🔄 Une nouvelle version est disponible. <button id="reloadNow" style="margin-left:0.5rem; background:var(--accent); color:#fff; border:none; padding:0.3rem 0.8rem; border-radius:20px; cursor:pointer;">Actualiser</button>';
+        container.appendChild(toast);
+        document.getElementById('reloadNow').addEventListener('click', () => {
+            window.location.reload();
+        });
+        // Auto-remove after 10s
+        setTimeout(() => {
+            if (toast.parentNode) toast.parentNode.removeChild(toast);
+        }, 10000);
     }
 
     // ═══════════ MAIN INIT ═══════════
@@ -73,7 +91,6 @@
 
     async function init() {
         try {
-            // Fetch and inject header
             const headerResp = await fetch('ed-french-header.html');
             if (!headerResp.ok) throw new Error('Header introuvable');
             const headerHTML = await headerResp.text();
@@ -85,7 +102,6 @@
                 body.insertBefore(tempDiv.firstChild, firstBodyChild);
             }
 
-            // Fetch and inject footer
             const footerResp = await fetch('ed-french-footer.html');
             if (!footerResp.ok) throw new Error('Footer introuvable');
             const footerHTML = await footerResp.text();
@@ -93,12 +109,11 @@
             footerTemp.innerHTML = footerHTML;
             body.appendChild(footerTemp.firstChild);
 
-            // Initialise all features
             initThemeToggle();
             initSettingsModal();
             initOnlineStatus();
             initAuth();
-            initFooterButtons();   // 👈 new footer mock buttons
+            initFooterButtons();
             initInstallButton();
 
             await loadScript('cards-building.js');
@@ -259,13 +274,12 @@
         }
     }
 
-    // ── Footer action buttons (mock background sync & notifications) ──
+    // ── Footer action buttons ──
     function initFooterButtons() {
         const bgSyncBtn = document.getElementById('bgSyncBtn');
         const notifBtn = document.getElementById('notifBtn');
         if (!bgSyncBtn || !notifBtn) return;
 
-        // Load states from localStorage (default disabled)
         let bgSyncEnabled = localStorage.getItem('bgSync') === 'true';
         let notifEnabled = localStorage.getItem('notifications') === 'true';
         updateFooterButtons();
@@ -296,36 +310,57 @@
         });
     }
 
-    // ── PWA Install prompt ──
+    // ── PWA Install prompt – improved to always show unless already installed ──
+    let deferredPrompt;
+
     async function initInstallButton() {
         const installBtn = document.getElementById('installBtn');
         if (!installBtn) return;
+
+        // Hide if already running as standalone (installed)
         if (window.matchMedia('(display-mode: standalone)').matches) {
             installBtn.style.display = 'none';
             return;
         }
-        let deferredPrompt;
+
+        // Listen for the install prompt event
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
-            installBtn.style.display = 'inline-block';
-            logToDB('actions', { message: 'beforeinstallprompt fired – install button shown', type: 'pwa' });
+            installBtn.style.display = 'inline-flex'; // show button
+            logToDB('actions', { message: 'beforeinstallprompt fired', type: 'pwa' });
         });
+
+        // If the event has already fired before this script ran (unlikely), we still show button
+        // Button click handler
         installBtn.addEventListener('click', async () => {
-            if (!deferredPrompt) return;
-            deferredPrompt.prompt();
-            const { outcome } = await deferredPrompt.userChoice;
-            logToDB('actions', { message: `Install prompt outcome: ${outcome}`, type: 'pwa' });
-            if (outcome === 'accepted') {
-                installBtn.style.display = 'none';
-                logToDB('actions', { message: 'User accepted install', type: 'pwa' });
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                logToDB('actions', { message: `Install prompt outcome: ${outcome}`, type: 'pwa' });
+                if (outcome === 'accepted') {
+                    installBtn.style.display = 'none';
+                    logToDB('actions', { message: 'User accepted install', type: 'pwa' });
+                }
+                deferredPrompt = null;
+            } else {
+                // No prompt available – guide user to manual install
+                window.showToast('💡 Pour installer l\'application, utilisez l\'option "Ajouter à l\'écran d\'accueil" du navigateur.', '', 5000);
             }
-            deferredPrompt = null;
         });
+
+        // If the app was installed via another method
         window.addEventListener('appinstalled', () => {
             installBtn.style.display = 'none';
-            logToDB('actions', { message: 'App installed successfully', type: 'pwa' });
+            logToDB('actions', { message: 'App installed', type: 'pwa' });
         });
+
+        // Fallback: if no beforeinstallprompt has fired within 3 seconds, show the button anyway
+        setTimeout(() => {
+            if (!deferredPrompt && installBtn.style.display === 'none') {
+                installBtn.style.display = 'inline-flex';
+            }
+        }, 3000);
     }
 
     function registerSW() {
@@ -333,10 +368,20 @@
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/sw.js')
                     .then(registration => {
-                        logToDB('actions', { message: 'Service Worker registered with scope: ' + registration.scope, type: 'sw_reg' });
+                        logToDB('actions', { message: 'Service Worker registered: ' + registration.scope, type: 'sw_reg' });
+
+                        // Listen for updates to the service worker
+                        registration.addEventListener('updatefound', () => {
+                            const newWorker = registration.installing;
+                            newWorker.addEventListener('statechange', () => {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    // New content is available – we could show a toast, but SW_UPDATE message handles it later
+                                }
+                            });
+                        });
                     })
                     .catch(error => {
-                        logToDB('errors', { message: 'Service Worker registration failed: ' + error.message });
+                        logToDB('errors', { message: 'SW registration failed: ' + error.message });
                     });
             });
         }

@@ -1,5 +1,5 @@
 // Service Worker – Educational Dashboard – French
-const CACHE_NAME = 'revisions-tunisie-v1.3.5';
+const CACHE_NAME = 'revisions-tunisie-v1.3.6'; // bump version to force cache refresh
 const urlsToCache = [
     '/',
     '/index.html',
@@ -19,7 +19,7 @@ async function swLog(level, message) {
             client.postMessage({ type: 'SW_LOG', payload: { level, message } });
         });
     } catch (e) {
-        // worst case: ignore
+        // ignore
     }
 }
 
@@ -31,7 +31,6 @@ self.addEventListener('install', event => {
                 try {
                     await cache.add(url);
                 } catch (err) {
-                    // Log to SW console (visible in Application → Service Workers → inspect)
                     console.warn('Failed to cache:', url, err);
                 }
             }
@@ -40,9 +39,9 @@ self.addEventListener('install', event => {
     );
 });
 
-// Activation
+// Activation – delete old caches and notify clients
 self.addEventListener('activate', event => {
-    swLog('info', 'SW activate');
+    swLog('info', 'SW activate – cleaning old caches');
     event.waitUntil(
         caches.keys().then(cacheNames => {
             return Promise.all(
@@ -54,18 +53,26 @@ self.addEventListener('activate', event => {
                 })
             );
         }).then(() => {
-            swLog('info', 'Activation finished');
+            swLog('info', 'Activation finished, claiming clients');
             return self.clients.claim();
+        }).then(() => {
+            // Notify all clients that an update is available
+            self.clients.matchAll().then(clients => {
+                clients.forEach(client => {
+                    client.postMessage({ type: 'SW_UPDATE' });
+                });
+            });
         })
     );
 });
 
-// Fetch strategy
+// Fetch strategy – stale-while-revalidate for static assets, network-first for navigations
 self.addEventListener('fetch', event => {
     const requestUrl = new URL(event.request.url);
 
     if (event.request.method !== 'GET') return;
 
+    // Navigation requests: network first, cache fallback
     if (event.request.mode === 'navigate') {
         event.respondWith(
             fetch(event.request)
@@ -82,35 +89,19 @@ self.addEventListener('fetch', event => {
         return;
     }
 
-    if (requestUrl.pathname.match(/\.(png|jpg|jpeg|gif|svg|ico|webp)$/i)) {
-        event.respondWith(
-            caches.match(event.request).then(cached => {
-                if (cached) return cached;
-                return fetch(event.request).then(response => {
-                    const clone = response.clone();
-                    caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
-                    return response;
-                }).catch(() => {
-                    swLog('warn', 'Image load failed: ' + event.request.url);
-                });
-            })
-        );
+    // For images, fonts, etc.
+    if (requestUrl.pathname.match(/\.(png|jpg|jpeg|gif|svg|ico|webp|woff2?)$/i)) {
+        event.respondWith(serveStaleWhileRevalidate(event.request));
         return;
     }
 
-    if (requestUrl.pathname.match(/\.(json|js|css|woff2?)$/i) || requestUrl.pathname === '/manifest.json') {
-        event.respondWith(
-            caches.match(event.request).then(cached => {
-                return cached || fetch(event.request).then(response => {
-                    const clone = response.clone();
-                    caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
-                    return response;
-                });
-            })
-        );
+    // For JSON, JS, CSS, manifest – stale-while-revalidate
+    if (requestUrl.pathname.match(/\.(json|js|css)$/i) || requestUrl.pathname === '/manifest.json') {
+        event.respondWith(serveStaleWhileRevalidate(event.request));
         return;
     }
 
+    // All other requests: network with timeout fallback
     event.respondWith(
         new Promise(resolve => {
             let didTimeout = false;
@@ -139,6 +130,22 @@ self.addEventListener('fetch', event => {
         })
     );
 });
+
+// Helper: stale-while-revalidate
+function serveStaleWhileRevalidate(request) {
+    return caches.open(CACHE_NAME).then(cache => {
+        return cache.match(request).then(cachedResponse => {
+            const fetchPromise = fetch(request).then(networkResponse => {
+                cache.put(request, networkResponse.clone());
+                return networkResponse;
+            }).catch(() => {
+                // network error, ignore
+            });
+            // Return cached immediately, but update cache in background
+            return cachedResponse || fetchPromise;
+        });
+    });
+}
 
 // Message handling
 self.addEventListener('message', event => {
