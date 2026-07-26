@@ -139,25 +139,25 @@ async function initInstallButton() {
     }
 
     function initThemeToggle() {
-        const body = document.body;
-        const toggle = document.getElementById('themeToggle');
-        const icon = document.getElementById('themeIcon');
-        const label = document.getElementById('themeLabel');
-        if (!toggle || !icon || !label) return;
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            body.classList.add('dark');
-            icon.textContent = '☀️';
-            label.textContent = 'Mode clair';
-        }
-        toggle.addEventListener('click', () => {
-            body.classList.toggle('dark');
-            const isDark = body.classList.contains('dark');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            icon.textContent = isDark ? '☀️' : '🌙';
-            label.textContent = isDark ? 'Mode clair' : 'Mode sombre';
-        });
+    const body = document.body;
+    const toggle = document.getElementById('themeToggle');
+    const icon = document.getElementById('themeIcon');
+    // No longer requires the label – only needs the button and icon
+    if (!toggle || !icon) return;
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        body.classList.add('dark');
+        icon.textContent = '☀️';
     }
+
+    toggle.addEventListener('click', () => {
+        body.classList.toggle('dark');
+        const isDark = body.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        icon.textContent = isDark ? '☀️' : '🌙';
+    });
+}
 
     function initSettingsModal() {
         const modal = document.getElementById('settingsModal');
