@@ -1,6 +1,5 @@
 // cards-building.js
 (function() {
-  // MINI LOGGER (writes to testing DB) – inchangé
   const DB_NAME = 'adminMonitorDB_v2';
   const DB_VERSION = 1;
   let dbReady = false;
@@ -15,11 +14,7 @@
           db.createObjectStore('actions', { keyPath: 'id', autoIncrement: true });
         }
       };
-      request.onsuccess = (e) => {
-        db = e.target.result;
-        dbReady = true;
-        resolve(db);
-      };
+      request.onsuccess = (e) => { db = e.target.result; dbReady = true; resolve(db); };
       request.onerror = (e) => reject(e.target.error);
     });
   }
@@ -38,7 +33,6 @@
     } catch (e) { /* silent */ }
   }
 
-  // Card building logic
   const cardsData = [
     { id: 'primaire4', titleKey: 'card.primaire4.title', type: 'coming' },
     { id: 'primaire5', titleKey: 'card.primaire5.title', type: 'coming' },
@@ -63,7 +57,7 @@
     const header = document.createElement('div');
     header.className = 'card-header';
     header.setAttribute('data-i18n', card.titleKey);
-    header.innerHTML = (card.type === 'revision' ? '⭐ ' : '📘 ') + card.titleKey; // Placeholder avant traduction
+    header.innerHTML = (card.type === 'revision' ? '⭐ ' : '📘 ') + card.titleKey; // placeholder
     cardEl.appendChild(header);
 
     const body = document.createElement('div');
@@ -77,7 +71,7 @@
       ul.className = 'sections-list';
       card.sections.forEach(sec => {
         const li = document.createElement('li');
-        li.textContent = sec + ' (prochainement)'; // sera remplacé par la traduction
+        li.textContent = sec + ' (prochainement)';
         li.setAttribute('data-i18n', 'soon');
         ul.appendChild(li);
       });
@@ -91,10 +85,7 @@
     grid.appendChild(cardEl);
   });
 
-  // Appliquer les traductions après la construction des cartes
-  if (typeof applyTranslations === 'function') {
-    applyTranslations();
-  }
+  if (typeof applyTranslations === 'function') applyTranslations();
 
   logToDB({ type: 'info', message: 'cards-building.js loaded and cards rendered' });
 })();

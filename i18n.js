@@ -1,4 +1,4 @@
-// i18n.js – Module de traduction FR / EN / AR
+// i18n.js – Module de traduction FR / EN / AR (complet)
 (function() {
   const DEFAULT_LANG = 'fr';
   const translations = {
@@ -78,7 +78,7 @@
       'week7.title': 'Méthodologie des épreuves',
       'week8.title': 'Révisions intensives et bilan',
 
-      // Week 1 lessons
+      // Semaine 1
       'week1.lesson1.label': 'Grammaire (1)',
       'week1.lesson1.title': 'Les classes grammaticales',
       'week1.lesson2.label': 'Grammaire (2)',
@@ -96,7 +96,7 @@
       'week1.lesson8.label': '📖 Étude de texte',
       'week1.lesson8.title': 'Comprendre et analyser un texte littéraire',
 
-      // Week 2
+      // Semaine 2
       'week2.lesson1.label': 'Grammaire (1)',
       'week2.lesson1.title': 'Les propositions subordonnées relatives',
       'week2.lesson2.label': 'Grammaire (2)',
@@ -114,7 +114,7 @@
       'week2.lesson8.label': '📖 Étude de texte',
       'week2.lesson8.title': 'Identifier thèse, arguments, exemples',
 
-      // Week 3
+      // Semaine 3
       'week3.lesson1.label': 'Grammaire (1)',
       'week3.lesson1.title': 'Les pronoms personnels et leurs fonctions',
       'week3.lesson2.label': 'Grammaire (2)',
@@ -132,7 +132,7 @@
       'week3.lesson8.label': '📖 Étude de texte',
       'week3.lesson8.title': 'Confronter plusieurs documents',
 
-      // Week 4
+      // Semaine 4
       'week4.lesson1.label': 'Grammaire (1)',
       'week4.lesson1.title': 'Les expansions du nom',
       'week4.lesson2.label': 'Grammaire (2)',
@@ -150,7 +150,7 @@
       'week4.lesson8.label': '📖 Étude de texte',
       'week4.lesson8.title': 'Caractéristiques du roman',
 
-      // Week 5
+      // Semaine 5
       'week5.lesson1.label': 'Grammaire (1)',
       'week5.lesson1.title': 'Les figures de style',
       'week5.lesson2.label': 'Grammaire (2)',
@@ -168,7 +168,7 @@
       'week5.lesson8.label': '📖 Étude de texte',
       'week5.lesson8.title': 'Images poétiques et fonctions',
 
-      // Week 6
+      // Semaine 6
       'week6.lesson1.label': 'Grammaire (1)',
       'week6.lesson1.title': 'Les connecteurs logiques',
       'week6.lesson2.label': 'Grammaire (2)',
@@ -186,7 +186,7 @@
       'week6.lesson8.label': '📖 Étude de texte',
       'week6.lesson8.title': "Analyse d'un texte argumentatif",
 
-      // Week 7
+      // Semaine 7
       'week7.lesson1.label': 'Grammaire (1)',
       'week7.lesson1.title': 'Révisions grammaticales ciblées',
       'week7.lesson2.label': 'Grammaire (2)',
@@ -204,7 +204,7 @@
       'week7.lesson8.label': '📖 Étude de texte',
       'week7.lesson8.title': "Analyse d'image (photo, affiche)",
 
-      // Week 8
+      // Semaine 8
       'week8.lesson1.label': 'Grammaire (1)',
       'week8.lesson1.title': 'Bilan de grammaire : exercices type Bac',
       'week8.lesson2.label': 'Grammaire (2)',
@@ -294,6 +294,8 @@
       'week6.title': 'Literary Text Analysis',
       'week7.title': 'Exam Methodology',
       'week8.title': 'Intensive Review and Assessment',
+
+      // Semaine 1
       'week1.lesson1.label': 'Grammar (1)',
       'week1.lesson1.title': 'Word classes',
       'week1.lesson2.label': 'Grammar (2)',
@@ -310,7 +312,134 @@
       'week1.lesson7.title': 'Writing a structured paragraph',
       'week1.lesson8.label': '📖 Text study',
       'week1.lesson8.title': 'Understanding and analyzing a literary text',
-      // (and so on for weeks 2-8, similar pattern – omitted for brevity but you can expand)
+
+      // Semaine 2
+      'week2.lesson1.label': 'Grammar (1)',
+      'week2.lesson1.title': 'Relative subordinate clauses',
+      'week2.lesson2.label': 'Grammar (2)',
+      'week2.lesson2.title': 'Complement subordinate clauses',
+      'week2.lesson3.label': 'Conjugation (1)',
+      'week2.lesson3.title': 'Present and past conditional',
+      'week2.lesson4.label': 'Conjugation (2)',
+      'week2.lesson4.title': 'Present and past subjunctive',
+      'week2.lesson5.label': 'Spelling (1)',
+      'week2.lesson5.title': 'Homophones: a/à, ou/où, son/sont',
+      'week2.lesson6.label': 'Spelling (2)',
+      'week2.lesson6.title': 'Agreement of tout, même, quelque',
+      'week2.lesson7.label': '✍️ Writing',
+      'week2.lesson7.title': 'Writing an argumentative paragraph',
+      'week2.lesson8.label': '📖 Text study',
+      'week2.lesson8.title': 'Identifying thesis, arguments, examples',
+
+      // Semaine 3
+      'week3.lesson1.label': 'Grammar (1)',
+      'week3.lesson1.title': 'Personal pronouns and their functions',
+      'week3.lesson2.label': 'Grammar (2)',
+      'week3.lesson2.title': 'Adverbial phrases',
+      'week3.lesson3.label': 'Conjugation (1)',
+      'week3.lesson3.title': 'Pluperfect and future perfect',
+      'week3.lesson4.label': 'Conjugation (2)',
+      'week3.lesson4.title': 'Present and past imperative',
+      'week3.lesson5.label': 'Spelling (1)',
+      'week3.lesson5.title': 'Past participle agreement (complex cases)',
+      'week3.lesson6.label': 'Spelling (2)',
+      'week3.lesson6.title': 'Plural of compound nouns',
+      'week3.lesson7.label': '✍️ Writing',
+      'week3.lesson7.title': 'Summary methodology',
+      'week3.lesson8.label': '📖 Text study',
+      'week3.lesson8.title': 'Comparing multiple documents',
+
+      // Semaine 4
+      'week4.lesson1.label': 'Grammar (1)',
+      'week4.lesson1.title': 'Noun expansions',
+      'week4.lesson2.label': 'Grammar (2)',
+      'week4.lesson2.title': 'Direct and indirect speech',
+      'week4.lesson3.label': 'Conjugation (1)',
+      'week4.lesson3.title': 'Simple past and past anterior',
+      'week4.lesson4.label': 'Conjugation (2)',
+      'week4.lesson4.title': 'Narrative tenses: imperfect, simple past',
+      'week4.lesson5.label': 'Spelling (1)',
+      'week4.lesson5.title': 'Leur/leurs, quant/quand',
+      'week4.lesson6.label': 'Spelling (2)',
+      'week4.lesson6.title': 'Commented dictation',
+      'week4.lesson7.label': '✍️ Writing',
+      'week4.lesson7.title': 'Writing a character portrait',
+      'week4.lesson8.label': '📖 Text study',
+      'week4.lesson8.title': 'Characteristics of the novel',
+
+      // Semaine 5
+      'week5.lesson1.label': 'Grammar (1)',
+      'week5.lesson1.title': 'Figures of speech',
+      'week5.lesson2.label': 'Grammar (2)',
+      'week5.lesson2.title': 'Lexical and semantic fields',
+      'week5.lesson3.label': 'Conjugation (1)',
+      'week5.lesson3.title': 'Sequence of tenses',
+      'week5.lesson4.label': 'Conjugation (2)',
+      'week5.lesson4.title': 'Review of compound tenses',
+      'week5.lesson5.label': 'Spelling (1)',
+      'week5.lesson5.title': 'Past participle agreement (review)',
+      'week5.lesson6.label': 'Spelling (2)',
+      'week5.lesson6.title': 'Invariable words',
+      'week5.lesson7.label': '✍️ Writing',
+      'week5.lesson7.title': 'Writing a poem / analyzing a stanza',
+      'week5.lesson8.label': '📖 Text study',
+      'week5.lesson8.title': 'Poetic images and functions',
+
+      // Semaine 6
+      'week6.lesson1.label': 'Grammar (1)',
+      'week6.lesson1.title': 'Logical connectors',
+      'week6.lesson2.label': 'Grammar (2)',
+      'week6.lesson2.title': 'Modalization',
+      'week6.lesson3.label': 'Conjugation (1)',
+      'week6.lesson3.title': 'Review of indicative tenses',
+      'week6.lesson4.label': 'Conjugation (2)',
+      'week6.lesson4.title': 'Complete conjugation tables',
+      'week6.lesson5.label': 'Spelling (1)',
+      'week6.lesson5.title': 'Prepared dictation',
+      'week6.lesson6.label': 'Spelling (2)',
+      'week6.lesson6.title': 'Correcting frequent mistakes',
+      'week6.lesson7.label': '✍️ Writing',
+      'week6.lesson7.title': 'Building a detailed outline (dissertation)',
+      'week6.lesson8.label': '📖 Text study',
+      'week6.lesson8.title': 'Analyzing an argumentative text',
+
+      // Semaine 7
+      'week7.lesson1.label': 'Grammar (1)',
+      'week7.lesson1.title': 'Targeted grammar review',
+      'week7.lesson2.label': 'Grammar (2)',
+      'week7.lesson2.title': 'Nature and function: synthesis exercises',
+      'week7.lesson3.label': 'Conjugation (1)',
+      'week7.lesson3.title': 'All simple and compound tenses',
+      'week7.lesson4.label': 'Conjugation (2)',
+      'week7.lesson4.title': 'Sequence of tenses: exercises',
+      'week7.lesson5.label': 'Spelling (1)',
+      'week7.lesson5.title': 'Agreement in complex sentences',
+      'week7.lesson6.label': 'Spelling (2)',
+      'week7.lesson6.title': 'All grammatical homophones',
+      'week7.lesson7.label': '✍️ Writing',
+      'week7.lesson7.title': 'Commentary methodology',
+      'week7.lesson8.label': '📖 Text study',
+      'week7.lesson8.title': 'Image analysis (photo, poster)',
+
+      // Semaine 8
+      'week8.lesson1.label': 'Grammar (1)',
+      'week8.lesson1.title': 'Grammar review: Bac-style exercises',
+      'week8.lesson2.label': 'Grammar (2)',
+      'week8.lesson2.title': 'Synthesis: classes and functions',
+      'week8.lesson3.label': 'Conjugation (1)',
+      'week8.lesson3.title': 'Conjugation review: all moods',
+      'week8.lesson4.label': 'Conjugation (2)',
+      'week8.lesson4.title': 'Synthesis: values of tenses',
+      'week8.lesson5.label': 'Spelling (1)',
+      'week8.lesson5.title': 'Spelling review: dictation and corrections',
+      'week8.lesson6.label': 'Spelling (2)',
+      'week8.lesson6.title': 'Synthesis: all agreements',
+      'week8.lesson7.label': '✍️ Writing',
+      'week8.lesson7.title': 'Zero subjects – Bac past papers',
+      'week8.lesson8.label': '📖 Text study',
+      'week8.lesson8.title': 'Correction & error analysis',
+
+      // Conseils
       'conseils_heading': '💡 Tips for Effective Review',
       'conseil_1': '📋 <strong>Organisation</strong>: plan 2h/day, alternate subjects.',
       'conseil_2': '✏️ <strong>Active method</strong>: take notes, make flashcards, rephrase.',
@@ -382,6 +511,8 @@
       'week6.title': 'تحليل النصوص الأدبية',
       'week7.title': 'منهجية الامتحانات',
       'week8.title': 'مراجعة مكثفة وتقييم',
+
+      // Semaine 1
       'week1.lesson1.label': 'القواعد (1)',
       'week1.lesson1.title': 'أصناف الكلمات',
       'week1.lesson2.label': 'القواعد (2)',
@@ -398,7 +529,134 @@
       'week1.lesson7.title': 'كتابة فقرة منظمة',
       'week1.lesson8.label': '📖 دراسة النص',
       'week1.lesson8.title': 'فهم وتحليل نص أدبي',
-      // (weeks 2-8 omitted for brevity)
+
+      // Semaine 2
+      'week2.lesson1.label': 'القواعد (1)',
+      'week2.lesson1.title': 'الجمل الموصولة التابعة',
+      'week2.lesson2.label': 'القواعد (2)',
+      'week2.lesson2.title': 'الجمل المكملة التابعة',
+      'week2.lesson3.label': 'التصريف (1)',
+      'week2.lesson3.title': 'الشرط الحاضر والماضي',
+      'week2.lesson4.label': 'التصريف (2)',
+      'week2.lesson4.title': 'المضارع المنصوب والمجزوم',
+      'week2.lesson5.label': 'الإملاء (1)',
+      'week2.lesson5.title': 'الهوموفونات: a/à, ou/où, son/sont',
+      'week2.lesson6.label': 'الإملاء (2)',
+      'week2.lesson6.title': 'توافق tout, même, quelque',
+      'week2.lesson7.label': '✍️ التعبير الكتابي',
+      'week2.lesson7.title': 'كتابة فقرة حجاجية',
+      'week2.lesson8.label': '📖 دراسة النص',
+      'week2.lesson8.title': 'تحديد الأطروحة والحجج والأمثلة',
+
+      // Semaine 3
+      'week3.lesson1.label': 'القواعد (1)',
+      'week3.lesson1.title': 'الضمائر الشخصية ووظائفها',
+      'week3.lesson2.label': 'القواعد (2)',
+      'week3.lesson2.title': 'المتممات الظرفية',
+      'week3.lesson3.label': 'التصريف (1)',
+      'week3.lesson3.title': 'الماضي التام والمستقبل التام',
+      'week3.lesson4.label': 'التصريف (2)',
+      'week3.lesson4.title': 'الأمر الحاضر والماضي',
+      'week3.lesson5.label': 'الإملاء (1)',
+      'week3.lesson5.title': 'توافق اسم المفعول (حالات معقدة)',
+      'week3.lesson6.label': 'الإملاء (2)',
+      'week3.lesson6.title': 'جمع الأسماء المركبة',
+      'week3.lesson7.label': '✍️ التعبير الكتابي',
+      'week3.lesson7.title': 'منهجية التلخيص',
+      'week3.lesson8.label': '📖 دراسة النص',
+      'week3.lesson8.title': 'مقارنة عدة وثائق',
+
+      // Semaine 4
+      'week4.lesson1.label': 'القواعد (1)',
+      'week4.lesson1.title': 'توسعات الاسم',
+      'week4.lesson2.label': 'القواعد (2)',
+      'week4.lesson2.title': 'الكلام المباشر وغير المباشر',
+      'week4.lesson3.label': 'التصريف (1)',
+      'week4.lesson3.title': 'الماضي البسيط والماضي الأسبق',
+      'week4.lesson4.label': 'التصريف (2)',
+      'week4.lesson4.title': 'أزمنة السرد: الناقص والماضي البسيط',
+      'week4.lesson5.label': 'الإملاء (1)',
+      'week4.lesson5.title': 'Leur/leurs, quant/quand',
+      'week4.lesson6.label': 'الإملاء (2)',
+      'week4.lesson6.title': 'إملاء مشروح',
+      'week4.lesson7.label': '✍️ التعبير الكتابي',
+      'week4.lesson7.title': 'كتابة بورتريه شخصية',
+      'week4.lesson8.label': '📖 دراسة النص',
+      'week4.lesson8.title': 'خصائص الرواية',
+
+      // Semaine 5
+      'week5.lesson1.label': 'القواعد (1)',
+      'week5.lesson1.title': 'الصور البيانية',
+      'week5.lesson2.label': 'القواعد (2)',
+      'week5.lesson2.title': 'الحقول المعجمية والدلالية',
+      'week5.lesson3.label': 'التصريف (1)',
+      'week5.lesson3.title': 'توافق الأزمنة',
+      'week5.lesson4.label': 'التصريف (2)',
+      'week5.lesson4.title': 'مراجعة الأزمنة المركبة',
+      'week5.lesson5.label': 'الإملاء (1)',
+      'week5.lesson5.title': 'مراجعة توافق اسم المفعول',
+      'week5.lesson6.label': 'الإملاء (2)',
+      'week5.lesson6.title': 'الكلمات غير القابلة للتغيير',
+      'week5.lesson7.label': '✍️ التعبير الكتابي',
+      'week5.lesson7.title': 'كتابة قصيدة / تحليل مقطع',
+      'week5.lesson8.label': '📖 دراسة النص',
+      'week5.lesson8.title': 'الصور الشعرية ووظائفها',
+
+      // Semaine 6
+      'week6.lesson1.label': 'القواعد (1)',
+      'week6.lesson1.title': 'الروابط المنطقية',
+      'week6.lesson2.label': 'القواعد (2)',
+      'week6.lesson2.title': 'التحوير (الموضعة)',
+      'week6.lesson3.label': 'التصريف (1)',
+      'week6.lesson3.title': 'مراجعة أزمنة المضارع',
+      'week6.lesson4.label': 'التصريف (2)',
+      'week6.lesson4.title': 'جداول التصريف الكاملة',
+      'week6.lesson5.label': 'الإملاء (1)',
+      'week6.lesson5.title': 'إملاء محضّر',
+      'week6.lesson6.label': 'الإملاء (2)',
+      'week6.lesson6.title': 'تصحيح الأخطاء الشائعة',
+      'week6.lesson7.label': '✍️ التعبير الكتابي',
+      'week6.lesson7.title': 'بناء خطة مفصلة (مقال)',
+      'week6.lesson8.label': '📖 دراسة النص',
+      'week6.lesson8.title': 'تحليل نص حجاجي',
+
+      // Semaine 7
+      'week7.lesson1.label': 'القواعد (1)',
+      'week7.lesson1.title': 'مراجعة قواعدية موجّهة',
+      'week7.lesson2.label': 'القواعد (2)',
+      'week7.lesson2.title': 'الطبيعة والوظيفة: تمارين تركيبية',
+      'week7.lesson3.label': 'التصريف (1)',
+      'week7.lesson3.title': 'كل الأزمنة البسيطة والمركبة',
+      'week7.lesson4.label': 'التصريف (2)',
+      'week7.lesson4.title': 'توافق الأزمنة: تمارين',
+      'week7.lesson5.label': 'الإملاء (1)',
+      'week7.lesson5.title': 'التوافقات في الجملة المعقدة',
+      'week7.lesson6.label': 'الإملاء (2)',
+      'week7.lesson6.title': 'كل الهوموفونات القواعدية',
+      'week7.lesson7.label': '✍️ التعبير الكتابي',
+      'week7.lesson7.title': 'منهجية التعليق المركب',
+      'week7.lesson8.label': '📖 دراسة النص',
+      'week7.lesson8.title': 'تحليل صورة (صورة، ملصق)',
+
+      // Semaine 8
+      'week8.lesson1.label': 'القواعد (1)',
+      'week8.lesson1.title': 'مراجعة القواعد: تمارين على نمط البكالوريا',
+      'week8.lesson2.label': 'القواعد (2)',
+      'week8.lesson2.title': 'تركيب: الأصناف والوظائف',
+      'week8.lesson3.label': 'التصريف (1)',
+      'week8.lesson3.title': 'مراجعة التصريف: كل الأوضاع',
+      'week8.lesson4.label': 'التصريف (2)',
+      'week8.lesson4.title': 'تركيب: قيم الأزمنة',
+      'week8.lesson5.label': 'الإملاء (1)',
+      'week8.lesson5.title': 'مراجعة الإملاء: إملاء وتصحيحات',
+      'week8.lesson6.label': 'الإملاء (2)',
+      'week8.lesson6.title': 'تركيب: كل التوافقات',
+      'week8.lesson7.label': '✍️ التعبير الكتابي',
+      'week8.lesson7.title': 'مواضيع صفرية – حوليات البكالوريا',
+      'week8.lesson8.label': '📖 دراسة النص',
+      'week8.lesson8.title': 'التصحيح وتحليل الأخطاء',
+
+      // Conseils
       'conseils_heading': '💡 نصائح لمراجعة فعالة',
       'conseil_1': '📋 <strong>التنظيم</strong>: خطط لساعتين يومياً، نوع المواد.',
       'conseil_2': '✏️ <strong>الطريقة النشطة</strong>: دوّن ملاحظات، اصنع بطاقات، أعد الصياغة.',
@@ -433,19 +691,27 @@
     if (titleKey) document.title = titleKey;
   }
 
-  window.applyTranslations = applyTranslations;
-
-  document.addEventListener('DOMContentLoaded', () => {
+  function initLangSelector() {
     const langSelect = document.getElementById('langSelect');
-    if (langSelect) {
-      const savedLang = localStorage.getItem('lang') || DEFAULT_LANG;
-      langSelect.value = savedLang;
-      langSelect.addEventListener('change', (e) => {
-        const newLang = e.target.value;
-        localStorage.setItem('lang', newLang);
-        applyTranslations(newLang);
-      });
-    }
-    applyTranslations();
-  });
+    if (!langSelect) return;
+    const savedLang = localStorage.getItem('lang') || DEFAULT_LANG;
+    langSelect.value = savedLang;
+    langSelect.addEventListener('change', (e) => {
+      const newLang = e.target.value;
+      localStorage.setItem('lang', newLang);
+      applyTranslations(newLang);
+    });
+    applyTranslations(savedLang);
+  }
+
+  window.applyTranslations = applyTranslations;
+  window.initLangSelector = initLangSelector;
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      if (document.getElementById('langSelect')) initLangSelector();
+    });
+  } else {
+    if (document.getElementById('langSelect')) initLangSelector();
+  }
 })();
