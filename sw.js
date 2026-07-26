@@ -1,5 +1,5 @@
 // Service Worker – Educational Dashboard – French
-const CACHE_NAME = 'revisions-tunisie-v1.3.1';
+const CACHE_NAME = 'revisions-tunisie-v1.3.2';
 const urlsToCache = [
     '/',
     '/index.html',

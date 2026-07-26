@@ -31,7 +31,16 @@
       flex: 1;
       overflow: hidden;
     }
-    .sidebar { width: 240px; background: var(--surface); border-right: 1px solid var(--border); padding: 1rem; display: flex; flex-direction: column; flex-shrink: 0; }
+    .sidebar {
+  width: 240px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  overflow-y: auto;   /* ← new */
+}
     .sidebar h2 { color: var(--accent); margin-bottom: 1.5rem; font-size: 1.2rem; }
     .sidebar button { display: block; width: 100%; padding: 0.7rem 1rem; margin-bottom: 0.4rem; background: transparent; border: 1px solid transparent; color: var(--text); text-align: left; border-radius: var(--radius); cursor: pointer; transition: 0.2s; font-size: 0.95rem; }
     .sidebar button:hover, .sidebar button.active { background: var(--border); border-color: var(--accent); }
