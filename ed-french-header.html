@@ -4,22 +4,53 @@
     <span class="site-title">Educational Dashboard<br>French Hub</span>
   </div>
   <div class="header-right">
-    <!-- Dummy sign-in (no real function) -->
+    <!-- Not logged in -->
     <button id="signInBtn" class="header-btn sign-in-btn" title="Se connecter">🔑 Connexion</button>
-    <!-- Profile (hidden until signed in) -->
+    <!-- Logged in -->
+    <button id="signOutBtn" class="header-btn sign-out-btn" title="Se déconnecter" style="display: none;">🚪 Déconnexion</button>
     <button id="profileBtn" class="header-btn profile-btn" title="Profil" style="display: none;">👤 Profil</button>
-    <!-- Settings -->
+    <!-- Always visible -->
     <button id="settingsBtn" class="header-btn settings-btn" title="Paramètres">⚙️</button>
-    <!-- Theme toggle (icon only, no text) -->
     <button id="themeToggle" class="header-btn theme-btn" title="Changer le mode">
       <span id="themeIcon">🌙</span>
     </button>
-    <!-- Online/Offline indicator -->
     <span id="onlineStatus" class="status-dot online" title="En ligne"></span>
   </div>
 </header>
 
-<!-- Settings modal (unchanged) -->
+<!-- Auth Modal -->
+<div id="authModal" class="modal auth-modal">
+  <div class="modal-content auth-modal-content">
+    <span class="close-modal">&times;</span>
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-tab="signin">Connexion</button>
+      <button class="auth-tab" data-tab="signup">Inscription</button>
+    </div>
+    <!-- Sign In Form -->
+    <div id="authFormSignin" class="auth-form active">
+      <input type="text" placeholder="Nom d'utilisateur" class="auth-input" id="signin-username">
+      <input type="email" placeholder="Email" class="auth-input" id="signin-email">
+      <div class="password-wrapper">
+        <input type="password" placeholder="Mot de passe" class="auth-input" id="signin-password">
+        <button type="button" class="toggle-password" data-target="signin-password">👁️</button>
+      </div>
+      <button class="auth-submit" id="signin-submit">Se connecter</button>
+      <button class="forgot-password" id="forgotPassword">Mot de passe oublié ?</button>
+    </div>
+    <!-- Sign Up Form -->
+    <div id="authFormSignup" class="auth-form">
+      <input type="text" placeholder="Nom d'utilisateur" class="auth-input" id="signup-username">
+      <input type="email" placeholder="Email" class="auth-input" id="signup-email">
+      <div class="password-wrapper">
+        <input type="password" placeholder="Mot de passe" class="auth-input" id="signup-password">
+        <button type="button" class="toggle-password" data-target="signup-password">👁️</button>
+      </div>
+      <button class="auth-submit" id="signup-submit">S'inscrire</button>
+    </div>
+  </div>
+</div>
+
+<!-- Settings Modal (unchanged) -->
 <div id="settingsModal" class="modal">
   <div class="modal-content">
     <span class="close-modal">&times;</span>

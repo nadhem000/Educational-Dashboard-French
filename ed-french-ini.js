@@ -77,7 +77,8 @@
             initThemeToggle();
             initSettingsModal();
             initOnlineStatus();
-            initInstallButton(); // harmless if button missing
+            initAuth();               // 👈 new auth modal & button logic
+            initInstallButton();
 
             await loadScript('cards-building.js');
             registerSW();
@@ -132,6 +133,126 @@
         window.addEventListener('online', update);
         window.addEventListener('offline', update);
         update();
+    }
+
+    // ── Mock Auth (modal, sign in/up, button swapping) ──
+    function initAuth() {
+        const signInBtn = document.getElementById('signInBtn');
+        const signOutBtn = document.getElementById('signOutBtn');
+        const profileBtn = document.getElementById('profileBtn');
+        const authModal = document.getElementById('authModal');
+        const closeModalBtn = authModal ? authModal.querySelector('.close-modal') : null;
+        const tabButtons = authModal ? authModal.querySelectorAll('.auth-tab') : [];
+        const signinForm = document.getElementById('authFormSignin');
+        const signupForm = document.getElementById('authFormSignup');
+        const forgotPasswordBtn = document.getElementById('forgotPassword');
+
+        // Helper to update header buttons based on login state
+        function setLoggedIn(isLoggedIn) {
+            if (isLoggedIn) {
+                signInBtn.style.display = 'none';
+                signOutBtn.style.display = 'inline-flex';
+                profileBtn.style.display = 'inline-flex';
+                localStorage.setItem('isLoggedIn', 'true');
+            } else {
+                signInBtn.style.display = 'inline-flex';
+                signOutBtn.style.display = 'none';
+                profileBtn.style.display = 'none';
+                localStorage.removeItem('isLoggedIn');
+            }
+        }
+
+        // Initial state from localStorage
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+            setLoggedIn(true);
+        }
+
+        // Open modal when 'Connexion' clicked
+        if (signInBtn && authModal) {
+            signInBtn.addEventListener('click', () => {
+                authModal.style.display = 'block';
+            });
+        }
+
+        // Close modal
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', () => {
+                authModal.style.display = 'none';
+            });
+        }
+        window.addEventListener('click', (e) => {
+            if (e.target === authModal) authModal.style.display = 'none';
+        });
+
+        // Tab switching
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabName = btn.dataset.tab;
+                // Update active tab
+                tabButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                // Show corresponding form
+                document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+                if (tabName === 'signin') signinForm.classList.add('active');
+                else if (tabName === 'signup') signupForm.classList.add('active');
+            });
+        });
+
+        // Password visibility toggle (works for both forms)
+        document.querySelectorAll('.toggle-password').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const input = document.getElementById(btn.dataset.target);
+                if (input) {
+                    const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+                    input.setAttribute('type', type);
+                    // change icon
+                    btn.textContent = type === 'password' ? '👁️' : '🙈';
+                }
+            });
+        });
+
+        // Sign In mock
+        const signinSubmit = document.getElementById('signin-submit');
+        if (signinSubmit) {
+            signinSubmit.addEventListener('click', (e) => {
+                e.preventDefault();
+                // Accept any values – mock success
+                setLoggedIn(true);
+                authModal.style.display = 'none';
+                // Clear form (optional)
+                document.getElementById('signin-username').value = '';
+                document.getElementById('signin-email').value = '';
+                document.getElementById('signin-password').value = '';
+            });
+        }
+
+        // Sign Up mock
+        const signupSubmit = document.getElementById('signup-submit');
+        if (signupSubmit) {
+            signupSubmit.addEventListener('click', (e) => {
+                e.preventDefault();
+                setLoggedIn(true);
+                authModal.style.display = 'none';
+                document.getElementById('signup-username').value = '';
+                document.getElementById('signup-email').value = '';
+                document.getElementById('signup-password').value = '';
+            });
+        }
+
+        // Forgot password mock
+        if (forgotPasswordBtn) {
+            forgotPasswordBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert('Fonctionnalité à venir – Mot de passe oublié.');
+            });
+        }
+
+        // Sign out
+        if (signOutBtn) {
+            signOutBtn.addEventListener('click', () => {
+                setLoggedIn(false);
+            });
+        }
     }
 
     // ── PWA Install prompt (button hidden if not needed) ──

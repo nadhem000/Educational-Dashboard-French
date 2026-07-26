@@ -190,12 +190,14 @@ body.dark .install-btn {
 
 /* Accent buttons (connexion / profil) */
 .sign-in-btn,
+.sign-out-btn,
 .profile-btn {
     background: var(--accent);
     color: #fff;
     border: none;
 }
 .sign-in-btn:hover,
+.sign-out-btn:hover,
 .profile-btn:hover {
     background: var(--accent-hover);
     transform: translateY(-1px);
@@ -233,7 +235,118 @@ body.dark .header-btn {
     color: #e8dfd2;
 }
 body.dark .sign-in-btn,
+body.dark .sign-out-btn,
 body.dark .profile-btn {
     background: #c75b2c;
     color: #fff;
+}
+
+/* ============================================
+   AUTH MODAL
+   ============================================ */
+.auth-modal .modal-content {
+  max-width: 420px;
+  padding: 1.5rem 1.8rem;
+  text-align: left;
+}
+.auth-tabs {
+  display: flex;
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid var(--border);
+}
+.auth-tab {
+  flex: 1;
+  padding: 0.6rem 0;
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s, border-bottom 0.2s;
+  border-bottom: 3px solid transparent;
+  font-size: 0.95rem;
+}
+.auth-tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.auth-form {
+  display: none;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.auth-form.active {
+  display: flex;
+}
+.auth-input {
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: var(--card-bg);
+  color: var(--text);
+  outline: none;
+  transition: border 0.2s;
+}
+.auth-input:focus {
+  border-color: var(--accent);
+}
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.password-wrapper .auth-input {
+  flex: 1;
+  padding-right: 2.5rem;
+}
+.toggle-password {
+  position: absolute;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--text-light);
+  line-height: 1;
+}
+.auth-submit {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.7rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.auth-submit:hover {
+  background: var(--accent-hover);
+}
+.forgot-password {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-top: 0.4rem;
+  padding: 0;
+}
+.forgot-password:hover {
+  color: var(--accent-hover);
+}
+
+/* Dark mode tweaks for auth modal */
+body.dark .auth-modal .modal-content {
+  background: #2a2620;
+}
+body.dark .auth-input {
+  background: #3a3329;
+  color: #e8dfd2;
+  border-color: #3e3830;
+}
+body.dark .auth-input:focus {
+  border-color: var(--accent);
 }
