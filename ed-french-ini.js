@@ -38,7 +38,6 @@
         navigator.serviceWorker.addEventListener('message', event => {
             if (event.data && event.data.type === 'SW_LOG') {
                 const payload = event.data.payload;
-                // Determine store based on log level
                 const storeName = payload.level === 'error' ? 'errors' : 'actions';
                 logToDB(storeName, { message: payload.message, source: 'sw', level: payload.level });
             }
@@ -54,6 +53,7 @@
 
     async function init() {
         try {
+            // Fetch and inject header
             const headerResp = await fetch('ed-french-header.html');
             if (!headerResp.ok) throw new Error('Header introuvable');
             const headerHTML = await headerResp.text();
@@ -65,6 +65,7 @@
                 body.insertBefore(tempDiv.firstChild, firstBodyChild);
             }
 
+            // Fetch and inject footer
             const footerResp = await fetch('ed-french-footer.html');
             if (!footerResp.ok) throw new Error('Footer introuvable');
             const footerHTML = await footerResp.text();
@@ -72,56 +73,97 @@
             footerTemp.innerHTML = footerHTML;
             body.appendChild(footerTemp.firstChild);
 
-// ═══════════ PWA INSTALL BUTTON ═══════════
-async function initInstallButton() {
-    const installBtn = document.getElementById('installBtn');
-    if (!installBtn) return;
-
-    // Already installed → never show the button
-    if (window.matchMedia('(display-mode: standalone)').matches) {
-        installBtn.style.display = 'none';
-        return;
-    }
-
-    let deferredPrompt;
-
-    window.addEventListener('beforeinstallprompt', (e) => {
-        // Prevent the mini-infobar from appearing on mobile
-        e.preventDefault();
-        deferredPrompt = e;
-        installBtn.style.display = 'inline-block';
-
-        logToDB('actions', { message: 'beforeinstallprompt fired – install button shown', type: 'pwa' });
-    });
-
-    installBtn.addEventListener('click', async () => {
-        if (!deferredPrompt) return;
-        deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
-        logToDB('actions', { message: `Install prompt outcome: ${outcome}`, type: 'pwa' });
-
-        if (outcome === 'accepted') {
-            installBtn.style.display = 'none';
-            logToDB('actions', { message: 'User accepted install', type: 'pwa' });
-        }
-        deferredPrompt = null;
-    });
-
-    window.addEventListener('appinstalled', () => {
-        installBtn.style.display = 'none';
-        logToDB('actions', { message: 'App installed successfully', type: 'pwa' });
-    });
-}
+            // Initialise all header-dependent features
             initThemeToggle();
             initSettingsModal();
-    initInstallButton();
-            await loadScript('cards-building.js');
+            initOnlineStatus();
+            initInstallButton(); // harmless if button missing
 
-            // Register service worker (already done outside, but we keep it here for completeness)
+            await loadScript('cards-building.js');
             registerSW();
         } catch (error) {
             logToDB('errors', { message: 'Fallback: ' + error.message });
         }
+    }
+
+    // ── Theme toggle (icon only, no label) ──
+    function initThemeToggle() {
+        const body = document.body;
+        const toggle = document.getElementById('themeToggle');
+        const icon = document.getElementById('themeIcon');
+        if (!toggle || !icon) return;
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark');
+            icon.textContent = '☀️';
+        }
+
+        toggle.addEventListener('click', () => {
+            body.classList.toggle('dark');
+            const isDark = body.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            icon.textContent = isDark ? '☀️' : '🌙';
+        });
+    }
+
+    // ── Settings modal ──
+    function initSettingsModal() {
+        const modal = document.getElementById('settingsModal');
+        const settingsBtn = document.getElementById('settingsBtn');
+        const closeBtn = modal ? modal.querySelector('.close-modal') : null;
+        if (!modal || !settingsBtn || !closeBtn) return;
+        settingsBtn.onclick = () => modal.style.display = 'block';
+        closeBtn.onclick = () => modal.style.display = 'none';
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) modal.style.display = 'none';
+        });
+    }
+
+    // ── Online/Offline dot updater ──
+    function initOnlineStatus() {
+        const dot = document.getElementById('onlineStatus');
+        if (!dot) return;
+        function update() {
+            const online = navigator.onLine;
+            dot.className = 'status-dot ' + (online ? 'online' : 'offline');
+            dot.title = online ? 'En ligne' : 'Hors ligne';
+        }
+        window.addEventListener('online', update);
+        window.addEventListener('offline', update);
+        update();
+    }
+
+    // ── PWA Install prompt (button hidden if not needed) ──
+    async function initInstallButton() {
+        const installBtn = document.getElementById('installBtn');
+        if (!installBtn) return;
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+            installBtn.style.display = 'none';
+            return;
+        }
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            installBtn.style.display = 'inline-block';
+            logToDB('actions', { message: 'beforeinstallprompt fired – install button shown', type: 'pwa' });
+        });
+        installBtn.addEventListener('click', async () => {
+            if (!deferredPrompt) return;
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            logToDB('actions', { message: `Install prompt outcome: ${outcome}`, type: 'pwa' });
+            if (outcome === 'accepted') {
+                installBtn.style.display = 'none';
+                logToDB('actions', { message: 'User accepted install', type: 'pwa' });
+            }
+            deferredPrompt = null;
+        });
+        window.addEventListener('appinstalled', () => {
+            installBtn.style.display = 'none';
+            logToDB('actions', { message: 'App installed successfully', type: 'pwa' });
+        });
     }
 
     function registerSW() {
@@ -136,39 +178,6 @@ async function initInstallButton() {
                     });
             });
         }
-    }
-
-    function initThemeToggle() {
-    const body = document.body;
-    const toggle = document.getElementById('themeToggle');
-    const icon = document.getElementById('themeIcon');
-    // No longer requires the label – only needs the button and icon
-    if (!toggle || !icon) return;
-
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        body.classList.add('dark');
-        icon.textContent = '☀️';
-    }
-
-    toggle.addEventListener('click', () => {
-        body.classList.toggle('dark');
-        const isDark = body.classList.contains('dark');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        icon.textContent = isDark ? '☀️' : '🌙';
-    });
-}
-
-    function initSettingsModal() {
-        const modal = document.getElementById('settingsModal');
-        const settingsBtn = document.getElementById('settingsBtn');
-        const closeBtn = modal ? modal.querySelector('.close-modal') : null;
-        if (!modal || !settingsBtn || !closeBtn) return;
-        settingsBtn.onclick = () => modal.style.display = 'block';
-        closeBtn.onclick = () => modal.style.display = 'none';
-        window.addEventListener('click', (e) => {
-            if (e.target === modal) modal.style.display = 'none';
-        });
     }
 
     function loadScript(src) {

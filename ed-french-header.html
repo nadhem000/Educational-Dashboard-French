@@ -1,25 +1,20 @@
 <header class="site-header">
-  <!-- LEFT: icon + site title -->
   <div class="header-left">
     <img src="assets/icons/icon-96x96.png" alt="Logo" width="32" height="32" class="header-icon">
     <span class="site-title">Educational Dashboard<br>French Hub</span>
   </div>
-
-  <!-- RIGHT: actions + status -->
   <div class="header-right">
-    <!-- Sign in / Profile (dummy) -->
+    <!-- Dummy sign-in (no real function) -->
     <button id="signInBtn" class="header-btn sign-in-btn" title="Se connecter">🔑 Connexion</button>
+    <!-- Profile (hidden until signed in) -->
     <button id="profileBtn" class="header-btn profile-btn" title="Profil" style="display: none;">👤 Profil</button>
-
-    <!-- Settings gear -->
+    <!-- Settings -->
     <button id="settingsBtn" class="header-btn settings-btn" title="Paramètres">⚙️</button>
-
-    <!-- Dark/Light mode icon (no text) -->
+    <!-- Theme toggle (icon only, no text) -->
     <button id="themeToggle" class="header-btn theme-btn" title="Changer le mode">
       <span id="themeIcon">🌙</span>
     </button>
-
-    <!-- Online/Offline indicator (green/red dot) -->
+    <!-- Online/Offline indicator -->
     <span id="onlineStatus" class="status-dot online" title="En ligne"></span>
   </div>
 </header>
@@ -31,18 +26,3 @@
     <p>⚙️ Paramètres – Bientôt disponible</p>
   </div>
 </div>
-
-<!-- Online/Offline toggle script -->
-<script>
-  (function() {
-    const dot = document.getElementById('onlineStatus');
-    function updateStatus() {
-      const online = navigator.onLine;
-      dot.className = 'status-dot ' + (online ? 'online' : 'offline');
-      dot.title = online ? 'En ligne' : 'Hors ligne';
-    }
-    window.addEventListener('online', updateStatus);
-    window.addEventListener('offline', updateStatus);
-    updateStatus();
-  })();
-</script>
