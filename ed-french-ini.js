@@ -44,6 +44,26 @@
         });
     }
 
+    // ═══════════ GLOBAL TOAST ═══════════
+    window.showToast = function(message, type = '') {
+        const container = document.getElementById('toast-container') || createToastContainer();
+        const toast = document.createElement('div');
+        toast.className = 'toast ' + type;
+        toast.textContent = message;
+        container.appendChild(toast);
+        // Auto-remove after animation ends (3s)
+        setTimeout(() => {
+            if (toast.parentNode) toast.parentNode.removeChild(toast);
+        }, 3000);
+    };
+
+    function createToastContainer() {
+        const container = document.createElement('div');
+        container.id = 'toast-container';
+        document.body.appendChild(container);
+        return container;
+    }
+
     // ═══════════ MAIN INIT ═══════════
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
@@ -73,11 +93,12 @@
             footerTemp.innerHTML = footerHTML;
             body.appendChild(footerTemp.firstChild);
 
-            // Initialise all header-dependent features
+            // Initialise all features
             initThemeToggle();
             initSettingsModal();
             initOnlineStatus();
-            initAuth();               // 👈 new auth modal & button logic
+            initAuth();
+            initFooterButtons();   // 👈 new footer mock buttons
             initInstallButton();
 
             await loadScript('cards-building.js');
@@ -87,19 +108,17 @@
         }
     }
 
-    // ── Theme toggle (icon only, no label) ──
+    // ── Theme toggle (icon only) ──
     function initThemeToggle() {
         const body = document.body;
         const toggle = document.getElementById('themeToggle');
         const icon = document.getElementById('themeIcon');
         if (!toggle || !icon) return;
-
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
             body.classList.add('dark');
             icon.textContent = '☀️';
         }
-
         toggle.addEventListener('click', () => {
             body.classList.toggle('dark');
             const isDark = body.classList.contains('dark');
@@ -121,7 +140,7 @@
         });
     }
 
-    // ── Online/Offline dot updater ──
+    // ── Online/Offline dot ──
     function initOnlineStatus() {
         const dot = document.getElementById('onlineStatus');
         if (!dot) return;
@@ -135,7 +154,7 @@
         update();
     }
 
-    // ── Mock Auth (modal, sign in/up, button swapping) ──
+    // ── Auth (mock) ──
     function initAuth() {
         const signInBtn = document.getElementById('signInBtn');
         const signOutBtn = document.getElementById('signOutBtn');
@@ -147,7 +166,6 @@
         const signupForm = document.getElementById('authFormSignup');
         const forgotPasswordBtn = document.getElementById('forgotPassword');
 
-        // Helper to update header buttons based on login state
         function setLoggedIn(isLoggedIn) {
             if (isLoggedIn) {
                 signInBtn.style.display = 'none';
@@ -162,19 +180,13 @@
             }
         }
 
-        // Initial state from localStorage
-        if (localStorage.getItem('isLoggedIn') === 'true') {
-            setLoggedIn(true);
-        }
+        if (localStorage.getItem('isLoggedIn') === 'true') setLoggedIn(true);
 
-        // Open modal when 'Connexion' clicked
         if (signInBtn && authModal) {
             signInBtn.addEventListener('click', () => {
                 authModal.style.display = 'block';
             });
         }
-
-        // Close modal
         if (closeModalBtn) {
             closeModalBtn.addEventListener('click', () => {
                 authModal.style.display = 'none';
@@ -184,49 +196,41 @@
             if (e.target === authModal) authModal.style.display = 'none';
         });
 
-        // Tab switching
         tabButtons.forEach(btn => {
             btn.addEventListener('click', () => {
                 const tabName = btn.dataset.tab;
-                // Update active tab
                 tabButtons.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                // Show corresponding form
                 document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
                 if (tabName === 'signin') signinForm.classList.add('active');
                 else if (tabName === 'signup') signupForm.classList.add('active');
             });
         });
 
-        // Password visibility toggle (works for both forms)
         document.querySelectorAll('.toggle-password').forEach(btn => {
             btn.addEventListener('click', () => {
                 const input = document.getElementById(btn.dataset.target);
                 if (input) {
                     const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
                     input.setAttribute('type', type);
-                    // change icon
                     btn.textContent = type === 'password' ? '👁️' : '🙈';
                 }
             });
         });
 
-        // Sign In mock
         const signinSubmit = document.getElementById('signin-submit');
         if (signinSubmit) {
             signinSubmit.addEventListener('click', (e) => {
                 e.preventDefault();
-                // Accept any values – mock success
                 setLoggedIn(true);
                 authModal.style.display = 'none';
-                // Clear form (optional)
                 document.getElementById('signin-username').value = '';
                 document.getElementById('signin-email').value = '';
                 document.getElementById('signin-password').value = '';
+                window.showToast('✅ Vous êtes connecté.', 'success');
             });
         }
 
-        // Sign Up mock
         const signupSubmit = document.getElementById('signup-submit');
         if (signupSubmit) {
             signupSubmit.addEventListener('click', (e) => {
@@ -236,26 +240,63 @@
                 document.getElementById('signup-username').value = '';
                 document.getElementById('signup-email').value = '';
                 document.getElementById('signup-password').value = '';
+                window.showToast('✅ Compte créé et connecté.', 'success');
             });
         }
 
-        // Forgot password mock
         if (forgotPasswordBtn) {
             forgotPasswordBtn.addEventListener('click', (e) => {
                 e.preventDefault();
-                alert('Fonctionnalité à venir – Mot de passe oublié.');
+                window.showToast('🔧 Fonctionnalité à venir – Mot de passe oublié.', '');
             });
         }
 
-        // Sign out
         if (signOutBtn) {
             signOutBtn.addEventListener('click', () => {
                 setLoggedIn(false);
+                window.showToast('👋 Vous êtes déconnecté.', '');
             });
         }
     }
 
-    // ── PWA Install prompt (button hidden if not needed) ──
+    // ── Footer action buttons (mock background sync & notifications) ──
+    function initFooterButtons() {
+        const bgSyncBtn = document.getElementById('bgSyncBtn');
+        const notifBtn = document.getElementById('notifBtn');
+        if (!bgSyncBtn || !notifBtn) return;
+
+        // Load states from localStorage (default disabled)
+        let bgSyncEnabled = localStorage.getItem('bgSync') === 'true';
+        let notifEnabled = localStorage.getItem('notifications') === 'true';
+        updateFooterButtons();
+
+        function updateFooterButtons() {
+            bgSyncBtn.innerHTML = bgSyncEnabled ? '🔄 Disable Background Sync' : '🔄 Enable Background Sync';
+            notifBtn.innerHTML = notifEnabled ? '🔔 Disable Notifications' : '🔔 Enable Notifications';
+        }
+
+        bgSyncBtn.addEventListener('click', () => {
+            bgSyncEnabled = !bgSyncEnabled;
+            localStorage.setItem('bgSync', bgSyncEnabled);
+            updateFooterButtons();
+            window.showToast(
+                bgSyncEnabled ? 'Background Sync enabled (mock).' : 'Background Sync disabled.',
+                bgSyncEnabled ? 'success' : ''
+            );
+        });
+
+        notifBtn.addEventListener('click', () => {
+            notifEnabled = !notifEnabled;
+            localStorage.setItem('notifications', notifEnabled);
+            updateFooterButtons();
+            window.showToast(
+                notifEnabled ? 'Notifications enabled (mock).' : 'Notifications disabled.',
+                notifEnabled ? 'success' : ''
+            );
+        });
+    }
+
+    // ── PWA Install prompt ──
     async function initInstallButton() {
         const installBtn = document.getElementById('installBtn');
         if (!installBtn) return;

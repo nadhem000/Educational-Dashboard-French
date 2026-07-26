@@ -1,6 +1,25 @@
+:root {
+  /* Newly declared shared colour variables */
+  --settings-btn-bg: #f0e8d8;
+  --settings-btn-hover-bg: #e3d5bc;
+  --modal-overlay: rgba(0, 0, 0, 0.5);
+  --white: #fff;
+  --btn-accent-dark: #c75b2c;
+  --online: #2ecc71;
+  --online-shadow: #2ecc71aa;
+  --offline: #e74c3c;
+  --offline-shadow: #e74c3caa;
+  --dark-btn-bg: #3a3329;
+  --dark-text: #e8dfd2;
+  --dark-border: #3e3830;
+  --danger: #f85149;
+  --success: #3fb950;
+  --toast-dark-bg: #2a2620;
+  --toast-dark-shadow: rgba(0, 0, 0, 0.4);
+}
+
 /* ===== Shared Header, Topbar & Footer Styles ===== */
 
-/* Topbar (Révisions Tunisie + theme button) */
 .topbar {
     display: flex;
     align-items: center;
@@ -59,7 +78,7 @@
     line-height: 1.3;
 }
 .settings-btn {
-    background: #f0e8d8;
+    background: var(--settings-btn-bg);
     border: 1px solid var(--border);
     font-size: 1.3rem;
     cursor: pointer;
@@ -68,7 +87,7 @@
     color: var(--text);
 }
 .settings-btn:hover {
-    background: #e3d5bc;
+    background: var(--settings-btn-hover-bg);
 }
 
 /* Settings modal */
@@ -80,7 +99,7 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.5);
+    background: var(--modal-overlay);
 }
 .modal-content {
     background: var(--card-bg);
@@ -128,11 +147,11 @@
 /* Dark mode overrides */
 body.dark .site-header,
 body.dark .site-footer {
-    background: #2a2620;
+    background: var(--card-bg);
 }
 body.dark .settings-btn {
-    background: #3a3329;
-    color: #e8dfd2;
+    background: var(--dark-btn-bg);
+    color: var(--dark-text);
 }
 /* Header right grouping */
 .header-right {
@@ -141,10 +160,10 @@ body.dark .settings-btn {
     gap: 0.5rem;
 }
 
-/* Install button – identical base to settings-btn, with slight colour variation */
+/* Install button */
 .install-btn {
     background: var(--accent);
-    color: #fff;
+    color: var(--white);
     border: none;
     padding: 0.4rem 0.9rem;
     border-radius: 20px;
@@ -161,8 +180,8 @@ body.dark .settings-btn {
 
 /* Dark mode tweaks for install button */
 body.dark .install-btn {
-    background: #c75b2c;   /* keep accent visible */
-    color: #fff;
+    background: var(--btn-accent-dark);
+    color: var(--white);
 }
 
 /* ============================================
@@ -193,7 +212,7 @@ body.dark .install-btn {
 .sign-out-btn,
 .profile-btn {
     background: var(--accent);
-    color: #fff;
+    color: var(--white);
     border: none;
 }
 .sign-in-btn:hover,
@@ -221,24 +240,24 @@ body.dark .install-btn {
     transition: background 0.3s;
 }
 .status-dot.online {
-    background: #2ecc71;
-    box-shadow: 0 0 4px #2ecc71aa;
+    background: var(--online);
+    box-shadow: 0 0 4px var(--online-shadow);
 }
 .status-dot.offline {
-    background: #e74c3c;
-    box-shadow: 0 0 4px #e74c3caa;
+    background: var(--offline);
+    box-shadow: 0 0 4px var(--offline-shadow);
 }
 
 /* Dark mode overrides for new buttons */
 body.dark .header-btn {
-    background: #3a3329;
-    color: #e8dfd2;
+    background: var(--dark-btn-bg);
+    color: var(--dark-text);
 }
 body.dark .sign-in-btn,
 body.dark .sign-out-btn,
 body.dark .profile-btn {
-    background: #c75b2c;
-    color: #fff;
+    background: var(--btn-accent-dark);
+    color: var(--white);
 }
 
 /* ============================================
@@ -312,7 +331,7 @@ body.dark .profile-btn {
 }
 .auth-submit {
   background: var(--accent);
-  color: #fff;
+  color: var(--white);
   border: none;
   padding: 0.7rem;
   border-radius: 8px;
@@ -340,13 +359,81 @@ body.dark .profile-btn {
 
 /* Dark mode tweaks for auth modal */
 body.dark .auth-modal .modal-content {
-  background: #2a2620;
+  background: var(--card-bg);
 }
 body.dark .auth-input {
-  background: #3a3329;
-  color: #e8dfd2;
-  border-color: #3e3830;
+  background: var(--dark-btn-bg);
+  color: var(--dark-text);
+  border-color: var(--dark-border);
 }
 body.dark .auth-input:focus {
   border-color: var(--accent);
+}
+/* ============================================
+   FOOTER ACTION BUTTONS
+   ============================================ */
+.footer-action-btn {
+    background: none;
+    border: 1px solid var(--border);
+    padding: 0.35rem 0.8rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-light);
+    background: var(--card-bg);
+    transition: all var(--transition);
+    white-space: nowrap;
+}
+.footer-action-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* ============================================
+   TOAST NOTIFICATIONS
+   ============================================ */
+#toast-container {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    pointer-events: none;
+}
+.toast {
+    background: var(--card-bg);
+    color: var(--text);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    padding: 0.8rem 1.2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    font-size: 0.9rem;
+    pointer-events: auto;
+    animation: slideInRight 0.3s ease, fadeOut 0.5s 2.5s forwards;
+    max-width: 320px;
+    word-break: break-word;
+}
+.toast.error {
+    border-left-color: var(--danger);
+}
+.toast.success {
+    border-left-color: var(--success);
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to   { transform: translateX(0); opacity: 1; }
+}
+@keyframes fadeOut {
+    to { opacity: 0; transform: translateY(-10px); }
+}
+
+/* Dark mode toast tweaks */
+body.dark .toast {
+    background: var(--toast-dark-bg);
+    color: var(--dark-text);
+    box-shadow: 0 4px 12px var(--toast-dark-shadow);
 }
