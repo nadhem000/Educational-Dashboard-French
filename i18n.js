@@ -19,10 +19,55 @@
     }
   };
 
+  // ---- Toast translations (always loaded) ----
+  window.addI18nTranslations({
+    fr: {
+      'toast_signin_success': '✅ Vous êtes connecté.',
+      'toast_signup_success': '✅ Compte créé et connecté.',
+      'toast_signout': '👋 Vous êtes déconnecté.',
+      'toast_forgot_password': '🔧 Fonctionnalité à venir – Mot de passe oublié.',
+      'toast_bg_sync_enabled': '🔄 Synchronisation arrière‑plan activée (simulation).',
+      'toast_bg_sync_disabled': '🔄 Synchronisation arrière‑plan désactivée.',
+      'toast_notif_enabled': '🔔 Notifications activées (simulation).',
+      'toast_notif_disabled': '🔔 Notifications désactivées.',
+      'toast_install_prompt': '💡 Pour installer l\'application, utilisez l\'option "Ajouter à l\'écran d\'accueil" du navigateur.',
+      'toast_update_available': '🔄 Une nouvelle version est disponible.',
+      'toast_update_button': 'Actualiser'
+    },
+    en: {
+      'toast_signin_success': '✅ You are signed in.',
+      'toast_signup_success': '✅ Account created and signed in.',
+      'toast_signout': '👋 You have been signed out.',
+      'toast_forgot_password': '🔧 Forgot password feature coming soon.',
+      'toast_bg_sync_enabled': '🔄 Background sync enabled (mock).',
+      'toast_bg_sync_disabled': '🔄 Background sync disabled.',
+      'toast_notif_enabled': '🔔 Notifications enabled (mock).',
+      'toast_notif_disabled': '🔔 Notifications disabled.',
+      'toast_install_prompt': '💡 To install the app, use the "Add to Home Screen" option in your browser.',
+      'toast_update_available': '🔄 A new version is available.',
+      'toast_update_button': 'Refresh'
+    },
+    ar: {
+      'toast_signin_success': '✅ تم تسجيل الدخول بنجاح.',
+      'toast_signup_success': '✅ تم إنشاء الحساب وتسجيل الدخول.',
+      'toast_signout': '👋 تم تسجيل الخروج.',
+      'toast_forgot_password': '🔧 ميزة نسيت كلمة المرور قريباً.',
+      'toast_bg_sync_enabled': '🔄 تم تفعيل المزامنة الخلفية (محاكاة).',
+      'toast_bg_sync_disabled': '🔄 تم تعطيل المزامنة الخلفية.',
+      'toast_notif_enabled': '🔔 تم تفعيل الإشعارات (محاكاة).',
+      'toast_notif_disabled': '🔔 تم تعطيل الإشعارات.',
+      'toast_install_prompt': '💡 لتثبيت التطبيق، استخدم خيار "إضافة إلى الشاشة الرئيسية" في متصفحك.',
+      'toast_update_available': '🔄 تتوفر نسخة جديدة.',
+      'toast_update_button': 'تحديث'
+    }
+  });
+window.translateToastKey = function(lang, key) {
+    return translations[lang]?.[key] || key;
+};
+
   // Marque un conteneur comme bilingue et sauvegarde le français original
   window.makeBilingual = function(container) {
     if (!container) return;
-    console.log('makeBilingual called on', container.className || container.id);
     const elements = container.querySelectorAll('[data-i18n]');
     elements.forEach(el => {
       if (!el.dataset.i18nOrig) {

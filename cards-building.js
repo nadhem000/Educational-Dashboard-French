@@ -1,5 +1,4 @@
 // cards-building.js – version 3 (direct French text, bilingual)
-console.log('cards-building.js v3 loaded');
 
 (function() {
   // 1. Store French translations locally so we can use them immediately
@@ -163,7 +162,6 @@ console.log('cards-building.js v3 loaded');
   // 6. Register grid for bilingual display (saves the French we just set)
   if (typeof makeBilingual === 'function') {
     makeBilingual(grid);
-    console.log('Bilingual grid registered');
   }
 
   // 7. Apply translations for the current language (Arabic/English etc.)

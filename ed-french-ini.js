@@ -1,4 +1,4 @@
-// ed-french-ini.js (complet avec exécution des scripts injectés)
+// ed-french-ini.js (complet avec exécution des scripts injectés et toasts traduits)
 (function() {
   const DB_NAME = 'adminMonitorDB_v2';
   const DB_VERSION = 2;
@@ -39,19 +39,15 @@
     const temp = document.createElement('div');
     temp.innerHTML = htmlString;
 
-    // Convert the child nodes to an array because DOM manipulation changes the list
     const nodes = Array.from(temp.childNodes);
 
     nodes.forEach(node => {
       if (node.nodeName === 'SCRIPT') {
-        // Create a new script element to force execution
         const script = document.createElement('script');
-        // Copy attributes (if any)
         Array.from(node.attributes).forEach(attr => {
           script.setAttribute(attr.name, attr.value);
         });
         script.textContent = node.textContent;
-        // Replace the placeholder node with the live script
         if (position === 'prepend') {
           container.insertBefore(script, container.firstChild);
         } else {
@@ -80,11 +76,21 @@
     });
   }
 
-  window.showToast = function(message, type = '', duration = 3000) {
+  window.showToast = function(key, type = '', duration = 3000, isHTML = false) {
+    const lang = localStorage.getItem('lang') || 'fr';
+    let message = key;
+    if (typeof translateToastKey === 'function') {
+        message = translateToastKey(lang, key);
+    }
+
     const container = document.getElementById('toast-container') || createToastContainer();
     const toast = document.createElement('div');
     toast.className = 'toast ' + type;
-    toast.textContent = message;
+    if (isHTML) {
+        toast.innerHTML = message;
+    } else {
+        toast.textContent = message;
+    }
     container.appendChild(toast);
     setTimeout(() => { if (toast.parentNode) toast.parentNode.removeChild(toast); }, duration);
   };
@@ -97,10 +103,14 @@
   }
 
   function showUpdateToast() {
+    const lang = localStorage.getItem('lang') || 'fr';
+    const message = typeof translateToastKey === 'function' ? translateToastKey(lang, 'toast_update_available') : '🔄 Une nouvelle version est disponible.';
+    const buttonText = typeof translateToastKey === 'function' ? translateToastKey(lang, 'toast_update_button') : 'Actualiser';
+
     const container = document.getElementById('toast-container') || createToastContainer();
     const toast = document.createElement('div');
     toast.className = 'toast';
-    toast.innerHTML = '🔄 Une nouvelle version est disponible. <button id="reloadNow" style="margin-left:0.5rem; background:var(--accent); color:#fff; border:none; padding:0.3rem 0.8rem; border-radius:20px; cursor:pointer;">Actualiser</button>';
+    toast.innerHTML = message + ' <button id="reloadNow" style="margin-left:0.5rem; background:var(--accent); color:#fff; border:none; padding:0.3rem 0.8rem; border-radius:20px; cursor:pointer;">' + buttonText + '</button>';
     container.appendChild(toast);
     document.getElementById('reloadNow').addEventListener('click', () => { window.location.reload(); });
     setTimeout(() => { if (toast.parentNode) toast.parentNode.removeChild(toast); }, 10000);
@@ -114,19 +124,16 @@
 
   async function init() {
     try {
-      // --- Header ---
       const headerResp = await fetch('ed-french-header.html');
       if (!headerResp.ok) throw new Error('Header introuvable');
       const headerHTML = await headerResp.text();
       injectHTML(document.body, headerHTML, 'prepend');
 
-      // --- Footer ---
       const footerResp = await fetch('ed-french-footer.html');
       if (!footerResp.ok) throw new Error('Footer introuvable');
       const footerHTML = await footerResp.text();
       injectHTML(document.body, footerHTML, 'append');
 
-      // Now the translation scripts have been executed, init language
       if (typeof initLangSelector === 'function') {
         initLangSelector();
       }
@@ -138,10 +145,9 @@
       initFooterButtons();
       initInstallButton();
 
-     await loadScript('cards-building.js?v=3');
+      await loadScript('cards-building.js');
       registerSW();
 
-      // Second translation pass for dynamically added cards
       if (typeof applyTranslations === 'function') {
         applyTranslations();
       }
@@ -149,6 +155,7 @@
       logToDB('errors', { message: 'Fallback: ' + error.message });
     }
   }
+
   function initThemeToggle() {
     const body = document.body;
     const toggle = document.getElementById('themeToggle');
@@ -166,6 +173,7 @@
       icon.textContent = isDark ? '☀️' : '🌙';
     });
   }
+
   function initSettingsModal() {
     const modal = document.getElementById('settingsModal');
     const settingsBtn = document.getElementById('settingsBtn');
@@ -175,6 +183,7 @@
     closeBtn.onclick = () => modal.style.display = 'none';
     window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
   }
+
   function initOnlineStatus() {
     const dot = document.getElementById('onlineStatus');
     if (!dot) return;
@@ -188,6 +197,7 @@
     window.addEventListener('offline', update);
     update();
   }
+
   function initAuth() {
     const signInBtn = document.getElementById('signInBtn');
     const signOutBtn = document.getElementById('signOutBtn');
@@ -198,6 +208,7 @@
     const signinForm = document.getElementById('authFormSignin');
     const signupForm = document.getElementById('authFormSignup');
     const forgotPasswordBtn = document.getElementById('forgotPassword');
+
     function setLoggedIn(isLoggedIn) {
       if (isLoggedIn) {
         signInBtn.style.display = 'none';
@@ -211,10 +222,12 @@
         localStorage.removeItem('isLoggedIn');
       }
     }
+
     if (localStorage.getItem('isLoggedIn') === 'true') setLoggedIn(true);
     if (signInBtn && authModal) signInBtn.addEventListener('click', () => { authModal.style.display = 'block'; });
     if (closeModalBtn) closeModalBtn.addEventListener('click', () => { authModal.style.display = 'none'; });
     window.addEventListener('click', (e) => { if (e.target === authModal) authModal.style.display = 'none'; });
+
     tabButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         const tabName = btn.dataset.tab;
@@ -225,6 +238,7 @@
         else if (tabName === 'signup') signupForm.classList.add('active');
       });
     });
+
     document.querySelectorAll('.toggle-password').forEach(btn => {
       btn.addEventListener('click', () => {
         const input = document.getElementById(btn.dataset.target);
@@ -235,6 +249,7 @@
         }
       });
     });
+
     const signinSubmit = document.getElementById('signin-submit');
     if (signinSubmit) {
       signinSubmit.addEventListener('click', (e) => {
@@ -244,9 +259,10 @@
         document.getElementById('signin-username').value = '';
         document.getElementById('signin-email').value = '';
         document.getElementById('signin-password').value = '';
-        window.showToast('✅ Vous êtes connecté.', 'success');
+        window.showToast('toast_signin_success', 'success');
       });
     }
+
     const signupSubmit = document.getElementById('signup-submit');
     if (signupSubmit) {
       signupSubmit.addEventListener('click', (e) => {
@@ -256,47 +272,55 @@
         document.getElementById('signup-username').value = '';
         document.getElementById('signup-email').value = '';
         document.getElementById('signup-password').value = '';
-        window.showToast('✅ Compte créé et connecté.', 'success');
+        window.showToast('toast_signup_success', 'success');
       });
     }
+
     if (forgotPasswordBtn) {
       forgotPasswordBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        window.showToast('🔧 Fonctionnalité à venir – Mot de passe oublié.', '');
+        window.showToast('toast_forgot_password', '');
       });
     }
+
     if (signOutBtn) {
       signOutBtn.addEventListener('click', () => {
         setLoggedIn(false);
-        window.showToast('👋 Vous êtes déconnecté.', '');
+        window.showToast('toast_signout', '');
       });
     }
   }
+
   function initFooterButtons() {
     const bgSyncBtn = document.getElementById('bgSyncBtn');
     const notifBtn = document.getElementById('notifBtn');
     if (!bgSyncBtn || !notifBtn) return;
     let bgSyncEnabled = localStorage.getItem('bgSync') === 'true';
     let notifEnabled = localStorage.getItem('notifications') === 'true';
-    updateFooterButtons();
+
     function updateFooterButtons() {
       bgSyncBtn.setAttribute('data-i18n', bgSyncEnabled ? 'footer_disable_bg_sync' : 'footer_enable_bg_sync');
       notifBtn.setAttribute('data-i18n', notifEnabled ? 'footer_disable_notif' : 'footer_enable_notif');
       if (typeof applyTranslations === 'function') applyTranslations();
     }
+
+    updateFooterButtons();
+
     bgSyncBtn.addEventListener('click', () => {
       bgSyncEnabled = !bgSyncEnabled;
       localStorage.setItem('bgSync', bgSyncEnabled);
       updateFooterButtons();
-      window.showToast(bgSyncEnabled ? 'Background Sync enabled (mock).' : 'Background Sync disabled.', bgSyncEnabled ? 'success' : '');
+      window.showToast(bgSyncEnabled ? 'toast_bg_sync_enabled' : 'toast_bg_sync_disabled', bgSyncEnabled ? 'success' : '');
     });
+
     notifBtn.addEventListener('click', () => {
       notifEnabled = !notifEnabled;
       localStorage.setItem('notifications', notifEnabled);
       updateFooterButtons();
-      window.showToast(notifEnabled ? 'Notifications enabled (mock).' : 'Notifications disabled.', notifEnabled ? 'success' : '');
+      window.showToast(notifEnabled ? 'toast_notif_enabled' : 'toast_notif_disabled', notifEnabled ? 'success' : '');
     });
   }
+
   let deferredPrompt;
   async function initInstallButton() {
     const installBtn = document.getElementById('installBtn');
@@ -322,7 +346,7 @@
         }
         deferredPrompt = null;
       } else {
-        window.showToast('💡 Pour installer l\'application, utilisez l\'option "Ajouter à l\'écran d\'accueil" du navigateur.', '', 5000);
+        window.showToast('toast_install_prompt', '', 5000);
       }
     });
     window.addEventListener('appinstalled', () => {
@@ -333,6 +357,7 @@
       if (!deferredPrompt && installBtn.style.display === 'none') installBtn.style.display = 'inline-flex';
     }, 3000);
   }
+
   function registerSW() {
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -352,6 +377,7 @@
       });
     }
   }
+
   function loadScript(src) {
     return new Promise((resolve, reject) => {
       const script = document.createElement('script');
