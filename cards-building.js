@@ -1,10 +1,69 @@
 // cards-building.js
 (function() {
+  // Register card translations
+  if (typeof addI18nTranslations === 'function') {
+    addI18nTranslations({
+      fr: {
+        'card.primaire4.title': '4ᵉ année primaire',
+        'card.primaire5.title': '5ᵉ année primaire',
+        'card.primaire6.title': '6ᵉ année primaire',
+        'card.primaire7.title': '7ᵉ année primaire',
+        'card.primaire8.title': '8ᵉ année primaire',
+        'card.primaire9.title': '9ᵉ année primaire',
+        'card.secondaire1.title': '1ʳᵉ année secondaire',
+        'card.secondaire2.title': '2ᵉ année secondaire',
+        'card.secondaire3.title': '3ᵉ année secondaire',
+        'card.secondaire4.title': '4ᵉ année secondaire (Bac)',
+        'card.revision.title': '📖 Révision générale',
+        'coming_soon': '⏳ Contenu à venir',
+        'sections_available': 'Sections disponibles (à venir) :',
+        'soon': ' (prochainement)',
+        'revision_desc': 'Un programme complet de 8 semaines pour consolider les bases avant le Bac.',
+        'revision_link': 'Accéder au programme →'
+      },
+      en: {
+        'card.primaire4.title': '4th grade',
+        'card.primaire5.title': '5th grade',
+        'card.primaire6.title': '6th grade',
+        'card.primaire7.title': '7th grade',
+        'card.primaire8.title': '8th grade',
+        'card.primaire9.title': '9th grade',
+        'card.secondaire1.title': '10th grade',
+        'card.secondaire2.title': '11th grade',
+        'card.secondaire3.title': '12th grade',
+        'card.secondaire4.title': '12th grade (Bac)',
+        'card.revision.title': '📖 General Review',
+        'coming_soon': '⏳ Coming soon',
+        'sections_available': 'Available sections (coming soon):',
+        'soon': ' (coming soon)',
+        'revision_desc': 'An 8-week comprehensive program to strengthen the basics before the Bac.',
+        'revision_link': 'Access the program →'
+      },
+      ar: {
+        'card.primaire4.title': 'السنة الرابعة ابتدائي',
+        'card.primaire5.title': 'السنة الخامسة ابتدائي',
+        'card.primaire6.title': 'السنة السادسة ابتدائي',
+        'card.primaire7.title': 'السنة السابعة ابتدائي',
+        'card.primaire8.title': 'السنة الثامنة ابتدائي',
+        'card.primaire9.title': 'السنة التاسعة ابتدائي',
+        'card.secondaire1.title': 'الأولى ثانوي',
+        'card.secondaire2.title': 'الثانية ثانوي',
+        'card.secondaire3.title': 'الثالثة ثانوي',
+        'card.secondaire4.title': 'البكالوريا (السنة الرابعة)',
+        'card.revision.title': '📖 مراجعة عامة',
+        'coming_soon': '⏳ قريباً',
+        'sections_available': 'الأقسام المتاحة (قريباً):',
+        'soon': ' (قريباً)',
+        'revision_desc': 'برنامج شامل مدته 8 أسابيع لتقوية الأساسيات قبل البكالوريا.',
+        'revision_link': 'الوصول إلى البرنامج ←'
+      }
+    });
+  }
+
   const DB_NAME = 'adminMonitorDB_v2';
   const DB_VERSION = 1;
   let dbReady = false;
   let db;
-
   function openDB() {
     return new Promise((resolve, reject) => {
       const request = indexedDB.open(DB_NAME, DB_VERSION);
@@ -18,7 +77,6 @@
       request.onerror = (e) => reject(e.target.error);
     });
   }
-
   async function logToDB(entry) {
     try {
       if (!dbReady) await openDB();
@@ -32,7 +90,6 @@
       });
     } catch (e) { /* silent */ }
   }
-
   const cardsData = [
     { id: 'primaire4', titleKey: 'card.primaire4.title', type: 'coming' },
     { id: 'primaire5', titleKey: 'card.primaire5.title', type: 'coming' },
@@ -46,23 +103,18 @@
     { id: 'secondaire4', titleKey: 'card.secondaire4.title', type: 'secondary', sections: ['Section Lettres', 'Section Sciences', 'Section Techniques'] },
     { id: 'revision', titleKey: 'card.revision.title', type: 'revision', link: 'revision.html' }
   ];
-
   const grid = document.getElementById('cardGrid');
   if (!grid) return;
-
   cardsData.forEach(card => {
     const cardEl = document.createElement('div');
     cardEl.className = 'card' + (card.type === 'revision' ? ' revision' : '');
-
     const header = document.createElement('div');
     header.className = 'card-header';
     header.setAttribute('data-i18n', card.titleKey);
     header.innerHTML = (card.type === 'revision' ? '⭐ ' : '📘 ') + card.titleKey; // placeholder
     cardEl.appendChild(header);
-
     const body = document.createElement('div');
     body.className = 'card-body';
-
     if (card.type === 'coming') {
       body.innerHTML = '<span class="coming-soon" data-i18n="coming_soon">⏳ Contenu à venir</span>';
     } else if (card.type === 'secondary') {
@@ -80,12 +132,9 @@
       body.innerHTML = `<p data-i18n="revision_desc">Un programme complet de 8 semaines pour consolider les bases avant le Bac.</p>
                         <a href="${card.link}" data-i18n="revision_link">Accéder au programme →</a>`;
     }
-
     cardEl.appendChild(body);
     grid.appendChild(cardEl);
   });
-
   if (typeof applyTranslations === 'function') applyTranslations();
-
   logToDB({ type: 'info', message: 'cards-building.js loaded and cards rendered' });
 })();

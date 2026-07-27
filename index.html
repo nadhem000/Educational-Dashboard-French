@@ -175,7 +175,26 @@
     <p class="subtitle" data-i18n="index_subtitle">Des révisions pour le primaire, le secondaire et une section de révision générale complète.</p>
     <div class="cards-grid" id="cardGrid"></div>
   </div>
-  <script src="ed-french-ini.js"></script>
   <script src="i18n.js"></script>
+  <script>
+    // Index page translations
+    if (typeof addI18nTranslations === 'function') {
+      addI18nTranslations({
+        fr: {
+          'index_title': 'Tableau de Bord Éducatif – French',
+          'index_subtitle': 'Des révisions pour le primaire, le secondaire et une section de révision générale complète.'
+        },
+        en: {
+          'index_title': 'Educational Dashboard – French',
+          'index_subtitle': 'Reviews for primary, secondary and a full general review section.'
+        },
+        ar: {
+          'index_title': 'لوحة التحكم التعليمية – الفرنسية',
+          'index_subtitle': 'مراجعات للمرحلتين الابتدائية والثانوية وقسم مراجعة عامة كامل.'
+        }
+      });
+    }
+  </script>
+  <script src="ed-french-ini.js"></script>
 </body>
 </html>

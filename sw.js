@@ -1,5 +1,5 @@
 // Service Worker – Educational Dashboard – French
-const CACHE_NAME = 'revisions-tunisie-v1.3.7'; // bump version to force cache refresh
+const CACHE_NAME = 'revisions-tunisie-v1.3.8'; // bump version to force cache refresh
 const urlsToCache = [
     '/',
     '/index.html',
@@ -10,7 +10,6 @@ const urlsToCache = [
     '/assets/icons/icon-192x192.png',
     '/assets/icons/icon-512x512.png'
 ];
-
 // ═══════════ LOG HELPER (posts to all clients) ═══════════
 async function swLog(level, message) {
     try {
@@ -22,7 +21,6 @@ async function swLog(level, message) {
         // ignore
     }
 }
-
 // Installation
 self.addEventListener('install', event => {
     event.waitUntil(
@@ -38,7 +36,6 @@ self.addEventListener('install', event => {
         })
     );
 });
-
 // Activation – delete old caches and notify clients
 self.addEventListener('activate', event => {
     swLog('info', 'SW activate – cleaning old caches');
@@ -65,13 +62,10 @@ self.addEventListener('activate', event => {
         })
     );
 });
-
 // Fetch strategy – stale-while-revalidate for static assets, network-first for navigations
 self.addEventListener('fetch', event => {
     const requestUrl = new URL(event.request.url);
-
     if (event.request.method !== 'GET') return;
-
     // Navigation requests: network first, cache fallback
     if (event.request.mode === 'navigate') {
         event.respondWith(
@@ -88,19 +82,16 @@ self.addEventListener('fetch', event => {
         );
         return;
     }
-
     // For images, fonts, etc.
     if (requestUrl.pathname.match(/\.(png|jpg|jpeg|gif|svg|ico|webp|woff2?)$/i)) {
         event.respondWith(serveStaleWhileRevalidate(event.request));
         return;
     }
-
     // For JSON, JS, CSS, manifest – stale-while-revalidate
     if (requestUrl.pathname.match(/\.(json|js|css)$/i) || requestUrl.pathname === '/manifest.json') {
         event.respondWith(serveStaleWhileRevalidate(event.request));
         return;
     }
-
     // All other requests: network with timeout fallback
     event.respondWith(
         new Promise(resolve => {
@@ -111,7 +102,6 @@ self.addEventListener('fetch', event => {
                     if (cached) resolve(cached);
                 });
             }, 3000);
-
             fetch(event.request)
                 .then(response => {
                     clearTimeout(timeout);
@@ -130,7 +120,6 @@ self.addEventListener('fetch', event => {
         })
     );
 });
-
 // Helper: stale-while-revalidate
 function serveStaleWhileRevalidate(request) {
     return caches.open(CACHE_NAME).then(cache => {
@@ -146,7 +135,6 @@ function serveStaleWhileRevalidate(request) {
         });
     });
 }
-
 // Message handling
 self.addEventListener('message', event => {
     if (event.data && event.data.type === 'SKIP_WAITING') {
