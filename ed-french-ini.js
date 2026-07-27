@@ -138,7 +138,7 @@
       initFooterButtons();
       initInstallButton();
 
-      await loadScript('cards-building.js');
+      await loadScript('cards-building.js?v=2');
       registerSW();
 
       // Second translation pass for dynamically added cards
