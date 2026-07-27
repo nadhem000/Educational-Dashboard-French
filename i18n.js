@@ -7,7 +7,6 @@
     ar: {}
   };
 
-  // Conteneurs bilingues enregistrés
   const bilingualContainers = [];
 
   window.addI18nTranslations = function(newTranslations) {
@@ -20,9 +19,10 @@
     }
   };
 
-  // 1) Marque un conteneur comme bilingue et sauvegarde le français original
+  // Marque un conteneur comme bilingue et sauvegarde le français original
   window.makeBilingual = function(container) {
     if (!container) return;
+    console.log('makeBilingual called on', container.className || container.id);
     const elements = container.querySelectorAll('[data-i18n]');
     elements.forEach(el => {
       if (!el.dataset.i18nOrig) {
@@ -34,28 +34,21 @@
     }
   };
 
-  // 2) Après chaque changement de langue, restaure le français + ajoute la trad
   function restoreAllBilingual(lang) {
     bilingualContainers.forEach(container => {
-      // supprime les anciens blocs de traduction
       container.querySelectorAll('.i18n-bilingual').forEach(el => el.remove());
-
-      if (lang === 'fr') return; // rien à ajouter
-
+      if (lang === 'fr') return;
       const elements = container.querySelectorAll('[data-i18n]');
       elements.forEach(el => {
-        // restaure le français original
         if (el.dataset.i18nOrig) {
           el.innerHTML = el.dataset.i18nOrig;
         }
-
         const key = el.dataset.i18n;
         if (!key) return;
         const t = translations[lang];
         if (!t) return;
         const translation = t[key];
         if (!translation || translation.trim() === el.textContent.trim()) return;
-
         const bilingualEl = document.createElement('span');
         bilingualEl.className = 'i18n-bilingual';
         bilingualEl.innerHTML = translation;
@@ -83,13 +76,10 @@
     document.querySelectorAll('[data-i18n]').forEach(el => translateElement(el, lang));
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => translateElement(el, lang));
     document.querySelectorAll('[data-i18n-title]').forEach(el => translateElement(el, lang));
-
     const titleEl = document.querySelector('title[data-i18n]');
     if (titleEl && translations[lang]) {
       titleEl.textContent = translations[lang][titleEl.dataset.i18n] || titleEl.textContent;
     }
-
-    // Toujours restaurer l’affichage bilingue après avoir traduit
     restoreAllBilingual(lang);
   }
 
