@@ -61,7 +61,7 @@
   }
 
   const DB_NAME = 'adminMonitorDB_v2';
-  const DB_VERSION = 1;
+  const DB_VERSION = 2;
   let dbReady = false;
   let db;
   function openDB() {
