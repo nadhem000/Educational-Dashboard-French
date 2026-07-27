@@ -10,6 +10,7 @@ const urlsToCache = [
     '/assets/icons/icon-192x192.png',
     '/assets/icons/icon-512x512.png'
 ];
+
 // ═══════════ LOG HELPER (posts to all clients) ═══════════
 async function swLog(level, message) {
     try {
@@ -21,6 +22,78 @@ async function swLog(level, message) {
         // ignore
     }
 }
+
+// Background sync control (set by main page)
+let syncEnabled = false;
+
+// ── IndexedDB helpers (SW scope) ─────────────────
+function openSWDB() {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open('adminMonitorDB_v2', 2);
+    request.onupgradeneeded = (e) => {
+      const db = e.target.result;
+      if (!db.objectStoreNames.contains('actions')) {
+        db.createObjectStore('actions', { keyPath: 'id', autoIncrement: true });
+      }
+      // store for meta values (like swVersion)
+      if (!db.objectStoreNames.contains('meta')) {
+        db.createObjectStore('meta', { keyPath: 'key' });
+      }
+    };
+    request.onsuccess = (e) => resolve(e.target.result);
+    request.onerror = (e) => reject(e.target.error);
+  });
+}
+
+async function getMetaValue(key, defaultValue = null) {
+  const db = await openSWDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction('meta', 'readonly');
+    const store = tx.objectStore('meta');
+    const req = store.get(key);
+    req.onsuccess = () => resolve(req.result ? req.result.value : defaultValue);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+async function setMetaValue(key, value) {
+  const db = await openSWDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction('meta', 'readwrite');
+    const store = tx.objectStore('meta');
+    store.put({ key, value });
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+  });
+}
+
+// ── Version check using CACHE_NAME ────────────────
+async function checkForNewVersion() {
+  try {
+    const currentVersion = CACHE_NAME;
+    const storedVersion = await getMetaValue('swVersion', null);
+
+    if (storedVersion !== currentVersion) {
+      await setMetaValue('swVersion', currentVersion);
+
+      if (storedVersion !== null) {
+        // New version detected
+        swLog('info', `New version detected: ${currentVersion} (was ${storedVersion})`);
+        const clients = await self.clients.matchAll({ includeUncontrolled: true });
+        clients.forEach(client => {
+          client.postMessage({ type: 'SW_UPDATE' });
+        });
+      } else {
+        swLog('info', `First version check – setting baseline to ${currentVersion}`);
+      }
+    } else {
+      swLog('info', `Version check: no new version (${currentVersion})`);
+    }
+  } catch (error) {
+    swLog('error', `Version check failed: ${error.message}`);
+  }
+}
+
 // Installation
 self.addEventListener('install', event => {
     event.waitUntil(
@@ -36,6 +109,7 @@ self.addEventListener('install', event => {
         })
     );
 });
+
 // Activation – delete old caches and notify clients
 self.addEventListener('activate', event => {
     swLog('info', 'SW activate – cleaning old caches');
@@ -62,10 +136,12 @@ self.addEventListener('activate', event => {
         })
     );
 });
+
 // Fetch strategy – stale-while-revalidate for static assets, network-first for navigations
 self.addEventListener('fetch', event => {
     const requestUrl = new URL(event.request.url);
     if (event.request.method !== 'GET') return;
+
     // Navigation requests: network first, cache fallback
     if (event.request.mode === 'navigate') {
         event.respondWith(
@@ -82,16 +158,19 @@ self.addEventListener('fetch', event => {
         );
         return;
     }
+
     // For images, fonts, etc.
     if (requestUrl.pathname.match(/\.(png|jpg|jpeg|gif|svg|ico|webp|woff2?)$/i)) {
         event.respondWith(serveStaleWhileRevalidate(event.request));
         return;
     }
+
     // For JSON, JS, CSS, manifest – stale-while-revalidate
     if (requestUrl.pathname.match(/\.(json|js|css)$/i) || requestUrl.pathname === '/manifest.json') {
         event.respondWith(serveStaleWhileRevalidate(event.request));
         return;
     }
+
     // All other requests: network with timeout fallback
     event.respondWith(
         new Promise(resolve => {
@@ -102,6 +181,7 @@ self.addEventListener('fetch', event => {
                     if (cached) resolve(cached);
                 });
             }, 3000);
+
             fetch(event.request)
                 .then(response => {
                     clearTimeout(timeout);
@@ -116,10 +196,11 @@ self.addEventListener('fetch', event => {
                     caches.match(event.request).then(cached => {
                         resolve(cached || new Response('Ressource indisponible hors ligne', { status: 503 }));
                     });
-                });
+                })
         })
     );
 });
+
 // Helper: stale-while-revalidate
 function serveStaleWhileRevalidate(request) {
     return caches.open(CACHE_NAME).then(cache => {
@@ -135,6 +216,7 @@ function serveStaleWhileRevalidate(request) {
         });
     });
 }
+
 // Message handling
 self.addEventListener('message', event => {
     if (event.data && event.data.type === 'SKIP_WAITING') {
@@ -144,5 +226,24 @@ self.addEventListener('message', event => {
         caches.delete(CACHE_NAME).then(() => {
             swLog('info', 'Cache manually cleared');
         });
+    }
+    // NEW: receive sync enabled flag
+    if (event.data && event.data.type === 'SET_SYNC_ENABLED') {
+        syncEnabled = event.data.value;
+        swLog('info', `Background sync ${syncEnabled ? 'enabled' : 'disabled'} in SW`);
+    }
+});
+
+// ── Background Sync ──────────────────────────
+self.addEventListener('sync', event => {
+    if (event.tag === 'version-check' && syncEnabled) {
+        event.waitUntil(checkForNewVersion());
+    }
+});
+
+// ── Periodic Background Sync ─────────────────
+self.addEventListener('periodicsync', event => {
+    if (event.tag === 'version-check' && syncEnabled) {
+        event.waitUntil(checkForNewVersion());
     }
 });

@@ -14,6 +14,9 @@
           db.createObjectStore('actions', { keyPath: 'id', autoIncrement: true });
         if (!db.objectStoreNames.contains('errors'))
           db.createObjectStore('errors', { keyPath: 'id', autoIncrement: true });
+        // NEW: meta store for background sync version tracking
+        if (!db.objectStoreNames.contains('meta'))
+          db.createObjectStore('meta', { keyPath: 'key' });
       };
       request.onsuccess = (e) => { db = e.target.result; dbReady = true; resolve(db); };
       request.onerror = (e) => reject(e.target.error);
@@ -291,6 +294,82 @@
     }
   }
 
+  // ── BACKGROUND SYNC HANDLING ─────────────────
+  async function handleBgSyncToggle(enabled) {
+    try {
+      const registration = await navigator.serviceWorker.ready;
+      if (!registration) return;
+
+      // Tell the SW whether background sync is enabled
+      if (registration.active) {
+        registration.active.postMessage({ type: 'SET_SYNC_ENABLED', value: enabled });
+      }
+
+      if (enabled) {
+        // Register background sync
+        if ('sync' in registration) {
+          try {
+            await registration.sync.register('version-check');
+            console.log('Background sync registered (version-check)');
+          } catch (e) {
+            console.warn('Background sync registration failed:', e);
+          }
+        }
+
+        // Register periodic background sync (may be unavailable)
+        if ('periodicSync' in registration) {
+          try {
+            const status = await navigator.permissions.query({ name: 'periodic-background-sync' });
+            if (status.state === 'granted') {
+              await registration.periodicSync.register('version-check', {
+                minInterval: 12 * 60 * 60 * 1000  // 12 hours
+              });
+              console.log('Periodic background sync registered (version-check)');
+            } else {
+              // Request permission (user gesture present because of button click)
+              const permResult = await navigator.permissions.request({ name: 'periodic-background-sync' });
+              if (permResult.state === 'granted') {
+                await registration.periodicSync.register('version-check', {
+                  minInterval: 12 * 60 * 60 * 1000
+                });
+                console.log('Periodic background sync registered after permission request');
+              }
+            }
+          } catch (e) {
+            console.warn('Periodic background sync registration failed:', e);
+          }
+        }
+      } else {
+        // Unregister background sync
+        if ('sync' in registration) {
+          try {
+            const tags = await registration.sync.getTags();
+            if (tags.includes('version-check')) {
+              await registration.sync.unregister('version-check');
+              console.log('Background sync unregistered');
+            }
+          } catch (e) {
+            console.warn('Error unregistering sync:', e);
+          }
+        }
+
+        if ('periodicSync' in registration) {
+          try {
+            const tags = await registration.periodicSync.getTags();
+            if (tags.includes('version-check')) {
+              await registration.periodicSync.unregister('version-check');
+              console.log('Periodic background sync unregistered');
+            }
+          } catch (e) {
+            console.warn('Error unregistering periodic sync:', e);
+          }
+        }
+      }
+    } catch (err) {
+      console.error('handleBgSyncToggle error:', err);
+    }
+  }
+
   function initFooterButtons() {
     const bgSyncBtn = document.getElementById('bgSyncBtn');
     const notifBtn = document.getElementById('notifBtn');
@@ -306,11 +385,17 @@
 
     updateFooterButtons();
 
+    // If bg sync was already enabled, register it now
+    if (bgSyncEnabled) {
+      handleBgSyncToggle(true);
+    }
+
     bgSyncBtn.addEventListener('click', () => {
       bgSyncEnabled = !bgSyncEnabled;
       localStorage.setItem('bgSync', bgSyncEnabled);
       updateFooterButtons();
       window.showToast(bgSyncEnabled ? 'toast_bg_sync_enabled' : 'toast_bg_sync_disabled', bgSyncEnabled ? 'success' : '');
+      handleBgSyncToggle(bgSyncEnabled);
     });
 
     notifBtn.addEventListener('click', () => {
