@@ -1,5 +1,5 @@
 // Service Worker – Educational Dashboard – French
-const CACHE_NAME = 'revisions-tunisie-v1.4.7'; // bump version to force cache refresh
+const CACHE_NAME = 'revisions-tunisie-v1.4.8'; // bump version to force cache refresh
 const urlsToCache = [
     '/',
     '/index.html',
