@@ -1,4 +1,4 @@
-// i18n.js – Module de traduction FR / EN / AR (bilingue robuste)
+// i18n.js – Module de traduction FR / EN / AR (bilingue simple)
 (function() {
   const DEFAULT_LANG = 'fr';
   const translations = {
@@ -7,7 +7,7 @@
     ar: {}
   };
 
-  // Liste des conteneurs à traiter en mode bilingue
+  // Conteneurs bilingues enregistrés
   const bilingualContainers = [];
 
   window.addI18nTranslations = function(newTranslations) {
@@ -20,15 +20,8 @@
     }
   };
 
-  window.getTranslation = function(lang, key) {
-    return translations[lang]?.[key] || '';
-  };
-
-  /**
-   * Enregistre un conteneur pour affichage bilingue.
-   * Sauvegarde immédiatement le français original de tous ses éléments [data-i18n].
-   */
-  window.registerBilingualContainer = function(container) {
+  // 1) Marque un conteneur comme bilingue et sauvegarde le français original
+  window.makeBilingual = function(container) {
     if (!container) return;
     const elements = container.querySelectorAll('[data-i18n]');
     elements.forEach(el => {
@@ -41,26 +34,26 @@
     }
   };
 
-  /**
-   * Restaure le français et ajoute les blocs de traduction pour la langue actuelle.
-   */
-  function restoreBilingual(lang) {
+  // 2) Après chaque changement de langue, restaure le français + ajoute la trad
+  function restoreAllBilingual(lang) {
     bilingualContainers.forEach(container => {
-      // Supprimer les anciens blocs de traduction
+      // supprime les anciens blocs de traduction
       container.querySelectorAll('.i18n-bilingual').forEach(el => el.remove());
 
-      if (lang === 'fr') return;
+      if (lang === 'fr') return; // rien à ajouter
 
       const elements = container.querySelectorAll('[data-i18n]');
       elements.forEach(el => {
-        // Restaurer le français original
+        // restaure le français original
         if (el.dataset.i18nOrig) {
           el.innerHTML = el.dataset.i18nOrig;
         }
 
         const key = el.dataset.i18n;
         if (!key) return;
-        const translation = window.getTranslation(lang, key);
+        const t = translations[lang];
+        if (!t) return;
+        const translation = t[key];
         if (!translation || translation.trim() === el.textContent.trim()) return;
 
         const bilingualEl = document.createElement('span');
@@ -96,13 +89,8 @@
       titleEl.textContent = translations[lang][titleEl.dataset.i18n] || titleEl.textContent;
     }
 
-    // Toujours restaurer l'état bilingue après une traduction
-    restoreBilingual(lang);
-
-    // Exécuter d'éventuels callbacks supplémentaires (déprécié si on utilise le système bilingue)
-    if (window._i18nCallbacks) {
-      window._i18nCallbacks.forEach(fn => fn());
-    }
+    // Toujours restaurer l’affichage bilingue après avoir traduit
+    restoreAllBilingual(lang);
   }
 
   function initLangSelector() {

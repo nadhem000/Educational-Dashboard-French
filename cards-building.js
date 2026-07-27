@@ -135,9 +135,9 @@
     cardEl.appendChild(body);
     grid.appendChild(cardEl);
   });
- // Enregistrer la grille comme conteneur bilingue (sauvegarde le français original)
-  if (typeof registerBilingualContainer === 'function') {
-    registerBilingualContainer(grid);
+  // Enregistrer la grille comme conteneur bilingue
+  if (typeof makeBilingual === 'function') {
+    makeBilingual(grid);
   }
 
   // Appliquer les traductions (la fonction applyTranslations s'occupera du mode bilingue)
