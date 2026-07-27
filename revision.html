@@ -553,30 +553,29 @@
     }
   </script>
   <script>
-    // Bilingual display for revision cards
     (function() {
+      const container = document.querySelector('.container');
+      if (!container) return;
+
+      // Sauvegarde du français original
+      if (typeof makeBilingual === 'function') {
+        makeBilingual(container);
+      }
+
+      // Mise à jour de l'affichage bilingue
       function updateBilingual() {
         const lang = localStorage.getItem('lang') || 'fr';
-        if (lang === 'fr') {
-          // Remove all existing bilingual elements
-          document.querySelectorAll('.i18n-bilingual').forEach(el => el.remove());
-          return;
-        }
-        if (typeof applyBilingualCards === 'function') {
-          // Apply to the whole main container
-          applyBilingualCards(document.querySelector('.container'), lang);
+        if (typeof applyBilingualDisplay === 'function') {
+          applyBilingualDisplay(container, lang);
         }
       }
 
-      // Run after translations are applied
-      if (window._i18nCallbacks) {
-        window._i18nCallbacks.push(updateBilingual);
-      } else {
-        window._i18nCallbacks = [updateBilingual];
-      }
+      // Callback pour les changements de langue
+      if (!window._i18nCallbacks) window._i18nCallbacks = [];
+      window._i18nCallbacks.push(updateBilingual);
 
-      // Also run now (on page load) after a short delay to ensure DOM ready
-      setTimeout(updateBilingual, 100);
+      // Exécution initiale
+      setTimeout(updateBilingual, 50);
     })();
   </script>
   <script src="ed-french-ini.js"></script>

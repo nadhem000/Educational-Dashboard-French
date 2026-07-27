@@ -135,29 +135,28 @@
     cardEl.appendChild(body);
     grid.appendChild(cardEl);
   });
+ // Marquer toutes les cartes comme bilingues et sauvegarder leur français
+  if (typeof makeBilingual === 'function') {
+    makeBilingual(grid);
+  }
+
+  // Appliquer les traductions de la langue actuelle (celles des autres éléments)
   if (typeof applyTranslations === 'function') applyTranslations();
 
-  // Bilingual support for cards
+  // Fonction de mise à jour bilingue pour les cartes
   function updateBilingualCards() {
     const lang = localStorage.getItem('lang') || 'fr';
-    if (lang === 'fr') {
-      document.querySelectorAll('#cardGrid .i18n-bilingual').forEach(el => el.remove());
-      return;
-    }
-    if (typeof applyBilingualCards === 'function') {
-      applyBilingualCards(document.getElementById('cardGrid'), lang);
+    if (typeof applyBilingualDisplay === 'function') {
+      applyBilingualDisplay(grid, lang);
     }
   }
 
-  // Register callback for language changes
-  if (window._i18nCallbacks) {
-    window._i18nCallbacks.push(updateBilingualCards);
-  } else {
-    window._i18nCallbacks = [updateBilingualCards];
-  }
+  // Enregistrement du callback pour les changements de langue futurs
+  if (!window._i18nCallbacks) window._i18nCallbacks = [];
+  window._i18nCallbacks.push(updateBilingualCards);
 
-  // Initial call after a short delay
-  setTimeout(updateBilingualCards, 100);
+  // Première mise à jour (après un court délai pour laisser le DOM se stabiliser)
+  setTimeout(updateBilingualCards, 50);
 
   logToDB({ type: 'info', message: 'cards-building.js loaded and cards rendered' });
 })();

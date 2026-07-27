@@ -1,4 +1,4 @@
-// i18n.js – Module de traduction FR / EN / AR (moteur uniquement)
+// i18n.js – Module de traduction FR / EN / AR (bilingue)
 (function() {
   const DEFAULT_LANG = 'fr';
   const translations = {
@@ -18,7 +18,7 @@
     }
   };
 
-  // Get a single translation (used by bilingual helper)
+  // Accès direct à une traduction
   window.getTranslation = function(lang, key) {
     return translations[lang]?.[key] || '';
   };
@@ -26,6 +26,9 @@
   function translateElement(el, lang) {
     const t = translations[lang];
     if (!t) return;
+    // Skip elements marked as bilingual – they are handled separately
+    if (el.dataset.i18nBilingual === 'true') return;
+
     if (el.dataset.i18n) {
       el.innerHTML = t[el.dataset.i18n] || el.innerHTML;
     }
@@ -48,32 +51,56 @@
       titleEl.textContent = translations[lang][titleEl.dataset.i18n] || titleEl.textContent;
     }
 
-    // Execute registered callbacks (e.g., bilingual updaters)
+    // Exécuter les callbacks (ex : mise à jour bilingue)
     if (window._i18nCallbacks) {
       window._i18nCallbacks.forEach(fn => fn());
     }
   }
 
-  // Bilingual helper: appends translation block under each data-i18n element inside container
-  window.applyBilingualCards = function(container, lang) {
-    if (!container || lang === 'fr') return;
-    // Remove previous bilingual elements first
+  /**
+   * Marque tous les éléments data-i18n d'un conteneur comme bilingues.
+   * Sauvegarde le contenu HTML français original avant toute traduction.
+   */
+  window.makeBilingual = function(container) {
+    const elements = container.querySelectorAll('[data-i18n]');
+    elements.forEach(el => {
+      if (!el.dataset.i18nOrig) {
+        el.dataset.i18nOrig = el.innerHTML;   // français original
+        el.dataset.i18nBilingual = 'true';    // ne sera plus touché par translateElement
+      }
+    });
+  };
+
+  /**
+   * Applique l'affichage bilingue sur un conteneur.
+   * - Remet le français original
+   * - Ajoute le bloc de traduction en dessous (sauf si la langue = 'fr')
+   */
+  window.applyBilingualDisplay = function(container, lang) {
+    if (!container) return;
+
+    // Supprimer les anciens blocs de traduction
     container.querySelectorAll('.i18n-bilingual').forEach(el => el.remove());
+
+    if (lang === 'fr') return;
 
     const elements = container.querySelectorAll('[data-i18n]');
     elements.forEach(el => {
+      // Restaurer le français original
+      if (el.dataset.i18nOrig) {
+        el.innerHTML = el.dataset.i18nOrig;
+      }
+
       const key = el.dataset.i18n;
       if (!key) return;
       const translation = window.getTranslation(lang, key);
-      if (!translation) return;
-      // Skip if the translation is identical to the current text (avoid duplicate)
-      if (el.textContent.trim() === translation.trim()) return;
+      if (!translation || translation.trim() === el.textContent.trim()) return;
 
-      const bilingualSpan = document.createElement('span');
-      bilingualSpan.className = 'i18n-bilingual';
-      bilingualSpan.textContent = translation;
-      // Insert after the original element
-      el.parentNode.insertBefore(bilingualSpan, el.nextSibling);
+      const bilingualEl = document.createElement('span');
+      bilingualEl.className = 'i18n-bilingual';
+      bilingualEl.innerHTML = translation;  // pour préserver les <strong> etc.
+
+      el.parentNode.insertBefore(bilingualEl, el.nextSibling);
     });
   };
 
