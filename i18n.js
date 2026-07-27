@@ -18,6 +18,11 @@
     }
   };
 
+  // Get a single translation (used by bilingual helper)
+  window.getTranslation = function(lang, key) {
+    return translations[lang]?.[key] || '';
+  };
+
   function translateElement(el, lang) {
     const t = translations[lang];
     if (!t) return;
@@ -38,12 +43,39 @@
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => translateElement(el, lang));
     document.querySelectorAll('[data-i18n-title]').forEach(el => translateElement(el, lang));
 
-    // Mise à jour du titre de la page via l'attribut data-i18n
     const titleEl = document.querySelector('title[data-i18n]');
     if (titleEl && translations[lang]) {
       titleEl.textContent = translations[lang][titleEl.dataset.i18n] || titleEl.textContent;
     }
+
+    // Execute registered callbacks (e.g., bilingual updaters)
+    if (window._i18nCallbacks) {
+      window._i18nCallbacks.forEach(fn => fn());
+    }
   }
+
+  // Bilingual helper: appends translation block under each data-i18n element inside container
+  window.applyBilingualCards = function(container, lang) {
+    if (!container || lang === 'fr') return;
+    // Remove previous bilingual elements first
+    container.querySelectorAll('.i18n-bilingual').forEach(el => el.remove());
+
+    const elements = container.querySelectorAll('[data-i18n]');
+    elements.forEach(el => {
+      const key = el.dataset.i18n;
+      if (!key) return;
+      const translation = window.getTranslation(lang, key);
+      if (!translation) return;
+      // Skip if the translation is identical to the current text (avoid duplicate)
+      if (el.textContent.trim() === translation.trim()) return;
+
+      const bilingualSpan = document.createElement('span');
+      bilingualSpan.className = 'i18n-bilingual';
+      bilingualSpan.textContent = translation;
+      // Insert after the original element
+      el.parentNode.insertBefore(bilingualSpan, el.nextSibling);
+    });
+  };
 
   function initLangSelector() {
     const langSelect = document.getElementById('langSelect');

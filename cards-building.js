@@ -136,5 +136,28 @@
     grid.appendChild(cardEl);
   });
   if (typeof applyTranslations === 'function') applyTranslations();
+
+  // Bilingual support for cards
+  function updateBilingualCards() {
+    const lang = localStorage.getItem('lang') || 'fr';
+    if (lang === 'fr') {
+      document.querySelectorAll('#cardGrid .i18n-bilingual').forEach(el => el.remove());
+      return;
+    }
+    if (typeof applyBilingualCards === 'function') {
+      applyBilingualCards(document.getElementById('cardGrid'), lang);
+    }
+  }
+
+  // Register callback for language changes
+  if (window._i18nCallbacks) {
+    window._i18nCallbacks.push(updateBilingualCards);
+  } else {
+    window._i18nCallbacks = [updateBilingualCards];
+  }
+
+  // Initial call after a short delay
+  setTimeout(updateBilingualCards, 100);
+
   logToDB({ type: 'info', message: 'cards-building.js loaded and cards rendered' });
 })();
