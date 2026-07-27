@@ -32,10 +32,12 @@
 			<input type="email" class="auth-input" id="signin-email" data-i18n-placeholder="auth_placeholder_email" placeholder="Email">
 			<div class="password-wrapper">
 				<form onsubmit="return false;" style="display:contents;">
+					<!-- Hidden username field for accessibility -->
+					<input type="text" autocomplete="username" style="display:none" aria-hidden="true">
 					<input type="password" class="auth-input" id="signin-password"
-       data-i18n-placeholder="auth_placeholder_password"
-       placeholder="Mot de passe"
-       autocomplete="current-password">
+					data-i18n-placeholder="auth_placeholder_password"
+					placeholder="Mot de passe"
+					autocomplete="current-password">
 					<button type="button" class="toggle-password" data-target="signin-password">👁️</button>
 				</form>
 			</div>
@@ -47,10 +49,12 @@
 			<input type="email" class="auth-input" id="signup-email" data-i18n-placeholder="auth_placeholder_email" placeholder="Email">
 			<div class="password-wrapper">
 				<form onsubmit="return false;" style="display:contents;">
+					<!-- Hidden username field for accessibility -->
+					<input type="text" autocomplete="username" style="display:none" aria-hidden="true">
 					<input type="password" class="auth-input" id="signup-password"
-       data-i18n-placeholder="auth_placeholder_password"
-       placeholder="Mot de passe"
-       autocomplete="new-password">
+					data-i18n-placeholder="auth_placeholder_password"
+					placeholder="Mot de passe"
+					autocomplete="new-password">
 					<button type="button" class="toggle-password" data-target="signup-password">👁️</button>
 				</form>
 			</div>

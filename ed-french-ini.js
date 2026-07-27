@@ -317,28 +317,22 @@
         }
 
         // Register periodic background sync (may be unavailable)
-        if ('periodicSync' in registration) {
-          try {
-            const status = await navigator.permissions.query({ name: 'periodic-background-sync' });
-            if (status.state === 'granted') {
-              await registration.periodicSync.register('version-check', {
-                minInterval: 12 * 60 * 60 * 1000  // 12 hours
-              });
-              console.log('Periodic background sync registered (version-check)');
-            } else {
-              // Request permission (user gesture present because of button click)
-              const permResult = await navigator.permissions.request({ name: 'periodic-background-sync' });
-              if (permResult.state === 'granted') {
-                await registration.periodicSync.register('version-check', {
-                  minInterval: 12 * 60 * 60 * 1000
-                });
-                console.log('Periodic background sync registered after permission request');
-              }
-            }
-          } catch (e) {
-            console.warn('Periodic background sync registration failed:', e);
-          }
-        }
+       if ('periodicSync' in registration) {
+  try {
+    const status = await navigator.permissions.query({ name: 'periodic-background-sync' });
+    if (status.state === 'granted') {
+      await registration.periodicSync.register('version-check', {
+        minInterval: 12 * 60 * 60 * 1000
+      });
+      console.log('Periodic background sync registered (version-check)');
+    } else {
+      // Periodic sync permission not granted – it is usually auto-granted for installed PWAs
+      console.log('Periodic background sync permission not granted; it may be enabled later automatically.');
+    }
+  } catch (e) {
+    console.warn('Periodic background sync registration failed:', e);
+  }
+}
       } else {
         // Unregister background sync
         if ('sync' in registration) {
