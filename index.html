@@ -216,5 +216,11 @@
   })();
 </script>
 <script src="ed-french-ini.js"></script>
+<script>
+  // Static registration so PWABuilder detects the SW
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+  }
+</script>
 </body>
 </html>

@@ -1,123 +1,127 @@
 <header class="site-header">
-  <div class="header-left">
-    <img src="assets/icons/icon-96x96.png" alt="Logo" width="32" height="32" class="header-icon">
-    <span class="site-title" data-i18n="site_title">Educational Dashboard<br>French Hub</span>
-  </div>
-  <div class="header-right">
-    <select id="langSelect" style="background:var(--card-bg); color:var(--text); border:1px solid var(--border); border-radius:6px; padding:0.3rem 0.5rem; font-size:0.85rem; margin-right:0.5rem;">
-      <option value="fr">FR</option>
-      <option value="en">EN</option>
-      <option value="ar">AR</option>
-    </select>
-    <button id="signInBtn" class="header-btn sign-in-btn" data-i18n="signin">🔒 Connexion</button>
-    <button id="signOutBtn" class="header-btn sign-out-btn" style="display:none;" data-i18n="signout">🚪 Déconnexion</button>
-    <button id="profileBtn" class="header-btn profile-btn" style="display:none;" data-i18n="profile">👤 Profil</button>
-    <button id="installBtn" class="header-btn install-btn" style="display:none;" data-i18n="install">📲 Installer</button>
-    <button id="settingsBtn" class="header-btn settings-btn" data-i18n="settings">⚙️</button>
-    <button id="themeToggle" class="header-btn theme-btn" data-i18n-title="theme_toggle" title="Changer le mode">
-      <span id="themeIcon">🌙</span>
-    </button>
-    <span id="onlineStatus" class="status-dot online" data-i18n-title="online" title="En ligne"></span>
-  </div>
+	<div class="header-left">
+		<img src="assets/icons/icon-96x96.png" alt="Logo" width="32" height="32" class="header-icon">
+		<span class="site-title" data-i18n="site_title">Educational Dashboard<br>French Hub</span>
+	</div>
+	<div class="header-right">
+		<select id="langSelect" style="background:var(--card-bg); color:var(--text); border:1px solid var(--border); border-radius:6px; padding:0.3rem 0.5rem; font-size:0.85rem; margin-right:0.5rem;">
+			<option value="fr">Français</option>
+			<option value="en">English </option>
+			<option value="ar">العربية</option>
+		</select>
+		<button id="signInBtn" class="header-btn sign-in-btn" data-i18n="signin">🔒 Connexion</button>
+		<button id="signOutBtn" class="header-btn sign-out-btn" style="display:none;" data-i18n="signout">🚪 Déconnexion</button>
+		<button id="profileBtn" class="header-btn profile-btn" style="display:none;" data-i18n="profile">👤 Profil</button>
+		<button id="installBtn" class="header-btn install-btn" style="display:none;" data-i18n="install">📲 Installer</button>
+		<button id="settingsBtn" class="header-btn settings-btn" data-i18n="settings">⚙️</button>
+		<button id="themeToggle" class="header-btn theme-btn" data-i18n-title="theme_toggle" title="Changer le mode">
+			<span id="themeIcon">🌙</span>
+		</button>
+		<span id="onlineStatus" class="status-dot online" data-i18n-title="online" title="En ligne"></span>
+	</div>
 </header>
 <div id="authModal" class="modal auth-modal">
-  <div class="modal-content auth-modal-content">
-    <span class="close-modal">&times;</span>
-    <div class="auth-tabs">
-      <button class="auth-tab active" data-tab="signin" data-i18n="auth_tab_signin">Connexion</button>
-      <button class="auth-tab" data-tab="signup" data-i18n="auth_tab_signup">Inscription</button>
-    </div>
-    <div id="authFormSignin" class="auth-form active">
-      <input type="text" class="auth-input" id="signin-username" data-i18n-placeholder="auth_placeholder_username" placeholder="Nom d'utilisateur">
-      <input type="email" class="auth-input" id="signin-email" data-i18n-placeholder="auth_placeholder_email" placeholder="Email">
-      <div class="password-wrapper">
-        <input type="password" class="auth-input" id="signin-password" data-i18n-placeholder="auth_placeholder_password" placeholder="Mot de passe">
-        <button type="button" class="toggle-password" data-target="signin-password">👁️</button>
-      </div>
-      <button class="auth-submit" id="signin-submit" data-i18n="auth_submit_signin">Se connecter</button>
-      <button class="forgot-password" id="forgotPassword" data-i18n="auth_forgot_password">Mot de passe oublié ?</button>
-    </div>
-    <div id="authFormSignup" class="auth-form">
-      <input type="text" class="auth-input" id="signup-username" data-i18n-placeholder="auth_placeholder_username" placeholder="Nom d'utilisateur">
-      <input type="email" class="auth-input" id="signup-email" data-i18n-placeholder="auth_placeholder_email" placeholder="Email">
-      <div class="password-wrapper">
-        <input type="password" class="auth-input" id="signup-password" data-i18n-placeholder="auth_placeholder_password" placeholder="Mot de passe">
-        <button type="button" class="toggle-password" data-target="signup-password">👁️</button>
-      </div>
-      <button class="auth-submit" id="signup-submit" data-i18n="auth_submit_signup">S'inscrire</button>
-    </div>
-  </div>
+	<div class="modal-content auth-modal-content">
+		<span class="close-modal">&times;</span>
+		<div class="auth-tabs">
+			<button class="auth-tab active" data-tab="signin" data-i18n="auth_tab_signin">Connexion</button>
+			<button class="auth-tab" data-tab="signup" data-i18n="auth_tab_signup">Inscription</button>
+		</div>
+		<div id="authFormSignin" class="auth-form active">
+			<input type="text" class="auth-input" id="signin-username" data-i18n-placeholder="auth_placeholder_username" placeholder="Nom d'utilisateur">
+			<input type="email" class="auth-input" id="signin-email" data-i18n-placeholder="auth_placeholder_email" placeholder="Email">
+			<div class="password-wrapper">
+				<form onsubmit="return false;" style="display:contents;">
+					<input type="password" class="auth-input" id="signin-password" data-i18n-placeholder="auth_placeholder_password" placeholder="Mot de passe">
+					<button type="button" class="toggle-password" data-target="signin-password">👁️</button>
+				</form>
+			</div>
+			<button class="auth-submit" id="signin-submit" data-i18n="auth_submit_signin">Se connecter</button>
+			<button class="forgot-password" id="forgotPassword" data-i18n="auth_forgot_password">Mot de passe oublié ?</button>
+		</div>
+		<div id="authFormSignup" class="auth-form">
+			<input type="text" class="auth-input" id="signup-username" data-i18n-placeholder="auth_placeholder_username" placeholder="Nom d'utilisateur">
+			<input type="email" class="auth-input" id="signup-email" data-i18n-placeholder="auth_placeholder_email" placeholder="Email">
+			<div class="password-wrapper">
+				<form onsubmit="return false;" style="display:contents;">
+					<input type="password" class="auth-input" id="signup-password" data-i18n-placeholder="auth_placeholder_password" placeholder="Mot de passe">
+					<button type="button" class="toggle-password" data-target="signup-password">👁️</button>
+				</form>
+			</div>
+			<button class="auth-submit" id="signup-submit" data-i18n="auth_submit_signup">S'inscrire</button>
+		</div>
+	</div>
 </div>
 <div id="settingsModal" class="modal">
-  <div class="modal-content">
-    <span class="close-modal">&times;</span>
-    <p data-i18n="auth_modal_settings">⚙️ Paramètres – Bientôt disponible</p>
-  </div>
+	<div class="modal-content">
+		<span class="close-modal">&times;</span>
+		<p data-i18n="auth_modal_settings">⚙️ Paramètres – Bientôt disponible</p>
+	</div>
 </div>
 <script>
-// Translations for header elements
-if (typeof addI18nTranslations === 'function') {
-  addI18nTranslations({
-    fr: {
-      'site_title': 'Tableau de Bord Éducatif<br>French Hub',
-      'signin': '🔒 Connexion',
-      'signout': '🚪 Déconnexion',
-      'profile': '👤 Profil',
-      'install': '📲 Installer',
-      'settings': '⚙️',
-      'theme_toggle': 'Changer le mode',
-      'online': 'En ligne',
-      'offline': 'Hors ligne',
-      'auth_tab_signin': 'Connexion',
-      'auth_tab_signup': 'Inscription',
-      'auth_placeholder_username': "Nom d'utilisateur",
-      'auth_placeholder_email': 'Email',
-      'auth_placeholder_password': 'Mot de passe',
-      'auth_submit_signin': 'Se connecter',
-      'auth_submit_signup': "S'inscrire",
-      'auth_forgot_password': 'Mot de passe oublié ?',
-      'auth_modal_settings': '⚙️ Paramètres – Bientôt disponible'
-    },
-    en: {
-      'site_title': 'Educational Dashboard<br>French Hub',
-      'signin': '🔒 Sign in',
-      'signout': '🚪 Sign out',
-      'profile': '👤 Profile',
-      'install': '📲 Install',
-      'settings': '⚙️',
-      'theme_toggle': 'Toggle theme',
-      'online': 'Online',
-      'offline': 'Offline',
-      'auth_tab_signin': 'Sign in',
-      'auth_tab_signup': 'Sign up',
-      'auth_placeholder_username': 'Username',
-      'auth_placeholder_email': 'Email',
-      'auth_placeholder_password': 'Password',
-      'auth_submit_signin': 'Sign in',
-      'auth_submit_signup': 'Sign up',
-      'auth_forgot_password': 'Forgot password?',
-      'auth_modal_settings': '⚙️ Settings – Coming soon'
-    },
-    ar: {
-      'site_title': 'لوحة التحكم التعليمية<br>French Hub',
-      'signin': '🔒 تسجيل الدخول',
-      'signout': '🚪 تسجيل الخروج',
-      'profile': '👤 الملف الشخصي',
-      'install': '📲 تثبيت',
-      'settings': '⚙️',
-      'theme_toggle': 'تغيير المظهر',
-      'online': 'متصل',
-      'offline': 'غير متصل',
-      'auth_tab_signin': 'تسجيل الدخول',
-      'auth_tab_signup': 'إنشاء حساب',
-      'auth_placeholder_username': 'اسم المستخدم',
-      'auth_placeholder_email': 'البريد الإلكتروني',
-      'auth_placeholder_password': 'كلمة المرور',
-      'auth_submit_signin': 'تسجيل الدخول',
-      'auth_submit_signup': 'إنشاء حساب',
-      'auth_forgot_password': 'نسيت كلمة المرور؟',
-      'auth_modal_settings': '⚙️ الإعدادات – قريباً'
-    }
-  });
-}
+	// Translations for header elements
+	if (typeof addI18nTranslations === 'function') {
+		addI18nTranslations({
+			fr: {
+				'site_title': 'Tableau de Bord Éducatif<br>French Hub',
+				'signin': '🔒 Connexion',
+				'signout': '🚪 Déconnexion',
+				'profile': '👤 Profil',
+				'install': '📲 Installer',
+				'settings': '⚙️',
+				'theme_toggle': 'Changer le mode',
+				'online': 'En ligne',
+				'offline': 'Hors ligne',
+				'auth_tab_signin': 'Connexion',
+				'auth_tab_signup': 'Inscription',
+				'auth_placeholder_username': "Nom d'utilisateur",
+				'auth_placeholder_email': 'Email',
+				'auth_placeholder_password': 'Mot de passe',
+				'auth_submit_signin': 'Se connecter',
+				'auth_submit_signup': "S'inscrire",
+				'auth_forgot_password': 'Mot de passe oublié ?',
+				'auth_modal_settings': '⚙️ Paramètres – Bientôt disponible'
+			},
+			en: {
+				'site_title': 'Educational Dashboard<br>French Hub',
+				'signin': '🔒 Sign in',
+				'signout': '🚪 Sign out',
+				'profile': '👤 Profile',
+				'install': '📲 Install',
+				'settings': '⚙️',
+				'theme_toggle': 'Toggle theme',
+				'online': 'Online',
+				'offline': 'Offline',
+				'auth_tab_signin': 'Sign in',
+				'auth_tab_signup': 'Sign up',
+				'auth_placeholder_username': 'Username',
+				'auth_placeholder_email': 'Email',
+				'auth_placeholder_password': 'Password',
+				'auth_submit_signin': 'Sign in',
+				'auth_submit_signup': 'Sign up',
+				'auth_forgot_password': 'Forgot password?',
+				'auth_modal_settings': '⚙️ Settings – Coming soon'
+			},
+			ar: {
+				'site_title': 'لوحة التحكم التعليمية<br>French Hub',
+				'signin': '🔒 تسجيل الدخول',
+				'signout': '🚪 تسجيل الخروج',
+				'profile': '👤 الملف الشخصي',
+				'install': '📲 تثبيت',
+				'settings': '⚙️',
+				'theme_toggle': 'تغيير المظهر',
+				'online': 'متصل',
+				'offline': 'غير متصل',
+				'auth_tab_signin': 'تسجيل الدخول',
+				'auth_tab_signup': 'إنشاء حساب',
+				'auth_placeholder_username': 'اسم المستخدم',
+				'auth_placeholder_email': 'البريد الإلكتروني',
+				'auth_placeholder_password': 'كلمة المرور',
+				'auth_submit_signin': 'تسجيل الدخول',
+				'auth_submit_signup': 'إنشاء حساب',
+				'auth_forgot_password': 'نسيت كلمة المرور؟',
+				'auth_modal_settings': '⚙️ الإعدادات – قريباً'
+			}
+		});
+	}
 </script>
