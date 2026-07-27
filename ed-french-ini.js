@@ -1,9 +1,10 @@
-// ed-french-ini.js (complet avec initialisation du sélecteur de langue)
+// ed-french-ini.js (complet avec exécution des scripts injectés)
 (function() {
   const DB_NAME = 'adminMonitorDB_v2';
   const DB_VERSION = 2;
   let dbReady = false;
   let db;
+
   function openDB() {
     return new Promise((resolve, reject) => {
       const request = indexedDB.open(DB_NAME, DB_VERSION);
@@ -18,6 +19,7 @@
       request.onerror = (e) => reject(e.target.error);
     });
   }
+
   async function logToDB(storeName, entry) {
     try {
       if (!dbReady) await openDB();
@@ -31,6 +33,40 @@
       });
     } catch (e) { /* silent */ }
   }
+
+  // Helper: insert HTML fragment and execute any scripts it contains
+  function injectHTML(container, htmlString, position = 'append') {
+    const temp = document.createElement('div');
+    temp.innerHTML = htmlString;
+
+    // Convert the child nodes to an array because DOM manipulation changes the list
+    const nodes = Array.from(temp.childNodes);
+
+    nodes.forEach(node => {
+      if (node.nodeName === 'SCRIPT') {
+        // Create a new script element to force execution
+        const script = document.createElement('script');
+        // Copy attributes (if any)
+        Array.from(node.attributes).forEach(attr => {
+          script.setAttribute(attr.name, attr.value);
+        });
+        script.textContent = node.textContent;
+        // Replace the placeholder node with the live script
+        if (position === 'prepend') {
+          container.insertBefore(script, container.firstChild);
+        } else {
+          container.appendChild(script);
+        }
+      } else {
+        if (position === 'prepend') {
+          container.insertBefore(node, container.firstChild);
+        } else {
+          container.appendChild(node);
+        }
+      }
+    });
+  }
+
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.addEventListener('message', event => {
       if (!event.data) return;
@@ -43,6 +79,7 @@
       }
     });
   }
+
   window.showToast = function(message, type = '', duration = 3000) {
     const container = document.getElementById('toast-container') || createToastContainer();
     const toast = document.createElement('div');
@@ -51,12 +88,14 @@
     container.appendChild(toast);
     setTimeout(() => { if (toast.parentNode) toast.parentNode.removeChild(toast); }, duration);
   };
+
   function createToastContainer() {
     const container = document.createElement('div');
     container.id = 'toast-container';
     document.body.appendChild(container);
     return container;
   }
+
   function showUpdateToast() {
     const container = document.getElementById('toast-container') || createToastContainer();
     const toast = document.createElement('div');
@@ -66,42 +105,43 @@
     document.getElementById('reloadNow').addEventListener('click', () => { window.location.reload(); });
     setTimeout(() => { if (toast.parentNode) toast.parentNode.removeChild(toast); }, 10000);
   }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
   }
+
   async function init() {
     try {
+      // --- Header ---
       const headerResp = await fetch('ed-french-header.html');
       if (!headerResp.ok) throw new Error('Header introuvable');
       const headerHTML = await headerResp.text();
-      const body = document.body;
-      const tempDiv = document.createElement('div');
-      tempDiv.innerHTML = headerHTML;
-      const firstBodyChild = body.firstChild;
-      while (tempDiv.firstChild) {
-        body.insertBefore(tempDiv.firstChild, firstBodyChild);
-      }
+      injectHTML(document.body, headerHTML, 'prepend');
+
+      // --- Footer ---
       const footerResp = await fetch('ed-french-footer.html');
       if (!footerResp.ok) throw new Error('Footer introuvable');
       const footerHTML = await footerResp.text();
-      const footerTemp = document.createElement('div');
-      footerTemp.innerHTML = footerHTML;
-      body.appendChild(footerTemp.firstChild);
-      // ★ Initialisation du sélecteur de langue APRÈS injection du header
+      injectHTML(document.body, footerHTML, 'append');
+
+      // Now the translation scripts have been executed, init language
       if (typeof initLangSelector === 'function') {
         initLangSelector();
       }
+
       initThemeToggle();
       initSettingsModal();
       initOnlineStatus();
       initAuth();
       initFooterButtons();
       initInstallButton();
+
       await loadScript('cards-building.js');
       registerSW();
-      // Seconde passe de traduction pour les éléments ajoutés après (cartes)
+
+      // Second translation pass for dynamically added cards
       if (typeof applyTranslations === 'function') {
         applyTranslations();
       }
