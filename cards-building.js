@@ -1,6 +1,8 @@
-// cards-building.js
+// cards-building.js – version 2 (bilingual grid)
+console.log('cards-building.js v2 loaded');
+
 (function() {
-  // Register card translations
+  // Register card translations (unchanged)
   if (typeof addI18nTranslations === 'function') {
     addI18nTranslations({
       fr: {
@@ -60,6 +62,7 @@
     });
   }
 
+  // IndexedDB (unchanged)
   const DB_NAME = 'adminMonitorDB_v2';
   const DB_VERSION = 2;
   let dbReady = false;
@@ -90,6 +93,7 @@
       });
     } catch (e) { /* silent */ }
   }
+
   const cardsData = [
     { id: 'primaire4', titleKey: 'card.primaire4.title', type: 'coming' },
     { id: 'primaire5', titleKey: 'card.primaire5.title', type: 'coming' },
@@ -103,8 +107,10 @@
     { id: 'secondaire4', titleKey: 'card.secondaire4.title', type: 'secondary', sections: ['Section Lettres', 'Section Sciences', 'Section Techniques'] },
     { id: 'revision', titleKey: 'card.revision.title', type: 'revision', link: 'revision.html' }
   ];
+
   const grid = document.getElementById('cardGrid');
   if (!grid) return;
+
   cardsData.forEach(card => {
     const cardEl = document.createElement('div');
     cardEl.className = 'card' + (card.type === 'revision' ? ' revision' : '');
@@ -135,13 +141,17 @@
     cardEl.appendChild(body);
     grid.appendChild(cardEl);
   });
-  // Enregistrer la grille comme conteneur bilingue
+
+  // ★★★ IMPORTANT – Enable bilingual display on the card grid ★★★
   if (typeof makeBilingual === 'function') {
     makeBilingual(grid);
+    console.log('Bilingual grid registered');
+  } else {
+    console.warn('makeBilingual not available');
   }
 
-  // Appliquer les traductions (la fonction applyTranslations s'occupera du mode bilingue)
+  // Apply translations (this will also trigger bilingual restoration)
   if (typeof applyTranslations === 'function') applyTranslations();
 
-  logToDB({ type: 'info', message: 'cards-building.js loaded and cards rendered' });
+  logToDB({ type: 'info', message: 'cards-building.js v2 loaded and cards rendered' });
 })();
