@@ -135,28 +135,13 @@
     cardEl.appendChild(body);
     grid.appendChild(cardEl);
   });
- // Marquer toutes les cartes comme bilingues et sauvegarder leur français
-  if (typeof makeBilingual === 'function') {
-    makeBilingual(grid);
+ // Enregistrer la grille comme conteneur bilingue (sauvegarde le français original)
+  if (typeof registerBilingualContainer === 'function') {
+    registerBilingualContainer(grid);
   }
 
-  // Appliquer les traductions de la langue actuelle (celles des autres éléments)
+  // Appliquer les traductions (la fonction applyTranslations s'occupera du mode bilingue)
   if (typeof applyTranslations === 'function') applyTranslations();
-
-  // Fonction de mise à jour bilingue pour les cartes
-  function updateBilingualCards() {
-    const lang = localStorage.getItem('lang') || 'fr';
-    if (typeof applyBilingualDisplay === 'function') {
-      applyBilingualDisplay(grid, lang);
-    }
-  }
-
-  // Enregistrement du callback pour les changements de langue futurs
-  if (!window._i18nCallbacks) window._i18nCallbacks = [];
-  window._i18nCallbacks.push(updateBilingualCards);
-
-  // Première mise à jour (après un court délai pour laisser le DOM se stabiliser)
-  setTimeout(updateBilingualCards, 50);
 
   logToDB({ type: 'info', message: 'cards-building.js loaded and cards rendered' });
 })();
