@@ -349,20 +349,38 @@
       window.showToast(notifEnabled ? 'toast_notif_enabled' : 'toast_notif_disabled', notifEnabled ? 'success' : '');
     });
   }
+
+  // ═══════════════════════════════════════
+  //  INSTALL BUTTON – fixed version
+  // ═══════════════════════════════════════
   let deferredPrompt;
+
+  // Listen for the install prompt as soon as possible
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    const installBtn = document.getElementById('installBtn');
+    if (installBtn) {
+      installBtn.style.display = 'inline-flex';
+    }
+    logToDB('actions', { message: 'beforeinstallprompt fired', type: 'pwa' });
+  });
+
   async function initInstallButton() {
     const installBtn = document.getElementById('installBtn');
     if (!installBtn) return;
+
+    // Already installed as standalone? Hide permanently
     if (window.matchMedia('(display-mode: standalone)').matches) {
       installBtn.style.display = 'none';
       return;
     }
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
+
+    // If the prompt already fired, show button immediately
+    if (deferredPrompt) {
       installBtn.style.display = 'inline-flex';
-      logToDB('actions', { message: 'beforeinstallprompt fired', type: 'pwa' });
-    });
+    }
+
     installBtn.addEventListener('click', async () => {
       if (deferredPrompt) {
         deferredPrompt.prompt();
@@ -374,17 +392,18 @@
         }
         deferredPrompt = null;
       } else {
+        // Should not normally happen if button is only shown after beforeinstallprompt
         window.showToast('toast_install_prompt', '', 5000);
       }
     });
+
     window.addEventListener('appinstalled', () => {
       installBtn.style.display = 'none';
       logToDB('actions', { message: 'App installed', type: 'pwa' });
     });
-    setTimeout(() => {
-      if (!deferredPrompt && installBtn.style.display === 'none') installBtn.style.display = 'inline-flex';
-    }, 3000);
   }
+  // ═══════════════════════════════════════
+
   function registerSW() {
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
