@@ -4,7 +4,6 @@
   const DB_VERSION = 2;
   let dbReady = false;
   let db;
-
   function openDB() {
     return new Promise((resolve, reject) => {
       const request = indexedDB.open(DB_NAME, DB_VERSION);
@@ -14,7 +13,6 @@
           db.createObjectStore('actions', { keyPath: 'id', autoIncrement: true });
         if (!db.objectStoreNames.contains('errors'))
           db.createObjectStore('errors', { keyPath: 'id', autoIncrement: true });
-        // NEW: meta store for background sync version tracking
         if (!db.objectStoreNames.contains('meta'))
           db.createObjectStore('meta', { keyPath: 'key' });
       };
@@ -22,7 +20,6 @@
       request.onerror = (e) => reject(e.target.error);
     });
   }
-
   async function logToDB(storeName, entry) {
     try {
       if (!dbReady) await openDB();
@@ -36,14 +33,10 @@
       });
     } catch (e) { /* silent */ }
   }
-
-  // Helper: insert HTML fragment and execute any scripts it contains
   function injectHTML(container, htmlString, position = 'append') {
     const temp = document.createElement('div');
     temp.innerHTML = htmlString;
-
     const nodes = Array.from(temp.childNodes);
-
     nodes.forEach(node => {
       if (node.nodeName === 'SCRIPT') {
         const script = document.createElement('script');
@@ -65,7 +58,6 @@
       }
     });
   }
-
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.addEventListener('message', event => {
       if (!event.data) return;
@@ -78,14 +70,12 @@
       }
     });
   }
-
   window.showToast = function(key, type = '', duration = 3000, isHTML = false) {
     const lang = localStorage.getItem('lang') || 'fr';
     let message = key;
     if (typeof translateToastKey === 'function') {
         message = translateToastKey(lang, key);
     }
-
     const container = document.getElementById('toast-container') || createToastContainer();
     const toast = document.createElement('div');
     toast.className = 'toast ' + type;
@@ -97,60 +87,50 @@
     container.appendChild(toast);
     setTimeout(() => { if (toast.parentNode) toast.parentNode.removeChild(toast); }, duration);
   };
-
   function createToastContainer() {
     const container = document.createElement('div');
     container.id = 'toast-container';
     document.body.appendChild(container);
     return container;
   }
-
   function showUpdateToast() {
     const lang = localStorage.getItem('lang') || 'fr';
     const message = typeof translateToastKey === 'function' ? translateToastKey(lang, 'toast_update_available') : '🔄 Une nouvelle version est disponible.';
     const buttonText = typeof translateToastKey === 'function' ? translateToastKey(lang, 'toast_update_button') : 'Actualiser';
-
     const container = document.getElementById('toast-container') || createToastContainer();
     const toast = document.createElement('div');
     toast.className = 'toast';
-    toast.innerHTML = message + ' <button id="reloadNow" style="margin-left:0.5rem; background:var(--accent); color:#fff; border:none; padding:0.3rem 0.8rem; border-radius:20px; cursor:pointer;">' + buttonText + '</button>';
+    toast.innerHTML = message + ' <button id="reloadNow" class="reload-btn">' + buttonText + '</button>';
     container.appendChild(toast);
     document.getElementById('reloadNow').addEventListener('click', () => { window.location.reload(); });
     setTimeout(() => { if (toast.parentNode) toast.parentNode.removeChild(toast); }, 10000);
   }
-
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
   }
-
   async function init() {
     try {
       const headerResp = await fetch('ed-french-header.html');
       if (!headerResp.ok) throw new Error('Header introuvable');
       const headerHTML = await headerResp.text();
       injectHTML(document.body, headerHTML, 'prepend');
-
       const footerResp = await fetch('ed-french-footer.html');
       if (!footerResp.ok) throw new Error('Footer introuvable');
       const footerHTML = await footerResp.text();
       injectHTML(document.body, footerHTML, 'append');
-
       if (typeof initLangSelector === 'function') {
         initLangSelector();
       }
-
       initThemeToggle();
       initSettingsModal();
       initOnlineStatus();
       initAuth();
       initFooterButtons();
       initInstallButton();
-
       await loadScript('cards-building.js');
       registerSW();
-
       if (typeof applyTranslations === 'function') {
         applyTranslations();
       }
@@ -158,7 +138,6 @@
       logToDB('errors', { message: 'Fallback: ' + error.message });
     }
   }
-
   function initThemeToggle() {
     const body = document.body;
     const toggle = document.getElementById('themeToggle');
@@ -176,7 +155,6 @@
       icon.textContent = isDark ? '☀️' : '🌙';
     });
   }
-
   function initSettingsModal() {
     const modal = document.getElementById('settingsModal');
     const settingsBtn = document.getElementById('settingsBtn');
@@ -186,7 +164,6 @@
     closeBtn.onclick = () => modal.style.display = 'none';
     window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
   }
-
   function initOnlineStatus() {
     const dot = document.getElementById('onlineStatus');
     if (!dot) return;
@@ -200,7 +177,6 @@
     window.addEventListener('offline', update);
     update();
   }
-
   function initAuth() {
     const signInBtn = document.getElementById('signInBtn');
     const signOutBtn = document.getElementById('signOutBtn');
@@ -211,7 +187,6 @@
     const signinForm = document.getElementById('authFormSignin');
     const signupForm = document.getElementById('authFormSignup');
     const forgotPasswordBtn = document.getElementById('forgotPassword');
-
     function setLoggedIn(isLoggedIn) {
       if (isLoggedIn) {
         signInBtn.style.display = 'none';
@@ -225,12 +200,10 @@
         localStorage.removeItem('isLoggedIn');
       }
     }
-
     if (localStorage.getItem('isLoggedIn') === 'true') setLoggedIn(true);
     if (signInBtn && authModal) signInBtn.addEventListener('click', () => { authModal.style.display = 'block'; });
     if (closeModalBtn) closeModalBtn.addEventListener('click', () => { authModal.style.display = 'none'; });
     window.addEventListener('click', (e) => { if (e.target === authModal) authModal.style.display = 'none'; });
-
     tabButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         const tabName = btn.dataset.tab;
@@ -241,7 +214,6 @@
         else if (tabName === 'signup') signupForm.classList.add('active');
       });
     });
-
     document.querySelectorAll('.toggle-password').forEach(btn => {
       btn.addEventListener('click', () => {
         const input = document.getElementById(btn.dataset.target);
@@ -252,7 +224,6 @@
         }
       });
     });
-
     const signinSubmit = document.getElementById('signin-submit');
     if (signinSubmit) {
       signinSubmit.addEventListener('click', (e) => {
@@ -265,7 +236,6 @@
         window.showToast('toast_signin_success', 'success');
       });
     }
-
     const signupSubmit = document.getElementById('signup-submit');
     if (signupSubmit) {
       signupSubmit.addEventListener('click', (e) => {
@@ -278,14 +248,12 @@
         window.showToast('toast_signup_success', 'success');
       });
     }
-
     if (forgotPasswordBtn) {
       forgotPasswordBtn.addEventListener('click', (e) => {
         e.preventDefault();
         window.showToast('toast_forgot_password', '');
       });
     }
-
     if (signOutBtn) {
       signOutBtn.addEventListener('click', () => {
         setLoggedIn(false);
@@ -293,20 +261,14 @@
       });
     }
   }
-
-  // ── BACKGROUND SYNC HANDLING ─────────────────
   async function handleBgSyncToggle(enabled) {
     try {
       const registration = await navigator.serviceWorker.ready;
       if (!registration) return;
-
-      // Tell the SW whether background sync is enabled
       if (registration.active) {
         registration.active.postMessage({ type: 'SET_SYNC_ENABLED', value: enabled });
       }
-
       if (enabled) {
-        // Register background sync
         if ('sync' in registration) {
           try {
             await registration.sync.register('version-check');
@@ -315,26 +277,22 @@
             console.warn('Background sync registration failed:', e);
           }
         }
-
-        // Register periodic background sync (may be unavailable)
-       if ('periodicSync' in registration) {
-  try {
-    const status = await navigator.permissions.query({ name: 'periodic-background-sync' });
-    if (status.state === 'granted') {
-      await registration.periodicSync.register('version-check', {
-        minInterval: 12 * 60 * 60 * 1000
-      });
-      console.log('Periodic background sync registered (version-check)');
-    } else {
-      // Periodic sync permission not granted – it is usually auto-granted for installed PWAs
-      console.log('Periodic background sync permission not granted; it may be enabled later automatically.');
-    }
-  } catch (e) {
-    console.warn('Periodic background sync registration failed:', e);
-  }
-}
+        if ('periodicSync' in registration) {
+          try {
+            const status = await navigator.permissions.query({ name: 'periodic-background-sync' });
+            if (status.state === 'granted') {
+              await registration.periodicSync.register('version-check', {
+                minInterval: 12 * 60 * 60 * 1000
+              });
+              console.log('Periodic background sync registered (version-check)');
+            } else {
+              console.log('Periodic background sync permission not granted; it may be enabled later automatically.');
+            }
+          } catch (e) {
+            console.warn('Periodic background sync registration failed:', e);
+          }
+        }
       } else {
-        // Unregister background sync
         if ('sync' in registration) {
           try {
             const tags = await registration.sync.getTags();
@@ -346,7 +304,6 @@
             console.warn('Error unregistering sync:', e);
           }
         }
-
         if ('periodicSync' in registration) {
           try {
             const tags = await registration.periodicSync.getTags();
@@ -363,27 +320,21 @@
       console.error('handleBgSyncToggle error:', err);
     }
   }
-
   function initFooterButtons() {
     const bgSyncBtn = document.getElementById('bgSyncBtn');
     const notifBtn = document.getElementById('notifBtn');
     if (!bgSyncBtn || !notifBtn) return;
     let bgSyncEnabled = localStorage.getItem('bgSync') === 'true';
     let notifEnabled = localStorage.getItem('notifications') === 'true';
-
     function updateFooterButtons() {
       bgSyncBtn.setAttribute('data-i18n', bgSyncEnabled ? 'footer_disable_bg_sync' : 'footer_enable_bg_sync');
       notifBtn.setAttribute('data-i18n', notifEnabled ? 'footer_disable_notif' : 'footer_enable_notif');
       if (typeof applyTranslations === 'function') applyTranslations();
     }
-
     updateFooterButtons();
-
-    // If bg sync was already enabled, register it now
     if (bgSyncEnabled) {
       handleBgSyncToggle(true);
     }
-
     bgSyncBtn.addEventListener('click', () => {
       bgSyncEnabled = !bgSyncEnabled;
       localStorage.setItem('bgSync', bgSyncEnabled);
@@ -391,7 +342,6 @@
       window.showToast(bgSyncEnabled ? 'toast_bg_sync_enabled' : 'toast_bg_sync_disabled', bgSyncEnabled ? 'success' : '');
       handleBgSyncToggle(bgSyncEnabled);
     });
-
     notifBtn.addEventListener('click', () => {
       notifEnabled = !notifEnabled;
       localStorage.setItem('notifications', notifEnabled);
@@ -399,7 +349,6 @@
       window.showToast(notifEnabled ? 'toast_notif_enabled' : 'toast_notif_disabled', notifEnabled ? 'success' : '');
     });
   }
-
   let deferredPrompt;
   async function initInstallButton() {
     const installBtn = document.getElementById('installBtn');
@@ -436,7 +385,6 @@
       if (!deferredPrompt && installBtn.style.display === 'none') installBtn.style.display = 'inline-flex';
     }, 3000);
   }
-
   function registerSW() {
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -456,7 +404,6 @@
       });
     }
   }
-
   function loadScript(src) {
     return new Promise((resolve, reject) => {
       const script = document.createElement('script');

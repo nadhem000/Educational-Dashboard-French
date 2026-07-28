@@ -1,5 +1,12 @@
+/* ===== Global reset (moved from both pages) ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
-  /* Newly declared shared colour variables */
+  /* Shared colour & UI variables (originally in shared.css) */
   --settings-btn-bg: #f0e8d8;
   --settings-btn-hover-bg: #e3d5bc;
   --modal-overlay: rgba(0, 0, 0, 0.5);
@@ -16,10 +23,98 @@
   --success: #3fb950;
   --toast-dark-bg: #2a2620;
   --toast-dark-shadow: rgba(0, 0, 0, 0.4);
+
+  /* Common layout & theme variables (previously duplicated in pages) */
+  --bg: #f9f7f3;
+  --card-bg: #ffffff;
+  --text: #2c2416;
+  --text-light: #5c5344;
+  --accent: #c75b2c;
+  --accent-hover: #a3441d;
+  --border: #e5ddd0;
+  --radius: 12px;
+  --transition: 0.25s ease;
+  --font: 'Segoe UI', 'Georgia', serif;
+
+  /* Topbar shadow (decoupled from page-specific --shadow) */
+  --topbar-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* Dark mode overrides for shared variables */
+body.dark {
+  --bg: #1e1b17;
+  --card-bg: #2a2620;
+  --text: #e8dfd2;
+  --text-light: #b9aa95;
+  --accent: #e07b4a;
+  --accent-hover: #f08c5c;
+  --border: #3e3830;
+}
+
+/* I18n bilingual display */
+.i18n-bilingual {
+  display: block;
+  font-size: 0.85em;
+  color: var(--accent);
+  margin-top: 2px;
+  line-height: 1.3;
+  border-left: 2px solid var(--accent);
+  padding-left: 6px;
+  opacity: 0.85;
+  margin-bottom: 4px;
+}
+
+/* Utility classes replacing inline styles */
+.lang-select {
+  background: var(--card-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.85rem;
+  margin-right: 0.5rem;
+}
+.hidden-input {
+  display: none;
+}
+.password-wrapper > form {
+  display: contents;
+}
+.footer-left {
+  flex: 1;
+  text-align: left;
+}
+.footer-center {
+  flex: 1;
+  text-align: center;
+}
+.footer-right {
+  flex: 1;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+}
+.footer-right .version {
+  margin: 0;
+}
+.footer-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.reload-btn {
+  margin-left: 0.5rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
 /* ===== Shared Header, Topbar & Footer Styles ===== */
-
 .topbar {
     display: flex;
     align-items: center;
@@ -27,7 +122,7 @@
     padding: 0.7rem 1.5rem;
     background: var(--card-bg);
     border-bottom: 1px solid var(--border);
-    box-shadow: var(--shadow);
+    box-shadow: var(--topbar-shadow);
     position: sticky;
     top: 0;
     z-index: 10;
@@ -52,7 +147,6 @@
 .theme-btn:hover {
     border-color: var(--accent);
 }
-
 /* Site header (icon, title, settings) */
 .site-header {
     display: flex;
@@ -89,7 +183,6 @@
 .settings-btn:hover {
     background: var(--settings-btn-hover-bg);
 }
-
 /* Settings modal */
 .modal {
     display: none;
@@ -120,7 +213,6 @@
     cursor: pointer;
     color: var(--text-light);
 }
-
 /* Site footer */
 .site-footer {
     display: flex;
@@ -143,7 +235,6 @@
 .version {
     opacity: 0.7;
 }
-
 /* Dark mode overrides */
 body.dark .site-header,
 body.dark .site-footer {
@@ -159,7 +250,6 @@ body.dark .settings-btn {
     align-items: center;
     gap: 0.5rem;
 }
-
 /* Install button */
 .install-btn {
     background: var(--accent);
@@ -177,13 +267,10 @@ body.dark .settings-btn {
     background: var(--accent-hover);
     transform: translateY(-1px);
 }
-
-/* Dark mode tweaks for install button */
 body.dark .install-btn {
     background: var(--btn-accent-dark);
     color: var(--white);
 }
-
 /* ============================================
    NEW HEADER BUTTONS & ONLINE/OFFLINE DOT
    ============================================ */
@@ -206,7 +293,6 @@ body.dark .install-btn {
 .header-btn:hover {
     border-color: var(--accent);
 }
-
 /* Accent buttons (connexion / profil) */
 .sign-in-btn,
 .sign-out-btn,
@@ -221,7 +307,6 @@ body.dark .install-btn {
     background: var(--accent-hover);
     transform: translateY(-1px);
 }
-
 /* Icon-only buttons (settings / theme) */
 .settings-btn,
 .theme-btn {
@@ -229,7 +314,6 @@ body.dark .install-btn {
     font-size: 1.2rem;
     line-height: 1;
 }
-
 /* Online / offline dot */
 .status-dot {
     width: 10px;
@@ -247,8 +331,6 @@ body.dark .install-btn {
     background: var(--offline);
     box-shadow: 0 0 4px var(--offline-shadow);
 }
-
-/* Dark mode overrides for new buttons */
 body.dark .header-btn {
     background: var(--dark-btn-bg);
     color: var(--dark-text);
@@ -259,7 +341,6 @@ body.dark .profile-btn {
     background: var(--btn-accent-dark);
     color: var(--white);
 }
-
 /* ============================================
    AUTH MODAL
    ============================================ */
@@ -356,8 +437,6 @@ body.dark .profile-btn {
 .forgot-password:hover {
   color: var(--accent-hover);
 }
-
-/* Dark mode tweaks for auth modal */
 body.dark .auth-modal .modal-content {
   background: var(--card-bg);
 }
@@ -389,7 +468,6 @@ body.dark .auth-input:focus {
     border-color: var(--accent);
     color: var(--accent);
 }
-
 /* ============================================
    TOAST NOTIFICATIONS
    ============================================ */
@@ -422,7 +500,6 @@ body.dark .auth-input:focus {
 .toast.success {
     border-left-color: var(--success);
 }
-
 @keyframes slideInRight {
     from { transform: translateX(100%); opacity: 0; }
     to   { transform: translateX(0); opacity: 1; }
@@ -430,8 +507,6 @@ body.dark .auth-input:focus {
 @keyframes fadeOut {
     to { opacity: 0; transform: translateY(-10px); }
 }
-
-/* Dark mode toast tweaks */
 body.dark .toast {
     background: var(--toast-dark-bg);
     color: var(--dark-text);

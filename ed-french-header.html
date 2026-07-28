@@ -4,7 +4,7 @@
 		<span class="site-title" data-i18n="site_title">Educational Dashboard<br>French Hub</span>
 	</div>
 	<div class="header-right">
-		<select id="langSelect" style="background:var(--card-bg); color:var(--text); border:1px solid var(--border); border-radius:6px; padding:0.3rem 0.5rem; font-size:0.85rem; margin-right:0.5rem;">
+		<select id="langSelect" class="lang-select">
 			<option value="fr">Français</option>
 			<option value="en">English </option>
 			<option value="ar">العربية</option>
@@ -31,9 +31,8 @@
 			<input type="text" class="auth-input" id="signin-username" data-i18n-placeholder="auth_placeholder_username" placeholder="Nom d'utilisateur">
 			<input type="email" class="auth-input" id="signin-email" data-i18n-placeholder="auth_placeholder_email" placeholder="Email">
 			<div class="password-wrapper">
-				<form onsubmit="return false;" style="display:contents;">
-					<!-- Hidden username field for accessibility -->
-					<input type="text" autocomplete="username" style="display:none" aria-hidden="true">
+				<form onsubmit="return false;">
+					<input type="text" id="hidden-signin-username" name="hidden-signin-username" autocomplete="username" class="hidden-input" aria-hidden="true">
 					<input type="password" class="auth-input" id="signin-password"
 					data-i18n-placeholder="auth_placeholder_password"
 					placeholder="Mot de passe"
@@ -48,9 +47,8 @@
 			<input type="text" class="auth-input" id="signup-username" data-i18n-placeholder="auth_placeholder_username" placeholder="Nom d'utilisateur">
 			<input type="email" class="auth-input" id="signup-email" data-i18n-placeholder="auth_placeholder_email" placeholder="Email">
 			<div class="password-wrapper">
-				<form onsubmit="return false;" style="display:contents;">
-					<!-- Hidden username field for accessibility -->
-					<input type="text" autocomplete="username" style="display:none" aria-hidden="true">
+				<form onsubmit="return false;">
+					<input type="text" id="hidden-signup-username" name="hidden-signup-username" autocomplete="username" class="hidden-input" aria-hidden="true">
 					<input type="password" class="auth-input" id="signup-password"
 					data-i18n-placeholder="auth_placeholder_password"
 					placeholder="Mot de passe"
