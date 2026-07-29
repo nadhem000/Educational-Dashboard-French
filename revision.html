@@ -198,11 +198,10 @@
   </style>
 </head>
 <body>
-  <!-- Header injecté par ed-french-ini.js -->
   <nav class="back-nav">
     <a href="index.html" data-i18n="back_link">← Retour à l'accueil</a>
   </nav>
-  <main class="container">
+  <main class="container" id="main-content">
     <h1 data-i18n="revision_main_title">📖 Programme de Révision Générale</h1>
     <p class="subtitle" data-i18n="revision_subtitle">4ᵉ année secondaire — 8 semaines pour tout consolider</p>
     <div class="objectives">
@@ -617,14 +616,14 @@
       });
     }
   </script>
- <script>
+  <script>
     (function() {
       var container = document.querySelector('.container');
       if (container && typeof makeBilingual === 'function') {
         makeBilingual(container);
       }
     })();
-</script>
+  </script>
   <script src="ed-french-ini.js"></script>
 </body>
 </html>

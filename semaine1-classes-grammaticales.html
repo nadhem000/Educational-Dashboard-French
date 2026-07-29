@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leçon 1 – Les Classes Grammaticales | Texte littéraire & Exercices</title>
-   <link rel="manifest" href="/manifest.json">
-   <link rel="stylesheet" href="shared.css">
+    <title data-i18n="lesson1_title">Leçon 1 – Les Classes Grammaticales | Texte littéraire & Exercices</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
     <style>
         :root {
             --bg: #f9f7f1;
@@ -57,44 +57,20 @@
             transition: background var(--transition), color var(--transition);
         }
 
-        /* ── Topbar ── */
-        .topbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.8rem 1.6rem;
+        .back-nav {
             background: var(--card);
             border-bottom: 1px solid var(--border);
-            box-shadow: var(--shadow);
-            position: sticky;
-            top:0;
-            z-index:10;
-            flex-wrap: wrap;
-            gap:0.6rem;
+            padding: 0.5rem 1.5rem;
         }
-        .breadcrumb { font-size:0.85rem; color:var(--text-light); }
-        .breadcrumb a { color:var(--accent); text-decoration:none; font-weight:600; }
-        .breadcrumb a:hover { text-decoration:underline; }
-
-        .theme-btn {
-            display:inline-flex;
-            align-items:center;
-            gap:0.4rem;
-            padding:0.45rem 0.9rem;
-            border-radius:20px;
-            border:1px solid var(--border);
-            background: var(--button-bg);
-            color:var(--text);
-            cursor:pointer;
-            font-size:0.85rem;
-            font-weight:600;
-            transition: all var(--transition);
+        .back-nav a {
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
         }
-        .theme-btn:hover { background:var(--button-hover); }
+        .back-nav a:hover { text-decoration: underline; }
 
         .container { max-width:860px; margin:0 auto; padding:1.8rem 1.4rem 3rem; }
 
-        /* ── Lesson Header ── */
         .lesson-header {
             text-align: center;
             margin-bottom: 2rem;
@@ -125,7 +101,6 @@
             flex-wrap: wrap;
         }
 
-        /* ── Custom Audio Player ── */
         .audio-player {
             background: var(--card);
             border:1px solid var(--border);
@@ -215,7 +190,6 @@
             .audio-label { text-align: center; }
         }
 
-        /* ── Literary text card ── */
         .text-card {
             background: var(--card);
             border:1px solid var(--border);
@@ -246,7 +220,6 @@
             margin-top:0.8rem;
         }
 
-        /* ── Exercises ── */
         .exercises-section h2 {
             font-size:1.5rem;
             color:var(--heading);
@@ -322,7 +295,6 @@
         }
         .answer-key.visible { display:block; }
 
-        /* ── Footer ── */
         .lesson-footer {
             margin-top:2.5rem;
             padding-top:1.2rem;
@@ -344,95 +316,82 @@
             .lesson-header h1 { font-size:1.5rem; }
             .container { padding:1rem 0.8rem 2rem; }
         }
-/* ═════ RÈGLES / MÉTHODE – à ajouter à toutes les leçons ═════ */
-.valeurs-section,
-.methode-section {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.6rem 1.8rem;
-    margin: 2rem 0;
-    box-shadow: var(--shadow);
-}
-.valeurs-section h2,
-.methode-section h2 {
-    font-size: 1.5rem;
-    color: var(--heading);
-    margin-bottom: 1rem;
-    border-bottom: 3px solid var(--accent);
-    display: inline-block;
-    padding-bottom: 0.3rem;
-}
-.valeur-card {
-    background: var(--audio-bg);
-    border-radius: var(--radius-sm);
-    padding: 1rem 1.2rem;
-    margin-bottom: 1rem;
-}
-.valeur-card h3 {
-    color: var(--accent);
-    font-size: 1.1rem;
-    margin-bottom: 0.4rem;
-}
-.valeur-card ul {
-    list-style: none;
-    padding: 0;
-}
-.valeur-card li {
-    padding: 0.3rem 0;
-    padding-left: 1.4rem;
-    position: relative;
-    color: var(--text-light);
-}
-.valeur-card li::before {
-    content: '◆';
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-    font-size: 0.5rem;
-    top: 0.5rem;
-}
-/* optionnel : espace sous les paragraphes dans ces cartes */
-.valeur-card p {
-    margin: 0.5rem 0;
-}
-.back-nav {
-    background: var(--card);
-    border-bottom: 1px solid var(--border);
-    padding: 0.5rem 1.5rem;
-}
-.back-nav a {
-    font-weight: 600;
-    color: var(--accent);
-    text-decoration: none;
-}
-.back-nav a:hover {
-    text-decoration: underline;
-}
+
+        .valeurs-section,
+        .methode-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.6rem 1.8rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+        .valeurs-section h2,
+        .methode-section h2 {
+            font-size: 1.5rem;
+            color: var(--heading);
+            margin-bottom: 1rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+        .valeur-card {
+            background: var(--audio-bg);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .valeur-card h3 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+        .valeur-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .valeur-card li {
+            padding: 0.3rem 0;
+            padding-left: 1.4rem;
+            position: relative;
+            color: var(--text-light);
+        }
+        .valeur-card li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 0.5rem;
+            top: 0.5rem;
+        }
+        .valeur-card p {
+            margin: 0.5rem 0;
+        }
     </style>
 </head>
 <body>
 
+    <nav class="back-nav">
+        <a href="index.html" data-i18n="back_home">🏠 Accueil</a>
+        › <a href="revision.html" data-i18n="back_revision">Révision générale</a>
+        › <strong data-i18n="back_current">Classes grammaticales</strong>
+    </nav>
 
-
-<nav class="back-nav">
-    <a href="index.html">🏠 Accueil</a> › <a href="revision.html">Révision générale</a> › <strong>Classes grammaticales</strong>
-</nav>
     <main class="container">
 
         <div class="lesson-header">
-            <span class="badge">📘 Grammaire · Leçon 1</span>
-            <h1>Les Classes Grammaticales<br>(Nature des Mots)</h1>
+            <span class="badge" data-i18n="lesson_badge">📘 Grammaire · Leçon 1</span>
+            <h1 data-i18n="lesson_title">Les Classes Grammaticales<br>(Nature des Mots)</h1>
             <div class="meta">
-                <span>⏱️ 45 minutes</span>
-                <span>🎧 Écoutez le texte puis faites les exercices</span>
+                <span data-i18n="lesson_duration">⏱️ 45 minutes</span>
+                <span data-i18n="lesson_meta_audio">🎧 Écoutez le texte puis faites les exercices</span>
             </div>
         </div>
 
-        <!-- ═════ CUSTOM AUDIO PLAYER (lessons/revision/sounds/lesson1.mp3) ═════ -->
+        <!-- ═════ CUSTOM AUDIO PLAYER ═════ -->
         <div class="audio-player" id="audioPlayer">
-            <span class="audio-label">🎧 Écoute littéraire</span>
-            <button class="play-btn" id="playBtn">▶</button>
+            <span class="audio-label" data-i18n="audio_label">🎧 Écoute littéraire</span>
+            <button class="play-btn" id="playBtn" aria-label="Lecture">▶</button>
             <div class="progress-area">
                 <div class="progress-bar" id="progressBar">
                     <div class="progress-fill" id="progressFill"></div>
@@ -461,104 +420,255 @@
                 <u>Il</u> me regarda <u>avec</u> curiosité, <u>puis</u> disparut <u>derrière</u> un grand chêne.  
                 <u>Cette</u> rencontre <u>fut</u> éphémère, <u>mais</u> elle <u>remplit</u> mon cœur <u>de</u> joie.
             </p>
-            <div class="author">— Promenade automnale, anonyme</div>
+            <div class="author" data-i18n="text_author">— Promenade automnale, anonyme</div>
         </div>
 
-<!-- ═════ RÈGLES : LES CLASSES GRAMMATICALES ═════ -->
-<div class="valeurs-section">
-    <h2>📖 Les classes grammaticales (natures)</h2>
-    <p style="margin-bottom:1.2rem;">La <strong>nature</strong> (ou classe grammaticale) d’un mot est son identité fixe, indépendamment de son rôle dans la phrase. On distingue les mots <strong>variables</strong> (ils changent de forme) et <strong>invariables</strong>.</p>
+        <!-- ═════ RÈGLES : LES CLASSES GRAMMATICALES ═════ -->
+        <div class="valeurs-section">
+            <h2 data-i18n="rules_heading">📖 Les classes grammaticales (natures)</h2>
+            <!-- FIX 1: first paragraph is now direct-translation only -->
+            <p data-i18n="rules_intro" class="no-bilingual" style="margin-bottom:1.2rem;">La <strong>nature</strong> (ou classe grammaticale) d’un mot est son identité fixe, indépendamment de son rôle dans la phrase. On distingue les mots <strong>variables</strong> (ils changent de forme) et <strong>invariables</strong>.</p>
 
-    <div class="valeur-card">
-        <h3>🔹 Mots variables</h3>
-        <ul>
-            <li><strong>Le nom :</strong> désigne un être, une chose, une idée. <em>vent, feuille, automne, Tunis</em></li>
-            <li><strong>Le déterminant :</strong> précède le nom et indique son genre et son nombre. <em>le, la, les, un, une, mon, cette</em></li>
-            <li><strong>L’adjectif qualificatif :</strong> qualifie le nom. <em>léger, doré, rapide, silencieuse</em></li>
-            <li><strong>Le pronom :</strong> remplace un nom ou un groupe nominal. <em>je, me, il, elle, le mien</em></li>
-            <li><strong>Le verbe :</strong> exprime une action ou un état. <em>caressait, est, traversa, remplit</em></li>
-        </ul>
-    </div>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_var_title">🔹 Mots variables</h3>
+                <ul data-i18n="rules_var_list">
+                    <li><strong>Le nom :</strong> désigne un être, une chose, une idée. <em>vent, feuille, automne, Tunis</em></li>
+                    <li><strong>Le déterminant :</strong> précède le nom et indique son genre et son nombre. <em>le, la, les, un, une, mon, cette</em></li>
+                    <li><strong>L’adjectif qualificatif :</strong> qualifie le nom. <em>léger, doré, rapide, silencieuse</em></li>
+                    <li><strong>Le pronom :</strong> remplace un nom ou un groupe nominal. <em>je, me, il, elle, le mien</em></li>
+                    <li><strong>Le verbe :</strong> exprime une action ou un état. <em>caressait, est, traversa, remplit</em></li>
+                </ul>
+            </div>
 
-    <div class="valeur-card">
-        <h3>🔹 Mots invariables</h3>
-        <ul>
-            <li><strong>L’adverbe :</strong> modifie le sens d’un verbe, d’un adjectif ou d’un autre adverbe. <em>doucement, lentement, très</em></li>
-            <li><strong>La préposition :</strong> introduit un complément. <em>dans, avec, derrière, de, à</em></li>
-            <li><strong>La conjonction de coordination :</strong> relie des mots ou propositions de même nature. <em>mais, ou, et, donc, or, ni, car</em></li>
-            <li><strong>L’interjection :</strong> exprime une émotion, une réaction. <em>Ah !, Oh !, Hélas !</em></li>
-        </ul>
-    </div>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_invar_title">🔹 Mots invariables</h3>
+                <ul data-i18n="rules_invar_list">
+                    <li><strong>L’adverbe :</strong> modifie le sens d’un verbe, d’un adjectif ou d’un autre adverbe. <em>doucement, lentement, très</em></li>
+                    <li><strong>La préposition :</strong> introduit un complément. <em>dans, avec, derrière, de, à</em></li>
+                    <li><strong>La conjonction de coordination :</strong> relie des mots ou propositions de même nature. <em>mais, ou, et, donc, or, ni, car</em></li>
+                    <li><strong>L’interjection :</strong> exprime une émotion, une réaction. <em>Ah !, Oh !, Hélas !</em></li>
+                </ul>
+            </div>
 
-    <p style="margin-top:1rem; font-style:italic; color:var(--text-light);">💡 Ne pas confondre <strong>nature</strong> (ce qu’est le mot) et <strong>fonction</strong> (ce qu’il fait dans la phrase).</p>
-</div>
+            <p data-i18n="rules_note" style="margin-top:1rem; font-style:italic; color:var(--text-light);">💡 Ne pas confondre <strong>nature</strong> (ce qu’est le mot) et <strong>fonction</strong> (ce qu’il fait dans la phrase).</p>
+        </div>
+
         <!-- ═════ EXERCISES ═════ -->
         <div class="exercises-section">
-            <h2>✍️ Exercices</h2>
+            <h2 data-i18n="exercises_heading">✍️ Exercices</h2>
 
-            <!-- Exercice 1 : tableau à remplir -->
+            <!-- Exercice 1 -->
             <div class="exercise-card">
-                <h3>📌 1. Identifiez la classe grammaticale de chaque mot souligné</h3>
-                <p>Complétez le tableau ci‑dessous en indiquant la nature exacte de chaque mot souligné dans le texte.</p>
+                <h3 data-i18n="exo1_title">📌 1. Identifiez la classe grammaticale de chaque mot souligné</h3>
+                <p data-i18n="exo1_instruction">Complétez le tableau ci‑dessous en indiquant la nature exacte de chaque mot souligné dans le texte.</p>
                 <table id="exo1Table">
-                    <thead><tr><th>Mot souligné</th><th>Votre réponse</th></tr></thead>
+                    <thead>
+                        <tr>
+                            <!-- FIX 3: table headers direct translation, no bilingual span messing layout -->
+                            <th data-i18n="table_word" class="no-bilingual">Mot souligné</th>
+                            <th data-i18n="table_answer" class="no-bilingual">Votre réponse</th>
+                        </tr>
+                    </thead>
                     <tbody></tbody>
                 </table>
-                <button class="btn-verify" onclick="toggleCorrection('exo1Key')">🔍 Voir la correction</button>
+                <button class="btn-verify" onclick="toggleCorrection('exo1Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
                 <div id="exo1Key" class="answer-key"></div>
             </div>
 
-            <!-- Exercice 2 : nature / fonction -->
+            <!-- Exercice 2 -->
             <div class="exercise-card">
-                <h3>📌 2. Nature ou fonction ?</h3>
-                <p>Relisez la phrase : « Le vent léger caressait doucement les feuilles dorées. »</p>
+                <h3 data-i18n="exo2_title">📌 2. Nature ou fonction ?</h3>
+                <p data-i18n="exo2_instruction">Relisez la phrase : « Le vent léger caressait doucement les feuilles dorées. »</p>
                 <ol type="a">
-                    <li>Quelle est la <strong>nature</strong> du mot « vent » ? <input type="text" placeholder="ex: nom commun"></li>
-                    <li>Quelle est sa <strong>fonction</strong> dans la phrase ? <input type="text" placeholder="ex: sujet"></li>
-                    <li>Nature de « doucement » : <input type="text" placeholder="..."> , Fonction : <input type="text" placeholder="..."></li>
-                    <li>Expliquez la différence entre nature et fonction en une phrase : <br><textarea rows="2" style="width:100%; padding:0.4rem;" placeholder="Votre explication..."></textarea></li>
+                    <li><span data-i18n="exo2_q1_nature">Quelle est la <strong>nature</strong> du mot « vent » ?</span> <input type="text" placeholder="ex: nom commun"></li>
+                    <li><span data-i18n="exo2_q2_fonction">Quelle est sa <strong>fonction</strong> dans la phrase ?</span> <input type="text" placeholder="ex: sujet"></li>
+                    <li><span data-i18n="exo2_q3_doucement">Nature de « doucement » :</span> <input type="text" placeholder="..."> , <span data-i18n="exo2_q3_fonction">Fonction :</span> <input type="text" placeholder="..."></li>
+                    <li><span data-i18n="exo2_q4_explain">Expliquez la différence entre nature et fonction en une phrase :</span> <br><textarea rows="2" style="width:100%; padding:0.4rem;" placeholder="Votre explication..."></textarea></li>
                 </ol>
-                <button class="btn-verify" onclick="toggleCorrection('exo2Key')">🔍 Voir la correction</button>
+                <button class="btn-verify" onclick="toggleCorrection('exo2Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
                 <div id="exo2Key" class="answer-key"></div>
             </div>
 
-            <!-- Exercice 3 : repérage mots invariables -->
+            <!-- Exercice 3 -->
             <div class="exercise-card">
-                <h3>📌 3. Classes invariables</h3>
-                <p>Dans le texte, relevez :</p>
+                <h3 data-i18n="exo3_title">📌 3. Classes invariables</h3>
+                <p data-i18n="exo3_instruction">Dans le texte, relevez :</p>
                 <ul>
-                    <li>Deux adverbes différents : <input type="text" placeholder="adverbe 1"> , <input type="text" placeholder="adverbe 2"></li>
-                    <li>Deux prépositions : <input type="text" placeholder="prép 1"> , <input type="text" placeholder="prép 2"></li>
-                    <li>Une conjonction de coordination : <input type="text" placeholder="conjonction"></li>
-                    <li>Une interjection : <input type="text" placeholder="interjection"></li>
+                    <li><span data-i18n="exo3_q1_adverbs">Deux adverbes différents :</span> <input type="text" placeholder="adverbe 1"> , <input type="text" placeholder="adverbe 2"></li>
+                    <li><span data-i18n="exo3_q2_preps">Deux prépositions :</span> <input type="text" placeholder="prép 1"> , <input type="text" placeholder="prép 2"></li>
+                    <li><span data-i18n="exo3_q3_conj">Une conjonction de coordination :</span> <input type="text" placeholder="conjonction"></li>
+                    <li><span data-i18n="exo3_q4_interj">Une interjection :</span> <input type="text" placeholder="interjection"></li>
                 </ul>
-                <button class="btn-verify" onclick="toggleCorrection('exo3Key')">🔍 Voir la correction</button>
+                <button class="btn-verify" onclick="toggleCorrection('exo3Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
                 <div id="exo3Key" class="answer-key"></div>
             </div>
 
-            <!-- Exercice 4 : production -->
+            <!-- Exercice 4 -->
             <div class="exercise-card">
-                <h3>📌 4. Production personnelle</h3>
-                <p>Rédigez deux phrases sur le thème de l’automne ou de la forêt. Soulignez chaque mot et indiquez sa nature entre parenthèses, comme dans l’exemple.</p>
-                <p><em>Exemple :</em> <u>L’</u> (déterminant) <u>oiseau</u> (nom) <u>chante</u> (verbe) <u>joliment</u> (adverbe) <u>dans</u> (préposition) <u>le</u> (déterminant) <u>bois</u> (nom).</p>
+                <h3 data-i18n="exo4_title">📌 4. Production personnelle</h3>
+                <p data-i18n="exo4_instruction">Rédigez deux phrases sur le thème de l’automne ou de la forêt. Soulignez chaque mot et indiquez sa nature entre parenthèses, comme dans l’exemple.</p>
+                <p><em data-i18n="exo4_example">Exemple :</em> <u>L’</u> (déterminant) <u>oiseau</u> (nom) <u>chante</u> (verbe) <u>joliment</u> (adverbe) <u>dans</u> (préposition) <u>le</u> (déterminant) <u>bois</u> (nom).</p>
                 <textarea rows="4" style="width:100%; padding:0.5rem;" placeholder="Vos phrases..."></textarea>
             </div>
         </div>
 
         <div class="lesson-footer">
-            <a href="index.html">← Retour au programme</a>
-            <a href="semaine1-fonctions-essentielles.html">Leçon suivante : Les fonctions essentielles →</a>
+            <!-- FIX 2: footer links are now direct translation -->
+            <a href="index.html" data-i18n="footer_back" class="no-bilingual">← Retour au programme</a>
+            <a href="semaine1-fonctions-essentielles.html" data-i18n="footer_next" class="no-bilingual">Leçon suivante : Les fonctions essentielles →</a>
         </div>
-
 
     </main>
 
-<script src="ed-french-ini.js"></script>
     <!-- ═══════ SCRIPTS ═══════ -->
+    <script src="i18n.js"></script>
     <script>
-        (function() {
+        // ── Translations for this lesson page ──
+        if (typeof addI18nTranslations === 'function') {
+            addI18nTranslations({
+                fr: {
+                    'lesson1_title': 'Leçon 1 – Les Classes Grammaticales | Texte littéraire & Exercices',
+                    'back_home': '🏠 Accueil',
+                    'back_revision': 'Révision générale',
+                    'back_current': 'Classes grammaticales',
+                    'lesson_badge': '📘 Grammaire · Leçon 1',
+                    'lesson_title': 'Les Classes Grammaticales<br>(Nature des Mots)',
+                    'lesson_duration': '⏱️ 45 minutes',
+                    'lesson_meta_audio': '🎧 Écoutez le texte puis faites les exercices',
+                    'audio_label': '🎧 Écoute littéraire',
+                    'text_author': '— Promenade automnale, anonyme',
+                    'rules_heading': '📖 Les classes grammaticales (natures)',
+                    'rules_intro': 'La <strong>nature</strong> (ou classe grammaticale) d’un mot est son identité fixe, indépendamment de son rôle dans la phrase. On distingue les mots <strong>variables</strong> (ils changent de forme) et <strong>invariables</strong>.',
+                    'rules_var_title': '🔹 Mots variables',
+                    'rules_var_list': '<li><strong>Le nom :</strong> désigne un être, une chose, une idée. <em>vent, feuille, automne, Tunis</em></li><li><strong>Le déterminant :</strong> précède le nom et indique son genre et son nombre. <em>le, la, les, un, une, mon, cette</em></li><li><strong>L’adjectif qualificatif :</strong> qualifie le nom. <em>léger, doré, rapide, silencieuse</em></li><li><strong>Le pronom :</strong> remplace un nom ou un groupe nominal. <em>je, me, il, elle, le mien</em></li><li><strong>Le verbe :</strong> exprime une action ou un état. <em>caressait, est, traversa, remplit</em></li>',
+                    'rules_invar_title': '🔹 Mots invariables',
+                    'rules_invar_list': '<li><strong>L’adverbe :</strong> modifie le sens d’un verbe, d’un adjectif ou d’un autre adverbe. <em>doucement, lentement, très</em></li><li><strong>La préposition :</strong> introduit un complément. <em>dans, avec, derrière, de, à</em></li><li><strong>La conjonction de coordination :</strong> relie des mots ou propositions de même nature. <em>mais, ou, et, donc, or, ni, car</em></li><li><strong>L’interjection :</strong> exprime une émotion, une réaction. <em>Ah !, Oh !, Hélas !</em></li>',
+                    'rules_note': '💡 Ne pas confondre <strong>nature</strong> (ce qu’est le mot) et <strong>fonction</strong> (ce qu’il fait dans la phrase).',
+                    'exercises_heading': '✍️ Exercices',
+                    'exo1_title': '📌 1. Identifiez la classe grammaticale de chaque mot souligné',
+                    'exo1_instruction': 'Complétez le tableau ci‑dessous en indiquant la nature exacte de chaque mot souligné dans le texte.',
+                    'table_word': 'Mot souligné',
+                    'table_answer': 'Votre réponse',
+                    'btn_correction': '🔍 Voir la correction',
+                    'exo2_title': '📌 2. Nature ou fonction ?',
+                    'exo2_instruction': 'Relisez la phrase : « Le vent léger caressait doucement les feuilles dorées. »',
+                    'exo2_q1_nature': 'Quelle est la <strong>nature</strong> du mot « vent » ?',
+                    'exo2_q2_fonction': 'Quelle est sa <strong>fonction</strong> dans la phrase ?',
+                    'exo2_q3_doucement': 'Nature de « doucement » :',
+                    'exo2_q3_fonction': 'Fonction :',
+                    'exo2_q4_explain': 'Expliquez la différence entre nature et fonction en une phrase :',
+                    'exo3_title': '📌 3. Classes invariables',
+                    'exo3_instruction': 'Dans le texte, relevez :',
+                    'exo3_q1_adverbs': 'Deux adverbes différents :',
+                    'exo3_q2_preps': 'Deux prépositions :',
+                    'exo3_q3_conj': 'Une conjonction de coordination :',
+                    'exo3_q4_interj': 'Une interjection :',
+                    'exo4_title': '📌 4. Production personnelle',
+                    'exo4_instruction': 'Rédigez deux phrases sur le thème de l’automne ou de la forêt. Soulignez chaque mot et indiquez sa nature entre parenthèses, comme dans l’exemple.',
+                    'exo4_example': 'Exemple :',
+                    'footer_back': '← Retour au programme',
+                    'footer_next': 'Leçon suivante : Les fonctions essentielles →'
+                },
+                en: {
+                    'lesson1_title': 'Lesson 1 – Grammatical Classes | Literary Text & Exercises',
+                    'back_home': '🏠 Home',
+                    'back_revision': 'General Review',
+                    'back_current': 'Grammatical Classes',
+                    'lesson_badge': '📘 Grammar · Lesson 1',
+                    'lesson_title': 'Grammatical Classes<br>(Parts of Speech)',
+                    'lesson_duration': '⏱️ 45 minutes',
+                    'lesson_meta_audio': '🎧 Listen to the text then do the exercises',
+                    'audio_label': '🎧 Literary Listening',
+                    'text_author': '— Autumn Walk, anonymous',
+                    'rules_heading': '📖 Grammatical Classes (Parts of Speech)',
+                    'rules_intro': 'The <strong>nature</strong> (or grammatical class) of a word is its fixed identity, regardless of its role in the sentence. We distinguish <strong>variable</strong> words (they change form) and <strong>invariable</strong> words.',
+                    'rules_var_title': '🔹 Variable words',
+                    'rules_var_list': '<li><strong>Noun :</strong> designates a being, thing, idea. <em>vent, feuille, automne, Tunis</em></li><li><strong>Determiner :</strong> precedes the noun and indicates its gender and number. <em>le, la, les, un, une, mon, cette</em></li><li><strong>Adjective :</strong> qualifies the noun. <em>léger, doré, rapide, silencieuse</em></li><li><strong>Pronoun :</strong> replaces a noun or noun phrase. <em>je, me, il, elle, le mien</em></li><li><strong>Verb :</strong> expresses an action or state. <em>caressait, est, traversa, remplit</em></li>',
+                    'rules_invar_title': '🔹 Invariable words',
+                    'rules_invar_list': '<li><strong>Adverb :</strong> modifies the meaning of a verb, adjective or another adverb. <em>doucement, lentement, très</em></li><li><strong>Preposition :</strong> introduces a complement. <em>dans, avec, derrière, de, à</em></li><li><strong>Coordinating conjunction :</strong> links words or clauses of the same nature. <em>mais, ou, et, donc, or, ni, car</em></li><li><strong>Interjection :</strong> expresses an emotion, reaction. <em>Ah !, Oh !, Hélas !</em></li>',
+                    'rules_note': '💡 Do not confuse <strong>nature</strong> (what the word is) and <strong>function</strong> (what it does in the sentence).',
+                    'exercises_heading': '✍️ Exercises',
+                    'exo1_title': '📌 1. Identify the grammatical class of each underlined word',
+                    'exo1_instruction': 'Complete the table below by giving the exact nature of each underlined word in the text.',
+                    'table_word': 'Underlined word',
+                    'table_answer': 'Your answer',
+                    'btn_correction': '🔍 See the correction',
+                    'exo2_title': '📌 2. Nature or function?',
+                    'exo2_instruction': 'Reread the sentence: « Le vent léger caressait doucement les feuilles dorées. »',
+                    'exo2_q1_nature': 'What is the <strong>nature</strong> of the word « vent »?',
+                    'exo2_q2_fonction': 'What is its <strong>function</strong> in the sentence?',
+                    'exo2_q3_doucement': 'Nature of « doucement »:',
+                    'exo2_q3_fonction': 'Function:',
+                    'exo2_q4_explain': 'Explain the difference between nature and function in one sentence:',
+                    'exo3_title': '📌 3. Invariable classes',
+                    'exo3_instruction': 'From the text, find:',
+                    'exo3_q1_adverbs': 'Two different adverbs:',
+                    'exo3_q2_preps': 'Two prepositions:',
+                    'exo3_q3_conj': 'A coordinating conjunction:',
+                    'exo3_q4_interj': 'An interjection:',
+                    'exo4_title': '📌 4. Personal production',
+                    'exo4_instruction': 'Write two sentences on the theme of autumn or the forest. Underline each word and indicate its nature in parentheses, as in the example.',
+                    'exo4_example': 'Example:',
+                    'footer_back': '← Back to program',
+                    'footer_next': 'Next lesson: Essential functions →'
+                },
+                ar: {
+                    'lesson1_title': 'الدرس 1 – الأصناف النحوية | نص أدبي وتمارين',
+                    'back_home': '🏠 الرئيسية',
+                    'back_revision': 'المراجعة العامة',
+                    'back_current': 'الأصناف النحوية',
+                    'lesson_badge': '📘 القواعد · الدرس 1',
+                    'lesson_title': 'الأصناف النحوية<br>(طبيعة الكلمات)',
+                    'lesson_duration': '⏱️ 45 دقيقة',
+                    'lesson_meta_audio': '🎧 استمع إلى النص ثم قم بالتمارين',
+                    'audio_label': '🎧 استماع أدبي',
+                    'text_author': '— نزهة خريفية، كاتب مجهول',
+                    'rules_heading': '📖 الأصناف النحوية (الطبيعة)',
+                    'rules_intro': '<strong>الطبيعة</strong> (أو الصنف النحوي) للكلمة هي هويتها الثابتة، بغض النظر عن دورها في الجملة. نميّز بين الكلمات <strong>المتغيرة</strong> (التي يتغير شكلها) والكلمات <strong>الثابتة</strong>.',
+                    'rules_var_title': '🔹 الكلمات المتغيرة',
+                    'rules_var_list': '<li><strong>الاسم :</strong> يدل على كائن أو شيء أو فكرة. <em>ريح، ورق، خريف، تونس</em></li><li><strong>المحدد :</strong> يسبق الاسم ويبين جنسه وعدده. <em>الـ، واحد، هذه</em></li><li><strong>النعت :</strong> يصف الاسم. <em>خفيف، ذهبي، سريع، صامت</em></li><li><strong>الضمير :</strong> يحل محل اسم أو مجموعة اسمية. <em>أنا، أنت، هو، هي</em></li><li><strong>الفعل :</strong> يعبر عن حدث أو حالة. <em>يداعب، يكون، عبر، يملأ</em></li>',
+                    'rules_invar_title': '🔹 الكلمات الثابتة',
+                    'rules_invar_list': '<li><strong>الظرف :</strong> يعدل معنى فعل أو نعت أو ظرف آخر. <em>بلطف، ببطء، جدا</em></li><li><strong>حرف الجر :</strong> يقدم مكملا. <em>في، مع، خلف، من، إلى</em></li><li><strong>حرف العطف :</strong> يربط كلمات أو جملا من نفس الطبيعة. <em>لكن، أو، و، إذن، لا، لأن</em></li><li><strong>حرف التعجب :</strong> يعبر عن شعور أو رد فعل. <em>آه!، أوه!، واحسرتاه!</em></li>',
+                    'rules_note': '💡 لا تخلط بين <strong>الطبيعة</strong> (ما هي الكلمة) و<strong>الوظيفة</strong> (ماذا تفعل في الجملة).',
+                    'exercises_heading': '✍️ تمارين',
+                    'exo1_title': '📌 1. حدد الصنف النحوي لكل كلمة مسطرة',
+                    'exo1_instruction': 'أكمل الجدول أدناه بذكر الطبيعة الدقيقة لكل كلمة مسطرة في النص.',
+                    'table_word': 'الكلمة المسطرة',
+                    'table_answer': 'جوابك',
+                    'btn_correction': '🔍 الاطلاع على التصحيح',
+                    'exo2_title': '📌 2. طبيعة أم وظيفة؟',
+                    'exo2_instruction': 'أعد قراءة الجملة: « Le vent léger caressait doucement les feuilles dorées. »',
+                    'exo2_q1_nature': 'ما هي <strong>طبيعة</strong> كلمة « vent »؟',
+                    'exo2_q2_fonction': 'ما هي <strong>وظيفتها</strong> في الجملة؟',
+                    'exo2_q3_doucement': 'طبيعة « doucement »:',
+                    'exo2_q3_fonction': 'الوظيفة:',
+                    'exo2_q4_explain': 'اشرح الفرق بين الطبيعة والوظيفة في جملة واحدة:',
+                    'exo3_title': '📌 3. الأصناف الثابتة',
+                    'exo3_instruction': 'استخرج من النص:',
+                    'exo3_q1_adverbs': 'ظرفين مختلفين:',
+                    'exo3_q2_preps': 'حرفي جر:',
+                    'exo3_q3_conj': 'حرف عطف:',
+                    'exo3_q4_interj': 'حرف تعجب:',
+                    'exo4_title': '📌 4. إنتاج شخصي',
+                    'exo4_instruction': 'اكتب جملتين حول موضوع الخريف أو الغابة. ضع خطا تحت كل كلمة واكتب طبيعتها بين قوسين، كما في المثال.',
+                    'exo4_example': 'مثال:',
+                    'footer_back': '← العودة إلى البرنامج',
+                    'footer_next': 'الدرس الموالي: الوظائف الأساسية →'
+                }
+            });
+        }
 
-            // ── CUSTOM AUDIO PLAYER ──
+        (function() {
+            var container = document.querySelector('.container');
+            if (container && typeof makeBilingual === 'function') {
+                makeBilingual(container);
+            }
+        })();
+    </script>
+    <script src="ed-french-ini.js"></script>
+    <script>
+        // ── Custom audio player and exercise logic (unchanged) ──
+        (function() {
             const audio = new Audio('lessons/revision/sounds/lesson1.mp3');
             const playBtn = document.getElementById('playBtn');
             const progressFill = document.getElementById('progressFill');
@@ -573,30 +683,17 @@
                 return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
             }
 
-            audio.addEventListener('loadedmetadata', () => {
-                durationEl.textContent = formatTime(audio.duration);
-            });
-
+            audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
             audio.addEventListener('timeupdate', () => {
                 const percent = (audio.currentTime / audio.duration) * 100 || 0;
                 progressFill.style.width = percent + '%';
                 currentTimeEl.textContent = formatTime(audio.currentTime);
             });
-
-            audio.addEventListener('ended', () => {
-                playBtn.textContent = '▶';
-            });
-
+            audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
             playBtn.addEventListener('click', () => {
-                if (audio.paused) {
-                    audio.play();
-                    playBtn.textContent = '⏸';
-                } else {
-                    audio.pause();
-                    playBtn.textContent = '▶';
-                }
+                if (audio.paused) { audio.play(); playBtn.textContent = '⏸'; }
+                else { audio.pause(); playBtn.textContent = '▶'; }
             });
-
             progressBar.addEventListener('click', (e) => {
                 const rect = progressBar.getBoundingClientRect();
                 const clickX = e.clientX - rect.left;
@@ -604,7 +701,6 @@
                 const seekTime = (clickX / width) * audio.duration;
                 audio.currentTime = seekTime;
             });
-
             speedBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     speedBtns.forEach(b => b.classList.remove('active'));
@@ -614,7 +710,6 @@
                 });
             });
 
-            // ── FILL EXERCISE 1 TABLE DYNAMICALLY ──
             const words = [
                 "Le", "vent", "doucement", "feuilles", "Ah !",
                 "la", "est", "automne", "Je", "me",
@@ -642,34 +737,94 @@
                 cellAnswer.appendChild(input);
             });
 
-            // ── CORRECTION DATA ──
             const exo1KeyDiv = document.getElementById('exo1Key');
             exo1KeyDiv.innerHTML = '<strong>Correction :</strong><br>' + words.map((w,i) => `${w} → <em>${answersExo1[i]}</em>`).join('<br>');
-
             const exo2KeyDiv = document.getElementById('exo2Key');
-            exo2KeyDiv.innerHTML = `
-                <strong>Correction :</strong><br>
-                a) Nature de « vent » : nom commun<br>
-                b) Fonction : sujet du verbe « caressait »<br>
-                c) Nature de « doucement » : adverbe ; Fonction : complément circonstanciel de manière<br>
-                d) La nature est la catégorie fixe du mot (ce qu'il est), la fonction est le rôle qu'il joue dans la phrase (ce qu'il fait).
-            `;
-
+            exo2KeyDiv.innerHTML = '<strong>Correction :</strong><br>a) Nature de « vent » : nom commun<br>b) Fonction : sujet du verbe « caressait »<br>c) Nature de « doucement » : adverbe ; Fonction : complément circonstanciel de manière<br>d) La nature est la catégorie fixe du mot (ce qu\'il est), la fonction est le rôle qu\'il joue dans la phrase (ce qu\'il fait).';
             const exo3KeyDiv = document.getElementById('exo3Key');
-            exo3KeyDiv.innerHTML = `
-                <strong>Correction :</strong><br>
-                • Deux adverbes : doucement, lentement<br>
-                • Deux prépositions : dans, avec (ou derrière, de)<br>
-                • Conjonction de coordination : mais (ou puis)<br>
-                • Interjection : Ah !
-            `;
+            exo3KeyDiv.innerHTML = '<strong>Correction :</strong><br>• Deux adverbes : doucement, lentement<br>• Deux prépositions : dans, avec (ou derrière, de)<br>• Conjonction de coordination : mais (ou puis)<br>• Interjection : Ah !';
 
-            // ── TOGGLE CORRECTION ──
             window.toggleCorrection = function(id) {
                 const el = document.getElementById(id);
                 el.classList.toggle('visible');
             };
         })();
     </script>
+
+    <!-- ═══════ DIRECT-TRANSLATION FIX ═══════ -->
+    <script>
+        (function() {
+            // Wait until applyTranslations is available
+            if (typeof applyTranslations !== 'function') return;
+
+            const originalApply = applyTranslations;
+
+            // Override the global applyTranslations to handle .no-bilingual elements
+            window.applyTranslations = function(lang) {
+                // Run the original i18n logic (including bilingual span insertion)
+                originalApply(lang);
+
+                // After a brief pause (bilingual spans are already in DOM), clean up direct-only elements
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        // Remove sibling bilingual span if present
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') {
+                                // Replace the element's content with the translation
+                                el.innerHTML = next.innerHTML;
+                            }
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+
+            // Run the fix immediately after initial page load
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') {
+                            el.innerHTML = next.innerHTML;
+                        }
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+
+    <!--
+    ═══════════════════════════════════════════════════════════════════
+    CHANGES APPLIED TO FIX THE THREE ISSUES
+    ═══════════════════════════════════════════════════════════════════
+
+    1. First paragraph (rules_intro) now translates correctly:
+       - Added class "no-bilingual" to the <p> element.
+       - The override script removes the bilingual span and directly sets
+         the translation text when the language is not French.
+
+    2. Navigation and footer links are direct-only (no bilingual spans):
+       - Top navigation is outside the bilingual container (.container),
+         so it was already direct; no change needed.
+       - Footer links (<a> in .lesson-footer) were inside the container
+         and would have received bilingual spans. Now they have
+         class "no-bilingual", making them direct-only.
+
+    3. Table style fixed:
+       - The <th> elements now have class "no-bilingual".
+       - The script removes the invalid <span class="i18n-bilingual"> that
+         was inserted between <tr> and <td>, restoring proper table layout.
+       - The translation text is placed directly into the <th> when needed.
+
+    The override script works by wrapping the existing applyTranslations()
+    function. After the original logic inserts bilingual spans, it
+    immediately removes those spans from elements with the "no-bilingual"
+    class and replaces their content with the pure translation (if not
+    French). This keeps the HTML clean and resolves all reported issues.
+    ═══════════════════════════════════════════════════════════════════
+    -->
 </body>
 </html>

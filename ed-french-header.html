@@ -4,6 +4,7 @@
 		<span class="site-title" data-i18n="site_title">Educational Dashboard<br>French Hub</span>
 	</div>
 	<div class="header-right">
+		<label for="langSelect" class="sr-only" data-i18n="lang_label">Choisir la langue</label>
 		<select id="langSelect" class="lang-select">
 			<option value="fr">Français</option>
 			<option value="en">English </option>
@@ -13,56 +14,78 @@
 		<button id="signOutBtn" class="header-btn sign-out-btn" style="display:none;" data-i18n="signout">🚪 Déconnexion</button>
 		<button id="profileBtn" class="header-btn profile-btn" style="display:none;" data-i18n="profile">👤 Profil</button>
 		<button id="installBtn" class="header-btn install-btn" style="display:none;" data-i18n="install">📲 Installer</button>
-		<button id="settingsBtn" class="header-btn settings-btn" data-i18n="settings">⚙️</button>
-		<button id="themeToggle" class="header-btn theme-btn" data-i18n-title="theme_toggle" title="Changer le mode">
+		<button id="settingsBtn" class="header-btn settings-btn" data-i18n-aria="settings" aria-label="Paramètres">⚙️</button>
+		<button id="themeToggle" class="header-btn theme-btn" data-i18n-aria="theme_toggle" aria-label="Changer le mode">
 			<span id="themeIcon">🌙</span>
 		</button>
-		<span id="onlineStatus" class="status-dot online" data-i18n-title="online" title="En ligne"></span>
+		<span id="onlineStatus" class="status-dot online" role="status" aria-live="polite"
+		      data-i18n-aria="online" aria-label="En ligne"
+		      data-i18n-title="online" title="En ligne"></span>
 	</div>
 </header>
-<div id="authModal" class="modal auth-modal">
+<div id="authModal" class="modal auth-modal" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
 	<div class="modal-content auth-modal-content">
 		<span class="close-modal">&times;</span>
+		<h2 id="authModalTitle" class="sr-only" data-i18n="auth_modal_title">Authentification</h2>
 		<div class="auth-tabs">
 			<button class="auth-tab active" data-tab="signin" data-i18n="auth_tab_signin">Connexion</button>
 			<button class="auth-tab" data-tab="signup" data-i18n="auth_tab_signup">Inscription</button>
 		</div>
 		<div id="authFormSignin" class="auth-form active">
-			<input type="text" class="auth-input" id="signin-username" data-i18n-placeholder="auth_placeholder_username" placeholder="Nom d'utilisateur">
-			<input type="email" class="auth-input" id="signin-email" data-i18n-placeholder="auth_placeholder_email" placeholder="Email">
-			<div class="password-wrapper">
-				<form onsubmit="return false;">
-					<input type="text" id="hidden-signin-username" name="hidden-signin-username" autocomplete="username" class="hidden-input" aria-hidden="true">
-					<input type="password" class="auth-input" id="signin-password"
-					data-i18n-placeholder="auth_placeholder_password"
-					placeholder="Mot de passe"
-					autocomplete="current-password">
-					<button type="button" class="toggle-password" data-target="signin-password">👁️</button>
-				</form>
+			<div class="auth-field">
+				<label for="signin-username" data-i18n="auth_label_username">Nom d'utilisateur</label>
+				<input type="text" class="auth-input" id="signin-username" data-i18n-placeholder="auth_placeholder_username" placeholder="Nom d'utilisateur">
+			</div>
+			<div class="auth-field">
+				<label for="signin-email" data-i18n="auth_label_email">Email</label>
+				<input type="email" class="auth-input" id="signin-email" data-i18n-placeholder="auth_placeholder_email" placeholder="Email">
+			</div>
+			<div class="auth-field">
+				<label for="signin-password" data-i18n="auth_label_password">Mot de passe</label>
+				<div class="password-wrapper">
+					<form onsubmit="return false;">
+						<input type="text" id="hidden-signin-username" name="hidden-signin-username" autocomplete="username" class="hidden-input" aria-hidden="true">
+						<input type="password" class="auth-input" id="signin-password"
+						data-i18n-placeholder="auth_placeholder_password"
+						placeholder="Mot de passe"
+						autocomplete="current-password">
+						<button type="button" class="toggle-password" data-target="signin-password">👁️</button>
+					</form>
+				</div>
 			</div>
 			<button class="auth-submit" id="signin-submit" data-i18n="auth_submit_signin">Se connecter</button>
 			<button class="forgot-password" id="forgotPassword" data-i18n="auth_forgot_password">Mot de passe oublié ?</button>
 		</div>
 		<div id="authFormSignup" class="auth-form">
-			<input type="text" class="auth-input" id="signup-username" data-i18n-placeholder="auth_placeholder_username" placeholder="Nom d'utilisateur">
-			<input type="email" class="auth-input" id="signup-email" data-i18n-placeholder="auth_placeholder_email" placeholder="Email">
-			<div class="password-wrapper">
-				<form onsubmit="return false;">
-					<input type="text" id="hidden-signup-username" name="hidden-signup-username" autocomplete="username" class="hidden-input" aria-hidden="true">
-					<input type="password" class="auth-input" id="signup-password"
-					data-i18n-placeholder="auth_placeholder_password"
-					placeholder="Mot de passe"
-					autocomplete="new-password">
-					<button type="button" class="toggle-password" data-target="signup-password">👁️</button>
-				</form>
+			<div class="auth-field">
+				<label for="signup-username" data-i18n="auth_label_username">Nom d'utilisateur</label>
+				<input type="text" class="auth-input" id="signup-username" data-i18n-placeholder="auth_placeholder_username" placeholder="Nom d'utilisateur">
+			</div>
+			<div class="auth-field">
+				<label for="signup-email" data-i18n="auth_label_email">Email</label>
+				<input type="email" class="auth-input" id="signup-email" data-i18n-placeholder="auth_placeholder_email" placeholder="Email">
+			</div>
+			<div class="auth-field">
+				<label for="signup-password" data-i18n="auth_label_password">Mot de passe</label>
+				<div class="password-wrapper">
+					<form onsubmit="return false;">
+						<input type="text" id="hidden-signup-username" name="hidden-signup-username" autocomplete="username" class="hidden-input" aria-hidden="true">
+						<input type="password" class="auth-input" id="signup-password"
+						data-i18n-placeholder="auth_placeholder_password"
+						placeholder="Mot de passe"
+						autocomplete="new-password">
+						<button type="button" class="toggle-password" data-target="signup-password">👁️</button>
+					</form>
+				</div>
 			</div>
 			<button class="auth-submit" id="signup-submit" data-i18n="auth_submit_signup">S'inscrire</button>
 		</div>
 	</div>
 </div>
-<div id="settingsModal" class="modal">
+<div id="settingsModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="settingsModalTitle">
 	<div class="modal-content">
 		<span class="close-modal">&times;</span>
+		<h2 id="settingsModalTitle" class="sr-only" data-i18n="settings_modal_title">Paramètres</h2>
 		<p data-i18n="auth_modal_settings">⚙️ Paramètres – Bientôt disponible</p>
 	</div>
 </div>
@@ -88,7 +111,13 @@
 				'auth_submit_signin': 'Se connecter',
 				'auth_submit_signup': "S'inscrire",
 				'auth_forgot_password': 'Mot de passe oublié ?',
-				'auth_modal_settings': '⚙️ Paramètres – Bientôt disponible'
+				'auth_modal_settings': '⚙️ Paramètres – Bientôt disponible',
+				'lang_label': 'Choisir la langue',
+				'auth_modal_title': 'Authentification',
+				'settings_modal_title': 'Paramètres',
+				'auth_label_username': "Nom d'utilisateur",
+				'auth_label_email': 'Email',
+				'auth_label_password': 'Mot de passe'
 			},
 			en: {
 				'site_title': 'Educational Dashboard<br>French Hub',
@@ -108,7 +137,13 @@
 				'auth_submit_signin': 'Sign in',
 				'auth_submit_signup': 'Sign up',
 				'auth_forgot_password': 'Forgot password?',
-				'auth_modal_settings': '⚙️ Settings – Coming soon'
+				'auth_modal_settings': '⚙️ Settings – Coming soon',
+				'lang_label': 'Choose language',
+				'auth_modal_title': 'Authentication',
+				'settings_modal_title': 'Settings',
+				'auth_label_username': 'Username',
+				'auth_label_email': 'Email',
+				'auth_label_password': 'Password'
 			},
 			ar: {
 				'site_title': 'لوحة التحكم التعليمية<br>French Hub',
@@ -128,7 +163,13 @@
 				'auth_submit_signin': 'تسجيل الدخول',
 				'auth_submit_signup': 'إنشاء حساب',
 				'auth_forgot_password': 'نسيت كلمة المرور؟',
-				'auth_modal_settings': '⚙️ الإعدادات – قريباً'
+				'auth_modal_settings': '⚙️ الإعدادات – قريباً',
+				'lang_label': 'اختر اللغة',
+				'auth_modal_title': 'المصادقة',
+				'settings_modal_title': 'الإعدادات',
+				'auth_label_username': 'اسم المستخدم',
+				'auth_label_email': 'البريد الإلكتروني',
+				'auth_label_password': 'كلمة المرور'
 			}
 		});
 	}

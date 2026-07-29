@@ -1,172 +1,166 @@
-// cards-building.js – version 3 (direct French text, bilingual)
-
+// i18n.js – Module de traduction FR / EN / AR (bilingue simple)
 (function() {
-  // 1. Store French translations locally so we can use them immediately
-  const fr = {
-    'card.primaire4.title': '4ᵉ année primaire',
-    'card.primaire5.title': '5ᵉ année primaire',
-    'card.primaire6.title': '6ᵉ année primaire',
-    'card.primaire7.title': '7ᵉ année primaire',
-    'card.primaire8.title': '8ᵉ année primaire',
-    'card.primaire9.title': '9ᵉ année primaire',
-    'card.secondaire1.title': '1ʳᵉ année secondaire',
-    'card.secondaire2.title': '2ᵉ année secondaire',
-    'card.secondaire3.title': '3ᵉ année secondaire',
-    'card.secondaire4.title': '4ᵉ année secondaire (Bac)',
-    'card.revision.title': '📖 Révision générale',
-    'coming_soon': '⏳ Contenu à venir',
-    'sections_available': 'Sections disponibles (à venir) :',
-    'soon': ' (prochainement)',
-    'revision_desc': 'Un programme complet de 8 semaines pour consolider les bases avant le Bac.',
-    'revision_link': 'Accéder au programme →'
+  const DEFAULT_LANG = 'fr';
+  const translations = {
+    fr: {},
+    en: {},
+    ar: {}
+  };
+  const bilingualContainers = [];
+
+  window.addI18nTranslations = function(newTranslations) {
+    for (const lang of Object.keys(newTranslations)) {
+      if (translations[lang]) {
+        Object.assign(translations[lang], newTranslations[lang]);
+      } else {
+        translations[lang] = { ...newTranslations[lang] };
+      }
+    }
   };
 
-  // 2. Register translations for all languages
-  if (typeof addI18nTranslations === 'function') {
-    addI18nTranslations({
-      fr: fr,   // reuse the same object
-      en: {
-        'card.primaire4.title': '4th grade',
-        'card.primaire5.title': '5th grade',
-        'card.primaire6.title': '6th grade',
-        'card.primaire7.title': '7th grade',
-        'card.primaire8.title': '8th grade',
-        'card.primaire9.title': '9th grade',
-        'card.secondaire1.title': '10th grade',
-        'card.secondaire2.title': '11th grade',
-        'card.secondaire3.title': '12th grade',
-        'card.secondaire4.title': '12th grade (Bac)',
-        'card.revision.title': '📖 General Review',
-        'coming_soon': '⏳ Coming soon',
-        'sections_available': 'Available sections (coming soon):',
-        'soon': ' (coming soon)',
-        'revision_desc': 'An 8-week comprehensive program to strengthen the basics before the Bac.',
-        'revision_link': 'Access the program →'
-      },
-      ar: {
-        'card.primaire4.title': 'السنة الرابعة ابتدائي',
-        'card.primaire5.title': 'السنة الخامسة ابتدائي',
-        'card.primaire6.title': 'السنة السادسة ابتدائي',
-        'card.primaire7.title': 'السنة السابعة ابتدائي',
-        'card.primaire8.title': 'السنة الثامنة ابتدائي',
-        'card.primaire9.title': 'السنة التاسعة ابتدائي',
-        'card.secondaire1.title': 'الأولى ثانوي',
-        'card.secondaire2.title': 'الثانية ثانوي',
-        'card.secondaire3.title': 'الثالثة ثانوي',
-        'card.secondaire4.title': 'البكالوريا (السنة الرابعة)',
-        'card.revision.title': '📖 مراجعة عامة',
-        'coming_soon': '⏳ قريباً',
-        'sections_available': 'الأقسام المتاحة (قريباً):',
-        'soon': ' (قريباً)',
-        'revision_desc': 'برنامج شامل مدته 8 أسابيع لتقوية الأساسيات قبل البكالوريا.',
-        'revision_link': 'الوصول إلى البرنامج ←'
-      }
-    });
-  }
-
-  // 3. IndexedDB (unchanged)
-  const DB_NAME = 'adminMonitorDB_v2';
-  const DB_VERSION = 2;
-  let dbReady = false;
-  let db;
-  function openDB() {
-    return new Promise((resolve, reject) => {
-      const request = indexedDB.open(DB_NAME, DB_VERSION);
-      request.onupgradeneeded = (e) => {
-        const db = e.target.result;
-        if (!db.objectStoreNames.contains('actions')) {
-          db.createObjectStore('actions', { keyPath: 'id', autoIncrement: true });
-        }
-      };
-      request.onsuccess = (e) => { db = e.target.result; dbReady = true; resolve(db); };
-      request.onerror = (e) => reject(e.target.error);
-    });
-  }
-  async function logToDB(entry) {
-    try {
-      if (!dbReady) await openDB();
-      const tx = db.transaction('actions', 'readwrite');
-      const store = tx.objectStore('actions');
-      const { id, ...clean } = entry;
-      await new Promise((resolve, reject) => {
-        const req = store.add({ ...clean, timestamp: clean.timestamp || new Date().toISOString() });
-        req.onsuccess = resolve;
-        req.onerror = reject;
-      });
-    } catch (e) { /* silent */ }
-  }
-
-  // 4. Card definitions
-  const cardsData = [
-    { id: 'primaire4', titleKey: 'card.primaire4.title', type: 'coming' },
-    { id: 'primaire5', titleKey: 'card.primaire5.title', type: 'coming' },
-    { id: 'primaire6', titleKey: 'card.primaire6.title', type: 'coming' },
-    { id: 'primaire7', titleKey: 'card.primaire7.title', type: 'coming' },
-    { id: 'primaire8', titleKey: 'card.primaire8.title', type: 'coming' },
-    { id: 'primaire9', titleKey: 'card.primaire9.title', type: 'coming' },
-    { id: 'secondaire1', titleKey: 'card.secondaire1.title', type: 'coming' },
-    { id: 'secondaire2', titleKey: 'card.secondaire2.title', type: 'secondary', sections: ['Section Lettres', 'Section Sciences', 'Section Économie'] },
-    { id: 'secondaire3', titleKey: 'card.secondaire3.title', type: 'secondary', sections: ['Section Lettres', 'Section Sciences', 'Section Mathématiques'] },
-    { id: 'secondaire4', titleKey: 'card.secondaire4.title', type: 'secondary', sections: ['Section Lettres', 'Section Sciences', 'Section Techniques'] },
-    { id: 'revision', titleKey: 'card.revision.title', type: 'revision', link: 'revision.html' }
-  ];
-
-  const grid = document.getElementById('cardGrid');
-  if (!grid) return;
-
-  // 5. Build cards using French text directly
-  cardsData.forEach(card => {
-    const cardEl = document.createElement('div');
-    cardEl.className = 'card' + (card.type === 'revision' ? ' revision' : '');
-
-    const header = document.createElement('div');
-    header.className = 'card-header';
-    header.setAttribute('data-i18n', card.titleKey);
-    // Use French text as the visible content
-    header.innerHTML = (card.type === 'revision' ? '⭐ ' : '📘 ') + (fr[card.titleKey] || card.titleKey);
-    cardEl.appendChild(header);
-
-    const body = document.createElement('div');
-    body.className = 'card-body';
-
-    if (card.type === 'coming') {
-      const span = document.createElement('span');
-      span.className = 'coming-soon';
-      span.setAttribute('data-i18n', 'coming_soon');
-      span.innerHTML = fr['coming_soon'];   // French
-      body.appendChild(span);
-    } else if (card.type === 'secondary') {
-      const p = document.createElement('p');
-      p.setAttribute('data-i18n', 'sections_available');
-      p.innerHTML = fr['sections_available'];  // French
-      body.appendChild(p);
-
-      const ul = document.createElement('ul');
-      ul.className = 'sections-list';
-      card.sections.forEach(sec => {
-        const li = document.createElement('li');
-        li.textContent = sec + ' (prochainement)';
-        li.setAttribute('data-i18n', 'soon');
-        ul.appendChild(li);
-      });
-      body.appendChild(ul);
-    } else if (card.type === 'revision') {
-      body.innerHTML = `<p data-i18n="revision_desc">${fr['revision_desc']}</p>
-                        <a href="${card.link}" data-i18n="revision_link">${fr['revision_link']}</a>`;
+  // ---- Toast translations (always loaded) ----
+  window.addI18nTranslations({
+    fr: {
+      'toast_signin_success': '✅ Vous êtes connecté.',
+      'toast_signup_success': '✅ Compte créé et connecté.',
+      'toast_signout': '👋 Vous êtes déconnecté.',
+      'toast_forgot_password': '🔧 Fonctionnalité à venir – Mot de passe oublié.',
+      'toast_bg_sync_enabled': '🔄 Synchronisation arrière‑plan activée (simulation).',
+      'toast_bg_sync_disabled': '🔄 Synchronisation arrière‑plan désactivée.',
+      'toast_notif_enabled': '🔔 Notifications activées (simulation).',
+      'toast_notif_disabled': '🔔 Notifications désactivées.',
+      'toast_install_prompt': '💡 Pour installer l\'application, utilisez l\'option "Ajouter à l\'écran d\'accueil" du navigateur.',
+      'toast_update_available': '🔄 Une nouvelle version est disponible.',
+      'toast_update_button': 'Actualiser',
+      // Global UI labels (used by multiple components)
+      'skip_to_content': 'Aller au contenu principal',
+      'lang_label': 'Choisir la langue'
+    },
+    en: {
+      'toast_signin_success': '✅ You are signed in.',
+      'toast_signup_success': '✅ Account created and signed in.',
+      'toast_signout': '👋 You have been signed out.',
+      'toast_forgot_password': '🔧 Forgot password feature coming soon.',
+      'toast_bg_sync_enabled': '🔄 Background sync enabled (mock).',
+      'toast_bg_sync_disabled': '🔄 Background sync disabled.',
+      'toast_notif_enabled': '🔔 Notifications enabled (mock).',
+      'toast_notif_disabled': '🔔 Notifications disabled.',
+      'toast_install_prompt': '💡 To install the app, use the "Add to Home Screen" option in your browser.',
+      'toast_update_available': '🔄 A new version is available.',
+      'toast_update_button': 'Refresh',
+      'skip_to_content': 'Skip to main content',
+      'lang_label': 'Choose language'
+    },
+    ar: {
+      'toast_signin_success': '✅ تم تسجيل الدخول بنجاح.',
+      'toast_signup_success': '✅ تم إنشاء الحساب وتسجيل الدخول.',
+      'toast_signout': '👋 تم تسجيل الخروج.',
+      'toast_forgot_password': '🔧 ميزة نسيت كلمة المرور قريباً.',
+      'toast_bg_sync_enabled': '🔄 تم تفعيل المزامنة الخلفية (محاكاة).',
+      'toast_bg_sync_disabled': '🔄 تم تعطيل المزامنة الخلفية.',
+      'toast_notif_enabled': '🔔 تم تفعيل الإشعارات (محاكاة).',
+      'toast_notif_disabled': '🔔 تم تعطيل الإشعارات.',
+      'toast_install_prompt': '💡 لتثبيت التطبيق، استخدم خيار "إضافة إلى الشاشة الرئيسية" في متصفحك.',
+      'toast_update_available': '🔄 تتوفر نسخة جديدة.',
+      'toast_update_button': 'تحديث',
+      'skip_to_content': 'تخطي إلى المحتوى الرئيسي',
+      'lang_label': 'اختر اللغة'
     }
-
-    cardEl.appendChild(body);
-    grid.appendChild(cardEl);
   });
 
-  // 6. Register grid for bilingual display (saves the French we just set)
-  if (typeof makeBilingual === 'function') {
-    makeBilingual(grid);
+  window.translateToastKey = function(lang, key) {
+    return translations[lang]?.[key] || key;
+  };
+
+  // Marque un conteneur comme bilingue et sauvegarde le français original
+  window.makeBilingual = function(container) {
+    if (!container) return;
+    const elements = container.querySelectorAll('[data-i18n]');
+    elements.forEach(el => {
+      if (!el.dataset.i18nOrig) {
+        el.dataset.i18nOrig = el.innerHTML; // français original
+      }
+    });
+    if (!bilingualContainers.includes(container)) {
+      bilingualContainers.push(container);
+    }
+  };
+
+  function restoreAllBilingual(lang) {
+    bilingualContainers.forEach(container => {
+      container.querySelectorAll('.i18n-bilingual').forEach(el => el.remove());
+      if (lang === 'fr') return;
+      const elements = container.querySelectorAll('[data-i18n]');
+      elements.forEach(el => {
+        if (el.dataset.i18nOrig) {
+          el.innerHTML = el.dataset.i18nOrig;
+        }
+        const key = el.dataset.i18n;
+        if (!key) return;
+        const t = translations[lang];
+        if (!t) return;
+        const translation = t[key];
+        if (!translation || translation.trim() === el.textContent.trim()) return;
+        const bilingualEl = document.createElement('span');
+        bilingualEl.className = 'i18n-bilingual';
+        bilingualEl.innerHTML = translation;
+        el.parentNode.insertBefore(bilingualEl, el.nextSibling);
+      });
+    });
   }
 
-  // 7. Apply translations for the current language (Arabic/English etc.)
-  //    This will replace content, but restoreAllBilingual will bring French back + translation.
-  if (typeof applyTranslations === 'function') applyTranslations();
+  function translateElement(el, lang) {
+    const t = translations[lang];
+    if (!t) return;
+    if (el.dataset.i18n) {
+      el.innerHTML = t[el.dataset.i18n] || el.innerHTML;
+    }
+    if (el.dataset.i18nPlaceholder) {
+      el.placeholder = t[el.dataset.i18nPlaceholder] || el.placeholder;
+    }
+    if (el.dataset.i18nTitle) {
+      el.title = t[el.dataset.i18nTitle] || el.title;
+    }
+    // New: support for aria-label translation
+    if (el.dataset.i18nAria) {
+      el.setAttribute('aria-label', t[el.dataset.i18nAria] || el.getAttribute('aria-label'));
+    }
+  }
 
-  logToDB({ type: 'info', message: 'cards-building.js v3 loaded and cards rendered' });
+  function applyTranslations(lang) {
+    lang = lang || localStorage.getItem('lang') || DEFAULT_LANG;
+    document.querySelectorAll('[data-i18n]').forEach(el => translateElement(el, lang));
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => translateElement(el, lang));
+    document.querySelectorAll('[data-i18n-title]').forEach(el => translateElement(el, lang));
+    document.querySelectorAll('[data-i18n-aria]').forEach(el => translateElement(el, lang));
+    const titleEl = document.querySelector('title[data-i18n]');
+    if (titleEl && translations[lang]) {
+      titleEl.textContent = translations[lang][titleEl.dataset.i18n] || titleEl.textContent;
+    }
+    restoreAllBilingual(lang);
+  }
+
+  function initLangSelector() {
+    const langSelect = document.getElementById('langSelect');
+    if (!langSelect) return;
+    const savedLang = localStorage.getItem('lang') || DEFAULT_LANG;
+    langSelect.value = savedLang;
+    langSelect.addEventListener('change', (e) => {
+      const newLang = e.target.value;
+      localStorage.setItem('lang', newLang);
+      applyTranslations(newLang);
+    });
+    applyTranslations(savedLang);
+  }
+
+  window.applyTranslations = applyTranslations;
+  window.initLangSelector = initLangSelector;
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      if (document.getElementById('langSelect')) initLangSelector();
+    });
+  } else {
+    if (document.getElementById('langSelect')) initLangSelector();
+  }
 })();

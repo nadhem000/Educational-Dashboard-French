@@ -1,9 +1,10 @@
-// ed-french-ini.js (complet avec exécution des scripts injectés et toasts traduits)
+// ed-french-ini.js (complet avec exécution des scripts injectés, toasts, accessibilité)
 (function() {
   const DB_NAME = 'adminMonitorDB_v2';
   const DB_VERSION = 2;
   let dbReady = false;
   let db;
+
   function openDB() {
     return new Promise((resolve, reject) => {
       const request = indexedDB.open(DB_NAME, DB_VERSION);
@@ -20,6 +21,7 @@
       request.onerror = (e) => reject(e.target.error);
     });
   }
+
   async function logToDB(storeName, entry) {
     try {
       if (!dbReady) await openDB();
@@ -33,6 +35,7 @@
       });
     } catch (e) { /* silent */ }
   }
+
   function injectHTML(container, htmlString, position = 'append') {
     const temp = document.createElement('div');
     temp.innerHTML = htmlString;
@@ -58,6 +61,7 @@
       }
     });
   }
+
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.addEventListener('message', event => {
       if (!event.data) return;
@@ -70,6 +74,7 @@
       }
     });
   }
+
   window.showToast = function(key, type = '', duration = 3000, isHTML = false) {
     const lang = localStorage.getItem('lang') || 'fr';
     let message = key;
@@ -87,12 +92,14 @@
     container.appendChild(toast);
     setTimeout(() => { if (toast.parentNode) toast.parentNode.removeChild(toast); }, duration);
   };
+
   function createToastContainer() {
     const container = document.createElement('div');
     container.id = 'toast-container';
     document.body.appendChild(container);
     return container;
   }
+
   function showUpdateToast() {
     const lang = localStorage.getItem('lang') || 'fr';
     const message = typeof translateToastKey === 'function' ? translateToastKey(lang, 'toast_update_available') : '🔄 Une nouvelle version est disponible.';
@@ -105,21 +112,91 @@
     document.getElementById('reloadNow').addEventListener('click', () => { window.location.reload(); });
     setTimeout(() => { if (toast.parentNode) toast.parentNode.removeChild(toast); }, 10000);
   }
+
+  // ---------- Focus trap & modal helpers ----------
+  let currentOpenModal = null;
+  let lastFocusedElement = null;
+
+  function trapFocus(modal) {
+    const focusable = modal.querySelectorAll('a[href], button:not([disabled]), textarea, input:not([type="hidden"]), select, [tabindex]:not([tabindex="-1"])');
+    if (focusable.length === 0) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    modal.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal(modal);
+        return;
+      }
+      if (e.key === 'Tab') {
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      }
+    });
+  }
+
+  function openModal(modal) {
+    if (currentOpenModal && currentOpenModal !== modal) {
+      closeModal(currentOpenModal);
+    }
+    lastFocusedElement = document.activeElement;
+    modal.style.display = 'block';
+    modal.setAttribute('aria-hidden', 'false');
+    currentOpenModal = modal;
+    // Focus the first focusable element (e.g., close button) after a microtask
+    setTimeout(() => {
+      const focusable = modal.querySelectorAll('a[href], button:not([disabled]), textarea, input:not([type="hidden"]), select, [tabindex]:not([tabindex="-1"])');
+      if (focusable.length) focusable[0].focus();
+    }, 0);
+  }
+
+  function closeModal(modal) {
+    if (modal) {
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      if (currentOpenModal === modal) currentOpenModal = null;
+    }
+    if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+      lastFocusedElement.focus();
+      lastFocusedElement = null;
+    }
+  }
+
+  // ---------- Init functions ----------
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
   }
+
   async function init() {
     try {
       const headerResp = await fetch('ed-french-header.html');
       if (!headerResp.ok) throw new Error('Header introuvable');
       const headerHTML = await headerResp.text();
       injectHTML(document.body, headerHTML, 'prepend');
+
+      // Inject skip link as absolute first element in body
+      const skipLink = document.createElement('a');
+      skipLink.className = 'skip-link';
+      skipLink.href = '#main-content';
+      skipLink.setAttribute('data-i18n', 'skip_to_content');
+      skipLink.textContent = 'Aller au contenu principal';
+      document.body.insertBefore(skipLink, document.body.firstChild);
+
       const footerResp = await fetch('ed-french-footer.html');
       if (!footerResp.ok) throw new Error('Footer introuvable');
       const footerHTML = await footerResp.text();
       injectHTML(document.body, footerHTML, 'append');
+
       if (typeof initLangSelector === 'function') {
         initLangSelector();
       }
@@ -138,6 +215,7 @@
       logToDB('errors', { message: 'Fallback: ' + error.message });
     }
   }
+
   function initThemeToggle() {
     const body = document.body;
     const toggle = document.getElementById('themeToggle');
@@ -155,28 +233,37 @@
       icon.textContent = isDark ? '☀️' : '🌙';
     });
   }
+
   function initSettingsModal() {
     const modal = document.getElementById('settingsModal');
     const settingsBtn = document.getElementById('settingsBtn');
     const closeBtn = modal ? modal.querySelector('.close-modal') : null;
     if (!modal || !settingsBtn || !closeBtn) return;
-    settingsBtn.onclick = () => modal.style.display = 'block';
-    closeBtn.onclick = () => modal.style.display = 'none';
-    window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+
+    settingsBtn.addEventListener('click', () => openModal(modal));
+    closeBtn.addEventListener('click', () => closeModal(modal));
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal(modal);
+    });
+    trapFocus(modal);
   }
+
   function initOnlineStatus() {
     const dot = document.getElementById('onlineStatus');
     if (!dot) return;
     function update() {
       const online = navigator.onLine;
       dot.className = 'status-dot ' + (online ? 'online' : 'offline');
-      dot.setAttribute('data-i18n-title', online ? 'online' : 'offline');
+      const key = online ? 'online' : 'offline';
+      dot.setAttribute('data-i18n-aria', key);
+      dot.setAttribute('data-i18n-title', key);
       if (typeof applyTranslations === 'function') applyTranslations();
     }
     window.addEventListener('online', update);
     window.addEventListener('offline', update);
     update();
   }
+
   function initAuth() {
     const signInBtn = document.getElementById('signInBtn');
     const signOutBtn = document.getElementById('signOutBtn');
@@ -187,6 +274,7 @@
     const signinForm = document.getElementById('authFormSignin');
     const signupForm = document.getElementById('authFormSignup');
     const forgotPasswordBtn = document.getElementById('forgotPassword');
+
     function setLoggedIn(isLoggedIn) {
       if (isLoggedIn) {
         signInBtn.style.display = 'none';
@@ -200,10 +288,19 @@
         localStorage.removeItem('isLoggedIn');
       }
     }
+
     if (localStorage.getItem('isLoggedIn') === 'true') setLoggedIn(true);
-    if (signInBtn && authModal) signInBtn.addEventListener('click', () => { authModal.style.display = 'block'; });
-    if (closeModalBtn) closeModalBtn.addEventListener('click', () => { authModal.style.display = 'none'; });
-    window.addEventListener('click', (e) => { if (e.target === authModal) authModal.style.display = 'none'; });
+
+    if (signInBtn && authModal) {
+      signInBtn.addEventListener('click', () => openModal(authModal));
+    }
+    if (closeModalBtn) {
+      closeModalBtn.addEventListener('click', () => closeModal(authModal));
+    }
+    window.addEventListener('click', (e) => {
+      if (e.target === authModal) closeModal(authModal);
+    });
+
     tabButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         const tabName = btn.dataset.tab;
@@ -214,6 +311,7 @@
         else if (tabName === 'signup') signupForm.classList.add('active');
       });
     });
+
     document.querySelectorAll('.toggle-password').forEach(btn => {
       btn.addEventListener('click', () => {
         const input = document.getElementById(btn.dataset.target);
@@ -224,43 +322,49 @@
         }
       });
     });
+
     const signinSubmit = document.getElementById('signin-submit');
     if (signinSubmit) {
       signinSubmit.addEventListener('click', (e) => {
         e.preventDefault();
         setLoggedIn(true);
-        authModal.style.display = 'none';
+        closeModal(authModal);
         document.getElementById('signin-username').value = '';
         document.getElementById('signin-email').value = '';
         document.getElementById('signin-password').value = '';
         window.showToast('toast_signin_success', 'success');
       });
     }
+
     const signupSubmit = document.getElementById('signup-submit');
     if (signupSubmit) {
       signupSubmit.addEventListener('click', (e) => {
         e.preventDefault();
         setLoggedIn(true);
-        authModal.style.display = 'none';
+        closeModal(authModal);
         document.getElementById('signup-username').value = '';
         document.getElementById('signup-email').value = '';
         document.getElementById('signup-password').value = '';
         window.showToast('toast_signup_success', 'success');
       });
     }
+
     if (forgotPasswordBtn) {
       forgotPasswordBtn.addEventListener('click', (e) => {
         e.preventDefault();
         window.showToast('toast_forgot_password', '');
       });
     }
+
     if (signOutBtn) {
       signOutBtn.addEventListener('click', () => {
         setLoggedIn(false);
         window.showToast('toast_signout', '');
       });
     }
+    trapFocus(authModal);
   }
+
   async function handleBgSyncToggle(enabled) {
     try {
       const registration = await navigator.serviceWorker.ready;
@@ -272,10 +376,7 @@
         if ('sync' in registration) {
           try {
             await registration.sync.register('version-check');
-            console.log('Background sync registered (version-check)');
-          } catch (e) {
-            console.warn('Background sync registration failed:', e);
-          }
+          } catch (e) {}
         }
         if ('periodicSync' in registration) {
           try {
@@ -284,42 +385,26 @@
               await registration.periodicSync.register('version-check', {
                 minInterval: 12 * 60 * 60 * 1000
               });
-              console.log('Periodic background sync registered (version-check)');
-            } else {
-              console.log('Periodic background sync permission not granted; it may be enabled later automatically.');
             }
-          } catch (e) {
-            console.warn('Periodic background sync registration failed:', e);
-          }
+          } catch (e) {}
         }
       } else {
         if ('sync' in registration) {
           try {
             const tags = await registration.sync.getTags();
-            if (tags.includes('version-check')) {
-              await registration.sync.unregister('version-check');
-              console.log('Background sync unregistered');
-            }
-          } catch (e) {
-            console.warn('Error unregistering sync:', e);
-          }
+            if (tags.includes('version-check')) await registration.sync.unregister('version-check');
+          } catch (e) {}
         }
         if ('periodicSync' in registration) {
           try {
             const tags = await registration.periodicSync.getTags();
-            if (tags.includes('version-check')) {
-              await registration.periodicSync.unregister('version-check');
-              console.log('Periodic background sync unregistered');
-            }
-          } catch (e) {
-            console.warn('Error unregistering periodic sync:', e);
-          }
+            if (tags.includes('version-check')) await registration.periodicSync.unregister('version-check');
+          } catch (e) {}
         }
       }
-    } catch (err) {
-      console.error('handleBgSyncToggle error:', err);
-    }
+    } catch (err) {}
   }
+
   function initFooterButtons() {
     const bgSyncBtn = document.getElementById('bgSyncBtn');
     const notifBtn = document.getElementById('notifBtn');
@@ -332,9 +417,7 @@
       if (typeof applyTranslations === 'function') applyTranslations();
     }
     updateFooterButtons();
-    if (bgSyncEnabled) {
-      handleBgSyncToggle(true);
-    }
+    if (bgSyncEnabled) handleBgSyncToggle(true);
     bgSyncBtn.addEventListener('click', () => {
       bgSyncEnabled = !bgSyncEnabled;
       localStorage.setItem('bgSync', bgSyncEnabled);
@@ -350,88 +433,49 @@
     });
   }
 
-  // ═══════════════════════════════════════
-  //  INSTALL BUTTON – fixed version
-  // ═══════════════════════════════════════
   let deferredPrompt;
-
-  // Listen for the install prompt as soon as possible
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
     const installBtn = document.getElementById('installBtn');
-    if (installBtn) {
-      installBtn.style.display = 'inline-flex';
-    }
-    logToDB('actions', { message: 'beforeinstallprompt fired', type: 'pwa' });
+    if (installBtn) installBtn.style.display = 'inline-flex';
   });
 
   async function initInstallButton() {
     const installBtn = document.getElementById('installBtn');
     if (!installBtn) return;
-
-    // Already installed as standalone? Hide permanently
     if (window.matchMedia('(display-mode: standalone)').matches) {
       installBtn.style.display = 'none';
       return;
     }
-
-    // If the prompt already fired, show button immediately
-    if (deferredPrompt) {
-      installBtn.style.display = 'inline-flex';
-    }
-
+    if (deferredPrompt) installBtn.style.display = 'inline-flex';
     installBtn.addEventListener('click', async () => {
       if (deferredPrompt) {
         deferredPrompt.prompt();
         const { outcome } = await deferredPrompt.userChoice;
-        logToDB('actions', { message: `Install prompt outcome: ${outcome}`, type: 'pwa' });
-        if (outcome === 'accepted') {
-          installBtn.style.display = 'none';
-          logToDB('actions', { message: 'User accepted install', type: 'pwa' });
-        }
+        if (outcome === 'accepted') installBtn.style.display = 'none';
         deferredPrompt = null;
-      } else {
-        // Should not normally happen if button is only shown after beforeinstallprompt
-        window.showToast('toast_install_prompt', '', 5000);
       }
     });
-
     window.addEventListener('appinstalled', () => {
       installBtn.style.display = 'none';
-      logToDB('actions', { message: 'App installed', type: 'pwa' });
     });
   }
-  // ═══════════════════════════════════════
 
   function registerSW() {
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-          .then(registration => {
-            logToDB('actions', { message: 'Service Worker registered: ' + registration.scope, type: 'sw_reg' });
-            registration.addEventListener('updatefound', () => {
-              const newWorker = registration.installing;
-              newWorker.addEventListener('statechange', () => {
-                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                  // New content available
-                }
-              });
-            });
-          })
-          .catch(error => { logToDB('errors', { message: 'SW registration failed: ' + error.message }); });
+        navigator.serviceWorker.register('/sw.js').catch(error => {});
       });
     }
   }
+
   function loadScript(src) {
     return new Promise((resolve, reject) => {
       const script = document.createElement('script');
       script.src = src;
       script.onload = resolve;
-      script.onerror = () => {
-        logToDB('errors', { message: 'Failed to load script: ' + src });
-        reject(new Error('Script load error'));
-      };
+      script.onerror = () => reject(new Error('Script load error'));
       document.head.appendChild(script);
     });
   }

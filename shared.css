@@ -4,7 +4,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 :root {
   /* Shared colour & UI variables (originally in shared.css) */
   --settings-btn-bg: #f0e8d8;
@@ -23,7 +22,6 @@
   --success: #3fb950;
   --toast-dark-bg: #2a2620;
   --toast-dark-shadow: rgba(0, 0, 0, 0.4);
-
   /* Common layout & theme variables (previously duplicated in pages) */
   --bg: #f9f7f3;
   --card-bg: #ffffff;
@@ -35,11 +33,9 @@
   --radius: 12px;
   --transition: 0.25s ease;
   --font: 'Segoe UI', 'Georgia', serif;
-
   /* Topbar shadow (decoupled from page-specific --shadow) */
   --topbar-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
-
 /* Dark mode overrides for shared variables */
 body.dark {
   --bg: #1e1b17;
@@ -50,7 +46,6 @@ body.dark {
   --accent-hover: #f08c5c;
   --border: #3e3830;
 }
-
 /* I18n bilingual display */
 .i18n-bilingual {
   display: block;
@@ -63,7 +58,34 @@ body.dark {
   opacity: 0.85;
   margin-bottom: 4px;
 }
-
+/* Screen‑reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+/* Skip‑link – visually hidden, appears on focus */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  z-index: 10000;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+}
 /* Utility classes replacing inline styles */
 .lang-select {
   background: var(--card-bg);
@@ -113,7 +135,6 @@ body.dark {
   border-radius: 20px;
   cursor: pointer;
 }
-
 /* ===== Shared Header, Topbar & Footer Styles ===== */
 .topbar {
     display: flex;
@@ -378,6 +399,17 @@ body.dark .profile-btn {
 .auth-form.active {
   display: flex;
 }
+/* Auth field with label */
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.auth-field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-light);
+}
 .auth-input {
   padding: 0.65rem 0.8rem;
   border: 1px solid var(--border);
@@ -511,4 +543,14 @@ body.dark .toast {
     background: var(--toast-dark-bg);
     color: var(--dark-text);
     box-shadow: 0 4px 12px var(--toast-dark-shadow);
+}
+
+/* ===== FOCUS INDICATORS ===== */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+/* Remove default outline only when custom focus is shown */
+:focus:not(:focus-visible) {
+  outline: none;
 }
