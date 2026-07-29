@@ -1,4 +1,4 @@
-// ed-french-ini.js (complet avec exécution des scripts injectés, toasts, accessibilité)
+// ed-french-ini.js (complet avec chargement, fallback, spinner auth, install disabled)
 (function() {
   const DB_NAME = 'adminMonitorDB_v2';
   const DB_VERSION = 2;
@@ -151,7 +151,6 @@
     modal.style.display = 'block';
     modal.setAttribute('aria-hidden', 'false');
     currentOpenModal = modal;
-    // Focus the first focusable element (e.g., close button) after a microtask
     setTimeout(() => {
       const focusable = modal.querySelectorAll('a[href], button:not([disabled]), textarea, input:not([type="hidden"]), select, [tabindex]:not([tabindex="-1"])');
       if (focusable.length) focusable[0].focus();
@@ -197,22 +196,35 @@
       const footerHTML = await footerResp.text();
       injectHTML(document.body, footerHTML, 'append');
 
-      if (typeof initLangSelector === 'function') {
-        initLangSelector();
-      }
-      initThemeToggle();
-      initSettingsModal();
-      initOnlineStatus();
-      initAuth();
-      initFooterButtons();
-      initInstallButton();
-      await loadScript('cards-building.js');
-      registerSW();
-      if (typeof applyTranslations === 'function') {
-        applyTranslations();
-      }
     } catch (error) {
-      logToDB('errors', { message: 'Fallback: ' + error.message });
+      logToDB('errors', { message: 'Fallback header/footer: ' + error.message });
+      // Inject minimal fallback UI
+      const fallbackHeader = document.createElement('header');
+      fallbackHeader.className = 'site-header';
+      fallbackHeader.innerHTML = '<div class="header-left"><span class="site-title">Educational Dashboard - French</span></div>';
+      document.body.insertBefore(fallbackHeader, document.body.firstChild);
+
+      const fallbackFooter = document.createElement('footer');
+      fallbackFooter.className = 'site-footer';
+      fallbackFooter.innerHTML = '<div class="footer-left"><p>Développé par Mejri Ziad – Mode dégradé</p></div>';
+      document.body.appendChild(fallbackFooter);
+      window.showToast('toast_fallback', 'error', 6000);
+    }
+
+    // Continue with other initializations regardless of fetch success/failure
+    if (typeof initLangSelector === 'function') {
+      initLangSelector();
+    }
+    initThemeToggle();
+    initSettingsModal();
+    initOnlineStatus();
+    initAuth();
+    initFooterButtons();
+    initInstallButton();
+    await loadScript('cards-building.js');
+    registerSW();
+    if (typeof applyTranslations === 'function') {
+      applyTranslations();
     }
   }
 
@@ -264,6 +276,7 @@
     update();
   }
 
+  // Auth with loading spinners
   function initAuth() {
     const signInBtn = document.getElementById('signInBtn');
     const signOutBtn = document.getElementById('signOutBtn');
@@ -323,16 +336,39 @@
       });
     });
 
+    // Helper: show spinner on a button
+    function setButtonLoading(btn, isLoading) {
+      if (!btn) return;
+      if (isLoading) {
+        btn.classList.add('btn-loading');
+        btn.disabled = true;
+        const originalText = btn.getAttribute('data-original-text') || btn.textContent;
+        btn.setAttribute('data-original-text', originalText);
+        btn.innerHTML = '<span class="spinner"></span> ' + originalText;
+      } else {
+        btn.classList.remove('btn-loading');
+        btn.disabled = false;
+        const originalText = btn.getAttribute('data-original-text');
+        if (originalText) {
+          btn.textContent = originalText;
+        }
+      }
+    }
+
     const signinSubmit = document.getElementById('signin-submit');
     if (signinSubmit) {
       signinSubmit.addEventListener('click', (e) => {
         e.preventDefault();
-        setLoggedIn(true);
-        closeModal(authModal);
-        document.getElementById('signin-username').value = '';
-        document.getElementById('signin-email').value = '';
-        document.getElementById('signin-password').value = '';
-        window.showToast('toast_signin_success', 'success');
+        setButtonLoading(signinSubmit, true);
+        setTimeout(() => {
+          setButtonLoading(signinSubmit, false);
+          setLoggedIn(true);
+          closeModal(authModal);
+          document.getElementById('signin-username').value = '';
+          document.getElementById('signin-email').value = '';
+          document.getElementById('signin-password').value = '';
+          window.showToast('toast_signin_success', 'success');
+        }, 800);
       });
     }
 
@@ -340,12 +376,16 @@
     if (signupSubmit) {
       signupSubmit.addEventListener('click', (e) => {
         e.preventDefault();
-        setLoggedIn(true);
-        closeModal(authModal);
-        document.getElementById('signup-username').value = '';
-        document.getElementById('signup-email').value = '';
-        document.getElementById('signup-password').value = '';
-        window.showToast('toast_signup_success', 'success');
+        setButtonLoading(signupSubmit, true);
+        setTimeout(() => {
+          setButtonLoading(signupSubmit, false);
+          setLoggedIn(true);
+          closeModal(authModal);
+          document.getElementById('signup-username').value = '';
+          document.getElementById('signup-email').value = '';
+          document.getElementById('signup-password').value = '';
+          window.showToast('toast_signup_success', 'success');
+        }, 800);
       });
     }
 
@@ -374,17 +414,13 @@
       }
       if (enabled) {
         if ('sync' in registration) {
-          try {
-            await registration.sync.register('version-check');
-          } catch (e) {}
+          try { await registration.sync.register('version-check'); } catch (e) {}
         }
         if ('periodicSync' in registration) {
           try {
             const status = await navigator.permissions.query({ name: 'periodic-background-sync' });
             if (status.state === 'granted') {
-              await registration.periodicSync.register('version-check', {
-                minInterval: 12 * 60 * 60 * 1000
-              });
+              await registration.periodicSync.register('version-check', { minInterval: 12 * 60 * 60 * 1000 });
             }
           } catch (e) {}
         }
@@ -434,29 +470,51 @@
   }
 
   let deferredPrompt;
+  // Listen for install prompt and enable button accordingly
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
     const installBtn = document.getElementById('installBtn');
-    if (installBtn) installBtn.style.display = 'inline-flex';
+    if (installBtn) {
+      installBtn.disabled = false;
+      installBtn.style.display = 'inline-flex';
+      installBtn.removeAttribute('title');
+      installBtn.setAttribute('data-i18n', 'install');
+      if (typeof applyTranslations === 'function') applyTranslations();
+    }
   });
 
   async function initInstallButton() {
     const installBtn = document.getElementById('installBtn');
     if (!installBtn) return;
+
+    // If already installed, hide permanently
     if (window.matchMedia('(display-mode: standalone)').matches) {
       installBtn.style.display = 'none';
       return;
     }
-    if (deferredPrompt) installBtn.style.display = 'inline-flex';
+
+    // Initially, show button but disabled if no prompt yet
+    installBtn.style.display = 'inline-flex';
+    if (!deferredPrompt) {
+      installBtn.disabled = true;
+      installBtn.setAttribute('data-i18n', 'install_not_available');
+      installBtn.setAttribute('title', 'Installation non disponible – utilisez le menu du navigateur');
+      if (typeof applyTranslations === 'function') applyTranslations();
+    }
+
     installBtn.addEventListener('click', async () => {
       if (deferredPrompt) {
         deferredPrompt.prompt();
         const { outcome } = await deferredPrompt.userChoice;
-        if (outcome === 'accepted') installBtn.style.display = 'none';
+        if (outcome === 'accepted') {
+          installBtn.style.display = 'none';
+        }
         deferredPrompt = null;
+        // Re-enable if needed? After prompt it's gone anyway.
       }
     });
+
     window.addEventListener('appinstalled', () => {
       installBtn.style.display = 'none';
     });
