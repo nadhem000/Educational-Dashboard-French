@@ -615,3 +615,91 @@ body.dark .toast {
   background: var(--btn-accent-dark);
   color: var(--white);
 }
+
+/* ==================================================
+   RESPONSIVENESS & TOUCH TARGET IMPROVEMENTS
+   ================================================== */
+
+/* Responsive header: wrap buttons on very narrow screens */
+@media (max-width: 500px) {
+  .header-right {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .header-btn {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Responsive footer: stack columns on mobile */
+@media (max-width: 600px) {
+  .site-footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.8rem;
+  }
+  .footer-left,
+  .footer-center,
+  .footer-right {
+    text-align: center;
+    align-items: center;
+  }
+  .footer-buttons {
+    justify-content: center;
+  }
+}
+
+/* Ensure all interactive elements are at least 44×44px (touch-friendly) */
+button,
+.header-btn,
+.theme-btn,
+.settings-btn,
+.toggle-password,
+.auth-submit,
+.footer-action-btn,
+.install-btn {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.toggle-password {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  font-size: 1.2rem;
+}
+
+/* ==================================================
+   OFFLINE BANNER
+   ================================================== */
+.offline-banner {
+  display: none;
+  background: #e74c3c;
+  color: #fff;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10001; /* above header */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.offline-banner.show {
+  display: block;
+}
+/* Push body content down when banner is visible (optional) */
+body.banner-visible {
+  padding-top: 40px; /* adjust to banner height */
+}
+
+/* Generic card focus effect (fallback for any card) */
+.card:focus-visible {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+  outline: 2px solid var(--accent);
+}

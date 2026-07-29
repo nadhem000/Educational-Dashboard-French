@@ -100,13 +100,17 @@
     return container;
   }
 
+  // Updated: only one update toast at a time
   function showUpdateToast() {
+    const existing = document.querySelector('.toast.update-toast');
+    if (existing) return; // already displayed
+
     const lang = localStorage.getItem('lang') || 'fr';
     const message = typeof translateToastKey === 'function' ? translateToastKey(lang, 'toast_update_available') : '🔄 Une nouvelle version est disponible.';
     const buttonText = typeof translateToastKey === 'function' ? translateToastKey(lang, 'toast_update_button') : 'Actualiser';
     const container = document.getElementById('toast-container') || createToastContainer();
     const toast = document.createElement('div');
-    toast.className = 'toast';
+    toast.className = 'toast update-toast'; // key class for singleton
     toast.innerHTML = message + ' <button id="reloadNow" class="reload-btn">' + buttonText + '</button>';
     container.appendChild(toast);
     document.getElementById('reloadNow').addEventListener('click', () => { window.location.reload(); });
@@ -260,15 +264,29 @@
     trapFocus(modal);
   }
 
+  // Updated: also manage offline banner
   function initOnlineStatus() {
     const dot = document.getElementById('onlineStatus');
-    if (!dot) return;
+    const banner = document.getElementById('offlineBanner');
     function update() {
       const online = navigator.onLine;
-      dot.className = 'status-dot ' + (online ? 'online' : 'offline');
-      const key = online ? 'online' : 'offline';
-      dot.setAttribute('data-i18n-aria', key);
-      dot.setAttribute('data-i18n-title', key);
+      // Dot status
+      if (dot) {
+        dot.className = 'status-dot ' + (online ? 'online' : 'offline');
+        const key = online ? 'online' : 'offline';
+        dot.setAttribute('data-i18n-aria', key);
+        dot.setAttribute('data-i18n-title', key);
+      }
+      // Offline banner
+      if (banner) {
+        if (online) {
+          banner.classList.remove('show');
+          document.body.classList.remove('banner-visible');
+        } else {
+          banner.classList.add('show');
+          document.body.classList.add('banner-visible');
+        }
+      }
       if (typeof applyTranslations === 'function') applyTranslations();
     }
     window.addEventListener('online', update);

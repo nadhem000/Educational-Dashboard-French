@@ -124,6 +124,8 @@
     cardsData.forEach(card => {
       const cardEl = document.createElement('div');
       cardEl.className = 'card' + (card.type === 'revision' ? ' revision' : '');
+      // Make cards keyboard accessible (so focus-visible works)
+      cardEl.setAttribute('tabindex', '0');
       const header = document.createElement('div');
       header.className = 'card-header';
       header.setAttribute('data-i18n', card.titleKey);

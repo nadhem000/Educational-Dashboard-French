@@ -101,6 +101,8 @@
       display: flex;
       align-items: center;
       gap: 0.6rem;
+      cursor: pointer;
+      user-select: none;
     }
     .week-num {
       width: 34px;
@@ -188,6 +190,51 @@
       border-top: 1px solid var(--border);
       padding-top: 1.5rem;
     }
+
+    /* Collapse arrow */
+    .week-header .collapse-arrow {
+      margin-left: auto;
+      font-size: 0.8rem;
+      transition: transform 0.3s;
+    }
+    .week-body {
+      overflow: hidden;
+      max-height: 1000px; /* large enough */
+      transition: max-height 0.4s ease, padding 0.4s ease;
+    }
+    .week-body.collapsed {
+      max-height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    .week-header.collapsed .collapse-arrow {
+      transform: rotate(-90deg);
+    }
+
+    /* Back to top button */
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 99;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transition: opacity 0.3s;
+    }
+    #backToTop.show {
+      display: flex;
+    }
+
     @media (max-width: 640px) {
       h1 { font-size: 1.5rem; }
       .lesson-link { flex-wrap: wrap; padding: 0.5rem 1rem; }
@@ -215,7 +262,7 @@
     </div>
     <!-- Semaine 1 -->
     <div class="week">
-      <div class="week-header"><span class="week-num">1</span> <span data-i18n="week1.title">Les Fondations de la Langue</span></div>
+      <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">1</span> <span data-i18n="week1.title">Les Fondations de la Langue</span><span class="collapse-arrow">▼</span></div>
       <div class="week-body">
         <a href="semaine1-classes-grammaticales.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week1.lesson1.label">Grammaire (1)</span><span class="lesson-title" data-i18n="week1.lesson1.title">Les classes grammaticales</span><span class="arrow">→</span></a>
         <a href="semaine1-fonctions-essentielles.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week1.lesson2.label">Grammaire (2)</span><span class="lesson-title" data-i18n="week1.lesson2.title">Les fonctions essentielles</span><span class="arrow">→</span></a>
@@ -229,7 +276,7 @@
     </div>
     <!-- Semaine 2 -->
     <div class="week">
-      <div class="week-header"><span class="week-num">2</span> <span data-i18n="week2.title">Consolidation grammaticale</span></div>
+      <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">2</span> <span data-i18n="week2.title">Consolidation grammaticale</span><span class="collapse-arrow">▼</span></div>
       <div class="week-body">
         <a href="semaine2-grammaire-propositions.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week2.lesson1.label">Grammaire (1)</span><span class="lesson-title" data-i18n="week2.lesson1.title">Les propositions subordonnées relatives</span><span class="arrow">→</span></a>
         <a href="semaine2-grammaire-completives.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week2.lesson2.label">Grammaire (2)</span><span class="lesson-title" data-i18n="week2.lesson2.title">Les propositions subordonnées complétives</span><span class="arrow">→</span></a>
@@ -243,7 +290,7 @@
     </div>
     <!-- Semaine 3 -->
     <div class="week">
-      <div class="week-header"><span class="week-num">3</span> <span data-i18n="week3.title">Maîtrise de la conjugaison</span></div>
+      <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">3</span> <span data-i18n="week3.title">Maîtrise de la conjugaison</span><span class="collapse-arrow">▼</span></div>
       <div class="week-body">
         <a href="semaine3-grammaire-pronoms.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week3.lesson1.label">Grammaire (1)</span><span class="lesson-title" data-i18n="week3.lesson1.title">Les pronoms personnels et leurs fonctions</span><span class="arrow">→</span></a>
         <a href="semaine3-grammaire-complements.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week3.lesson2.label">Grammaire (2)</span><span class="lesson-title" data-i18n="week3.lesson2.title">Les compléments circonstanciels</span><span class="arrow">→</span></a>
@@ -257,7 +304,7 @@
     </div>
     <!-- Semaine 4 -->
     <div class="week">
-      <div class="week-header"><span class="week-num">4</span> <span data-i18n="week4.title">Orthographe et précision</span></div>
+      <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">4</span> <span data-i18n="week4.title">Orthographe et précision</span><span class="collapse-arrow">▼</span></div>
       <div class="week-body">
         <a href="semaine4-grammaire-expansions.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week4.lesson1.label">Grammaire (1)</span><span class="lesson-title" data-i18n="week4.lesson1.title">Les expansions du nom</span><span class="arrow">→</span></a>
         <a href="semaine4-grammaire-discours.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week4.lesson2.label">Grammaire (2)</span><span class="lesson-title" data-i18n="week4.lesson2.title">Discours direct et indirect</span><span class="arrow">→</span></a>
@@ -271,7 +318,7 @@
     </div>
     <!-- Semaine 5 -->
     <div class="week">
-      <div class="week-header"><span class="week-num">5</span> <span data-i18n="week5.title">Expression écrite structurée</span></div>
+      <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">5</span> <span data-i18n="week5.title">Expression écrite structurée</span><span class="collapse-arrow">▼</span></div>
       <div class="week-body">
         <a href="semaine5-grammaire-figures.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week5.lesson1.label">Grammaire (1)</span><span class="lesson-title" data-i18n="week5.lesson1.title">Les figures de style</span><span class="arrow">→</span></a>
         <a href="semaine5-grammaire-champs.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week5.lesson2.label">Grammaire (2)</span><span class="lesson-title" data-i18n="week5.lesson2.title">Les champs lexicaux et sémantiques</span><span class="arrow">→</span></a>
@@ -285,7 +332,7 @@
     </div>
     <!-- Semaine 6 -->
     <div class="week">
-      <div class="week-header"><span class="week-num">6</span> <span data-i18n="week6.title">Analyse de textes littéraires</span></div>
+      <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">6</span> <span data-i18n="week6.title">Analyse de textes littéraires</span><span class="collapse-arrow">▼</span></div>
       <div class="week-body">
         <a href="semaine6-grammaire-connecteurs.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week6.lesson1.label">Grammaire (1)</span><span class="lesson-title" data-i18n="week6.lesson1.title">Les connecteurs logiques</span><span class="arrow">→</span></a>
         <a href="semaine6-grammaire-modalisation.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week6.lesson2.label">Grammaire (2)</span><span class="lesson-title" data-i18n="week6.lesson2.title">La modalisation</span><span class="arrow">→</span></a>
@@ -299,7 +346,7 @@
     </div>
     <!-- Semaine 7 -->
     <div class="week">
-      <div class="week-header"><span class="week-num">7</span> <span data-i18n="week7.title">Méthodologie des épreuves</span></div>
+      <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">7</span> <span data-i18n="week7.title">Méthodologie des épreuves</span><span class="collapse-arrow">▼</span></div>
       <div class="week-body">
         <a href="semaine7-grammaire-revision.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week7.lesson1.label">Grammaire (1)</span><span class="lesson-title" data-i18n="week7.lesson1.title">Révisions grammaticales ciblées</span><span class="arrow">→</span></a>
         <a href="semaine7-grammaire-nature-fonction.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week7.lesson2.label">Grammaire (2)</span><span class="lesson-title" data-i18n="week7.lesson2.title">Nature et fonction : exercices de synthèse</span><span class="arrow">→</span></a>
@@ -313,7 +360,7 @@
     </div>
     <!-- Semaine 8 -->
     <div class="week">
-      <div class="week-header"><span class="week-num">8</span> <span data-i18n="week8.title">Révisions intensives et bilan</span></div>
+      <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">8</span> <span data-i18n="week8.title">Révisions intensives et bilan</span><span class="collapse-arrow">▼</span></div>
       <div class="week-body">
         <a href="semaine8-grammaire-bilan.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week8.lesson1.label">Grammaire (1)</span><span class="lesson-title" data-i18n="week8.lesson1.title">Bilan de grammaire : exercices type Bac</span><span class="arrow">→</span></a>
         <a href="semaine8-grammaire-synthese.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week8.lesson2.label">Grammaire (2)</span><span class="lesson-title" data-i18n="week8.lesson2.title">Synthèse : classes et fonctions</span><span class="arrow">→</span></a>
@@ -625,5 +672,34 @@
     })();
   </script>
   <script src="ed-french-ini.js"></script>
+  <script>
+    // Collapse/expand week lessons
+    function toggleWeek(header) {
+      const body = header.nextElementSibling;
+      if (body && body.classList.contains('week-body')) {
+        body.classList.toggle('collapsed');
+        header.classList.toggle('collapsed');
+      }
+    }
+
+    // Back to top button
+    (function() {
+      const btn = document.createElement('button');
+      btn.id = 'backToTop';
+      btn.title = 'Retour en haut';
+      btn.innerHTML = '⬆';
+      document.body.appendChild(btn);
+
+      btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+          btn.classList.add('show');
+        } else {
+          btn.classList.remove('show');
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
