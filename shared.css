@@ -33,7 +33,7 @@
   --radius: 12px;
   --transition: 0.25s ease;
   --font: 'Segoe UI', 'Georgia', serif;
-  /* Topbar shadow (decoupled from page-specific --shadow) */
+  /* Topbar shadow (decoupled from page‑specific --shadow) */
   --topbar-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 /* Dark mode overrides for shared variables */
@@ -45,6 +45,16 @@ body.dark {
   --accent: #e07b4a;
   --accent-hover: #f08c5c;
   --border: #3e3830;
+
+  /* Unified overrides from index.html and revision.html */
+  --shadow: 0 2px 8px rgba(0,0,0,0.25);
+  --shadow-hover: 0 10px 25px rgba(0,0,0,0.35);
+  --subcard-bg: #24211b;
+  --muted: #aaa;
+  --heading: #f0e4d2;
+  --shadow-lg: 0 4px 14px rgba(0, 0, 0, 0.35);
+  --week-bg: #25211c;
+  --week-header-bg: #332e25;
 }
 /* I18n bilingual display */
 .i18n-bilingual {
@@ -466,7 +476,6 @@ body.dark .profile-btn {
   margin-top: 0.15rem;
   display: block;
 }
-
 .password-wrapper {
   position: relative;
   display: flex;
@@ -588,7 +597,6 @@ body.dark .toast {
     color: var(--dark-text);
     box-shadow: 0 4px 12px var(--toast-dark-shadow);
 }
-
 /* ===== FOCUS INDICATORS ===== */
 :focus-visible {
   outline: 2px solid var(--accent);
@@ -628,7 +636,6 @@ body.dark .toast {
 .skeleton-card.revision .card-header {
   background: var(--accent);
 }
-
 /* ===== BUTTON LOADING SPINNER ===== */
 .btn-loading {
   position: relative;
@@ -651,7 +658,6 @@ body.dark .toast {
 .auth-submit .spinner {
   margin-right: 0.3rem;
 }
-
 /* Disabled install button */
 .install-btn:disabled {
   opacity: 0.6;
@@ -659,11 +665,9 @@ body.dark .toast {
   background: var(--btn-accent-dark);
   color: var(--white);
 }
-
 /* ==================================================
    RESPONSIVENESS & TOUCH TARGET IMPROVEMENTS
    ================================================== */
-
 /* Responsive header: wrap buttons on very narrow screens */
 @media (max-width: 500px) {
   .header-right {
@@ -675,7 +679,6 @@ body.dark .toast {
     font-size: 0.8rem;
   }
 }
-
 /* Responsive footer: stack columns on mobile */
 @media (max-width: 600px) {
   .site-footer {
@@ -693,7 +696,6 @@ body.dark .toast {
     justify-content: center;
   }
 }
-
 /* Ensure all interactive elements are at least 44×44px (touch-friendly) */
 button,
 .header-btn,
@@ -715,7 +717,6 @@ button,
   padding: 0;
   font-size: 1.2rem;
 }
-
 /* ==================================================
    OFFLINE BANNER
    ================================================== */
@@ -740,7 +741,6 @@ button,
 body.banner-visible {
   padding-top: 40px; /* adjust to banner height */
 }
-
 /* Generic card focus effect (fallback for any card) */
 .card:focus-visible {
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);

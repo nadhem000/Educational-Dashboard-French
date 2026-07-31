@@ -57,7 +57,7 @@
 						data-i18n-placeholder="auth_placeholder_password"
 						placeholder="Mot de passe"
 						autocomplete="current-password" required>
-						<button type="button" class="toggle-password" data-target="signin-password">👁️</button>
+						<button type="button" class="toggle-password" data-target="signin-password" aria-label="Afficher le mot de passe">👁️</button>
 					</form>
 				</div>
 				<span class="field-error" id="error-signin-password" aria-live="polite"></span>
@@ -86,7 +86,7 @@
 						data-i18n-placeholder="auth_placeholder_password"
 						placeholder="Mot de passe"
 						autocomplete="new-password" required minlength="6">
-						<button type="button" class="toggle-password" data-target="signup-password">👁️</button>
+						<button type="button" class="toggle-password" data-target="signup-password" aria-label="Afficher le mot de passe">👁️</button>
 					</form>
 				</div>
 				<div class="password-strength">
@@ -106,7 +106,7 @@
 		<p data-i18n="auth_modal_settings">⚙️ Paramètres – Bientôt disponible</p>
 	</div>
 </div>
-<script>
+<script data-sanitize-allow="true">
 	// Translations for header elements
 	if (typeof addI18nTranslations === 'function') {
 		addI18nTranslations({

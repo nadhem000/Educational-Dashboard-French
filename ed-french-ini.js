@@ -4,7 +4,6 @@
   const DB_VERSION = 2;
   let dbReady = false;
   let db;
-
   function openDB() {
     return new Promise((resolve, reject) => {
       const request = indexedDB.open(DB_NAME, DB_VERSION);
@@ -21,7 +20,6 @@
       request.onerror = (e) => reject(e.target.error);
     });
   }
-
   async function logToDB(storeName, entry) {
     try {
       if (!dbReady) await openDB();
@@ -35,33 +33,39 @@
       });
     } catch (e) { /* silent */ }
   }
-
   function injectHTML(container, htmlString, position = 'append') {
-    const temp = document.createElement('div');
-    temp.innerHTML = htmlString;
-    const nodes = Array.from(temp.childNodes);
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlString, 'text/html');
+    const nodes = Array.from(doc.body.childNodes);
     nodes.forEach(node => {
-      if (node.nodeName === 'SCRIPT') {
-        const script = document.createElement('script');
-        Array.from(node.attributes).forEach(attr => {
-          script.setAttribute(attr.name, attr.value);
-        });
-        script.textContent = node.textContent;
-        if (position === 'prepend') {
-          container.insertBefore(script, container.firstChild);
-        } else {
-          container.appendChild(script);
+      if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'SCRIPT') {
+        // Only re-create scripts that have our trust marker
+        if (node.hasAttribute('data-sanitize-allow')) {
+          const script = document.createElement('script');
+          Array.from(node.attributes).forEach(attr => {
+            if (attr.name !== 'data-sanitize-allow') {
+              script.setAttribute(attr.name, attr.value);
+            }
+          });
+          script.textContent = node.textContent;
+          if (position === 'prepend') {
+            container.insertBefore(script, container.firstChild);
+          } else {
+            container.appendChild(script);
+          }
         }
+        // ignore scripts without the marker
       } else {
+        // All other nodes are safe (DOMParser doesn't execute scripts)
+        const clone = document.importNode(node, true);
         if (position === 'prepend') {
-          container.insertBefore(node, container.firstChild);
+          container.insertBefore(clone, container.firstChild);
         } else {
-          container.appendChild(node);
+          container.appendChild(clone);
         }
       }
     });
   }
-
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.addEventListener('message', event => {
       if (!event.data) return;
@@ -74,7 +78,6 @@
       }
     });
   }
-
   window.showToast = function(key, type = '', duration = 3000, isHTML = false) {
     const lang = localStorage.getItem('lang') || 'fr';
     let message = key;
@@ -92,19 +95,16 @@
     container.appendChild(toast);
     setTimeout(() => { if (toast.parentNode) toast.parentNode.removeChild(toast); }, duration);
   };
-
   function createToastContainer() {
     const container = document.createElement('div');
     container.id = 'toast-container';
     document.body.appendChild(container);
     return container;
   }
-
   // Singleton update toast
   function showUpdateToast() {
     const existing = document.querySelector('.toast.update-toast');
     if (existing) return;
-
     const lang = localStorage.getItem('lang') || 'fr';
     const message = typeof translateToastKey === 'function' ? translateToastKey(lang, 'toast_update_available') : '🔄 Une nouvelle version est disponible.';
     const buttonText = typeof translateToastKey === 'function' ? translateToastKey(lang, 'toast_update_button') : 'Actualiser';
@@ -116,11 +116,9 @@
     document.getElementById('reloadNow').addEventListener('click', () => { window.location.reload(); });
     setTimeout(() => { if (toast.parentNode) toast.parentNode.removeChild(toast); }, 10000);
   }
-
   // ---------- Focus trap & modal helpers ----------
   let currentOpenModal = null;
   let lastFocusedElement = null;
-
   function trapFocus(modal) {
     const focusable = modal.querySelectorAll('a[href], button:not([disabled]), textarea, input:not([type="hidden"]), select, [tabindex]:not([tabindex="-1"])');
     if (focusable.length === 0) return;
@@ -146,7 +144,6 @@
       }
     });
   }
-
   function openModal(modal) {
     if (currentOpenModal && currentOpenModal !== modal) {
       closeModal(currentOpenModal);
@@ -160,7 +157,6 @@
       if (focusable.length) focusable[0].focus();
     }, 0);
   }
-
   function closeModal(modal) {
     if (modal) {
       modal.style.display = 'none';
@@ -172,7 +168,6 @@
       lastFocusedElement = null;
     }
   }
-
   // ---------- Auth validation helpers ----------
   function translateError(key) {
     const lang = localStorage.getItem('lang') || 'fr';
@@ -188,21 +183,18 @@
     };
     return fallback[key] || key;
   }
-
   function showFieldError(input, errorSpan, messageKey) {
     if (!input || !errorSpan) return;
     input.classList.add('error');
     errorSpan.textContent = translateError(messageKey);
     errorSpan.classList.add('visible');
   }
-
   function clearFieldError(input, errorSpan) {
     if (!input || !errorSpan) return;
     input.classList.remove('error');
     errorSpan.textContent = '';
     errorSpan.classList.remove('visible');
   }
-
   // Validate a single field (returns true if valid)
   function validateField(input, errorSpan) {
     if (!input || !errorSpan) return true;
@@ -227,7 +219,6 @@
     }
     return true;
   }
-
   function validateSignInForm() {
     let valid = true;
     const username = document.getElementById('signin-username');
@@ -241,7 +232,6 @@
     if (!validateField(password, errPass)) valid = false;
     return valid;
   }
-
   function validateSignUpForm() {
     let valid = true;
     const username = document.getElementById('signup-username');
@@ -255,7 +245,6 @@
     if (!validateField(password, errPass)) valid = false;
     return valid;
   }
-
   // Password strength meter
   function evaluatePasswordStrength(password) {
     const bar = document.getElementById('strengthBar');
@@ -273,7 +262,6 @@
     if (/[a-z]/.test(password) && /[A-Z]/.test(password)) score++;
     if (/\d/.test(password)) score++;
     if (/[^a-zA-Z0-9]/.test(password)) score++;
-
     let width, className, strengthKey;
     if (score <= 1) {
       width = '33%';
@@ -292,21 +280,18 @@
     bar.className = `strength-bar ${className}`;
     text.textContent = translateError(strengthKey);
   }
-
   // ---------- Init functions ----------
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
   }
-
   async function init() {
     try {
       const headerResp = await fetch('ed-french-header.html');
       if (!headerResp.ok) throw new Error('Header introuvable');
       const headerHTML = await headerResp.text();
       injectHTML(document.body, headerHTML, 'prepend');
-
       // Inject skip link as absolute first element in body
       const skipLink = document.createElement('a');
       skipLink.className = 'skip-link';
@@ -314,26 +299,22 @@
       skipLink.setAttribute('data-i18n', 'skip_to_content');
       skipLink.textContent = 'Aller au contenu principal';
       document.body.insertBefore(skipLink, document.body.firstChild);
-
       const footerResp = await fetch('ed-french-footer.html');
       if (!footerResp.ok) throw new Error('Footer introuvable');
       const footerHTML = await footerResp.text();
       injectHTML(document.body, footerHTML, 'append');
-
     } catch (error) {
       logToDB('errors', { message: 'Fallback header/footer: ' + error.message });
       const fallbackHeader = document.createElement('header');
       fallbackHeader.className = 'site-header';
       fallbackHeader.innerHTML = '<div class="header-left"><span class="site-title">Educational Dashboard - French</span></div>';
       document.body.insertBefore(fallbackHeader, document.body.firstChild);
-
       const fallbackFooter = document.createElement('footer');
       fallbackFooter.className = 'site-footer';
       fallbackFooter.innerHTML = '<div class="footer-left"><p>Développé par Mejri Ziad – Mode dégradé</p></div>';
       document.body.appendChild(fallbackFooter);
       window.showToast('toast_fallback', 'error', 6000);
     }
-
     if (typeof initLangSelector === 'function') {
       initLangSelector();
     }
@@ -349,25 +330,33 @@
       applyTranslations();
     }
   }
-
   function initThemeToggle() {
     const body = document.body;
     const toggle = document.getElementById('themeToggle');
     const icon = document.getElementById('themeIcon');
     if (!toggle || !icon) return;
+
+    function setThemeAria(isDark) {
+      const key = isDark ? 'theme_switch_to_light' : 'theme_switch_to_dark';
+      toggle.setAttribute('data-i18n-aria', key);
+      if (typeof applyTranslations === 'function') applyTranslations();
+    }
+
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
       body.classList.add('dark');
       icon.textContent = '☀️';
+      setThemeAria(true);
     }
+
     toggle.addEventListener('click', () => {
       body.classList.toggle('dark');
       const isDark = body.classList.contains('dark');
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
       icon.textContent = isDark ? '☀️' : '🌙';
+      setThemeAria(isDark);
     });
   }
-
   function initSettingsModal() {
     const modal = document.getElementById('settingsModal');
     const settingsBtn = document.getElementById('settingsBtn');
@@ -380,7 +369,6 @@
     });
     trapFocus(modal);
   }
-
   function initOnlineStatus() {
     const dot = document.getElementById('onlineStatus');
     const banner = document.getElementById('offlineBanner');
@@ -407,7 +395,6 @@
     window.addEventListener('offline', update);
     update();
   }
-
   // Auth with loading spinners and validation
   function initAuth() {
     const signInBtn = document.getElementById('signInBtn');
@@ -419,7 +406,6 @@
     const signinForm = document.getElementById('authFormSignin');
     const signupForm = document.getElementById('authFormSignup');
     const forgotPasswordBtn = document.getElementById('forgotPassword');
-
     function setLoggedIn(isLoggedIn) {
       if (isLoggedIn) {
         signInBtn.style.display = 'none';
@@ -433,9 +419,7 @@
         localStorage.removeItem('isLoggedIn');
       }
     }
-
     if (localStorage.getItem('isLoggedIn') === 'true') setLoggedIn(true);
-
     if (signInBtn && authModal) {
       signInBtn.addEventListener('click', () => openModal(authModal));
     }
@@ -445,7 +429,6 @@
     window.addEventListener('click', (e) => {
       if (e.target === authModal) closeModal(authModal);
     });
-
     tabButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         const tabName = btn.dataset.tab;
@@ -456,18 +439,22 @@
         else if (tabName === 'signup') signupForm.classList.add('active');
       });
     });
-
     document.querySelectorAll('.toggle-password').forEach(btn => {
+      const input = document.getElementById(btn.dataset.target);
+      if (input) {
+        // Set initial aria-label
+        btn.setAttribute('aria-label', 'Afficher le mot de passe');
+      }
       btn.addEventListener('click', () => {
         const input = document.getElementById(btn.dataset.target);
         if (input) {
-          const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
-          input.setAttribute('type', type);
-          btn.textContent = type === 'password' ? '👁️' : '🙈';
+          const isPassword = input.getAttribute('type') === 'password';
+          input.setAttribute('type', isPassword ? 'text' : 'password');
+          btn.textContent = isPassword ? '🙈' : '👁️';
+          btn.setAttribute('aria-label', isPassword ? 'Masquer le mot de passe' : 'Afficher le mot de passe');
         }
       });
     });
-
     // Real-time validation on blur
     document.getElementById('signin-username')?.addEventListener('blur', function() {
       validateField(this, document.getElementById('error-signin-username'));
@@ -492,7 +479,6 @@
     document.getElementById('signup-password')?.addEventListener('blur', function() {
       validateField(this, document.getElementById('error-signup-password'));
     });
-
     // Helper: show spinner
     function setButtonLoading(btn, isLoading) {
       if (!btn) return;
@@ -511,7 +497,6 @@
         }
       }
     }
-
     const signinSubmit = document.getElementById('signin-submit');
     if (signinSubmit) {
       signinSubmit.addEventListener('click', (e) => {
@@ -535,7 +520,6 @@
         }, 800);
       });
     }
-
     const signupSubmit = document.getElementById('signup-submit');
     if (signupSubmit) {
       signupSubmit.addEventListener('click', (e) => {
@@ -561,14 +545,12 @@
         }, 800);
       });
     }
-
     if (forgotPasswordBtn) {
       forgotPasswordBtn.addEventListener('click', (e) => {
         e.preventDefault();
         window.showToast('toast_forgot_password', '');
       });
     }
-
     if (signOutBtn) {
       signOutBtn.addEventListener('click', () => {
         setLoggedIn(false);
@@ -577,7 +559,6 @@
     }
     trapFocus(authModal);
   }
-
   async function handleBgSyncToggle(enabled) {
     try {
       const registration = await navigator.serviceWorker.ready;
@@ -613,7 +594,6 @@
       }
     } catch (err) {}
   }
-
   function initFooterButtons() {
     const bgSyncBtn = document.getElementById('bgSyncBtn');
     const notifBtn = document.getElementById('notifBtn');
@@ -641,7 +621,6 @@
       window.showToast(notifEnabled ? 'toast_notif_enabled' : 'toast_notif_disabled', notifEnabled ? 'success' : '');
     });
   }
-
   let deferredPrompt;
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
@@ -655,7 +634,6 @@
       if (typeof applyTranslations === 'function') applyTranslations();
     }
   });
-
   async function initInstallButton() {
     const installBtn = document.getElementById('installBtn');
     if (!installBtn) return;
@@ -684,7 +662,6 @@
       installBtn.style.display = 'none';
     });
   }
-
   function registerSW() {
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -692,7 +669,6 @@
       });
     }
   }
-
   function loadScript(src) {
     return new Promise((resolve, reject) => {
       const script = document.createElement('script');

@@ -30,7 +30,10 @@
       'toast_install_prompt': '💡 Pour installer l\'application, utilisez l\'option "Ajouter à l\'écran d\'accueil" du navigateur.',
       'toast_update_available': '🔄 Une nouvelle version est disponible.',
       'toast_update_button': 'Actualiser',
-      'skip_to_content': 'Aller au contenu principal'
+      'skip_to_content': 'Aller au contenu principal',
+      'back_to_top': 'Retour en haut',
+      'theme_switch_to_light': 'Activer le mode clair',
+      'theme_switch_to_dark': 'Activer le mode sombre'
     },
     en: {
       'toast_signin_success': '✅ You are signed in.',
@@ -44,7 +47,10 @@
       'toast_install_prompt': '💡 To install the app, use the "Add to Home Screen" option in your browser.',
       'toast_update_available': '🔄 A new version is available.',
       'toast_update_button': 'Refresh',
-      'skip_to_content': 'Skip to main content'
+      'skip_to_content': 'Skip to main content',
+      'back_to_top': 'Back to top',
+      'theme_switch_to_light': 'Switch to light mode',
+      'theme_switch_to_dark': 'Switch to dark mode'
     },
     ar: {
       'toast_signin_success': '✅ تم تسجيل الدخول بنجاح.',
@@ -58,7 +64,10 @@
       'toast_install_prompt': '💡 لتثبيت التطبيق، استخدم خيار "إضافة إلى الشاشة الرئيسية" في متصفحك.',
       'toast_update_available': '🔄 تتوفر نسخة جديدة.',
       'toast_update_button': 'تحديث',
-      'skip_to_content': 'تجاوز إلى المحتوى الرئيسي'
+      'skip_to_content': 'تجاوز إلى المحتوى الرئيسي',
+      'back_to_top': 'العودة إلى الأعلى',
+      'theme_switch_to_light': 'التبديل إلى الوضع الفاتح',
+      'theme_switch_to_dark': 'التبديل إلى الوضع الداكن'
     }
   });
 window.translateToastKey = function(lang, key) {

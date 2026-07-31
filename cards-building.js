@@ -1,4 +1,4 @@
-// cards-building.js – version 4 (with skeleton removal, error handling)
+// cards-building.js – version 4 (with skeleton removal, error handling, accessibility)
 (function() {
   // 1. Store French translations locally so we can use them immediately
   const fr = {
@@ -20,7 +20,6 @@
     'revision_link': 'Accéder au programme →',
     'cards_error': '❌ Impossible de charger les cartes. Veuillez réessayer.'
   };
-
   // 2. Register translations for all languages
   if (typeof addI18nTranslations === 'function') {
     addI18nTranslations({
@@ -65,7 +64,6 @@
       }
     });
   }
-
   // 3. IndexedDB (unchanged)
   const DB_NAME = 'adminMonitorDB_v2';
   const DB_VERSION = 2;
@@ -97,7 +95,6 @@
       });
     } catch (e) { /* silent */ }
   }
-
   // 4. Card definitions
   const cardsData = [
     { id: 'primaire4', titleKey: 'card.primaire4.title', type: 'coming' },
@@ -112,27 +109,31 @@
     { id: 'secondaire4', titleKey: 'card.secondaire4.title', type: 'secondary', sections: ['Section Lettres', 'Section Sciences', 'Section Techniques'] },
     { id: 'revision', titleKey: 'card.revision.title', type: 'revision', link: 'revision.html' }
   ];
-
   const grid = document.getElementById('cardGrid');
   if (!grid) return;
-
   // Clear any existing content (including skeletons)
   grid.innerHTML = '';
-
   try {
     // 5. Build cards using French text directly
     cardsData.forEach(card => {
       const cardEl = document.createElement('div');
       cardEl.className = 'card' + (card.type === 'revision' ? ' revision' : '');
-      // Make cards keyboard accessible (so focus-visible works)
-      cardEl.setAttribute('tabindex', '0');
+      
+      // Accessibility: only revision card is focusable/interactive
+      if (card.type === 'revision') {
+        cardEl.setAttribute('tabindex', '0');
+      } else {
+        cardEl.setAttribute('aria-disabled', 'true');
+        // negative tabindex removes from tab order
+        cardEl.setAttribute('tabindex', '-1');
+      }
+      
       const header = document.createElement('div');
       header.className = 'card-header';
       header.setAttribute('data-i18n', card.titleKey);
       // Use French text as the visible content
       header.innerHTML = (card.type === 'revision' ? '⭐ ' : '📘 ') + (fr[card.titleKey] || card.titleKey);
       cardEl.appendChild(header);
-
       const body = document.createElement('div');
       body.className = 'card-body';
       if (card.type === 'coming') {
@@ -162,14 +163,12 @@
       cardEl.appendChild(body);
       grid.appendChild(cardEl);
     });
-
     // 6. Register grid for bilingual display (saves the French we just set)
     if (typeof makeBilingual === 'function') {
       makeBilingual(grid);
     }
     // 7. Apply translations for the current language (Arabic/English etc.)
     if (typeof applyTranslations === 'function') applyTranslations();
-
     logToDB({ type: 'info', message: 'cards-building.js v4 loaded and cards rendered' });
   } catch (error) {
     // Show error message inside grid

@@ -18,13 +18,6 @@
       --arrow-color: #c0b090;
       --accent-hover-bg: rgba(199, 91, 44, 0.08);
     }
-    body.dark {
-      --heading: #f0e4d2;
-      --shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-      --shadow-lg: 0 4px 14px rgba(0, 0, 0, 0.35);
-      --week-bg: #25211c;
-      --week-header-bg: #332e25;
-    }
     body {
       font-family: var(--font);
       background: var(--bg);
@@ -97,12 +90,22 @@
       padding: 0.8rem 1.3rem;
       font-weight: 700;
       font-size: 1.1rem;
+      border: none;
       border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
       gap: 0.6rem;
+      width: 100%;
       cursor: pointer;
       user-select: none;
+      text-align: left;
+      font-family: inherit;
+      color: inherit;
+      background-color: var(--week-header-bg);
+      transition: background 0.2s;
+    }
+    .week-header:hover {
+      background-color: var(--accent-hover-bg);
     }
     .week-num {
       width: 34px;
@@ -116,7 +119,24 @@
       font-weight: 700;
       flex-shrink: 0;
     }
-    .week-body { padding: 0.5rem 0; }
+    .week-body {
+      overflow: hidden;
+      max-height: 1000px; /* fallback, will be overridden by JS */
+      transition: max-height 0.4s ease;
+    }
+    .week-body.collapsed {
+      max-height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    .week-header.collapsed .collapse-arrow {
+      transform: rotate(-90deg);
+    }
+    .collapse-arrow {
+      margin-left: auto;
+      font-size: 0.8rem;
+      transition: transform 0.3s;
+    }
     .lesson-link {
       display: flex;
       align-items: center;
@@ -190,27 +210,6 @@
       border-top: 1px solid var(--border);
       padding-top: 1.5rem;
     }
-
-    /* Collapse arrow */
-    .week-header .collapse-arrow {
-      margin-left: auto;
-      font-size: 0.8rem;
-      transition: transform 0.3s;
-    }
-    .week-body {
-      overflow: hidden;
-      max-height: 1000px; /* large enough */
-      transition: max-height 0.4s ease, padding 0.4s ease;
-    }
-    .week-body.collapsed {
-      max-height: 0;
-      padding-top: 0;
-      padding-bottom: 0;
-    }
-    .week-header.collapsed .collapse-arrow {
-      transform: rotate(-90deg);
-    }
-
     /* Back to top button */
     #backToTop {
       position: fixed;
@@ -234,7 +233,6 @@
     #backToTop.show {
       display: flex;
     }
-
     @media (max-width: 640px) {
       h1 { font-size: 1.5rem; }
       .lesson-link { flex-wrap: wrap; padding: 0.5rem 1rem; }
@@ -262,8 +260,12 @@
     </div>
     <!-- Semaine 1 -->
     <div class="week">
-      <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">1</span> <span data-i18n="week1.title">Les Fondations de la Langue</span><span class="collapse-arrow">▼</span></div>
-      <div class="week-body">
+      <button class="week-header" aria-expanded="true" aria-controls="week1-body">
+        <span class="week-num">1</span>
+        <span data-i18n="week1.title">Les Fondations de la Langue</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="week-body" id="week1-body">
         <a href="semaine1-classes-grammaticales.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week1.lesson1.label">Grammaire (1)</span><span class="lesson-title" data-i18n="week1.lesson1.title">Les classes grammaticales</span><span class="arrow">→</span></a>
         <a href="semaine1-fonctions-essentielles.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week1.lesson2.label">Grammaire (2)</span><span class="lesson-title" data-i18n="week1.lesson2.title">Les fonctions essentielles</span><span class="arrow">→</span></a>
         <a href="semaine1-conjugaison-temps-simples.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week1.lesson3.label">Conjugaison (1)</span><span class="lesson-title" data-i18n="week1.lesson3.title">Temps simples de l'indicatif</span><span class="arrow">→</span></a>
@@ -276,8 +278,12 @@
     </div>
     <!-- Semaine 2 -->
     <div class="week">
-      <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">2</span> <span data-i18n="week2.title">Consolidation grammaticale</span><span class="collapse-arrow">▼</span></div>
-      <div class="week-body">
+      <button class="week-header" aria-expanded="true" aria-controls="week2-body">
+        <span class="week-num">2</span>
+        <span data-i18n="week2.title">Consolidation grammaticale</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="week-body" id="week2-body">
         <a href="semaine2-grammaire-propositions.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week2.lesson1.label">Grammaire (1)</span><span class="lesson-title" data-i18n="week2.lesson1.title">Les propositions subordonnées relatives</span><span class="arrow">→</span></a>
         <a href="semaine2-grammaire-completives.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week2.lesson2.label">Grammaire (2)</span><span class="lesson-title" data-i18n="week2.lesson2.title">Les propositions subordonnées complétives</span><span class="arrow">→</span></a>
         <a href="semaine2-conjugaison-conditionnel.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week2.lesson3.label">Conjugaison (1)</span><span class="lesson-title" data-i18n="week2.lesson3.title">Le conditionnel présent et passé</span><span class="arrow">→</span></a>
@@ -290,8 +296,12 @@
     </div>
     <!-- Semaine 3 -->
     <div class="week">
-      <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">3</span> <span data-i18n="week3.title">Maîtrise de la conjugaison</span><span class="collapse-arrow">▼</span></div>
-      <div class="week-body">
+      <button class="week-header" aria-expanded="true" aria-controls="week3-body">
+        <span class="week-num">3</span>
+        <span data-i18n="week3.title">Maîtrise de la conjugaison</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="week-body" id="week3-body">
         <a href="semaine3-grammaire-pronoms.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week3.lesson1.label">Grammaire (1)</span><span class="lesson-title" data-i18n="week3.lesson1.title">Les pronoms personnels et leurs fonctions</span><span class="arrow">→</span></a>
         <a href="semaine3-grammaire-complements.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week3.lesson2.label">Grammaire (2)</span><span class="lesson-title" data-i18n="week3.lesson2.title">Les compléments circonstanciels</span><span class="arrow">→</span></a>
         <a href="semaine3-conjugaison-plusqueparfait.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week3.lesson3.label">Conjugaison (1)</span><span class="lesson-title" data-i18n="week3.lesson3.title">Le plus-que-parfait et le futur antérieur</span><span class="arrow">→</span></a>
@@ -304,8 +314,12 @@
     </div>
     <!-- Semaine 4 -->
     <div class="week">
-      <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">4</span> <span data-i18n="week4.title">Orthographe et précision</span><span class="collapse-arrow">▼</span></div>
-      <div class="week-body">
+      <button class="week-header" aria-expanded="true" aria-controls="week4-body">
+        <span class="week-num">4</span>
+        <span data-i18n="week4.title">Orthographe et précision</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="week-body" id="week4-body">
         <a href="semaine4-grammaire-expansions.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week4.lesson1.label">Grammaire (1)</span><span class="lesson-title" data-i18n="week4.lesson1.title">Les expansions du nom</span><span class="arrow">→</span></a>
         <a href="semaine4-grammaire-discours.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week4.lesson2.label">Grammaire (2)</span><span class="lesson-title" data-i18n="week4.lesson2.title">Discours direct et indirect</span><span class="arrow">→</span></a>
         <a href="semaine4-conjugaison-passe-simple.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week4.lesson3.label">Conjugaison (1)</span><span class="lesson-title" data-i18n="week4.lesson3.title">Le passé simple et le passé antérieur</span><span class="arrow">→</span></a>
@@ -318,8 +332,12 @@
     </div>
     <!-- Semaine 5 -->
     <div class="week">
-      <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">5</span> <span data-i18n="week5.title">Expression écrite structurée</span><span class="collapse-arrow">▼</span></div>
-      <div class="week-body">
+      <button class="week-header" aria-expanded="true" aria-controls="week5-body">
+        <span class="week-num">5</span>
+        <span data-i18n="week5.title">Expression écrite structurée</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="week-body" id="week5-body">
         <a href="semaine5-grammaire-figures.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week5.lesson1.label">Grammaire (1)</span><span class="lesson-title" data-i18n="week5.lesson1.title">Les figures de style</span><span class="arrow">→</span></a>
         <a href="semaine5-grammaire-champs.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week5.lesson2.label">Grammaire (2)</span><span class="lesson-title" data-i18n="week5.lesson2.title">Les champs lexicaux et sémantiques</span><span class="arrow">→</span></a>
         <a href="semaine5-conjugaison-concordance.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week5.lesson3.label">Conjugaison (1)</span><span class="lesson-title" data-i18n="week5.lesson3.title">La concordance des temps</span><span class="arrow">→</span></a>
@@ -332,8 +350,12 @@
     </div>
     <!-- Semaine 6 -->
     <div class="week">
-      <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">6</span> <span data-i18n="week6.title">Analyse de textes littéraires</span><span class="collapse-arrow">▼</span></div>
-      <div class="week-body">
+      <button class="week-header" aria-expanded="true" aria-controls="week6-body">
+        <span class="week-num">6</span>
+        <span data-i18n="week6.title">Analyse de textes littéraires</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="week-body" id="week6-body">
         <a href="semaine6-grammaire-connecteurs.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week6.lesson1.label">Grammaire (1)</span><span class="lesson-title" data-i18n="week6.lesson1.title">Les connecteurs logiques</span><span class="arrow">→</span></a>
         <a href="semaine6-grammaire-modalisation.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week6.lesson2.label">Grammaire (2)</span><span class="lesson-title" data-i18n="week6.lesson2.title">La modalisation</span><span class="arrow">→</span></a>
         <a href="semaine6-conjugaison-revisions.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week6.lesson3.label">Conjugaison (1)</span><span class="lesson-title" data-i18n="week6.lesson3.title">Révisions des temps de l'indicatif</span><span class="arrow">→</span></a>
@@ -346,8 +368,12 @@
     </div>
     <!-- Semaine 7 -->
     <div class="week">
-      <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">7</span> <span data-i18n="week7.title">Méthodologie des épreuves</span><span class="collapse-arrow">▼</span></div>
-      <div class="week-body">
+      <button class="week-header" aria-expanded="true" aria-controls="week7-body">
+        <span class="week-num">7</span>
+        <span data-i18n="week7.title">Méthodologie des épreuves</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="week-body" id="week7-body">
         <a href="semaine7-grammaire-revision.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week7.lesson1.label">Grammaire (1)</span><span class="lesson-title" data-i18n="week7.lesson1.title">Révisions grammaticales ciblées</span><span class="arrow">→</span></a>
         <a href="semaine7-grammaire-nature-fonction.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week7.lesson2.label">Grammaire (2)</span><span class="lesson-title" data-i18n="week7.lesson2.title">Nature et fonction : exercices de synthèse</span><span class="arrow">→</span></a>
         <a href="semaine7-conjugaison-tous-temps.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week7.lesson3.label">Conjugaison (1)</span><span class="lesson-title" data-i18n="week7.lesson3.title">Tous les temps simples et composés</span><span class="arrow">→</span></a>
@@ -360,8 +386,12 @@
     </div>
     <!-- Semaine 8 -->
     <div class="week">
-      <div class="week-header" onclick="toggleWeek(this)"><span class="week-num">8</span> <span data-i18n="week8.title">Révisions intensives et bilan</span><span class="collapse-arrow">▼</span></div>
-      <div class="week-body">
+      <button class="week-header" aria-expanded="true" aria-controls="week8-body">
+        <span class="week-num">8</span>
+        <span data-i18n="week8.title">Révisions intensives et bilan</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="week-body" id="week8-body">
         <a href="semaine8-grammaire-bilan.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week8.lesson1.label">Grammaire (1)</span><span class="lesson-title" data-i18n="week8.lesson1.title">Bilan de grammaire : exercices type Bac</span><span class="arrow">→</span></a>
         <a href="semaine8-grammaire-synthese.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week8.lesson2.label">Grammaire (2)</span><span class="lesson-title" data-i18n="week8.lesson2.title">Synthèse : classes et fonctions</span><span class="arrow">→</span></a>
         <a href="semaine8-conjugaison-bilan.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week8.lesson3.label">Conjugaison (1)</span><span class="lesson-title" data-i18n="week8.lesson3.title">Bilan de conjugaison : tous les modes</span><span class="arrow">→</span></a>
@@ -478,7 +508,8 @@
           'conseil_4': '🔗 <strong>Cohérence</strong> : chaque séance de lecture doit être suivie d\'une production écrite.',
           'conseil_5': '🗣️ <strong>Travaillez l\'oral</strong> : lisez vos textes à voix haute.',
           'footer_planning': '📘 Programme conçu pour les élèves de 4ᵉ année secondaire — Tunisie',
-          'footer_encouragement': 'Suivez ce planning avec rigueur et adaptez‑le à votre rythme. <strong>Bonne préparation !</strong>'
+          'footer_encouragement': 'Suivez ce planning avec rigueur et adaptez‑le à votre rythme. <strong>Bonne préparation !</strong>',
+          'back_to_top': 'Retour en haut'
         },
         en: {
           'back_link': '← Back to home',
@@ -568,7 +599,8 @@
           'conseil_4': '🔗 <strong>Consistency</strong>: each reading session should be followed by a writing task.',
           'conseil_5': '🗣️ <strong>Work on oral skills</strong>: read your texts aloud.',
           'footer_planning': '📘 Program designed for 12th grade students — Tunisia',
-          'footer_encouragement': 'Follow this planning rigorously and adapt it to your pace. <strong>Good luck!</strong>'
+          'footer_encouragement': 'Follow this planning rigorously and adapt it to your pace. <strong>Good luck!</strong>',
+          'back_to_top': 'Back to top'
         },
         ar: {
           'back_link': '← العودة إلى الرئيسية',
@@ -658,7 +690,8 @@
           'conseil_4': '🔗 <strong>التماسك</strong>: على كل حصة قراءة أن تليها كتابة.',
           'conseil_5': '🗣️ <strong>اشتغل على الشفهي</strong>: اقرأ نصوصك بصوت عالٍ.',
           'footer_planning': '📘 برنامج موجّه لتلاميذ السنة الرابعة ثانوي — تونس',
-          'footer_encouragement': 'اتبع هذا التخطيط بدقة وعدّله حسب وتيرتك. <strong>حظاً موفقاً!</strong>'
+          'footer_encouragement': 'اتبع هذا التخطيط بدقة وعدّله حسب وتيرتك. <strong>حظاً موفقاً!</strong>',
+          'back_to_top': 'العودة إلى الأعلى'
         }
       });
     }
@@ -673,25 +706,48 @@
   </script>
   <script src="ed-french-ini.js"></script>
   <script>
-    // Collapse/expand week lessons
+    // Collapse/expand week lessons with keyboard support & scrollHeight animation
     function toggleWeek(header) {
-      const body = header.nextElementSibling;
-      if (body && body.classList.contains('week-body')) {
-        body.classList.toggle('collapsed');
-        header.classList.toggle('collapsed');
+      const body = document.getElementById(header.getAttribute('aria-controls'));
+      if (!body) return;
+      const isExpanded = header.getAttribute('aria-expanded') === 'true';
+      header.setAttribute('aria-expanded', !isExpanded);
+      header.classList.toggle('collapsed', isExpanded);
+      body.classList.toggle('collapsed', isExpanded);
+
+      if (!isExpanded) {
+        // Opening: set max-height to actual scrollHeight
+        body.style.maxHeight = body.scrollHeight + 'px';
+        const transitionHandler = () => {
+          body.style.maxHeight = 'none';
+          body.removeEventListener('transitionend', transitionHandler);
+        };
+        body.addEventListener('transitionend', transitionHandler);
+      } else {
+        // Closing: set max-height to 0
+        body.style.maxHeight = '0';
       }
     }
+
+    // Attach click and keydown listeners to all week header buttons
+    document.querySelectorAll('.week-header').forEach(btn => {
+      btn.addEventListener('click', () => toggleWeek(btn));
+      btn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleWeek(btn);
+        }
+      });
+    });
 
     // Back to top button
     (function() {
       const btn = document.createElement('button');
       btn.id = 'backToTop';
-      btn.title = 'Retour en haut';
+      btn.setAttribute('aria-label', 'Retour en haut');
       btn.innerHTML = '⬆';
       document.body.appendChild(btn);
-
       btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
       window.addEventListener('scroll', () => {
         if (window.scrollY > 400) {
           btn.classList.add('show');
@@ -699,6 +755,10 @@
           btn.classList.remove('show');
         }
       });
+      // Update aria-label with translation
+      if (typeof applyTranslations === 'function') {
+        applyTranslations();
+      }
     })();
   </script>
 </body>
