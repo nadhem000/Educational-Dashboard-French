@@ -1,4 +1,4 @@
-// i18n.js – Module de traduction FR / EN / AR (bilingue simple)
+// i18n.js – Module de traduction FR / EN / AR (bilingue simple) – v2 (App namespace)
 (function() {
   const DEFAULT_LANG = 'fr';
   const translations = {
@@ -7,7 +7,12 @@
     ar: {}
   };
   const bilingualContainers = [];
-  window.addI18nTranslations = function(newTranslations) {
+  const langListeners = [];
+
+  const App = {};
+  window.App = App;
+
+  App.addI18nTranslations = function(newTranslations) {
     for (const lang of Object.keys(newTranslations)) {
       if (translations[lang]) {
         Object.assign(translations[lang], newTranslations[lang]);
@@ -16,8 +21,9 @@
       }
     }
   };
+
   // ---- Toast translations (always loaded) ----
-  window.addI18nTranslations({
+  App.addI18nTranslations({
     fr: {
       'toast_signin_success': '✅ Vous êtes connecté.',
       'toast_signup_success': '✅ Compte créé et connecté.',
@@ -70,22 +76,30 @@
       'theme_switch_to_dark': 'التبديل إلى الوضع الداكن'
     }
   });
-window.translateToastKey = function(lang, key) {
-    return translations[lang]?.[key] || key;
-};
-  // Marque un conteneur comme bilingue et sauvegarde le français original
-  window.makeBilingual = function(container) {
+
+  App.translateToastKey = function(lang, key) {
+    return (translations[lang] && translations[lang][key]) || key;
+  };
+
+  // Public helper to get a translation for the current language
+  App.getTranslation = function(key, langOverride) {
+    const lang = langOverride || localStorage.getItem('lang') || DEFAULT_LANG;
+    return (translations[lang] && translations[lang][key]) || key;
+  };
+
+  App.makeBilingual = function(container) {
     if (!container) return;
     const elements = container.querySelectorAll('[data-i18n]');
     elements.forEach(el => {
       if (!el.dataset.i18nOrig) {
-        el.dataset.i18nOrig = el.innerHTML; // français original
+        el.dataset.i18nOrig = el.innerHTML;
       }
     });
     if (!bilingualContainers.includes(container)) {
       bilingualContainers.push(container);
     }
   };
+
   function restoreAllBilingual(lang) {
     bilingualContainers.forEach(container => {
       container.querySelectorAll('.i18n-bilingual').forEach(el => el.remove());
@@ -108,6 +122,7 @@ window.translateToastKey = function(lang, key) {
       });
     });
   }
+
   function translateElement(el, lang) {
     const t = translations[lang];
     if (!t) return;
@@ -121,7 +136,8 @@ window.translateToastKey = function(lang, key) {
       el.title = t[el.dataset.i18nTitle] || el.title;
     }
   }
-  function applyTranslations(lang) {
+
+  App.applyTranslations = function(lang) {
     lang = lang || localStorage.getItem('lang') || DEFAULT_LANG;
     document.querySelectorAll('[data-i18n]').forEach(el => translateElement(el, lang));
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => translateElement(el, lang));
@@ -136,15 +152,16 @@ window.translateToastKey = function(lang, key) {
     if (titleEl && translations[lang]) {
       titleEl.textContent = translations[lang][titleEl.dataset.i18n] || titleEl.textContent;
     }
-document.querySelectorAll('[data-i18n-aria]').forEach(el => {
-    const key = el.dataset.i18nAria;
-    if (translations[lang] && translations[lang][key]) {
-        el.setAttribute('aria-label', translations[lang][key]);
-    }
-});
     restoreAllBilingual(lang);
-  }
-  function initLangSelector() {
+
+    // Update <html lang>
+    document.documentElement.lang = lang;
+
+    // Notify language change listeners
+    langListeners.forEach(cb => cb(lang));
+  };
+
+  App.initLangSelector = function() {
     const langSelect = document.getElementById('langSelect');
     if (!langSelect) return;
     const savedLang = localStorage.getItem('lang') || DEFAULT_LANG;
@@ -152,17 +169,25 @@ document.querySelectorAll('[data-i18n-aria]').forEach(el => {
     langSelect.addEventListener('change', (e) => {
       const newLang = e.target.value;
       localStorage.setItem('lang', newLang);
-      applyTranslations(newLang);
+      App.applyTranslations(newLang);
     });
-    applyTranslations(savedLang);
-  }
-  window.applyTranslations = applyTranslations;
-  window.initLangSelector = initLangSelector;
+    App.applyTranslations(savedLang);
+  };
+
+  // Register language change listener
+  App.onLangChange = function(callback) {
+    if (typeof callback === 'function') {
+      langListeners.push(callback);
+    }
+  };
+
+  // Initial activation if langSelect already exists
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-      if (document.getElementById('langSelect')) initLangSelector();
+      if (document.getElementById('langSelect')) App.initLangSelector();
     });
   } else {
-    if (document.getElementById('langSelect')) initLangSelector();
+    if (document.getElementById('langSelect')) App.initLangSelector();
   }
+
 })();

@@ -236,41 +236,40 @@
       </div>
     </div>
   </div>
-<script src="i18n.js"></script>
+  <script src="i18n.js"></script>
+  <script src="db-utils.js"></script>
   <script>
-    // Index page translations
-    if (typeof addI18nTranslations === 'function') {
-      addI18nTranslations({
-        fr: {
-          'index_title': 'Tableau de Bord Éducatif – French',
-          'index_subtitle': 'Des révisions pour le primaire, le secondaire et une section de révision générale complète.'
-        },
-        en: {
-          'index_title': 'Educational Dashboard – French',
-          'index_subtitle': 'Reviews for primary, secondary and a full general review section.'
-        },
-        ar: {
-          'index_title': 'لوحة التحكم التعليمية – الفرنسية',
-          'index_subtitle': 'مراجعات للمرحلتين الابتدائية والثانوية وقسم مراجعة عامة كامل.'
-        }
-      });
-    }
+    // Index page translations – App namespace
+    App.addI18nTranslations({
+      fr: {
+        'index_title': 'Tableau de Bord Éducatif – French',
+        'index_subtitle': 'Des révisions pour le primaire, le secondaire et une section de révision générale complète.'
+      },
+      en: {
+        'index_title': 'Educational Dashboard – French',
+        'index_subtitle': 'Reviews for primary, secondary and a full general review section.'
+      },
+      ar: {
+        'index_title': 'لوحة التحكم التعليمية – الفرنسية',
+        'index_subtitle': 'مراجعات للمرحلتين الابتدائية والثانوية وقسم مراجعة عامة كامل.'
+      }
+    });
   </script>
   <script>
-  // Active le mode bilingue pour toute la page de révision
-  (function() {
-    var container = document.querySelector('.container');
-    if (container && typeof makeBilingual === 'function') {
-      makeBilingual(container);
+    // Active le mode bilingue pour toute la page de révision
+    (function() {
+      var container = document.querySelector('.container');
+      if (container && typeof App.makeBilingual === 'function') {
+        App.makeBilingual(container);
+      }
+    })();
+  </script>
+  <script src="ed-french-ini.js"></script>
+  <script>
+    // Static registration so PWABuilder detects the SW
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js');
     }
-  })();
-</script>
-<script src="ed-french-ini.js"></script>
-<script>
-  // Static registration so PWABuilder detects the SW
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js');
-  }
-</script>
+  </script>
 </body>
 </html>
