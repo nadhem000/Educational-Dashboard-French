@@ -6,9 +6,7 @@
     en: {},
     ar: {}
   };
-
   const bilingualContainers = [];
-
   window.addI18nTranslations = function(newTranslations) {
     for (const lang of Object.keys(newTranslations)) {
       if (translations[lang]) {
@@ -18,7 +16,6 @@
       }
     }
   };
-
   // ---- Toast translations (always loaded) ----
   window.addI18nTranslations({
     fr: {
@@ -32,7 +29,8 @@
       'toast_notif_disabled': '🔔 Notifications désactivées.',
       'toast_install_prompt': '💡 Pour installer l\'application, utilisez l\'option "Ajouter à l\'écran d\'accueil" du navigateur.',
       'toast_update_available': '🔄 Une nouvelle version est disponible.',
-      'toast_update_button': 'Actualiser'
+      'toast_update_button': 'Actualiser',
+      'skip_to_content': 'Aller au contenu principal'
     },
     en: {
       'toast_signin_success': '✅ You are signed in.',
@@ -45,7 +43,8 @@
       'toast_notif_disabled': '🔔 Notifications disabled.',
       'toast_install_prompt': '💡 To install the app, use the "Add to Home Screen" option in your browser.',
       'toast_update_available': '🔄 A new version is available.',
-      'toast_update_button': 'Refresh'
+      'toast_update_button': 'Refresh',
+      'skip_to_content': 'Skip to main content'
     },
     ar: {
       'toast_signin_success': '✅ تم تسجيل الدخول بنجاح.',
@@ -58,13 +57,13 @@
       'toast_notif_disabled': '🔔 تم تعطيل الإشعارات.',
       'toast_install_prompt': '💡 لتثبيت التطبيق، استخدم خيار "إضافة إلى الشاشة الرئيسية" في متصفحك.',
       'toast_update_available': '🔄 تتوفر نسخة جديدة.',
-      'toast_update_button': 'تحديث'
+      'toast_update_button': 'تحديث',
+      'skip_to_content': 'تجاوز إلى المحتوى الرئيسي'
     }
   });
 window.translateToastKey = function(lang, key) {
     return translations[lang]?.[key] || key;
 };
-
   // Marque un conteneur comme bilingue et sauvegarde le français original
   window.makeBilingual = function(container) {
     if (!container) return;
@@ -78,7 +77,6 @@ window.translateToastKey = function(lang, key) {
       bilingualContainers.push(container);
     }
   };
-
   function restoreAllBilingual(lang) {
     bilingualContainers.forEach(container => {
       container.querySelectorAll('.i18n-bilingual').forEach(el => el.remove());
@@ -101,7 +99,6 @@ window.translateToastKey = function(lang, key) {
       });
     });
   }
-
   function translateElement(el, lang) {
     const t = translations[lang];
     if (!t) return;
@@ -115,19 +112,29 @@ window.translateToastKey = function(lang, key) {
       el.title = t[el.dataset.i18nTitle] || el.title;
     }
   }
-
   function applyTranslations(lang) {
     lang = lang || localStorage.getItem('lang') || DEFAULT_LANG;
     document.querySelectorAll('[data-i18n]').forEach(el => translateElement(el, lang));
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => translateElement(el, lang));
     document.querySelectorAll('[data-i18n-title]').forEach(el => translateElement(el, lang));
+    document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+      const key = el.dataset.i18nAria;
+      if (translations[lang] && translations[lang][key]) {
+        el.setAttribute('aria-label', translations[lang][key]);
+      }
+    });
     const titleEl = document.querySelector('title[data-i18n]');
     if (titleEl && translations[lang]) {
       titleEl.textContent = translations[lang][titleEl.dataset.i18n] || titleEl.textContent;
     }
+document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+    const key = el.dataset.i18nAria;
+    if (translations[lang] && translations[lang][key]) {
+        el.setAttribute('aria-label', translations[lang][key]);
+    }
+});
     restoreAllBilingual(lang);
   }
-
   function initLangSelector() {
     const langSelect = document.getElementById('langSelect');
     if (!langSelect) return;
@@ -140,10 +147,8 @@ window.translateToastKey = function(lang, key) {
     });
     applyTranslations(savedLang);
   }
-
   window.applyTranslations = applyTranslations;
   window.initLangSelector = initLangSelector;
-
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       if (document.getElementById('langSelect')) initLangSelector();

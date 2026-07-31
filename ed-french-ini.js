@@ -100,17 +100,17 @@
     return container;
   }
 
-  // Updated: only one update toast at a time
+  // Singleton update toast
   function showUpdateToast() {
     const existing = document.querySelector('.toast.update-toast');
-    if (existing) return; // already displayed
+    if (existing) return;
 
     const lang = localStorage.getItem('lang') || 'fr';
     const message = typeof translateToastKey === 'function' ? translateToastKey(lang, 'toast_update_available') : '🔄 Une nouvelle version est disponible.';
     const buttonText = typeof translateToastKey === 'function' ? translateToastKey(lang, 'toast_update_button') : 'Actualiser';
     const container = document.getElementById('toast-container') || createToastContainer();
     const toast = document.createElement('div');
-    toast.className = 'toast update-toast'; // key class for singleton
+    toast.className = 'toast update-toast';
     toast.innerHTML = message + ' <button id="reloadNow" class="reload-btn">' + buttonText + '</button>';
     container.appendChild(toast);
     document.getElementById('reloadNow').addEventListener('click', () => { window.location.reload(); });
@@ -173,6 +173,126 @@
     }
   }
 
+  // ---------- Auth validation helpers ----------
+  function translateError(key) {
+    const lang = localStorage.getItem('lang') || 'fr';
+    if (typeof translateToastKey === 'function') {
+      return translateToastKey(lang, key);
+    }
+    // fallback
+    const fallback = {
+      'error_required': 'Ce champ est requis.',
+      'error_invalid_email': 'Veuillez entrer une adresse email valide.',
+      'error_password_short': 'Le mot de passe doit contenir au moins 6 caractères.',
+      'error_password_weak': 'Mot de passe faible.'
+    };
+    return fallback[key] || key;
+  }
+
+  function showFieldError(input, errorSpan, messageKey) {
+    if (!input || !errorSpan) return;
+    input.classList.add('error');
+    errorSpan.textContent = translateError(messageKey);
+    errorSpan.classList.add('visible');
+  }
+
+  function clearFieldError(input, errorSpan) {
+    if (!input || !errorSpan) return;
+    input.classList.remove('error');
+    errorSpan.textContent = '';
+    errorSpan.classList.remove('visible');
+  }
+
+  // Validate a single field (returns true if valid)
+  function validateField(input, errorSpan) {
+    if (!input || !errorSpan) return true;
+    clearFieldError(input, errorSpan);
+    if (!input.value.trim()) {
+      showFieldError(input, errorSpan, 'error_required');
+      return false;
+    }
+    if (input.type === 'email') {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!re.test(input.value)) {
+        showFieldError(input, errorSpan, 'error_invalid_email');
+        return false;
+      }
+    }
+    if (input.id.includes('password')) {
+      if (input.value.length < 6) {
+        showFieldError(input, errorSpan, 'error_password_short');
+        return false;
+      }
+      // Optional: weak password check (already displayed with strength meter)
+    }
+    return true;
+  }
+
+  function validateSignInForm() {
+    let valid = true;
+    const username = document.getElementById('signin-username');
+    const email = document.getElementById('signin-email');
+    const password = document.getElementById('signin-password');
+    const errUser = document.getElementById('error-signin-username');
+    const errEmail = document.getElementById('error-signin-email');
+    const errPass = document.getElementById('error-signin-password');
+    if (!validateField(username, errUser)) valid = false;
+    if (!validateField(email, errEmail)) valid = false;
+    if (!validateField(password, errPass)) valid = false;
+    return valid;
+  }
+
+  function validateSignUpForm() {
+    let valid = true;
+    const username = document.getElementById('signup-username');
+    const email = document.getElementById('signup-email');
+    const password = document.getElementById('signup-password');
+    const errUser = document.getElementById('error-signup-username');
+    const errEmail = document.getElementById('error-signup-email');
+    const errPass = document.getElementById('error-signup-password');
+    if (!validateField(username, errUser)) valid = false;
+    if (!validateField(email, errEmail)) valid = false;
+    if (!validateField(password, errPass)) valid = false;
+    return valid;
+  }
+
+  // Password strength meter
+  function evaluatePasswordStrength(password) {
+    const bar = document.getElementById('strengthBar');
+    const text = document.getElementById('strengthText');
+    if (!bar || !text) return;
+    bar.className = 'strength-bar';
+    if (!password) {
+      bar.style.width = '0';
+      text.textContent = '';
+      return;
+    }
+    let score = 0;
+    if (password.length >= 6) score++;
+    if (password.length >= 10) score++;
+    if (/[a-z]/.test(password) && /[A-Z]/.test(password)) score++;
+    if (/\d/.test(password)) score++;
+    if (/[^a-zA-Z0-9]/.test(password)) score++;
+
+    let width, className, strengthKey;
+    if (score <= 1) {
+      width = '33%';
+      className = 'weak';
+      strengthKey = 'strength_weak';
+    } else if (score <= 3) {
+      width = '66%';
+      className = 'medium';
+      strengthKey = 'strength_medium';
+    } else {
+      width = '100%';
+      className = 'strong';
+      strengthKey = 'strength_strong';
+    }
+    bar.style.width = width;
+    bar.className = `strength-bar ${className}`;
+    text.textContent = translateError(strengthKey);
+  }
+
   // ---------- Init functions ----------
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
@@ -202,7 +322,6 @@
 
     } catch (error) {
       logToDB('errors', { message: 'Fallback header/footer: ' + error.message });
-      // Inject minimal fallback UI
       const fallbackHeader = document.createElement('header');
       fallbackHeader.className = 'site-header';
       fallbackHeader.innerHTML = '<div class="header-left"><span class="site-title">Educational Dashboard - French</span></div>';
@@ -215,7 +334,6 @@
       window.showToast('toast_fallback', 'error', 6000);
     }
 
-    // Continue with other initializations regardless of fetch success/failure
     if (typeof initLangSelector === 'function') {
       initLangSelector();
     }
@@ -255,7 +373,6 @@
     const settingsBtn = document.getElementById('settingsBtn');
     const closeBtn = modal ? modal.querySelector('.close-modal') : null;
     if (!modal || !settingsBtn || !closeBtn) return;
-
     settingsBtn.addEventListener('click', () => openModal(modal));
     closeBtn.addEventListener('click', () => closeModal(modal));
     window.addEventListener('click', (e) => {
@@ -264,20 +381,17 @@
     trapFocus(modal);
   }
 
-  // Updated: also manage offline banner
   function initOnlineStatus() {
     const dot = document.getElementById('onlineStatus');
     const banner = document.getElementById('offlineBanner');
     function update() {
       const online = navigator.onLine;
-      // Dot status
       if (dot) {
         dot.className = 'status-dot ' + (online ? 'online' : 'offline');
         const key = online ? 'online' : 'offline';
         dot.setAttribute('data-i18n-aria', key);
         dot.setAttribute('data-i18n-title', key);
       }
-      // Offline banner
       if (banner) {
         if (online) {
           banner.classList.remove('show');
@@ -294,7 +408,7 @@
     update();
   }
 
-  // Auth with loading spinners
+  // Auth with loading spinners and validation
   function initAuth() {
     const signInBtn = document.getElementById('signInBtn');
     const signOutBtn = document.getElementById('signOutBtn');
@@ -354,7 +468,32 @@
       });
     });
 
-    // Helper: show spinner on a button
+    // Real-time validation on blur
+    document.getElementById('signin-username')?.addEventListener('blur', function() {
+      validateField(this, document.getElementById('error-signin-username'));
+    });
+    document.getElementById('signin-email')?.addEventListener('blur', function() {
+      validateField(this, document.getElementById('error-signin-email'));
+    });
+    document.getElementById('signin-password')?.addEventListener('blur', function() {
+      validateField(this, document.getElementById('error-signin-password'));
+    });
+    document.getElementById('signup-username')?.addEventListener('blur', function() {
+      validateField(this, document.getElementById('error-signup-username'));
+    });
+    document.getElementById('signup-email')?.addEventListener('blur', function() {
+      validateField(this, document.getElementById('error-signup-email'));
+    });
+    document.getElementById('signup-password')?.addEventListener('input', function() {
+      evaluatePasswordStrength(this.value);
+      // Clear error on input
+      clearFieldError(this, document.getElementById('error-signup-password'));
+    });
+    document.getElementById('signup-password')?.addEventListener('blur', function() {
+      validateField(this, document.getElementById('error-signup-password'));
+    });
+
+    // Helper: show spinner
     function setButtonLoading(btn, isLoading) {
       if (!btn) return;
       if (isLoading) {
@@ -377,6 +516,7 @@
     if (signinSubmit) {
       signinSubmit.addEventListener('click', (e) => {
         e.preventDefault();
+        if (!validateSignInForm()) return;
         setButtonLoading(signinSubmit, true);
         setTimeout(() => {
           setButtonLoading(signinSubmit, false);
@@ -385,6 +525,12 @@
           document.getElementById('signin-username').value = '';
           document.getElementById('signin-email').value = '';
           document.getElementById('signin-password').value = '';
+          // Clear all errors
+          ['signin-username','signin-email','signin-password'].forEach(id => {
+            const input = document.getElementById(id);
+            const err = document.getElementById('error-' + id);
+            if (input && err) clearFieldError(input, err);
+          });
           window.showToast('toast_signin_success', 'success');
         }, 800);
       });
@@ -394,6 +540,7 @@
     if (signupSubmit) {
       signupSubmit.addEventListener('click', (e) => {
         e.preventDefault();
+        if (!validateSignUpForm()) return;
         setButtonLoading(signupSubmit, true);
         setTimeout(() => {
           setButtonLoading(signupSubmit, false);
@@ -402,6 +549,14 @@
           document.getElementById('signup-username').value = '';
           document.getElementById('signup-email').value = '';
           document.getElementById('signup-password').value = '';
+          // Reset strength meter
+          evaluatePasswordStrength('');
+          // Clear errors
+          ['signup-username','signup-email','signup-password'].forEach(id => {
+            const input = document.getElementById(id);
+            const err = document.getElementById('error-' + id);
+            if (input && err) clearFieldError(input, err);
+          });
           window.showToast('toast_signup_success', 'success');
         }, 800);
       });
@@ -488,7 +643,6 @@
   }
 
   let deferredPrompt;
-  // Listen for install prompt and enable button accordingly
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
@@ -505,14 +659,10 @@
   async function initInstallButton() {
     const installBtn = document.getElementById('installBtn');
     if (!installBtn) return;
-
-    // If already installed, hide permanently
     if (window.matchMedia('(display-mode: standalone)').matches) {
       installBtn.style.display = 'none';
       return;
     }
-
-    // Initially, show button but disabled if no prompt yet
     installBtn.style.display = 'inline-flex';
     if (!deferredPrompt) {
       installBtn.disabled = true;
@@ -520,7 +670,6 @@
       installBtn.setAttribute('title', 'Installation non disponible – utilisez le menu du navigateur');
       if (typeof applyTranslations === 'function') applyTranslations();
     }
-
     installBtn.addEventListener('click', async () => {
       if (deferredPrompt) {
         deferredPrompt.prompt();
@@ -529,10 +678,8 @@
           installBtn.style.display = 'none';
         }
         deferredPrompt = null;
-        // Re-enable if needed? After prompt it's gone anyway.
       }
     });
-
     window.addEventListener('appinstalled', () => {
       installBtn.style.display = 'none';
     });

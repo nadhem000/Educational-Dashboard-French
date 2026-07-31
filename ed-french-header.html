@@ -36,14 +36,17 @@
 			<button class="auth-tab active" data-tab="signin" data-i18n="auth_tab_signin">Connexion</button>
 			<button class="auth-tab" data-tab="signup" data-i18n="auth_tab_signup">Inscription</button>
 		</div>
+		<!-- Sign In Form -->
 		<div id="authFormSignin" class="auth-form active">
 			<div class="auth-field">
 				<label for="signin-username" data-i18n="auth_label_username">Nom d'utilisateur</label>
-				<input type="text" class="auth-input" id="signin-username" data-i18n-placeholder="auth_placeholder_username" placeholder="Nom d'utilisateur">
+				<input type="text" class="auth-input" id="signin-username" data-i18n-placeholder="auth_placeholder_username" placeholder="Nom d'utilisateur" required>
+				<span class="field-error" id="error-signin-username" aria-live="polite"></span>
 			</div>
 			<div class="auth-field">
 				<label for="signin-email" data-i18n="auth_label_email">Email</label>
-				<input type="email" class="auth-input" id="signin-email" data-i18n-placeholder="auth_placeholder_email" placeholder="Email">
+				<input type="email" class="auth-input" id="signin-email" data-i18n-placeholder="auth_placeholder_email" placeholder="Email" required>
+				<span class="field-error" id="error-signin-email" aria-live="polite"></span>
 			</div>
 			<div class="auth-field">
 				<label for="signin-password" data-i18n="auth_label_password">Mot de passe</label>
@@ -53,22 +56,26 @@
 						<input type="password" class="auth-input" id="signin-password"
 						data-i18n-placeholder="auth_placeholder_password"
 						placeholder="Mot de passe"
-						autocomplete="current-password">
+						autocomplete="current-password" required>
 						<button type="button" class="toggle-password" data-target="signin-password">👁️</button>
 					</form>
 				</div>
+				<span class="field-error" id="error-signin-password" aria-live="polite"></span>
 			</div>
 			<button class="auth-submit" id="signin-submit" data-i18n="auth_submit_signin">Se connecter</button>
-			<button class="forgot-password" id="forgotPassword" data-i18n="auth_forgot_password">Mot de passe oublié ?</button>
+			<button type="button" class="forgot-password" id="forgotPassword" data-i18n="auth_forgot_password">Mot de passe oublié ?</button>
 		</div>
+		<!-- Sign Up Form -->
 		<div id="authFormSignup" class="auth-form">
 			<div class="auth-field">
 				<label for="signup-username" data-i18n="auth_label_username">Nom d'utilisateur</label>
-				<input type="text" class="auth-input" id="signup-username" data-i18n-placeholder="auth_placeholder_username" placeholder="Nom d'utilisateur">
+				<input type="text" class="auth-input" id="signup-username" data-i18n-placeholder="auth_placeholder_username" placeholder="Nom d'utilisateur" required>
+				<span class="field-error" id="error-signup-username" aria-live="polite"></span>
 			</div>
 			<div class="auth-field">
 				<label for="signup-email" data-i18n="auth_label_email">Email</label>
-				<input type="email" class="auth-input" id="signup-email" data-i18n-placeholder="auth_placeholder_email" placeholder="Email">
+				<input type="email" class="auth-input" id="signup-email" data-i18n-placeholder="auth_placeholder_email" placeholder="Email" required>
+				<span class="field-error" id="error-signup-email" aria-live="polite"></span>
 			</div>
 			<div class="auth-field">
 				<label for="signup-password" data-i18n="auth_label_password">Mot de passe</label>
@@ -78,10 +85,15 @@
 						<input type="password" class="auth-input" id="signup-password"
 						data-i18n-placeholder="auth_placeholder_password"
 						placeholder="Mot de passe"
-						autocomplete="new-password">
+						autocomplete="new-password" required minlength="6">
 						<button type="button" class="toggle-password" data-target="signup-password">👁️</button>
 					</form>
 				</div>
+				<div class="password-strength">
+					<div class="strength-bar" id="strengthBar"></div>
+				</div>
+				<span class="strength-text" id="strengthText" aria-live="polite"></span>
+				<span class="field-error" id="error-signup-password" aria-live="polite"></span>
 			</div>
 			<button class="auth-submit" id="signup-submit" data-i18n="auth_submit_signup">S'inscrire</button>
 		</div>
@@ -124,7 +136,15 @@
 				'settings_modal_title': 'Paramètres',
 				'auth_label_username': "Nom d'utilisateur",
 				'auth_label_email': 'Email',
-				'auth_label_password': 'Mot de passe'
+				'auth_label_password': 'Mot de passe',
+				// Validation error messages
+				'error_required': 'Ce champ est requis.',
+				'error_invalid_email': 'Veuillez entrer une adresse email valide.',
+				'error_password_short': 'Le mot de passe doit contenir au moins 6 caractères.',
+				'error_password_weak': 'Mot de passe faible. Utilisez au moins 6 caractères avec lettres et chiffres.',
+				'strength_weak': 'Faible',
+				'strength_medium': 'Moyen',
+				'strength_strong': 'Fort'
 			},
 			en: {
 				'site_title': 'Educational Dashboard<br>French Hub',
@@ -152,7 +172,14 @@
 				'settings_modal_title': 'Settings',
 				'auth_label_username': 'Username',
 				'auth_label_email': 'Email',
-				'auth_label_password': 'Password'
+				'auth_label_password': 'Password',
+				'error_required': 'This field is required.',
+				'error_invalid_email': 'Please enter a valid email address.',
+				'error_password_short': 'Password must be at least 6 characters.',
+				'error_password_weak': 'Weak password. Use at least 6 characters with letters and numbers.',
+				'strength_weak': 'Weak',
+				'strength_medium': 'Medium',
+				'strength_strong': 'Strong'
 			},
 			ar: {
 				'site_title': 'لوحة التحكم التعليمية<br>French Hub',
@@ -180,7 +207,14 @@
 				'settings_modal_title': 'الإعدادات',
 				'auth_label_username': 'اسم المستخدم',
 				'auth_label_email': 'البريد الإلكتروني',
-				'auth_label_password': 'كلمة المرور'
+				'auth_label_password': 'كلمة المرور',
+				'error_required': 'هذا الحقل مطلوب.',
+				'error_invalid_email': 'يرجى إدخال بريد إلكتروني صالح.',
+				'error_password_short': 'يجب أن تحتوي كلمة المرور على 6 أحرف على الأقل.',
+				'error_password_weak': 'كلمة المرور ضعيفة. استخدم 6 أحرف على الأقل مع أحرف وأرقام.',
+				'strength_weak': 'ضعيف',
+				'strength_medium': 'متوسط',
+				'strength_strong': 'قوي'
 			}
 		});
 	}

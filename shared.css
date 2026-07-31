@@ -423,6 +423,50 @@ body.dark .profile-btn {
 .auth-input:focus {
   border-color: var(--accent);
 }
+/* Input error state */
+.auth-input.error {
+  border-color: var(--danger);
+}
+/* Inline error message */
+.field-error {
+  color: var(--danger);
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
+  display: none;
+}
+.field-error.visible {
+  display: block;
+}
+/* Password strength meter */
+.password-strength {
+  margin-top: 0.3rem;
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.strength-bar {
+  height: 100%;
+  width: 0;
+  border-radius: 2px;
+  transition: width 0.3s, background 0.3s;
+}
+.strength-bar.weak {
+  background: var(--danger);
+}
+.strength-bar.medium {
+  background: #f0ad4e;
+}
+.strength-bar.strong {
+  background: var(--success);
+}
+.strength-text {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  margin-top: 0.15rem;
+  display: block;
+}
+
 .password-wrapper {
   position: relative;
   display: flex;
