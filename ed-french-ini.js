@@ -385,14 +385,20 @@
 
     // Listen to Supabase auth state changes
     App.supabase.auth.onAuthStateChange((event, session) => {
-      if (session) {
-        setLoggedIn(true);
-        App.logToDB('actions', { message: 'User signed in: ' + session.user.email });
-      } else {
-        setLoggedIn(false);
-        App.logToDB('actions', { message: 'User signed out' });
-      }
-    });
+  if (event === 'PASSWORD_RECOVERY') {
+    // Redirect to dedicated reset page, keeping the recovery token in the hash
+    window.location.href = 'reset-password.html' + window.location.hash;
+    return;
+  }
+
+  if (session) {
+    setLoggedIn(true);
+    App.logToDB('actions', { message: 'User signed in: ' + session.user.email });
+  } else {
+    setLoggedIn(false);
+    App.logToDB('actions', { message: 'User signed out' });
+  }
+});
 
     // Check for an existing session on page load
     App.supabase.auth.getSession().then(({ data: { session } }) => {
