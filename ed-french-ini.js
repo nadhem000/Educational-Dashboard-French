@@ -484,6 +484,19 @@
       }
     }
 
+    // Helper to translate Supabase error messages
+    function translateAuthError(rawMessage) {
+      const lang = localStorage.getItem('lang') || 'fr';
+      const prefixKey = 'auth_error_generic';
+      const prefix = App.translateToastKey(lang, prefixKey);
+      // Try to translate the exact error message, else fallback to raw
+      const translatedMsg = App.translateToastKey(lang, rawMessage);
+      if (translatedMsg && translatedMsg !== rawMessage) {
+        return prefix + translatedMsg;
+      }
+      return prefix + rawMessage;
+    }
+
     // ---------- REAL SIGN IN ----------
     const signinSubmit = document.getElementById('signin-submit');
     if (signinSubmit) {
@@ -504,13 +517,13 @@
 
         if (error) {
           App.logToDB('errors', { message: 'Sign in failed: ' + error.message });
-          // Display error inline
+          const errorText = translateAuthError(error.message);
           const generalError = document.getElementById('auth-error-signin');
           if (generalError) {
-            generalError.textContent = error.message;
+            generalError.textContent = errorText;
             generalError.classList.add('visible');
           }
-          App.showToast('Erreur de connexion : ' + error.message, 'error');
+          App.showToast(errorText, 'error');
           return;
         } else {
           const generalError = document.getElementById('auth-error-signin');
@@ -554,12 +567,13 @@
 
         if (error) {
           App.logToDB('errors', { message: 'Sign up failed: ' + error.message });
+          const errorText = translateAuthError(error.message);
           const generalError = document.getElementById('auth-error-signup');
           if (generalError) {
-            generalError.textContent = error.message;
+            generalError.textContent = errorText;
             generalError.classList.add('visible');
           }
-          App.showToast('Erreur d\'inscription : ' + error.message, 'error');
+          App.showToast(errorText, 'error');
           return;
         } else {
           const generalError = document.getElementById('auth-error-signup');
@@ -585,7 +599,9 @@
           App.showToast('toast_signup_success', 'success');
         } else {
           // Email confirmation required
-          App.showToast('Un email de confirmation a été envoyé. Vérifiez votre boîte de réception.', 'success', 6000);
+          const lang = localStorage.getItem('lang') || 'fr';
+          const confirmMsg = App.translateToastKey(lang, 'auth_error_confirm_email');
+          App.showToast(confirmMsg, 'success', 6000);
           closeModal(authModal);
           document.getElementById('signup-username').value = '';
           document.getElementById('signup-email').value = '';
@@ -604,16 +620,20 @@
     if (forgotPasswordBtn) {
       forgotPasswordBtn.addEventListener('click', async (e) => {
         e.preventDefault();
+        const lang = localStorage.getItem('lang') || 'fr';
         const email = document.getElementById('signin-email')?.value.trim();
         if (!email) {
-          App.showToast('Veuillez entrer votre email dans le champ Email.', 'error');
+          const msg = App.translateToastKey(lang, 'auth_error_email_required');
+          App.showToast(msg, 'error');
           return;
         }
         const { error } = await App.supabase.auth.resetPasswordForEmail(email);
         if (error) {
-          App.showToast('Erreur : ' + error.message, 'error');
+          const errorText = translateAuthError(error.message);
+          App.showToast(errorText, 'error');
         } else {
-          App.showToast('Email de réinitialisation envoyé (vérifiez vos spams).', 'success', 5000);
+          const msg = App.translateToastKey(lang, 'auth_error_reset_sent');
+          App.showToast(msg, 'success', 5000);
         }
       });
     }

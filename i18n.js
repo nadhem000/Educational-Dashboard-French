@@ -39,7 +39,19 @@
       'skip_to_content': 'Aller au contenu principal',
       'back_to_top': 'Retour en haut',
       'theme_switch_to_light': 'Activer le mode clair',
-      'theme_switch_to_dark': 'Activer le mode sombre'
+      'theme_switch_to_dark': 'Activer le mode sombre',
+'auth_error_prefix': 'Erreur de connexion : ',
+'auth_error_signup_prefix': "Erreur d'inscription : ",
+'auth_error_confirm_email': 'Un email de confirmation a été envoyé. Vérifiez votre boîte de réception.',
+'auth_error_email_required': 'Veuillez entrer votre email dans le champ Email.',
+'auth_error_reset_sent': 'Email de réinitialisation envoyé (vérifiez vos spams).',
+'auth_error_generic': 'Erreur : ',
+// Common Supabase error messages (exact match)
+'Invalid login credentials': 'Email ou mot de passe incorrect.',
+'User not found': 'Aucun compte trouvé avec cet email.',
+'Email not confirmed': 'Votre email n’a pas encore été confirmé. Veuillez vérifier votre boîte de réception.',
+'User already registered': 'Un compte avec cet email existe déjà.',
+'Password should be at least 6 characters': 'Le mot de passe doit contenir au moins 6 caractères.'
     },
     en: {
       'toast_signin_success': '✅ You are signed in.',
@@ -56,7 +68,18 @@
       'skip_to_content': 'Skip to main content',
       'back_to_top': 'Back to top',
       'theme_switch_to_light': 'Switch to light mode',
-      'theme_switch_to_dark': 'Switch to dark mode'
+      'theme_switch_to_dark': 'Switch to dark mode',
+'auth_error_prefix': 'Login error: ',
+'auth_error_signup_prefix': 'Sign up error: ',
+'auth_error_confirm_email': 'A confirmation email has been sent. Please check your inbox.',
+'auth_error_email_required': 'Please enter your email in the Email field.',
+'auth_error_reset_sent': 'Password reset email sent (check your spam).',
+'auth_error_generic': 'Error: ',
+'Invalid login credentials': 'Invalid email or password.',
+'User not found': 'No account found with this email.',
+'Email not confirmed': 'Your email has not been confirmed yet. Please check your inbox.',
+'User already registered': 'An account with this email already exists.',
+'Password should be at least 6 characters': 'Password must be at least 6 characters.'
     },
     ar: {
       'toast_signin_success': '✅ تم تسجيل الدخول بنجاح.',
@@ -73,7 +96,18 @@
       'skip_to_content': 'تجاوز إلى المحتوى الرئيسي',
       'back_to_top': 'العودة إلى الأعلى',
       'theme_switch_to_light': 'التبديل إلى الوضع الفاتح',
-      'theme_switch_to_dark': 'التبديل إلى الوضع الداكن'
+      'theme_switch_to_dark': 'التبديل إلى الوضع الداكن',
+'auth_error_prefix': 'خطأ في تسجيل الدخول: ',
+'auth_error_signup_prefix': 'خطأ في إنشاء الحساب: ',
+'auth_error_confirm_email': 'تم إرسال بريد تأكيد. يرجى التحقق من صندوق الوارد.',
+'auth_error_email_required': 'يرجى إدخال بريدك الإلكتروني في حقل البريد.',
+'auth_error_reset_sent': 'تم إرسال بريد إعادة تعيين كلمة المرور (تفقد البريد العشوائي).',
+'auth_error_generic': 'خطأ: ',
+'Invalid login credentials': 'البريد الإلكتروني أو كلمة المرور غير صحيحة.',
+'User not found': 'لم يتم العثور على حساب بهذا البريد.',
+'Email not confirmed': 'لم يتم تأكيد بريدك الإلكتروني بعد. يرجى التحقق من صندوق الوارد.',
+'User already registered': 'يوجد حساب مسجل بهذا البريد مسبقاً.',
+'Password should be at least 6 characters': 'كلمة المرور يجب أن تتكون من 6 أحرف على الأقل.'
     }
   });
 
