@@ -189,13 +189,11 @@
 
   function validateSignInForm() {
     let valid = true;
-    const username = document.getElementById('signin-username');
+    // Username is optional for Supabase sign-in; skip validation
     const email = document.getElementById('signin-email');
     const password = document.getElementById('signin-password');
-    const errUser = document.getElementById('error-signin-username');
     const errEmail = document.getElementById('error-signin-email');
     const errPass = document.getElementById('error-signin-password');
-    if (!validateField(username, errUser)) valid = false;
     if (!validateField(email, errEmail)) valid = false;
     if (!validateField(password, errPass)) valid = false;
     return valid;
@@ -378,16 +376,29 @@
         signInBtn.style.display = 'none';
         signOutBtn.style.display = 'inline-flex';
         profileBtn.style.display = 'inline-flex';
-        localStorage.setItem('isLoggedIn', 'true');
       } else {
         signInBtn.style.display = 'inline-flex';
         signOutBtn.style.display = 'none';
         profileBtn.style.display = 'none';
-        localStorage.removeItem('isLoggedIn');
       }
     }
 
-    if (localStorage.getItem('isLoggedIn') === 'true') setLoggedIn(true);
+    // Listen to Supabase auth state changes
+    App.supabase.auth.onAuthStateChange((event, session) => {
+      if (session) {
+        setLoggedIn(true);
+        App.logToDB('actions', { message: 'User signed in: ' + session.user.email });
+      } else {
+        setLoggedIn(false);
+        App.logToDB('actions', { message: 'User signed out' });
+      }
+    });
+
+    // Check for an existing session on page load
+    App.supabase.auth.getSession().then(({ data: { session } }) => {
+      setLoggedIn(!!session);
+    });
+
     if (signInBtn && authModal) {
       signInBtn.addEventListener('click', () => openModal(authModal));
     }
@@ -405,6 +416,18 @@
         document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
         if (tabName === 'signin') signinForm.classList.add('active');
         else if (tabName === 'signup') signupForm.classList.add('active');
+
+        // Clear general auth errors on tab switch
+        const generalErrorSignin = document.getElementById('auth-error-signin');
+        const generalErrorSignup = document.getElementById('auth-error-signup');
+        if (generalErrorSignin) {
+          generalErrorSignin.textContent = '';
+          generalErrorSignin.classList.remove('visible');
+        }
+        if (generalErrorSignup) {
+          generalErrorSignup.textContent = '';
+          generalErrorSignup.classList.remove('visible');
+        }
       });
     });
 
@@ -461,37 +484,94 @@
       }
     }
 
+    // ---------- REAL SIGN IN ----------
     const signinSubmit = document.getElementById('signin-submit');
     if (signinSubmit) {
-      signinSubmit.addEventListener('click', (e) => {
+      signinSubmit.addEventListener('click', async (e) => {
         e.preventDefault();
         if (!validateSignInForm()) return;
+
+        const email = document.getElementById('signin-email').value.trim();
+        const password = document.getElementById('signin-password').value;
         setButtonLoading(signinSubmit, true);
-        setTimeout(() => {
-          setButtonLoading(signinSubmit, false);
-          setLoggedIn(true);
-          closeModal(authModal);
-          document.getElementById('signin-username').value = '';
-          document.getElementById('signin-email').value = '';
-          document.getElementById('signin-password').value = '';
-          ['signin-username','signin-email','signin-password'].forEach(id => {
-            const input = document.getElementById(id);
-            const err = document.getElementById('error-' + id);
-            if (input && err) clearFieldError(input, err);
-          });
-          App.showToast('toast_signin_success', 'success');
-        }, 800);
+
+        const { data, error } = await App.supabase.auth.signInWithPassword({
+          email: email,
+          password: password
+        });
+
+        setButtonLoading(signinSubmit, false);
+
+        if (error) {
+          App.logToDB('errors', { message: 'Sign in failed: ' + error.message });
+          // Display error inline
+          const generalError = document.getElementById('auth-error-signin');
+          if (generalError) {
+            generalError.textContent = error.message;
+            generalError.classList.add('visible');
+          }
+          App.showToast('Erreur de connexion : ' + error.message, 'error');
+          return;
+        } else {
+          const generalError = document.getElementById('auth-error-signin');
+          if (generalError) {
+            generalError.textContent = '';
+            generalError.classList.remove('visible');
+          }
+        }
+
+        // Success – session listener will handle setLoggedIn
+        closeModal(authModal);
+        document.getElementById('signin-username').value = '';
+        document.getElementById('signin-email').value = '';
+        document.getElementById('signin-password').value = '';
+        ['signin-username','signin-email','signin-password'].forEach(id => {
+          const input = document.getElementById(id);
+          const err = document.getElementById('error-' + id);
+          if (input && err) clearFieldError(input, err);
+        });
+        App.showToast('toast_signin_success', 'success');
       });
     }
+
+    // ---------- REAL SIGN UP ----------
     const signupSubmit = document.getElementById('signup-submit');
     if (signupSubmit) {
-      signupSubmit.addEventListener('click', (e) => {
+      signupSubmit.addEventListener('click', async (e) => {
         e.preventDefault();
         if (!validateSignUpForm()) return;
+
+        const email = document.getElementById('signup-email').value.trim();
+        const password = document.getElementById('signup-password').value;
         setButtonLoading(signupSubmit, true);
-        setTimeout(() => {
-          setButtonLoading(signupSubmit, false);
-          setLoggedIn(true);
+
+        const { data, error } = await App.supabase.auth.signUp({
+          email: email,
+          password: password
+        });
+
+        setButtonLoading(signupSubmit, false);
+
+        if (error) {
+          App.logToDB('errors', { message: 'Sign up failed: ' + error.message });
+          const generalError = document.getElementById('auth-error-signup');
+          if (generalError) {
+            generalError.textContent = error.message;
+            generalError.classList.add('visible');
+          }
+          App.showToast('Erreur d\'inscription : ' + error.message, 'error');
+          return;
+        } else {
+          const generalError = document.getElementById('auth-error-signup');
+          if (generalError) {
+            generalError.textContent = '';
+            generalError.classList.remove('visible');
+          }
+        }
+
+        // If email confirmation is disabled, the user is immediately signed in.
+        if (data.session) {
+          // Automatically signed in – listener will update UI
           closeModal(authModal);
           document.getElementById('signup-username').value = '';
           document.getElementById('signup-email').value = '';
@@ -503,21 +583,50 @@
             if (input && err) clearFieldError(input, err);
           });
           App.showToast('toast_signup_success', 'success');
-        }, 800);
+        } else {
+          // Email confirmation required
+          App.showToast('Un email de confirmation a été envoyé. Vérifiez votre boîte de réception.', 'success', 6000);
+          closeModal(authModal);
+          document.getElementById('signup-username').value = '';
+          document.getElementById('signup-email').value = '';
+          document.getElementById('signup-password').value = '';
+          evaluatePasswordStrength('');
+          ['signup-username','signup-email','signup-password'].forEach(id => {
+            const input = document.getElementById(id);
+            const err = document.getElementById('error-' + id);
+            if (input && err) clearFieldError(input, err);
+          });
+        }
       });
     }
+
+    // ---------- FORGOT PASSWORD ----------
     if (forgotPasswordBtn) {
-      forgotPasswordBtn.addEventListener('click', (e) => {
+      forgotPasswordBtn.addEventListener('click', async (e) => {
         e.preventDefault();
-        App.showToast('toast_forgot_password', '');
+        const email = document.getElementById('signin-email')?.value.trim();
+        if (!email) {
+          App.showToast('Veuillez entrer votre email dans le champ Email.', 'error');
+          return;
+        }
+        const { error } = await App.supabase.auth.resetPasswordForEmail(email);
+        if (error) {
+          App.showToast('Erreur : ' + error.message, 'error');
+        } else {
+          App.showToast('Email de réinitialisation envoyé (vérifiez vos spams).', 'success', 5000);
+        }
       });
     }
+
+    // ---------- REAL SIGN OUT ----------
     if (signOutBtn) {
-      signOutBtn.addEventListener('click', () => {
-        setLoggedIn(false);
+      signOutBtn.addEventListener('click', async () => {
+        await App.supabase.auth.signOut();
+        // Listener will handle UI update and logging
         App.showToast('toast_signout', '');
       });
     }
+
     trapFocus(authModal);
   }
 
