@@ -361,6 +361,18 @@
 
   // ---------- Auth with loading spinners and validation ----------
   function initAuth() {
+  // Debug: check URL and hash
+  console.log('[initAuth] Called. window.location.href:', window.location.href);
+  console.log('[initAuth] window.location.hash:', window.location.hash);
+
+  const hash = window.location.hash;
+  if (hash.includes('type=recovery')) {
+    console.log('[initAuth] Recovery hash detected, redirecting to reset-password.html with hash:', hash);
+    window.location.replace('reset-password.html' + hash);
+    return; // Stop further init
+  } else {
+    console.log('[initAuth] No recovery hash found – proceeding with normal init.');
+  }
     const signInBtn = document.getElementById('signInBtn');
     const signOutBtn = document.getElementById('signOutBtn');
     const profileBtn = document.getElementById('profileBtn');
@@ -371,11 +383,6 @@
     const signupForm = document.getElementById('authFormSignup');
     const forgotPasswordBtn = document.getElementById('forgotPassword');
 
-const hash = window.location.hash;
-if (hash.includes('type=recovery')) {
-  window.location.replace('reset-password.html' + hash);
-  return; // Stop everything else
-}
     function setLoggedIn(isLoggedIn) {
       if (isLoggedIn) {
         signInBtn.style.display = 'none';
