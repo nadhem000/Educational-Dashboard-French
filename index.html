@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <script>
+    // Intercept recovery hash before any other script can consume it
+    if (window.location.hash.indexOf('type=recovery') !== -1) {
+      window.location.replace('reset-password.html' + window.location.hash);
+    }
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n="index_title">Educational Dashboard – French | Lessons, Review, Tests</title>
