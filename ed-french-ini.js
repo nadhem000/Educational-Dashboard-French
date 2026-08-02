@@ -374,7 +374,7 @@
 const hash = window.location.hash;
 if (hash.includes('type=recovery')) {
   window.location.replace('reset-password.html' + hash);
-  return; // Stop everything else – don't touch Supabase
+  return; // Stop everything else
 }
     function setLoggedIn(isLoggedIn) {
       if (isLoggedIn) {
