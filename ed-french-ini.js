@@ -31,7 +31,6 @@
       }
     });
   }
-
   // ---------- Service Worker log listener ----------
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.addEventListener('message', event => {
@@ -45,8 +44,20 @@
       }
     });
   }
+  // ---------- Notification history & badge ----------
+  let notificationHistory = [];   // last 5 { message, type, timestamp }
 
-  // ---------- Toast system ----------
+  function updateNotificationBadge() {
+    const bellBtn = document.getElementById('notifBellBtn');
+    if (!bellBtn) return;
+    const badge = bellBtn.querySelector('.bell-badge');
+    if (badge) {
+      badge.textContent = notificationHistory.length || '';
+      badge.style.display = notificationHistory.length ? 'inline' : 'none';
+    }
+  }
+
+  // ---------- Toast system (with dedup, pause-on-hover, history) ----------
   App.showToast = function(key, type = '', duration = 3000, isHTML = false) {
     const lang = localStorage.getItem('lang') || 'fr';
     let message = key;
@@ -54,20 +65,61 @@
       message = App.translateToastKey(lang, key);
     }
     const container = document.getElementById('toast-container') || createToastContainer();
+
+    // Dedup: skip if a toast with the same message is already visible
+    const existingToasts = container.querySelectorAll('.toast');
+    for (let t of existingToasts) {
+      if (t.getAttribute('data-message') === message) {
+        // refresh timer
+        if (t._timeoutId) clearTimeout(t._timeoutId);
+        t._timeoutId = setTimeout(() => { if (t.parentNode) t.parentNode.removeChild(t); }, duration);
+        return;
+      }
+    }
+
     const toast = document.createElement('div');
     toast.className = 'toast ' + type;
+    toast.setAttribute('data-message', message);
     if (isHTML) {
       toast.innerHTML = message;
     } else {
       toast.textContent = message;
     }
     container.appendChild(toast);
-    setTimeout(() => { if (toast.parentNode) toast.parentNode.removeChild(toast); }, duration);
+
+    // Add to notification history (max 5, dedup)
+    const dupIdx = notificationHistory.findIndex(n => n.message === message);
+    if (dupIdx !== -1) notificationHistory.splice(dupIdx, 1);
+    notificationHistory.unshift({ message, type, timestamp: Date.now() });
+    if (notificationHistory.length > 5) notificationHistory.pop();
+    updateNotificationBadge();
+
+    // Auto-remove after duration
+    let timeoutId = setTimeout(() => {
+      if (toast.parentNode) toast.parentNode.removeChild(toast);
+    }, duration);
+    toast._timeoutId = timeoutId;
+
+    // Pause on hover
+    toast.addEventListener('mouseenter', () => {
+      if (toast._timeoutId) clearTimeout(toast._timeoutId);
+      toast._remainingTime = duration - (Date.now() - toast._startTime);
+    });
+    toast.addEventListener('mouseleave', () => {
+      toast._startTime = Date.now();
+      toast._timeoutId = setTimeout(() => {
+        if (toast.parentNode) toast.parentNode.removeChild(toast);
+      }, toast._remainingTime || duration);
+    });
+    toast._startTime = Date.now();
   };
 
   function createToastContainer() {
     const container = document.createElement('div');
     container.id = 'toast-container';
+    container.setAttribute('role', 'status');
+    container.setAttribute('aria-live', 'polite');
+    container.setAttribute('aria-atomic', 'false');
     document.body.appendChild(container);
     return container;
   }
@@ -88,10 +140,36 @@
     setTimeout(() => { if (toast.parentNode) toast.parentNode.removeChild(toast); }, 10000);
   }
 
+  // ---------- Notification panel toggle ----------
+  window.toggleNotifPanel = function() {
+    const panel = document.getElementById('notifPanel');
+    if (!panel) return;
+    const isVisible = panel.style.display === 'block';
+    panel.style.display = isVisible ? 'none' : 'block';
+    if (!isVisible) {
+      renderNotifPanel();
+    }
+  };
+
+  function renderNotifPanel() {
+    const list = document.getElementById('notifList');
+    if (!list) return;
+    list.innerHTML = '';
+    if (notificationHistory.length === 0) {
+      list.innerHTML = '<li class="notif-empty">' + (App.getTranslation('notif_empty') || 'Aucune notification') + '</li>';
+      return;
+    }
+    notificationHistory.forEach(n => {
+      const li = document.createElement('li');
+      li.className = 'notif-item';
+      li.textContent = n.message;
+      list.appendChild(li);
+    });
+  }
+
   // ---------- Focus trap & modal helpers ----------
   let currentOpenModal = null;
   let lastFocusedElement = null;
-
   function trapFocus(modal) {
     const focusable = modal.querySelectorAll('a[href], button:not([disabled]), textarea, input:not([type="hidden"]), select, [tabindex]:not([tabindex="-1"])');
     if (focusable.length === 0) return;
@@ -117,7 +195,6 @@
       }
     });
   }
-
   function openModal(modal) {
     if (currentOpenModal && currentOpenModal !== modal) {
       closeModal(currentOpenModal);
@@ -131,7 +208,6 @@
       if (focusable.length) focusable[0].focus();
     }, 0);
   }
-
   function closeModal(modal) {
     if (modal) {
       modal.style.display = 'none';
@@ -143,27 +219,23 @@
       lastFocusedElement = null;
     }
   }
-
   // ---------- Auth validation helpers ----------
   function translateError(key) {
     const lang = localStorage.getItem('lang') || 'fr';
     return App.translateToastKey(lang, key);
   }
-
   function showFieldError(input, errorSpan, messageKey) {
     if (!input || !errorSpan) return;
     input.classList.add('error');
     errorSpan.textContent = translateError(messageKey);
     errorSpan.classList.add('visible');
   }
-
   function clearFieldError(input, errorSpan) {
     if (!input || !errorSpan) return;
     input.classList.remove('error');
     errorSpan.textContent = '';
     errorSpan.classList.remove('visible');
   }
-
   function validateField(input, errorSpan) {
     if (!input || !errorSpan) return true;
     clearFieldError(input, errorSpan);
@@ -186,7 +258,6 @@
     }
     return true;
   }
-
   function validateSignInForm() {
     let valid = true;
     // Username is optional for Supabase sign-in; skip validation
@@ -198,7 +269,6 @@
     if (!validateField(password, errPass)) valid = false;
     return valid;
   }
-
   function validateSignUpForm() {
     let valid = true;
     const username = document.getElementById('signup-username');
@@ -212,7 +282,6 @@
     if (!validateField(password, errPass)) valid = false;
     return valid;
   }
-
   function evaluatePasswordStrength(password) {
     const bar = document.getElementById('strengthBar');
     const text = document.getElementById('strengthText');
@@ -241,28 +310,24 @@
     bar.className = `strength-bar ${className}`;
     text.textContent = translateError(strengthKey);
   }
-
   // ---------- Init functions ----------
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
   }
-
   async function init() {
     try {
       const headerResp = await fetch('ed-french-header.html');
       if (!headerResp.ok) throw new Error('Header introuvable');
       const headerHTML = await headerResp.text();
       injectHTML(document.body, headerHTML, 'prepend');
-
       const skipLink = document.createElement('a');
       skipLink.className = 'skip-link';
       skipLink.href = '#main-content';
       skipLink.setAttribute('data-i18n', 'skip_to_content');
       skipLink.textContent = 'Aller au contenu principal';
       document.body.insertBefore(skipLink, document.body.firstChild);
-
       const footerResp = await fetch('ed-french-footer.html');
       if (!footerResp.ok) throw new Error('Footer introuvable');
       const footerHTML = await footerResp.text();
@@ -279,7 +344,6 @@
       document.body.appendChild(fallbackFooter);
       App.showToast('toast_fallback', 'error', 6000);
     }
-
     if (typeof App.initLangSelector === 'function') {
       App.initLangSelector();
     }
@@ -293,7 +357,6 @@
     registerSW();
     App.applyTranslations();
   }
-
   function initThemeToggle() {
     const body = document.body;
     const toggle = document.getElementById('themeToggle');
@@ -318,7 +381,6 @@
       setThemeAria(isDark);
     });
   }
-
   function initSettingsModal() {
     const modal = document.getElementById('settingsModal');
     const settingsBtn = document.getElementById('settingsBtn');
@@ -331,7 +393,6 @@
     });
     trapFocus(modal);
   }
-
   function initOnlineStatus() {
     const dot = document.getElementById('onlineStatus');
     const banner = document.getElementById('offlineBanner');
@@ -358,7 +419,6 @@
     window.addEventListener('offline', update);
     update();
   }
-
   // ---------- Auth with loading spinners and validation ----------
   function initAuth() {
     const signInBtn = document.getElementById('signInBtn');
@@ -370,7 +430,6 @@
     const signinForm = document.getElementById('authFormSignin');
     const signupForm = document.getElementById('authFormSignup');
     const forgotPasswordBtn = document.getElementById('forgotPassword');
-
     function setLoggedIn(isLoggedIn) {
       if (isLoggedIn) {
         signInBtn.style.display = 'none';
@@ -382,29 +441,25 @@
         profileBtn.style.display = 'none';
       }
     }
-
     // Listen to Supabase auth state changes
     App.supabase.auth.onAuthStateChange((event, session) => {
-  if (event === 'PASSWORD_RECOVERY') {
-    // Redirect to dedicated reset page, keeping the recovery token in the hash
-    window.location.href = 'reset-password.html' + window.location.hash;
-    return;
-  }
-
-  if (session) {
-    setLoggedIn(true);
-    App.logToDB('actions', { message: 'User signed in: ' + session.user.email });
-  } else {
-    setLoggedIn(false);
-    App.logToDB('actions', { message: 'User signed out' });
-  }
-});
-
+      if (event === 'PASSWORD_RECOVERY') {
+        // Redirect to dedicated reset page, keeping the recovery token in the hash
+        window.location.href = 'reset-password.html' + window.location.hash;
+        return;
+      }
+      if (session) {
+        setLoggedIn(true);
+        App.logToDB('actions', { message: 'User signed in: ' + session.user.email });
+      } else {
+        setLoggedIn(false);
+        App.logToDB('actions', { message: 'User signed out' });
+      }
+    });
     // Check for an existing session on page load
     App.supabase.auth.getSession().then(({ data: { session } }) => {
       setLoggedIn(!!session);
     });
-
     if (signInBtn && authModal) {
       signInBtn.addEventListener('click', () => openModal(authModal));
     }
@@ -422,7 +477,6 @@
         document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
         if (tabName === 'signin') signinForm.classList.add('active');
         else if (tabName === 'signup') signupForm.classList.add('active');
-
         // Clear general auth errors on tab switch
         const generalErrorSignin = document.getElementById('auth-error-signin');
         const generalErrorSignup = document.getElementById('auth-error-signup');
@@ -436,7 +490,6 @@
         }
       });
     });
-
     document.querySelectorAll('.toggle-password').forEach(btn => {
       btn.setAttribute('aria-label', 'Afficher le mot de passe');
       btn.addEventListener('click', () => {
@@ -449,7 +502,6 @@
         }
       });
     });
-
     // Real-time validation on blur
     document.getElementById('signin-username')?.addEventListener('blur', function() {
       validateField(this, document.getElementById('error-signin-username'));
@@ -473,7 +525,6 @@
     document.getElementById('signup-password')?.addEventListener('blur', function() {
       validateField(this, document.getElementById('error-signup-password'));
     });
-
     function setButtonLoading(btn, isLoading) {
       if (!btn) return;
       if (isLoading) {
@@ -489,7 +540,6 @@
         if (originalText) btn.textContent = originalText;
       }
     }
-
     // Helper to translate Supabase error messages
     function translateAuthError(rawMessage) {
       const lang = localStorage.getItem('lang') || 'fr';
@@ -502,25 +552,20 @@
       }
       return prefix + rawMessage;
     }
-
     // ---------- REAL SIGN IN ----------
     const signinSubmit = document.getElementById('signin-submit');
     if (signinSubmit) {
       signinSubmit.addEventListener('click', async (e) => {
         e.preventDefault();
         if (!validateSignInForm()) return;
-
         const email = document.getElementById('signin-email').value.trim();
         const password = document.getElementById('signin-password').value;
         setButtonLoading(signinSubmit, true);
-
         const { data, error } = await App.supabase.auth.signInWithPassword({
           email: email,
           password: password
         });
-
         setButtonLoading(signinSubmit, false);
-
         if (error) {
           App.logToDB('errors', { message: 'Sign in failed: ' + error.message });
           const errorText = translateAuthError(error.message);
@@ -538,7 +583,6 @@
             generalError.classList.remove('visible');
           }
         }
-
         // Success – session listener will handle setLoggedIn
         closeModal(authModal);
         document.getElementById('signin-username').value = '';
@@ -552,25 +596,20 @@
         App.showToast('toast_signin_success', 'success');
       });
     }
-
     // ---------- REAL SIGN UP ----------
     const signupSubmit = document.getElementById('signup-submit');
     if (signupSubmit) {
       signupSubmit.addEventListener('click', async (e) => {
         e.preventDefault();
         if (!validateSignUpForm()) return;
-
         const email = document.getElementById('signup-email').value.trim();
         const password = document.getElementById('signup-password').value;
         setButtonLoading(signupSubmit, true);
-
         const { data, error } = await App.supabase.auth.signUp({
           email: email,
           password: password
         });
-
         setButtonLoading(signupSubmit, false);
-
         if (error) {
           App.logToDB('errors', { message: 'Sign up failed: ' + error.message });
           const errorText = translateAuthError(error.message);
@@ -588,7 +627,6 @@
             generalError.classList.remove('visible');
           }
         }
-
         // If email confirmation is disabled, the user is immediately signed in.
         if (data.session) {
           // Automatically signed in – listener will update UI
@@ -621,7 +659,6 @@
         }
       });
     }
-
     // ---------- FORGOT PASSWORD ----------
     if (forgotPasswordBtn) {
       forgotPasswordBtn.addEventListener('click', async (e) => {
@@ -643,7 +680,6 @@
         }
       });
     }
-
     // ---------- REAL SIGN OUT ----------
     if (signOutBtn) {
       signOutBtn.addEventListener('click', async () => {
@@ -652,10 +688,8 @@
         App.showToast('toast_signout', '');
       });
     }
-
     trapFocus(authModal);
   }
-
   async function handleBgSyncToggle(enabled) {
     try {
       const registration = await navigator.serviceWorker.ready;
@@ -691,15 +725,12 @@
       }
     } catch (err) {}
   }
-
   function initFooterButtons() {
     const bgSyncBtn = document.getElementById('bgSyncBtn');
     const notifBtn = document.getElementById('notifBtn');
     if (!bgSyncBtn || !notifBtn) return;
-
     let bgSyncEnabled = localStorage.getItem('bgSync') === 'true';
     let notifEnabled = localStorage.getItem('notifications') === 'true';
-
     function updateFooterTexts() {
       if (bgSyncBtn) {
         bgSyncBtn.textContent = App.getTranslation(bgSyncEnabled ? 'footer_disable_bg_sync' : 'footer_enable_bg_sync');
@@ -709,12 +740,9 @@
       }
     }
     updateFooterTexts();
-
     // When language changes, refresh the button texts
     App.onLangChange(() => updateFooterTexts());
-
     if (bgSyncEnabled) handleBgSyncToggle(true);
-
     bgSyncBtn.addEventListener('click', () => {
       bgSyncEnabled = !bgSyncEnabled;
       localStorage.setItem('bgSync', bgSyncEnabled);
@@ -729,7 +757,6 @@
       App.showToast(notifEnabled ? 'toast_notif_enabled' : 'toast_notif_disabled', notifEnabled ? 'success' : '');
     });
   }
-
   let deferredPrompt;
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
@@ -743,7 +770,6 @@
       App.applyTranslations();
     }
   });
-
   async function initInstallButton() {
     const installBtn = document.getElementById('installBtn');
     if (!installBtn) return;
@@ -772,7 +798,6 @@
       installBtn.style.display = 'none';
     });
   }
-
   function registerSW() {
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -780,7 +805,6 @@
       });
     }
   }
-
   function loadScript(src) {
     return new Promise((resolve, reject) => {
       const script = document.createElement('script');

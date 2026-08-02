@@ -240,15 +240,34 @@
       .lesson-title { width:100%; font-size:0.85rem; }
       .arrow { display:none; }
     }
+    /* ===== Print styles ===== */
+    @media print {
+      .no-print { display: none !important; }
+      .print-only { display: block !important; }
+      #print-header, #print-footer {
+        display: block !important;
+        text-align: center;
+        margin: 20px 0;
+      }
+      #print-header h1 { font-size: 18pt; }
+      .container { padding: 0; }
+      h1 { font-size: 18pt; }
+      .week-body { max-height: none !important; }
+      .week-header { cursor: default; pointer-events: none; }
+    }
   </style>
 </head>
 <body>
-  <nav class="back-nav">
+  <nav class="back-nav no-print">
     <a href="index.html" data-i18n="back_link">← Retour à l'accueil</a>
   </nav>
   <main class="container" id="main-content">
     <h1 data-i18n="revision_main_title">📖 Programme de Révision Générale</h1>
     <p class="subtitle" data-i18n="revision_subtitle">4ᵉ année secondaire — 8 semaines pour tout consolider</p>
+    
+    <!-- Print button (hidden in print) -->
+    <button id="printProgramBtn" class="header-btn no-print" onclick="window.print();" data-i18n="print_button">🖨️ Imprimer le programme</button>
+
     <div class="objectives">
       <h2 data-i18n="objectives_heading">🎯 Objectifs de la révision</h2>
       <ul>
@@ -258,6 +277,8 @@
         <li data-i18n="objectives_4">Enrichir sa culture littéraire à travers les grands thèmes du programme.</li>
       </ul>
     </div>
+
+    <!-- Weeks 1-8 (unchanged except for no-print on conseils and footer) -->
     <!-- Semaine 1 -->
     <div class="week">
       <button class="week-header" aria-expanded="true" aria-controls="week1-body">
@@ -402,7 +423,8 @@
         <a href="semaine8-etude-correction.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week8.lesson8.label">📖 Étude de texte</span><span class="lesson-title" data-i18n="week8.lesson8.title">Correction & analyse des erreurs</span><span class="arrow">→</span></a>
       </div>
     </div>
-    <div class="conseils">
+
+    <div class="conseils no-print">
       <h2 data-i18n="conseils_heading">💡 Conseils pour une révision efficace</h2>
       <div class="conseil-item"><span class="conseil-icon">📋</span> <span data-i18n="conseil_1">📋 <strong>Organisation</strong> : planifiez 2h/jour, alternez les matières.</span></div>
       <div class="conseil-item"><span class="conseil-icon">✏️</span> <span data-i18n="conseil_2">✏️ <strong>Méthode active</strong> : prenez des notes, faites des fiches, reformulez.</span></div>
@@ -410,15 +432,28 @@
       <div class="conseil-item"><span class="conseil-icon">🔗</span> <span data-i18n="conseil_4">🔗 <strong>Cohérence</strong> : chaque séance de lecture doit être suivie d'une production écrite.</span></div>
       <div class="conseil-item"><span class="conseil-icon">🗣️</span> <span data-i18n="conseil_5">🗣️ <strong>Travaillez l'oral</strong> : lisez vos textes à voix haute.</span></div>
     </div>
-    <div class="footer">
+    <div class="footer no-print">
       <p data-i18n="footer_planning">📘 Programme conçu pour les élèves de 4ᵉ année secondaire — Tunisie</p>
       <p data-i18n="footer_encouragement">Suivez ce planning avec rigueur et adaptez‑le à votre rythme. <strong>Bonne préparation !</strong></p>
     </div>
+
+    <!-- Print-only custom header & footer -->
+    <div id="print-header" style="display:none;" class="print-only">
+      <h1>Educational Dashboard – French</h1>
+      <p>Programme de Révision Générale</p>
+      <hr>
+    </div>
+    <div id="print-footer" style="display:none;" class="print-only">
+      <hr>
+      <p>Imprimé le <span id="print-date"></span> – educational-dashboard-french.netlify.app</p>
+    </div>
   </main>
+
   <script src="i18n.js"></script>
   <script src="db-utils.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase-client.js"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-client.js"></script>
+
   <script>
     // Revision page translations – App namespace
     App.addI18nTranslations({
@@ -511,7 +546,8 @@
         'conseil_5': '🗣️ <strong>Travaillez l\'oral</strong> : lisez vos textes à voix haute.',
         'footer_planning': '📘 Programme conçu pour les élèves de 4ᵉ année secondaire — Tunisie',
         'footer_encouragement': 'Suivez ce planning avec rigueur et adaptez‑le à votre rythme. <strong>Bonne préparation !</strong>',
-        'back_to_top': 'Retour en haut'
+        'back_to_top': 'Retour en haut',
+        'print_button': '🖨️ Imprimer le programme'
       },
       en: {
         'back_link': '← Back to home',
@@ -602,7 +638,8 @@
         'conseil_5': '🗣️ <strong>Work on oral skills</strong>: read your texts aloud.',
         'footer_planning': '📘 Program designed for 12th grade students — Tunisia',
         'footer_encouragement': 'Follow this planning rigorously and adapt it to your pace. <strong>Good luck!</strong>',
-        'back_to_top': 'Back to top'
+        'back_to_top': 'Back to top',
+        'print_button': '🖨️ Print program'
       },
       ar: {
         'back_link': '← العودة إلى الرئيسية',
@@ -693,10 +730,12 @@
         'conseil_5': '🗣️ <strong>اشتغل على الشفهي</strong>: اقرأ نصوصك بصوت عالٍ.',
         'footer_planning': '📘 برنامج موجّه لتلاميذ السنة الرابعة ثانوي — تونس',
         'footer_encouragement': 'اتبع هذا التخطيط بدقة وعدّله حسب وتيرتك. <strong>حظاً موفقاً!</strong>',
-        'back_to_top': 'العودة إلى الأعلى'
+        'back_to_top': 'العودة إلى الأعلى',
+        'print_button': '🖨️ طباعة البرنامج'
       }
     });
   </script>
+
   <script>
     (function() {
       var container = document.querySelector('.container');
@@ -758,6 +797,11 @@
         App.applyTranslations();
       }
     })();
+  </script>
+
+  <!-- Set print date in French -->
+  <script>
+    document.getElementById('print-date').textContent = new Date().toLocaleDateString('fr-FR');
   </script>
 </body>
 </html>

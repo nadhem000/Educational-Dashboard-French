@@ -747,3 +747,86 @@ body.banner-visible {
   transform: translateY(-2px);
   outline: 2px solid var(--accent);
 }
+/* Notification bell badge */
+.bell-badge {
+  background: var(--danger);
+  color: #fff;
+  border-radius: 50%;
+  padding: 2px 5px;
+  font-size: 0.7rem;
+  margin-left: 4px;
+  display: none;
+  min-width: 18px;
+  text-align: center;
+}
+/* Notification panel */
+.notif-panel {
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  width: 300px;
+  max-height: 400px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  overflow-y: auto;
+  padding: 1rem;
+}
+.notif-panel h3 {
+  margin-top: 0;
+  font-size: 1rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+.notif-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.notif-item {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+.notif-item:last-child { border-bottom: none; }
+.notif-empty {
+  color: var(--text-light);
+  font-style: italic;
+  padding: 0.5rem 0;
+}
+/* ===== Global Print Styles ===== */
+@media print {
+  .site-header, .site-footer, .back-nav, .skip-link,
+  #backToTop, .offline-banner, .modal, .toast-container,
+  .header-btn, .settings-btn, .theme-btn, .install-btn,
+  .sign-in-btn, .sign-out-btn, .profile-btn,
+  #notifBellBtn, #notifPanel, #authModal, #settingsModal,
+  .footer-action-btn, .week-header, .collapse-arrow,
+  .conseils, .footer, .back-to-top,
+  .i18n-bilingual, .bell-badge, .notif-panel,
+  .no-print, button, .card.revision a, .card:not(.revision) {
+    display: none !important;
+  }
+  body {
+    background: white;
+    color: black;
+    font-size: 12pt;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+  }
+  .container, .week-body, .card {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    color: black;
+  }
+  a { color: black; text-decoration: underline; }
+  .i18n-bilingual { display: none !important; }
+  .print-only { display: block !important; }
+}

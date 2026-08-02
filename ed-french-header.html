@@ -15,6 +15,9 @@
 		<button id="profileBtn" class="header-btn profile-btn" style="display:none;" data-i18n="profile">👤 Profil</button>
 		<button id="installBtn" class="header-btn install-btn" style="display:none;" data-i18n="install">📲 Installer</button>
 		<button id="settingsBtn" class="header-btn settings-btn" data-i18n-aria="settings" aria-label="Paramètres">⚙️</button>
+		<button id="notifBellBtn" class="header-btn" onclick="toggleNotifPanel()" data-i18n-title="notif_bell_title" title="Notifications">
+			🔔 <span class="bell-badge" style="display:none; font-size:0.7rem; background:red; color:white; border-radius:50%; padding:2px 5px; margin-left:4px;"></span>
+		</button>
 		<button id="themeToggle" class="header-btn theme-btn" data-i18n-aria="theme_toggle" aria-label="Changer le mode">
 			<span id="themeIcon">🌙</span>
 		</button>
@@ -26,6 +29,11 @@
 <!-- Offline banner (hidden by default) -->
 <div id="offlineBanner" class="offline-banner" role="alert" aria-live="assertive" data-i18n="offline_banner">
   ⚠️ Vous êtes hors ligne – Certains contenus peuvent ne pas être disponibles.
+</div>
+<!-- Notification panel (Facebook-style dropdown) -->
+<div id="notifPanel" class="notif-panel" style="display:none;">
+  <h3 data-i18n="notif_panel_title">Notifications</h3>
+  <ul id="notifList"></ul>
 </div>
 <!-- End offline banner -->
 <div id="authModal" class="modal auth-modal" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
@@ -145,7 +153,11 @@
 			'error_password_weak': 'Mot de passe faible. Utilisez au moins 6 caractères avec lettres et chiffres.',
 			'strength_weak': 'Faible',
 			'strength_medium': 'Moyen',
-			'strength_strong': 'Fort'
+			'strength_strong': 'Fort',
+			// Notification keys
+			'notif_panel_title': 'Notifications',
+			'notif_empty': 'Aucune notification',
+			'notif_bell_title': 'Voir les notifications'
 		},
 		en: {
 			'site_title': 'Educational Dashboard<br>French Hub',
@@ -180,7 +192,11 @@
 			'error_password_weak': 'Weak password. Use at least 6 characters with letters and numbers.',
 			'strength_weak': 'Weak',
 			'strength_medium': 'Medium',
-			'strength_strong': 'Strong'
+			'strength_strong': 'Strong',
+			// Notification keys
+			'notif_panel_title': 'Notifications',
+			'notif_empty': 'No notifications',
+			'notif_bell_title': 'View notifications'
 		},
 		ar: {
 			'site_title': 'لوحة التحكم التعليمية<br>French Hub',
@@ -215,7 +231,11 @@
 			'error_password_weak': 'كلمة المرور ضعيفة. استخدم 6 أحرف على الأقل مع أحرف وأرقام.',
 			'strength_weak': 'ضعيف',
 			'strength_medium': 'متوسط',
-			'strength_strong': 'قوي'
+			'strength_strong': 'قوي',
+			// Notification keys
+			'notif_panel_title': 'الإشعارات',
+			'notif_empty': 'لا توجد إشعارات',
+			'notif_bell_title': 'عرض الإشعارات'
 		}
 	});
 </script>
