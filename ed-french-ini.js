@@ -631,9 +631,14 @@
         const password = document.getElementById('signup-password').value;
         setButtonLoading(signupSubmit, true);
         const { data, error } = await App.supabase.auth.signUp({
-          email: email,
-          password: password
-        });
+    email: email,
+    password: password,
+    options: {
+        data: {
+            username: username  // matches the trigger’s metadata key
+        }
+    }
+});
         setButtonLoading(signupSubmit, false);
         if (error) {
           App.logToDB('errors', { message: 'Sign up failed: ' + error.message });
