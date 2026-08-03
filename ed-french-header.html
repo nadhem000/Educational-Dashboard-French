@@ -116,6 +116,21 @@
 		<p data-i18n="auth_modal_settings">⚙️ Paramètres – Bientôt disponible</p>
 	</div>
 </div>
+<!-- Profile Modal -->
+<div id="profileModal" class="modal auth-modal" role="dialog" aria-modal="true" aria-labelledby="profileModalTitle">
+	<div class="modal-content auth-modal-content">
+		<span class="close-modal">&times;</span>
+		<h2 id="profileModalTitle" class="sr-only" data-i18n="profile_modal_title">Profil utilisateur</h2>
+		<div class="auth-field">
+			<label data-i18n="profile_label_username">Nom d'utilisateur</label>
+			<p id="profile-username-display"></p>
+		</div>
+		<div class="auth-field">
+			<label data-i18n="profile_label_email">Email</label>
+			<p id="profile-email-display"></p>
+		</div>
+	</div>
+</div>
 <script data-sanitize-allow="true">
 	// Translations for header elements – App namespace
 	App.addI18nTranslations({
@@ -146,6 +161,10 @@
 			'auth_label_username': "Nom d'utilisateur",
 			'auth_label_email': 'Email',
 			'auth_label_password': 'Mot de passe',
+			// Profile modal keys
+			'profile_modal_title': 'Profil utilisateur',
+			'profile_label_username': "Nom d'utilisateur",
+			'profile_label_email': 'Email',
 			// Validation error messages
 			'error_required': 'Ce champ est requis.',
 			'error_invalid_email': 'Veuillez entrer une adresse email valide.',
@@ -186,6 +205,10 @@
 			'auth_label_username': 'Username',
 			'auth_label_email': 'Email',
 			'auth_label_password': 'Password',
+			// Profile modal keys
+			'profile_modal_title': 'User Profile',
+			'profile_label_username': 'Username',
+			'profile_label_email': 'Email',
 			'error_required': 'This field is required.',
 			'error_invalid_email': 'Please enter a valid email address.',
 			'error_password_short': 'Password must be at least 6 characters.',
@@ -225,6 +248,10 @@
 			'auth_label_username': 'اسم المستخدم',
 			'auth_label_email': 'البريد الإلكتروني',
 			'auth_label_password': 'كلمة المرور',
+			// Profile modal keys
+			'profile_modal_title': 'الملف الشخصي',
+			'profile_label_username': 'اسم المستخدم',
+			'profile_label_email': 'البريد الإلكتروني',
 			'error_required': 'هذا الحقل مطلوب.',
 			'error_invalid_email': 'يرجى إدخال بريد إلكتروني صالح.',
 			'error_password_short': 'يجب أن تحتوي كلمة المرور على 6 أحرف على الأقل.',

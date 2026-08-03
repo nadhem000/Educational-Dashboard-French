@@ -450,6 +450,7 @@
     const signOutBtn = document.getElementById('signOutBtn');
     const profileBtn = document.getElementById('profileBtn');
     const authModal = document.getElementById('authModal');
+    const profileModal = document.getElementById('profileModal');
     const closeModalBtn = authModal ? authModal.querySelector('.close-modal') : null;
     const tabButtons = authModal ? authModal.querySelectorAll('.auth-tab') : [];
     const signinForm = document.getElementById('authFormSignin');
@@ -493,6 +494,7 @@
     }
     window.addEventListener('click', (e) => {
       if (e.target === authModal) closeModal(authModal);
+      if (e.target === profileModal) closeModal(profileModal);
     });
     tabButtons.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -631,15 +633,15 @@
         const password = document.getElementById('signup-password').value;
         setButtonLoading(signupSubmit, true);
         const username = document.getElementById('signup-username').value.trim();
-const { data, error } = await App.supabase.auth.signUp({
-    email: email,
-    password: password,
-    options: {
-        data: {
-            username: username
-        }
-    }
-});
+        const { data, error } = await App.supabase.auth.signUp({
+          email: email,
+          password: password,
+          options: {
+            data: {
+              username: username
+            }
+          }
+        });
         setButtonLoading(signupSubmit, false);
         if (error) {
           App.logToDB('errors', { message: 'Sign up failed: ' + error.message });
@@ -719,6 +721,35 @@ const { data, error } = await App.supabase.auth.signUp({
         App.showToast('toast_signout', '');
       });
     }
+
+    // ---------- PROFILE BUTTON ----------
+    if (profileBtn) {
+      profileBtn.addEventListener('click', async () => {
+        const { data: { user } } = await App.supabase.auth.getUser();
+        if (!user) return;
+        // Fetch profile from the profiles table
+        const { data: profile, error } = await App.supabase
+          .from('profiles')
+          .select('username')
+          .eq('id', user.id)
+          .single();
+        if (error) {
+          App.showToast('Could not load profile', 'error');
+          return;
+        }
+        document.getElementById('profile-username-display').textContent = profile?.username || '';
+        document.getElementById('profile-email-display').textContent = user.email || '';
+        openModal(profileModal);
+      });
+    }
+    // Profile modal close button
+    const profileCloseBtn = profileModal ? profileModal.querySelector('.close-modal') : null;
+    if (profileCloseBtn) {
+      profileCloseBtn.addEventListener('click', () => closeModal(profileModal));
+    }
+
+    // Focus trap for profile modal
+    if (profileModal) trapFocus(profileModal);
     trapFocus(authModal);
   }
   async function handleBgSyncToggle(enabled) {
