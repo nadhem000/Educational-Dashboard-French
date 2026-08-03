@@ -51,7 +51,13 @@
 'User not found': 'Aucun compte trouvé avec cet email.',
 'Email not confirmed': 'Votre email n’a pas encore été confirmé. Veuillez vérifier votre boîte de réception.',
 'User already registered': 'Un compte avec cet email existe déjà.',
-'Password should be at least 6 characters': 'Le mot de passe doit contenir au moins 6 caractères.'
+'Password should be at least 6 characters': 'Le mot de passe doit contenir au moins 6 caractères.',
+'username_updated': 'Nom d’utilisateur mis à jour.',
+'email_updated': 'Email mis à jour. Vérifiez votre boîte de réception pour confirmer.',
+'error_wrong_password': 'Mot de passe incorrect.',
+'error_update_username': 'Erreur lors de la mise à jour du nom d’utilisateur.',
+'error_update_email': 'Erreur lors de la mise à jour de l’email.',
+'profile_error_load': 'Impossible de charger le profil.'
     },
     en: {
       'toast_signin_success': '✅ You are signed in.',
@@ -79,7 +85,13 @@
 'User not found': 'No account found with this email.',
 'Email not confirmed': 'Your email has not been confirmed yet. Please check your inbox.',
 'User already registered': 'An account with this email already exists.',
-'Password should be at least 6 characters': 'Password must be at least 6 characters.'
+'Password should be at least 6 characters': 'Password must be at least 6 characters.',
+'username_updated': 'Username updated.',
+'email_updated': 'Email updated. Check your inbox to confirm.',
+'error_wrong_password': 'Incorrect password.',
+'error_update_username': 'Error updating username.',
+'error_update_email': 'Error updating email.',
+'profile_error_load': 'Could not load profile.'
     },
     ar: {
       'toast_signin_success': '✅ تم تسجيل الدخول بنجاح.',
@@ -107,7 +119,13 @@
 'User not found': 'لم يتم العثور على حساب بهذا البريد.',
 'Email not confirmed': 'لم يتم تأكيد بريدك الإلكتروني بعد. يرجى التحقق من صندوق الوارد.',
 'User already registered': 'يوجد حساب مسجل بهذا البريد مسبقاً.',
-'Password should be at least 6 characters': 'كلمة المرور يجب أن تتكون من 6 أحرف على الأقل.'
+'Password should be at least 6 characters': 'كلمة المرور يجب أن تتكون من 6 أحرف على الأقل.',
+'username_updated': 'تم تحديث اسم المستخدم.',
+'email_updated': 'تم تحديث البريد الإلكتروني. تحقق من صندوق الوارد للتأكيد.',
+'error_wrong_password': 'كلمة مرور غير صحيحة.',
+'error_update_username': 'خطأ في تحديث اسم المستخدم.',
+'error_update_email': 'خطأ في تحديث البريد الإلكتروني.',
+'profile_error_load': 'تعذّر تحميل الملف الشخصي.'
     }
   });
 
