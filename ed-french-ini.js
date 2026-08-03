@@ -1,5 +1,28 @@
 // ed-french-ini.js (complet avec chargement, fallback, spinner auth, install disabled) – App namespace, db-utils
 (function() {
+  // ──────────────────────────────────────────────────────
+  // Phase 4.1 – Global console override (silent, log to DB)
+  // ──────────────────────────────────────────────────────
+  const originalConsole = {};
+  ['log','warn','error','info','debug'].forEach(method => {
+    originalConsole[method] = console[method];
+    console[method] = function(...args) {
+      const message = args.map(a => {
+        if (a instanceof Error) return a.stack || a.message;
+        if (typeof a === 'object') {
+          try { return JSON.stringify(a); } catch(e) { return String(a); }
+        }
+        return String(a);
+      }).join(' ');
+      App.logToDB(method === 'error' ? 'errors' : 'actions', {
+        message,
+        level: method,
+        source: 'console'
+      });
+      // The real console is intentionally NOT called – this silences it.
+    };
+  });
+
   // ---------- Helper: inject HTML from string ----------
   function injectHTML(container, htmlString, position = 'append') {
     const parser = new DOMParser();
@@ -31,6 +54,7 @@
       }
     });
   }
+
   // ---------- Service Worker log listener ----------
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.addEventListener('message', event => {
@@ -44,6 +68,7 @@
       }
     });
   }
+
   // ---------- Notification history & badge ----------
   let notificationHistory = [];   // last 5 { message, type, timestamp }
 
@@ -814,4 +839,72 @@
       document.head.appendChild(script);
     });
   }
+})();
+
+// ─── Network interceptor (captures fetch & XHR, broadcasts to monitor) ───
+(function() {
+  const CHANNEL_NAME = 'app-monitor';
+
+  function broadcastLog(level, message, source = 'network') {
+    try {
+      const bc = new BroadcastChannel(CHANNEL_NAME);
+      bc.postMessage({
+        type: 'log-entry',
+        payload: {
+          level,
+          message,
+          source,
+          timestamp: new Date().toISOString()
+        }
+      });
+      setTimeout(() => bc.close(), 100);
+    } catch(e) {}
+  }
+
+  // Wrap fetch
+  const originalFetch = window.fetch;
+  window.fetch = function(...args) {
+    const [url, options] = args;
+    const method = (options && options.method) || 'GET';
+    const start = Date.now();
+
+    broadcastLog('network', `⏳ ${method} ${url}`);
+
+    return originalFetch.apply(this, args)
+      .then(response => {
+        const duration = Date.now() - start;
+        broadcastLog('network', `✅ ${method} ${url} → ${response.status} (${duration}ms)`);
+        return response;
+      })
+      .catch(error => {
+        broadcastLog('network', `❌ ${method} ${url} → ${error.message}`);
+        throw error;
+      });
+  };
+
+  // Optional: wrap XMLHttpRequest (for older libraries)
+  const OriginalXHR = window.XMLHttpRequest;
+  window.XMLHttpRequest = function() {
+    const xhr = new OriginalXHR();
+    let method, url;
+    const open = xhr.open;
+    xhr.open = function(m, u, ...rest) {
+      method = m;
+      url = u;
+      return open.apply(xhr, [m, u, ...rest]);
+    };
+    const send = xhr.send;
+    xhr.send = function(...sargs) {
+      broadcastLog('network', `⏳ XHR ${method} ${url}`);
+      xhr.addEventListener('loadend', function() {
+        if (xhr.status) {
+          broadcastLog('network', `✅ XHR ${method} ${url} → ${xhr.status}`);
+        } else {
+          broadcastLog('network', `❌ XHR ${method} ${url} → Network error`);
+        }
+      });
+      return send.apply(xhr, sargs);
+    };
+    return xhr;
+  };
 })();

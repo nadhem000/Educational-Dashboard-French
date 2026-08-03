@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Monitor – Educational Dashboard</title>
-   <link rel="manifest" href="/manifest.json">
-    <link rel="stylesheet" href="shared.css">
+  <title>Admin Test Panel – Educational Dashboard</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="shared.css">
   <style>
     :root {
       --bg: #0d1117; --surface: #161b22; --border: #30363d; --text: #c9d1d9;
       --text-secondary: #8b949e; --accent: #58a6ff; --success: #3fb950;
       --warning: #d29922; --danger: #f85149; --radius: 8px;
-      /* ── Required by shared header & footer (dark theme) ── */
       --card-bg: var(--surface);
       --text-light: var(--text-secondary);
       --accent-hover: #79c0ff;
@@ -26,23 +25,17 @@
       display: flex; flex-direction: column;
       height: 100vh;
     }
-    .app-wrapper {
-      display: flex;
-      flex: 1;
-      overflow: hidden;
-    }
+    .app-wrapper { display: flex; flex: 1; overflow: hidden; }
     .sidebar {
-  width: 240px;
-  background: var(--surface);
-  border-right: 1px solid var(--border);
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  overflow-y: auto;   /* ← new */
-}
+      width: 240px; background: var(--surface); border-right: 1px solid var(--border);
+      padding: 1rem; display: flex; flex-direction: column; flex-shrink: 0; overflow-y: auto;
+    }
     .sidebar h2 { color: var(--accent); margin-bottom: 1.5rem; font-size: 1.2rem; }
-    .sidebar button { display: block; width: 100%; padding: 0.7rem 1rem; margin-bottom: 0.4rem; background: transparent; border: 1px solid transparent; color: var(--text); text-align: left; border-radius: var(--radius); cursor: pointer; transition: 0.2s; font-size: 0.95rem; }
+    .sidebar button {
+      display: block; width: 100%; padding: 0.7rem 1rem; margin-bottom: 0.4rem;
+      background: transparent; border: 1px solid transparent; color: var(--text);
+      text-align: left; border-radius: var(--radius); cursor: pointer; transition: 0.2s; font-size: 0.95rem;
+    }
     .sidebar button:hover, .sidebar button.active { background: var(--border); border-color: var(--accent); }
     .main { flex: 1; overflow-y: auto; padding: 1.5rem; }
     .panel { display: none; }
@@ -52,7 +45,7 @@
     .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; text-align: center; }
     .stat-card .value { font-size: 2rem; font-weight: bold; }
     .stat-card .label { color: var(--text-secondary); font-size: 0.9rem; }
-    .log-container { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; max-height: 500px; overflow-y: auto; font-family: 'Cascadia Code', 'Fira Code', monospace; font-size: 0.85rem; line-height: 1.6; }
+    .log-container { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; max-height: 500px; overflow-y: auto; font-family: 'Cascadia Code', monospace; font-size: 0.85rem; line-height: 1.6; }
     .log-entry { padding: 0.3rem 0; border-bottom: 1px solid var(--border); }
     .log-entry.console { color: var(--text-secondary); }
     .log-entry.error { color: var(--danger); }
@@ -68,7 +61,6 @@
     .badge.warn { background: var(--warning); color: #000; }
     button.action-btn { background: var(--accent); color: #000; border: none; padding: 0.5rem 1rem; border-radius: var(--radius); cursor: pointer; font-weight: bold; margin-right: 0.5rem; }
     button.action-btn:hover { opacity: 0.9; }
-    .toggle-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
     @media (max-width: 768px) {
       .app-wrapper { flex-direction: column; }
       .sidebar { width: 100%; flex-direction: row; flex-wrap: wrap; }
@@ -77,102 +69,39 @@
   </style>
 </head>
 <body>
-  <!-- Header and footer are injected by ed-french-ini.js -->
   <div class="app-wrapper">
     <aside class="sidebar">
-      <h2>🧠 Monitor</h2>
+      <h2>🧪 Testing</h2>
       <button class="active" data-panel="overview">📊 Overview</button>
-      <button data-panel="console">📟 Console</button>
-      <button data-panel="errors">🚨 Errors</button>
-      <button data-panel="actions">🖱️ Actions</button>
       <button data-panel="network">🌐 Network</button>
       <button data-panel="performance">⚡ Performance</button>
       <button data-panel="security">🔐 Security</button>
       <button data-panel="pwa">📱 PWA</button>
       <button data-panel="storage">💾 Storage</button>
       <button data-panel="dom">🏗️ DOM Audit</button>
-      <button data-panel="export">⬇️ Export</button>
+      <button data-panel="export">⬇️ Export / Import</button>
     </aside>
     <main class="main" id="mainContent"></main>
   </div>
-  <!-- Scripts -->
   <script src="ed-french-ini.js"></script>
   <script>
     (function() {
-      // ═══════════ CONSOLE CAPTURE (Silences browser console) ═══════════
-      const capturedConsoleLogs = [];
-      const originalConsole = {};
-      ['log','warn','error','info','debug'].forEach(method => {
-        originalConsole[method] = console[method];
-        console[method] = function(...args) {
-          capturedConsoleLogs.push({
-            method,
-            message: args.map(a => typeof a === 'string' ? a : JSON.stringify(a)).join(' '),
-            timestamp: new Date().toISOString()
-          });
-          // Optionally, still output to browser console (toggleable) – we don't to keep it silent.
-          // originalConsole[method].apply(console, args);
-        };
-      });
-
-      // ═══════════ GLOBAL MONITOR STATE (snapshots of last panel results) ═══════════
-      const monitorState = {
-        overview: null,
-        console: [],
-        security: null,
-        performance: null,
-        pwa: null,
-        domAudit: null,
-        storage: null,
-        network: []
-      };
-
-      // ═══════════ INDEXEDDB SETUP ═══════════
+      // ═══════════ IndexedDB helpers ═══════════
       const DB_NAME = 'adminMonitorDB_v2';
       const DB_VERSION = 2;
       let db;
-      
+
       function openDB() {
         return new Promise((resolve, reject) => {
           const request = indexedDB.open(DB_NAME, DB_VERSION);
           request.onupgradeneeded = (e) => {
-            const db = e.target.result;
-            if (!db.objectStoreNames.contains('errors')) db.createObjectStore('errors', { keyPath: 'id', autoIncrement: true });
-            if (!db.objectStoreNames.contains('actions')) db.createObjectStore('actions', { keyPath: 'id', autoIncrement: true });
-            if (!db.objectStoreNames.contains('console')) db.createObjectStore('console', { keyPath: 'id', autoIncrement: true });
+            const d = e.target.result;
+            if (!d.objectStoreNames.contains('errors')) d.createObjectStore('errors', { keyPath: 'id', autoIncrement: true });
+            if (!d.objectStoreNames.contains('actions')) d.createObjectStore('actions', { keyPath: 'id', autoIncrement: true });
           };
           request.onsuccess = (e) => { db = e.target.result; resolve(db); };
           request.onerror = (e) => reject(e.target.error);
         });
-      }
-
-      async function addLog(storeName, data, silent = true) {
-        if (!db) { try { await openDB(); } catch(e) { return; } }
-        // Strip any 'id' to avoid constraint errors
-        const { id, ...rest } = data;
-        const entry = { ...rest, timestamp: rest.timestamp || new Date().toISOString() };
-        try {
-          const tx = db.transaction(storeName, 'readwrite');
-          const store = tx.objectStore(storeName);
-          await new Promise((resolve, reject) => {
-            const req = store.add(entry);
-            req.onsuccess = resolve;
-            req.onerror = reject;
-          });
-        } catch (err) {
-          // Retry once silently
-          try {
-            const tx = db.transaction(storeName, 'readwrite');
-            const store = tx.objectStore(storeName);
-            await new Promise((resolve, reject) => {
-              const req = store.add(entry);
-              req.onsuccess = resolve;
-              req.onerror = reject;
-            });
-          } catch (err2) {
-            // ignore
-          }
-        }
       }
 
       async function getAllLogs(storeName) {
@@ -186,110 +115,14 @@
         });
       }
 
-      async function clearStore(storeName) {
-        if (!db) await openDB();
-        const tx = db.transaction(storeName, 'readwrite');
-        const store = tx.objectStore(storeName);
-        return new Promise((resolve, reject) => {
-          const req = store.clear();
-          req.onsuccess = resolve;
-          req.onerror = reject;
-        });
-      }
-
-      window.clearErrors = () => clearStore('errors').then(() => location.reload());
-      window.clearActions = () => clearStore('actions').then(() => location.reload());
-      window.clearAllData = () => Promise.all([
-        clearStore('errors'), clearStore('actions'), clearStore('console')
-      ]).then(() => {
-        // Reset monitorState
-        for (const key in monitorState) {
-          if (Array.isArray(monitorState[key])) monitorState[key] = [];
-          else monitorState[key] = null;
-        }
-        location.reload();
-      });
-
-      // ═══════════ GLOBAL ERROR / REJECTION CAPTURE (silent) ═══════════
-      window.addEventListener('error', (event) => {
-        addLog('errors', {
-          type: 'runtime',
-          message: event.message,
-          source: event.filename,
-          line: event.lineno,
-          col: event.colno,
-          stack: event.error?.stack || ''
-        });
-        event.preventDefault(); // stop default console error
-      });
-
-      window.addEventListener('unhandledrejection', (event) => {
-        addLog('errors', {
-          type: 'promise',
-          message: event.reason?.message || String(event.reason),
-          stack: event.reason?.stack || ''
-        });
-        event.preventDefault();
-      });
-
-      // Action logging (clicks)
-      let actionLoggingEnabled = true;
-      document.addEventListener('click', async (e) => {
-        if (!actionLoggingEnabled) return;
-        const target = e.target.closest('a, button');
-        if (!target) return;
-        const tag = target.tagName.toLowerCase();
-        const text = target.textContent?.trim().substring(0, 60) || '';
-        const url = tag === 'a' ? target.href : '';
-        addLog('actions', { tag, text, url, id: target.id || '', class: target.className || '' });
-      });
-
-      // Fetch interceptor (records all fetch calls)
-      const originalFetch = window.fetch;
-      window.fetch = async function(...args) {
-        const url = typeof args[0] === 'string' ? args[0] : args[0].url;
-        const start = performance.now();
-        let response;
-        try {
-          response = await originalFetch(...args);
-          return response;
-        } finally {
-          if (!url.includes('testing.html') && !url.startsWith('blob:')) {
-            const duration = (performance.now() - start).toFixed(1);
-            const status = response ? response.status : 'network error';
-            addLog('actions', { type: 'fetch', url, status, duration: duration + 'ms' });
-          }
-        }
+      window.clearAllData = () => {
+        if (db) db.close();
+        indexedDB.deleteDatabase(DB_NAME).then(() => location.reload());
       };
 
-      // Save console logs periodically to IndexedDB
-      setInterval(() => {
-        if (capturedConsoleLogs.length > 0) {
-          const logsToSave = capturedConsoleLogs.splice(0, capturedConsoleLogs.length);
-          logsToSave.forEach(log => addLog('console', log));
-        }
-      }, 2000);
-
-      // ═══════════ PANEL MANAGEMENT ═══════════
+      // ═══════════ Panel management ═══════════
       const main = document.getElementById('mainContent');
-      let currentPanel = null;
-      let liveInterval = null;
-
-      const panels = {
-        overview: createOverviewPanel,
-        console: createConsolePanel,
-        errors: createLogPanel('errors', '🚨 Error Logs'),
-        actions: createLogPanel('actions', '🖱️ Action Logs'),
-        network: createNetworkPanel,
-        performance: createPerformancePanel,
-        security: createSecurityPanel,
-        pwa: createPWAPanel,
-        storage: createStoragePanel,
-        dom: createDOMAuditPanel,
-        export: createExportPanel
-      };
-
-      renderPanel('overview');
+      const panels = {};
 
       document.querySelectorAll('.sidebar button').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -300,7 +133,6 @@
       });
 
       async function renderPanel(name) {
-        if (liveInterval) { clearInterval(liveInterval); liveInterval = null; }
         main.innerHTML = '';
         const div = document.createElement('div');
         div.className = 'panel active';
@@ -312,117 +144,49 @@
         }
       }
 
-      // ═══════════ PANEL IMPLEMENTATIONS (now saving to monitorState) ═══════════
-
-      async function createOverviewPanel(container) {
-        const [errors, actions, consoleLogs] = await Promise.all([
-          getAllLogs('errors'), getAllLogs('actions'), getAllLogs('console')
-        ]);
-        const online = navigator.onLine ? 'Online' : 'Offline';
-        const visibility = document.visibilityState;
+      // ═══════════ Panel implementations ═══════════
+      panels.overview = async (container) => {
+        const [errors, actions] = await Promise.all([getAllLogs('errors'), getAllLogs('actions')]);
         container.innerHTML = `
           <div class="stats-grid">
             <div class="stat-card"><div class="value">${errors.length}</div><div class="label">Errors</div></div>
             <div class="stat-card"><div class="value">${actions.length}</div><div class="label">Actions</div></div>
-            <div class="stat-card"><div class="value">${consoleLogs.length}</div><div class="label">Console entries</div></div>
-            <div class="stat-card"><div class="value">${online}</div><div class="label">Connection</div></div>
-            <div class="stat-card"><div class="value">${visibility}</div><div class="label">Visibility</div></div>
-            <div class="stat-card"><div class="value">${new Date().toLocaleTimeString()}</div><div class="label">Last Refresh</div></div>
+            <div class="stat-card"><div class="value">${navigator.onLine?'Online':'Offline'}</div><div class="label">Connection</div></div>
           </div>
-          <h3>Quick Actions</h3>
-          <button class="action-btn" onclick="clearErrors()">Clear Errors</button>
-          <button class="action-btn" onclick="clearActions()">Clear Actions</button>
+          <button class="action-btn" onclick="clearAllData()">Clear All IndexedDB Data</button>
         `;
-        // Save to monitorState
-        monitorState.overview = {
-          errorsCount: errors.length,
-          actionsCount: actions.length,
-          consoleCount: consoleLogs.length,
-          online,
-          visibility,
-          timestamp: new Date().toISOString()
-        };
-      }
+      };
 
-      function createConsolePanel(container) {
-        container.innerHTML = `
-          <h3>📟 Browser Console (captured, silent)</h3>
-          <div class="log-container" id="consoleLogContainer"></div>
-        `;
-        const logDiv = container.querySelector('#consoleLogContainer');
-        function update() {
-          if (!logDiv || !logDiv.isConnected) return;
-          const storedPromise = getAllLogs('console');
-          storedPromise.then(stored => {
-            const combined = [...stored, ...capturedConsoleLogs].sort((a,b) => new Date(b.timestamp) - new Date(a.timestamp)).slice(0, 50);
-            logDiv.innerHTML = combined.map(entry => {
-              const cls = entry.method === 'error' ? 'error' : 'console';
-              return `<div class="log-entry ${cls}"><span class="timestamp">${new Date(entry.timestamp).toLocaleTimeString()}</span> [${entry.method}] ${entry.message}</div>`;
-            }).join('');
-            // Save combined snapshot
-            monitorState.console = combined;
-          });
-        }
-        update();
-        liveInterval = setInterval(update, 3000);
-      }
-
-      function createLogPanel(storeName, title) {
-        return async (container) => {
-          container.innerHTML = `
-            <h3>${title}</h3>
-            <div class="log-container" id="${storeName}Log"></div>
-          `;
-          const logDiv = container.querySelector(`#${storeName}Log`);
-          const logs = await getAllLogs(storeName);
-          if (logs.length === 0) { logDiv.innerHTML = '<p>No entries.</p>'; return; }
-          logs.sort((a,b) => new Date(b.timestamp) - new Date(a.timestamp));
-          logDiv.innerHTML = logs.map(log => {
-            const cls = storeName === 'errors' ? 'error' : 'action';
-            let msg = storeName === 'errors' ? (log.message || 'Unknown error') : (log.url || log.text || 'action');
-            return `<div class="log-entry ${cls}"><span class="timestamp">${new Date(log.timestamp).toLocaleString()}</span> ${msg}</div>`;
-          }).join('');
-        };
-      }
-
-      async function createNetworkPanel(container) {
-        container.innerHTML = '<h3>🌐 Network Monitor (last 20 requests)</h3><div id="networkTableContainer"></div>';
-        const render = async () => {
-          const actions = await getAllLogs('actions');
-          const fetchLogs = actions.filter(a => a.type === 'fetch').slice(-20);
-          monitorState.network = fetchLogs; // save
-          let html = '<table><tr><th>Time</th><th>URL</th><th>Status</th><th>Duration</th></tr>';
+      panels.network = async (container) => {
+        const actions = await getAllLogs('actions');
+        const fetchLogs = actions.filter(a => a.type === 'fetch').slice(-20);
+        let html = '<h3>🌐 Recent Fetch Requests</h3>';
+        if (!fetchLogs.length) {
+          html += '<p>No network logs recorded yet. Make sure the app\'s network interceptor is writing to actions store.</p>';
+        } else {
+          html += '<table><tr><th>Time</th><th>URL</th><th>Status</th><th>Duration</th></tr>';
           fetchLogs.forEach(f => {
             html += `<tr><td>${new Date(f.timestamp).toLocaleTimeString()}</td><td>${f.url}</td><td>${f.status}</td><td>${f.duration}</td></tr>`;
           });
           html += '</table>';
-          document.getElementById('networkTableContainer').innerHTML = html;
-        };
-        render();
-        liveInterval = setInterval(render, 5000);
-      }
+        }
+        container.innerHTML = html;
+      };
 
-      async function createPerformancePanel(container) {
+      panels.performance = (container) => {
         const timing = performance.timing;
         const loadTime = timing.loadEventEnd - timing.navigationStart;
         const domContentLoaded = timing.domContentLoadedEventEnd - timing.navigationStart;
         const ttfb = timing.responseStart - timing.navigationStart;
         const memory = performance.memory || {};
-        // Web Vitals
-        let lcp = 'N/A', fcp = 'N/A', fid = 'N/A', cls = 'N/A';
+        let lcp='N/A', fcp='N/A';
         try {
-          new PerformanceObserver(list => {
-            const entries = list.getEntries();
-            const last = entries[entries.length-1];
-            if (last) lcp = last.startTime.toFixed(0)+'ms';
-          }).observe({type: 'largest-contentful-paint', buffered: true});
-          new PerformanceObserver(list => {
-            const entries = list.getEntries();
-            const first = entries[0];
-            if (first) fcp = first.startTime.toFixed(0)+'ms';
-          }).observe({type: 'paint', buffered: true});
-        } catch(e) {}
-        const resources = performance.getEntriesByType('resource').filter(r => !r.name.includes('testing.html')).slice(0, 20);
+          new PerformanceObserver(list => { const last = list.getEntries().pop(); if(last) lcp = last.startTime.toFixed(0)+'ms'; })
+            .observe({type:'largest-contentful-paint', buffered:true});
+          new PerformanceObserver(list => { const first = list.getEntries()[0]; if(first) fcp = first.startTime.toFixed(0)+'ms'; })
+            .observe({type:'paint', buffered:true});
+        } catch(e){}
+        const resources = performance.getEntriesByType('resource').filter(r => !r.name.includes('testing.html')).slice(0,20);
         container.innerHTML = `
           <h3>⚡ Performance Metrics</h3>
           <table>
@@ -430,8 +194,8 @@
             <tr><td>Page Load</td><td>${loadTime} ms</td></tr>
             <tr><td>DOM Content Loaded</td><td>${domContentLoaded} ms</td></tr>
             <tr><td>Time to First Byte</td><td>${ttfb} ms</td></tr>
-            <tr><td>Largest Contentful Paint (LCP)</td><td>${lcp}</td></tr>
-            <tr><td>First Contentful Paint (FCP)</td><td>${fcp}</td></tr>
+            <tr><td>LCP</td><td>${lcp}</td></tr>
+            <tr><td>FCP</td><td>${fcp}</td></tr>
             <tr><td>Used JS Heap</td><td>${memory.usedJSHeapSize ? (memory.usedJSHeapSize/1048576).toFixed(2)+' MB' : 'N/A'}</td></tr>
             <tr><td>Total JS Heap</td><td>${memory.totalJSHeapSize ? (memory.totalJSHeapSize/1048576).toFixed(2)+' MB' : 'N/A'}</td></tr>
           </table>
@@ -440,202 +204,132 @@
             ${resources.map(r => `<div class="log-entry perf"><span class="timestamp">${(r.duration||0).toFixed(0)}ms</span> ${r.name}</div>`).join('')}
           </div>
         `;
-        // Save to monitorState
-        monitorState.performance = {
-          pageLoad: loadTime,
-          domContentLoaded,
-          ttfb,
-          lcp,
-          fcp,
-          jsHeapUsed: memory.usedJSHeapSize ? (memory.usedJSHeapSize/1048576).toFixed(2)+' MB' : 'N/A',
-          jsHeapTotal: memory.totalJSHeapSize ? (memory.totalJSHeapSize/1048576).toFixed(2)+' MB' : 'N/A',
-          resources: resources.map(r => ({ name: r.name, duration: r.duration }))
-        };
-      }
+      };
 
-      async function createSecurityPanel(container) {
-        container.innerHTML = '<h3>🔐 Security Audit (running...)</h3>';
+      panels.security = async (container) => {
+        container.innerHTML = '<p>Running security audit...</p>';
         const results = [];
-        results.push({ test: 'HTTPS', status: location.protocol==='https:'?'pass':'fail', details: location.protocol });
+        results.push({ test:'HTTPS', status: location.protocol==='https:'?'pass':'fail', details:location.protocol });
         try {
-          const res = await fetch(location.href + '?nocache='+Date.now(), {cache:'no-store'});
+          const res = await fetch(location.href+'?nocache='+Date.now(), {cache:'no-store'});
           const csp = res.headers.get('Content-Security-Policy');
-          results.push({ test: 'CSP', status: csp?'pass':'warn', details: csp||'Not set' });
+          results.push({ test:'CSP', status:csp?'pass':'warn', details:csp||'Not set' });
           const xfo = res.headers.get('X-Frame-Options');
-          results.push({ test: 'X-Frame-Options', status: xfo?'pass':'warn', details: xfo||'Not set' });
+          results.push({ test:'X-Frame-Options', status:xfo?'pass':'warn', details:xfo||'Not set' });
           const xcto = res.headers.get('X-Content-Type-Options');
-          results.push({ test: 'X-Content-Type-Options', status: xcto?'pass':'warn', details: xcto||'Not set' });
+          results.push({ test:'X-Content-Type-Options', status:xcto?'pass':'warn', details:xcto||'Not set' });
           const referrer = res.headers.get('Referrer-Policy');
-          results.push({ test: 'Referrer-Policy', status: referrer?'pass':'warn', details: referrer||'Not set' });
-        } catch(e) { results.push({test:'Fetch Headers', status:'fail', details: e.message}); }
+          results.push({ test:'Referrer-Policy', status:referrer?'pass':'warn', details:referrer||'Not set' });
+        } catch(e) { results.push({test:'Fetch Headers', status:'fail', details:e.message}); }
         let evalAllowed = false;
-        try { new Function('return true')(); evalAllowed = true; } catch(e) {}
-        results.push({ test: 'eval() allowed', status: evalAllowed?'fail':'pass', details: evalAllowed?'Allowed':'Blocked' });
+        try { new Function('return true')(); evalAllowed = true; } catch(e){}
+        results.push({ test:'eval()', status:evalAllowed?'fail':'pass', details:evalAllowed?'Allowed':'Blocked' });
         const insecure = performance.getEntriesByType('resource').filter(r=>r.name.startsWith('http:'));
-        results.push({ test: 'Mixed Content', status: insecure.length?'fail':'pass', details: insecure.length?`${insecure.length} insecure`:'None' });
-        results.push({ test: 'Service Worker', status: navigator.serviceWorker?.controller?'pass':'warn', details: navigator.serviceWorker?.controller?'Active':'Inactive' });
-        const cookiesAccessible = document.cookie.length>0;
-        results.push({ test: 'Cookies via JS', status: cookiesAccessible?'warn':'pass', details: cookiesAccessible?'Some not HttpOnly':'None' });
-        let html = '<table><tr><th>Test</th><th>Status</th><th>Details</th></tr>';
-        results.forEach(r => html+=`<tr><td>${r.test}</td><td><span class="badge ${r.status}">${r.status.toUpperCase()}</span></td><td>${r.details}</td></tr>`);
-        html+='</table>';
-        container.innerHTML = '<h3>🔐 Security Audit</h3>'+html;
-        // Save
-        monitorState.security = results;
-      }
+        results.push({ test:'Mixed Content', status:insecure.length?'fail':'pass', details:insecure.length?`${insecure.length} insecure`:'None' });
+        results.push({ test:'Service Worker', status:navigator.serviceWorker?.controller?'pass':'warn', details:navigator.serviceWorker?.controller?'Active':'Inactive' });
+        container.innerHTML = `
+          <h3>🔐 Security Audit</h3>
+          <table>
+            <tr><th>Test</th><th>Status</th><th>Details</th></tr>
+            ${results.map(r => `<tr><td>${r.test}</td><td><span class="badge ${r.status}">${r.status.toUpperCase()}</span></td><td>${r.details}</td></tr>`).join('')}
+          </table>
+        `;
+      };
 
-      async function createPWAPanel(container) {
-        let manifestData = '';
-        try { const res = await fetch('/manifest.json'); manifestData = await res.json(); } catch(e){ manifestData = 'Failed to load'; }
-        const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+      panels.pwa = async (container) => {
+        let manifest = 'Failed to load';
+        try { const res = await fetch('/manifest.json'); manifest = JSON.stringify(await res.json(), null, 2); } catch(e){}
+        const standalone = window.matchMedia('(display-mode: standalone)').matches;
         const swStatus = navigator.serviceWorker?.controller ? 'active' : 'inactive';
-        let cacheDetails = '';
+        let cacheInfo = '';
         try {
-          const cacheNames = await caches.keys();
-          for (const name of cacheNames) {
+          const names = await caches.keys();
+          for (const name of names) {
             const cache = await caches.open(name);
             const keys = await cache.keys();
-            cacheDetails += `<p><strong>${name}</strong>: ${keys.length} entries</p>`;
+            cacheInfo += `<p><strong>${name}</strong>: ${keys.length} entries</p>`;
           }
-        } catch(e){ cacheDetails = 'Error'; }
+        } catch(e){ cacheInfo = 'Error'; }
         container.innerHTML = `
           <h3>📱 PWA Diagnostics</h3>
           <table>
-            <tr><td>Installable</td><td>${isStandalone?'Yes (standalone)':'Maybe (check manifest & HTTPS)'}</td></tr>
+            <tr><td>Installable</td><td>${standalone?'Yes (standalone)':'Maybe'}</td></tr>
             <tr><td>Service Worker</td><td>${swStatus}</td></tr>
-            <tr><td>Manifest</td><td><pre>${JSON.stringify(manifestData, null, 2)}</pre></td></tr>
-            <tr><td>Cache Storage</td><td>${cacheDetails||'None'}</td></tr>
           </table>
+          <h4>Manifest</h4>
+          <pre style="background:var(--surface); padding:10px; border-radius:4px; max-height:200px; overflow-y:auto;">${manifest}</pre>
+          <h4>Cache Storage</h4>
+          <div>${cacheInfo||'None'}</div>
         `;
-        // Save
-        monitorState.pwa = {
-          manifest: manifestData,
-          isStandalone,
-          swStatus,
-          cacheDetails: cacheDetails || 'None'
-        };
-      }
+      };
 
-      async function createStoragePanel(container) {
+      panels.storage = async (container) => {
         const local = localStorage.length;
         const session = sessionStorage.length;
         let dbSize = 'Calculating...';
-        if (navigator.storage && navigator.storage.estimate) {
-          const estimate = await navigator.storage.estimate();
-          dbSize = estimate.usage ? (estimate.usage/1024).toFixed(2)+' KB' : 'Unknown';
+        if (navigator.storage?.estimate) {
+          const est = await navigator.storage.estimate();
+          dbSize = est.usage ? (est.usage/1024).toFixed(2)+' KB' : 'Unknown';
         }
         container.innerHTML = `
           <h3>💾 Storage Usage</h3>
           <table>
             <tr><td>localStorage items</td><td>${local}</td></tr>
             <tr><td>sessionStorage items</td><td>${session}</td></tr>
-            <tr><td>IndexedDB usage (estimate)</td><td>${dbSize}</td></tr>
+            <tr><td>IndexedDB (estimate)</td><td>${dbSize}</td></tr>
           </table>
           <button class="action-btn" onclick="clearAllData()">Clear All IndexedDB Data</button>
         `;
-        // Save
-        monitorState.storage = {
-          localStorageItems: local,
-          sessionStorageItems: session,
-          indexedDBUsage: dbSize
-        };
-      }
+      };
 
-      function createDOMAuditPanel(container) {
+      panels.dom = (container) => {
         const links = document.querySelectorAll('a');
         const imgs = document.querySelectorAll('img');
-        const brokenLinks = [];
-        const missingAlt = [];
-        links.forEach(link => { if (link.href && !link.href.startsWith('http') && !link.href.startsWith('/')) brokenLinks.push(link.href); });
-        imgs.forEach(img => { if (!img.alt) missingAlt.push(img.src); });
+        const broken = [], missingAlt = [];
+        links.forEach(l => { if (l.href && !l.href.startsWith('http') && !l.href.startsWith('/')) broken.push(l.href); });
+        imgs.forEach(i => { if (!i.alt) missingAlt.push(i.src); });
         container.innerHTML = `
           <h3>🏗️ DOM Audit</h3>
           <h4>Potentially Broken Links</h4>
-          ${brokenLinks.length ? '<ul>'+brokenLinks.map(l=>`<li>${l}</li>`).join('')+'</ul>' : '<p>None found.</p>'}
+          ${broken.length ? '<ul>'+broken.map(l=>`<li>${l}</li>`).join('')+'</ul>' : '<p>None found.</p>'}
           <h4>Images Missing Alt Text</h4>
           ${missingAlt.length ? '<ul>'+missingAlt.map(s=>`<li>${s}</li>`).join('')+'</ul>' : '<p>None.</p>'}
         `;
-        // Save
-        monitorState.domAudit = {
-          brokenLinks,
-          missingAlt
-        };
-      }
+      };
 
-      function createExportPanel(container) {
+      panels.export = async (container) => {
         container.innerHTML = `
-          <h3>⬇️ Export / Import / Clear</h3>
-          <p>Export a complete snapshot of all monitor data, panel results, and captured logs.</p>
-          <button class="action-btn" id="fullExportBtn">📦 Export Full Report (JSON)</button>
-          <button class="action-btn" id="importBtn">Import Logs</button>
+          <h3>⬇️ Export / Import</h3>
+          <button class="action-btn" id="exportBtn">📦 Export Full Report (JSON)</button>
+          <button class="action-btn" id="importBtn">📂 Import Logs</button>
           <input type="file" id="importFile" accept=".json" style="display:none">
-          <button class="action-btn" onclick="clearAllData()">Clear All Data</button>
-          <p style="margin-top:1rem; color:var(--text-secondary); font-size:0.8rem;">
-            The full report includes: overview, console, errors, actions, network, performance, security, PWA, DOM audit, storage, and current page metadata.
-          </p>
+          <button class="action-btn" onclick="clearAllData()">🗑 Clear All Data</button>
         `;
-
-        // Full Export
-        container.querySelector('#fullExportBtn').onclick = async () => {
-          // Optionally flush any pending console logs to DB for completeness
-          if (capturedConsoleLogs.length > 0) {
-            const logsToFlush = capturedConsoleLogs.splice(0, capturedConsoleLogs.length);
-            for (const log of logsToFlush) {
-              await addLog('console', log);
-            }
-          }
-
-          // Gather IndexedDB logs
-          const [dbErrors, dbActions, dbConsole] = await Promise.all([
-            getAllLogs('errors'),
-            getAllLogs('actions'),
-            getAllLogs('console')
-          ]);
-
+        document.getElementById('exportBtn').onclick = async () => {
+          const [errors, actions] = await Promise.all([getAllLogs('errors'), getAllLogs('actions')]);
           const report = {
             exportTime: new Date().toISOString(),
-            page: {
-              url: window.location.href,
-              title: document.title,
-              userAgent: navigator.userAgent,
-              online: navigator.onLine
-            },
-            overview: monitorState.overview,
-            console: {
-              stored: dbConsole,
-              liveSnapshot: monitorState.console // from last console panel update
-            },
-            errors: {
-              stored: dbErrors
-            },
-            actions: dbActions,
-            network: monitorState.network,
-            performance: monitorState.performance,
-            security: monitorState.security,
-            pwa: monitorState.pwa,
-            domAudit: monitorState.domAudit,
-            storage: monitorState.storage
+            errors, actions,
+            performance: {}, security: {}, pwa: {}, storage: {}, domAudit: {}
           };
-
           const blob = new Blob([JSON.stringify(report, null, 2)], {type:'application/json'});
           const a = document.createElement('a');
           a.href = URL.createObjectURL(blob);
-          a.download = `monitor-full-report-${new Date().toISOString().slice(0,19).replace(/:/g,'-')}.json`;
+          a.download = `testing-report-${new Date().toISOString().slice(0,19).replace(/:/g,'-')}.json`;
           a.click();
         };
-
-        // Import (unchanged)
-        container.querySelector('#importBtn').onclick = () => container.querySelector('#importFile').click();
-        container.querySelector('#importFile').onchange = async (e) => {
+        document.getElementById('importBtn').onclick = () => document.getElementById('importFile').click();
+        document.getElementById('importFile').onchange = async (e) => {
           const file = e.target.files[0];
           if(!file) return;
           const reader = new FileReader();
           reader.onload = async (ev) => {
             try {
               const data = JSON.parse(ev.target.result);
-              for (const store of ['errors','actions','console']) {
+              const database = await openDB();
+              for (const store of ['errors','actions']) {
                 if (data[store]) {
-                  const tx = db.transaction(store, 'readwrite');
+                  const tx = database.transaction(store, 'readwrite');
                   for (const entry of data[store]) await tx.store.add(entry);
                   await tx.done;
                 }
@@ -646,11 +340,10 @@
           };
           reader.readAsText(file);
         };
-      }
+      };
 
-      // ═══════════ INIT ═══════════
-      openDB().catch(e => { /* DB fail silent */ });
-      actionLoggingEnabled = true;
+      // Start with overview
+      openDB().then(() => renderPanel('overview'));
     })();
   </script>
 </body>

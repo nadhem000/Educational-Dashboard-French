@@ -1,5 +1,7 @@
+importScripts('db-utils.js');
+
 // Service Worker – Educational Dashboard – French
-const CACHE_NAME = 'revisions-tunisie-v1.8.1'; // bump version to force cache refresh
+const CACHE_NAME = 'ed-french-v1.8.2'; // bump version to force cache refresh
 const urlsToCache = [
     '/',
     '/index.html',
@@ -10,6 +12,7 @@ const urlsToCache = [
     '/assets/icons/icon-192x192.png',
     '/assets/icons/icon-512x512.png'
 ];
+
 // ═══════════ LOG HELPER (posts to all clients) ═══════════
 async function swLog(level, message) {
     try {
@@ -21,28 +24,14 @@ async function swLog(level, message) {
         // ignore
     }
 }
+
 // Background sync control (set by main page)
 let syncEnabled = false;
-// ── IndexedDB helpers (SW scope) ─────────────────
-function openSWDB() {
-  return new Promise((resolve, reject) => {
-    const request = indexedDB.open('adminMonitorDB_v2', 2);
-    request.onupgradeneeded = (e) => {
-      const db = e.target.result;
-      if (!db.objectStoreNames.contains('actions')) {
-        db.createObjectStore('actions', { keyPath: 'id', autoIncrement: true });
-      }
-      // store for meta values (like swVersion)
-      if (!db.objectStoreNames.contains('meta')) {
-        db.createObjectStore('meta', { keyPath: 'key' });
-      }
-    };
-    request.onsuccess = (e) => resolve(e.target.result);
-    request.onerror = (e) => reject(e.target.error);
-  });
-}
+
+// ── IndexedDB helpers (using shared db-utils) ─────────────────
+
 async function getMetaValue(key, defaultValue = null) {
-  const db = await openSWDB();
+  const db = await openDB();
   return new Promise((resolve, reject) => {
     const tx = db.transaction('meta', 'readonly');
     const store = tx.objectStore('meta');
@@ -51,8 +40,9 @@ async function getMetaValue(key, defaultValue = null) {
     req.onerror = () => reject(req.error);
   });
 }
+
 async function setMetaValue(key, value) {
-  const db = await openSWDB();
+  const db = await openDB();
   return new Promise((resolve, reject) => {
     const tx = db.transaction('meta', 'readwrite');
     const store = tx.objectStore('meta');
@@ -61,6 +51,7 @@ async function setMetaValue(key, value) {
     tx.onerror = () => reject(tx.error);
   });
 }
+
 // ── Version check using CACHE_NAME ────────────────
 async function checkForNewVersion() {
   try {
@@ -85,6 +76,7 @@ async function checkForNewVersion() {
     swLog('error', `Version check failed: ${error.message}`);
   }
 }
+
 // Installation
 self.addEventListener('install', event => {
     event.waitUntil(
@@ -100,6 +92,7 @@ self.addEventListener('install', event => {
         })
     );
 });
+
 // Activation – delete old caches and notify clients
 self.addEventListener('activate', event => {
     swLog('info', 'SW activate – cleaning old caches');
@@ -126,6 +119,7 @@ self.addEventListener('activate', event => {
         })
     );
 });
+
 // Helper: network-first strategy (try network, update cache, fallback to cache)
 function networkFirst(request) {
     return fetch(request)
@@ -139,10 +133,12 @@ function networkFirst(request) {
             return caches.match(request);
         });
 }
+
 // Fetch strategy – network-first for HTML/CSS/JS/JSON/manifest, cache-first for images
 self.addEventListener('fetch', event => {
     const requestUrl = new URL(event.request.url);
     if (event.request.method !== 'GET') return;
+
     // Navigation requests: network first, cache fallback
     if (event.request.mode === 'navigate') {
         event.respondWith(
@@ -159,16 +155,19 @@ self.addEventListener('fetch', event => {
         );
         return;
     }
+
     // For images, fonts, etc. – cache-first with background revalidation
     if (requestUrl.pathname.match(/\.(png|jpg|jpeg|gif|svg|ico|webp|woff2?)$/i)) {
         event.respondWith(serveStaleWhileRevalidate(event.request));
         return;
     }
+
     // For CSS, JS, JSON, manifest – network-first (ensure latest versions)
     if (requestUrl.pathname.match(/\.(json|js|css)$/i) || requestUrl.pathname === '/manifest.json') {
         event.respondWith(networkFirst(event.request));
         return;
     }
+
     // All other requests: network with timeout fallback
     event.respondWith(
         new Promise(resolve => {
@@ -179,6 +178,7 @@ self.addEventListener('fetch', event => {
                     if (cached) resolve(cached);
                 });
             }, 3000);
+
             fetch(event.request)
                 .then(response => {
                     clearTimeout(timeout);
@@ -193,10 +193,11 @@ self.addEventListener('fetch', event => {
                     caches.match(event.request).then(cached => {
                         resolve(cached || new Response('Ressource indisponible hors ligne', { status: 503 }));
                     });
-                })
+                });
         })
     );
 });
+
 // Helper: stale-while-revalidate (for images/fonts)
 function serveStaleWhileRevalidate(request) {
     return caches.open(CACHE_NAME).then(cache => {
@@ -212,6 +213,7 @@ function serveStaleWhileRevalidate(request) {
         });
     });
 }
+
 // Message handling
 self.addEventListener('message', event => {
     if (event.data && event.data.type === 'SKIP_WAITING') {
@@ -228,12 +230,14 @@ self.addEventListener('message', event => {
         swLog('info', `Background sync ${syncEnabled ? 'enabled' : 'disabled'} in SW`);
     }
 });
+
 // ── Background Sync ──────────────────────────
 self.addEventListener('sync', event => {
     if (event.tag === 'version-check' && syncEnabled) {
         event.waitUntil(checkForNewVersion());
     }
 });
+
 // ── Periodic Background Sync ─────────────────
 self.addEventListener('periodicsync', event => {
     if (event.tag === 'version-check' && syncEnabled) {
