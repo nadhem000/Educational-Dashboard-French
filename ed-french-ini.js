@@ -723,25 +723,53 @@
     }
 
     // ---------- PROFILE BUTTON ----------
-    if (profileBtn) {
-      profileBtn.addEventListener('click', async () => {
-        const { data: { user } } = await App.supabase.auth.getUser();
-        if (!user) return;
-        // Fetch profile from the profiles table
-        const { data: profile, error } = await App.supabase
-          .from('profiles')
-          .select('username')
-          .eq('id', user.id)
-          .single();
-        if (error) {
-          App.showToast('Could not load profile', 'error');
-          return;
-        }
-        document.getElementById('profile-username-display').textContent = profile?.username || '';
-        document.getElementById('profile-email-display').textContent = user.email || '';
-        openModal(profileModal);
-      });
+if (profileBtn) {
+  profileBtn.addEventListener('click', async () => {
+    const { data: { user } } = await App.supabase.auth.getUser();
+    if (!user) return;
+
+    const { data: profile, error } = await App.supabase
+      .from('profiles')
+      .select('username')
+      .eq('id', user.id)
+      .single();
+
+    if (error) {
+      App.showToast('profile_error_load', 'error');       // translated key
+      return;
     }
+
+    const username = profile?.username || '';
+    const email = user.email || '';
+
+    document.getElementById('profile-username-display').textContent = username;
+    document.getElementById('profile-email-display').textContent = email;
+
+    // Avatar initials
+    const avatar = document.getElementById('profile-avatar');
+    if (avatar) {
+      if (username) {
+        avatar.textContent = username.charAt(0).toUpperCase();
+      } else if (email) {
+        avatar.textContent = email.charAt(0).toUpperCase();
+      } else {
+        avatar.textContent = '👤';
+      }
+    }
+
+    openModal(profileModal);
+  });
+}
+
+// Nouveau bouton Déconnexion dans le modal
+const profileSignoutBtn = document.getElementById('profileSignoutBtn');
+if (profileSignoutBtn) {
+  profileSignoutBtn.addEventListener('click', async () => {
+    await App.supabase.auth.signOut();
+    closeModal(profileModal);
+    App.showToast('toast_signout', '');
+  });
+}
     // Profile modal close button
     const profileCloseBtn = profileModal ? profileModal.querySelector('.close-modal') : null;
     if (profileCloseBtn) {

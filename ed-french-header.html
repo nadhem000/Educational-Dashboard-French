@@ -22,18 +22,18 @@
 			<span id="themeIcon">🌙</span>
 		</button>
 		<span id="onlineStatus" class="status-dot online" role="status" aria-live="polite"
-		      data-i18n-aria="online" aria-label="En ligne"
-		      data-i18n-title="online" title="En ligne"></span>
+		data-i18n-aria="online" aria-label="En ligne"
+		data-i18n-title="online" title="En ligne"></span>
 	</div>
 </header>
 <!-- Offline banner (hidden by default) -->
 <div id="offlineBanner" class="offline-banner" role="alert" aria-live="assertive" data-i18n="offline_banner">
-  ⚠️ Vous êtes hors ligne – Certains contenus peuvent ne pas être disponibles.
+	⚠️ Vous êtes hors ligne – Certains contenus peuvent ne pas être disponibles.
 </div>
 <!-- Notification panel (Facebook-style dropdown) -->
 <div id="notifPanel" class="notif-panel" style="display:none;">
-  <h3 data-i18n="notif_panel_title">Notifications</h3>
-  <ul id="notifList"></ul>
+	<h3 data-i18n="notif_panel_title">Notifications</h3>
+	<ul id="notifList"></ul>
 </div>
 <!-- End offline banner -->
 <div id="authModal" class="modal auth-modal" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
@@ -118,18 +118,30 @@
 </div>
 <!-- Profile Modal -->
 <div id="profileModal" class="modal auth-modal" role="dialog" aria-modal="true" aria-labelledby="profileModalTitle">
-	<div class="modal-content auth-modal-content">
-		<span class="close-modal">&times;</span>
-		<h2 id="profileModalTitle" class="sr-only" data-i18n="profile_modal_title">Profil utilisateur</h2>
-		<div class="auth-field">
-			<label data-i18n="profile_label_username">Nom d'utilisateur</label>
-			<p id="profile-username-display"></p>
-		</div>
-		<div class="auth-field">
-			<label data-i18n="profile_label_email">Email</label>
-			<p id="profile-email-display"></p>
-		</div>
-	</div>
+  <div class="modal-content profile-modal-card">
+    <span class="close-modal">&times;</span>
+    <h2 id="profileModalTitle" class="sr-only" data-i18n="profile_modal_title">Profil utilisateur</h2>
+
+    <!-- En-tête avec avatar et infos principales -->
+    <div class="profile-card-header">
+      <div class="profile-avatar" id="profile-avatar">👤</div>
+      <p class="profile-card-username" id="profile-username-display"></p>
+      <p class="profile-card-email" id="profile-email-display"></p>
+    </div>
+
+    <!-- Boutons d’action -->
+    <div class="profile-card-actions">
+      <a href="profile.html#personal" class="profile-action-btn profile-action-primary" data-i18n="profile_edit">
+        ✏️ Modifier le profil
+      </a>
+      <a href="profile.html#achievements" class="profile-action-btn profile-action-secondary" data-i18n="profile_achievements">
+        🏆 Parcours / Réalisations
+      </a>
+      <button id="profileSignoutBtn" class="profile-action-btn profile-action-danger" data-i18n="signout">
+        🚪 Déconnexion
+      </button>
+    </div>
+  </div>
 </div>
 <script data-sanitize-allow="true">
 	// Translations for header elements – App namespace
@@ -165,6 +177,9 @@
 			'profile_modal_title': 'Profil utilisateur',
 			'profile_label_username': "Nom d'utilisateur",
 			'profile_label_email': 'Email',
+			'profile_edit': '✏️ Modifier le profil',
+'profile_achievements': '🏆 Parcours / Réalisations',
+'profile_error_load': 'Impossible de charger le profil.',
 			// Validation error messages
 			'error_required': 'Ce champ est requis.',
 			'error_invalid_email': 'Veuillez entrer une adresse email valide.',
@@ -209,6 +224,9 @@
 			'profile_modal_title': 'User Profile',
 			'profile_label_username': 'Username',
 			'profile_label_email': 'Email',
+			'profile_edit': '✏️ Edit profile',
+'profile_achievements': '🏆 Achievements',
+'profile_error_load': 'Could not load profile.',
 			'error_required': 'This field is required.',
 			'error_invalid_email': 'Please enter a valid email address.',
 			'error_password_short': 'Password must be at least 6 characters.',
@@ -252,6 +270,9 @@
 			'profile_modal_title': 'الملف الشخصي',
 			'profile_label_username': 'اسم المستخدم',
 			'profile_label_email': 'البريد الإلكتروني',
+			'profile_edit': '✏️ تعديل الملف الشخصي',
+'profile_achievements': '🏆 الإنجازات والمسار',
+'profile_error_load': 'تعذّر تحميل الملف الشخصي.',
 			'error_required': 'هذا الحقل مطلوب.',
 			'error_invalid_email': 'يرجى إدخال بريد إلكتروني صالح.',
 			'error_password_short': 'يجب أن تحتوي كلمة المرور على 6 أحرف على الأقل.',
