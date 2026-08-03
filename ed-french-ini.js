@@ -630,12 +630,13 @@
         const email = document.getElementById('signup-email').value.trim();
         const password = document.getElementById('signup-password').value;
         setButtonLoading(signupSubmit, true);
-        const { data, error } = await App.supabase.auth.signUp({
+        const username = document.getElementById('signup-username').value.trim();
+const { data, error } = await App.supabase.auth.signUp({
     email: email,
     password: password,
     options: {
         data: {
-            username: username  // matches the trigger’s metadata key
+            username: username
         }
     }
 });
