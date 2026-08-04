@@ -35,16 +35,12 @@
       padding-bottom: 0.5rem;
       color: var(--heading);
     }
-    .profile-info-card {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
     .info-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
+      padding: 0.6rem 0;
     }
     .info-row label {
       font-weight: 600;
@@ -67,6 +63,7 @@
       color: var(--accent);
       text-decoration: none;
       transition: all var(--transition);
+      white-space: nowrap;
     }
     .btn-edit:hover {
       background: var(--accent);
@@ -77,7 +74,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.8rem;
-      align-items: center;
+      align-items: flex-end;
     }
     .edit-form.hidden { display: none; }
     .btn-cancel {
@@ -100,7 +97,14 @@
       text-align: center;
       margin-top: 2rem;
     }
-    /* Print layout */
+    /* RTL support */
+    html[dir="rtl"] .info-row label {
+      text-align: right;
+    }
+    html[dir="rtl"] .info-value {
+      direction: rtl;
+    }
+    /* Print */
     @media print {
       body { background: white; color: black; }
       .site-header, .site-footer, .print-actions, .btn-edit, .edit-form,
@@ -145,23 +149,24 @@
             <button id="edit-email-btn" class="btn-edit" data-i18n="change_email">Changer l'email</button>
           </div>
         </div>
-        <div class="info-row">
+        <div class="info-row no-print">
           <label data-i18n="profile_password_label">Mot de passe</label>
           <div class="info-value">
             <span>••••••••</span>
-            <a href="reset-password.html" class="btn-edit" data-i18n="change_password">Changer le mot de passe</a>
+            <button id="edit-password-btn" class="btn-edit" data-i18n="change_password">Changer le mot de passe</button>
           </div>
         </div>
       </div>
 
-      <!-- Inline edit forms (hidden by default) -->
+      <!-- Edit Username Form -->
       <div id="edit-username-form" class="edit-form hidden">
         <input type="text" id="new-username" class="auth-input" data-i18n-placeholder="new_username_placeholder" placeholder="Nouveau nom d'utilisateur">
         <button id="save-username-btn" class="auth-submit" data-i18n="save">Enregistrer</button>
         <button id="cancel-username-btn" class="btn-cancel" data-i18n="cancel">Annuler</button>
-        <span class="field-error" id="error-username-edit"></span>
+        <span class="field-error" id="error-username-edit" aria-live="polite"></span>
       </div>
 
+      <!-- Edit Email Form (requires password) -->
       <div id="edit-email-form" class="edit-form hidden">
         <div class="auth-field">
           <label data-i18n="current_password">Mot de passe actuel</label>
@@ -173,7 +178,22 @@
         </div>
         <button id="save-email-btn" class="auth-submit" data-i18n="save">Enregistrer</button>
         <button id="cancel-email-btn" class="btn-cancel" data-i18n="cancel">Annuler</button>
-        <span class="field-error" id="error-email-edit"></span>
+        <span class="field-error" id="error-email-edit" aria-live="polite"></span>
+      </div>
+
+      <!-- Edit Password Form (requires current password) -->
+      <div id="edit-password-form" class="edit-form hidden">
+        <div class="auth-field">
+          <label data-i18n="current_password">Mot de passe actuel</label>
+          <input type="password" id="current-password-for-pw" class="auth-input" data-i18n-placeholder="current_password_placeholder" placeholder="Entrez votre mot de passe">
+        </div>
+        <div class="auth-field">
+          <label data-i18n="new_password">Nouveau mot de passe</label>
+          <input type="password" id="new-password" class="auth-input" data-i18n-placeholder="new_password_placeholder" placeholder="Nouveau mot de passe" minlength="6">
+          <span class="field-error" id="error-password-edit" aria-live="polite"></span>
+        </div>
+        <button id="save-password-btn" class="auth-submit" data-i18n="save">Enregistrer</button>
+        <button id="cancel-password-btn" class="btn-cancel" data-i18n="cancel">Annuler</button>
       </div>
     </section>
 
@@ -197,7 +217,14 @@
   <script src="supabase-client.js"></script>
   <script src="ed-french-ini.js"></script>
   <script>
-    // Page translations (must be registered before ed-french-ini.js runs its applyTranslations)
+    // Apply RTL for Arabic
+    (function() {
+      const lang = localStorage.getItem('lang') || 'fr';
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    })();
+
+    // Page translations
     App.addI18nTranslations({
       fr: {
         'profile_page_title': 'Profil utilisateur',
@@ -219,14 +246,19 @@
         'current_password_placeholder': 'Entrez votre mot de passe',
         'new_email': 'Nouvel email',
         'new_email_placeholder': 'Nouvel email',
+        'new_password': 'Nouveau mot de passe',
+        'new_password_placeholder': 'Nouveau mot de passe',
         'print_profile': '🖨️ Imprimer le profil',
         'coming_soon': '⏳ Contenu à venir',
         'username_updated': 'Nom d\'utilisateur mis à jour.',
-        'email_updated': 'Email mis à jour. Vérifiez votre boîte de réception pour confirmer.',
-        'error_wrong_password': 'Mot de passe incorrect.',
+        'email_verification_sent': 'Un email de vérification a été envoyé à votre nouvelle adresse.',
+        'password_updated': 'Mot de passe modifié avec succès.',
+        'error_wrong_password': 'Mot de passe actuel incorrect.',
         'error_update_username': 'Erreur lors de la mise à jour du nom d\'utilisateur.',
         'error_update_email': 'Erreur lors de la mise à jour de l\'email.',
-        'profile_error_load': 'Impossible de charger le profil.'
+        'error_update_password': 'Erreur lors de la modification du mot de passe.',
+        'profile_error_load': 'Impossible de charger le profil.',
+        'sign_out_confirm': 'Vous avez été déconnecté.'
       },
       en: {
         'profile_page_title': 'User Profile',
@@ -248,14 +280,19 @@
         'current_password_placeholder': 'Enter your password',
         'new_email': 'New email',
         'new_email_placeholder': 'New email',
+        'new_password': 'New password',
+        'new_password_placeholder': 'New password',
         'print_profile': '🖨️ Print profile',
         'coming_soon': '⏳ Coming soon',
         'username_updated': 'Username updated.',
-        'email_updated': 'Email updated. Check your inbox to confirm.',
-        'error_wrong_password': 'Incorrect password.',
+        'email_verification_sent': 'A verification email has been sent to your new address.',
+        'password_updated': 'Password changed successfully.',
+        'error_wrong_password': 'Incorrect current password.',
         'error_update_username': 'Error updating username.',
         'error_update_email': 'Error updating email.',
-        'profile_error_load': 'Could not load profile.'
+        'error_update_password': 'Error changing password.',
+        'profile_error_load': 'Could not load profile.',
+        'sign_out_confirm': 'You have been signed out.'
       },
       ar: {
         'profile_page_title': 'الملف الشخصي',
@@ -274,17 +311,22 @@
         'cancel': 'إلغاء',
         'new_username_placeholder': 'اسم المستخدم الجديد',
         'current_password': 'كلمة المرور الحالية',
-        'current_password_placeholder': 'أدخل كلمة المرور',
+        'current_password_placeholder': 'أدخل كلمة المرور الحالية',
         'new_email': 'البريد الإلكتروني الجديد',
         'new_email_placeholder': 'البريد الإلكتروني الجديد',
+        'new_password': 'كلمة المرور الجديدة',
+        'new_password_placeholder': 'كلمة المرور الجديدة',
         'print_profile': '🖨️ طباعة الملف الشخصي',
         'coming_soon': '⏳ قريباً',
         'username_updated': 'تم تحديث اسم المستخدم.',
-        'email_updated': 'تم تحديث البريد الإلكتروني. تحقق من صندوق الوارد للتأكيد.',
-        'error_wrong_password': 'كلمة مرور غير صحيحة.',
+        'email_verification_sent': 'تم إرسال بريد تحقق إلى عنوانك الجديد.',
+        'password_updated': 'تم تغيير كلمة المرور بنجاح.',
+        'error_wrong_password': 'كلمة المرور الحالية غير صحيحة.',
         'error_update_username': 'خطأ في تحديث اسم المستخدم.',
         'error_update_email': 'خطأ في تحديث البريد الإلكتروني.',
-        'profile_error_load': 'تعذّر تحميل الملف الشخصي.'
+        'error_update_password': 'خطأ في تغيير كلمة المرور.',
+        'profile_error_load': 'تعذّر تحميل الملف الشخصي.',
+        'sign_out_confirm': 'تم تسجيل الخروج.'
       }
     });
 
@@ -292,13 +334,15 @@
       // Set print date
       document.getElementById('print-date').textContent = new Date().toLocaleDateString('fr-FR');
 
-      // Load user profile data
+      let userEmail = null;
+
       async function loadProfile() {
         const { data: { user } } = await App.supabase.auth.getUser();
         if (!user) {
           window.location.href = 'index.html';
           return;
         }
+        userEmail = user.email;
         const { data: profile, error } = await App.supabase
           .from('profiles')
           .select('username')
@@ -314,7 +358,9 @@
         document.getElementById('display-email').textContent = user.email || '';
       }
 
-      // Username edit
+      loadProfile();
+
+      // ----- Username editing -----
       document.getElementById('edit-username-btn').addEventListener('click', () => {
         document.getElementById('edit-username-form').classList.remove('hidden');
         document.getElementById('new-username').value = document.getElementById('display-username').textContent;
@@ -338,7 +384,7 @@
         }
       });
 
-      // Email edit (requires password)
+      // ----- Email editing (requires password) -----
       document.getElementById('edit-email-btn').addEventListener('click', () => {
         document.getElementById('edit-email-form').classList.remove('hidden');
       });
@@ -351,9 +397,8 @@
         if (!currentPassword || !newEmail) return;
 
         // Re-authenticate
-        const { data: { user } } = await App.supabase.auth.getUser();
         const { error: signInError } = await App.supabase.auth.signInWithPassword({
-          email: user.email,
+          email: userEmail,
           password: currentPassword
         });
         if (signInError) {
@@ -365,20 +410,61 @@
         if (updateError) {
           App.showToast('error_update_email', 'error');
         } else {
-          document.getElementById('display-email').textContent = newEmail;
+          document.getElementById('display-email').textContent = newEmail; // optimistic
           document.getElementById('edit-email-form').classList.add('hidden');
-          App.showToast('email_updated', 'success');
+          App.showToast('email_verification_sent', 'success');
           document.getElementById('current-password').value = '';
           document.getElementById('new-email').value = '';
+          // The email will only change after verification, but we can reflect optimism
         }
       });
 
-      // Print trigger
+      // ----- Password editing (requires current password) -----
+      document.getElementById('edit-password-btn').addEventListener('click', () => {
+        document.getElementById('edit-password-form').classList.remove('hidden');
+      });
+      document.getElementById('cancel-password-btn').addEventListener('click', () => {
+        document.getElementById('edit-password-form').classList.add('hidden');
+      });
+      document.getElementById('save-password-btn').addEventListener('click', async () => {
+        const currentPassword = document.getElementById('current-password-for-pw').value;
+        const newPassword = document.getElementById('new-password').value;
+        if (!currentPassword || !newPassword) return;
+
+        // Re-authenticate
+        const { error: signInError } = await App.supabase.auth.signInWithPassword({
+          email: userEmail,
+          password: currentPassword
+        });
+        if (signInError) {
+          App.showToast('error_wrong_password', 'error');
+          return;
+        }
+
+        const { error: updateError } = await App.supabase.auth.updateUser({ password: newPassword });
+        if (updateError) {
+          App.showToast('error_update_password', 'error');
+        } else {
+          document.getElementById('edit-password-form').classList.add('hidden');
+          App.showToast('password_updated', 'success');
+          document.getElementById('current-password-for-pw').value = '';
+          document.getElementById('new-password').value = '';
+        }
+      });
+
+      // ----- Sign out (handled by global header, but we add a safety redirect) -----
+      // The header sign-out already works, but profile page should redirect after sign-out
+      // We can listen to auth state change to redirect if logged out
+      App.supabase.auth.onAuthStateChange((event, session) => {
+        if (event === 'SIGNED_OUT') {
+          window.location.href = 'index.html';
+        }
+      });
+
+      // Print button
       document.getElementById('printProfileBtn').addEventListener('click', () => {
         window.print();
       });
-
-      loadProfile();
     })();
   </script>
 </body>
