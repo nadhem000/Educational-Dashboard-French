@@ -1,4 +1,7 @@
-// ed-french-ini.js (complet avec chargement, fallback, spinner auth, install disabled) – App namespace, db-utils
+// ed-french-ini.js (complet avec chargement, fallback, spinner auth, install disabled)
+// – App namespace, db-utils
+// – Logging intégré : logGeneralAction (compteur) et logUserAction (backup)
+
 (function() {
   // ──────────────────────────────────────────────────────
   // Phase 4.1 – Global console override (silent, log to DB)
@@ -467,7 +470,7 @@
         profileBtn.style.display = 'none';
       }
     }
-    // Listen to Supabase auth state changes
+    // Listen to Supabase auth state changes (no logging here – we log explicitly after actions)
     App.supabase.auth.onAuthStateChange((event, session) => {
       if (event === 'PASSWORD_RECOVERY') {
         // Redirect to dedicated reset page, keeping the recovery token in the hash
@@ -480,7 +483,7 @@
       } else {
         setLoggedIn(false);
         App.logToDB('actions', { message: 'User signed out' });
-    App.logGeneralAction('sign_out');   // l’utilisateur n’est plus connecté, on log en général
+        // No sign_out log here – handled in button handlers
       }
     });
     // Check for an existing session on page load
@@ -622,7 +625,10 @@
           if (input && err) clearFieldError(input, err);
         });
         App.showToast('toast_signin_success', 'success');
-      App.logUserAction('sign_in_success');
+        // Log to general stats (counter)
+        App.logGeneralAction('sign_in');
+        // Log to backup (authenticated user)
+        App.logUserAction('sign_in');
       });
     }
     // ---------- REAL SIGN UP ----------
@@ -676,13 +682,18 @@
             if (input && err) clearFieldError(input, err);
           });
           App.showToast('toast_signup_success', 'success');
-        App.logUserAction('sign_up_success');
+          // Log to general stats (counter)
+          App.logGeneralAction('sign_up');
+          // Log to backup
+          App.logUserAction('sign_up');
         } else {
           // Email confirmation required
           const lang = localStorage.getItem('lang') || 'fr';
           const confirmMsg = App.translateToastKey(lang, 'auth_error_confirm_email');
           App.showToast(confirmMsg, 'success', 6000);
-		  App.logUserAction('sign_up_initiated');
+          // Log general (counter) for initiated sign-up
+          App.logGeneralAction('sign_up_initiated');
+          // No user log here because user is not yet signed in.
           closeModal(authModal);
           document.getElementById('signup-username').value = '';
           document.getElementById('signup-email').value = '';
@@ -717,64 +728,69 @@
         }
       });
     }
-    // ---------- REAL SIGN OUT ----------
+    // ---------- REAL SIGN OUT (header button) ----------
     if (signOutBtn) {
       signOutBtn.addEventListener('click', async () => {
+        // Log user sign out before the session is destroyed
+        await App.logUserAction('sign_out');
         await App.supabase.auth.signOut();
-        // Listener will handle UI update and logging
+        // Listener will handle UI update
         App.showToast('toast_signout', '');
-    App.logGeneralAction('sign_out');
+        App.logGeneralAction('sign_out');
       });
     }
 
     // ---------- PROFILE BUTTON ----------
-if (profileBtn) {
-  profileBtn.addEventListener('click', async () => {
-    const { data: { user } } = await App.supabase.auth.getUser();
-    if (!user) return;
+    if (profileBtn) {
+      profileBtn.addEventListener('click', async () => {
+        const { data: { user } } = await App.supabase.auth.getUser();
+        if (!user) return;
 
-    const { data: profile, error } = await App.supabase
-      .from('profiles')
-      .select('username')
-      .eq('id', user.id)
-      .single();
+        const { data: profile, error } = await App.supabase
+          .from('profiles')
+          .select('username')
+          .eq('id', user.id)
+          .single();
 
-    if (error) {
-      App.showToast('profile_error_load', 'error');       // translated key
-      return;
+        if (error) {
+          App.showToast('profile_error_load', 'error');       // translated key
+          return;
+        }
+
+        const username = profile?.username || '';
+        const email = user.email || '';
+
+        document.getElementById('profile-username-display').textContent = username;
+        document.getElementById('profile-email-display').textContent = email;
+
+        // Avatar initials
+        const avatar = document.getElementById('profile-avatar');
+        if (avatar) {
+          if (username) {
+            avatar.textContent = username.charAt(0).toUpperCase();
+          } else if (email) {
+            avatar.textContent = email.charAt(0).toUpperCase();
+          } else {
+            avatar.textContent = '👤';
+          }
+        }
+
+        openModal(profileModal);
+      });
     }
 
-    const username = profile?.username || '';
-    const email = user.email || '';
-
-    document.getElementById('profile-username-display').textContent = username;
-    document.getElementById('profile-email-display').textContent = email;
-
-    // Avatar initials
-    const avatar = document.getElementById('profile-avatar');
-    if (avatar) {
-      if (username) {
-        avatar.textContent = username.charAt(0).toUpperCase();
-      } else if (email) {
-        avatar.textContent = email.charAt(0).toUpperCase();
-      } else {
-        avatar.textContent = '👤';
-      }
+    // Nouveau bouton Déconnexion dans le modal
+    const profileSignoutBtn = document.getElementById('profileSignoutBtn');
+    if (profileSignoutBtn) {
+      profileSignoutBtn.addEventListener('click', async () => {
+        // Log user sign out before destroying session
+        await App.logUserAction('sign_out');
+        await App.supabase.auth.signOut();
+        closeModal(profileModal);
+        App.showToast('toast_signout', '');
+        App.logGeneralAction('sign_out');
+      });
     }
-
-    openModal(profileModal);
-  });
-}
-
-// Nouveau bouton Déconnexion dans le modal
-const profileSignoutBtn = document.getElementById('profileSignoutBtn');
-if (profileSignoutBtn) {
-  profileSignoutBtn.addEventListener('click', async () => {
-    await App.supabase.auth.signOut();
-    closeModal(profileModal);
-    App.showToast('toast_signout', '');
-  });
-}
     // Profile modal close button
     const profileCloseBtn = profileModal ? profileModal.querySelector('.close-modal') : null;
     if (profileCloseBtn) {
@@ -885,7 +901,10 @@ if (profileSignoutBtn) {
         const { outcome } = await deferredPrompt.userChoice;
         if (outcome === 'accepted') {
           installBtn.style.display = 'none';
-      App.logGeneralAction('pwa_installed');
+          // Log general (counter)
+          App.logGeneralAction('pwa_installed');
+          // Log user if signed in
+          App.logUserAction('pwa_installed');
         }
         deferredPrompt = null;
       }

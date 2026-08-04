@@ -20,41 +20,35 @@
     return LOG_CLIENT;
   }
 
-  // Envoi asynchrone et silencieux (fire‑and‑forget)
-  function safeInsert(table, payload) {
+  // Log d'une action générale – atomically increment counter via RPC
+  App.logGeneralAction = function (action, details = {}) {
     const client = getClient();
-    if (!client) return; // Supabase pas encore chargé, on abandonne proprement
-
-    // Le timeout évite de bloquer l'appel si le réseau est lent
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 3000);
+    if (!client) return;
 
     client
-      .from(table)
-      .insert([payload], { count: null })
-      .abortSignal(controller.signal)
+      .rpc('increment_general_action', {
+        action_text: action,
+        user_agent_text: navigator.userAgent
+      })
       .then(({ error }) => {
         if (error) {
-          // Erreur silencieuse – on peut si on veut la renvoyer vers IndexedDB plus tard
+          // Fallback : direct upsert si le RPC échoue
+          client
+            .from('log-ed-french-interactions-general')
+            .upsert(
+              { action, count: 1, user_agent: navigator.userAgent, updated_at: new Date().toISOString() },
+              { onConflict: 'action', ignoreDuplicates: false }
+            )
+            .then(() => {})
+            .catch(() => {});
         }
       })
-      .catch(() => {})
-      .finally(() => clearTimeout(timeoutId));
-  }
-
-  // Log d'une action générale (sans utilisateur)
-  App.logGeneralAction = function (action, details = {}) {
-    const payload = {
-      action: action,
-      details: details,
-      user_agent: navigator.userAgent
-    };
-    safeInsert('log-ed-french-interactions-general', payload);
+      .catch(() => {});
   };
 
-  // Log d'une action utilisateur (signé)
+  // Log d'une action utilisateur – utilise le client authentifié App.supabase
   App.logUserAction = async function (action, details = {}) {
-    // Vérifier que l'utilisateur est bien connecté
+    if (!App.supabase) return;
     const { data: { user } } = await App.supabase.auth.getUser();
     if (!user) return;
 
@@ -64,7 +58,12 @@
       details: details,
       user_agent: navigator.userAgent
     };
-    safeInsert('log-ed-french-interactions-backup', payload);
+
+    App.supabase
+      .from('log-ed-french-interactions-backup')
+      .insert([payload])
+      .then(() => {})
+      .catch(() => {});
   };
 
   // Appel automatique au chargement de la page (selon le nom de la page)
