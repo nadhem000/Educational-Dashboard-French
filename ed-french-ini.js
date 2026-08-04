@@ -480,6 +480,7 @@
       } else {
         setLoggedIn(false);
         App.logToDB('actions', { message: 'User signed out' });
+    App.logGeneralAction('sign_out');   // l’utilisateur n’est plus connecté, on log en général
       }
     });
     // Check for an existing session on page load
@@ -621,6 +622,7 @@
           if (input && err) clearFieldError(input, err);
         });
         App.showToast('toast_signin_success', 'success');
+      App.logUserAction('sign_in_success');
       });
     }
     // ---------- REAL SIGN UP ----------
@@ -674,11 +676,13 @@
             if (input && err) clearFieldError(input, err);
           });
           App.showToast('toast_signup_success', 'success');
+        App.logUserAction('sign_up_success');
         } else {
           // Email confirmation required
           const lang = localStorage.getItem('lang') || 'fr';
           const confirmMsg = App.translateToastKey(lang, 'auth_error_confirm_email');
           App.showToast(confirmMsg, 'success', 6000);
+		  App.logUserAction('sign_up_initiated');
           closeModal(authModal);
           document.getElementById('signup-username').value = '';
           document.getElementById('signup-email').value = '';
@@ -719,6 +723,7 @@
         await App.supabase.auth.signOut();
         // Listener will handle UI update and logging
         App.showToast('toast_signout', '');
+    App.logGeneralAction('sign_out');
       });
     }
 
@@ -880,6 +885,7 @@ if (profileSignoutBtn) {
         const { outcome } = await deferredPrompt.userChoice;
         if (outcome === 'accepted') {
           installBtn.style.display = 'none';
+      App.logGeneralAction('pwa_installed');
         }
         deferredPrompt = null;
       }

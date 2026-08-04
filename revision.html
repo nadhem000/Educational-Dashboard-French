@@ -453,6 +453,7 @@
   <script src="db-utils.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-client.js"></script>
+<script src="logging.js"></script>
 
   <script>
     // Revision page translations – App namespace
@@ -797,11 +798,41 @@
         App.applyTranslations();
       }
     })();
+// ---- Log clicks on lesson links ----
+(function() {
+  document.querySelectorAll('.lesson-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+      const lessonTitle = this.querySelector('.lesson-title').textContent.trim();
+      const lessonLabel = this.querySelector('.lesson-label').textContent.trim();
+      const details = { lesson: lessonTitle, label: lessonLabel, href: this.href };
+
+      if (typeof App !== 'undefined' && App.supabase) {
+        App.supabase.auth.getSession().then(({ data: { session } }) => {
+          if (session) {
+            App.logUserAction('lesson_click', details);
+          } else {
+            App.logGeneralAction('lesson_click', details);
+          }
+        }).catch(() => {
+          App.logGeneralAction('lesson_click', details);
+        });
+      }
+    });
+  });
+})();
   </script>
 
   <!-- Set print date in French -->
-  <script>
-    document.getElementById('print-date').textContent = new Date().toLocaleDateString('fr-FR');
-  </script>
+<script>
+  document.getElementById('print-date').textContent = new Date().toLocaleDateString('fr-FR');
+  window.addEventListener('afterprint', function() {
+  if (typeof App !== 'undefined') {
+    App.logGeneralAction('revision_printed');
+    App.supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session) App.logUserAction('revision_printed');
+    }).catch(() => {});
+  }
+});
+</script>
 </body>
 </html>

@@ -124,7 +124,7 @@
   <!-- Print header (hidden on screen) -->
   <div id="print-header" class="print-only" style="display:none;">
     <h1 data-i18n="profile_print_title">Profil utilisateur</h1>
-    <p data-i18n="profile_print_date">Imprimé le <span id="print-date"></span></p>
+    <p id="print-date-paragraph" data-i18n="profile_print_date">Imprimé le </p>
     <hr>
   </div>
 
@@ -215,14 +215,20 @@
   <script src="db-utils.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-client.js"></script>
+<script src="logging.js"></script>
   <script src="ed-french-ini.js"></script>
   <script>
     // Apply RTL for Arabic
-    (function() {
-      const lang = localStorage.getItem('lang') || 'fr';
-      document.documentElement.lang = lang;
-      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-    })();
+    // Apply RTL for Arabic (only to the profile container)
+(function() {
+  const lang = localStorage.getItem('lang') || 'fr';
+  document.documentElement.lang = lang;
+  // Set dir only on the main content, not the whole page
+  const container = document.getElementById('main-content');
+  if (container) {
+    container.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  }
+})();
 
     // Page translations
     App.addI18nTranslations({
@@ -381,6 +387,7 @@
           document.getElementById('display-username').textContent = newUsername;
           document.getElementById('edit-username-form').classList.add('hidden');
           App.showToast('username_updated', 'success');
+    App.logUserAction('profile_username_updated', { newUsername: newUsername });
         }
       });
 
@@ -413,6 +420,7 @@
           document.getElementById('display-email').textContent = newEmail; // optimistic
           document.getElementById('edit-email-form').classList.add('hidden');
           App.showToast('email_verification_sent', 'success');
+    App.logUserAction('profile_email_changed', { newEmail: newEmail });
           document.getElementById('current-password').value = '';
           document.getElementById('new-email').value = '';
           // The email will only change after verification, but we can reflect optimism
@@ -447,6 +455,7 @@
         } else {
           document.getElementById('edit-password-form').classList.add('hidden');
           App.showToast('password_updated', 'success');
+    App.logUserAction('profile_password_changed');
           document.getElementById('current-password-for-pw').value = '';
           document.getElementById('new-password').value = '';
         }
@@ -461,6 +470,15 @@
         }
       });
 
+	  // Set the print date after translations have been applied
+document.addEventListener('DOMContentLoaded', function() {
+  const paragraph = document.getElementById('print-date-paragraph');
+  if (paragraph) {
+    const dateStr = new Date().toLocaleDateString('fr-FR');
+    // The translation already holds the trailing space, e.g. "طُبع في " or "Imprimé le "
+    paragraph.textContent = paragraph.textContent + dateStr;
+  }
+});
       // Print button
       document.getElementById('printProfileBtn').addEventListener('click', () => {
         window.print();
