@@ -46,22 +46,24 @@
       .catch(() => {});
   };
 
-  // Log d'une action utilisateur – utilise le client authentifié App.supabase
+  // Log d'une action utilisateur – append to user's JSONB array via RPC
   App.logUserAction = async function (action, details = {}) {
     if (!App.supabase) return;
     const { data: { user } } = await App.supabase.auth.getUser();
     if (!user) return;
 
-    const payload = {
-      user_id: user.id,
-      action: action,
-      details: details,
+    const entry = {
+      action,
+      details,
+      timestamp: new Date().toISOString(),
       user_agent: navigator.userAgent
     };
 
     App.supabase
-      .from('log-ed-french-interactions-backup')
-      .insert([payload])
+      .rpc('append_user_action', {
+        p_user_id: user.id,
+        p_action_entry: entry
+      })
       .then(() => {})
       .catch(() => {});
   };
