@@ -1297,6 +1297,274 @@ RESULT: The application now has a clean separation of concerns:
   with the live pipeline.
 - The Service Worker uses the same database helper, eliminating duplicated
   code.
+  **Phase 24 – Profile Management Integration**  
+Goal: Establish a `profiles` table in Supabase, automatically create a profile on sign‑up (via a trigger), pass the username from the sign‑up form into the metadata, and build a profile modal in the app that displays the user’s username and email.
+---
+**24.1 – Created `public.profiles` table with trigger**  
+   **File:** SQL executed in Supabase SQL Editor  
+   **Change:**  
+   ```sql
+   -- Table
+   CREATE TABLE public.profiles (
+       id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
+       username TEXT UNIQUE,
+       created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+       updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+   );
+   ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
+   -- Policies
+   CREATE POLICY "Users can view own profile" ON public.profiles FOR SELECT USING (auth.uid() = id);
+   CREATE POLICY "Users can insert their own profile" ON public.profiles FOR INSERT WITH CHECK (auth.uid() = id);
+   CREATE POLICY "Users can update own profile" ON public.profiles FOR UPDATE USING (auth.uid() = id) WITH CHECK (auth.uid() = id);
+   -- Trigger function
+   CREATE OR REPLACE FUNCTION public.handle_new_user()
+   RETURNS TRIGGER LANGUAGE plpgsql SECURITY DEFINER SET search_path = ''
+   AS $$
+   BEGIN
+       INSERT INTO public.profiles (id, username)
+       VALUES (NEW.id, NEW.raw_user_meta_data ->> 'username');
+       RETURN NEW;
+   END;
+   $$;
+   -- Trigger
+   CREATE TRIGGER on_auth_user_created
+       AFTER INSERT ON auth.users
+       FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
+   ```  
+   **Reason:** Every authenticated user needs a profile row. The trigger reads the `username` from the metadata sent during sign‑up and inserts it automatically. RLS ensures users only see their own profile.
+---
+**24.2 – Modified sign‑up to send username in metadata**  
+   **File:** `ed-french-ini.js`  
+   **Change:** In the REAL SIGN UP handler, the username is now read from the sign‑up form and passed inside `options.data`:
+   ```js
+   const username = document.getElementById('signup-username').value.trim();
+   const { data, error } = await App.supabase.auth.signUp({
+       email: email,
+       password: password,
+       options: {
+           data: {
+               username: username
+           }
+       }
+   });
+   ```  
+   **Reason:** Without this, the trigger only receives `null` for the username, leaving the profile field empty. Now the metadata contains the username, and the trigger populates the profiles table correctly.
+---
+**24.3 – Added profile modal to the header**  
+   **File:** `ed-french-header.html`  
+   **Change:**  
+   - A new `#profileModal` (structure similar to `authModal`) was added after `#settingsModal`.  
+   - It contains two display fields: username (`#profile-username-display`) and email (`#profile-email-display`).  
+   - Translations for the modal title and labels were added in all three languages (fr/en/ar) within the existing inline translation block.  
+   - The translation keys added:  
+     - `profile_modal_title`  
+     - `profile_label_username`  
+     - `profile_label_email`  
+   **Reason:** Provides a dedicated UI for viewing the authenticated user’s profile information after clicking the profile button.
+---
+**24.4 – Profile button logic and modal handling in the main script**  
+   **File:** `ed-french-ini.js`  
+   **Change:**  
+   - Inside `initAuth()`, the `profileBtn` click handler was added. It:  
+     a. Calls `App.supabase.auth.getUser()` to retrieve the current user.  
+     b. Queries the `profiles` table for the username (`select('username').eq('id', user.id).single()`).  
+     c. Populates the modal with `profile?.username` and `user.email`.  
+     d. Opens the profile modal via `openModal(profileModal)`.  
+   - A close button listener for `#profileModal .close-modal` was added.  
+   - The backdrop click handler was extended to also close `profileModal`.  
+   - `trapFocus(profileModal)` was called to ensure keyboard accessibility.  
+   - The `profileModal` variable was declared at the top of `initAuth()`.  
+   **Reason:** Ties the profile UI to real data, making the “Profil” button functional.
+---
+**24.5 – Verification**  
+   - Newly registered users now have a profile row with the correct username.  
+   - The profile modal displays both username and email for signed‑in users.  
+   - Existing users (created before this change) still have `null` usernames; they can be updated manually if needed.
+**Result:**  
+User profiles are now fully integrated. Registration automatically creates a profile record, and the app provides a trilingual profile modal that fetches and shows the current user’s details. All changes are backward‑compatible; the existing authentication flow remains unchanged.
+PHASE 25 – PROFILE MODAL VISUAL REDESIGN
+Goal: Replace the basic profile modal with a modern, branded design that includes an avatar (with initials), user details displayed in a card style, and three action buttons (modify profile, achievements, sign out).
+================================================================================
+25.1 – NEW PROFILE MODAL HTML STRUCTURE
+   File: ed-french-header.html
+   Change: Replaced the existing `#profileModal` content with a new layout:
+           - `div.profile-modal-card` (max-width 380px, centered)
+           - En-tête avec fond dégradé (gradient) contenant un avatar (`div.profile-avatar`) et les champs nom d'utilisateur et email.
+           - Section des boutons d'action avec trois boutons :
+             · "✏️ Modifier le profil" → lien vers `profile.html#personal`
+             · "🏆 Parcours / Réalisations" → lien vers `profile.html#achievements`
+             · "🚪 Déconnexion" → bouton (exécute la déconnexion)
+           - Tous les textes visibles reçoivent des attributs `data-i18n`.
+   Reason: The initial profile modal was functional but unstyled. The new design gives a polished user experience consistent with the app's overall look.
+25.2 – PROFILE MODAL CSS (shared.css)
+   File: shared.css
+   Change: Added a comprehensive set of styles under a new comment block "PROFILE MODAL ENHANCEMENTS":
+           - `.profile-modal-card` : carte avec overflow hidden, fond et bordures.
+           - `.profile-card-header` : fond en dégradé, padding, centre.
+           - `.profile-avatar` : cercle 64px avec couleur d'accent, affichage des initiales.
+           - `.profile-card-username` et `.profile-card-email` : typographie adaptée.
+           - `.profile-card-actions` : conteneur flex pour les boutons.
+           - `.profile-action-btn` : boutons pleine largeur avec icônes et états hover.
+           - Variantes : `.profile-action-primary`, `.profile-action-secondary`, `.profile-action-danger`.
+           - Adaptations pour le mode sombre.
+   Reason: Provides a unique, attractive profile card that matches the application theme.
+25.3 – JAVASCRIPT UPDATES IN ed-french-ini.js
+   File: ed-french-ini.js
+   Change: Modified the `profileBtn` click handler to:
+           - Fetch the user's profile (username) from Supabase.
+           - Populate `#profile-username-display`, `#profile-email-display`, and the avatar (display first letter of username or email).
+           - Open the modal.
+           Added a new click handler for `#profileSignoutBtn` inside the modal that signs the user out, closes the modal, and shows the sign-out toast.
+   Reason: Connects the redesigned UI with real user data and provides an in‑modal sign‑out option.
+25.4 – MISSING TRANSLATION KEYS FIXED
+   Files: ed-french-header.html, i18n.js
+   Change: Added translation keys for `profile_edit` and `profile_achievements` in all three languages (fr/en/ar) inside the header's inline script. Also ensured the toast key `profile_error_load` was added. The toast `'profile_error_load'` was already added earlier; verified it's present in `i18n.js`.
+   Reason: All user‑facing strings in the new modal are now localised.
+Result: The profile modal is visually appealing, fully interactive, and trilingual. Users can view their details and access the full profile page or sign out directly from the modal.
+================================================================================
+
+PHASE 26 – PROFILE PAGE (profile.html) CREATION
+Goal: Build a dedicated page for users to view and edit their personal information, see achievements (coming soon), and print their profile data.
+================================================================================
+26.1 – CREATED profile.html WITH TWO SECTIONS
+   File: profile.html (new)
+   Change: Created a standalone page using the app shell (header/footer injected by `ed-french-ini.js`). Contains:
+           - Breadcrumb and title "Mon Profil".
+           - Section "Informations personnelles" (`#personal`) displaying username, email, and password (masked). Each field has an edit button that reveals an inline edit form.
+             · Username editing: simple text input, saves to profiles table via `upsert`.
+             · Email editing: requires current password for re‑authentication; calls `updateUser({ email })` (sends verification email).
+             · Password editing: requires current password and new password; calls `updateUser({ password })` after re‑authentication.
+           - Section "Réalisations" (`#achievements`) showing a coming‑soon placeholder.
+           - A print button that triggers `window.print()`.
+           - Print‑only header/footer with dynamic date (French locale).
+           - All text translated (fr/en/ar) with `data-i18n` attributes.
+           - RTL support for Arabic: the script sets `dir="rtl"` on `#main-content` only (not the whole page), preventing header/footer disruption.
+           - Password row hidden during print (class `no-print`).
+           - Sign‑out redirect: listens to `onAuthStateChange` and redirects to `index.html` on `SIGNED_OUT`.
+   Reason: Provides a central place for users to manage their account details, view progress, and obtain a printable record.
+26.2 – TRANSLATION KEYS
+   File: profile.html (inline <script>)
+   Change: Registered all necessary translation keys for the page in fr/en/ar. Keys include labels, buttons, toast messages, and print-related strings.
+   Reason: Ensures the profile page is fully multilingual.
+26.3 – BUG FIXES DURING DEVELOPMENT
+   Changes:
+       - Fixed print date not appearing: moved the date injection to a `DOMContentLoaded` listener that appends the date after translations are applied.
+       - Fixed Arabic RTL affecting header/footer: applied `dir` only to `#main-content`.
+       - Password change error ("invalid session") resolved by re‑authenticating with current password before calling `updateUser`.
+       - Email change now correctly notifies the user that a verification email has been sent, rather than claiming instant success.
+   Reason: Addresses issues that would prevent the page from working correctly in all scenarios.
+Result: The profile page is fully operational, secure, and integrated into the app. Users can modify their profile, change sensitive data after confirming their password, and print a clean PDF without the password.
+================================================================================
+
+PHASE 27 – LESSON PAGE AUTH & SELF-ASSESSMENT INTEGRATION (Template for all lessons)
+Goal: Enhance the existing lesson template (semaine1-classes-grammaticales.html) so that:
+      - Only signed‑in users can view answer keys.
+      - Each exercise includes a self‑assessment radio group (correct/incorrect/partially correct).
+      - A scoring area at the bottom displays live counts of self‑assessed answers.
+      - The page integrates with the app shell (header/footer via ed-french-ini.js) and uses real authentication.
+      - The previous direct‑translation and i18n infrastructure is preserved.
+================================================================================
+27.1 – APP SHELL INTEGRATION
+   File: semaine1-classes-grammaticales.html
+   Change: - Removed the custom `<nav class="back-nav">` and `<footer class="lesson-footer">` (the app’s global header and footer are now injected).
+           - Added a small breadcrumb inside the `<div id="main-content">` to preserve lesson navigation.
+           - Included the required script dependencies for Supabase auth: `db-utils.js`, Supabase CDN, and `supabase-client.js` before `ed-french-ini.js`.
+   Reason: Aligns the lesson page with the rest of the application; header/footer are no longer duplicated. Authentication is now available on the page.
+27.2 – AUTH‑GATED CORRECTIONS
+   File: semaine1-classes-grammaticales.html (JavaScript)
+   Change: Replaced the original `toggleCorrection()` function with an async version that:
+           - Calls `App.supabase.auth.getSession()`.
+           - If no session, shows a translated toast (`toast_signin_required`) and opens the sign‑in modal (by clicking `#signInBtn`).
+           - If session exists, toggles the visibility of the answer key as before.
+   Reason: Non‑authenticated users are prevented from seeing the corrections, encouraging registration while still allowing them to attempt exercises.
+27.3 – SELF‑ASSESSMENT RADIO BUTTONS
+   File: semaine1-classes-grammaticales.html (HTML + JS)
+   Change: - Added a `<div class="self-assessment">` after each exercise (exercises 1‑4). It contains three radio inputs with `name="self_ex1"` … `name="self_ex4"`, each labelled with translated text (Correcte, Incorrecte, Partiellement correcte).
+           - The radio buttons are not submitted anywhere; they are purely for self‑evaluation.
+   Reason: Empowers students to reflect on their own answers. The data could later be saved to a backend.
+27.4 – LIVE SCORING AREA
+   File: semaine1-classes-grammaticales.html (HTML + JS)
+   Change: - Added a `<div class="score-area">` at the bottom containing counters for correct, incorrect, partial, and unanswered exercises.
+           - Implemented `updateScore()` that reads all radio groups and updates the counts immediately.
+           - Added an event listener on all self‑assessment radios to call `updateScore()`.
+   Reason: Gives instant feedback on self‑assessed performance.
+27.5 – TRANSLATION KEYS ADDED
+   File: semaine1-classes-grammaticales.html (inline <script>)
+   Change: Added all necessary keys for the new elements: `self_assess_question`, `self_correct`, `self_incorrect`, `self_partial`, `score_title`, `score_correct`, `score_incorrect`, `score_partial`, `score_unanswered`, and `toast_signin_required` in all three languages.
+   Reason: Full i18n coverage.
+27.6 – COMPATIBILITY WITH EXISTING DIRECT‑TRANSLATION FIX
+   Note: The existing `.no-bilingual` class and the override script for direct‑only elements (table headers, footer links) remain untouched and continue to work correctly.
+27.7 – LESSON TEMPLATE NOTE (COMMENT ADDED TO HTML)
+   File: semaine1-classes-grammaticales.html
+   Change: Added a comprehensive comment block at the end of the file titled "PHASE 2 – AUTH & SELF‑ASSESSMENT INTEGRATION (2026-08-04)" explaining all additions and how to apply the template to other lessons.
+   Reason: Serves as a guide for the developer to duplicate the structure for the remaining 63 lessons.
+Result: The lesson page is now fully integrated with the app’s authentication system. Corrections are hidden from anonymous users, and students can self‑assess their work. The page can be used as a base for all future lessons.
+PHASE 28 – ACTION LOGGING SYSTEM (GENERAL STATS & USER BACKUP)
+Goal: Capture every relevant user action (pages, auth, profile, lessons, printing, PWA install)
+      in two Supabase tables:
+      - log-ed-french-interactions-general  → aggregated counters (one row per action type)
+      - log-ed-french-interactions-backup    → one row per authenticated user, with a JSON array
+        of all their actions (append only)
+      The system is completely sandboxed: no interference with existing functionality,
+      no duplicate rows, and uses Supabase RPC for atomic operations.
+================================================================================
+28.1 – SUPABASE TABLES AND FUNCTIONS
+   See SUPABASE ACTIONS section for the complete SQL.
+   Reason: General table stores counters per action type; backup table stores per‑user action arrays.
+   SECURITY DEFINER functions allow anon/authenticated users to safely update rows.
+
+28.2 – LOGGING MODULE (logging.js)
+   File: logging.js (new)
+   Content: A self‑contained IIFE that creates a secondary Supabase client (with persistSession: false)
+   for general actions, and uses the main App.supabase for user actions.
+   - App.logGeneralAction(action, details) calls increment_general_action RPC.
+   - App.logUserAction(action, details) calls append_user_action RPC.
+   The module also logs page visits (index, revision) on load.
+   Included in all pages after supabase-client.js.
+
+28.3 – INTEGRATION IN PAGES
+   - index.html, revision.html, profile.html: added <script src="logging.js"></script> after supabase-client.js.
+   - ed-french-ini.js:
+       * Sign‑in success: App.logGeneralAction('sign_in'); App.logUserAction('sign_in');
+       * Sign‑up success (immediate): App.logGeneralAction('sign_up'); App.logUserAction('sign_up');
+       * Sign‑up with email confirmation: App.logGeneralAction('sign_up_initiated');
+       * Sign‑out (header and profile modal): before signOut → App.logUserAction('sign_out');
+         after signOut → App.logGeneralAction('sign_out');
+       * PWA install accepted: App.logGeneralAction('pwa_installed'); App.logUserAction('pwa_installed');
+   - revision.html:
+       * Lesson‑link clicks: captures lesson title/label and logs to general or user (based on session).
+       * Print afterprint: logs 'revision_printed' to both general and (if signed in) user.
+   - profile.html:
+       * Username/email/password changes: logs user action with details.
+   Reason: Captures all critical interactions without affecting existing features.
+
+28.4 – RESULT
+   The general table now shows aggregated counters for each action (e.g., sign_in: 12, page_visit_index: 340).
+   The backup table stores one row per user, with a growing JSON array of all their actions.
+   All logging is silent, fire‑and‑forget, and fully sandboxed.
+PHASE 29 – SERVICE WORKER CACHE STRATEGY: DEV vs. PRODUCTION
+Goal: During development, always serve the latest HTML from the network (with offline fallback) to avoid stale pages after changes. For production, switch to a cache‑first strategy for instant loading, while still supporting hard‑refresh (Ctrl+Shift+R) to fetch fresh content.
+================================================================================
+29.1 – NAVIGATION REQUEST HANDLING (sw.js)
+   File: sw.js
+   Change: Replaced the single navigation fetch handler with two clearly separated strategies:
+           - 🔧 Development (active): `fetch(event.request, { cache: 'no-cache' })` forces a network
+             request on every navigation, updates the cache, and falls back to cache if offline.
+           - 📦 Production (commented out): For normal navigations, serves from cache immediately
+             and silently updates the cache in the background. Detects hard refresh
+             (request.cache === 'reload' or Cache-Control: no-cache) and, when detected,
+             performs a full network request with `{ cache: 'no-cache' }` to get the latest page.
+           The rest of the fetch logic (images, CSS/JS, other assets) remains unchanged.
+   Reason: During development, every page reload must reflect the latest changes.
+           In production, cached pages provide instant loads while still allowing a full refresh
+           when needed. The dual‑strategy approach with a simple comment toggle makes switching easy.
+29.2 – RESULT
+   Developers now see immediately updated HTML after every file change.
+   When switching to production (uncomment the second block), normal navigation becomes cache‑first,
+   while hard refresh still guarantees fresh content. No other caching behavior is affected.
+================================================================================
+================================================================================
+================================================================================
 ================================================================================
 ================================================================================
 ================================================================================
@@ -1527,3 +1795,96 @@ Files modified:
   - Supabase Dashboard → Authentication → URL Configuration
     · Site URL set to: https://educational-dashboard-french.netlify.app
     · Redirect URL added: https://educational-dashboard-french.netlify.app/reset-password.html
+Tables:
+Profiles table (public.profiles) – created for user profiles:
+  - Table SQL:
+    CREATE TABLE public.profiles (
+        id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
+        username TEXT UNIQUE,
+        created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+        updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+    );
+  - Row Level Security enabled with policies:
+    · SELECT: Users can view own profile (USING auth.uid() = id)
+    · INSERT: Users can insert own profile (WITH CHECK auth.uid() = id)
+    · UPDATE: Users can update own profile (USING auth.uid() = id, WITH CHECK auth.uid() = id)
+  - Automatic profile creation trigger:
+    CREATE OR REPLACE FUNCTION public.handle_new_user()
+    RETURNS TRIGGER LANGUAGE plpgsql SECURITY DEFINER SET search_path = ''
+    AS $$
+    BEGIN
+        INSERT INTO public.profiles (id, username)
+        VALUES (NEW.id, NEW.raw_user_meta_data ->> 'username');
+        RETURN NEW;
+    END;
+    $$;
+    CREATE TRIGGER on_auth_user_created
+        AFTER INSERT ON auth.users
+        FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
+  - The trigger reads the 'username' from the raw_user_meta_data sent during sign‑up.
+    The username is passed via App.supabase.auth.signUp({ ... options: { data: { username } } }).
+  - Profiles are automatically created for all new users; existing users before this change may have null usernames (can be backfilled).
+  - Front‑end integration: a profile modal (#profileModal) in the header shows username (from profiles) and email (from auth.users).
+Tables:
+Logging – General action counters (log-ed-french-interactions-general)
+  CREATE TABLE public."log-ed-french-interactions-general" (
+    action     TEXT PRIMARY KEY,
+    count      INTEGER NOT NULL DEFAULT 1,
+    user_agent TEXT,
+    updated_at TIMESTAMPTZ DEFAULT now()
+  );
+  ALTER TABLE public."log-ed-french-interactions-general" ENABLE ROW LEVEL SECURITY;
+  CREATE POLICY "anon_can_insert_general" ON public."log-ed-french-interactions-general"
+    FOR INSERT WITH CHECK (true);
+  CREATE POLICY "anon_can_update_general" ON public."log-ed-french-interactions-general"
+    FOR UPDATE USING (true) WITH CHECK (true);
+
+Logging – User action backup (log-ed-french-interactions-backup)
+  CREATE TABLE public."log-ed-french-interactions-backup" (
+    user_id    UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
+    actions    JSONB NOT NULL DEFAULT '[]'::jsonb,
+    updated_at TIMESTAMPTZ DEFAULT now()
+  );
+  ALTER TABLE public."log-ed-french-interactions-backup" ENABLE ROW LEVEL SECURITY;
+  CREATE POLICY "auth_manage_own_backup" ON public."log-ed-french-interactions-backup"
+    FOR ALL USING (auth.uid() = user_id) WITH CHECK (auth.uid() = user_id);
+
+Functions:
+  increment_general_action (increments counter atomically)
+    CREATE OR REPLACE FUNCTION increment_general_action(
+      action_text TEXT,
+      user_agent_text TEXT DEFAULT NULL
+    ) RETURNS VOID AS $$
+    BEGIN
+      INSERT INTO public."log-ed-french-interactions-general" (action, count, user_agent, updated_at)
+      VALUES (action_text, 1, user_agent_text, now())
+      ON CONFLICT (action)
+      DO UPDATE SET
+        count = "log-ed-french-interactions-general".count + 1,
+        user_agent = EXCLUDED.user_agent,
+        updated_at = now();
+    END;
+    $$ LANGUAGE plpgsql SECURITY DEFINER;
+
+  append_user_action (appends entry to user's JSON array)
+    CREATE OR REPLACE FUNCTION append_user_action(
+      p_user_id UUID,
+      p_action_entry JSONB
+    ) RETURNS VOID AS $$
+    BEGIN
+      INSERT INTO public."log-ed-french-interactions-backup" (user_id, actions, updated_at)
+      VALUES (p_user_id, jsonb_build_array(p_action_entry), now())
+      ON CONFLICT (user_id)
+      DO UPDATE SET
+        actions = "log-ed-french-interactions-backup".actions || p_action_entry,
+        updated_at = now();
+    END;
+    $$ LANGUAGE plpgsql SECURITY DEFINER;
+
+Files created:
+  - logging.js
+Files modified:
+  - index.html (added logging.js)
+  - revision.html (added logging.js, lesson-click logger, print logger)
+  - profile.html (added logging.js, profile action loggers)
+  - ed-french-ini.js (auth and PWA log calls)

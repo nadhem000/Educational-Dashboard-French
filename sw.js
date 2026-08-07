@@ -1,7 +1,7 @@
 importScripts('db-utils.js');
 
 // Service Worker – Educational Dashboard – French
-const CACHE_NAME = 'ed-french-v1.9.3'; // bump version to force cache refresh
+const CACHE_NAME = 'ed-french-v1.9.6'; // bump version to force cache refresh
 const urlsToCache = [
     '/',
     '/index.html',
@@ -139,10 +139,18 @@ self.addEventListener('fetch', event => {
     const requestUrl = new URL(event.request.url);
     if (event.request.method !== 'GET') return;
 
-    // Navigation requests: network first, cache fallback
+    // ──────────────────────────────────────────────────────
+    // NAVIGATION REQUESTS – Two strategies
+    // Use the uncommented development version now;
+    // switch to the commented production version before deploying.
+    // ──────────────────────────────────────────────────────
+
+    // ======================================================
+    // 🔧 DEVELOPMENT: always fetch from network (no cache)
+    // ======================================================
     if (event.request.mode === 'navigate') {
         event.respondWith(
-            fetch(event.request)
+            fetch(event.request, { cache: 'no-cache' })
                 .then(response => {
                     const responseClone = response.clone();
                     caches.open(CACHE_NAME).then(cache => cache.put(event.request, responseClone));
@@ -155,6 +163,47 @@ self.addEventListener('fetch', event => {
         );
         return;
     }
+
+    // ======================================================
+    // 📦 PRODUCTION: cache-first, network update in background
+    //    Hard refresh (Ctrl+Shift+R) bypasses cache.
+    // ======================================================
+    /*
+    if (event.request.mode === 'navigate') {
+        const isHardRefresh = event.request.cache === 'reload' ||
+                             event.request.headers.get('Cache-Control')?.includes('no-cache');
+
+        if (isHardRefresh) {
+            event.respondWith(
+                fetch(event.request, { cache: 'no-cache' })
+                    .then(response => {
+                        const responseClone = response.clone();
+                        caches.open(CACHE_NAME).then(cache => cache.put(event.request, responseClone));
+                        return response;
+                    })
+                    .catch(() => {
+                        swLog('warn', 'Offline during hard refresh – falling back to cache');
+                        return caches.match(event.request).then(cached => cached || caches.match('/index.html'));
+                    })
+            );
+            return;
+        }
+
+        event.respondWith(
+            caches.match(event.request).then(cachedResponse => {
+                const fetchPromise = fetch(event.request).then(networkResponse => {
+                    caches.open(CACHE_NAME).then(cache => cache.put(event.request, networkResponse.clone()));
+                    return networkResponse;
+                }).catch(error => {
+                    swLog('warn', 'Background update failed – ' + event.request.url);
+                });
+
+                return cachedResponse || fetchPromise;
+            })
+        );
+        return;
+    }
+    */
 
     // For images, fonts, etc. – cache-first with background revalidation
     if (requestUrl.pathname.match(/\.(png|jpg|jpeg|gif|svg|ico|webp|woff2?)$/i)) {
