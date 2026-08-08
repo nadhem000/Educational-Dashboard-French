@@ -563,6 +563,12 @@
                 <div class="score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">4</span></div>
             </div>
         </div>
+<div class="score-actions" style="margin-top:1.2rem;">
+    <button id="saveResultsBtn" class="btn-verify" style="margin-right:0.5rem;" 
+            data-i18n="save_results">💾 Enregistrer mes résultats</button>
+    <span id="saveMsg" style="color:var(--success); font-size:0.9rem; display:none;" 
+          data-i18n="save_success">Résultats sauvegardés ✓</span>
+</div>
 
         <!-- Footer nav (minimal, app shell handles the rest) -->
         <div style="margin-top:2rem; display:flex; justify-content:space-between; flex-wrap:wrap;">
@@ -630,6 +636,8 @@
                 'score_incorrect': 'Incorrectes :',
                 'score_partial': 'Partielles :',
                 'score_unanswered': 'Sans réponse :',
+  'save_results': '💾 Enregistrer mes résultats',
+  'save_success': 'Résultats sauvegardés ✓',
                 'toast_signin_required': 'Connectez-vous pour voir les corrections.'
             },
             en: {
@@ -682,6 +690,8 @@
                 'score_incorrect': 'Incorrect:',
                 'score_partial': 'Partial:',
                 'score_unanswered': 'Unanswered:',
+  'save_results': '💾 Save my results',
+  'save_success': 'Results saved ✓',
                 'toast_signin_required': 'Sign in to see the corrections.'
             },
             ar: {
@@ -734,6 +744,8 @@
                 'score_incorrect': 'خاطئ:',
                 'score_partial': 'جزئي:',
                 'score_unanswered': 'بدون إجابة:',
+  'save_results': '💾 حفظ نتائجي',
+  'save_success': 'تم حفظ النتائج ✓',
                 'toast_signin_required': 'سجّل الدخول لرؤية التصحيحات.'
             }
         });
@@ -856,6 +868,88 @@
                 document.getElementById('scorePartial').textContent = partial;
                 document.getElementById('scoreUnanswered').textContent = unanswered;
             }
+// ── Save self‑assessment to profiles.achivement ──
+document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+    const { data: { user } } = await App.supabase.auth.getUser();
+    if (!user) {
+        App.showToast('toast_signin_required', 'error');
+        const signInBtn = document.getElementById('signInBtn');
+        if (signInBtn) signInBtn.click();
+        return;
+    }
+
+    // Gather self‑assessment counts
+    const radioGroups = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4'];
+    let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+    radioGroups.forEach(name => {
+        const selected = document.querySelector(`input[name="${name}"]:checked`);
+        if (selected) {
+            if (selected.value === 'correct') correct++;
+            else if (selected.value === 'incorrect') incorrect++;
+            else if (selected.value === 'partial') partial++;
+        } else {
+            unanswered++;
+        }
+    });
+
+    // Lesson metadata (customise per lesson)
+    const lessonId = 'semaine1-classes-grammaticales';
+    const year = '4ᵉ année secondaire (Bac)';
+    const module = 'Grammaire';
+    const entry = {
+        lesson_id: lessonId,
+        year: year,
+        module: module,
+        correct: correct,
+        incorrect: incorrect,
+        partial: partial,
+        unanswered: unanswered,
+        updated_at: new Date().toISOString()
+    };
+
+    // Fetch current profile, then update the achivement array
+    const { data: profileData, error: fetchError } = await App.supabase
+        .from('profiles')
+        .select('achivement')
+        .eq('id', user.id)
+        .single();
+
+    if (fetchError) {
+        console.error('Could not fetch profile:', fetchError);
+        return;
+    }
+
+    let achivement = profileData?.achivement || {};
+    if (!achivement["ED-French"]) {
+        achivement["ED-French"] = [];
+    }
+    const arr = achivement["ED-French"];
+    // Replace existing entry for the same lesson, or push new
+    const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+    if (existingIdx >= 0) {
+        arr[existingIdx] = entry;
+    } else {
+        arr.push(entry);
+    }
+
+    // Save back
+    const { error: updateError } = await App.supabase
+        .from('profiles')
+        .update({ achivement: achivement })
+        .eq('id', user.id);
+
+    if (updateError) {
+        console.error('Save failed:', updateError);
+        App.showToast('Erreur lors de la sauvegarde', 'error');
+    } else {
+        const saveMsg = document.getElementById('saveMsg');
+        if (saveMsg) {
+            saveMsg.style.display = 'inline';
+            setTimeout(() => { saveMsg.style.display = 'none'; }, 3000);
+        }
+        App.logUserAction('lesson_saved', { lesson: lessonId, correct, incorrect, partial });
+    }
+});
 
             document.querySelectorAll('input[type="radio"][name^="self_ex"]').forEach(radio => {
                 radio.addEventListener('change', updateScore);

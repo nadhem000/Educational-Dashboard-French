@@ -202,11 +202,15 @@
 			
 			<!-- Achievements Section -->
 			<section class="profile-section" id="achievements">
-				<h2 data-i18n="achievements">Réalisations</h2>
-				<div class="coming-soon-placeholder">
-					<span data-i18n="coming_soon">⏳ Contenu à venir</span>
-				</div>
-			</section>
+    <h2 data-i18n="achievements">🏆 Parcours / Réalisations</h2>
+    <div id="achievementsContent">
+        <!-- Skeleton loader while data is being fetched -->
+        <div class="skeleton-card" style="margin-bottom:1rem;">
+            <div class="skeleton-line skeleton-title" style="width:60%;"></div>
+            <div class="skeleton-line short"></div>
+        </div>
+    </div>
+</section>
 			
 			<!-- Print button -->
 			<div class="print-actions">
@@ -262,6 +266,8 @@
 					'new_password_placeholder': 'Nouveau mot de passe',
 					'print_profile': '🖨️ Imprimer le profil',
 					'coming_soon': '⏳ Contenu à venir',
+'login_to_view_achievements': 'Connectez-vous pour voir vos réalisations.',
+'no_achievements': 'Aucune leçon enregistrée. Commencez un exercice et sauvegardez vos résultats !',
 					'username_updated': 'Nom d\'utilisateur mis à jour.',
 					'email_verification_sent': 'Un email de vérification a été envoyé à votre nouvelle adresse.',
 					'password_updated': 'Mot de passe modifié avec succès.',
@@ -297,6 +303,8 @@
 					'new_password_placeholder': 'New password',
 					'print_profile': '🖨️ Print profile',
 					'coming_soon': '⏳ Coming soon',
+'login_to_view_achievements': 'Sign in to see your achievements.',
+'no_achievements': 'No recorded lessons. Start an exercise and save your results!',
 					'username_updated': 'Username updated.',
 					'email_verification_sent': 'A verification email has been sent to your new address.',
 					'password_updated': 'Password changed successfully.',
@@ -332,6 +340,8 @@
 					'new_password_placeholder': 'كلمة المرور الجديدة',
 					'print_profile': '🖨️ طباعة الملف الشخصي',
 					'coming_soon': '⏳ قريباً',
+'login_to_view_achievements': 'سجّل الدخول لرؤية إنجازاتك.',
+'no_achievements': 'لا توجد دروس مسجلة. ابدأ تمرينًا واحفظ نتائجك!',
 					'username_updated': 'تم تحديث اسم المستخدم.',
 					'email_verification_sent': 'تم إرسال بريد تحقق إلى عنوانك الجديد.',
 					'password_updated': 'تم تغيير كلمة المرور بنجاح.',
@@ -371,8 +381,84 @@
 					document.getElementById('display-username').textContent = profile?.username || '';
 					document.getElementById('display-email').textContent = user.email || '';
 				}
+// ── Load achievements ──
+async function loadAchievements() {
+    const container = document.getElementById('achievementsContent');
+    if (!container) return;
+
+    const { data: { user } } = await App.supabase.auth.getUser();
+    if (!user) {
+        container.innerHTML = '<p data-i18n="login_to_view_achievements">Connectez-vous pour voir vos réalisations.</p>';
+        App.applyTranslations();
+        return;
+    }
+
+    const { data: profileData, error } = await App.supabase
+        .from('profiles')
+        .select('achivement')
+        .eq('id', user.id)
+        .single();
+
+    if (error || !profileData || !profileData.achivement) {
+        container.innerHTML = '<p data-i18n="no_achievements">Aucune leçon enregistrée. Commencez un exercice et sauvegardez vos résultats !</p>';
+        App.applyTranslations();
+        return;
+    }
+
+    const edFrenchScores = profileData.achivement["ED-French"];
+    if (!edFrenchScores || edFrenchScores.length === 0) {
+        container.innerHTML = '<p data-i18n="no_achievements">Aucune leçon enregistrée. Commencez un exercice et sauvegardez vos résultats !</p>';
+        App.applyTranslations();
+        return;
+    }
+
+    // Group by year, then module
+    const grouped = {};
+    edFrenchScores.forEach(s => {
+        const yr = s.year || 'Sans année';
+        const mod = s.module || 'Sans module';
+        if (!grouped[yr]) grouped[yr] = {};
+        if (!grouped[yr][mod]) grouped[yr][mod] = [];
+        grouped[yr][mod].push(s);
+    });
+
+    let html = '';
+    for (const year in grouped) {
+        html += `<h3 style="color:var(--accent); margin-top:1.5rem;">📅 ${escapeHtml(year)}</h3>`;
+        for (const module in grouped[year]) {
+            html += `<h4 style="margin-left:1rem; color:var(--heading);">📘 ${escapeHtml(module)}</h4>`;
+            html += '<ul style="list-style:none; padding-left:2rem;">';
+            grouped[year][module].forEach(s => {
+                const total = s.correct + s.incorrect + s.partial + s.unanswered || 1;
+                const pctCorrect = ((s.correct / total) * 100).toFixed(1);
+                const pctPartial = ((s.partial / total) * 100).toFixed(1);
+                const pctIncorrect = ((s.incorrect / total) * 100).toFixed(1);
+                const lessonName = s.lesson_id.replace(/-/g, ' '); // simple display; can be improved later
+                html += `<li style="margin-bottom:0.5rem;">
+                    <strong>${escapeHtml(lessonName)}</strong> – 
+                    ✅ ${pctCorrect}% correct, 
+                    ⚠️ ${pctPartial}% partiel, 
+                    ❌ ${pctIncorrect}% incorrect
+                </li>`;
+            });
+            html += '</ul>';
+        }
+    }
+    container.innerHTML = html;
+    App.applyTranslations();
+}
+
+// Helper to prevent XSS
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.appendChild(document.createTextNode(text));
+    return div.innerHTML;
+}
 				
 				loadProfile();
+
+// Call after profile loads
+loadAchievements();
 				
 				// ----- Username editing -----
 				document.getElementById('edit-username-btn').addEventListener('click', () => {
