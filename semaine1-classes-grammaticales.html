@@ -909,17 +909,29 @@ document.getElementById('saveResultsBtn').addEventListener('click', async functi
     const lang = localStorage.getItem('lang') || 'fr';
     const lessonTitle = App.getTranslation('lesson_short_title', lang) || lessonId;
 
-    const entry = {
-    lesson_id: lessonId,
-    lesson_title: 'lesson_short_title',          // existing key
-    year: 'ach_year_bac',                       // new key
-    module: 'ach_module_semaine1',               // new key
-    correct: correct,
-    incorrect: incorrect,
-    partial: partial,
-    unanswered: unanswered,
-    updated_at: new Date().toISOString()
-};
+        const entry = {
+        lesson_id: lessonId,
+        lesson_title: {
+            fr: App.getTranslation('lesson_short_title', 'fr'),
+            en: App.getTranslation('lesson_short_title', 'en'),
+            ar: App.getTranslation('lesson_short_title', 'ar')
+        },
+        year: {
+            fr: App.getTranslation('ach_year_bac', 'fr'),
+            en: App.getTranslation('ach_year_bac', 'en'),
+            ar: App.getTranslation('ach_year_bac', 'ar')
+        },
+        module: {
+            fr: App.getTranslation('ach_module_semaine1', 'fr'),
+            en: App.getTranslation('ach_module_semaine1', 'en'),
+            ar: App.getTranslation('ach_module_semaine1', 'ar')
+        },
+        correct: correct,
+        incorrect: incorrect,
+        partial: partial,
+        unanswered: unanswered,
+        updated_at: new Date().toISOString()
+    };
 
     // Fetch current profile, then update the achivement array
     const { data: profileData, error: fetchError } = await App.supabase
