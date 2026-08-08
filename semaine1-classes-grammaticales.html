@@ -566,8 +566,6 @@
 <div class="score-actions" style="margin-top:1.2rem;">
     <button id="saveResultsBtn" class="btn-verify" style="margin-right:0.5rem;" 
             data-i18n="save_results">💾 Enregistrer mes résultats</button>
-    <span id="saveMsg" style="color:var(--success); font-size:0.9rem; display:none;" 
-          data-i18n="save_success">Résultats sauvegardés ✓</span>
 </div>
 
         <!-- Footer nav (minimal, app shell handles the rest) -->
@@ -588,6 +586,7 @@
         App.addI18nTranslations({
             fr: {
                 'lesson1_title': 'Leçon 1 – Les Classes Grammaticales | Texte littéraire & Exercices',
+				'lesson_short_title': 'Classes grammaticales',
                 'back_revision': 'Révision générale',
                 'back_current': 'Classes grammaticales',
                 'lesson_badge': '📘 Grammaire · Leçon 1',
@@ -638,10 +637,12 @@
                 'score_unanswered': 'Sans réponse :',
   'save_results': '💾 Enregistrer mes résultats',
   'save_success': 'Résultats sauvegardés ✓',
+'save_error': 'Erreur lors de la sauvegarde',
                 'toast_signin_required': 'Connectez-vous pour voir les corrections.'
             },
             en: {
                 'lesson1_title': 'Lesson 1 – Grammatical Classes | Literary Text & Exercises',
+				'lesson_short_title': 'Grammatical Classes',
                 'back_revision': 'General Review',
                 'back_current': 'Grammatical Classes',
                 'lesson_badge': '📘 Grammar · Lesson 1',
@@ -692,10 +693,12 @@
                 'score_unanswered': 'Unanswered:',
   'save_results': '💾 Save my results',
   'save_success': 'Results saved ✓',
+'save_error': 'Save failed',
                 'toast_signin_required': 'Sign in to see the corrections.'
             },
             ar: {
                 'lesson1_title': 'الدرس 1 – الأصناف النحوية | نص أدبي وتمارين',
+				'lesson_short_title': 'الأصناف النحوية',
                 'back_revision': 'المراجعة العامة',
                 'back_current': 'الأصناف النحوية',
                 'lesson_badge': '📘 القواعد · الدرس 1',
@@ -746,6 +749,7 @@
                 'score_unanswered': 'بدون إجابة:',
   'save_results': '💾 حفظ نتائجي',
   'save_success': 'تم حفظ النتائج ✓',
+'save_error': 'خطأ في الحفظ',
                 'toast_signin_required': 'سجّل الدخول لرؤية التصحيحات.'
             }
         });
@@ -896,8 +900,13 @@ document.getElementById('saveResultsBtn').addEventListener('click', async functi
     const lessonId = 'semaine1-classes-grammaticales';
     const year = '4ᵉ année secondaire (Bac)';
     const module = 'Grammaire';
+        // Get translated short title
+    const lang = localStorage.getItem('lang') || 'fr';
+    const lessonTitle = App.getTranslation('lesson_short_title', lang) || lessonId;
+
     const entry = {
         lesson_id: lessonId,
+        lesson_title: lessonTitle,
         year: year,
         module: module,
         correct: correct,
@@ -938,15 +947,11 @@ document.getElementById('saveResultsBtn').addEventListener('click', async functi
         .update({ achivement: achivement })
         .eq('id', user.id);
 
-    if (updateError) {
+        if (updateError) {
         console.error('Save failed:', updateError);
-        App.showToast('Erreur lors de la sauvegarde', 'error');
+        App.showToast('save_error', 'error');   // we'll define this key shortly
     } else {
-        const saveMsg = document.getElementById('saveMsg');
-        if (saveMsg) {
-            saveMsg.style.display = 'inline';
-            setTimeout(() => { saveMsg.style.display = 'none'; }, 3000);
-        }
+        App.showToast('save_success', 'success');
         App.logUserAction('lesson_saved', { lesson: lessonId, correct, incorrect, partial });
     }
 });
