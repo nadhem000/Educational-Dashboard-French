@@ -423,35 +423,42 @@ async function loadAchievements() {
         return;
     }
 
-    // Group by year, then module (using the stored keys)
+    // Helper: get localized field from multilingual object or fallback
+    const getLocalized = (obj, fallback) => {
+        if (typeof obj === 'object' && obj !== null && obj[lang]) return obj[lang];
+        return fallback || '';
+    };
+
+    // Group by year (use the French text as stable key)
     const grouped = {};
     edFrenchScores.forEach(s => {
-        const yr = s.year || 'ach_year_unknown';
-        const mod = s.module || 'ach_module_unknown';
-        if (!grouped[yr]) grouped[yr] = {};
-        if (!grouped[yr][mod]) grouped[yr][mod] = [];
-        grouped[yr][mod].push(s);
+        const yearKey = (s.year && typeof s.year === 'object' && s.year.fr) ? s.year.fr : 'Sans année';
+        const moduleKey = (s.module && typeof s.module === 'object' && s.module.fr) ? s.module.fr : 'Sans module';
+        if (!grouped[yearKey]) grouped[yearKey] = {};
+        if (!grouped[yearKey][moduleKey]) grouped[yearKey][moduleKey] = [];
+        grouped[yearKey][moduleKey].push(s);
     });
 
     let html = '';
-    for (const yrKey in grouped) {
-        const displayYear = App.getTranslation(yrKey, lang) || yrKey;
+    for (const yearKey in grouped) {
+        // Get the first entry's year object to display the localized version
+        const firstEntry = Object.values(grouped[yearKey])[0]?.[0];
+        const displayYear = firstEntry ? getLocalized(firstEntry.year, yearKey) : yearKey;
         html += `<h3 style="color:var(--accent); margin-top:1.5rem;">📅 ${escapeHtml(displayYear)}</h3>`;
-        for (const modKey in grouped[yrKey]) {
-            const displayModule = App.getTranslation(modKey, lang) || modKey;
+
+        for (const moduleKey in grouped[yearKey]) {
+            const firstModEntry = grouped[yearKey][moduleKey][0];
+            const displayModule = firstModEntry ? getLocalized(firstModEntry.module, moduleKey) : moduleKey;
             html += `<h4 style="margin-left:1rem; color:var(--heading);">📘 ${escapeHtml(displayModule)}</h4>`;
             html += '<ul style="list-style:none; padding-left:2rem;">';
-            grouped[yrKey][modKey].forEach(s => {
+
+            grouped[yearKey][moduleKey].forEach(s => {
                 const total = s.correct + s.incorrect + s.partial + s.unanswered || 1;
                 const pctCorrect = ((s.correct / total) * 100).toFixed(1);
                 const pctPartial = ((s.partial / total) * 100).toFixed(1);
                 const pctIncorrect = ((s.incorrect / total) * 100).toFixed(1);
 
-                // Translate lesson title (key or fallback)
-                const lessonTitleKey = s.lesson_title || s.lesson_id;
-                const lessonName = App.getTranslation(lessonTitleKey, lang) || s.lesson_id.replace(/-/g, ' ');
-
-                // Translate percentage labels
+                const lessonName = getLocalized(s.lesson_title, s.lesson_id.replace(/-/g, ' '));
                 const labelCorrect = App.getTranslation('achievement_correct', lang);
                 const labelIncorrect = App.getTranslation('achievement_incorrect', lang);
                 const labelPartial = App.getTranslation('achievement_partial', lang);
