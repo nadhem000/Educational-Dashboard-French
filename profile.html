@@ -433,7 +433,7 @@ async function loadAchievements() {
                 const pctCorrect = ((s.correct / total) * 100).toFixed(1);
                 const pctPartial = ((s.partial / total) * 100).toFixed(1);
                 const pctIncorrect = ((s.incorrect / total) * 100).toFixed(1);
-                const lessonName = s.lesson_id.replace(/-/g, ' '); // simple display; can be improved later
+                const lessonName = s.lesson_title || s.lesson_id.replace(/-/g, ' '); // simple display; can be improved later
                 html += `<li style="margin-bottom:0.5rem;">
                     <strong>${escapeHtml(lessonName)}</strong> – 
                     ✅ ${pctCorrect}% correct, 
