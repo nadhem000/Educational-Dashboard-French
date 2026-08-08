@@ -268,6 +268,9 @@
 					'coming_soon': '⏳ Contenu à venir',
 'login_to_view_achievements': 'Connectez-vous pour voir vos réalisations.',
 'no_achievements': 'Aucune leçon enregistrée. Commencez un exercice et sauvegardez vos résultats !',
+'achievement_correct': 'correct',
+'achievement_incorrect': 'incorrect',
+'achievement_partial': 'partiel',
 					'username_updated': 'Nom d\'utilisateur mis à jour.',
 					'email_verification_sent': 'Un email de vérification a été envoyé à votre nouvelle adresse.',
 					'password_updated': 'Mot de passe modifié avec succès.',
@@ -305,6 +308,9 @@
 					'coming_soon': '⏳ Coming soon',
 'login_to_view_achievements': 'Sign in to see your achievements.',
 'no_achievements': 'No recorded lessons. Start an exercise and save your results!',
+'achievement_correct': 'correct',
+'achievement_incorrect': 'incorrect',
+'achievement_partial': 'partial',
 					'username_updated': 'Username updated.',
 					'email_verification_sent': 'A verification email has been sent to your new address.',
 					'password_updated': 'Password changed successfully.',
@@ -342,6 +348,9 @@
 					'coming_soon': '⏳ قريباً',
 'login_to_view_achievements': 'سجّل الدخول لرؤية إنجازاتك.',
 'no_achievements': 'لا توجد دروس مسجلة. ابدأ تمرينًا واحفظ نتائجك!',
+'achievement_correct': 'صحيح',
+'achievement_incorrect': 'خاطئ',
+'achievement_partial': 'جزئي',
 					'username_updated': 'تم تحديث اسم المستخدم.',
 					'email_verification_sent': 'تم إرسال بريد تحقق إلى عنوانك الجديد.',
 					'password_updated': 'تم تغيير كلمة المرور بنجاح.',
@@ -386,6 +395,8 @@ async function loadAchievements() {
     const container = document.getElementById('achievementsContent');
     if (!container) return;
 
+    const lang = localStorage.getItem('lang') || 'fr';
+
     const { data: { user } } = await App.supabase.auth.getUser();
     if (!user) {
         container.innerHTML = '<p data-i18n="login_to_view_achievements">Connectez-vous pour voir vos réalisations.</p>';
@@ -400,45 +411,56 @@ async function loadAchievements() {
         .single();
 
     if (error || !profileData || !profileData.achivement) {
-        container.innerHTML = '<p data-i18n="no_achievements">Aucune leçon enregistrée. Commencez un exercice et sauvegardez vos résultats !</p>';
+        container.innerHTML = '<p data-i18n="no_achievements">Aucune leçon enregistrée.</p>';
         App.applyTranslations();
         return;
     }
 
     const edFrenchScores = profileData.achivement["ED-French"];
     if (!edFrenchScores || edFrenchScores.length === 0) {
-        container.innerHTML = '<p data-i18n="no_achievements">Aucune leçon enregistrée. Commencez un exercice et sauvegardez vos résultats !</p>';
+        container.innerHTML = '<p data-i18n="no_achievements">Aucune leçon enregistrée.</p>';
         App.applyTranslations();
         return;
     }
 
-    // Group by year, then module
+    // Group by year, then module (using the stored keys)
     const grouped = {};
     edFrenchScores.forEach(s => {
-        const yr = s.year || 'Sans année';
-        const mod = s.module || 'Sans module';
+        const yr = s.year || 'ach_year_unknown';
+        const mod = s.module || 'ach_module_unknown';
         if (!grouped[yr]) grouped[yr] = {};
         if (!grouped[yr][mod]) grouped[yr][mod] = [];
         grouped[yr][mod].push(s);
     });
 
     let html = '';
-    for (const year in grouped) {
-        html += `<h3 style="color:var(--accent); margin-top:1.5rem;">📅 ${escapeHtml(year)}</h3>`;
-        for (const module in grouped[year]) {
-            html += `<h4 style="margin-left:1rem; color:var(--heading);">📘 ${escapeHtml(module)}</h4>`;
+    for (const yrKey in grouped) {
+        const displayYear = App.getTranslation(yrKey, lang) || yrKey;
+        html += `<h3 style="color:var(--accent); margin-top:1.5rem;">📅 ${escapeHtml(displayYear)}</h3>`;
+        for (const modKey in grouped[yrKey]) {
+            const displayModule = App.getTranslation(modKey, lang) || modKey;
+            html += `<h4 style="margin-left:1rem; color:var(--heading);">📘 ${escapeHtml(displayModule)}</h4>`;
             html += '<ul style="list-style:none; padding-left:2rem;">';
-            grouped[year][module].forEach(s => {
+            grouped[yrKey][modKey].forEach(s => {
                 const total = s.correct + s.incorrect + s.partial + s.unanswered || 1;
                 const pctCorrect = ((s.correct / total) * 100).toFixed(1);
                 const pctPartial = ((s.partial / total) * 100).toFixed(1);
                 const pctIncorrect = ((s.incorrect / total) * 100).toFixed(1);
-                const lessonName = s.lesson_title || s.lesson_id.replace(/-/g, ' '); // simple display; can be improved later
+
+                // Translate lesson title (key or fallback)
+                const lessonTitleKey = s.lesson_title || s.lesson_id;
+                const lessonName = App.getTranslation(lessonTitleKey, lang) || s.lesson_id.replace(/-/g, ' ');
+
+                // Translate percentage labels
+                const labelCorrect = App.getTranslation('achievement_correct', lang);
+                const labelIncorrect = App.getTranslation('achievement_incorrect', lang);
+                const labelPartial = App.getTranslation('achievement_partial', lang);
+
                 html += `<li style="margin-bottom:0.5rem;">
                     <strong>${escapeHtml(lessonName)}</strong> – 
-                    ✅ ${pctCorrect}% correct, 
-                    ⚠️ ${pctPartial}% partiel, 
-                    ❌ ${pctIncorrect}% incorrect
+                    ✅ ${pctCorrect}% ${labelCorrect}, 
+                    ⚠️ ${pctPartial}% ${labelPartial}, 
+                    ❌ ${pctIncorrect}% ${labelIncorrect}
                 </li>`;
             });
             html += '</ul>';
@@ -448,7 +470,7 @@ async function loadAchievements() {
     App.applyTranslations();
 }
 
-// Helper to prevent XSS
+// Keep the existing escapeHtml function
 function escapeHtml(text) {
     const div = document.createElement('div');
     div.appendChild(document.createTextNode(text));

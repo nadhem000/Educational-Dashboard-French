@@ -587,6 +587,8 @@
             fr: {
                 'lesson1_title': 'Leçon 1 – Les Classes Grammaticales | Texte littéraire & Exercices',
 				'lesson_short_title': 'Classes grammaticales',
+'ach_year_bac': '4ᵉ année secondaire (Bac)',
+'ach_module_semaine1': 'Les Fondations de la Langue',
                 'back_revision': 'Révision générale',
                 'back_current': 'Classes grammaticales',
                 'lesson_badge': '📘 Grammaire · Leçon 1',
@@ -643,6 +645,8 @@
             en: {
                 'lesson1_title': 'Lesson 1 – Grammatical Classes | Literary Text & Exercises',
 				'lesson_short_title': 'Grammatical Classes',
+'ach_year_bac': '12th grade (Bac)',
+'ach_module_semaine1': 'Language Foundations',
                 'back_revision': 'General Review',
                 'back_current': 'Grammatical Classes',
                 'lesson_badge': '📘 Grammar · Lesson 1',
@@ -699,6 +703,8 @@
             ar: {
                 'lesson1_title': 'الدرس 1 – الأصناف النحوية | نص أدبي وتمارين',
 				'lesson_short_title': 'الأصناف النحوية',
+'ach_year_bac': 'السنة الرابعة ثانوي',
+'ach_module_semaine1': 'أسس اللغة',
                 'back_revision': 'المراجعة العامة',
                 'back_current': 'الأصناف النحوية',
                 'lesson_badge': '📘 القواعد · الدرس 1',
@@ -898,23 +904,22 @@ document.getElementById('saveResultsBtn').addEventListener('click', async functi
 
     // Lesson metadata (customise per lesson)
     const lessonId = 'semaine1-classes-grammaticales';
-    const year = '4ᵉ année secondaire (Bac)';
-    const module = 'Grammaire';
+    
         // Get translated short title
     const lang = localStorage.getItem('lang') || 'fr';
     const lessonTitle = App.getTranslation('lesson_short_title', lang) || lessonId;
 
     const entry = {
-        lesson_id: lessonId,
-        lesson_title: lessonTitle,
-        year: year,
-        module: module,
-        correct: correct,
-        incorrect: incorrect,
-        partial: partial,
-        unanswered: unanswered,
-        updated_at: new Date().toISOString()
-    };
+    lesson_id: lessonId,
+    lesson_title: 'lesson_short_title',          // existing key
+    year: 'ach_year_bac',                       // new key
+    module: 'ach_module_semaine1',               // new key
+    correct: correct,
+    incorrect: incorrect,
+    partial: partial,
+    unanswered: unanswered,
+    updated_at: new Date().toISOString()
+};
 
     // Fetch current profile, then update the achivement array
     const { data: profileData, error: fetchError } = await App.supabase
