@@ -248,6 +248,17 @@
     }
   }
   // ---------- Auth validation helpers ----------
+  // Helper to assign default registration state after sign‑up
+async function assignInitialRegistration(userId) {
+  const { error } = await App.supabase.rpc('set_user_registration', {
+    p_user_id: userId
+  });
+  if (error) {
+    console.error('Registration assignment failed:', error);
+  } else {
+    App.logToDB('actions', { message: `Registration set for user ${userId}` });
+  }
+}
   function translateError(key) {
     const lang = localStorage.getItem('lang') || 'fr';
     return App.translateToastKey(lang, key);
@@ -681,6 +692,8 @@
             const err = document.getElementById('error-' + id);
             if (input && err) clearFieldError(input, err);
           });
+		  // Assign default registration
+assignInitialRegistration(data.user.id);
           App.showToast('toast_signup_success', 'success');
           // Log to general stats (counter)
           App.logGeneralAction('sign_up');
