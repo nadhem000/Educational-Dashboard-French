@@ -566,6 +566,8 @@
 <div class="score-actions" style="margin-top:1.2rem;">
     <button id="saveResultsBtn" class="btn-verify" style="margin-right:0.5rem;" 
             data-i18n="save_results">💾 Enregistrer mes résultats</button>
+			<button id="printPdfBtn" class="btn-verify" style="background:#5c5344; margin-right:0.5rem;"
+        data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
 </div>
 
         <!-- Footer nav (minimal, app shell handles the rest) -->
@@ -640,6 +642,9 @@
   'save_results': '💾 Enregistrer mes résultats',
   'save_success': 'Résultats sauvegardés ✓',
 'save_error': 'Erreur lors de la sauvegarde',
+'print_pdf': '🖨️ Imprimer / PDF',
+'print_with_answers': 'Corrigé inclus',
+'print_without_answers': 'Sans corrigé',
                 'toast_signin_required': 'Connectez-vous pour voir les corrections.'
             },
             en: {
@@ -698,6 +703,9 @@
   'save_results': '💾 Save my results',
   'save_success': 'Results saved ✓',
 'save_error': 'Save failed',
+'print_pdf': '🖨️ Print / PDF',
+'print_with_answers': 'With answers',
+'print_without_answers': 'Without answers',
                 'toast_signin_required': 'Sign in to see the corrections.'
             },
             ar: {
@@ -756,6 +764,9 @@
   'save_results': '💾 حفظ نتائجي',
   'save_success': 'تم حفظ النتائج ✓',
 'save_error': 'خطأ في الحفظ',
+'print_pdf': '🖨️ طباعة / PDF',
+'print_with_answers': 'مع التصحيح',
+'print_without_answers': 'بدون تصحيح',
                 'toast_signin_required': 'سجّل الدخول لرؤية التصحيحات.'
             }
         });
@@ -887,7 +898,130 @@ document.getElementById('saveResultsBtn').addEventListener('click', async functi
         if (signInBtn) signInBtn.click();
         return;
     }
+// ── Print / PDF button ──
+document.getElementById('printPdfBtn').addEventListener('click', async function() {
+    // 1. Check authentication
+    const { data: { user } } = await App.supabase.auth.getUser();
+    if (!user) {
+        App.showToast('toast_signin_required', 'error');
+        const signInBtn = document.getElementById('signInBtn');
+        if (signInBtn) signInBtn.click();
+        return;
+    }
 
+    // 2. Fetch registration state
+    let isRegistered = false;
+    try {
+        const { data: profile, error } = await App.supabase
+            .from('profiles')
+            .select('registration_state')
+            .eq('id', user.id)
+            .single();
+        if (!error && profile && profile.registration_state && profile.registration_state.active === true) {
+            isRegistered = true;
+        }
+    } catch (e) { /* ignore, treat as not registered */ }
+
+    // 3. Gather page content (clean version)
+    // Lesson header
+    const headerHTML = document.querySelector('.lesson-header').cloneNode(true);
+    // Remove the badge? We'll keep it. Remove interactive elements from header? None.
+
+    // Audio player: exclude (not printable)
+    // Text card: include
+    const textCard = document.querySelector('.text-card').cloneNode(true);
+    // Remove the quote mark? It's just CSS; fine.
+
+    // Rules section (valeurs-section and methode-section) – include
+    const rulesSections = document.querySelectorAll('.valeurs-section, .methode-section');
+    let rulesHTML = '';
+    rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
+
+    // Exercises section: keep structure but remove inputs, radios, buttons, and self-assessment divs
+    const exercisesSection = document.querySelector('.exercises-section').cloneNode(true);
+    exercisesSection.querySelectorAll('input, textarea, .btn-verify, .self-assessment').forEach(el => el.remove());
+
+    // If user is registered, replace answer-key divs with their visible content
+    if (isRegistered) {
+        const answerKeys = exercisesSection.querySelectorAll('.answer-key');
+        answerKeys.forEach(key => {
+            // The answer key's innerHTML is already set; we just need to make it visible
+            key.style.display = 'block';
+            key.style.border = 'none';
+            key.style.padding = '0.5rem 0';
+            key.style.margin = '0.5rem 0';
+            key.style.background = 'transparent';
+        });
+    } else {
+        // Remove answer keys entirely
+        exercisesSection.querySelectorAll('.answer-key').forEach(el => el.remove());
+    }
+
+    // Score area and save button: remove
+    const scoreArea = document.querySelector('.score-area');
+    const scoreActions = document.querySelector('.score-actions');
+    // We'll just not include them.
+
+    // Breadcrumb
+    const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+
+    // 4. Build full HTML document
+    const printWindow = window.open('', '_blank', 'width=800,height=600');
+    const lang = localStorage.getItem('lang') || 'fr';
+    printWindow.document.write(`
+        <!DOCTYPE html>
+        <html lang="${lang}">
+        <head>
+            <meta charset="UTF-8">
+            <title>${App.getTranslation('lesson_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title>
+            <style>
+                body {
+                    font-family: 'Georgia', 'Times New Roman', serif;
+                    line-height: 1.6;
+                    max-width: 700px;
+                    margin: 2rem auto;
+                    padding: 0 1rem;
+                    color: #000;
+                }
+                h1, h2, h3 { color: #000; }
+                .lesson-header { text-align: center; margin-bottom: 2rem; }
+                .badge { display: inline-block; background: #c75b2c; color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; text-transform: uppercase; }
+                .text-card {
+                    border-left: 4px solid #c75b2c;
+                    padding: 1rem 1.5rem;
+                    margin: 1.5rem 0;
+                    font-style: italic;
+                }
+                .quote-mark { font-size: 3rem; color: #c75b2c; opacity: 0.3; position: absolute; top: -10px; left: 10px; }
+                .text-card .author { text-align: right; font-style: normal; margin-top: 0.8rem; }
+                .valeurs-section, .methode-section { margin: 1.5rem 0; }
+                .valeur-card { background: #f8f4ec; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; }
+                .valeur-card h3 { color: #c75b2c; }
+                .exercise-card { margin: 1.2rem 0; }
+                table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; }
+                th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+                th { background: #f0e8d8; }
+                .answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; }
+                @media print {
+                    body { margin: 0; padding: 0; }
+                    @page { margin: 2cm; }
+                }
+            </style>
+        </head>
+        <body>
+            ${breadcrumb.outerHTML}
+            ${headerHTML.outerHTML}
+            ${textCard.outerHTML}
+            ${rulesHTML}
+            ${exercisesSection.outerHTML}
+        </body>
+        </html>
+    `);
+    printWindow.document.close();
+    printWindow.focus();
+    // Slight delay to ensure content is rendered before printing
+    setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+});
     // Gather self‑assessment counts
     const radioGroups = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4'];
     let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
@@ -1086,6 +1220,26 @@ document.getElementById('saveResultsBtn').addEventListener('click', async functi
         needs the button to call toggleCorrection('answerKeyId').
 
     All original styles and the direct‑translation fix remain untouched.
+    ═══════════════════════════════════════════════════════════════════
+    -->
+	    <!--
+    ═══════════════════════════════════════════════════════════════════
+    PHASE 3 – ACHIEVEMENT SAVING (2026-08-08)
+    ═══════════════════════════════════════════════════════════════════
+
+    Added the "Enregistrer mes résultats" button and its save logic.
+    - Gathers self-assessment radio values (correct/incorrect/partial/unanswered)
+      for all four exercises.
+    - Builds an entry with multilingual lesson title, year, and module.
+    - Upserts the entry into the user's profile.achivement["ED-French"] array
+      via Supabase.
+    - Displays success/error toasts instead of inline messages.
+
+    To reuse this template for other lessons:
+      1. Copy the <div class="score-actions"> block.
+      2. Copy the save function (document.getElementById('saveResultsBtn')...).
+      3. Update the three metadata objects: lesson_id, lesson_title, year, module
+         with multilingual objects specific to the new lesson.
     ═══════════════════════════════════════════════════════════════════
     -->
 </body>
