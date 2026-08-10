@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leçon 3 – Les Temps Simples de l'Indicatif | Texte & Exercices</title>
-   <link rel="manifest" href="/manifest.json">
-<link rel="stylesheet" href="shared.css">
+    <title data-i18n="lesson3_title">Leçon 3 – Les Temps Simples de l'Indicatif</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
     <style>
+        /* ===== Lesson‑specific styles (identical to lesson 1) ===== */
         :root {
             --bg: #f9f7f1;
             --card: #ffffff;
@@ -21,13 +22,14 @@
             --radius: 12px;
             --radius-sm: 8px;
             --transition: 0.25s ease;
-            --font: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
+            --font-body: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
             --audio-bg: #f4efe4;
             --audio-progress: #d8c9aa;
             --button-bg: #f0e8d8;
             --button-hover: #e3d5bc;
             --input-bg: #fcfaf6;
         }
+
         body.dark {
             --bg: #1e1b17;
             --card: #2a2620;
@@ -45,160 +47,377 @@
             --button-hover: #4e4437;
             --input-bg: #333028;
         }
+
         * { margin:0; padding:0; box-sizing:border-box; }
+
         body {
-            font-family: var(--font);
+            font-family: var(--font-body);
             background: var(--bg);
             color: var(--text);
             line-height: 1.75;
             transition: background var(--transition), color var(--transition);
         }
-        .topbar {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0.8rem 1.6rem; background: var(--card);
-            border-bottom: 1px solid var(--border); box-shadow: var(--shadow);
-            position: sticky; top:0; z-index:10; flex-wrap: wrap; gap:0.6rem;
-        }
-        .breadcrumb { font-size:0.85rem; color:var(--text-light); }
-        .breadcrumb a { color:var(--accent); text-decoration:none; font-weight:600; }
-        .breadcrumb a:hover { text-decoration:underline; }
-        .theme-btn {
-            display:inline-flex; align-items:center; gap:0.4rem;
-            padding:0.45rem 0.9rem; border-radius:20px;
-            border:1px solid var(--border); background: var(--button-bg);
-            color:var(--text); cursor:pointer; font-size:0.85rem; font-weight:600;
-            transition: all var(--transition);
-        }
-        .theme-btn:hover { background:var(--button-hover); }
-        .container { max-width:900px; margin:0 auto; padding:1.8rem 1.4rem 3rem; }
 
-        .lesson-header { text-align: center; margin-bottom: 2rem; }
-        .badge { display:inline-block; background: var(--accent); color:#fff; padding:0.25rem 1rem;
-            border-radius:20px; font-size:0.8rem; font-weight:700; letter-spacing:0.03em; text-transform: uppercase; }
-        .lesson-header h1 { font-size: 2.1rem; color: var(--heading); margin: 0.6rem 0 0.3rem; line-height: 1.3; }
-        .lesson-header .meta { font-size:0.9rem; color:var(--text-light); }
+        .container { max-width:860px; margin:0 auto; padding:1.8rem 1.4rem 3rem; }
 
-        /* audio player */
+        .lesson-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .badge {
+            display:inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding:0.25rem 1rem;
+            border-radius:20px;
+            font-size:0.8rem;
+            font-weight:700;
+            letter-spacing:0.03em;
+            text-transform: uppercase;
+        }
+        .lesson-header h1 {
+            font-size: 2.1rem;
+            color: var(--heading);
+            margin: 0.6rem 0 0.3rem;
+            line-height: 1.3;
+        }
+        .lesson-header .meta {
+            font-size:0.9rem;
+            color:var(--text-light);
+            display: flex;
+            justify-content: center;
+            gap:1.2rem;
+            flex-wrap: wrap;
+        }
+
         .audio-player {
-            background: var(--card); border:1px solid var(--border);
-            border-radius: var(--radius); padding:1rem 1.4rem; margin: 1.5rem 0 2rem;
-            box-shadow: var(--shadow); display: flex; align-items: center; gap:1rem; flex-wrap: wrap;
+            background: var(--card);
+            border:1px solid var(--border);
+            border-radius: var(--radius);
+            padding:1rem 1.4rem;
+            margin: 1.5rem 0 2rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap:1rem;
+            flex-wrap: wrap;
         }
-        .play-btn {
-            width:44px; height:44px; border-radius:50%; background: var(--accent);
-            color:#fff; border:none; font-size:1.2rem; cursor:pointer;
-            display: flex; align-items:center; justify-content:center;
-            transition: background var(--transition); flex-shrink:0;
+        .audio-player .play-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            border:none;
+            font-size:1.2rem;
+            cursor:pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background var(--transition);
+            flex-shrink: 0;
         }
         .play-btn:hover { background: var(--accent-hover); }
-        .progress-area { flex:1; min-width:120px; display: flex; flex-direction: column; gap:0.3rem; }
-        .progress-bar { width:100%; height:6px; background: var(--audio-progress); border-radius:3px; cursor:pointer; overflow: hidden; }
-        .progress-fill { height:100%; background: var(--accent); border-radius:3px; width:0%; transition: width 0.1s linear; }
-        .time-info { display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-light); }
-        .speed-selector { display: flex; gap:0.3rem; }
-        .speed-btn {
-            border:1px solid var(--border); background: var(--button-bg); color: var(--text);
-            padding:0.25rem 0.55rem; border-radius:4px; font-size:0.75rem; font-weight:600;
-            cursor:pointer; transition: all var(--transition);
+        .audio-player .progress-area {
+            flex:1;
+            min-width:120px;
+            display: flex;
+            flex-direction: column;
+            gap:0.3rem;
         }
-        .speed-btn.active { background: var(--accent); color:#fff; border-color:var(--accent); }
-        .audio-label { font-weight:700; font-size:0.85rem; color:var(--heading); white-space:nowrap; }
+        .progress-bar {
+            width:100%;
+            height:6px;
+            background: var(--audio-progress);
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+        .time-info {
+            display: flex;
+            justify-content: space-between;
+            font-size:0.75rem;
+            color:var(--text-light);
+        }
+        .speed-selector {
+            display: flex;
+            gap:0.3rem;
+            flex-wrap: wrap;
+        }
+        .speed-btn {
+            border:1px solid var(--border);
+            background: var(--button-bg);
+            color: var(--text);
+            padding:0.25rem 0.55rem;
+            border-radius: 4px;
+            font-size:0.75rem;
+            font-weight:600;
+            cursor:pointer;
+            transition: all var(--transition);
+        }
+        .speed-btn.active {
+            background: var(--accent);
+            color:#fff;
+            border-color: var(--accent);
+        }
+        .audio-label {
+            font-weight:700;
+            font-size:0.85rem;
+            color:var(--heading);
+            white-space: nowrap;
+        }
+        @media (max-width:600px) {
+            .audio-player { flex-direction: column; align-items: stretch; }
+            .audio-label { text-align: center; }
+        }
 
-        /* text card */
         .text-card {
-            background: var(--card); border:1px solid var(--border);
+            background: var(--card);
+            border:1px solid var(--border);
             border-left:5px solid var(--accent);
             border-radius: 0 var(--radius) var(--radius) 0;
-            padding:1.6rem 1.8rem; margin:1.8rem 0;
-            font-style:italic; font-size:1.05rem; line-height:1.9;
-            box-shadow: var(--shadow); position: relative;
+            padding:1.4rem 1.6rem;
+            margin:1.8rem 0;
+            font-style:italic;
+            font-size:1.05rem;
+            line-height: 1.9;
+            box-shadow: var(--shadow);
+            position: relative;
         }
-        .text-card .quote-mark { position:absolute; top:-12px; left:14px; font-size:3rem; color:var(--accent); opacity:0.25; line-height:1; }
-        .text-card .author { text-align:right; font-style:normal; font-size:0.9rem; color:var(--text-light); margin-top:0.8rem; }
-
-        /* Valeurs section */
-        .valeurs-section {
-            background: var(--card); border:1px solid var(--border); border-radius:var(--radius);
-            padding:1.6rem 1.8rem; margin:2rem 0; box-shadow:var(--shadow);
+        .text-card .quote-mark {
+            position: absolute;
+            top:-12px;
+            left:14px;
+            font-size:3rem;
+            color:var(--accent);
+            opacity:0.25;
+            line-height:1;
         }
-        .valeurs-section h2 { font-size:1.5rem; color:var(--heading); margin-bottom:1rem; border-bottom:3px solid var(--accent); display:inline-block; padding-bottom:0.3rem; }
-        .valeur-card { background: var(--audio-bg); border-radius:var(--radius-sm); padding:1rem 1.2rem; margin-bottom:1rem; }
-        .valeur-card h3 { color:var(--accent); font-size:1.1rem; margin-bottom:0.4rem; }
-        .valeur-card ul { list-style:none; padding:0; }
-        .valeur-card li { padding:0.3rem 0; padding-left:1.4rem; position:relative; color:var(--text-light); }
-        .valeur-card li::before { content:'◆'; position:absolute; left:0; color:var(--accent); font-size:0.5rem; top:0.5rem; }
+        .text-card .author {
+            text-align:right;
+            font-style:normal;
+            font-size:0.9rem;
+            color:var(--text-light);
+            margin-top:0.8rem;
+        }
 
-        /* exercises */
-        .exercises-section h2 { font-size:1.5rem; color:var(--heading); margin:2rem 0 1rem; border-bottom:3px solid var(--accent); display:inline-block; padding-bottom:0.3rem; }
+        .exercises-section h2 {
+            font-size:1.5rem;
+            color:var(--heading);
+            margin:2rem 0 1rem;
+            border-bottom:3px solid var(--accent);
+            display:inline-block;
+            padding-bottom:0.3rem;
+        }
         .exercise-card {
-            background: var(--card); border:1px solid var(--border); border-radius: var(--radius-sm);
-            padding:1.2rem 1.4rem; margin-bottom:1.4rem; box-shadow: var(--shadow);
+            background: var(--card);
+            border:1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding:1.2rem 1.4rem;
+            margin-bottom:1.4rem;
+            box-shadow: var(--shadow);
         }
-        .exercise-card h3 { font-size:1.05rem; color:var(--accent); margin-bottom:0.8rem; }
-        .exercise-card table { width:100%; border-collapse:collapse; margin:0.8rem 0; }
-        .exercise-card th, .exercise-card td { padding:0.55rem 0.7rem; border:1px solid var(--border); text-align:left; font-size:0.9rem; }
-        .exercise-card th { background: var(--audio-bg); font-weight:700; color:var(--heading); }
-        .exercise-card input[type="text"], .exercise-card textarea {
-            width:100%; padding:0.4rem 0.6rem; border:1px solid var(--border);
-            border-radius:4px; background: var(--input-bg); color: var(--text);
-            font-family: inherit; font-size:0.9rem;
+        .exercise-card h3 {
+            font-size:1.05rem;
+            color:var(--accent);
+            margin-bottom:0.8rem;
+            display: flex;
+            align-items: center;
+            gap:0.4rem;
+        }
+        .exercise-card table {
+            width:100%;
+            border-collapse: collapse;
+            margin: 0.8rem 0;
+        }
+        .exercise-card th, .exercise-card td {
+            padding:0.55rem 0.7rem;
+            border:1px solid var(--border);
+            text-align:left;
+            font-size:0.9rem;
+        }
+        .exercise-card th {
+            background: var(--audio-bg);
+            font-weight:700;
+            color:var(--heading);
+        }
+        .exercise-card input[type="text"] {
+            width:100%;
+            padding:0.4rem 0.6rem;
+            border:1px solid var(--border);
+            border-radius:4px;
+            background: var(--input-bg);
+            color: var(--text);
+            font-family: inherit;
+            font-size:0.9rem;
         }
         .btn-verify {
-            background: var(--accent); color:#fff; border:none;
-            padding:0.5rem 1.2rem; border-radius:20px; font-weight:600;
-            cursor:pointer; transition: background var(--transition); margin-top:0.6rem; font-size:0.85rem;
+            background: var(--accent);
+            color:#fff;
+            border:none;
+            padding:0.5rem 1.2rem;
+            border-radius: 20px;
+            font-weight:600;
+            cursor:pointer;
+            transition: background var(--transition);
+            margin-top:0.6rem;
+            font-size:0.85rem;
         }
         .btn-verify:hover { background: var(--accent-hover); }
-        .answer-key { display:none; margin-top:0.8rem; padding:0.8rem; background: var(--audio-bg); border-radius:6px; font-size:0.85rem; color:var(--text-light); border:1px dashed var(--accent); }
+        .answer-key {
+            display:none;
+            margin-top:0.8rem;
+            padding:0.8rem;
+            background: var(--audio-bg);
+            border-radius:6px;
+            font-size:0.85rem;
+            color: var(--text-light);
+            border:1px dashed var(--accent);
+        }
         .answer-key.visible { display:block; }
 
-        .lesson-footer {
-            margin-top:2.5rem; padding-top:1.2rem; border-top:1px solid var(--border);
-            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap:0.8rem;
+        /* Self‑assessment */
+        .self-assessment {
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
         }
-        .lesson-footer a { color: var(--accent); text-decoration:none; font-weight:600; }
-        .lesson-footer a:hover { text-decoration:underline; }
+        .self-assessment label {
+            cursor: pointer;
+        }
+
+        /* Score area */
+        .score-area {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: var(--shadow);
+        }
+        .score-area h2 {
+            color: var(--heading);
+            margin-bottom: 1rem;
+        }
+        .score-stats {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .score-stat {
+            background: var(--audio-bg);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        /* RTL support */
+        html[dir="rtl"] body { direction: rtl; }
+        html[dir="rtl"] .container { text-align: right; }
+        html[dir="rtl"] .text-card .author { text-align: left; }
+        html[dir="rtl"] .exercise-card th, html[dir="rtl"] .exercise-card td {
+            text-align: right;
+        }
 
         @media (max-width:600px) {
-            .container { padding:1rem 0.8rem 2rem; }
             .lesson-header h1 { font-size:1.5rem; }
-            .audio-player { flex-direction: column; align-items: stretch; }
+            .container { padding:1rem 0.8rem 2rem; }
         }
-.back-nav {
-    background: var(--card);
-    border-bottom: 1px solid var(--border);
-    padding: 0.5rem 1.5rem;
-}
-.back-nav a {
-    font-weight: 600;
-    color: var(--accent);
-    text-decoration: none;
-}
-.back-nav a:hover {
-    text-decoration: underline;
-}
+
+        .valeurs-section,
+        .methode-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.6rem 1.8rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+        .valeurs-section h2,
+        .methode-section h2 {
+            font-size: 1.5rem;
+            color: var(--heading);
+            margin-bottom: 1rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+        .valeur-card {
+            background: var(--audio-bg);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .valeur-card h3 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+        .valeur-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .valeur-card li {
+            padding: 0.3rem 0;
+            padding-left: 1.4rem;
+            position: relative;
+            color: var(--text-light);
+        }
+        .valeur-card li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 0.5rem;
+            top: 0.5rem;
+        }
+        .valeur-card p {
+            margin: 0.5rem 0;
+        }
     </style>
 </head>
 <body>
 
-<nav class="back-nav">
-    <a href="index.html">🏠 Accueil</a> › <a href="revision.html">Révision générale</a> › <strong>Temps simples</strong>
-</nav>
+    <!-- App shell header/footer are injected by ed-french-ini.js -->
+    <div id="main-content" class="container">
+        <!-- Breadcrumb (keeping lesson navigation inside the content) -->
+        <p style="margin-bottom:1.5rem; color:var(--text-light);">
+            <a href="revision.html" data-i18n="back_revision">Révision générale</a>
+            › <strong data-i18n="back_current">Temps simples</strong>
+        </p>
 
-    <main class="container">
         <div class="lesson-header">
-            <span class="badge">📗 Conjugaison · Leçon 3</span>
-            <h1>Les Temps Simples de l'Indicatif<br>Présent, Imparfait, Futur Simple</h1>
-            <div class="meta"><span>⏱️ 50 minutes</span> <span>🎧 Écoutez puis appliquez</span></div>
+            <span class="badge" data-i18n="lesson_badge">📗 Conjugaison · Leçon 3</span>
+            <h1 data-i18n="lesson_title">Les Temps Simples de l'Indicatif<br>Présent, Imparfait, Futur Simple</h1>
+            <div class="meta">
+                <span data-i18n="lesson_duration">⏱️ 50 minutes</span>
+                <span data-i18n="lesson_meta_audio">🎧 Écoutez puis appliquez</span>
+            </div>
         </div>
 
-        <!-- ═════ AUDIO PLAYER ═════ -->
+        <!-- ═════ CUSTOM AUDIO PLAYER ═════ -->
         <div class="audio-player" id="audioPlayer">
-            <span class="audio-label">🎧 Écoute littéraire</span>
-            <button class="play-btn" id="playBtn">▶</button>
+            <span class="audio-label" data-i18n="audio_label">🎧 Écoute littéraire</span>
+            <button class="play-btn" id="playBtn" aria-label="Lecture">▶</button>
             <div class="progress-area">
-                <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
-                <div class="time-info"><span id="currentTime">0:00</span><span id="duration">0:00</span></div>
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="time-info">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
             </div>
             <div class="speed-selector" id="speedSelector">
                 <button class="speed-btn" data-speed="0.75">0.75x</button>
@@ -214,17 +433,17 @@
             <p>
                 Chaque matin, le vieux pêcheur <u>sort</u> de sa cabane et <u>contemple</u> l'océan. Autrefois, il <u>partait</u> avant l'aube avec son père ; ils <u>jetaient</u> les filets ensemble. Aujourd'hui, il <u>préfère</u> la solitude. Bientôt, son petit-fils <u>viendra</u> passer l'été ici. Il lui <u>apprendra</u> les secrets de la mer. Quand le soir <u>tombe</u>, le vieil homme <u>s'assoit</u> sur le rocher et <u>raconte</u> les légendes d'antan. Les vagues <u>murmuraient</u> alors des histoires que seuls les marins <u>comprenaient</u>. Demain, le jeune garçon <u>découvrira</u> ces récits et <u>sentira</u> l'appel du large. La tradition <u>continuera</u> ainsi, génération après génération.
             </p>
-            <div class="author">— Les gardiens de la mer, d'après un conte tunisien</div>
+            <div class="author" data-i18n="text_author">— Les gardiens de la mer, d'après un conte tunisien</div>
         </div>
 
         <!-- ═════ VALEURS DES TEMPS ═════ -->
         <div class="valeurs-section">
-            <h2>📖 Valeurs des temps simples</h2>
-            <p style="margin-bottom:1.2rem;">Chaque temps simple de l'indicatif possède plusieurs emplois. Voici les principaux.</p>
+            <h2 data-i18n="rules_heading">📖 Valeurs des temps simples</h2>
+            <p data-i18n="rules_intro" class="no-bilingual" style="margin-bottom:1.2rem;">Chaque temps simple de l'indicatif possède plusieurs emplois. Voici les principaux.</p>
 
             <div class="valeur-card">
-                <h3>🔹 Le Présent</h3>
-                <ul>
+                <h3 data-i18n="rules_present_title">🔹 Le Présent</h3>
+                <ul data-i18n="rules_present_list">
                     <li><strong>Action en cours :</strong> « Il pleut en ce moment. »</li>
                     <li><strong>Habitude / répétition :</strong> « Tous les matins, elle boit un café. »</li>
                     <li><strong>Vérité générale / proverbe :</strong> « L'eau bout à 100 degrés. »</li>
@@ -234,8 +453,8 @@
             </div>
 
             <div class="valeur-card">
-                <h3>🔹 L'Imparfait</h3>
-                <ul>
+                <h3 data-i18n="rules_imparfait_title">🔹 L'Imparfait</h3>
+                <ul data-i18n="rules_imparfait_list">
                     <li><strong>Description / arrière-plan :</strong> « Le ciel était gris, les oiseaux se taisaient. »</li>
                     <li><strong>Habitude passée :</strong> « Chaque été, nous allions à la plage. »</li>
                     <li><strong>Action de second plan (par rapport au passé simple) :</strong> « Il lisait quand soudain on frappa à la porte. »</li>
@@ -244,26 +463,28 @@
             </div>
 
             <div class="valeur-card">
-                <h3>🔹 Le Futur Simple</h3>
-                <ul>
+                <h3 data-i18n="rules_futur_title">🔹 Le Futur Simple</h3>
+                <ul data-i18n="rules_futur_list">
                     <li><strong>Action future certaine :</strong> « Demain, nous visiterons la médina. »</li>
                     <li><strong>Ordre atténué ou conseil :</strong> « Tu feras attention à la marche. »</li>
                     <li><strong>Prévision / promesse :</strong> « Un jour, tout cela changera. »</li>
                     <li><strong>Futur historique (pour évoquer l'avenir depuis le passé) :</strong> « Napoléon mourra en 1821. »</li>
                 </ul>
             </div>
+
+            <p data-i18n="rules_note" style="margin-top:1rem; font-style:italic; color:var(--text-light);">💡 Bien choisir le temps en fonction du contexte et de l'intention de la phrase.</p>
         </div>
 
         <!-- ═════ EXERCISES ═════ -->
         <div class="exercises-section">
-            <h2>✍️ Exercices (niveau avancé)</h2>
+            <h2 data-i18n="exercises_heading">✍️ Exercices (niveau avancé)</h2>
 
-            <!-- Exo 1 : identifier temps -->
+            <!-- Exercice 1 -->
             <div class="exercise-card">
-                <h3>📌 1. Identifiez le temps de chaque verbe souligné</h3>
-                <p>Complétez le tableau en indiquant le temps (présent, imparfait ou futur simple) et la valeur d'emploi en vous aidant du cours ci‑dessus.</p>
+                <h3 data-i18n="exo1_title">📌 1. Identifiez le temps de chaque verbe souligné</h3>
+                <p data-i18n="exo1_instruction">Complétez le tableau en indiquant le temps (présent, imparfait ou futur simple) et la valeur d'emploi en vous aidant du cours ci‑dessus.</p>
                 <table id="exo1Table">
-                    <thead><tr><th>Verbe souligné</th><th>Temps</th><th>Valeur / emploi</th></tr></thead>
+                    <thead><tr><th data-i18n="table_verb" class="no-bilingual">Verbe souligné</th><th data-i18n="table_time" class="no-bilingual">Temps</th><th data-i18n="table_value" class="no-bilingual">Valeur / emploi</th></tr></thead>
                     <tbody>
                         <tr><td>sort</td><td><input type="text"></td><td><input type="text"></td></tr>
                         <tr><td>contemple</td><td><input type="text"></td><td><input type="text"></td></tr>
@@ -282,73 +503,365 @@
                         <tr><td>continuera</td><td><input type="text"></td><td><input type="text"></td></tr>
                     </tbody>
                 </table>
-                <button class="btn-verify" onclick="toggleCorrection('exo1Key')">🔍 Voir la correction</button>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo1Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
                 <div id="exo1Key" class="answer-key"></div>
             </div>
 
-            <!-- Exo 2 : conjugaison contextuelle -->
+            <!-- Exercice 2 -->
             <div class="exercise-card">
-                <h3>📌 2. Conjuguez les verbes entre parenthèses au temps simple qui convient</h3>
-                <p>Choisissez le temps en fonction de la valeur indiquée.</p>
+                <h3 data-i18n="exo2_title">📌 2. Conjuguez les verbes entre parenthèses au temps simple qui convient</h3>
+                <p data-i18n="exo2_instruction">Choisissez le temps en fonction de la valeur indiquée.</p>
                 <ol type="a">
-                    <li>Autrefois, les pêcheurs (utiliser) ________ des barques à voile. (habitude passée)</li>
-                    <li>Chaque été, nous (aller) ________ à Mahdia. (présent d'habitude)</li>
-                    <li>Demain, tu (recevoir) ________ une lettre importante. (futur certain)</li>
-                    <li>Quand j'(être) ________ enfant, je (croire) ________ aux sirènes. (description passée)</li>
-                    <li>Le soleil (se lever) ________ à l'est. (vérité générale)</li>
-                    <li>Bientôt, vous (savoir) ________ la vérité. (futur)</li>
+                    <li><span data-i18n="exo2_q1">Autrefois, les pêcheurs (utiliser) ________ des barques à voile. (habitude passée)</span></li>
+                    <li><span data-i18n="exo2_q2">Chaque été, nous (aller) ________ à Mahdia. (présent d'habitude)</span></li>
+                    <li><span data-i18n="exo2_q3">Demain, tu (recevoir) ________ une lettre importante. (futur certain)</span></li>
+                    <li><span data-i18n="exo2_q4">Quand j'(être) ________ enfant, je (croire) ________ aux sirènes. (description passée)</span></li>
+                    <li><span data-i18n="exo2_q5">Le soleil (se lever) ________ à l'est. (vérité générale)</span></li>
+                    <li><span data-i18n="exo2_q6">Bientôt, vous (savoir) ________ la vérité. (futur)</span></li>
                 </ol>
-                <button class="btn-verify" onclick="toggleCorrection('exo2Key')">🔍 Voir la correction</button>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo2Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
                 <div id="exo2Key" class="answer-key"></div>
             </div>
 
-            <!-- Exo 3 : transformation -->
+            <!-- Exercice 3 -->
             <div class="exercise-card">
-                <h3>📌 3. Transformez le passage suivant</h3>
-                <p>Réécrivez ce texte au présent d'abord à <strong>l'imparfait</strong> puis au <strong>futur simple</strong>.</p>
-                <p><em>« Le vent souffle fort, les nuages courent dans le ciel et la pluie commence à tomber. Les enfants rentrent vite chez eux. »</em></p>
-                <p>Version imparfait :<br><textarea rows="2" style="width:100%;" placeholder="Écrivez ici..."></textarea></p>
-                <p>Version futur simple :<br><textarea rows="2" style="width:100%;" placeholder="Écrivez ici..."></textarea></p>
-                <button class="btn-verify" onclick="toggleCorrection('exo3Key')">🔍 Voir la correction</button>
+                <h3 data-i18n="exo3_title">📌 3. Transformez le passage suivant</h3>
+                <p data-i18n="exo3_instruction">Réécrivez ce texte au présent d'abord à <strong>l'imparfait</strong> puis au <strong>futur simple</strong>.</p>
+                <p data-i18n="exo3_text"><em>« Le vent souffle fort, les nuages courent dans le ciel et la pluie commence à tomber. Les enfants rentrent vite chez eux. »</em></p>
+                <p data-i18n="exo3_imparfait_label">Version imparfait :<br><textarea rows="2" style="width:100%;" placeholder="Écrivez ici..."></textarea></p>
+                <p data-i18n="exo3_futur_label">Version futur simple :<br><textarea rows="2" style="width:100%;" placeholder="Écrivez ici..."></textarea></p>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo3Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
                 <div id="exo3Key" class="answer-key"></div>
             </div>
 
-            <!-- Exo 4 : trouver l'erreur -->
+            <!-- Exercice 4 -->
             <div class="exercise-card">
-                <h3>📌 4. Chasse aux erreurs</h3>
-                <p>Chaque phrase contient une erreur de conjugaison. Corrigez-la.</p>
+                <h3 data-i18n="exo4_title">📌 4. Chasse aux erreurs</h3>
+                <p data-i18n="exo4_instruction">Chaque phrase contient une erreur de conjugaison. Corrigez-la.</p>
                 <ol type="a">
-                    <li>Quand j'étais petit, je <strong>jouais</strong> souvent dans le jardin. (pas d'erreur ?)</li>
-                    <li>Demain, nous <strong>allions</strong> au marché ensemble.</li>
-                    <li>Les étoiles <strong>brillera</strong> toujours dans le ciel nocturne.</li>
-                    <li>Il y a dix ans, elle <strong>habite</strong> à Sousse.</li>
+                    <li><span data-i18n="exo4_q1">Quand j'étais petit, je <strong>jouais</strong> souvent dans le jardin. (pas d'erreur ?)</span></li>
+                    <li><span data-i18n="exo4_q2">Demain, nous <strong>allions</strong> au marché ensemble.</span></li>
+                    <li><span data-i18n="exo4_q3">Les étoiles <strong>brillera</strong> toujours dans le ciel nocturne.</span></li>
+                    <li><span data-i18n="exo4_q4">Il y a dix ans, elle <strong>habite</strong> à Sousse.</span></li>
                 </ol>
-                <p>Correction :</p>
+                <p data-i18n="exo4_correction_label">Correction :</p>
                 <textarea rows="3" style="width:100%;" placeholder="Indiquez la forme correcte pour chaque phrase..."></textarea>
-                <button class="btn-verify" onclick="toggleCorrection('exo4Key')">🔍 Voir la correction</button>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo4Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
                 <div id="exo4Key" class="answer-key"></div>
             </div>
 
-            <!-- Exo 5 : production -->
+            <!-- Exercice 5 (production) – no self-assessment as per original? We'll add one for consistency, but original didn't have it. We'll follow the template: all exercises get self-assessment. So I'll add it. -->
             <div class="exercise-card">
-                <h3>📌 5. Production personnelle</h3>
-                <p>Rédigez un court paragraphe (5-6 phrases) décrivant votre routine actuelle, un souvenir d'enfance et un projet futur. Utilisez au moins deux verbes au présent, deux à l'imparfait et deux au futur simple. Soulignez les verbes et indiquez leur temps entre parenthèses.</p>
+                <h3 data-i18n="exo5_title">📌 5. Production personnelle</h3>
+                <p data-i18n="exo5_instruction">Rédigez un court paragraphe (5-6 phrases) décrivant votre routine actuelle, un souvenir d'enfance et un projet futur. Utilisez au moins deux verbes au présent, deux à l'imparfait et deux au futur simple. Soulignez les verbes et indiquez leur temps entre parenthèses.</p>
                 <textarea rows="5" style="width:100%;" placeholder="Votre texte..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex5" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex5" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex5" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
             </div>
         </div>
 
-        <div class="lesson-footer">
-            <a href="semaine1-fonctions-essentielles.html">← Leçon précédente : Fonctions</a>
-            <a href="semaine1-conjugaison-temps-composes.html">Leçon suivante : Temps composés →</a>
+        <!-- ═════ SCORING AREA ═════ -->
+        <div class="score-area" id="scoreArea">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="score-stats" id="scoreStats">
+                <div class="score-stat"><span data-i18n="score_correct">Correctes :</span> <span id="scoreCorrect">0</span></div>
+                <div class="score-stat"><span data-i18n="score_incorrect">Incorrectes :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="score-stat"><span data-i18n="score_partial">Partielles :</span> <span id="scorePartial">0</span></div>
+                <div class="score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">5</span></div>
+            </div>
         </div>
+<div class="score-actions" style="margin-top:1.2rem;">
+    <button id="saveResultsBtn" class="btn-verify" style="margin-right:0.5rem;" 
+            data-i18n="save_results">💾 Enregistrer mes résultats</button>
+    <button id="printPdfBtn" class="btn-verify" style="background:#5c5344; margin-right:0.5rem;"
+            data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+</div>
 
-    </main>
+        <!-- Footer nav (minimal) -->
+        <div style="margin-top:2rem; display:flex; justify-content:space-between; flex-wrap:wrap;">
+            <a href="semaine1-fonctions-essentielles.html" data-i18n="footer_back" class="no-bilingual">← Leçon précédente : Fonctions</a>
+            <a href="semaine1-conjugaison-temps-composes.html" data-i18n="footer_next" class="no-bilingual">Leçon suivante : Temps composés →</a>
+        </div>
+    </div>
 
-<script src="ed-french-ini.js"></script>
+    <!-- ═══════ SCRIPTS ═══════ -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+<script src="logging.js"></script>
     <script>
-        (function() {
+        // ── Translations for this lesson page ──
+        App.addI18nTranslations({
+            fr: {
+                'lesson3_title': 'Leçon 3 – Les Temps Simples de l\'Indicatif',
+                'lesson_short_title': 'Temps simples de l\'indicatif',
+                'ach_year_bac': '4ᵉ année secondaire (Bac)',
+                'ach_module_semaine1': 'Les Fondations de la Langue',
+                'back_revision': 'Révision générale',
+                'back_current': 'Temps simples',
+                'lesson_badge': '📗 Conjugaison · Leçon 3',
+                'lesson_title': 'Les Temps Simples de l\'Indicatif<br>Présent, Imparfait, Futur Simple',
+                'lesson_duration': '⏱️ 50 minutes',
+                'lesson_meta_audio': '🎧 Écoutez puis appliquez',
+                'audio_label': '🎧 Écoute littéraire',
+                'text_author': '— Les gardiens de la mer, d\'après un conte tunisien',
+                'rules_heading': '📖 Valeurs des temps simples',
+                'rules_intro': 'Chaque temps simple de l\'indicatif possède plusieurs emplois. Voici les principaux.',
+                'rules_present_title': '🔹 Le Présent',
+                'rules_present_list': '<li><strong>Action en cours :</strong> « Il pleut en ce moment. »</li><li><strong>Habitude / répétition :</strong> « Tous les matins, elle boit un café. »</li><li><strong>Vérité générale / proverbe :</strong> « L\'eau bout à 100 degrés. »</li><li><strong>Futur proche :</strong> « Je pars dans cinq minutes. »</li><li><strong>Narration (présent historique) :</strong> « En 1789, la Révolution éclate. »</li>',
+                'rules_imparfait_title': '🔹 L\'Imparfait',
+                'rules_imparfait_list': '<li><strong>Description / arrière-plan :</strong> « Le ciel était gris, les oiseaux se taisaient. »</li><li><strong>Habitude passée :</strong> « Chaque été, nous allions à la plage. »</li><li><strong>Action de second plan (par rapport au passé simple) :</strong> « Il lisait quand soudain on frappa à la porte. »</li><li><strong>Hypothèse (après « si ») :</strong> « Si je gagnais au loto, je voyagerais. »</li>',
+                'rules_futur_title': '🔹 Le Futur Simple',
+                'rules_futur_list': '<li><strong>Action future certaine :</strong> « Demain, nous visiterons la médina. »</li><li><strong>Ordre atténué ou conseil :</strong> « Tu feras attention à la marche. »</li><li><strong>Prévision / promesse :</strong> « Un jour, tout cela changera. »</li><li><strong>Futur historique (pour évoquer l\'avenir depuis le passé) :</strong> « Napoléon mourra en 1821. »</li>',
+                'rules_note': '💡 Bien choisir le temps en fonction du contexte et de l\'intention de la phrase.',
+                'exercises_heading': '✍️ Exercices (niveau avancé)',
+                'exo1_title': '📌 1. Identifiez le temps de chaque verbe souligné',
+                'exo1_instruction': 'Complétez le tableau en indiquant le temps (présent, imparfait ou futur simple) et la valeur d\'emploi en vous aidant du cours ci‑dessus.',
+                'table_verb': 'Verbe souligné',
+                'table_time': 'Temps',
+                'table_value': 'Valeur / emploi',
+                'btn_correction': '🔍 Voir la correction',
+                'exo2_title': '📌 2. Conjuguez les verbes entre parenthèses au temps simple qui convient',
+                'exo2_instruction': 'Choisissez le temps en fonction de la valeur indiquée.',
+                'exo2_q1': 'Autrefois, les pêcheurs (utiliser) ________ des barques à voile. (habitude passée)',
+                'exo2_q2': 'Chaque été, nous (aller) ________ à Mahdia. (présent d\'habitude)',
+                'exo2_q3': 'Demain, tu (recevoir) ________ une lettre importante. (futur certain)',
+                'exo2_q4': 'Quand j\'(être) ________ enfant, je (croire) ________ aux sirènes. (description passée)',
+                'exo2_q5': 'Le soleil (se lever) ________ à l\'est. (vérité générale)',
+                'exo2_q6': 'Bientôt, vous (savoir) ________ la vérité. (futur)',
+                'exo3_title': '📌 3. Transformez le passage suivant',
+                'exo3_instruction': 'Réécrivez ce texte au présent d\'abord à <strong>l\'imparfait</strong> puis au <strong>futur simple</strong>.',
+                'exo3_text': '<em>« Le vent souffle fort, les nuages courent dans le ciel et la pluie commence à tomber. Les enfants rentrent vite chez eux. »</em>',
+                'exo3_imparfait_label': 'Version imparfait :',
+                'exo3_futur_label': 'Version futur simple :',
+                'exo4_title': '📌 4. Chasse aux erreurs',
+                'exo4_instruction': 'Chaque phrase contient une erreur de conjugaison. Corrigez-la.',
+                'exo4_q1': 'Quand j\'étais petit, je <strong>jouais</strong> souvent dans le jardin. (pas d\'erreur ?)',
+                'exo4_q2': 'Demain, nous <strong>allions</strong> au marché ensemble.',
+                'exo4_q3': 'Les étoiles <strong>brillera</strong> toujours dans le ciel nocturne.',
+                'exo4_q4': 'Il y a dix ans, elle <strong>habite</strong> à Sousse.',
+                'exo4_correction_label': 'Correction :',
+                'exo5_title': '📌 5. Production personnelle',
+                'exo5_instruction': 'Rédigez un court paragraphe (5-6 phrases) décrivant votre routine actuelle, un souvenir d\'enfance et un projet futur. Utilisez au moins deux verbes au présent, deux à l\'imparfait et deux au futur simple. Soulignez les verbes et indiquez leur temps entre parenthèses.',
+                'footer_back': '← Leçon précédente : Fonctions',
+                'footer_next': 'Leçon suivante : Temps composés →',
+                'self_assess_question': 'Ma réponse est :',
+                'self_correct': 'Correcte',
+                'self_incorrect': 'Incorrecte',
+                'self_partial': 'Partiellement correcte',
+                'score_title': '📊 Votre auto‑évaluation',
+                'score_correct': 'Correctes :',
+                'score_incorrect': 'Incorrectes :',
+                'score_partial': 'Partielles :',
+                'score_unanswered': 'Sans réponse :',
+                'save_results': '💾 Enregistrer mes résultats',
+                'save_success': 'Résultats sauvegardés ✓',
+                'save_error': 'Erreur lors de la sauvegarde',
+                'print_pdf': '🖨️ Imprimer / PDF',
+                'print_with_answers': 'Corrigé inclus',
+                'print_without_answers': 'Sans corrigé',
+                'print_site_name': 'Educational Dashboard – French',
+                'print_scholar_year': 'Révision pour le Bac',
+                'print_week': 'Semaine 1',
+                'print_area': 'Conjugaison',
+                'print_footer_dev': 'Développé par Mejri Ziad',
+                'print_footer_date': 'Imprimé le',
+                'toast_signin_required': 'Connectez-vous pour voir les corrections.'
+            },
+            en: {
+                'lesson3_title': 'Lesson 3 – Simple Indicative Tenses',
+                'lesson_short_title': 'Simple Tenses',
+                'ach_year_bac': '12th grade (Bac)',
+                'ach_module_semaine1': 'Language Foundations',
+                'back_revision': 'General Review',
+                'back_current': 'Simple Tenses',
+                'lesson_badge': '📗 Conjugation · Lesson 3',
+                'lesson_title': 'Simple Indicative Tenses<br>Present, Imperfect, Simple Future',
+                'lesson_duration': '⏱️ 50 minutes',
+                'lesson_meta_audio': '🎧 Listen then apply',
+                'audio_label': '🎧 Literary Listening',
+                'text_author': '— Guardians of the Sea, after a Tunisian tale',
+                'rules_heading': '📖 Values of Simple Tenses',
+                'rules_intro': 'Each simple indicative tense has several uses. Here are the main ones.',
+                'rules_present_title': '🔹 Present Tense',
+                'rules_present_list': '<li><strong>Action in progress:</strong> "It is raining right now."</li><li><strong>Habit/repetition:</strong> "Every morning, she drinks coffee."</li><li><strong>General truth/proverb:</strong> "Water boils at 100 degrees."</li><li><strong>Near future:</strong> "I am leaving in five minutes."</li><li><strong>Narrative (historical present):</strong> "In 1789, the Revolution breaks out."</li>',
+                'rules_imparfait_title': '🔹 Imperfect Tense',
+                'rules_imparfait_list': '<li><strong>Description/background:</strong> "The sky was grey, the birds were silent."</li><li><strong>Past habit:</strong> "Every summer, we used to go to the beach."</li><li><strong>Background action (vs simple past):</strong> "He was reading when suddenly someone knocked."</li><li><strong>Hypothesis (after "if"):</strong> "If I won the lottery, I would travel."</li>',
+                'rules_futur_title': '🔹 Simple Future',
+                'rules_futur_list': '<li><strong>Certain future action:</strong> "Tomorrow, we will visit the medina."</li><li><strong>Softened order or advice:</strong> "You will be careful with the step."</li><li><strong>Prediction/promise:</strong> "One day, all this will change."</li><li><strong>Historical future (to evoke the future from the past):</strong> "Napoleon would die in 1821."</li>',
+                'rules_note': '💡 Choose the tense according to context and intent.',
+                'exercises_heading': '✍️ Exercises (advanced)',
+                'exo1_title': '📌 1. Identify the tense of each underlined verb',
+                'exo1_instruction': 'Complete the table by indicating the tense (present, imperfect, or simple future) and its use, using the lesson above.',
+                'table_verb': 'Underlined verb',
+                'table_time': 'Tense',
+                'table_value': 'Value/use',
+                'btn_correction': '🔍 See the correction',
+                'exo2_title': '📌 2. Conjugate the verbs in parentheses to the appropriate simple tense',
+                'exo2_instruction': 'Choose the tense based on the indicated value.',
+                'exo2_q1': 'In the past, fishermen (use) ________ sailing boats. (past habit)',
+                'exo2_q2': 'Every summer, we (go) ________ to Mahdia. (present habit)',
+                'exo2_q3': 'Tomorrow, you (receive) ________ an important letter. (certain future)',
+                'exo2_q4': 'When I (be) ________ a child, I (believe) ________ in mermaids. (past description)',
+                'exo2_q5': 'The sun (rise) ________ in the east. (general truth)',
+                'exo2_q6': 'Soon, you (know) ________ the truth. (future)',
+                'exo3_title': '📌 3. Transform the following passage',
+                'exo3_instruction': 'Rewrite this present-tense text first in <strong>the imperfect</strong> then in <strong>the simple future</strong>.',
+                'exo3_text': '<em>"The wind is blowing hard, the clouds are racing across the sky, and the rain is starting to fall. The children are quickly going home."</em>',
+                'exo3_imparfait_label': 'Imperfect version:',
+                'exo3_futur_label': 'Simple future version:',
+                'exo4_title': '📌 4. Spot the errors',
+                'exo4_instruction': 'Each sentence contains a conjugation error. Correct it.',
+                'exo4_q1': 'When I was little, I <strong>played</strong> often in the garden. (no error?)',
+                'exo4_q2': 'Tomorrow, we <strong>went</strong> to the market together.',
+                'exo4_q3': 'The stars <strong>will shine</strong> always in the night sky.',
+                'exo4_q4': 'Ten years ago, she <strong>lives</strong> in Sousse.',
+                'exo4_correction_label': 'Correction:',
+                'exo5_title': '📌 5. Personal production',
+                'exo5_instruction': 'Write a short paragraph (5-6 sentences) describing your current routine, a childhood memory, and a future project. Use at least two present-tense verbs, two imperfect-tense verbs, and two future-tense verbs. Underline the verbs and indicate their tense in parentheses.',
+                'footer_back': '← Previous lesson: Functions',
+                'footer_next': 'Next lesson: Compound Tenses →',
+                'self_assess_question': 'My answer is:',
+                'self_correct': 'Correct',
+                'self_incorrect': 'Incorrect',
+                'self_partial': 'Partially correct',
+                'score_title': '📊 Your self‑assessment',
+                'score_correct': 'Correct:',
+                'score_incorrect': 'Incorrect:',
+                'score_partial': 'Partial:',
+                'score_unanswered': 'Unanswered:',
+                'save_results': '💾 Save my results',
+                'save_success': 'Results saved ✓',
+                'save_error': 'Save failed',
+                'print_pdf': '🖨️ Print / PDF',
+                'print_with_answers': 'With answers',
+                'print_without_answers': 'Without answers',
+                'print_site_name': 'Educational Dashboard – French',
+                'print_scholar_year': 'Bac Review',
+                'print_week': 'Week 1',
+                'print_area': 'Conjugation',
+                'print_footer_dev': 'Developed by Mejri Ziad',
+                'print_footer_date': 'Printed on',
+                'toast_signin_required': 'Sign in to see the corrections.'
+            },
+            ar: {
+                'lesson3_title': 'الدرس 3 – الأزمنة البسيطة للمضارع',
+                'lesson_short_title': 'الأزمنة البسيطة',
+                'ach_year_bac': 'السنة الرابعة ثانوي',
+                'ach_module_semaine1': 'أسس اللغة',
+                'back_revision': 'المراجعة العامة',
+                'back_current': 'الأزمنة البسيطة',
+                'lesson_badge': '📗 التصريف · الدرس 3',
+                'lesson_title': 'الأزمنة البسيطة للمضارع<br>المضارع، الماضي الناقص، المستقبل البسيط',
+                'lesson_duration': '⏱️ 50 دقيقة',
+                'lesson_meta_audio': '🎧 استمع ثم طبق',
+                'audio_label': '🎧 استماع أدبي',
+                'text_author': '— حراس البحر، مقتبس من حكاية تونسية',
+                'rules_heading': '📖 قيم الأزمنة البسيطة',
+                'rules_intro': 'لكل زمن بسيط من أزمنة المضارع عدة استعمالات. إليك أهمها.',
+                'rules_present_title': '🔹 المضارع',
+                'rules_present_list': '<li><strong>حدث جار:</strong> "إنها تمطر الآن."</li><li><strong>عادة/تكرار:</strong> "كل صباح، تشرب قهوة."</li><li><strong>حقيقة عامة/مثل:</strong> "يغلي الماء عند 100 درجة."</li><li><strong>مستقبل قريب:</strong> "سأغادر بعد خمس دقائق."</li><li><strong>سرد (مضارع تاريخي):</strong> "في 1789، اندلعت الثورة."</li>',
+                'rules_imparfait_title': '🔹 الماضي الناقص',
+                'rules_imparfait_list': '<li><strong>وصف/خلفية:</strong> "كانت السماء رمادية، وصمتت الطيور."</li><li><strong>عادة ماضية:</strong> "كل صيف، كنا نذهب إلى الشاطئ."</li><li><strong>حدث خلفي (مقابل الماضي البسيط):</strong> "كان يقرأ عندما طرق أحدهم الباب."</li><li><strong>فرضية (بعد "إذا"):</strong> "إذا ربحت اليانصيب، سأسافر."</li>',
+                'rules_futur_title': '🔹 المستقبل البسيط',
+                'rules_futur_list': '<li><strong>حدث مستقبلي مؤكد:</strong> "غدا، سنزور المدينة العتيقة."</li><li><strong>أمر مخفف أو نصيحة:</strong> "ستنتبه للدرجة."</li><li><strong>تنبؤ/وعد:</strong> "يوما ما، سيتغير كل هذا."</li><li><strong>مستقبل تاريخي (للإشارة إلى المستقبل من الماضي):</strong> "سيموت نابليون في 1821."</li>',
+                'rules_note': '💡 اختر الزمن حسب السياق والغرض من الجملة.',
+                'exercises_heading': '✍️ تمارين (متقدمة)',
+                'exo1_title': '📌 1. حدد زمن كل فعل مسطر',
+                'exo1_instruction': 'أكمل الجدول بذكر الزمن (مضارع، ماضي ناقص، أو مستقبل بسيط) وقيمته باستخدام الدرس أعلاه.',
+                'table_verb': 'الفعل المسطر',
+                'table_time': 'الزمن',
+                'table_value': 'القيمة/الاستعمال',
+                'btn_correction': '🔍 الاطلاع على التصحيح',
+                'exo2_title': '📌 2. صرف الأفعال بين قوسين في الزمن البسيط المناسب',
+                'exo2_instruction': 'اختر الزمن حسب القيمة المذكورة.',
+                'exo2_q1': 'قديماً، كان الصيادون (يستخدمون) ________ مراكب شراعية. (عادة ماضية)',
+                'exo2_q2': 'كل صيف، (نذهب) ________ إلى المهدية. (عادة مضارعة)',
+                'exo2_q3': 'غدا، (تتلقى) ________ رسالة مهمة. (مستقبل مؤكد)',
+                'exo2_q4': 'عندما (أكون) ________ طفلاً، (أؤمن) ________ بالحوريات. (وصف ماض)',
+                'exo2_q5': 'الشمس (تشرق) ________ من الشرق. (حقيقة عامة)',
+                'exo2_q6': 'قريباً، (تعرفون) ________ الحقيقة. (مستقبل)',
+                'exo3_title': '📌 3. حول الفقرة التالية',
+                'exo3_instruction': 'أعد كتابة هذا النص بصيغة المضارع أولا إلى <strong>الماضي الناقص</strong> ثم إلى <strong>المستقبل البسيط</strong>.',
+                'exo3_text': '<em>"تهب الرياح بقوة، وتجري الغيوم في السماء، ويبدأ المطر في التساقط. يعود الأطفال سريعاً إلى منازلهم."</em>',
+                'exo3_imparfait_label': 'صيغة الماضي الناقص:',
+                'exo3_futur_label': 'صيغة المستقبل البسيط:',
+                'exo4_title': '📌 4. صيد الأخطاء',
+                'exo4_instruction': 'كل جملة تحتوي على خطأ في التصريف. صححه.',
+                'exo4_q1': 'عندما كنت صغيراً، <strong>كنت ألعب</strong> كثيراً في الحديقة. (لا خطأ؟)',
+                'exo4_q2': 'غدا، <strong>نذهب</strong> إلى السوق معاً.',
+                'exo4_q3': 'النجوم <strong>ستلمع</strong> دائماً في سماء الليل.',
+                'exo4_q4': 'قبل عشر سنوات، <strong>تسكن</strong> في سوسة.',
+                'exo4_correction_label': 'التصحيح:',
+                'exo5_title': '📌 5. إنتاج شخصي',
+                'exo5_instruction': 'اكتب فقرة قصيرة (5-6 جمل) تصف روتينك الحالي وذكرى طفولة ومشروعاً مستقبلياً. استخدم فعلين على الأقل في المضارع وفعلين في الماضي الناقص وفعلين في المستقبل البسيط. ضع خطا تحت الأفعال واكتب زمنها بين قوسين.',
+                'footer_back': '← الدرس السابق: الوظائف',
+                'footer_next': 'الدرس الموالي: الأزمنة المركبة →',
+                'self_assess_question': 'جوابي هو:',
+                'self_correct': 'صحيح',
+                'self_incorrect': 'خاطئ',
+                'self_partial': 'صحيح جزئيًا',
+                'score_title': '📊 تقييمك الذاتي',
+                'score_correct': 'صحيح:',
+                'score_incorrect': 'خاطئ:',
+                'score_partial': 'جزئي:',
+                'score_unanswered': 'بدون إجابة:',
+                'save_results': '💾 حفظ نتائجي',
+                'save_success': 'تم حفظ النتائج ✓',
+                'save_error': 'خطأ في الحفظ',
+                'print_pdf': '🖨️ طباعة / PDF',
+                'print_with_answers': 'مع التصحيح',
+                'print_without_answers': 'بدون تصحيح',
+                'print_site_name': 'لوحة التحكم التعليمية – الفرنسية',
+                'print_scholar_year': 'مراجعة البكالوريا',
+                'print_week': 'الأسبوع 1',
+                'print_area': 'التصريف',
+                'print_footer_dev': 'طوّر بواسطة ماجري زياد',
+                'print_footer_date': 'طُبع في',
+                'toast_signin_required': 'سجّل الدخول لرؤية التصحيحات.'
+            }
+        });
 
-            // Audio player
+        (function() {
+            var container = document.querySelector('.container');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+        })();
+    </script>
+    <script src="ed-french-ini.js"></script>
+    <script>
+        // ── Custom audio player and exercise logic ──
+        (function() {
             const audio = new Audio('lessons/revision/sounds/lesson3.mp3');
             const playBtn = document.getElementById('playBtn');
             const progressFill = document.getElementById('progressFill');
@@ -362,26 +875,31 @@
                 const secs = Math.floor(seconds % 60);
                 return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
             }
-            audio.addEventListener('loadedmetadata', () => durationEl.textContent = formatTime(audio.duration));
+
+            audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
             audio.addEventListener('timeupdate', () => {
                 const percent = (audio.currentTime / audio.duration) * 100 || 0;
                 progressFill.style.width = percent + '%';
                 currentTimeEl.textContent = formatTime(audio.currentTime);
             });
-            audio.addEventListener('ended', () => playBtn.textContent = '▶');
+            audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
             playBtn.addEventListener('click', () => {
                 if (audio.paused) { audio.play(); playBtn.textContent = '⏸'; }
                 else { audio.pause(); playBtn.textContent = '▶'; }
             });
             progressBar.addEventListener('click', (e) => {
                 const rect = progressBar.getBoundingClientRect();
-                audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const seekTime = (clickX / width) * audio.duration;
+                audio.currentTime = seekTime;
             });
             speedBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     speedBtns.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
-                    audio.playbackRate = parseFloat(btn.dataset.speed);
+                    const speed = parseFloat(btn.dataset.speed);
+                    audio.playbackRate = speed;
                 });
             });
 
@@ -405,10 +923,344 @@
                 c) « brillera » → présent : brillent (vérité générale).<br>
                 d) « habite » → imparfait : habitait.`;
 
-            window.toggleCorrection = function(id) {
-                document.getElementById(id).classList.toggle('visible');
+            // ── Auth‑gated correction ──
+            window.toggleCorrection = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('visible');
             };
+
+            // ── Self‑assessment score calculation ──
+            function updateScore() {
+                const radioGroups = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5'];
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                radioGroups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                document.getElementById('scoreCorrect').textContent = correct;
+                document.getElementById('scoreIncorrect').textContent = incorrect;
+                document.getElementById('scorePartial').textContent = partial;
+                document.getElementById('scoreUnanswered').textContent = unanswered;
+            }
+// ── Save self‑assessment to profiles.achivement ──
+document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+    const { data: { user } } = await App.supabase.auth.getUser();
+    if (!user) {
+        App.showToast('toast_signin_required', 'error');
+        const signInBtn = document.getElementById('signInBtn');
+        if (signInBtn) signInBtn.click();
+        return;
+    }
+    const radioGroups = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5'];
+    let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+    radioGroups.forEach(name => {
+        const selected = document.querySelector(`input[name="${name}"]:checked`);
+        if (selected) {
+            if (selected.value === 'correct') correct++;
+            else if (selected.value === 'incorrect') incorrect++;
+            else if (selected.value === 'partial') partial++;
+        } else {
+            unanswered++;
+        }
+    });
+
+    const lessonId = 'semaine1-conjugaison-temps-simples';
+    const lang = localStorage.getItem('lang') || 'fr';
+    const entry = {
+        lesson_id: lessonId,
+        lesson_title: {
+            fr: App.getTranslation('lesson_short_title', 'fr'),
+            en: App.getTranslation('lesson_short_title', 'en'),
+            ar: App.getTranslation('lesson_short_title', 'ar')
+        },
+        year: {
+            fr: App.getTranslation('ach_year_bac', 'fr'),
+            en: App.getTranslation('ach_year_bac', 'en'),
+            ar: App.getTranslation('ach_year_bac', 'ar')
+        },
+        module: {
+            fr: App.getTranslation('ach_module_semaine1', 'fr'),
+            en: App.getTranslation('ach_module_semaine1', 'en'),
+            ar: App.getTranslation('ach_module_semaine1', 'ar')
+        },
+        correct: correct,
+        incorrect: incorrect,
+        partial: partial,
+        unanswered: unanswered,
+        updated_at: new Date().toISOString()
+    };
+
+    const { data: profileData, error: fetchError } = await App.supabase
+        .from('profiles')
+        .select('achivement')
+        .eq('id', user.id)
+        .single();
+
+    if (fetchError) {
+        console.error('Could not fetch profile:', fetchError);
+        return;
+    }
+
+    let achivement = profileData?.achivement || {};
+    if (!achivement["ED-French"]) achivement["ED-French"] = [];
+    const arr = achivement["ED-French"];
+    const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+    if (existingIdx >= 0) arr[existingIdx] = entry;
+    else arr.push(entry);
+
+    const { error: updateError } = await App.supabase
+        .from('profiles')
+        .update({ achivement: achivement })
+        .eq('id', user.id);
+
+    if (updateError) {
+        console.error('Save failed:', updateError);
+        App.showToast('save_error', 'error');
+    } else {
+        App.showToast('save_success', 'success');
+        App.logUserAction('lesson_saved', { lesson: lessonId, correct, incorrect, partial });
+    }
+});
+
+// ── Print / PDF button ──
+document.getElementById('printPdfBtn').addEventListener('click', async function() {
+    const { data: { user } } = await App.supabase.auth.getUser();
+    if (!user) {
+        App.showToast('toast_signin_required', 'error');
+        const signInBtn = document.getElementById('signInBtn');
+        if (signInBtn) signInBtn.click();
+        return;
+    }
+
+    let isRegistered = false;
+    try {
+        const { data: profile, error } = await App.supabase
+            .from('profiles')
+            .select('registration_state')
+            .eq('id', user.id)
+            .single();
+        if (!error && profile && profile.registration_state && profile.registration_state.active === true) {
+            isRegistered = true;
+        }
+    } catch (e) {}
+
+    const headerHTML = document.querySelector('.lesson-header').cloneNode(true);
+    const textCard = document.querySelector('.text-card').cloneNode(true);
+    const rulesSections = document.querySelectorAll('.valeurs-section, .methode-section');
+    let rulesHTML = '';
+    rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
+    const exercisesSection = document.querySelector('.exercises-section').cloneNode(true);
+    exercisesSection.querySelectorAll('input, textarea, .btn-verify, .self-assessment').forEach(el => el.remove());
+
+    if (isRegistered) {
+        const answerKeys = exercisesSection.querySelectorAll('.answer-key');
+        answerKeys.forEach(key => {
+            key.style.display = 'block';
+            key.style.border = 'none';
+            key.style.padding = '0.5rem 0';
+            key.style.margin = '0.5rem 0';
+            key.style.background = 'transparent';
+        });
+    } else {
+        exercisesSection.querySelectorAll('.answer-key').forEach(el => el.remove());
+    }
+
+    const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+
+    const printWindow = window.open('', '_blank', 'width=800,height=600');
+    const lang = localStorage.getItem('lang') || 'fr';
+    printWindow.document.write(`
+        <!DOCTYPE html>
+        <html lang="${lang}">
+        <head>
+            <meta charset="UTF-8">
+            <title>${App.getTranslation('lesson_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title>
+            <style>
+                body { font-family: 'Georgia', serif; line-height: 1.6; max-width: 700px; margin: 2rem auto; padding: 0 1rem; color: #000; }
+                h1, h2, h3 { color: #000; }
+                .lesson-header { text-align: center; margin-bottom: 2rem; }
+                .badge { display: inline-block; background: #c75b2c; color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; text-transform: uppercase; }
+                .text-card { border-left: 4px solid #c75b2c; padding: 1rem 1.5rem; margin: 1.5rem 0; font-style: italic; }
+                .quote-mark { font-size: 3rem; color: #c75b2c; opacity: 0.3; position: absolute; top: -10px; left: 10px; }
+                .text-card .author { text-align: right; font-style: normal; margin-top: 0.8rem; }
+                .valeurs-section, .methode-section { margin: 1.5rem 0; }
+                .valeur-card { background: #f8f4ec; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; }
+                .valeur-card h3 { color: #c75b2c; }
+                .exercise-card { margin: 1.2rem 0; }
+                table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; }
+                th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+                th { background: #f0e8d8; }
+                .answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; }
+                .print-header { text-align: center; border-bottom: 2px solid #c75b2c; padding-bottom: 1rem; margin-bottom: 2rem; }
+                .print-header .site-name { font-size: 1.4rem; font-weight: bold; color: #c75b2c; margin: 0 0 0.3rem; }
+                .print-header .meta-line { font-size: 0.95rem; color: #444; margin: 0.2rem 0; }
+                .print-header .lesson-name { font-size: 1.1rem; font-weight: bold; color: #000; margin-top: 0.5rem; }
+                .print-footer { text-align: center; border-top: 1px solid #ccc; padding-top: 1rem; margin-top: 2rem; font-size: 0.85rem; color: #666; }
+                @media print { body { margin: 0; padding: 0; } @page { margin: 2cm; } }
+            </style>
+        </head>
+        <body>
+            <div class="print-header">
+                <div class="site-name">${App.getTranslation('print_site_name', lang)}</div>
+                <div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div>
+                <div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div>
+            </div>
+            ${breadcrumb.outerHTML}
+            ${headerHTML.outerHTML}
+            ${textCard.outerHTML}
+            ${rulesHTML}
+            ${exercisesSection.outerHTML}
+            <div class="print-footer">
+                ${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}
+            </div>
+        </body>
+        </html>
+    `);
+    printWindow.document.close();
+    printWindow.focus();
+    setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+});
+
+            document.querySelectorAll('input[type="radio"][name^="self_ex"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
         })();
     </script>
+
+    <!-- ═══════ DIRECT‑TRANSLATION FIX ═══════ -->
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') {
+                                el.innerHTML = next.innerHTML;
+                            }
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+
+    <!--
+    ═══════════════════════════════════════════════════════════════════
+    PHASE 2 – AUTH & SELF‑ASSESSMENT INTEGRATION (2026-08-04)
+    ═══════════════════════════════════════════════════════════════════
+
+    To make the lesson compatible with the new app version (real Supabase
+    authentication + self‑assessment system), the following was added:
+
+    1. App shell scripts:
+       - Included <script src="db-utils.js"></script>,
+         the Supabase CDN and <script src="supabase-client.js"></script>
+         BEFORE ed-french-ini.js.
+       - The page now inherits the global header/footer injected by
+         ed-french-ini.js. The old custom navigation bar was removed and
+         replaced with a small breadcrumb inside .container.
+
+    2. Auth‑gated corrections:
+       - The toggleCorrection() function now checks the Supabase session
+         via App.supabase.auth.getSession().
+       - If the user is not signed in, it shows a translated toast
+         (toast_signin_required) and opens the sign‑in modal.
+       - The answer key is only revealed when a valid session exists.
+
+    3. Self‑assessment radio buttons:
+       - After each exercise, a <div class="self-assessment"> was added
+         containing three radio inputs (correct/incorrect/partial) with
+         translated labels.
+       - These radios share a name per exercise (self_ex1 … self_ex5).
+
+    4. Scoring area:
+       - A new <div class="score-area"> at the end of the page shows
+         real‑time counters for correct, incorrect, partial and
+         unanswered exercises.
+       - The updateScore() function listens to all radio changes and
+         updates the counters instantly.
+
+    To apply this template to another lesson:
+      - Replace the lesson content (text, exercises, answer keys)
+        while keeping the same HTML structure.
+      - Duplicate the self‑assessment block for each exercise and ensure
+        the radio name is unique (self_ex1, self_ex2, …).
+      - Update the translation keys accordingly.
+      - Keep the auth‑gated toggleCorrection logic unchanged; it only
+        needs the button to call toggleCorrection('answerKeyId').
+
+    All original styles and the direct‑translation fix remain untouched.
+    ═══════════════════════════════════════════════════════════════════
+    -->
+    <!--
+    ═══════════════════════════════════════════════════════════════════
+    PHASE 3 – ACHIEVEMENT SAVING (2026-08-08)
+    ═══════════════════════════════════════════════════════════════════
+
+    Added the "Enregistrer mes résultats" button and its save logic.
+    - Gathers self-assessment radio values (correct/incorrect/partial/unanswered)
+      for all exercises.
+    - Builds an entry with multilingual lesson title, year, and module.
+    - Upserts the entry into the user's profile.achivement["ED-French"] array
+      via Supabase.
+    - Displays success/error toasts instead of inline messages.
+
+    To reuse this template for other lessons:
+      1. Copy the <div class="score-actions"> block.
+      2. Copy the save function (document.getElementById('saveResultsBtn')...).
+      3. Update the three metadata objects: lesson_id, lesson_title, year, module
+         with multilingual objects specific to the new lesson.
+    ═══════════════════════════════════════════════════════════════════
+    -->
+    <!--
+    ═══════════════════════════════════════════════════════════════════
+    PHASE 4 – PRINT / PDF BUTTON WITH CONDITIONAL ANSWERS (2026-08-10)
+    ═══════════════════════════════════════════════════════════════════
+
+    Added the “🖨️ Imprimer / PDF” button and its logic.
+    - Checks if the user is signed in; if not, shows a toast and opens the sign‑in modal.
+    - If signed in, fetches the registration_state from Supabase to determine whether answers are included.
+    - Clones the lesson content (text, rules, exercises) and removes all interactive elements.
+    - Builds a clean, printable HTML document with a custom header (site name, scholar year, week, area, lesson name)
+      and footer (developer, date).
+    - Opens a new window and triggers the browser’s print dialog.
+
+    Answers are only visible if the user’s registration_state.active is true.
+
+    To reuse this template for other lessons:
+      1. Copy the button HTML into the .score-actions div.
+      2. Copy the printPdfBtn event listener (place it outside the saveResultsBtn handler).
+      3. Update the translation keys (print_*) in the lesson’s language blocks if needed.
+    ═══════════════════════════════════════════════════════════════════
+    -->
 </body>
 </html>

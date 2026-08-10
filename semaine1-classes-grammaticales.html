@@ -1299,5 +1299,26 @@ document.getElementById('printPdfBtn').addEventListener('click', async function(
          with multilingual objects specific to the new lesson.
     ═══════════════════════════════════════════════════════════════════
     -->
+		<!--
+    ═══════════════════════════════════════════════════════════════════
+    PHASE 4 – PRINT / PDF BUTTON WITH CONDITIONAL ANSWERS (2026-08-10)
+    ═══════════════════════════════════════════════════════════════════
+
+    Added the “🖨️ Imprimer / PDF” button and its logic.
+    - Checks if the user is signed in; if not, shows a toast and opens the sign‑in modal.
+    - If signed in, fetches the registration_state from Supabase to determine whether answers are included.
+    - Clones the lesson content (text, rules, exercises) and removes all interactive elements.
+    - Builds a clean, printable HTML document with a custom header (site name, scholar year, week, area, lesson name)
+      and footer (developer, date).
+    - Opens a new window and triggers the browser’s print dialog.
+
+    Answers are only visible if the user’s registration_state.active is true.
+
+    To reuse this template for other lessons:
+      1. Copy the button HTML into the .score-actions div.
+      2. Copy the printPdfBtn event listener (place it outside the saveResultsBtn handler).
+      3. Update the translation keys (print_*) in the lesson’s language blocks if needed.
+    ═══════════════════════════════════════════════════════════════════
+    -->
 </body>
 </html>

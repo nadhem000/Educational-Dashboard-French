@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leçon 2 – Les Fonctions Essentielles | Texte littéraire & Exercices</title>
-   <link rel="manifest" href="/manifest.json">
-   <link rel="stylesheet" href="shared.css">
+    <title data-i18n="lesson2_title">Leçon 2 – Les Fonctions Essentielles</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
     <style>
+        /* ===== Lesson‑specific styles (identical to lesson 1) ===== */
         :root {
             --bg: #f9f7f1;
             --card: #ffffff;
@@ -21,7 +22,7 @@
             --radius: 12px;
             --radius-sm: 8px;
             --transition: 0.25s ease;
-            --font: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
+            --font-body: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
             --audio-bg: #f4efe4;
             --audio-progress: #d8c9aa;
             --button-bg: #f0e8d8;
@@ -50,51 +51,15 @@
         * { margin:0; padding:0; box-sizing:border-box; }
 
         body {
-            font-family: var(--font);
+            font-family: var(--font-body);
             background: var(--bg);
             color: var(--text);
             line-height: 1.75;
             transition: background var(--transition), color var(--transition);
         }
 
-        /* ── Topbar ── */
-        .topbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.8rem 1.6rem;
-            background: var(--card);
-            border-bottom: 1px solid var(--border);
-            box-shadow: var(--shadow);
-            position: sticky;
-            top:0;
-            z-index:10;
-            flex-wrap: wrap;
-            gap:0.6rem;
-        }
-        .breadcrumb { font-size:0.85rem; color:var(--text-light); }
-        .breadcrumb a { color:var(--accent); text-decoration:none; font-weight:600; }
-        .breadcrumb a:hover { text-decoration:underline; }
-
-        .theme-btn {
-            display:inline-flex;
-            align-items:center;
-            gap:0.4rem;
-            padding:0.45rem 0.9rem;
-            border-radius:20px;
-            border:1px solid var(--border);
-            background: var(--button-bg);
-            color:var(--text);
-            cursor:pointer;
-            font-size:0.85rem;
-            font-weight:600;
-            transition: all var(--transition);
-        }
-        .theme-btn:hover { background:var(--button-hover); }
-
         .container { max-width:860px; margin:0 auto; padding:1.8rem 1.4rem 3rem; }
 
-        /* ── Lesson Header ── */
         .lesson-header {
             text-align: center;
             margin-bottom: 2rem;
@@ -125,7 +90,6 @@
             flex-wrap: wrap;
         }
 
-        /* ── Custom Audio Player ── */
         .audio-player {
             background: var(--card);
             border:1px solid var(--border);
@@ -215,7 +179,6 @@
             .audio-label { text-align: center; }
         }
 
-        /* ── Literary text card ── */
         .text-card {
             background: var(--card);
             border:1px solid var(--border);
@@ -246,7 +209,6 @@
             margin-top:0.8rem;
         }
 
-        /* ── Exercises ── */
         .exercises-section h2 {
             font-size:1.5rem;
             color:var(--heading);
@@ -322,118 +284,132 @@
         }
         .answer-key.visible { display:block; }
 
-        /* ── Footer ── */
-        .lesson-footer {
-            margin-top:2.5rem;
-            padding-top:1.2rem;
-            border-top:1px solid var(--border);
+        /* Self‑assessment */
+        .self-assessment {
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
             flex-wrap: wrap;
-            gap:0.8rem;
+            gap: 1rem;
+            align-items: center;
         }
-        .lesson-footer a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight:600;
+        .self-assessment label {
+            cursor: pointer;
         }
-        .lesson-footer a:hover { text-decoration:underline; }
+
+        /* Score area */
+        .score-area {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: var(--shadow);
+        }
+        .score-area h2 {
+            color: var(--heading);
+            margin-bottom: 1rem;
+        }
+        .score-stats {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .score-stat {
+            background: var(--audio-bg);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        /* RTL support */
+        html[dir="rtl"] body { direction: rtl; }
+        html[dir="rtl"] .container { text-align: right; }
+        html[dir="rtl"] .text-card .author { text-align: left; }
+        html[dir="rtl"] .exercise-card th, html[dir="rtl"] .exercise-card td {
+            text-align: right;
+        }
 
         @media (max-width:600px) {
             .lesson-header h1 { font-size:1.5rem; }
             .container { padding:1rem 0.8rem 2rem; }
         }
-/* ═════ RÈGLES / MÉTHODE – à ajouter à toutes les leçons ═════ */
-.valeurs-section,
-.methode-section {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.6rem 1.8rem;
-    margin: 2rem 0;
-    box-shadow: var(--shadow);
-}
-.valeurs-section h2,
-.methode-section h2 {
-    font-size: 1.5rem;
-    color: var(--heading);
-    margin-bottom: 1rem;
-    border-bottom: 3px solid var(--accent);
-    display: inline-block;
-    padding-bottom: 0.3rem;
-}
-.valeur-card {
-    background: var(--audio-bg);
-    border-radius: var(--radius-sm);
-    padding: 1rem 1.2rem;
-    margin-bottom: 1rem;
-}
-.valeur-card h3 {
-    color: var(--accent);
-    font-size: 1.1rem;
-    margin-bottom: 0.4rem;
-}
-.valeur-card ul {
-    list-style: none;
-    padding: 0;
-}
-.valeur-card li {
-    padding: 0.3rem 0;
-    padding-left: 1.4rem;
-    position: relative;
-    color: var(--text-light);
-}
-.valeur-card li::before {
-    content: '◆';
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-    font-size: 0.5rem;
-    top: 0.5rem;
-}
-/* optionnel : espace sous les paragraphes dans ces cartes */
-.valeur-card p {
-    margin: 0.5rem 0;
-}
-.back-nav {
-    background: var(--card);
-    border-bottom: 1px solid var(--border);
-    padding: 0.5rem 1.5rem;
-}
-.back-nav a {
-    font-weight: 600;
-    color: var(--accent);
-    text-decoration: none;
-}
-.back-nav a:hover {
-    text-decoration: underline;
-}
+
+        .valeurs-section,
+        .methode-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.6rem 1.8rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+        .valeurs-section h2,
+        .methode-section h2 {
+            font-size: 1.5rem;
+            color: var(--heading);
+            margin-bottom: 1rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+        .valeur-card {
+            background: var(--audio-bg);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .valeur-card h3 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+        .valeur-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .valeur-card li {
+            padding: 0.3rem 0;
+            padding-left: 1.4rem;
+            position: relative;
+            color: var(--text-light);
+        }
+        .valeur-card li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 0.5rem;
+            top: 0.5rem;
+        }
+        .valeur-card p {
+            margin: 0.5rem 0;
+        }
     </style>
 </head>
 <body>
 
-
-    <!-- ═══════ TOP BAR ═══════ -->
-<nav class="back-nav">
-    <a href="index.html">🏠 Accueil</a> › <a href="revision.html">Révision générale</a> › <strong>Fonctions essentielles</strong>
-</nav>
-
-    <main class="container">
+    <!-- App shell header/footer are injected by ed-french-ini.js -->
+    <div id="main-content" class="container">
+        <!-- Breadcrumb (keeping lesson navigation inside the content) -->
+        <p style="margin-bottom:1.5rem; color:var(--text-light);">
+            <a href="revision.html" data-i18n="back_revision">Révision générale</a>
+            › <strong data-i18n="back_current">Fonctions essentielles</strong>
+        </p>
 
         <div class="lesson-header">
-            <span class="badge">📘 Grammaire · Leçon 2</span>
-            <h1>Les Fonctions Essentielles<br>(Sujet, COD, COI, CC)</h1>
+            <span class="badge" data-i18n="lesson_badge">📘 Grammaire · Leçon 2</span>
+            <h1 data-i18n="lesson_title">Les Fonctions Essentielles<br>(Sujet, COD, COI, CC)</h1>
             <div class="meta">
-                <span>⏱️ 45 minutes</span>
-                <span>🎧 Écoutez le texte puis faites les exercices</span>
+                <span data-i18n="lesson_duration">⏱️ 45 minutes</span>
+                <span data-i18n="lesson_meta_audio">🎧 Écoutez le texte puis faites les exercices</span>
             </div>
         </div>
 
-        <!-- ═════ CUSTOM AUDIO PLAYER (lessons/revision/sounds/lesson2.mp3) ═════ -->
+        <!-- ═════ CUSTOM AUDIO PLAYER ═════ -->
         <div class="audio-player" id="audioPlayer">
-            <span class="audio-label">🎧 Écoute littéraire</span>
-            <button class="play-btn" id="playBtn">▶</button>
+            <span class="audio-label" data-i18n="audio_label">🎧 Écoute littéraire</span>
+            <button class="play-btn" id="playBtn" aria-label="Lecture">▶</button>
             <div class="progress-area">
                 <div class="progress-bar" id="progressBar">
                     <div class="progress-fill" id="progressFill"></div>
@@ -461,55 +437,56 @@
                 Soudain, <u>un</u> <u>souffle</u> <u>glacial</u> <u>me</u> <u>fit</u> <u>frissonner</u>.  
                 <u>J'</u> <u>offris</u> <u>mon</u> <u>écharpe</u> <u>à</u> <u>la</u> <u>jeune</u> <u>fille</u> <u>tremblante</u>.
             </p>
-            <div class="author">— Crépuscule d'automne, anonyme</div>
+            <div class="author" data-i18n="text_author">— Crépuscule d'automne, anonyme</div>
         </div>
-<!-- ═════ RÈGLES : LES FONCTIONS ESSENTIELLES ═════ -->
-<div class="valeurs-section">
-    <h2>📖 Les fonctions grammaticales dans la phrase</h2>
-    <p style="margin-bottom:1.2rem;">La <strong>fonction</strong> d’un mot ou d’un groupe de mots indique le rôle qu’il joue dans la phrase (sujet, complément, etc.), contrairement à la nature qui est fixe.</p>
 
-    <div class="valeur-card">
-        <h3>🔹 Le sujet</h3>
-        <p>Il fait l’action ou subit l’état exprimé par le verbe. On le trouve en posant la question <em>« Qui est-ce qui ? »</em> ou <em>« Qu’est-ce qui ? »</em>.</p>
-        <p><em>Le soleil couchant embrasait l’horizon.</em> → <strong>Le soleil couchant</strong> est sujet de « embrasait ».</p>
-    </div>
+        <!-- ═════ RÈGLES : LES FONCTIONS ESSENTIELLES ═════ -->
+        <div class="valeurs-section">
+            <h2 data-i18n="rules_heading">📖 Les fonctions grammaticales dans la phrase</h2>
+            <p data-i18n="rules_intro" class="no-bilingual" style="margin-bottom:1.2rem;">La <strong>fonction</strong> d’un mot ou d’un groupe de mots indique le rôle qu’il joue dans la phrase (sujet, complément, etc.), contrairement à la nature qui est fixe.</p>
 
-    <div class="valeur-card">
-        <h3>🔹 Le COD (complément d’objet direct)</h3>
-        <p>Il complète directement le verbe, sans préposition. Question : <em>« qui ? »</em> ou <em>« quoi ? »</em> après le verbe.</p>
-        <p><em>J’offris mon écharpe.</em> → <strong>mon écharpe</strong> est COD de « offris ».</p>
-    </div>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_subject_title">🔹 Le sujet</h3>
+                <p data-i18n="rules_subject_desc">Il fait l’action ou subit l’état exprimé par le verbe. On le trouve en posant la question <em>« Qui est-ce qui ? »</em> ou <em>« Qu’est-ce qui ? »</em>.</p>
+                <p data-i18n="rules_subject_example"><em>Le soleil couchant embrasait l’horizon.</em> → <strong>Le soleil couchant</strong> est sujet de « embrasait ».</p>
+            </div>
 
-    <div class="valeur-card">
-        <h3>🔹 Le COI (complément d’objet indirect)</h3>
-        <p>Il est introduit par une préposition (à, de, avec…). Question : <em>« à qui ? », « à quoi ? », « de qui ? », « de quoi ? »</em>.</p>
-        <p><em>J’offris mon écharpe à la jeune fille.</em> → <strong>à la jeune fille</strong> est COI de « offris ».</p>
-    </div>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_cod_title">🔹 Le COD (complément d’objet direct)</h3>
+                <p data-i18n="rules_cod_desc">Il complète directement le verbe, sans préposition. Question : <em>« qui ? »</em> ou <em>« quoi ? »</em> après le verbe.</p>
+                <p data-i18n="rules_cod_example"><em>J’offris mon écharpe.</em> → <strong>mon écharpe</strong> est COD de « offris ».</p>
+            </div>
 
-    <div class="valeur-card">
-        <h3>🔹 Les compléments circonstanciels (CC)</h3>
-        <p>Ils précisent les circonstances de l’action (temps, lieu, manière, cause…). Ils sont souvent supprimables ou déplaçables.</p>
-        <ul>
-            <li><strong>CC de temps :</strong> <em>Chaque matin, il sort.</em></li>
-            <li><strong>CC de lieu :</strong> <em>Il se promène dans la forêt.</em></li>
-            <li><strong>CC de manière :</strong> <em>Elle parle doucement.</em></li>
-            <li><strong>CC de cause :</strong> <em>Il tremble de froid.</em></li>
-        </ul>
-    </div>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_coi_title">🔹 Le COI (complément d’objet indirect)</h3>
+                <p data-i18n="rules_coi_desc">Il est introduit par une préposition (à, de, avec…). Question : <em>« à qui ? », « à quoi ? », « de qui ? », « de quoi ? »</em>.</p>
+                <p data-i18n="rules_coi_example"><em>J’offris mon écharpe à la jeune fille.</em> → <strong>à la jeune fille</strong> est COI de « offris ».</p>
+            </div>
 
-    <p style="margin-top:1rem; font-style:italic; color:var(--text-light);">💡 Un même mot peut avoir une nature invariable mais des fonctions différentes selon la phrase.</p>
-</div>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_cc_title">🔹 Les compléments circonstanciels (CC)</h3>
+                <p data-i18n="rules_cc_desc">Ils précisent les circonstances de l’action (temps, lieu, manière, cause…). Ils sont souvent supprimables ou déplaçables.</p>
+                <ul data-i18n="rules_cc_list">
+                    <li><strong>CC de temps :</strong> <em>Chaque matin, il sort.</em></li>
+                    <li><strong>CC de lieu :</strong> <em>Il se promène dans la forêt.</em></li>
+                    <li><strong>CC de manière :</strong> <em>Elle parle doucement.</em></li>
+                    <li><strong>CC de cause :</strong> <em>Il tremble de froid.</em></li>
+                </ul>
+            </div>
+
+            <p data-i18n="rules_note" style="margin-top:1rem; font-style:italic; color:var(--text-light);">💡 Un même mot peut avoir une nature invariable mais des fonctions différentes selon la phrase.</p>
+        </div>
 
         <!-- ═════ EXERCISES ═════ -->
         <div class="exercises-section">
-            <h2>✍️ Exercices</h2>
+            <h2 data-i18n="exercises_heading">✍️ Exercices</h2>
 
-            <!-- Exercice 1 : fonctions des groupes soulignés -->
+            <!-- Exercice 1 -->
             <div class="exercise-card">
-                <h3>📌 1. Identifiez la fonction des mots ou groupes soulignés</h3>
-                <p>Pour chaque élément souligné dans le texte, précisez sa fonction grammaticale : <strong>sujet</strong>, <strong>COD</strong>, <strong>COI</strong>, <strong>complément circonstanciel</strong> (CC de lieu, temps, manière…).</p>
+                <h3 data-i18n="exo1_title">📌 1. Identifiez la fonction des mots ou groupes soulignés</h3>
+                <p data-i18n="exo1_instruction">Pour chaque élément souligné dans le texte, précisez sa fonction grammaticale : <strong>sujet</strong>, <strong>COD</strong>, <strong>COI</strong>, <strong>complément circonstanciel</strong> (CC de lieu, temps, manière…).</p>
                 <table id="exo1Table">
-                    <thead><tr><th>Groupe souligné</th><th>Fonction</th></tr></thead>
+                    <thead><tr><th data-i18n="table_group" class="no-bilingual">Groupe souligné</th><th data-i18n="table_function" class="no-bilingual">Fonction</th></tr></thead>
                     <tbody>
                         <tr><td>Le soleil couchant</td><td><input type="text" placeholder="ex: sujet"></td></tr>
                         <tr><td>l'horizon</td><td><input type="text" placeholder="..."></td></tr>
@@ -527,7 +504,13 @@
                         <tr><td>à la jeune fille tremblante</td><td><input type="text" placeholder="..."></td></tr>
                     </tbody>
                 </table>
-                <button class="btn-verify" onclick="toggleCorrection('exo1Key')">🔍 Voir la correction</button>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo1Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
                 <div id="exo1Key" class="answer-key">
                     <strong>Correction :</strong><br>
                     Le soleil couchant → <em>sujet du verbe « embrasait »</em><br>
@@ -547,18 +530,24 @@
                 </div>
             </div>
 
-            <!-- Exercice 2 : distinguer nature et fonction -->
+            <!-- Exercice 2 -->
             <div class="exercise-card">
-                <h3>📌 2. Nature ou fonction ?</h3>
-                <p>Dans la phrase « J'offris mon écharpe à la jeune fille tremblante. »</p>
+                <h3 data-i18n="exo2_title">📌 2. Nature ou fonction ?</h3>
+                <p data-i18n="exo2_instruction">Dans la phrase « J'offris mon écharpe à la jeune fille tremblante. »</p>
                 <ol type="a">
-                    <li>Quelle est la <strong>nature</strong> de « mon » ? <input type="text" placeholder="nature"></li>
-                    <li>Quelle est la <strong>fonction</strong> de « mon écharpe » ? <input type="text" placeholder="fonction"></li>
-                    <li>Quelle est la <strong>nature</strong> de « à » ? <input type="text" placeholder="nature"></li>
-                    <li>Quelle est la <strong>fonction</strong> de « à la jeune fille tremblante » ? <input type="text" placeholder="fonction"></li>
-                    <li>Rappelez la différence entre nature et fonction en une phrase : <br><textarea rows="2" style="width:100%; padding:0.4rem;" placeholder="Votre réponse..."></textarea></li>
+                    <li><span data-i18n="exo2_q1_nature">Quelle est la <strong>nature</strong> de « mon » ?</span> <input type="text" placeholder="nature"></li>
+                    <li><span data-i18n="exo2_q2_fonction">Quelle est la <strong>fonction</strong> de « mon écharpe » ?</span> <input type="text" placeholder="fonction"></li>
+                    <li><span data-i18n="exo2_q3_nature">Quelle est la <strong>nature</strong> de « à » ?</span> <input type="text" placeholder="nature"></li>
+                    <li><span data-i18n="exo2_q4_fonction">Quelle est la <strong>fonction</strong> de « à la jeune fille tremblante » ?</span> <input type="text" placeholder="fonction"></li>
+                    <li><span data-i18n="exo2_q5_explain">Rappelez la différence entre nature et fonction en une phrase :</span> <br><textarea rows="2" style="width:100%; padding:0.4rem;" placeholder="Votre réponse..."></textarea></li>
                 </ol>
-                <button class="btn-verify" onclick="toggleCorrection('exo2Key')">🔍 Voir la correction</button>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo2Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
                 <div id="exo2Key" class="answer-key">
                     <strong>Correction :</strong><br>
                     a) Nature de « mon » → déterminant possessif<br>
@@ -569,24 +558,36 @@
                 </div>
             </div>
 
-            <!-- Exercice 3 : créer des phrases avec fonctions imposées -->
+            <!-- Exercice 3 -->
             <div class="exercise-card">
-                <h3>📌 3. Production dirigée</h3>
-                <p>Composez une phrase complète contenant : un <strong>sujet</strong>, un <strong>COD</strong>, un <strong>COI</strong> et un <strong>CC de temps</strong>. Soulignez chaque groupe et indiquez sa fonction entre parenthèses.</p>
+                <h3 data-i18n="exo3_title">📌 3. Production dirigée</h3>
+                <p data-i18n="exo3_instruction">Composez une phrase complète contenant : un <strong>sujet</strong>, un <strong>COD</strong>, un <strong>COI</strong> et un <strong>CC de temps</strong>. Soulignez chaque groupe et indiquez sa fonction entre parenthèses.</p>
                 <textarea rows="3" style="width:100%; padding:0.5rem;" placeholder="Écrivez votre phrase..."></textarea>
-                <p style="margin-top:0.8rem;"><em>Exemple :</em> <u>Le professeur</u> (sujet) explique <u>la leçon</u> (COD) <u>aux élèves</u> (COI) <u>chaque matin</u> (CC de temps).</p>
+                <p style="margin-top:0.8rem;"><em data-i18n="exo3_example">Exemple :</em> <u>Le professeur</u> (sujet) explique <u>la leçon</u> (COD) <u>aux élèves</u> (COI) <u>chaque matin</u> (CC de temps).</p>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
             </div>
 
-            <!-- Exercice 4 : piège du pronom -->
+            <!-- Exercice 4 -->
             <div class="exercise-card">
-                <h3>📌 4. Attention aux pronoms</h3>
-                <p>Dans la phrase « Il me les a donnés », identifiez la fonction des pronoms soulignés.</p>
+                <h3 data-i18n="exo4_title">📌 4. Attention aux pronoms</h3>
+                <p data-i18n="exo4_instruction">Dans la phrase « Il me les a donnés », identifiez la fonction des pronoms soulignés.</p>
                 <ul>
                     <li><u>Il</u> : fonction <input type="text" placeholder="..."></li>
                     <li><u>me</u> : fonction <input type="text" placeholder="..."></li>
                     <li><u>les</u> : fonction <input type="text" placeholder="..."></li>
                 </ul>
-                <button class="btn-verify" onclick="toggleCorrection('exo4Key')">🔍 Voir la correction</button>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo4Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
                 <div id="exo4Key" class="answer-key">
                     <strong>Correction :</strong><br>
                     <u>Il</u> → sujet du verbe « a donnés »<br>
@@ -596,20 +597,265 @@
             </div>
         </div>
 
-        <div class="lesson-footer">
-            <a href="semaine1-classes-grammaticales.html">← Leçon précédente : Classes grammaticales</a>
-            <a href="semaine1-conjugaison-temps-simples.html">Leçon suivante : Temps simples →</a>
+        <!-- ═════ SCORING AREA ═════ -->
+        <div class="score-area" id="scoreArea">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="score-stats" id="scoreStats">
+                <div class="score-stat"><span data-i18n="score_correct">Correctes :</span> <span id="scoreCorrect">0</span></div>
+                <div class="score-stat"><span data-i18n="score_incorrect">Incorrectes :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="score-stat"><span data-i18n="score_partial">Partielles :</span> <span id="scorePartial">0</span></div>
+                <div class="score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">4</span></div>
+            </div>
         </div>
+<div class="score-actions" style="margin-top:1.2rem;">
+    <button id="saveResultsBtn" class="btn-verify" style="margin-right:0.5rem;" 
+            data-i18n="save_results">💾 Enregistrer mes résultats</button>
+			<button id="printPdfBtn" class="btn-verify" style="background:#5c5344; margin-right:0.5rem;"
+            data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+</div>
 
+        <!-- Footer nav (minimal) -->
+        <div style="margin-top:2rem; display:flex; justify-content:space-between; flex-wrap:wrap;">
+            <a href="semaine1-classes-grammaticales.html" data-i18n="footer_back" class="no-bilingual">← Leçon précédente : Classes grammaticales</a>
+            <a href="semaine1-conjugaison-temps-simples.html" data-i18n="footer_next" class="no-bilingual">Leçon suivante : Temps simples →</a>
+        </div>
+    </div>
 
-    </main>
-
-<script src="ed-french-ini.js"></script>
     <!-- ═══════ SCRIPTS ═══════ -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+<script src="logging.js"></script>
     <script>
-        (function() {
+        // ── Translations for this lesson page ──
+        App.addI18nTranslations({
+            fr: {
+                'lesson2_title': 'Leçon 2 – Les Fonctions Essentielles',
+                'lesson_short_title': 'Fonctions essentielles',
+                'ach_year_bac': '4ᵉ année secondaire (Bac)',
+                'ach_module_semaine1': 'Les Fondations de la Langue',
+                'back_revision': 'Révision générale',
+                'back_current': 'Fonctions essentielles',
+                'lesson_badge': '📘 Grammaire · Leçon 2',
+                'lesson_title': 'Les Fonctions Essentielles<br>(Sujet, COD, COI, CC)',
+                'lesson_duration': '⏱️ 45 minutes',
+                'lesson_meta_audio': '🎧 Écoutez le texte puis faites les exercices',
+                'audio_label': '🎧 Écoute littéraire',
+                'text_author': '— Crépuscule d\'automne, anonyme',
+                'rules_heading': '📖 Les fonctions grammaticales dans la phrase',
+                'rules_intro': 'La <strong>fonction</strong> d’un mot ou d’un groupe de mots indique le rôle qu’il joue dans la phrase (sujet, complément, etc.), contrairement à la nature qui est fixe.',
+                'rules_subject_title': '🔹 Le sujet',
+                'rules_subject_desc': 'Il fait l’action ou subit l’état exprimé par le verbe. On le trouve en posant la question <em>« Qui est-ce qui ? »</em> ou <em>« Qu’est-ce qui ? »</em>.',
+                'rules_subject_example': '<em>Le soleil couchant embrasait l’horizon.</em> → <strong>Le soleil couchant</strong> est sujet de « embrasait ».',
+                'rules_cod_title': '🔹 Le COD (complément d’objet direct)',
+                'rules_cod_desc': 'Il complète directement le verbe, sans préposition. Question : <em>« qui ? »</em> ou <em>« quoi ? »</em> après le verbe.',
+                'rules_cod_example': '<em>J’offris mon écharpe.</em> → <strong>mon écharpe</strong> est COD de « offris ».',
+                'rules_coi_title': '🔹 Le COI (complément d’objet indirect)',
+                'rules_coi_desc': 'Il est introduit par une préposition (à, de, avec…). Question : <em>« à qui ? », « à quoi ? », « de qui ? », « de quoi ? »</em>.',
+                'rules_coi_example': '<em>J’offris mon écharpe à la jeune fille.</em> → <strong>à la jeune fille</strong> est COI de « offris ».',
+                'rules_cc_title': '🔹 Les compléments circonstanciels (CC)',
+                'rules_cc_desc': 'Ils précisent les circonstances de l’action (temps, lieu, manière, cause…). Ils sont souvent supprimables ou déplaçables.',
+                'rules_cc_list': '<li><strong>CC de temps :</strong> <em>Chaque matin, il sort.</em></li><li><strong>CC de lieu :</strong> <em>Il se promène dans la forêt.</em></li><li><strong>CC de manière :</strong> <em>Elle parle doucement.</em></li><li><strong>CC de cause :</strong> <em>Il tremble de froid.</em></li>',
+                'rules_note': '💡 Un même mot peut avoir une nature invariable mais des fonctions différentes selon la phrase.',
+                'exercises_heading': '✍️ Exercices',
+                'exo1_title': '📌 1. Identifiez la fonction des mots ou groupes soulignés',
+                'exo1_instruction': 'Pour chaque élément souligné dans le texte, précisez sa fonction grammaticale : <strong>sujet</strong>, <strong>COD</strong>, <strong>COI</strong>, <strong>complément circonstanciel</strong> (CC de lieu, temps, manière…).',
+                'table_group': 'Groupe souligné',
+                'table_function': 'Fonction',
+                'btn_correction': '🔍 Voir la correction',
+                'exo2_title': '📌 2. Nature ou fonction ?',
+                'exo2_instruction': 'Dans la phrase « J\'offris mon écharpe à la jeune fille tremblante. »',
+                'exo2_q1_nature': 'Quelle est la <strong>nature</strong> de « mon » ?',
+                'exo2_q2_fonction': 'Quelle est la <strong>fonction</strong> de « mon écharpe » ?',
+                'exo2_q3_nature': 'Quelle est la <strong>nature</strong> de « à » ?',
+                'exo2_q4_fonction': 'Quelle est la <strong>fonction</strong> de « à la jeune fille tremblante » ?',
+                'exo2_q5_explain': 'Rappelez la différence entre nature et fonction en une phrase :',
+                'exo3_title': '📌 3. Production dirigée',
+                'exo3_instruction': 'Composez une phrase complète contenant : un <strong>sujet</strong>, un <strong>COD</strong>, un <strong>COI</strong> et un <strong>CC de temps</strong>. Soulignez chaque groupe et indiquez sa fonction entre parenthèses.',
+                'exo3_example': 'Exemple :',
+                'exo4_title': '📌 4. Attention aux pronoms',
+                'exo4_instruction': 'Dans la phrase « Il me les a donnés », identifiez la fonction des pronoms soulignés.',
+                'footer_back': '← Leçon précédente : Classes grammaticales',
+                'footer_next': 'Leçon suivante : Temps simples →',
+                'self_assess_question': 'Ma réponse est :',
+                'self_correct': 'Correcte',
+                'self_incorrect': 'Incorrecte',
+                'self_partial': 'Partiellement correcte',
+                'score_title': '📊 Votre auto‑évaluation',
+                'score_correct': 'Correctes :',
+                'score_incorrect': 'Incorrectes :',
+                'score_partial': 'Partielles :',
+                'score_unanswered': 'Sans réponse :',
+                'save_results': '💾 Enregistrer mes résultats',
+                'save_success': 'Résultats sauvegardés ✓',
+                'save_error': 'Erreur lors de la sauvegarde',
+                'print_pdf': '🖨️ Imprimer / PDF',
+                'print_with_answers': 'Corrigé inclus',
+                'print_without_answers': 'Sans corrigé',
+                'print_site_name': 'Educational Dashboard – French',
+                'print_scholar_year': 'Révision pour le Bac',
+                'print_week': 'Semaine 1',
+                'print_area': 'Grammaire',
+                'print_footer_dev': 'Développé par Mejri Ziad',
+                'print_footer_date': 'Imprimé le',
+                'toast_signin_required': 'Connectez-vous pour voir les corrections.'
+            },
+            en: {
+                'lesson2_title': 'Lesson 2 – Essential Functions',
+                'lesson_short_title': 'Essential Functions',
+                'ach_year_bac': '12th grade (Bac)',
+                'ach_module_semaine1': 'Language Foundations',
+                'back_revision': 'General Review',
+                'back_current': 'Essential Functions',
+                'lesson_badge': '📘 Grammar · Lesson 2',
+                'lesson_title': 'Essential Functions<br>(Subject, Direct Object, Indirect Object, Adverbial)',
+                'lesson_duration': '⏱️ 45 minutes',
+                'lesson_meta_audio': '🎧 Listen to the text then do the exercises',
+                'audio_label': '🎧 Literary Listening',
+                'text_author': '— Autumn Twilight, anonymous',
+                'rules_heading': '📖 Grammatical Functions in the Sentence',
+                'rules_intro': 'The <strong>function</strong> of a word or phrase indicates its role in the sentence (subject, complement, etc.), unlike its nature which is fixed.',
+                'rules_subject_title': '🔹 The Subject',
+                'rules_subject_desc': 'It performs the action or undergoes the state expressed by the verb. Found by asking <em>“Who?”</em> or <em>“What?”</em> before the verb.',
+                'rules_subject_example': '<em>The setting sun set the horizon ablaze.</em> → <strong>The setting sun</strong> is the subject of “set ablaze”.',
+                'rules_cod_title': '🔹 The Direct Object (COD)',
+                'rules_cod_desc': 'It completes the verb directly, without a preposition. Question: <em>“whom?”</em> or <em>“what?”</em> after the verb.',
+                'rules_cod_example': '<em>I offered my scarf.</em> → <strong>my scarf</strong> is the direct object of “offered”.',
+                'rules_coi_title': '🔹 The Indirect Object (COI)',
+                'rules_coi_desc': 'Introduced by a preposition (to, of, with…). Questions: <em>“to whom?”</em>, <em>“to what?”</em>, <em>“of whom?”</em>, <em>“of what?”</em>.',
+                'rules_coi_example': '<em>I offered my scarf to the young girl.</em> → <strong>to the young girl</strong> is the indirect object of “offered”.',
+                'rules_cc_title': '🔹 Adverbial Complements (CC)',
+                'rules_cc_desc': 'They specify the circumstances of the action (time, place, manner, cause…). They can often be removed or moved.',
+                'rules_cc_list': '<li><strong>Time:</strong> <em>Every morning, he goes out.</em></li><li><strong>Place:</strong> <em>He walks in the forest.</em></li><li><strong>Manner:</strong> <em>She speaks softly.</em></li><li><strong>Cause:</strong> <em>He trembles from the cold.</em></li>',
+                'rules_note': '💡 The same word can have an invariable nature but different functions depending on the sentence.',
+                'exercises_heading': '✍️ Exercises',
+                'exo1_title': '📌 1. Identify the function of the underlined words or phrases',
+                'exo1_instruction': 'For each underlined element in the text, state its grammatical function: <strong>subject</strong>, <strong>direct object</strong>, <strong>indirect object</strong>, <strong>adverbial complement</strong> (place, time, manner…).',
+                'table_group': 'Underlined phrase',
+                'table_function': 'Function',
+                'btn_correction': '🔍 See the correction',
+                'exo2_title': '📌 2. Nature or function?',
+                'exo2_instruction': 'In the sentence “I offered my scarf to the trembling young girl.”',
+                'exo2_q1_nature': 'What is the <strong>nature</strong> of “my”?',
+                'exo2_q2_fonction': 'What is the <strong>function</strong> of “my scarf”?',
+                'exo2_q3_nature': 'What is the <strong>nature</strong> of “to”?',
+                'exo2_q4_fonction': 'What is the <strong>function</strong> of “to the trembling young girl”?',
+                'exo2_q5_explain': 'Explain the difference between nature and function in one sentence:',
+                'exo3_title': '📌 3. Directed production',
+                'exo3_instruction': 'Compose a full sentence containing: a <strong>subject</strong>, a <strong>direct object</strong>, an <strong>indirect object</strong> and a <strong>time adverbial</strong>. Underline each group and write its function in parentheses.',
+                'exo3_example': 'Example:',
+                'exo4_title': '📌 4. Watch out for pronouns',
+                'exo4_instruction': 'In the sentence “He gave them to me”, identify the function of the underlined pronouns.',
+                'footer_back': '← Previous lesson: Grammatical Classes',
+                'footer_next': 'Next lesson: Simple Tenses →',
+                'self_assess_question': 'My answer is:',
+                'self_correct': 'Correct',
+                'self_incorrect': 'Incorrect',
+                'self_partial': 'Partially correct',
+                'score_title': '📊 Your self‑assessment',
+                'score_correct': 'Correct:',
+                'score_incorrect': 'Incorrect:',
+                'score_partial': 'Partial:',
+                'score_unanswered': 'Unanswered:',
+                'save_results': '💾 Save my results',
+                'save_success': 'Results saved ✓',
+                'save_error': 'Save failed',
+                'print_pdf': '🖨️ Print / PDF',
+                'print_with_answers': 'With answers',
+                'print_without_answers': 'Without answers',
+                'print_site_name': 'Educational Dashboard – French',
+                'print_scholar_year': 'Bac Review',
+                'print_week': 'Week 1',
+                'print_area': 'Grammar',
+                'print_footer_dev': 'Developed by Mejri Ziad',
+                'print_footer_date': 'Printed on',
+                'toast_signin_required': 'Sign in to see the corrections.'
+            },
+            ar: {
+                'lesson2_title': 'الدرس 2 – الوظائف الأساسية',
+                'lesson_short_title': 'الوظائف الأساسية',
+                'ach_year_bac': 'السنة الرابعة ثانوي',
+                'ach_module_semaine1': 'أسس اللغة',
+                'back_revision': 'المراجعة العامة',
+                'back_current': 'الوظائف الأساسية',
+                'lesson_badge': '📘 القواعد · الدرس 2',
+                'lesson_title': 'الوظائف الأساسية<br>(الفاعل، المفعول به، المفعول لأجله، الظرف)',
+                'lesson_duration': '⏱️ 45 دقيقة',
+                'lesson_meta_audio': '🎧 استمع إلى النص ثم قم بالتمارين',
+                'audio_label': '🎧 استماع أدبي',
+                'text_author': '— غسق الخريف، كاتب مجهول',
+                'rules_heading': '📖 الوظائف النحوية في الجملة',
+                'rules_intro': '<strong>الوظيفة</strong> لكلمة أو مجموعة كلمات تحدد دورها في الجملة (فاعل، مفعول به، إلخ)، بخلاف الطبيعة التي تكون ثابتة.',
+                'rules_subject_title': '🔹 الفاعل',
+                'rules_subject_desc': 'يقوم بالفعل أو يتحمل الحالة التي يعبر عنها الفعل. نجده بالسؤال <em>«من؟»</em> أو <em>«ماذا؟»</em> قبل الفعل.',
+                'rules_subject_example': '<em>الشمس الغاربة أضرمت الأفق.</em> → <strong>الشمس الغاربة</strong> فاعل «أضرمت».',
+                'rules_cod_title': '🔹 المفعول به المباشر',
+                'rules_cod_desc': 'يكمل الفعل مباشرة دون حرف جر. السؤال: <em>«من؟»</em> أو <em>«ماذا؟»</em> بعد الفعل.',
+                'rules_cod_example': '<em>أعطيت وشاحي.</em> → <strong>وشاحي</strong> مفعول به مباشر لـ«أعطيت».',
+                'rules_coi_title': '🔹 المفعول به غير المباشر',
+                'rules_coi_desc': 'يسبقه حرف جر (إلى، من، بـ…). الأسئلة: <em>«إلى من؟»</em>، <em>«إلى ماذا؟»</em>، <em>«ممن؟»</em>، <em>«مم؟»</em>.',
+                'rules_coi_example': '<em>أعطيت وشاحي للفتاة الصغيرة.</em> → <strong>للفتاة الصغيرة</strong> مفعول به غير مباشر لـ«أعطيت».',
+                'rules_cc_title': '🔹 المكملات الظرفية',
+                'rules_cc_desc': 'تحدد ظروف الحدث (زمان، مكان، كيفية، سبب…). يمكن حذفها أو تغيير مكانها غالباً.',
+                'rules_cc_list': '<li><strong>ظرف زمان:</strong> <em>كل صباح، يخرج.</em></li><li><strong>ظرف مكان:</strong> <em>يتمشى في الغابة.</em></li><li><strong>ظرف كيفية:</strong> <em>تتكلم بهدوء.</em></li><li><strong>ظرف سبب:</strong> <em>يرتجف من البرد.</em></li>',
+                'rules_note': '💡 نفس الكلمة قد تكون لها طبيعة ثابتة لكن وظائف مختلفة حسب الجملة.',
+                'exercises_heading': '✍️ تمارين',
+                'exo1_title': '📌 1. حدد وظيفة الكلمات أو العبارات المسطرة',
+                'exo1_instruction': 'لكل عنصر مسطر في النص، حدد وظيفته النحوية: <strong>فاعل</strong>، <strong>مفعول به مباشر</strong>، <strong>مفعول به غير مباشر</strong>، <strong>مكمل ظرفي</strong> (مكان، زمان، كيفية…).',
+                'table_group': 'العبارة المسطرة',
+                'table_function': 'الوظيفة',
+                'btn_correction': '🔍 الاطلاع على التصحيح',
+                'exo2_title': '📌 2. طبيعة أم وظيفة؟',
+                'exo2_instruction': 'في جملة «أعطيت وشاحي للفتاة الصغيرة المرتجفة.»',
+                'exo2_q1_nature': 'ما هي <strong>طبيعة</strong> «وشاحي»؟',
+                'exo2_q2_fonction': 'ما هي <strong>وظيفة</strong> «وشاحي»؟',
+                'exo2_q3_nature': 'ما هي <strong>طبيعة</strong> «لـ»؟',
+                'exo2_q4_fonction': 'ما هي <strong>وظيفة</strong> «للفتاة الصغيرة المرتجفة»؟',
+                'exo2_q5_explain': 'اشرح الفرق بين الطبيعة والوظيفة في جملة واحدة:',
+                'exo3_title': '📌 3. إنتاج موجه',
+                'exo3_instruction': 'أنشئ جملة كاملة تحتوي على: <strong>فاعل</strong>، <strong>مفعول به مباشر</strong>، <strong>مفعول به غير مباشر</strong> و<strong>ظرف زمان</strong>. ضع خطا تحت كل مجموعة واكتب وظيفتها بين قوسين.',
+                'exo3_example': 'مثال:',
+                'exo4_title': '📌 4. انتبه للضمائر',
+                'exo4_instruction': 'في جملة «أعطانيهم»، حدد وظيفة الضمائر المسطرة.',
+                'footer_back': '← الدرس السابق: الأصناف النحوية',
+                'footer_next': 'الدرس الموالي: الأزمنة البسيطة →',
+                'self_assess_question': 'جوابي هو:',
+                'self_correct': 'صحيح',
+                'self_incorrect': 'خاطئ',
+                'self_partial': 'صحيح جزئيًا',
+                'score_title': '📊 تقييمك الذاتي',
+                'score_correct': 'صحيح:',
+                'score_incorrect': 'خاطئ:',
+                'score_partial': 'جزئي:',
+                'score_unanswered': 'بدون إجابة:',
+                'save_results': '💾 حفظ نتائجي',
+                'save_success': 'تم حفظ النتائج ✓',
+                'save_error': 'خطأ في الحفظ',
+                'print_pdf': '🖨️ طباعة / PDF',
+                'print_with_answers': 'مع التصحيح',
+                'print_without_answers': 'بدون تصحيح',
+                'print_site_name': 'لوحة التحكم التعليمية – الفرنسية',
+                'print_scholar_year': 'مراجعة البكالوريا',
+                'print_week': 'الأسبوع 1',
+                'print_area': 'القواعد',
+                'print_footer_dev': 'طوّر بواسطة ماجري زياد',
+                'print_footer_date': 'طُبع في',
+                'toast_signin_required': 'سجّل الدخول لرؤية التصحيحات.'
+            }
+        });
 
-            // ── CUSTOM AUDIO PLAYER ──
+        (function() {
+            var container = document.querySelector('.container');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+        })();
+    </script>
+    <script src="ed-french-ini.js"></script>
+    <script>
+        // ── Custom audio player and exercise logic ──
+        (function() {
             const audio = new Audio('lessons/revision/sounds/lesson2.mp3');
             const playBtn = document.getElementById('playBtn');
             const progressFill = document.getElementById('progressFill');
@@ -624,45 +870,282 @@
                 return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
             }
 
-            audio.addEventListener('loadedmetadata', () => {
-                durationEl.textContent = formatTime(audio.duration);
-            });
+            audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
             audio.addEventListener('timeupdate', () => {
                 const percent = (audio.currentTime / audio.duration) * 100 || 0;
                 progressFill.style.width = percent + '%';
                 currentTimeEl.textContent = formatTime(audio.currentTime);
             });
-            audio.addEventListener('ended', () => {
-                playBtn.textContent = '▶';
-            });
+            audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
             playBtn.addEventListener('click', () => {
-                if (audio.paused) {
-                    audio.play();
-                    playBtn.textContent = '⏸';
-                } else {
-                    audio.pause();
-                    playBtn.textContent = '▶';
-                }
+                if (audio.paused) { audio.play(); playBtn.textContent = '⏸'; }
+                else { audio.pause(); playBtn.textContent = '▶'; }
             });
             progressBar.addEventListener('click', (e) => {
                 const rect = progressBar.getBoundingClientRect();
                 const clickX = e.clientX - rect.left;
                 const width = rect.width;
-                audio.currentTime = (clickX / width) * audio.duration;
+                const seekTime = (clickX / width) * audio.duration;
+                audio.currentTime = seekTime;
             });
             speedBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     speedBtns.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
-                    audio.playbackRate = parseFloat(btn.dataset.speed);
+                    const speed = parseFloat(btn.dataset.speed);
+                    audio.playbackRate = speed;
                 });
             });
 
-            // Toggle correction visibility
-            window.toggleCorrection = function(id) {
+            // ── Auth‑gated correction ──
+            window.toggleCorrection = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
                 const el = document.getElementById(id);
-                el.classList.toggle('visible');
+                if (el) el.classList.toggle('visible');
             };
+
+            // ── Self‑assessment score calculation ──
+            function updateScore() {
+                const radioGroups = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4'];
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                radioGroups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                document.getElementById('scoreCorrect').textContent = correct;
+                document.getElementById('scoreIncorrect').textContent = incorrect;
+                document.getElementById('scorePartial').textContent = partial;
+                document.getElementById('scoreUnanswered').textContent = unanswered;
+            }
+// ── Save self‑assessment to profiles.achivement ──
+document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+    const { data: { user } } = await App.supabase.auth.getUser();
+    if (!user) {
+        App.showToast('toast_signin_required', 'error');
+        const signInBtn = document.getElementById('signInBtn');
+        if (signInBtn) signInBtn.click();
+        return;
+    }
+    // Gather self‑assessment counts
+    const radioGroups = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4'];
+    let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+    radioGroups.forEach(name => {
+        const selected = document.querySelector(`input[name="${name}"]:checked`);
+        if (selected) {
+            if (selected.value === 'correct') correct++;
+            else if (selected.value === 'incorrect') incorrect++;
+            else if (selected.value === 'partial') partial++;
+        } else {
+            unanswered++;
+        }
+    });
+
+    // Lesson metadata
+    const lessonId = 'semaine1-fonctions-essentielles';
+    const lang = localStorage.getItem('lang') || 'fr';
+    const entry = {
+        lesson_id: lessonId,
+        lesson_title: {
+            fr: App.getTranslation('lesson_short_title', 'fr'),
+            en: App.getTranslation('lesson_short_title', 'en'),
+            ar: App.getTranslation('lesson_short_title', 'ar')
+        },
+        year: {
+            fr: App.getTranslation('ach_year_bac', 'fr'),
+            en: App.getTranslation('ach_year_bac', 'en'),
+            ar: App.getTranslation('ach_year_bac', 'ar')
+        },
+        module: {
+            fr: App.getTranslation('ach_module_semaine1', 'fr'),
+            en: App.getTranslation('ach_module_semaine1', 'en'),
+            ar: App.getTranslation('ach_module_semaine1', 'ar')
+        },
+        correct: correct,
+        incorrect: incorrect,
+        partial: partial,
+        unanswered: unanswered,
+        updated_at: new Date().toISOString()
+    };
+
+    const { data: profileData, error: fetchError } = await App.supabase
+        .from('profiles')
+        .select('achivement')
+        .eq('id', user.id)
+        .single();
+
+    if (fetchError) {
+        console.error('Could not fetch profile:', fetchError);
+        return;
+    }
+
+    let achivement = profileData?.achivement || {};
+    if (!achivement["ED-French"]) achivement["ED-French"] = [];
+    const arr = achivement["ED-French"];
+    const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+    if (existingIdx >= 0) arr[existingIdx] = entry;
+    else arr.push(entry);
+
+    const { error: updateError } = await App.supabase
+        .from('profiles')
+        .update({ achivement: achivement })
+        .eq('id', user.id);
+
+    if (updateError) {
+        console.error('Save failed:', updateError);
+        App.showToast('save_error', 'error');
+    } else {
+        App.showToast('save_success', 'success');
+        App.logUserAction('lesson_saved', { lesson: lessonId, correct, incorrect, partial });
+    }
+});
+
+// ── Print / PDF button ──
+document.getElementById('printPdfBtn').addEventListener('click', async function() {
+    const { data: { user } } = await App.supabase.auth.getUser();
+    if (!user) {
+        App.showToast('toast_signin_required', 'error');
+        const signInBtn = document.getElementById('signInBtn');
+        if (signInBtn) signInBtn.click();
+        return;
+    }
+
+    let isRegistered = false;
+    try {
+        const { data: profile, error } = await App.supabase
+            .from('profiles')
+            .select('registration_state')
+            .eq('id', user.id)
+            .single();
+        if (!error && profile && profile.registration_state && profile.registration_state.active === true) {
+            isRegistered = true;
+        }
+    } catch (e) {}
+
+    const headerHTML = document.querySelector('.lesson-header').cloneNode(true);
+    const textCard = document.querySelector('.text-card').cloneNode(true);
+    const rulesSections = document.querySelectorAll('.valeurs-section, .methode-section');
+    let rulesHTML = '';
+    rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
+    const exercisesSection = document.querySelector('.exercises-section').cloneNode(true);
+    exercisesSection.querySelectorAll('input, textarea, .btn-verify, .self-assessment').forEach(el => el.remove());
+
+    if (isRegistered) {
+        const answerKeys = exercisesSection.querySelectorAll('.answer-key');
+        answerKeys.forEach(key => {
+            key.style.display = 'block';
+            key.style.border = 'none';
+            key.style.padding = '0.5rem 0';
+            key.style.margin = '0.5rem 0';
+            key.style.background = 'transparent';
+        });
+    } else {
+        exercisesSection.querySelectorAll('.answer-key').forEach(el => el.remove());
+    }
+
+    const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+
+    const printWindow = window.open('', '_blank', 'width=800,height=600');
+    const lang = localStorage.getItem('lang') || 'fr';
+    printWindow.document.write(`
+        <!DOCTYPE html>
+        <html lang="${lang}">
+        <head>
+            <meta charset="UTF-8">
+            <title>${App.getTranslation('lesson_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title>
+            <style>
+                body { font-family: 'Georgia', serif; line-height: 1.6; max-width: 700px; margin: 2rem auto; padding: 0 1rem; color: #000; }
+                h1, h2, h3 { color: #000; }
+                .lesson-header { text-align: center; margin-bottom: 2rem; }
+                .badge { display: inline-block; background: #c75b2c; color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; text-transform: uppercase; }
+                .text-card { border-left: 4px solid #c75b2c; padding: 1rem 1.5rem; margin: 1.5rem 0; font-style: italic; }
+                .quote-mark { font-size: 3rem; color: #c75b2c; opacity: 0.3; position: absolute; top: -10px; left: 10px; }
+                .text-card .author { text-align: right; font-style: normal; margin-top: 0.8rem; }
+                .valeurs-section, .methode-section { margin: 1.5rem 0; }
+                .valeur-card { background: #f8f4ec; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; }
+                .valeur-card h3 { color: #c75b2c; }
+                .exercise-card { margin: 1.2rem 0; }
+                table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; }
+                th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+                th { background: #f0e8d8; }
+                .answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; }
+                .print-header { text-align: center; border-bottom: 2px solid #c75b2c; padding-bottom: 1rem; margin-bottom: 2rem; }
+                .print-header .site-name { font-size: 1.4rem; font-weight: bold; color: #c75b2c; margin: 0 0 0.3rem; }
+                .print-header .meta-line { font-size: 0.95rem; color: #444; margin: 0.2rem 0; }
+                .print-header .lesson-name { font-size: 1.1rem; font-weight: bold; color: #000; margin-top: 0.5rem; }
+                .print-footer { text-align: center; border-top: 1px solid #ccc; padding-top: 1rem; margin-top: 2rem; font-size: 0.85rem; color: #666; }
+                @media print { body { margin: 0; padding: 0; } @page { margin: 2cm; } }
+            </style>
+        </head>
+        <body>
+            <div class="print-header">
+                <div class="site-name">${App.getTranslation('print_site_name', lang)}</div>
+                <div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div>
+                <div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div>
+            </div>
+            ${breadcrumb.outerHTML}
+            ${headerHTML.outerHTML}
+            ${textCard.outerHTML}
+            ${rulesHTML}
+            ${exercisesSection.outerHTML}
+            <div class="print-footer">
+                ${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}
+            </div>
+        </body>
+        </html>
+    `);
+    printWindow.document.close();
+    printWindow.focus();
+    setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+});
+
+            document.querySelectorAll('input[type="radio"][name^="self_ex"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+        })();
+    </script>
+
+    <!-- ═══════ DIRECT‑TRANSLATION FIX ═══════ -->
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') {
+                                el.innerHTML = next.innerHTML;
+                            }
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
         })();
     </script>
 </body>
