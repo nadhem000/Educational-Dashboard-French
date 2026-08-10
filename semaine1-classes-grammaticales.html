@@ -643,7 +643,12 @@
   'save_success': 'Résultats sauvegardés ✓',
 'save_error': 'Erreur lors de la sauvegarde',
 'print_pdf': '🖨️ Imprimer / PDF',
-'print_with_answers': 'Corrigé inclus',
+'print_with_answers': 'Corrigé inclus','print_site_name': 'Educational Dashboard – French',
+'print_scholar_year': 'Révision pour le Bac',
+'print_week': 'Semaine 1',
+'print_area': 'Grammaire',
+'print_footer_dev': 'Développé par Mejri Ziad',
+'print_footer_date': 'Imprimé le',
 'print_without_answers': 'Sans corrigé',
                 'toast_signin_required': 'Connectez-vous pour voir les corrections.'
             },
@@ -705,6 +710,12 @@
 'save_error': 'Save failed',
 'print_pdf': '🖨️ Print / PDF',
 'print_with_answers': 'With answers',
+'print_site_name': 'Educational Dashboard – French',
+'print_scholar_year': 'Bac Review',
+'print_week': 'Week 1',
+'print_area': 'Grammar',
+'print_footer_dev': 'Developed by Mejri Ziad',
+'print_footer_date': 'Printed on',
 'print_without_answers': 'Without answers',
                 'toast_signin_required': 'Sign in to see the corrections.'
             },
@@ -766,7 +777,12 @@
 'save_error': 'خطأ في الحفظ',
 'print_pdf': '🖨️ طباعة / PDF',
 'print_with_answers': 'مع التصحيح',
-'print_without_answers': 'بدون تصحيح',
+'print_site_name': 'لوحة التحكم التعليمية – الفرنسية',
+'print_scholar_year': 'مراجعة البكالوريا',
+'print_week': 'الأسبوع 1',
+'print_area': 'القواعد',
+'print_footer_dev': 'طوّر بواسطة ماجري زياد',
+'print_footer_date': 'طُبع في',
                 'toast_signin_required': 'سجّل الدخول لرؤية التصحيحات.'
             }
         });
@@ -1054,54 +1070,95 @@ document.getElementById('printPdfBtn').addEventListener('click', async function(
     const printWindow = window.open('', '_blank', 'width=800,height=600');
     const lang = localStorage.getItem('lang') || 'fr';
     printWindow.document.write(`
-        <!DOCTYPE html>
-        <html lang="${lang}">
-        <head>
-            <meta charset="UTF-8">
-            <title>${App.getTranslation('lesson_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title>
-            <style>
-                body {
-                    font-family: 'Georgia', 'Times New Roman', serif;
-                    line-height: 1.6;
-                    max-width: 700px;
-                    margin: 2rem auto;
-                    padding: 0 1rem;
-                    color: #000;
-                }
-                h1, h2, h3 { color: #000; }
-                .lesson-header { text-align: center; margin-bottom: 2rem; }
-                .badge { display: inline-block; background: #c75b2c; color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; text-transform: uppercase; }
-                .text-card {
-                    border-left: 4px solid #c75b2c;
-                    padding: 1rem 1.5rem;
-                    margin: 1.5rem 0;
-                    font-style: italic;
-                }
-                .quote-mark { font-size: 3rem; color: #c75b2c; opacity: 0.3; position: absolute; top: -10px; left: 10px; }
-                .text-card .author { text-align: right; font-style: normal; margin-top: 0.8rem; }
-                .valeurs-section, .methode-section { margin: 1.5rem 0; }
-                .valeur-card { background: #f8f4ec; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; }
-                .valeur-card h3 { color: #c75b2c; }
-                .exercise-card { margin: 1.2rem 0; }
-                table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; }
-                th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
-                th { background: #f0e8d8; }
-                .answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; }
-                @media print {
-                    body { margin: 0; padding: 0; }
-                    @page { margin: 2cm; }
-                }
-            </style>
-        </head>
-        <body>
-            ${breadcrumb.outerHTML}
-            ${headerHTML.outerHTML}
-            ${textCard.outerHTML}
-            ${rulesHTML}
-            ${exercisesSection.outerHTML}
-        </body>
-        </html>
-    `);
+    <!DOCTYPE html>
+    <html lang="${lang}">
+    <head>
+        <meta charset="UTF-8">
+        <title>${App.getTranslation('lesson_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title>
+        <style>
+            body {
+                font-family: 'Georgia', 'Times New Roman', serif;
+                line-height: 1.6;
+                max-width: 700px;
+                margin: 2rem auto;
+                padding: 0 1rem;
+                color: #000;
+            }
+            .print-header {
+                text-align: center;
+                border-bottom: 2px solid #c75b2c;
+                padding-bottom: 1rem;
+                margin-bottom: 2rem;
+            }
+            .print-header .site-name {
+                font-size: 1.4rem;
+                font-weight: bold;
+                color: #c75b2c;
+                margin: 0 0 0.3rem;
+            }
+            .print-header .meta-line {
+                font-size: 0.95rem;
+                color: #444;
+                margin: 0.2rem 0;
+            }
+            .print-header .lesson-name {
+                font-size: 1.1rem;
+                font-weight: bold;
+                color: #000;
+                margin-top: 0.5rem;
+            }
+            .print-footer {
+                text-align: center;
+                border-top: 1px solid #ccc;
+                padding-top: 1rem;
+                margin-top: 2rem;
+                font-size: 0.85rem;
+                color: #666;
+            }
+            h1, h2, h3 { color: #000; }
+            .lesson-header { text-align: center; margin-bottom: 2rem; }
+            .badge { display: inline-block; background: #c75b2c; color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; text-transform: uppercase; }
+            .text-card {
+                border-left: 4px solid #c75b2c;
+                padding: 1rem 1.5rem;
+                margin: 1.5rem 0;
+                font-style: italic;
+            }
+            .quote-mark { font-size: 3rem; color: #c75b2c; opacity: 0.3; position: absolute; top: -10px; left: 10px; }
+            .text-card .author { text-align: right; font-style: normal; margin-top: 0.8rem; }
+            .valeurs-section, .methode-section { margin: 1.5rem 0; }
+            .valeur-card { background: #f8f4ec; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; }
+            .valeur-card h3 { color: #c75b2c; }
+            .exercise-card { margin: 1.2rem 0; }
+            table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; }
+            th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+            th { background: #f0e8d8; }
+            .answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; }
+            @media print {
+                body { margin: 0; padding: 0; }
+                @page { margin: 2cm; }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="print-header">
+            <div class="site-name">${App.getTranslation('print_site_name', lang)}</div>
+            <div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div>
+            <div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div>
+        </div>
+
+        ${breadcrumb.outerHTML}
+        ${headerHTML.outerHTML}
+        ${textCard.outerHTML}
+        ${rulesHTML}
+        ${exercisesSection.outerHTML}
+
+        <div class="print-footer">
+            ${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}
+        </div>
+    </body>
+    </html>
+`);
     printWindow.document.close();
     printWindow.focus();
     // Slight delay to ensure content is rendered before printing
