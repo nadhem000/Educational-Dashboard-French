@@ -898,6 +898,91 @@ document.getElementById('saveResultsBtn').addEventListener('click', async functi
         if (signInBtn) signInBtn.click();
         return;
     }
+    // Gather self‑assessment counts
+    const radioGroups = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4'];
+    let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+    radioGroups.forEach(name => {
+        const selected = document.querySelector(`input[name="${name}"]:checked`);
+        if (selected) {
+            if (selected.value === 'correct') correct++;
+            else if (selected.value === 'incorrect') incorrect++;
+            else if (selected.value === 'partial') partial++;
+        } else {
+            unanswered++;
+        }
+    });
+
+    // Lesson metadata (customise per lesson)
+    const lessonId = 'semaine1-classes-grammaticales';
+    
+        // Get translated short title
+    const lang = localStorage.getItem('lang') || 'fr';
+    const lessonTitle = App.getTranslation('lesson_short_title', lang) || lessonId;
+
+        const entry = {
+        lesson_id: lessonId,
+        lesson_title: {
+            fr: App.getTranslation('lesson_short_title', 'fr'),
+            en: App.getTranslation('lesson_short_title', 'en'),
+            ar: App.getTranslation('lesson_short_title', 'ar')
+        },
+        year: {
+            fr: App.getTranslation('ach_year_bac', 'fr'),
+            en: App.getTranslation('ach_year_bac', 'en'),
+            ar: App.getTranslation('ach_year_bac', 'ar')
+        },
+        module: {
+            fr: App.getTranslation('ach_module_semaine1', 'fr'),
+            en: App.getTranslation('ach_module_semaine1', 'en'),
+            ar: App.getTranslation('ach_module_semaine1', 'ar')
+        },
+        correct: correct,
+        incorrect: incorrect,
+        partial: partial,
+        unanswered: unanswered,
+        updated_at: new Date().toISOString()
+    };
+
+    // Fetch current profile, then update the achivement array
+    const { data: profileData, error: fetchError } = await App.supabase
+        .from('profiles')
+        .select('achivement')
+        .eq('id', user.id)
+        .single();
+
+    if (fetchError) {
+        console.error('Could not fetch profile:', fetchError);
+        return;
+    }
+
+    let achivement = profileData?.achivement || {};
+    if (!achivement["ED-French"]) {
+        achivement["ED-French"] = [];
+    }
+    const arr = achivement["ED-French"];
+    // Replace existing entry for the same lesson, or push new
+    const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+    if (existingIdx >= 0) {
+        arr[existingIdx] = entry;
+    } else {
+        arr.push(entry);
+    }
+
+    // Save back
+    const { error: updateError } = await App.supabase
+        .from('profiles')
+        .update({ achivement: achivement })
+        .eq('id', user.id);
+
+        if (updateError) {
+        console.error('Save failed:', updateError);
+        App.showToast('save_error', 'error');   // we'll define this key shortly
+    } else {
+        App.showToast('save_success', 'success');
+        App.logUserAction('lesson_saved', { lesson: lessonId, correct, incorrect, partial });
+    }
+});
+
 // ── Print / PDF button ──
 document.getElementById('printPdfBtn').addEventListener('click', async function() {
     // 1. Check authentication
@@ -1022,91 +1107,6 @@ document.getElementById('printPdfBtn').addEventListener('click', async function(
     // Slight delay to ensure content is rendered before printing
     setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
 });
-    // Gather self‑assessment counts
-    const radioGroups = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4'];
-    let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
-    radioGroups.forEach(name => {
-        const selected = document.querySelector(`input[name="${name}"]:checked`);
-        if (selected) {
-            if (selected.value === 'correct') correct++;
-            else if (selected.value === 'incorrect') incorrect++;
-            else if (selected.value === 'partial') partial++;
-        } else {
-            unanswered++;
-        }
-    });
-
-    // Lesson metadata (customise per lesson)
-    const lessonId = 'semaine1-classes-grammaticales';
-    
-        // Get translated short title
-    const lang = localStorage.getItem('lang') || 'fr';
-    const lessonTitle = App.getTranslation('lesson_short_title', lang) || lessonId;
-
-        const entry = {
-        lesson_id: lessonId,
-        lesson_title: {
-            fr: App.getTranslation('lesson_short_title', 'fr'),
-            en: App.getTranslation('lesson_short_title', 'en'),
-            ar: App.getTranslation('lesson_short_title', 'ar')
-        },
-        year: {
-            fr: App.getTranslation('ach_year_bac', 'fr'),
-            en: App.getTranslation('ach_year_bac', 'en'),
-            ar: App.getTranslation('ach_year_bac', 'ar')
-        },
-        module: {
-            fr: App.getTranslation('ach_module_semaine1', 'fr'),
-            en: App.getTranslation('ach_module_semaine1', 'en'),
-            ar: App.getTranslation('ach_module_semaine1', 'ar')
-        },
-        correct: correct,
-        incorrect: incorrect,
-        partial: partial,
-        unanswered: unanswered,
-        updated_at: new Date().toISOString()
-    };
-
-    // Fetch current profile, then update the achivement array
-    const { data: profileData, error: fetchError } = await App.supabase
-        .from('profiles')
-        .select('achivement')
-        .eq('id', user.id)
-        .single();
-
-    if (fetchError) {
-        console.error('Could not fetch profile:', fetchError);
-        return;
-    }
-
-    let achivement = profileData?.achivement || {};
-    if (!achivement["ED-French"]) {
-        achivement["ED-French"] = [];
-    }
-    const arr = achivement["ED-French"];
-    // Replace existing entry for the same lesson, or push new
-    const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
-    if (existingIdx >= 0) {
-        arr[existingIdx] = entry;
-    } else {
-        arr.push(entry);
-    }
-
-    // Save back
-    const { error: updateError } = await App.supabase
-        .from('profiles')
-        .update({ achivement: achivement })
-        .eq('id', user.id);
-
-        if (updateError) {
-        console.error('Save failed:', updateError);
-        App.showToast('save_error', 'error');   // we'll define this key shortly
-    } else {
-        App.showToast('save_success', 'success');
-        App.logUserAction('lesson_saved', { lesson: lessonId, correct, incorrect, partial });
-    }
-});
-
             document.querySelectorAll('input[type="radio"][name^="self_ex"]').forEach(radio => {
                 radio.addEventListener('change', updateScore);
             });
