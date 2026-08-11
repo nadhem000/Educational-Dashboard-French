@@ -3,109 +3,421 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leçon 7 – Expression Écrite | Écrire un paragraphe structuré</title>
-   <link rel="manifest" href="/manifest.json">
-<link rel="stylesheet" href="shared.css">
+    <title data-i18n="lesson7_title">Leçon 7 – Expression Écrite (Rédiger un paragraphe structuré) | Texte & Exercices</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
     <style>
-        /* Same design system as other lessons */
+        /* ===== Lesson‑specific styles (unchanged) ===== */
         :root {
-            --bg: #f9f7f1; --card: #ffffff; --text: #2b2416; --text-light: #5c5344;
-            --heading: #382e1e; --accent: #c75b2c; --accent-hover: #a3441d;
-            --border: #e5ddd0; --shadow: 0 1px 4px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.05);
-            --shadow-hover: 0 8px 22px rgba(0,0,0,0.08); --radius: 12px; --radius-sm: 8px;
-            --transition: 0.25s ease; --font: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
-            --audio-bg: #f4efe4; --audio-progress: #d8c9aa; --button-bg: #f0e8d8;
-            --button-hover: #e3d5bc; --input-bg: #fcfaf6;
+            --bg: #f9f7f1;
+            --card: #ffffff;
+            --text: #2b2416;
+            --text-light: #5c5344;
+            --heading: #382e1e;
+            --accent: #c75b2c;
+            --accent-hover: #a3441d;
+            --border: #e5ddd0;
+            --shadow: 0 1px 4px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-hover: 0 8px 22px rgba(0,0,0,0.08);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --transition: 0.25s ease;
+            --font-body: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
+            --audio-bg: #f4efe4;
+            --audio-progress: #d8c9aa;
+            --button-bg: #f0e8d8;
+            --button-hover: #e3d5bc;
+            --input-bg: #fcfaf6;
         }
+
         body.dark {
-            --bg: #1e1b17; --card: #2a2620; --text: #e8dfd2; --text-light: #b9aa95;
-            --heading: #f0e4d2; --accent: #e07b4a; --accent-hover: #f08c5c;
-            --border: #3e3830; --shadow: 0 1px 4px rgba(0,0,0,0.25);
-            --shadow-hover: 0 8px 22px rgba(0,0,0,0.35); --audio-bg: #26221b;
-            --audio-progress: #5a4e3c; --button-bg: #3a3329; --button-hover: #4e4437;
+            --bg: #1e1b17;
+            --card: #2a2620;
+            --text: #e8dfd2;
+            --text-light: #b9aa95;
+            --heading: #f0e4d2;
+            --accent: #e07b4a;
+            --accent-hover: #f08c5c;
+            --border: #3e3830;
+            --shadow: 0 1px 4px rgba(0,0,0,0.25);
+            --shadow-hover: 0 8px 22px rgba(0,0,0,0.35);
+            --audio-bg: #26221b;
+            --audio-progress: #5a4e3c;
+            --button-bg: #3a3329;
+            --button-hover: #4e4437;
             --input-bg: #333028;
         }
+
         * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.75; transition: background var(--transition), color var(--transition); }
-        .topbar { display: flex; align-items: center; justify-content: space-between; padding: 0.8rem 1.6rem; background: var(--card); border-bottom: 1px solid var(--border); box-shadow: var(--shadow); position: sticky; top:0; z-index:10; flex-wrap: wrap; gap:0.6rem; }
-        .breadcrumb { font-size:0.85rem; color:var(--text-light); }
-        .breadcrumb a { color:var(--accent); text-decoration:none; font-weight:600; }
-        .breadcrumb a:hover { text-decoration:underline; }
-        .theme-btn { display:inline-flex; align-items:center; gap:0.4rem; padding:0.45rem 0.9rem; border-radius:20px; border:1px solid var(--border); background: var(--button-bg); color:var(--text); cursor:pointer; font-size:0.85rem; font-weight:600; transition: all var(--transition); }
-        .theme-btn:hover { background:var(--button-hover); }
-        .container { max-width:900px; margin:0 auto; padding:1.8rem 1.4rem 3rem; }
-        .lesson-header { text-align: center; margin-bottom: 2rem; }
-        .badge { display:inline-block; background: var(--accent); color:#fff; padding:0.25rem 1rem; border-radius:20px; font-size:0.8rem; font-weight:700; letter-spacing:0.03em; text-transform: uppercase; }
-        .lesson-header h1 { font-size: 2.1rem; color: var(--heading); margin: 0.6rem 0 0.3rem; line-height: 1.3; }
-        .lesson-header .meta { font-size:0.9rem; color:var(--text-light); display: flex; justify-content: center; gap:1.2rem; flex-wrap: wrap; }
-        .audio-player { background: var(--card); border:1px solid var(--border); border-radius: var(--radius); padding:1rem 1.4rem; margin: 1.5rem 0 2rem; box-shadow: var(--shadow); display: flex; align-items: center; gap:1rem; flex-wrap: wrap; }
-        .play-btn { width:44px; height:44px; border-radius:50%; background: var(--accent); color:#fff; border:none; font-size:1.2rem; cursor:pointer; display: flex; align-items:center; justify-content:center; transition: background var(--transition); flex-shrink:0; }
-        .play-btn:hover { background: var(--accent-hover); }
-        .progress-area { flex:1; min-width:120px; display: flex; flex-direction: column; gap:0.3rem; }
-        .progress-bar { width:100%; height:6px; background: var(--audio-progress); border-radius:3px; cursor:pointer; overflow: hidden; }
-        .progress-fill { height:100%; background: var(--accent); border-radius:3px; width:0%; transition: width 0.1s linear; }
-        .time-info { display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-light); }
-        .speed-selector { display: flex; gap:0.3rem; }
-        .speed-btn { border:1px solid var(--border); background: var(--button-bg); color: var(--text); padding:0.25rem 0.55rem; border-radius:4px; font-size:0.75rem; font-weight:600; cursor:pointer; transition: all var(--transition); }
-        .speed-btn.active { background: var(--accent); color:#fff; border-color:var(--accent); }
-        .audio-label { font-weight:700; font-size:0.85rem; color:var(--heading); white-space:nowrap; }
-        .text-card { background: var(--card); border:1px solid var(--border); border-left:5px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding:1.6rem 1.8rem; margin:1.8rem 0; font-style:italic; font-size:1.05rem; line-height:1.9; box-shadow: var(--shadow); position: relative; }
-        .text-card .quote-mark { position:absolute; top:-12px; left:14px; font-size:3rem; color:var(--accent); opacity:0.25; line-height:1; }
-        .text-card .author { text-align:right; font-style:normal; font-size:0.9rem; color:var(--text-light); margin-top:0.8rem; }
-        .methode-section { background: var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:1.6rem 1.8rem; margin:2rem 0; box-shadow:var(--shadow); }
-        .methode-section h2 { font-size:1.5rem; color:var(--heading); margin-bottom:1rem; border-bottom:3px solid var(--accent); display:inline-block; padding-bottom:0.3rem; }
-        .exercises-section h2 { font-size:1.5rem; color:var(--heading); margin:2rem 0 1rem; border-bottom:3px solid var(--accent); display:inline-block; padding-bottom:0.3rem; }
-        .exercise-card { background: var(--card); border:1px solid var(--border); border-radius: var(--radius-sm); padding:1.2rem 1.4rem; margin-bottom:1.4rem; box-shadow: var(--shadow); }
-        .exercise-card h3 { font-size:1.05rem; color:var(--accent); margin-bottom:0.8rem; }
-        .exercise-card textarea { width:100%; padding:0.5rem; border:1px solid var(--border); border-radius:4px; background: var(--input-bg); color: var(--text); font-family: inherit; font-size:0.9rem; }
-        .btn-verify { background: var(--accent); color:#fff; border:none; padding:0.5rem 1.2rem; border-radius:20px; font-weight:600; cursor:pointer; transition: background var(--transition); margin-top:0.6rem; font-size:0.85rem; }
-        .btn-verify:hover { background: var(--accent-hover); }
-        .answer-key { display:none; margin-top:0.8rem; padding:0.8rem; background: var(--audio-bg); border-radius:6px; font-size:0.85rem; color:var(--text-light); border:1px dashed var(--accent); }
-        .answer-key.visible { display:block; }
-        .lesson-footer { margin-top:2.5rem; padding-top:1.2rem; border-top:1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap:0.8rem; }
-        .lesson-footer a { color: var(--accent); text-decoration:none; font-weight:600; }
-        .lesson-footer a:hover { text-decoration:underline; }
-        @media (max-width:600px) {
-            .container { padding:1rem 0.8rem 2rem; }
-            .lesson-header h1 { font-size:1.5rem; }
-            .audio-player { flex-direction: column; align-items: stretch; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.75;
+            transition: background var(--transition), color var(--transition);
         }
-.back-nav {
-    background: var(--card);
-    border-bottom: 1px solid var(--border);
-    padding: 0.5rem 1.5rem;
-}
-.back-nav a {
-    font-weight: 600;
-    color: var(--accent);
-    text-decoration: none;
-}
-.back-nav a:hover {
-    text-decoration: underline;
-}
+
+        .container { max-width:860px; margin:0 auto; padding:1.8rem 1.4rem 3rem; }
+
+        .lesson-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .badge {
+            display:inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding:0.25rem 1rem;
+            border-radius:20px;
+            font-size:0.8rem;
+            font-weight:700;
+            letter-spacing:0.03em;
+            text-transform: uppercase;
+        }
+        .lesson-header h1 {
+            font-size: 2.1rem;
+            color: var(--heading);
+            margin: 0.6rem 0 0.3rem;
+            line-height: 1.3;
+        }
+        .lesson-header .meta {
+            font-size:0.9rem;
+            color:var(--text-light);
+            display: flex;
+            justify-content: center;
+            gap:1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .audio-player {
+            background: var(--card);
+            border:1px solid var(--border);
+            border-radius: var(--radius);
+            padding:1rem 1.4rem;
+            margin: 1.5rem 0 2rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap:1rem;
+            flex-wrap: wrap;
+        }
+        .audio-player .play-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            border:none;
+            font-size:1.2rem;
+            cursor:pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background var(--transition);
+            flex-shrink: 0;
+        }
+        .play-btn:hover { background: var(--accent-hover); }
+        .audio-player .progress-area {
+            flex:1;
+            min-width:120px;
+            display: flex;
+            flex-direction: column;
+            gap:0.3rem;
+        }
+        .progress-bar {
+            width:100%;
+            height:6px;
+            background: var(--audio-progress);
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+        .time-info {
+            display: flex;
+            justify-content: space-between;
+            font-size:0.75rem;
+            color:var(--text-light);
+        }
+        .speed-selector {
+            display: flex;
+            gap:0.3rem;
+            flex-wrap: wrap;
+        }
+        .speed-btn {
+            border:1px solid var(--border);
+            background: var(--button-bg);
+            color: var(--text);
+            padding:0.25rem 0.55rem;
+            border-radius: 4px;
+            font-size:0.75rem;
+            font-weight:600;
+            cursor:pointer;
+            transition: all var(--transition);
+        }
+        .speed-btn.active {
+            background: var(--accent);
+            color:#fff;
+            border-color: var(--accent);
+        }
+        .audio-label {
+            font-weight:700;
+            font-size:0.85rem;
+            color:var(--heading);
+            white-space: nowrap;
+        }
+        @media (max-width:600px) {
+            .audio-player { flex-direction: column; align-items: stretch; }
+            .audio-label { text-align: center; }
+        }
+
+        .text-card {
+            background: var(--card);
+            border:1px solid var(--border);
+            border-left:5px solid var(--accent);
+            border-radius: 0 var(--radius) var(--radius) 0;
+            padding:1.4rem 1.6rem;
+            margin:1.8rem 0;
+            font-style:italic;
+            font-size:1.05rem;
+            line-height: 1.9;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        .text-card .quote-mark {
+            position: absolute;
+            top:-12px;
+            left:14px;
+            font-size:3rem;
+            color:var(--accent);
+            opacity:0.25;
+            line-height:1;
+        }
+        .text-card .author {
+            text-align:right;
+            font-style:normal;
+            font-size:0.9rem;
+            color:var(--text-light);
+            margin-top:0.8rem;
+        }
+
+        .exercises-section h2 {
+            font-size:1.5rem;
+            color:var(--heading);
+            margin:2rem 0 1rem;
+            border-bottom:3px solid var(--accent);
+            display:inline-block;
+            padding-bottom:0.3rem;
+        }
+        .exercise-card {
+            background: var(--card);
+            border:1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding:1.2rem 1.4rem;
+            margin-bottom:1.4rem;
+            box-shadow: var(--shadow);
+        }
+        .exercise-card h3 {
+            font-size:1.05rem;
+            color:var(--accent);
+            margin-bottom:0.8rem;
+            display: flex;
+            align-items: center;
+            gap:0.4rem;
+        }
+        .exercise-card table {
+            width:100%;
+            border-collapse: collapse;
+            margin: 0.8rem 0;
+        }
+        .exercise-card th, .exercise-card td {
+            padding:0.55rem 0.7rem;
+            border:1px solid var(--border);
+            text-align:left;
+            font-size:0.9rem;
+        }
+        .exercise-card th {
+            background: var(--audio-bg);
+            font-weight:700;
+            color:var(--heading);
+        }
+        .exercise-card input[type="text"] {
+            width:100%;
+            padding:0.4rem 0.6rem;
+            border:1px solid var(--border);
+            border-radius:4px;
+            background: var(--input-bg);
+            color: var(--text);
+            font-family: inherit;
+            font-size:0.9rem;
+        }
+        .btn-verify {
+            background: var(--accent);
+            color:#fff;
+            border:none;
+            padding:0.5rem 1.2rem;
+            border-radius: 20px;
+            font-weight:600;
+            cursor:pointer;
+            transition: background var(--transition);
+            margin-top:0.6rem;
+            font-size:0.85rem;
+        }
+        .btn-verify:hover { background: var(--accent-hover); }
+        .answer-key {
+            display:none;
+            margin-top:0.8rem;
+            padding:0.8rem;
+            background: var(--audio-bg);
+            border-radius:6px;
+            font-size:0.85rem;
+            color: var(--text-light);
+            border:1px dashed var(--accent);
+        }
+        .answer-key.visible { display:block; }
+
+        /* Self‑assessment */
+        .self-assessment {
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+        }
+        .self-assessment label {
+            cursor: pointer;
+        }
+
+        /* Score area */
+        .score-area {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: var(--shadow);
+        }
+        .score-area h2 {
+            color: var(--heading);
+            margin-bottom: 1rem;
+        }
+        .score-stats {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .score-stat {
+            background: var(--audio-bg);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        /* RTL support */
+        html[dir="rtl"] body { direction: rtl; }
+        html[dir="rtl"] .container { text-align: right; }
+        html[dir="rtl"] .text-card .author { text-align: left; }
+        html[dir="rtl"] .exercise-card th, html[dir="rtl"] .exercise-card td {
+            text-align: right;
+        }
+
+        @media (max-width:600px) {
+            .lesson-header h1 { font-size:1.5rem; }
+            .container { padding:1rem 0.8rem 2rem; }
+        }
+
+        .valeurs-section,
+        .methode-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.6rem 1.8rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+        .valeurs-section h2,
+        .methode-section h2 {
+            font-size: 1.5rem;
+            color: var(--heading);
+            margin-bottom: 1rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+        .valeur-card {
+            background: var(--audio-bg);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .valeur-card h3 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+        .valeur-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .valeur-card li {
+            padding: 0.3rem 0;
+            padding-left: 1.4rem;
+            position: relative;
+            color: var(--text-light);
+        }
+        .valeur-card li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 0.5rem;
+            top: 0.5rem;
+        }
+        .valeur-card p {
+            margin: 0.5rem 0;
+        }
     </style>
 </head>
 <body>
 
-<nav class="back-nav">
-    <a href="index.html">🏠 Accueil</a> › <a href="revision.html">Révision générale</a> › <strong>Expression écrite</strong>
-</nav>
-    <main class="container">
+    <!-- App shell header/footer are injected by ed-french-ini.js -->
+    <div id="main-content" class="container">
+        <!-- Breadcrumb -->
+        <p style="margin-bottom:1.5rem; color:var(--text-light);">
+            <a href="revision.html" data-i18n="back_revision">Révision générale</a>
+            › <strong data-i18n="back_current">Expression écrite</strong>
+        </p>
+
         <div class="lesson-header">
-            <span class="badge">✍️ Expression Écrite · Leçon 7</span>
-            <h1>Rédiger un paragraphe structuré<br>Introduction, développement, conclusion</h1>
+            <span class="badge" data-i18n="lesson_badge">✍️ Expression Écrite · Leçon 7</span>
+            <h1 data-i18n="lesson_title">Expression Écrite<br>(Rédiger un paragraphe structuré)</h1>
             <div class="meta">
-                <span>⏱️ 50 minutes</span>
-                <span>🎧 Écoutez le modèle puis entraînez‑vous</span>
+                <span data-i18n="lesson_duration">⏱️ 45 minutes</span>
+                <span data-i18n="lesson_meta_audio">🎧 Écoutez le modèle puis faites les exercices</span>
             </div>
         </div>
-        <!-- Audio player -->
+
+        <!-- ═════ CUSTOM AUDIO PLAYER ═════ -->
         <div class="audio-player" id="audioPlayer">
-            <span class="audio-label">🎧 Modèle de paragraphe</span>
-            <button class="play-btn" id="playBtn">▶</button>
+            <span class="audio-label" data-i18n="audio_label">🎧 Écoute du modèle</span>
+            <button class="play-btn" id="playBtn" aria-label="Lecture">▶</button>
             <div class="progress-area">
-                <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
-                <div class="time-info"><span id="currentTime">0:00</span><span id="duration">0:00</span></div>
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="time-info">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
             </div>
             <div class="speed-selector" id="speedSelector">
                 <button class="speed-btn" data-speed="0.75">0.75x</button>
@@ -114,68 +426,377 @@
                 <button class="speed-btn" data-speed="1.5">1.5x</button>
             </div>
         </div>
-        <!-- Model paragraph -->
+
+        <!-- ═════ MODEL TEXT ═════ -->
         <div class="text-card">
             <span class="quote-mark">“</span>
             <p>
-                <strong>La marche quotidienne est bénéfique pour la santé.</strong> En effet, elle renforce le cœur et améliore la circulation sanguine. De plus, marcher trente minutes par jour réduit le stress et favorise la concentration. Ainsi, les médecins recommandent cette activité simple à tous les âges. <strong>En conclusion, intégrer la marche dans son quotidien est un geste facile qui apporte de nombreux bienfaits.</strong>
+                La marche quotidienne est bénéfique pour la santé. En effet, elle renforce le cœur et améliore la circulation sanguine. De plus, marcher trente minutes par jour réduit le stress et favorise la concentration. Ainsi, les médecins recommandent cette activité simple à tous les âges. En conclusion, intégrer la marche dans son quotidien est un geste facile qui apporte de nombreux bienfaits.
             </p>
-            <div class="author">— Modèle de paragraphe argumentatif</div>
-        </div>
-        <!-- Method -->
-        <div class="methode-section">
-            <h2>📖 Structure d'un paragraphe</h2>
-            <p>Un paragraphe bien construit comporte trois parties :</p>
-            <ol style="margin-left:1.5rem; color:var(--text-light);">
-                <li><strong>L'idée principale (phrase d'introduction)</strong> : elle annonce le sujet du paragraphe.</li>
-                <li><strong>Le développement</strong> : il apporte des arguments, des exemples ou des explications.</li>
-                <li><strong>La phrase de conclusion</strong> : elle résume l'idée ou ouvre une perspective.</li>
-            </ol>
-            <p style="margin-top:1rem;">Utilisez des <strong>connecteurs logiques</strong> (en effet, de plus, ainsi, donc, en conclusion) pour relier vos idées.</p>
-        </div>
-        <!-- Exercises -->
-        <div class="exercises-section">
-            <h2>✍️ Exercices</h2>
-            <div class="exercise-card">
-                <h3>📌 1. Analyse du modèle</h3>
-                <p>Relisez le paragraphe ci-dessus et répondez :</p>
-                <ol type="a">
-                    <li>Quelle est l'idée principale ? <input type="text" placeholder="Écrivez la phrase..."></li>
-                    <li>Relevez deux arguments utilisés dans le développement. <input type="text" placeholder="Argument 1"> , <input type="text" placeholder="Argument 2"></li>
-                    <li>Quel connecteur introduit la conclusion ? <input type="text"></li>
-                </ol>
-                <button class="btn-verify" onclick="toggleCorrection('exo1Key')">🔍 Voir la correction</button>
-                <div id="exo1Key" class="answer-key">
-                    <strong>Correction :</strong><br>
-                    a) « La marche quotidienne est bénéfique pour la santé. »<br>
-                    b) Elle renforce le cœur / elle réduit le stress.<br>
-                    c) « En conclusion ».
-                </div>
-            </div>
-            <div class="exercise-card">
-                <h3>📌 2. Complétez le paragraphe</h3>
-                <p>Voici une idée principale : <em>« Lire développe l'imagination. »</em> Rédigez un développement de deux phrases et une courte conclusion.</p>
-                <textarea rows="4" placeholder="Votre paragraphe..."></textarea>
-            </div>
-            <div class="exercise-card">
-                <h3>📌 3. Rédaction guidée</h3>
-                <p>Choisissez un sujet parmi les deux suivants et rédigez un paragraphe structuré (5-6 lignes).</p>
-                <ul>
-                    <li>Sujet A : Les avantages du sport en équipe.</li>
-                    <li>Sujet B : L'importance de préserver les traditions.</li>
-                </ul>
-                <p>Votre paragraphe doit contenir une introduction, deux arguments et une conclusion. Soulignez les connecteurs.</p>
-                <textarea rows="6" placeholder="Votre paragraphe..."></textarea>
-            </div>
-        </div>
-        <div class="lesson-footer">
-            <a href="semaine1-accord-participe-passe.html">← Leçon précédente : Participe passé</a>
-            <a href="semaine1-etude-texte.html">Leçon suivante : Étude de texte →</a>
+            <div class="author" data-i18n="text_author">— Modèle de paragraphe argumentatif</div>
         </div>
 
-    </main>
-<script src="ed-french-ini.js"></script>
+        <!-- ═════ RÈGLES : STRUCTURE D'UN PARAGRAPHE ═════ -->
+        <div class="valeurs-section">
+            <h2 data-i18n="rules_heading">📖 Structure d'un paragraphe</h2>
+            <p data-i18n="rules_intro" class="no-bilingual" style="margin-bottom:1.2rem;">Un paragraphe bien construit comporte trois parties :</p>
+
+            <div class="valeur-card">
+                <h3 data-i18n="rules_idea_title">🔹 1. L'idée principale (phrase d'introduction)</h3>
+                <p data-i18n="rules_idea_text">Elle annonce le sujet du paragraphe.</p>
+            </div>
+
+            <div class="valeur-card">
+                <h3 data-i18n="rules_dev_title">🔹 2. Le développement</h3>
+                <p data-i18n="rules_dev_text">Il apporte des arguments, des exemples ou des explications.</p>
+            </div>
+
+            <div class="valeur-card">
+                <h3 data-i18n="rules_concl_title">🔹 3. La phrase de conclusion</h3>
+                <p data-i18n="rules_concl_text">Elle résume l'idée ou ouvre une perspective.</p>
+            </div>
+
+            <p data-i18n="rules_note" style="margin-top:1rem; font-style:italic; color:var(--text-light);">💡 Utilisez des connecteurs logiques (en effet, de plus, ainsi, donc, en conclusion) pour relier vos idées.</p>
+        </div>
+
+        <!-- ═════ EXERCISES ═════ -->
+        <div class="exercises-section">
+            <h2 data-i18n="exercises_heading">✍️ Exercices</h2>
+
+            <!-- Exercice 1 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo1_title">📌 1. Analyse du modèle</h3>
+                <p data-i18n="exo1_instruction">Relisez le paragraphe ci-dessus et répondez :</p>
+                <ol type="a">
+                    <li><span data-i18n="exo1_q1">Quelle est l'idée principale ?</span><br><input type="text" placeholder="Votre réponse..."></li>
+                    <li><span data-i18n="exo1_q2">Relevez deux arguments utilisés dans le développement.</span><br><input type="text" placeholder="Argument 1..."><br><input type="text" placeholder="Argument 2..." style="margin-top:0.3rem;"></li>
+                    <li><span data-i18n="exo1_q3">Quel connecteur introduit la conclusion ?</span><br><input type="text" placeholder="Connecteur..."></li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo1Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo1Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 2 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo2_title">📌 2. Complétez le paragraphe</h3>
+                <p data-i18n="exo2_instruction">Idée principale : « Lire développe l'imagination. »</p>
+                <p data-i18n="exo2_task">Rédigez un développement de deux phrases et une courte conclusion.</p>
+                <textarea rows="4" style="width:100%; padding:0.5rem;" placeholder="Votre développement et conclusion..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo2Key')" data-i18n="btn_correction">🔍 Voir une proposition</button>
+                <div id="exo2Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 3 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo3_title">📌 3. Rédaction guidée</h3>
+                <p data-i18n="exo3_instruction">Choisissez un sujet et rédigez un paragraphe structuré (5-6 lignes) avec introduction, deux arguments et une conclusion. Soulignez les connecteurs.</p>
+                <ul>
+                    <li data-i18n="exo3_sujetA">Sujet A : Les avantages du sport en équipe.</li>
+                    <li data-i18n="exo3_sujetB">Sujet B : L'importance de préserver les traditions.</li>
+                </ul>
+                <textarea rows="6" style="width:100%; padding:0.5rem;" placeholder="Votre paragraphe..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo3Key')" data-i18n="btn_correction">🔍 Voir une proposition</button>
+                <div id="exo3Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 4 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo4_title">📌 4. Remettez les phrases dans l'ordre</h3>
+                <p data-i18n="exo4_instruction">Formez un paragraphe cohérent en numérotant les phrases de 1 à 5.</p>
+                <ol type="a" style="list-style-type: lower-alpha;">
+                    <li>En conclusion, cette innovation a transformé notre façon de travailler. <input type="text" placeholder="N°" style="width:60px; display:inline-block; margin-left:1rem;"></li>
+                    <li>De plus, il a permis de réduire les coûts de communication. <input type="text" placeholder="N°" style="width:60px; display:inline-block; margin-left:1rem;"></li>
+                    <li>L'invention d'Internet a révolutionné le monde professionnel. <input type="text" placeholder="N°" style="width:60px; display:inline-block; margin-left:1rem;"></li>
+                    <li>Ainsi, les échanges sont devenus plus rapides et plus efficaces. <input type="text" placeholder="N°" style="width:60px; display:inline-block; margin-left:1rem;"></li>
+                    <li>En effet, il a favorisé le télétravail et la collaboration à distance. <input type="text" placeholder="N°" style="width:60px; display:inline-block; margin-left:1rem;"></li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo4Key')" data-i18n="btn_correction">🔍 Voir l'ordre correct</button>
+                <div id="exo4Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 5 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo5_title">📌 5. Transformez les paires de phrases</h3>
+                <p data-i18n="exo5_instruction">Reliez chaque paire en une phrase complexe argumentative à l'aide d'un connecteur logique (car, donc, parce que, c'est pourquoi, en effet…).</p>
+                <ol type="a">
+                    <li>Le sport est bon pour la santé. Il réduit le stress.<br><input type="text" placeholder="Votre phrase..."></li>
+                    <li>Les écrans fatiguent les yeux. Il ne faut pas en abuser.<br><input type="text" placeholder="Votre phrase..."></li>
+                    <li>Apprendre une langue étrangère est utile. Cela ouvre des portes à l'international.<br><input type="text" placeholder="Votre phrase..."></li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex5" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex5" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex5" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo5Key')" data-i18n="btn_correction">🔍 Voir des propositions</button>
+                <div id="exo5Key" class="answer-key"></div>
+            </div>
+        </div>
+
+        <!-- ═════ SCORING AREA ═════ -->
+        <div class="score-area" id="scoreArea">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="score-stats" id="scoreStats">
+                <div class="score-stat"><span data-i18n="score_correct">Correctes :</span> <span id="scoreCorrect">0</span></div>
+                <div class="score-stat"><span data-i18n="score_incorrect">Incorrectes :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="score-stat"><span data-i18n="score_partial">Partielles :</span> <span id="scorePartial">0</span></div>
+                <div class="score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">5</span></div>
+            </div>
+        </div>
+        <div class="score-actions" style="margin-top:1.2rem;">
+            <button id="saveResultsBtn" class="btn-verify" style="margin-right:0.5rem;" 
+                    data-i18n="save_results">💾 Enregistrer mes résultats</button>
+            <button id="printPdfBtn" class="btn-verify" style="background:#5c5344; margin-right:0.5rem;"
+                    data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+        </div>
+
+        <!-- Footer nav -->
+        <div style="margin-top:2rem; display:flex; justify-content:space-between; flex-wrap:wrap;">
+            <a href="semaine1-accord-participe-passe.html" data-i18n="footer_back" class="no-bilingual">← Leçon précédente</a>
+            <a href="semaine1-etude-texte.html" data-i18n="footer_next" class="no-bilingual">Leçon suivante : Étude de texte →</a>
+        </div>
+    </div>
+
+    <!-- ═══════ SCRIPTS ═══════ -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
     <script>
+        // ── Translations for this lesson ──
+        App.addI18nTranslations({
+            fr: {
+                'lesson7_title': 'Leçon 7 – Expression Écrite (Rédiger un paragraphe structuré) | Texte & Exercices',
+                'lesson_short_title': 'Expression écrite',
+                'ach_year_bac': '4ᵉ année secondaire (Bac)',
+                'ach_module_semaine1': 'Les Fondations de la Langue',
+                'back_revision': 'Révision générale',
+                'back_current': 'Expression écrite',
+                'lesson_badge': '✍️ Expression Écrite · Leçon 7',
+                'lesson_title': 'Expression Écrite<br>(Rédiger un paragraphe structuré)',
+                'lesson_duration': '⏱️ 45 minutes',
+                'lesson_meta_audio': '🎧 Écoutez le modèle puis faites les exercices',
+                'audio_label': '🎧 Écoute du modèle',
+                'text_author': '— Modèle de paragraphe argumentatif',
+                'rules_heading': '📖 Structure d\'un paragraphe',
+                'rules_intro': 'Un paragraphe bien construit comporte trois parties :',
+                'rules_idea_title': '🔹 1. L\'idée principale (phrase d\'introduction)',
+                'rules_idea_text': 'Elle annonce le sujet du paragraphe.',
+                'rules_dev_title': '🔹 2. Le développement',
+                'rules_dev_text': 'Il apporte des arguments, des exemples ou des explications.',
+                'rules_concl_title': '🔹 3. La phrase de conclusion',
+                'rules_concl_text': 'Elle résume l\'idée ou ouvre une perspective.',
+                'rules_note': '💡 Utilisez des connecteurs logiques (en effet, de plus, ainsi, donc, en conclusion) pour relier vos idées.',
+                'exercises_heading': '✍️ Exercices',
+                'exo1_title': '📌 1. Analyse du modèle',
+                'exo1_instruction': 'Relisez le paragraphe ci-dessus et répondez :',
+                'exo1_q1': 'Quelle est l\'idée principale ?',
+                'exo1_q2': 'Relevez deux arguments utilisés dans le développement.',
+                'exo1_q3': 'Quel connecteur introduit la conclusion ?',
+                'exo2_title': '📌 2. Complétez le paragraphe',
+                'exo2_instruction': 'Idée principale : « Lire développe l\'imagination. »',
+                'exo2_task': 'Rédigez un développement de deux phrases et une courte conclusion.',
+                'exo3_title': '📌 3. Rédaction guidée',
+                'exo3_instruction': 'Choisissez un sujet et rédigez un paragraphe structuré (5-6 lignes) avec introduction, deux arguments et une conclusion. Soulignez les connecteurs.',
+                'exo3_sujetA': 'Sujet A : Les avantages du sport en équipe.',
+                'exo3_sujetB': 'Sujet B : L\'importance de préserver les traditions.',
+                'exo4_title': '📌 4. Remettez les phrases dans l\'ordre',
+                'exo4_instruction': 'Formez un paragraphe cohérent en numérotant les phrases de 1 à 5.',
+                'exo5_title': '📌 5. Transformez les paires de phrases',
+                'exo5_instruction': 'Reliez chaque paire en une phrase complexe argumentative à l\'aide d\'un connecteur logique (car, donc, parce que, c\'est pourquoi, en effet…).',
+                'btn_correction': '🔍 Voir la correction',
+                'footer_back': '← Leçon précédente',
+                'footer_next': 'Leçon suivante : Étude de texte →',
+                'self_assess_question': 'Ma réponse est :',
+                'self_correct': 'Correcte',
+                'self_incorrect': 'Incorrecte',
+                'self_partial': 'Partiellement correcte',
+                'score_title': '📊 Votre auto‑évaluation',
+                'score_correct': 'Correctes :',
+                'score_incorrect': 'Incorrectes :',
+                'score_partial': 'Partielles :',
+                'score_unanswered': 'Sans réponse :',
+                'save_results': '💾 Enregistrer mes résultats',
+                'save_success': 'Résultats sauvegardés ✓',
+                'save_error': 'Erreur lors de la sauvegarde',
+                'print_pdf': '🖨️ Imprimer / PDF',
+                'print_with_answers': 'Corrigé inclus',
+                'print_site_name': 'Educational Dashboard – French',
+                'print_scholar_year': 'Révision pour le Bac',
+                'print_week': 'Semaine 1',
+                'print_area': 'Expression écrite',
+                'print_footer_dev': 'Développé par Mejri Ziad',
+                'print_footer_date': 'Imprimé le',
+                'print_without_answers': 'Sans corrigé',
+                'toast_signin_required': 'Connectez-vous pour voir les corrections.'
+            },
+            en: {
+                'lesson7_title': 'Lesson 7 – Written Expression (Writing a structured paragraph) | Text & Exercises',
+                'lesson_short_title': 'Written Expression',
+                'ach_year_bac': '12th grade (Bac)',
+                'ach_module_semaine1': 'Language Foundations',
+                'back_revision': 'General Review',
+                'back_current': 'Written Expression',
+                'lesson_badge': '✍️ Written Expression · Lesson 7',
+                'lesson_title': 'Written Expression<br>(Writing a structured paragraph)',
+                'lesson_duration': '⏱️ 45 minutes',
+                'lesson_meta_audio': '🎧 Listen to the model then do the exercises',
+                'audio_label': '🎧 Listen to the model',
+                'text_author': '— Model argumentative paragraph',
+                'rules_heading': '📖 Structure of a paragraph',
+                'rules_intro': 'A well-constructed paragraph has three parts:',
+                'rules_idea_title': '🔹 1. Main idea (introduction sentence)',
+                'rules_idea_text': 'It announces the topic of the paragraph.',
+                'rules_dev_title': '🔹 2. Development',
+                'rules_dev_text': 'It provides arguments, examples or explanations.',
+                'rules_concl_title': '🔹 3. Concluding sentence',
+                'rules_concl_text': 'It summarizes the idea or opens a perspective.',
+                'rules_note': '💡 Use logical connectors (indeed, furthermore, thus, therefore, in conclusion) to link your ideas.',
+                'exercises_heading': '✍️ Exercises',
+                'exo1_title': '📌 1. Analysis of the model',
+                'exo1_instruction': 'Reread the paragraph above and answer:',
+                'exo1_q1': 'What is the main idea?',
+                'exo1_q2': 'Find two arguments used in the development.',
+                'exo1_q3': 'Which connector introduces the conclusion?',
+                'exo2_title': '📌 2. Complete the paragraph',
+                'exo2_instruction': 'Main idea: "Reading develops the imagination."',
+                'exo2_task': 'Write a two-sentence development and a short conclusion.',
+                'exo3_title': '📌 3. Guided writing',
+                'exo3_instruction': 'Choose a topic and write a structured paragraph (5-6 lines) with an introduction, two arguments and a conclusion. Underline the connectors.',
+                'exo3_sujetA': 'Topic A: The advantages of team sports.',
+                'exo3_sujetB': 'Topic B: The importance of preserving traditions.',
+                'exo4_title': '📌 4. Put the sentences in order',
+                'exo4_instruction': 'Form a coherent paragraph by numbering the sentences 1 to 5.',
+                'exo5_title': '📌 5. Transform the pairs of sentences',
+                'exo5_instruction': 'Link each pair into an argumentative complex sentence using a logical connector (because, so, therefore, for, indeed…).',
+                'btn_correction': '🔍 See correction',
+                'footer_back': '← Previous lesson',
+                'footer_next': 'Next lesson: Text Study →',
+                'self_assess_question': 'My answer is:',
+                'self_correct': 'Correct',
+                'self_incorrect': 'Incorrect',
+                'self_partial': 'Partially correct',
+                'score_title': '📊 Your self‑assessment',
+                'score_correct': 'Correct:',
+                'score_incorrect': 'Incorrect:',
+                'score_partial': 'Partial:',
+                'score_unanswered': 'Unanswered:',
+                'save_results': '💾 Save my results',
+                'save_success': 'Results saved ✓',
+                'save_error': 'Save failed',
+                'print_pdf': '🖨️ Print / PDF',
+                'print_with_answers': 'With answers',
+                'print_site_name': 'Educational Dashboard – French',
+                'print_scholar_year': 'Bac Review',
+                'print_week': 'Week 1',
+                'print_area': 'Written Expression',
+                'print_footer_dev': 'Developed by Mejri Ziad',
+                'print_footer_date': 'Printed on',
+                'print_without_answers': 'Without answers',
+                'toast_signin_required': 'Sign in to see the corrections.'
+            },
+            ar: {
+                'lesson7_title': 'الدرس 7 – التعبير الكتابي (كتابة فقرة منظمة) | نص وتمارين',
+                'lesson_short_title': 'التعبير الكتابي',
+                'ach_year_bac': 'السنة الرابعة ثانوي',
+                'ach_module_semaine1': 'أسس اللغة',
+                'back_revision': 'المراجعة العامة',
+                'back_current': 'التعبير الكتابي',
+                'lesson_badge': '✍️ التعبير الكتابي · الدرس 7',
+                'lesson_title': 'التعبير الكتابي<br>(كتابة فقرة منظمة)',
+                'lesson_duration': '⏱️ 45 دقيقة',
+                'lesson_meta_audio': '🎧 استمع إلى النموذج ثم قم بالتمارين',
+                'audio_label': '🎧 استماع إلى النموذج',
+                'text_author': '— نموذج فقرة حجاجية',
+                'rules_heading': '📖 هيكل الفقرة',
+                'rules_intro': 'الفقرة المبنية جيدا تتكون من ثلاثة أجزاء:',
+                'rules_idea_title': '🔹 1. الفكرة الرئيسية (جملة المقدمة)',
+                'rules_idea_text': 'تعلن عن موضوع الفقرة.',
+                'rules_dev_title': '🔹 2. التطوير',
+                'rules_dev_text': 'يقدم حججا أو أمثلة أو شروحات.',
+                'rules_concl_title': '🔹 3. جملة الخاتمة',
+                'rules_concl_text': 'تلخص الفكرة أو تفتح أفقا.',
+                'rules_note': '💡 استعمل الروابط المنطقية (في الواقع، بالإضافة إلى ذلك، وهكذا، إذن، في الختام) لربط أفكارك.',
+                'exercises_heading': '✍️ تمارين',
+                'exo1_title': '📌 1. تحليل النموذج',
+                'exo1_instruction': 'أعد قراءة الفقرة أعلاه وأجب:',
+                'exo1_q1': 'ما هي الفكرة الرئيسية؟',
+                'exo1_q2': 'استخرج حجتين مستعملتين في التطوير.',
+                'exo1_q3': 'ما الرابط الذي يقدم الخاتمة؟',
+                'exo2_title': '📌 2. أكمل الفقرة',
+                'exo2_instruction': 'الفكرة الرئيسية: « القراءة تنمي الخيال. »',
+                'exo2_task': 'اكتب تطويرا من جملتين وخاتمة قصيرة.',
+                'exo3_title': '📌 3. كتابة موجهة',
+                'exo3_instruction': 'اختر موضوعا واكتب فقرة منظمة (5-6 أسطر) تتضمن مقدمة وحجتين وخاتمة. ضع خطا تحت الروابط.',
+                'exo3_sujetA': 'الموضوع أ: فوائد الرياضة الجماعية.',
+                'exo3_sujetB': 'الموضوع ب: أهمية الحفاظ على التقاليد.',
+                'exo4_title': '📌 4. رتب الجمل',
+                'exo4_instruction': 'كون فقرة متماسكة بترقيم الجمل من 1 إلى 5.',
+                'exo5_title': '📌 5. حول أزواج الجمل',
+                'exo5_instruction': 'اربط كل زوج في جملة حجاجية مركبة باستعمال رابط منطقي (لأن، إذن، لذلك، وبالتالي، في الواقع…).',
+                'btn_correction': '🔍 الاطلاع على التصحيح',
+                'footer_back': '← الدرس السابق',
+                'footer_next': 'الدرس الموالي: دراسة النص →',
+                'self_assess_question': 'جوابي هو:',
+                'self_correct': 'صحيح',
+                'self_incorrect': 'خاطئ',
+                'self_partial': 'صحيح جزئيًا',
+                'score_title': '📊 تقييمك الذاتي',
+                'score_correct': 'صحيح:',
+                'score_incorrect': 'خاطئ:',
+                'score_partial': 'جزئي:',
+                'score_unanswered': 'بدون إجابة:',
+                'save_results': '💾 حفظ نتائجي',
+                'save_success': 'تم حفظ النتائج ✓',
+                'save_error': 'خطأ في الحفظ',
+                'print_pdf': '🖨️ طباعة / PDF',
+                'print_with_answers': 'مع التصحيح',
+                'print_site_name': 'لوحة التحكم التعليمية – الفرنسية',
+                'print_scholar_year': 'مراجعة البكالوريا',
+                'print_week': 'الأسبوع 1',
+                'print_area': 'التعبير الكتابي',
+                'print_footer_dev': 'طوّر بواسطة ماجري زياد',
+                'print_footer_date': 'طُبع في',
+                'toast_signin_required': 'سجّل الدخول لرؤية التصحيحات.'
+            }
+        });
+
+        (function() {
+            var container = document.querySelector('.container');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+        })();
+    </script>
+    <script src="ed-french-ini.js"></script>
+    <script>
+        // ── Custom audio player and exercise logic ──
         (function() {
             const audio = new Audio('lessons/revision/sounds/lesson7.mp3');
             const playBtn = document.getElementById('playBtn');
@@ -184,14 +805,353 @@
             const currentTimeEl = document.getElementById('currentTime');
             const durationEl = document.getElementById('duration');
             const speedBtns = document.querySelectorAll('.speed-btn');
-            function formatTime(s) { const m=Math.floor(s/60); const sec=Math.floor(s%60); return `${m}:${sec<10?'0':''}${sec}`; }
-            audio.addEventListener('loadedmetadata', ()=> durationEl.textContent=formatTime(audio.duration));
-            audio.addEventListener('timeupdate', ()=>{ const p=(audio.currentTime/audio.duration)*100||0; progressFill.style.width=p+'%'; currentTimeEl.textContent=formatTime(audio.currentTime); });
-            audio.addEventListener('ended', ()=> playBtn.textContent='▶');
-            playBtn.addEventListener('click', ()=>{ if(audio.paused){ audio.play(); playBtn.textContent='⏸'; } else { audio.pause(); playBtn.textContent='▶'; } });
-            progressBar.addEventListener('click', (e)=>{ const r=progressBar.getBoundingClientRect(); audio.currentTime=((e.clientX-r.left)/r.width)*audio.duration; });
-            speedBtns.forEach(b=>b.addEventListener('click',()=>{ speedBtns.forEach(x=>x.classList.remove('active')); b.classList.add('active'); audio.playbackRate=parseFloat(b.dataset.speed); }));
-            window.toggleCorrection = function(id) { document.getElementById(id).classList.toggle('visible'); };
+
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+
+            audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
+            audio.addEventListener('timeupdate', () => {
+                const percent = (audio.currentTime / audio.duration) * 100 || 0;
+                progressFill.style.width = percent + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            });
+            audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) { audio.play(); playBtn.textContent = '⏸'; }
+                else { audio.pause(); playBtn.textContent = '▶'; }
+            });
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const seekTime = (clickX / width) * audio.duration;
+                audio.currentTime = seekTime;
+            });
+            speedBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    speedBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const speed = parseFloat(btn.dataset.speed);
+                    audio.playbackRate = speed;
+                });
+            });
+
+            // Correction Ex 1
+            document.getElementById('exo1Key').innerHTML = '<strong>Correction :</strong><br>a) « La marche quotidienne est bénéfique pour la santé. »<br>b) Elle renforce le cœur et améliore la circulation sanguine. / Marcher trente minutes par jour réduit le stress et favorise la concentration.<br>c) « En conclusion ».';
+
+            // Correction Ex 2 (example)
+            document.getElementById('exo2Key').innerHTML = '<strong>Proposition :</strong><br>En effet, la lecture permet de voyager dans des univers inconnus et de vivre des aventures extraordinaires. De plus, elle stimule la créativité en nous faisant imaginer les personnages et les décors. Ainsi, lire régulièrement enrichit notre capacité à inventer et à rêver.';
+
+            // Correction Ex 3 (examples for both topics)
+            document.getElementById('exo3Key').innerHTML = '<strong>Propositions :</strong><br><br><u>Sujet A</u> : Le sport en équipe présente de nombreux avantages. D\'abord, il favorise l\'esprit de coopération et la solidarité entre les joueurs. Ensuite, il permet de progresser plus rapidement grâce aux conseils des coéquipiers. Enfin, il crée des liens sociaux forts et durables. En conclusion, pratiquer une activité collective est bénéfique tant sur le plan physique que relationnel.<br><br><u>Sujet B</u> : Il est essentiel de préserver les traditions. En effet, elles constituent notre héritage culturel et nous relient à nos ancêtres. De plus, elles renforcent le sentiment d\'appartenance à une communauté. Ainsi, les transmettre aux jeunes générations garantit la continuité de notre identité. En conclusion, les traditions sont un trésor qu\'il faut protéger et valoriser.';
+
+            // Correction Ex 4
+            document.getElementById('exo4Key').innerHTML = '<strong>Ordre correct :</strong><br>1. c (L\'invention d\'Internet a révolutionné le monde professionnel.)<br>2. e (En effet, il a favorisé le télétravail et la collaboration à distance.)<br>3. b (De plus, il a permis de réduire les coûts de communication.)<br>4. d (Ainsi, les échanges sont devenus plus rapides et plus efficaces.)<br>5. a (En conclusion, cette innovation a transformé notre façon de travailler.)';
+
+            // Correction Ex 5 (examples)
+            document.getElementById('exo5Key').innerHTML = '<strong>Propositions :</strong><br>a) Le sport est bon pour la santé car il réduit le stress.<br>b) Les écrans fatiguent les yeux, c\'est pourquoi il ne faut pas en abuser.<br>c) Apprendre une langue étrangère est utile car cela ouvre des portes à l\'international.';
+
+            // Auth‑gated correction toggle
+            window.toggleCorrection = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('visible');
+            };
+
+            // Self‑assessment scoring (5 exercises)
+            function updateScore() {
+                const radioGroups = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5'];
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                radioGroups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                document.getElementById('scoreCorrect').textContent = correct;
+                document.getElementById('scoreIncorrect').textContent = incorrect;
+                document.getElementById('scorePartial').textContent = partial;
+                document.getElementById('scoreUnanswered').textContent = unanswered;
+            }
+
+            // Save results
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                const radioGroups = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5'];
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                radioGroups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+
+                const lessonId = 'semaine1-expression-ecrite';
+                const lang = localStorage.getItem('lang') || 'fr';
+                const lessonTitle = App.getTranslation('lesson_short_title', lang) || lessonId;
+
+                const entry = {
+                    lesson_id: lessonId,
+                    lesson_title: {
+                        fr: App.getTranslation('lesson_short_title', 'fr'),
+                        en: App.getTranslation('lesson_short_title', 'en'),
+                        ar: App.getTranslation('lesson_short_title', 'ar')
+                    },
+                    year: {
+                        fr: App.getTranslation('ach_year_bac', 'fr'),
+                        en: App.getTranslation('ach_year_bac', 'en'),
+                        ar: App.getTranslation('ach_year_bac', 'ar')
+                    },
+                    module: {
+                        fr: App.getTranslation('ach_module_semaine1', 'fr'),
+                        en: App.getTranslation('ach_module_semaine1', 'en'),
+                        ar: App.getTranslation('ach_module_semaine1', 'ar')
+                    },
+                    correct: correct,
+                    incorrect: incorrect,
+                    partial: partial,
+                    unanswered: unanswered,
+                    updated_at: new Date().toISOString()
+                };
+
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles')
+                    .select('achivement')
+                    .eq('id', user.id)
+                    .single();
+
+                if (fetchError) {
+                    console.error('Could not fetch profile:', fetchError);
+                    return;
+                }
+
+                let achivement = profileData?.achivement || {};
+                if (!achivement["ED-French"]) {
+                    achivement["ED-French"] = [];
+                }
+                const arr = achivement["ED-French"];
+                const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+                if (existingIdx >= 0) {
+                    arr[existingIdx] = entry;
+                } else {
+                    arr.push(entry);
+                }
+
+                const { error: updateError } = await App.supabase
+                    .from('profiles')
+                    .update({ achivement: achivement })
+                    .eq('id', user.id);
+
+                if (updateError) {
+                    console.error('Save failed:', updateError);
+                    App.showToast('save_error', 'error');
+                } else {
+                    App.showToast('save_success', 'success');
+                    App.logUserAction('lesson_saved', { lesson: lessonId, correct, incorrect, partial });
+                }
+            });
+
+            // Print / PDF
+            document.getElementById('printPdfBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles')
+                        .select('registration_state')
+                        .eq('id', user.id)
+                        .single();
+                    if (!error && profile && profile.registration_state && profile.registration_state.active === true) {
+                        isRegistered = true;
+                    }
+                } catch (e) { /* ignore */ }
+
+                const headerHTML = document.querySelector('.lesson-header').cloneNode(true);
+                const textCard = document.querySelector('.text-card').cloneNode(true);
+                const rulesSections = document.querySelectorAll('.valeurs-section, .methode-section');
+                let rulesHTML = '';
+                rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
+
+                const exercisesSection = document.querySelector('.exercises-section').cloneNode(true);
+                exercisesSection.querySelectorAll('input, textarea, .btn-verify, .self-assessment').forEach(el => el.remove());
+
+                if (isRegistered) {
+                    const answerKeys = exercisesSection.querySelectorAll('.answer-key');
+                    answerKeys.forEach(key => {
+                        key.style.display = 'block';
+                        key.style.border = 'none';
+                        key.style.padding = '0.5rem 0';
+                        key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    exercisesSection.querySelectorAll('.answer-key').forEach(el => el.remove());
+                }
+
+                const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                const lang = localStorage.getItem('lang') || 'fr';
+                printWindow.document.write(`
+                <!DOCTYPE html>
+                <html lang="${lang}">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>${App.getTranslation('lesson_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title>
+                    <style>
+                        body {
+                            font-family: 'Georgia', 'Times New Roman', serif;
+                            line-height: 1.6;
+                            max-width: 700px;
+                            margin: 2rem auto;
+                            padding: 0 1rem;
+                            color: #000;
+                        }
+                        .print-header {
+                            text-align: center;
+                            border-bottom: 2px solid #c75b2c;
+                            padding-bottom: 1rem;
+                            margin-bottom: 2rem;
+                        }
+                        .print-header .site-name {
+                            font-size: 1.4rem;
+                            font-weight: bold;
+                            color: #c75b2c;
+                            margin: 0 0 0.3rem;
+                        }
+                        .print-header .meta-line {
+                            font-size: 0.95rem;
+                            color: #444;
+                            margin: 0.2rem 0;
+                        }
+                        .print-header .lesson-name {
+                            font-size: 1.1rem;
+                            font-weight: bold;
+                            color: #000;
+                            margin-top: 0.5rem;
+                        }
+                        .print-footer {
+                            text-align: center;
+                            border-top: 1px solid #ccc;
+                            padding-top: 1rem;
+                            margin-top: 2rem;
+                            font-size: 0.85rem;
+                            color: #666;
+                        }
+                        h1, h2, h3 { color: #000; }
+                        .lesson-header { text-align: center; margin-bottom: 2rem; }
+                        .badge { display: inline-block; background: #c75b2c; color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; text-transform: uppercase; }
+                        .text-card {
+                            border-left: 4px solid #c75b2c;
+                            padding: 1rem 1.5rem;
+                            margin: 1.5rem 0;
+                            font-style: italic;
+                        }
+                        .quote-mark { font-size: 3rem; color: #c75b2c; opacity: 0.3; position: absolute; top: -10px; left: 10px; }
+                        .text-card .author { text-align: right; font-style: normal; margin-top: 0.8rem; }
+                        .valeurs-section, .methode-section { margin: 1.5rem 0; }
+                        .valeur-card { background: #f8f4ec; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; }
+                        .valeur-card h3 { color: #c75b2c; }
+                        .exercise-card { margin: 1.2rem 0; }
+                        table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; }
+                        th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+                        th { background: #f0e8d8; }
+                        .answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; }
+                        @media print {
+                            body { margin: 0; padding: 0; }
+                            @page { margin: 2cm; }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="print-header">
+                        <div class="site-name">${App.getTranslation('print_site_name', lang)}</div>
+                        <div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div>
+                        <div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div>
+                    </div>
+
+                    ${breadcrumb.outerHTML}
+                    ${headerHTML.outerHTML}
+                    ${textCard.outerHTML}
+                    ${rulesHTML}
+                    ${exercisesSection.outerHTML}
+
+                    <div class="print-footer">
+                        ${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}
+                    </div>
+                </body>
+                </html>
+            `);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+
+            document.querySelectorAll('input[type="radio"][name^="self_ex"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+        })();
+    </script>
+
+    <!-- ═══════ DIRECT‑TRANSLATION FIX ═══════ -->
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') {
+                                el.innerHTML = next.innerHTML;
+                            }
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
         })();
     </script>
 </body>

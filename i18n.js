@@ -8,10 +8,8 @@
   };
   const bilingualContainers = [];
   const langListeners = [];
-
   const App = {};
   window.App = App;
-
   App.addI18nTranslations = function(newTranslations) {
     for (const lang of Object.keys(newTranslations)) {
       if (translations[lang]) {
@@ -21,7 +19,6 @@
       }
     }
   };
-
   // ---- Toast translations (always loaded) ----
   App.addI18nTranslations({
     fr: {
@@ -128,17 +125,14 @@
 'profile_error_load': 'تعذّر تحميل الملف الشخصي.'
     }
   });
-
   App.translateToastKey = function(lang, key) {
     return (translations[lang] && translations[lang][key]) || key;
   };
-
   // Public helper to get a translation for the current language
   App.getTranslation = function(key, langOverride) {
     const lang = langOverride || localStorage.getItem('lang') || DEFAULT_LANG;
     return (translations[lang] && translations[lang][key]) || key;
   };
-
   App.makeBilingual = function(container) {
     if (!container) return;
     const elements = container.querySelectorAll('[data-i18n]');
@@ -151,7 +145,6 @@
       bilingualContainers.push(container);
     }
   };
-
   function restoreAllBilingual(lang) {
     bilingualContainers.forEach(container => {
       container.querySelectorAll('.i18n-bilingual').forEach(el => el.remove());
@@ -174,7 +167,6 @@
       });
     });
   }
-
   function translateElement(el, lang) {
     const t = translations[lang];
     if (!t) return;
@@ -188,7 +180,6 @@
       el.title = t[el.dataset.i18nTitle] || el.title;
     }
   }
-
   App.applyTranslations = function(lang) {
     lang = lang || localStorage.getItem('lang') || DEFAULT_LANG;
     document.querySelectorAll('[data-i18n]').forEach(el => translateElement(el, lang));
@@ -205,14 +196,11 @@
       titleEl.textContent = translations[lang][titleEl.dataset.i18n] || titleEl.textContent;
     }
     restoreAllBilingual(lang);
-
     // Update <html lang>
     document.documentElement.lang = lang;
-
     // Notify language change listeners
     langListeners.forEach(cb => cb(lang));
   };
-
   App.initLangSelector = function() {
     const langSelect = document.getElementById('langSelect');
     if (!langSelect) return;
@@ -225,14 +213,12 @@
     });
     App.applyTranslations(savedLang);
   };
-
   // Register language change listener
   App.onLangChange = function(callback) {
     if (typeof callback === 'function') {
       langListeners.push(callback);
     }
   };
-
   // Initial activation if langSelect already exists
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
@@ -241,5 +227,4 @@
   } else {
     if (document.getElementById('langSelect')) App.initLangSelector();
   }
-
 })();

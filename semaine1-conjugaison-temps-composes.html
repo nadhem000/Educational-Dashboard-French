@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="lesson4_title">Leçon 4 – Les Temps Composés de l'Indicatif</title>
+    <title data-i18n="lesson4_title">Leçon 4 – Les Temps Composés de l'Indicatif (Passé composé, Plus-que-parfait, Passé antérieur) | Texte littéraire & Exercices</title>
     <link rel="manifest" href="/manifest.json">
     <link rel="stylesheet" href="shared.css">
     <style>
-        /* ===== Lesson‑specific styles (identical to lesson 1) ===== */
+        /* ===== Lesson‑specific styles (unchanged) ===== */
         :root {
             --bg: #f9f7f1;
             --card: #ffffff;
@@ -389,19 +389,20 @@
 </head>
 <body>
 
+    <!-- App shell header/footer are injected by ed-french-ini.js -->
     <div id="main-content" class="container">
         <!-- Breadcrumb -->
         <p style="margin-bottom:1.5rem; color:var(--text-light);">
             <a href="revision.html" data-i18n="back_revision">Révision générale</a>
-            › <strong data-i18n="back_current">Temps composés</strong>
+            › <strong data-i18n="back_current">Temps composés de l'indicatif</strong>
         </p>
 
         <div class="lesson-header">
-            <span class="badge" data-i18n="lesson_badge">📗 Conjugaison · Leçon 4</span>
-            <h1 data-i18n="lesson_title">Les Temps Composés de l'Indicatif<br>Passé composé & Plus-que-parfait</h1>
+            <span class="badge" data-i18n="lesson_badge">📘 Grammaire · Leçon 4</span>
+            <h1 data-i18n="lesson_title">Les Temps Composés de l'Indicatif<br>(Passé composé, Plus-que-parfait, Passé antérieur)</h1>
             <div class="meta">
-                <span data-i18n="lesson_duration">⏱️ 60 minutes</span>
-                <span data-i18n="lesson_meta_audio">🎧 Écoutez le récit puis entraînez‑vous</span>
+                <span data-i18n="lesson_duration">⏱️ 45 minutes</span>
+                <span data-i18n="lesson_meta_audio">🎧 Écoutez le texte puis faites les exercices</span>
             </div>
         </div>
 
@@ -410,8 +411,13 @@
             <span class="audio-label" data-i18n="audio_label">🎧 Écoute littéraire</span>
             <button class="play-btn" id="playBtn" aria-label="Lecture">▶</button>
             <div class="progress-area">
-                <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
-                <div class="time-info"><span id="currentTime">0:00</span><span id="duration">0:00</span></div>
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="time-info">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
             </div>
             <div class="speed-selector" id="speedSelector">
                 <button class="speed-btn" data-speed="0.75">0.75x</button>
@@ -430,60 +436,61 @@
             <div class="author" data-i18n="text_author">— Récit d'une tempête, d'après un conte du littoral tunisien</div>
         </div>
 
-        <!-- ═════ VALEURS DES TEMPS COMPOSÉS ═════ -->
+        <!-- ═════ RÈGLES : FORMATION ET VALEURS DES TEMPS COMPOSÉS ═════ -->
         <div class="valeurs-section">
             <h2 data-i18n="rules_heading">📖 Formation et valeurs des temps composés</h2>
-            <p data-i18n="rules_intro" class="no-bilingual" style="margin-bottom:1.2rem;">Les temps composés expriment une action achevée. Ils se forment avec <strong>l'auxiliaire être ou avoir</strong> conjugué au temps simple correspondant + le <strong>participe passé</strong> du verbe.</p>
+            <p data-i18n="rules_intro" class="no-bilingual" style="margin-bottom:1.2rem;">Les temps composés expriment une action achevée. Ils se forment avec l'auxiliaire <strong>être</strong> ou <strong>avoir</strong> conjugué au temps simple correspondant + le participe passé du verbe.</p>
 
             <div class="valeur-card">
                 <h3 data-i18n="rules_pc_title">🔹 Le Passé Composé</h3>
-                <p data-i18n="rules_pc_formation"><strong>Formation :</strong> auxiliaire au présent (être/avoir) + participe passé.</p>
+                <p data-i18n="rules_pc_formation">Formation : auxiliaire au présent (être/avoir) + participe passé.</p>
                 <ul data-i18n="rules_pc_list">
-                    <li><strong>Action ponctuelle achevée :</strong> « Il <em>a terminé</em> son travail. »</li>
-                    <li><strong>Action passée dans un récit au présent :</strong> « Soudain, il <em>a crié</em>. »</li>
-                    <li><strong>Antériorité par rapport au présent :</strong> « Elle <em>est déjà partie</em>. »</li>
-                    <li><strong>Valeur de bilan :</strong> « Nous <em>avons accompli</em> notre mission. »</li>
+                    <li><strong>Action ponctuelle achevée :</strong> « Il a terminé son travail. »</li>
+                    <li><strong>Action passée dans un récit au présent :</strong> « Soudain, il a crié. »</li>
+                    <li><strong>Antériorité par rapport au présent :</strong> « Elle est déjà partie. »</li>
+                    <li><strong>Valeur de bilan :</strong> « Nous avons accompli notre mission. »</li>
                 </ul>
             </div>
 
             <div class="valeur-card">
                 <h3 data-i18n="rules_pqp_title">🔹 Le Plus-que-parfait</h3>
-                <p data-i18n="rules_pqp_formation"><strong>Formation :</strong> auxiliaire à l'imparfait (être/avoir) + participe passé.</p>
+                <p data-i18n="rules_pqp_formation">Formation : auxiliaire à l'imparfait (être/avoir) + participe passé.</p>
                 <ul data-i18n="rules_pqp_list">
-                    <li><strong>Action achevée avant une autre action passée :</strong> « Quand il <em>arriva</em>, elle <em>était déjà partie</em>. »</li>
-                    <li><strong>Hypothèse non réalisée (après « si ») :</strong> « Si j'<em>avais su</em>, je serais venu. »</li>
-                    <li><strong>Rappel d'une action lointaine dans un récit au passé :</strong> « Il se souvint qu'il <em>avait oublié</em> la clé. »</li>
+                    <li><strong>Action achevée avant une autre action passée :</strong> « Quand il arriva, elle était déjà partie. »</li>
+                    <li><strong>Hypothèse non réalisée (après « si ») :</strong> « Si j'avais su, je serais venu. »</li>
+                    <li><strong>Rappel d'une action lointaine :</strong> « Il se souvint qu'il avait oublié la clé. »</li>
                 </ul>
             </div>
+
+            <div class="valeur-card">
+                <h3 data-i18n="rules_pa_title">🔹 Le Passé Antérieur</h3>
+                <p data-i18n="rules_pa_formation">Formation : auxiliaire au passé simple (être/avoir) + participe passé.</p>
+                <ul data-i18n="rules_pa_list">
+                    <li><strong>Action immédiatement antérieure</strong> à une autre action passée (souvent après « quand », « après que », « dès que »).</li>
+                    <li>Exemple : « Dès qu'il eut terminé son travail, il sortit. »</li>
+                    <li>Note : Ce temps est littéraire et rare à l'oral.</li>
+                </ul>
+            </div>
+
+            <p data-i18n="rules_note" style="margin-top:1rem; font-style:italic; color:var(--text-light);">💡 Bien choisir le temps en fonction du contexte et de l'intention de la phrase.</p>
         </div>
 
         <!-- ═════ EXERCISES ═════ -->
         <div class="exercises-section">
-            <h2 data-i18n="exercises_heading">✍️ Exercices (9 exercices progressifs)</h2>
+            <h2 data-i18n="exercises_heading">✍️ Exercices</h2>
 
-            <!-- Exo 1 -->
+            <!-- Exercice 1 -->
             <div class="exercise-card">
-                <h3 data-i18n="exo1_title">📌 1. Identifiez le temps de chaque verbe souligné dans le texte</h3>
-                <p data-i18n="exo1_instruction">Précisez s'il s'agit du passé composé ou du plus-que-parfait, et donnez sa valeur.</p>
+                <h3 data-i18n="exo1_title">📌 1. Identifiez le temps et la valeur des verbes soulignés</h3>
+                <p data-i18n="exo1_instruction">Pour chaque verbe, indiquez le temps (passé composé, plus-que-parfait ou passé antérieur) et sa valeur d'emploi.</p>
                 <table id="exo1Table">
-                    <thead><tr><th data-i18n="table_verb" class="no-bilingual">Verbe souligné</th><th data-i18n="table_time" class="no-bilingual">Temps</th><th data-i18n="table_value" class="no-bilingual">Valeur / emploi</th></tr></thead>
-                    <tbody>
-                        <tr><td>a percé</td><td><input type="text"></td><td><input type="text"></td></tr>
-                        <tr><td>avait déjà préparé</td><td><input type="text"></td><td><input type="text"></td></tr>
-                        <tr><td>était parti</td><td><input type="text"></td><td><input type="text"></td></tr>
-                        <tr><td>eurent partagé</td><td><input type="text"></td><td><input type="text"></td></tr>
-                        <tr><td>avait été</td><td><input type="text"></td><td><input type="text"></td></tr>
-                        <tr><td>se sont levées</td><td><input type="text"></td><td><input type="text"></td></tr>
-                        <tr><td>a serré</td><td><input type="text"></td><td><input type="text"></td></tr>
-                        <tr><td>a lancé</td><td><input type="text"></td><td><input type="text"></td></tr>
-                        <tr><td>n'avait jamais affronté</td><td><input type="text"></td><td><input type="text"></td></tr>
-                        <tr><td>a tenu</td><td><input type="text"></td><td><input type="text"></td></tr>
-                        <tr><td>est arrivé</td><td><input type="text"></td><td><input type="text"></td></tr>
-                        <tr><td>avait disparu</td><td><input type="text"></td><td><input type="text"></td></tr>
-                        <tr><td>est réapparu</td><td><input type="text"></td><td><input type="text"></td></tr>
-                        <tr><td>avait sauvé</td><td><input type="text"></td><td><input type="text"></td></tr>
-                        <tr><td>a souri</td><td><input type="text"></td><td><input type="text"></td></tr>
-                    </tbody>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_verb" class="no-bilingual">Verbe</th>
+                            <th data-i18n="table_answer" class="no-bilingual">Temps et valeur</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
                 </table>
                 <div class="self-assessment">
                     <span data-i18n="self_assess_question">Ma réponse est :</span>
@@ -495,16 +502,17 @@
                 <div id="exo1Key" class="answer-key"></div>
             </div>
 
-            <!-- Exo 2 -->
+            <!-- Exercice 2 -->
             <div class="exercise-card">
-                <h3 data-i18n="exo2_title">📌 2. Conjuguez les verbes entre parenthèses au passé composé ou au plus-que-parfait</h3>
+                <h3 data-i18n="exo2_title">📌 2. Conjuguez au passé composé ou au plus-que-parfait</h3>
+                <p data-i18n="exo2_instruction">Complétez avec le temps composé qui convient selon le contexte.</p>
                 <ol type="a">
-                    <li><span data-i18n="exo2_q1">Dès qu'il (finir) ________ ses devoirs, il sortit jouer.</span></li>
-                    <li><span data-i18n="exo2_q2">Quand je suis arrivé, ils (déjà manger) ________ .</span></li>
-                    <li><span data-i18n="exo2_q3">Nous (voir) ________ ce film hier soir.</span></li>
-                    <li><span data-i18n="exo2_q4">Elle (ne jamais visiter) ________ Tunis avant cette année.</span></li>
-                    <li><span data-i18n="exo2_q5">Après que la pluie (cesser) ________ , le soleil apparut.</span></li>
-                    <li><span data-i18n="exo2_q6">Tu (oublier) ________ ton écharpe chez moi la semaine dernière.</span></li>
+                    <li>Dès qu'il (finir) ________ ses devoirs, il sortit jouer.</li>
+                    <li>Quand je suis arrivé, ils (déjà manger) ________ .</li>
+                    <li>Nous (voir) ________ ce film hier soir.</li>
+                    <li>Elle (ne jamais visiter) ________ Tunis avant cette année.</li>
+                    <li>Après que la pluie (cesser) ________ , le soleil apparut.</li>
+                    <li>Tu (oublier) ________ ton écharpe chez moi la semaine dernière.</li>
                 </ol>
                 <div class="self-assessment">
                     <span data-i18n="self_assess_question">Ma réponse est :</span>
@@ -516,12 +524,12 @@
                 <div id="exo2Key" class="answer-key"></div>
             </div>
 
-            <!-- Exo 3 -->
+            <!-- Exercice 3 -->
             <div class="exercise-card">
-                <h3 data-i18n="exo3_title">📌 3. Transformez du présent au passé composé, puis au plus-que-parfait</h3>
-                <p data-i18n="exo3_text"><em>« Le soleil se lève, les oiseaux chantent et la brise marine caresse les dunes. »</em></p>
-                <p data-i18n="exo3_pc_label">Passé composé :<br><textarea rows="2" placeholder="Passé composé..."></textarea></p>
-                <p data-i18n="exo3_pqp_label">Plus-que-parfait :<br><textarea rows="2" placeholder="Plus-que-parfait..."></textarea></p>
+                <h3 data-i18n="exo3_title">📌 3. Transformez au passé composé puis au plus-que-parfait</h3>
+                <p data-i18n="exo3_instruction">« Le soleil se lève, les oiseaux chantent et la brise marine caresse les dunes. »</p>
+                <p><strong data-i18n="exo3_pc_label">Passé composé :</strong><br><textarea rows="2" style="width:100%;" placeholder="Écrivez ici..."></textarea></p>
+                <p><strong data-i18n="exo3_pqp_label">Plus-que-parfait :</strong><br><textarea rows="2" style="width:100%;" placeholder="Écrivez ici..."></textarea></p>
                 <div class="self-assessment">
                     <span data-i18n="self_assess_question">Ma réponse est :</span>
                     <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
@@ -532,17 +540,16 @@
                 <div id="exo3Key" class="answer-key"></div>
             </div>
 
-            <!-- Exo 4 -->
+            <!-- Exercice 4 -->
             <div class="exercise-card">
                 <h3 data-i18n="exo4_title">📌 4. Corrigez l'erreur de temps</h3>
+                <p data-i18n="exo4_instruction">Chaque phrase contient une erreur (sauf une). Corrigez-la.</p>
                 <ol type="a">
-                    <li><span data-i18n="exo4_q1">Hier, nous <strong>avions allés</strong> au souk.</span></li>
-                    <li><span data-i18n="exo4_q2">Quand elle a téléphoné, je <strong>suis déjà sorti</strong>.</span></li>
-                    <li><span data-i18n="exo4_q3">Il <strong>a été</strong> content de me voir ce matin.</span></li>
-                    <li><span data-i18n="exo4_q4">Après que nous <strong>sommes partis</strong>, la fête a continué.</span></li>
+                    <li>Hier, nous avions allés au souk. <input type="text" placeholder="Correction"></li>
+                    <li>Quand elle a téléphoné, je suis déjà sorti. <input type="text" placeholder="Correction"></li>
+                    <li>Il a été content de me voir ce matin. <input type="text" placeholder="Correction ou ✅"></li>
+                    <li>Après que nous sommes partis, la fête a continué. <input type="text" placeholder="Correction"></li>
                 </ol>
-                <p data-i18n="exo4_correction_label">Votre correction :</p>
-                <textarea rows="3" placeholder="Écrivez les phrases corrigées..."></textarea>
                 <div class="self-assessment">
                     <span data-i18n="self_assess_question">Ma réponse est :</span>
                     <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
@@ -553,14 +560,14 @@
                 <div id="exo4Key" class="answer-key"></div>
             </div>
 
-            <!-- Exo 5 -->
+            <!-- Exercice 5 -->
             <div class="exercise-card">
                 <h3 data-i18n="exo5_title">📌 5. Analyse d'un extrait</h3>
-                <p data-i18n="exo5_instruction"><em>« Lorsque les secours <strong>sont arrivés</strong>, l'incendie <strong>avait déjà ravagé</strong> la moitié du village. Les habitants <strong>avaient fui</strong> depuis longtemps. »</em></p>
+                <p data-i18n="exo5_instruction">« Lorsque les secours sont arrivés, l'incendie avait déjà ravagé la moitié du village. Les habitants avaient fui depuis longtemps. »</p>
                 <ol type="a">
-                    <li><span data-i18n="exo5_q1">Pourquoi utilise-t-on le plus-que-parfait dans la deuxième proposition ? <input type="text" placeholder="Explication..."></span></li>
-                    <li><span data-i18n="exo5_q2">Quelle est la valeur du passé composé « sont arrivés » ? <input type="text"></span></li>
-                    <li><span data-i18n="exo5_q3">Quel rapport temporel exprime « depuis longtemps » avec le plus-que-parfait ? <input type="text"></span></li>
+                    <li><span data-i18n="exo5_q1">Pourquoi utilise-t-on le plus-que-parfait dans la deuxième proposition ?</span><br><textarea rows="2" style="width:100%;" placeholder="Votre réponse..."></textarea></li>
+                    <li><span data-i18n="exo5_q2">Quelle est la valeur du passé composé « sont arrivés » ?</span><br><input type="text" placeholder="Valeur..." style="width:100%;"></li>
+                    <li><span data-i18n="exo5_q3">Quel rapport temporel exprime « depuis longtemps » avec le plus-que-parfait ?</span><br><input type="text" placeholder="Rapport..." style="width:100%;"></li>
                 </ol>
                 <div class="self-assessment">
                     <span data-i18n="self_assess_question">Ma réponse est :</span>
@@ -572,14 +579,15 @@
                 <div id="exo5Key" class="answer-key"></div>
             </div>
 
-            <!-- Exo 6 -->
+            <!-- Exercice 6 -->
             <div class="exercise-card">
                 <h3 data-i18n="exo6_title">📌 6. Choisissez le bon auxiliaire et accordez le participe passé</h3>
+                <p data-i18n="exo6_instruction">Complétez avec être ou avoir et accordez correctement.</p>
                 <ol type="a">
-                    <li><span data-i18n="exo6_q1">Elle (monter) ________ dans le train.</span></li>
-                    <li><span data-i18n="exo6_q2">Ils (se laver) ________ les mains avant de manger.</span></li>
-                    <li><span data-i18n="exo6_q3">Nous (rentrer) ________ très tard.</span></li>
-                    <li><span data-i18n="exo6_q4">Les fleurs (fleurir) ________ au printemps.</span></li>
+                    <li>Elle (monter) ________ dans le train.</li>
+                    <li>Ils (se laver) ________ les mains avant de manger.</li>
+                    <li>Nous (rentrer) ________ très tard.</li>
+                    <li>Les fleurs (fleurir) ________ au printemps.</li>
                 </ol>
                 <div class="self-assessment">
                     <span data-i18n="self_assess_question">Ma réponse est :</span>
@@ -591,11 +599,11 @@
                 <div id="exo6Key" class="answer-key"></div>
             </div>
 
-            <!-- Exo 7 -->
+            <!-- Exercice 7 -->
             <div class="exercise-card">
                 <h3 data-i18n="exo7_title">📌 7. Production écrite</h3>
                 <p data-i18n="exo7_instruction">Racontez un souvenir marquant (5-6 phrases) en utilisant au moins trois passés composés et deux plus-que-parfaits. Soulignez les verbes et indiquez leur temps.</p>
-                <textarea rows="5" placeholder="Votre récit..."></textarea>
+                <textarea rows="6" style="width:100%; padding:0.5rem;" placeholder="Votre récit..."></textarea>
                 <div class="self-assessment">
                     <span data-i18n="self_assess_question">Ma réponse est :</span>
                     <label><input type="radio" name="self_ex7" value="correct" data-i18n="self_correct"> Correcte</label>
@@ -604,16 +612,22 @@
                 </div>
             </div>
 
-            <!-- Exo 8 -->
+            <!-- Exercice 8 -->
             <div class="exercise-card">
                 <h3 data-i18n="exo8_title">📌 8. Associez chaque phrase à la valeur du temps composé</h3>
-                <table>
-                    <thead><tr><th data-i18n="table_phrase" class="no-bilingual">Phrase</th><th data-i18n="table_value2" class="no-bilingual">Valeur</th></tr></thead>
+                <p data-i18n="exo8_instruction">Faites correspondre la phrase (1-4) à la valeur (A-D).</p>
+                <table id="exo8Table">
+                    <thead>
+                        <tr>
+                            <th>Phrase</th>
+                            <th>Valeur</th>
+                        </tr>
+                    </thead>
                     <tbody>
-                        <tr><td>1. J'ai enfin terminé mon livre.</td><td><input type="text" placeholder="Valeur..."></td></tr>
-                        <tr><td>2. Si elle avait su, elle ne serait pas venue.</td><td><input type="text"></td></tr>
-                        <tr><td>3. Il avait déjà vendu sa voiture quand je l'ai appelé.</td><td><input type="text"></td></tr>
-                        <tr><td>4. Nous sommes allés au cinéma samedi.</td><td><input type="text"></td></tr>
+                        <tr><td>1. J'ai enfin terminé mon livre.</td><td><input type="text" placeholder="ex: bilan"></td></tr>
+                        <tr><td>2. Si elle avait su, elle ne serait pas venue.</td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>3. Il avait déjà vendu sa voiture quand je l'ai appelé.</td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>4. Nous sommes allés au cinéma samedi.</td><td><input type="text" placeholder="..."></td></tr>
                     </tbody>
                 </table>
                 <div class="self-assessment">
@@ -626,12 +640,11 @@
                 <div id="exo8Key" class="answer-key"></div>
             </div>
 
-            <!-- Exo 9 -->
+            <!-- Exercice 9 -->
             <div class="exercise-card">
                 <h3 data-i18n="exo9_title">📌 9. Correction d'un paragraphe fautif</h3>
-                <p data-i18n="exo9_instruction">Réécrivez le passage en corrigeant les erreurs de temps composé.</p>
-                <p><em>« Quand nous <strong>avons arrivés</strong> à la gare, le train <strong>avait parti</strong>. Nous <strong>avons du</strong> attendre le suivant. Heureusement, nous <strong>n'avions pas raté</strong> la correspondance. »</em></p>
-                <textarea rows="3" placeholder="Votre correction..."></textarea>
+                <p data-i18n="exo9_instruction">« Quand nous avons arrivés à la gare, le train avait parti. Nous avons du attendre le suivant. Heureusement, nous n'avions pas raté la correspondance. »</p>
+                <textarea rows="3" style="width:100%;" placeholder="Réécrivez le paragraphe corrigé..."></textarea>
                 <div class="self-assessment">
                     <span data-i18n="self_assess_question">Ma réponse est :</span>
                     <label><input type="radio" name="self_ex9" value="correct" data-i18n="self_correct"> Correcte</label>
@@ -640,6 +653,25 @@
                 </div>
                 <button class="btn-verify" onclick="toggleCorrection('exo9Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
                 <div id="exo9Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 10 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo10_title">📌 10. Passé antérieur</h3>
+                <p data-i18n="exo10_instruction">Conjuguez les verbes entre parenthèses au passé antérieur et expliquez l'effet de sens.</p>
+                <ol type="a">
+                    <li>Après qu'ils (terminer) ________ leurs devoirs, ils allèrent jouer. <input type="text" placeholder="conjugaison"><br><em data-i18n="exo10_explain">Effet de sens :</em> <input type="text" placeholder="explication" style="width:100%;"></li>
+                    <li>Dès que la cloche (sonner) ________ , les élèves se levèrent. <input type="text" placeholder="conjugaison"><br><em data-i18n="exo10_explain">Effet de sens :</em> <input type="text" placeholder="explication" style="width:100%;"></li>
+                    <li>Quand il (recevoir) ________ la lettre, il comprit tout. <input type="text" placeholder="conjugaison"><br><em data-i18n="exo10_explain">Effet de sens :</em> <input type="text" placeholder="explication" style="width:100%;"></li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex10" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex10" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex10" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo10Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo10Key" class="answer-key"></div>
             </div>
         </div>
 
@@ -650,20 +682,20 @@
                 <div class="score-stat"><span data-i18n="score_correct">Correctes :</span> <span id="scoreCorrect">0</span></div>
                 <div class="score-stat"><span data-i18n="score_incorrect">Incorrectes :</span> <span id="scoreIncorrect">0</span></div>
                 <div class="score-stat"><span data-i18n="score_partial">Partielles :</span> <span id="scorePartial">0</span></div>
-                <div class="score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">9</span></div>
+                <div class="score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">10</span></div>
             </div>
         </div>
-<div class="score-actions" style="margin-top:1.2rem;">
-    <button id="saveResultsBtn" class="btn-verify" style="margin-right:0.5rem;" 
-            data-i18n="save_results">💾 Enregistrer mes résultats</button>
-    <button id="printPdfBtn" class="btn-verify" style="background:#5c5344; margin-right:0.5rem;"
-            data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
-</div>
+        <div class="score-actions" style="margin-top:1.2rem;">
+            <button id="saveResultsBtn" class="btn-verify" style="margin-right:0.5rem;" 
+                    data-i18n="save_results">💾 Enregistrer mes résultats</button>
+            <button id="printPdfBtn" class="btn-verify" style="background:#5c5344; margin-right:0.5rem;"
+                    data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+        </div>
 
-        <!-- Footer nav (minimal) -->
+        <!-- Footer nav -->
         <div style="margin-top:2rem; display:flex; justify-content:space-between; flex-wrap:wrap;">
-            <a href="semaine1-conjugaison-temps-simples.html" data-i18n="footer_back" class="no-bilingual">← Leçon précédente : Temps simples</a>
-            <a href="semaine1-accord-sujet-verbe.html" data-i18n="footer_next" class="no-bilingual">Leçon suivante : Accord sujet-verbe →</a>
+            <a href="semaine1-temps-simples.html" data-i18n="footer_back" class="no-bilingual">← Leçon précédente</a>
+            <a href="revision.html" data-i18n="footer_next" class="no-bilingual">Retour au programme →</a>
         </div>
     </div>
 
@@ -672,74 +704,67 @@
     <script src="db-utils.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="supabase-client.js"></script>
-<script src="logging.js"></script>
+    <script src="logging.js"></script>
     <script>
-        // ── Translations for this lesson page ──
+        // ── Translations for this lesson ──
         App.addI18nTranslations({
             fr: {
-                'lesson4_title': 'Leçon 4 – Les Temps Composés de l\'Indicatif',
+                'lesson4_title': 'Leçon 4 – Les Temps Composés de l\'Indicatif (Passé composé, Plus-que-parfait, Passé antérieur) | Texte littéraire & Exercices',
                 'lesson_short_title': 'Temps composés de l\'indicatif',
                 'ach_year_bac': '4ᵉ année secondaire (Bac)',
                 'ach_module_semaine1': 'Les Fondations de la Langue',
                 'back_revision': 'Révision générale',
-                'back_current': 'Temps composés',
-                'lesson_badge': '📗 Conjugaison · Leçon 4',
-                'lesson_title': 'Les Temps Composés de l\'Indicatif<br>Passé composé & Plus-que-parfait',
-                'lesson_duration': '⏱️ 60 minutes',
-                'lesson_meta_audio': '🎧 Écoutez le récit puis entraînez‑vous',
+                'back_current': 'Temps composés de l\'indicatif',
+                'lesson_badge': '📘 Grammaire · Leçon 4',
+                'lesson_title': 'Les Temps Composés de l\'Indicatif<br>(Passé composé, Plus-que-parfait, Passé antérieur)',
+                'lesson_duration': '⏱️ 45 minutes',
+                'lesson_meta_audio': '🎧 Écoutez le texte puis faites les exercices',
                 'audio_label': '🎧 Écoute littéraire',
                 'text_author': '— Récit d\'une tempête, d\'après un conte du littoral tunisien',
                 'rules_heading': '📖 Formation et valeurs des temps composés',
-                'rules_intro': 'Les temps composés expriment une action achevée. Ils se forment avec <strong>l\'auxiliaire être ou avoir</strong> conjugué au temps simple correspondant + le <strong>participe passé</strong> du verbe.',
+                'rules_intro': 'Les temps composés expriment une action achevée. Ils se forment avec l\'auxiliaire <strong>être</strong> ou <strong>avoir</strong> conjugué au temps simple correspondant + le participe passé du verbe.',
                 'rules_pc_title': '🔹 Le Passé Composé',
-                'rules_pc_formation': '<strong>Formation :</strong> auxiliaire au présent (être/avoir) + participe passé.',
-                'rules_pc_list': '<li><strong>Action ponctuelle achevée :</strong> « Il <em>a terminé</em> son travail. »</li><li><strong>Action passée dans un récit au présent :</strong> « Soudain, il <em>a crié</em>. »</li><li><strong>Antériorité par rapport au présent :</strong> « Elle <em>est déjà partie</em>. »</li><li><strong>Valeur de bilan :</strong> « Nous <em>avons accompli</em> notre mission. »</li>',
+                'rules_pc_formation': 'Formation : auxiliaire au présent (être/avoir) + participe passé.',
+                'rules_pc_list': '<li><strong>Action ponctuelle achevée :</strong> « Il a terminé son travail. »</li><li><strong>Action passée dans un récit au présent :</strong> « Soudain, il a crié. »</li><li><strong>Antériorité par rapport au présent :</strong> « Elle est déjà partie. »</li><li><strong>Valeur de bilan :</strong> « Nous avons accompli notre mission. »</li>',
                 'rules_pqp_title': '🔹 Le Plus-que-parfait',
-                'rules_pqp_formation': '<strong>Formation :</strong> auxiliaire à l\'imparfait (être/avoir) + participe passé.',
-                'rules_pqp_list': '<li><strong>Action achevée avant une autre action passée :</strong> « Quand il <em>arriva</em>, elle <em>était déjà partie</em>. »</li><li><strong>Hypothèse non réalisée (après « si ») :</strong> « Si j\'<em>avais su</em>, je serais venu. »</li><li><strong>Rappel d\'une action lointaine dans un récit au passé :</strong> « Il se souvint qu\'il <em>avait oublié</em> la clé. »</li>',
-                'exercises_heading': '✍️ Exercices (9 exercices progressifs)',
-                'exo1_title': '📌 1. Identifiez le temps de chaque verbe souligné dans le texte',
-                'exo1_instruction': 'Précisez s\'il s\'agit du passé composé ou du plus-que-parfait, et donnez sa valeur.',
-                'table_verb': 'Verbe souligné',
-                'table_time': 'Temps',
-                'table_value': 'Valeur / emploi',
-                'btn_correction': '🔍 Voir la correction',
-                'exo2_title': '📌 2. Conjuguez les verbes entre parenthèses au passé composé ou au plus-que-parfait',
-                'exo2_q1': 'Dès qu\'il (finir) ________ ses devoirs, il sortit jouer.',
-                'exo2_q2': 'Quand je suis arrivé, ils (déjà manger) ________ .',
-                'exo2_q3': 'Nous (voir) ________ ce film hier soir.',
-                'exo2_q4': 'Elle (ne jamais visiter) ________ Tunis avant cette année.',
-                'exo2_q5': 'Après que la pluie (cesser) ________ , le soleil apparut.',
-                'exo2_q6': 'Tu (oublier) ________ ton écharpe chez moi la semaine dernière.',
-                'exo3_title': '📌 3. Transformez du présent au passé composé, puis au plus-que-parfait',
-                'exo3_text': '<em>« Le soleil se lève, les oiseaux chantent et la brise marine caresse les dunes. »</em>',
+                'rules_pqp_formation': 'Formation : auxiliaire à l\'imparfait (être/avoir) + participe passé.',
+                'rules_pqp_list': '<li><strong>Action achevée avant une autre action passée :</strong> « Quand il arriva, elle était déjà partie. »</li><li><strong>Hypothèse non réalisée (après « si ») :</strong> « Si j\'avais su, je serais venu. »</li><li><strong>Rappel d\'une action lointaine :</strong> « Il se souvint qu\'il avait oublié la clé. »</li>',
+                'rules_pa_title': '🔹 Le Passé Antérieur',
+                'rules_pa_formation': 'Formation : auxiliaire au passé simple (être/avoir) + participe passé.',
+                'rules_pa_list': '<li><strong>Action immédiatement antérieure</strong> à une autre action passée (souvent après « quand », « après que », « dès que »).</li><li>Exemple : « Dès qu\'il eut terminé son travail, il sortit. »</li><li>Note : Ce temps est littéraire et rare à l\'oral.</li>',
+                'rules_note': '💡 Bien choisir le temps en fonction du contexte et de l\'intention de la phrase.',
+                'exercises_heading': '✍️ Exercices',
+                'exo1_title': '📌 1. Identifiez le temps et la valeur des verbes soulignés',
+                'exo1_instruction': 'Pour chaque verbe, indiquez le temps (passé composé, plus-que-parfait ou passé antérieur) et sa valeur d\'emploi.',
+                'table_verb': 'Verbe',
+                'table_answer': 'Temps et valeur',
+                'exo2_title': '📌 2. Conjuguez au passé composé ou au plus-que-parfait',
+                'exo2_instruction': 'Complétez avec le temps composé qui convient selon le contexte.',
+                'exo3_title': '📌 3. Transformez au passé composé puis au plus-que-parfait',
+                'exo3_instruction': '« Le soleil se lève, les oiseaux chantent et la brise marine caresse les dunes. »',
                 'exo3_pc_label': 'Passé composé :',
                 'exo3_pqp_label': 'Plus-que-parfait :',
                 'exo4_title': '📌 4. Corrigez l\'erreur de temps',
-                'exo4_q1': 'Hier, nous <strong>avions allés</strong> au souk.',
-                'exo4_q2': 'Quand elle a téléphoné, je <strong>suis déjà sorti</strong>.',
-                'exo4_q3': 'Il <strong>a été</strong> content de me voir ce matin.',
-                'exo4_q4': 'Après que nous <strong>sommes partis</strong>, la fête a continué.',
-                'exo4_correction_label': 'Votre correction :',
+                'exo4_instruction': 'Chaque phrase contient une erreur (sauf une). Corrigez-la.',
                 'exo5_title': '📌 5. Analyse d\'un extrait',
-                'exo5_instruction': '<em>« Lorsque les secours <strong>sont arrivés</strong>, l\'incendie <strong>avait déjà ravagé</strong> la moitié du village. Les habitants <strong>avaient fui</strong> depuis longtemps. »</em>',
-                'exo5_q1': 'Pourquoi utilise-t-on le plus-que-parfait dans la deuxième proposition ? <input type="text" placeholder="Explication...">',
-                'exo5_q2': 'Quelle est la valeur du passé composé « sont arrivés » ? <input type="text">',
-                'exo5_q3': 'Quel rapport temporel exprime « depuis longtemps » avec le plus-que-parfait ? <input type="text">',
+                'exo5_instruction': '« Lorsque les secours sont arrivés, l\'incendie avait déjà ravagé la moitié du village. Les habitants avaient fui depuis longtemps. »',
+                'exo5_q1': 'Pourquoi utilise-t-on le plus-que-parfait dans la deuxième proposition ?',
+                'exo5_q2': 'Quelle est la valeur du passé composé « sont arrivés » ?',
+                'exo5_q3': 'Quel rapport temporel exprime « depuis longtemps » avec le plus-que-parfait ?',
                 'exo6_title': '📌 6. Choisissez le bon auxiliaire et accordez le participe passé',
-                'exo6_q1': 'Elle (monter) ________ dans le train.',
-                'exo6_q2': 'Ils (se laver) ________ les mains avant de manger.',
-                'exo6_q3': 'Nous (rentrer) ________ très tard.',
-                'exo6_q4': 'Les fleurs (fleurir) ________ au printemps.',
+                'exo6_instruction': 'Complétez avec être ou avoir et accordez correctement.',
                 'exo7_title': '📌 7. Production écrite',
                 'exo7_instruction': 'Racontez un souvenir marquant (5-6 phrases) en utilisant au moins trois passés composés et deux plus-que-parfaits. Soulignez les verbes et indiquez leur temps.',
                 'exo8_title': '📌 8. Associez chaque phrase à la valeur du temps composé',
-                'table_phrase': 'Phrase',
-                'table_value2': 'Valeur',
+                'exo8_instruction': 'Faites correspondre la phrase (1-4) à la valeur (A-D).',
                 'exo9_title': '📌 9. Correction d\'un paragraphe fautif',
-                'exo9_instruction': 'Réécrivez le passage en corrigeant les erreurs de temps composé.',
-                'footer_back': '← Leçon précédente : Temps simples',
-                'footer_next': 'Leçon suivante : Accord sujet-verbe →',
+                'exo9_instruction': '« Quand nous avons arrivés à la gare, le train avait parti. Nous avons du attendre le suivant. Heureusement, nous n\'avions pas raté la correspondance. »',
+                'exo10_title': '📌 10. Passé antérieur',
+                'exo10_instruction': 'Conjuguez les verbes entre parenthèses au passé antérieur et expliquez l\'effet de sens.',
+                'exo10_explain': 'Effet de sens :',
+                'btn_correction': '🔍 Voir la correction',
+                'footer_back': '← Leçon précédente',
+                'footer_next': 'Retour au programme →',
                 'self_assess_question': 'Ma réponse est :',
                 'self_correct': 'Correcte',
                 'self_incorrect': 'Incorrecte',
@@ -754,79 +779,72 @@
                 'save_error': 'Erreur lors de la sauvegarde',
                 'print_pdf': '🖨️ Imprimer / PDF',
                 'print_with_answers': 'Corrigé inclus',
-                'print_without_answers': 'Sans corrigé',
                 'print_site_name': 'Educational Dashboard – French',
                 'print_scholar_year': 'Révision pour le Bac',
                 'print_week': 'Semaine 1',
-                'print_area': 'Conjugaison',
+                'print_area': 'Grammaire',
                 'print_footer_dev': 'Développé par Mejri Ziad',
                 'print_footer_date': 'Imprimé le',
+                'print_without_answers': 'Sans corrigé',
                 'toast_signin_required': 'Connectez-vous pour voir les corrections.'
             },
             en: {
-                'lesson4_title': 'Lesson 4 – Compound Indicative Tenses',
-                'lesson_short_title': 'Compound Tenses',
+                'lesson4_title': 'Lesson 4 – Compound Tenses of the Indicative (Passé composé, Pluperfect, Past anterior) | Literary Text & Exercises',
+                'lesson_short_title': 'Compound Indicative Tenses',
                 'ach_year_bac': '12th grade (Bac)',
                 'ach_module_semaine1': 'Language Foundations',
                 'back_revision': 'General Review',
-                'back_current': 'Compound Tenses',
-                'lesson_badge': '📗 Conjugation · Lesson 4',
-                'lesson_title': 'Compound Indicative Tenses<br>Passé Composé & Plus-que-parfait',
-                'lesson_duration': '⏱️ 60 minutes',
-                'lesson_meta_audio': '🎧 Listen to the story then practice',
+                'back_current': 'Compound Indicative Tenses',
+                'lesson_badge': '📘 Grammar · Lesson 4',
+                'lesson_title': 'Compound Tenses of the Indicative<br>(Passé composé, Pluperfect, Past anterior)',
+                'lesson_duration': '⏱️ 45 minutes',
+                'lesson_meta_audio': '🎧 Listen to the text then do the exercises',
                 'audio_label': '🎧 Literary Listening',
-                'text_author': '— Tale of a Storm, after a Tunisian coastal story',
-                'rules_heading': '📖 Formation and values of compound tenses',
-                'rules_intro': 'Compound tenses express a completed action. They are formed with <strong>the auxiliary être or avoir</strong> conjugated in the corresponding simple tense + the <strong>past participle</strong> of the verb.',
-                'rules_pc_title': '🔹 Passé Composé',
-                'rules_pc_formation': '<strong>Formation:</strong> auxiliary in present (être/avoir) + past participle.',
-                'rules_pc_list': '<li><strong>Completed punctual action:</strong> "He <em>has finished</em> his work."</li><li><strong>Past action in a present narrative:</strong> "Suddenly, he <em>shouted</em>."</li><li><strong>Anteriority relative to the present:</strong> "She <em>has already left</em>."</li><li><strong>Assessment value:</strong> "We <em>have accomplished</em> our mission."</li>',
-                'rules_pqp_title': '🔹 Plus-que-parfait',
-                'rules_pqp_formation': '<strong>Formation:</strong> auxiliary in imperfect (être/avoir) + past participle.',
-                'rules_pqp_list': '<li><strong>Action completed before another past action:</strong> "When he <em>arrived</em>, she <em>had already left</em>."</li><li><strong>Unrealized hypothesis (after "if"):</strong> "If I <em>had known</em>, I would have come."</li><li><strong>Recall of a distant action in a past narrative:</strong> "He remembered that he <em>had forgotten</em> the key."</li>',
-                'exercises_heading': '✍️ Exercises (9 progressive exercises)',
-                'exo1_title': '📌 1. Identify the tense of each underlined verb in the text',
-                'exo1_instruction': 'Specify whether it is passé composé or plus-que-parfait, and give its value.',
-                'table_verb': 'Underlined verb',
-                'table_time': 'Tense',
-                'table_value': 'Value / use',
-                'btn_correction': '🔍 See correction',
-                'exo2_title': '📌 2. Conjugate the verbs in parentheses in the passé composé or plus-que-parfait',
-                'exo2_q1': 'As soon as he (finish) ________ his homework, he went out to play.',
-                'exo2_q2': 'When I arrived, they (already eat) ________ .',
-                'exo2_q3': 'We (see) ________ this movie last night.',
-                'exo2_q4': 'She (never visit) ________ Tunis before this year.',
-                'exo2_q5': 'After the rain (stop) ________ , the sun appeared.',
-                'exo2_q6': 'You (forget) ________ your scarf at my place last week.',
-                'exo3_title': '📌 3. Transform from present to passé composé, then to plus-que-parfait',
-                'exo3_text': '<em>"The sun rises, the birds sing and the sea breeze caresses the dunes."</em>',
+                'text_author': '— Tale of a storm, based on a Tunisian coastal story',
+                'rules_heading': '📖 Formation and uses of compound tenses',
+                'rules_intro': 'Compound tenses express completed actions. They are formed with the auxiliary <strong>être</strong> or <strong>avoir</strong> conjugated in the corresponding simple tense + the past participle of the verb.',
+                'rules_pc_title': '🔹 Passé composé',
+                'rules_pc_formation': 'Formation: auxiliary in present (être/avoir) + past participle.',
+                'rules_pc_list': '<li><strong>Completed punctual action:</strong> « Il a terminé son travail. »</li><li><strong>Past action in a present-tense narrative:</strong> « Soudain, il a crié. »</li><li><strong>Anteriority to present:</strong> « Elle est déjà partie. »</li><li><strong>Result/value:</strong> « Nous avons accompli notre mission. »</li>',
+                'rules_pqp_title': '🔹 Pluperfect',
+                'rules_pqp_formation': 'Formation: auxiliary in imperfect (être/avoir) + past participle.',
+                'rules_pqp_list': '<li><strong>Action completed before another past action:</strong> « Quand il arriva, elle était déjà partie. »</li><li><strong>Unreal hypothesis (after "si"):</strong> « Si j\'avais su, je serais venu. »</li><li><strong>Recall of a distant action:</strong> « Il se souvint qu\'il avait oublié la clé. »</li>',
+                'rules_pa_title': '🔹 Past anterior',
+                'rules_pa_formation': 'Formation: auxiliary in simple past (être/avoir) + past participle.',
+                'rules_pa_list': '<li><strong>Immediately anterior action</strong> to another past action (often after "quand", "après que", "dès que").</li><li>Example: « Dès qu\'il eut terminé son travail, il sortit. »</li><li>Note: This tense is literary and rare in spoken French.</li>',
+                'rules_note': '💡 Choose the tense according to the context and the intention of the sentence.',
+                'exercises_heading': '✍️ Exercises',
+                'exo1_title': '📌 1. Identify the tense and use of each underlined verb',
+                'exo1_instruction': 'For each verb, indicate the tense (passé composé, pluperfect or past anterior) and its use.',
+                'table_verb': 'Verb',
+                'table_answer': 'Tense and use',
+                'exo2_title': '📌 2. Conjugate in the passé composé or pluperfect',
+                'exo2_instruction': 'Fill in with the correct compound tense according to context.',
+                'exo3_title': '📌 3. Transform into passé composé then pluperfect',
+                'exo3_instruction': '"Le soleil se lève, les oiseaux chantent et la brise marine caresse les dunes."',
                 'exo3_pc_label': 'Passé composé:',
-                'exo3_pqp_label': 'Plus-que-parfait:',
+                'exo3_pqp_label': 'Pluperfect:',
                 'exo4_title': '📌 4. Correct the tense error',
-                'exo4_q1': 'Yesterday, we <strong>had gone</strong> to the souk.',
-                'exo4_q2': 'When she called, I <strong>am already gone</strong>.',
-                'exo4_q3': 'He <strong>has been</strong> happy to see me this morning.',
-                'exo4_q4': 'After we <strong>left</strong>, the party continued.',
-                'exo4_correction_label': 'Your correction:',
+                'exo4_instruction': 'Each sentence contains an error (except one). Correct it.',
                 'exo5_title': '📌 5. Analyze an excerpt',
-                'exo5_instruction': '<em>"When the rescuers <strong>arrived</strong>, the fire <strong>had already ravaged</strong> half the village. The inhabitants <strong>had fled</strong> long ago."</em>',
-                'exo5_q1': 'Why is the plus-que-parfait used in the second clause? <input type="text" placeholder="Explanation...">',
-                'exo5_q2': 'What is the value of the passé composé "arrived"? <input type="text">',
-                'exo5_q3': 'What temporal relationship does "long ago" express with the plus-que-parfait? <input type="text">',
-                'exo6_title': '📌 6. Choose the correct auxiliary and agree the past participle',
-                'exo6_q1': 'She (monter) ________ into the train.',
-                'exo6_q2': 'They (se laver) ________ their hands before eating.',
-                'exo6_q3': 'We (rentrer) ________ very late.',
-                'exo6_q4': 'The flowers (fleurir) ________ in spring.',
+                'exo5_instruction': '"Lorsque les secours sont arrivés, l\'incendie avait déjà ravagé la moitié du village. Les habitants avaient fui depuis longtemps."',
+                'exo5_q1': 'Why is the pluperfect used in the second clause?',
+                'exo5_q2': 'What is the value of the passé composé "sont arrivés"?',
+                'exo5_q3': 'What temporal relationship does "depuis longtemps" express with the pluperfect?',
+                'exo6_title': '📌 6. Choose the right auxiliary and agree the past participle',
+                'exo6_instruction': 'Complete with être or avoir and make the agreement.',
                 'exo7_title': '📌 7. Written production',
-                'exo7_instruction': 'Tell a memorable memory (5-6 sentences) using at least three passés composés and two plus-que-parfaits. Underline the verbs and indicate their tense.',
-                'exo8_title': '📌 8. Match each sentence to the value of the compound tense',
-                'table_phrase': 'Sentence',
-                'table_value2': 'Value',
+                'exo7_instruction': 'Tell a memorable memory (5-6 sentences) using at least three passés composés and two pluperfects. Underline the verbs and indicate their tense.',
+                'exo8_title': '📌 8. Match each sentence to the compound tense value',
+                'exo8_instruction': 'Match the sentence (1-4) to the value (A-D).',
                 'exo9_title': '📌 9. Correct a faulty paragraph',
-                'exo9_instruction': 'Rewrite the passage correcting the compound tense errors.',
-                'footer_back': '← Previous lesson: Simple Tenses',
-                'footer_next': 'Next lesson: Subject-Verb Agreement →',
+                'exo9_instruction': '"Quand nous avons arrivés à la gare, le train avait parti. Nous avons du attendre le suivant. Heureusement, nous n\'avions pas raté la correspondance."',
+                'exo10_title': '📌 10. Past anterior',
+                'exo10_instruction': 'Conjugate the verbs in parentheses in the past anterior and explain the effect.',
+                'exo10_explain': 'Effect:',
+                'btn_correction': '🔍 See correction',
+                'footer_back': '← Previous lesson',
+                'footer_next': 'Back to program →',
                 'self_assess_question': 'My answer is:',
                 'self_correct': 'Correct',
                 'self_incorrect': 'Incorrect',
@@ -841,79 +859,72 @@
                 'save_error': 'Save failed',
                 'print_pdf': '🖨️ Print / PDF',
                 'print_with_answers': 'With answers',
-                'print_without_answers': 'Without answers',
                 'print_site_name': 'Educational Dashboard – French',
                 'print_scholar_year': 'Bac Review',
                 'print_week': 'Week 1',
-                'print_area': 'Conjugation',
+                'print_area': 'Grammar',
                 'print_footer_dev': 'Developed by Mejri Ziad',
                 'print_footer_date': 'Printed on',
+                'print_without_answers': 'Without answers',
                 'toast_signin_required': 'Sign in to see the corrections.'
             },
             ar: {
-                'lesson4_title': 'الدرس 4 – الأزمنة المركبة للمضارع',
-                'lesson_short_title': 'الأزمنة المركبة',
+                'lesson4_title': 'الدرس 4 – الأزمنة المركبة للدلالة (الماضي المركب، الماضي التام، الماضي الأسبق) | نص أدبي وتمارين',
+                'lesson_short_title': 'الأزمنة المركبة للدلالة',
                 'ach_year_bac': 'السنة الرابعة ثانوي',
                 'ach_module_semaine1': 'أسس اللغة',
                 'back_revision': 'المراجعة العامة',
-                'back_current': 'الأزمنة المركبة',
-                'lesson_badge': '📗 التصريف · الدرس 4',
-                'lesson_title': 'الأزمنة المركبة للمضارع<br>الماضي المركب & الماضي التام',
-                'lesson_duration': '⏱️ 60 دقيقة',
-                'lesson_meta_audio': '🎧 استمع إلى القصة ثم تدرب',
+                'back_current': 'الأزمنة المركبة للدلالة',
+                'lesson_badge': '📘 القواعد · الدرس 4',
+                'lesson_title': 'الأزمنة المركبة للدلالة<br>(الماضي المركب، الماضي التام، الماضي الأسبق)',
+                'lesson_duration': '⏱️ 45 دقيقة',
+                'lesson_meta_audio': '🎧 استمع إلى النص ثم قم بالتمارين',
                 'audio_label': '🎧 استماع أدبي',
-                'text_author': '— حكاية عاصفة، مقتبسة من قصة ساحلية تونسية',
-                'rules_heading': '📖 تكوين وقيم الأزمنة المركبة',
-                'rules_intro': 'تعبر الأزمنة المركبة عن حدث مكتمل. تتكون من <strong>الفعل المساعد être أو avoir</strong> مصرف في الزمن البسيط المناسب + <strong>اسم المفعول</strong> للفعل.',
+                'text_author': '— حكاية عاصفة، مقتبسة من قصة من الساحل التونسي',
+                'rules_heading': '📖 تكوين واستعمالات الأزمنة المركبة',
+                'rules_intro': 'الأزمنة المركبة تعبر عن حدث مكتمل. تتكون من الفعل المساعد <strong>être</strong> أو <strong>avoir</strong> مصرفا في الزمن البسيط المناسب + اسم المفعول للفعل.',
                 'rules_pc_title': '🔹 الماضي المركب',
-                'rules_pc_formation': '<strong>التكوين:</strong> الفعل المساعد في المضارع (être/avoir) + اسم المفعول.',
-                'rules_pc_list': '<li><strong>حدث مكتمل:</strong> "لقد <em>أنهى</em> عمله."</li><li><strong>حدث ماض في سرد مضارع:</strong> "فجأة، <em>صرخ</em>."</li><li><strong>سابق بالنسبة للحاضر:</strong> "لقد <em>غادرت</em> بالفعل."</li><li><strong>قيمة إجمالية:</strong> "لقد <em>أنجزنا</em> مهمتنا."</li>',
+                'rules_pc_formation': 'التكوين: المساعد في المضارع (être/avoir) + اسم المفعول.',
+                'rules_pc_list': '<li><strong>حدث مكتمل وجيز:</strong> « Il a terminé son travail. »</li><li><strong>حدث ماضٍ في سرد حاضر:</strong> « Soudain, il a crié. »</li><li><strong>أسبقية على الحاضر:</strong> « Elle est déjà partie. »</li><li><strong>قيمة حصيلة:</strong> « Nous avons accompli notre mission. »</li>',
                 'rules_pqp_title': '🔹 الماضي التام',
-                'rules_pqp_formation': '<strong>التكوين:</strong> الفعل المساعد في الماضي الناقص (être/avoir) + اسم المفعول.',
-                'rules_pqp_list': '<li><strong>حدث مكتمل قبل حدث ماض آخر:</strong> "عندما <em>وصل</em>، كانت <em>قد غادرت</em>."</li><li><strong>فرضية غير محققة (بعد "إذا"):</strong> "لو <em>كنت أعرف</em>، لكنت أتيت."</li><li><strong>استحضار حدث بعيد في سرد ماض:</strong> "تذكر أنه <em>كان قد نسي</em> المفتاح."</li>',
-                'exercises_heading': '✍️ تمارين (9 تمارين متدرجة)',
-                'exo1_title': '📌 1. حدد زمن كل فعل مسطر في النص',
-                'exo1_instruction': 'حدد ما إذا كان ماضيا مركبا أم ماضيا تاما، واذكر قيمته.',
-                'table_verb': 'الفعل المسطر',
-                'table_time': 'الزمن',
-                'table_value': 'القيمة / الاستعمال',
-                'btn_correction': '🔍 الاطلاع على التصحيح',
-                'exo2_title': '📌 2. صرف الأفعال بين قوسين في الماضي المركب أو الماضي التام',
-                'exo2_q1': 'ما إن (ينهي) ________ فروضه حتى خرج للعب.',
-                'exo2_q2': 'عندما وصلت، كانوا (يأكلون بالفعل) ________ .',
-                'exo2_q3': 'نحن (نرى) ________ هذا الفيلم ليلة أمس.',
-                'exo2_q4': 'هي (لم تزر قط) ________ تونس قبل هذا العام.',
-                'exo2_q5': 'بعد أن (يتوقف) ________ المطر، ظهرت الشمس.',
-                'exo2_q6': 'أنت (تنسى) ________ وشاحك عندي الأسبوع الماضي.',
-                'exo3_title': '📌 3. حول من المضارع إلى الماضي المركب ثم إلى الماضي التام',
-                'exo3_text': '<em>"تشرق الشمس، تغرد الطيور ويداعب نسيم البحر الكثبان."</em>',
+                'rules_pqp_formation': 'التكوين: المساعد في الماضي الناقص (être/avoir) + اسم المفعول.',
+                'rules_pqp_list': '<li><strong>حدث مكتمل قبل حدث ماضٍ آخر:</strong> « Quand il arriva, elle était déjà partie. »</li><li><strong>فرض غير واقعي (بعد "si"):</strong> « Si j\'avais su, je serais venu. »</li><li><strong>استحضار حدث بعيد:</strong> « Il se souvint qu\'il avait oublié la clé. »</li>',
+                'rules_pa_title': '🔹 الماضي الأسبق',
+                'rules_pa_formation': 'التكوين: المساعد في الماضي البسيط (être/avoir) + اسم المفعول.',
+                'rules_pa_list': '<li><strong>حدث سابق مباشرة</strong> لحدث ماضٍ آخر (غالبا بعد "quand"، "après que"، "dès que").</li><li>مثال: « Dès qu\'il eut terminé son travail, il sortit. »</li><li>ملاحظة: هذا الزمن أدبي ونادر في الكلام.</li>',
+                'rules_note': '💡 اختر الزمن حسب السياق والغرض من الجملة.',
+                'exercises_heading': '✍️ تمارين',
+                'exo1_title': '📌 1. حدد زمن واستعمال كل فعل مسطر',
+                'exo1_instruction': 'لكل فعل، اذكر الزمن (ماضي مركب، ماضي تام أو ماضي أسبق) واستعماله.',
+                'table_verb': 'الفعل',
+                'table_answer': 'الزمن والاستعمال',
+                'exo2_title': '📌 2. صرّف في الماضي المركب أو الماضي التام',
+                'exo2_instruction': 'أكمل بالزمن المركب المناسب حسب السياق.',
+                'exo3_title': '📌 3. حول إلى الماضي المركب ثم إلى الماضي التام',
+                'exo3_instruction': '"Le soleil se lève, les oiseaux chantent et la brise marine caresse les dunes."',
                 'exo3_pc_label': 'الماضي المركب:',
                 'exo3_pqp_label': 'الماضي التام:',
                 'exo4_title': '📌 4. صحح خطأ الزمن',
-                'exo4_q1': 'بالأمس، <strong>كنا ذهبنا</strong> إلى السوق.',
-                'exo4_q2': 'عندما اتصلت، <strong>أنا خرجت بالفعل</strong>.',
-                'exo4_q3': 'لقد <strong>كان</strong> سعيدا برؤيتي هذا الصباح.',
-                'exo4_q4': 'بعد أن <strong>غادرنا</strong>، استمر الحفل.',
-                'exo4_correction_label': 'تصحيحك:',
+                'exo4_instruction': 'كل جملة تحتوي على خطأ (ما عدا واحدة). صححه.',
                 'exo5_title': '📌 5. تحليل مقتطف',
-                'exo5_instruction': '<em>"عندما <strong>وصلت</strong> فرق الإنقاذ، <strong>كان الحريق قد دمر بالفعل</strong> نصف القرية. <strong>كان السكان قد فروا</strong> منذ فترة طويلة."</em>',
-                'exo5_q1': 'لماذا استعمل الماضي التام في الجملة الثانية؟ <input type="text" placeholder="الشرح...">',
-                'exo5_q2': 'ما قيمة الماضي المركب «وصلت»؟ <input type="text">',
-                'exo5_q3': 'ما العلاقة الزمنية التي يعبر عنها «منذ فترة طويلة» مع الماضي التام؟ <input type="text">',
-                'exo6_title': '📌 6. اختر الفعل المساعد الصحيح واضبط اسم المفعول',
-                'exo6_q1': 'هي (تصعد) ________ إلى القطار.',
-                'exo6_q2': 'هم (يغسلون) ________ أيديهم قبل الأكل.',
-                'exo6_q3': 'نحن (نعود) ________ متأخرين جدا.',
-                'exo6_q4': 'الأزهار (تزهر) ________ في الربيع.',
+                'exo5_instruction': '"Lorsque les secours sont arrivés, l\'incendie avait déjà ravagé la moitié du village. Les habitants avaient fui depuis longtemps."',
+                'exo5_q1': 'لماذا استعمل الماضي التام في الشق الثاني؟',
+                'exo5_q2': 'ما قيمة الماضي المركب "sont arrivés"؟',
+                'exo5_q3': 'ما العلاقة الزمنية التي تعبر عنها "depuis longtemps" مع الماضي التام؟',
+                'exo6_title': '📌 6. اختر المساعد الصحيح واضبط اسم المفعول',
+                'exo6_instruction': 'أكمل بـ être أو avoir واضبط المطابقة.',
                 'exo7_title': '📌 7. إنتاج كتابي',
-                'exo7_instruction': 'احك ذكرى مؤثرة (5-6 جمل) مستعملا ثلاثة أفعال على الأقل في الماضي المركب واثنين في الماضي التام. ضع خطا تحت الأفعال واذكر زمنها.',
+                'exo7_instruction': 'احكِ ذكرى مؤثرة (5-6 جمل) باستعمال ثلاثة أفعال في الماضي المركب واثنين في الماضي التام على الأقل. ضع خطا تحت الأفعال واكتب الزمن.',
                 'exo8_title': '📌 8. اربط كل جملة بقيمة الزمن المركب',
-                'table_phrase': 'الجملة',
-                'table_value2': 'القيمة',
+                'exo8_instruction': 'صل الجملة (1-4) بالقيمة (أ-د).',
                 'exo9_title': '📌 9. تصحيح فقرة خاطئة',
-                'exo9_instruction': 'أعد كتابة الفقرة مع تصحيح أخطاء الأزمنة المركبة.',
-                'footer_back': '← الدرس السابق: الأزمنة البسيطة',
-                'footer_next': 'الدرس الموالي: توافق الفعل والفاعل →',
+                'exo9_instruction': '"Quand nous avons arrivés à la gare, le train avait parti. Nous avons du attendre le suivant. Heureusement, nous n\'avions pas raté la correspondance."',
+                'exo10_title': '📌 10. الماضي الأسبق',
+                'exo10_instruction': 'صرف الأفعال بين قوسين في الماضي الأسبق واشرح أثر المعنى.',
+                'exo10_explain': 'أثر المعنى:',
+                'btn_correction': '🔍 الاطلاع على التصحيح',
+                'footer_back': '← الدرس السابق',
+                'footer_next': 'العودة إلى البرنامج →',
                 'self_assess_question': 'جوابي هو:',
                 'self_correct': 'صحيح',
                 'self_incorrect': 'خاطئ',
@@ -928,11 +939,10 @@
                 'save_error': 'خطأ في الحفظ',
                 'print_pdf': '🖨️ طباعة / PDF',
                 'print_with_answers': 'مع التصحيح',
-                'print_without_answers': 'بدون تصحيح',
                 'print_site_name': 'لوحة التحكم التعليمية – الفرنسية',
                 'print_scholar_year': 'مراجعة البكالوريا',
                 'print_week': 'الأسبوع 1',
-                'print_area': 'التصريف',
+                'print_area': 'القواعد',
                 'print_footer_dev': 'طوّر بواسطة ماجري زياد',
                 'print_footer_date': 'طُبع في',
                 'toast_signin_required': 'سجّل الدخول لرؤية التصحيحات.'
@@ -963,57 +973,85 @@
                 const secs = Math.floor(seconds % 60);
                 return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
             }
-            audio.addEventListener('loadedmetadata', () => durationEl.textContent = formatTime(audio.duration));
+
+            audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
             audio.addEventListener('timeupdate', () => {
                 const percent = (audio.currentTime / audio.duration) * 100 || 0;
                 progressFill.style.width = percent + '%';
                 currentTimeEl.textContent = formatTime(audio.currentTime);
             });
-            audio.addEventListener('ended', () => playBtn.textContent = '▶');
+            audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
             playBtn.addEventListener('click', () => {
                 if (audio.paused) { audio.play(); playBtn.textContent = '⏸'; }
                 else { audio.pause(); playBtn.textContent = '▶'; }
             });
             progressBar.addEventListener('click', (e) => {
                 const rect = progressBar.getBoundingClientRect();
-                audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const seekTime = (clickX / width) * audio.duration;
+                audio.currentTime = seekTime;
             });
             speedBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     speedBtns.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
-                    audio.playbackRate = parseFloat(btn.dataset.speed);
+                    const speed = parseFloat(btn.dataset.speed);
+                    audio.playbackRate = speed;
                 });
             });
 
-            // Correction data
-            document.getElementById('exo1Key').innerHTML = `<strong>Correction :</strong><br>
-                a percé → passé composé (action ponctuelle) / avait déjà préparé → plus-que-parfait (antériorité) / était parti → plus-que-parfait / eurent partagé → passé antérieur (mais on peut le traiter comme un temps composé rare) / avait été → plus-que-parfait / se sont levées → passé composé / a serré → passé composé / a lancé → passé composé / n'avait jamais affronté → plus-que-parfait / a tenu → passé composé / est arrivé → passé composé / avait disparu → plus-que-parfait / est réapparu → passé composé / avait sauvé → plus-que-parfait / a souri → passé composé.`;
+            // Exercice 1 – verbes
+            const verbsEx1 = [
+                "a percé", "avait déjà préparé", "était parti", "eurent partagé", "avait été",
+                "se sont levées", "a serré", "a lancé", "n'avait jamais affronté", "a tenu",
+                "est arrivé", "avait disparu", "est réapparu", "avait sauvé", "a souri"
+            ];
+            const answersEx1 = [
+                "passé composé (action ponctuelle)", "plus-que-parfait (antériorité)", "plus-que-parfait", "passé antérieur (antériorité immédiate après « après que »)", "plus-que-parfait",
+                "passé composé", "passé composé", "passé composé", "plus-que-parfait", "passé composé",
+                "passé composé", "plus-que-parfait", "passé composé", "plus-que-parfait", "passé composé"
+            ];
 
-            document.getElementById('exo2Key').innerHTML = `<strong>Correction :</strong><br>
-                a) a fini / b) avaient déjà mangé / c) avons vu / d) n'avait jamais visité / e) a cessé (ou fut cessé ? après que + indicatif passé composé) / f) as oublié.`;
+            const tbody1 = document.querySelector('#exo1Table tbody');
+            verbsEx1.forEach((verb, i) => {
+                const row = tbody1.insertRow();
+                const cellVerb = row.insertCell();
+                cellVerb.textContent = verb;
+                const cellAnswer = row.insertCell();
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.placeholder = 'temps et valeur';
+                cellAnswer.appendChild(input);
+            });
 
-            document.getElementById('exo3Key').innerHTML = `<strong>Passé composé :</strong> Le soleil s'est levé, les oiseaux ont chanté et la brise marine a caressé les dunes.<br>
-                <strong>Plus-que-parfait :</strong> Le soleil s'était levé, les oiseaux avaient chanté et la brise marine avait caressé les dunes.`;
+            document.getElementById('exo1Key').innerHTML = '<strong>Correction :</strong><br>' + verbsEx1.map((v,i) => `${v} → <em>${answersEx1[i]}</em>`).join('<br>');
 
-            document.getElementById('exo4Key').innerHTML = `<strong>Correction :</strong><br>
-                a) sommes allés / b) j'étais déjà sorti / c) a été (correct) / d) étions partis.`;
+            // Correction Ex 2
+            document.getElementById('exo2Key').innerHTML = '<strong>Correction :</strong><br>a) a fini<br>b) avaient déjà mangé<br>c) avons vu<br>d) n\'avait jamais visité<br>e) a cessé<br>f) as oublié';
 
-            document.getElementById('exo5Key').innerHTML = `<strong>Correction :</strong><br>
-                a) Le plus-que-parfait exprime une action achevée avant l'arrivée des secours (antériorité dans le passé).<br>
-                b) Action ponctuelle passée.<br>
-                c) Le plus-que-parfait indique que la fuite avait eu lieu longtemps avant l'arrivée des secours.`;
+            // Correction Ex 3
+            document.getElementById('exo3Key').innerHTML = '<strong>Correction :</strong><br><strong>Passé composé :</strong> Le soleil s\'est levé, les oiseaux ont chanté et la brise marine a caressé les dunes.<br><strong>Plus-que-parfait :</strong> Le soleil s\'était levé, les oiseaux avaient chanté et la brise marine avait caressé les dunes.';
 
-            document.getElementById('exo6Key').innerHTML = `<strong>Correction :</strong><br>
-                a) est montée / b) se sont lavé (les mains, COD placé après) / c) sommes rentrés / d) ont fleuri.`;
+            // Correction Ex 4
+            document.getElementById('exo4Key').innerHTML = '<strong>Correction :</strong><br>a) Hier, nous sommes allés au souk.<br>b) Quand elle a téléphoné, j\'étais déjà sorti.<br>c) Pas d\'erreur (a été est correct).<br>d) Après que nous étions partis (ou : après que nous sommes partis est acceptable, mais l\'usage plus formel attend le plus-que-parfait).';
 
-            document.getElementById('exo8Key').innerHTML = `<strong>Correction :</strong><br>
-                1 → bilan / 2 → hypothèse non réalisée / 3 → antériorité par rapport à une action passée / 4 → action ponctuelle datée.`;
+            // Correction Ex 5
+            document.getElementById('exo5Key').innerHTML = '<strong>Correction :</strong><br>a) Le plus-que-parfait exprime une action (ravager) terminée avant l\'arrivée des secours.<br>b) Action ponctuelle achevée.<br>c) Le plus-que-parfait indique que la fuite a eu lieu bien avant l\'arrivée des secours, avec une distance temporelle marquée par « depuis longtemps ».';
 
-            document.getElementById('exo9Key').innerHTML = `<strong>Correction :</strong><br>
-                Quand nous <em>sommes arrivés</em> à la gare, le train <em>était parti</em>. Nous <em>avons dû</em> attendre le suivant. Heureusement, nous <em>n'avions pas raté</em> la correspondance.`;
+            // Correction Ex 6
+            document.getElementById('exo6Key').innerHTML = '<strong>Correction :</strong><br>a) est montée<br>b) se sont lavé (les mains COD après le verbe)<br>c) sommes rentrés<br>d) ont fleuri';
 
-            // ── Auth‑gated correction ──
+            // Correction Ex 8
+            document.getElementById('exo8Key').innerHTML = '<strong>Correction :</strong><br>1 → bilan<br>2 → hypothèse non réalisée<br>3 → antériorité par rapport à une action passée<br>4 → action ponctuelle datée';
+
+            // Correction Ex 9
+            document.getElementById('exo9Key').innerHTML = '<strong>Correction :</strong><br>Quand nous sommes arrivés à la gare, le train était parti. Nous avons dû attendre le suivant. Heureusement, nous n\'avions pas raté la correspondance.';
+
+            // Correction Ex 10
+            document.getElementById('exo10Key').innerHTML = '<strong>Correction :</strong><br>a) eurent terminé – l\'action de terminer est achevée juste avant d\'aller jouer.<br>b) eut sonné – l\'action de la cloche se produit juste avant que les élèves se lèvent.<br>c) eut reçu – la réception de la lettre précède immédiatement la compréhension.';
+
+            // Auth‑gated correction toggle
             window.toggleCorrection = async function(id) {
                 const { data: { session } } = await App.supabase.auth.getSession();
                 if (!session) {
@@ -1026,9 +1064,9 @@
                 if (el) el.classList.toggle('visible');
             };
 
-            // ── Self‑assessment score calculation ──
+            // Self‑assessment scoring (10 exercises)
             function updateScore() {
-                const radioGroups = ['self_ex1','self_ex2','self_ex3','self_ex4','self_ex5','self_ex6','self_ex7','self_ex8','self_ex9'];
+                const radioGroups = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5', 'self_ex6', 'self_ex7', 'self_ex8', 'self_ex9', 'self_ex10'];
                 let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
                 radioGroups.forEach(name => {
                     const selected = document.querySelector(`input[name="${name}"]:checked`);
@@ -1045,184 +1083,235 @@
                 document.getElementById('scorePartial').textContent = partial;
                 document.getElementById('scoreUnanswered').textContent = unanswered;
             }
-// ── Save self‑assessment to profiles.achivement ──
-document.getElementById('saveResultsBtn').addEventListener('click', async function() {
-    const { data: { user } } = await App.supabase.auth.getUser();
-    if (!user) {
-        App.showToast('toast_signin_required', 'error');
-        const signInBtn = document.getElementById('signInBtn');
-        if (signInBtn) signInBtn.click();
-        return;
-    }
-    const radioGroups = ['self_ex1','self_ex2','self_ex3','self_ex4','self_ex5','self_ex6','self_ex7','self_ex8','self_ex9'];
-    let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
-    radioGroups.forEach(name => {
-        const selected = document.querySelector(`input[name="${name}"]:checked`);
-        if (selected) {
-            if (selected.value === 'correct') correct++;
-            else if (selected.value === 'incorrect') incorrect++;
-            else if (selected.value === 'partial') partial++;
-        } else {
-            unanswered++;
-        }
-    });
 
-    const lessonId = 'semaine1-conjugaison-temps-composes';
-    const lang = localStorage.getItem('lang') || 'fr';
-    const entry = {
-        lesson_id: lessonId,
-        lesson_title: {
-            fr: App.getTranslation('lesson_short_title', 'fr'),
-            en: App.getTranslation('lesson_short_title', 'en'),
-            ar: App.getTranslation('lesson_short_title', 'ar')
-        },
-        year: {
-            fr: App.getTranslation('ach_year_bac', 'fr'),
-            en: App.getTranslation('ach_year_bac', 'en'),
-            ar: App.getTranslation('ach_year_bac', 'ar')
-        },
-        module: {
-            fr: App.getTranslation('ach_module_semaine1', 'fr'),
-            en: App.getTranslation('ach_module_semaine1', 'en'),
-            ar: App.getTranslation('ach_module_semaine1', 'ar')
-        },
-        correct: correct,
-        incorrect: incorrect,
-        partial: partial,
-        unanswered: unanswered,
-        updated_at: new Date().toISOString()
-    };
+            // Save results
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                const radioGroups = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5', 'self_ex6', 'self_ex7', 'self_ex8', 'self_ex9', 'self_ex10'];
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                radioGroups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
 
-    const { data: profileData, error: fetchError } = await App.supabase
-        .from('profiles')
-        .select('achivement')
-        .eq('id', user.id)
-        .single();
+                const lessonId = 'semaine1-temps-composes';
+                const lang = localStorage.getItem('lang') || 'fr';
+                const lessonTitle = App.getTranslation('lesson_short_title', lang) || lessonId;
 
-    if (fetchError) {
-        console.error('Could not fetch profile:', fetchError);
-        return;
-    }
+                const entry = {
+                    lesson_id: lessonId,
+                    lesson_title: {
+                        fr: App.getTranslation('lesson_short_title', 'fr'),
+                        en: App.getTranslation('lesson_short_title', 'en'),
+                        ar: App.getTranslation('lesson_short_title', 'ar')
+                    },
+                    year: {
+                        fr: App.getTranslation('ach_year_bac', 'fr'),
+                        en: App.getTranslation('ach_year_bac', 'en'),
+                        ar: App.getTranslation('ach_year_bac', 'ar')
+                    },
+                    module: {
+                        fr: App.getTranslation('ach_module_semaine1', 'fr'),
+                        en: App.getTranslation('ach_module_semaine1', 'en'),
+                        ar: App.getTranslation('ach_module_semaine1', 'ar')
+                    },
+                    correct: correct,
+                    incorrect: incorrect,
+                    partial: partial,
+                    unanswered: unanswered,
+                    updated_at: new Date().toISOString()
+                };
 
-    let achivement = profileData?.achivement || {};
-    if (!achivement["ED-French"]) achivement["ED-French"] = [];
-    const arr = achivement["ED-French"];
-    const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
-    if (existingIdx >= 0) arr[existingIdx] = entry;
-    else arr.push(entry);
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles')
+                    .select('achivement')
+                    .eq('id', user.id)
+                    .single();
 
-    const { error: updateError } = await App.supabase
-        .from('profiles')
-        .update({ achivement: achivement })
-        .eq('id', user.id);
+                if (fetchError) {
+                    console.error('Could not fetch profile:', fetchError);
+                    return;
+                }
 
-    if (updateError) {
-        console.error('Save failed:', updateError);
-        App.showToast('save_error', 'error');
-    } else {
-        App.showToast('save_success', 'success');
-        App.logUserAction('lesson_saved', { lesson: lessonId, correct, incorrect, partial });
-    }
-});
+                let achivement = profileData?.achivement || {};
+                if (!achivement["ED-French"]) {
+                    achivement["ED-French"] = [];
+                }
+                const arr = achivement["ED-French"];
+                const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+                if (existingIdx >= 0) {
+                    arr[existingIdx] = entry;
+                } else {
+                    arr.push(entry);
+                }
 
-// ── Print / PDF button ──
-document.getElementById('printPdfBtn').addEventListener('click', async function() {
-    const { data: { user } } = await App.supabase.auth.getUser();
-    if (!user) {
-        App.showToast('toast_signin_required', 'error');
-        const signInBtn = document.getElementById('signInBtn');
-        if (signInBtn) signInBtn.click();
-        return;
-    }
+                const { error: updateError } = await App.supabase
+                    .from('profiles')
+                    .update({ achivement: achivement })
+                    .eq('id', user.id);
 
-    let isRegistered = false;
-    try {
-        const { data: profile, error } = await App.supabase
-            .from('profiles')
-            .select('registration_state')
-            .eq('id', user.id)
-            .single();
-        if (!error && profile && profile.registration_state && profile.registration_state.active === true) {
-            isRegistered = true;
-        }
-    } catch (e) {}
+                if (updateError) {
+                    console.error('Save failed:', updateError);
+                    App.showToast('save_error', 'error');
+                } else {
+                    App.showToast('save_success', 'success');
+                    App.logUserAction('lesson_saved', { lesson: lessonId, correct, incorrect, partial });
+                }
+            });
 
-    const headerHTML = document.querySelector('.lesson-header').cloneNode(true);
-    const textCard = document.querySelector('.text-card').cloneNode(true);
-    const rulesSections = document.querySelectorAll('.valeurs-section, .methode-section');
-    let rulesHTML = '';
-    rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
-    const exercisesSection = document.querySelector('.exercises-section').cloneNode(true);
-    exercisesSection.querySelectorAll('input, textarea, .btn-verify, .self-assessment').forEach(el => el.remove());
+            // Print / PDF
+            document.getElementById('printPdfBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
 
-    if (isRegistered) {
-        const answerKeys = exercisesSection.querySelectorAll('.answer-key');
-        answerKeys.forEach(key => {
-            key.style.display = 'block';
-            key.style.border = 'none';
-            key.style.padding = '0.5rem 0';
-            key.style.margin = '0.5rem 0';
-            key.style.background = 'transparent';
-        });
-    } else {
-        exercisesSection.querySelectorAll('.answer-key').forEach(el => el.remove());
-    }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles')
+                        .select('registration_state')
+                        .eq('id', user.id)
+                        .single();
+                    if (!error && profile && profile.registration_state && profile.registration_state.active === true) {
+                        isRegistered = true;
+                    }
+                } catch (e) { /* ignore */ }
 
-    const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+                const headerHTML = document.querySelector('.lesson-header').cloneNode(true);
+                const textCard = document.querySelector('.text-card').cloneNode(true);
+                const rulesSections = document.querySelectorAll('.valeurs-section, .methode-section');
+                let rulesHTML = '';
+                rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
 
-    const printWindow = window.open('', '_blank', 'width=800,height=600');
-    const lang = localStorage.getItem('lang') || 'fr';
-    printWindow.document.write(`
-        <!DOCTYPE html>
-        <html lang="${lang}">
-        <head>
-            <meta charset="UTF-8">
-            <title>${App.getTranslation('lesson_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title>
-            <style>
-                body { font-family: 'Georgia', serif; line-height: 1.6; max-width: 700px; margin: 2rem auto; padding: 0 1rem; color: #000; }
-                h1, h2, h3 { color: #000; }
-                .lesson-header { text-align: center; margin-bottom: 2rem; }
-                .badge { display: inline-block; background: #c75b2c; color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; text-transform: uppercase; }
-                .text-card { border-left: 4px solid #c75b2c; padding: 1rem 1.5rem; margin: 1.5rem 0; font-style: italic; }
-                .quote-mark { font-size: 3rem; color: #c75b2c; opacity: 0.3; position: absolute; top: -10px; left: 10px; }
-                .text-card .author { text-align: right; font-style: normal; margin-top: 0.8rem; }
-                .valeurs-section, .methode-section { margin: 1.5rem 0; }
-                .valeur-card { background: #f8f4ec; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; }
-                .valeur-card h3 { color: #c75b2c; }
-                .exercise-card { margin: 1.2rem 0; }
-                table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; }
-                th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
-                th { background: #f0e8d8; }
-                .answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; }
-                .print-header { text-align: center; border-bottom: 2px solid #c75b2c; padding-bottom: 1rem; margin-bottom: 2rem; }
-                .print-header .site-name { font-size: 1.4rem; font-weight: bold; color: #c75b2c; margin: 0 0 0.3rem; }
-                .print-header .meta-line { font-size: 0.95rem; color: #444; margin: 0.2rem 0; }
-                .print-header .lesson-name { font-size: 1.1rem; font-weight: bold; color: #000; margin-top: 0.5rem; }
-                .print-footer { text-align: center; border-top: 1px solid #ccc; padding-top: 1rem; margin-top: 2rem; font-size: 0.85rem; color: #666; }
-                @media print { body { margin: 0; padding: 0; } @page { margin: 2cm; } }
-            </style>
-        </head>
-        <body>
-            <div class="print-header">
-                <div class="site-name">${App.getTranslation('print_site_name', lang)}</div>
-                <div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div>
-                <div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div>
-            </div>
-            ${breadcrumb.outerHTML}
-            ${headerHTML.outerHTML}
-            ${textCard.outerHTML}
-            ${rulesHTML}
-            ${exercisesSection.outerHTML}
-            <div class="print-footer">
-                ${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}
-            </div>
-        </body>
-        </html>
-    `);
-    printWindow.document.close();
-    printWindow.focus();
-    setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
-});
+                const exercisesSection = document.querySelector('.exercises-section').cloneNode(true);
+                exercisesSection.querySelectorAll('input, textarea, .btn-verify, .self-assessment').forEach(el => el.remove());
+
+                if (isRegistered) {
+                    const answerKeys = exercisesSection.querySelectorAll('.answer-key');
+                    answerKeys.forEach(key => {
+                        key.style.display = 'block';
+                        key.style.border = 'none';
+                        key.style.padding = '0.5rem 0';
+                        key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    exercisesSection.querySelectorAll('.answer-key').forEach(el => el.remove());
+                }
+
+                const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                const lang = localStorage.getItem('lang') || 'fr';
+                printWindow.document.write(`
+                <!DOCTYPE html>
+                <html lang="${lang}">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>${App.getTranslation('lesson_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title>
+                    <style>
+                        body {
+                            font-family: 'Georgia', 'Times New Roman', serif;
+                            line-height: 1.6;
+                            max-width: 700px;
+                            margin: 2rem auto;
+                            padding: 0 1rem;
+                            color: #000;
+                        }
+                        .print-header {
+                            text-align: center;
+                            border-bottom: 2px solid #c75b2c;
+                            padding-bottom: 1rem;
+                            margin-bottom: 2rem;
+                        }
+                        .print-header .site-name {
+                            font-size: 1.4rem;
+                            font-weight: bold;
+                            color: #c75b2c;
+                            margin: 0 0 0.3rem;
+                        }
+                        .print-header .meta-line {
+                            font-size: 0.95rem;
+                            color: #444;
+                            margin: 0.2rem 0;
+                        }
+                        .print-header .lesson-name {
+                            font-size: 1.1rem;
+                            font-weight: bold;
+                            color: #000;
+                            margin-top: 0.5rem;
+                        }
+                        .print-footer {
+                            text-align: center;
+                            border-top: 1px solid #ccc;
+                            padding-top: 1rem;
+                            margin-top: 2rem;
+                            font-size: 0.85rem;
+                            color: #666;
+                        }
+                        h1, h2, h3 { color: #000; }
+                        .lesson-header { text-align: center; margin-bottom: 2rem; }
+                        .badge { display: inline-block; background: #c75b2c; color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; text-transform: uppercase; }
+                        .text-card {
+                            border-left: 4px solid #c75b2c;
+                            padding: 1rem 1.5rem;
+                            margin: 1.5rem 0;
+                            font-style: italic;
+                        }
+                        .quote-mark { font-size: 3rem; color: #c75b2c; opacity: 0.3; position: absolute; top: -10px; left: 10px; }
+                        .text-card .author { text-align: right; font-style: normal; margin-top: 0.8rem; }
+                        .valeurs-section, .methode-section { margin: 1.5rem 0; }
+                        .valeur-card { background: #f8f4ec; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; }
+                        .valeur-card h3 { color: #c75b2c; }
+                        .exercise-card { margin: 1.2rem 0; }
+                        table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; }
+                        th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+                        th { background: #f0e8d8; }
+                        .answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; }
+                        @media print {
+                            body { margin: 0; padding: 0; }
+                            @page { margin: 2cm; }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="print-header">
+                        <div class="site-name">${App.getTranslation('print_site_name', lang)}</div>
+                        <div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div>
+                        <div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div>
+                    </div>
+
+                    ${breadcrumb.outerHTML}
+                    ${headerHTML.outerHTML}
+                    ${textCard.outerHTML}
+                    ${rulesHTML}
+                    ${exercisesSection.outerHTML}
+
+                    <div class="print-footer">
+                        ${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}
+                    </div>
+                </body>
+                </html>
+            `);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
 
             document.querySelectorAll('input[type="radio"][name^="self_ex"]').forEach(radio => {
                 radio.addEventListener('change', updateScore);
@@ -1262,95 +1351,5 @@ document.getElementById('printPdfBtn').addEventListener('click', async function(
             }, 0);
         })();
     </script>
-
-    <!--
-    ═══════════════════════════════════════════════════════════════════
-    PHASE 2 – AUTH & SELF‑ASSESSMENT INTEGRATION (2026-08-04)
-    ═══════════════════════════════════════════════════════════════════
-
-    To make the lesson compatible with the new app version (real Supabase
-    authentication + self‑assessment system), the following was added:
-
-    1. App shell scripts:
-       - Included <script src="db-utils.js"></script>,
-         the Supabase CDN and <script src="supabase-client.js"></script>
-         BEFORE ed-french-ini.js.
-       - The page now inherits the global header/footer injected by
-         ed-french-ini.js. The old custom navigation bar was removed and
-         replaced with a small breadcrumb inside .container.
-
-    2. Auth‑gated corrections:
-       - The toggleCorrection() function now checks the Supabase session
-         via App.supabase.auth.getSession().
-       - If the user is not signed in, it shows a translated toast
-         (toast_signin_required) and opens the sign‑in modal.
-       - The answer key is only revealed when a valid session exists.
-
-    3. Self‑assessment radio buttons:
-       - After each exercise, a <div class="self-assessment"> was added
-         containing three radio inputs (correct/incorrect/partial) with
-         translated labels.
-       - These radios share a name per exercise (self_ex1 … self_ex9).
-
-    4. Scoring area:
-       - A new <div class="score-area"> at the end of the page shows
-         real‑time counters for correct, incorrect, partial and
-         unanswered exercises.
-       - The updateScore() function listens to all radio changes and
-         updates the counters instantly.
-
-    To apply this template to another lesson:
-      - Replace the lesson content (text, exercises, answer keys)
-        while keeping the same HTML structure.
-      - Duplicate the self‑assessment block for each exercise and ensure
-        the radio name is unique (self_ex1, self_ex2, …).
-      - Update the translation keys accordingly.
-      - Keep the auth‑gated toggleCorrection logic unchanged; it only
-        needs the button to call toggleCorrection('answerKeyId').
-
-    All original styles and the direct‑translation fix remain untouched.
-    ═══════════════════════════════════════════════════════════════════
-    -->
-    <!--
-    ═══════════════════════════════════════════════════════════════════
-    PHASE 3 – ACHIEVEMENT SAVING (2026-08-08)
-    ═══════════════════════════════════════════════════════════════════
-
-    Added the "Enregistrer mes résultats" button and its save logic.
-    - Gathers self-assessment radio values (correct/incorrect/partial/unanswered)
-      for all 9 exercises.
-    - Builds an entry with multilingual lesson title, year, and module.
-    - Upserts the entry into the user's profile.achivement["ED-French"] array
-      via Supabase.
-    - Displays success/error toasts instead of inline messages.
-
-    To reuse this template for other lessons:
-      1. Copy the <div class="score-actions"> block.
-      2. Copy the save function (document.getElementById('saveResultsBtn')...).
-      3. Update the three metadata objects: lesson_id, lesson_title, year, module
-         with multilingual objects specific to the new lesson.
-    ═══════════════════════════════════════════════════════════════════
-    -->
-    <!--
-    ═══════════════════════════════════════════════════════════════════
-    PHASE 4 – PRINT / PDF BUTTON WITH CONDITIONAL ANSWERS (2026-08-10)
-    ═══════════════════════════════════════════════════════════════════
-
-    Added the “🖨️ Imprimer / PDF” button and its logic.
-    - Checks if the user is signed in; if not, shows a toast and opens the sign‑in modal.
-    - If signed in, fetches the registration_state from Supabase to determine whether answers are included.
-    - Clones the lesson content (text, rules, exercises) and removes all interactive elements.
-    - Builds a clean, printable HTML document with a custom header (site name, scholar year, week, area, lesson name)
-      and footer (developer, date).
-    - Opens a new window and triggers the browser’s print dialog.
-
-    Answers are only visible if the user’s registration_state.active is true.
-
-    To reuse this template for other lessons:
-      1. Copy the button HTML into the .score-actions div.
-      2. Copy the printPdfBtn event listener (place it outside the saveResultsBtn handler).
-      3. Update the translation keys (print_*) in the lesson’s language blocks if needed.
-    ═══════════════════════════════════════════════════════════════════
-    -->
 </body>
 </html>

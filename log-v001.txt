@@ -1422,7 +1422,6 @@ Goal: Replace the basic profile modal with a modern, branded design that include
    Reason: All user‑facing strings in the new modal are now localised.
 Result: The profile modal is visually appealing, fully interactive, and trilingual. Users can view their details and access the full profile page or sign out directly from the modal.
 ================================================================================
-
 PHASE 26 – PROFILE PAGE (profile.html) CREATION
 Goal: Build a dedicated page for users to view and edit their personal information, see achievements (coming soon), and print their profile data.
 ================================================================================
@@ -1455,7 +1454,6 @@ Goal: Build a dedicated page for users to view and edit their personal informati
    Reason: Addresses issues that would prevent the page from working correctly in all scenarios.
 Result: The profile page is fully operational, secure, and integrated into the app. Users can modify their profile, change sensitive data after confirming their password, and print a clean PDF without the password.
 ================================================================================
-
 PHASE 27 – LESSON PAGE AUTH & SELF-ASSESSMENT INTEGRATION (Template for all lessons)
 Goal: Enhance the existing lesson template (semaine1-classes-grammaticales.html) so that:
       - Only signed‑in users can view answer keys.
@@ -1512,7 +1510,6 @@ Goal: Capture every relevant user action (pages, auth, profile, lessons, printin
    See SUPABASE ACTIONS section for the complete SQL.
    Reason: General table stores counters per action type; backup table stores per‑user action arrays.
    SECURITY DEFINER functions allow anon/authenticated users to safely update rows.
-
 28.2 – LOGGING MODULE (logging.js)
    File: logging.js (new)
    Content: A self‑contained IIFE that creates a secondary Supabase client (with persistSession: false)
@@ -1521,7 +1518,6 @@ Goal: Capture every relevant user action (pages, auth, profile, lessons, printin
    - App.logUserAction(action, details) calls append_user_action RPC.
    The module also logs page visits (index, revision) on load.
    Included in all pages after supabase-client.js.
-
 28.3 – INTEGRATION IN PAGES
    - index.html, revision.html, profile.html: added <script src="logging.js"></script> after supabase-client.js.
    - ed-french-ini.js:
@@ -1537,7 +1533,6 @@ Goal: Capture every relevant user action (pages, auth, profile, lessons, printin
    - profile.html:
        * Username/email/password changes: logs user action with details.
    Reason: Captures all critical interactions without affecting existing features.
-
 28.4 – RESULT
    The general table now shows aggregated counters for each action (e.g., sign_in: 12, page_visit_index: 340).
    The backup table stores one row per user, with a growing JSON array of all their actions.
@@ -1563,6 +1558,102 @@ Goal: During development, always serve the latest HTML from the network (with of
    When switching to production (uncomment the second block), normal navigation becomes cache‑first,
    while hard refresh still guarantees fresh content. No other caching behavior is affected.
 ================================================================================
+PHASE 30 – ACHIEVEMENT INTEGRATION (LESSON ↔ PROFILE)
+Goal: Let students save self‑assessment results from a lesson page into their
+      profile, then display those results in the Profile → Réalisations section,
+      grouped by schooling year and module, with full multilingual support.
+================================================================================
+30.1 – ADDED `achivement` JSONB COLUMN TO profiles TABLE
+   Table: public.profiles
+   Change: ALTER TABLE public.profiles ADD COLUMN IF NOT EXISTS achivement JSONB NOT NULL DEFAULT '{}'::jsonb;
+   Reason: A single JSON column per user holds all app achievements under an "ED-French"
+           key, avoiding the need for a separate table. Future apps can add their own keys.
+30.2 – MODIFIED LESSON PAGE TO SAVE SELF‑ASSESSMENT
+   File: semaine1-classes-grammaticales.html
+   Change: - Added a “Save results” button inside the .score-area.
+           - JavaScript gathers the selected radio values (correct/incorrect/partial/unanswered)
+             and builds a multilingual entry object (lesson_title, year, module) with text
+             in fr/en/ar.
+           - On save, fetches the current profile.achivement, appends or replaces the entry
+             for the lesson under the "ED-French" array, and updates the profile via Supabase.
+           - On success, shows a toast message; on failure, shows an error toast.
+   Reason: Empowers students to record their progress directly from the lesson.
+30.3 – UPDATED PROFILE PAGE TO DISPLAY ACHIEVEMENTS
+   File: profile.html
+   Change: - Replaced the “Coming soon” placeholder with a dynamic #achievementsContent area.
+           - loadAchievements() reads profiles.achivement, extracts the "ED-French" array,
+             groups entries by year and module (using the multilingual objects),
+             and renders them in a tree layout with percentage breakdowns.
+           - Labels (correct/incorrect/partial) are translated dynamically.
+   Reason: The Réalisations section now shows real data instead of a placeholder.
+30.4 – MULTILINGUAL STORAGE APPROACH
+   Instead of storing translation keys, each achievement entry stores the actual
+   translated strings in a small object: { fr: "…", en: "…", ar: "…" }.
+   This ensures the profile page can display the correct language without loading
+   the lesson's translation file, and no keys are duplicated across pages.
+Result: The achievement system is fully functional. Students save their self‑assessment
+        from any lesson; the profile groups and displays all saved lessons in the current
+        language. The architecture allows easy extension to future lessons by copying
+        the save logic and updating the multilingual metadata.
+================================================================================
+PHASE 31 – REGISTRATION STATE & PROFILE SYNC
+Goal: Add a registration system that stores a user’s plan (illimited) and a
+      personal information JSON column, automatically synced with username/email.
+================================================================================
+31.1 – ADDED COLUMNS TO public.profiles
+   Table: public.profiles
+   Change:
+     ALTER TABLE public.profiles ADD COLUMN IF NOT EXISTS personal_information JSONB NOT NULL DEFAULT '{}'::jsonb;
+     ALTER TABLE public.profiles ADD COLUMN IF NOT EXISTS registration_state JSONB NOT NULL DEFAULT '{"active": true, "type": "illimited"}'::jsonb;
+   Reason: personal_information stores {username, email}; registration_state tracks active plan.
+
+31.2 – FUNCTION set_user_registration(p_user_id UUID)
+   Function: SECURITY DEFINER, sets registration_state to '{"active": true, "type": "illimited"}' for given user.
+   Called via RPC from JS after sign‑up.
+
+31.3 – TRIGGER sync_personal_information (username → personal_information.username)
+   BEFORE UPDATE on profiles: when username column changes, updates personal_information JSON automatically.
+
+31.4 – TRIGGER sync_email_to_profile (auth.users.email → personal_information.email)
+   AFTER UPDATE OF email ON auth.users: updates profiles.personal_information.email with new email.
+
+31.5 – JAVASCRIPT HELPER assignInitialRegistration
+   File: ed-french-ini.js
+   Change: Added async function assignInitialRegistration(userId) calling set_user_registration RPC.
+           Invoked inside sign‑up success (if (data.session)) after other logs.
+   Reason: Automatically sets the registration state for new users.
+
+31.6 – CONSOLIDATED REGISTRATION SQL SCRIPT
+   (See SUPABASE ACTIONS for full script)
+
+================================================================================
+PHASE 32 – LESSON PRINT/PDF WITH CONDITIONAL ANSWERS
+Goal: Add a “🖨️ Imprimer / PDF” button to the lesson page that opens a clean print
+      window with lesson content and, if the user is signed‑in and registered,
+      includes the answer keys.
+================================================================================
+32.1 – ADDED PRINT BUTTON TO LESSON
+   File: semaine1-classes-grammaticales.html
+   Change: Inserted <button id="printPdfBtn" class="btn-verify" …>🖨️ Imprimer / PDF</button> inside .score-actions.
+   Reason: Provides a print‑friendly output.
+
+32.2 – TRANSLATION KEYS
+   File: semaine1-classes-grammaticales.html
+   Change: Added keys print_pdf, print_with_answers, print_without_answers, print_site_name, print_scholar_year,
+           print_week, print_area, print_footer_dev, print_footer_date in fr/en/ar.
+   Reason: Fully localised print window.
+
+32.3 – JAVASCRIPT PRINT LOGIC
+   File: semaine1-classes-grammaticales.html
+   Change: Event listener on #printPdfBtn that checks auth, fetches registration_state, clones lesson content,
+           removes interactive elements, conditionally shows answer keys, builds styled HTML with custom header/footer,
+           opens a new window, and triggers print.
+   Reason: Secure print with answers only for signed‑in, registered users.
+
+32.4 – BUGFIX: EVENT LISTENER PLACEMENT
+   File: semaine1-classes-grammaticales.html
+   Change: Moved addEventListener for printPdfBtn outside the saveResultsBtn callback.
+   Reason: Listener was not attached on page load, making the button inactive.
 ================================================================================
 ================================================================================
 ================================================================================
@@ -1838,7 +1929,6 @@ Logging – General action counters (log-ed-french-interactions-general)
     FOR INSERT WITH CHECK (true);
   CREATE POLICY "anon_can_update_general" ON public."log-ed-french-interactions-general"
     FOR UPDATE USING (true) WITH CHECK (true);
-
 Logging – User action backup (log-ed-french-interactions-backup)
   CREATE TABLE public."log-ed-french-interactions-backup" (
     user_id    UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
@@ -1848,7 +1938,6 @@ Logging – User action backup (log-ed-french-interactions-backup)
   ALTER TABLE public."log-ed-french-interactions-backup" ENABLE ROW LEVEL SECURITY;
   CREATE POLICY "auth_manage_own_backup" ON public."log-ed-french-interactions-backup"
     FOR ALL USING (auth.uid() = user_id) WITH CHECK (auth.uid() = user_id);
-
 Functions:
   increment_general_action (increments counter atomically)
     CREATE OR REPLACE FUNCTION increment_general_action(
@@ -1865,7 +1954,6 @@ Functions:
         updated_at = now();
     END;
     $$ LANGUAGE plpgsql SECURITY DEFINER;
-
   append_user_action (appends entry to user's JSON array)
     CREATE OR REPLACE FUNCTION append_user_action(
       p_user_id UUID,
@@ -1880,7 +1968,6 @@ Functions:
         updated_at = now();
     END;
     $$ LANGUAGE plpgsql SECURITY DEFINER;
-
 Files created:
   - logging.js
 Files modified:
@@ -1888,3 +1975,96 @@ Files modified:
   - revision.html (added logging.js, lesson-click logger, print logger)
   - profile.html (added logging.js, profile action loggers)
   - ed-french-ini.js (auth and PWA log calls)
+tables:
+Added column:
+  ALTER TABLE public.profiles ADD COLUMN IF NOT EXISTS achivement JSONB NOT NULL DEFAULT '{}'::jsonb;
+  This column stores all achievement data under app-specific keys (e.g. "ED-French").
+tables:
+-- ============================================================
+-- CLEANUP (if re-running)
+-- ============================================================
+DROP TRIGGER IF EXISTS trg_sync_personal_info ON public.profiles;
+DROP FUNCTION IF EXISTS sync_personal_information();
+DROP TRIGGER IF EXISTS trg_sync_email ON auth.users;
+DROP FUNCTION IF EXISTS sync_email_to_profile();
+DROP FUNCTION IF EXISTS set_user_registration(UUID);
+
+-- ============================================================
+-- TABLE CHANGES
+-- ============================================================
+ALTER TABLE public.profiles
+  ADD COLUMN IF NOT EXISTS personal_information JSONB NOT NULL DEFAULT '{}'::jsonb;
+
+ALTER TABLE public.profiles
+  ADD COLUMN IF NOT EXISTS registration_state JSONB NOT NULL DEFAULT '{"active": true, "type": "illimited"}'::jsonb;
+
+-- ============================================================
+-- FUNCTION: set default registration for a given user
+-- ============================================================
+CREATE OR REPLACE FUNCTION set_user_registration(p_user_id UUID)
+RETURNS void
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = ''
+AS $$
+BEGIN
+  UPDATE public.profiles
+  SET registration_state = '{"active": true, "type": "illimited"}'::jsonb
+  WHERE id = p_user_id;
+END;
+$$;
+
+GRANT EXECUTE ON FUNCTION set_user_registration(UUID) TO authenticated;
+
+-- ============================================================
+-- TRIGGER: sync username → personal_information.username
+-- ============================================================
+CREATE OR REPLACE FUNCTION sync_personal_information()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SET search_path = ''
+AS $$
+BEGIN
+  IF OLD.username IS DISTINCT FROM NEW.username THEN
+    NEW.personal_information = jsonb_set(
+      COALESCE(NEW.personal_information, '{}'),
+      '{username}',
+      to_jsonb(NEW.username)
+    );
+  END IF;
+  RETURN NEW;
+END;
+$$;
+
+CREATE TRIGGER trg_sync_personal_info
+  BEFORE UPDATE ON public.profiles
+  FOR EACH ROW
+  EXECUTE FUNCTION sync_personal_information();
+
+-- ============================================================
+-- TRIGGER: sync auth.users.email → personal_information.email
+-- ============================================================
+CREATE OR REPLACE FUNCTION sync_email_to_profile()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = ''
+AS $$
+BEGIN
+  IF OLD.email IS DISTINCT FROM NEW.email THEN
+    UPDATE public.profiles
+    SET personal_information = jsonb_set(
+      COALESCE(personal_information, '{}'),
+      '{email}',
+      to_jsonb(NEW.email)
+    )
+    WHERE id = NEW.id;
+  END IF;
+  RETURN NEW;
+END;
+$$;
+
+CREATE TRIGGER trg_sync_email
+  AFTER UPDATE OF email ON auth.users
+  FOR EACH ROW
+  EXECUTE FUNCTION sync_email_to_profile();

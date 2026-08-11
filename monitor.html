@@ -49,22 +49,18 @@
     const DB_NAME = 'adminMonitorDB_v2';
     const DB_VERSION = 2;
     const CHANNEL_NAME = 'app-monitor';
-
     const logContainer = document.getElementById('logContainer');
     const startBtn = document.getElementById('startBtn');
     const stopBtn = document.getElementById('stopBtn');
     const clearBtn = document.getElementById('clearBtn');
     const loadBtn = document.getElementById('loadBtn');
     const status = document.getElementById('status');
-
     let channel = null, recording = false, currentFilter = 'all';
-
     function applyFilter() {
       document.querySelectorAll('.log-entry').forEach(entry => {
         entry.style.display = (currentFilter === 'all' || entry.dataset.level === currentFilter) ? '' : 'none';
       });
     }
-
     document.querySelectorAll('.filters button').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
@@ -73,7 +69,6 @@
         applyFilter();
       });
     });
-
     // IndexedDB helpers
     function openDB() {
       return new Promise((resolve, reject) => {
@@ -88,7 +83,6 @@
         request.onerror = (e) => reject(e.target.error);
       });
     }
-
     async function fetchRecentLogs(limit = 50) {
       const db = await openDB();
       const logs = [];
@@ -117,7 +111,6 @@
       logs.sort((a,b) => (a.timestamp||'').localeCompare(b.timestamp||''));
       return logs.slice(0, limit);
     }
-
     function appendLog(entry) {
       const div = document.createElement('div');
       const time = new Date(entry.timestamp || Date.now()).toLocaleTimeString();
@@ -128,9 +121,7 @@
       if (currentFilter !== 'all' && currentFilter !== entry.level) div.style.display = 'none';
       logContainer.scrollTop = logContainer.scrollHeight;
     }
-
     function escapeHtml(text) { return String(text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-
     startBtn.addEventListener('click', () => {
       if (recording) return;
       recording = true;
@@ -142,7 +133,6 @@
         if (event.data?.type === 'log-entry') appendLog(event.data.payload);
       };
     });
-
     stopBtn.addEventListener('click', () => {
       if (!recording) return;
       recording = false;
@@ -151,9 +141,7 @@
       status.textContent = '⚪ Idle';
       if (channel) { channel.close(); channel = null; }
     });
-
     clearBtn.addEventListener('click', () => { logContainer.innerHTML = ''; });
-
     loadBtn.addEventListener('click', async () => {
       loadBtn.disabled = true;
       loadBtn.textContent = 'Loading...';
@@ -171,7 +159,6 @@
       loadBtn.disabled = false;
       loadBtn.textContent = '📂 Load Recent Logs';
     });
-
     stopBtn.disabled = true;
   })();
 </script>

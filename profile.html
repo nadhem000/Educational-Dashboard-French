@@ -127,13 +127,11 @@
 			<p id="print-date-paragraph" data-i18n="profile_print_date">Imprimé le </p>
 			<hr>
 		</div>
-		
 		<div id="main-content" class="container">
 			<nav class="back-nav no-print">
 				<a href="index.html" data-i18n="back_link">← Retour à l'accueil</a>
 			</nav>
 			<h1 data-i18n="profile_heading">Mon Profil</h1>
-			
 			<!-- Personal Information Section -->
 			<section class="profile-section" id="personal">
 				<h2 data-i18n="personal_info">Informations personnelles</h2>
@@ -160,7 +158,6 @@
 						</div>
 					</div>
 				</div>
-				
 				<!-- Edit Username Form -->
 				<div id="edit-username-form" class="edit-form hidden">
 					<input type="text" id="new-username" class="auth-input" data-i18n-placeholder="new_username_placeholder" placeholder="Nouveau nom d'utilisateur">
@@ -168,7 +165,6 @@
 					<button id="cancel-username-btn" class="btn-cancel" data-i18n="cancel">Annuler</button>
 					<span class="field-error" id="error-username-edit" aria-live="polite"></span>
 				</div>
-				
 				<!-- Edit Email Form (requires password) -->
 				<div id="edit-email-form" class="edit-form hidden">
 					<div class="auth-field">
@@ -183,7 +179,6 @@
 					<button id="cancel-email-btn" class="btn-cancel" data-i18n="cancel">Annuler</button>
 					<span class="field-error" id="error-email-edit" aria-live="polite"></span>
 				</div>
-				
 				<!-- Edit Password Form (requires current password) -->
 				<div id="edit-password-form" class="edit-form hidden">
 					<div class="auth-field">
@@ -199,7 +194,6 @@
 					<button id="cancel-password-btn" class="btn-cancel" data-i18n="cancel">Annuler</button>
 				</div>
 			</section>
-			
 			<!-- Achievements Section -->
 			<section class="profile-section" id="achievements">
     <h2 data-i18n="achievements">🏆 Parcours / Réalisations</h2>
@@ -211,13 +205,11 @@
         </div>
     </div>
 </section>
-			
 			<!-- Print button -->
 			<div class="print-actions">
 				<button id="printProfileBtn" class="header-btn" data-i18n="print_profile">🖨️ Imprimer le profil</button>
 			</div>
 		</div>
-		
 		<script src="i18n.js"></script>
 		<script src="db-utils.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -238,7 +230,6 @@
   document.documentElement.lang = newLang;
 });
 			})();
-			
 			// Page translations
 			App.addI18nTranslations({
 				fr: {
@@ -362,13 +353,10 @@
 					'sign_out_confirm': 'تم تسجيل الخروج.'
 				}
 			});
-			
 			(function() {
 				// Set print date
 				// document.getElementById('print-date').textContent = new Date().toLocaleDateString('fr-FR');
-				
 				let userEmail = null;
-				
 				async function loadProfile() {
 					const { data: { user } } = await App.supabase.auth.getUser();
 					if (!user) {
@@ -381,12 +369,10 @@
 					.select('username')
 					.eq('id', user.id)
 					.single();
-					
 					if (error) {
 						App.showToast('profile_error_load', 'error');
 						return;
 					}
-					
 					document.getElementById('display-username').textContent = profile?.username || '';
 					document.getElementById('display-email').textContent = user.email || '';
 				}
@@ -394,41 +380,34 @@
 async function loadAchievements() {
     const container = document.getElementById('achievementsContent');
     if (!container) return;
-
     const lang = localStorage.getItem('lang') || 'fr';
-
     const { data: { user } } = await App.supabase.auth.getUser();
     if (!user) {
         container.innerHTML = '<p data-i18n="login_to_view_achievements">Connectez-vous pour voir vos réalisations.</p>';
         App.applyTranslations();
         return;
     }
-
     const { data: profileData, error } = await App.supabase
         .from('profiles')
         .select('achivement')
         .eq('id', user.id)
         .single();
-
     if (error || !profileData || !profileData.achivement) {
         container.innerHTML = '<p data-i18n="no_achievements">Aucune leçon enregistrée.</p>';
         App.applyTranslations();
         return;
     }
-
     const edFrenchScores = profileData.achivement["ED-French"];
     if (!edFrenchScores || edFrenchScores.length === 0) {
         container.innerHTML = '<p data-i18n="no_achievements">Aucune leçon enregistrée.</p>';
         App.applyTranslations();
         return;
     }
-
     // Helper: get localized field from multilingual object or fallback
     const getLocalized = (obj, fallback) => {
         if (typeof obj === 'object' && obj !== null && obj[lang]) return obj[lang];
         return fallback || '';
     };
-
     // Group by year (use the French text as stable key)
     const grouped = {};
     edFrenchScores.forEach(s => {
@@ -438,31 +417,26 @@ async function loadAchievements() {
         if (!grouped[yearKey][moduleKey]) grouped[yearKey][moduleKey] = [];
         grouped[yearKey][moduleKey].push(s);
     });
-
     let html = '';
     for (const yearKey in grouped) {
         // Get the first entry's year object to display the localized version
         const firstEntry = Object.values(grouped[yearKey])[0]?.[0];
         const displayYear = firstEntry ? getLocalized(firstEntry.year, yearKey) : yearKey;
         html += `<h3 style="color:var(--accent); margin-top:1.5rem;">📅 ${escapeHtml(displayYear)}</h3>`;
-
         for (const moduleKey in grouped[yearKey]) {
             const firstModEntry = grouped[yearKey][moduleKey][0];
             const displayModule = firstModEntry ? getLocalized(firstModEntry.module, moduleKey) : moduleKey;
             html += `<h4 style="margin-left:1rem; color:var(--heading);">📘 ${escapeHtml(displayModule)}</h4>`;
             html += '<ul style="list-style:none; padding-left:2rem;">';
-
             grouped[yearKey][moduleKey].forEach(s => {
                 const total = s.correct + s.incorrect + s.partial + s.unanswered || 1;
                 const pctCorrect = ((s.correct / total) * 100).toFixed(1);
                 const pctPartial = ((s.partial / total) * 100).toFixed(1);
                 const pctIncorrect = ((s.incorrect / total) * 100).toFixed(1);
-
                 const lessonName = getLocalized(s.lesson_title, s.lesson_id.replace(/-/g, ' '));
                 const labelCorrect = App.getTranslation('achievement_correct', lang);
                 const labelIncorrect = App.getTranslation('achievement_incorrect', lang);
                 const labelPartial = App.getTranslation('achievement_partial', lang);
-
                 html += `<li style="margin-bottom:0.5rem;">
                     <strong>${escapeHtml(lessonName)}</strong> – 
                     ✅ ${pctCorrect}% ${labelCorrect}, 
@@ -476,19 +450,15 @@ async function loadAchievements() {
     container.innerHTML = html;
     App.applyTranslations();
 }
-
 // Keep the existing escapeHtml function
 function escapeHtml(text) {
     const div = document.createElement('div');
     div.appendChild(document.createTextNode(text));
     return div.innerHTML;
 }
-				
 				loadProfile();
-
 // Call after profile loads
 loadAchievements();
-				
 				// ----- Username editing -----
 				document.getElementById('edit-username-btn').addEventListener('click', () => {
 					document.getElementById('edit-username-form').classList.remove('hidden');
@@ -513,7 +483,6 @@ loadAchievements();
 						App.logUserAction('profile_username_updated', { newUsername: newUsername });
 					}
 				});
-				
 				// ----- Email editing (requires password) -----
 				document.getElementById('edit-email-btn').addEventListener('click', () => {
 					document.getElementById('edit-email-form').classList.remove('hidden');
@@ -525,7 +494,6 @@ loadAchievements();
 					const currentPassword = document.getElementById('current-password').value;
 					const newEmail = document.getElementById('new-email').value.trim();
 					if (!currentPassword || !newEmail) return;
-					
 					// Re-authenticate
 					const { error: signInError } = await App.supabase.auth.signInWithPassword({
 						email: userEmail,
@@ -535,7 +503,6 @@ loadAchievements();
 						App.showToast('error_wrong_password', 'error');
 						return;
 					}
-					
 					const { error: updateError } = await App.supabase.auth.updateUser({ email: newEmail });
 					if (updateError) {
 						App.showToast('error_update_email', 'error');
@@ -549,7 +516,6 @@ loadAchievements();
 						// The email will only change after verification, but we can reflect optimism
 					}
 				});
-				
 				// ----- Password editing (requires current password) -----
 				document.getElementById('edit-password-btn').addEventListener('click', () => {
 					document.getElementById('edit-password-form').classList.remove('hidden');
@@ -561,7 +527,6 @@ loadAchievements();
 					const currentPassword = document.getElementById('current-password-for-pw').value;
 					const newPassword = document.getElementById('new-password').value;
 					if (!currentPassword || !newPassword) return;
-					
 					// Re-authenticate
 					const { error: signInError } = await App.supabase.auth.signInWithPassword({
 						email: userEmail,
@@ -571,7 +536,6 @@ loadAchievements();
 						App.showToast('error_wrong_password', 'error');
 						return;
 					}
-					
 					const { error: updateError } = await App.supabase.auth.updateUser({ password: newPassword });
 					if (updateError) {
 						App.showToast('error_update_password', 'error');
@@ -583,7 +547,6 @@ loadAchievements();
 						document.getElementById('new-password').value = '';
 					}
 				});
-				
 				// ----- Sign out (handled by global header, but we add a safety redirect) -----
 				// The header sign-out already works, but profile page should redirect after sign-out
 				// We can listen to auth state change to redirect if logged out
@@ -592,7 +555,6 @@ loadAchievements();
 						window.location.href = 'index.html';
 					}
 				});
-				
 				// Set the print date after translations have been applied
 				document.addEventListener('DOMContentLoaded', function() {
 					const paragraph = document.getElementById('print-date-paragraph');

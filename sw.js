@@ -1,7 +1,6 @@
 importScripts('db-utils.js');
-
 // Service Worker – Educational Dashboard – French
-const CACHE_NAME = 'ed-french-v2.0.9'; // bump version to force cache refresh
+const CACHE_NAME = 'ed-french-v2.0.5'; // bump version to force cache refresh
 const urlsToCache = [
     '/',
     '/index.html',
@@ -12,7 +11,6 @@ const urlsToCache = [
     '/assets/icons/icon-192x192.png',
     '/assets/icons/icon-512x512.png'
 ];
-
 // ═══════════ LOG HELPER (posts to all clients) ═══════════
 async function swLog(level, message) {
     try {
@@ -24,12 +22,9 @@ async function swLog(level, message) {
         // ignore
     }
 }
-
 // Background sync control (set by main page)
 let syncEnabled = false;
-
 // ── IndexedDB helpers (using shared db-utils) ─────────────────
-
 async function getMetaValue(key, defaultValue = null) {
   const db = await openDB();
   return new Promise((resolve, reject) => {
@@ -40,7 +35,6 @@ async function getMetaValue(key, defaultValue = null) {
     req.onerror = () => reject(req.error);
   });
 }
-
 async function setMetaValue(key, value) {
   const db = await openDB();
   return new Promise((resolve, reject) => {
@@ -51,7 +45,6 @@ async function setMetaValue(key, value) {
     tx.onerror = () => reject(tx.error);
   });
 }
-
 // ── Version check using CACHE_NAME ────────────────
 async function checkForNewVersion() {
   try {
@@ -76,7 +69,6 @@ async function checkForNewVersion() {
     swLog('error', `Version check failed: ${error.message}`);
   }
 }
-
 // Installation
 self.addEventListener('install', event => {
     event.waitUntil(
@@ -92,7 +84,6 @@ self.addEventListener('install', event => {
         })
     );
 });
-
 // Activation – delete old caches and notify clients
 self.addEventListener('activate', event => {
     swLog('info', 'SW activate – cleaning old caches');
@@ -119,7 +110,6 @@ self.addEventListener('activate', event => {
         })
     );
 });
-
 // Helper: network-first strategy (try network, update cache, fallback to cache)
 function networkFirst(request) {
     return fetch(request)
@@ -133,18 +123,15 @@ function networkFirst(request) {
             return caches.match(request);
         });
 }
-
 // Fetch strategy – network-first for HTML/CSS/JS/JSON/manifest, cache-first for images
 self.addEventListener('fetch', event => {
     const requestUrl = new URL(event.request.url);
     if (event.request.method !== 'GET') return;
-
     // ──────────────────────────────────────────────────────
     // NAVIGATION REQUESTS – Two strategies
     // Use the uncommented development version now;
     // switch to the commented production version before deploying.
     // ──────────────────────────────────────────────────────
-
     // ======================================================
     // 🔧 DEVELOPMENT: always fetch from network (no cache)
     // ======================================================
@@ -163,7 +150,6 @@ self.addEventListener('fetch', event => {
         );
         return;
     }
-
     // ======================================================
     // 📦 PRODUCTION: cache-first, network update in background
     //    Hard refresh (Ctrl+Shift+R) bypasses cache.
@@ -172,7 +158,6 @@ self.addEventListener('fetch', event => {
     if (event.request.mode === 'navigate') {
         const isHardRefresh = event.request.cache === 'reload' ||
                              event.request.headers.get('Cache-Control')?.includes('no-cache');
-
         if (isHardRefresh) {
             event.respondWith(
                 fetch(event.request, { cache: 'no-cache' })
@@ -188,7 +173,6 @@ self.addEventListener('fetch', event => {
             );
             return;
         }
-
         event.respondWith(
             caches.match(event.request).then(cachedResponse => {
                 const fetchPromise = fetch(event.request).then(networkResponse => {
@@ -197,26 +181,22 @@ self.addEventListener('fetch', event => {
                 }).catch(error => {
                     swLog('warn', 'Background update failed – ' + event.request.url);
                 });
-
                 return cachedResponse || fetchPromise;
             })
         );
         return;
     }
     */
-
     // For images, fonts, etc. – cache-first with background revalidation
     if (requestUrl.pathname.match(/\.(png|jpg|jpeg|gif|svg|ico|webp|woff2?)$/i)) {
         event.respondWith(serveStaleWhileRevalidate(event.request));
         return;
     }
-
     // For CSS, JS, JSON, manifest – network-first (ensure latest versions)
     if (requestUrl.pathname.match(/\.(json|js|css)$/i) || requestUrl.pathname === '/manifest.json') {
         event.respondWith(networkFirst(event.request));
         return;
     }
-
     // All other requests: network with timeout fallback
     event.respondWith(
         new Promise(resolve => {
@@ -227,7 +207,6 @@ self.addEventListener('fetch', event => {
                     if (cached) resolve(cached);
                 });
             }, 3000);
-
             fetch(event.request)
                 .then(response => {
                     clearTimeout(timeout);
@@ -246,7 +225,6 @@ self.addEventListener('fetch', event => {
         })
     );
 });
-
 // Helper: stale-while-revalidate (for images/fonts)
 function serveStaleWhileRevalidate(request) {
     return caches.open(CACHE_NAME).then(cache => {
@@ -262,7 +240,6 @@ function serveStaleWhileRevalidate(request) {
         });
     });
 }
-
 // Message handling
 self.addEventListener('message', event => {
     if (event.data && event.data.type === 'SKIP_WAITING') {
@@ -279,14 +256,12 @@ self.addEventListener('message', event => {
         swLog('info', `Background sync ${syncEnabled ? 'enabled' : 'disabled'} in SW`);
     }
 });
-
 // ── Background Sync ──────────────────────────
 self.addEventListener('sync', event => {
     if (event.tag === 'version-check' && syncEnabled) {
         event.waitUntil(checkForNewVersion());
     }
 });
-
 // ── Periodic Background Sync ─────────────────
 self.addEventListener('periodicsync', event => {
     if (event.tag === 'version-check' && syncEnabled) {

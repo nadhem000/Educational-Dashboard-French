@@ -4,7 +4,6 @@
   const DB_VERSION = 2;
   let dbReady = false;
   let db;
-
   function openDB() {
     return new Promise((resolve, reject) => {
       if (dbReady && db) { resolve(db); return; }
@@ -26,7 +25,6 @@
       request.onerror = (e) => reject(e.target.error);
     });
   }
-
   async function logToDB(storeName, entry) {
     try {
       const db = await openDB();
@@ -57,11 +55,9 @@
       });
     } catch (e) { /* silent */ }
   }
-
   // Expose to the global object (window in pages, self in Service Workers)
   global.openDB = openDB;
   global.logToDB = logToDB;
-
   // Also attach to the App namespace if it exists
   global.App = global.App || {};
   global.App.openDB = openDB;

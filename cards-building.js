@@ -62,7 +62,6 @@
       'cards_error': '❌ تعذّر تحميل البطاقات. يرجى المحاولة مرة أخرى.'
     }
   });
-
   // Card definitions
   const cardsData = [
     { id: 'primaire4', titleKey: 'card.primaire4.title', type: 'coming' },
@@ -77,11 +76,9 @@
     { id: 'secondaire4', titleKey: 'card.secondaire4.title', type: 'secondary', sections: ['Section Lettres', 'Section Sciences', 'Section Techniques'] },
     { id: 'revision', titleKey: 'card.revision.title', type: 'revision', link: 'revision.html' }
   ];
-
   const grid = document.getElementById('cardGrid');
   if (!grid) return;
   grid.innerHTML = '';
-
   try {
     cardsData.forEach(card => {
       const cardEl = document.createElement('div');
@@ -92,16 +89,13 @@
         cardEl.setAttribute('aria-disabled', 'true');
         cardEl.setAttribute('tabindex', '-1');
       }
-
       const header = document.createElement('div');
       header.className = 'card-header';
       header.setAttribute('data-i18n', card.titleKey);
       header.innerHTML = (card.type === 'revision' ? '⭐ ' : '📘 ') + (fr[card.titleKey] || card.titleKey);
       cardEl.appendChild(header);
-
       const body = document.createElement('div');
       body.className = 'card-body';
-
       if (card.type === 'coming') {
         const span = document.createElement('span');
         span.className = 'coming-soon';
@@ -129,7 +123,6 @@
       cardEl.appendChild(body);
       grid.appendChild(cardEl);
     });
-
     if (typeof App.makeBilingual === 'function') {
       App.makeBilingual(grid);
     }

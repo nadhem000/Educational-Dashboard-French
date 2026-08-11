@@ -1,7 +1,6 @@
 // ed-french-ini.js (complet avec chargement, fallback, spinner auth, install disabled)
 // – App namespace, db-utils
 // – Logging intégré : logGeneralAction (compteur) et logUserAction (backup)
-
 (function() {
   // ──────────────────────────────────────────────────────
   // Phase 4.1 – Global console override (silent, log to DB)
@@ -25,7 +24,6 @@
       // The real console is intentionally NOT called – this silences it.
     };
   });
-
   // ---------- Helper: inject HTML from string ----------
   function injectHTML(container, htmlString, position = 'append') {
     const parser = new DOMParser();
@@ -57,7 +55,6 @@
       }
     });
   }
-
   // ---------- Service Worker log listener ----------
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.addEventListener('message', event => {
@@ -71,10 +68,8 @@
       }
     });
   }
-
   // ---------- Notification history & badge ----------
   let notificationHistory = [];   // last 5 { message, type, timestamp }
-
   function updateNotificationBadge() {
     const bellBtn = document.getElementById('notifBellBtn');
     if (!bellBtn) return;
@@ -84,7 +79,6 @@
       badge.style.display = notificationHistory.length ? 'inline' : 'none';
     }
   }
-
   // ---------- Toast system (with dedup, pause-on-hover, history) ----------
   App.showToast = function(key, type = '', duration = 3000, isHTML = false) {
     const lang = localStorage.getItem('lang') || 'fr';
@@ -93,7 +87,6 @@
       message = App.translateToastKey(lang, key);
     }
     const container = document.getElementById('toast-container') || createToastContainer();
-
     // Dedup: skip if a toast with the same message is already visible
     const existingToasts = container.querySelectorAll('.toast');
     for (let t of existingToasts) {
@@ -104,7 +97,6 @@
         return;
       }
     }
-
     const toast = document.createElement('div');
     toast.className = 'toast ' + type;
     toast.setAttribute('data-message', message);
@@ -114,20 +106,17 @@
       toast.textContent = message;
     }
     container.appendChild(toast);
-
     // Add to notification history (max 5, dedup)
     const dupIdx = notificationHistory.findIndex(n => n.message === message);
     if (dupIdx !== -1) notificationHistory.splice(dupIdx, 1);
     notificationHistory.unshift({ message, type, timestamp: Date.now() });
     if (notificationHistory.length > 5) notificationHistory.pop();
     updateNotificationBadge();
-
     // Auto-remove after duration
     let timeoutId = setTimeout(() => {
       if (toast.parentNode) toast.parentNode.removeChild(toast);
     }, duration);
     toast._timeoutId = timeoutId;
-
     // Pause on hover
     toast.addEventListener('mouseenter', () => {
       if (toast._timeoutId) clearTimeout(toast._timeoutId);
@@ -141,7 +130,6 @@
     });
     toast._startTime = Date.now();
   };
-
   function createToastContainer() {
     const container = document.createElement('div');
     container.id = 'toast-container';
@@ -151,7 +139,6 @@
     document.body.appendChild(container);
     return container;
   }
-
   // Singleton update toast
   function showUpdateToast() {
     const existing = document.querySelector('.toast.update-toast');
@@ -167,7 +154,6 @@
     document.getElementById('reloadNow').addEventListener('click', () => { window.location.reload(); });
     setTimeout(() => { if (toast.parentNode) toast.parentNode.removeChild(toast); }, 10000);
   }
-
   // ---------- Notification panel toggle ----------
   window.toggleNotifPanel = function() {
     const panel = document.getElementById('notifPanel');
@@ -178,7 +164,6 @@
       renderNotifPanel();
     }
   };
-
   function renderNotifPanel() {
     const list = document.getElementById('notifList');
     if (!list) return;
@@ -194,7 +179,6 @@
       list.appendChild(li);
     });
   }
-
   // ---------- Focus trap & modal helpers ----------
   let currentOpenModal = null;
   let lastFocusedElement = null;
@@ -248,17 +232,6 @@
     }
   }
   // ---------- Auth validation helpers ----------
-  // Helper to assign default registration state after sign‑up
-async function assignInitialRegistration(userId) {
-  const { error } = await App.supabase.rpc('set_user_registration', {
-    p_user_id: userId
-  });
-  if (error) {
-    console.error('Registration assignment failed:', error);
-  } else {
-    App.logToDB('actions', { message: `Registration set for user ${userId}` });
-  }
-}
   function translateError(key) {
     const lang = localStorage.getItem('lang') || 'fr';
     return App.translateToastKey(lang, key);
@@ -692,8 +665,6 @@ async function assignInitialRegistration(userId) {
             const err = document.getElementById('error-' + id);
             if (input && err) clearFieldError(input, err);
           });
-		  // Assign default registration
-assignInitialRegistration(data.user.id);
           App.showToast('toast_signup_success', 'success');
           // Log to general stats (counter)
           App.logGeneralAction('sign_up');
@@ -752,30 +723,24 @@ assignInitialRegistration(data.user.id);
         App.logGeneralAction('sign_out');
       });
     }
-
     // ---------- PROFILE BUTTON ----------
     if (profileBtn) {
       profileBtn.addEventListener('click', async () => {
         const { data: { user } } = await App.supabase.auth.getUser();
         if (!user) return;
-
         const { data: profile, error } = await App.supabase
           .from('profiles')
           .select('username')
           .eq('id', user.id)
           .single();
-
         if (error) {
           App.showToast('profile_error_load', 'error');       // translated key
           return;
         }
-
         const username = profile?.username || '';
         const email = user.email || '';
-
         document.getElementById('profile-username-display').textContent = username;
         document.getElementById('profile-email-display').textContent = email;
-
         // Avatar initials
         const avatar = document.getElementById('profile-avatar');
         if (avatar) {
@@ -787,11 +752,9 @@ assignInitialRegistration(data.user.id);
             avatar.textContent = '👤';
           }
         }
-
         openModal(profileModal);
       });
     }
-
     // Nouveau bouton Déconnexion dans le modal
     const profileSignoutBtn = document.getElementById('profileSignoutBtn');
     if (profileSignoutBtn) {
@@ -809,7 +772,6 @@ assignInitialRegistration(data.user.id);
     if (profileCloseBtn) {
       profileCloseBtn.addEventListener('click', () => closeModal(profileModal));
     }
-
     // Focus trap for profile modal
     if (profileModal) trapFocus(profileModal);
     trapFocus(authModal);
@@ -943,11 +905,9 @@ assignInitialRegistration(data.user.id);
     });
   }
 })();
-
 // ─── Network interceptor (captures fetch & XHR, broadcasts to monitor) ───
 (function() {
   const CHANNEL_NAME = 'app-monitor';
-
   function broadcastLog(level, message, source = 'network') {
     try {
       const bc = new BroadcastChannel(CHANNEL_NAME);
@@ -963,16 +923,13 @@ assignInitialRegistration(data.user.id);
       setTimeout(() => bc.close(), 100);
     } catch(e) {}
   }
-
   // Wrap fetch
   const originalFetch = window.fetch;
   window.fetch = function(...args) {
     const [url, options] = args;
     const method = (options && options.method) || 'GET';
     const start = Date.now();
-
     broadcastLog('network', `⏳ ${method} ${url}`);
-
     return originalFetch.apply(this, args)
       .then(response => {
         const duration = Date.now() - start;
@@ -984,7 +941,6 @@ assignInitialRegistration(data.user.id);
         throw error;
       });
   };
-
   // Optional: wrap XMLHttpRequest (for older libraries)
   const OriginalXHR = window.XMLHttpRequest;
   window.XMLHttpRequest = function() {
