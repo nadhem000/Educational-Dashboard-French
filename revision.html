@@ -179,6 +179,22 @@
       color: var(--accent);
       transform: translateX(3px);
     }
+    /* Test link at end of each week */
+    .test-link {
+      display: block;
+      text-align: center;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0.8rem 1.3rem 0.8rem 1.3rem;
+      transition: background var(--transition);
+    }
+    .test-link:hover {
+      background: var(--accent-hover);
+    }
     .conseils {
       background: var(--card-bg);
       border-radius: var(--radius);
@@ -239,6 +255,7 @@
       .lesson-label { min-width: auto; font-size: 0.75rem; }
       .lesson-title { width:100%; font-size:0.85rem; }
       .arrow { display:none; }
+      .test-link { margin: 0.6rem 0.8rem; }
     }
     /* ===== Print styles ===== */
     @media print {
@@ -254,6 +271,7 @@
       h1 { font-size: 18pt; }
       .week-body { max-height: none !important; }
       .week-header { cursor: default; pointer-events: none; }
+      .test-link { display: none; } /* hide test links when printing */
     }
   </style>
 </head>
@@ -275,7 +293,7 @@
         <li data-i18n="objectives_4">Enrichir sa culture littéraire à travers les grands thèmes du programme.</li>
       </ul>
     </div>
-    <!-- Weeks 1-8 (unchanged except for no-print on conseils and footer) -->
+    <!-- Weeks 1-8 (unchanged except for the addition of test links) -->
     <!-- Semaine 1 -->
     <div class="week">
       <button class="week-header" aria-expanded="true" aria-controls="week1-body">
@@ -292,6 +310,7 @@
         <a href="semaine1-accord-participe-passe.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week1.lesson6.label">Orthographe (2)</span><span class="lesson-title" data-i18n="week1.lesson6.title">L'accord du participe passé</span><span class="arrow">→</span></a>
         <a href="semaine1-expression-ecrite.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week1.lesson7.label">✍️ Expression écrite</span><span class="lesson-title" data-i18n="week1.lesson7.title">Rédiger un paragraphe structuré</span><span class="arrow">→</span></a>
         <a href="semaine1-etude-texte.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week1.lesson8.label">📖 Étude de texte</span><span class="lesson-title" data-i18n="week1.lesson8.title">Comprendre et analyser un texte littéraire</span><span class="arrow">→</span></a>
+        <a href="revision-test-semaine1.html" class="test-link" data-i18n="test_link">📝 Test général</a>
       </div>
     </div>
     <!-- Semaine 2 -->
@@ -310,6 +329,7 @@
         <a href="semaine2-orthographe-tout-quelque.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week2.lesson6.label">Orthographe (2)</span><span class="lesson-title" data-i18n="week2.lesson6.title">Accord de tout, même, quelque</span><span class="arrow">→</span></a>
         <a href="semaine2-expression-argumentation.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week2.lesson7.label">✍️ Expression écrite</span><span class="lesson-title" data-i18n="week2.lesson7.title">Rédiger un paragraphe argumenté</span><span class="arrow">→</span></a>
         <a href="semaine2-etude-argumentation.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week2.lesson8.label">📖 Étude de texte</span><span class="lesson-title" data-i18n="week2.lesson8.title">Identifier thèse, arguments, exemples</span><span class="arrow">→</span></a>
+        <a href="revision-test-semaine2.html" class="test-link" data-i18n="test_link">📝 Test général</a>
       </div>
     </div>
     <!-- Semaine 3 -->
@@ -328,6 +348,7 @@
         <a href="semaine3-orthographe-pluriel.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week3.lesson6.label">Orthographe (2)</span><span class="lesson-title" data-i18n="week3.lesson6.title">Le pluriel des noms composés</span><span class="arrow">→</span></a>
         <a href="semaine3-expression-resume.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week3.lesson7.label">✍️ Expression écrite</span><span class="lesson-title" data-i18n="week3.lesson7.title">Méthodologie du résumé</span><span class="arrow">→</span></a>
         <a href="semaine3-etude-synthese.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week3.lesson8.label">📖 Étude de texte</span><span class="lesson-title" data-i18n="week3.lesson8.title">Confronter plusieurs documents</span><span class="arrow">→</span></a>
+        <a href="revision-test-semaine3.html" class="test-link" data-i18n="test_link">📝 Test général</a>
       </div>
     </div>
     <!-- Semaine 4 -->
@@ -346,6 +367,7 @@
         <a href="semaine4-orthographe-dictee.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week4.lesson6.label">Orthographe (2)</span><span class="lesson-title" data-i18n="week4.lesson6.title">Dictée commentée</span><span class="arrow">→</span></a>
         <a href="semaine4-expression-portrait.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week4.lesson7.label">✍️ Expression écrite</span><span class="lesson-title" data-i18n="week4.lesson7.title">Rédiger un portrait de personnage</span><span class="arrow">→</span></a>
         <a href="semaine4-etude-roman.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week4.lesson8.label">📖 Étude de texte</span><span class="lesson-title" data-i18n="week4.lesson8.title">Caractéristiques du roman</span><span class="arrow">→</span></a>
+        <a href="revision-test-semaine4.html" class="test-link" data-i18n="test_link">📝 Test général</a>
       </div>
     </div>
     <!-- Semaine 5 -->
@@ -364,6 +386,7 @@
         <a href="semaine5-orthographe-mots.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week5.lesson6.label">Orthographe (2)</span><span class="lesson-title" data-i18n="week5.lesson6.title">Les mots invariables</span><span class="arrow">→</span></a>
         <a href="semaine5-expression-poesie.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week5.lesson7.label">✍️ Expression écrite</span><span class="lesson-title" data-i18n="week5.lesson7.title">Écrire un poème / analyser une strophe</span><span class="arrow">→</span></a>
         <a href="semaine5-etude-poesie.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week5.lesson8.label">📖 Étude de texte</span><span class="lesson-title" data-i18n="week5.lesson8.title">Images poétiques et fonctions</span><span class="arrow">→</span></a>
+        <a href="revision-test-semaine5.html" class="test-link" data-i18n="test_link">📝 Test général</a>
       </div>
     </div>
     <!-- Semaine 6 -->
@@ -382,6 +405,7 @@
         <a href="semaine6-orthographe-erreurs.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week6.lesson6.label">Orthographe (2)</span><span class="lesson-title" data-i18n="week6.lesson6.title">Correction des erreurs fréquentes</span><span class="arrow">→</span></a>
         <a href="semaine6-expression-dissertation.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week6.lesson7.label">✍️ Expression écrite</span><span class="lesson-title" data-i18n="week6.lesson7.title">Construire un plan détaillé (dissertation)</span><span class="arrow">→</span></a>
         <a href="semaine6-etude-argumentation.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week6.lesson8.label">📖 Étude de texte</span><span class="lesson-title" data-i18n="week6.lesson8.title">Analyse d'un texte argumentatif</span><span class="arrow">→</span></a>
+        <a href="revision-test-semaine6.html" class="test-link" data-i18n="test_link">📝 Test général</a>
       </div>
     </div>
     <!-- Semaine 7 -->
@@ -400,6 +424,7 @@
         <a href="semaine7-orthographe-homophones.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week7.lesson6.label">Orthographe (2)</span><span class="lesson-title" data-i18n="week7.lesson6.title">Tous les homophones grammaticaux</span><span class="arrow">→</span></a>
         <a href="semaine7-expression-commentaire.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week7.lesson7.label">✍️ Expression écrite</span><span class="lesson-title" data-i18n="week7.lesson7.title">Méthodologie du commentaire composé</span><span class="arrow">→</span></a>
         <a href="semaine7-etude-image.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week7.lesson8.label">📖 Étude de texte</span><span class="lesson-title" data-i18n="week7.lesson8.title">Analyse d'image (photo, affiche)</span><span class="arrow">→</span></a>
+        <a href="revision-test-semaine7.html" class="test-link" data-i18n="test_link">📝 Test général</a>
       </div>
     </div>
     <!-- Semaine 8 -->
@@ -418,6 +443,7 @@
         <a href="semaine8-orthographe-synthese.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week8.lesson6.label">Orthographe (2)</span><span class="lesson-title" data-i18n="week8.lesson6.title">Synthèse : tous les accords</span><span class="arrow">→</span></a>
         <a href="semaine8-expression-sujets.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week8.lesson7.label">✍️ Expression écrite</span><span class="lesson-title" data-i18n="week8.lesson7.title">Sujets zéro – Annales du Bac</span><span class="arrow">→</span></a>
         <a href="semaine8-etude-correction.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="week8.lesson8.label">📖 Étude de texte</span><span class="lesson-title" data-i18n="week8.lesson8.title">Correction & analyse des erreurs</span><span class="arrow">→</span></a>
+        <a href="revision-test-semaine8.html" class="test-link" data-i18n="test_link">📝 Test général</a>
       </div>
     </div>
     <div class="conseils no-print">
@@ -541,7 +567,8 @@
         'footer_planning': '📘 Programme conçu pour les élèves de 4ᵉ année secondaire — Tunisie',
         'footer_encouragement': 'Suivez ce planning avec rigueur et adaptez‑le à votre rythme. <strong>Bonne préparation !</strong>',
         'back_to_top': 'Retour en haut',
-        'print_button': '🖨️ Imprimer le programme'
+        'print_button': '🖨️ Imprimer le programme',
+        'test_link': '📝 Test général'
       },
       en: {
         'back_link': '← Back to home',
@@ -633,7 +660,8 @@
         'footer_planning': '📘 Program designed for 12th grade students — Tunisia',
         'footer_encouragement': 'Follow this planning rigorously and adapt it to your pace. <strong>Good luck!</strong>',
         'back_to_top': 'Back to top',
-        'print_button': '🖨️ Print program'
+        'print_button': '🖨️ Print program',
+        'test_link': '📝 General Test'
       },
       ar: {
         'back_link': '← العودة إلى الرئيسية',
@@ -725,7 +753,8 @@
         'footer_planning': '📘 برنامج موجّه لتلاميذ السنة الرابعة ثانوي — تونس',
         'footer_encouragement': 'اتبع هذا التخطيط بدقة وعدّله حسب وتيرتك. <strong>حظاً موفقاً!</strong>',
         'back_to_top': 'العودة إلى الأعلى',
-        'print_button': '🖨️ طباعة البرنامج'
+        'print_button': '🖨️ طباعة البرنامج',
+        'test_link': '📝 اختبار عام'
       }
     });
   </script>
@@ -748,7 +777,6 @@
       header.classList.toggle('collapsed', isExpanded);
       body.classList.toggle('collapsed', isExpanded);
       if (!isExpanded) {
-        // Opening: set max-height to actual scrollHeight
         body.style.maxHeight = body.scrollHeight + 'px';
         const transitionHandler = () => {
           body.style.maxHeight = 'none';
@@ -756,11 +784,9 @@
         };
         body.addEventListener('transitionend', transitionHandler);
       } else {
-        // Closing: set max-height to 0
         body.style.maxHeight = '0';
       }
     }
-    // Attach click and keydown listeners to all week header buttons
     document.querySelectorAll('.week-header').forEach(btn => {
       btn.addEventListener('click', () => toggleWeek(btn));
       btn.addEventListener('keydown', (e) => {
@@ -785,27 +811,27 @@
           btn.classList.remove('show');
         }
       });
-      // Update aria-label with translation
       if (typeof App.applyTranslations === 'function') {
         App.applyTranslations();
       }
     })();
 // ---- Log clicks on lesson links ----
 (function() {
-  document.querySelectorAll('.lesson-link').forEach(link => {
+  document.querySelectorAll('.lesson-link, .test-link').forEach(link => {
     link.addEventListener('click', function(e) {
-      const lessonTitle = this.querySelector('.lesson-title').textContent.trim();
-      const lessonLabel = this.querySelector('.lesson-label').textContent.trim();
+      const isTest = this.classList.contains('test-link');
+      const lessonTitle = isTest ? this.textContent.trim() : this.querySelector('.lesson-title').textContent.trim();
+      const lessonLabel = isTest ? 'Test' : this.querySelector('.lesson-label').textContent.trim();
       const details = { lesson: lessonTitle, label: lessonLabel, href: this.href };
       if (typeof App !== 'undefined' && App.supabase) {
         App.supabase.auth.getSession().then(({ data: { session } }) => {
           if (session) {
-            App.logUserAction('lesson_click', details);
+            App.logUserAction(isTest ? 'test_click' : 'lesson_click', details);
           } else {
-            App.logGeneralAction('lesson_click', details);
+            App.logGeneralAction(isTest ? 'test_click' : 'lesson_click', details);
           }
         }).catch(() => {
-          App.logGeneralAction('lesson_click', details);
+          App.logGeneralAction(isTest ? 'test_click' : 'lesson_click', details);
         });
       }
     });

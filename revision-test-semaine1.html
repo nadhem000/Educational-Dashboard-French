@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="devoir1_title">Devoir de Contrôle N°1 – Français – Bac Eco & Gestion</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    /* ===== Lesson‑specific styles (unchanged from reference) ===== */
+    :root { --bg: #f9f7f1; --card: #ffffff; --text: #2b2416; --text-light: #5c5344; --heading: #382e1e; --accent: #c75b2c; --accent-hover: #a3441d; --border: #e5ddd0; --shadow: 0 1px 4px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.05); --shadow-hover: 0 8px 22px rgba(0,0,0,0.08); --radius: 12px; --radius-sm: 8px; --transition: 0.25s ease; --font-body: 'Segoe UI', 'Georgia', 'Times New Roman', serif; --audio-bg: #f4efe4; --audio-progress: #d8c9aa; --button-bg: #f0e8d8; --button-hover: #e3d5bc; --input-bg: #fcfaf6; }
+    body.dark { --bg: #1e1b17; --card: #2a2620; --text: #e8dfd2; --text-light: #b9aa95; --heading: #f0e4d2; --accent: #e07b4a; --accent-hover: #f08c5c; --border: #3e3830; --shadow: 0 1px 4px rgba(0,0,0,0.25); --shadow-hover: 0 8px 22px rgba(0,0,0,0.35); --audio-bg: #26221b; --audio-progress: #5a4e3c; --button-bg: #3a3329; --button-hover: #4e4437; --input-bg: #333028; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.75; transition: background var(--transition), color var(--transition); }
+    .container { max-width:860px; margin:0 auto; padding:1.8rem 1.4rem 3rem; }
+    .lesson-header { text-align: center; margin-bottom: 2rem; }
+    .badge { display:inline-block; background: var(--accent); color: #fff; padding:0.25rem 1rem; border-radius:20px; font-size:0.8rem; font-weight:700; letter-spacing:0.03em; text-transform: uppercase; }
+    .lesson-header h1 { font-size: 2.1rem; color: var(--heading); margin: 0.6rem 0 0.3rem; line-height: 1.3; }
+    .lesson-header .meta { font-size:0.9rem; color:var(--text-light); display: flex; justify-content: center; gap:1.2rem; flex-wrap: wrap; }
+    .audio-player { background: var(--card); border:1px solid var(--border); border-radius: var(--radius); padding:1rem 1.4rem; margin: 1.5rem 0 2rem; box-shadow: var(--shadow); display: flex; align-items: center; gap:1rem; flex-wrap: wrap; }
+    .audio-player .play-btn { width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #fff; border:none; font-size:1.2rem; cursor:pointer; display: flex; align-items: center; justify-content: center; transition: background var(--transition); flex-shrink: 0; }
+    .play-btn:hover { background: var(--accent-hover); }
+    .audio-player .progress-area { flex:1; min-width:120px; display: flex; flex-direction: column; gap:0.3rem; }
+    .progress-bar { width:100%; height:6px; background: var(--audio-progress); border-radius: 3px; cursor: pointer; position: relative; overflow: hidden; }
+    .progress-fill { height: 100%; background: var(--accent); border-radius: 3px; width: 0%; transition: width 0.1s linear; }
+    .time-info { display: flex; justify-content: space-between; font-size:0.75rem; color:var(--text-light); }
+    .speed-selector { display: flex; gap:0.3rem; flex-wrap: wrap; }
+    .speed-btn { border:1px solid var(--border); background: var(--button-bg); color: var(--text); padding:0.25rem 0.55rem; border-radius: 4px; font-size:0.75rem; font-weight:600; cursor:pointer; transition: all var(--transition); }
+    .speed-btn.active { background: var(--accent); color:#fff; border-color: var(--accent); }
+    .audio-label { font-weight:700; font-size:0.85rem; color:var(--heading); white-space: nowrap; }
+    @media (max-width:600px) { .audio-player { flex-direction: column; align-items: stretch; } .audio-label { text-align: center; } }
+    .text-card { background: var(--card); border:1px solid var(--border); border-left:5px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding:1.4rem 1.6rem; margin:1.8rem 0; font-style:italic; font-size:1.05rem; line-height: 1.9; box-shadow: var(--shadow); position: relative; }
+    .text-card .quote-mark { position: absolute; top:-12px; left:14px; font-size:3rem; color:var(--accent); opacity:0.25; line-height:1; }
+    .text-card .author { text-align:right; font-style:normal; font-size:0.9rem; color:var(--text-light); margin-top:0.8rem; }
+    .exercises-section h2 { font-size:1.5rem; color:var(--heading); margin:2rem 0 1rem; border-bottom:3px solid var(--accent); display:inline-block; padding-bottom:0.3rem; }
+    .exercise-card { background: var(--card); border:1px solid var(--border); border-radius: var(--radius-sm); padding:1.2rem 1.4rem; margin-bottom:1.4rem; box-shadow: var(--shadow); }
+    .exercise-card h3 { font-size:1.05rem; color:var(--accent); margin-bottom:0.8rem; display: flex; align-items: center; gap:0.4rem; }
+    .exercise-card select, .exercise-card input[type="text"], .exercise-card textarea { width:100%; padding:0.4rem 0.6rem; border:1px solid var(--border); border-radius:4px; background: var(--input-bg); color: var(--text); font-family: inherit; font-size:0.9rem; }
+    .btn-verify { background: var(--accent); color:#fff; border:none; padding:0.5rem 1.2rem; border-radius: 20px; font-weight:600; cursor:pointer; transition: background var(--transition); margin-top:0.6rem; font-size:0.85rem; }
+    .btn-verify:hover { background: var(--accent-hover); }
+    .answer-key { display:none; margin-top:0.8rem; padding:0.8rem; background: var(--audio-bg); border-radius:6px; font-size:0.85rem; color: var(--text-light); border:1px dashed var(--accent); }
+    .answer-key.visible { display:block; }
+    .self-assessment { margin-top: 0.8rem; font-size: 0.9rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+    .self-assessment label { cursor: pointer; }
+    .score-area { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; margin-top: 2rem; box-shadow: var(--shadow); }
+    .score-area h2 { color: var(--heading); margin-bottom: 1rem; }
+    .score-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .score-stat { background: var(--audio-bg); padding: 0.8rem 1.2rem; border-radius: 8px; font-weight: 600; }
+    html[dir="rtl"] body { direction: rtl; } html[dir="rtl"] .container { text-align: right; } html[dir="rtl"] .text-card .author { text-align: left; } html[dir="rtl"] .exercise-card th, html[dir="rtl"] .exercise-card td { text-align: right; }
+    @media (max-width:600px) { .lesson-header h1 { font-size:1.5rem; } .container { padding:1rem 0.8rem 2rem; } }
+    .valeurs-section, .methode-section { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.6rem 1.8rem; margin: 2rem 0; box-shadow: var(--shadow); }
+    .valeurs-section h2, .methode-section h2 { font-size: 1.5rem; color: var(--heading); margin-bottom: 1rem; border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 0.3rem; }
+    .valeur-card { background: var(--audio-bg); border-radius: var(--radius-sm); padding: 1rem 1.2rem; margin-bottom: 1rem; }
+    .valeur-card h3 { color: var(--accent); font-size: 1.1rem; margin-bottom: 0.4rem; }
+    .valeur-card ul { list-style: none; padding: 0; }
+    .valeur-card li { padding: 0.3rem 0; padding-left: 1.4rem; position: relative; color: var(--text-light); }
+    .valeur-card li::before { content: '◆'; position: absolute; left: 0; color: var(--accent); font-size: 0.5rem; top: 0.5rem; }
+    .valeur-card p { margin: 0.5rem 0; }
+    .auto-graded { pointer-events: none; opacity: 0.8; } /* for disabled radios */
+  </style>
+</head>
+<body>
+  <div id="main-content" class="container">
+    <p style="margin-bottom:1.5rem; color:var(--text-light);">
+      <a href="revision.html" data-i18n="back_revision">Révision générale</a> › <strong data-i18n="back_current">Devoir de Contrôle N°1</strong>
+    </p>
+    <div class="lesson-header">
+      <span class="badge" data-i18n="lesson_badge">📘 Devoir · Bac Eco & Gestion</span>
+      <h1 data-i18n="lesson_title">Devoir de Contrôle N°1<br>Français – Bac Economie & Gestion</h1>
+      <div class="meta">
+        <span data-i18n="lesson_duration">⏱️ 60 minutes</span>
+        <span data-i18n="lesson_meta_audio">🎧 Écoutez le texte puis répondez aux questions</span>
+      </div>
+    </div>
+    <!-- CUSTOM AUDIO PLAYER -->
+    <div class="audio-player" id="audioPlayer">
+      <span class="audio-label" data-i18n="audio_label">🎧 Écoute du texte</span>
+      <button class="play-btn" id="playBtn" aria-label="Lecture">▶</button>
+      <div class="progress-area">
+        <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="time-info"><span id="currentTime">0:00</span><span id="duration">0:00</span></div>
+      </div>
+      <div class="speed-selector" id="speedSelector">
+        <button class="speed-btn" data-speed="0.75">0.75x</button>
+        <button class="speed-btn active" data-speed="1">1x</button>
+        <button class="speed-btn" data-speed="1.25">1.25x</button>
+        <button class="speed-btn" data-speed="1.5">1.5x</button>
+      </div>
+    </div>
+    <!-- LITERARY TEXT -->
+    <div class="text-card">
+      <span class="quote-mark">“</span>
+      <p>J’y vivais follement heureux et cependant, je l’ignorais. Je l’ai appris brusquement à onze ans, ce jour d’octobre où je suis entré pensionnaire dans un lycée d’une ville trop grande pour moi. Ce fut une déchirure. Une blessure profonde qui ne s’est jamais vraiment refermée, mais dont mes parents, bien-sûr, ne sont en aucun cas coupables. Ils avaient confusément deviné que la vie glissait vers les villes, que le monde rural était condamné, que les études étaient devenues indispensables. Je suis donc parti, déchiré, malheureux comme je ne l’avais jamais été. Privé de liberté dans les champs et les prés, du cocon de la famille, et jeté dans une prison enclose dans une grande ville, j’aurais pu sombrer jusqu’à l’anorexie. Je ne comprenais rien à ce monde violent, aux vexations, aux menaces quotidiennes proférées par des surveillants d’une autre époque (c’était bien avant 1968), je guettais les coins de ciel bleu, je comptais les nuages, j’attendais désespérément le samedi, je ne travaillais pas. Pourtant j’ai franchi l’obstacle. Où ai-je trouvé la force, à onze ans, de survivre à ce terrible exil ? Sans doute dans l’idée d’une île préservée du mal, à vingt kilomètres de là, et dans la souffrance de ceux qui m’aimaient assez fort pour m’éloigner d’eux alors qu’ils avaient tant besoin de moi, parce qu’il y allait de mon « avenir ». Un ami psychiatre, à qui je parlais de cette époque de ma vie et de la gravité de la blessure, m’a répondu que c’était sans doute grâce à elle que j’étais devenu romancier. C’est possible. C’est même probable. Banni du royaume de l’enfance, j’ai utilisé le moyen de l’écriture pour me l’approprier définitivement. Pour qu’on ne me le prenne plus jamais.</p>
+      <div class="author" data-i18n="text_author">— Christian Signol, Bonheurs d’enfance, 1996</div>
+    </div>
+    <!-- CONSIGNES -->
+    <div class="valeurs-section">
+      <h2 data-i18n="rules_heading">📖 Consignes de l’épreuve</h2>
+      <p data-i18n="rules_intro" class="no-bilingual" style="margin-bottom:1.2rem;">Lisez attentivement le texte, puis répondez aux questions de compréhension, de grammaire, de conjugaison et d’orthographe. Enfin, vous rédigerez un paragraphe structuré.</p>
+      <div class="valeur-card">
+        <h3 data-i18n="rules_tips_title">🔹 Conseils</h3>
+        <ul data-i18n="rules_tips_list">
+          <li>Justifiez chaque réponse en citant le texte.</li>
+          <li>Pour les questions à choix, sélectionnez la bonne réponse.</li>
+          <li>Structurez votre paragraphe avec une introduction, un développement et une conclusion.</li>
+        </ul>
+      </div>
+    </div>
+    <!-- EXERCISES -->
+    <div class="exercises-section">
+      <h2 data-i18n="exercises_heading">✍️ Questions</h2>
+      <!-- Question 1 -->
+      <div class="exercise-card">
+        <h3 data-i18n="exo1_title">📌 1. Pourquoi le narrateur va-t-il quitter sa famille ?</h3>
+        <p data-i18n="exo1_instruction">Justifiez votre réponse par une phrase du texte.</p>
+        <textarea rows="3" style="width:100%; padding:0.5rem;" placeholder="Votre réponse..."></textarea>
+        <div class="self-assessment">
+          <span data-i18n="self_assess_question">Ma réponse est :</span>
+          <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+          <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+          <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+        </div>
+        <button class="btn-verify" onclick="toggleCorrection('exo1Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+        <div id="exo1Key" class="answer-key"></div>
+      </div>
+      <!-- Question 2 -->
+      <div class="exercise-card">
+        <h3 data-i18n="exo2_title">📌 2. Quels sentiments le narrateur éprouve-t-il tout au long du texte ?</h3>
+        <p data-i18n="exo2_instruction">Expliquez en vous appuyant sur des indices textuels.</p>
+        <textarea rows="3" style="width:100%; padding:0.5rem;" placeholder="Votre réponse..."></textarea>
+        <div class="self-assessment">
+          <span data-i18n="self_assess_question">Ma réponse est :</span>
+          <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+          <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+          <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+        </div>
+        <button class="btn-verify" onclick="toggleCorrection('exo2Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+        <div id="exo2Key" class="answer-key"></div>
+      </div>
+      <!-- Question 3 -->
+      <div class="exercise-card">
+        <h3 data-i18n="exo3_title">📌 3. Pour quelles raisons le narrateur n’aime-t-il pas sa nouvelle vie ?</h3>
+        <p data-i18n="exo3_instruction">Justifiez par des indices textuels.</p>
+        <textarea rows="3" style="width:100%; padding:0.5rem;" placeholder="Votre réponse..."></textarea>
+        <div class="self-assessment">
+          <span data-i18n="self_assess_question">Ma réponse est :</span>
+          <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+          <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+          <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+        </div>
+        <button class="btn-verify" onclick="toggleCorrection('exo3Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+        <div id="exo3Key" class="answer-key"></div>
+      </div>
+      <!-- Question 4 -->
+      <div class="exercise-card">
+        <h3 data-i18n="exo4_title">📌 4. Comment le narrateur présente-t-il son enfance ?</h3>
+        <p data-i18n="exo4_instruction">Relevez un procédé d’écriture qui le montre.</p>
+        <textarea rows="3" style="width:100%; padding:0.5rem;" placeholder="Votre réponse..."></textarea>
+        <div class="self-assessment">
+          <span data-i18n="self_assess_question">Ma réponse est :</span>
+          <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
+          <label><input type="radio" name="self_ex4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+          <label><input type="radio" name="self_ex4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+        </div>
+        <button class="btn-verify" onclick="toggleCorrection('exo4Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+        <div id="exo4Key" class="answer-key"></div>
+      </div>
+      <!-- Question 5 – Grammaire : classes grammaticales -->
+      <div class="exercise-card">
+        <h3 data-i18n="exo5_title">📌 5. Quelle est la classe grammaticale du mot souligné ?</h3>
+        <p data-i18n="exo5_instruction">« Je l’ai appris <u>brusquement</u> à onze ans. »</p>
+        <select id="select_ex5" data-correct="adverbe">
+          <option value="">-- Choisissez --</option>
+          <option value="nom">Nom</option>
+          <option value="adjectif">Adjectif</option>
+          <option value="verbe">Verbe</option>
+          <option value="adverbe">Adverbe</option>
+          <option value="pronom">Pronom</option>
+        </select>
+        <div class="self-assessment">
+          <span data-i18n="self_assess_question">Ma réponse est :</span>
+          <label><input type="radio" name="self_ex5" value="correct" data-i18n="self_correct"> Correcte</label>
+          <label><input type="radio" name="self_ex5" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+          <label><input type="radio" name="self_ex5" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+        </div>
+        <button class="btn-verify" onclick="toggleCorrection('exo5Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+        <div id="exo5Key" class="answer-key"></div>
+      </div>
+      <!-- Question 6 – Grammaire : fonctions essentielles -->
+      <div class="exercise-card">
+        <h3 data-i18n="exo6_title">📌 6. Quelle est la fonction du groupe souligné ?</h3>
+        <p data-i18n="exo6_instruction">« Ils avaient deviné <u>que le monde rural était condamné</u>. »</p>
+        <select id="select_ex6" data-correct="cod">
+          <option value="">-- Choisissez --</option>
+          <option value="sujet">Sujet</option>
+          <option value="cod">COD</option>
+          <option value="coi">COI</option>
+          <option value="cc">Complément circonstanciel</option>
+        </select>
+        <div class="self-assessment">
+          <span data-i18n="self_assess_question">Ma réponse est :</span>
+          <label><input type="radio" name="self_ex6" value="correct" data-i18n="self_correct"> Correcte</label>
+          <label><input type="radio" name="self_ex6" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+          <label><input type="radio" name="self_ex6" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+        </div>
+        <button class="btn-verify" onclick="toggleCorrection('exo6Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+        <div id="exo6Key" class="answer-key"></div>
+      </div>
+      <!-- Question 7 – Conjugaison : temps simples -->
+      <div class="exercise-card">
+        <h3 data-i18n="exo7_title">📌 7. Conjuguez au présent de l’indicatif.</h3>
+        <p data-i18n="exo7_instruction">« Je (être) <u>content</u> de partir. »</p>
+        <select id="select_ex7" data-correct="suis">
+          <option value="">-- Choisissez --</option>
+          <option value="suis">suis</option>
+          <option value="es">es</option>
+          <option value="est">est</option>
+          <option value="sommes">sommes</option>
+          <option value="êtes">êtes</option>
+          <option value="sont">sont</option>
+        </select>
+        <div class="self-assessment">
+          <span data-i18n="self_assess_question">Ma réponse est :</span>
+          <label><input type="radio" name="self_ex7" value="correct" data-i18n="self_correct"> Correcte</label>
+          <label><input type="radio" name="self_ex7" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+          <label><input type="radio" name="self_ex7" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+        </div>
+        <button class="btn-verify" onclick="toggleCorrection('exo7Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+        <div id="exo7Key" class="answer-key"></div>
+      </div>
+      <!-- Question 8 – Conjugaison : temps composés -->
+      <div class="exercise-card">
+        <h3 data-i18n="exo8_title">📌 8. Conjuguez au passé composé.</h3>
+        <p data-i18n="exo8_instruction">« Hier, il <u>manger</u> une pomme. »</p>
+        <select id="select_ex8" data-correct="a_mange">
+          <option value="">-- Choisissez --</option>
+          <option value="a_mange">a mangé</option>
+          <option value="as_mange">as mangé</option>
+          <option value="avons_mange">avons mangé</option>
+          <option value="ont_mange">ont mangé</option>
+        </select>
+        <div class="self-assessment">
+          <span data-i18n="self_assess_question">Ma réponse est :</span>
+          <label><input type="radio" name="self_ex8" value="correct" data-i18n="self_correct"> Correcte</label>
+          <label><input type="radio" name="self_ex8" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+          <label><input type="radio" name="self_ex8" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+        </div>
+        <button class="btn-verify" onclick="toggleCorrection('exo8Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+        <div id="exo8Key" class="answer-key"></div>
+      </div>
+      <!-- Question 9 – Orthographe : accord sujet-verbe -->
+      <div class="exercise-card">
+        <h3 data-i18n="exo9_title">📌 9. Accordez le verbe avec son sujet.</h3>
+        <p data-i18n="exo9_instruction">« Les enfants <u>jouer</u> dans le jardin. »</p>
+        <select id="select_ex9" data-correct="jouent">
+          <option value="">-- Choisissez --</option>
+          <option value="joue">joue</option>
+          <option value="joues">joues</option>
+          <option value="jouent">jouent</option>
+          <option value="jouons">jouons</option>
+        </select>
+        <div class="self-assessment">
+          <span data-i18n="self_assess_question">Ma réponse est :</span>
+          <label><input type="radio" name="self_ex9" value="correct" data-i18n="self_correct"> Correcte</label>
+          <label><input type="radio" name="self_ex9" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+          <label><input type="radio" name="self_ex9" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+        </div>
+        <button class="btn-verify" onclick="toggleCorrection('exo9Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+        <div id="exo9Key" class="answer-key"></div>
+      </div>
+      <!-- Question 10 – Orthographe : accord du participe passé -->
+      <div class="exercise-card">
+        <h3 data-i18n="exo10_title">📌 10. Accordez le participe passé.</h3>
+        <p data-i18n="exo10_instruction">« Les fleurs que j’ai <u>acheter</u> sont belles. »</p>
+        <select id="select_ex10" data-correct="achetees">
+          <option value="">-- Choisissez --</option>
+          <option value="achete">acheté</option>
+          <option value="achetee">achetée</option>
+          <option value="achetes">achetés</option>
+          <option value="achetees">achetées</option>
+        </select>
+        <div class="self-assessment">
+          <span data-i18n="self_assess_question">Ma réponse est :</span>
+          <label><input type="radio" name="self_ex10" value="correct" data-i18n="self_correct"> Correcte</label>
+          <label><input type="radio" name="self_ex10" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+          <label><input type="radio" name="self_ex10" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+        </div>
+        <button class="btn-verify" onclick="toggleCorrection('exo10Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+        <div id="exo10Key" class="answer-key"></div>
+      </div>
+      <!-- Question 11 – Expression écrite -->
+      <div class="exercise-card">
+        <h3 data-i18n="exo11_title">📌 11. Expression écrite</h3>
+        <p data-i18n="exo11_instruction">Rédigez un paragraphe structuré (introduction, développement, conclusion) sur un souvenir d’enfance ou une personne qui vous a marqué.</p>
+        <textarea rows="6" style="width:100%; padding:0.5rem;" placeholder="Votre paragraphe..."></textarea>
+        <div class="self-assessment">
+          <span data-i18n="self_assess_question">Ma réponse est :</span>
+          <label><input type="radio" name="self_ex11" value="correct" data-i18n="self_correct"> Correcte</label>
+          <label><input type="radio" name="self_ex11" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+          <label><input type="radio" name="self_ex11" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+        </div>
+      </div>
+    </div>
+    <!-- SCORING AREA -->
+    <div class="score-area" id="scoreArea">
+      <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+      <div class="score-stats" id="scoreStats">
+        <div class="score-stat"><span data-i18n="score_correct">Correctes :</span> <span id="scoreCorrect">0</span></div>
+        <div class="score-stat"><span data-i18n="score_incorrect">Incorrectes :</span> <span id="scoreIncorrect">0</span></div>
+        <div class="score-stat"><span data-i18n="score_partial">Partielles :</span> <span id="scorePartial">0</span></div>
+        <div class="score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">11</span></div>
+      </div>
+    </div>
+    <div class="score-actions" style="margin-top:1.2rem;">
+      <button id="saveResultsBtn" class="btn-verify" style="margin-right:0.5rem;" data-i18n="save_results">💾 Enregistrer mes résultats</button>
+      <button id="printPdfBtn" class="btn-verify" style="background:#5c5344; margin-right:0.5rem;" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+    </div>
+    <div style="margin-top:2rem; display:flex; justify-content:space-between; flex-wrap:wrap;">
+      <a href="semaine2-orthographe-tout-quelque.html" data-i18n="footer_back" class="no-bilingual">← Leçon précédente</a>
+      <a href="revision.html" data-i18n="footer_next" class="no-bilingual">Retour au programme →</a>
+    </div>
+  </div>
+  <!-- SCRIPTS -->
+  <script src="i18n.js"></script>
+  <script src="db-utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-client.js"></script>
+  <script src="logging.js"></script>
+  <script>
+    App.addI18nTranslations({
+      fr: {
+        'devoir1_title': 'Devoir de Contrôle N°1 – Français – Bac Eco & Gestion',
+        'devoir1_short_title': 'Devoir de Contrôle N°1',
+        'ach_year_bac': '4ᵉ année secondaire (Bac)',
+        'ach_module_semaine1': 'Semaine 1 – Les Fondations de la Langue',
+        'back_revision': 'Révision générale',
+        'back_current': 'Devoir de Contrôle N°1',
+        'lesson_badge': '📘 Devoir · Bac Eco & Gestion',
+        'lesson_title': 'Devoir de Contrôle N°1<br>Français – Bac Economie & Gestion',
+        'lesson_duration': '⏱️ 60 minutes',
+        'lesson_meta_audio': '🎧 Écoutez le texte puis répondez aux questions',
+        'audio_label': '🎧 Écoute du texte',
+        'text_author': '— Christian Signol, Bonheurs d’enfance, 1996',
+        'rules_heading': '📖 Consignes de l’épreuve',
+        'rules_intro': 'Lisez attentivement le texte, puis répondez aux questions de compréhension, de grammaire, de conjugaison et d’orthographe. Enfin, vous rédigerez un paragraphe structuré.',
+        'rules_tips_title': '🔹 Conseils',
+        'rules_tips_list': '<li>Justifiez chaque réponse en citant le texte.</li><li>Pour les questions à choix, sélectionnez la bonne réponse.</li><li>Structurez votre paragraphe avec une introduction, un développement et une conclusion.</li>',
+        'exercises_heading': '✍️ Questions',
+        'exo1_title': '📌 1. Pourquoi le narrateur va-t-il quitter sa famille ?',
+        'exo1_instruction': 'Justifiez votre réponse par une phrase du texte.',
+        'exo2_title': '📌 2. Quels sentiments le narrateur éprouve-t-il tout au long du texte ?',
+        'exo2_instruction': 'Expliquez en vous appuyant sur des indices textuels.',
+        'exo3_title': '📌 3. Pour quelles raisons le narrateur n’aime-t-il pas sa nouvelle vie ?',
+        'exo3_instruction': 'Justifiez par des indices textuels.',
+        'exo4_title': '📌 4. Comment le narrateur présente-t-il son enfance ?',
+        'exo4_instruction': 'Relevez un procédé d’écriture qui le montre.',
+        'exo5_title': '📌 5. Quelle est la classe grammaticale du mot souligné ?',
+        'exo5_instruction': '« Je l’ai appris <u>brusquement</u> à onze ans. »',
+        'exo6_title': '📌 6. Quelle est la fonction du groupe souligné ?',
+        'exo6_instruction': '« Ils avaient deviné <u>que le monde rural était condamné</u>. »',
+        'exo7_title': '📌 7. Conjuguez au présent de l’indicatif.',
+        'exo7_instruction': '« Je (être) <u>content</u> de partir. »',
+        'exo8_title': '📌 8. Conjuguez au passé composé.',
+        'exo8_instruction': '« Hier, il <u>manger</u> une pomme. »',
+        'exo9_title': '📌 9. Accordez le verbe avec son sujet.',
+        'exo9_instruction': '« Les enfants <u>jouer</u> dans le jardin. »',
+        'exo10_title': '📌 10. Accordez le participe passé.',
+        'exo10_instruction': '« Les fleurs que j’ai <u>acheter</u> sont belles. »',
+        'exo11_title': '📌 11. Expression écrite',
+        'exo11_instruction': 'Rédigez un paragraphe structuré (introduction, développement, conclusion) sur un souvenir d’enfance ou une personne qui vous a marqué.',
+        'btn_correction': '🔍 Voir la correction',
+        'footer_back': '← Leçon précédente',
+        'footer_next': 'Retour au programme →',
+        'self_assess_question': 'Ma réponse est :',
+        'self_correct': 'Correcte',
+        'self_incorrect': 'Incorrecte',
+        'self_partial': 'Partiellement correcte',
+        'score_title': '📊 Votre auto‑évaluation',
+        'score_correct': 'Correctes :',
+        'score_incorrect': 'Incorrectes :',
+        'score_partial': 'Partielles :',
+        'score_unanswered': 'Sans réponse :',
+        'save_results': '💾 Enregistrer mes résultats',
+        'save_success': 'Résultats sauvegardés ✓',
+        'save_error': 'Erreur lors de la sauvegarde',
+        'print_pdf': '🖨️ Imprimer / PDF',
+        'print_with_answers': 'Corrigé inclus',
+        'print_site_name': 'Educational Dashboard – French',
+        'print_scholar_year': 'Révision pour le Bac',
+        'print_week': 'Semaine 1',
+        'print_area': 'Devoir',
+        'print_footer_dev': 'Développé par Mejri Ziad',
+        'print_footer_date': 'Imprimé le',
+        'print_without_answers': 'Sans corrigé',
+        'toast_signin_required': 'Connectez-vous pour voir les corrections.'
+      },
+      en: {
+        'devoir1_title': 'Test N°1 – French – Economics & Management Bac',
+        'devoir1_short_title': 'Test N°1',
+        'ach_year_bac': '12th grade (Bac)',
+        'ach_module_semaine1': 'Week 1 – Language Foundations',
+        'back_revision': 'General Review',
+        'back_current': 'Test N°1',
+        'lesson_badge': '📘 Test · Economics & Management',
+        'lesson_title': 'Test N°1<br>French – Economics & Management',
+        'lesson_duration': '⏱️ 60 minutes',
+        'lesson_meta_audio': '🎧 Listen to the text then answer the questions',
+        'audio_label': '🎧 Text Listening',
+        'text_author': '— Christian Signol, Childhood Happiness, 1996',
+        'rules_heading': '📖 Test Instructions',
+        'rules_intro': 'Read the text carefully, then answer the comprehension, grammar, conjugation and spelling questions. Finally, write a structured paragraph.',
+        'rules_tips_title': '🔹 Tips',
+        'rules_tips_list': '<li>Justify each answer by quoting the text.</li><li>For multiple‑choice questions, select the correct answer.</li><li>Structure your paragraph with an introduction, development and conclusion.</li>',
+        'exercises_heading': '✍️ Questions',
+        'exo1_title': '📌 1. Why does the narrator leave his family?',
+        'exo1_instruction': 'Justify with a sentence from the text.',
+        'exo2_title': '📌 2. What feelings does the narrator experience throughout the text?',
+        'exo2_instruction': 'Explain with textual evidence.',
+        'exo3_title': '📌 3. Why doesn’t the narrator like his new life?',
+        'exo3_instruction': 'Justify with textual evidence.',
+        'exo4_title': '📌 4. How does the narrator present his childhood?',
+        'exo4_instruction': 'Identify a writing device that shows this.',
+        'exo5_title': '📌 5. What is the grammatical class of the underlined word?',
+        'exo5_instruction': '“I learned it <u>suddenly</u> at age eleven.”',
+        'exo6_title': '📌 6. What is the function of the underlined group?',
+        'exo6_instruction': '“They had guessed <u>that the rural world was condemned</u>.”',
+        'exo7_title': '📌 7. Conjugate in the present indicative.',
+        'exo7_instruction': '“I (be) <u>happy</u> to leave.”',
+        'exo8_title': '📌 8. Conjugate in the passé composé.',
+        'exo8_instruction': '“Yesterday, he <u>eat</u> an apple.”',
+        'exo9_title': '📌 9. Make the verb agree with its subject.',
+        'exo9_instruction': '“The children <u>play</u> in the garden.”',
+        'exo10_title': '📌 10. Agree the past participle.',
+        'exo10_instruction': '“The flowers that I <u>buy</u> are beautiful.”',
+        'exo11_title': '📌 11. Writing',
+        'exo11_instruction': 'Write a structured paragraph (introduction, development, conclusion) about a childhood memory or a person who marked you.',
+        'btn_correction': '🔍 See correction',
+        'footer_back': '← Previous lesson',
+        'footer_next': 'Back to program →',
+        'self_assess_question': 'My answer is:',
+        'self_correct': 'Correct',
+        'self_incorrect': 'Incorrect',
+        'self_partial': 'Partially correct',
+        'score_title': '📊 Your self‑assessment',
+        'score_correct': 'Correct:',
+        'score_incorrect': 'Incorrect:',
+        'score_partial': 'Partial:',
+        'score_unanswered': 'Unanswered:',
+        'save_results': '💾 Save my results',
+        'save_success': 'Results saved ✓',
+        'save_error': 'Save failed',
+        'print_pdf': '🖨️ Print / PDF',
+        'print_with_answers': 'With answers',
+        'print_site_name': 'Educational Dashboard – French',
+        'print_scholar_year': 'Bac Review',
+        'print_week': 'Week 1',
+        'print_area': 'Test',
+        'print_footer_dev': 'Developed by Mejri Ziad',
+        'print_footer_date': 'Printed on',
+        'print_without_answers': 'Without answers',
+        'toast_signin_required': 'Sign in to see the corrections.'
+      },
+      ar: {
+        'devoir1_title': 'فرض مراقبة عدد 1 – الفرنسية – باكالوريا اقتصاد وتصرف',
+        'devoir1_short_title': 'فرض مراقبة عدد 1',
+        'ach_year_bac': 'السنة الرابعة ثانوي',
+        'ach_module_semaine1': 'الأسبوع 1 – أسس اللغة',
+        'back_revision': 'المراجعة العامة',
+        'back_current': 'فرض مراقبة عدد 1',
+        'lesson_badge': '📘 فرض · اقتصاد وتصرف',
+        'lesson_title': 'فرض مراقبة عدد 1<br>الفرنسية – باكالوريا اقتصاد وتصرف',
+        'lesson_duration': '⏱️ 60 دقيقة',
+        'lesson_meta_audio': '🎧 استمع إلى النص ثم أجب عن الأسئلة',
+        'audio_label': '🎧 استماع النص',
+        'text_author': '— كريستيان سينيول، سعادة الطفولة، 1996',
+        'rules_heading': '📖 تعليمات الفرض',
+        'rules_intro': 'اقرأ النص بعناية، ثم أجب عن أسئلة الفهم والقواعد والتصريف والإملاء. أخيراً، حرر فقرة منظمة.',
+        'rules_tips_title': '🔹 نصائح',
+        'rules_tips_list': '<li>برر كل إجابة بالاستشهاد من النص.</li><li>بالنسبة للأسئلة متعددة الاختيار، اختر الإجابة الصحيحة.</li><li>هيكل فقرتك بمقدمة وتطوير وخاتمة.</li>',
+        'exercises_heading': '✍️ الأسئلة',
+        'exo1_title': '📌 1. لماذا يغادر الراوي عائلته؟',
+        'exo1_instruction': 'برر إجابتك بجملة من النص.',
+        'exo2_title': '📌 2. ما هي المشاعر التي يشعر بها الراوي طوال النص؟',
+        'exo2_instruction': 'اشرح معتمداً على مؤشرات نصية.',
+        'exo3_title': '📌 3. لماذا لا يحب الراوي حياته الجديدة؟',
+        'exo3_instruction': 'برر بمؤشرات نصية.',
+        'exo4_title': '📌 4. كيف يقدم الراوي طفولته؟',
+        'exo4_instruction': 'اذكر أسلوباً كتابياً يُظهر ذلك.',
+        'exo5_title': '📌 5. ما هو الصنف النحوي للكلمة المسطرة؟',
+        'exo5_instruction': '« تعلمت ذلك <u>فجأة</u> في الحادية عشرة. »',
+        'exo6_title': '📌 6. ما هي وظيفة المجموعة المسطرة؟',
+        'exo6_instruction': '« كانوا قد خمنوا <u>أن العالم الريفي محكوم عليه</u>. »',
+        'exo7_title': '📌 7. صرف في المضارع المعلوم.',
+        'exo7_instruction': '« أنا (أكون) <u>سعيداً</u> بالرحيل. »',
+        'exo8_title': '📌 8. صرف في الماضي المركب.',
+        'exo8_instruction': '« أمس، هو <u>يأكل</u> تفاحة. »',
+        'exo9_title': '📌 9. طابق الفعل مع فاعله.',
+        'exo9_instruction': '« الأطفال <u>يلعبون</u> في الحديقة. »',
+        'exo10_title': '📌 10. طابق اسم المفعول.',
+        'exo10_instruction': '« الأزهار التي <u>اشتريتها</u> جميلة. »',
+        'exo11_title': '📌 11. تعبير كتابي',
+        'exo11_instruction': 'اكتب فقرة منظمة (مقدمة، تطوير، خاتمة) عن ذكرى طفولة أو شخص ترك أثراً فيك.',
+        'btn_correction': '🔍 الاطلاع على التصحيح',
+        'footer_back': '← الدرس السابق',
+        'footer_next': 'العودة إلى البرنامج →',
+        'self_assess_question': 'جوابي هو:',
+        'self_correct': 'صحيح',
+        'self_incorrect': 'خاطئ',
+        'self_partial': 'صحيح جزئياً',
+        'score_title': '📊 تقييمك الذاتي',
+        'score_correct': 'صحيح:',
+        'score_incorrect': 'خاطئ:',
+        'score_partial': 'جزئي:',
+        'score_unanswered': 'بدون إجابة:',
+        'save_results': '💾 حفظ نتائجي',
+        'save_success': 'تم حفظ النتائج ✓',
+        'save_error': 'خطأ في الحفظ',
+        'print_pdf': '🖨️ طباعة / PDF',
+        'print_with_answers': 'مع التصحيح',
+        'print_site_name': 'لوحة التحكم التعليمية – الفرنسية',
+        'print_scholar_year': 'مراجعة البكالوريا',
+        'print_week': 'الأسبوع 1',
+        'print_area': 'فرض',
+        'print_footer_dev': 'طوّر بواسطة ماجري زياد',
+        'print_footer_date': 'طبع في',
+        'print_without_answers': 'بدون تصحيح',
+        'toast_signin_required': 'سجّل الدخول لرؤية التصحيحات.'
+      }
+    });
+    (function() {
+      var container = document.querySelector('.container');
+      if (container && typeof App.makeBilingual === 'function') {
+        App.makeBilingual(container);
+      }
+    })();
+  </script>
+  <script src="ed-french-ini.js"></script>
+  <script>
+    (function() {
+      const audio = new Audio('lessons/revision/sounds/test1.mp3');
+      const playBtn = document.getElementById('playBtn');
+      const progressFill = document.getElementById('progressFill');
+      const progressBar = document.getElementById('progressBar');
+      const currentTimeEl = document.getElementById('currentTime');
+      const durationEl = document.getElementById('duration');
+      const speedBtns = document.querySelectorAll('.speed-btn');
+
+      function formatTime(seconds) {
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+      }
+
+      audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
+      audio.addEventListener('timeupdate', () => {
+        const percent = (audio.currentTime / audio.duration) * 100 || 0;
+        progressFill.style.width = percent + '%';
+        currentTimeEl.textContent = formatTime(audio.currentTime);
+      });
+      audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
+      playBtn.addEventListener('click', () => {
+        if (audio.paused) { audio.play(); playBtn.textContent = '⏸'; }
+        else { audio.pause(); playBtn.textContent = '▶'; }
+      });
+      progressBar.addEventListener('click', (e) => {
+        const rect = progressBar.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const width = rect.width;
+        const seekTime = (clickX / width) * audio.duration;
+        audio.currentTime = seekTime;
+      });
+      speedBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          speedBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const speed = parseFloat(btn.dataset.speed);
+          audio.playbackRate = speed;
+        });
+      });
+
+      // Answer keys
+      const keys = {
+        exo1Key: `<strong>Correction :</strong><br>Le narrateur quitte sa famille parce que ses parents estiment que l'éducation est devenue indispensable pour assurer son avenir, le monde rural étant condamné.<br><br><strong>Justification :</strong> « Ils avaient confusément deviné que la vie glissait vers les villes, que le monde rural était condamné, que les études étaient devenues indispensables. »`,
+        exo2Key: `<strong>Correction :</strong><br>Le narrateur éprouve des sentiments contradictoires : un profond malheur, une déchirure et un sentiment d'emprisonnement face à sa nouvelle vie, mais aussi une certaine force puisée dans l'amour parental et le souvenir de son « île » préservée.<br><br><strong>Indices :</strong> « déchirure », « blessure », « malheureux », « sombrer », mais aussi « j'ai franchi l'obstacle ».`,
+        exo3Key: `<strong>Correction :</strong><br>Trois raisons : la perte de liberté, l'enfermement, et la violence/vexations.<br><br><strong>Indices :</strong> « Privé de liberté dans les champs et les prés », « jeté dans une prison enclose dans une grande ville », « je ne comprenais rien à ce monde violent, aux vexations, aux menaces quotidiennes ».`,
+        exo4Key: `<strong>Correction :</strong><br>Il présente son enfance comme un paradis perdu, une île préservée du mal.<br><br><strong>Procédé :</strong> Métaphore filée : « le royaume de l’enfance », « une île préservée du mal ».`,
+        exo5Key: `<strong>Correction :</strong><br>La classe grammaticale de « brusquement » est : <strong>adverbe</strong>.`,
+        exo6Key: `<strong>Correction :</strong><br>La fonction du groupe souligné est : <strong>COD</strong> du verbe « deviné ».`,
+        exo7Key: `<strong>Correction :</strong><br>La bonne réponse est : <strong>suis</strong>.<br>« Je <strong>suis</strong> content de partir. »`,
+        exo8Key: `<strong>Correction :</strong><br>La bonne réponse est : <strong>a mangé</strong>.<br>« Hier, il <strong>a mangé</strong> une pomme. »`,
+        exo9Key: `<strong>Correction :</strong><br>La bonne réponse est : <strong>jouent</strong>.<br>« Les enfants <strong>jouent</strong> dans le jardin. »`,
+        exo10Key: `<strong>Correction :</strong><br>La bonne réponse est : <strong>achetées</strong>.<br>« Les fleurs que j’ai <strong>achetées</strong> sont belles. »`
+      };
+      for (const [id, html] of Object.entries(keys)) {
+        document.getElementById(id).innerHTML = html;
+      }
+
+      // Auth‑gated correction toggle
+      window.toggleCorrection = async function(id) {
+        const { data: { session } } = await App.supabase.auth.getSession();
+        if (!session) {
+          App.showToast('toast_signin_required', 'error');
+          const signInBtn = document.getElementById('signInBtn');
+          if (signInBtn) signInBtn.click();
+          return;
+        }
+        const el = document.getElementById(id);
+        if (el) el.classList.toggle('visible');
+      };
+
+      // Auto‑grade objective questions (5‑10)
+      const objectiveQuestions = [
+        { selectId: 'select_ex5', correctValue: 'adverbe', radioGroup: 'self_ex5' },
+        { selectId: 'select_ex6', correctValue: 'cod', radioGroup: 'self_ex6' },
+        { selectId: 'select_ex7', correctValue: 'suis', radioGroup: 'self_ex7' },
+        { selectId: 'select_ex8', correctValue: 'a_mange', radioGroup: 'self_ex8' },
+        { selectId: 'select_ex9', correctValue: 'jouent', radioGroup: 'self_ex9' },
+        { selectId: 'select_ex10', correctValue: 'achetees', radioGroup: 'self_ex10' }
+      ];
+
+      objectiveQuestions.forEach(q => {
+        const select = document.getElementById(q.selectId);
+        select.addEventListener('change', () => {
+          const isCorrect = select.value === q.correctValue;
+          const radioCorrect = document.querySelector(`input[name="${q.radioGroup}"][value="correct"]`);
+          const radioIncorrect = document.querySelector(`input[name="${q.radioGroup}"][value="incorrect"]`);
+          if (radioCorrect && radioIncorrect) {
+            radioCorrect.checked = isCorrect;
+            radioIncorrect.checked = !isCorrect;
+          }
+          updateScore();
+        });
+      });
+
+      // Score calculation
+      function updateScore() {
+        const radioGroups = ['self_ex1','self_ex2','self_ex3','self_ex4','self_ex5','self_ex6','self_ex7','self_ex8','self_ex9','self_ex10','self_ex11'];
+        let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+        radioGroups.forEach(name => {
+          const selected = document.querySelector(`input[name="${name}"]:checked`);
+          if (selected) {
+            if (selected.value === 'correct') correct++;
+            else if (selected.value === 'incorrect') incorrect++;
+            else if (selected.value === 'partial') partial++;
+          } else {
+            unanswered++;
+          }
+        });
+        document.getElementById('scoreCorrect').textContent = correct;
+        document.getElementById('scoreIncorrect').textContent = incorrect;
+        document.getElementById('scorePartial').textContent = partial;
+        document.getElementById('scoreUnanswered').textContent = unanswered;
+      }
+
+      document.querySelectorAll('input[type="radio"][name^="self_ex"]').forEach(radio => {
+        radio.addEventListener('change', updateScore);
+      });
+
+      // Save results
+      document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+        const { data: { user } } = await App.supabase.auth.getUser();
+        if (!user) {
+          App.showToast('toast_signin_required', 'error');
+          const signInBtn = document.getElementById('signInBtn');
+          if (signInBtn) signInBtn.click();
+          return;
+        }
+        const radioGroups = ['self_ex1','self_ex2','self_ex3','self_ex4','self_ex5','self_ex6','self_ex7','self_ex8','self_ex9','self_ex10','self_ex11'];
+        let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+        radioGroups.forEach(name => {
+          const selected = document.querySelector(`input[name="${name}"]:checked`);
+          if (selected) {
+            if (selected.value === 'correct') correct++;
+            else if (selected.value === 'incorrect') incorrect++;
+            else if (selected.value === 'partial') partial++;
+          } else {
+            unanswered++;
+          }
+        });
+
+        const lessonId = 'devoir1-francais-eco';
+        const lang = localStorage.getItem('lang') || 'fr';
+        const lessonTitle = App.getTranslation('devoir1_short_title', lang) || lessonId;
+        const entry = {
+          lesson_id: lessonId,
+          lesson_title: { fr: App.getTranslation('devoir1_short_title', 'fr'), en: App.getTranslation('devoir1_short_title', 'en'), ar: App.getTranslation('devoir1_short_title', 'ar') },
+          year: { fr: App.getTranslation('ach_year_bac', 'fr'), en: App.getTranslation('ach_year_bac', 'en'), ar: App.getTranslation('ach_year_bac', 'ar') },
+          module: { fr: App.getTranslation('ach_module_semaine1', 'fr'), en: App.getTranslation('ach_module_semaine1', 'en'), ar: App.getTranslation('ach_module_semaine1', 'ar') },
+          correct, incorrect, partial, unanswered,
+          updated_at: new Date().toISOString()
+        };
+
+        const { data: profileData, error: fetchError } = await App.supabase
+          .from('profiles').select('achivement').eq('id', user.id).single();
+        if (fetchError) { console.error('Could not fetch profile:', fetchError); return; }
+        let achivement = profileData?.achivement || {};
+        if (!achivement["ED-French"]) achivement["ED-French"] = [];
+        const arr = achivement["ED-French"];
+        const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+        if (existingIdx >= 0) arr[existingIdx] = entry;
+        else arr.push(entry);
+        const { error: updateError } = await App.supabase
+          .from('profiles').update({ achivement }).eq('id', user.id);
+        if (updateError) { console.error('Save failed:', updateError); App.showToast('save_error', 'error'); }
+        else { App.showToast('save_success', 'success'); App.logUserAction('lesson_saved', { lesson: lessonId, correct, incorrect, partial }); }
+      });
+
+      // Print / PDF
+      document.getElementById('printPdfBtn').addEventListener('click', async function() {
+        const { data: { user } } = await App.supabase.auth.getUser();
+        if (!user) {
+          App.showToast('toast_signin_required', 'error');
+          const signInBtn = document.getElementById('signInBtn');
+          if (signInBtn) signInBtn.click();
+          return;
+        }
+
+        let isRegistered = false;
+        try {
+          const { data: profile, error } = await App.supabase
+            .from('profiles').select('registration_state').eq('id', user.id).single();
+          if (!error && profile && profile.registration_state && profile.registration_state.active === true) {
+            isRegistered = true;
+          }
+        } catch (e) {}
+
+        const headerHTML = document.querySelector('.lesson-header').cloneNode(true);
+        const textCard = document.querySelector('.text-card').cloneNode(true);
+        const rulesSections = document.querySelectorAll('.valeurs-section, .methode-section');
+        let rulesHTML = '';
+        rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
+
+        const exercisesSection = document.querySelector('.exercises-section').cloneNode(true);
+        exercisesSection.querySelectorAll('input, textarea, select, .btn-verify, .self-assessment').forEach(el => el.remove());
+
+        if (isRegistered) {
+          exercisesSection.querySelectorAll('.answer-key').forEach(key => {
+            key.style.display = 'block'; key.style.border = 'none'; key.style.padding = '0.5rem 0'; key.style.margin = '0.5rem 0'; key.style.background = 'transparent';
+          });
+        } else {
+          exercisesSection.querySelectorAll('.answer-key').forEach(el => el.remove());
+        }
+
+        const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+        const printWindow = window.open('', '_blank', 'width=800,height=600');
+        const lang = localStorage.getItem('lang') || 'fr';
+        printWindow.document.write(`
+          <!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8">
+          <title>${App.getTranslation('devoir1_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title>
+          <style> body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.6; max-width: 700px; margin: 2rem auto; padding: 0 1rem; color: #000; } .print-header { text-align: center; border-bottom: 2px solid #c75b2c; padding-bottom: 1rem; margin-bottom: 2rem; } .print-header .site-name { font-size: 1.4rem; font-weight: bold; color: #c75b2c; margin: 0 0 0.3rem; } .print-header .meta-line { font-size: 0.95rem; color: #444; margin: 0.2rem 0; } .print-header .lesson-name { font-size: 1.1rem; font-weight: bold; color: #000; margin-top: 0.5rem; } .print-footer { text-align: center; border-top: 1px solid #ccc; padding-top: 1rem; margin-top: 2rem; font-size: 0.85rem; color: #666; } h1, h2, h3 { color: #000; } .lesson-header { text-align: center; margin-bottom: 2rem; } .badge { display: inline-block; background: #c75b2c; color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; text-transform: uppercase; } .text-card { border-left: 4px solid #c75b2c; padding: 1rem 1.5rem; margin: 1.5rem 0; font-style: italic; } .quote-mark { font-size: 3rem; color: #c75b2c; opacity: 0.3; position: absolute; top: -10px; left: 10px; } .text-card .author { text-align: right; font-style: normal; margin-top: 0.8rem; } .valeurs-section, .methode-section { margin: 1.5rem 0; } .valeur-card { background: #f8f4ec; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; } .valeur-card h3 { color: #c75b2c; } .exercise-card { margin: 1.2rem 0; } table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; } th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; } th { background: #f0e8d8; } .answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; } @media print { body { margin: 0; padding: 0; } @page { margin: 2cm; } } </style>
+          </head><body>
+          <div class="print-header">
+            <div class="site-name">${App.getTranslation('print_site_name', lang)}</div>
+            <div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div>
+            <div class="lesson-name">${App.getTranslation('devoir1_short_title', lang)}</div>
+          </div>
+          ${breadcrumb.outerHTML}
+          ${headerHTML.outerHTML}
+          ${textCard.outerHTML}
+          ${rulesHTML}
+          ${exercisesSection.outerHTML}
+          <div class="print-footer">${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}</div>
+          </body></html>
+        `);
+        printWindow.document.close();
+        printWindow.focus();
+        setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+      });
+
+      // Initialise score
+      updateScore();
+    })();
+  </script>
+  <!-- ═══════ DIRECT‑TRANSLATION FIX ═══════ -->
+  <script>
+    (function() {
+      if (typeof applyTranslations !== 'function') return;
+      const originalApply = applyTranslations;
+      window.applyTranslations = function(lang) {
+        originalApply(lang);
+        setTimeout(() => {
+          document.querySelectorAll('.no-bilingual').forEach(el => {
+            const next = el.nextElementSibling;
+            if (next && next.classList.contains('i18n-bilingual')) {
+              if (lang !== 'fr') {
+                el.innerHTML = next.innerHTML;
+              }
+              next.remove();
+            }
+          });
+        }, 0);
+      };
+      setTimeout(() => {
+        document.querySelectorAll('.no-bilingual').forEach(el => {
+          const next = el.nextElementSibling;
+          if (next && next.classList.contains('i18n-bilingual')) {
+            const lang = localStorage.getItem('lang') || 'fr';
+            if (lang !== 'fr') el.innerHTML = next.innerHTML;
+            next.remove();
+          }
+        });
+      }, 0);
+    })();
+  </script>
+</body>
+</html>
