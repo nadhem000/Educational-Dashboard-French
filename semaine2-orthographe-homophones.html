@@ -125,8 +125,10 @@
     </div>
     <div class="exercises-section">
       <h2 data-i18n="exercises_heading">✍️ Exercices</h2>
+      <!-- Exercice 1 -->
       <div class="exercise-card">
         <h3 data-i18n="exo1_title">📌 1. Complétez par a ou à</h3>
+        <p data-i18n="exo1_instruction">Utilisez les astuces de remplacement (avait pour a, impossible pour à).</p>
         <ol type="a">
           <li>Il ______ mangé ______ la cantine. <input type="text" placeholder="..."> / <input type="text" placeholder="..."></li>
           <li>Marie ______ une belle robe ______ fleurs. <input type="text" placeholder="..."> / <input type="text" placeholder="..."></li>
@@ -143,8 +145,10 @@
         <button class="btn-verify" onclick="toggleCorrection('exo1Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
         <div id="exo1Key" class="answer-key"></div>
       </div>
+      <!-- Exercice 2 -->
       <div class="exercise-card">
         <h3 data-i18n="exo2_title">📌 2. Complétez par ou ou où</h3>
+        <p data-i18n="exo2_instruction">Remplacez par « ou bien » pour tester le « ou » sans accent.</p>
         <ol type="a">
           <li>Tu préfères le bleu ______ le rouge ? <input type="text" placeholder="..."></li>
           <li>Je me demande ______ il est passé. <input type="text" placeholder="..."></li>
@@ -161,8 +165,10 @@
         <button class="btn-verify" onclick="toggleCorrection('exo2Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
         <div id="exo2Key" class="answer-key"></div>
       </div>
+      <!-- Exercice 3 -->
       <div class="exercise-card">
         <h3 data-i18n="exo3_title">📌 3. Complétez par son ou sont</h3>
+        <p data-i18n="exo3_instruction">Remplacez par « mon » pour son, et par « étaient » pour sont.</p>
         <ol type="a">
           <li>C'est ______ anniversaire aujourd'hui. <input type="text" placeholder="..."></li>
           <li>Ils ______ arrivés hier soir. <input type="text" placeholder="..."></li>
@@ -179,6 +185,7 @@
         <button class="btn-verify" onclick="toggleCorrection('exo3Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
         <div id="exo3Key" class="answer-key"></div>
       </div>
+      <!-- Exercice 4 -->
       <div class="exercise-card">
         <h3 data-i18n="exo4_title">📌 4. Écrivez une phrase contenant les trois paires</h3>
         <p data-i18n="exo4_instruction">Rédigez une phrase qui contient au moins un exemple correct de a/à, ou/où et son/sont. Soulignez les homophones utilisés.</p>
@@ -209,6 +216,7 @@
       <a href="revision.html" data-i18n="footer_next" class="no-bilingual">Retour au programme →</a>
     </div>
   </div>
+
   <script src="i18n.js"></script>
   <script src="db-utils.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -239,8 +247,11 @@
         'rules_son_sont_list': '<li><strong>son</strong> = déterminant possessif. On peut le remplacer par <em>mon</em> ou <em>ton</em>. <br>Ex : <u>Son</u> chien est gentil → <u>Mon</u> chien est gentil.</li><li><strong>sont</strong> = verbe être à la 3ᵉ personne du pluriel. On peut le remplacer par <em>étaient</em>. <br>Ex : Ils <u>sont</u> fatigués → Ils <u>étaient</u> fatigués.</li>',
         'exercises_heading': '✍️ Exercices',
         'exo1_title': '📌 1. Complétez par a ou à',
+        'exo1_instruction': 'Utilisez les astuces de remplacement (avait pour a, impossible pour à).',
         'exo2_title': '📌 2. Complétez par ou ou où',
+        'exo2_instruction': 'Remplacez par « ou bien » pour tester le « ou » sans accent.',
         'exo3_title': '📌 3. Complétez par son ou sont',
+        'exo3_instruction': 'Remplacez par « mon » pour son, et par « étaient » pour sont.',
         'exo4_title': '📌 4. Écrivez une phrase contenant les trois paires',
         'exo4_instruction': 'Rédigez une phrase qui contient au moins un exemple correct de a/à, ou/où et son/sont. Soulignez les homophones utilisés.',
         'btn_correction': '🔍 Voir la correction',
@@ -292,8 +303,11 @@
         'rules_son_sont_list': '<li><strong>son</strong> = possessive determiner. Can be replaced by <em>mon</em> or <em>ton</em>. <br>Ex: <u>Son</u> chien est gentil → <u>Mon</u> chien est gentil.</li><li><strong>sont</strong> = verb être in the 3rd person plural. Can be replaced by <em>étaient</em>. <br>Ex: Ils <u>sont</u> fatigués → Ils <u>étaient</u> fatigués.</li>',
         'exercises_heading': '✍️ Exercises',
         'exo1_title': '📌 1. Fill in with a or à',
+        'exo1_instruction': 'Use the replacement tricks (avait for a, impossible for à).',
         'exo2_title': '📌 2. Fill in with ou or où',
+        'exo2_instruction': 'Replace with “ou bien” to test the “ou” without an accent.',
         'exo3_title': '📌 3. Fill in with son or sont',
+        'exo3_instruction': 'Replace with “mon” for son, and with “étaient” for sont.',
         'exo4_title': '📌 4. Write a sentence containing the three pairs',
         'exo4_instruction': 'Write a sentence that contains at least one correct example of a/à, ou/où and son/sont. Underline the homophones used.',
         'btn_correction': '🔍 See correction',
@@ -345,8 +359,11 @@
         'rules_son_sont_list': '<li><strong>son</strong> = محدد ملكية. يمكن استبداله بـ <em>mon</em> أو <em>ton</em>. <br>مثال: <u>Son</u> chien est gentil → <u>Mon</u> chien est gentil.</li><li><strong>sont</strong> = فعل être في الغائب الجمع. يمكن استبداله بـ <em>étaient</em>. <br>مثال: Ils <u>sont</u> fatigués → Ils <u>étaient</u> fatigués.</li>',
         'exercises_heading': '✍️ تمارين',
         'exo1_title': '📌 1. أكمل بـ a أو à',
+        'exo1_instruction': 'استخدم حيل الاستبدال (avait لـ a، مستحيل لـ à).',
         'exo2_title': '📌 2. أكمل بـ ou أو où',
+        'exo2_instruction': 'استبدل بـ « ou bien » لاختبار « ou » بدون علامة.',
         'exo3_title': '📌 3. أكمل بـ son أو sont',
+        'exo3_instruction': 'استبدل بـ « mon » لـ son، وبـ « étaient » لـ sont.',
         'exo4_title': '📌 4. اكتب جملة تحتوي على الأزواج الثلاثة',
         'exo4_instruction': 'اكتب جملة تحتوي على مثال صحيح واحد على الأقل لكل من a/à, ou/où و son/sont. ضع خطاً تحت الهوموفونات المستعملة.',
         'btn_correction': '🔍 الاطلاع على التصحيح',
@@ -560,6 +577,37 @@
         radio.addEventListener('change', updateScore);
       });
       updateScore();
+    })();
+  </script>
+  <!-- ═══════ DIRECT‑TRANSLATION FIX ═══════ -->
+  <script>
+    (function() {
+      if (typeof applyTranslations !== 'function') return;
+      const originalApply = applyTranslations;
+      window.applyTranslations = function(lang) {
+        originalApply(lang);
+        setTimeout(() => {
+          document.querySelectorAll('.no-bilingual').forEach(el => {
+            const next = el.nextElementSibling;
+            if (next && next.classList.contains('i18n-bilingual')) {
+              if (lang !== 'fr') {
+                el.innerHTML = next.innerHTML;
+              }
+              next.remove();
+            }
+          });
+        }, 0);
+      };
+      setTimeout(() => {
+        document.querySelectorAll('.no-bilingual').forEach(el => {
+          const next = el.nextElementSibling;
+          if (next && next.classList.contains('i18n-bilingual')) {
+            const lang = localStorage.getItem('lang') || 'fr';
+            if (lang !== 'fr') el.innerHTML = next.innerHTML;
+            next.remove();
+          }
+        });
+      }, 0);
     })();
   </script>
 </body>

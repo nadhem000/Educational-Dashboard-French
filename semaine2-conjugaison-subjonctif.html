@@ -145,6 +145,7 @@
       <!-- Exercice 2 -->
       <div class="exercise-card">
         <h3 data-i18n="exo2_title">📌 2. Conjuguez au subjonctif présent</h3>
+        <p data-i18n="exo2_instruction">Mettez les verbes entre parenthèses au subjonctif présent.</p>
         <ol type="a">
           <li>Il faut que tu (être) ________ à l'heure. <input type="text" placeholder="..."></li>
           <li>Je souhaite qu'elle (pouvoir) ________ venir. <input type="text" placeholder="..."></li>
@@ -164,6 +165,7 @@
       <!-- Exercice 3 -->
       <div class="exercise-card">
         <h3 data-i18n="exo3_title">📌 3. Conjuguez au subjonctif passé</h3>
+        <p data-i18n="exo3_instruction">Conjuguez les verbes au subjonctif passé.</p>
         <ol type="a">
           <li>Je suis étonné qu'il (faire) ________ une telle erreur. <input type="text" placeholder="..."></li>
           <li>Il est dommage que vous ne (venir) ________ pas. <input type="text" placeholder="..."></li>
@@ -266,7 +268,9 @@
         'table_verbe': 'Verbe au subjonctif',
         'table_declencheur': 'Déclencheur / Valeur',
         'exo2_title': '📌 2. Conjuguez au subjonctif présent',
+        'exo2_instruction': 'Mettez les verbes entre parenthèses au subjonctif présent.',
         'exo3_title': '📌 3. Conjuguez au subjonctif passé',
+        'exo3_instruction': 'Conjuguez les verbes au subjonctif passé.',
         'exo4_title': '📌 4. Indicatif ou subjonctif ?',
         'exo4_instruction': 'Complétez avec la forme correcte du verbe (indicatif ou subjonctif présent).',
         'exo5_title': '📌 5. Production écrite',
@@ -323,7 +327,9 @@
         'table_verbe': 'Subjunctive verb',
         'table_declencheur': 'Trigger / Value',
         'exo2_title': '📌 2. Conjugate in the present subjunctive',
+        'exo2_instruction': 'Put the verbs in brackets into the present subjunctive.',
         'exo3_title': '📌 3. Conjugate in the past subjunctive',
+        'exo3_instruction': 'Conjugate the verbs in the past subjunctive.',
         'exo4_title': '📌 4. Indicative or subjunctive?',
         'exo4_instruction': 'Fill in with the correct form of the verb (present indicative or subjunctive).',
         'exo5_title': '📌 5. Written production',
@@ -380,7 +386,9 @@
         'table_verbe': 'فعل المنصوب',
         'table_declencheur': 'المبرر / القيمة',
         'exo2_title': '📌 2. صرف في المضارع المنصوب',
+        'exo2_instruction': 'ضع الأفعال بين قوسين في المضارع المنصوب.',
         'exo3_title': '📌 3. صرف في الماضي المنصوب',
+        'exo3_instruction': 'صرف الأفعال في الماضي المنصوب.',
         'exo4_title': '📌 4. معلوم أم منصوب؟',
         'exo4_instruction': 'أكمل بالصيغة الصحيحة للفعل (مضارع معلوم أو منصوب).',
         'exo5_title': '📌 5. إنتاج كتابي',
@@ -620,6 +628,37 @@
         radio.addEventListener('change', updateScore);
       });
       updateScore();
+    })();
+  </script>
+  <!-- ═══════ DIRECT‑TRANSLATION FIX ═══════ -->
+  <script>
+    (function() {
+      if (typeof applyTranslations !== 'function') return;
+      const originalApply = applyTranslations;
+      window.applyTranslations = function(lang) {
+        originalApply(lang);
+        setTimeout(() => {
+          document.querySelectorAll('.no-bilingual').forEach(el => {
+            const next = el.nextElementSibling;
+            if (next && next.classList.contains('i18n-bilingual')) {
+              if (lang !== 'fr') {
+                el.innerHTML = next.innerHTML;
+              }
+              next.remove();
+            }
+          });
+        }, 0);
+      };
+      setTimeout(() => {
+        document.querySelectorAll('.no-bilingual').forEach(el => {
+          const next = el.nextElementSibling;
+          if (next && next.classList.contains('i18n-bilingual')) {
+            const lang = localStorage.getItem('lang') || 'fr';
+            if (lang !== 'fr') el.innerHTML = next.innerHTML;
+            next.remove();
+          }
+        });
+      }, 0);
     })();
   </script>
 </body>

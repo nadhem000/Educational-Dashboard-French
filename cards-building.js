@@ -1,8 +1,10 @@
-// cards-building.js – version 4 (with skeleton removal, error handling, accessibility) – App namespace
+// cards-building.js – version 5 (with degree4 link, error handling, accessibility) – App namespace
 (function() {
   // 1. Store French translations locally so we can use them immediately
   const fr = {
     'card.primaire4.title': '4ᵉ année primaire',
+    'card.primaire4.desc': 'Programme complet de la 4ème année primaire avec 10 unités.',
+    'card.primaire4.link': 'Accéder au programme →',
     'card.primaire5.title': '5ᵉ année primaire',
     'card.primaire6.title': '6ᵉ année primaire',
     'card.primaire7.title': '7ᵉ année primaire',
@@ -25,6 +27,8 @@
     fr: fr,
     en: {
       'card.primaire4.title': '4th grade',
+      'card.primaire4.desc': 'Complete 4th year primary program with 10 units.',
+      'card.primaire4.link': 'Access the program →',
       'card.primaire5.title': '5th grade',
       'card.primaire6.title': '6th grade',
       'card.primaire7.title': '7th grade',
@@ -44,6 +48,8 @@
     },
     ar: {
       'card.primaire4.title': 'السنة الرابعة ابتدائي',
+      'card.primaire4.desc': 'البرنامج الكامل للسنة الرابعة ابتدائي مع 10 وحدات.',
+      'card.primaire4.link': 'الوصول إلى البرنامج ←',
       'card.primaire5.title': 'السنة الخامسة ابتدائي',
       'card.primaire6.title': 'السنة السادسة ابتدائي',
       'card.primaire7.title': 'السنة السابعة ابتدائي',
@@ -64,7 +70,7 @@
   });
   // Card definitions
   const cardsData = [
-    { id: 'primaire4', titleKey: 'card.primaire4.title', type: 'coming' },
+    { id: 'primaire4', titleKey: 'card.primaire4.title', type: 'degree', link: 'degree4.html', descKey: 'card.primaire4.desc', linkKey: 'card.primaire4.link' },
     { id: 'primaire5', titleKey: 'card.primaire5.title', type: 'coming' },
     { id: 'primaire6', titleKey: 'card.primaire6.title', type: 'coming' },
     { id: 'primaire7', titleKey: 'card.primaire7.title', type: 'coming' },
@@ -82,8 +88,9 @@
   try {
     cardsData.forEach(card => {
       const cardEl = document.createElement('div');
-      cardEl.className = 'card' + (card.type === 'revision' ? ' revision' : '');
-      if (card.type === 'revision') {
+      // Treat 'degree' like 'revision' for styling and interactivity
+      cardEl.className = 'card' + (card.type === 'revision' || card.type === 'degree' ? ' revision' : '');
+      if (card.type === 'revision' || card.type === 'degree') {
         cardEl.setAttribute('tabindex', '0');
       } else {
         cardEl.setAttribute('aria-disabled', 'true');
@@ -116,9 +123,12 @@
           ul.appendChild(li);
         });
         body.appendChild(ul);
-      } else if (card.type === 'revision') {
-        body.innerHTML = `<p data-i18n="revision_desc">${fr['revision_desc']}</p>
-                        <a href="${card.link}" data-i18n="revision_link">${fr['revision_link']}</a>`;
+      } else if (card.type === 'revision' || card.type === 'degree') {
+        // Use custom description and link keys for degree, fallback to revision defaults
+        const descKey = card.descKey || 'revision_desc';
+        const linkKey = card.linkKey || 'revision_link';
+        body.innerHTML = `<p data-i18n="${descKey}">${fr[descKey]}</p>
+                        <a href="${card.link}" data-i18n="${linkKey}">${fr[linkKey]}</a>`;
       }
       cardEl.appendChild(body);
       grid.appendChild(cardEl);
@@ -127,7 +137,7 @@
       App.makeBilingual(grid);
     }
     App.applyTranslations();
-    App.logToDB('actions', { type: 'info', message: 'cards-building.js v4 loaded and cards rendered' });
+    App.logToDB('actions', { type: 'info', message: 'cards-building.js v5 loaded and cards rendered' });
   } catch (error) {
     grid.innerHTML = `<div class="card"><div class="card-body" data-i18n="cards_error">${fr['cards_error']}</div></div>`;
     App.logToDB('errors', { type: 'error', message: 'cards-building.js failed: ' + error.message });

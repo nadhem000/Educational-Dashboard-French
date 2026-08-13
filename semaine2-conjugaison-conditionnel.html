@@ -147,6 +147,7 @@
       <!-- Exercice 2 -->
       <div class="exercise-card">
         <h3 data-i18n="exo2_title">📌 2. Conjuguez au conditionnel présent</h3>
+        <p data-i18n="exo2_instruction">Conjuguez les verbes entre parenthèses au conditionnel présent.</p>
         <ol type="a">
           <li>Elle (vouloir) ________ une glace. <input type="text" placeholder="..."></li>
           <li>Nous (pouvoir) ________ venir demain. <input type="text" placeholder="..."></li>
@@ -166,6 +167,7 @@
       <!-- Exercice 3 -->
       <div class="exercise-card">
         <h3 data-i18n="exo3_title">📌 3. Conjuguez au conditionnel passé</h3>
+        <p data-i18n="exo3_instruction">Conjuguez les verbes entre parenthèses au conditionnel passé.</p>
         <ol type="a">
           <li>Si tu m’avais écouté, tu (réussir) ________. <input type="text" placeholder="..."></li>
           <li>Il (falloir) ________ venir plus tôt. <input type="text" placeholder="..."></li>
@@ -267,7 +269,9 @@
         'table_verbe': 'Verbe au conditionnel',
         'table_valeur': 'Valeur / Emploi',
         'exo2_title': '📌 2. Conjuguez au conditionnel présent',
+        'exo2_instruction': 'Conjuguez les verbes entre parenthèses au conditionnel présent.',
         'exo3_title': '📌 3. Conjuguez au conditionnel passé',
+        'exo3_instruction': 'Conjuguez les verbes entre parenthèses au conditionnel passé.',
         'exo4_title': '📌 4. Transformez : du futur dans le passé au conditionnel',
         'exo4_instruction': 'Réécrivez les phrases en mettant le verbe principal au passé composé et en utilisant le conditionnel présent pour le second verbe.',
         'exo5_title': '📌 5. Production écrite',
@@ -324,7 +328,9 @@
         'table_verbe': 'Conditional verb',
         'table_valeur': 'Value / Use',
         'exo2_title': '📌 2. Conjugate in the present conditional',
+        'exo2_instruction': 'Conjugate the verbs in brackets in the present conditional.',
         'exo3_title': '📌 3. Conjugate in the past conditional',
+        'exo3_instruction': 'Conjugate the verbs in brackets in the past conditional.',
         'exo4_title': '📌 4. Transform: from future in the past to conditional',
         'exo4_instruction': 'Rewrite the sentences by putting the main verb in the passé composé and using the present conditional for the second verb.',
         'exo5_title': '📌 5. Written production',
@@ -381,7 +387,9 @@
         'table_verbe': 'فعل الشرط',
         'table_valeur': 'القيمة / الاستعمال',
         'exo2_title': '📌 2. صرف في الشرط الحاضر',
+        'exo2_instruction': 'صرف الأفعال بين قوسين في الشرط الحاضر.',
         'exo3_title': '📌 3. صرف في الشرط الماضي',
+        'exo3_instruction': 'صرف الأفعال بين قوسين في الشرط الماضي.',
         'exo4_title': '📌 4. حول: من المستقبل في الماضي إلى الشرط',
         'exo4_instruction': 'أعد كتابة الجمل بوضع الفعل الرئيسي في الماضي المركب واستعمال الشرط الحاضر للفعل الثاني.',
         'exo5_title': '📌 5. إنتاج كتابي',
@@ -621,6 +629,37 @@
         radio.addEventListener('change', updateScore);
       });
       updateScore();
+    })();
+  </script>
+  <!-- ═══════ DIRECT‑TRANSLATION FIX ═══════ -->
+  <script>
+    (function() {
+      if (typeof applyTranslations !== 'function') return;
+      const originalApply = applyTranslations;
+      window.applyTranslations = function(lang) {
+        originalApply(lang);
+        setTimeout(() => {
+          document.querySelectorAll('.no-bilingual').forEach(el => {
+            const next = el.nextElementSibling;
+            if (next && next.classList.contains('i18n-bilingual')) {
+              if (lang !== 'fr') {
+                el.innerHTML = next.innerHTML;
+              }
+              next.remove();
+            }
+          });
+        }, 0);
+      };
+      setTimeout(() => {
+        document.querySelectorAll('.no-bilingual').forEach(el => {
+          const next = el.nextElementSibling;
+          if (next && next.classList.contains('i18n-bilingual')) {
+            const lang = localStorage.getItem('lang') || 'fr';
+            if (lang !== 'fr') el.innerHTML = next.innerHTML;
+            next.remove();
+          }
+        });
+      }, 0);
     })();
   </script>
 </body>
