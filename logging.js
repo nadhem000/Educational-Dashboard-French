@@ -23,13 +23,14 @@
 
   function isNetworkError(error) {
     if (!error) return false;
-    const msg = (error.message || '').toLowerCase();
+    const msg = (error.message || error.msg || '').toLowerCase();
     return (
       msg.includes('networkerror') ||
       msg.includes('failed to fetch') ||
       msg.includes('load failed') ||
       msg.includes('network request failed') ||
-      msg.includes('internet disconnected')
+      msg.includes('internet disconnected') ||
+      msg.includes('fetch error')
     );
   }
 
@@ -41,10 +42,27 @@
     }
   }
 
+  // Used to queue a general action when offline/network error
+  async function queueGeneral(action, details) {
+    try {
+      await enqueueOfflineAction('general', { action, details });
+      registerSync();
+    } catch (e) { /* ignore */ }
+  }
+
+  // Used to queue a user action when offline/network error
+  async function queueUser(action, details) {
+    try {
+      await enqueueOfflineAction('user', { action, details });
+      registerSync();
+    } catch (e) { /* ignore */ }
+  }
+
   async function performGeneralAction(action, details = {}) {
     const client = getClient();
     if (!client) return;
 
+    // Try RPC increment
     try {
       const { error } = await client
         .rpc('increment_general_action', {
@@ -53,25 +71,37 @@
         });
 
       if (error) {
-        // Fallback upsert
-        await client
-          .from('log-ed-french-interactions-general')
-          .upsert(
-            { action, count: 1, user_agent: navigator.userAgent, updated_at: new Date().toISOString() },
-            { onConflict: 'action', ignoreDuplicates: false }
-          );
-      }
-    } catch (e) {
-      // If offline or a network failure occurred, queue for later
-      if (isOffline() || isNetworkError(e)) {
+        if (isNetworkError(error)) {
+          // Network issue -> queue and stop
+          await queueGeneral(action, details);
+          return;
+        }
+        // Non-network error: try fallback upsert
         try {
-          await enqueueOfflineAction('general', { action, details });
-          registerSync();
-        } catch (queueError) {
-          // ignore queue errors
+          const { error: upsertError } = await client
+            .from('log-ed-french-interactions-general')
+            .upsert(
+              { action, count: 1, user_agent: navigator.userAgent, updated_at: new Date().toISOString() },
+              { onConflict: 'action', ignoreDuplicates: false }
+            );
+
+          if (upsertError && isNetworkError(upsertError)) {
+            await queueGeneral(action, details);
+            return;
+          }
+        } catch (upsertException) {
+          if (isOffline() || isNetworkError(upsertException)) {
+            await queueGeneral(action, details);
+            return;
+          }
         }
       }
-      throw e;
+    } catch (e) {
+      // Supabase threw an exception
+      if (isOffline() || isNetworkError(e)) {
+        await queueGeneral(action, details);
+        return;
+      }
     }
   }
 
@@ -88,52 +118,48 @@
     };
 
     try {
-      await App.supabase
+      const { error } = await App.supabase
         .rpc('append_user_action', {
           p_user_id: user.id,
           p_action_entry: entry
         });
+
+      if (error) {
+        if (isNetworkError(error)) {
+          await queueUser(action, details);
+          return;
+        }
+        // If not network error, ignore for now
+      }
     } catch (e) {
       if (isOffline() || isNetworkError(e)) {
-        try {
-          await enqueueOfflineAction('user', { action, details });
-          registerSync();
-        } catch (queueError) {
-          // ignore queue errors
-        }
+        await queueUser(action, details);
+        return;
       }
-      throw e;
     }
   }
 
   // Public: log general action
   App.logGeneralAction = function (action, details = {}) {
     if (isOffline()) {
-      enqueueOfflineAction('general', { action, details })
-        .then(() => registerSync())
-        .catch(() => {});
+      queueGeneral(action, details);
       return;
     }
-
     performGeneralAction(action, details).catch(() => {});
   };
 
   // Public: log user action
   App.logUserAction = async function (action, details = {}) {
     if (isOffline()) {
-      try {
-        await enqueueOfflineAction('user', { action, details });
-        registerSync();
-      } catch (e) { /* ignore */ }
+      await queueUser(action, details);
       return;
     }
-
     try {
       await performUserAction(action, details);
     } catch (e) { /* ignore */ }
   };
 
-  // Page visit logging (offline-aware)
+  // Page visit logging
   function logPageVisit() {
     const path = window.location.pathname;
     if (path.endsWith('index.html') || path === '/') {
@@ -149,7 +175,7 @@
     logPageVisit();
   }
 
-  // Expose replay functions for future use
+  // Expose for future
   App._performGeneralAction = performGeneralAction;
   App._performUserAction = performUserAction;
 })();

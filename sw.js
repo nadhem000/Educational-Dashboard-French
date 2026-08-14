@@ -121,7 +121,7 @@ async function syncOfflineActions() {
     swLog('error', `Sync failed: ${error.message}`);
   }
 }
-const CACHE_NAME = 'ed-french-v2.1.1'; // bump version to force cache refresh
+const CACHE_NAME = 'ed-french-v2.1.2'; // bump version to force cache refresh
 const urlsToCache = [
     '/',
     '/index.html',
