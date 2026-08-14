@@ -17,23 +17,43 @@
     return LOG_CLIENT;
   }
 
-  // Helper to check if we are offline
   function isOffline() {
     return !navigator.onLine;
   }
 
-  // Original general action logic (extracted for replay)
+  function isNetworkError(error) {
+    if (!error) return false;
+    const msg = (error.message || '').toLowerCase();
+    return (
+      msg.includes('networkerror') ||
+      msg.includes('failed to fetch') ||
+      msg.includes('load failed') ||
+      msg.includes('network request failed') ||
+      msg.includes('internet disconnected')
+    );
+  }
+
+  function registerSync() {
+    if ('serviceWorker' in navigator && 'SyncManager' in window) {
+      navigator.serviceWorker.ready.then(reg => {
+        reg.sync.register('sync-offline-actions').catch(() => {});
+      }).catch(() => {});
+    }
+  }
+
   async function performGeneralAction(action, details = {}) {
     const client = getClient();
     if (!client) return;
+
     try {
       const { error } = await client
         .rpc('increment_general_action', {
           action_text: action,
           user_agent_text: navigator.userAgent
         });
+
       if (error) {
-        // Fallback: direct upsert
+        // Fallback upsert
         await client
           .from('log-ed-french-interactions-general')
           .upsert(
@@ -42,22 +62,31 @@
           );
       }
     } catch (e) {
-      // Silently ignore; will be retried later if offline queue used
+      // If offline or a network failure occurred, queue for later
+      if (isOffline() || isNetworkError(e)) {
+        try {
+          await enqueueOfflineAction('general', { action, details });
+          registerSync();
+        } catch (queueError) {
+          // ignore queue errors
+        }
+      }
       throw e;
     }
   }
 
-  // Original user action logic (extracted for replay)
   async function performUserAction(action, details = {}) {
     if (!App.supabase) return;
     const { data: { user } } = await App.supabase.auth.getUser();
     if (!user) return;
+
     const entry = {
       action,
       details,
       timestamp: new Date().toISOString(),
       user_agent: navigator.userAgent
     };
+
     try {
       await App.supabase
         .rpc('append_user_action', {
@@ -65,49 +94,46 @@
           p_action_entry: entry
         });
     } catch (e) {
+      if (isOffline() || isNetworkError(e)) {
+        try {
+          await enqueueOfflineAction('user', { action, details });
+          registerSync();
+        } catch (queueError) {
+          // ignore queue errors
+        }
+      }
       throw e;
     }
   }
 
-  // Public: log general action (offline-aware)
+  // Public: log general action
   App.logGeneralAction = function (action, details = {}) {
     if (isOffline()) {
-      // Queue for later
       enqueueOfflineAction('general', { action, details })
-        .then(() => {
-          // Try to register a background sync
-          if ('serviceWorker' in navigator && 'SyncManager' in window) {
-            navigator.serviceWorker.ready.then(reg => {
-              reg.sync.register('sync-offline-actions').catch(() => {});
-            });
-          }
-        })
+        .then(() => registerSync())
         .catch(() => {});
       return;
     }
+
     performGeneralAction(action, details).catch(() => {});
   };
 
-  // Public: log user action (offline-aware)
+  // Public: log user action
   App.logUserAction = async function (action, details = {}) {
     if (isOffline()) {
-      // Queue for later
       try {
         await enqueueOfflineAction('user', { action, details });
-        if ('serviceWorker' in navigator && 'SyncManager' in window) {
-          navigator.serviceWorker.ready.then(reg => {
-            reg.sync.register('sync-offline-actions').catch(() => {});
-          });
-        }
+        registerSync();
       } catch (e) { /* ignore */ }
       return;
     }
+
     try {
       await performUserAction(action, details);
     } catch (e) { /* ignore */ }
   };
 
-  // Page visit logging (also offline-aware)
+  // Page visit logging (offline-aware)
   function logPageVisit() {
     const path = window.location.pathname;
     if (path.endsWith('index.html') || path === '/') {
