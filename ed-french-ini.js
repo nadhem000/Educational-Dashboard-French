@@ -466,30 +466,24 @@
 			}
 		}
 		// Listen to Supabase auth state changes (no logging here – we log explicitly after actions)
-				App.supabase.auth.onAuthStateChange((event, session) => {
+		App.supabase.auth.onAuthStateChange((event, session) => {
 			if (event === 'PASSWORD_RECOVERY') {
+				// Redirect to dedicated reset page, keeping the recovery token in the hash
 				window.location.href = 'reset-password.html' + window.location.hash;
 				return;
 			}
 			if (session) {
 				setLoggedIn(true);
-				saveOfflineSession(session);
 				App.logToDB('actions', { message: 'User signed in: ' + session.user.email });
-			} else {
+				} else {
 				setLoggedIn(false);
-				clearOfflineSession();
 				App.logToDB('actions', { message: 'User signed out' });
+				// No sign_out log here – handled in button handlers
 			}
 		});
 		// Check for an existing session on page load
-				// Check for an existing session on page load
 		App.supabase.auth.getSession().then(({ data: { session } }) => {
 			setLoggedIn(!!session);
-			if (session) {
-				saveOfflineSession(session);
-			} else {
-				clearOfflineSession();
-			}
 		});
 		if (signInBtn && authModal) {
 			signInBtn.addEventListener('click', () => openModal(authModal));
@@ -923,103 +917,6 @@
 			document.head.appendChild(script);
 		});
 	}
-		// ---------- Offline sync replay (page-level fallback) ----------
-	const SYNC_SUPABASE_URL = 'https://bdzvznaoqqfajzuevqyz.supabase.co';
-	const SYNC_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJkenZ6bmFvcXFmYWp6dWV2cXl6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUxODgwNTUsImV4cCI6MjEwMDc2NDA1NX0.mex6LAye9Q-QZPJutCb928Ih1IqFZ-wUbYR02Mg3Ols';
-
-	async function replayOfflineActions() {
-		try {
-			const session = await getOfflineSession();
-			if (!session) return;
-
-			const actions = await getOfflineActions(50);
-			if (!actions.length) return;
-
-			let currentSession = session;
-
-			for (const action of actions) {
-				let requestUrl, requestBody;
-
-				if (action.type === 'general') {
-					requestUrl = `${SYNC_SUPABASE_URL}/rest/v1/rpc/increment_general_action`;
-					requestBody = JSON.stringify({
-						action_text: action.payload.action,
-						user_agent_text: navigator.userAgent
-					});
-				} else if (action.type === 'user') {
-					const user_id = currentSession.user?.id;
-					if (!user_id) continue;
-
-					const entry = {
-						action: action.payload.action,
-						details: action.payload.details || {},
-						timestamp: new Date().toISOString(),
-						user_agent: navigator.userAgent
-					};
-					requestUrl = `${SYNC_SUPABASE_URL}/rest/v1/rpc/append_user_action`;
-					requestBody = JSON.stringify({
-						p_user_id: user_id,
-						p_action_entry: entry
-					});
-				} else {
-					await removeOfflineAction(action.id);
-					continue;
-				}
-
-				const sendRequest = (token) => fetch(requestUrl, {
-					method: 'POST',
-					headers: {
-						'apikey': SYNC_SUPABASE_ANON_KEY,
-						'Authorization': `Bearer ${token}`,
-						'Content-Type': 'application/json'
-					},
-					body: requestBody
-				});
-
-				try {
-					let response = await sendRequest(currentSession.access_token);
-
-					if (response.ok) {
-						await removeOfflineAction(action.id);
-					} else if (response.status === 401) {
-						// Token expired – refresh
-						const refreshResp = await fetch(`${SYNC_SUPABASE_URL}/auth/v1/token?grant_type=refresh_token`, {
-							method: 'POST',
-							headers: {
-								'apikey': SYNC_SUPABASE_ANON_KEY,
-								'Content-Type': 'application/json'
-							},
-							body: JSON.stringify({ refresh_token: currentSession.refresh_token })
-						});
-						if (refreshResp.ok) {
-							const data = await refreshResp.json();
-							currentSession = {
-								access_token: data.access_token,
-								refresh_token: data.refresh_token || currentSession.refresh_token,
-								expires_at: Date.now() + (data.expires_in || 3600) * 1000
-							};
-							await saveOfflineSession(currentSession);
-							response = await sendRequest(currentSession.access_token);
-							if (response.ok) {
-								await removeOfflineAction(action.id);
-							}
-						} else {
-							await clearOfflineSession();
-						}
-					}
-				} catch (error) {
-					// Stop processing on network error
-					break;
-				}
-			}
-		} catch (error) {
-			// ignore
-		}
-	}
-
-	window.addEventListener('online', () => {
-		replayOfflineActions();
-	});
 })();
 // ─── Network interceptor (captures fetch & XHR, broadcasts to monitor) ───
 (function() {

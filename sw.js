@@ -1,127 +1,6 @@
 importScripts('db-utils.js');
-importScripts('offline-sync-utils.js');
 // Service Worker – Educational Dashboard – French
-// ═══════════ OFFLINE SYNC REPLAY ═══════════
-const SUPABASE_URL = 'https://bdzvznaoqqfajzuevqyz.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJkenZ6bmFvcXFmYWp6dWV2cXl6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUxODgwNTUsImV4cCI6MjEwMDc2NDA1NX0.mex6LAye9Q-QZPJutCb928Ih1IqFZ-wUbYR02Mg3Ols';
-
-async function refreshSupabaseSession(session) {
-  try {
-    const response = await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=refresh_token`, {
-      method: 'POST',
-      headers: {
-        'apikey': SUPABASE_ANON_KEY,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        refresh_token: session.refresh_token
-      })
-    });
-    if (!response.ok) return null;
-    const data = await response.json();
-    if (!data.access_token) return null;
-    return {
-      access_token: data.access_token,
-      refresh_token: data.refresh_token || session.refresh_token,
-      expires_at: Date.now() + (data.expires_in || 3600) * 1000
-    };
-  } catch (e) {
-    return null;
-  }
-}
-
-async function syncOfflineActions() {
-  try {
-    const session = await getOfflineSession();
-    if (!session) {
-      swLog('info', 'No offline session – skipping sync');
-      return;
-    }
-
-    const actions = await getOfflineActions(50);
-    if (!actions.length) {
-      swLog('info', 'No offline actions to sync');
-      return;
-    }
-
-    let currentSession = session;
-
-    for (const action of actions) {
-      // Build request body depending on type
-      let requestUrl, requestBody;
-
-      if (action.type === 'general') {
-        requestUrl = `${SUPABASE_URL}/rest/v1/rpc/increment_general_action`;
-        requestBody = JSON.stringify({
-          action_text: action.payload.action,
-          user_agent_text: navigator.userAgent
-        });
-      } else if (action.type === 'user') {
-        const user_id = currentSession.user?.id;
-        if (!user_id) continue;
-
-        const entry = {
-          action: action.payload.action,
-          details: action.payload.details || {},
-          timestamp: new Date().toISOString(),
-          user_agent: navigator.userAgent
-        };
-        requestUrl = `${SUPABASE_URL}/rest/v1/rpc/append_user_action`;
-        requestBody = JSON.stringify({
-          p_user_id: user_id,
-          p_action_entry: entry
-        });
-      } else {
-        await removeOfflineAction(action.id);
-        continue;
-      }
-
-      const sendRequest = (token) => fetch(requestUrl, {
-        method: 'POST',
-        headers: {
-          'apikey': SUPABASE_ANON_KEY,
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        },
-        body: requestBody
-      });
-
-      try {
-        let response = await sendRequest(currentSession.access_token);
-
-        if (response.ok) {
-          await removeOfflineAction(action.id);
-          swLog('info', `Synced offline action: ${action.type}`);
-        } else if (response.status === 401) {
-          // Token expired – try refresh
-          const newSession = await refreshSupabaseSession(currentSession);
-          if (newSession) {
-            await saveOfflineSession(newSession);
-            currentSession = newSession;
-            response = await sendRequest(currentSession.access_token);
-            if (response.ok) {
-              await removeOfflineAction(action.id);
-              swLog('info', `Synced offline action after refresh: ${action.type}`);
-            } else {
-              swLog('error', `Failed to sync action ${action.type} after refresh: ${response.status}`);
-            }
-          } else {
-            swLog('error', 'Token refresh failed – clearing offline session');
-            await clearOfflineSession();
-          }
-        } else {
-          swLog('error', `Failed to sync ${action.type}: ${response.status}`);
-        }
-      } catch (error) {
-        swLog('error', `Sync error for ${action.type}: ${error.message}`);
-        break; // stop processing further actions
-      }
-    }
-  } catch (error) {
-    swLog('error', `Sync failed: ${error.message}`);
-  }
-}
-const CACHE_NAME = 'ed-french-v2.1.2'; // bump version to force cache refresh
+const CACHE_NAME = 'ed-french-v2.1.5'; // bump version to force cache refresh
 const urlsToCache = [
     '/',
     '/index.html',
@@ -381,9 +260,6 @@ self.addEventListener('message', event => {
 self.addEventListener('sync', event => {
     if (event.tag === 'version-check' && syncEnabled) {
         event.waitUntil(checkForNewVersion());
-    }
-    if (event.tag === 'sync-offline-actions') {
-        event.waitUntil(syncOfflineActions());
     }
 });
 // ── Periodic Background Sync ─────────────────

@@ -1,0 +1,342 @@
+/* degree4.css – Styles spécifiques aux leçons 4e année primaire */
+
+/* Utilisation des variables CSS de l'application */
+:root {
+  --lesson-bg: var(--bg, #f9f7f1);
+  --lesson-card: var(--card-bg, #ffffff);
+  --lesson-text: var(--text, #2b2416);
+  --lesson-text-light: var(--text-light, #5c5344);
+  --lesson-heading: var(--heading, #382e1e);
+  --lesson-accent: var(--accent, #c75b2c);
+  --lesson-accent-hover: var(--accent-hover, #a3441d);
+  --lesson-border: var(--border, #e5ddd0);
+  --lesson-shadow: var(--shadow, 0 1px 4px rgba(0,0,0,0.04));
+  --lesson-radius: var(--radius, 12px);
+  --lesson-radius-sm: 8px;
+  --lesson-transition: var(--transition, 0.25s ease);
+  --lesson-button-bg: #f0e8d8;
+  --lesson-button-hover: #e3d5bc;
+  --lesson-audio-bg: #f4efe4;
+  --lesson-audio-progress: #d8c9aa;
+}
+
+body.dark {
+  --lesson-bg: #1e1b17;
+  --lesson-card: #2a2620;
+  --lesson-text: #e8dfd2;
+  --lesson-text-light: #b9aa95;
+  --lesson-heading: #f0e4d2;
+  --lesson-accent: #e07b4a;
+  --lesson-accent-hover: #f08c5c;
+  --lesson-border: #3e3830;
+  --lesson-shadow: 0 1px 4px rgba(0,0,0,0.25);
+  --lesson-button-bg: #3a3329;
+  --lesson-button-hover: #4e4437;
+  --lesson-audio-bg: #26221b;
+  --lesson-audio-progress: #5a4e3c;
+}
+
+/* Conteneur principal de la leçon */
+.degree4-lesson {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 1.8rem 1.4rem 3rem;
+  font-family: var(--font, 'Segoe UI', Georgia, serif);
+  line-height: 1.75;
+  color: var(--lesson-text);
+  background: var(--lesson-bg);
+  transition: background var(--lesson-transition), color var(--lesson-transition);
+}
+
+/* En-tête de leçon */
+.lesson-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.lesson-badge {
+  display: inline-block;
+  background: var(--lesson-accent);
+  color: #fff;
+  padding: 0.25rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.lesson-header h1 {
+  font-size: 2.1rem;
+  color: var(--lesson-heading);
+  margin: 0.6rem 0 0.3rem;
+  line-height: 1.3;
+}
+.lesson-meta {
+  font-size: 0.9rem;
+  color: var(--lesson-text-light);
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+/* Cartes de contenu */
+.lesson-card {
+  background: var(--lesson-card);
+  border: 1px solid var(--lesson-border);
+  border-radius: var(--lesson-radius);
+  padding: 1.6rem 1.8rem;
+  margin: 2rem 0;
+  box-shadow: var(--lesson-shadow);
+}
+.lesson-card h2 {
+  font-size: 1.5rem;
+  color: var(--lesson-heading);
+  margin-bottom: 1rem;
+  border-bottom: 3px solid var(--lesson-accent);
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+
+/* Checklist d'objectifs */
+.goal-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.5rem 0;
+}
+.goal-checkbox {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--lesson-accent);
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+.goal-text.completed {
+  color: #4CAF50;
+  text-decoration: line-through;
+  font-weight: 600;
+}
+body.dark .goal-text.completed {
+  color: #81C784;
+}
+
+/* Barre de progression */
+.progress-container {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--lesson-border);
+}
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--lesson-accent);
+}
+.progress-bar {
+  height: 12px;
+  background: var(--lesson-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.progress-value {
+  height: 100%;
+  background: var(--lesson-accent);
+  width: 0%;
+  transition: width 0.5s ease;
+}
+.progress-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+/* Boutons génériques */
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: opacity 0.2s;
+}
+.btn:hover { opacity: 0.9; }
+.btn-reset {
+  background: var(--lesson-button-bg);
+  color: var(--lesson-text);
+  border: 1px solid var(--lesson-border);
+}
+.btn-save {
+  background: var(--lesson-accent);
+  color: white;
+}
+
+/* Lightbox de confirmation */
+.confirmation-lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+.confirmation-lightbox.visible {
+  display: flex;
+}
+.confirmation-content {
+  background-color: var(--lesson-card);
+  padding: 25px;
+  border-radius: var(--lesson-radius);
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  color: var(--lesson-text);
+}
+.confirmation-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+.confirmation-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.confirmation-cancel {
+  background-color: var(--lesson-button-bg);
+  color: var(--lesson-text-light);
+}
+.confirmation-confirm {
+  background-color: #e74c3c;
+  color: white;
+}
+
+/* Dictée / texte encadré */
+.text-card {
+  background: var(--lesson-card);
+  border: 1px solid var(--lesson-border);
+  border-left: 5px solid var(--lesson-accent);
+  border-radius: 0 var(--lesson-radius) var(--lesson-radius) 0;
+  padding: 1.4rem 1.6rem;
+  margin: 1.8rem 0;
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  box-shadow: var(--lesson-shadow);
+}
+
+/* Auto‑évaluation */
+.self-assessment {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+.self-assessment label {
+  cursor: pointer;
+}
+
+/* Zone de score */
+.score-area {
+  background: var(--lesson-card);
+  border: 1px solid var(--lesson-border);
+  border-radius: var(--lesson-radius);
+  padding: 1.5rem;
+  margin-top: 2rem;
+  box-shadow: var(--lesson-shadow);
+}
+.score-area h2 {
+  color: var(--lesson-heading);
+  margin-bottom: 1rem;
+}
+.score-stats {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.score-stat {
+  background: var(--lesson-audio-bg);
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+.score-actions {
+  margin-top: 1.2rem;
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+.btn-verify {
+  background: var(--lesson-accent);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--lesson-transition);
+  font-size: 0.85rem;
+}
+.btn-verify:hover { background: var(--lesson-accent-hover); }
+
+/* Navigation pied de page */
+.footer-nav {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.footer-nav a {
+  color: var(--lesson-accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+.footer-nav a:hover { text-decoration: underline; }
+
+/* Boutons flottants */
+.degree4-floating-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--lesson-accent);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.degree4-floating-btn.show {
+  display: flex;
+}
+.reading-mode-btn {
+  bottom: 90px;
+}
+
+/* RTL */
+html[dir="rtl"] .degree4-lesson { text-align: right; }
+html[dir="rtl"] .valeur-card li { padding-left: 0; padding-right: 1.4rem; }
+html[dir="rtl"] .valeur-card li::before { left: auto; right: 0; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .degree4-lesson { padding: 1rem 0.8rem 2rem; }
+  .lesson-header h1 { font-size: 1.5rem; }
+}

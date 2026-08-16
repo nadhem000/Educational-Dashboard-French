@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_title">Le projet d'écriture – Unité 1</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="degree4.css">
+    <style>
+        /* Ajustements mineurs si nécessaire */
+        body.reading-mode .degree4-lesson {
+            font-size: 1.15rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- L'en-tête et le pied de page globaux sont injectés par ed-french-ini.js -->
+    <div id="main-content" class="degree4-lesson">
+        <!-- Fil d'Ariane -->
+        <p style="margin-bottom:1.5rem; color:var(--lesson-text-light);">
+            <a href="degree4.html" data-i18n="back_link">← Retour au programme</a>
+            › <strong data-i18n="current_lesson">Le projet d'écriture</strong>
+        </p>
+
+        <!-- En-tête de la leçon -->
+        <div class="lesson-header">
+            <span class="lesson-badge" data-i18n="lesson_badge">📘 Unité 1 · Projet</span>
+            <h1 data-i18n="lesson_title">Le projet d'écriture</h1>
+            <div class="lesson-meta">
+                <span data-i18n="lesson_subtitle">Raconter un événement de la vie quotidienne</span>
+            </div>
+        </div>
+
+        <!-- Section : Mon contrat -->
+        <div class="lesson-card">
+            <h2 data-i18n="contract_title">Mon contrat</h2>
+            <p data-i18n="contract_subtitle">Dans cette unité, je vais apprendre à :</p>
+            <ul class="goals-list" id="goals-list">
+                <li class="goal-item">
+                    <input type="checkbox" class="goal-checkbox" id="goal-1" data-goal="1">
+                    <label for="goal-1" class="goal-text" data-i18n="goal1">réciter un poème</label>
+                </li>
+                <li class="goal-item">
+                    <input type="checkbox" class="goal-checkbox" id="goal-2" data-goal="2">
+                    <label for="goal-2" class="goal-text" data-i18n="goal2">lire et écrire les graphies : z - k - g</label>
+                </li>
+                <li class="goal-item">
+                    <input type="checkbox" class="goal-checkbox" id="goal-3" data-goal="3">
+                    <label for="goal-3" class="goal-text" data-i18n="goal3">écrire les majuscules : A-M-N</label>
+                </li>
+                <li class="goal-item">
+                    <input type="checkbox" class="goal-checkbox" id="goal-4" data-goal="4">
+                    <label for="goal-4" class="goal-text" data-i18n="goal4">lire des textes : La nouvelle élève. Les deux amies.</label>
+                </li>
+                <li class="goal-item">
+                    <input type="checkbox" class="goal-checkbox" id="goal-5" data-goal="5">
+                    <label for="goal-5" class="goal-text" data-i18n="goal5">construire une phrase complète</label>
+                </li>
+                <li class="goal-item">
+                    <input type="checkbox" class="goal-checkbox" id="goal-6" data-goal="6">
+                    <label for="goal-6" class="goal-text" data-i18n="goal6">conjuguer le verbe « être » au présent</label>
+                </li>
+                <li class="goal-item">
+                    <input type="checkbox" class="goal-checkbox" id="goal-7" data-goal="7">
+                    <label for="goal-7" class="goal-text" data-i18n="goal7">identifier les personnages dans une histoire</label>
+                </li>
+                <li class="goal-item">
+                    <input type="checkbox" class="goal-checkbox" id="goal-8" data-goal="8">
+                    <label for="goal-8" class="goal-text" data-i18n="goal8">organiser les événements d'un récit</label>
+                </li>
+                <li class="goal-item">
+                    <input type="checkbox" class="goal-checkbox" id="goal-9" data-goal="9">
+                    <label for="goal-9" class="goal-text" data-i18n="goal9">lire un document pour m'informer sur les droits et les devoirs de l'enfant</label>
+                </li>
+                <li class="goal-item">
+                    <input type="checkbox" class="goal-checkbox" id="goal-10" data-goal="10">
+                    <label for="goal-10" class="goal-text" data-i18n="goal10">fabriquer « La ronde des enfants »</label>
+                </li>
+                <li class="goal-item">
+                    <input type="checkbox" class="goal-checkbox" id="goal-11" data-goal="11">
+                    <label for="goal-11" class="goal-text" data-i18n="goal11">jouer avec les mots contenant les graphies étudiées</label>
+                </li>
+            </ul>
+
+            <div class="progress-container">
+                <div class="progress-header">
+                    <span data-i18n="progress_label">Progression :</span>
+                    <span id="progress-percentage">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-value" id="progress-bar"></div>
+                </div>
+                <div class="progress-actions">
+                    <button class="btn btn-reset" id="reset-progress" data-i18n="reset_button">Réinitialiser</button>
+                    <button class="btn btn-save" id="save-progress" data-i18n="save_button">Sauvegarder la progression</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section : Dictée -->
+        <div class="lesson-card">
+            <h2 data-i18n="dictation_title">Mon auto-dictée</h2>
+            <div class="text-card">
+                <p data-i18n="dictation_sentence">Amélie est en classe. Elle dessine des cerises et des fraises.</p>
+            </div>
+
+            <!-- Auto-évaluation de la dictée -->
+            <div class="self-assessment">
+                <span data-i18n="self_assessment_question">Auto-évaluez votre dictée :</span>
+                <label><input type="radio" name="self_dictation" value="correct"> <span data-i18n="self_correct">Correct</span></label>
+                <label><input type="radio" name="self_dictation" value="partial"> <span data-i18n="self_partial">Partiellement correct</span></label>
+                <label><input type="radio" name="self_dictation" value="incorrect"> <span data-i18n="self_incorrect">Incorrect</span></label>
+            </div>
+
+            <!-- Zone de score -->
+            <div class="score-area">
+                <h2 data-i18n="score_title">Votre auto-évaluation</h2>
+                <div class="score-stats">
+                    <div class="score-stat"><span data-i18n="score_correct">Correct :</span> <span id="score-correct">0</span></div>
+                    <div class="score-stat"><span data-i18n="score_partial">Partiel :</span> <span id="score-partial">0</span></div>
+                    <div class="score-stat"><span data-i18n="score_incorrect">Incorrect :</span> <span id="score-incorrect">0</span></div>
+                    <div class="score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="score-unanswered">1</span></div>
+                </div>
+                <div class="score-actions">
+                    <button id="saveResultsBtn" class="btn-verify" data-i18n="save_results">💾 Enregistrer mes résultats</button>
+                    <button id="printPdfBtn" class="btn-verify" style="background:#5c5344;" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation pied de page -->
+        <div class="footer-nav">
+            <a href="degree4.html" data-i18n="footer_back">← Retour au programme</a>
+            <a href="unite1-lecon2.html" data-i18n="footer_next">Leçon suivante →</a>
+        </div>
+    </div>
+
+    <!-- Sons -->
+    <audio id="check-sound" preload="auto">
+        <source src="assets/sounds/check-sound.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="applause-sound" preload="auto">
+        <source src="assets/sounds/applause.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Lightbox de confirmation -->
+    <div id="reset-confirmation" class="confirmation-lightbox">
+        <div class="confirmation-content">
+            <h3 data-i18n="confirmResetTitle">Confirmer la réinitialisation</h3>
+            <p data-i18n="confirmResetMessage">Voulez-vous vraiment réinitialiser votre progression ?</p>
+            <div class="confirmation-buttons">
+                <button class="confirmation-btn confirmation-cancel" data-i18n="cancel">Annuler</button>
+                <button class="confirmation-btn confirmation-confirm" data-i18n="confirmReset">Oui, réinitialiser</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Boutons flottants -->
+    <button id="readingModeToggle" class="degree4-floating-btn reading-mode-btn" aria-label="Mode lecture">📖</button>
+    <button id="backToTop" class="degree4-floating-btn" aria-label="Retour en haut">⬆</button>
+
+    <!-- Scripts -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script>
+        // ── Traductions pour cette leçon ──
+        App.addI18nTranslations({
+            fr: {
+                lesson_title: "Le projet d'écriture",
+                lesson_short_title: "Le projet d'écriture",
+                lesson_badge: "📘 Unité 1 · Projet",
+                lesson_subtitle: "Raconter un événement de la vie quotidienne",
+                back_link: "← Retour au programme",
+                current_lesson: "Le projet d'écriture",
+                module_name: "Unité 1",
+                contract_title: "Mon contrat",
+                contract_subtitle: "Dans cette unité, je vais apprendre à :",
+                goal1: "réciter un poème",
+                goal2: "lire et écrire les graphies : z - k - g",
+                goal3: "écrire les majuscules : A-M-N",
+                goal4: "lire des textes : La nouvelle élève. Les deux amies.",
+                goal5: "construire une phrase complète",
+                goal6: "conjuguer le verbe « être » au présent",
+                goal7: "identifier les personnages dans une histoire",
+                goal8: "organiser les événements d'un récit",
+                goal9: "lire un document pour m'informer sur les droits et les devoirs de l'enfant",
+                goal10: "fabriquer « La ronde des enfants »",
+                goal11: "jouer avec les mots contenant les graphies étudiées",
+                progress_label: "Progression :",
+                reset_button: "Réinitialiser",
+                save_button: "Sauvegarder la progression",
+                dictation_title: "Mon auto-dictée",
+                dictation_sentence: "Amélie est en classe. Elle dessine des cerises et des fraises.",
+                self_assessment_question: "Auto-évaluez votre dictée :",
+                self_correct: "Correct",
+                self_partial: "Partiellement correct",
+                self_incorrect: "Incorrect",
+                score_title: "Votre auto-évaluation",
+                score_correct: "Correct :",
+                score_partial: "Partiel :",
+                score_incorrect: "Incorrect :",
+                score_unanswered: "Sans réponse :",
+                save_results: "💾 Enregistrer mes résultats",
+                save_success: "Résultats enregistrés !",
+                save_error: "Erreur lors de l'enregistrement.",
+                print_pdf: "🖨️ Imprimer / PDF",
+                footer_back: "← Retour au programme",
+                footer_next: "Leçon suivante →",
+                confirmResetTitle: "Confirmer la réinitialisation",
+                confirmResetMessage: "Voulez-vous vraiment réinitialiser votre progression ?",
+                cancel: "Annuler",
+                confirmReset: "Oui, réinitialiser",
+                readingModeOn: "Mode lecture activé",
+                readingModeOff: "Mode lecture désactivé",
+                progressSaved: "Progression enregistrée !",
+                progressReset: "Progression réinitialisée.",
+                allGoalsCompleted: "Félicitations ! Tous les objectifs sont complétés.",
+                toast_signin_required: "Connectez-vous pour enregistrer vos résultats."
+            },
+            en: {
+                lesson_title: "The Writing Project",
+                lesson_short_title: "The Writing Project",
+                lesson_badge: "📘 Unit 1 · Project",
+                lesson_subtitle: "Narrating an Event from Daily Life",
+                back_link: "← Back to program",
+                current_lesson: "The Writing Project",
+                module_name: "Unit 1",
+                contract_title: "My Charter",
+                contract_subtitle: "In this unit, I will learn how to:",
+                goal1: "Recite a poem",
+                goal2: "Read and write the spellings: z - k - g",
+                goal3: "Write capital letters: A-M-N",
+                goal4: "Read texts: The New Student. The Two Friends.",
+                goal5: "Construct a complete sentence",
+                goal6: "Conjugate the verb 'to be' in the present tense",
+                goal7: "Identify characters in a story",
+                goal8: "Organize events in a narrative",
+                goal9: "Read a document to learn about children's rights and duties",
+                goal10: "Create 'The Children's Circle'",
+                goal11: "Play with words containing the studied spellings",
+                progress_label: "Progress:",
+                reset_button: "Reset",
+                save_button: "Save Progress",
+                dictation_title: "Self-Dictation",
+                dictation_sentence: "Amélie est en classe. Elle dessine des cerises et des fraises.",
+                self_assessment_question: "Self-assess your dictation:",
+                self_correct: "Correct",
+                self_partial: "Partially correct",
+                self_incorrect: "Incorrect",
+                score_title: "Your self-assessment",
+                score_correct: "Correct:",
+                score_partial: "Partial:",
+                score_incorrect: "Incorrect:",
+                score_unanswered: "Unanswered:",
+                save_results: "💾 Save my results",
+                save_success: "Results saved!",
+                save_error: "Error saving results.",
+                print_pdf: "🖨️ Print / PDF",
+                footer_back: "← Back to program",
+                footer_next: "Next lesson →",
+                confirmResetTitle: "Confirm Reset",
+                confirmResetMessage: "Are you sure you want to reset your progress?",
+                cancel: "Cancel",
+                confirmReset: "Yes, reset",
+                readingModeOn: "Reading mode enabled",
+                readingModeOff: "Reading mode disabled",
+                progressSaved: "Progress saved!",
+                progressReset: "Progress reset.",
+                allGoalsCompleted: "Congratulations! All goals completed.",
+                toast_signin_required: "Sign in to save your results."
+            },
+            ar: {
+                lesson_title: "المشروع الكتابي",
+                lesson_short_title: "المشروع الكتابي",
+                lesson_badge: "📘 الوحدة الأولى · مشروع",
+                lesson_subtitle: "رواية حدث من الحياة اليومية",
+                back_link: "← العودة إلى البرنامج",
+                current_lesson: "المشروع الكتابي",
+                module_name: "الوحدة الأولى",
+                contract_title: "ميثاقي",
+                contract_subtitle: "في هذه الوحدة، سأتعلم كيفية:",
+                goal1: "أن أُنشِد قصيدة",
+                goal2: "أن أقرأ وأكتب الرسم الكتابي: z - k - g",
+                goal3: "أن أكتب الحروف الكبيرة: A-M-N",
+                goal4: "أن أقرأ نصوصًا: التلميذة الجديدة. الصديقتان.",
+                goal5: "أن أبني جملةً كاملة",
+                goal6: "أن أصرف فعل «être» في الزمن الحاضر",
+                goal7: "أن أحدد الشخصيات في قصة",
+                goal8: "أن أنظم الأحداث في سرد",
+                goal9: "أن أقرأ وثيقة لأتعرف على حقوق وواجبات الطفل",
+                goal10: "أن أصنع «دائرة الأطفال»",
+                goal11: "أن ألعب بالكلمات التي تحتوي على الرسم الكتابي المدروس",
+                progress_label: "التقدم:",
+                reset_button: "إعادة التعيين",
+                save_button: "حفظ التقدم",
+                dictation_title: "الإملاء الذاتي",
+                dictation_sentence: "Amélie est en classe. Elle dessine des cerises et des fraises.",
+                self_assessment_question: "قيّم إملاءك الذاتي:",
+                self_correct: "صحيح",
+                self_partial: "صحيح جزئيًا",
+                self_incorrect: "خطأ",
+                score_title: "تقييمك الذاتي",
+                score_correct: "صحيح:",
+                score_partial: "جزئي:",
+                score_incorrect: "خطأ:",
+                score_unanswered: "بدون إجابة:",
+                save_results: "💾 حفظ نتائجي",
+                save_success: "تم حفظ النتائج!",
+                save_error: "خطأ في الحفظ.",
+                print_pdf: "🖨️ طباعة / PDF",
+                footer_back: "← العودة إلى البرنامج",
+                footer_next: "الدرس الموالي ←",
+                confirmResetTitle: "تأكيد إعادة التعيين",
+                confirmResetMessage: "هل أنت متأكد من رغبتك في إعادة تعيين تقدمك؟",
+                cancel: "إلغاء",
+                confirmReset: "نعم، إعادة التعيين",
+                readingModeOn: "تم تفعيل وضع القراءة",
+                readingModeOff: "تم إلغاء وضع القراءة",
+                progressSaved: "تم حفظ التقدم!",
+                progressReset: "تمت إعادة التعيين.",
+                allGoalsCompleted: "تهانينا! لقد أكملت جميع الأهداف.",
+                toast_signin_required: "سجّل الدخول لحفظ نتائجك."
+            }
+        });
+
+        // Activation du mode bilingue et RTL
+        (function() {
+            const container = document.getElementById('main-content');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+            App.onLangChange(function(lang) {
+                container.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            });
+            container.dir = (localStorage.getItem('lang') || 'fr') === 'ar' ? 'rtl' : 'ltr';
+        })();
+    </script>
+    <script src="ed-french-ini.js"></script>
+    <script src="degree4.js"></script>
+</body>
+</html>
