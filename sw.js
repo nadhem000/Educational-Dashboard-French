@@ -1,6 +1,6 @@
 importScripts('db-utils.js');
 // Service Worker – Educational Dashboard – French
-const CACHE_NAME = 'ed-french-v2.1.5'; // bump version to force cache refresh
+const CACHE_NAME = 'ed-french-v2.1.6'; // bump version to force cache refresh
 const urlsToCache = [
     '/',
     '/index.html',
