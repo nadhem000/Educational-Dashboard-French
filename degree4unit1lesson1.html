@@ -6,17 +6,206 @@
     <title data-i18n="lesson_title">Le projet d'écriture – Unité 1</title>
     <link rel="manifest" href="/manifest.json">
     <link rel="stylesheet" href="shared.css">
-    <link rel="stylesheet" href="degree4.css">
     <style>
-        /* Ajustements mineurs si nécessaire */
-        body.reading-mode .degree4-lesson {
-            font-size: 1.15rem;
+        /* ===== Lesson-specific styles (same pattern as other lessons) ===== */
+        :root {
+            --lesson-bg: #f9f7f1;
+            --lesson-card: #ffffff;
+            --lesson-text: #2b2416;
+            --lesson-text-light: #5c5344;
+            --lesson-heading: #382e1e;
+            --lesson-accent: #c75b2c;
+            --lesson-accent-hover: #a3441d;
+            --lesson-border: #e5ddd0;
+            --lesson-shadow: 0 1px 4px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.05);
+            --lesson-shadow-hover: 0 8px 22px rgba(0,0,0,0.08);
+            --lesson-radius: 12px;
+            --lesson-radius-sm: 8px;
+            --lesson-transition: 0.25s ease;
+            --lesson-font: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
+            --lesson-button-bg: #f0e8d8;
+            --lesson-button-hover: #e3d5bc;
+            --lesson-input-bg: #fcfaf6;
+        }
+        body.dark {
+            --lesson-bg: #1e1b17;
+            --lesson-card: #2a2620;
+            --lesson-text: #e8dfd2;
+            --lesson-text-light: #b9aa95;
+            --lesson-heading: #f0e4d2;
+            --lesson-accent: #e07b4a;
+            --lesson-accent-hover: #f08c5c;
+            --lesson-border: #3e3830;
+            --lesson-shadow: 0 1px 4px rgba(0,0,0,0.25);
+            --lesson-shadow-hover: 0 8px 22px rgba(0,0,0,0.35);
+            --lesson-button-bg: #3a3329;
+            --lesson-button-hover: #4e4437;
+            --lesson-input-bg: #333028;
+        }
+        body {
+            font-family: var(--lesson-font);
+            background: var(--lesson-bg);
+            color: var(--lesson-text);
+            line-height: 1.75;
+            transition: background var(--lesson-transition), color var(--lesson-transition);
+        }
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 1.8rem 1.4rem 3rem;
+        }
+        .lesson-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .badge {
+            display: inline-block;
+            background: var(--lesson-accent);
+            color: #fff;
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+        .lesson-header h1 {
+            font-size: 2.1rem;
+            color: var(--lesson-heading);
+            margin: 0.6rem 0 0.3rem;
+            line-height: 1.3;
+        }
+        .lesson-meta {
+            font-size: 0.9rem;
+            color: var(--lesson-text-light);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .lesson-card {
+            background: var(--lesson-card);
+            border: 1px solid var(--lesson-border);
+            border-radius: var(--lesson-radius);
+            padding: 1.5rem 1.8rem;
+            margin: 1.8rem 0;
+            box-shadow: var(--lesson-shadow);
+        }
+        .lesson-card h2 {
+            font-size: 1.5rem;
+            color: var(--lesson-heading);
+            margin-bottom: 1rem;
+            border-bottom: 3px solid var(--lesson-accent);
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+        .goals-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        .goal-item {
+            padding: 0.4rem 0 0.4rem 1.5rem;
+            position: relative;
+            border-bottom: 1px dashed var(--lesson-border);
+        }
+        .goal-item::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--lesson-accent);
+            font-size: 0.6rem;
+            top: 0.55rem;
+        }
+        .text-card {
+            background: var(--lesson-card);
+            border: 1px solid var(--lesson-border);
+            border-left: 5px solid var(--lesson-accent);
+            border-radius: 0 var(--lesson-radius) var(--lesson-radius) 0;
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            font-style: italic;
+            font-size: 1.05rem;
+            line-height: 1.9;
+        }
+        .self-assessment {
+            margin: 1rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+        }
+        .self-assessment label {
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .score-area {
+            background: var(--lesson-card);
+            border: 1px solid var(--lesson-border);
+            border-radius: var(--lesson-radius);
+            padding: 1.5rem;
+            margin-top: 1rem;
+            box-shadow: var(--lesson-shadow);
+        }
+        .score-stats {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .score-stat {
+            background: var(--lesson-button-bg);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        .score-actions {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        .btn-verify {
+            background: var(--lesson-accent);
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background var(--lesson-transition);
+            font-size: 0.85rem;
+        }
+        .btn-verify:hover {
+            background: var(--lesson-accent-hover);
+        }
+        .footer-nav {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .footer-nav a {
+            color: var(--lesson-accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .footer-nav a:hover {
+            text-decoration: underline;
+        }
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container { padding: 1rem 0.8rem 2rem; }
+            .lesson-header h1 { font-size: 1.5rem; }
+            .lesson-card { padding: 1rem 1.2rem; }
+            .score-stats { gap: 0.8rem; }
         }
     </style>
 </head>
 <body>
-    <!-- L'en-tête et le pied de page globaux sont injectés par ed-french-ini.js -->
-    <div id="main-content" class="degree4-lesson">
+    <div id="main-content" class="container">
         <!-- Fil d'Ariane -->
         <p style="margin-bottom:1.5rem; color:var(--lesson-text-light);">
             <a href="degree4.html" data-i18n="back_link">← Retour au programme</a>
@@ -25,77 +214,30 @@
 
         <!-- En-tête de la leçon -->
         <div class="lesson-header">
-            <span class="lesson-badge" data-i18n="lesson_badge">📘 Unité 1 · Projet</span>
+            <span class="badge" data-i18n="lesson_badge">📘 Unité 1 · Projet</span>
             <h1 data-i18n="lesson_title">Le projet d'écriture</h1>
             <div class="lesson-meta">
                 <span data-i18n="lesson_subtitle">Raconter un événement de la vie quotidienne</span>
             </div>
         </div>
 
-        <!-- Section : Mon contrat -->
+        <!-- Section : Mon contrat (objectifs) -->
         <div class="lesson-card">
             <h2 data-i18n="contract_title">Mon contrat</h2>
             <p data-i18n="contract_subtitle">Dans cette unité, je vais apprendre à :</p>
-            <ul class="goals-list" id="goals-list">
-                <li class="goal-item">
-                    <input type="checkbox" class="goal-checkbox" id="goal-1" data-goal="1">
-                    <label for="goal-1" class="goal-text" data-i18n="goal1">réciter un poème</label>
-                </li>
-                <li class="goal-item">
-                    <input type="checkbox" class="goal-checkbox" id="goal-2" data-goal="2">
-                    <label for="goal-2" class="goal-text" data-i18n="goal2">lire et écrire les graphies : z - k - g</label>
-                </li>
-                <li class="goal-item">
-                    <input type="checkbox" class="goal-checkbox" id="goal-3" data-goal="3">
-                    <label for="goal-3" class="goal-text" data-i18n="goal3">écrire les majuscules : A-M-N</label>
-                </li>
-                <li class="goal-item">
-                    <input type="checkbox" class="goal-checkbox" id="goal-4" data-goal="4">
-                    <label for="goal-4" class="goal-text" data-i18n="goal4">lire des textes : La nouvelle élève. Les deux amies.</label>
-                </li>
-                <li class="goal-item">
-                    <input type="checkbox" class="goal-checkbox" id="goal-5" data-goal="5">
-                    <label for="goal-5" class="goal-text" data-i18n="goal5">construire une phrase complète</label>
-                </li>
-                <li class="goal-item">
-                    <input type="checkbox" class="goal-checkbox" id="goal-6" data-goal="6">
-                    <label for="goal-6" class="goal-text" data-i18n="goal6">conjuguer le verbe « être » au présent</label>
-                </li>
-                <li class="goal-item">
-                    <input type="checkbox" class="goal-checkbox" id="goal-7" data-goal="7">
-                    <label for="goal-7" class="goal-text" data-i18n="goal7">identifier les personnages dans une histoire</label>
-                </li>
-                <li class="goal-item">
-                    <input type="checkbox" class="goal-checkbox" id="goal-8" data-goal="8">
-                    <label for="goal-8" class="goal-text" data-i18n="goal8">organiser les événements d'un récit</label>
-                </li>
-                <li class="goal-item">
-                    <input type="checkbox" class="goal-checkbox" id="goal-9" data-goal="9">
-                    <label for="goal-9" class="goal-text" data-i18n="goal9">lire un document pour m'informer sur les droits et les devoirs de l'enfant</label>
-                </li>
-                <li class="goal-item">
-                    <input type="checkbox" class="goal-checkbox" id="goal-10" data-goal="10">
-                    <label for="goal-10" class="goal-text" data-i18n="goal10">fabriquer « La ronde des enfants »</label>
-                </li>
-                <li class="goal-item">
-                    <input type="checkbox" class="goal-checkbox" id="goal-11" data-goal="11">
-                    <label for="goal-11" class="goal-text" data-i18n="goal11">jouer avec les mots contenant les graphies étudiées</label>
-                </li>
+            <ul class="goals-list">
+                <li class="goal-item" data-i18n="goal1">réciter un poème</li>
+                <li class="goal-item" data-i18n="goal2">lire et écrire les graphies : z - k - g</li>
+                <li class="goal-item" data-i18n="goal3">écrire les majuscules : A-M-N</li>
+                <li class="goal-item" data-i18n="goal4">lire des textes : La nouvelle élève. Les deux amies.</li>
+                <li class="goal-item" data-i18n="goal5">construire une phrase complète</li>
+                <li class="goal-item" data-i18n="goal6">conjuguer le verbe « être » au présent</li>
+                <li class="goal-item" data-i18n="goal7">identifier les personnages dans une histoire</li>
+                <li class="goal-item" data-i18n="goal8">organiser les événements d'un récit</li>
+                <li class="goal-item" data-i18n="goal9">lire un document pour m'informer sur les droits et les devoirs de l'enfant</li>
+                <li class="goal-item" data-i18n="goal10">fabriquer « La ronde des enfants »</li>
+                <li class="goal-item" data-i18n="goal11">jouer avec les mots contenant les graphies étudiées</li>
             </ul>
-
-            <div class="progress-container">
-                <div class="progress-header">
-                    <span data-i18n="progress_label">Progression :</span>
-                    <span id="progress-percentage">0%</span>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-value" id="progress-bar"></div>
-                </div>
-                <div class="progress-actions">
-                    <button class="btn btn-reset" id="reset-progress" data-i18n="reset_button">Réinitialiser</button>
-                    <button class="btn btn-save" id="save-progress" data-i18n="save_button">Sauvegarder la progression</button>
-                </div>
-            </div>
         </div>
 
         <!-- Section : Dictée -->
@@ -132,42 +274,20 @@
         <!-- Navigation pied de page -->
         <div class="footer-nav">
             <a href="degree4.html" data-i18n="footer_back">← Retour au programme</a>
-            <a href="unite1-lecon2.html" data-i18n="footer_next">Leçon suivante →</a>
+            <a href="degree4unit1lesson2.html" data-i18n="footer_next">Leçon suivante →</a>
         </div>
     </div>
-
-    <!-- Sons -->
-    <audio id="check-sound" preload="auto">
-        <source src="assets/sounds/check-sound.mp3" type="audio/mpeg">
-    </audio>
-    <audio id="applause-sound" preload="auto">
-        <source src="assets/sounds/applause.mp3" type="audio/mpeg">
-    </audio>
-
-    <!-- Lightbox de confirmation -->
-    <div id="reset-confirmation" class="confirmation-lightbox">
-        <div class="confirmation-content">
-            <h3 data-i18n="confirmResetTitle">Confirmer la réinitialisation</h3>
-            <p data-i18n="confirmResetMessage">Voulez-vous vraiment réinitialiser votre progression ?</p>
-            <div class="confirmation-buttons">
-                <button class="confirmation-btn confirmation-cancel" data-i18n="cancel">Annuler</button>
-                <button class="confirmation-btn confirmation-confirm" data-i18n="confirmReset">Oui, réinitialiser</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Boutons flottants -->
-    <button id="readingModeToggle" class="degree4-floating-btn reading-mode-btn" aria-label="Mode lecture">📖</button>
-    <button id="backToTop" class="degree4-floating-btn" aria-label="Retour en haut">⬆</button>
 
     <!-- Scripts -->
     <script src="i18n.js"></script>
     <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="supabase-client.js"></script>
     <script src="logging.js"></script>
+
+    <!-- Inline translations -->
     <script>
-        // ── Traductions pour cette leçon ──
         App.addI18nTranslations({
             fr: {
                 lesson_title: "Le projet d'écriture",
@@ -190,9 +310,6 @@
                 goal9: "lire un document pour m'informer sur les droits et les devoirs de l'enfant",
                 goal10: "fabriquer « La ronde des enfants »",
                 goal11: "jouer avec les mots contenant les graphies étudiées",
-                progress_label: "Progression :",
-                reset_button: "Réinitialiser",
-                save_button: "Sauvegarder la progression",
                 dictation_title: "Mon auto-dictée",
                 dictation_sentence: "Amélie est en classe. Elle dessine des cerises et des fraises.",
                 self_assessment_question: "Auto-évaluez votre dictée :",
@@ -210,16 +327,9 @@
                 print_pdf: "🖨️ Imprimer / PDF",
                 footer_back: "← Retour au programme",
                 footer_next: "Leçon suivante →",
-                confirmResetTitle: "Confirmer la réinitialisation",
-                confirmResetMessage: "Voulez-vous vraiment réinitialiser votre progression ?",
-                cancel: "Annuler",
-                confirmReset: "Oui, réinitialiser",
-                readingModeOn: "Mode lecture activé",
-                readingModeOff: "Mode lecture désactivé",
-                progressSaved: "Progression enregistrée !",
-                progressReset: "Progression réinitialisée.",
-                allGoalsCompleted: "Félicitations ! Tous les objectifs sont complétés.",
-                toast_signin_required: "Connectez-vous pour enregistrer vos résultats."
+                toast_signin_required: "Connectez-vous pour enregistrer vos résultats.",
+                ach_year_degree4: "4ème Année Primaire",
+                ach_module_unit1: "Unité 1"
             },
             en: {
                 lesson_title: "The Writing Project",
@@ -242,9 +352,6 @@
                 goal9: "Read a document to learn about children's rights and duties",
                 goal10: "Create 'The Children's Circle'",
                 goal11: "Play with words containing the studied spellings",
-                progress_label: "Progress:",
-                reset_button: "Reset",
-                save_button: "Save Progress",
                 dictation_title: "Self-Dictation",
                 dictation_sentence: "Amélie est en classe. Elle dessine des cerises et des fraises.",
                 self_assessment_question: "Self-assess your dictation:",
@@ -262,16 +369,9 @@
                 print_pdf: "🖨️ Print / PDF",
                 footer_back: "← Back to program",
                 footer_next: "Next lesson →",
-                confirmResetTitle: "Confirm Reset",
-                confirmResetMessage: "Are you sure you want to reset your progress?",
-                cancel: "Cancel",
-                confirmReset: "Yes, reset",
-                readingModeOn: "Reading mode enabled",
-                readingModeOff: "Reading mode disabled",
-                progressSaved: "Progress saved!",
-                progressReset: "Progress reset.",
-                allGoalsCompleted: "Congratulations! All goals completed.",
-                toast_signin_required: "Sign in to save your results."
+                toast_signin_required: "Sign in to save your results.",
+                ach_year_degree4: "4th Grade Primary",
+                ach_module_unit1: "Unit 1"
             },
             ar: {
                 lesson_title: "المشروع الكتابي",
@@ -294,9 +394,6 @@
                 goal9: "أن أقرأ وثيقة لأتعرف على حقوق وواجبات الطفل",
                 goal10: "أن أصنع «دائرة الأطفال»",
                 goal11: "أن ألعب بالكلمات التي تحتوي على الرسم الكتابي المدروس",
-                progress_label: "التقدم:",
-                reset_button: "إعادة التعيين",
-                save_button: "حفظ التقدم",
                 dictation_title: "الإملاء الذاتي",
                 dictation_sentence: "Amélie est en classe. Elle dessine des cerises et des fraises.",
                 self_assessment_question: "قيّم إملاءك الذاتي:",
@@ -314,16 +411,9 @@
                 print_pdf: "🖨️ طباعة / PDF",
                 footer_back: "← العودة إلى البرنامج",
                 footer_next: "الدرس الموالي ←",
-                confirmResetTitle: "تأكيد إعادة التعيين",
-                confirmResetMessage: "هل أنت متأكد من رغبتك في إعادة تعيين تقدمك؟",
-                cancel: "إلغاء",
-                confirmReset: "نعم، إعادة التعيين",
-                readingModeOn: "تم تفعيل وضع القراءة",
-                readingModeOff: "تم إلغاء وضع القراءة",
-                progressSaved: "تم حفظ التقدم!",
-                progressReset: "تمت إعادة التعيين.",
-                allGoalsCompleted: "تهانينا! لقد أكملت جميع الأهداف.",
-                toast_signin_required: "سجّل الدخول لحفظ نتائجك."
+                toast_signin_required: "سجّل الدخول لحفظ نتائجك.",
+                ach_year_degree4: "السنة الرابعة ابتدائي",
+                ach_module_unit1: "الوحدة الأولى"
             }
         });
 
@@ -339,7 +429,247 @@
             container.dir = (localStorage.getItem('lang') || 'fr') === 'ar' ? 'rtl' : 'ltr';
         })();
     </script>
+
     <script src="ed-french-ini.js"></script>
-    <script src="degree4.js"></script>
+
+    <script>
+        // ── Lesson-specific logic (standard pattern) ──
+        (function() {
+            // ========== Dictation self-assessment score ==========
+            const radioDictation = document.querySelectorAll('input[name="self_dictation"]');
+            const scoreCorrect = document.getElementById('score-correct');
+            const scorePartial = document.getElementById('score-partial');
+            const scoreIncorrect = document.getElementById('score-incorrect');
+            const scoreUnanswered = document.getElementById('score-unanswered');
+
+            function updateScore() {
+                const selected = document.querySelector('input[name="self_dictation"]:checked');
+                let correct = 0, partial = 0, incorrect = 0, unanswered = 0;
+                if (selected) {
+                    if (selected.value === 'correct') correct = 1;
+                    else if (selected.value === 'partial') partial = 1;
+                    else if (selected.value === 'incorrect') incorrect = 1;
+                } else {
+                    unanswered = 1;
+                }
+                scoreCorrect.textContent = correct;
+                scorePartial.textContent = partial;
+                scoreIncorrect.textContent = incorrect;
+                scoreUnanswered.textContent = unanswered;
+            }
+
+            radioDictation.forEach(radio => radio.addEventListener('change', updateScore));
+
+            // ========== Save results to Supabase ==========
+            document.getElementById('saveResultsBtn').addEventListener('click', async () => {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                let correct = 0, partial = 0, incorrect = 0, unanswered = 0;
+                const selected = document.querySelector('input[name="self_dictation"]:checked');
+                if (selected) {
+                    if (selected.value === 'correct') correct = 1;
+                    else if (selected.value === 'partial') partial = 1;
+                    else if (selected.value === 'incorrect') incorrect = 1;
+                } else {
+                    unanswered = 1;
+                }
+                const lessonId = 'degree4unit1lesson1';
+                const lang = localStorage.getItem('lang') || 'fr';
+                const entry = {
+                    lesson_id: lessonId,
+                    lesson_title: {
+                        fr: App.getTranslation('lesson_short_title', 'fr'),
+                        en: App.getTranslation('lesson_short_title', 'en'),
+                        ar: App.getTranslation('lesson_short_title', 'ar')
+                    },
+                    year: {
+                        fr: App.getTranslation('ach_year_degree4', 'fr'),
+                        en: App.getTranslation('ach_year_degree4', 'en'),
+                        ar: App.getTranslation('ach_year_degree4', 'ar')
+                    },
+                    module: {
+                        fr: App.getTranslation('ach_module_unit1', 'fr'),
+                        en: App.getTranslation('ach_module_unit1', 'en'),
+                        ar: App.getTranslation('ach_module_unit1', 'ar')
+                    },
+                    correct: correct,
+                    incorrect: incorrect,
+                    partial: partial,
+                    unanswered: unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles')
+                    .select('achivement')
+                    .eq('id', user.id)
+                    .single();
+                if (fetchError) {
+                    console.error('Could not fetch profile:', fetchError);
+                    App.showToast('save_error', 'error');
+                    return;
+                }
+                let achivement = profileData?.achivement || {};
+                if (!achivement["ED-French"]) {
+                    achivement["ED-French"] = [];
+                }
+                const arr = achivement["ED-French"];
+                const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+                if (existingIdx >= 0) {
+                    arr[existingIdx] = entry;
+                } else {
+                    arr.push(entry);
+                }
+                const { error: updateError } = await App.supabase
+                    .from('profiles')
+                    .update({ achivement: achivement })
+                    .eq('id', user.id);
+                if (updateError) {
+                    console.error('Save failed:', updateError);
+                    App.showToast('save_error', 'error');
+                } else {
+                    App.showToast('save_success', 'success');
+                    App.logUserAction('lesson_saved', { lesson: lessonId, correct, incorrect, partial });
+                }
+            });
+
+            // ========== Print / PDF ==========
+            document.getElementById('printPdfBtn').addEventListener('click', async () => {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                const headerHTML = document.querySelector('.lesson-header').cloneNode(true);
+                const contractCard = document.querySelector('.lesson-card').cloneNode(true);
+                const dictationCard = document.querySelectorAll('.lesson-card')[1].cloneNode(true);
+                // Remove interactive elements
+                contractCard.querySelectorAll('input, button, .score-area, .progress-container').forEach(el => el.remove());
+                dictationCard.querySelectorAll('input, button, .score-area').forEach(el => el.remove());
+                const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+                const lang = localStorage.getItem('lang') || 'fr';
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                printWindow.document.write(`
+                    <!DOCTYPE html>
+                    <html lang="${lang}">
+                    <head>
+                        <meta charset="UTF-8">
+                        <title>${App.getTranslation('lesson_short_title', lang)}</title>
+                        <style>
+                            body {
+                                font-family: 'Georgia', 'Times New Roman', serif;
+                                line-height: 1.6;
+                                max-width: 700px;
+                                margin: 2rem auto;
+                                padding: 0 1rem;
+                                color: #000;
+                            }
+                            .print-header {
+                                text-align: center;
+                                border-bottom: 2px solid #c75b2c;
+                                padding-bottom: 1rem;
+                                margin-bottom: 2rem;
+                            }
+                            .print-header .site-name {
+                                font-size: 1.4rem;
+                                font-weight: bold;
+                                color: #c75b2c;
+                                margin: 0 0 0.3rem;
+                            }
+                            .print-header .meta-line {
+                                font-size: 0.95rem;
+                                color: #444;
+                                margin: 0.2rem 0;
+                            }
+                            .print-header .lesson-name {
+                                font-size: 1.1rem;
+                                font-weight: bold;
+                                color: #000;
+                                margin-top: 0.5rem;
+                            }
+                            .print-footer {
+                                text-align: center;
+                                border-top: 1px solid #ccc;
+                                padding-top: 1rem;
+                                margin-top: 2rem;
+                                font-size: 0.85rem;
+                                color: #666;
+                            }
+                            h1, h2, h3 { color: #000; }
+                            .lesson-header { text-align: center; margin-bottom: 2rem; }
+                            .badge { display: inline-block; background: #c75b2c; color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; text-transform: uppercase; }
+                            .lesson-card { border: 1px solid #ccc; padding: 1rem; margin: 1rem 0; border-radius: 8px; }
+                            .goals-list { list-style: none; padding: 0; }
+                            .goal-item { padding: 0.4rem 0; }
+                            .text-card { border-left: 4px solid #c75b2c; padding: 1rem 1.5rem; margin: 1rem 0; font-style: italic; }
+                            @media print {
+                                body { margin: 0; padding: 0; }
+                                @page { margin: 2cm; }
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="print-header">
+                            <div class="site-name">Educational Dashboard – French</div>
+                            <div class="meta-line">${App.getTranslation('ach_year_degree4', lang)} – ${App.getTranslation('ach_module_unit1', lang)}</div>
+                            <div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div>
+                        </div>
+                        ${breadcrumb.outerHTML}
+                        ${headerHTML.outerHTML}
+                        ${contractCard.outerHTML}
+                        ${dictationCard.outerHTML}
+                        <div class="print-footer">
+                            Développé par Mejri Ziad – Imprimé le ${new Date().toLocaleDateString('fr-FR')}
+                        </div>
+                    </body>
+                    </html>
+                `);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+
+            // ========== Initialisation ==========
+            updateScore();
+        })();
+    </script>
+
+    <!-- Direct translation fix (same as other lesson pages) -->
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') {
+                                el.innerHTML = next.innerHTML;
+                            }
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
 </body>
 </html>
