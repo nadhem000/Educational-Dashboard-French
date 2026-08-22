@@ -7,60 +7,65 @@
     <link rel="manifest" href="/manifest.json">
     <link rel="stylesheet" href="shared.css">
     <style>
-        /* ===== Lesson-specific styles (same pattern as other lessons) ===== */
+        /* ===== Degree 4 Project Lesson – Mini Modular Styles (prefixed) ===== */
         :root {
-            --lesson-bg: #f9f7f1;
-            --lesson-card: #ffffff;
-            --lesson-text: #2b2416;
-            --lesson-text-light: #5c5344;
-            --lesson-heading: #382e1e;
-            --lesson-accent: #c75b2c;
-            --lesson-accent-hover: #a3441d;
-            --lesson-border: #e5ddd0;
-            --lesson-shadow: 0 1px 4px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.05);
-            --lesson-shadow-hover: 0 8px 22px rgba(0,0,0,0.08);
-            --lesson-radius: 12px;
-            --lesson-radius-sm: 8px;
-            --lesson-transition: 0.25s ease;
-            --lesson-font: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
-            --lesson-button-bg: #f0e8d8;
-            --lesson-button-hover: #e3d5bc;
-            --lesson-input-bg: #fcfaf6;
+            --degree4-lessonType-project-bg: #f9f7f1;
+            --degree4-lessonType-project-card: #ffffff;
+            --degree4-lessonType-project-text: #2b2416;
+            --degree4-lessonType-project-text-light: #5c5344;
+            --degree4-lessonType-project-heading: #382e1e;
+            --degree4-lessonType-project-accent: #c75b2c;
+            --degree4-lessonType-project-accent-hover: #a3441d;
+            --degree4-lessonType-project-border: #e5ddd0;
+            --degree4-lessonType-project-shadow: 0 1px 4px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.05);
+            --degree4-lessonType-project-shadow-hover: 0 8px 22px rgba(0,0,0,0.08);
+            --degree4-lessonType-project-radius: 12px;
+            --degree4-lessonType-project-radius-sm: 8px;
+            --degree4-lessonType-project-transition: 0.25s ease;
+            --degree4-lessonType-project-font: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
+            --degree4-lessonType-project-audio-bg: #f4efe4;
+            --degree4-lessonType-project-audio-progress: #d8c9aa;
+            --degree4-lessonType-project-button-bg: #f0e8d8;
+            --degree4-lessonType-project-button-hover: #e3d5bc;
+            --degree4-lessonType-project-input-bg: #fcfaf6;
         }
         body.dark {
-            --lesson-bg: #1e1b17;
-            --lesson-card: #2a2620;
-            --lesson-text: #e8dfd2;
-            --lesson-text-light: #b9aa95;
-            --lesson-heading: #f0e4d2;
-            --lesson-accent: #e07b4a;
-            --lesson-accent-hover: #f08c5c;
-            --lesson-border: #3e3830;
-            --lesson-shadow: 0 1px 4px rgba(0,0,0,0.25);
-            --lesson-shadow-hover: 0 8px 22px rgba(0,0,0,0.35);
-            --lesson-button-bg: #3a3329;
-            --lesson-button-hover: #4e4437;
-            --lesson-input-bg: #333028;
+            --degree4-lessonType-project-bg: #1e1b17;
+            --degree4-lessonType-project-card: #2a2620;
+            --degree4-lessonType-project-text: #e8dfd2;
+            --degree4-lessonType-project-text-light: #b9aa95;
+            --degree4-lessonType-project-heading: #f0e4d2;
+            --degree4-lessonType-project-accent: #e07b4a;
+            --degree4-lessonType-project-accent-hover: #f08c5c;
+            --degree4-lessonType-project-border: #3e3830;
+            --degree4-lessonType-project-shadow: 0 1px 4px rgba(0,0,0,0.25);
+            --degree4-lessonType-project-shadow-hover: 0 8px 22px rgba(0,0,0,0.35);
+            --degree4-lessonType-project-audio-bg: #26221b;
+            --degree4-lessonType-project-audio-progress: #5a4e3c;
+            --degree4-lessonType-project-button-bg: #3a3329;
+            --degree4-lessonType-project-button-hover: #4e4437;
+            --degree4-lessonType-project-input-bg: #333028;
         }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: var(--lesson-font);
-            background: var(--lesson-bg);
-            color: var(--lesson-text);
+            font-family: var(--degree4-lessonType-project-font);
+            background: var(--degree4-lessonType-project-bg);
+            color: var(--degree4-lessonType-project-text);
             line-height: 1.75;
-            transition: background var(--lesson-transition), color var(--lesson-transition);
+            transition: background var(--degree4-lessonType-project-transition), color var(--degree4-lessonType-project-transition);
         }
-        .container {
+        .degree4-lessonType-project-container {
             max-width: 860px;
             margin: 0 auto;
             padding: 1.8rem 1.4rem 3rem;
         }
-        .lesson-header {
+        .degree4-lessonType-project-header {
             text-align: center;
             margin-bottom: 2rem;
         }
-        .badge {
+        .degree4-lessonType-project-badge {
             display: inline-block;
-            background: var(--lesson-accent);
+            background: var(--degree4-lessonType-project-accent);
             color: #fff;
             padding: 0.25rem 1rem;
             border-radius: 20px;
@@ -69,216 +74,375 @@
             letter-spacing: 0.03em;
             text-transform: uppercase;
         }
-        .lesson-header h1 {
+        .degree4-lessonType-project-header h1 {
             font-size: 2.1rem;
-            color: var(--lesson-heading);
+            color: var(--degree4-lessonType-project-heading);
             margin: 0.6rem 0 0.3rem;
             line-height: 1.3;
         }
-        .lesson-meta {
+        .degree4-lessonType-project-meta {
             font-size: 0.9rem;
-            color: var(--lesson-text-light);
+            color: var(--degree4-lessonType-project-text-light);
             display: flex;
             justify-content: center;
+            gap: 1.2rem;
             flex-wrap: wrap;
-            gap: 0.5rem;
         }
-        .lesson-card {
-            background: var(--lesson-card);
-            border: 1px solid var(--lesson-border);
-            border-radius: var(--lesson-radius);
-            padding: 1.5rem 1.8rem;
-            margin: 1.8rem 0;
-            box-shadow: var(--lesson-shadow);
+        .degree4-lessonType-project-audio {
+            background: var(--degree4-lessonType-project-card);
+            border: 1px solid var(--degree4-lessonType-project-border);
+            border-radius: var(--degree4-lessonType-project-radius);
+            padding: 1rem 1.4rem;
+            margin: 1.5rem 0 2rem;
+            box-shadow: var(--degree4-lessonType-project-shadow);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
-        .lesson-card h2 {
-            font-size: 1.5rem;
-            color: var(--lesson-heading);
-            margin-bottom: 1rem;
-            border-bottom: 3px solid var(--lesson-accent);
-            display: inline-block;
-            padding-bottom: 0.3rem;
+        .degree4-lessonType-project-audio .degree4-lessonType-project-play-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--degree4-lessonType-project-accent);
+            color: #fff;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background var(--degree4-lessonType-project-transition);
+            flex-shrink: 0;
         }
-        .goals-list {
-            list-style: none;
-            padding: 0;
-            margin: 1rem 0;
+        .degree4-lessonType-project-play-btn:hover { background: var(--degree4-lessonType-project-accent-hover); }
+        .degree4-lessonType-project-progress-area {
+            flex: 1;
+            min-width: 120px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
         }
-        .goal-item {
-            padding: 0.4rem 0 0.4rem 1.5rem;
+        .degree4-lessonType-project-progress-bar {
+            width: 100%;
+            height: 6px;
+            background: var(--degree4-lessonType-project-audio-progress);
+            border-radius: 3px;
+            cursor: pointer;
             position: relative;
-            border-bottom: 1px dashed var(--lesson-border);
+            overflow: hidden;
         }
-        .goal-item::before {
-            content: '◆';
-            position: absolute;
-            left: 0;
-            color: var(--lesson-accent);
-            font-size: 0.6rem;
-            top: 0.55rem;
+        .degree4-lessonType-project-progress-fill {
+            height: 100%;
+            background: var(--degree4-lessonType-project-accent);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s linear;
         }
-        .text-card {
-            background: var(--lesson-card);
-            border: 1px solid var(--lesson-border);
-            border-left: 5px solid var(--lesson-accent);
-            border-radius: 0 var(--lesson-radius) var(--lesson-radius) 0;
-            padding: 1rem 1.5rem;
-            margin: 1rem 0;
+        .degree4-lessonType-project-time-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--degree4-lessonType-project-text-light);
+        }
+        .degree4-lessonType-project-speed-selector {
+            display: flex;
+            gap: 0.3rem;
+            flex-wrap: wrap;
+        }
+        .degree4-lessonType-project-speed-btn {
+            border: 1px solid var(--degree4-lessonType-project-border);
+            background: var(--degree4-lessonType-project-button-bg);
+            color: var(--degree4-lessonType-project-text);
+            padding: 0.25rem 0.55rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--degree4-lessonType-project-transition);
+        }
+        .degree4-lessonType-project-speed-btn.active {
+            background: var(--degree4-lessonType-project-accent);
+            color: #fff;
+            border-color: var(--degree4-lessonType-project-accent);
+        }
+        .degree4-lessonType-project-audio-label {
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--degree4-lessonType-project-heading);
+            white-space: nowrap;
+        }
+        @media (max-width: 600px) {
+            .degree4-lessonType-project-audio { flex-direction: column; align-items: stretch; }
+            .degree4-lessonType-project-audio-label { text-align: center; }
+        }
+        .degree4-lessonType-project-text-card {
+            background: var(--degree4-lessonType-project-card);
+            border: 1px solid var(--degree4-lessonType-project-border);
+            border-left: 5px solid var(--degree4-lessonType-project-accent);
+            border-radius: 0 var(--degree4-lessonType-project-radius) var(--degree4-lessonType-project-radius) 0;
+            padding: 1.4rem 1.6rem;
+            margin: 1.8rem 0;
             font-style: italic;
             font-size: 1.05rem;
             line-height: 1.9;
+            box-shadow: var(--degree4-lessonType-project-shadow);
+            position: relative;
         }
-        .self-assessment {
+        .degree4-lessonType-project-quote-mark {
+            position: absolute;
+            top: -12px;
+            left: 14px;
+            font-size: 3rem;
+            color: var(--degree4-lessonType-project-accent);
+            opacity: 0.25;
+            line-height: 1;
+        }
+        .degree4-lessonType-project-author {
+            text-align: right;
+            font-style: normal;
+            font-size: 0.9rem;
+            color: var(--degree4-lessonType-project-text-light);
+            margin-top: 0.8rem;
+        }
+        .degree4-lessonType-project-rules,
+        .degree4-lessonType-project-contract {
+            background: var(--degree4-lessonType-project-card);
+            border: 1px solid var(--degree4-lessonType-project-border);
+            border-radius: var(--degree4-lessonType-project-radius);
+            padding: 1.6rem 1.8rem;
+            margin: 2rem 0;
+            box-shadow: var(--degree4-lessonType-project-shadow);
+        }
+        .degree4-lessonType-project-rules h2,
+        .degree4-lessonType-project-contract h2 {
+            font-size: 1.5rem;
+            color: var(--degree4-lessonType-project-heading);
+            margin-bottom: 1rem;
+            border-bottom: 3px solid var(--degree4-lessonType-project-accent);
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+        .degree4-lessonType-project-rule-card,
+        .degree4-lessonType-project-contract ul {
+            background: var(--degree4-lessonType-project-audio-bg);
+            border-radius: var(--degree4-lessonType-project-radius-sm);
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .degree4-lessonType-project-rule-card h3 {
+            color: var(--degree4-lessonType-project-accent);
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+        .degree4-lessonType-project-rule-card ul,
+        .degree4-lessonType-project-contract ul { list-style: none; padding: 0; }
+        .degree4-lessonType-project-rule-card li,
+        .degree4-lessonType-project-contract li {
+            padding: 0.3rem 0;
+            padding-left: 1.4rem;
+            position: relative;
+            color: var(--degree4-lessonType-project-text-light);
+        }
+        .degree4-lessonType-project-rule-card li::before,
+        .degree4-lessonType-project-contract li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--degree4-lessonType-project-accent);
+            font-size: 0.5rem;
+            top: 0.5rem;
+        }
+        .degree4-lessonType-project-rule-card p { margin: 0.5rem 0; }
+        .degree4-lessonType-project-self-assess {
             margin: 1rem 0;
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
             align-items: center;
+            font-size: 0.9rem;
         }
-        .self-assessment label {
+        .degree4-lessonType-project-self-assess label {
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
         }
-        .score-area {
-            background: var(--lesson-card);
-            border: 1px solid var(--lesson-border);
-            border-radius: var(--lesson-radius);
+        .degree4-lessonType-project-score-area {
+            background: var(--degree4-lessonType-project-card);
+            border: 1px solid var(--degree4-lessonType-project-border);
+            border-radius: var(--degree4-lessonType-project-radius);
             padding: 1.5rem;
-            margin-top: 1rem;
-            box-shadow: var(--lesson-shadow);
+            margin-top: 2rem;
+            box-shadow: var(--degree4-lessonType-project-shadow);
         }
-        .score-stats {
+        .degree4-lessonType-project-score-area h2 {
+            color: var(--degree4-lessonType-project-heading);
+            margin-bottom: 1rem;
+        }
+        .degree4-lessonType-project-score-stats {
             display: flex;
             gap: 1.5rem;
             flex-wrap: wrap;
         }
-        .score-stat {
-            background: var(--lesson-button-bg);
+        .degree4-lessonType-project-score-stat {
+            background: var(--degree4-lessonType-project-audio-bg);
             padding: 0.8rem 1.2rem;
             border-radius: 8px;
             font-weight: 600;
         }
-        .score-actions {
+        .degree4-lessonType-project-score-actions {
             margin-top: 1rem;
             display: flex;
             gap: 0.8rem;
             flex-wrap: wrap;
         }
-        .btn-verify {
-            background: var(--lesson-accent);
+        .degree4-lessonType-project-btn {
+            background: var(--degree4-lessonType-project-accent);
             color: #fff;
             border: none;
             padding: 0.5rem 1.2rem;
             border-radius: 20px;
             font-weight: 600;
             cursor: pointer;
-            transition: background var(--lesson-transition);
+            transition: background var(--degree4-lessonType-project-transition);
             font-size: 0.85rem;
         }
-        .btn-verify:hover {
-            background: var(--lesson-accent-hover);
-        }
-        .footer-nav {
+        .degree4-lessonType-project-btn:hover { background: var(--degree4-lessonType-project-accent-hover); }
+        .degree4-lessonType-project-footer-nav {
             margin-top: 2rem;
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 1rem;
         }
-        .footer-nav a {
-            color: var(--lesson-accent);
+        .degree4-lessonType-project-footer-nav a {
+            color: var(--degree4-lessonType-project-accent);
             text-decoration: none;
             font-weight: 600;
         }
-        .footer-nav a:hover {
-            text-decoration: underline;
-        }
-        /* Responsive */
+        .degree4-lessonType-project-footer-nav a:hover { text-decoration: underline; }
+        html[dir="rtl"] body { direction: rtl; }
+        html[dir="rtl"] .degree4-lessonType-project-container { text-align: right; }
+        html[dir="rtl"] .degree4-lessonType-project-author { text-align: left; }
         @media (max-width: 600px) {
-            .container { padding: 1rem 0.8rem 2rem; }
-            .lesson-header h1 { font-size: 1.5rem; }
-            .lesson-card { padding: 1rem 1.2rem; }
-            .score-stats { gap: 0.8rem; }
+            .degree4-lessonType-project-header h1 { font-size: 1.5rem; }
+            .degree4-lessonType-project-container { padding: 1rem 0.8rem 2rem; }
+            .degree4-lessonType-project-score-stats { gap: 0.8rem; }
         }
     </style>
 </head>
 <body>
-    <div id="main-content" class="container">
+    <div id="main-content" class="degree4-lessonType-project-container">
         <!-- Fil d'Ariane -->
-        <p style="margin-bottom:1.5rem; color:var(--lesson-text-light);">
+        <p style="margin-bottom:1.5rem; color:var(--degree4-lessonType-project-text-light);">
             <a href="degree4.html" data-i18n="back_link">← Retour au programme</a>
             › <strong data-i18n="current_lesson">Le projet d'écriture</strong>
         </p>
 
-        <!-- En-tête de la leçon -->
-        <div class="lesson-header">
-            <span class="badge" data-i18n="lesson_badge">📘 Unité 1 · Projet</span>
+        <!-- En-tête -->
+        <div class="degree4-lessonType-project-header">
+            <span class="degree4-lessonType-project-badge" data-i18n="lesson_badge">📘 Unité 1 · Projet</span>
             <h1 data-i18n="lesson_title">Le projet d'écriture</h1>
-            <div class="lesson-meta">
+            <div class="degree4-lessonType-project-meta">
                 <span data-i18n="lesson_subtitle">Raconter un événement de la vie quotidienne</span>
+                <span data-i18n="lesson_duration">⏱️ 45 minutes</span>
+                <span data-i18n="lesson_meta_audio">🎧 Écoutez le texte puis faites la dictée</span>
             </div>
         </div>
 
         <!-- Section : Mon contrat (objectifs) -->
-        <div class="lesson-card">
+        <div class="degree4-lessonType-project-contract">
             <h2 data-i18n="contract_title">Mon contrat</h2>
             <p data-i18n="contract_subtitle">Dans cette unité, je vais apprendre à :</p>
-            <ul class="goals-list">
-                <li class="goal-item" data-i18n="goal1">réciter un poème</li>
-                <li class="goal-item" data-i18n="goal2">lire et écrire les graphies : z - k - g</li>
-                <li class="goal-item" data-i18n="goal3">écrire les majuscules : A-M-N</li>
-                <li class="goal-item" data-i18n="goal4">lire des textes : La nouvelle élève. Les deux amies.</li>
-                <li class="goal-item" data-i18n="goal5">construire une phrase complète</li>
-                <li class="goal-item" data-i18n="goal6">conjuguer le verbe « être » au présent</li>
-                <li class="goal-item" data-i18n="goal7">identifier les personnages dans une histoire</li>
-                <li class="goal-item" data-i18n="goal8">organiser les événements d'un récit</li>
-                <li class="goal-item" data-i18n="goal9">lire un document pour m'informer sur les droits et les devoirs de l'enfant</li>
-                <li class="goal-item" data-i18n="goal10">fabriquer « La ronde des enfants »</li>
-                <li class="goal-item" data-i18n="goal11">jouer avec les mots contenant les graphies étudiées</li>
+            <ul>
+                <li data-i18n="goal1">réciter un poème</li>
+                <li data-i18n="goal2">lire et écrire les graphies : z - k - g</li>
+                <li data-i18n="goal3">écrire les majuscules : A-M-N</li>
+                <li data-i18n="goal4">lire des textes : La nouvelle élève. Les deux amies.</li>
+                <li data-i18n="goal5">construire une phrase complète</li>
+                <li data-i18n="goal6">conjuguer le verbe « être » au présent</li>
+                <li data-i18n="goal7">identifier les personnages dans une histoire</li>
+                <li data-i18n="goal8">organiser les événements d'un récit</li>
+                <li data-i18n="goal9">lire un document pour m'informer sur les droits et les devoirs de l'enfant</li>
+                <li data-i18n="goal10">fabriquer « La ronde des enfants »</li>
+                <li data-i18n="goal11">jouer avec les mots contenant les graphies étudiées</li>
             </ul>
         </div>
 
-        <!-- Section : Dictée -->
-        <div class="lesson-card">
-            <h2 data-i18n="dictation_title">Mon auto-dictée</h2>
-            <div class="text-card">
-                <p data-i18n="dictation_sentence">Amélie est en classe. Elle dessine des cerises et des fraises.</p>
-            </div>
-
-            <!-- Auto-évaluation de la dictée -->
-            <div class="self-assessment">
-                <span data-i18n="self_assessment_question">Auto-évaluez votre dictée :</span>
-                <label><input type="radio" name="self_dictation" value="correct"> <span data-i18n="self_correct">Correct</span></label>
-                <label><input type="radio" name="self_dictation" value="partial"> <span data-i18n="self_partial">Partiellement correct</span></label>
-                <label><input type="radio" name="self_dictation" value="incorrect"> <span data-i18n="self_incorrect">Incorrect</span></label>
-            </div>
-
-            <!-- Zone de score -->
-            <div class="score-area">
-                <h2 data-i18n="score_title">Votre auto-évaluation</h2>
-                <div class="score-stats">
-                    <div class="score-stat"><span data-i18n="score_correct">Correct :</span> <span id="score-correct">0</span></div>
-                    <div class="score-stat"><span data-i18n="score_partial">Partiel :</span> <span id="score-partial">0</span></div>
-                    <div class="score-stat"><span data-i18n="score_incorrect">Incorrect :</span> <span id="score-incorrect">0</span></div>
-                    <div class="score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="score-unanswered">1</span></div>
+        <!-- Lecteur audio -->
+        <div class="degree4-lessonType-project-audio" id="degree4LessonTypeProjectAudioPlayer">
+            <span class="degree4-lessonType-project-audio-label" data-i18n="audio_label">🎧 Écoute littéraire</span>
+            <button class="degree4-lessonType-project-play-btn" id="degree4LessonTypeProjectPlayBtn" aria-label="Lecture">▶</button>
+            <div class="degree4-lessonType-project-progress-area">
+                <div class="degree4-lessonType-project-progress-bar" id="degree4LessonTypeProjectProgressBar">
+                    <div class="degree4-lessonType-project-progress-fill" id="degree4LessonTypeProjectProgressFill"></div>
                 </div>
-                <div class="score-actions">
-                    <button id="saveResultsBtn" class="btn-verify" data-i18n="save_results">💾 Enregistrer mes résultats</button>
-                    <button id="printPdfBtn" class="btn-verify" style="background:#5c5344;" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+                <div class="degree4-lessonType-project-time-info">
+                    <span id="degree4LessonTypeProjectCurrentTime">0:00</span>
+                    <span id="degree4LessonTypeProjectDuration">0:00</span>
                 </div>
+            </div>
+            <div class="degree4-lessonType-project-speed-selector" id="degree4LessonTypeProjectSpeedSelector">
+                <button class="degree4-lessonType-project-speed-btn" data-speed="0.75">0.75x</button>
+                <button class="degree4-lessonType-project-speed-btn active" data-speed="1">1x</button>
+                <button class="degree4-lessonType-project-speed-btn" data-speed="1.25">1.25x</button>
+                <button class="degree4-lessonType-project-speed-btn" data-speed="1.5">1.5x</button>
             </div>
         </div>
 
-        <!-- Navigation pied de page -->
-        <div class="footer-nav">
+        <!-- Texte de dictée -->
+        <div class="degree4-lessonType-project-text-card">
+            <span class="degree4-lessonType-project-quote-mark">“</span>
+            <p data-i18n="dictation_sentence">Amélie est en classe. Elle dessine des cerises et des fraises.</p>
+            <div class="degree4-lessonType-project-author" data-i18n="text_author">— Dictée de la leçon 1</div>
+        </div>
+
+        <!-- Conseils pour la dictée -->
+        <div class="degree4-lessonType-project-rules">
+            <h2 data-i18n="rules_heading">📖 Conseils pour réussir la dictée</h2>
+            <p data-i18n="rules_intro" class="no-bilingual" style="margin-bottom:1.2rem;">Avant d'écrire, écoute attentivement et observe les mots.</p>
+            <div class="degree4-lessonType-project-rule-card">
+                <h3 data-i18n="rules_tip1_title">🔹 Mots à retenir</h3>
+                <p data-i18n="rules_tip1_text"><strong>Amélie</strong> – une majuscule car c'est un prénom.<br><strong>cerises</strong>, <strong>fraises</strong> – noms au pluriel.</p>
+            </div>
+            <div class="degree4-lessonType-project-rule-card">
+                <h3 data-i18n="rules_tip2_title">🔹 Difficultés orthographiques</h3>
+                <p data-i18n="rules_tip2_text">Le son [z] s'écrit « s » entre deux voyelles (cerises, fraises).<br>Le son [k] s'écrit « c » devant « e » (classe).</p>
+            </div>
+        </div>
+
+        <!-- Auto-évaluation de la dictée -->
+        <div class="degree4-lessonType-project-self-assess">
+            <span data-i18n="self_assessment_question">Auto-évaluez votre dictée :</span>
+            <label><input type="radio" name="self_dictation" value="correct"> <span data-i18n="self_correct">Correct</span></label>
+            <label><input type="radio" name="self_dictation" value="partial"> <span data-i18n="self_partial">Partiellement correct</span></label>
+            <label><input type="radio" name="self_dictation" value="incorrect"> <span data-i18n="self_incorrect">Incorrect</span></label>
+        </div>
+
+        <!-- Zone de score -->
+        <div class="degree4-lessonType-project-score-area">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="degree4-lessonType-project-score-stats">
+                <div class="degree4-lessonType-project-score-stat"><span data-i18n="score_correct">Correct :</span> <span id="degree4LessonTypeProjectScoreCorrect">0</span></div>
+                <div class="degree4-lessonType-project-score-stat"><span data-i18n="score_partial">Partiel :</span> <span id="degree4LessonTypeProjectScorePartial">0</span></div>
+                <div class="degree4-lessonType-project-score-stat"><span data-i18n="score_incorrect">Incorrect :</span> <span id="degree4LessonTypeProjectScoreIncorrect">0</span></div>
+                <div class="degree4-lessonType-project-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="degree4LessonTypeProjectScoreUnanswered">1</span></div>
+            </div>
+            <div class="degree4-lessonType-project-score-actions">
+                <button id="degree4LessonTypeProjectSaveResultsBtn" class="degree4-lessonType-project-btn" data-i18n="save_results">💾 Enregistrer mes résultats</button>
+                <button id="degree4LessonTypeProjectPrintBtn" class="degree4-lessonType-project-btn" style="background:#5c5344;" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="degree4-lessonType-project-footer-nav">
             <a href="degree4.html" data-i18n="footer_back">← Retour au programme</a>
             <a href="degree4unit1lesson2.html" data-i18n="footer_next">Leçon suivante →</a>
         </div>
     </div>
 
-    <!-- Scripts -->
+    <!-- Scripts globaux -->
     <script src="i18n.js"></script>
     <script src="db-utils.js"></script>
     <script src="offline-sync-utils.js"></script>
@@ -286,7 +450,7 @@
     <script src="supabase-client.js"></script>
     <script src="logging.js"></script>
 
-    <!-- Inline translations -->
+    <!-- Traductions inline -->
     <script>
         App.addI18nTranslations({
             fr: {
@@ -294,6 +458,8 @@
                 lesson_short_title: "Le projet d'écriture",
                 lesson_badge: "📘 Unité 1 · Projet",
                 lesson_subtitle: "Raconter un événement de la vie quotidienne",
+                lesson_duration: "⏱️ 45 minutes",
+                lesson_meta_audio: "🎧 Écoutez le texte puis faites la dictée",
                 back_link: "← Retour au programme",
                 current_lesson: "Le projet d'écriture",
                 module_name: "Unité 1",
@@ -310,13 +476,20 @@
                 goal9: "lire un document pour m'informer sur les droits et les devoirs de l'enfant",
                 goal10: "fabriquer « La ronde des enfants »",
                 goal11: "jouer avec les mots contenant les graphies étudiées",
-                dictation_title: "Mon auto-dictée",
+                audio_label: "🎧 Écoute littéraire",
                 dictation_sentence: "Amélie est en classe. Elle dessine des cerises et des fraises.",
+                text_author: "— Dictée de la leçon 1",
+                rules_heading: "📖 Conseils pour réussir la dictée",
+                rules_intro: "Avant d'écrire, écoute attentivement et observe les mots.",
+                rules_tip1_title: "🔹 Mots à retenir",
+                rules_tip1_text: "<strong>Amélie</strong> – une majuscule car c'est un prénom.<br><strong>cerises</strong>, <strong>fraises</strong> – noms au pluriel.",
+                rules_tip2_title: "🔹 Difficultés orthographiques",
+                rules_tip2_text: "Le son [z] s'écrit « s » entre deux voyelles (cerises, fraises).<br>Le son [k] s'écrit « c » devant « e » (classe).",
                 self_assessment_question: "Auto-évaluez votre dictée :",
                 self_correct: "Correct",
                 self_partial: "Partiellement correct",
                 self_incorrect: "Incorrect",
-                score_title: "Votre auto-évaluation",
+                score_title: "📊 Votre auto‑évaluation",
                 score_correct: "Correct :",
                 score_partial: "Partiel :",
                 score_incorrect: "Incorrect :",
@@ -336,6 +509,8 @@
                 lesson_short_title: "The Writing Project",
                 lesson_badge: "📘 Unit 1 · Project",
                 lesson_subtitle: "Narrating an Event from Daily Life",
+                lesson_duration: "⏱️ 45 minutes",
+                lesson_meta_audio: "🎧 Listen to the text then do the dictation",
                 back_link: "← Back to program",
                 current_lesson: "The Writing Project",
                 module_name: "Unit 1",
@@ -352,13 +527,20 @@
                 goal9: "Read a document to learn about children's rights and duties",
                 goal10: "Create 'The Children's Circle'",
                 goal11: "Play with words containing the studied spellings",
-                dictation_title: "Self-Dictation",
+                audio_label: "🎧 Literary Listening",
                 dictation_sentence: "Amélie est en classe. Elle dessine des cerises et des fraises.",
+                text_author: "— Dictation for Lesson 1",
+                rules_heading: "📖 Tips for a Successful Dictation",
+                rules_intro: "Before writing, listen carefully and observe the words.",
+                rules_tip1_title: "🔹 Words to Remember",
+                rules_tip1_text: "<strong>Amélie</strong> – capital letter because it's a name.<br><strong>cerises</strong>, <strong>fraises</strong> – plural nouns.",
+                rules_tip2_title: "🔹 Spelling Difficulties",
+                rules_tip2_text: "The sound [z] is written 's' between two vowels (cerises, fraises).<br>The sound [k] is written 'c' before 'e' (classe).",
                 self_assessment_question: "Self-assess your dictation:",
                 self_correct: "Correct",
                 self_partial: "Partially correct",
                 self_incorrect: "Incorrect",
-                score_title: "Your self-assessment",
+                score_title: "📊 Your self‑assessment",
                 score_correct: "Correct:",
                 score_partial: "Partial:",
                 score_incorrect: "Incorrect:",
@@ -378,6 +560,8 @@
                 lesson_short_title: "المشروع الكتابي",
                 lesson_badge: "📘 الوحدة الأولى · مشروع",
                 lesson_subtitle: "رواية حدث من الحياة اليومية",
+                lesson_duration: "⏱️ 45 دقيقة",
+                lesson_meta_audio: "🎧 استمع إلى النص ثم قم بالإملاء",
                 back_link: "← العودة إلى البرنامج",
                 current_lesson: "المشروع الكتابي",
                 module_name: "الوحدة الأولى",
@@ -394,13 +578,20 @@
                 goal9: "أن أقرأ وثيقة لأتعرف على حقوق وواجبات الطفل",
                 goal10: "أن أصنع «دائرة الأطفال»",
                 goal11: "أن ألعب بالكلمات التي تحتوي على الرسم الكتابي المدروس",
-                dictation_title: "الإملاء الذاتي",
+                audio_label: "🎧 استماع أدبي",
                 dictation_sentence: "Amélie est en classe. Elle dessine des cerises et des fraises.",
+                text_author: "— إملاء الدرس الأول",
+                rules_heading: "📖 نصائح لإملاء ناجح",
+                rules_intro: "قبل الكتابة، استمع بانتباه ولاحظ الكلمات.",
+                rules_tip1_title: "🔹 كلمات للتذكر",
+                rules_tip1_text: "<strong>Amélie</strong> – حرف كبير لأنه اسم علم.<br><strong>cerises</strong>, <strong>fraises</strong> – أسماء جمع.",
+                rules_tip2_title: "🔹 صعوبات إملائية",
+                rules_tip2_text: "الصوت [z] يُكتب « s » بين حرفي علة (cerises, fraises).<br>الصوت [k] يُكتب « c » أمام « e » (classe).",
                 self_assessment_question: "قيّم إملاءك الذاتي:",
                 self_correct: "صحيح",
                 self_partial: "صحيح جزئيًا",
                 self_incorrect: "خطأ",
-                score_title: "تقييمك الذاتي",
+                score_title: "📊 تقييمك الذاتي",
                 score_correct: "صحيح:",
                 score_partial: "جزئي:",
                 score_incorrect: "خطأ:",
@@ -416,33 +607,76 @@
                 ach_module_unit1: "الوحدة الأولى"
             }
         });
+    </script>
 
-        // Activation du mode bilingue et RTL
+    <!-- ⚠️ AJOUT IMPORTANT : Activation du système bilingue -->
+    <script>
         (function() {
-            const container = document.getElementById('main-content');
+            var container = document.getElementById('main-content');
             if (container && typeof App.makeBilingual === 'function') {
                 App.makeBilingual(container);
             }
             App.onLangChange(function(lang) {
-                container.dir = lang === 'ar' ? 'rtl' : 'ltr';
+                if (container) container.dir = lang === 'ar' ? 'rtl' : 'ltr';
             });
-            container.dir = (localStorage.getItem('lang') || 'fr') === 'ar' ? 'rtl' : 'ltr';
+            if (container) container.dir = (localStorage.getItem('lang') || 'fr') === 'ar' ? 'rtl' : 'ltr';
         })();
     </script>
 
     <script src="ed-french-ini.js"></script>
 
+    <!-- Script spécifique préfixé -->
     <script>
-        // ── Lesson-specific logic (standard pattern) ──
         (function() {
-            // ========== Dictation self-assessment score ==========
-            const radioDictation = document.querySelectorAll('input[name="self_dictation"]');
-            const scoreCorrect = document.getElementById('score-correct');
-            const scorePartial = document.getElementById('score-partial');
-            const scoreIncorrect = document.getElementById('score-incorrect');
-            const scoreUnanswered = document.getElementById('score-unanswered');
+            'use strict';
 
-            function updateScore() {
+            const DEGREE4_PROJECT_AUDIO_SRC = 'lessons/degree4/sounds/unit1-lesson1.mp3';
+            const DEGREE4_PROJECT_LESSON_ID = 'degree4unit1lesson1';
+            const DEGREE4_PROJECT_ACH_YEAR_KEY = 'ach_year_degree4';
+            const DEGREE4_PROJECT_ACH_MODULE_KEY = 'ach_module_unit1';
+
+            function degree4LessonTypeProjectInitAudio() {
+                const audio = new Audio(DEGREE4_PROJECT_AUDIO_SRC);
+                const playBtn = document.getElementById('degree4LessonTypeProjectPlayBtn');
+                const progressFill = document.getElementById('degree4LessonTypeProjectProgressFill');
+                const progressBar = document.getElementById('degree4LessonTypeProjectProgressBar');
+                const currentTimeEl = document.getElementById('degree4LessonTypeProjectCurrentTime');
+                const durationEl = document.getElementById('degree4LessonTypeProjectDuration');
+                const speedBtns = document.querySelectorAll('.degree4-lessonType-project-speed-btn');
+                if (!playBtn || !progressFill || !progressBar) return;
+
+                function formatTime(seconds) {
+                    const mins = Math.floor(seconds / 60);
+                    const secs = Math.floor(seconds % 60);
+                    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+                }
+                audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
+                audio.addEventListener('timeupdate', () => {
+                    const percent = (audio.currentTime / audio.duration) * 100 || 0;
+                    progressFill.style.width = percent + '%';
+                    currentTimeEl.textContent = formatTime(audio.currentTime);
+                });
+                audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
+                playBtn.addEventListener('click', () => {
+                    if (audio.paused) { audio.play(); playBtn.textContent = '⏸'; }
+                    else { audio.pause(); playBtn.textContent = '▶'; }
+                });
+                progressBar.addEventListener('click', (e) => {
+                    const rect = progressBar.getBoundingClientRect();
+                    const clickX = e.clientX - rect.left;
+                    const width = rect.width;
+                    audio.currentTime = (clickX / width) * audio.duration;
+                });
+                speedBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        speedBtns.forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        audio.playbackRate = parseFloat(btn.dataset.speed);
+                    });
+                });
+            }
+
+            function degree4LessonTypeProjectUpdateScore() {
                 const selected = document.querySelector('input[name="self_dictation"]:checked');
                 let correct = 0, partial = 0, incorrect = 0, unanswered = 0;
                 if (selected) {
@@ -452,16 +686,21 @@
                 } else {
                     unanswered = 1;
                 }
-                scoreCorrect.textContent = correct;
-                scorePartial.textContent = partial;
-                scoreIncorrect.textContent = incorrect;
-                scoreUnanswered.textContent = unanswered;
+                document.getElementById('degree4LessonTypeProjectScoreCorrect').textContent = correct;
+                document.getElementById('degree4LessonTypeProjectScorePartial').textContent = partial;
+                document.getElementById('degree4LessonTypeProjectScoreIncorrect').textContent = incorrect;
+                document.getElementById('degree4LessonTypeProjectScoreUnanswered').textContent = unanswered;
             }
 
-            radioDictation.forEach(radio => radio.addEventListener('change', updateScore));
+            function degree4LessonTypeProjectInitScoring() {
+                document.querySelectorAll('input[name="self_dictation"]').forEach(radio => {
+                    radio.addEventListener('change', degree4LessonTypeProjectUpdateScore);
+                });
+                degree4LessonTypeProjectUpdateScore();
+            }
 
-            // ========== Save results to Supabase ==========
-            document.getElementById('saveResultsBtn').addEventListener('click', async () => {
+            async function degree4LessonTypeProjectSaveResults() {
+                if (!App.supabase) return;
                 const { data: { user } } = await App.supabase.auth.getUser();
                 if (!user) {
                     App.showToast('toast_signin_required', 'error');
@@ -478,29 +717,28 @@
                 } else {
                     unanswered = 1;
                 }
-                const lessonId = 'degree4unit1lesson1';
                 const lang = localStorage.getItem('lang') || 'fr';
                 const entry = {
-                    lesson_id: lessonId,
+                    lesson_id: DEGREE4_PROJECT_LESSON_ID,
                     lesson_title: {
                         fr: App.getTranslation('lesson_short_title', 'fr'),
                         en: App.getTranslation('lesson_short_title', 'en'),
                         ar: App.getTranslation('lesson_short_title', 'ar')
                     },
                     year: {
-                        fr: App.getTranslation('ach_year_degree4', 'fr'),
-                        en: App.getTranslation('ach_year_degree4', 'en'),
-                        ar: App.getTranslation('ach_year_degree4', 'ar')
+                        fr: App.getTranslation(DEGREE4_PROJECT_ACH_YEAR_KEY, 'fr'),
+                        en: App.getTranslation(DEGREE4_PROJECT_ACH_YEAR_KEY, 'en'),
+                        ar: App.getTranslation(DEGREE4_PROJECT_ACH_YEAR_KEY, 'ar')
                     },
                     module: {
-                        fr: App.getTranslation('ach_module_unit1', 'fr'),
-                        en: App.getTranslation('ach_module_unit1', 'en'),
-                        ar: App.getTranslation('ach_module_unit1', 'ar')
+                        fr: App.getTranslation(DEGREE4_PROJECT_ACH_MODULE_KEY, 'fr'),
+                        en: App.getTranslation(DEGREE4_PROJECT_ACH_MODULE_KEY, 'en'),
+                        ar: App.getTranslation(DEGREE4_PROJECT_ACH_MODULE_KEY, 'ar')
                     },
-                    correct: correct,
-                    incorrect: incorrect,
-                    partial: partial,
-                    unanswered: unanswered,
+                    correct,
+                    incorrect,
+                    partial,
+                    unanswered,
                     updated_at: new Date().toISOString()
                 };
                 const { data: profileData, error: fetchError } = await App.supabase
@@ -514,31 +752,26 @@
                     return;
                 }
                 let achivement = profileData?.achivement || {};
-                if (!achivement["ED-French"]) {
-                    achivement["ED-French"] = [];
-                }
-                const arr = achivement["ED-French"];
-                const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
-                if (existingIdx >= 0) {
-                    arr[existingIdx] = entry;
-                } else {
-                    arr.push(entry);
-                }
+                if (!achivement['ED-French']) achivement['ED-French'] = [];
+                const arr = achivement['ED-French'];
+                const existingIdx = arr.findIndex(e => e.lesson_id === DEGREE4_PROJECT_LESSON_ID);
+                if (existingIdx >= 0) arr[existingIdx] = entry;
+                else arr.push(entry);
                 const { error: updateError } = await App.supabase
                     .from('profiles')
-                    .update({ achivement: achivement })
+                    .update({ achivement })
                     .eq('id', user.id);
                 if (updateError) {
                     console.error('Save failed:', updateError);
                     App.showToast('save_error', 'error');
                 } else {
                     App.showToast('save_success', 'success');
-                    App.logUserAction('lesson_saved', { lesson: lessonId, correct, incorrect, partial });
+                    App.logUserAction('lesson_saved', { lesson: DEGREE4_PROJECT_LESSON_ID, correct, incorrect, partial });
                 }
-            });
+            }
 
-            // ========== Print / PDF ==========
-            document.getElementById('printPdfBtn').addEventListener('click', async () => {
+            async function degree4LessonTypeProjectPrintPdf() {
+                if (!App.supabase) return;
                 const { data: { user } } = await App.supabase.auth.getUser();
                 if (!user) {
                     App.showToast('toast_signin_required', 'error');
@@ -546,14 +779,17 @@
                     if (signInBtn) signInBtn.click();
                     return;
                 }
-                const headerHTML = document.querySelector('.lesson-header').cloneNode(true);
-                const contractCard = document.querySelector('.lesson-card').cloneNode(true);
-                const dictationCard = document.querySelectorAll('.lesson-card')[1].cloneNode(true);
-                // Remove interactive elements
-                contractCard.querySelectorAll('input, button, .score-area, .progress-container').forEach(el => el.remove());
-                dictationCard.querySelectorAll('input, button, .score-area').forEach(el => el.remove());
-                const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
                 const lang = localStorage.getItem('lang') || 'fr';
+                const headerHTML = document.querySelector('.degree4-lessonType-project-header').cloneNode(true);
+                const contractHTML = document.querySelector('.degree4-lessonType-project-contract').cloneNode(true);
+                const textCard = document.querySelector('.degree4-lessonType-project-text-card').cloneNode(true);
+                const rulesSections = document.querySelectorAll('.degree4-lessonType-project-rules');
+                let rulesHTML = '';
+                rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
+                const selfAssess = document.querySelector('.degree4-lessonType-project-self-assess').cloneNode(true);
+                selfAssess.querySelectorAll('input').forEach(el => el.remove());
+                const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+
                 const printWindow = window.open('', '_blank', 'width=800,height=600');
                 printWindow.document.write(`
                     <!DOCTYPE html>
@@ -562,68 +798,37 @@
                         <meta charset="UTF-8">
                         <title>${App.getTranslation('lesson_short_title', lang)}</title>
                         <style>
-                            body {
-                                font-family: 'Georgia', 'Times New Roman', serif;
-                                line-height: 1.6;
-                                max-width: 700px;
-                                margin: 2rem auto;
-                                padding: 0 1rem;
-                                color: #000;
-                            }
-                            .print-header {
-                                text-align: center;
-                                border-bottom: 2px solid #c75b2c;
-                                padding-bottom: 1rem;
-                                margin-bottom: 2rem;
-                            }
-                            .print-header .site-name {
-                                font-size: 1.4rem;
-                                font-weight: bold;
-                                color: #c75b2c;
-                                margin: 0 0 0.3rem;
-                            }
-                            .print-header .meta-line {
-                                font-size: 0.95rem;
-                                color: #444;
-                                margin: 0.2rem 0;
-                            }
-                            .print-header .lesson-name {
-                                font-size: 1.1rem;
-                                font-weight: bold;
-                                color: #000;
-                                margin-top: 0.5rem;
-                            }
-                            .print-footer {
-                                text-align: center;
-                                border-top: 1px solid #ccc;
-                                padding-top: 1rem;
-                                margin-top: 2rem;
-                                font-size: 0.85rem;
-                                color: #666;
-                            }
+                            body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.6; max-width: 700px; margin: 2rem auto; padding: 0 1rem; color: #000; }
+                            .print-header { text-align: center; border-bottom: 2px solid #c75b2c; padding-bottom: 1rem; margin-bottom: 2rem; }
+                            .print-header .site-name { font-size: 1.4rem; font-weight: bold; color: #c75b2c; margin: 0 0 0.3rem; }
+                            .print-header .meta-line { font-size: 0.95rem; color: #444; margin: 0.2rem 0; }
+                            .print-header .lesson-name { font-size: 1.1rem; font-weight: bold; color: #000; margin-top: 0.5rem; }
+                            .print-footer { text-align: center; border-top: 1px solid #ccc; padding-top: 1rem; margin-top: 2rem; font-size: 0.85rem; color: #666; }
                             h1, h2, h3 { color: #000; }
-                            .lesson-header { text-align: center; margin-bottom: 2rem; }
-                            .badge { display: inline-block; background: #c75b2c; color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; text-transform: uppercase; }
-                            .lesson-card { border: 1px solid #ccc; padding: 1rem; margin: 1rem 0; border-radius: 8px; }
-                            .goals-list { list-style: none; padding: 0; }
-                            .goal-item { padding: 0.4rem 0; }
-                            .text-card { border-left: 4px solid #c75b2c; padding: 1rem 1.5rem; margin: 1rem 0; font-style: italic; }
-                            @media print {
-                                body { margin: 0; padding: 0; }
-                                @page { margin: 2cm; }
-                            }
+                            .degree4-lessonType-project-header { text-align: center; margin-bottom: 2rem; }
+                            .degree4-lessonType-project-badge { display: inline-block; background: #c75b2c; color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; text-transform: uppercase; }
+                            .degree4-lessonType-project-contract, .degree4-lessonType-project-rules { margin: 1.5rem 0; }
+                            .degree4-lessonType-project-contract ul, .degree4-lessonType-project-rule-card { background: #f8f4ec; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; }
+                            .degree4-lessonType-project-contract li, .degree4-lessonType-project-rule-card li { padding: 0.3rem 0; }
+                            .degree4-lessonType-project-text-card { border-left: 4px solid #c75b2c; padding: 1rem 1.5rem; margin: 1.5rem 0; font-style: italic; }
+                            .degree4-lessonType-project-quote-mark { font-size: 3rem; color: #c75b2c; opacity: 0.3; }
+                            .degree4-lessonType-project-author { text-align: right; font-style: normal; margin-top: 0.8rem; }
+                            .degree4-lessonType-project-self-assess { margin: 1rem 0; }
+                            @media print { body { margin: 0; padding: 0; } @page { margin: 2cm; } }
                         </style>
                     </head>
                     <body>
                         <div class="print-header">
                             <div class="site-name">Educational Dashboard – French</div>
-                            <div class="meta-line">${App.getTranslation('ach_year_degree4', lang)} – ${App.getTranslation('ach_module_unit1', lang)}</div>
+                            <div class="meta-line">${App.getTranslation(DEGREE4_PROJECT_ACH_YEAR_KEY, lang)} – ${App.getTranslation(DEGREE4_PROJECT_ACH_MODULE_KEY, lang)}</div>
                             <div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div>
                         </div>
                         ${breadcrumb.outerHTML}
                         ${headerHTML.outerHTML}
-                        ${contractCard.outerHTML}
-                        ${dictationCard.outerHTML}
+                        ${contractHTML.outerHTML}
+                        ${textCard.outerHTML}
+                        ${rulesHTML}
+                        ${selfAssess.outerHTML}
                         <div class="print-footer">
                             Développé par Mejri Ziad – Imprimé le ${new Date().toLocaleDateString('fr-FR')}
                         </div>
@@ -633,14 +838,29 @@
                 printWindow.document.close();
                 printWindow.focus();
                 setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
-            });
+            }
 
-            // ========== Initialisation ==========
-            updateScore();
+            function degree4LessonTypeProjectInit() {
+                const container = document.getElementById('main-content');
+                if (container) {
+                    const lang = localStorage.getItem('lang') || 'fr';
+                    container.dir = lang === 'ar' ? 'rtl' : 'ltr';
+                }
+                degree4LessonTypeProjectInitAudio();
+                degree4LessonTypeProjectInitScoring();
+                document.getElementById('degree4LessonTypeProjectSaveResultsBtn')?.addEventListener('click', degree4LessonTypeProjectSaveResults);
+                document.getElementById('degree4LessonTypeProjectPrintBtn')?.addEventListener('click', degree4LessonTypeProjectPrintPdf);
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', degree4LessonTypeProjectInit);
+            } else {
+                degree4LessonTypeProjectInit();
+            }
         })();
     </script>
 
-    <!-- Direct translation fix (same as other lesson pages) -->
+    <!-- Fix de traduction directe -->
     <script>
         (function() {
             if (typeof applyTranslations !== 'function') return;
@@ -651,9 +871,7 @@
                     document.querySelectorAll('.no-bilingual').forEach(el => {
                         const next = el.nextElementSibling;
                         if (next && next.classList.contains('i18n-bilingual')) {
-                            if (lang !== 'fr') {
-                                el.innerHTML = next.innerHTML;
-                            }
+                            if (lang !== 'fr') el.innerHTML = next.innerHTML;
                             next.remove();
                         }
                     });
