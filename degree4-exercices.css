@@ -1,0 +1,369 @@
+/* degree4-exercices.css
+   Styles for text‑input, dropdown, and matching exercises.
+   All selectors are prefixed according to exercise type.
+*/
+/* ==================================================================
+   TEXT INPUT EXERCISES
+   ================================================================== */
+:root {
+    --degree4-lessonType-reading-text-input-accent: #c75b2c;
+    --degree4-lessonType-reading-text-input-border: #e5ddd0;
+    --degree4-lessonType-reading-text-input-bg: #fcfaf6;
+    --degree4-lessonType-reading-text-input-text: #2b2416;
+    --degree4-lessonType-reading-text-input-feedback-correct: #2e7d32;
+    --degree4-lessonType-reading-text-input-feedback-wrong: #c62828;
+}
+/* Plain text input container */
+.degree4-lessonType-reading-text-input-container {
+    background: #ffffff;
+    border: 1px solid var(--degree4-lessonType-reading-text-input-border);
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 1.4rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.degree4-lessonType-reading-text-input-container h3 {
+    font-size: 1.1rem;
+    color: var(--degree4-lessonType-reading-text-input-accent);
+    margin-bottom: 0.8rem;
+}
+.degree4-lessonType-reading-text-input-container input[type="text"],
+.degree4-lessonType-reading-text-input-container textarea {
+    width: 100%;
+    padding: 0.5rem 0.7rem;
+    border: 1px solid var(--degree4-lessonType-reading-text-input-border);
+    border-radius: 6px;
+    background: var(--degree4-lessonType-reading-text-input-bg);
+    color: var(--degree4-lessonType-reading-text-input-text);
+    font-family: inherit;
+    font-size: 0.95rem;
+    margin-bottom: 0.6rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.degree4-lessonType-reading-text-input-container input[type="text"]:focus,
+.degree4-lessonType-reading-text-input-container textarea:focus {
+    border-color: var(--degree4-lessonType-reading-text-input-accent);
+    box-shadow: 0 0 0 2px rgba(199, 91, 44, 0.2);
+    outline: none;
+}
+.degree4-lessonType-reading-text-input-container .degree4-lessonType-reading-btn {
+    background: var(--degree4-lessonType-reading-text-input-accent);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+.degree4-lessonType-reading-text-input-container .degree4-lessonType-reading-btn:hover {
+    background: #a3441d;
+}
+.degree4-lessonType-reading-text-input-container .degree4-lessonType-reading-feedback {
+    margin-top: 0.8rem;
+    font-weight: 600;
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+.degree4-lessonType-reading-text-input-container .degree4-lessonType-reading-feedback.correct {
+    color: var(--degree4-lessonType-reading-text-input-feedback-correct);
+    background: #e8f5e9;
+    border: 1px solid #c8e6c9;
+}
+.degree4-lessonType-reading-text-input-container .degree4-lessonType-reading-feedback.wrong {
+    color: var(--degree4-lessonType-reading-text-input-feedback-wrong);
+    background: #ffebee;
+    border: 1px solid #ffcdd2;
+}
+.degree4-lessonType-reading-text-input-container .degree4-lessonType-reading-self-assess {
+    margin-top: 0.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    font-size: 0.9rem;
+}
+.degree4-lessonType-reading-text-input-container .degree4-lessonType-reading-self-assess label {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+/* Image‑prompt text input container */
+.degree4-lessonType-reading-text-input-image-container {
+    background: #ffffff;
+    border: 1px solid var(--degree4-lessonType-reading-text-input-border);
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 1.4rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.degree4-lessonType-reading-text-input-image-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.degree4-lessonType-reading-text-input-image-img {
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+.degree4-lessonType-reading-text-input-image-input {
+    flex: 1;
+    padding: 0.5rem 0.7rem;
+    border: 1px solid var(--degree4-lessonType-reading-text-input-border);
+    border-radius: 6px;
+    background: var(--degree4-lessonType-reading-text-input-bg);
+    color: var(--degree4-lessonType-reading-text-input-text);
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.degree4-lessonType-reading-text-input-image-input:focus {
+    border-color: var(--degree4-lessonType-reading-text-input-accent);
+    box-shadow: 0 0 0 2px rgba(199, 91, 44, 0.2);
+    outline: none;
+}
+.degree4-lessonType-reading-text-input-image-container .degree4-lessonType-reading-btn {
+    background: var(--degree4-lessonType-reading-text-input-accent);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+.degree4-lessonType-reading-text-input-image-container .degree4-lessonType-reading-btn:hover {
+    background: #a3441d;
+}
+.degree4-lessonType-reading-text-input-image-container .degree4-lessonType-reading-feedback {
+    margin-top: 0.8rem;
+    font-weight: 600;
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+.degree4-lessonType-reading-text-input-image-container .degree4-lessonType-reading-feedback.correct {
+    color: var(--degree4-lessonType-reading-text-input-feedback-correct);
+    background: #e8f5e9;
+    border: 1px solid #c8e6c9;
+}
+.degree4-lessonType-reading-text-input-image-container .degree4-lessonType-reading-feedback.wrong {
+    color: var(--degree4-lessonType-reading-text-input-feedback-wrong);
+    background: #ffebee;
+    border: 1px solid #ffcdd2;
+}
+/* ==================================================================
+   DROPDOWN EXERCISES
+   ================================================================== */
+:root {
+    --degree4-lessonType-reading-dropdown-accent: #c75b2c;
+    --degree4-lessonType-reading-dropdown-border: #e5ddd0;
+    --degree4-lessonType-reading-dropdown-bg: #fcfaf6;
+    --degree4-lessonType-reading-dropdown-text: #2b2416;
+    --degree4-lessonType-reading-dropdown-feedback-correct: #2e7d32;
+    --degree4-lessonType-reading-dropdown-feedback-wrong: #c62828;
+}
+.degree4-lessonType-reading-dropdown-container {
+    background: #ffffff;
+    border: 1px solid var(--degree4-lessonType-reading-dropdown-border);
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 1.4rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.degree4-lessonType-reading-dropdown-container h3 {
+    font-size: 1.1rem;
+    color: var(--degree4-lessonType-reading-dropdown-accent);
+    margin-bottom: 0.8rem;
+}
+.degree4-lessonType-reading-dropdown-container select {
+    width: 100%;
+    padding: 0.5rem 0.7rem;
+    border: 1px solid var(--degree4-lessonType-reading-dropdown-border);
+    border-radius: 6px;
+    background: var(--degree4-lessonType-reading-dropdown-bg);
+    color: var(--degree4-lessonType-reading-dropdown-text);
+    font-family: inherit;
+    font-size: 0.95rem;
+    margin-bottom: 0.6rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 2.2rem;
+    cursor: pointer;
+}
+.degree4-lessonType-reading-dropdown-container select:focus {
+    border-color: var(--degree4-lessonType-reading-dropdown-accent);
+    box-shadow: 0 0 0 2px rgba(199, 91, 44, 0.2);
+    outline: none;
+}
+/* Emoji arrow wrapper (added by JS) */
+.degree4-lessonType-reading-dropdown-select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+.degree4-lessonType-reading-dropdown-emoji {
+    position: absolute;
+    right: 0.7rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 1rem;
+    color: inherit;
+    opacity: 0.7;
+}
+body.dark .degree4-lessonType-reading-dropdown-emoji {
+    opacity: 0.9;
+}
+.degree4-lessonType-reading-dropdown-container .degree4-lessonType-reading-btn {
+    background: var(--degree4-lessonType-reading-dropdown-accent);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+.degree4-lessonType-reading-dropdown-container .degree4-lessonType-reading-btn:hover {
+    background: #a3441d;
+}
+.degree4-lessonType-reading-dropdown-container .degree4-lessonType-reading-feedback {
+    margin-top: 0.8rem;
+    font-weight: 600;
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+.degree4-lessonType-reading-dropdown-container .degree4-lessonType-reading-feedback.correct {
+    color: var(--degree4-lessonType-reading-dropdown-feedback-correct);
+    background: #e8f5e9;
+    border: 1px solid #c8e6c9;
+}
+.degree4-lessonType-reading-dropdown-container .degree4-lessonType-reading-feedback.wrong {
+    color: var(--degree4-lessonType-reading-dropdown-feedback-wrong);
+    background: #ffebee;
+    border: 1px solid #ffcdd2;
+}
+.degree4-lessonType-reading-dropdown-container .degree4-lessonType-reading-self-assess {
+    margin-top: 0.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    font-size: 0.9rem;
+}
+.degree4-lessonType-reading-dropdown-container .degree4-lessonType-reading-self-assess label {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+/* Print dropdown options (used in print helper) */
+.degree4-lessonType-reading-dropdown-print-options {
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    border: 1px dashed #aaa;
+    border-radius: 4px;
+    background: #f5f5f5;
+    font-style: italic;
+}
+/* ==================================================================
+   MATCHING EXERCISES
+   ================================================================== */
+:root {
+    --degree4-lessonType-reading-matching-accent: #c75b2c;
+    --degree4-lessonType-reading-matching-border: #e5ddd0;
+    --degree4-lessonType-reading-matching-bg: #fcfaf6;
+    --degree4-lessonType-reading-matching-text: #2b2416;
+    --degree4-lessonType-reading-matching-feedback-correct: #2e7d32;
+    --degree4-lessonType-reading-matching-feedback-wrong: #c62828;
+    --degree4-lessonType-reading-matching-selected-bg: #f0e8d8;
+    --degree4-lessonType-reading-matching-matched-bg: #e8f5e9;
+    --degree4-lessonType-reading-matching-matched-border: #4caf50;
+}
+.degree4-lessonType-reading-matching-container {
+    background: #ffffff;
+    border: 1px solid var(--degree4-lessonType-reading-matching-border);
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 1.4rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.degree4-lessonType-reading-matching-main {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+.degree4-lessonType-reading-matching-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    flex: 1;
+}
+.degree4-lessonType-reading-matching-item {
+    padding: 0.6rem 1rem;
+    border: 2px solid var(--degree4-lessonType-reading-matching-border);
+    border-radius: 8px;
+    cursor: pointer;
+    background: var(--degree4-lessonType-reading-matching-bg);
+    color: var(--degree4-lessonType-reading-matching-text);
+    font-weight: 500;
+    text-align: center;
+    transition: all 0.2s;
+}
+.degree4-lessonType-reading-matching-item:hover {
+    border-color: var(--degree4-lessonType-reading-matching-accent);
+}
+.degree4-lessonType-reading-matching-item.selected {
+    border-color: var(--degree4-lessonType-reading-matching-accent);
+    background: var(--degree4-lessonType-reading-matching-selected-bg);
+}
+.degree4-lessonType-reading-matching-item.matched {
+    border-color: var(--degree4-lessonType-reading-matching-matched-border);
+    background: var(--degree4-lessonType-reading-matching-matched-bg);
+}
+.degree4-lessonType-reading-matching-container .degree4-lessonType-reading-feedback {
+    margin-top: 1rem;
+    font-weight: 600;
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+.degree4-lessonType-reading-matching-container .degree4-lessonType-reading-feedback.correct {
+    color: var(--degree4-lessonType-reading-matching-feedback-correct);
+    background: #e8f5e9;
+    border: 1px solid #c8e6c9;
+}
+.degree4-lessonType-reading-matching-container .degree4-lessonType-reading-feedback.wrong {
+    color: var(--degree4-lessonType-reading-matching-feedback-wrong);
+    background: #ffebee;
+    border: 1px solid #ffcdd2;
+}
+/* Responsive */
+@media (max-width: 600px) {
+    .degree4-lessonType-reading-matching-main {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .degree4-lessonType-reading-text-input-container,
+    .degree4-lessonType-reading-dropdown-container {
+        padding: 1rem;
+    }
+    .degree4-lessonType-reading-text-input-container input[type="text"],
+    .degree4-lessonType-reading-text-input-container textarea,
+    .degree4-lessonType-reading-dropdown-container select {
+        font-size: 0.9rem;
+    }
+}
