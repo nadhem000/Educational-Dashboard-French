@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_title">Leçon 4 – L'impératif présent et passé | Texte littéraire & Exercices</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ===== Lesson‑specific styles (unchanged) ===== */
+        :root {
+            --bg: #f9f7f1;
+            --card: #ffffff;
+            --text: #2b2416;
+            --text-light: #5c5344;
+            --heading: #382e1e;
+            --accent: #c75b2c;
+            --accent-hover: #a3441d;
+            --border: #e5ddd0;
+            --shadow: 0 1px 4px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-hover: 0 8px 22px rgba(0,0,0,0.08);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --transition: 0.25s ease;
+            --font-body: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
+            --audio-bg: #f4efe4;
+            --audio-progress: #d8c9aa;
+            --button-bg: #f0e8d8;
+            --button-hover: #e3d5bc;
+            --input-bg: #fcfaf6;
+        }
+        body.dark {
+            --bg: #1e1b17;
+            --card: #2a2620;
+            --text: #e8dfd2;
+            --text-light: #b9aa95;
+            --heading: #f0e4d2;
+            --accent: #e07b4a;
+            --accent-hover: #f08c5c;
+            --border: #3e3830;
+            --shadow: 0 1px 4px rgba(0,0,0,0.25);
+            --shadow-hover: 0 8px 22px rgba(0,0,0,0.35);
+            --audio-bg: #26221b;
+            --audio-progress: #5a4e3c;
+            --button-bg: #3a3329;
+            --button-hover: #4e4437;
+            --input-bg: #333028;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.75;
+            transition: background var(--transition), color var(--transition);
+        }
+        .container { max-width:860px; margin:0 auto; padding:1.8rem 1.4rem 3rem; }
+        .lesson-header { text-align: center; margin-bottom: 2rem; }
+        .badge {
+            display:inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding:0.25rem 1rem;
+            border-radius:20px;
+            font-size:0.8rem;
+            font-weight:700;
+            letter-spacing:0.03em;
+            text-transform: uppercase;
+        }
+        .lesson-header h1 {
+            font-size: 2.1rem;
+            color: var(--heading);
+            margin: 0.6rem 0 0.3rem;
+            line-height: 1.3;
+        }
+        .lesson-header .meta {
+            font-size:0.9rem;
+            color:var(--text-light);
+            display: flex;
+            justify-content: center;
+            gap:1.2rem;
+            flex-wrap: wrap;
+        }
+        .audio-player {
+            background: var(--card);
+            border:1px solid var(--border);
+            border-radius: var(--radius);
+            padding:1rem 1.4rem;
+            margin: 1.5rem 0 2rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap:1rem;
+            flex-wrap: wrap;
+        }
+        .audio-player .play-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            border:none;
+            font-size:1.2rem;
+            cursor:pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background var(--transition);
+            flex-shrink: 0;
+        }
+        .play-btn:hover { background: var(--accent-hover); }
+        .audio-player .progress-area {
+            flex:1;
+            min-width:120px;
+            display: flex;
+            flex-direction: column;
+            gap:0.3rem;
+        }
+        .progress-bar {
+            width:100%;
+            height:6px;
+            background: var(--audio-progress);
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+        .time-info {
+            display: flex;
+            justify-content: space-between;
+            font-size:0.75rem;
+            color:var(--text-light);
+        }
+        .speed-selector { display: flex; gap:0.3rem; flex-wrap: wrap; }
+        .speed-btn {
+            border:1px solid var(--border);
+            background: var(--button-bg);
+            color: var(--text);
+            padding:0.25rem 0.55rem;
+            border-radius: 4px;
+            font-size:0.75rem;
+            font-weight:600;
+            cursor:pointer;
+            transition: all var(--transition);
+        }
+        .speed-btn.active {
+            background: var(--accent);
+            color:#fff;
+            border-color: var(--accent);
+        }
+        .audio-label {
+            font-weight:700;
+            font-size:0.85rem;
+            color:var(--heading);
+            white-space: nowrap;
+        }
+        @media (max-width:600px) {
+            .audio-player { flex-direction: column; align-items: stretch; }
+            .audio-label { text-align: center; }
+        }
+        .text-card {
+            background: var(--card);
+            border:1px solid var(--border);
+            border-left:5px solid var(--accent);
+            border-radius: 0 var(--radius) var(--radius) 0;
+            padding:1.4rem 1.6rem;
+            margin:1.8rem 0;
+            font-style:italic;
+            font-size:1.05rem;
+            line-height: 1.9;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        .text-card .quote-mark {
+            position: absolute;
+            top:-12px;
+            left:14px;
+            font-size:3rem;
+            color:var(--accent);
+            opacity:0.25;
+            line-height:1;
+        }
+        .text-card .author {
+            text-align:right;
+            font-style:normal;
+            font-size:0.9rem;
+            color:var(--text-light);
+            margin-top:0.8rem;
+        }
+        .exercises-section h2 {
+            font-size:1.5rem;
+            color:var(--heading);
+            margin:2rem 0 1rem;
+            border-bottom:3px solid var(--accent);
+            display:inline-block;
+            padding-bottom:0.3rem;
+        }
+        .exercise-card {
+            background: var(--card);
+            border:1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding:1.2rem 1.4rem;
+            margin-bottom:1.4rem;
+            box-shadow: var(--shadow);
+        }
+        .exercise-card h3 {
+            font-size:1.05rem;
+            color:var(--accent);
+            margin-bottom:0.8rem;
+            display: flex;
+            align-items: center;
+            gap:0.4rem;
+        }
+        .exercise-card table {
+            width:100%;
+            border-collapse: collapse;
+            margin: 0.8rem 0;
+        }
+        .exercise-card th, .exercise-card td {
+            padding:0.55rem 0.7rem;
+            border:1px solid var(--border);
+            text-align:left;
+            font-size:0.9rem;
+        }
+        .exercise-card th {
+            background: var(--audio-bg);
+            font-weight:700;
+            color:var(--heading);
+        }
+        .exercise-card input[type="text"] {
+            width:100%;
+            padding:0.4rem 0.6rem;
+            border:1px solid var(--border);
+            border-radius:4px;
+            background: var(--input-bg);
+            color: var(--text);
+            font-family: inherit;
+            font-size:0.9rem;
+        }
+        .btn-verify {
+            background: var(--accent);
+            color:#fff;
+            border:none;
+            padding:0.5rem 1.2rem;
+            border-radius: 20px;
+            font-weight:600;
+            cursor:pointer;
+            transition: background var(--transition);
+            margin-top:0.6rem;
+            font-size:0.85rem;
+        }
+        .btn-verify:hover { background: var(--accent-hover); }
+        .answer-key {
+            display:none;
+            margin-top:0.8rem;
+            padding:0.8rem;
+            background: var(--audio-bg);
+            border-radius:6px;
+            font-size:0.85rem;
+            color: var(--text-light);
+            border:1px dashed var(--accent);
+        }
+        .answer-key.visible { display:block; }
+        .self-assessment {
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+        }
+        .self-assessment label { cursor: pointer; }
+        .score-area {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: var(--shadow);
+        }
+        .score-area h2 { color: var(--heading); margin-bottom: 1rem; }
+        .score-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .score-stat {
+            background: var(--audio-bg);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        html[dir="rtl"] body { direction: rtl; }
+        html[dir="rtl"] .container { text-align: right; }
+        html[dir="rtl"] .text-card .author { text-align: left; }
+        html[dir="rtl"] .exercise-card th, html[dir="rtl"] .exercise-card td { text-align: right; }
+        @media (max-width:600px) {
+            .lesson-header h1 { font-size:1.5rem; }
+            .container { padding:1rem 0.8rem 2rem; }
+        }
+        .valeurs-section, .methode-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.6rem 1.8rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+        .valeurs-section h2, .methode-section h2 {
+            font-size: 1.5rem;
+            color: var(--heading);
+            margin-bottom: 1rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+        .valeur-card {
+            background: var(--audio-bg);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .valeur-card h3 { color: var(--accent); font-size: 1.1rem; margin-bottom: 0.4rem; }
+        .valeur-card ul { list-style: none; padding: 0; }
+        .valeur-card li {
+            padding: 0.3rem 0;
+            padding-left: 1.4rem;
+            position: relative;
+            color: var(--text-light);
+        }
+        .valeur-card li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 0.5rem;
+            top: 0.5rem;
+        }
+        .valeur-card p { margin: 0.5rem 0; }
+    </style>
+</head>
+<body>
+    <div id="main-content" class="container">
+        <p style="margin-bottom:1.5rem; color:var(--text-light);">
+            <a href="revision.html" data-i18n="back_revision">Révision générale</a>
+            › <strong data-i18n="back_current">L'impératif présent et passé</strong>
+        </p>
+        <div class="lesson-header">
+            <span class="badge" data-i18n="lesson_badge">📘 Conjugaison · Leçon 4</span>
+            <h1 data-i18n="lesson_title">L'impératif présent et passé</h1>
+            <div class="meta">
+                <span data-i18n="lesson_duration">⏱️ 45 minutes</span>
+                <span data-i18n="lesson_meta_audio">🎧 Écoutez le texte puis faites les exercices</span>
+            </div>
+        </div>
+        <!-- ═════ CUSTOM AUDIO PLAYER ═════ -->
+        <div class="audio-player" id="audioPlayer">
+            <span class="audio-label" data-i18n="audio_label">🎧 Écoute littéraire</span>
+            <button class="play-btn" id="playBtn" aria-label="Lecture">▶</button>
+            <div class="progress-area">
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="time-info">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+            <div class="speed-selector" id="speedSelector">
+                <button class="speed-btn" data-speed="0.75">0.75x</button>
+                <button class="speed-btn active" data-speed="1">1x</button>
+                <button class="speed-btn" data-speed="1.25">1.25x</button>
+                <button class="speed-btn" data-speed="1.5">1.5x</button>
+            </div>
+        </div>
+        <!-- ═════ LITERARY TEXT ═════ -->
+        <div class="text-card">
+            <span class="quote-mark">“</span>
+            <p>
+                <u>Écoute</u> le murmure du vent. <u>Regarde</u> les vagues danser. <u>Soyons</u> attentifs à la beauté du monde. <u>N'oubliez pas</u> de remercier la nature. <u>Aie</u> confiance en toi. <u>Ayons</u> le courage d'avancer. <u>Sachez</u> apprécier chaque instant. <u>Va</u> vers tes rêves. <u>Ne te décourage jamais</u>. <u>Faites</u> de votre mieux. <u>Pardonne</u> et <u>avance</u>.
+            </p>
+            <div class="author" data-i18n="text_author">— Conseils de sagesse, texte original</div>
+        </div>
+        <!-- ═════ RÈGLES : L'IMPÉRATIF ═════ -->
+        <div class="valeurs-section">
+            <h2 data-i18n="rules_heading">📖 L'impératif présent et passé</h2>
+            <p data-i18n="rules_intro" class="no-bilingual" style="margin-bottom:1.2rem;">L'impératif est un mode personnel qui sert à donner un ordre, un conseil, une prière ou une interdiction. Il ne se conjugue qu'à trois personnes : 2e du singulier, 1re du pluriel, 2e du pluriel.</p>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_present_title">🔹 L'impératif présent</h3>
+                <p data-i18n="rules_present_formation"><strong>Formation :</strong> on utilise le présent de l'indicatif sans le sujet.<br>• 1er groupe : -e, -ons, -ez (chante, chantons, chantez)<br>• 2e groupe : -is, -issons, -issez (finis, finissons, finissez)<br>• 3e groupe : formes irrégulières (va, allons, allez ; fais, faisons, faites ; sois, soyons, soyez ; aie, ayons, ayez ; sache, sachons, sachez)</p>
+                <p data-i18n="rules_present_note"><strong>Particularités :</strong><br>• Les verbes en -er perdent le -s à la 2e personne du singulier (chante, mange).<br>• Devant « en » et « y », on ajoute un -s (manges-en, vas-y).<br>• Les verbes pronominaux gardent le pronom (lève-toi, levons-nous, levez-vous).</p>
+            </div>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_passe_title">🔹 L'impératif passé</h3>
+                <p data-i18n="rules_passe_formation"><strong>Formation :</strong> auxiliaire (avoir ou être) à l'impératif présent + participe passé.<br>• (avoir) aie, ayons, ayez + participe passé<br>• (être) sois, soyons, soyez + participe passé</p>
+                <p data-i18n="rules_passe_values"><strong>Emploi :</strong> exprime une action à réaliser avant un moment donné, souvent avec une nuance d'antériorité.<br>Ex. : <em>Aie terminé</em> avant midi. <em>Soyez partis</em> avant la nuit.</p>
+            </div>
+            <p data-i18n="rules_note" style="margin-top:1rem; font-style:italic; color:var(--text-light);">💡 L'impératif passé est rare et s'utilise surtout avec l'auxiliaire « avoir » ou « être » pour marquer l'achèvement.</p>
+        </div>
+        <!-- ═════ EXERCISES ═════ -->
+        <div class="exercises-section">
+            <h2 data-i18n="exercises_heading">✍️ Exercices</h2>
+            <!-- Exercice 1 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo1_title">📌 1. Identifiez les impératifs soulignés</h3>
+                <p data-i18n="exo1_instruction">Pour chaque verbe souligné dans le texte, indiquez s'il s'agit de l'impératif présent ou passé, et la personne (tu, nous, vous).</p>
+                <table id="exo1Table">
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_verb" class="no-bilingual">Verbe</th>
+                            <th data-i18n="table_answer" class="no-bilingual">Temps et personne</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo1Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo1Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 2 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo2_title">📌 2. Conjuguez à l'impératif présent</h3>
+                <p data-i18n="exo2_instruction">Complétez avec le verbe à l'impératif présent.</p>
+                <ol type="a">
+                    <li>(Manger) ________ tes légumes !</li>
+                    <li>(Finir) ________ vos devoirs avant de sortir !</li>
+                    <li>(Aller) ________ au tableau !</li>
+                    <li>(Être) ________ patients !</li>
+                    <li>(Avoir) ________ confiance !</li>
+                    <li>(Savoir) ________ attendre ton tour.</li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo2Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo2Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 3 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo3_title">📌 3. Transformez à la forme négative</h3>
+                <p data-i18n="exo3_instruction">Mettez ces impératifs à la forme négative.</p>
+                <ol type="a">
+                    <li>Parle plus fort ! → <input type="text" placeholder="Forme négative"></li>
+                    <li>Mangeons tout de suite ! → <input type="text" placeholder="Forme négative"></li>
+                    <li>Levez-vous ! → <input type="text" placeholder="Forme négative"></li>
+                    <li>Fais attention ! → <input type="text" placeholder="Forme négative"></li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo3Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo3Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 4 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo4_title">📌 4. Impératif des verbes pronominaux</h3>
+                <p data-i18n="exo4_instruction">Conjuguez à l'impératif présent (affirmatif et négatif).</p>
+                <ol type="a">
+                    <li>(Se lever) ________ tôt demain ! → Ne ________ pas tard !</li>
+                    <li>(Se dépêcher) ________ , nous sommes en retard ! → Ne ________ pas trop !</li>
+                    <li>(S'asseoir) ________ ici ! → Ne ________ pas là !</li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo4Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo4Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 5 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo5_title">📌 5. Impératif passé</h3>
+                <p data-i18n="exo5_instruction">Transformez en impératif passé avec l'auxiliaire indiqué.</p>
+                <ol type="a">
+                    <li>(avoir / finir) ________ ton travail avant ce soir.</li>
+                    <li>(être / partir) ________ avant le lever du jour.</li>
+                    <li>(avoir / réviser) ________ tes leçons avant l'examen.</li>
+                    <li>(être / rentré) ________ avant minuit.</li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex5" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex5" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex5" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo5Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo5Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 6 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo6_title">📌 6. Production personnelle</h3>
+                <p data-i18n="exo6_instruction">Rédigez un court paragraphe (4-5 lignes) donnant des conseils à un ami pour réussir ses examens. Utilisez au moins cinq verbes à l'impératif présent (différentes personnes) et un impératif passé. Soulignez les impératifs.</p>
+                <textarea rows="5" style="width:100%; padding:0.5rem;" placeholder="Vos conseils..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex6" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex6" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex6" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+        </div>
+        <!-- ═════ SCORING AREA ═════ -->
+        <div class="score-area" id="scoreArea">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="score-stats" id="scoreStats">
+                <div class="score-stat"><span data-i18n="score_correct">Correctes :</span> <span id="scoreCorrect">0</span></div>
+                <div class="score-stat"><span data-i18n="score_incorrect">Incorrectes :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="score-stat"><span data-i18n="score_partial">Partielles :</span> <span id="scorePartial">0</span></div>
+                <div class="score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">6</span></div>
+            </div>
+        </div>
+        <div class="score-actions" style="margin-top:1.2rem;">
+            <button id="saveResultsBtn" class="btn-verify" style="margin-right:0.5rem;" 
+                    data-i18n="save_results">💾 Enregistrer mes résultats</button>
+            <button id="printPdfBtn" class="btn-verify" style="background:#5c5344; margin-right:0.5rem;"
+                    data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+        </div>
+        <!-- Footer nav -->
+        <div style="margin-top:2rem; display:flex; justify-content:space-between; flex-wrap:wrap;">
+            <a href="semaine3-conjugaison-plusqueparfait.html" data-i18n="footer_back" class="no-bilingual">← Leçon précédente</a>
+            <a href="semaine3-orthographe-participe.html" data-i18n="footer_next" class="no-bilingual">Leçon suivante : Accord du participe passé →</a>
+        </div>
+    </div>
+    <!-- ═══════ SCRIPTS ═══════ -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                'lesson_title': 'Leçon 4 – L\'impératif présent et passé | Texte littéraire & Exercices',
+                'lesson_short_title': 'L\'impératif présent et passé',
+                'ach_year_bac': '4ᵉ année secondaire (Bac)',
+                'ach_module_semaine3': 'Maîtrise de la conjugaison',
+                'back_revision': 'Révision générale',
+                'back_current': 'L\'impératif présent et passé',
+                'lesson_badge': '📘 Conjugaison · Leçon 4',
+                'lesson_title': 'L\'impératif présent et passé',
+                'lesson_duration': '⏱️ 45 minutes',
+                'lesson_meta_audio': '🎧 Écoutez le texte puis faites les exercices',
+                'audio_label': '🎧 Écoute littéraire',
+                'text_author': '— Conseils de sagesse, texte original',
+                'rules_heading': '📖 L\'impératif présent et passé',
+                'rules_intro': 'L\'impératif est un mode personnel qui sert à donner un ordre, un conseil, une prière ou une interdiction. Il ne se conjugue qu\'à trois personnes : 2e du singulier, 1re du pluriel, 2e du pluriel.',
+                'rules_present_title': '🔹 L\'impératif présent',
+                'rules_present_formation': '<strong>Formation :</strong> on utilise le présent de l\'indicatif sans le sujet.<br>• 1er groupe : -e, -ons, -ez (chante, chantons, chantez)<br>• 2e groupe : -is, -issons, -issez (finis, finissons, finissez)<br>• 3e groupe : formes irrégulières (va, allons, allez ; fais, faisons, faites ; sois, soyons, soyez ; aie, ayons, ayez ; sache, sachons, sachez)',
+                'rules_present_note': '<strong>Particularités :</strong><br>• Les verbes en -er perdent le -s à la 2e personne du singulier (chante, mange).<br>• Devant « en » et « y », on ajoute un -s (manges-en, vas-y).<br>• Les verbes pronominaux gardent le pronom (lève-toi, levons-nous, levez-vous).',
+                'rules_passe_title': '🔹 L\'impératif passé',
+                'rules_passe_formation': '<strong>Formation :</strong> auxiliaire (avoir ou être) à l\'impératif présent + participe passé.<br>• (avoir) aie, ayons, ayez + participe passé<br>• (être) sois, soyons, soyez + participe passé',
+                'rules_passe_values': '<strong>Emploi :</strong> exprime une action à réaliser avant un moment donné, souvent avec une nuance d\'antériorité.<br>Ex. : <em>Aie terminé</em> avant midi. <em>Soyez partis</em> avant la nuit.',
+                'rules_note': '💡 L\'impératif passé est rare et s\'utilise surtout avec l\'auxiliaire « avoir » ou « être » pour marquer l\'achèvement.',
+                'exercises_heading': '✍️ Exercices',
+                'exo1_title': '📌 1. Identifiez les impératifs soulignés',
+                'exo1_instruction': 'Pour chaque verbe souligné dans le texte, indiquez s\'il s\'agit de l\'impératif présent ou passé, et la personne (tu, nous, vous).',
+                'table_verb': 'Verbe',
+                'table_answer': 'Temps et personne',
+                'exo2_title': '📌 2. Conjuguez à l\'impératif présent',
+                'exo2_instruction': 'Complétez avec le verbe à l\'impératif présent.',
+                'exo3_title': '📌 3. Transformez à la forme négative',
+                'exo3_instruction': 'Mettez ces impératifs à la forme négative.',
+                'exo4_title': '📌 4. Impératif des verbes pronominaux',
+                'exo4_instruction': 'Conjuguez à l\'impératif présent (affirmatif et négatif).',
+                'exo5_title': '📌 5. Impératif passé',
+                'exo5_instruction': 'Transformez en impératif passé avec l\'auxiliaire indiqué.',
+                'exo6_title': '📌 6. Production personnelle',
+                'exo6_instruction': 'Rédigez un court paragraphe (4-5 lignes) donnant des conseils à un ami pour réussir ses examens. Utilisez au moins cinq verbes à l\'impératif présent (différentes personnes) et un impératif passé. Soulignez les impératifs.',
+                'btn_correction': '🔍 Voir la correction',
+                'footer_back': '← Leçon précédente',
+                'footer_next': 'Leçon suivante : Accord du participe passé →',
+                'self_assess_question': 'Ma réponse est :',
+                'self_correct': 'Correcte',
+                'self_incorrect': 'Incorrecte',
+                'self_partial': 'Partiellement correcte',
+                'score_title': '📊 Votre auto‑évaluation',
+                'score_correct': 'Correctes :',
+                'score_incorrect': 'Incorrectes :',
+                'score_partial': 'Partielles :',
+                'score_unanswered': 'Sans réponse :',
+                'save_results': '💾 Enregistrer mes résultats',
+                'save_success': 'Résultats sauvegardés ✓',
+                'save_error': 'Erreur lors de la sauvegarde',
+                'print_pdf': '🖨️ Imprimer / PDF',
+                'print_with_answers': 'Corrigé inclus',
+                'print_site_name': 'Educational Dashboard – French',
+                'print_scholar_year': 'Révision pour le Bac',
+                'print_week': 'Semaine 3',
+                'print_area': 'Conjugaison',
+                'print_footer_dev': 'Développé par Mejri Ziad',
+                'print_footer_date': 'Imprimé le',
+                'print_without_answers': 'Sans corrigé',
+                'toast_signin_required': 'Connectez-vous pour voir les corrections.'
+            },
+            en: {
+                'lesson_title': 'Lesson 4 – Present and Past Imperative | Literary Text & Exercises',
+                'lesson_short_title': 'Present and Past Imperative',
+                'ach_year_bac': '12th grade (Bac)',
+                'ach_module_semaine3': 'Mastering Conjugation',
+                'back_revision': 'General Review',
+                'back_current': 'Present and Past Imperative',
+                'lesson_badge': '📘 Conjugation · Lesson 4',
+                'lesson_title': 'Present and Past Imperative',
+                'lesson_duration': '⏱️ 45 minutes',
+                'lesson_meta_audio': '🎧 Listen to the text then do the exercises',
+                'audio_label': '🎧 Literary Listening',
+                'text_author': '— Words of Wisdom, original text',
+                'rules_heading': '📖 Present and Past Imperative',
+                'rules_intro': 'The imperative is a personal mood used to give an order, advice, a prayer or a prohibition. It is only conjugated in three persons: 2nd singular, 1st plural, 2nd plural.',
+                'rules_present_title': '🔹 Present imperative',
+                'rules_present_formation': '<strong>Formation:</strong> use the present indicative without the subject.<br>• 1st group: -e, -ons, -ez (chante, chantons, chantez)<br>• 2nd group: -is, -issons, -issez (finis, finissons, finissez)<br>• 3rd group: irregular forms (va, allons, allez; fais, faisons, faites; sois, soyons, soyez; aie, ayons, ayez; sache, sachons, sachez)',
+                'rules_present_note': '<strong>Particularities:</strong><br>• -er verbs lose the -s in the 2nd person singular (chante, mange).<br>• Before "en" and "y", an -s is added (manges-en, vas-y).<br>• Pronominal verbs keep the pronoun (lève-toi, levons-nous, levez-vous).',
+                'rules_passe_title': '🔹 Past imperative',
+                'rules_passe_formation': '<strong>Formation:</strong> auxiliary (avoir or être) in the present imperative + past participle.<br>• (avoir) aie, ayons, ayez + past participle<br>• (être) sois, soyons, soyez + past participle',
+                'rules_passe_values': '<strong>Use:</strong> expresses an action to be completed before a given moment, often with a nuance of anteriority.<br>Ex.: <em>Aie terminé</em> before noon. <em>Soyez partis</em> before nightfall.',
+                'rules_note': '💡 The past imperative is rare and is mainly used with "avoir" or "être" to mark completion.',
+                'exercises_heading': '✍️ Exercises',
+                'exo1_title': '📌 1. Identify the underlined imperatives',
+                'exo1_instruction': 'For each underlined verb in the text, indicate whether it is present or past imperative, and the person (tu, nous, vous).',
+                'table_verb': 'Verb',
+                'table_answer': 'Tense and person',
+                'exo2_title': '📌 2. Conjugate in the present imperative',
+                'exo2_instruction': 'Fill in with the verb in the present imperative.',
+                'exo3_title': '📌 3. Transform to the negative form',
+                'exo3_instruction': 'Put these imperatives in the negative form.',
+                'exo4_title': '📌 4. Imperative of pronominal verbs',
+                'exo4_instruction': 'Conjugate in the present imperative (affirmative and negative).',
+                'exo5_title': '📌 5. Past imperative',
+                'exo5_instruction': 'Transform into the past imperative with the indicated auxiliary.',
+                'exo6_title': '📌 6. Personal production',
+                'exo6_instruction': 'Write a short paragraph (4-5 lines) giving advice to a friend to succeed in exams. Use at least five verbs in the present imperative (different persons) and one past imperative. Underline the imperatives.',
+                'btn_correction': '🔍 See correction',
+                'footer_back': '← Previous lesson',
+                'footer_next': 'Next lesson: Past participle agreement →',
+                'self_assess_question': 'My answer is:',
+                'self_correct': 'Correct',
+                'self_incorrect': 'Incorrect',
+                'self_partial': 'Partially correct',
+                'score_title': '📊 Your self‑assessment',
+                'score_correct': 'Correct:',
+                'score_incorrect': 'Incorrect:',
+                'score_partial': 'Partial:',
+                'score_unanswered': 'Unanswered:',
+                'save_results': '💾 Save my results',
+                'save_success': 'Results saved ✓',
+                'save_error': 'Save failed',
+                'print_pdf': '🖨️ Print / PDF',
+                'print_with_answers': 'With answers',
+                'print_site_name': 'Educational Dashboard – French',
+                'print_scholar_year': 'Bac Review',
+                'print_week': 'Week 3',
+                'print_area': 'Conjugation',
+                'print_footer_dev': 'Developed by Mejri Ziad',
+                'print_footer_date': 'Printed on',
+                'print_without_answers': 'Without answers',
+                'toast_signin_required': 'Sign in to see the corrections.'
+            },
+            ar: {
+                'lesson_title': 'الدرس 4 – الأمر الحاضر والماضي | نص أدبي وتمارين',
+                'lesson_short_title': 'الأمر الحاضر والماضي',
+                'ach_year_bac': 'السنة الرابعة ثانوي',
+                'ach_module_semaine3': 'إتقان التصريف',
+                'back_revision': 'المراجعة العامة',
+                'back_current': 'الأمر الحاضر والماضي',
+                'lesson_badge': '📘 التصريف · الدرس 4',
+                'lesson_title': 'الأمر الحاضر والماضي',
+                'lesson_duration': '⏱️ 45 دقيقة',
+                'lesson_meta_audio': '🎧 استمع إلى النص ثم قم بالتمارين',
+                'audio_label': '🎧 استماع أدبي',
+                'text_author': '— نصائح حكيمة، نص أصلي',
+                'rules_heading': '📖 الأمر الحاضر والماضي',
+                'rules_intro': 'الأمر صيغة شخصية تستعمل لإعطاء أمر أو نصيحة أو طلب أو نهي. يُصرَّف فقط مع ثلاثة ضمائر: أنتَ، نحن، أنتم.',
+                'rules_present_title': '🔹 الأمر الحاضر',
+                'rules_present_formation': '<strong>التكوين:</strong> نستعمل المضارع الدلالي بدون الفاعل.<br>• المجموعة الأولى: -e, -ons, -ez (chante, chantons, chantez)<br>• المجموعة الثانية: -is, -issons, -issez (finis, finissons, finissez)<br>• المجموعة الثالثة: أشكال شاذة (va, allons, allez; fais, faisons, faites; sois, soyons, soyez; aie, ayons, ayez; sache, sachons, sachez)',
+                'rules_present_note': '<strong>خصوصيات:</strong><br>• أفعال المجموعة الأولى تحذف -s في صيغة المفرد (chante, mange).<br>• قبل « en » و « y » نضيف -s (manges-en, vas-y).<br>• الأفعال الانعكاسية تحتفظ بالضمير (lève-toi, levons-nous, levez-vous).',
+                'rules_passe_title': '🔹 الأمر الماضي',
+                'rules_passe_formation': '<strong>التكوين:</strong> الفعل المساعد (avoir أو être) في الأمر الحاضر + اسم المفعول.<br>• (avoir) aie, ayons, ayez + اسم المفعول<br>• (être) sois, soyons, soyez + اسم المفعول',
+                'rules_passe_values': '<strong>الاستعمال:</strong> يعبر عن حدث يجب إنجازه قبل لحظة معينة، غالبا مع فارق الأسبقية.<br>مثال: <em>Aie terminé</em> قبل الظهر. <em>Soyez partis</em> قبل الليل.',
+                'rules_note': '💡 الأمر الماضي نادر ويستعمل خاصة مع « avoir » أو « être » للدلالة على الإنجاز.',
+                'exercises_heading': '✍️ تمارين',
+                'exo1_title': '📌 1. حدد أوامر الأمر المسطرة',
+                'exo1_instruction': 'لكل فعل مسطر في النص، اذكر ما إذا كان أمرا حاضرا أو ماضيا، والضمير (tu, nous, vous).',
+                'table_verb': 'الفعل',
+                'table_answer': 'الزمن والضمير',
+                'exo2_title': '📌 2. صرّف في الأمر الحاضر',
+                'exo2_instruction': 'أكمل بتصريف الفعل في الأمر الحاضر.',
+                'exo3_title': '📌 3. حوّل إلى صيغة النفي',
+                'exo3_instruction': 'ضع هذه الأوامر في صيغة النفي.',
+                'exo4_title': '📌 4. أمر الأفعال الانعكاسية',
+                'exo4_instruction': 'صرّف في الأمر الحاضر (إثباتا ونفيا).',
+                'exo5_title': '📌 5. الأمر الماضي',
+                'exo5_instruction': 'حوّل إلى الأمر الماضي باستعمال الفعل المساعد المحدد.',
+                'exo6_title': '📌 6. إنتاج شخصي',
+                'exo6_instruction': 'اكتب فقرة قصيرة (4-5 أسطر) تقدم نصائح لصديق لينجح في امتحاناته. استعمل خمسة أفعال على الأقل في الأمر الحاضر (أشخاص مختلفة) وأمرا ماضيا واحدا. ضع خطا تحت الأوامر.',
+                'btn_correction': '🔍 الاطلاع على التصحيح',
+                'footer_back': '← الدرس السابق',
+                'footer_next': 'الدرس الموالي: توافق اسم المفعول →',
+                'self_assess_question': 'جوابي هو:',
+                'self_correct': 'صحيح',
+                'self_incorrect': 'خاطئ',
+                'self_partial': 'صحيح جزئيًا',
+                'score_title': '📊 تقييمك الذاتي',
+                'score_correct': 'صحيح:',
+                'score_incorrect': 'خاطئ:',
+                'score_partial': 'جزئي:',
+                'score_unanswered': 'بدون إجابة:',
+                'save_results': '💾 حفظ نتائجي',
+                'save_success': 'تم حفظ النتائج ✓',
+                'save_error': 'خطأ في الحفظ',
+                'print_pdf': '🖨️ طباعة / PDF',
+                'print_with_answers': 'مع التصحيح',
+                'print_site_name': 'لوحة التحكم التعليمية – الفرنسية',
+                'print_scholar_year': 'مراجعة البكالوريا',
+                'print_week': 'الأسبوع 3',
+                'print_area': 'التصريف',
+                'print_footer_dev': 'طوّر بواسطة ماجري زياد',
+                'print_footer_date': 'طُبع في',
+                'toast_signin_required': 'سجّل الدخول لرؤية التصحيحات.'
+            }
+        });
+        (function() {
+            var container = document.querySelector('.container');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+        })();
+    </script>
+    <script src="ed-french-ini.js"></script>
+    <script>
+        (function() {
+            const audio = new Audio('lessons/revision/sounds/semaine3-imperatif.mp3');
+            const playBtn = document.getElementById('playBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const speedBtns = document.querySelectorAll('.speed-btn');
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+            audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
+            audio.addEventListener('timeupdate', () => {
+                const percent = (audio.currentTime / audio.duration) * 100 || 0;
+                progressFill.style.width = percent + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            });
+            audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) { audio.play(); playBtn.textContent = '⏸'; }
+                else { audio.pause(); playBtn.textContent = '▶'; }
+            });
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const seekTime = (clickX / width) * audio.duration;
+                audio.currentTime = seekTime;
+            });
+            speedBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    speedBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const speed = parseFloat(btn.dataset.speed);
+                    audio.playbackRate = speed;
+                });
+            });
+            const verbs = [
+                "Écoute", "Regarde", "Soyons", "N'oubliez pas",
+                "Aie", "Ayons", "Sachez", "Va",
+                "Ne te décourage jamais", "Faites", "Pardonne", "avance"
+            ];
+            const answersEx1 = [
+                "présent, tu", "présent, tu", "présent, nous", "présent, vous (négatif)",
+                "présent, tu", "présent, nous", "présent, vous", "présent, tu",
+                "présent, tu (négatif)", "présent, vous", "présent, tu", "présent, tu"
+            ];
+            const tbody1 = document.querySelector('#exo1Table tbody');
+            verbs.forEach((verb, i) => {
+                const row = tbody1.insertRow();
+                const cellVerb = row.insertCell();
+                cellVerb.textContent = verb;
+                const cellAnswer = row.insertCell();
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.placeholder = 'temps et personne';
+                cellAnswer.appendChild(input);
+            });
+            document.getElementById('exo1Key').innerHTML = '<strong>Correction :</strong><br>' + verbs.map((v,i) => `${v} → <em>${answersEx1[i]}</em>`).join('<br>');
+            document.getElementById('exo2Key').innerHTML = '<strong>Correction :</strong><br>a) Mange<br>b) Finissez<br>c) Va<br>d) Soyez<br>e) Aie<br>f) Sache';
+            document.getElementById('exo3Key').innerHTML = '<strong>Correction :</strong><br>a) Ne parle pas plus fort !<br>b) Ne mangeons pas tout de suite !<br>c) Ne vous levez pas !<br>d) Ne fais pas attention !';
+            document.getElementById('exo4Key').innerHTML = '<strong>Correction :</strong><br>a) Lève-toi tôt demain ! Ne te lève pas tard !<br>b) Dépêchons-nous ! Ne nous dépêchons pas trop !<br>c) Assieds-toi ici ! Ne t\'assieds pas là !';
+            document.getElementById('exo5Key').innerHTML = '<strong>Correction :</strong><br>a) Aie fini ton travail avant ce soir.<br>b) Soyez partis avant le lever du jour.<br>c) Aie révisé tes leçons avant l\'examen.<br>d) Soyez rentrés avant minuit.';
+            window.toggleCorrection = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('visible');
+            };
+            function updateScore() {
+                const radioGroups = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5', 'self_ex6'];
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                radioGroups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                document.getElementById('scoreCorrect').textContent = correct;
+                document.getElementById('scoreIncorrect').textContent = incorrect;
+                document.getElementById('scorePartial').textContent = partial;
+                document.getElementById('scoreUnanswered').textContent = unanswered;
+            }
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                const radioGroups = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5', 'self_ex6'];
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                radioGroups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                const lessonId = 'semaine3-conjugaison-imperatif';
+                const lang = localStorage.getItem('lang') || 'fr';
+                const entry = {
+                    lesson_id: lessonId,
+                    lesson_title: {
+                        fr: App.getTranslation('lesson_short_title', 'fr'),
+                        en: App.getTranslation('lesson_short_title', 'en'),
+                        ar: App.getTranslation('lesson_short_title', 'ar')
+                    },
+                    year: {
+                        fr: App.getTranslation('ach_year_bac', 'fr'),
+                        en: App.getTranslation('ach_year_bac', 'en'),
+                        ar: App.getTranslation('ach_year_bac', 'ar')
+                    },
+                    module: {
+                        fr: App.getTranslation('ach_module_semaine3', 'fr'),
+                        en: App.getTranslation('ach_module_semaine3', 'en'),
+                        ar: App.getTranslation('ach_module_semaine3', 'ar')
+                    },
+                    correct: correct,
+                    incorrect: incorrect,
+                    partial: partial,
+                    unanswered: unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles')
+                    .select('achivement')
+                    .eq('id', user.id)
+                    .single();
+                if (fetchError) { console.error('Could not fetch profile:', fetchError); return; }
+                let achivement = profileData?.achivement || {};
+                if (!achivement["ED-French"]) achivement["ED-French"] = [];
+                const arr = achivement["ED-French"];
+                const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+                if (existingIdx >= 0) arr[existingIdx] = entry; else arr.push(entry);
+                const { error: updateError } = await App.supabase
+                    .from('profiles')
+                    .update({ achivement: achivement })
+                    .eq('id', user.id);
+                if (updateError) {
+                    console.error('Save failed:', updateError);
+                    App.showToast('save_error', 'error');
+                } else {
+                    App.showToast('save_success', 'success');
+                    App.logUserAction('lesson_saved', { lesson: lessonId, correct, incorrect, partial });
+                }
+            });
+            document.getElementById('printPdfBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles')
+                        .select('registration_state')
+                        .eq('id', user.id)
+                        .single();
+                    if (!error && profile && profile.registration_state && profile.registration_state.active === true) isRegistered = true;
+                } catch (e) {}
+                const headerHTML = document.querySelector('.lesson-header').cloneNode(true);
+                const textCard = document.querySelector('.text-card').cloneNode(true);
+                const rulesSections = document.querySelectorAll('.valeurs-section, .methode-section');
+                let rulesHTML = '';
+                rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
+                const exercisesSection = document.querySelector('.exercises-section').cloneNode(true);
+                exercisesSection.querySelectorAll('input, textarea, .btn-verify, .self-assessment').forEach(el => el.remove());
+                if (isRegistered) {
+                    const answerKeys = exercisesSection.querySelectorAll('.answer-key');
+                    answerKeys.forEach(key => {
+                        key.style.display = 'block';
+                        key.style.border = 'none';
+                        key.style.padding = '0.5rem 0';
+                        key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    exercisesSection.querySelectorAll('.answer-key').forEach(el => el.remove());
+                }
+                const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                const lang = localStorage.getItem('lang') || 'fr';
+                printWindow.document.write(`
+                <!DOCTYPE html>
+                <html lang="${lang}">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>${App.getTranslation('lesson_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title>
+                    <style>
+                        body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.6; max-width: 700px; margin: 2rem auto; padding: 0 1rem; color: #000; }
+                        .print-header { text-align: center; border-bottom: 2px solid #c75b2c; padding-bottom: 1rem; margin-bottom: 2rem; }
+                        .print-header .site-name { font-size: 1.4rem; font-weight: bold; color: #c75b2c; margin: 0 0 0.3rem; }
+                        .print-header .meta-line { font-size: 0.95rem; color: #444; margin: 0.2rem 0; }
+                        .print-header .lesson-name { font-size: 1.1rem; font-weight: bold; color: #000; margin-top: 0.5rem; }
+                        .print-footer { text-align: center; border-top: 1px solid #ccc; padding-top: 1rem; margin-top: 2rem; font-size: 0.85rem; color: #666; }
+                        h1, h2, h3 { color: #000; }
+                        .lesson-header { text-align: center; margin-bottom: 2rem; }
+                        .badge { display: inline-block; background: #c75b2c; color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; text-transform: uppercase; }
+                        .text-card { border-left: 4px solid #c75b2c; padding: 1rem 1.5rem; margin: 1.5rem 0; font-style: italic; }
+                        .quote-mark { font-size: 3rem; color: #c75b2c; opacity: 0.3; position: absolute; top: -10px; left: 10px; }
+                        .text-card .author { text-align: right; font-style: normal; margin-top: 0.8rem; }
+                        .valeurs-section, .methode-section { margin: 1.5rem 0; }
+                        .valeur-card { background: #f8f4ec; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; }
+                        .valeur-card h3 { color: #c75b2c; }
+                        .exercise-card { margin: 1.2rem 0; }
+                        table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; }
+                        th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+                        th { background: #f0e8d8; }
+                        .answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; }
+                        @media print { body { margin: 0; padding: 0; } @page { margin: 2cm; } }
+                    </style>
+                </head>
+                <body>
+                    <div class="print-header">
+                        <div class="site-name">${App.getTranslation('print_site_name', lang)}</div>
+                        <div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div>
+                        <div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div>
+                    </div>
+                    ${breadcrumb.outerHTML}
+                    ${headerHTML.outerHTML}
+                    ${textCard.outerHTML}
+                    ${rulesHTML}
+                    ${exercisesSection.outerHTML}
+                    <div class="print-footer">
+                        ${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}
+                    </div>
+                </body>
+                </html>
+            `);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+            document.querySelectorAll('input[type="radio"][name^="self_ex"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+        })();
+    </script>
+    <!-- ═══════ DIRECT‑TRANSLATION FIX ═══════ -->
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+</body>
+</html>

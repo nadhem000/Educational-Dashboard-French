@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_title">Leçon 4 – Les temps du récit : imparfait, passé simple | Texte littéraire & Exercices</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ===== Lesson‑specific styles (unchanged) ===== */
+        :root {
+            --bg: #f9f7f1;
+            --card: #ffffff;
+            --text: #2b2416;
+            --text-light: #5c5344;
+            --heading: #382e1e;
+            --accent: #c75b2c;
+            --accent-hover: #a3441d;
+            --border: #e5ddd0;
+            --shadow: 0 1px 4px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-hover: 0 8px 22px rgba(0,0,0,0.08);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --transition: 0.25s ease;
+            --font-body: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
+            --audio-bg: #f4efe4;
+            --audio-progress: #d8c9aa;
+            --button-bg: #f0e8d8;
+            --button-hover: #e3d5bc;
+            --input-bg: #fcfaf6;
+        }
+        body.dark {
+            --bg: #1e1b17;
+            --card: #2a2620;
+            --text: #e8dfd2;
+            --text-light: #b9aa95;
+            --heading: #f0e4d2;
+            --accent: #e07b4a;
+            --accent-hover: #f08c5c;
+            --border: #3e3830;
+            --shadow: 0 1px 4px rgba(0,0,0,0.25);
+            --shadow-hover: 0 8px 22px rgba(0,0,0,0.35);
+            --audio-bg: #26221b;
+            --audio-progress: #5a4e3c;
+            --button-bg: #3a3329;
+            --button-hover: #4e4437;
+            --input-bg: #333028;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.75;
+            transition: background var(--transition), color var(--transition);
+        }
+        .container { max-width:860px; margin:0 auto; padding:1.8rem 1.4rem 3rem; }
+        .lesson-header { text-align: center; margin-bottom: 2rem; }
+        .badge {
+            display:inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding:0.25rem 1rem;
+            border-radius:20px;
+            font-size:0.8rem;
+            font-weight:700;
+            letter-spacing:0.03em;
+            text-transform: uppercase;
+        }
+        .lesson-header h1 {
+            font-size: 2.1rem;
+            color: var(--heading);
+            margin: 0.6rem 0 0.3rem;
+            line-height: 1.3;
+        }
+        .lesson-header .meta {
+            font-size:0.9rem;
+            color:var(--text-light);
+            display: flex;
+            justify-content: center;
+            gap:1.2rem;
+            flex-wrap: wrap;
+        }
+        .audio-player {
+            background: var(--card);
+            border:1px solid var(--border);
+            border-radius: var(--radius);
+            padding:1rem 1.4rem;
+            margin: 1.5rem 0 2rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap:1rem;
+            flex-wrap: wrap;
+        }
+        .audio-player .play-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            border:none;
+            font-size:1.2rem;
+            cursor:pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background var(--transition);
+            flex-shrink: 0;
+        }
+        .play-btn:hover { background: var(--accent-hover); }
+        .audio-player .progress-area {
+            flex:1;
+            min-width:120px;
+            display: flex;
+            flex-direction: column;
+            gap:0.3rem;
+        }
+        .progress-bar {
+            width:100%;
+            height:6px;
+            background: var(--audio-progress);
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+        .time-info { display: flex; justify-content: space-between; font-size:0.75rem; color:var(--text-light); }
+        .speed-selector { display: flex; gap:0.3rem; flex-wrap: wrap; }
+        .speed-btn {
+            border:1px solid var(--border);
+            background: var(--button-bg);
+            color: var(--text);
+            padding:0.25rem 0.55rem;
+            border-radius: 4px;
+            font-size:0.75rem;
+            font-weight:600;
+            cursor:pointer;
+            transition: all var(--transition);
+        }
+        .speed-btn.active { background: var(--accent); color:#fff; border-color: var(--accent); }
+        .audio-label { font-weight:700; font-size:0.85rem; color:var(--heading); white-space: nowrap; }
+        @media (max-width:600px) {
+            .audio-player { flex-direction: column; align-items: stretch; }
+            .audio-label { text-align: center; }
+        }
+        .text-card {
+            background: var(--card);
+            border:1px solid var(--border);
+            border-left:5px solid var(--accent);
+            border-radius: 0 var(--radius) var(--radius) 0;
+            padding:1.4rem 1.6rem;
+            margin:1.8rem 0;
+            font-style:italic;
+            font-size:1.05rem;
+            line-height: 1.9;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        .text-card .quote-mark {
+            position: absolute;
+            top:-12px;
+            left:14px;
+            font-size:3rem;
+            color:var(--accent);
+            opacity:0.25;
+            line-height:1;
+        }
+        .text-card .author { text-align:right; font-style:normal; font-size:0.9rem; color:var(--text-light); margin-top:0.8rem; }
+        .exercises-section h2 {
+            font-size:1.5rem;
+            color:var(--heading);
+            margin:2rem 0 1rem;
+            border-bottom:3px solid var(--accent);
+            display:inline-block;
+            padding-bottom:0.3rem;
+        }
+        .exercise-card {
+            background: var(--card);
+            border:1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding:1.2rem 1.4rem;
+            margin-bottom:1.4rem;
+            box-shadow: var(--shadow);
+        }
+        .exercise-card h3 { font-size:1.05rem; color:var(--accent); margin-bottom:0.8rem; display: flex; align-items: center; gap:0.4rem; }
+        .exercise-card table { width:100%; border-collapse: collapse; margin: 0.8rem 0; }
+        .exercise-card th, .exercise-card td { padding:0.55rem 0.7rem; border:1px solid var(--border); text-align:left; font-size:0.9rem; }
+        .exercise-card th { background: var(--audio-bg); font-weight:700; color:var(--heading); }
+        .exercise-card input[type="text"] {
+            width:100%;
+            padding:0.4rem 0.6rem;
+            border:1px solid var(--border);
+            border-radius:4px;
+            background: var(--input-bg);
+            color: var(--text);
+            font-family: inherit;
+            font-size:0.9rem;
+        }
+        .btn-verify {
+            background: var(--accent);
+            color:#fff;
+            border:none;
+            padding:0.5rem 1.2rem;
+            border-radius: 20px;
+            font-weight:600;
+            cursor:pointer;
+            transition: background var(--transition);
+            margin-top:0.6rem;
+            font-size:0.85rem;
+        }
+        .btn-verify:hover { background: var(--accent-hover); }
+        .answer-key {
+            display:none;
+            margin-top:0.8rem;
+            padding:0.8rem;
+            background: var(--audio-bg);
+            border-radius:6px;
+            font-size:0.85rem;
+            color: var(--text-light);
+            border:1px dashed var(--accent);
+        }
+        .answer-key.visible { display:block; }
+        .self-assessment { margin-top: 0.8rem; font-size: 0.9rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+        .self-assessment label { cursor: pointer; }
+        .score-area {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: var(--shadow);
+        }
+        .score-area h2 { color: var(--heading); margin-bottom: 1rem; }
+        .score-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .score-stat { background: var(--audio-bg); padding: 0.8rem 1.2rem; border-radius: 8px; font-weight: 600; }
+        html[dir="rtl"] body { direction: rtl; }
+        html[dir="rtl"] .container { text-align: right; }
+        html[dir="rtl"] .text-card .author { text-align: left; }
+        html[dir="rtl"] .exercise-card th, html[dir="rtl"] .exercise-card td { text-align: right; }
+        @media (max-width:600px) {
+            .lesson-header h1 { font-size:1.5rem; }
+            .container { padding:1rem 0.8rem 2rem; }
+        }
+        .valeurs-section, .methode-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.6rem 1.8rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+        .valeurs-section h2, .methode-section h2 {
+            font-size: 1.5rem;
+            color: var(--heading);
+            margin-bottom: 1rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+        .valeur-card {
+            background: var(--audio-bg);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .valeur-card h3 { color: var(--accent); font-size: 1.1rem; margin-bottom: 0.4rem; }
+        .valeur-card ul { list-style: none; padding: 0; }
+        .valeur-card li { padding: 0.3rem 0; padding-left: 1.4rem; position: relative; color: var(--text-light); }
+        .valeur-card li::before { content: '◆'; position: absolute; left: 0; color: var(--accent); font-size: 0.5rem; top: 0.5rem; }
+        .valeur-card p { margin: 0.5rem 0; }
+    </style>
+</head>
+<body>
+    <div id="main-content" class="container">
+        <p style="margin-bottom:1.5rem; color:var(--text-light);">
+            <a href="revision.html" data-i18n="back_revision">Révision générale</a>
+            › <strong data-i18n="back_current">Les temps du récit : imparfait, passé simple</strong>
+        </p>
+        <div class="lesson-header">
+            <span class="badge" data-i18n="lesson_badge">📘 Conjugaison · Leçon 4</span>
+            <h1 data-i18n="lesson_title">Les temps du récit : imparfait, passé simple</h1>
+            <div class="meta">
+                <span data-i18n="lesson_duration">⏱️ 45 minutes</span>
+                <span data-i18n="lesson_meta_audio">🎧 Écoutez le texte puis faites les exercices</span>
+            </div>
+        </div>
+
+        <!-- ═════ CUSTOM AUDIO PLAYER ═════ -->
+        <div class="audio-player" id="audioPlayer">
+            <span class="audio-label" data-i18n="audio_label">🎧 Écoute littéraire</span>
+            <button class="play-btn" id="playBtn" aria-label="Lecture">▶</button>
+            <div class="progress-area">
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="time-info">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+            <div class="speed-selector" id="speedSelector">
+                <button class="speed-btn" data-speed="0.75">0.75x</button>
+                <button class="speed-btn active" data-speed="1">1x</button>
+                <button class="speed-btn" data-speed="1.25">1.25x</button>
+                <button class="speed-btn" data-speed="1.5">1.5x</button>
+            </div>
+        </div>
+
+        <!-- ═════ LITERARY TEXT ═════ -->
+        <div class="text-card">
+            <span class="quote-mark">“</span>
+            <p>
+                La nuit <u>était</u> calme et les étoiles <u>brillaient</u> dans le ciel. Soudain, un cri <u>déchira</u> le silence. Les villageois <u>dormaient</u> encore quand l'incendie <u>éclata</u>. Les flammes <u>montaient</u> rapidement vers le toit. Heureusement, un jeune homme <u>aperçut</u> la lueur et <u>donna</u> l'alerte. Il <u>courait</u> de maison en maison pendant que le feu <u>progressait</u>. En quelques minutes, tout le village <u>fut</u> réveillé. Les pompiers <u>arrivèrent</u> et <u>maîtrisèrent</u> l'incendie. Le lendemain, on <u>constata</u> que la vieille grange <u>avait brûlé</u>, mais personne n'<u>avait été</u> blessé.
+            </p>
+            <div class="author" data-i18n="text_author">— La nuit de l'incendie, texte original</div>
+        </div>
+
+        <!-- ═════ RÈGLES : LES TEMPS DU RÉCIT (EXPANDED) ═════ -->
+        <div class="valeurs-section">
+            <h2 data-i18n="rules_heading">📖 Les temps du récit : imparfait et passé simple</h2>
+            <p data-i18n="rules_intro" class="no-bilingual" style="margin-bottom:1.2rem;">Dans un récit au passé, l'imparfait et le passé simple jouent des rôles complémentaires : l'imparfait décrit le décor et les actions de second plan, le passé simple fait avancer l'histoire en racontant les actions principales.</p>
+
+            <div class="valeur-card">
+                <h3 data-i18n="rules_imparfait_title">🔹 L'imparfait : arrière-plan et description</h3>
+                <p data-i18n="rules_imparfait_text">Il exprime :</p>
+                <ul data-i18n="rules_imparfait_list">
+                    <li><strong>Description :</strong> « Le ciel <strong>était</strong> gris, les oiseaux <strong>se taisaient</strong>. »</li>
+                    <li><strong>Habitude passée :</strong> « Chaque matin, il <strong>allait</strong> au marché. »</li>
+                    <li><strong>Action de second plan :</strong> « Il <strong>lisait</strong> quand on frappa à la porte. »</li>
+                    <li><strong>Action en cours interrompue :</strong> « Je <strong>dormais</strong> quand le téléphone sonna. »</li>
+                    <li><strong>Commentaire ou explication :</strong> « Elle <strong>savait</strong> qu'il fallait agir vite. »</li>
+                </ul>
+            </div>
+
+            <div class="valeur-card">
+                <h3 data-i18n="rules_ps_title">🔹 Le passé simple : premier plan et actions principales</h3>
+                <p data-i18n="rules_ps_text">Il exprime :</p>
+                <ul data-i18n="rules_ps_list">
+                    <li><strong>Action ponctuelle et achevée :</strong> « Soudain, un cri <strong>déchira</strong> le silence. »</li>
+                    <li><strong>Succession d'événements :</strong> « Il <strong>aperçut</strong> la lueur, <strong>donna</strong> l'alerte et <strong>courut</strong>. »</li>
+                    <li><strong>Action qui fait avancer le récit :</strong> « Les pompiers <strong>arrivèrent</strong> et <strong>maîtrisèrent</strong> l'incendie. »</li>
+                    <li><strong>Événement de premier plan :</strong> « En quelques minutes, tout le village <strong>fut</strong> réveillé. »</li>
+                </ul>
+            </div>
+
+            <div class="valeur-card">
+                <h3 data-i18n="rules_contraste_title">🔹 Contraste et complémentarité</h3>
+                <p data-i18n="rules_contraste_text">L'imparfait et le passé simple s'opposent dans un récit :<br>
+                • L'imparfait <strong>installe le décor</strong> et décrit des actions qui durent.<br>
+                • Le passé simple <strong>fait surgir</strong> les événements ponctuels et successifs.<br>
+                Exemple : « La nuit <strong>était</strong> calme (imparfait, décor) ; soudain un cri <strong>déchira</strong> le silence (passé simple, événement). »</p>
+            </div>
+
+            <div class="valeur-card">
+                <h3 data-i18n="rules_alternance_title">🔹 Alternance des deux temps</h3>
+                <p data-i18n="rules_alternance_text">Dans un récit au passé, on alterne souvent imparfait (description, arrière-plan) et passé simple (actions principales). Cette alternance crée du relief et donne du rythme au récit.<br>
+                Ex. : « Le vent <strong>soufflait</strong> (imparfait) ; soudain, une branche <strong>craqua</strong> (passé simple). »</p>
+            </div>
+
+            <div class="valeur-card">
+                <h3 data-i18n="rules_repere_title">🔹 Repères de temps</h3>
+                <p data-i18n="rules_repere_text">Certains indicateurs temporels accompagnent chaque temps :<br>
+                • Avec l'imparfait : <strong>autrefois, chaque jour, pendant que, tandis que, souvent</strong>.<br>
+                • Avec le passé simple : <strong>soudain, tout à coup, alors, ensuite, enfin</strong>.</p>
+            </div>
+
+            <p data-i18n="rules_note" style="margin-top:1rem; font-style:italic; color:var(--text-light);">💡 L'imparfait et le passé simple ne sont pas interchangeables : le premier dure, le second ponctue. Leur combinaison est essentielle à un récit vivant.</p>
+        </div>
+
+        <!-- ═════ EXERCISES (10) ═════ -->
+        <div class="exercises-section">
+            <h2 data-i18n="exercises_heading">✍️ Exercices</h2>
+
+            <!-- Exercice 1 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo1_title">📌 1. Identifiez le temps des verbes soulignés</h3>
+                <p data-i18n="exo1_instruction">Pour chaque verbe souligné dans le texte, indiquez s'il est à l'imparfait ou au passé simple.</p>
+                <table id="exo1Table">
+                    <thead><tr><th data-i18n="table_verb" class="no-bilingual">Verbe</th><th data-i18n="table_answer" class="no-bilingual">Temps</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo1Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo1Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 2 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo2_title">📌 2. Conjuguez à l'imparfait ou au passé simple</h3>
+                <p data-i18n="exo2_instruction">Choisissez le temps qui convient selon le sens (description ou événement).</p>
+                <ol type="a">
+                    <li>Le soleil (briller) ________ et les oiseaux (chanter) ________.</li>
+                    <li>Soudain, un éclair (déchirer) ________ le ciel et le tonnerre (gronder) ________.</li>
+                    <li>Pendant que je (lire) ________, quelqu'un (frapper) ________ à la porte.</li>
+                    <li>Chaque dimanche, nous (aller) ________ à la plage ; un jour, nous (voir) ________ une baleine.</li>
+                    <li>Il (faire) ________ beau ; alors, nous (décider) ________ de sortir.</li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo2Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo2Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 3 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo3_title">📌 3. Transformez l'imparfait en passé simple (ou inversement)</h3>
+                <p data-i18n="exo3_instruction">Réécrivez les phrases en changeant le temps du verbe (passé simple → imparfait, ou imparfait → passé simple) et expliquez l'effet produit.</p>
+                <ol type="a">
+                    <li>Il marchait dans la rue. (→ passé simple) <input type="text" placeholder="Phrase transformée"></li>
+                    <li>Soudain, elle cria. (→ imparfait) <input type="text" placeholder="Phrase transformée"></li>
+                    <li>Ils dormaient profondément quand l'alarme retentit. (→ passé simple les deux) <input type="text" placeholder="Phrase transformée"></li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo3Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo3Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 4 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo4_title">📌 4. Complétez le récit avec le temps correct</h3>
+                <p data-i18n="exo4_instruction">Complétez ce court récit en choisissant entre imparfait et passé simple.</p>
+                <p>« Le soleil (briller) ________, les oiseaux (chanter) ________. Soudain, un nuage noir (apparaître) ________ et la pluie (se mettre) ________ à tomber. Les passants (ouvrir) ________ leurs parapluies et (presser) ________ le pas. »</p>
+                <textarea rows="3" style="width:100%;" placeholder="Votre récit..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo4Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo4Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 5 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo5_title">📌 5. Repérez l'alternance imparfait / passé simple</h3>
+                <p data-i18n="exo5_instruction">Dans le texte, identifiez deux phrases qui illustrent l'alternance entre imparfait (décor) et passé simple (événement). Citez-les et expliquez l'effet.</p>
+                <textarea rows="3" style="width:100%;" placeholder="Votre réponse..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex5" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex5" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex5" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo5Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo5Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 6 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo6_title">📌 6. Corrigez les erreurs de temps</h3>
+                <p data-i18n="exo6_instruction">Certaines phrases utilisent le mauvais temps. Corrigez-les.</p>
+                <ol type="a">
+                    <li>La nuit était calme ; soudain un cri déchirait le silence. <input type="text" placeholder="Correction"></li>
+                    <li>Les villageois dormaient encore quand l'incendie éclatait. <input type="text" placeholder="Correction"></li>
+                    <li>Il courait de maison en maison pendant que le feu progressa. <input type="text" placeholder="Correction"></li>
+                    <li>Les pompiers arrivaient et maîtrisaient l'incendie. <input type="text" placeholder="Correction"></li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex6" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex6" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex6" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo6Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo6Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 7 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo7_title">📌 7. Analysez l'effet de sens</h3>
+                <p data-i18n="exo7_instruction">« Le vent soufflait fort. Soudain, une branche craqua. »<br>Quel effet produit l'alternance de l'imparfait et du passé simple ?</p>
+                <textarea rows="3" style="width:100%;" placeholder="Votre réponse..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex7" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex7" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex7" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo7Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo7Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 8 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo8_title">📌 8. Complétez avec un indicateur temporel approprié</h3>
+                <p data-i18n="exo8_instruction">Ajoutez un indicateur temporel adapté à chaque temps.</p>
+                <ol type="a">
+                    <li>________ il faisait beau. <input type="text" placeholder="indicateur + imparfait"></li>
+                    <li>________ un éclair déchira le ciel. <input type="text" placeholder="indicateur + passé simple"></li>
+                    <li>________ nous allions à la plage. <input type="text" placeholder="indicateur + imparfait"></li>
+                    <li>________ le téléphone sonna. <input type="text" placeholder="indicateur + passé simple"></li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex8" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex8" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex8" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo8Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo8Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 9 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo9_title">📌 9. Récrivez un récit avec l'alternance correcte</h3>
+                <p data-i18n="exo9_instruction">Réécrivez ce paragraphe en corrigeant l'alternance imparfait / passé simple.</p>
+                <p><em>« Le soleil brillait et les oiseaux chantaient. Soudain, un nuage apparaissait et la pluie se mettait à tomber. Les passants ouvraient leurs parapluies et pressaient le pas. »</em></p>
+                <textarea rows="4" style="width:100%;" placeholder="Votre version corrigée..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex9" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex9" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex9" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo9Key')" data-i18n="btn_correction">🔍 Voir une proposition</button>
+                <div id="exo9Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 10 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo10_title">📌 10. Production personnelle</h3>
+                <p data-i18n="exo10_instruction">Racontez un souvenir (5-6 lignes) en utilisant au moins quatre imparfaits et trois passés simples. Soulignez les verbes et indiquez leur temps.</p>
+                <textarea rows="6" style="width:100%; padding:0.5rem;" placeholder="Votre récit..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex10" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex10" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex10" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═════ SCORING AREA ═════ -->
+        <div class="score-area" id="scoreArea">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="score-stats" id="scoreStats">
+                <div class="score-stat"><span data-i18n="score_correct">Correctes :</span> <span id="scoreCorrect">0</span></div>
+                <div class="score-stat"><span data-i18n="score_incorrect">Incorrectes :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="score-stat"><span data-i18n="score_partial">Partielles :</span> <span id="scorePartial">0</span></div>
+                <div class="score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">10</span></div>
+            </div>
+        </div>
+        <div class="score-actions" style="margin-top:1.2rem;">
+            <button id="saveResultsBtn" class="btn-verify" style="margin-right:0.5rem;" 
+                    data-i18n="save_results">💾 Enregistrer mes résultats</button>
+            <button id="printPdfBtn" class="btn-verify" style="background:#5c5344; margin-right:0.5rem;"
+                    data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+        </div>
+
+        <!-- Footer nav -->
+        <div style="margin-top:2rem; display:flex; justify-content:space-between; flex-wrap:wrap;">
+            <a href="semaine4-conjugaison-passe-simple.html" data-i18n="footer_back" class="no-bilingual">← Leçon précédente</a>
+            <a href="semaine4-orthographe-leur-quant.html" data-i18n="footer_next" class="no-bilingual">Leçon suivante : Leur/leurs, quant/quand →</a>
+        </div>
+    </div>
+
+    <!-- ═══════ SCRIPTS ═══════ -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                'lesson_title': 'Leçon 4 – Les temps du récit : imparfait, passé simple | Texte littéraire & Exercices',
+                'lesson_short_title': 'Les temps du récit : imparfait, passé simple',
+                'ach_year_bac': '4ᵉ année secondaire (Bac)',
+                'ach_module_semaine4': 'Orthographe et précision',
+                'back_revision': 'Révision générale',
+                'back_current': 'Les temps du récit : imparfait, passé simple',
+                'lesson_badge': '📘 Conjugaison · Leçon 4',
+                'lesson_title': 'Les temps du récit : imparfait, passé simple',
+                'lesson_duration': '⏱️ 45 minutes',
+                'lesson_meta_audio': '🎧 Écoutez le texte puis faites les exercices',
+                'audio_label': '🎧 Écoute littéraire',
+                'text_author': '— La nuit de l\'incendie, texte original',
+                'rules_heading': '📖 Les temps du récit : imparfait et passé simple',
+                'rules_intro': 'Dans un récit au passé, l\'imparfait et le passé simple jouent des rôles complémentaires : l\'imparfait décrit le décor et les actions de second plan, le passé simple fait avancer l\'histoire en racontant les actions principales.',
+                'rules_imparfait_title': '🔹 L\'imparfait : arrière-plan et description',
+                'rules_imparfait_text': 'Il exprime :',
+                'rules_imparfait_list': '<li><strong>Description :</strong> « Le ciel <strong>était</strong> gris, les oiseaux <strong>se taisaient</strong>. »</li><li><strong>Habitude passée :</strong> « Chaque matin, il <strong>allait</strong> au marché. »</li><li><strong>Action de second plan :</strong> « Il <strong>lisait</strong> quand on frappa à la porte. »</li><li><strong>Action en cours interrompue :</strong> « Je <strong>dormais</strong> quand le téléphone sonna. »</li><li><strong>Commentaire ou explication :</strong> « Elle <strong>savait</strong> qu\'il fallait agir vite. »</li>',
+                'rules_ps_title': '🔹 Le passé simple : premier plan et actions principales',
+                'rules_ps_text': 'Il exprime :',
+                'rules_ps_list': '<li><strong>Action ponctuelle et achevée :</strong> « Soudain, un cri <strong>déchira</strong> le silence. »</li><li><strong>Succession d\'événements :</strong> « Il <strong>aperçut</strong> la lueur, <strong>donna</strong> l\'alerte et <strong>courut</strong>. »</li><li><strong>Action qui fait avancer le récit :</strong> « Les pompiers <strong>arrivèrent</strong> et <strong>maîtrisèrent</strong> l\'incendie. »</li><li><strong>Événement de premier plan :</strong> « En quelques minutes, tout le village <strong>fut</strong> réveillé. »</li>',
+                'rules_contraste_title': '🔹 Contraste et complémentarité',
+                'rules_contraste_text': 'L\'imparfait et le passé simple s\'opposent dans un récit :<br>• L\'imparfait <strong>installe le décor</strong> et décrit des actions qui durent.<br>• Le passé simple <strong>fait surgir</strong> les événements ponctuels et successifs.<br>Exemple : « La nuit <strong>était</strong> calme (imparfait, décor) ; soudain un cri <strong>déchira</strong> le silence (passé simple, événement). »',
+                'rules_alternance_title': '🔹 Alternance des deux temps',
+                'rules_alternance_text': 'Dans un récit au passé, on alterne souvent imparfait (description, arrière-plan) et passé simple (actions principales). Cette alternance crée du relief et donne du rythme au récit.<br>Ex. : « Le vent <strong>soufflait</strong> (imparfait) ; soudain, une branche <strong>craqua</strong> (passé simple). »',
+                'rules_repere_title': '🔹 Repères de temps',
+                'rules_repere_text': 'Certains indicateurs temporels accompagnent chaque temps :<br>• Avec l\'imparfait : <strong>autrefois, chaque jour, pendant que, tandis que, souvent</strong>.<br>• Avec le passé simple : <strong>soudain, tout à coup, alors, ensuite, enfin</strong>.',
+                'rules_note': '💡 L\'imparfait et le passé simple ne sont pas interchangeables : le premier dure, le second ponctue. Leur combinaison est essentielle à un récit vivant.',
+                'exercises_heading': '✍️ Exercices',
+                'exo1_title': '📌 1. Identifiez le temps des verbes soulignés',
+                'exo1_instruction': 'Pour chaque verbe souligné dans le texte, indiquez s\'il est à l\'imparfait ou au passé simple.',
+                'table_verb': 'Verbe',
+                'table_answer': 'Temps',
+                'exo2_title': '📌 2. Conjuguez à l\'imparfait ou au passé simple',
+                'exo2_instruction': 'Choisissez le temps qui convient selon le sens (description ou événement).',
+                'exo3_title': '📌 3. Transformez l\'imparfait en passé simple (ou inversement)',
+                'exo3_instruction': 'Réécrivez les phrases en changeant le temps du verbe (passé simple → imparfait, ou imparfait → passé simple) et expliquez l\'effet produit.',
+                'exo4_title': '📌 4. Complétez le récit avec le temps correct',
+                'exo4_instruction': 'Complétez ce court récit en choisissant entre imparfait et passé simple.',
+                'exo5_title': '📌 5. Repérez l\'alternance imparfait / passé simple',
+                'exo5_instruction': 'Dans le texte, identifiez deux phrases qui illustrent l\'alternance entre imparfait (décor) et passé simple (événement). Citez-les et expliquez l\'effet.',
+                'exo6_title': '📌 6. Corrigez les erreurs de temps',
+                'exo6_instruction': 'Certaines phrases utilisent le mauvais temps. Corrigez-les.',
+                'exo7_title': '📌 7. Analysez l\'effet de sens',
+                'exo7_instruction': '« Le vent soufflait fort. Soudain, une branche craqua. »<br>Quel effet produit l\'alternance de l\'imparfait et du passé simple ?',
+                'exo8_title': '📌 8. Complétez avec un indicateur temporel approprié',
+                'exo8_instruction': 'Ajoutez un indicateur temporel adapté à chaque temps.',
+                'exo9_title': '📌 9. Récrivez un récit avec l\'alternance correcte',
+                'exo9_instruction': 'Réécrivez ce paragraphe en corrigeant l\'alternance imparfait / passé simple.',
+                'exo10_title': '📌 10. Production personnelle',
+                'exo10_instruction': 'Racontez un souvenir (5-6 lignes) en utilisant au moins quatre imparfaits et trois passés simples. Soulignez les verbes et indiquez leur temps.',
+                'btn_correction': '🔍 Voir la correction',
+                'footer_back': '← Leçon précédente',
+                'footer_next': 'Leçon suivante : Leur/leurs, quant/quand →',
+                'self_assess_question': 'Ma réponse est :',
+                'self_correct': 'Correcte',
+                'self_incorrect': 'Incorrecte',
+                'self_partial': 'Partiellement correcte',
+                'score_title': '📊 Votre auto‑évaluation',
+                'score_correct': 'Correctes :',
+                'score_incorrect': 'Incorrectes :',
+                'score_partial': 'Partielles :',
+                'score_unanswered': 'Sans réponse :',
+                'save_results': '💾 Enregistrer mes résultats',
+                'save_success': 'Résultats sauvegardés ✓',
+                'save_error': 'Erreur lors de la sauvegarde',
+                'print_pdf': '🖨️ Imprimer / PDF',
+                'print_with_answers': 'Corrigé inclus',
+                'print_site_name': 'Educational Dashboard – French',
+                'print_scholar_year': 'Révision pour le Bac',
+                'print_week': 'Semaine 4',
+                'print_area': 'Conjugaison',
+                'print_footer_dev': 'Développé par Mejri Ziad',
+                'print_footer_date': 'Imprimé le',
+                'print_without_answers': 'Sans corrigé',
+                'toast_signin_required': 'Connectez-vous pour voir les corrections.'
+            },
+            en: {
+                'lesson_title': 'Lesson 4 – Narrative Tenses: Imperfect, Simple Past | Literary Text & Exercises',
+                'lesson_short_title': 'Narrative Tenses: Imperfect, Simple Past',
+                'ach_year_bac': '12th grade (Bac)',
+                'ach_module_semaine4': 'Spelling and Precision',
+                'back_revision': 'General Review',
+                'back_current': 'Narrative Tenses: Imperfect, Simple Past',
+                'lesson_badge': '📘 Conjugation · Lesson 4',
+                'lesson_title': 'Narrative Tenses: Imperfect, Simple Past',
+                'lesson_duration': '⏱️ 45 minutes',
+                'lesson_meta_audio': '🎧 Listen to the text then do the exercises',
+                'audio_label': '🎧 Literary Listening',
+                'text_author': '— The Night of the Fire, original text',
+                'rules_heading': '📖 Narrative Tenses: Imperfect and Simple Past',
+                'rules_intro': 'In a past narrative, the imperfect and simple past play complementary roles: the imperfect describes the setting and background actions, the simple past moves the story forward by telling the main actions.',
+                'rules_imparfait_title': '🔹 Imperfect: background and description',
+                'rules_imparfait_text': 'It expresses:',
+                'rules_imparfait_list': '<li><strong>Description:</strong> "The sky <strong>was</strong> grey, the birds <strong>were silent</strong>."</li><li><strong>Past habit:</strong> "Every morning, he <strong>went</strong> to the market."</li><li><strong>Background action:</strong> "He <strong>was reading</strong> when someone knocked."</li><li><strong>Ongoing action interrupted:</strong> "I <strong>was sleeping</strong> when the phone rang."</li><li><strong>Comment or explanation:</strong> "She <strong>knew</strong> she had to act fast."</li>',
+                'rules_ps_title': '🔹 Simple Past: foreground and main actions',
+                'rules_ps_text': 'It expresses:',
+                'rules_ps_list': '<li><strong>Completed punctual action:</strong> "Suddenly, a cry <strong>tore</strong> the silence."</li><li><strong>Sequence of events:</strong> "He <strong>saw</strong> the glow, <strong>gave</strong> the alert and <strong>ran</strong>."</li><li><strong>Action that advances the story:</strong> "The firefighters <strong>arrived</strong> and <strong>controlled</strong> the fire."</li><li><strong>Foreground event:</strong> "In a few minutes, the whole village <strong>was</strong> awake."</li>',
+                'rules_contraste_title': '🔹 Contrast and complementarity',
+                'rules_contraste_text': 'Imperfect and simple past oppose each other in a narrative:<br>• Imperfect <strong>sets the scene</strong> and describes lasting actions.<br>• Simple past <strong>brings out</strong> punctual and successive events.<br>Example: "The night <strong>was</strong> calm (imperfect, setting); suddenly a cry <strong>tore</strong> the silence (simple past, event)."',
+                'rules_alternance_title': '🔹 Alternation of the two tenses',
+                'rules_alternance_text': 'In a past narrative, we often alternate imperfect (description, background) and simple past (main actions). This alternation creates depth and rhythm.<br>Ex.: "The wind <strong>was blowing</strong> (imperfect); suddenly, a branch <strong>cracked</strong> (simple past)."',
+                'rules_repere_title': '🔹 Time markers',
+                'rules_repere_text': 'Some time markers accompany each tense:<br>• With imperfect: <strong>formerly, every day, while, whereas, often</strong>.<br>• With simple past: <strong>suddenly, all of a sudden, then, next, finally</strong>.',
+                'rules_note': '💡 Imperfect and simple past are not interchangeable: the first lasts, the second punctuates. Their combination is essential for a lively narrative.',
+                'exercises_heading': '✍️ Exercises',
+                'exo1_title': '📌 1. Identify the tense of the underlined verbs',
+                'exo1_instruction': 'For each underlined verb in the text, indicate whether it is imperfect or simple past.',
+                'table_verb': 'Verb',
+                'table_answer': 'Tense',
+                'exo2_title': '📌 2. Conjugate in imperfect or simple past',
+                'exo2_instruction': 'Choose the appropriate tense according to the meaning (description or event).',
+                'exo3_title': '📌 3. Transform imperfect to simple past (or vice versa)',
+                'exo3_instruction': 'Rewrite the sentences changing the tense (simple past → imperfect, or imperfect → simple past) and explain the effect.',
+                'exo4_title': '📌 4. Complete the story with the correct tense',
+                'exo4_instruction': 'Complete this short story by choosing between imperfect and simple past.',
+                'exo5_title': '📌 5. Spot the alternation imperfect / simple past',
+                'exo5_instruction': 'In the text, identify two sentences that illustrate the alternation between imperfect (setting) and simple past (event). Quote them and explain the effect.',
+                'exo6_title': '📌 6. Correct tense errors',
+                'exo6_instruction': 'Some sentences use the wrong tense. Correct them.',
+                'exo7_title': '📌 7. Analyze the effect of meaning',
+                'exo7_instruction': '"The wind was blowing hard. Suddenly, a branch cracked."<br>What effect does the alternation of imperfect and simple past produce?',
+                'exo8_title': '📌 8. Complete with an appropriate time marker',
+                'exo8_instruction': 'Add an appropriate time marker for each tense.',
+                'exo9_title': '📌 9. Rewrite a story with the correct alternation',
+                'exo9_instruction': 'Rewrite this paragraph correcting the imperfect/simple past alternation.',
+                'exo10_title': '📌 10. Personal production',
+                'exo10_instruction': 'Tell a memory (5-6 lines) using at least four imperfects and three simple pasts. Underline the verbs and indicate their tense.',
+                'btn_correction': '🔍 See correction',
+                'footer_back': '← Previous lesson',
+                'footer_next': 'Next lesson: Leur/leurs, quant/quand →',
+                'self_assess_question': 'My answer is:',
+                'self_correct': 'Correct',
+                'self_incorrect': 'Incorrect',
+                'self_partial': 'Partially correct',
+                'score_title': '📊 Your self‑assessment',
+                'score_correct': 'Correct:',
+                'score_incorrect': 'Incorrect:',
+                'score_partial': 'Partial:',
+                'score_unanswered': 'Unanswered:',
+                'save_results': '💾 Save my results',
+                'save_success': 'Results saved ✓',
+                'save_error': 'Save failed',
+                'print_pdf': '🖨️ Print / PDF',
+                'print_with_answers': 'With answers',
+                'print_site_name': 'Educational Dashboard – French',
+                'print_scholar_year': 'Bac Review',
+                'print_week': 'Week 4',
+                'print_area': 'Conjugation',
+                'print_footer_dev': 'Developed by Mejri Ziad',
+                'print_footer_date': 'Printed on',
+                'print_without_answers': 'Without answers',
+                'toast_signin_required': 'Sign in to see the corrections.'
+            },
+            ar: {
+                'lesson_title': 'الدرس 4 – أزمنة السرد: الماضي الناقص، الماضي البسيط | نص أدبي وتمارين',
+                'lesson_short_title': 'أزمنة السرد: الماضي الناقص، الماضي البسيط',
+                'ach_year_bac': 'السنة الرابعة ثانوي',
+                'ach_module_semaine4': 'الإملاء والدقة',
+                'back_revision': 'المراجعة العامة',
+                'back_current': 'أزمنة السرد: الماضي الناقص، الماضي البسيط',
+                'lesson_badge': '📘 التصريف · الدرس 4',
+                'lesson_title': 'أزمنة السرد: الماضي الناقص، الماضي البسيط',
+                'lesson_duration': '⏱️ 45 دقيقة',
+                'lesson_meta_audio': '🎧 استمع إلى النص ثم قم بالتمارين',
+                'audio_label': '🎧 استماع أدبي',
+                'text_author': '— ليلة الحريق، نص أصلي',
+                'rules_heading': '📖 أزمنة السرد: الماضي الناقص والماضي البسيط',
+                'rules_intro': 'في سرد ماضٍ، يلعب الماضي الناقص والماضي البسيط دورين متكاملين: الماضي الناقص يصف المشهد والأحداث الثانوية، والماضي البسيط يدفع القصة قدما بسرد الأحداث الرئيسية.',
+                'rules_imparfait_title': '🔹 الماضي الناقص: الخلفية والوصف',
+                'rules_imparfait_text': 'يعبر عن:',
+                'rules_imparfait_list': '<li><strong>الوصف:</strong> « السماء <strong>كانت</strong> رمادية، الطيور <strong>كانت صامتة</strong>. »</li><li><strong>عادة ماضية:</strong> « كل صباح، <strong>كان يذهب</strong> إلى السوق. »</li><li><strong>حدث ثانوي:</strong> « <strong>كان يقرأ</strong> عندما طرق أحدهم الباب. »</li><li><strong>حدث جارٍ تم قطعه:</strong> « <strong>كنت نائما</strong> عندما رن الهاتف. »</li><li><strong>تعليق أو شرح:</strong> « <strong>كانت تعرف</strong> أنه يجب التصرف بسرعة. »</li>',
+                'rules_ps_title': '🔹 الماضي البسيط: الصدارة والأحداث الرئيسية',
+                'rules_ps_text': 'يعبر عن:',
+                'rules_ps_list': '<li><strong>حدث مكتمل ووجيز:</strong> « فجأة، صرخة <strong>مزقت</strong> الصمت. »</li><li><strong>تتابع الأحداث:</strong> « <strong>رأى</strong> اللمعان، <strong>أعطى</strong> الإنذار و<strong>ركض</strong>. »</li><li><strong>حدث يدفع القصة قدما:</strong> « رجال الإطفاء <strong>وصلوا</strong> و<strong>سيطروا</strong> على الحريق. »</li><li><strong>حدث رئيسي:</strong> « في دقائق، استيقظت القرية كلها. »</li>',
+                'rules_contraste_title': '🔹 التباين والتكامل',
+                'rules_contraste_text': 'الماضي الناقص والماضي البسيط يتقابلان في السرد:<br>• الماضي الناقص <strong>يثبت المشهد</strong> ويصف أفعالا تدوم.<br>• الماضي البسيط <strong>يبرز</strong> الأحداث الوجيزة والمتتابعة.<br>مثال: « الليل <strong>كان</strong> هادئا (ناقص، مشهد)؛ فجأة صرخة <strong>مزقت</strong> الصمت (بسيط، حدث). »',
+                'rules_alternance_title': '🔹 تناوب الزمنين',
+                'rules_alternance_text': 'في سرد ماضٍ، نناوب غالبا بين الماضي الناقص (وصف، خلفية) والماضي البسيط (أحداث رئيسية). هذا التناوب يخلق عمقا وإيقاعا.<br>مثال: « الريح <strong>كانت تهب</strong> (ناقص)؛ فجأة، غصن <strong>كسر</strong> (بسيط). »',
+                'rules_repere_title': '🔹 مؤشرات الزمن',
+                'rules_repere_text': 'بعض المؤشرات الزمنية ترافق كل زمن:<br>• مع الماضي الناقص: <strong>قديما، كل يوم، بينما، في حين، غالبا</strong>.<br>• مع الماضي البسيط: <strong>فجأة، وفجأة، ثم، بعد ذلك، أخيرا</strong>.',
+                'rules_note': '💡 الماضي الناقص والماضي البسيط غير قابلين للتبادل: الأول يدوم، والثاني يقطع. جمعهما أساسي لسرد حي.',
+                'exercises_heading': '✍️ تمارين',
+                'exo1_title': '📌 1. حدد زمن الأفعال المسطرة',
+                'exo1_instruction': 'لكل فعل مسطر في النص، اذكر ما إذا كان ماضيا ناقصا أو ماضيا بسيطا.',
+                'table_verb': 'الفعل',
+                'table_answer': 'الزمن',
+                'exo2_title': '📌 2. صرّف في الماضي الناقص أو الماضي البسيط',
+                'exo2_instruction': 'اختر الزمن المناسب حسب المعنى (وصف أو حدث).',
+                'exo3_title': '📌 3. حوّل الماضي الناقص إلى ماضي بسيط (أو العكس)',
+                'exo3_instruction': 'أعد كتابة الجمل مع تغيير الزمن (ماضي بسيط → ناقص، أو ناقص → بسيط) واشرح الأثر.',
+                'exo4_title': '📌 4. أكمل القصة بالزمن الصحيح',
+                'exo4_instruction': 'أكمل هذه القصة القصيرة باختيار الماضي الناقص أو الماضي البسيط.',
+                'exo5_title': '📌 5. رصد تناوب الناقص / البسيط',
+                'exo5_instruction': 'في النص، حدد جملتين توضحان التناوب بين الماضي الناقص (مشهد) والماضي البسيط (حدث). اذكرهما واشرح الأثر.',
+                'exo6_title': '📌 6. صحح أخطاء الزمن',
+                'exo6_instruction': 'بعض الجمل تستعمل الزمن الخطأ. صححها.',
+                'exo7_title': '📌 7. حلل أثر المعنى',
+                'exo7_instruction': '« الريح كانت تهب بقوة. فجأة، غصن كسر. »<br>ما الأثر الذي ينتجه تناوب الماضي الناقص والماضي البسيط؟',
+                'exo8_title': '📌 8. أكمل بمؤشر زمني مناسب',
+                'exo8_instruction': 'أضف مؤشرا زمنيا مناسبا لكل زمن.',
+                'exo9_title': '📌 9. أعد كتابة قصة بالتناوب الصحيح',
+                'exo9_instruction': 'أعد كتابة هذه الفقرة بتصحيح تناوب الماضي الناقص / الماضي البسيط.',
+                'exo10_title': '📌 10. إنتاج شخصي',
+                'exo10_instruction': 'احكِ ذكرى (5-6 أسطر) باستعمال أربعة أفعال في الماضي الناقص وثلاثة في الماضي البسيط على الأقل. ضع خطا تحت الأفعال واكتب زمنها.',
+                'btn_correction': '🔍 الاطلاع على التصحيح',
+                'footer_back': '← الدرس السابق',
+                'footer_next': 'الدرس الموالي: Leur/leurs, quant/quand →',
+                'self_assess_question': 'جوابي هو:',
+                'self_correct': 'صحيح',
+                'self_incorrect': 'خاطئ',
+                'self_partial': 'صحيح جزئيًا',
+                'score_title': '📊 تقييمك الذاتي',
+                'score_correct': 'صحيح:',
+                'score_incorrect': 'خاطئ:',
+                'score_partial': 'جزئي:',
+                'score_unanswered': 'بدون إجابة:',
+                'save_results': '💾 حفظ نتائجي',
+                'save_success': 'تم حفظ النتائج ✓',
+                'save_error': 'خطأ في الحفظ',
+                'print_pdf': '🖨️ طباعة / PDF',
+                'print_with_answers': 'مع التصحيح',
+                'print_site_name': 'لوحة التحكم التعليمية – الفرنسية',
+                'print_scholar_year': 'مراجعة البكالوريا',
+                'print_week': 'الأسبوع 4',
+                'print_area': 'التصريف',
+                'print_footer_dev': 'طوّر بواسطة ماجري زياد',
+                'print_footer_date': 'طُبع في',
+                'toast_signin_required': 'سجّل الدخول لرؤية التصحيحات.'
+            }
+        });
+        (function() {
+            var container = document.querySelector('.container');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+        })();
+    </script>
+    <script src="ed-french-ini.js"></script>
+    <script>
+        (function() {
+            const audio = new Audio('lessons/revision/sounds/semaine4-temps-recit.mp3');
+            const playBtn = document.getElementById('playBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const speedBtns = document.querySelectorAll('.speed-btn');
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+            audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
+            audio.addEventListener('timeupdate', () => {
+                const percent = (audio.currentTime / audio.duration) * 100 || 0;
+                progressFill.style.width = percent + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            });
+            audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) { audio.play(); playBtn.textContent = '⏸'; }
+                else { audio.pause(); playBtn.textContent = '▶'; }
+            });
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const seekTime = (clickX / width) * audio.duration;
+                audio.currentTime = seekTime;
+            });
+            speedBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    speedBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const speed = parseFloat(btn.dataset.speed);
+                    audio.playbackRate = speed;
+                });
+            });
+
+            const verbs = [
+                "était", "brillaient", "déchira", "dormaient", "éclata",
+                "montaient", "aperçut", "donna", "courait", "progressait",
+                "fut", "arrivèrent", "maîtrisèrent", "constata", "avait brûlé", "avait été"
+            ];
+            const answersEx1 = [
+                "imparfait", "imparfait", "passé simple", "imparfait", "passé simple",
+                "imparfait", "passé simple", "passé simple", "imparfait", "imparfait",
+                "passé simple", "passé simple", "passé simple", "passé simple", "plus-que-parfait", "plus-que-parfait"
+            ];
+            const tbody1 = document.querySelector('#exo1Table tbody');
+            verbs.forEach((verb, i) => {
+                const row = tbody1.insertRow();
+                const cellVerb = row.insertCell();
+                cellVerb.textContent = verb;
+                const cellAnswer = row.insertCell();
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.placeholder = 'imparfait ou passé simple';
+                cellAnswer.appendChild(input);
+            });
+            document.getElementById('exo1Key').innerHTML = '<strong>Correction :</strong><br>' + verbs.map((v,i) => `${v} → <em>${answersEx1[i]}</em>`).join('<br>');
+            document.getElementById('exo2Key').innerHTML = '<strong>Correction :</strong><br>a) brillait, chantaient<br>b) déchira, gronda<br>c) lisais, frappa<br>d) allions, vîmes<br>e) faisait, décidâmes';
+            document.getElementById('exo3Key').innerHTML = '<strong>Correction :</strong><br>a) Il marcha dans la rue. (passé simple : action ponctuelle)<br>b) Soudain, elle criait. (imparfait : action en cours, durée ; peut sembler inhabituel, effet de durée inattendue)<br>c) Ils dormirent profondément quand l\'alarme retentit. (les deux au passé simple : succession d\'actions ponctuelles)';
+            document.getElementById('exo4Key').innerHTML = '<strong>Correction :</strong><br>Le soleil brillait, les oiseaux chantaient. Soudain, un nuage noir apparut et la pluie se mit à tomber. Les passants ouvrirent leurs parapluies et pressèrent le pas.';
+            document.getElementById('exo5Key').innerHTML = '<strong>Correction :</strong><br>Exemple d\'alternance : « La nuit était calme et les étoiles brillaient » (imparfait, décor) / « Soudain, un cri déchira le silence » (passé simple, événement). Effet : le contraste crée une rupture et dramatise l\'action.';
+            document.getElementById('exo6Key').innerHTML = '<strong>Correction :</strong><br>a) La nuit était calme ; soudain un cri déchira le silence.<br>b) Les villageois dormaient encore quand l\'incendie éclata.<br>c) Il courait de maison en maison pendant que le feu progressait.<br>d) Les pompiers arrivèrent et maîtrisèrent l\'incendie.';
+            document.getElementById('exo7Key').innerHTML = '<strong>Correction :</strong><br>L\'imparfait (« soufflait ») décrit une action qui dure et installe une atmosphère. Le passé simple (« craqua ») survient comme un événement brusque et ponctuel. Le contraste crée un effet de rupture et de surprise.';
+            document.getElementById('exo8Key').innerHTML = '<strong>Correction :</strong><br>a) Autrefois / Chaque jour / Pendant que... il faisait beau.<br>b) Soudain / Tout à coup... un éclair déchira le ciel.<br>c) Chaque été / Souvent... nous allions à la plage.<br>d) Soudain / Alors... le téléphone sonna.';
+            document.getElementById('exo9Key').innerHTML = '<strong>Proposition :</strong><br>Le soleil brillait et les oiseaux chantaient. Soudain, un nuage apparut et la pluie se mit à tomber. Les passants ouvrirent leurs parapluies et pressèrent le pas.';
+            window.toggleCorrection = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('visible');
+            };
+            function updateScore() {
+                const radioGroups = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5', 'self_ex6', 'self_ex7', 'self_ex8', 'self_ex9', 'self_ex10'];
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                radioGroups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                document.getElementById('scoreCorrect').textContent = correct;
+                document.getElementById('scoreIncorrect').textContent = incorrect;
+                document.getElementById('scorePartial').textContent = partial;
+                document.getElementById('scoreUnanswered').textContent = unanswered;
+            }
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                const radioGroups = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5', 'self_ex6', 'self_ex7', 'self_ex8', 'self_ex9', 'self_ex10'];
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                radioGroups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                const lessonId = 'semaine4-conjugaison-temps-recit';
+                const lang = localStorage.getItem('lang') || 'fr';
+                const entry = {
+                    lesson_id: lessonId,
+                    lesson_title: {
+                        fr: App.getTranslation('lesson_short_title', 'fr'),
+                        en: App.getTranslation('lesson_short_title', 'en'),
+                        ar: App.getTranslation('lesson_short_title', 'ar')
+                    },
+                    year: {
+                        fr: App.getTranslation('ach_year_bac', 'fr'),
+                        en: App.getTranslation('ach_year_bac', 'en'),
+                        ar: App.getTranslation('ach_year_bac', 'ar')
+                    },
+                    module: {
+                        fr: App.getTranslation('ach_module_semaine4', 'fr'),
+                        en: App.getTranslation('ach_module_semaine4', 'en'),
+                        ar: App.getTranslation('ach_module_semaine4', 'ar')
+                    },
+                    correct: correct,
+                    incorrect: incorrect,
+                    partial: partial,
+                    unanswered: unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles')
+                    .select('achivement')
+                    .eq('id', user.id)
+                    .single();
+                if (fetchError) { console.error('Could not fetch profile:', fetchError); return; }
+                let achivement = profileData?.achivement || {};
+                if (!achivement["ED-French"]) achivement["ED-French"] = [];
+                const arr = achivement["ED-French"];
+                const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+                if (existingIdx >= 0) arr[existingIdx] = entry; else arr.push(entry);
+                const { error: updateError } = await App.supabase
+                    .from('profiles')
+                    .update({ achivement: achivement })
+                    .eq('id', user.id);
+                if (updateError) {
+                    console.error('Save failed:', updateError);
+                    App.showToast('save_error', 'error');
+                } else {
+                    App.showToast('save_success', 'success');
+                    App.logUserAction('lesson_saved', { lesson: lessonId, correct, incorrect, partial });
+                }
+            });
+            document.getElementById('printPdfBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles')
+                        .select('registration_state')
+                        .eq('id', user.id)
+                        .single();
+                    if (!error && profile && profile.registration_state && profile.registration_state.active === true) isRegistered = true;
+                } catch (e) {}
+                const headerHTML = document.querySelector('.lesson-header').cloneNode(true);
+                const textCard = document.querySelector('.text-card').cloneNode(true);
+                const rulesSections = document.querySelectorAll('.valeurs-section, .methode-section');
+                let rulesHTML = '';
+                rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
+                const exercisesSection = document.querySelector('.exercises-section').cloneNode(true);
+                exercisesSection.querySelectorAll('input, textarea, .btn-verify, .self-assessment').forEach(el => el.remove());
+                if (isRegistered) {
+                    const answerKeys = exercisesSection.querySelectorAll('.answer-key');
+                    answerKeys.forEach(key => {
+                        key.style.display = 'block';
+                        key.style.border = 'none';
+                        key.style.padding = '0.5rem 0';
+                        key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    exercisesSection.querySelectorAll('.answer-key').forEach(el => el.remove());
+                }
+                const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                const lang = localStorage.getItem('lang') || 'fr';
+                printWindow.document.write(`
+                <!DOCTYPE html>
+                <html lang="${lang}">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>${App.getTranslation('lesson_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title>
+                    <style>
+                        body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.6; max-width: 700px; margin: 2rem auto; padding: 0 1rem; color: #000; }
+                        .print-header { text-align: center; border-bottom: 2px solid #c75b2c; padding-bottom: 1rem; margin-bottom: 2rem; }
+                        .print-header .site-name { font-size: 1.4rem; font-weight: bold; color: #c75b2c; margin: 0 0 0.3rem; }
+                        .print-header .meta-line { font-size: 0.95rem; color: #444; margin: 0.2rem 0; }
+                        .print-header .lesson-name { font-size: 1.1rem; font-weight: bold; color: #000; margin-top: 0.5rem; }
+                        .print-footer { text-align: center; border-top: 1px solid #ccc; padding-top: 1rem; margin-top: 2rem; font-size: 0.85rem; color: #666; }
+                        h1, h2, h3 { color: #000; }
+                        .lesson-header { text-align: center; margin-bottom: 2rem; }
+                        .badge { display: inline-block; background: #c75b2c; color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; text-transform: uppercase; }
+                        .text-card { border-left: 4px solid #c75b2c; padding: 1rem 1.5rem; margin: 1.5rem 0; font-style: italic; }
+                        .quote-mark { font-size: 3rem; color: #c75b2c; opacity: 0.3; position: absolute; top: -10px; left: 10px; }
+                        .text-card .author { text-align: right; font-style: normal; margin-top: 0.8rem; }
+                        .valeurs-section, .methode-section { margin: 1.5rem 0; }
+                        .valeur-card { background: #f8f4ec; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; }
+                        .valeur-card h3 { color: #c75b2c; }
+                        .exercise-card { margin: 1.2rem 0; }
+                        table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; }
+                        th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+                        th { background: #f0e8d8; }
+                        .answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; }
+                        @media print { body { margin: 0; padding: 0; } @page { margin: 2cm; } }
+                    </style>
+                </head>
+                <body>
+                    <div class="print-header">
+                        <div class="site-name">${App.getTranslation('print_site_name', lang)}</div>
+                        <div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div>
+                        <div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div>
+                    </div>
+                    ${breadcrumb.outerHTML}
+                    ${headerHTML.outerHTML}
+                    ${textCard.outerHTML}
+                    ${rulesHTML}
+                    ${exercisesSection.outerHTML}
+                    <div class="print-footer">
+                        ${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}
+                    </div>
+                </body>
+                </html>
+            `);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+            document.querySelectorAll('input[type="radio"][name^="self_ex"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+        })();
+    </script>
+    <!-- ═══════ DIRECT‑TRANSLATION FIX ═══════ -->
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') {
+                                el.innerHTML = next.innerHTML;
+                            }
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_title">Leçon 2 – Les compléments circonstanciels | Texte littéraire & Exercices</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ===== Lesson‑specific styles (unchanged) ===== */
+        :root {
+            --bg: #f9f7f1;
+            --card: #ffffff;
+            --text: #2b2416;
+            --text-light: #5c5344;
+            --heading: #382e1e;
+            --accent: #c75b2c;
+            --accent-hover: #a3441d;
+            --border: #e5ddd0;
+            --shadow: 0 1px 4px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-hover: 0 8px 22px rgba(0,0,0,0.08);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --transition: 0.25s ease;
+            --font-body: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
+            --audio-bg: #f4efe4;
+            --audio-progress: #d8c9aa;
+            --button-bg: #f0e8d8;
+            --button-hover: #e3d5bc;
+            --input-bg: #fcfaf6;
+        }
+        body.dark {
+            --bg: #1e1b17;
+            --card: #2a2620;
+            --text: #e8dfd2;
+            --text-light: #b9aa95;
+            --heading: #f0e4d2;
+            --accent: #e07b4a;
+            --accent-hover: #f08c5c;
+            --border: #3e3830;
+            --shadow: 0 1px 4px rgba(0,0,0,0.25);
+            --shadow-hover: 0 8px 22px rgba(0,0,0,0.35);
+            --audio-bg: #26221b;
+            --audio-progress: #5a4e3c;
+            --button-bg: #3a3329;
+            --button-hover: #4e4437;
+            --input-bg: #333028;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.75;
+            transition: background var(--transition), color var(--transition);
+        }
+        .container { max-width:860px; margin:0 auto; padding:1.8rem 1.4rem 3rem; }
+        .lesson-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .badge {
+            display:inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding:0.25rem 1rem;
+            border-radius:20px;
+            font-size:0.8rem;
+            font-weight:700;
+            letter-spacing:0.03em;
+            text-transform: uppercase;
+        }
+        .lesson-header h1 {
+            font-size: 2.1rem;
+            color: var(--heading);
+            margin: 0.6rem 0 0.3rem;
+            line-height: 1.3;
+        }
+        .lesson-header .meta {
+            font-size:0.9rem;
+            color:var(--text-light);
+            display: flex;
+            justify-content: center;
+            gap:1.2rem;
+            flex-wrap: wrap;
+        }
+        .audio-player {
+            background: var(--card);
+            border:1px solid var(--border);
+            border-radius: var(--radius);
+            padding:1rem 1.4rem;
+            margin: 1.5rem 0 2rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap:1rem;
+            flex-wrap: wrap;
+        }
+        .audio-player .play-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            border:none;
+            font-size:1.2rem;
+            cursor:pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background var(--transition);
+            flex-shrink: 0;
+        }
+        .play-btn:hover { background: var(--accent-hover); }
+        .audio-player .progress-area {
+            flex:1;
+            min-width:120px;
+            display: flex;
+            flex-direction: column;
+            gap:0.3rem;
+        }
+        .progress-bar {
+            width:100%;
+            height:6px;
+            background: var(--audio-progress);
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+        .time-info {
+            display: flex;
+            justify-content: space-between;
+            font-size:0.75rem;
+            color:var(--text-light);
+        }
+        .speed-selector {
+            display: flex;
+            gap:0.3rem;
+            flex-wrap: wrap;
+        }
+        .speed-btn {
+            border:1px solid var(--border);
+            background: var(--button-bg);
+            color: var(--text);
+            padding:0.25rem 0.55rem;
+            border-radius: 4px;
+            font-size:0.75rem;
+            font-weight:600;
+            cursor:pointer;
+            transition: all var(--transition);
+        }
+        .speed-btn.active {
+            background: var(--accent);
+            color:#fff;
+            border-color: var(--accent);
+        }
+        .audio-label {
+            font-weight:700;
+            font-size:0.85rem;
+            color:var(--heading);
+            white-space: nowrap;
+        }
+        @media (max-width:600px) {
+            .audio-player { flex-direction: column; align-items: stretch; }
+            .audio-label { text-align: center; }
+        }
+        .text-card {
+            background: var(--card);
+            border:1px solid var(--border);
+            border-left:5px solid var(--accent);
+            border-radius: 0 var(--radius) var(--radius) 0;
+            padding:1.4rem 1.6rem;
+            margin:1.8rem 0;
+            font-style:italic;
+            font-size:1.05rem;
+            line-height: 1.9;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        .text-card .quote-mark {
+            position: absolute;
+            top:-12px;
+            left:14px;
+            font-size:3rem;
+            color:var(--accent);
+            opacity:0.25;
+            line-height:1;
+        }
+        .text-card .author {
+            text-align:right;
+            font-style:normal;
+            font-size:0.9rem;
+            color:var(--text-light);
+            margin-top:0.8rem;
+        }
+        .exercises-section h2 {
+            font-size:1.5rem;
+            color:var(--heading);
+            margin:2rem 0 1rem;
+            border-bottom:3px solid var(--accent);
+            display:inline-block;
+            padding-bottom:0.3rem;
+        }
+        .exercise-card {
+            background: var(--card);
+            border:1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding:1.2rem 1.4rem;
+            margin-bottom:1.4rem;
+            box-shadow: var(--shadow);
+        }
+        .exercise-card h3 {
+            font-size:1.05rem;
+            color:var(--accent);
+            margin-bottom:0.8rem;
+            display: flex;
+            align-items: center;
+            gap:0.4rem;
+        }
+        .exercise-card table {
+            width:100%;
+            border-collapse: collapse;
+            margin: 0.8rem 0;
+        }
+        .exercise-card th, .exercise-card td {
+            padding:0.55rem 0.7rem;
+            border:1px solid var(--border);
+            text-align:left;
+            font-size:0.9rem;
+        }
+        .exercise-card th {
+            background: var(--audio-bg);
+            font-weight:700;
+            color:var(--heading);
+        }
+        .exercise-card input[type="text"] {
+            width:100%;
+            padding:0.4rem 0.6rem;
+            border:1px solid var(--border);
+            border-radius:4px;
+            background: var(--input-bg);
+            color: var(--text);
+            font-family: inherit;
+            font-size:0.9rem;
+        }
+        .btn-verify {
+            background: var(--accent);
+            color:#fff;
+            border:none;
+            padding:0.5rem 1.2rem;
+            border-radius: 20px;
+            font-weight:600;
+            cursor:pointer;
+            transition: background var(--transition);
+            margin-top:0.6rem;
+            font-size:0.85rem;
+        }
+        .btn-verify:hover { background: var(--accent-hover); }
+        .answer-key {
+            display:none;
+            margin-top:0.8rem;
+            padding:0.8rem;
+            background: var(--audio-bg);
+            border-radius:6px;
+            font-size:0.85rem;
+            color: var(--text-light);
+            border:1px dashed var(--accent);
+        }
+        .answer-key.visible { display:block; }
+        .self-assessment {
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+        }
+        .self-assessment label { cursor: pointer; }
+        .score-area {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: var(--shadow);
+        }
+        .score-area h2 { color: var(--heading); margin-bottom: 1rem; }
+        .score-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .score-stat {
+            background: var(--audio-bg);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        html[dir="rtl"] body { direction: rtl; }
+        html[dir="rtl"] .container { text-align: right; }
+        html[dir="rtl"] .text-card .author { text-align: left; }
+        html[dir="rtl"] .exercise-card th, html[dir="rtl"] .exercise-card td { text-align: right; }
+        @media (max-width:600px) {
+            .lesson-header h1 { font-size:1.5rem; }
+            .container { padding:1rem 0.8rem 2rem; }
+        }
+        .valeurs-section, .methode-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.6rem 1.8rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+        .valeurs-section h2, .methode-section h2 {
+            font-size: 1.5rem;
+            color: var(--heading);
+            margin-bottom: 1rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+        .valeur-card {
+            background: var(--audio-bg);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .valeur-card h3 { color: var(--accent); font-size: 1.1rem; margin-bottom: 0.4rem; }
+        .valeur-card ul { list-style: none; padding: 0; }
+        .valeur-card li {
+            padding: 0.3rem 0;
+            padding-left: 1.4rem;
+            position: relative;
+            color: var(--text-light);
+        }
+        .valeur-card li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 0.5rem;
+            top: 0.5rem;
+        }
+        .valeur-card p { margin: 0.5rem 0; }
+    </style>
+</head>
+<body>
+    <div id="main-content" class="container">
+        <p style="margin-bottom:1.5rem; color:var(--text-light);">
+            <a href="revision.html" data-i18n="back_revision">Révision générale</a>
+            › <strong data-i18n="back_current">Les compléments circonstanciels</strong>
+        </p>
+        <div class="lesson-header">
+            <span class="badge" data-i18n="lesson_badge">📘 Grammaire · Leçon 2</span>
+            <h1 data-i18n="lesson_title">Les compléments circonstanciels</h1>
+            <div class="meta">
+                <span data-i18n="lesson_duration">⏱️ 45 minutes</span>
+                <span data-i18n="lesson_meta_audio">🎧 Écoutez le texte puis faites les exercices</span>
+            </div>
+        </div>
+        <!-- ═════ CUSTOM AUDIO PLAYER ═════ -->
+        <div class="audio-player" id="audioPlayer">
+            <span class="audio-label" data-i18n="audio_label">🎧 Écoute littéraire</span>
+            <button class="play-btn" id="playBtn" aria-label="Lecture">▶</button>
+            <div class="progress-area">
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="time-info">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+            <div class="speed-selector" id="speedSelector">
+                <button class="speed-btn" data-speed="0.75">0.75x</button>
+                <button class="speed-btn active" data-speed="1">1x</button>
+                <button class="speed-btn" data-speed="1.25">1.25x</button>
+                <button class="speed-btn" data-speed="1.5">1.5x</button>
+            </div>
+        </div>
+        <!-- ═════ LITERARY TEXT ═════ -->
+        <div class="text-card">
+            <span class="quote-mark">“</span>
+            <p>
+                <u>Hier soir</u>, <u>dans le vieux port</u>, les pêcheurs rentraient <u>lentement</u> <u>à cause de la tempête</u>. <u>Pour se réchauffer</u>, ils allumèrent un grand feu <u>sur la plage</u>. <u>Pendant ce temps</u>, les mouettes criaient <u>au-dessus des vagues</u>. <u>Malgré le froid</u>, les enfants couraient <u>joyeusement</u> <u>vers leurs parents</u>. <u>Grâce à leur courage</u>, personne ne manquait à l'appel. <u>À la tombée de la nuit</u>, tout le monde se retrouva <u>autour d'un repas chaud</u>.
+            </p>
+            <div class="author" data-i18n="text_author">— Soirée au port, texte original</div>
+        </div>
+        <!-- ═════ RÈGLES : LES COMPLÉMENTS CIRCONSTANCIELS ═════ -->
+        <div class="valeurs-section">
+            <h2 data-i18n="rules_heading">📖 Les compléments circonstanciels</h2>
+            <p data-i18n="rules_intro" class="no-bilingual" style="margin-bottom:1.2rem;">Les compléments circonstanciels (CC) précisent les circonstances de l'action : temps, lieu, manière, cause, but, moyen, conséquence, etc. Ils sont souvent supprimables ou déplaçables.</p>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_cc_temps_title">🔹 CC de temps</h3>
+                <p data-i18n="rules_cc_temps_text">Indiquent quand se déroule l'action. Questions : quand ? combien de temps ?<br>Ex. : <em>Hier soir</em>, <em>pendant ce temps</em>, <em>à la tombée de la nuit</em>.</p>
+            </div>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_cc_lieu_title">🔹 CC de lieu</h3>
+                <p data-i18n="rules_cc_lieu_text">Indiquent où se déroule l'action. Questions : où ? vers où ? d'où ?<br>Ex. : <em>dans le vieux port</em>, <em>sur la plage</em>, <em>au-dessus des vagues</em>.</p>
+            </div>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_cc_maniere_title">🔹 CC de manière</h3>
+                <p data-i18n="rules_cc_maniere_text">Indiquent comment se déroule l'action. Questions : comment ? de quelle manière ?<br>Ex. : <em>lentement</em>, <em>joyeusement</em>.</p>
+            </div>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_cc_cause_title">🔹 CC de cause</h3>
+                <p data-i18n="rules_cc_cause_text">Indiquent pourquoi l'action a lieu. Questions : pourquoi ? pour quelle raison ?<br>Ex. : <em>à cause de la tempête</em>, <em>grâce à leur courage</em>.</p>
+            </div>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_cc_but_title">🔹 CC de but</h3>
+                <p data-i18n="rules_cc_but_text">Indiquent dans quel but. Questions : pour quoi ? dans quel but ?<br>Ex. : <em>pour se réchauffer</em>.</p>
+            </div>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_cc_concession_title">🔹 CC de concession (ou opposition)</h3>
+                <p data-i18n="rules_cc_concession_text">Indiquent une opposition, une restriction. Questions : malgré quoi ?<br>Ex. : <em>malgré le froid</em>.</p>
+            </div>
+            <p data-i18n="rules_note" style="margin-top:1rem; font-style:italic; color:var(--text-light);">💡 Un CC peut être un adverbe, un groupe prépositionnel, un nom, une proposition subordonnée, etc.</p>
+        </div>
+        <!-- ═════ EXERCISES ═════ -->
+        <div class="exercises-section">
+            <h2 data-i18n="exercises_heading">✍️ Exercices</h2>
+            <!-- Exercice 1 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo1_title">📌 1. Identifiez les CC soulignés</h3>
+                <p data-i18n="exo1_instruction">Pour chaque complément souligné dans le texte, indiquez sa catégorie (temps, lieu, manière, cause, but, concession).</p>
+                <table id="exo1Table">
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_cc" class="no-bilingual">Complément circonstanciel</th>
+                            <th data-i18n="table_answer" class="no-bilingual">Catégorie</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo1Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo1Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 2 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo2_title">📌 2. Ajoutez un CC selon la catégorie demandée</h3>
+                <p data-i18n="exo2_instruction">Complétez chaque phrase avec un complément circonstanciel de la catégorie indiquée.</p>
+                <ol type="a">
+                    <li>(Temps) ______________, nous partirons en voyage.</li>
+                    <li>Il a réussi son examen (cause) ______________.</li>
+                    <li>(Lieu) ______________, les enfants jouent au ballon.</li>
+                    <li>Elle travaille (manière) ______________.</li>
+                    <li>(But) ______________, je fais du sport régulièrement.</li>
+                    <li>(Concession) ______________, il est sorti sans manteau.</li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo2Key')" data-i18n="btn_correction">🔍 Voir des propositions</button>
+                <div id="exo2Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 3 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo3_title">📌 3. Supprimez les CC et observez le sens</h3>
+                <p data-i18n="exo3_instruction">Réécrivez les phrases sans les compléments circonstanciels. Que remarquez-vous ?</p>
+                <ol type="a">
+                    <li>Ce matin, dans la cour, les élèves discutent calmement.</li>
+                    <li>À cause de la pluie, le match a été annulé.</li>
+                    <li>Pour réussir, tu dois t'entraîner sérieusement.</li>
+                </ol>
+                <textarea rows="4" style="width:100%;" placeholder="Vos réponses..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo3Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo3Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 4 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo4_title">📌 4. Transformez en CC de but ou de cause</h3>
+                <p data-i18n="exo4_instruction">Reliez les deux phrases en utilisant un complément circonstanciel de but ou de cause.</p>
+                <ol type="a">
+                    <li>Il fait du jogging. Il veut rester en forme.<br><input type="text" placeholder="Phrase complexe"></li>
+                    <li>Elle est fatiguée. Elle a trop travaillé.<br><input type="text" placeholder="Phrase complexe"></li>
+                    <li>Nous avons pris un taxi. Nous étions en retard.<br><input type="text" placeholder="Phrase complexe"></li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo4Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo4Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 5 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo5_title">📌 5. Déplacez le CC et réécrivez</h3>
+                <p data-i18n="exo5_instruction">Déplacez le complément circonstanciel en tête ou en fin de phrase pour montrer sa mobilité.</p>
+                <ol type="a">
+                    <li>Les manifestants ont défilé dans les rues pendant des heures.<br><input type="text" placeholder="Phrase modifiée"></li>
+                    <li>Elle a souri malgré sa tristesse.<br><input type="text" placeholder="Phrase modifiée"></li>
+                    <li>Nous avons pique-niqué au bord du lac dimanche dernier.<br><input type="text" placeholder="Phrase modifiée"></li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex5" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex5" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex5" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo5Key')" data-i18n="btn_correction">🔍 Voir des propositions</button>
+                <div id="exo5Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 6 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo6_title">📌 6. Production personnelle</h3>
+                <p data-i18n="exo6_instruction">Rédigez un court paragraphe (5-6 lignes) décrivant votre journée idéale. Utilisez au moins un CC de temps, un de lieu, un de manière, un de cause et un de but. Soulignez chaque CC et indiquez sa catégorie entre parenthèses.</p>
+                <textarea rows="6" style="width:100%; padding:0.5rem;" placeholder="Votre paragraphe..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex6" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex6" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex6" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+        </div>
+        <!-- ═════ SCORING AREA ═════ -->
+        <div class="score-area" id="scoreArea">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="score-stats" id="scoreStats">
+                <div class="score-stat"><span data-i18n="score_correct">Correctes :</span> <span id="scoreCorrect">0</span></div>
+                <div class="score-stat"><span data-i18n="score_incorrect">Incorrectes :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="score-stat"><span data-i18n="score_partial">Partielles :</span> <span id="scorePartial">0</span></div>
+                <div class="score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">6</span></div>
+            </div>
+        </div>
+        <div class="score-actions" style="margin-top:1.2rem;">
+            <button id="saveResultsBtn" class="btn-verify" style="margin-right:0.5rem;" 
+                    data-i18n="save_results">💾 Enregistrer mes résultats</button>
+            <button id="printPdfBtn" class="btn-verify" style="background:#5c5344; margin-right:0.5rem;"
+                    data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+        </div>
+        <!-- Footer nav -->
+        <div style="margin-top:2rem; display:flex; justify-content:space-between; flex-wrap:wrap;">
+            <a href="semaine3-grammaire-pronoms.html" data-i18n="footer_back" class="no-bilingual">← Leçon précédente</a>
+            <a href="semaine3-conjugaison-plusqueparfait.html" data-i18n="footer_next" class="no-bilingual">Leçon suivante : Le plus-que-parfait →</a>
+        </div>
+    </div>
+    <!-- ═══════ SCRIPTS ═══════ -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                'lesson_title': 'Leçon 2 – Les compléments circonstanciels | Texte littéraire & Exercices',
+                'lesson_short_title': 'Les compléments circonstanciels',
+                'ach_year_bac': '4ᵉ année secondaire (Bac)',
+                'ach_module_semaine3': 'Maîtrise de la conjugaison',
+                'back_revision': 'Révision générale',
+                'back_current': 'Les compléments circonstanciels',
+                'lesson_badge': '📘 Grammaire · Leçon 2',
+                'lesson_title': 'Les compléments circonstanciels',
+                'lesson_duration': '⏱️ 45 minutes',
+                'lesson_meta_audio': '🎧 Écoutez le texte puis faites les exercices',
+                'audio_label': '🎧 Écoute littéraire',
+                'text_author': '— Soirée au port, texte original',
+                'rules_heading': '📖 Les compléments circonstanciels',
+                'rules_intro': 'Les compléments circonstanciels (CC) précisent les circonstances de l\'action : temps, lieu, manière, cause, but, moyen, conséquence, etc. Ils sont souvent supprimables ou déplaçables.',
+                'rules_cc_temps_title': '🔹 CC de temps',
+                'rules_cc_temps_text': 'Indiquent quand se déroule l\'action. Questions : quand ? combien de temps ?<br>Ex. : <em>Hier soir</em>, <em>pendant ce temps</em>, <em>à la tombée de la nuit</em>.',
+                'rules_cc_lieu_title': '🔹 CC de lieu',
+                'rules_cc_lieu_text': 'Indiquent où se déroule l\'action. Questions : où ? vers où ? d\'où ?<br>Ex. : <em>dans le vieux port</em>, <em>sur la plage</em>, <em>au-dessus des vagues</em>.',
+                'rules_cc_maniere_title': '🔹 CC de manière',
+                'rules_cc_maniere_text': 'Indiquent comment se déroule l\'action. Questions : comment ? de quelle manière ?<br>Ex. : <em>lentement</em>, <em>joyeusement</em>.',
+                'rules_cc_cause_title': '🔹 CC de cause',
+                'rules_cc_cause_text': 'Indiquent pourquoi l\'action a lieu. Questions : pourquoi ? pour quelle raison ?<br>Ex. : <em>à cause de la tempête</em>, <em>grâce à leur courage</em>.',
+                'rules_cc_but_title': '🔹 CC de but',
+                'rules_cc_but_text': 'Indiquent dans quel but. Questions : pour quoi ? dans quel but ?<br>Ex. : <em>pour se réchauffer</em>.',
+                'rules_cc_concession_title': '🔹 CC de concession (ou opposition)',
+                'rules_cc_concession_text': 'Indiquent une opposition, une restriction. Questions : malgré quoi ?<br>Ex. : <em>malgré le froid</em>.',
+                'rules_note': '💡 Un CC peut être un adverbe, un groupe prépositionnel, un nom, une proposition subordonnée, etc.',
+                'exercises_heading': '✍️ Exercices',
+                'exo1_title': '📌 1. Identifiez les CC soulignés',
+                'exo1_instruction': 'Pour chaque complément souligné dans le texte, indiquez sa catégorie (temps, lieu, manière, cause, but, concession).',
+                'table_cc': 'Complément circonstanciel',
+                'table_answer': 'Catégorie',
+                'exo2_title': '📌 2. Ajoutez un CC selon la catégorie demandée',
+                'exo2_instruction': 'Complétez chaque phrase avec un complément circonstanciel de la catégorie indiquée.',
+                'exo3_title': '📌 3. Supprimez les CC et observez le sens',
+                'exo3_instruction': 'Réécrivez les phrases sans les compléments circonstanciels. Que remarquez-vous ?',
+                'exo4_title': '📌 4. Transformez en CC de but ou de cause',
+                'exo4_instruction': 'Reliez les deux phrases en utilisant un complément circonstanciel de but ou de cause.',
+                'exo5_title': '📌 5. Déplacez le CC et réécrivez',
+                'exo5_instruction': 'Déplacez le complément circonstanciel en tête ou en fin de phrase pour montrer sa mobilité.',
+                'exo6_title': '📌 6. Production personnelle',
+                'exo6_instruction': 'Rédigez un court paragraphe (5-6 lignes) décrivant votre journée idéale. Utilisez au moins un CC de temps, un de lieu, un de manière, un de cause et un de but. Soulignez chaque CC et indiquez sa catégorie entre parenthèses.',
+                'btn_correction': '🔍 Voir la correction',
+                'footer_back': '← Leçon précédente',
+                'footer_next': 'Leçon suivante : Le plus-que-parfait →',
+                'self_assess_question': 'Ma réponse est :',
+                'self_correct': 'Correcte',
+                'self_incorrect': 'Incorrecte',
+                'self_partial': 'Partiellement correcte',
+                'score_title': '📊 Votre auto‑évaluation',
+                'score_correct': 'Correctes :',
+                'score_incorrect': 'Incorrectes :',
+                'score_partial': 'Partielles :',
+                'score_unanswered': 'Sans réponse :',
+                'save_results': '💾 Enregistrer mes résultats',
+                'save_success': 'Résultats sauvegardés ✓',
+                'save_error': 'Erreur lors de la sauvegarde',
+                'print_pdf': '🖨️ Imprimer / PDF',
+                'print_with_answers': 'Corrigé inclus',
+                'print_site_name': 'Educational Dashboard – French',
+                'print_scholar_year': 'Révision pour le Bac',
+                'print_week': 'Semaine 3',
+                'print_area': 'Grammaire',
+                'print_footer_dev': 'Développé par Mejri Ziad',
+                'print_footer_date': 'Imprimé le',
+                'print_without_answers': 'Sans corrigé',
+                'toast_signin_required': 'Connectez-vous pour voir les corrections.'
+            },
+            en: {
+                'lesson_title': 'Lesson 2 – Adverbial phrases (Circumstantial complements) | Literary Text & Exercises',
+                'lesson_short_title': 'Adverbial phrases',
+                'ach_year_bac': '12th grade (Bac)',
+                'ach_module_semaine3': 'Mastering Conjugation',
+                'back_revision': 'General Review',
+                'back_current': 'Adverbial phrases',
+                'lesson_badge': '📘 Grammar · Lesson 2',
+                'lesson_title': 'Adverbial phrases',
+                'lesson_duration': '⏱️ 45 minutes',
+                'lesson_meta_audio': '🎧 Listen to the text then do the exercises',
+                'audio_label': '🎧 Literary Listening',
+                'text_author': '— Evening at the port, original text',
+                'rules_heading': '📖 Adverbial phrases',
+                'rules_intro': 'Adverbial phrases (or circumstantial complements) specify the circumstances of the action: time, place, manner, cause, purpose, means, consequence, etc. They are often removable or movable.',
+                'rules_cc_temps_title': '🔹 Time',
+                'rules_cc_temps_text': 'Indicate when the action takes place. Questions: when? how long?<br>Ex.: <em>yesterday evening</em>, <em>during that time</em>, <em>at nightfall</em>.',
+                'rules_cc_lieu_title': '🔹 Place',
+                'rules_cc_lieu_text': 'Indicate where the action takes place. Questions: where? to where? from where?<br>Ex.: <em>in the old port</em>, <em>on the beach</em>, <em>above the waves</em>.',
+                'rules_cc_maniere_title': '🔹 Manner',
+                'rules_cc_maniere_text': 'Indicate how the action is done. Questions: how? in what manner?<br>Ex.: <em>slowly</em>, <em>joyfully</em>.',
+                'rules_cc_cause_title': '🔹 Cause',
+                'rules_cc_cause_text': 'Indicate why the action happens. Questions: why? for what reason?<br>Ex.: <em>because of the storm</em>, <em>thanks to their courage</em>.',
+                'rules_cc_but_title': '🔹 Purpose',
+                'rules_cc_but_text': 'Indicate for what purpose. Questions: what for? for what purpose?<br>Ex.: <em>to warm up</em>.',
+                'rules_cc_concession_title': '🔹 Concession (or opposition)',
+                'rules_cc_concession_text': 'Indicate an opposition, a restriction. Questions: despite what?<br>Ex.: <em>despite the cold</em>.',
+                'rules_note': '💡 An adverbial phrase can be an adverb, a prepositional phrase, a noun, a subordinate clause, etc.',
+                'exercises_heading': '✍️ Exercises',
+                'exo1_title': '📌 1. Identify the underlined adverbial phrases',
+                'exo1_instruction': 'For each underlined complement in the text, indicate its category (time, place, manner, cause, purpose, concession).',
+                'table_cc': 'Adverbial phrase',
+                'table_answer': 'Category',
+                'exo2_title': '📌 2. Add an adverbial phrase according to the requested category',
+                'exo2_instruction': 'Complete each sentence with an adverbial phrase of the indicated category.',
+                'exo3_title': '📌 3. Remove the adverbial phrases and observe the meaning',
+                'exo3_instruction': 'Rewrite the sentences without the adverbial phrases. What do you notice?',
+                'exo4_title': '📌 4. Transform into purpose or cause adverbial phrases',
+                'exo4_instruction': 'Link the two sentences using an adverbial phrase of purpose or cause.',
+                'exo5_title': '📌 5. Move the adverbial phrase and rewrite',
+                'exo5_instruction': 'Move the adverbial phrase to the beginning or end of the sentence to show its mobility.',
+                'exo6_title': '📌 6. Personal production',
+                'exo6_instruction': 'Write a short paragraph (5-6 lines) describing your ideal day. Use at least one time, one place, one manner, one cause and one purpose adverbial phrase. Underline each and indicate its category in parentheses.',
+                'btn_correction': '🔍 See correction',
+                'footer_back': '← Previous lesson',
+                'footer_next': 'Next lesson: Pluperfect →',
+                'self_assess_question': 'My answer is:',
+                'self_correct': 'Correct',
+                'self_incorrect': 'Incorrect',
+                'self_partial': 'Partially correct',
+                'score_title': '📊 Your self‑assessment',
+                'score_correct': 'Correct:',
+                'score_incorrect': 'Incorrect:',
+                'score_partial': 'Partial:',
+                'score_unanswered': 'Unanswered:',
+                'save_results': '💾 Save my results',
+                'save_success': 'Results saved ✓',
+                'save_error': 'Save failed',
+                'print_pdf': '🖨️ Print / PDF',
+                'print_with_answers': 'With answers',
+                'print_site_name': 'Educational Dashboard – French',
+                'print_scholar_year': 'Bac Review',
+                'print_week': 'Week 3',
+                'print_area': 'Grammar',
+                'print_footer_dev': 'Developed by Mejri Ziad',
+                'print_footer_date': 'Printed on',
+                'print_without_answers': 'Without answers',
+                'toast_signin_required': 'Sign in to see the corrections.'
+            },
+            ar: {
+                'lesson_title': 'الدرس 2 – المتممات الظرفية | نص أدبي وتمارين',
+                'lesson_short_title': 'المتممات الظرفية',
+                'ach_year_bac': 'السنة الرابعة ثانوي',
+                'ach_module_semaine3': 'إتقان التصريف',
+                'back_revision': 'المراجعة العامة',
+                'back_current': 'المتممات الظرفية',
+                'lesson_badge': '📘 القواعد · الدرس 2',
+                'lesson_title': 'المتممات الظرفية',
+                'lesson_duration': '⏱️ 45 دقيقة',
+                'lesson_meta_audio': '🎧 استمع إلى النص ثم قم بالتمارين',
+                'audio_label': '🎧 استماع أدبي',
+                'text_author': '— أمسية في الميناء، نص أصلي',
+                'rules_heading': '📖 المتممات الظرفية',
+                'rules_intro': 'المتممات الظرفية تحدد ظروف الحدث: الزمان، المكان، الكيفية، السبب، الغاية، الوسيلة، النتيجة، إلخ. غالبا ما تكون قابلة للحذف أو النقل.',
+                'rules_cc_temps_title': '🔹 ظرف الزمان',
+                'rules_cc_temps_text': 'تبين متى يقع الحدث. الأسئلة: متى؟ كم من الوقت؟<br>مثال: <em>مساء أمس</em>، <em>خلال ذلك الوقت</em>، <em>عند حلول الليل</em>.',
+                'rules_cc_lieu_title': '🔹 ظرف المكان',
+                'rules_cc_lieu_text': 'تبين أين يقع الحدث. الأسئلة: أين؟ إلى أين؟ من أين؟<br>مثال: <em>في الميناء القديم</em>، <em>على الشاطئ</em>، <em>فوق الأمواج</em>.',
+                'rules_cc_maniere_title': '🔹 ظرف الكيفية',
+                'rules_cc_maniere_text': 'تبين كيف يقع الحدث. الأسئلة: كيف؟ بأي طريقة؟<br>مثال: <em>ببطء</em>، <em>بفرح</em>.',
+                'rules_cc_cause_title': '🔹 ظرف السبب',
+                'rules_cc_cause_text': 'تبين لماذا يقع الحدث. الأسئلة: لماذا؟ لأي سبب؟<br>مثال: <em>بسبب العاصفة</em>، <em>بفضل شجاعتهم</em>.',
+                'rules_cc_but_title': '🔹 ظرف الغاية',
+                'rules_cc_but_text': 'تبين لأي غاية. الأسئلة: لماذا؟ لأي هدف؟<br>مثال: <em>للتدفئة</em>.',
+                'rules_cc_concession_title': '🔹 ظرف الاستدراك (أو التعارض)',
+                'rules_cc_concession_text': 'تبين تعارضا أو تقييدا. الأسئلة: رغم ماذا؟<br>مثال: <em>رغم البرد</em>.',
+                'rules_note': '💡 يمكن أن يكون الظرف حالا أو مجموعة جر أو اسما أو جملة تابعة، إلخ.',
+                'exercises_heading': '✍️ تمارين',
+                'exo1_title': '📌 1. حدد المتممات الظرفية المسطرة',
+                'exo1_instruction': 'لكل متمم مسطر في النص، اذكر فئته (زمان، مكان، كيفية، سبب، غاية، استدراك).',
+                'table_cc': 'المتمم الظرفي',
+                'table_answer': 'الفئة',
+                'exo2_title': '📌 2. أضف متمما ظرفيا حسب الفئة المطلوبة',
+                'exo2_instruction': 'أكمل كل جملة بمتمم ظرفي من الفئة المحددة.',
+                'exo3_title': '📌 3. احذف المتممات الظرفية ولاحظ المعنى',
+                'exo3_instruction': 'أعد كتابة الجمل بدون المتممات الظرفية. ماذا تلاحظ؟',
+                'exo4_title': '📌 4. حول إلى متمم غاية أو سبب',
+                'exo4_instruction': 'اربط الجملتين باستعمال متمم ظرفي للغاية أو السبب.',
+                'exo5_title': '📌 5. انقل المتمم الظرفي وأعد الكتابة',
+                'exo5_instruction': 'انقل المتمم الظرفي إلى بداية أو نهاية الجملة لإظهار قابليته للتحريك.',
+                'exo6_title': '📌 6. إنتاج شخصي',
+                'exo6_instruction': 'اكتب فقرة قصيرة (5-6 أسطر) تصف يومك المثالي. استعمل متمما زمانيا، ومكانيا، وكيفيا، وسببيا، وغائيا على الأقل. ضع خطا تحت كل متمم واكتب فئته بين قوسين.',
+                'btn_correction': '🔍 الاطلاع على التصحيح',
+                'footer_back': '← الدرس السابق',
+                'footer_next': 'الدرس الموالي: الماضي التام →',
+                'self_assess_question': 'جوابي هو:',
+                'self_correct': 'صحيح',
+                'self_incorrect': 'خاطئ',
+                'self_partial': 'صحيح جزئيًا',
+                'score_title': '📊 تقييمك الذاتي',
+                'score_correct': 'صحيح:',
+                'score_incorrect': 'خاطئ:',
+                'score_partial': 'جزئي:',
+                'score_unanswered': 'بدون إجابة:',
+                'save_results': '💾 حفظ نتائجي',
+                'save_success': 'تم حفظ النتائج ✓',
+                'save_error': 'خطأ في الحفظ',
+                'print_pdf': '🖨️ طباعة / PDF',
+                'print_with_answers': 'مع التصحيح',
+                'print_site_name': 'لوحة التحكم التعليمية – الفرنسية',
+                'print_scholar_year': 'مراجعة البكالوريا',
+                'print_week': 'الأسبوع 3',
+                'print_area': 'القواعد',
+                'print_footer_dev': 'طوّر بواسطة ماجري زياد',
+                'print_footer_date': 'طُبع في',
+                'toast_signin_required': 'سجّل الدخول لرؤية التصحيحات.'
+            }
+        });
+        (function() {
+            var container = document.querySelector('.container');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+        })();
+    </script>
+    <script src="ed-french-ini.js"></script>
+    <script>
+        (function() {
+            const audio = new Audio('lessons/revision/sounds/semaine3-complements.mp3');
+            const playBtn = document.getElementById('playBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const speedBtns = document.querySelectorAll('.speed-btn');
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+            audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
+            audio.addEventListener('timeupdate', () => {
+                const percent = (audio.currentTime / audio.duration) * 100 || 0;
+                progressFill.style.width = percent + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            });
+            audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) { audio.play(); playBtn.textContent = '⏸'; }
+                else { audio.pause(); playBtn.textContent = '▶'; }
+            });
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const seekTime = (clickX / width) * audio.duration;
+                audio.currentTime = seekTime;
+            });
+            speedBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    speedBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const speed = parseFloat(btn.dataset.speed);
+                    audio.playbackRate = speed;
+                });
+            });
+            const ccs = [
+                "Hier soir", "dans le vieux port", "lentement", "à cause de la tempête",
+                "Pour se réchauffer", "sur la plage", "Pendant ce temps", "au-dessus des vagues",
+                "Malgré le froid", "joyeusement", "vers leurs parents", "Grâce à leur courage",
+                "À la tombée de la nuit", "autour d'un repas chaud"
+            ];
+            const answersEx1 = [
+                "temps", "lieu", "manière", "cause",
+                "but", "lieu", "temps", "lieu",
+                "concession", "manière", "lieu", "cause",
+                "temps", "lieu"
+            ];
+            const tbody1 = document.querySelector('#exo1Table tbody');
+            ccs.forEach((cc, i) => {
+                const row = tbody1.insertRow();
+                const cellCC = row.insertCell();
+                cellCC.textContent = cc;
+                const cellAnswer = row.insertCell();
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.placeholder = 'catégorie';
+                cellAnswer.appendChild(input);
+            });
+            document.getElementById('exo1Key').innerHTML = '<strong>Correction :</strong><br>' + ccs.map((cc,i) => `${cc} → <em>${answersEx1[i]}</em>`).join('<br>');
+            document.getElementById('exo2Key').innerHTML = '<strong>Propositions :</strong><br>a) Demain matin / L\'été prochain... (temps)<br>b) à cause de son travail / grâce à ses efforts (cause)<br>c) Dans la cour / Sur la place (lieu)<br>d) avec soin / rapidement (manière)<br>e) Pour rester en bonne santé / Afin de me muscler (but)<br>f) Malgré le froid / En dépit de la neige (concession)';
+            document.getElementById('exo3Key').innerHTML = '<strong>Correction :</strong><br>a) Les élèves discutent.<br>b) Le match a été annulé.<br>c) Tu dois t\'entraîner.<br>Remarque : les phrases restent grammaticalement correctes mais perdent des informations importantes ; les CC sont donc facultatifs mais apportent des précisions.';
+            document.getElementById('exo4Key').innerHTML = '<strong>Correction :</strong><br>a) Il fait du jogging pour rester en forme.<br>b) Elle est fatiguée à cause de son excès de travail.<br>c) Nous avons pris un taxi parce que nous étions en retard.';
+            document.getElementById('exo5Key').innerHTML = '<strong>Propositions :</strong><br>a) Pendant des heures, les manifestants ont défilé dans les rues.<br>b) Malgré sa tristesse, elle a souri.<br>c) Dimanche dernier, nous avons pique-niqué au bord du lac.';
+            window.toggleCorrection = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('visible');
+            };
+            function updateScore() {
+                const radioGroups = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5', 'self_ex6'];
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                radioGroups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                document.getElementById('scoreCorrect').textContent = correct;
+                document.getElementById('scoreIncorrect').textContent = incorrect;
+                document.getElementById('scorePartial').textContent = partial;
+                document.getElementById('scoreUnanswered').textContent = unanswered;
+            }
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                const radioGroups = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5', 'self_ex6'];
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                radioGroups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                const lessonId = 'semaine3-grammaire-complements';
+                const lang = localStorage.getItem('lang') || 'fr';
+                const entry = {
+                    lesson_id: lessonId,
+                    lesson_title: {
+                        fr: App.getTranslation('lesson_short_title', 'fr'),
+                        en: App.getTranslation('lesson_short_title', 'en'),
+                        ar: App.getTranslation('lesson_short_title', 'ar')
+                    },
+                    year: {
+                        fr: App.getTranslation('ach_year_bac', 'fr'),
+                        en: App.getTranslation('ach_year_bac', 'en'),
+                        ar: App.getTranslation('ach_year_bac', 'ar')
+                    },
+                    module: {
+                        fr: App.getTranslation('ach_module_semaine3', 'fr'),
+                        en: App.getTranslation('ach_module_semaine3', 'en'),
+                        ar: App.getTranslation('ach_module_semaine3', 'ar')
+                    },
+                    correct: correct,
+                    incorrect: incorrect,
+                    partial: partial,
+                    unanswered: unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles')
+                    .select('achivement')
+                    .eq('id', user.id)
+                    .single();
+                if (fetchError) { console.error('Could not fetch profile:', fetchError); return; }
+                let achivement = profileData?.achivement || {};
+                if (!achivement["ED-French"]) achivement["ED-French"] = [];
+                const arr = achivement["ED-French"];
+                const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+                if (existingIdx >= 0) arr[existingIdx] = entry; else arr.push(entry);
+                const { error: updateError } = await App.supabase
+                    .from('profiles')
+                    .update({ achivement: achivement })
+                    .eq('id', user.id);
+                if (updateError) {
+                    console.error('Save failed:', updateError);
+                    App.showToast('save_error', 'error');
+                } else {
+                    App.showToast('save_success', 'success');
+                    App.logUserAction('lesson_saved', { lesson: lessonId, correct, incorrect, partial });
+                }
+            });
+            document.getElementById('printPdfBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles')
+                        .select('registration_state')
+                        .eq('id', user.id)
+                        .single();
+                    if (!error && profile && profile.registration_state && profile.registration_state.active === true) isRegistered = true;
+                } catch (e) {}
+                const headerHTML = document.querySelector('.lesson-header').cloneNode(true);
+                const textCard = document.querySelector('.text-card').cloneNode(true);
+                const rulesSections = document.querySelectorAll('.valeurs-section, .methode-section');
+                let rulesHTML = '';
+                rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
+                const exercisesSection = document.querySelector('.exercises-section').cloneNode(true);
+                exercisesSection.querySelectorAll('input, textarea, .btn-verify, .self-assessment').forEach(el => el.remove());
+                if (isRegistered) {
+                    const answerKeys = exercisesSection.querySelectorAll('.answer-key');
+                    answerKeys.forEach(key => {
+                        key.style.display = 'block';
+                        key.style.border = 'none';
+                        key.style.padding = '0.5rem 0';
+                        key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    exercisesSection.querySelectorAll('.answer-key').forEach(el => el.remove());
+                }
+                const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                const lang = localStorage.getItem('lang') || 'fr';
+                printWindow.document.write(`
+                <!DOCTYPE html>
+                <html lang="${lang}">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>${App.getTranslation('lesson_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title>
+                    <style>
+                        body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.6; max-width: 700px; margin: 2rem auto; padding: 0 1rem; color: #000; }
+                        .print-header { text-align: center; border-bottom: 2px solid #c75b2c; padding-bottom: 1rem; margin-bottom: 2rem; }
+                        .print-header .site-name { font-size: 1.4rem; font-weight: bold; color: #c75b2c; margin: 0 0 0.3rem; }
+                        .print-header .meta-line { font-size: 0.95rem; color: #444; margin: 0.2rem 0; }
+                        .print-header .lesson-name { font-size: 1.1rem; font-weight: bold; color: #000; margin-top: 0.5rem; }
+                        .print-footer { text-align: center; border-top: 1px solid #ccc; padding-top: 1rem; margin-top: 2rem; font-size: 0.85rem; color: #666; }
+                        h1, h2, h3 { color: #000; }
+                        .lesson-header { text-align: center; margin-bottom: 2rem; }
+                        .badge { display: inline-block; background: #c75b2c; color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; text-transform: uppercase; }
+                        .text-card { border-left: 4px solid #c75b2c; padding: 1rem 1.5rem; margin: 1.5rem 0; font-style: italic; }
+                        .quote-mark { font-size: 3rem; color: #c75b2c; opacity: 0.3; position: absolute; top: -10px; left: 10px; }
+                        .text-card .author { text-align: right; font-style: normal; margin-top: 0.8rem; }
+                        .valeurs-section, .methode-section { margin: 1.5rem 0; }
+                        .valeur-card { background: #f8f4ec; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; }
+                        .valeur-card h3 { color: #c75b2c; }
+                        .exercise-card { margin: 1.2rem 0; }
+                        table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; }
+                        th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+                        th { background: #f0e8d8; }
+                        .answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; }
+                        @media print { body { margin: 0; padding: 0; } @page { margin: 2cm; } }
+                    </style>
+                </head>
+                <body>
+                    <div class="print-header">
+                        <div class="site-name">${App.getTranslation('print_site_name', lang)}</div>
+                        <div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div>
+                        <div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div>
+                    </div>
+                    ${breadcrumb.outerHTML}
+                    ${headerHTML.outerHTML}
+                    ${textCard.outerHTML}
+                    ${rulesHTML}
+                    ${exercisesSection.outerHTML}
+                    <div class="print-footer">
+                        ${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}
+                    </div>
+                </body>
+                </html>
+            `);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+            document.querySelectorAll('input[type="radio"][name^="self_ex"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+        })();
+    </script>
+    <!-- ═══════ DIRECT‑TRANSLATION FIX ═══════ -->
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_title">Leçon 2 – Discours direct et indirect | Texte littéraire & Exercices</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ===== Lesson‑specific styles (unchanged) ===== */
+        :root {
+            --bg: #f9f7f1;
+            --card: #ffffff;
+            --text: #2b2416;
+            --text-light: #5c5344;
+            --heading: #382e1e;
+            --accent: #c75b2c;
+            --accent-hover: #a3441d;
+            --border: #e5ddd0;
+            --shadow: 0 1px 4px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-hover: 0 8px 22px rgba(0,0,0,0.08);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --transition: 0.25s ease;
+            --font-body: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
+            --audio-bg: #f4efe4;
+            --audio-progress: #d8c9aa;
+            --button-bg: #f0e8d8;
+            --button-hover: #e3d5bc;
+            --input-bg: #fcfaf6;
+        }
+        body.dark {
+            --bg: #1e1b17;
+            --card: #2a2620;
+            --text: #e8dfd2;
+            --text-light: #b9aa95;
+            --heading: #f0e4d2;
+            --accent: #e07b4a;
+            --accent-hover: #f08c5c;
+            --border: #3e3830;
+            --shadow: 0 1px 4px rgba(0,0,0,0.25);
+            --shadow-hover: 0 8px 22px rgba(0,0,0,0.35);
+            --audio-bg: #26221b;
+            --audio-progress: #5a4e3c;
+            --button-bg: #3a3329;
+            --button-hover: #4e4437;
+            --input-bg: #333028;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.75;
+            transition: background var(--transition), color var(--transition);
+        }
+        .container { max-width:860px; margin:0 auto; padding:1.8rem 1.4rem 3rem; }
+        .lesson-header { text-align: center; margin-bottom: 2rem; }
+        .badge {
+            display:inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding:0.25rem 1rem;
+            border-radius:20px;
+            font-size:0.8rem;
+            font-weight:700;
+            letter-spacing:0.03em;
+            text-transform: uppercase;
+        }
+        .lesson-header h1 {
+            font-size: 2.1rem;
+            color: var(--heading);
+            margin: 0.6rem 0 0.3rem;
+            line-height: 1.3;
+        }
+        .lesson-header .meta {
+            font-size:0.9rem;
+            color:var(--text-light);
+            display: flex;
+            justify-content: center;
+            gap:1.2rem;
+            flex-wrap: wrap;
+        }
+        .audio-player {
+            background: var(--card);
+            border:1px solid var(--border);
+            border-radius: var(--radius);
+            padding:1rem 1.4rem;
+            margin: 1.5rem 0 2rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap:1rem;
+            flex-wrap: wrap;
+        }
+        .audio-player .play-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            border:none;
+            font-size:1.2rem;
+            cursor:pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background var(--transition);
+            flex-shrink: 0;
+        }
+        .play-btn:hover { background: var(--accent-hover); }
+        .audio-player .progress-area {
+            flex:1;
+            min-width:120px;
+            display: flex;
+            flex-direction: column;
+            gap:0.3rem;
+        }
+        .progress-bar {
+            width:100%;
+            height:6px;
+            background: var(--audio-progress);
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+        .time-info { display: flex; justify-content: space-between; font-size:0.75rem; color:var(--text-light); }
+        .speed-selector { display: flex; gap:0.3rem; flex-wrap: wrap; }
+        .speed-btn {
+            border:1px solid var(--border);
+            background: var(--button-bg);
+            color: var(--text);
+            padding:0.25rem 0.55rem;
+            border-radius: 4px;
+            font-size:0.75rem;
+            font-weight:600;
+            cursor:pointer;
+            transition: all var(--transition);
+        }
+        .speed-btn.active { background: var(--accent); color:#fff; border-color: var(--accent); }
+        .audio-label { font-weight:700; font-size:0.85rem; color:var(--heading); white-space: nowrap; }
+        @media (max-width:600px) {
+            .audio-player { flex-direction: column; align-items: stretch; }
+            .audio-label { text-align: center; }
+        }
+        .text-card {
+            background: var(--card);
+            border:1px solid var(--border);
+            border-left:5px solid var(--accent);
+            border-radius: 0 var(--radius) var(--radius) 0;
+            padding:1.4rem 1.6rem;
+            margin:1.8rem 0;
+            font-style:italic;
+            font-size:1.05rem;
+            line-height: 1.9;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        .text-card .quote-mark {
+            position: absolute;
+            top:-12px;
+            left:14px;
+            font-size:3rem;
+            color:var(--accent);
+            opacity:0.25;
+            line-height:1;
+        }
+        .text-card .author { text-align:right; font-style:normal; font-size:0.9rem; color:var(--text-light); margin-top:0.8rem; }
+        .exercises-section h2 {
+            font-size:1.5rem;
+            color:var(--heading);
+            margin:2rem 0 1rem;
+            border-bottom:3px solid var(--accent);
+            display:inline-block;
+            padding-bottom:0.3rem;
+        }
+        .exercise-card {
+            background: var(--card);
+            border:1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding:1.2rem 1.4rem;
+            margin-bottom:1.4rem;
+            box-shadow: var(--shadow);
+        }
+        .exercise-card h3 { font-size:1.05rem; color:var(--accent); margin-bottom:0.8rem; display: flex; align-items: center; gap:0.4rem; }
+        .exercise-card table { width:100%; border-collapse: collapse; margin: 0.8rem 0; }
+        .exercise-card th, .exercise-card td { padding:0.55rem 0.7rem; border:1px solid var(--border); text-align:left; font-size:0.9rem; }
+        .exercise-card th { background: var(--audio-bg); font-weight:700; color:var(--heading); }
+        .exercise-card input[type="text"] {
+            width:100%;
+            padding:0.4rem 0.6rem;
+            border:1px solid var(--border);
+            border-radius:4px;
+            background: var(--input-bg);
+            color: var(--text);
+            font-family: inherit;
+            font-size:0.9rem;
+        }
+        .btn-verify {
+            background: var(--accent);
+            color:#fff;
+            border:none;
+            padding:0.5rem 1.2rem;
+            border-radius: 20px;
+            font-weight:600;
+            cursor:pointer;
+            transition: background var(--transition);
+            margin-top:0.6rem;
+            font-size:0.85rem;
+        }
+        .btn-verify:hover { background: var(--accent-hover); }
+        .answer-key {
+            display:none;
+            margin-top:0.8rem;
+            padding:0.8rem;
+            background: var(--audio-bg);
+            border-radius:6px;
+            font-size:0.85rem;
+            color: var(--text-light);
+            border:1px dashed var(--accent);
+        }
+        .answer-key.visible { display:block; }
+        .self-assessment { margin-top: 0.8rem; font-size: 0.9rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+        .self-assessment label { cursor: pointer; }
+        .score-area {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: var(--shadow);
+        }
+        .score-area h2 { color: var(--heading); margin-bottom: 1rem; }
+        .score-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .score-stat { background: var(--audio-bg); padding: 0.8rem 1.2rem; border-radius: 8px; font-weight: 600; }
+        html[dir="rtl"] body { direction: rtl; }
+        html[dir="rtl"] .container { text-align: right; }
+        html[dir="rtl"] .text-card .author { text-align: left; }
+        html[dir="rtl"] .exercise-card th, html[dir="rtl"] .exercise-card td { text-align: right; }
+        @media (max-width:600px) {
+            .lesson-header h1 { font-size:1.5rem; }
+            .container { padding:1rem 0.8rem 2rem; }
+        }
+        .valeurs-section, .methode-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.6rem 1.8rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+        .valeurs-section h2, .methode-section h2 {
+            font-size: 1.5rem;
+            color: var(--heading);
+            margin-bottom: 1rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+        .valeur-card {
+            background: var(--audio-bg);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .valeur-card h3 { color: var(--accent); font-size: 1.1rem; margin-bottom: 0.4rem; }
+        .valeur-card ul { list-style: none; padding: 0; }
+        .valeur-card li { padding: 0.3rem 0; padding-left: 1.4rem; position: relative; color: var(--text-light); }
+        .valeur-card li::before { content: '◆'; position: absolute; left: 0; color: var(--accent); font-size: 0.5rem; top: 0.5rem; }
+        .valeur-card p { margin: 0.5rem 0; }
+    </style>
+</head>
+<body>
+    <div id="main-content" class="container">
+        <p style="margin-bottom:1.5rem; color:var(--text-light);">
+            <a href="revision.html" data-i18n="back_revision">Révision générale</a>
+            › <strong data-i18n="back_current">Discours direct et indirect</strong>
+        </p>
+        <div class="lesson-header">
+            <span class="badge" data-i18n="lesson_badge">📘 Grammaire · Leçon 2</span>
+            <h1 data-i18n="lesson_title">Discours direct et indirect</h1>
+            <div class="meta">
+                <span data-i18n="lesson_duration">⏱️ 45 minutes</span>
+                <span data-i18n="lesson_meta_audio">🎧 Écoutez le texte puis faites les exercices</span>
+            </div>
+        </div>
+
+        <!-- ═════ CUSTOM AUDIO PLAYER ═════ -->
+        <div class="audio-player" id="audioPlayer">
+            <span class="audio-label" data-i18n="audio_label">🎧 Écoute littéraire</span>
+            <button class="play-btn" id="playBtn" aria-label="Lecture">▶</button>
+            <div class="progress-area">
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="time-info">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+            <div class="speed-selector" id="speedSelector">
+                <button class="speed-btn" data-speed="0.75">0.75x</button>
+                <button class="speed-btn active" data-speed="1">1x</button>
+                <button class="speed-btn" data-speed="1.25">1.25x</button>
+                <button class="speed-btn" data-speed="1.5">1.5x</button>
+            </div>
+        </div>
+
+        <!-- ═════ LITERARY TEXT ═════ -->
+        <div class="text-card">
+            <span class="quote-mark">“</span>
+            <p>
+                Le capitaine déclara : « Nous partirons à l'aube. » Il ajouta qu'il fallait préparer les provisions. Le mousse demanda : « Est-ce que la mer sera calme ? » Le capitaine répondit qu'elle serait calme mais qu'il fallait rester prudent. « N'oubliez pas vos gilets de sauvetage ! » ordonna-t-il. Le vieux marin affirma qu'il n'avait jamais vu une tempête en cette saison. « Je me souviens des voyages de mon père », murmura-t-il.
+            </p>
+            <div class="author" data-i18n="text_author">— Avant le grand départ, texte original</div>
+        </div>
+
+        <!-- ═════ RÈGLES : DISCOURS DIRECT ET INDIRECT (EXPANDED) ═════ -->
+        <div class="valeurs-section">
+            <h2 data-i18n="rules_heading">📖 Discours direct et indirect</h2>
+            <p data-i18n="rules_intro" class="no-bilingual" style="margin-bottom:1.2rem;">Le discours direct rapporte exactement les paroles telles qu'elles ont été prononcées. Le discours indirect les intègre dans une proposition subordonnée, ce qui entraîne des transformations (temps, pronoms, indicateurs). Voici les règles détaillées.</p>
+            
+            <div class="valeur-card">
+                <h3 data-i18n="rules_direct_title">🔹 Le discours direct</h3>
+                <p data-i18n="rules_direct_text">Il utilise des guillemets, des tirets, et les paroles sont rapportées telles quelles.<br>Ex. : Il dit : « Je viens demain. »</p>
+            </div>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_indirect_title">🔹 Le discours indirect</h3>
+                <p data-i18n="rules_indirect_text">Les paroles sont subordonnées à un verbe de parole (dire, affirmer, demander…).<br>Ex. : Il dit qu'il viendra le lendemain.</p>
+            </div>
+
+            <div class="valeur-card">
+                <h3 data-i18n="rules_temps_title">🔹 Transformation des temps (concordance)</h3>
+                <ul data-i18n="rules_temps_list">
+                    <li><strong>Présent</strong> → imparfait<br>Ex. : « Je mange » → Il dit qu'il mangeait.</li>
+                    <li><strong>Futur simple</strong> → conditionnel présent<br>Ex. : « Je partirai » → Il dit qu'il partirait.</li>
+                    <li><strong>Passé composé</strong> → plus-que-parfait<br>Ex. : « J'ai fini » → Il dit qu'il avait fini.</li>
+                    <li><strong>Futur antérieur</strong> → conditionnel passé<br>Ex. : « J'aurai terminé » → Il dit qu'il aurait terminé.</li>
+                    <li><strong>Impératif</strong> → de + infinitif<br>Ex. : « Viens ! » → Il lui dit de venir.</li>
+                </ul>
+            </div>
+
+            <div class="valeur-card">
+                <h3 data-i18n="rules_pronoms_title">🔹 Transformation des pronoms et déterminants</h3>
+                <ul data-i18n="rules_pronoms_list">
+                    <li>Je, tu → il, elle ; nous → ils/elles ; vous → ils/elles</li>
+                    <li>Mon, ma, mes → son, sa, ses ; ton, ta, tes → son, sa, ses</li>
+                    <li>Notre, nos → leur, leurs ; votre, vos → leur, leurs</li>
+                    <li>Ceci, cela → cela / ça</li>
+                </ul>
+            </div>
+
+            <div class="valeur-card">
+                <h3 data-i18n="rules_indicateurs_title">🔹 Transformation des indicateurs de temps et de lieu</h3>
+                <ul data-i18n="rules_indicateurs_list">
+                    <li>Ici → là</li>
+                    <li>Maintenant → alors / à ce moment-là</li>
+                    <li>Aujourd'hui → ce jour-là</li>
+                    <li>Demain → le lendemain</li>
+                    <li>Hier → la veille</li>
+                    <li>Ce matin → ce matin-là</li>
+                </ul>
+            </div>
+
+            <div class="valeur-card">
+                <h3 data-i18n="rules_interro_title">🔹 Transformation des phrases interrogatives</h3>
+                <ul data-i18n="rules_interro_list">
+                    <li><strong>Question totale (oui/non)</strong> : « Est-ce que tu viens ? » → Il demande <strong>si</strong> tu viens.</li>
+                    <li><strong>Question partielle</strong> : « Où vas-tu ? » → Il demande <strong>où</strong> tu vas.</li>
+                    <li>Les mots interrogatifs (où, quand, comment, pourquoi, qui, que…) sont conservés mais la structure change.</li>
+                </ul>
+            </div>
+
+            <div class="valeur-card">
+                <h3 data-i18n="rules_imperatif_title">🔹 Transformation des phrases impératives</h3>
+                <p data-i18n="rules_imperatif_text">On utilise généralement <strong>de + infinitif</strong>.<br>Ex. : « Assieds-toi ! » → Il lui dit <strong>de s'asseoir</strong>.</p>
+            </div>
+
+            <p data-i18n="rules_note" style="margin-top:1rem; font-style:italic; color:var(--text-light);">💡 Le passage du discours direct au discours indirect exige de bien respecter la concordance des temps et les transformations des pronoms et indicateurs.</p>
+        </div>
+
+        <!-- ═════ EXERCISES (10) ═════ -->
+        <div class="exercises-section">
+            <h2 data-i18n="exercises_heading">✍️ Exercices</h2>
+
+            <!-- Exercice 1 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo1_title">📌 1. Identifiez le type de discours</h3>
+                <p data-i18n="exo1_instruction">Pour chaque phrase du texte, indiquez si elle est au discours direct ou indirect.</p>
+                <table id="exo1Table">
+                    <thead><tr><th data-i18n="table_phrase" class="no-bilingual">Phrase</th><th data-i18n="table_answer" class="no-bilingual">Type</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo1Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo1Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 2 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo2_title">📌 2. Transformez au discours indirect (déclaratif)</h3>
+                <p data-i18n="exo2_instruction">Réécrivez ces phrases en discours indirect en respectant la concordance des temps.</p>
+                <ol type="a">
+                    <li>Il dit : « J'aime la mer. »<br><input type="text" placeholder="Discours indirect"></li>
+                    <li>Elle affirme : « Nous avons fini nos devoirs. »<br><input type="text" placeholder="Discours indirect"></li>
+                    <li>Ils déclarent : « Nous partirons demain. »<br><input type="text" placeholder="Discours indirect"></li>
+                    <li>Le professeur dit : « Vous devez réviser. »<br><input type="text" placeholder="Discours indirect"></li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo2Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo2Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 3 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo3_title">📌 3. Transformez au discours indirect (interrogatif)</h3>
+                <p data-i18n="exo3_instruction">Transformez ces questions directes en questions indirectes.</p>
+                <ol type="a">
+                    <li>Elle demande : « Où vas-tu ? »<br><input type="text" placeholder="Discours indirect"></li>
+                    <li>Il demande : « Est-ce que tu viens ? »<br><input type="text" placeholder="Discours indirect"></li>
+                    <li>Nous demandons : « Pourquoi pleures-tu ? »<br><input type="text" placeholder="Discours indirect"></li>
+                    <li>Le client demande : « Combien coûte ce livre ? »<br><input type="text" placeholder="Discours indirect"></li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo3Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo3Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 4 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo4_title">📌 4. Transformez au discours indirect (impératif)</h3>
+                <p data-i18n="exo4_instruction">Transformez ces impératifs en discours indirect avec « de + infinitif ».</p>
+                <ol type="a">
+                    <li>« Assieds-toi ! » → Il lui dit ________ .<br><input type="text" placeholder="Discours indirect"></li>
+                    <li>« Ne courez pas ! » → Le professeur leur dit ________ .<br><input type="text" placeholder="Discours indirect"></li>
+                    <li>« Regarde-moi ! » → Elle lui dit ________ .<br><input type="text" placeholder="Discours indirect"></li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo4Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo4Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 5 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo5_title">📌 5. Transformez au discours direct</h3>
+                <p data-i18n="exo5_instruction">Réécrivez ces phrases en discours direct.</p>
+                <ol type="a">
+                    <li>Il dit qu'il partira le lendemain.<br><input type="text" placeholder="Discours direct"></li>
+                    <li>Elle demande si je viens.<br><input type="text" placeholder="Discours direct"></li>
+                    <li>Ils affirment qu'ils ont terminé la veille.<br><input type="text" placeholder="Discours direct"></li>
+                    <li>Le professeur demande où nous allons.<br><input type="text" placeholder="Discours direct"></li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex5" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex5" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex5" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo5Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo5Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 6 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo6_title">📌 6. Corrigez les erreurs</h3>
+                <p data-i18n="exo6_instruction">Certaines transformations sont incorrectes. Corrigez-les.</p>
+                <ol type="a">
+                    <li>Il a dit qu'il viendra demain. <input type="text" placeholder="Correction"></li>
+                    <li>Elle demande où est-ce qu'il habite. <input type="text" placeholder="Correction"></li>
+                    <li>Ils ont dit : « nous avons faim. » → Ils ont dit qu'ils ont faim. <input type="text" placeholder="Correction"></li>
+                    <li>« Ne parlez pas ! » → Il leur dit de ne pas parlent. <input type="text" placeholder="Correction"></li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex6" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex6" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex6" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo6Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo6Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 7 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo7_title">📌 7. Analysez un passage</h3>
+                <p data-i18n="exo7_instruction">« Le guide dit : “Nous visiterons le musée demain.” »<br>Quelles transformations faudrait-il opérer pour passer au discours indirect ?</p>
+                <textarea rows="3" style="width:100%;" placeholder="Votre analyse..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex7" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex7" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex7" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo7Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo7Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 8 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo8_title">📌 8. Complétez avec le bon connecteur</h3>
+                <p data-i18n="exo8_instruction">Complétez les phrases indirectes avec le connecteur qui convient (que, si, où, quand, pourquoi, etc.).</p>
+                <ol type="a">
+                    <li>Il demande ________ tu vas. <input type="text" placeholder="connecteur"></li>
+                    <li>Elle dit ________ elle est fatiguée. <input type="text" placeholder="connecteur"></li>
+                    <li>Je ne sais pas ________ il viendra. <input type="text" placeholder="connecteur"></li>
+                    <li>Nous demandons ________ il est parti. <input type="text" placeholder="connecteur"></li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex8" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex8" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex8" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo8Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo8Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 9 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo9_title">📌 9. Transformez un dialogue complet</h3>
+                <p data-i18n="exo9_instruction">Lisez ce dialogue puis rapportez-le au discours indirect en un seul paragraphe.</p>
+                <p><em>« Où vas-tu ? » demande Marie. « Je vais au marché », répond Paul. « Achète-moi des fruits ! » demande-t-elle. « D'accord, je t'en apporterai », promet-il.</em></p>
+                <textarea rows="5" style="width:100%;" placeholder="Votre texte..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex9" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex9" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex9" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo9Key')" data-i18n="btn_correction">🔍 Voir une proposition</button>
+                <div id="exo9Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 10 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo10_title">📌 10. Production personnelle</h3>
+                <p data-i18n="exo10_instruction">Rapportez une conversation entre deux personnes (5-6 répliques) en utilisant le discours direct, puis transformez-la au discours indirect dans un second paragraphe.</p>
+                <textarea rows="6" style="width:100%; padding:0.5rem;" placeholder="Votre texte..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex10" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex10" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex10" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═════ SCORING AREA ═════ -->
+        <div class="score-area" id="scoreArea">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="score-stats" id="scoreStats">
+                <div class="score-stat"><span data-i18n="score_correct">Correctes :</span> <span id="scoreCorrect">0</span></div>
+                <div class="score-stat"><span data-i18n="score_incorrect">Incorrectes :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="score-stat"><span data-i18n="score_partial">Partielles :</span> <span id="scorePartial">0</span></div>
+                <div class="score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">10</span></div>
+            </div>
+        </div>
+        <div class="score-actions" style="margin-top:1.2rem;">
+            <button id="saveResultsBtn" class="btn-verify" style="margin-right:0.5rem;" 
+                    data-i18n="save_results">💾 Enregistrer mes résultats</button>
+            <button id="printPdfBtn" class="btn-verify" style="background:#5c5344; margin-right:0.5rem;"
+                    data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+        </div>
+
+        <!-- Footer nav -->
+        <div style="margin-top:2rem; display:flex; justify-content:space-between; flex-wrap:wrap;">
+            <a href="semaine4-grammaire-expansions.html" data-i18n="footer_back" class="no-bilingual">← Leçon précédente</a>
+            <a href="semaine4-conjugaison-passe-simple.html" data-i18n="footer_next" class="no-bilingual">Leçon suivante : Le passé simple et le passé antérieur →</a>
+        </div>
+    </div>
+
+    <!-- ═══════ SCRIPTS ═══════ -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+        <!-- ═══════ SCRIPTS ═══════ -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script>
+        // ── Translations for this lesson (EXPANDED) ──
+        App.addI18nTranslations({
+            fr: {
+                'lesson_title': 'Leçon 2 – Discours direct et indirect | Texte littéraire & Exercices',
+                'lesson_short_title': 'Discours direct et indirect',
+                'ach_year_bac': '4ᵉ année secondaire (Bac)',
+                'ach_module_semaine4': 'Orthographe et précision',
+                'back_revision': 'Révision générale',
+                'back_current': 'Discours direct et indirect',
+                'lesson_badge': '📘 Grammaire · Leçon 2',
+                'lesson_title': 'Discours direct et indirect',
+                'lesson_duration': '⏱️ 45 minutes',
+                'lesson_meta_audio': '🎧 Écoutez le texte puis faites les exercices',
+                'audio_label': '🎧 Écoute littéraire',
+                'text_author': '— Avant le grand départ, texte original',
+                'rules_heading': '📖 Discours direct et indirect',
+                'rules_intro': 'Le discours direct rapporte exactement les paroles telles qu\'elles ont été prononcées. Le discours indirect les intègre dans une proposition subordonnée, ce qui entraîne des transformations (temps, pronoms, indicateurs). Voici les règles détaillées.',
+                'rules_direct_title': '🔹 Le discours direct',
+                'rules_direct_text': 'Il utilise des guillemets, des tirets, et les paroles sont rapportées telles quelles.<br>Ex. : Il dit : « Je viens demain. »',
+                'rules_indirect_title': '🔹 Le discours indirect',
+                'rules_indirect_text': 'Les paroles sont subordonnées à un verbe de parole (dire, affirmer, demander…).<br>Ex. : Il dit qu\'il viendra le lendemain.',
+                'rules_temps_title': '🔹 Transformation des temps (concordance)',
+                'rules_temps_list': '<li><strong>Présent</strong> → imparfait<br>Ex. : « Je mange » → Il dit qu\'il mangeait.</li><li><strong>Futur simple</strong> → conditionnel présent<br>Ex. : « Je partirai » → Il dit qu\'il partirait.</li><li><strong>Passé composé</strong> → plus-que-parfait<br>Ex. : « J\'ai fini » → Il dit qu\'il avait fini.</li><li><strong>Futur antérieur</strong> → conditionnel passé<br>Ex. : « J\'aurai terminé » → Il dit qu\'il aurait terminé.</li><li><strong>Impératif</strong> → de + infinitif<br>Ex. : « Viens ! » → Il lui dit de venir.</li>',
+                'rules_pronoms_title': '🔹 Transformation des pronoms et déterminants',
+                'rules_pronoms_list': '<li>Je, tu → il, elle ; nous → ils/elles ; vous → ils/elles</li><li>Mon, ma, mes → son, sa, ses ; ton, ta, tes → son, sa, ses</li><li>Notre, nos → leur, leurs ; votre, vos → leur, leurs</li><li>Ceci, cela → cela / ça</li>',
+                'rules_indicateurs_title': '🔹 Transformation des indicateurs de temps et de lieu',
+                'rules_indicateurs_list': '<li>Ici → là</li><li>Maintenant → alors / à ce moment-là</li><li>Aujourd\'hui → ce jour-là</li><li>Demain → le lendemain</li><li>Hier → la veille</li><li>Ce matin → ce matin-là</li>',
+                'rules_interro_title': '🔹 Transformation des phrases interrogatives',
+                'rules_interro_list': '<li><strong>Question totale (oui/non)</strong> : « Est-ce que tu viens ? » → Il demande <strong>si</strong> tu viens.</li><li><strong>Question partielle</strong> : « Où vas-tu ? » → Il demande <strong>où</strong> tu vas.</li><li>Les mots interrogatifs (où, quand, comment, pourquoi, qui, que…) sont conservés mais la structure change.</li>',
+                'rules_imperatif_title': '🔹 Transformation des phrases impératives',
+                'rules_imperatif_text': 'On utilise généralement <strong>de + infinitif</strong>.<br>Ex. : « Assieds-toi ! » → Il lui dit <strong>de s\'asseoir</strong>.',
+                'rules_note': '💡 Le passage du discours direct au discours indirect exige de bien respecter la concordance des temps et les transformations des pronoms et indicateurs.',
+                'exercises_heading': '✍️ Exercices',
+                'exo1_title': '📌 1. Identifiez le type de discours',
+                'exo1_instruction': 'Pour chaque phrase du texte, indiquez si elle est au discours direct ou indirect.',
+                'table_phrase': 'Phrase',
+                'table_answer': 'Type',
+                'exo2_title': '📌 2. Transformez au discours indirect (déclaratif)',
+                'exo2_instruction': 'Réécrivez ces phrases en discours indirect en respectant la concordance des temps.',
+                'exo3_title': '📌 3. Transformez au discours indirect (interrogatif)',
+                'exo3_instruction': 'Transformez ces questions directes en questions indirectes.',
+                'exo4_title': '📌 4. Transformez au discours indirect (impératif)',
+                'exo4_instruction': 'Transformez ces impératifs en discours indirect avec « de + infinitif ».',
+                'exo5_title': '📌 5. Transformez au discours direct',
+                'exo5_instruction': 'Réécrivez ces phrases en discours direct.',
+                'exo6_title': '📌 6. Corrigez les erreurs',
+                'exo6_instruction': 'Certaines transformations sont incorrectes. Corrigez-les.',
+                'exo7_title': '📌 7. Analysez un passage',
+                'exo7_instruction': '« Le guide dit : "Nous visiterons le musée demain." »<br>Quelles transformations faudrait-il opérer pour passer au discours indirect ?',
+                'exo8_title': '📌 8. Complétez avec le bon connecteur',
+                'exo8_instruction': 'Complétez les phrases indirectes avec le connecteur qui convient (que, si, où, quand, pourquoi, etc.).',
+                'exo9_title': '📌 9. Transformez un dialogue complet',
+                'exo9_instruction': 'Lisez ce dialogue puis rapportez-le au discours indirect en un seul paragraphe.',
+                'exo10_title': '📌 10. Production personnelle',
+                'exo10_instruction': 'Rapportez une conversation entre deux personnes (5-6 répliques) en utilisant le discours direct, puis transformez-la au discours indirect dans un second paragraphe.',
+                'btn_correction': '🔍 Voir la correction',
+                'footer_back': '← Leçon précédente',
+                'footer_next': 'Leçon suivante : Le passé simple et le passé antérieur →',
+                'self_assess_question': 'Ma réponse est :',
+                'self_correct': 'Correcte',
+                'self_incorrect': 'Incorrecte',
+                'self_partial': 'Partiellement correcte',
+                'score_title': '📊 Votre auto‑évaluation',
+                'score_correct': 'Correctes :',
+                'score_incorrect': 'Incorrectes :',
+                'score_partial': 'Partielles :',
+                'score_unanswered': 'Sans réponse :',
+                'save_results': '💾 Enregistrer mes résultats',
+                'save_success': 'Résultats sauvegardés ✓',
+                'save_error': 'Erreur lors de la sauvegarde',
+                'print_pdf': '🖨️ Imprimer / PDF',
+                'print_with_answers': 'Corrigé inclus',
+                'print_site_name': 'Educational Dashboard – French',
+                'print_scholar_year': 'Révision pour le Bac',
+                'print_week': 'Semaine 4',
+                'print_area': 'Grammaire',
+                'print_footer_dev': 'Développé par Mejri Ziad',
+                'print_footer_date': 'Imprimé le',
+                'print_without_answers': 'Sans corrigé',
+                'toast_signin_required': 'Connectez-vous pour voir les corrections.'
+            },
+            en: {
+                'lesson_title': 'Lesson 2 – Direct and Indirect Speech | Literary Text & Exercises',
+                'lesson_short_title': 'Direct and Indirect Speech',
+                'ach_year_bac': '12th grade (Bac)',
+                'ach_module_semaine4': 'Spelling and Precision',
+                'back_revision': 'General Review',
+                'back_current': 'Direct and Indirect Speech',
+                'lesson_badge': '📘 Grammar · Lesson 2',
+                'lesson_title': 'Direct and Indirect Speech',
+                'lesson_duration': '⏱️ 45 minutes',
+                'lesson_meta_audio': '🎧 Listen to the text then do the exercises',
+                'audio_label': '🎧 Literary Listening',
+                'text_author': '— Before the Great Departure, original text',
+                'rules_heading': '📖 Direct and Indirect Speech',
+                'rules_intro': 'Direct speech reports the exact words as they were spoken. Indirect speech integrates them into a subordinate clause, causing transformations (tenses, pronouns, markers). Here are the detailed rules.',
+                'rules_direct_title': '🔹 Direct speech',
+                'rules_direct_text': 'It uses quotation marks, dashes, and words are reported exactly.<br>Ex.: He says, "I am coming tomorrow."',
+                'rules_indirect_title': '🔹 Indirect speech',
+                'rules_indirect_text': 'Words are subordinated to a reporting verb (say, state, ask…).<br>Ex.: He says that he will come the next day.',
+                'rules_temps_title': '🔹 Tense transformations (agreement)',
+                'rules_temps_list': '<li><strong>Present</strong> → imperfect<br>Ex.: "I eat" → He says that he was eating.</li><li><strong>Simple future</strong> → present conditional<br>Ex.: "I will leave" → He says that he would leave.</li><li><strong>Present perfect</strong> → pluperfect<br>Ex.: "I have finished" → He says that he had finished.</li><li><strong>Future perfect</strong> → past conditional<br>Ex.: "I will have finished" → He says that he would have finished.</li><li><strong>Imperative</strong> → to + infinitive<br>Ex.: "Come!" → He tells him to come.</li>',
+                'rules_pronoms_title': '🔹 Pronoun and determiner transformations',
+                'rules_pronoms_list': '<li>I, you → he, she; we → they; you → they</li><li>My → his/her; your → his/her</li><li>Our → their; your → their</li><li>This, that → that</li>',
+                'rules_indicateurs_title': '🔹 Time and place marker transformations',
+                'rules_indicateurs_list': '<li>Here → there</li><li>Now → then</li><li>Today → that day</li><li>Tomorrow → the next day</li><li>Yesterday → the day before</li><li>This morning → that morning</li>',
+                'rules_interro_title': '🔹 Interrogative sentence transformations',
+                'rules_interro_list': '<li><strong>Yes/no question</strong>: "Are you coming?" → He asks <strong>if</strong> you are coming.</li><li><strong>Wh-question</strong>: "Where are you going?" → He asks <strong>where</strong> you are going.</li><li>Question words (where, when, how, why, who, what…) are kept but the structure changes.</li>',
+                'rules_imperatif_title': '🔹 Imperative sentence transformations',
+                'rules_imperatif_text': 'We generally use <strong>to + infinitive</strong>.<br>Ex.: "Sit down!" → He tells him <strong>to sit down</strong>.',
+                'rules_note': '💡 Moving from direct to indirect speech requires respecting tense agreement and transformations of pronouns and markers.',
+                'exercises_heading': '✍️ Exercises',
+                'exo1_title': '📌 1. Identify the type of speech',
+                'exo1_instruction': 'For each sentence in the text, indicate whether it is in direct or indirect speech.',
+                'table_phrase': 'Sentence',
+                'table_answer': 'Type',
+                'exo2_title': '📌 2. Transform into indirect speech (declarative)',
+                'exo2_instruction': 'Rewrite these sentences in indirect speech respecting tense agreement.',
+                'exo3_title': '📌 3. Transform into indirect speech (interrogative)',
+                'exo3_instruction': 'Transform these direct questions into indirect questions.',
+                'exo4_title': '📌 4. Transform into indirect speech (imperative)',
+                'exo4_instruction': 'Transform these imperatives into indirect speech with "to + infinitive".',
+                'exo5_title': '📌 5. Transform into direct speech',
+                'exo5_instruction': 'Rewrite these sentences in direct speech.',
+                'exo6_title': '📌 6. Correct the errors',
+                'exo6_instruction': 'Some transformations are incorrect. Correct them.',
+                'exo7_title': '📌 7. Analyze a passage',
+                'exo7_instruction': '"The guide says: "We will visit the museum tomorrow.""<br>What transformations would be needed to move to indirect speech?',
+                'exo8_title': '📌 8. Complete with the correct connector',
+                'exo8_instruction': 'Complete the indirect sentences with the correct connector (that, if, where, when, why, etc.).',
+                'exo9_title': '📌 9. Transform a complete dialogue',
+                'exo9_instruction': 'Read this dialogue then report it in indirect speech in a single paragraph.',
+                'exo10_title': '📌 10. Personal production',
+                'exo10_instruction': 'Report a conversation between two people (5-6 lines) using direct speech, then transform it into indirect speech in a second paragraph.',
+                'btn_correction': '🔍 See correction',
+                'footer_back': '← Previous lesson',
+                'footer_next': 'Next lesson: Simple past and past anterior →',
+                'self_assess_question': 'My answer is:',
+                'self_correct': 'Correct',
+                'self_incorrect': 'Incorrect',
+                'self_partial': 'Partially correct',
+                'score_title': '📊 Your self‑assessment',
+                'score_correct': 'Correct:',
+                'score_incorrect': 'Incorrect:',
+                'score_partial': 'Partial:',
+                'score_unanswered': 'Unanswered:',
+                'save_results': '💾 Save my results',
+                'save_success': 'Results saved ✓',
+                'save_error': 'Save failed',
+                'print_pdf': '🖨️ Print / PDF',
+                'print_with_answers': 'With answers',
+                'print_site_name': 'Educational Dashboard – French',
+                'print_scholar_year': 'Bac Review',
+                'print_week': 'Week 4',
+                'print_area': 'Grammar',
+                'print_footer_dev': 'Developed by Mejri Ziad',
+                'print_footer_date': 'Printed on',
+                'print_without_answers': 'Without answers',
+                'toast_signin_required': 'Sign in to see the corrections.'
+            },
+            ar: {
+                'lesson_title': 'الدرس 2 – الكلام المباشر وغير المباشر | نص أدبي وتمارين',
+                'lesson_short_title': 'الكلام المباشر وغير المباشر',
+                'ach_year_bac': 'السنة الرابعة ثانوي',
+                'ach_module_semaine4': 'الإملاء والدقة',
+                'back_revision': 'المراجعة العامة',
+                'back_current': 'الكلام المباشر وغير المباشر',
+                'lesson_badge': '📘 القواعد · الدرس 2',
+                'lesson_title': 'الكلام المباشر وغير المباشر',
+                'lesson_duration': '⏱️ 45 دقيقة',
+                'lesson_meta_audio': '🎧 استمع إلى النص ثم قم بالتمارين',
+                'audio_label': '🎧 استماع أدبي',
+                'text_author': '— قبل الانطلاق الكبير، نص أصلي',
+                'rules_heading': '📖 الكلام المباشر وغير المباشر',
+                'rules_intro': 'الكلام المباشر ينقل الكلمات كما نُطقت تماما. الكلام غير المباشر يدمجها في جملة تابعة، مما يستلزم تحويلات (أزمنة، ضمائر، مؤشرات). إليك القواعد المفصلة.',
+                'rules_direct_title': '🔹 الكلام المباشر',
+                'rules_direct_text': 'يستعمل علامات التنصيص والشرطات، وتنقل الكلمات كما هي.<br>مثال: قال: « سآتي غدا. »',
+                'rules_indirect_title': '🔹 الكلام غير المباشر',
+                'rules_indirect_text': 'تُربط الكلمات بفعل قول (قال، أكد، سأل…).<br>مثال: قال إنه سيأتي في اليوم الموالي.',
+                'rules_temps_title': '🔹 تحويل الأزمنة (التوافق)',
+                'rules_temps_list': '<li><strong>المضارع</strong> → الماضي الناقص<br>مثال: « Je mange » → قال إنه يأكل.</li><li><strong>المستقبل البسيط</strong> → الشرط الحاضر<br>مثال: « Je partirai » → قال إنه سيغادر.</li><li><strong>الماضي المركب</strong> → الماضي التام<br>مثال: « J\'ai fini » → قال إنه أنهى.</li><li><strong>المستقبل التام</strong> → الشرط الماضي<br>مثال: « J\'aurai terminé » → قال إنه سيكون أنهى.</li><li><strong>الأمر</strong> → de + مصدر<br>مثال: « Viens ! » → قال له أن يأتي.</li>',
+                'rules_pronoms_title': '🔹 تحويل الضمائر والمحددات',
+                'rules_pronoms_list': '<li>أنا، أنت → هو، هي؛ نحن → هم؛ أنتم → هم</li><li>الخاص بي → الخاص به/بها؛ الخاص بك → الخاص به/بها</li><li>الخاص بنا → الخاص بهم؛ الخاص بكم → الخاص بهم</li><li>هذا، ذلك → ذلك</li>',
+                'rules_indicateurs_title': '🔹 تحويل مؤشرات الزمان والمكان',
+                'rules_indicateurs_list': '<li>هنا → هناك</li><li>الآن → حينئذ</li><li>اليوم → ذلك اليوم</li><li>غدا → اليوم الموالي</li><li>أمس → اليوم السابق</li><li>هذا الصباح → ذلك الصباح</li>',
+                'rules_interro_title': '🔹 تحويل الجمل الاستفهامية',
+                'rules_interro_list': '<li><strong>سؤال مغلق (نعم/لا)</strong>: « هل تأتي؟ » → يسأل <strong>إذا</strong> كنت تأتي.</li><li><strong>سؤال مفتوح</strong>: « أين تذهب؟ » → يسأل <strong>أين</strong> تذهب.</li><li>أدوات الاستفهام (أين، متى، كيف، لماذا، من، ماذا…) تُحفظ لكن البنية تتغير.</li>',
+                'rules_imperatif_title': '🔹 تحويل الجمل الأمرية',
+                'rules_imperatif_text': 'نستعمل عادة <strong>de + مصدر</strong>.<br>مثال: « اجلس! » → قال له <strong>أن يجلس</strong>.',
+                'rules_note': '💡 الانتقال من المباشر إلى غير المباشر يتطلب احترام توافق الأزمنة وتحويلات الضمائر والمؤشرات.',
+                'exercises_heading': '✍️ تمارين',
+                'exo1_title': '📌 1. حدد نوع الكلام',
+                'exo1_instruction': 'لكل جملة في النص، اذكر ما إذا كانت كلاما مباشرا أو غير مباشر.',
+                'table_phrase': 'الجملة',
+                'table_answer': 'النوع',
+                'exo2_title': '📌 2. حوّل إلى الكلام غير المباشر (خبري)',
+                'exo2_instruction': 'أعد كتابة هذه الجمل في الكلام غير المباشر مع احترام توافق الأزمنة.',
+                'exo3_title': '📌 3. حوّل إلى الكلام غير المباشر (استفهامي)',
+                'exo3_instruction': 'حوّل هذه الأسئلة المباشرة إلى أسئلة غير مباشرة.',
+                'exo4_title': '📌 4. حوّل إلى الكلام غير المباشر (أمري)',
+                'exo4_instruction': 'حوّل هذه الأوامر إلى كلام غير مباشر باستعمال « de + مصدر ».',
+                'exo5_title': '📌 5. حوّل إلى الكلام المباشر',
+                'exo5_instruction': 'أعد كتابة هذه الجمل في الكلام المباشر.',
+                'exo6_title': '📌 6. صحح الأخطاء',
+                'exo6_instruction': 'بعض التحويلات خاطئة. صححها.',
+                'exo7_title': '📌 7. حلل مقطعا',
+                'exo7_instruction': '« قال الدليل: "سنزور المتحف غدا." »<br>ما التحويلات اللازمة للانتقال إلى الكلام غير المباشر؟',
+                'exo8_title': '📌 8. أكمل بالرابط المناسب',
+                'exo8_instruction': 'أكمل الجمل غير المباشرة بالرابط المناسب (أن، إذا، أين، متى، لماذا، إلخ).',
+                'exo9_title': '📌 9. حوّل حوارا كاملا',
+                'exo9_instruction': 'اقرأ هذا الحوار ثم انقله إلى الكلام غير المباشر في فقرة واحدة.',
+                'exo10_title': '📌 10. إنتاج شخصي',
+                'exo10_instruction': 'انقل حوارا بين شخصين (5-6 جمل) باستعمال الكلام المباشر، ثم حوّله إلى الكلام غير المباشر في فقرة ثانية.',
+                'btn_correction': '🔍 الاطلاع على التصحيح',
+                'footer_back': '← الدرس السابق',
+                'footer_next': 'الدرس الموالي: الماضي البسيط والماضي الأسبق →',
+                'self_assess_question': 'جوابي هو:',
+                'self_correct': 'صحيح',
+                'self_incorrect': 'خاطئ',
+                'self_partial': 'صحيح جزئيًا',
+                'score_title': '📊 تقييمك الذاتي',
+                'score_correct': 'صحيح:',
+                'score_incorrect': 'خاطئ:',
+                'score_partial': 'جزئي:',
+                'score_unanswered': 'بدون إجابة:',
+                'save_results': '💾 حفظ نتائجي',
+                'save_success': 'تم حفظ النتائج ✓',
+                'save_error': 'خطأ في الحفظ',
+                'print_pdf': '🖨️ طباعة / PDF',
+                'print_with_answers': 'مع التصحيح',
+                'print_site_name': 'لوحة التحكم التعليمية – الفرنسية',
+                'print_scholar_year': 'مراجعة البكالوريا',
+                'print_week': 'الأسبوع 4',
+                'print_area': 'القواعد',
+                'print_footer_dev': 'طوّر بواسطة ماجري زياد',
+                'print_footer_date': 'طُبع في',
+                'toast_signin_required': 'سجّل الدخول لرؤية التصحيحات.'
+            }
+        });
+
+        (function() {
+            var container = document.querySelector('.container');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+        })();
+    </script>
+    <script src="ed-french-ini.js"></script>
+    <script>
+        // ── Custom audio player and exercise logic ──
+        (function() {
+            const audio = new Audio('lessons/revision/sounds/semaine4-discours.mp3');
+            const playBtn = document.getElementById('playBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const speedBtns = document.querySelectorAll('.speed-btn');
+
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+
+            audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
+            audio.addEventListener('timeupdate', () => {
+                const percent = (audio.currentTime / audio.duration) * 100 || 0;
+                progressFill.style.width = percent + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            });
+            audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) { audio.play(); playBtn.textContent = '⏸'; }
+                else { audio.pause(); playBtn.textContent = '▶'; }
+            });
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const seekTime = (clickX / width) * audio.duration;
+                audio.currentTime = seekTime;
+            });
+            speedBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    speedBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const speed = parseFloat(btn.dataset.speed);
+                    audio.playbackRate = speed;
+                });
+            });
+
+            // ── Exercise 1: Identify type of speech ──
+            const phrases = [
+                "Le capitaine déclara : « Nous partirons à l'aube. »",
+                "Il ajouta qu'il fallait préparer les provisions.",
+                "Le mousse demanda : « Est-ce que la mer sera calme ? »",
+                "Le capitaine répondit qu'elle serait calme mais qu'il fallait rester prudent.",
+                "« N'oubliez pas vos gilets de sauvetage ! » ordonna-t-il.",
+                "Le vieux marin affirma qu'il n'avait jamais vu une tempête en cette saison.",
+                "« Je me souviens des voyages de mon père », murmura-t-il."
+            ];
+            const answersEx1 = ["direct", "indirect", "direct", "indirect", "direct", "indirect", "direct"];
+            const tbody1 = document.querySelector('#exo1Table tbody');
+            phrases.forEach((phrase, i) => {
+                const row = tbody1.insertRow();
+                const cellPhrase = row.insertCell();
+                cellPhrase.textContent = phrase;
+                const cellAnswer = row.insertCell();
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.placeholder = 'direct ou indirect';
+                cellAnswer.appendChild(input);
+            });
+            document.getElementById('exo1Key').innerHTML = '<strong>Correction :</strong><br>' + phrases.map((p,i) => `${p} → <em>${answersEx1[i]}</em>`).join('<br>');
+
+            // ── Exercise 2: Transform declarative direct → indirect ──
+            document.getElementById('exo2Key').innerHTML = '<strong>Correction :</strong><br>a) Il dit qu\'il aime la mer.<br>b) Elle affirme qu\'ils ont fini leurs devoirs.<br>c) Ils déclarent qu\'ils partiront le lendemain.<br>d) Le professeur dit qu\'ils doivent réviser.';
+
+            // ── Exercise 3: Transform interrogative direct → indirect ──
+            document.getElementById('exo3Key').innerHTML = '<strong>Correction :</strong><br>a) Elle demande où je vais.<br>b) Il demande si je viens.<br>c) Nous demandons pourquoi je pleure.<br>d) Le client demande combien coûte ce livre.';
+
+            // ── Exercise 4: Transform imperative direct → indirect ──
+            document.getElementById('exo4Key').innerHTML = '<strong>Correction :</strong><br>a) Il lui dit de s\'asseoir.<br>b) Le professeur leur dit de ne pas courir.<br>c) Elle lui dit de la regarder.';
+
+            // ── Exercise 5: Transform indirect → direct ──
+            document.getElementById('exo5Key').innerHTML = '<strong>Correction :</strong><br>a) Il dit : « Je partirai demain. »<br>b) Elle demande : « Viens-tu ? »<br>c) Ils affirment : « Nous avons terminé hier. »<br>d) Le professeur demande : « Où allez-vous ? »';
+
+            // ── Exercise 6: Correct errors ──
+            document.getElementById('exo6Key').innerHTML = '<strong>Correction :</strong><br>a) Il a dit qu\'il viendrait le lendemain.<br>b) Elle demande où il habite.<br>c) Ils ont dit qu\'ils avaient faim.<br>d) Il leur dit de ne pas parler.';
+
+            // ── Exercise 7: Analyze passage ──
+            document.getElementById('exo7Key').innerHTML = '<strong>Correction :</strong><br>- « nous » → « ils »<br>- « visiterons » (futur) → « visiteraient » (conditionnel)<br>- « demain » → « le lendemain »<br>Phrase finale : Le guide dit qu\'ils visiteraient le musée le lendemain.';
+
+            // ── Exercise 8: Complete with connector ──
+            document.getElementById('exo8Key').innerHTML = '<strong>Correction :</strong><br>a) où<br>b) qu\'<br>c) si<br>d) pourquoi';
+
+            // ── Exercise 9: Transform complete dialogue ──
+            document.getElementById('exo9Key').innerHTML = '<strong>Proposition :</strong><br>Marie demande à Paul où il va. Paul répond qu\'il va au marché. Marie lui demande de lui acheter des fruits. Paul promet qu\'il lui en apportera.';
+
+            // ── Auth‑gated correction toggle ──
+            window.toggleCorrection = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('visible');
+            };
+
+            // ── Self‑assessment scoring (10 exercises) ──
+            function updateScore() {
+                const radioGroups = [
+                    'self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5',
+                    'self_ex6', 'self_ex7', 'self_ex8', 'self_ex9', 'self_ex10'
+                ];
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                radioGroups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                document.getElementById('scoreCorrect').textContent = correct;
+                document.getElementById('scoreIncorrect').textContent = incorrect;
+                document.getElementById('scorePartial').textContent = partial;
+                document.getElementById('scoreUnanswered').textContent = unanswered;
+            }
+
+            // ── Save results ──
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                const radioGroups = [
+                    'self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5',
+                    'self_ex6', 'self_ex7', 'self_ex8', 'self_ex9', 'self_ex10'
+                ];
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                radioGroups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+
+                const lessonId = 'semaine4-grammaire-discours';
+                const lang = localStorage.getItem('lang') || 'fr';
+                const entry = {
+                    lesson_id: lessonId,
+                    lesson_title: {
+                        fr: App.getTranslation('lesson_short_title', 'fr'),
+                        en: App.getTranslation('lesson_short_title', 'en'),
+                        ar: App.getTranslation('lesson_short_title', 'ar')
+                    },
+                    year: {
+                        fr: App.getTranslation('ach_year_bac', 'fr'),
+                        en: App.getTranslation('ach_year_bac', 'en'),
+                        ar: App.getTranslation('ach_year_bac', 'ar')
+                    },
+                    module: {
+                        fr: App.getTranslation('ach_module_semaine4', 'fr'),
+                        en: App.getTranslation('ach_module_semaine4', 'en'),
+                        ar: App.getTranslation('ach_module_semaine4', 'ar')
+                    },
+                    correct: correct,
+                    incorrect: incorrect,
+                    partial: partial,
+                    unanswered: unanswered,
+                    updated_at: new Date().toISOString()
+                };
+
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles')
+                    .select('achivement')
+                    .eq('id', user.id)
+                    .single();
+
+                if (fetchError) {
+                    console.error('Could not fetch profile:', fetchError);
+                    return;
+                }
+
+                let achivement = profileData?.achivement || {};
+                if (!achivement["ED-French"]) {
+                    achivement["ED-French"] = [];
+                }
+                const arr = achivement["ED-French"];
+                const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+                if (existingIdx >= 0) {
+                    arr[existingIdx] = entry;
+                } else {
+                    arr.push(entry);
+                }
+
+                const { error: updateError } = await App.supabase
+                    .from('profiles')
+                    .update({ achivement: achivement })
+                    .eq('id', user.id);
+
+                if (updateError) {
+                    console.error('Save failed:', updateError);
+                    App.showToast('save_error', 'error');
+                } else {
+                    App.showToast('save_success', 'success');
+                    App.logUserAction('lesson_saved', { lesson: lessonId, correct, incorrect, partial });
+                }
+            });
+
+            // ── Print / PDF ──
+            document.getElementById('printPdfBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles')
+                        .select('registration_state')
+                        .eq('id', user.id)
+                        .single();
+                    if (!error && profile && profile.registration_state && profile.registration_state.active === true) {
+                        isRegistered = true;
+                    }
+                } catch (e) { /* ignore */ }
+
+                const headerHTML = document.querySelector('.lesson-header').cloneNode(true);
+                const textCard = document.querySelector('.text-card').cloneNode(true);
+                const rulesSections = document.querySelectorAll('.valeurs-section, .methode-section');
+                let rulesHTML = '';
+                rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
+
+                const exercisesSection = document.querySelector('.exercises-section').cloneNode(true);
+                exercisesSection.querySelectorAll('input, textarea, .btn-verify, .self-assessment').forEach(el => el.remove());
+
+                if (isRegistered) {
+                    const answerKeys = exercisesSection.querySelectorAll('.answer-key');
+                    answerKeys.forEach(key => {
+                        key.style.display = 'block';
+                        key.style.border = 'none';
+                        key.style.padding = '0.5rem 0';
+                        key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    exercisesSection.querySelectorAll('.answer-key').forEach(el => el.remove());
+                }
+
+                const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                const lang = localStorage.getItem('lang') || 'fr';
+                printWindow.document.write(`
+                <!DOCTYPE html>
+                <html lang="${lang}">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>${App.getTranslation('lesson_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title>
+                    <style>
+                        body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.6; max-width: 700px; margin: 2rem auto; padding: 0 1rem; color: #000; }
+                        .print-header { text-align: center; border-bottom: 2px solid #c75b2c; padding-bottom: 1rem; margin-bottom: 2rem; }
+                        .print-header .site-name { font-size: 1.4rem; font-weight: bold; color: #c75b2c; margin: 0 0 0.3rem; }
+                        .print-header .meta-line { font-size: 0.95rem; color: #444; margin: 0.2rem 0; }
+                        .print-header .lesson-name { font-size: 1.1rem; font-weight: bold; color: #000; margin-top: 0.5rem; }
+                        .print-footer { text-align: center; border-top: 1px solid #ccc; padding-top: 1rem; margin-top: 2rem; font-size: 0.85rem; color: #666; }
+                        h1, h2, h3 { color: #000; }
+                        .lesson-header { text-align: center; margin-bottom: 2rem; }
+                        .badge { display: inline-block; background: #c75b2c; color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; text-transform: uppercase; }
+                        .text-card { border-left: 4px solid #c75b2c; padding: 1rem 1.5rem; margin: 1.5rem 0; font-style: italic; }
+                        .quote-mark { font-size: 3rem; color: #c75b2c; opacity: 0.3; position: absolute; top: -10px; left: 10px; }
+                        .text-card .author { text-align: right; font-style: normal; margin-top: 0.8rem; }
+                        .valeurs-section, .methode-section { margin: 1.5rem 0; }
+                        .valeur-card { background: #f8f4ec; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; }
+                        .valeur-card h3 { color: #c75b2c; }
+                        .exercise-card { margin: 1.2rem 0; }
+                        table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; }
+                        th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+                        th { background: #f0e8d8; }
+                        .answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; }
+                        @media print { body { margin: 0; padding: 0; } @page { margin: 2cm; } }
+                    </style>
+                </head>
+                <body>
+                    <div class="print-header">
+                        <div class="site-name">${App.getTranslation('print_site_name', lang)}</div>
+                        <div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div>
+                        <div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div>
+                    </div>
+                    ${breadcrumb.outerHTML}
+                    ${headerHTML.outerHTML}
+                    ${textCard.outerHTML}
+                    ${rulesHTML}
+                    ${exercisesSection.outerHTML}
+                    <div class="print-footer">
+                        ${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}
+                    </div>
+                </body>
+                </html>
+            `);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+
+            document.querySelectorAll('input[type="radio"][name^="self_ex"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+        })();
+    </script>
+    <!-- ═══════ DIRECT‑TRANSLATION FIX ═══════ -->
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') {
+                                el.innerHTML = next.innerHTML;
+                            }
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+</body>
+</html>

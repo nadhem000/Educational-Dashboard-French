@@ -367,3 +367,164 @@ body.dark .degree4-lessonType-reading-dropdown-emoji {
         font-size: 0.9rem;
     }
 }
+
+/* ==================================================================
+   RADIO BUTTON EXERCISES
+   ================================================================== */
+:root {
+    --degree4-lessonType-reading-radio-accent: #c75b2c;
+    --degree4-lessonType-reading-radio-border: #e5ddd0;
+    --degree4-lessonType-reading-radio-bg: #fcfaf6;
+    --degree4-lessonType-reading-radio-text: #2b2416;
+    --degree4-lessonType-reading-radio-selected-bg: #f0e8d8;
+    --degree4-lessonType-reading-radio-feedback-correct: #2e7d32;
+    --degree4-lessonType-reading-radio-feedback-wrong: #c62828;
+}
+
+.degree4-lessonType-reading-radio-container .radio-group {
+    margin: 0.8rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.degree4-lessonType-reading-radio-container .radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--degree4-lessonType-reading-radio-border);
+    border-radius: 6px;
+    background: var(--degree4-lessonType-reading-radio-bg);
+    color: var(--degree4-lessonType-reading-radio-text);
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.degree4-lessonType-reading-radio-container .radio-group label:hover {
+    border-color: var(--degree4-lessonType-reading-radio-accent);
+}
+
+.degree4-lessonType-reading-radio-container .radio-group input[type="radio"] {
+    accent-color: var(--degree4-lessonType-reading-radio-accent);
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+}
+
+/* Optional: highlight selected option */
+.degree4-lessonType-reading-radio-container .radio-group input[type="radio"]:checked + span {
+    font-weight: 600;
+    color: var(--degree4-lessonType-reading-radio-accent);
+}
+
+/* Feedback styling (reuse existing) */
+.degree4-lessonType-reading-radio-container .degree4-lessonType-reading-feedback {
+    margin-top: 0.8rem;
+    font-weight: 600;
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+.degree4-lessonType-reading-radio-container .degree4-lessonType-reading-feedback.correct {
+    color: var(--degree4-lessonType-reading-radio-feedback-correct);
+    background: #e8f5e9;
+    border: 1px solid #c8e6c9;
+}
+
+.degree4-lessonType-reading-radio-container .degree4-lessonType-reading-feedback.wrong {
+    color: var(--degree4-lessonType-reading-radio-feedback-wrong);
+    background: #ffebee;
+    border: 1px solid #ffcdd2;
+}
+
+/* ==================================================================
+   NUMEROTE (ORDERING) EXERCISES – BILINGUAL SUPPORT
+   ================================================================== */
+:root {
+    --degree4-lessonType-reading-numerote-accent: #c75b2c;
+    --degree4-lessonType-reading-numerote-border: #e5ddd0;
+    --degree4-lessonType-reading-numerote-bg: #fcfaf6;
+    --degree4-lessonType-reading-numerote-text: #2b2416;
+    --degree4-lessonType-reading-numerote-feedback-correct: #2e7d32;
+    --degree4-lessonType-reading-numerote-feedback-wrong: #c62828;
+}
+
+.degree4-lessonType-reading-numerote-container {
+    margin: 1rem 0;
+}
+
+.degree4-lessonType-reading-numerote-item {
+    margin-bottom: 0.8rem;
+    padding: 0.5rem;
+    border: 1px solid var(--degree4-lessonType-reading-numerote-border);
+    border-radius: 6px;
+    background: var(--degree4-lessonType-reading-numerote-bg);
+}
+
+.degree4-lessonType-reading-numerote-text {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-size: 0.95rem;
+    word-break: break-word;
+    color: var(--degree4-lessonType-reading-numerote-text);
+}
+
+/* Translation small text */
+.degree4-lessonType-reading-numerote-translation {
+    display: inline;
+    font-size: 0.85rem;
+    color: #5c5344;
+    font-style: italic;
+            color: var(--degree4-lessonType-reading-accent);
+}
+
+.degree4-lessonType-reading-numerote-select {
+    width: 100%;
+    max-width: 80px;
+    padding: 0.3rem;
+    text-align: center;
+    border: 1px solid var(--degree4-lessonType-reading-numerote-border);
+    border-radius: 4px;
+    background: white;
+    color: var(--degree4-lessonType-reading-numerote-text);
+    cursor: pointer;
+}
+
+.degree4-lessonType-reading-numerote-select:focus {
+    border-color: var(--degree4-lessonType-reading-numerote-accent);
+    box-shadow: 0 0 0 2px rgba(199, 91, 44, 0.2);
+    outline: none;
+}
+
+.degree4-lessonType-reading-numerote-container .degree4-lessonType-reading-feedback {
+    margin-top: 0.8rem;
+    font-weight: 600;
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+.degree4-lessonType-reading-numerote-container .degree4-lessonType-reading-feedback.correct {
+    color: var(--degree4-lessonType-reading-numerote-feedback-correct);
+    background: #e8f5e9;
+    border: 1px solid #c8e6c9;
+}
+
+.degree4-lessonType-reading-numerote-container .degree4-lessonType-reading-feedback.wrong {
+    color: var(--degree4-lessonType-reading-numerote-feedback-wrong);
+    background: #ffebee;
+    border: 1px solid #ffcdd2;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .degree4-lessonType-reading-numerote-item {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .degree4-lessonType-reading-numerote-select {
+        width: 100%;
+    }
+}

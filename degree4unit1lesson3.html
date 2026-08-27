@@ -498,6 +498,34 @@
         .degree4-lessonType-reading-footer-nav a:hover {
             text-decoration: underline;
         }
+		/* Styling for tool‑words copy section */
+.degree4-tool-words-copy {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: var(--degree4-lessonType-reading-audio-bg, #f4efe4);
+    border: 2px dashed var(--degree4-lessonType-reading-accent, #c75b2c);
+    border-radius: 10px;
+    text-align: center;
+}
+.degree4-tool-words-copy ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+.degree4-tool-words-copy li {
+    font-size: 1.8rem;
+    font-family: 'Comic Sans MS', 'Segoe Print', cursive, sans-serif;
+    font-weight: bold;
+    color: var(--degree4-lessonType-reading-accent, #c75b2c);
+    background: white;
+    padding: 0.4rem 1.2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
         html[dir="rtl"] body { direction: rtl; }
         html[dir="rtl"] .degree4-lessonType-reading-container { text-align: right; }
         html[dir="rtl"] .degree4-lessonType-reading-author { text-align: left; }
@@ -596,10 +624,10 @@
             </div>
         </section>
 
-        <!-- ══════════════ QUESTIONS AREA (ORIGINAL STRUCTURE, MODULAR) ══════════════ -->
+        <!-- ══════════════ QUESTIONS AREA (MODIFIED) ══════════════ -->
         <!-- Comprehension Questions -->
         <section class="degree4-lessonType-reading-card">
-            <h2 data-i18n="questions_title">📝 Compréhension et questions</h2>
+            <h2 data-i18n="questions_title">Je réponds aux questions.</h2>
 
             <!-- Q1 -->
             <div class="degree4-lessonType-reading-exercise" id="comprehension-q1">
@@ -629,13 +657,12 @@
                 </div>
             </div>
 
-            <!-- Q3 -->
+            <!-- Q3 (dropdown modified) -->
             <div class="degree4-lessonType-reading-exercise" id="comprehension-q3">
                 <h3 data-i18n="q3">3) Pour mieux se présenter, qu'est-ce qu'elle doit encore dire?</h3>
                 <select id="degree4LessonTypeReadingQ3">
                     <option value="" data-i18n="choose_option">-- Choisissez --</option>
                     <option value="salaire" data-i18n="option_salaire">Son salaire</option>
-                    <option value="adresse" data-i18n="option_adresse">Son adresse</option>
                     <option value="couleur" data-i18n="option_couleur">Sa couleur préférée</option>
                     <option value="age" data-i18n="option_age">Son âge</option>
                 </select>
@@ -649,10 +676,15 @@
                 </div>
             </div>
 
-            <!-- Q4 -->
+            <!-- Q4 (radio button) -->
             <div class="degree4-lessonType-reading-exercise" id="comprehension-q4">
-                <h3 data-i18n="q4">4) Imagine une question que tu peux poser à cette élève.</h3>
-                <input type="text" id="degree4LessonTypeReadingQ4" placeholder="Votre question" data-i18n-ph="answer_placeholder">
+                <h3 data-i18n="q4_radio">4) Quelle question peux-tu poser à Caroline ?</h3>
+                <div class="radio-group" id="degree4LessonTypeReadingQ4RadioGroup">
+                    <label><input type="radio" name="degree4LessonTypeReadingQ4Radio" value="nom"> <span data-i18n="q4_opt_nom">Comment t'appelles-tu ?</span></label><br>
+                    <label><input type="radio" name="degree4LessonTypeReadingQ4Radio" value="plat"> <span data-i18n="q4_opt_plat">Quel est ton plat préféré ?</span></label><br>
+                    <label><input type="radio" name="degree4LessonTypeReadingQ4Radio" value="adresse"> <span data-i18n="q4_opt_adresse">Où habites-tu ?</span></label><br>
+                    <label><input type="radio" name="degree4LessonTypeReadingQ4Radio" value="age"> <span data-i18n="q4_opt_age">Quel âge as-tu ?</span></label>
+                </div>
                 <button class="degree4-lessonType-reading-btn" id="degree4LessonTypeReadingCheckQ4" data-i18n="check_questions">Vérifier</button>
                 <div id="degree4LessonTypeReadingQ4Feedback" class="degree4-lessonType-reading-feedback"></div>
                 <div class="degree4-lessonType-reading-self-assess">
@@ -668,7 +700,7 @@
         <section class="degree4-lessonType-reading-card">
             <h2 data-i18n="thinking_title">🧠 Je réfléchis</h2>
 
-            <!-- Character Name Exercise (original: one block with three inputs) -->
+            <!-- Character Name Exercise (original) -->
             <div class="degree4-lessonType-reading-exercise" id="names-exercise">
                 <h3 data-i18n="observe_exercise">1. J'observe les dessins et j'écris les noms des personnages.</h3>
                 <div class="degree4-lessonType-reading-character-exercise">
@@ -695,7 +727,7 @@
                 </div>
             </div>
 
-            <!-- Matching Exercise (original, using modular matching) -->
+            <!-- Matching Exercise (modified right column) -->
             <div class="degree4-lessonType-reading-exercise" id="matching-exercise">
                 <h3 data-i18n="matching_title">2. Je relie chaque personnage à ce qu'il fait.</h3>
                 <div id="degree4LessonTypeReadingMatchingContainer"></div>
@@ -709,51 +741,72 @@
                 </div>
             </div>
 
-            <!-- Completion Exercise (original: one paragraph with three inline inputs) -->
-            <div class="degree4-lessonType-reading-exercise" id="completion-exercise">
-                <h3 data-i18n="completion_title">3. Je complète.</h3>
-                <p>
-                    <span data-i18n="completion_director">Le directeur s'appelle</span>
-                    <input type="text" id="degree4LessonTypeReadingCompletion1" placeholder="...">,
-                    <span data-i18n="completion_teacher">la maîtresse s'appelle</span>
-                    <input type="text" id="degree4LessonTypeReadingCompletion2" placeholder="...">
-                    <span data-i18n="completion_and">et</span>
-                    <span data-i18n="completion_student">la nouvelle élève s'appelle</span>
-                    <input type="text" id="degree4LessonTypeReadingCompletion3" placeholder="...">.
-                </p>
-                <button class="degree4-lessonType-reading-btn" id="degree4LessonTypeReadingCheckCompletion" data-i18n="check_questions">Vérifier</button>
-                <div id="degree4LessonTypeReadingCompletionFeedback" class="degree4-lessonType-reading-feedback"></div>
+            <!-- Completion Exercise 3 (new) -->
+            <div class="degree4-lessonType-reading-exercise" id="completion-main-character">
+                <h3 data-i18n="completion_main_title">3. Je complète.</h3>
+                <p data-i18n="completion_main_sentence">Le personnage principal de cette histoire est</p>
+                <input type="text" id="degree4LessonTypeReadingMainCharacter" placeholder="...">
+                <button class="degree4-lessonType-reading-btn" id="degree4LessonTypeReadingCheckMainCharacter" data-i18n="check_questions">Vérifier</button>
+                <div id="degree4LessonTypeReadingMainCharacterFeedback" class="degree4-lessonType-reading-feedback"></div>
                 <div class="degree4-lessonType-reading-self-assess">
                     <span data-i18n="self_assess_question">Ma réponse est :</span>
-                    <label><input type="radio" name="self_completion" value="correct" data-i18n="self_correct"> Correcte</label>
-                    <label><input type="radio" name="self_completion" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
-                    <label><input type="radio" name="self_completion" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_main_character" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_main_character" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                    <label><input type="radio" name="self_main_character" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                </div>
+            </div>
+
+            <!-- Completion Exercise 4 (new) -->
+            <div class="degree4-lessonType-reading-exercise degree4-lessonType-reading-radio-container" id="comprehension-q4">
+                <h3 data-i18n="completion_dialogues_title">4) Je complète par : le directeur, la maîtresse ou Caroline</h3>
+                <p><span></span> <input type="text" id="degree4LessonTypeReadingDialogue1" placeholder="..."> <span data-i18n="dialogue1_sentence">dit : « J’ai neuf ans, j’habite à la rue Pasteur. »</span></p>
+			<p><span></span> <input type="text" id="degree4LessonTypeReadingDialogue2" placeholder="..."> <span data-i18n="dialogue2_sentence">dit : « Voici une nouvelle élève. »</span></p>
+                <p><span></span> <input type="text" id="degree4LessonTypeReadingDialogue3" placeholder="..."> <span data-i18n="dialogue3_sentence">dit : « Présente-toi à tes camarades. »</span></p>
+                <button class="degree4-lessonType-reading-btn" id="degree4LessonTypeReadingCheckDialogues" data-i18n="check_questions">Vérifier</button>
+                <div id="degree4LessonTypeReadingDialoguesFeedback" class="degree4-lessonType-reading-feedback"></div>
+                <div class="degree4-lessonType-reading-self-assess">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_dialogues" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_dialogues" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                    <label><input type="radio" name="self_dialogues" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
                 </div>
             </div>
         </section>
-        <!-- ══════════════ END OF QUESTIONS AREA ══════════════ -->
+
+        <!-- New Section: J’apprends à écrire des mots outils -->
+        <!-- New Section: J’apprends à écrire des mots outils -->
+<section class="degree4-lessonType-reading-card" id="tool-words-writing">
+    <h2 data-i18n="tool_words_writing_title">J’apprends à écrire des mots outils</h2>
+    <p data-i18n="tool_words_writing_intro">Recopie ces mots outils :</p>
+    <div class="degree4-tool-words-copy">
+        <ul>
+            <li>voici</li>
+            <li>lorsque</li>
+        </ul>
+    </div>
+</section>
 
         <!-- Hairstyles Section -->
-        <section class="degree4-lessonType-reading-card">
-            <h2 data-i18n="hairstyles_title">💇 Différentes coiffures</h2>
-            <div class="degree4-lessonType-reading-hairstyles">
-                <div class="degree4-lessonType-reading-hairstyle-card">
-                    <img src="assets/images/degree4/unit1/lesson3/hairstyles/queue-de-cheval.jpg" alt="Queue de cheval">
-                    <h3 data-i18n="hairstyle1_title">Cheveux tirés en queue de cheval</h3>
-                    <p data-i18n="hairstyle1_desc">Cheveux attachés en forme de queue de cheval - le style que Caroline portait</p>
-                </div>
-                <div class="degree4-lessonType-reading-hairstyle-card">
-                    <img src="assets/images/degree4/unit1/lesson3/hairstyles/tresses.jpg" alt="Tresses">
-                    <h3 data-i18n="hairstyle2_title">Cheveux tressés</h3>
-                    <p data-i18n="hairstyle2_desc">Cheveux tressés ou nattés - un style traditionnel et élégant</p>
-                </div>
-                <div class="degree4-lessonType-reading-hairstyle-card">
-                    <img src="assets/images/degree4/unit1/lesson3/hairstyles/couettes.jpg" alt="Couettes">
-                    <h3 data-i18n="hairstyle3_title">Cheveux retenus par des couettes</h3>
-                    <p data-i18n="hairstyle3_desc">Cheveux attachés en deux petites nattes sur les côtés - un style enfantin et joli</p>
-                </div>
-            </div>
-        </section>
+<section class="degree4-lessonType-reading-card">
+    <h2 data-i18n="comprehension_section_title">Je comprends</h2>
+    <div class="degree4-lessonType-reading-hairstyles">
+        <div class="degree4-lessonType-reading-hairstyle-card">
+            <img src="assets/images/degree4/unit1/lesson3/hairstyles/queue-de-cheval.jpg" alt="Queue de cheval">
+            <h3 data-i18n="hairstyle1_title">Cheveux tirés en queue de cheval</h3>
+            <p data-i18n="hairstyle1_desc">Cheveux attachés en forme de queue de cheval - le style que Caroline portait</p>
+        </div>
+        <div class="degree4-lessonType-reading-hairstyle-card">
+            <img src="assets/images/degree4/unit1/lesson3/hairstyles/tresses.jpg" alt="Tresses">
+            <h3 data-i18n="hairstyle2_title">Cheveux tressés</h3>
+            <p data-i18n="hairstyle2_desc">Cheveux tressés ou nattés - un style traditionnel et élégant</p>
+        </div>
+        <div class="degree4-lessonType-reading-hairstyle-card">
+            <img src="assets/images/degree4/unit1/lesson3/hairstyles/couettes.jpg" alt="Couettes">
+            <h3 data-i18n="hairstyle3_title">Cheveux retenus par des couettes</h3>
+            <p data-i18n="hairstyle3_desc">Cheveux attachés en deux petites nattes sur les côtés - un style enfantin et joli</p>
+        </div>
+    </div>
+</section>
 
         <!-- Scoring Area -->
         <div class="degree4-lessonType-reading-score-area">
@@ -762,7 +815,7 @@
                 <div class="degree4-lessonType-reading-score-stat"><span data-i18n="score_correct">Correct :</span> <span id="degree4LessonTypeReadingScoreCorrect">0</span></div>
                 <div class="degree4-lessonType-reading-score-stat"><span data-i18n="score_partial">Partiel :</span> <span id="degree4LessonTypeReadingScorePartial">0</span></div>
                 <div class="degree4-lessonType-reading-score-stat"><span data-i18n="score_incorrect">Incorrect :</span> <span id="degree4LessonTypeReadingScoreIncorrect">0</span></div>
-                <div class="degree4-lessonType-reading-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="degree4LessonTypeReadingScoreUnanswered">7</span></div>
+                <div class="degree4-lessonType-reading-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="degree4LessonTypeReadingScoreUnanswered">8</span></div>
             </div>
             <div class="degree4-lessonType-reading-score-actions">
                 <button id="degree4LessonTypeReadingSaveResultsBtn" class="degree4-lessonType-reading-btn" data-i18n="save_results">💾 Enregistrer mes résultats</button>
@@ -811,23 +864,34 @@
                 tools_title: "🔹 Mots outils",
                 tool_lorsque: " - lorsque",
                 tool_voici: " - voici",
-                questions_title: "📝 Compréhension et questions",
+                questions_title: "Je réponds aux questions.",
                 q1: "1) Quand la nouvelle élève arrive-t-elle en classe?",
                 q2: "2) Que sais-tu sur cette élève?",
                 q3: "3) Pour mieux se présenter, qu'est-ce qu'elle doit encore dire?",
-                q4: "4) Imagine une question que tu peux poser à cette élève.",
+                q4_radio: "4) Quelle question peux-tu poser à Caroline ?",
+                q4_opt_nom: "Comment t'appelles-tu ?",
+                q4_opt_plat: "Quel est ton plat préféré ?",
+                q4_opt_adresse: "Où habites-tu ?",
+                q4_opt_age: "Quel âge as-tu ?",
                 check_questions: "Vérifier",
                 thinking_title: "🧠 Je réfléchis",
                 observe_exercise: "1. J'observe les dessins et j'écris les noms des personnages.",
                 matching_title: "2. Je relie chaque personnage à ce qu'il fait.",
                 check_matching: "Vérifier les associations",
-                completion_title: "3. Je complète.",
+                completion_main_title: "3. Je complète.",
+                completion_main_sentence: "Le personnage principal de cette histoire est",
+                completion_dialogues_title: "4) Je complète par : le directeur, la maîtresse ou Caroline",
+                dialogue1_prefix: "[text input]",
+                dialogue1_sentence: "dit : « J’ai neuf ans, j’habite à la rue Pasteur. »",
+                dialogue2_prefix: "[text input]",
+                dialogue2_sentence: "dit : « Voici une nouvelle élève. »",
+                dialogue3_prefix: "[text input]",
+                dialogue3_sentence: "dit : « Présente-toi à tes camarades. »",
                 check_completion: "Vérifier",
-                completion_director: "Le directeur s'appelle",
-                completion_teacher: "la maîtresse s'appelle",
-                completion_and: "et",
-                completion_student: "la nouvelle élève s'appelle",
+                tool_words_writing_title: "J’apprends à écrire des mots outils",
+                tool_words_writing_intro: "Recopie ces mots outils :",
                 hairstyles_title: "💇 Différentes coiffures",
+    comprehension_section_title: "Je comprends",
                 hairstyle1_title: "Cheveux tirés en queue de cheval",
                 hairstyle1_desc: "Cheveux attachés en forme de queue de cheval - le style que Caroline portait",
                 hairstyle2_title: "Cheveux tressés",
@@ -855,7 +919,6 @@
                 answer_placeholder: "Votre réponse",
                 choose_option: "-- Choisissez --",
                 option_salaire: "Son salaire",
-                option_adresse: "Son adresse",
                 option_couleur: "Sa couleur préférée",
                 option_age: "Son âge",
                 degree4_exercices_all_correct: '✅ Parfait ! Toutes les réponses sont correctes.',
@@ -886,23 +949,34 @@
                 tools_title: "🔹 Tool Words",
                 tool_lorsque: " - lorsque (when)",
                 tool_voici: " - voici (this is)",
-                questions_title: "📝 Comprehension and Questions",
+                questions_title: "I answer the questions.",
                 q1: "1) When does the new student arrive in class?",
                 q2: "2) What do you know about this student?",
                 q3: "3) To introduce herself better, what else should she say?",
-                q4: "4) Imagine a question you can ask this student.",
+                q4_radio: "4) What question can you ask Caroline?",
+                q4_opt_nom: "What's your name?",
+                q4_opt_plat: "What's your favorite dish?",
+                q4_opt_adresse: "Where do you live?",
+                q4_opt_age: "How old are you?",
                 check_questions: "Check",
                 thinking_title: "🧠 I think",
                 observe_exercise: "1. I observe the drawings and write the names of the characters.",
                 matching_title: "2. Match each character to what they do.",
                 check_matching: "Check Matching",
-                completion_title: "3. Complete.",
+                completion_main_title: "3. Complete.",
+                completion_main_sentence: "The main character of this story is",
+                completion_dialogues_title: "4) Complete with: the director, the teacher or Caroline",
+                dialogue1_prefix: "[text input]",
+                dialogue1_sentence: "says: « I am nine years old, I live on Pasteur Street. »",
+                dialogue2_prefix: "[text input]",
+                dialogue2_sentence: "says: « Here is a new student. »",
+                dialogue3_prefix: "[text input]",
+                dialogue3_sentence: "says: « Introduce yourself to your classmates. »",
                 check_completion: "Check",
-                completion_director: "The director's name is",
-                completion_teacher: "the teacher's name is",
-                completion_and: "and",
-                completion_student: "the new student's name is",
+                tool_words_writing_title: "I learn to write tool words",
+                tool_words_writing_intro: "Copy these tool words:",
                 hairstyles_title: "💇 Different Hairstyles",
+    comprehension_section_title: "I understand",
                 hairstyle1_title: "Cheveux tirés en queue de cheval",
                 hairstyle1_desc: "Hair tied in a ponytail - the style that Caroline was wearing",
                 hairstyle2_title: "Cheveux tressés",
@@ -930,7 +1004,6 @@
                 answer_placeholder: "Your answer",
                 choose_option: "-- Choose --",
                 option_salaire: "His/her salary",
-                option_adresse: "His/her address",
                 option_couleur: "His/her favourite colour",
                 option_age: "His/her age",
                 degree4_exercices_all_correct: '✅ Perfect! All answers are correct.',
@@ -961,23 +1034,34 @@
                 tools_title: "🔹 كلمات مفيدة",
                 tool_lorsque: " - lorsque (عندما)",
                 tool_voici: " - voici (ها هو)",
-                questions_title: "📝 الفهم والأسئلة",
+                questions_title: "أجيب على الأسئلة.",
                 q1: "1) متى تصل التلميذة الجديدة إلى الصف؟",
                 q2: "2) ماذا تعرف عن هذه التلميذة؟",
                 q3: "3) لتقدّم نفسها بشكل أفضل، ماذا يجب أن تقول أيضًا؟",
-                q4: "4) تخيّل سؤالًا يمكنك أن تطرحه على هذه التلميذة.",
+                q4_radio: "4) ما السؤال الذي يمكنك طرحه على كارولين؟",
+                q4_opt_nom: "ما اسمك؟",
+                q4_opt_plat: "ما هو طبقك المفضل؟",
+                q4_opt_adresse: "أين تسكنين؟",
+                q4_opt_age: "كم عمرك؟",
                 check_questions: "تحقق",
                 thinking_title: "🧠 أفكر",
                 observe_exercise: "1. ألاحظ الرسوم وأكتب أسماء الشخصيات.",
                 matching_title: "2. أربط كل شخصية بما تقوم به.",
                 check_matching: "تحقق من الربط",
-                completion_title: "3. أكمل.",
+                completion_main_title: "3. أكمل.",
+                completion_main_sentence: "الشخصية الرئيسية في هذه القصة هي",
+                completion_dialogues_title: "4) أكمل بـ: المدير، المعلمة أو كارولين",
+                dialogue1_prefix: "[text input]",
+                dialogue1_sentence: "يقول/تقول: « عمري تسع سنوات، أسكن في شارع باستور. »",
+                dialogue2_prefix: "[text input]",
+                dialogue2_sentence: "يقول/تقول: « ها هي تلميذة جديدة. »",
+                dialogue3_prefix: "[text input]",
+                dialogue3_sentence: "يقول/تقول: « قدّم نفسك لزملائك. »",
                 check_completion: "تحقق",
-                completion_director: "اسم المدير هو",
-                completion_teacher: "اسم المعلمة هو",
-                completion_and: "و",
-                completion_student: "اسم التلميذة الجديدة هو",
+                tool_words_writing_title: "أتعلم كتابة كلمات الأدوات",
+                tool_words_writing_intro: "انسخ هذه الكلمات الأدوات:",
                 hairstyles_title: "💇 أنماط الشعر المختلفة",
+    comprehension_section_title: "أفهم",
                 hairstyle1_title: "Cheveux tirés en queue de cheval",
                 hairstyle1_desc: "شعر مربوط على شكل ذيل الحصان - وهو النمط الذي كانت ترتديه كارولين",
                 hairstyle2_title: "Cheveux tressés",
@@ -1005,7 +1089,6 @@
                 answer_placeholder: "إجابتك",
                 choose_option: "-- اختر --",
                 option_salaire: "راتبه/راتبها",
-                option_adresse: "عنوانه/عنوانها",
                 option_couleur: "لونه/لونها المفضل",
                 option_age: "عمره/عمرها",
                 degree4_exercices_all_correct: '✅ ممتاز! جميع الإجابات صحيحة.',
@@ -1142,79 +1225,94 @@
         })();
     </script>
 
+    <!-- Inline Radio Button Processor -->
+    
+
     <!-- Modular exercise initialization -->
     <script>
         (function() {
             'use strict';
 
-            // Q1
+            // Q1 text
             degree4LessonTypeReadingTextInputProcess({
                 checkButtonId: 'degree4LessonTypeReadingCheckQ1',
                 feedbackId: 'degree4LessonTypeReadingQ1Feedback',
                 inputs: [{ id: 'degree4LessonTypeReadingQ1', correctAnswers: ['lundi', 'lundi matin'] }],
                 sounds: { correct: 'assets/sounds/correct-sound.mp3', wrong: 'assets/sounds/wrong-sound.mp3', complete: 'assets/sounds/complete-sound.mp3' }
             });
-            // Q2
+            // Q2 text
             degree4LessonTypeReadingTextInputProcess({
                 checkButtonId: 'degree4LessonTypeReadingCheckQ2',
                 feedbackId: 'degree4LessonTypeReadingQ2Feedback',
                 inputs: [{ id: 'degree4LessonTypeReadingQ2', correctAnswers: ['caroline', 'caroline lebrun', 'neuf ans', '9 ans', 'rue pasteur'] }],
                 sounds: { correct: 'assets/sounds/correct-sound.mp3', wrong: 'assets/sounds/wrong-sound.mp3', complete: 'assets/sounds/complete-sound.mp3' }
             });
-            // Q3 dropdown
+            // Q3 dropdown (correct answer changed to couleur)
             degree4LessonTypeReadingDropdownProcess({
                 checkButtonId: 'degree4LessonTypeReadingCheckQ3',
                 feedbackId: 'degree4LessonTypeReadingQ3Feedback',
-                dropdowns: [{ id: 'degree4LessonTypeReadingQ3', correctValue: 'adresse' }],
+                dropdowns: [{ id: 'degree4LessonTypeReadingQ3', correctValue: 'couleur' }],
                 sounds: { correct: 'assets/sounds/correct-sound.mp3', wrong: 'assets/sounds/wrong-sound.mp3', complete: 'assets/sounds/complete-sound.mp3' }
             });
-            // Q4
-            degree4LessonTypeReadingTextInputProcess({
-                checkButtonId: 'degree4LessonTypeReadingCheckQ4',
-                feedbackId: 'degree4LessonTypeReadingQ4Feedback',
-                inputs: [{ id: 'degree4LessonTypeReadingQ4', correctAnswers: ['comment', 'pourquoi', 'où', 'quel', 'quelle', 'quand', 'qui'] }],
-                sounds: { correct: 'assets/sounds/correct-sound.mp3', wrong: 'assets/sounds/wrong-sound.mp3', complete: 'assets/sounds/complete-sound.mp3' }
-            });
+            // Q4 radio
+            degree4LessonTypeReadingRadioProcess({
+    checkButtonId: 'degree4LessonTypeReadingCheckQ4',
+    feedbackId: 'degree4LessonTypeReadingQ4Feedback',
+    radios: [{ name: 'degree4LessonTypeReadingQ4Radio', correctValue: 'plat' }],
+    sounds: {
+        correct: 'assets/sounds/correct-sound.mp3',
+        wrong: 'assets/sounds/wrong-sound.mp3',
+        complete: 'assets/sounds/complete-sound.mp3'
+    }
+});
 
-            // Character names (single block, multiple inputs)
+            // Character names
             degree4LessonTypeReadingTextInputProcess({
                 checkButtonId: 'degree4LessonTypeReadingCheckNames',
                 feedbackId: 'degree4LessonTypeReadingNamesFeedback',
                 inputs: [
                     { id: 'degree4LessonTypeReadingDirectorName', correctAnswers: ['mercier', 'monsieur mercier'] },
                     { id: 'degree4LessonTypeReadingTeacherName', correctAnswers: ['marceau', 'madame marceau'] },
-                    { id: 'degree4LessonTypeReadingCarolineName', correctAnswers: ['lebrun', 'caroline lebrun'] }
+                    { id: 'degree4LessonTypeReadingCarolineName', correctAnswers: ['caroline', 'lebrun', 'caroline lebrun'] }
                 ],
                 sounds: { correct: 'assets/sounds/correct-sound.mp3', wrong: 'assets/sounds/wrong-sound.mp3', complete: 'assets/sounds/complete-sound.mp3' }
             });
 
-            // Matching
+            // Matching with new right items
             degree4LessonTypeReadingMatchingProcess({
                 containerId: 'degree4LessonTypeReadingMatchingContainer',
                 checkButtonId: 'degree4LessonTypeReadingCheckMatching',
                 feedbackId: 'degree4LessonTypeReadingMatchingFeedback',
                 leftItems: [
-                    { id: 'director', label: 'Directeur' },
-                    { id: 'teacher', label: 'Maîtresse' },
+                    { id: 'director', label: 'Le directeur' },
+                    { id: 'teacher', label: 'La maîtresse' },
                     { id: 'caroline', label: 'Caroline' }
                 ],
                 rightItems: [
-                    { id: 'enter', label: 'Entre dans la classe' },
-                    { id: 'smile', label: 'Sourit' },
-                    { id: 'present', label: 'Se présente' }
+                    { id: 'present', label: 'présente la nouvelle élève' },
+                    { id: 'teach', label: 'apprend aux élèves à lire' },
+                    { id: 'self_intro', label: 'se présente à la classe' }
                 ],
-                correctMatches: { director: 'enter', teacher: 'smile', caroline: 'present' },
+                correctMatches: { director: 'present', teacher: 'teach', caroline: 'self_intro' },
                 sounds: { correct: 'assets/sounds/correct-sound.mp3', wrong: 'assets/sounds/wrong-sound.mp3', complete: 'assets/sounds/complete-sound.mp3' }
             });
 
-            // Completion (single block, multiple inputs)
+            // Completion main character
             degree4LessonTypeReadingTextInputProcess({
-                checkButtonId: 'degree4LessonTypeReadingCheckCompletion',
-                feedbackId: 'degree4LessonTypeReadingCompletionFeedback',
+                checkButtonId: 'degree4LessonTypeReadingCheckMainCharacter',
+                feedbackId: 'degree4LessonTypeReadingMainCharacterFeedback',
+                inputs: [{ id: 'degree4LessonTypeReadingMainCharacter', correctAnswers: ['caroline', 'caroline lebrun'] }],
+                sounds: { correct: 'assets/sounds/correct-sound.mp3', wrong: 'assets/sounds/wrong-sound.mp3', complete: 'assets/sounds/complete-sound.mp3' }
+            });
+
+            // Completion dialogues
+            degree4LessonTypeReadingTextInputProcess({
+                checkButtonId: 'degree4LessonTypeReadingCheckDialogues',
+                feedbackId: 'degree4LessonTypeReadingDialoguesFeedback',
                 inputs: [
-                    { id: 'degree4LessonTypeReadingCompletion1', correctAnswers: ['mercier', 'monsieur mercier'] },
-                    { id: 'degree4LessonTypeReadingCompletion2', correctAnswers: ['marceau', 'madame marceau'] },
-                    { id: 'degree4LessonTypeReadingCompletion3', correctAnswers: ['lebrun', 'caroline lebrun'] }
+                    { id: 'degree4LessonTypeReadingDialogue1', correctAnswers: ['caroline', 'caroline lebrun'] },
+                    { id: 'degree4LessonTypeReadingDialogue2', correctAnswers: ['le directeur', 'directeur'] },
+                    { id: 'degree4LessonTypeReadingDialogue3', correctAnswers: ['la maîtresse', 'maîtresse'] }
                 ],
                 sounds: { correct: 'assets/sounds/correct-sound.mp3', wrong: 'assets/sounds/wrong-sound.mp3', complete: 'assets/sounds/complete-sound.mp3' }
             });

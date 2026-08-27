@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_title">Leçon 3 – Le passé simple et le passé antérieur | Texte littéraire & Exercices</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ===== Lesson‑specific styles (unchanged) ===== */
+        :root {
+            --bg: #f9f7f1;
+            --card: #ffffff;
+            --text: #2b2416;
+            --text-light: #5c5344;
+            --heading: #382e1e;
+            --accent: #c75b2c;
+            --accent-hover: #a3441d;
+            --border: #e5ddd0;
+            --shadow: 0 1px 4px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-hover: 0 8px 22px rgba(0,0,0,0.08);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --transition: 0.25s ease;
+            --font-body: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
+            --audio-bg: #f4efe4;
+            --audio-progress: #d8c9aa;
+            --button-bg: #f0e8d8;
+            --button-hover: #e3d5bc;
+            --input-bg: #fcfaf6;
+        }
+        body.dark {
+            --bg: #1e1b17;
+            --card: #2a2620;
+            --text: #e8dfd2;
+            --text-light: #b9aa95;
+            --heading: #f0e4d2;
+            --accent: #e07b4a;
+            --accent-hover: #f08c5c;
+            --border: #3e3830;
+            --shadow: 0 1px 4px rgba(0,0,0,0.25);
+            --shadow-hover: 0 8px 22px rgba(0,0,0,0.35);
+            --audio-bg: #26221b;
+            --audio-progress: #5a4e3c;
+            --button-bg: #3a3329;
+            --button-hover: #4e4437;
+            --input-bg: #333028;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.75;
+            transition: background var(--transition), color var(--transition);
+        }
+        .container { max-width:860px; margin:0 auto; padding:1.8rem 1.4rem 3rem; }
+        .lesson-header { text-align: center; margin-bottom: 2rem; }
+        .badge {
+            display:inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding:0.25rem 1rem;
+            border-radius:20px;
+            font-size:0.8rem;
+            font-weight:700;
+            letter-spacing:0.03em;
+            text-transform: uppercase;
+        }
+        .lesson-header h1 {
+            font-size: 2.1rem;
+            color: var(--heading);
+            margin: 0.6rem 0 0.3rem;
+            line-height: 1.3;
+        }
+        .lesson-header .meta {
+            font-size:0.9rem;
+            color:var(--text-light);
+            display: flex;
+            justify-content: center;
+            gap:1.2rem;
+            flex-wrap: wrap;
+        }
+        .audio-player {
+            background: var(--card);
+            border:1px solid var(--border);
+            border-radius: var(--radius);
+            padding:1rem 1.4rem;
+            margin: 1.5rem 0 2rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap:1rem;
+            flex-wrap: wrap;
+        }
+        .audio-player .play-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            border:none;
+            font-size:1.2rem;
+            cursor:pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background var(--transition);
+            flex-shrink: 0;
+        }
+        .play-btn:hover { background: var(--accent-hover); }
+        .audio-player .progress-area {
+            flex:1;
+            min-width:120px;
+            display: flex;
+            flex-direction: column;
+            gap:0.3rem;
+        }
+        .progress-bar {
+            width:100%;
+            height:6px;
+            background: var(--audio-progress);
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+        .time-info { display: flex; justify-content: space-between; font-size:0.75rem; color:var(--text-light); }
+        .speed-selector { display: flex; gap:0.3rem; flex-wrap: wrap; }
+        .speed-btn {
+            border:1px solid var(--border);
+            background: var(--button-bg);
+            color: var(--text);
+            padding:0.25rem 0.55rem;
+            border-radius: 4px;
+            font-size:0.75rem;
+            font-weight:600;
+            cursor:pointer;
+            transition: all var(--transition);
+        }
+        .speed-btn.active { background: var(--accent); color:#fff; border-color: var(--accent); }
+        .audio-label { font-weight:700; font-size:0.85rem; color:var(--heading); white-space: nowrap; }
+        @media (max-width:600px) {
+            .audio-player { flex-direction: column; align-items: stretch; }
+            .audio-label { text-align: center; }
+        }
+        .text-card {
+            background: var(--card);
+            border:1px solid var(--border);
+            border-left:5px solid var(--accent);
+            border-radius: 0 var(--radius) var(--radius) 0;
+            padding:1.4rem 1.6rem;
+            margin:1.8rem 0;
+            font-style:italic;
+            font-size:1.05rem;
+            line-height: 1.9;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        .text-card .quote-mark {
+            position: absolute;
+            top:-12px;
+            left:14px;
+            font-size:3rem;
+            color:var(--accent);
+            opacity:0.25;
+            line-height:1;
+        }
+        .text-card .author { text-align:right; font-style:normal; font-size:0.9rem; color:var(--text-light); margin-top:0.8rem; }
+        .exercises-section h2 {
+            font-size:1.5rem;
+            color:var(--heading);
+            margin:2rem 0 1rem;
+            border-bottom:3px solid var(--accent);
+            display:inline-block;
+            padding-bottom:0.3rem;
+        }
+        .exercise-card {
+            background: var(--card);
+            border:1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding:1.2rem 1.4rem;
+            margin-bottom:1.4rem;
+            box-shadow: var(--shadow);
+        }
+        .exercise-card h3 { font-size:1.05rem; color:var(--accent); margin-bottom:0.8rem; display: flex; align-items: center; gap:0.4rem; }
+        .exercise-card table { width:100%; border-collapse: collapse; margin: 0.8rem 0; }
+        .exercise-card th, .exercise-card td { padding:0.55rem 0.7rem; border:1px solid var(--border); text-align:left; font-size:0.9rem; }
+        .exercise-card th { background: var(--audio-bg); font-weight:700; color:var(--heading); }
+        .exercise-card input[type="text"] {
+            width:100%;
+            padding:0.4rem 0.6rem;
+            border:1px solid var(--border);
+            border-radius:4px;
+            background: var(--input-bg);
+            color: var(--text);
+            font-family: inherit;
+            font-size:0.9rem;
+        }
+        .btn-verify {
+            background: var(--accent);
+            color:#fff;
+            border:none;
+            padding:0.5rem 1.2rem;
+            border-radius: 20px;
+            font-weight:600;
+            cursor:pointer;
+            transition: background var(--transition);
+            margin-top:0.6rem;
+            font-size:0.85rem;
+        }
+        .btn-verify:hover { background: var(--accent-hover); }
+        .answer-key {
+            display:none;
+            margin-top:0.8rem;
+            padding:0.8rem;
+            background: var(--audio-bg);
+            border-radius:6px;
+            font-size:0.85rem;
+            color: var(--text-light);
+            border:1px dashed var(--accent);
+        }
+        .answer-key.visible { display:block; }
+        .self-assessment { margin-top: 0.8rem; font-size: 0.9rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+        .self-assessment label { cursor: pointer; }
+        .score-area {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: var(--shadow);
+        }
+        .score-area h2 { color: var(--heading); margin-bottom: 1rem; }
+        .score-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .score-stat { background: var(--audio-bg); padding: 0.8rem 1.2rem; border-radius: 8px; font-weight: 600; }
+        html[dir="rtl"] body { direction: rtl; }
+        html[dir="rtl"] .container { text-align: right; }
+        html[dir="rtl"] .text-card .author { text-align: left; }
+        html[dir="rtl"] .exercise-card th, html[dir="rtl"] .exercise-card td { text-align: right; }
+        @media (max-width:600px) {
+            .lesson-header h1 { font-size:1.5rem; }
+            .container { padding:1rem 0.8rem 2rem; }
+        }
+        .valeurs-section, .methode-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.6rem 1.8rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+        .valeurs-section h2, .methode-section h2 {
+            font-size: 1.5rem;
+            color: var(--heading);
+            margin-bottom: 1rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+        .valeur-card {
+            background: var(--audio-bg);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .valeur-card h3 { color: var(--accent); font-size: 1.1rem; margin-bottom: 0.4rem; }
+        .valeur-card ul { list-style: none; padding: 0; }
+        .valeur-card li { padding: 0.3rem 0; padding-left: 1.4rem; position: relative; color: var(--text-light); }
+        .valeur-card li::before { content: '◆'; position: absolute; left: 0; color: var(--accent); font-size: 0.5rem; top: 0.5rem; }
+        .valeur-card p { margin: 0.5rem 0; }
+    </style>
+</head>
+<body>
+    <div id="main-content" class="container">
+        <p style="margin-bottom:1.5rem; color:var(--text-light);">
+            <a href="revision.html" data-i18n="back_revision">Révision générale</a>
+            › <strong data-i18n="back_current">Le passé simple et le passé antérieur</strong>
+        </p>
+        <div class="lesson-header">
+            <span class="badge" data-i18n="lesson_badge">📘 Conjugaison · Leçon 3</span>
+            <h1 data-i18n="lesson_title">Le passé simple et le passé antérieur</h1>
+            <div class="meta">
+                <span data-i18n="lesson_duration">⏱️ 45 minutes</span>
+                <span data-i18n="lesson_meta_audio">🎧 Écoutez le texte puis faites les exercices</span>
+            </div>
+        </div>
+
+        <!-- ═════ CUSTOM AUDIO PLAYER ═════ -->
+        <div class="audio-player" id="audioPlayer">
+            <span class="audio-label" data-i18n="audio_label">🎧 Écoute littéraire</span>
+            <button class="play-btn" id="playBtn" aria-label="Lecture">▶</button>
+            <div class="progress-area">
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="time-info">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+            <div class="speed-selector" id="speedSelector">
+                <button class="speed-btn" data-speed="0.75">0.75x</button>
+                <button class="speed-btn active" data-speed="1">1x</button>
+                <button class="speed-btn" data-speed="1.25">1.25x</button>
+                <button class="speed-btn" data-speed="1.5">1.5x</button>
+            </div>
+        </div>
+
+        <!-- ═════ LITERARY TEXT ═════ -->
+        <div class="text-card">
+            <span class="quote-mark">“</span>
+            <p>
+                Quand le soleil <u>se leva</u>, les voyageurs <u>avaient déjà repris</u> la route. Dès qu'ils <u>eurent traversé</u> la rivière, ils <u>aperçurent</u> le village. Le guide <u>raconta</u> l'histoire de la région ; il <u>expliqua</u> comment les ancêtres <u>construisirent</u> ces maisons de pierre. Les enfants <u>écoutèrent</u> avec attention. Après qu'ils <u>eurent visité</u> la mosquée, ils <u>allèrent</u> au souk. Là, un marchand <u>proposa</u> des tapis magnifiques. Le père <u>acheta</u> un petit tapis et <u>paya</u> en espèces. Lorsque la nuit <u>tomba</u>, ils <u>rentrèrent</u> à l'auberge. Ils <u>furent</u> fatigués mais heureux de cette journée riche en découvertes.
+            </p>
+            <div class="author" data-i18n="text_author">— Voyage au village, texte original</div>
+        </div>
+
+        <!-- ═════ RÈGLES : PASSÉ SIMPLE ET PASSÉ ANTÉRIEUR (EXPANDED) ═════ -->
+        <div class="valeurs-section">
+            <h2 data-i18n="rules_heading">📖 Le passé simple et le passé antérieur</h2>
+            <p data-i18n="rules_intro" class="no-bilingual" style="margin-bottom:1.2rem;">Le passé simple et le passé antérieur sont des temps du récit, utilisés principalement à l'écrit. Ils expriment des actions ponctuelles et achevées dans le passé.</p>
+
+            <div class="valeur-card">
+                <h3 data-i18n="rules_ps_title">🔹 Le passé simple</h3>
+                <p data-i18n="rules_ps_formation"><strong>Formation :</strong> il se conjugue à toutes les personnes, mais surtout aux 3e personnes du singulier et du pluriel dans les récits.</p>
+                <ul data-i18n="rules_ps_list">
+                    <li><strong>1er groupe (-er) :</strong> -ai, -as, -a, -âmes, -âtes, -èrent<br>Ex. : je <strong>parlai</strong>, tu <strong>parlas</strong>, il <strong>parla</strong>.</li>
+                    <li><strong>2e groupe (-ir) :</strong> -is, -is, -it, -îmes, -îtes, -irent<br>Ex. : je <strong>finis</strong>, tu <strong>finis</strong>, il <strong>finit</strong>.</li>
+                    <li><strong>3e groupe :</strong> formes variables selon les verbes (en -is, -us, -ins…).<br>Ex. : il <strong>prit</strong>, il <strong>vint</strong>, il <strong>fut</strong>.</li>
+                </ul>
+                <p data-i18n="rules_ps_values"><strong>Valeurs :</strong><br>• Action ponctuelle et achevée dans un récit au passé.<br>• Action de premier plan qui fait avancer l'histoire.<br>• Souvent utilisé avec l'imparfait (second plan).</p>
+            </div>
+
+            <div class="valeur-card">
+                <h3 data-i18n="rules_pa_title">🔹 Le passé antérieur</h3>
+                <p data-i18n="rules_pa_formation"><strong>Formation :</strong> auxiliaire (être ou avoir) au passé simple + participe passé.<br>Ex. : il <strong>eut parlé</strong>, elle <strong>fut partie</strong>.</p>
+                <p data-i18n="rules_pa_values"><strong>Valeurs :</strong><br>• Action achevée immédiatement avant une autre action passée (passé simple).<br>• S'utilise après des conjonctions comme <strong>quand</strong>, <strong>lorsque</strong>, <strong>dès que</strong>, <strong>après que</strong>.<br>• Exprime l'antériorité immédiate dans un récit littéraire.<br>Ex. : Dès qu'il <strong>eut terminé</strong>, il <strong>sortit</strong>.</p>
+            </div>
+
+            <div class="valeur-card">
+                <h3 data-i18n="rules_compare_title">🔹 Comparaison des deux temps</h3>
+                <p data-i18n="rules_compare_text">Le passé simple raconte l'action principale, le passé antérieur marque une action antérieure immédiate par rapport à une autre action passée. Les deux sont des temps du récit écrit, rarement utilisés à l'oral.</p>
+            </div>
+
+            <div class="valeur-card">
+                <h3 data-i18n="rules_aux_title">🔹 Choix de l'auxiliaire au passé antérieur</h3>
+                <p data-i18n="rules_aux_text">On utilise <strong>avoir</strong> ou <strong>être</strong> au passé simple, selon le verbe, comme au passé composé.<br>• Avec avoir : <strong>j'eus, tu eus, il eut, nous eûmes, vous eûtes, ils eurent</strong> + participe passé.<br>• Avec être : <strong>je fus, tu fus, il fut, nous fûmes, vous fûtes, ils furent</strong> + participe passé.</p>
+            </div>
+
+            <div class="valeur-card">
+                <h3 data-i18n="rules_negation_title">🔹 Négation et forme interrogative</h3>
+                <p data-i18n="rules_negation_text">La négation encadre l'auxiliaire : <strong>il n'eut pas fini</strong>, <strong>elle ne fut pas partie</strong>. À la forme interrogative, on inverse le sujet et l'auxiliaire : <strong>Eut-il fini ?</strong> <strong>Fut-elle partie ?</strong></p>
+            </div>
+
+            <p data-i18n="rules_note" style="margin-top:1rem; font-style:italic; color:var(--text-light);">💡 Le passé antérieur est rare mais indispensable pour exprimer une antériorité immédiate dans un récit soutenu.</p>
+        </div>
+
+        <!-- ═════ EXERCISES (10) ═════ -->
+        <div class="exercises-section">
+            <h2 data-i18n="exercises_heading">✍️ Exercices</h2>
+
+            <!-- Exercice 1 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo1_title">📌 1. Identifiez les temps</h3>
+                <p data-i18n="exo1_instruction">Pour chaque verbe souligné dans le texte, indiquez s'il s'agit du passé simple (PS) ou du passé antérieur (PA).</p>
+                <table id="exo1Table">
+                    <thead><tr><th data-i18n="table_verb" class="no-bilingual">Verbe</th><th data-i18n="table_answer" class="no-bilingual">Temps</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo1Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo1Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 2 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo2_title">📌 2. Conjuguez au passé simple</h3>
+                <p data-i18n="exo2_instruction">Complétez avec le verbe au passé simple à la personne indiquée.</p>
+                <ol type="a">
+                    <li>Il (parler) ________ au directeur hier.</li>
+                    <li>Nous (finir) ________ nos devoirs avant le dîner.</li>
+                    <li>Elles (aller) ________ au marché tôt le matin.</li>
+                    <li>Vous (prendre) ________ le train de 8 heures.</li>
+                    <li>Je (faire) ________ de mon mieux.</li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo2Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo2Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 3 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo3_title">📌 3. Conjuguez au passé antérieur</h3>
+                <p data-i18n="exo3_instruction">Transformez les verbes entre parenthèses au passé antérieur.</p>
+                <ol type="a">
+                    <li>Dès qu'il (terminer) ________ son travail, il partit.</li>
+                    <li>Après qu'elle (arriver) ________, tout le monde applaudit.</li>
+                    <li>Quand ils (voir) ________ le résultat, ils furent surpris.</li>
+                    <li>Lorsque nous (rentrer) ________, la porte était fermée.</li>
+                    <li>Une fois que tu (lire) ________ la lettre, tu compris tout.</li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo3Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo3Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 4 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo4_title">📌 4. Choisissez entre passé simple et passé antérieur</h3>
+                <p data-i18n="exo4_instruction">Complétez avec le temps qui convient (passé simple ou passé antérieur).</p>
+                <ol type="a">
+                    <li>Quand le rideau (se lever) ________, les spectateurs (applaudir) ________.</li>
+                    <li>Dès que le voleur (entrer) ________, l'alarme (sonner) ________.</li>
+                    <li>Après que le professeur (expliquer) ________ la leçon, les élèves (poser) ________ des questions.</li>
+                    <li>Lorsque la tempête (se calmer) ________, les marins (sortir) ________ sur le pont.</li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo4Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo4Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 5 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo5_title">📌 5. Transformez au passé simple</h3>
+                <p data-i18n="exo5_instruction">Réécrivez ces phrases en remplaçant le passé composé par le passé simple.</p>
+                <ol type="a">
+                    <li>Il a mangé une pomme. → Il ________ une pomme.</li>
+                    <li>Nous avons vu un film. → Nous ________ un film.</li>
+                    <li>Elles sont parties tôt. → Elles ________ tôt.</li>
+                    <li>Tu as écrit une lettre. → Tu ________ une lettre.</li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex5" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex5" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex5" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo5Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo5Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 6 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo6_title">📌 6. Corrigez les erreurs</h3>
+                <p data-i18n="exo6_instruction">Certaines formes sont incorrectes. Corrigez-les.</p>
+                <ol type="a">
+                    <li>Il <strong>mangea</strong> une pomme puis <strong>partit</strong>. <input type="text" placeholder="✅ ou correction"></li>
+                    <li>Dès qu'il <strong>eut fini</strong>, il <strong>sortit</strong>. <input type="text" placeholder="✅ ou correction"></li>
+                    <li>Elle <strong>prenit</strong> le livre et <strong>lisit</strong> une page. <input type="text" placeholder="Correction"></li>
+                    <li>Quand ils <strong>arrivèrent</strong>, la fête <strong>a déjà commencé</strong>. <input type="text" placeholder="Correction"></li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex6" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex6" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex6" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo6Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo6Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 7 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo7_title">📌 7. Analysez un extrait</h3>
+                <p data-i18n="exo7_instruction">« Après qu'ils eurent traversé la rivière, ils aperçurent le village. »<br>Quel est le rapport temporel entre les deux actions ? Justifiez l'emploi du passé antérieur.</p>
+                <textarea rows="3" style="width:100%;" placeholder="Votre réponse..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex7" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex7" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex7" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo7Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo7Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 8 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo8_title">📌 8. Complétez avec l'auxiliaire correct</h3>
+                <p data-i18n="exo8_instruction">Complétez les passés antérieurs avec l'auxiliaire (avoir ou être) au passé simple.</p>
+                <ol type="a">
+                    <li>Dès qu'il (________) fini, il partit.</li>
+                    <li>Après qu'elle (________) née, la famille déménagea.</li>
+                    <li>Quand ils (________) sorti, il se mit à pleuvoir.</li>
+                    <li>Lorsque nous (________) rentrés, le dîner était prêt.</li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex8" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex8" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex8" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo8Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo8Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 9 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo9_title">📌 9. Récrivez au passé simple et au passé antérieur</h3>
+                <p data-i18n="exo9_instruction">Transformez ce petit récit en remplaçant les temps du passé (passé composé, plus-que-parfait) par le passé simple et le passé antérieur.</p>
+                <p><em>« Quand le soleil s'est levé, les voyageurs avaient déjà repris la route. Ils ont traversé la rivière, puis ils ont aperçu le village. Après qu'ils ont visité la mosquée, ils sont allés au souk. »</em></p>
+                <textarea rows="4" style="width:100%;" placeholder="Votre récit..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex9" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex9" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex9" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo9Key')" data-i18n="btn_correction">🔍 Voir une proposition</button>
+                <div id="exo9Key" class="answer-key"></div>
+            </div>
+
+            <!-- Exercice 10 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo10_title">📌 10. Production personnelle</h3>
+                <p data-i18n="exo10_instruction">Racontez une courte histoire (5-6 lignes) au passé en utilisant au moins trois passés simples et deux passés antérieurs. Soulignez les verbes et indiquez leur temps.</p>
+                <textarea rows="6" style="width:100%; padding:0.5rem;" placeholder="Votre récit..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex10" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex10" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex10" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═════ SCORING AREA ═════ -->
+        <div class="score-area" id="scoreArea">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="score-stats" id="scoreStats">
+                <div class="score-stat"><span data-i18n="score_correct">Correctes :</span> <span id="scoreCorrect">0</span></div>
+                <div class="score-stat"><span data-i18n="score_incorrect">Incorrectes :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="score-stat"><span data-i18n="score_partial">Partielles :</span> <span id="scorePartial">0</span></div>
+                <div class="score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">10</span></div>
+            </div>
+        </div>
+        <div class="score-actions" style="margin-top:1.2rem;">
+            <button id="saveResultsBtn" class="btn-verify" style="margin-right:0.5rem;" 
+                    data-i18n="save_results">💾 Enregistrer mes résultats</button>
+            <button id="printPdfBtn" class="btn-verify" style="background:#5c5344; margin-right:0.5rem;"
+                    data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+        </div>
+
+        <!-- Footer nav -->
+        <div style="margin-top:2rem; display:flex; justify-content:space-between; flex-wrap:wrap;">
+            <a href="semaine4-grammaire-discours.html" data-i18n="footer_back" class="no-bilingual">← Leçon précédente</a>
+            <a href="semaine4-conjugaison-temps-recit.html" data-i18n="footer_next" class="no-bilingual">Leçon suivante : Les temps du récit →</a>
+        </div>
+    </div>
+
+    <!-- ═══════ SCRIPTS ═══════ -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                'lesson_title': 'Leçon 3 – Le passé simple et le passé antérieur | Texte littéraire & Exercices',
+                'lesson_short_title': 'Le passé simple et le passé antérieur',
+                'ach_year_bac': '4ᵉ année secondaire (Bac)',
+                'ach_module_semaine4': 'Orthographe et précision',
+                'back_revision': 'Révision générale',
+                'back_current': 'Le passé simple et le passé antérieur',
+                'lesson_badge': '📘 Conjugaison · Leçon 3',
+                'lesson_title': 'Le passé simple et le passé antérieur',
+                'lesson_duration': '⏱️ 45 minutes',
+                'lesson_meta_audio': '🎧 Écoutez le texte puis faites les exercices',
+                'audio_label': '🎧 Écoute littéraire',
+                'text_author': '— Voyage au village, texte original',
+                'rules_heading': '📖 Le passé simple et le passé antérieur',
+                'rules_intro': 'Le passé simple et le passé antérieur sont des temps du récit, utilisés principalement à l\'écrit. Ils expriment des actions ponctuelles et achevées dans le passé.',
+                'rules_ps_title': '🔹 Le passé simple',
+                'rules_ps_formation': 'Formation : il se conjugue à toutes les personnes, mais surtout aux 3e personnes du singulier et du pluriel dans les récits.',
+                'rules_ps_list': '<li><strong>1er groupe (-er) :</strong> -ai, -as, -a, -âmes, -âtes, -èrent<br>Ex. : je <strong>parlai</strong>, tu <strong>parlas</strong>, il <strong>parla</strong>.</li><li><strong>2e groupe (-ir) :</strong> -is, -is, -it, -îmes, -îtes, -irent<br>Ex. : je <strong>finis</strong>, tu <strong>finis</strong>, il <strong>finit</strong>.</li><li><strong>3e groupe :</strong> formes variables selon les verbes (en -is, -us, -ins…).<br>Ex. : il <strong>prit</strong>, il <strong>vint</strong>, il <strong>fut</strong>.</li>',
+                'rules_ps_values': 'Valeurs :<br>• Action ponctuelle et achevée dans un récit au passé.<br>• Action de premier plan qui fait avancer l\'histoire.<br>• Souvent utilisé avec l\'imparfait (second plan).',
+                'rules_pa_title': '🔹 Le passé antérieur',
+                'rules_pa_formation': 'Formation : auxiliaire (être ou avoir) au passé simple + participe passé.<br>Ex. : il <strong>eut parlé</strong>, elle <strong>fut partie</strong>.',
+                'rules_pa_values': 'Valeurs :<br>• Action achevée immédiatement avant une autre action passée (passé simple).<br>• S\'utilise après des conjonctions comme <strong>quand</strong>, <strong>lorsque</strong>, <strong>dès que</strong>, <strong>après que</strong>.<br>• Exprime l\'antériorité immédiate dans un récit littéraire.<br>Ex. : Dès qu\'il <strong>eut terminé</strong>, il <strong>sortit</strong>.',
+                'rules_compare_title': '🔹 Comparaison des deux temps',
+                'rules_compare_text': 'Le passé simple raconte l\'action principale, le passé antérieur marque une action antérieure immédiate par rapport à une autre action passée. Les deux sont des temps du récit écrit, rarement utilisés à l\'oral.',
+                'rules_aux_title': '🔹 Choix de l\'auxiliaire au passé antérieur',
+                'rules_aux_text': 'On utilise <strong>avoir</strong> ou <strong>être</strong> au passé simple, selon le verbe, comme au passé composé.<br>• Avec avoir : <strong>j\'eus, tu eus, il eut, nous eûmes, vous eûtes, ils eurent</strong> + participe passé.<br>• Avec être : <strong>je fus, tu fus, il fut, nous fûmes, vous fûtes, ils furent</strong> + participe passé.',
+                'rules_negation_title': '🔹 Négation et forme interrogative',
+                'rules_negation_text': 'La négation encadre l\'auxiliaire : <strong>il n\'eut pas fini</strong>, <strong>elle ne fut pas partie</strong>. À la forme interrogative, on inverse le sujet et l\'auxiliaire : <strong>Eut-il fini ?</strong> <strong>Fut-elle partie ?</strong>',
+                'rules_note': '💡 Le passé antérieur est rare mais indispensable pour exprimer une antériorité immédiate dans un récit soutenu.',
+                'exercises_heading': '✍️ Exercices',
+                'exo1_title': '📌 1. Identifiez les temps',
+                'exo1_instruction': 'Pour chaque verbe souligné dans le texte, indiquez s\'il s\'agit du passé simple (PS) ou du passé antérieur (PA).',
+                'table_verb': 'Verbe',
+                'table_answer': 'Temps',
+                'exo2_title': '📌 2. Conjuguez au passé simple',
+                'exo2_instruction': 'Complétez avec le verbe au passé simple à la personne indiquée.',
+                'exo3_title': '📌 3. Conjuguez au passé antérieur',
+                'exo3_instruction': 'Transformez les verbes entre parenthèses au passé antérieur.',
+                'exo4_title': '📌 4. Choisissez entre passé simple et passé antérieur',
+                'exo4_instruction': 'Complétez avec le temps qui convient (passé simple ou passé antérieur).',
+                'exo5_title': '📌 5. Transformez au passé simple',
+                'exo5_instruction': 'Réécrivez ces phrases en remplaçant le passé composé par le passé simple.',
+                'exo6_title': '📌 6. Corrigez les erreurs',
+                'exo6_instruction': 'Certaines formes sont incorrectes. Corrigez-les.',
+                'exo7_title': '📌 7. Analysez un extrait',
+                'exo7_instruction': '« Après qu\'ils eurent traversé la rivière, ils aperçurent le village. »<br>Quel est le rapport temporel entre les deux actions ? Justifiez l\'emploi du passé antérieur.',
+                'exo8_title': '📌 8. Complétez avec l\'auxiliaire correct',
+                'exo8_instruction': 'Complétez les passés antérieurs avec l\'auxiliaire (avoir ou être) au passé simple.',
+                'exo9_title': '📌 9. Récrivez au passé simple et au passé antérieur',
+                'exo9_instruction': 'Transformez ce petit récit en remplaçant les temps du passé (passé composé, plus-que-parfait) par le passé simple et le passé antérieur.',
+                'exo10_title': '📌 10. Production personnelle',
+                'exo10_instruction': 'Racontez une courte histoire (5-6 lignes) au passé en utilisant au moins trois passés simples et deux passés antérieurs. Soulignez les verbes et indiquez leur temps.',
+                'btn_correction': '🔍 Voir la correction',
+                'footer_back': '← Leçon précédente',
+                'footer_next': 'Leçon suivante : Les temps du récit →',
+                'self_assess_question': 'Ma réponse est :',
+                'self_correct': 'Correcte',
+                'self_incorrect': 'Incorrecte',
+                'self_partial': 'Partiellement correcte',
+                'score_title': '📊 Votre auto‑évaluation',
+                'score_correct': 'Correctes :',
+                'score_incorrect': 'Incorrectes :',
+                'score_partial': 'Partielles :',
+                'score_unanswered': 'Sans réponse :',
+                'save_results': '💾 Enregistrer mes résultats',
+                'save_success': 'Résultats sauvegardés ✓',
+                'save_error': 'Erreur lors de la sauvegarde',
+                'print_pdf': '🖨️ Imprimer / PDF',
+                'print_with_answers': 'Corrigé inclus',
+                'print_site_name': 'Educational Dashboard – French',
+                'print_scholar_year': 'Révision pour le Bac',
+                'print_week': 'Semaine 4',
+                'print_area': 'Conjugaison',
+                'print_footer_dev': 'Développé par Mejri Ziad',
+                'print_footer_date': 'Imprimé le',
+                'print_without_answers': 'Sans corrigé',
+                'toast_signin_required': 'Connectez-vous pour voir les corrections.'
+            },
+            en: {
+                'lesson_title': 'Lesson 3 – Simple Past and Past Anterior | Literary Text & Exercises',
+                'lesson_short_title': 'Simple Past and Past Anterior',
+                'ach_year_bac': '12th grade (Bac)',
+                'ach_module_semaine4': 'Spelling and Precision',
+                'back_revision': 'General Review',
+                'back_current': 'Simple Past and Past Anterior',
+                'lesson_badge': '📘 Conjugation · Lesson 3',
+                'lesson_title': 'Simple Past and Past Anterior',
+                'lesson_duration': '⏱️ 45 minutes',
+                'lesson_meta_audio': '🎧 Listen to the text then do the exercises',
+                'audio_label': '🎧 Literary Listening',
+                'text_author': '— Journey to the Village, original text',
+                'rules_heading': '📖 Simple Past and Past Anterior',
+                'rules_intro': 'The simple past and past anterior are narrative tenses, mainly used in writing. They express completed punctual actions in the past.',
+                'rules_ps_title': '🔹 Simple Past',
+                'rules_ps_formation': 'Formation: it is conjugated in all persons, but especially in the 3rd person singular and plural in narratives.',
+                'rules_ps_list': '<li><strong>1st group (-er):</strong> -ai, -as, -a, -âmes, -âtes, -èrent<br>Ex.: I <strong>spoke</strong>, you <strong>spoke</strong>, he <strong>spoke</strong>.</li><li><strong>2nd group (-ir):</strong> -is, -is, -it, -îmes, -îtes, -irent<br>Ex.: I <strong>finished</strong>, you <strong>finished</strong>, he <strong>finished</strong>.</li><li><strong>3rd group:</strong> variable forms (in -is, -us, -ins…).<br>Ex.: he <strong>took</strong>, he <strong>came</strong>, he <strong>was</strong>.</li>',
+                'rules_ps_values': 'Uses:<br>• Completed punctual action in a past narrative.<br>• Foreground action that moves the story forward.<br>• Often used with the imperfect (background).',
+                'rules_pa_title': '🔹 Past Anterior',
+                'rules_pa_formation': 'Formation: auxiliary (être or avoir) in simple past + past participle.<br>Ex.: he <strong>had spoken</strong>, she <strong>had left</strong>.',
+                'rules_pa_values': 'Uses:<br>• Action completed immediately before another past action (simple past).<br>• Used after conjunctions like <strong>when</strong>, <strong>as soon as</strong>, <strong>after</strong>.<br>• Expresses immediate anteriority in literary narrative.<br>Ex.: As soon as he <strong>had finished</strong>, he <strong>left</strong>.',
+                'rules_compare_title': '🔹 Comparison of the two tenses',
+                'rules_compare_text': 'The simple past tells the main action, the past anterior marks an action immediately before another past action. Both are written narrative tenses, rarely used orally.',
+                'rules_aux_title': '🔹 Choice of auxiliary in the past anterior',
+                'rules_aux_text': 'Use <strong>avoir</strong> or <strong>être</strong> in the simple past, depending on the verb, as in the present perfect.<br>• With avoir: <strong>j\'eus, tu eus, il eut...</strong> + past participle.<br>• With être: <strong>je fus, tu fus, il fut...</strong> + past participle.',
+                'rules_negation_title': '🔹 Negation and interrogative form',
+                'rules_negation_text': 'Negation surrounds the auxiliary: <strong>il n\'eut pas fini</strong>, <strong>elle ne fut pas partie</strong>. In interrogative form, invert subject and auxiliary: <strong>Eut-il fini?</strong> <strong>Fut-elle partie?</strong>',
+                'rules_note': '💡 The past anterior is rare but essential to express immediate anteriority in sustained narrative.',
+                'exercises_heading': '✍️ Exercises',
+                'exo1_title': '📌 1. Identify the tenses',
+                'exo1_instruction': 'For each underlined verb in the text, indicate whether it is simple past (SP) or past anterior (PA).',
+                'table_verb': 'Verb',
+                'table_answer': 'Tense',
+                'exo2_title': '📌 2. Conjugate in the simple past',
+                'exo2_instruction': 'Complete with the verb in the simple past at the indicated person.',
+                'exo3_title': '📌 3. Conjugate in the past anterior',
+                'exo3_instruction': 'Transform the verbs in parentheses into the past anterior.',
+                'exo4_title': '📌 4. Choose between simple past and past anterior',
+                'exo4_instruction': 'Complete with the appropriate tense (simple past or past anterior).',
+                'exo5_title': '📌 5. Transform into simple past',
+                'exo5_instruction': 'Rewrite these sentences by replacing the present perfect with the simple past.',
+                'exo6_title': '📌 6. Correct the errors',
+                'exo6_instruction': 'Some forms are incorrect. Correct them.',
+                'exo7_title': '📌 7. Analyze an excerpt',
+                'exo7_instruction': '"After they had crossed the river, they saw the village."<br>What is the temporal relationship between the two actions? Justify the use of the past anterior.',
+                'exo8_title': '📌 8. Complete with the correct auxiliary',
+                'exo8_instruction': 'Complete the past anteriors with the correct auxiliary (avoir or être) in the simple past.',
+                'exo9_title': '📌 9. Rewrite in simple past and past anterior',
+                'exo9_instruction': 'Transform this short narrative by replacing the past tenses (present perfect, pluperfect) with the simple past and past anterior.',
+                'exo10_title': '📌 10. Personal production',
+                'exo10_instruction': 'Tell a short story (5-6 lines) in the past using at least three simple pasts and two past anteriors. Underline the verbs and indicate their tense.',
+                'btn_correction': '🔍 See correction',
+                'footer_back': '← Previous lesson',
+                'footer_next': 'Next lesson: Narrative tenses →',
+                'self_assess_question': 'My answer is:',
+                'self_correct': 'Correct',
+                'self_incorrect': 'Incorrect',
+                'self_partial': 'Partially correct',
+                'score_title': '📊 Your self‑assessment',
+                'score_correct': 'Correct:',
+                'score_incorrect': 'Incorrect:',
+                'score_partial': 'Partial:',
+                'score_unanswered': 'Unanswered:',
+                'save_results': '💾 Save my results',
+                'save_success': 'Results saved ✓',
+                'save_error': 'Save failed',
+                'print_pdf': '🖨️ Print / PDF',
+                'print_with_answers': 'With answers',
+                'print_site_name': 'Educational Dashboard – French',
+                'print_scholar_year': 'Bac Review',
+                'print_week': 'Week 4',
+                'print_area': 'Conjugation',
+                'print_footer_dev': 'Developed by Mejri Ziad',
+                'print_footer_date': 'Printed on',
+                'print_without_answers': 'Without answers',
+                'toast_signin_required': 'Sign in to see the corrections.'
+            },
+            ar: {
+                'lesson_title': 'الدرس 3 – الماضي البسيط والماضي الأسبق | نص أدبي وتمارين',
+                'lesson_short_title': 'الماضي البسيط والماضي الأسبق',
+                'ach_year_bac': 'السنة الرابعة ثانوي',
+                'ach_module_semaine4': 'الإملاء والدقة',
+                'back_revision': 'المراجعة العامة',
+                'back_current': 'الماضي البسيط والماضي الأسبق',
+                'lesson_badge': '📘 التصريف · الدرس 3',
+                'lesson_title': 'الماضي البسيط والماضي الأسبق',
+                'lesson_duration': '⏱️ 45 دقيقة',
+                'lesson_meta_audio': '🎧 استمع إلى النص ثم قم بالتمارين',
+                'audio_label': '🎧 استماع أدبي',
+                'text_author': '— رحلة إلى القرية، نص أصلي',
+                'rules_heading': '📖 الماضي البسيط والماضي الأسبق',
+                'rules_intro': 'الماضي البسيط والماضي الأسبق زمنا سرد، يستعملان خاصة كتابيا. يعبران عن أحداث مكتملة ووجيزة في الماضي.',
+                'rules_ps_title': '🔹 الماضي البسيط',
+                'rules_ps_formation': 'التكوين: يُصرَّف في جميع الضمائر، لكن خاصة مع الغائب المفرد والجمع في السرد.',
+                'rules_ps_list': '<li><strong>المجموعة الأولى (-er):</strong> -ai, -as, -a, -âmes, -âtes, -èrent<br>مثال: أنا <strong>تكلمت</strong>، أنت <strong>تكلمت</strong>، هو <strong>تكلم</strong>.</li><li><strong>المجموعة الثانية (-ir):</strong> -is, -is, -it, -îmes, -îtes, -irent<br>مثال: أنا <strong>أنهيت</strong>، أنت <strong>أنهيت</strong>، هو <strong>أنهى</strong>.</li><li><strong>المجموعة الثالثة:</strong> أشكال متغيرة (بـ -is، -us، -ins…).<br>مثال: هو <strong>أخذ</strong>، هو <strong>جاء</strong>، هو <strong>كان</strong>.</li>',
+                'rules_ps_values': 'الاستعمالات:<br>• حدث مكتمل ووجيز في سرد ماضٍ.<br>• حدث رئيسي يدفع القصة قدما.<br>• غالبا يستعمل مع الماضي الناقص (خلفية).',
+                'rules_pa_title': '🔹 الماضي الأسبق',
+                'rules_pa_formation': 'التكوين: الفعل المساعد (être أو avoir) في الماضي البسيط + اسم المفعول.<br>مثال: هو <strong>كان قد تكلم</strong>، هي <strong>كانت قد غادرت</strong>.',
+                'rules_pa_values': 'الاستعمالات:<br>• حدث مكتمل مباشرة قبل حدث ماضٍ آخر (الماضي البسيط).<br>• يستعمل بعد أدوات مثل <strong>عندما</strong>، <strong>بمجرد أن</strong>، <strong>بعد أن</strong>.<br>• يعبر عن الأسبقية المباشرة في سرد أدبي.<br>مثال: بمجرد أن <strong>كان قد أنهى</strong>، <strong>خرج</strong>.',
+                'rules_compare_title': '🔹 مقارنة الزمنين',
+                'rules_compare_text': 'الماضي البسيط يروي الحدث الرئيسي، الماضي الأسبق يمثل حدثا سابقا مباشرة لحدث ماضٍ آخر. كلاهما زمنا سرد كتابيان، نادران في الكلام.',
+                'rules_aux_title': '🔹 اختيار الفعل المساعد في الماضي الأسبق',
+                'rules_aux_text': 'نستعمل <strong>avoir</strong> أو <strong>être</strong> في الماضي البسيط، حسب الفعل، كما في الماضي المركب.<br>• مع avoir: <strong>j\'eus, tu eus, il eut...</strong> + اسم المفعول.<br>• مع être: <strong>je fus, tu fus, il fut...</strong> + اسم المفعول.',
+                'rules_negation_title': '🔹 النفي والاستفهام',
+                'rules_negation_text': 'النفي يحيط بالفعل المساعد: <strong>il n\'eut pas fini</strong>، <strong>elle ne fut pas partie</strong>. في الاستفهام، نقلب الفاعل والمساعد: <strong>Eut-il fini?</strong> <strong>Fut-elle partie?</strong>',
+                'rules_note': '💡 الماضي الأسبق نادر لكنه ضروري للتعبير عن الأسبقية المباشرة في سرد متين.',
+                'exercises_heading': '✍️ تمارين',
+                'exo1_title': '📌 1. حدد الأزمنة',
+                'exo1_instruction': 'لكل فعل مسطر في النص، اذكر ما إذا كان ماضيا بسيطا (PS) أو ماضيا أسبق (PA).',
+                'table_verb': 'الفعل',
+                'table_answer': 'الزمن',
+                'exo2_title': '📌 2. صرّف في الماضي البسيط',
+                'exo2_instruction': 'أكمل بتصريف الفعل في الماضي البسيط مع الضمير المحدد.',
+                'exo3_title': '📌 3. صرّف في الماضي الأسبق',
+                'exo3_instruction': 'حوّل الأفعال بين قوسين إلى الماضي الأسبق.',
+                'exo4_title': '📌 4. اختر بين الماضي البسيط والماضي الأسبق',
+                'exo4_instruction': 'أكمل بالزمن المناسب (ماضي بسيط أو ماضي أسبق).',
+                'exo5_title': '📌 5. حوّل إلى الماضي البسيط',
+                'exo5_instruction': 'أعد كتابة هذه الجمل باستبدال الماضي المركب بالماضي البسيط.',
+                'exo6_title': '📌 6. صحح الأخطاء',
+                'exo6_instruction': 'بعض الأشكال خاطئة. صححها.',
+                'exo7_title': '📌 7. حلل مقطعا',
+                'exo7_instruction': '« بعد أن عبروا النهر، شاهدوا القرية. »<br>ما العلاقة الزمنية بين الحدثين؟ علل استعمال الماضي الأسبق.',
+                'exo8_title': '📌 8. أكمل بالفعل المساعد الصحيح',
+                'exo8_instruction': 'أكمل الماضي الأسبق بالفعل المساعد (avoir أو être) في الماضي البسيط.',
+                'exo9_title': '📌 9. أعد الكتابة بالماضي البسيط والماضي الأسبق',
+                'exo9_instruction': 'حوّل هذا السرد القصير باستبدال أزمنة الماضي (الماضي المركب، الماضي التام) بالماضي البسيط والماضي الأسبق.',
+                'exo10_title': '📌 10. إنتاج شخصي',
+                'exo10_instruction': 'احكِ قصة قصيرة (5-6 أسطر) في الماضي باستعمال ثلاثة أفعال في الماضي البسيط واثنين في الماضي الأسبق على الأقل. ضع خطا تحت الأفعال واكتب زمنها.',
+                'btn_correction': '🔍 الاطلاع على التصحيح',
+                'footer_back': '← الدرس السابق',
+                'footer_next': 'الدرس الموالي: أزمنة السرد →',
+                'self_assess_question': 'جوابي هو:',
+                'self_correct': 'صحيح',
+                'self_incorrect': 'خاطئ',
+                'self_partial': 'صحيح جزئيًا',
+                'score_title': '📊 تقييمك الذاتي',
+                'score_correct': 'صحيح:',
+                'score_incorrect': 'خاطئ:',
+                'score_partial': 'جزئي:',
+                'score_unanswered': 'بدون إجابة:',
+                'save_results': '💾 حفظ نتائجي',
+                'save_success': 'تم حفظ النتائج ✓',
+                'save_error': 'خطأ في الحفظ',
+                'print_pdf': '🖨️ طباعة / PDF',
+                'print_with_answers': 'مع التصحيح',
+                'print_site_name': 'لوحة التحكم التعليمية – الفرنسية',
+                'print_scholar_year': 'مراجعة البكالوريا',
+                'print_week': 'الأسبوع 4',
+                'print_area': 'التصريف',
+                'print_footer_dev': 'طوّر بواسطة ماجري زياد',
+                'print_footer_date': 'طُبع في',
+                'toast_signin_required': 'سجّل الدخول لرؤية التصحيحات.'
+            }
+        });
+        (function() {
+            var container = document.querySelector('.container');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+        })();
+    </script>
+    <script src="ed-french-ini.js"></script>
+    <script>
+        (function() {
+            const audio = new Audio('lessons/revision/sounds/semaine4-passe-simple.mp3');
+            const playBtn = document.getElementById('playBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const speedBtns = document.querySelectorAll('.speed-btn');
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+            audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
+            audio.addEventListener('timeupdate', () => {
+                const percent = (audio.currentTime / audio.duration) * 100 || 0;
+                progressFill.style.width = percent + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            });
+            audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) { audio.play(); playBtn.textContent = '⏸'; }
+                else { audio.pause(); playBtn.textContent = '▶'; }
+            });
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const seekTime = (clickX / width) * audio.duration;
+                audio.currentTime = seekTime;
+            });
+            speedBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    speedBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const speed = parseFloat(btn.dataset.speed);
+                    audio.playbackRate = speed;
+                });
+            });
+
+            const verbs = [
+                "se leva", "avaient déjà repris", "eurent traversé", "aperçurent",
+                "raconta", "expliqua", "construisirent", "écoutèrent",
+                "eurent visité", "allèrent", "proposa", "acheta",
+                "paya", "tomba", "rentrèrent", "furent"
+            ];
+            const answersEx1 = [
+                "PS", "PQP (not PS/PA but plus-que-parfait, note: actually plus-que-parfait, but in text we should treat as not requested; we'll mark as PQP)",
+                "PA", "PS", "PS", "PS", "PS", "PS",
+                "PA", "PS", "PS", "PS", "PS", "PS", "PS", "PS"
+            ];
+            const tbody1 = document.querySelector('#exo1Table tbody');
+            verbs.forEach((verb, i) => {
+                const row = tbody1.insertRow();
+                const cellVerb = row.insertCell();
+                cellVerb.textContent = verb;
+                const cellAnswer = row.insertCell();
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.placeholder = 'PS ou PA';
+                cellAnswer.appendChild(input);
+            });
+            document.getElementById('exo1Key').innerHTML = '<strong>Correction :</strong><br>' + verbs.map((v,i) => `${v} → <em>${answersEx1[i]}</em>`).join('<br>');
+            document.getElementById('exo2Key').innerHTML = '<strong>Correction :</strong><br>a) parla<br>b) finîmes<br>c) allèrent<br>d) prîtes<br>e) fis';
+            document.getElementById('exo3Key').innerHTML = '<strong>Correction :</strong><br>a) eut terminé<br>b) fut arrivée<br>c) eurent vu<br>d) fûmes rentrés<br>e) eus lu';
+            document.getElementById('exo4Key').innerHTML = '<strong>Correction :</strong><br>a) se leva / applaudirent<br>b) entra / sonna<br>c) eut expliqué / posèrent<br>d) se calma / sortirent';
+            document.getElementById('exo5Key').innerHTML = '<strong>Correction :</strong><br>a) mangea<br>b) vîmes<br>c) partirent<br>d) écrivis';
+            document.getElementById('exo6Key').innerHTML = '<strong>Correction :</strong><br>a) Pas d\'erreur (mangea, partit corrects)<br>b) Pas d\'erreur<br>c) Elle prit le livre et lut une page.<br>d) Quand ils arrivèrent, la fête avait déjà commencé.';
+            document.getElementById('exo7Key').innerHTML = '<strong>Correction :</strong><br>Le passé antérieur « eurent traversé » exprime une action achevée immédiatement avant l\'action au passé simple « aperçurent ». Il marque l\'antériorité immédiate.';
+            document.getElementById('exo8Key').innerHTML = '<strong>Correction :</strong><br>a) eut<br>b) fut<br>c) furent<br>d) fûmes';
+            document.getElementById('exo9Key').innerHTML = '<strong>Proposition :</strong><br>Quand le soleil se leva, les voyageurs avaient déjà repris la route. Ils eurent traversé la rivière, puis ils aperçurent le village. Après qu\'ils eurent visité la mosquée, ils allèrent au souk.';
+            window.toggleCorrection = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('visible');
+            };
+            function updateScore() {
+                const radioGroups = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5', 'self_ex6', 'self_ex7', 'self_ex8', 'self_ex9', 'self_ex10'];
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                radioGroups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                document.getElementById('scoreCorrect').textContent = correct;
+                document.getElementById('scoreIncorrect').textContent = incorrect;
+                document.getElementById('scorePartial').textContent = partial;
+                document.getElementById('scoreUnanswered').textContent = unanswered;
+            }
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                const radioGroups = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5', 'self_ex6', 'self_ex7', 'self_ex8', 'self_ex9', 'self_ex10'];
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                radioGroups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                const lessonId = 'semaine4-conjugaison-passe-simple';
+                const lang = localStorage.getItem('lang') || 'fr';
+                const entry = {
+                    lesson_id: lessonId,
+                    lesson_title: {
+                        fr: App.getTranslation('lesson_short_title', 'fr'),
+                        en: App.getTranslation('lesson_short_title', 'en'),
+                        ar: App.getTranslation('lesson_short_title', 'ar')
+                    },
+                    year: {
+                        fr: App.getTranslation('ach_year_bac', 'fr'),
+                        en: App.getTranslation('ach_year_bac', 'en'),
+                        ar: App.getTranslation('ach_year_bac', 'ar')
+                    },
+                    module: {
+                        fr: App.getTranslation('ach_module_semaine4', 'fr'),
+                        en: App.getTranslation('ach_module_semaine4', 'en'),
+                        ar: App.getTranslation('ach_module_semaine4', 'ar')
+                    },
+                    correct: correct,
+                    incorrect: incorrect,
+                    partial: partial,
+                    unanswered: unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles')
+                    .select('achivement')
+                    .eq('id', user.id)
+                    .single();
+                if (fetchError) { console.error('Could not fetch profile:', fetchError); return; }
+                let achivement = profileData?.achivement || {};
+                if (!achivement["ED-French"]) achivement["ED-French"] = [];
+                const arr = achivement["ED-French"];
+                const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+                if (existingIdx >= 0) arr[existingIdx] = entry; else arr.push(entry);
+                const { error: updateError } = await App.supabase
+                    .from('profiles')
+                    .update({ achivement: achivement })
+                    .eq('id', user.id);
+                if (updateError) {
+                    console.error('Save failed:', updateError);
+                    App.showToast('save_error', 'error');
+                } else {
+                    App.showToast('save_success', 'success');
+                    App.logUserAction('lesson_saved', { lesson: lessonId, correct, incorrect, partial });
+                }
+            });
+            document.getElementById('printPdfBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles')
+                        .select('registration_state')
+                        .eq('id', user.id)
+                        .single();
+                    if (!error && profile && profile.registration_state && profile.registration_state.active === true) isRegistered = true;
+                } catch (e) {}
+                const headerHTML = document.querySelector('.lesson-header').cloneNode(true);
+                const textCard = document.querySelector('.text-card').cloneNode(true);
+                const rulesSections = document.querySelectorAll('.valeurs-section, .methode-section');
+                let rulesHTML = '';
+                rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
+                const exercisesSection = document.querySelector('.exercises-section').cloneNode(true);
+                exercisesSection.querySelectorAll('input, textarea, .btn-verify, .self-assessment').forEach(el => el.remove());
+                if (isRegistered) {
+                    const answerKeys = exercisesSection.querySelectorAll('.answer-key');
+                    answerKeys.forEach(key => {
+                        key.style.display = 'block';
+                        key.style.border = 'none';
+                        key.style.padding = '0.5rem 0';
+                        key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    exercisesSection.querySelectorAll('.answer-key').forEach(el => el.remove());
+                }
+                const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                const lang = localStorage.getItem('lang') || 'fr';
+                printWindow.document.write(`
+                <!DOCTYPE html>
+                <html lang="${lang}">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>${App.getTranslation('lesson_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title>
+                    <style>
+                        body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.6; max-width: 700px; margin: 2rem auto; padding: 0 1rem; color: #000; }
+                        .print-header { text-align: center; border-bottom: 2px solid #c75b2c; padding-bottom: 1rem; margin-bottom: 2rem; }
+                        .print-header .site-name { font-size: 1.4rem; font-weight: bold; color: #c75b2c; margin: 0 0 0.3rem; }
+                        .print-header .meta-line { font-size: 0.95rem; color: #444; margin: 0.2rem 0; }
+                        .print-header .lesson-name { font-size: 1.1rem; font-weight: bold; color: #000; margin-top: 0.5rem; }
+                        .print-footer { text-align: center; border-top: 1px solid #ccc; padding-top: 1rem; margin-top: 2rem; font-size: 0.85rem; color: #666; }
+                        h1, h2, h3 { color: #000; }
+                        .lesson-header { text-align: center; margin-bottom: 2rem; }
+                        .badge { display: inline-block; background: #c75b2c; color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; text-transform: uppercase; }
+                        .text-card { border-left: 4px solid #c75b2c; padding: 1rem 1.5rem; margin: 1.5rem 0; font-style: italic; }
+                        .quote-mark { font-size: 3rem; color: #c75b2c; opacity: 0.3; position: absolute; top: -10px; left: 10px; }
+                        .text-card .author { text-align: right; font-style: normal; margin-top: 0.8rem; }
+                        .valeurs-section, .methode-section { margin: 1.5rem 0; }
+                        .valeur-card { background: #f8f4ec; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; }
+                        .valeur-card h3 { color: #c75b2c; }
+                        .exercise-card { margin: 1.2rem 0; }
+                        table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; }
+                        th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+                        th { background: #f0e8d8; }
+                        .answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; }
+                        @media print { body { margin: 0; padding: 0; } @page { margin: 2cm; } }
+                    </style>
+                </head>
+                <body>
+                    <div class="print-header">
+                        <div class="site-name">${App.getTranslation('print_site_name', lang)}</div>
+                        <div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div>
+                        <div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div>
+                    </div>
+                    ${breadcrumb.outerHTML}
+                    ${headerHTML.outerHTML}
+                    ${textCard.outerHTML}
+                    ${rulesHTML}
+                    ${exercisesSection.outerHTML}
+                    <div class="print-footer">
+                        ${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}
+                    </div>
+                </body>
+                </html>
+            `);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+            document.querySelectorAll('input[type="radio"][name^="self_ex"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+        })();
+    </script>
+    <!-- ═══════ DIRECT‑TRANSLATION FIX ═══════ -->
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') {
+                                el.innerHTML = next.innerHTML;
+                            }
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+</body>
+</html>
