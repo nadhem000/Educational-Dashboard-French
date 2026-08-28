@@ -519,3 +519,324 @@
     }
     window.degree4LessonTypeReadingMatchingProcess = degree4LessonTypeReadingMatchingProcess;
 })();
+
+/* ==================================================================
+   RADIO BUTTON EXERCISES
+   ================================================================== */
+(function() {
+    'use strict';
+
+    /* ------------------- Sanity Check ------------------- */
+    function degree4LessonTypeReadingRadioSanityCheck(config) {
+        if (!config || typeof config !== 'object') {
+            console.error('degree4Radio: configuration object is required.');
+            return false;
+        }
+        if (!config.checkButtonId || !config.feedbackId) {
+            console.error('degree4Radio: checkButtonId and feedbackId are required.');
+            return false;
+        }
+        if (!config.radios || !Array.isArray(config.radios) || config.radios.length === 0) {
+            console.error('degree4Radio: radios must be a non‑empty array.');
+            return false;
+        }
+        for (const radio of config.radios) {
+            if (!radio.name || !radio.correctValue) {
+                console.error('degree4Radio: each radio must have a name and a correctValue.');
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /* ------------------- Translation Helper ------------------- */
+    function degree4LessonTypeReadingRadioGetText(key, fallback) {
+        if (typeof App !== 'undefined' && typeof App.getTranslation === 'function') {
+            try {
+                return App.getTranslation(key, localStorage.getItem('lang') || 'fr') || fallback;
+            } catch (e) {
+                return fallback;
+            }
+        }
+        return fallback;
+    }
+
+    /* ------------------- Sound Helper ------------------- */
+    function degree4LessonTypeReadingRadioMakeSounds(sounds) {
+        return {
+            correct: sounds?.correct ? new Audio(sounds.correct) : null,
+            wrong: sounds?.wrong ? new Audio(sounds.wrong) : null,
+            complete: sounds?.complete ? new Audio(sounds.complete) : null
+        };
+    }
+
+    function degree4LessonTypeReadingRadioPlaySound(sound) {
+        if (sound) {
+            sound.currentTime = 0;
+            sound.play().catch(() => {});
+        }
+    }
+
+    /* ------------------- Feedback Builder ------------------- */
+    function degree4LessonTypeReadingRadioBuildFeedback(score, total, details) {
+        const T = {
+            allCorrect: degree4LessonTypeReadingRadioGetText('degree4_exercices_all_correct', '✅ Parfait ! Toutes les réponses sont correctes.'),
+            partialCorrect: degree4LessonTypeReadingRadioGetText('degree4_exercices_partial_correct', '⚠️ Vous avez {score}/{total}.'),
+            noneCorrect: degree4LessonTypeReadingRadioGetText('degree4_exercices_none_correct', '❌ Aucune bonne réponse.'),
+            wrongWithAnswer: degree4LessonTypeReadingRadioGetText('degree4_exercices_wrong_with_answer', 'La bonne réponse est : {answer}'),
+            separator: degree4LessonTypeReadingRadioGetText('degree4_exercices_separator', ' ')
+        };
+        let message = '';
+        if (score === total) {
+            message = T.allCorrect;
+        } else if (score > 0) {
+            message = T.partialCorrect.replace('{score}', score).replace('{total}', total);
+            const wrong = details.filter(d => !d.correct);
+            if (wrong.length) message += T.separator + wrong.map(d => T.wrongWithAnswer.replace('{answer}', d.defaultAnswer)).join(' | ');
+        } else {
+            message = T.noneCorrect;
+            const wrong = details.filter(d => !d.correct);
+            if (wrong.length) message += T.separator + wrong.map(d => T.wrongWithAnswer.replace('{answer}', d.defaultAnswer)).join(' | ');
+        }
+        return message;
+    }
+
+    /**
+     * Process radio button exercises.
+     * @param {Object} config
+     * @param {string} config.checkButtonId - ID of the button that triggers checking.
+     * @param {string} config.feedbackId   - ID of the element where feedback will be shown.
+     * @param {Array}  config.radios       - Array of { name, correctValue }.
+     * @param {Object} [config.sounds]     - Optional sound URLs: { correct, wrong, complete }.
+     * @param {Function} [config.onComplete] - Optional callback after checking.
+     * @returns {boolean}
+     */
+    function degree4LessonTypeReadingRadioProcess(config) {
+        if (!degree4LessonTypeReadingRadioSanityCheck(config)) return false;
+
+        const checkBtn = document.getElementById(config.checkButtonId);
+        const feedbackEl = document.getElementById(config.feedbackId);
+        if (!checkBtn || !feedbackEl) {
+            console.error('degree4Radio: button or feedback element not found.');
+            return false;
+        }
+
+        // Add type‑specific class to the exercise container (if possible)
+        const container = checkBtn.closest('.degree4-lessonType-reading-exercise');
+        if (container) container.classList.add('degree4-lessonType-reading-radio-container');
+
+        const sounds = degree4LessonTypeReadingRadioMakeSounds(config.sounds);
+
+        checkBtn.addEventListener('click', function() {
+            let score = 0;
+            const total = config.radios.length;
+            const details = [];
+
+            config.radios.forEach(radioCfg => {
+                const selected = document.querySelector(`input[name="${radioCfg.name}"]:checked`);
+                const isCorrect = selected && selected.value === radioCfg.correctValue;
+                if (isCorrect) score++;
+                details.push({
+                    id: radioCfg.name,
+                    correct: isCorrect,
+                    defaultAnswer: radioCfg.correctValue
+                });
+            });
+
+            const message = degree4LessonTypeReadingRadioBuildFeedback(score, total, details);
+            const feedbackClass = score === total ? 'correct' : 'wrong';
+            if (score === total) degree4LessonTypeReadingRadioPlaySound(sounds.complete || sounds.correct);
+            else if (score > 0) degree4LessonTypeReadingRadioPlaySound(sounds.correct || sounds.wrong);
+            else degree4LessonTypeReadingRadioPlaySound(sounds.wrong);
+
+            feedbackEl.textContent = message;
+            feedbackEl.className = 'degree4-lessonType-reading-feedback ' + feedbackClass;
+
+            if (typeof config.onComplete === 'function') config.onComplete({ score, total, details });
+        });
+
+        return true;
+    }
+
+    // Expose to global
+    window.degree4LessonTypeReadingRadioProcess = degree4LessonTypeReadingRadioProcess;
+})();
+
+/* ==================================================================
+   NUMEROTE (ORDERING) EXERCISES – BILINGUAL‑AWARE
+   ================================================================== */
+(function() {
+    'use strict';
+
+    function degree4LessonTypeReadingNumeroteSanityCheck(config) {
+        if (!config || typeof config !== 'object') {
+            console.error('degree4Numerote: configuration object is required.');
+            return false;
+        }
+        if (!config.containerId || !config.checkButtonId || !config.feedbackId) {
+            console.error('degree4Numerote: containerId, checkButtonId and feedbackId are required.');
+            return false;
+        }
+        if (!config.items || !Array.isArray(config.items) || config.items.length === 0) {
+            console.error('degree4Numerote: items must be a non‑empty array.');
+            return false;
+        }
+        for (const item of config.items) {
+            if (!item.id || (!item.fr && !item.text)) {
+                console.error('degree4Numerote: each item must have an id and either fr or text.');
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function degree4LessonTypeReadingNumeroteGetText(key, fallback) {
+        if (typeof App !== 'undefined' && typeof App.getTranslation === 'function') {
+            try {
+                const translated = App.getTranslation(key, localStorage.getItem('lang') || 'fr');
+                if (translated && translated !== key) {
+                    return translated;
+                }
+            } catch (e) {
+                // fall through
+            }
+        }
+        return fallback;
+    }
+
+    function degree4LessonTypeReadingNumeroteMakeSounds(sounds) {
+        return {
+            correct: sounds?.correct ? new Audio(sounds.correct) : null,
+            wrong: sounds?.wrong ? new Audio(sounds.wrong) : null,
+            complete: sounds?.complete ? new Audio(sounds.complete) : null
+        };
+    }
+
+    function degree4LessonTypeReadingNumerotePlaySound(sound) {
+        if (sound) {
+            sound.currentTime = 0;
+            sound.play().catch(() => {});
+        }
+    }
+
+    function degree4LessonTypeReadingNumeroteBuildFeedback(score, total, details) {
+        const T = {
+            allCorrect: degree4LessonTypeReadingNumeroteGetText('degree4_exercices_all_correct', '✅ Parfait ! Toutes les réponses sont correctes.'),
+            partialCorrect: degree4LessonTypeReadingNumeroteGetText('degree4_exercices_partial_correct', '⚠️ Vous avez {score}/{total}.'),
+            noneCorrect: degree4LessonTypeReadingNumeroteGetText('degree4_exercices_none_correct', '❌ Aucune bonne réponse.'),
+            wrongWithAnswer: degree4LessonTypeReadingNumeroteGetText('degree4_exercices_wrong_with_answer', 'La bonne réponse est : {answer}'),
+            separator: degree4LessonTypeReadingNumeroteGetText('degree4_exercices_separator', ' ')
+        };
+        let message = '';
+        if (score === total) {
+            message = T.allCorrect;
+        } else if (score > 0) {
+            message = T.partialCorrect.replace('{score}', score).replace('{total}', total);
+            const wrong = details.filter(d => !d.correct);
+            if (wrong.length) message += T.separator + wrong.map(d => T.wrongWithAnswer.replace('{answer}', d.defaultAnswer)).join(' | ');
+        } else {
+            message = T.noneCorrect;
+            const wrong = details.filter(d => !d.correct);
+            if (wrong.length) message += T.separator + wrong.map(d => T.wrongWithAnswer.replace('{answer}', d.defaultAnswer)).join(' | ');
+        }
+        return message;
+    }
+
+    /**
+     * Process numerote (ordering) exercises with bilingual support.
+     * Items can be:
+     *   { id: 'p1', fr: "French text", i18nKey: 'translation_key' }
+     *   or { id: 'p1', text: "French text" }   // no translation
+     */
+    function degree4LessonTypeReadingNumeroteProcess(config) {
+        if (!degree4LessonTypeReadingNumeroteSanityCheck(config)) return false;
+
+        const container = document.getElementById(config.containerId);
+        if (!container) return false;
+        const checkBtn = document.getElementById(config.checkButtonId);
+        const feedbackEl = document.getElementById(config.feedbackId);
+        if (!checkBtn || !feedbackEl) return false;
+
+        container.classList.add('degree4-lessonType-reading-numerote-container');
+
+        const total = config.items.length;
+        const currentLang = localStorage.getItem('lang') || 'fr';
+
+        config.items.forEach((item, index) => {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'degree4-lessonType-reading-numerote-item';
+
+            const textSpan = document.createElement('span');
+            textSpan.className = 'degree4-lessonType-reading-numerote-text';
+
+            // French original (or fallback text)
+            const french = item.fr || item.text;
+            textSpan.textContent = french;
+
+            // If translation key provided and current language isn't French, add translation
+            if (item.i18nKey && currentLang !== 'fr') {
+                const translated = degree4LessonTypeReadingNumeroteGetText(item.i18nKey, '');
+                if (translated && translated !== french) {
+                    const transSpan = document.createElement('small');
+                    transSpan.className = 'degree4-lessonType-reading-numerote-translation';
+                    transSpan.textContent = ` (${translated})`;
+                    textSpan.appendChild(transSpan);
+                }
+            }
+
+            itemDiv.appendChild(textSpan);
+
+            const select = document.createElement('select');
+            select.className = 'degree4-lessonType-reading-numerote-select';
+            select.id = `numerote-select-${item.id}`;
+            const defaultOption = document.createElement('option');
+            defaultOption.value = '';
+            defaultOption.textContent = '?';
+            select.appendChild(defaultOption);
+            for (let i = 1; i <= total; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = i;
+                select.appendChild(option);
+            }
+            itemDiv.appendChild(select);
+
+            container.appendChild(itemDiv);
+        });
+
+        const sounds = degree4LessonTypeReadingNumeroteMakeSounds(config.sounds);
+
+        checkBtn.addEventListener('click', function() {
+            let score = 0;
+            const details = [];
+
+            config.items.forEach((item, index) => {
+                const select = document.getElementById(`numerote-select-${item.id}`);
+                const userValue = select ? select.value : '';
+                const correctNumber = index + 1;
+                const isCorrect = userValue == correctNumber;
+                if (isCorrect) score++;
+                details.push({
+                    id: item.id,
+                    correct: isCorrect,
+                    defaultAnswer: correctNumber
+                });
+            });
+
+            const message = degree4LessonTypeReadingNumeroteBuildFeedback(score, total, details);
+            const feedbackClass = score === total ? 'correct' : 'wrong';
+            if (score === total) degree4LessonTypeReadingNumerotePlaySound(sounds.complete || sounds.correct);
+            else if (score > 0) degree4LessonTypeReadingNumerotePlaySound(sounds.correct || sounds.wrong);
+            else degree4LessonTypeReadingNumerotePlaySound(sounds.wrong);
+
+            feedbackEl.textContent = message;
+            feedbackEl.className = 'degree4-lessonType-reading-feedback ' + feedbackClass;
+
+            if (typeof config.onComplete === 'function') config.onComplete({ score, total, details });
+        });
+
+        return true;
+    }
+
+    window.degree4LessonTypeReadingNumeroteProcess = degree4LessonTypeReadingNumeroteProcess;
+})();

@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="test_title">Test général – Semaine 5 | Expression écrite structurée</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        :root {
+            --bg: #f9f7f1;
+            --card: #ffffff;
+            --text: #2b2416;
+            --text-light: #5c5344;
+            --heading: #382e1e;
+            --accent: #c75b2c;
+            --accent-hover: #a3441d;
+            --border: #e5ddd0;
+            --shadow: 0 1px 4px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.05);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --transition: 0.25s ease;
+            --font-body: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
+            --audio-bg: #f4efe4;
+            --button-bg: #f0e8d8;
+            --button-hover: #e3d5bc;
+            --input-bg: #fcfaf6;
+        }
+        body.dark {
+            --bg: #1e1b17;
+            --card: #2a2620;
+            --text: #e8dfd2;
+            --text-light: #b9aa95;
+            --heading: #f0e4d2;
+            --accent: #e07b4a;
+            --accent-hover: #f08c5c;
+            --border: #3e3830;
+            --shadow: 0 1px 4px rgba(0,0,0,0.25);
+            --audio-bg: #26221b;
+            --button-bg: #3a3329;
+            --button-hover: #4e4437;
+            --input-bg: #333028;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.75;
+            transition: background var(--transition), color var(--transition);
+        }
+        .container { max-width:860px; margin:0 auto; padding:1.8rem 1.4rem 3rem; }
+        .test-header { text-align: center; margin-bottom: 2rem; }
+        .badge {
+            display:inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding:0.25rem 1rem;
+            border-radius:20px;
+            font-size:0.8rem;
+            font-weight:700;
+            letter-spacing:0.03em;
+            text-transform: uppercase;
+        }
+        .test-header h1 {
+            font-size: 2.1rem;
+            color: var(--heading);
+            margin: 0.6rem 0 0.3rem;
+            line-height: 1.3;
+        }
+        .test-header .meta {
+            font-size:0.9rem;
+            color:var(--text-light);
+            display: flex;
+            justify-content: center;
+            gap:1.2rem;
+            flex-wrap: wrap;
+        }
+        .test-section h2 {
+            font-size:1.5rem;
+            color:var(--heading);
+            margin:2rem 0 1rem;
+            border-bottom:3px solid var(--accent);
+            display:inline-block;
+            padding-bottom:0.3rem;
+        }
+        .question-card {
+            background: var(--card);
+            border:1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding:1.2rem 1.4rem;
+            margin-bottom:1.4rem;
+            box-shadow: var(--shadow);
+        }
+        .question-card h3 {
+            font-size:1.05rem;
+            color:var(--accent);
+            margin-bottom:0.8rem;
+            display: flex;
+            align-items: center;
+            gap:0.4rem;
+        }
+        .question-card input[type="text"],
+        .question-card textarea {
+            width:100%;
+            padding:0.4rem 0.6rem;
+            border:1px solid var(--border);
+            border-radius:4px;
+            background: var(--input-bg);
+            color: var(--text);
+            font-family: inherit;
+            font-size:0.9rem;
+        }
+        .question-card table {
+            width:100%;
+            border-collapse: collapse;
+            margin: 0.8rem 0;
+        }
+        .question-card th, .question-card td {
+            padding:0.55rem 0.7rem;
+            border:1px solid var(--border);
+            text-align:left;
+            font-size:0.9rem;
+        }
+        .question-card th {
+            background: var(--audio-bg);
+            font-weight:700;
+            color:var(--heading);
+        }
+        .btn-verify {
+            background: var(--accent);
+            color:#fff;
+            border:none;
+            padding:0.5rem 1.2rem;
+            border-radius: 20px;
+            font-weight:600;
+            cursor:pointer;
+            transition: background var(--transition);
+            margin-top:0.6rem;
+            font-size:0.85rem;
+        }
+        .btn-verify:hover { background: var(--accent-hover); }
+        .answer-key {
+            display:none;
+            margin-top:0.8rem;
+            padding:0.8rem;
+            background: var(--audio-bg);
+            border-radius:6px;
+            font-size:0.85rem;
+            color: var(--text-light);
+            border:1px dashed var(--accent);
+        }
+        .answer-key.visible { display:block; }
+        .self-assessment {
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+        }
+        .self-assessment label { cursor: pointer; }
+        .score-area {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: var(--shadow);
+        }
+        .score-area h2 { color: var(--heading); margin-bottom: 1rem; }
+        .score-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .score-stat {
+            background: var(--audio-bg);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        html[dir="rtl"] body { direction: rtl; }
+        html[dir="rtl"] .container { text-align: right; }
+        @media (max-width:600px) {
+            .test-header h1 { font-size:1.5rem; }
+            .container { padding:1rem 0.8rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div id="main-content" class="container">
+        <p style="margin-bottom:1.5rem; color:var(--text-light);">
+            <a href="revision.html" data-i18n="back_revision">Révision générale</a>
+            › <strong data-i18n="back_current">Test général – Semaine 5</strong>
+        </p>
+        <div class="test-header">
+            <span class="badge" data-i18n="test_badge">📝 Test général</span>
+            <h1 data-i18n="test_title">Test général – Semaine 5</h1>
+            <div class="meta">
+                <span data-i18n="test_duration">⏱️ 60 minutes</span>
+                <span data-i18n="test_meta">📘 Expression écrite structurée</span>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2 data-i18n="grammar_section">📖 Grammaire</h2>
+            <!-- Question 1 -->
+            <div class="question-card">
+                <h3 data-i18n="q1_title">📌 1. Identifiez la figure de style</h3>
+                <p data-i18n="q1_instruction">« Le vent hurlait sa colère. »<br>Quelle figure de style est utilisée ?</p>
+                <input type="text" placeholder="Figure de style...">
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_q1" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_q1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_q1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('q1Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="q1Key" class="answer-key"></div>
+            </div>
+            <!-- Question 2 -->
+            <div class="question-card">
+                <h3 data-i18n="q2_title">📌 2. Champ lexical ou sémantique ?</h3>
+                <p data-i18n="q2_instruction">« vague, sable, coquillage, algue »<br>S'agit-il d'un champ lexical ou sémantique ? Justifiez en une phrase.</p>
+                <input type="text" placeholder="Votre réponse...">
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_q2" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_q2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_q2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('q2Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="q2Key" class="answer-key"></div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2 data-i18n="conjugaison_section">🔧 Conjugaison</h2>
+            <!-- Question 3 -->
+            <div class="question-card">
+                <h3 data-i18n="q3_title">📌 3. Concordance des temps</h3>
+                <p data-i18n="q3_instruction">« Il a dit qu'il (venir) ________ le lendemain. »<br>Complétez avec le temps correct.</p>
+                <input type="text" placeholder="Forme conjuguée...">
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_q3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_q3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_q3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('q3Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="q3Key" class="answer-key"></div>
+            </div>
+            <!-- Question 4 -->
+            <div class="question-card">
+                <h3 data-i18n="q4_title">📌 4. Temps composé</h3>
+                <p data-i18n="q4_instruction">« Quand tu (lire) ________ ce livre, donne-moi ton avis. »<br>Quel temps composé faut-il utiliser ?</p>
+                <input type="text" placeholder="Forme conjuguée...">
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_q4" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_q4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_q4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('q4Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="q4Key" class="answer-key"></div>
+            </div>
+            <!-- Question 5 -->
+            <div class="question-card">
+                <h3 data-i18n="q5_title">📌 5. Participe passé</h3>
+                <p data-i18n="q5_instruction">« Les lettres que j'ai (écrire) ________ sont sur la table. »</p>
+                <input type="text" placeholder="Participe passé accordé...">
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_q5" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_q5" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_q5" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('q5Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="q5Key" class="answer-key"></div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2 data-i18n="orthographe_section">✏️ Orthographe</h2>
+            <!-- Question 6 -->
+            <div class="question-card">
+                <h3 data-i18n="q6_title">📌 6. Mot invariable</h3>
+                <p data-i18n="q6_instruction">« ________ à moi, je préfère rester ici. »<br>Complétez avec le bon mot invariable.</p>
+                <input type="text" placeholder="quant / quand...">
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_q6" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_q6" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_q6" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('q6Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="q6Key" class="answer-key"></div>
+            </div>
+            <!-- Question 7 -->
+            <div class="question-card">
+                <h3 data-i18n="q7_title">📌 7. Accord du participe passé (verbe pronominal)</h3>
+                <p data-i18n="q7_instruction">« Elle s'est (laver) ________ les mains. »</p>
+                <input type="text" placeholder="Participe passé...">
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_q7" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_q7" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_q7" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('q7Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="q7Key" class="answer-key"></div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2 data-i18n="expression_section">✍️ Expression écrite</h2>
+            <!-- Question 8 -->
+            <div class="question-card">
+                <h3 data-i18n="q8_title">📌 8. Analysez une strophe</h3>
+                <p data-i18n="q8_instruction">« La lune est un grand voilier d'argent / Glissant sur l'océan. »<br>Quelle figure de style est utilisée ? Quelle est sa fonction ?</p>
+                <input type="text" placeholder="Figure et fonction...">
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_q8" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_q8" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_q8" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('q8Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="q8Key" class="answer-key"></div>
+            </div>
+            <!-- Question 9 -->
+            <div class="question-card">
+                <h3 data-i18n="q9_title">📌 9. Écrivez un vers avec une image</h3>
+                <p data-i18n="q9_instruction">Composez un vers poétique sur le thème du soleil en utilisant une métaphore.</p>
+                <input type="text" placeholder="Votre vers...">
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_q9" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_q9" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_q9" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═════ SCORING AREA ═════ -->
+        <div class="score-area" id="scoreArea">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="score-stats" id="scoreStats">
+                <div class="score-stat"><span data-i18n="score_correct">Correctes :</span> <span id="scoreCorrect">0</span></div>
+                <div class="score-stat"><span data-i18n="score_incorrect">Incorrectes :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="score-stat"><span data-i18n="score_partial">Partielles :</span> <span id="scorePartial">0</span></div>
+                <div class="score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">9</span></div>
+            </div>
+        </div>
+        <div class="score-actions" style="margin-top:1.2rem;">
+            <button id="saveResultsBtn" class="btn-verify" style="margin-right:0.5rem;" 
+                    data-i18n="save_results">💾 Enregistrer mes résultats</button>
+            <button id="printPdfBtn" class="btn-verify" style="background:#5c5344; margin-right:0.5rem;"
+                    data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+        </div>
+        <div style="margin-top:2rem; display:flex; justify-content:space-between; flex-wrap:wrap;">
+            <a href="revision.html" data-i18n="footer_back" class="no-bilingual">← Retour au programme</a>
+        </div>
+    </div>
+
+    <!-- ═══════ SCRIPTS ═══════ -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                'test_title': 'Test général – Semaine 5 | Expression écrite structurée',
+                'back_revision': 'Révision générale',
+                'back_current': 'Test général – Semaine 5',
+                'test_badge': '📝 Test général',
+                'test_duration': '⏱️ 60 minutes',
+                'test_meta': '📘 Expression écrite structurée',
+                'grammar_section': '📖 Grammaire',
+                'conjugaison_section': '🔧 Conjugaison',
+                'orthographe_section': '✏️ Orthographe',
+                'expression_section': '✍️ Expression écrite',
+                'q1_title': '📌 1. Identifiez la figure de style',
+                'q1_instruction': '« Le vent hurlait sa colère. »<br>Quelle figure de style est utilisée ?',
+                'q2_title': '📌 2. Champ lexical ou sémantique ?',
+                'q2_instruction': '« vague, sable, coquillage, algue »<br>S\'agit-il d\'un champ lexical ou sémantique ? Justifiez en une phrase.',
+                'q3_title': '📌 3. Concordance des temps',
+                'q3_instruction': '« Il a dit qu\'il (venir) ________ le lendemain. »<br>Complétez avec le temps correct.',
+                'q4_title': '📌 4. Temps composé',
+                'q4_instruction': '« Quand tu (lire) ________ ce livre, donne-moi ton avis. »<br>Quel temps composé faut-il utiliser ?',
+                'q5_title': '📌 5. Participe passé',
+                'q5_instruction': '« Les lettres que j\'ai (écrire) ________ sont sur la table. »',
+                'q6_title': '📌 6. Mot invariable',
+                'q6_instruction': '« ________ à moi, je préfère rester ici. »<br>Complétez avec le bon mot invariable.',
+                'q7_title': '📌 7. Accord du participe passé (verbe pronominal)',
+                'q7_instruction': '« Elle s\'est (laver) ________ les mains. »',
+                'q8_title': '📌 8. Analysez une strophe',
+                'q8_instruction': '« La lune est un grand voilier d\'argent / Glissant sur l\'océan. »<br>Quelle figure de style est utilisée ? Quelle est sa fonction ?',
+                'q9_title': '📌 9. Écrivez un vers avec une image',
+                'q9_instruction': 'Composez un vers poétique sur le thème du soleil en utilisant une métaphore.',
+                'btn_correction': '🔍 Voir la correction',
+                'footer_back': '← Retour au programme',
+                'self_assess_question': 'Ma réponse est :',
+                'self_correct': 'Correcte',
+                'self_incorrect': 'Incorrecte',
+                'self_partial': 'Partiellement correcte',
+                'score_title': '📊 Votre auto‑évaluation',
+                'score_correct': 'Correctes :',
+                'score_incorrect': 'Incorrectes :',
+                'score_partial': 'Partielles :',
+                'score_unanswered': 'Sans réponse :',
+                'save_results': '💾 Enregistrer mes résultats',
+                'save_success': 'Résultats sauvegardés ✓',
+                'save_error': 'Erreur lors de la sauvegarde',
+                'print_pdf': '🖨️ Imprimer / PDF',
+                'print_with_answers': 'Corrigé inclus',
+                'print_site_name': 'Educational Dashboard – French',
+                'print_scholar_year': 'Révision pour le Bac',
+                'print_week': 'Semaine 5',
+                'print_area': 'Test général',
+                'print_footer_dev': 'Développé par Mejri Ziad',
+                'print_footer_date': 'Imprimé le',
+                'print_without_answers': 'Sans corrigé',
+                'toast_signin_required': 'Connectez-vous pour voir les corrections.'
+            },
+            en: {
+                'test_title': 'General Test – Week 5 | Structured Writing',
+                'back_revision': 'General Review',
+                'back_current': 'General Test – Week 5',
+                'test_badge': '📝 General Test',
+                'test_duration': '⏱️ 60 minutes',
+                'test_meta': '📘 Structured Writing',
+                'grammar_section': '📖 Grammar',
+                'conjugaison_section': '🔧 Conjugation',
+                'orthographe_section': '✏️ Spelling',
+                'expression_section': '✍️ Writing',
+                'q1_title': '📌 1. Identify the figure of speech',
+                'q1_instruction': '"The wind howled its anger."<br>What figure of speech is used?',
+                'q2_title': '📌 2. Lexical or semantic field?',
+                'q2_instruction': '"wave, sand, shell, seaweed"<br>Is this a lexical or semantic field? Justify in one sentence.',
+                'q3_title': '📌 3. Tense agreement',
+                'q3_instruction': '"He said he (come) ________ the next day."<br>Complete with the correct tense.',
+                'q4_title': '📌 4. Compound tense',
+                'q4_instruction': '"When you (read) ________ this book, give me your opinion."<br>Which compound tense should be used?',
+                'q5_title': '📌 5. Past participle',
+                'q5_instruction': '"The letters I (write) ________ are on the table."',
+                'q6_title': '📌 6. Invariable word',
+                'q6_instruction': '"________ for me, I prefer to stay here."<br>Complete with the correct invariable word.',
+                'q7_title': '📌 7. Past participle agreement (pronominal verb)',
+                'q7_instruction': '"She (wash) ________ her hands."',
+                'q8_title': '📌 8. Analyze a stanza',
+                'q8_instruction': '"The moon is a great silver sail / Gliding on the ocean."<br>What figure of speech is used? What is its function?',
+                'q9_title': '📌 9. Write a verse with an image',
+                'q9_instruction': 'Compose a poetic verse about the sun using a metaphor.',
+                'btn_correction': '🔍 See correction',
+                'footer_back': '← Back to program',
+                'self_assess_question': 'My answer is:',
+                'self_correct': 'Correct',
+                'self_incorrect': 'Incorrect',
+                'self_partial': 'Partially correct',
+                'score_title': '📊 Your self‑assessment',
+                'score_correct': 'Correct:',
+                'score_incorrect': 'Incorrect:',
+                'score_partial': 'Partial:',
+                'score_unanswered': 'Unanswered:',
+                'save_results': '💾 Save my results',
+                'save_success': 'Results saved ✓',
+                'save_error': 'Save failed',
+                'print_pdf': '🖨️ Print / PDF',
+                'print_with_answers': 'With answers',
+                'print_site_name': 'Educational Dashboard – French',
+                'print_scholar_year': 'Bac Review',
+                'print_week': 'Week 5',
+                'print_area': 'General Test',
+                'print_footer_dev': 'Developed by Mejri Ziad',
+                'print_footer_date': 'Printed on',
+                'print_without_answers': 'Without answers',
+                'toast_signin_required': 'Sign in to see the corrections.'
+            },
+            ar: {
+                'test_title': 'الاختبار العام – الأسبوع 5 | التعبير الكتابي المنظم',
+                'back_revision': 'المراجعة العامة',
+                'back_current': 'الاختبار العام – الأسبوع 5',
+                'test_badge': '📝 اختبار عام',
+                'test_duration': '⏱️ 60 دقيقة',
+                'test_meta': '📘 التعبير الكتابي المنظم',
+                'grammar_section': '📖 القواعد',
+                'conjugaison_section': '🔧 التصريف',
+                'orthographe_section': '✏️ الإملاء',
+                'expression_section': '✍️ التعبير الكتابي',
+                'q1_title': '📌 1. حدد الصورة البيانية',
+                'q1_instruction': '« الريح تعوي غضبها. »<br>ما الصورة البيانية المستعملة؟',
+                'q2_title': '📌 2. حقل معجمي أم دلالي؟',
+                'q2_instruction': '« موجة، رمل، صدفة، طحلب »<br>هل هذا حقل معجمي أم دلالي؟ علل في جملة واحدة.',
+                'q3_title': '📌 3. توافق الأزمنة',
+                'q3_instruction': '« قال إنه (يأتي) ________ في اليوم الموالي. »<br>أكمل بالزمن الصحيح.',
+                'q4_title': '📌 4. زمن مركب',
+                'q4_instruction': '« عندما (تقرأ) ________ هذا الكتاب، أعطني رأيك. »<br>ما الزمن المركب الذي يجب استعماله؟',
+                'q5_title': '📌 5. اسم المفعول',
+                'q5_instruction': '« الرسائل التي (كتبت) ________ على الطاولة. »',
+                'q6_title': '📌 6. كلمة ثابتة',
+                'q6_instruction': '« ________ بالنسبة إلي، أفضل البقاء هنا. »<br>أكمل بالكلمة الثابتة الصحيحة.',
+                'q7_title': '📌 7. توافق اسم المفعول (فعل انعكاسي)',
+                'q7_instruction': '« هي (غسلت) ________ يديها. »',
+                'q8_title': '📌 8. حلل مقطعا شعريا',
+                'q8_instruction': '« القمر شراع فضي كبير / ينزلق على المحيط. »<br>ما الصورة البيانية المستعملة؟ ما وظيفتها؟',
+                'q9_title': '📌 9. اكتب بيتا بصورة',
+                'q9_instruction': 'ألف بيتا شعريا حول الشمس مستعملا استعارة.',
+                'btn_correction': '🔍 الاطلاع على التصحيح',
+                'footer_back': '← العودة إلى البرنامج',
+                'self_assess_question': 'جوابي هو:',
+                'self_correct': 'صحيح',
+                'self_incorrect': 'خاطئ',
+                'self_partial': 'صحيح جزئيًا',
+                'score_title': '📊 تقييمك الذاتي',
+                'score_correct': 'صحيح:',
+                'score_incorrect': 'خاطئ:',
+                'score_partial': 'جزئي:',
+                'score_unanswered': 'بدون إجابة:',
+                'save_results': '💾 حفظ نتائجي',
+                'save_success': 'تم حفظ النتائج ✓',
+                'save_error': 'خطأ في الحفظ',
+                'print_pdf': '🖨️ طباعة / PDF',
+                'print_with_answers': 'مع التصحيح',
+                'print_site_name': 'لوحة التحكم التعليمية – الفرنسية',
+                'print_scholar_year': 'مراجعة البكالوريا',
+                'print_week': 'الأسبوع 5',
+                'print_area': 'اختبار عام',
+                'print_footer_dev': 'طوّر بواسطة ماجري زياد',
+                'print_footer_date': 'طُبع في',
+                'toast_signin_required': 'سجّل الدخول لرؤية التصحيحات.'
+            }
+        });
+        (function() {
+            var container = document.querySelector('.container');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+        })();
+    </script>
+    <script src="ed-french-ini.js"></script>
+    <script>
+        (function() {
+            document.getElementById('q1Key').innerHTML = '<strong>Correction :</strong> Personnification (le vent est animé, il hurle sa colère).';
+            document.getElementById('q2Key').innerHTML = '<strong>Correction :</strong> Champ lexical (mots différents liés au thème de la mer).';
+            document.getElementById('q3Key').innerHTML = '<strong>Correction :</strong> viendrait (conditionnel présent).';
+            document.getElementById('q4Key').innerHTML = '<strong>Correction :</strong> auras lu (futur antérieur).';
+            document.getElementById('q5Key').innerHTML = '<strong>Correction :</strong> écrites (accord avec COD « que » placé avant).';
+            document.getElementById('q6Key').innerHTML = '<strong>Correction :</strong> Quant (quant à moi).';
+            document.getElementById('q7Key').innerHTML = '<strong>Correction :</strong> lavé (pas d\'accord car COD « les mains » est après le verbe).';
+            document.getElementById('q8Key').innerHTML = '<strong>Correction :</strong> Métaphore (« La lune est un grand voilier d\'argent »). Fonction : embellir et suggérer.';
+            document.getElementById('q9Key').innerHTML = '<strong>Proposition :</strong> Le soleil, grand œil de feu, ouvre la paupière du jour.';
+
+            window.toggleCorrection = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('visible');
+            };
+
+            function updateScore() {
+                const radioGroups = ['self_q1', 'self_q2', 'self_q3', 'self_q4', 'self_q5', 'self_q6', 'self_q7', 'self_q8', 'self_q9'];
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                radioGroups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                document.getElementById('scoreCorrect').textContent = correct;
+                document.getElementById('scoreIncorrect').textContent = incorrect;
+                document.getElementById('scorePartial').textContent = partial;
+                document.getElementById('scoreUnanswered').textContent = unanswered;
+            }
+
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                const radioGroups = ['self_q1', 'self_q2', 'self_q3', 'self_q4', 'self_q5', 'self_q6', 'self_q7', 'self_q8', 'self_q9'];
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                radioGroups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                const lessonId = 'revision-test-semaine5';
+                const lang = localStorage.getItem('lang') || 'fr';
+                const entry = {
+                    lesson_id: lessonId,
+                    lesson_title: {
+                        fr: 'Test général – Semaine 5',
+                        en: 'General Test – Week 5',
+                        ar: 'الاختبار العام – الأسبوع 5'
+                    },
+                    year: {
+                        fr: '4ᵉ année secondaire (Bac)',
+                        en: '12th grade (Bac)',
+                        ar: 'السنة الرابعة ثانوي'
+                    },
+                    module: {
+                        fr: 'Expression écrite structurée',
+                        en: 'Structured Writing',
+                        ar: 'التعبير الكتابي المنظم'
+                    },
+                    correct: correct,
+                    incorrect: incorrect,
+                    partial: partial,
+                    unanswered: unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles')
+                    .select('achivement')
+                    .eq('id', user.id)
+                    .single();
+                if (fetchError) { console.error('Could not fetch profile:', fetchError); return; }
+                let achivement = profileData?.achivement || {};
+                if (!achivement["ED-French"]) achivement["ED-French"] = [];
+                const arr = achivement["ED-French"];
+                const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+                if (existingIdx >= 0) arr[existingIdx] = entry; else arr.push(entry);
+                const { error: updateError } = await App.supabase
+                    .from('profiles')
+                    .update({ achivement: achivement })
+                    .eq('id', user.id);
+                if (updateError) {
+                    console.error('Save failed:', updateError);
+                    App.showToast('save_error', 'error');
+                } else {
+                    App.showToast('save_success', 'success');
+                    App.logUserAction('test_saved', { test: lessonId, correct, incorrect, partial });
+                }
+            });
+
+            document.getElementById('printPdfBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles')
+                        .select('registration_state')
+                        .eq('id', user.id)
+                        .single();
+                    if (!error && profile && profile.registration_state && profile.registration_state.active === true) isRegistered = true;
+                } catch (e) {}
+                const headerHTML = document.querySelector('.test-header').cloneNode(true);
+                const sections = document.querySelectorAll('.test-section');
+                let sectionsHTML = '';
+                sections.forEach(s => {
+                    const clone = s.cloneNode(true);
+                    clone.querySelectorAll('input, textarea, .btn-verify, .self-assessment').forEach(el => el.remove());
+                    if (isRegistered) {
+                        const answerKeys = clone.querySelectorAll('.answer-key');
+                        answerKeys.forEach(key => {
+                            key.style.display = 'block';
+                            key.style.border = 'none';
+                            key.style.padding = '0.5rem 0';
+                            key.style.margin = '0.5rem 0';
+                            key.style.background = 'transparent';
+                        });
+                    } else {
+                        clone.querySelectorAll('.answer-key').forEach(el => el.remove());
+                    }
+                    sectionsHTML += clone.outerHTML;
+                });
+                const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                const lang = localStorage.getItem('lang') || 'fr';
+                printWindow.document.write(`
+                <!DOCTYPE html>
+                <html lang="${lang}">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>${App.getTranslation('test_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title>
+                    <style>
+                        body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.6; max-width: 700px; margin: 2rem auto; padding: 0 1rem; color: #000; }
+                        .print-header { text-align: center; border-bottom: 2px solid #c75b2c; padding-bottom: 1rem; margin-bottom: 2rem; }
+                        .print-header .site-name { font-size: 1.4rem; font-weight: bold; color: #c75b2c; margin: 0 0 0.3rem; }
+                        .print-header .meta-line { font-size: 0.95rem; color: #444; margin: 0.2rem 0; }
+                        .print-header .lesson-name { font-size: 1.1rem; font-weight: bold; color: #000; margin-top: 0.5rem; }
+                        .print-footer { text-align: center; border-top: 1px solid #ccc; padding-top: 1rem; margin-top: 2rem; font-size: 0.85rem; color: #666; }
+                        h1, h2, h3 { color: #000; }
+                        .test-header { text-align: center; margin-bottom: 2rem; }
+                        .badge { display: inline-block; background: #c75b2c; color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; text-transform: uppercase; }
+                        .test-section h2 { margin: 1.5rem 0; border-bottom: 2px solid #c75b2c; display: inline-block; }
+                        .question-card { margin: 1.2rem 0; }
+                        table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; }
+                        th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+                        th { background: #f0e8d8; }
+                        .answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; }
+                        @media print { body { margin: 0; padding: 0; } @page { margin: 2cm; } }
+                    </style>
+                </head>
+                <body>
+                    <div class="print-header">
+                        <div class="site-name">${App.getTranslation('print_site_name', lang)}</div>
+                        <div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div>
+                        <div class="lesson-name">${App.getTranslation('test_title', lang)}</div>
+                    </div>
+                    ${breadcrumb.outerHTML}
+                    ${headerHTML.outerHTML}
+                    ${sectionsHTML}
+                    <div class="print-footer">
+                        ${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}
+                    </div>
+                </body>
+                </html>
+            `);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+
+            document.querySelectorAll('input[type="radio"][name^="self_q"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+        })();
+    </script>
+    <!-- ═══════ DIRECT‑TRANSLATION FIX ═══════ -->
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+</body>
+</html>
