@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson4_title">Leçon 4 – Concordance des temps : exercices | Texte littéraire & Exercices</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ===== Lesson‑specific styles (unchanged) ===== */
+        :root {
+            --bg: #f9f7f1; --card: #ffffff; --text: #2b2416; --text-light: #5c5344;
+            --heading: #382e1e; --accent: #c75b2c; --accent-hover: #a3441d; --border: #e5ddd0;
+            --shadow: 0 1px 4px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-hover: 0 8px 22px rgba(0,0,0,0.08); --radius: 12px; --radius-sm: 8px;
+            --transition: 0.25s ease; --font-body: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
+            --audio-bg: #f4efe4; --audio-progress: #d8c9aa; --button-bg: #f0e8d8; --button-hover: #e3d5bc; --input-bg: #fcfaf6;
+        }
+        body.dark {
+            --bg: #1e1b17; --card: #2a2620; --text: #e8dfd2; --text-light: #b9aa95;
+            --heading: #f0e4d2; --accent: #e07b4a; --accent-hover: #f08c5c; --border: #3e3830;
+            --shadow: 0 1px 4px rgba(0,0,0,0.25); --shadow-hover: 0 8px 22px rgba(0,0,0,0.35);
+            --audio-bg: #26221b; --audio-progress: #5a4e3c; --button-bg: #3a3329; --button-hover: #4e4437; --input-bg: #333028;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: var(--font-body); background: var(--bg); color: var(--text);
+            line-height: 1.75; transition: background var(--transition), color var(--transition);
+        }
+        .container { max-width:860px; margin:0 auto; padding:1.8rem 1.4rem 3rem; }
+        .lesson-header { text-align: center; margin-bottom: 2rem; }
+        .badge { display:inline-block; background: var(--accent); color: #fff; padding:0.25rem 1rem; border-radius:20px; font-size:0.8rem; font-weight:700; letter-spacing:0.03em; text-transform: uppercase; }
+        .lesson-header h1 { font-size: 2.1rem; color: var(--heading); margin: 0.6rem 0 0.3rem; line-height: 1.3; }
+        .lesson-header .meta { font-size:0.9rem; color:var(--text-light); display: flex; justify-content: center; gap:1.2rem; flex-wrap: wrap; }
+        .audio-player { background: var(--card); border:1px solid var(--border); border-radius: var(--radius); padding:1rem 1.4rem; margin: 1.5rem 0 2rem; box-shadow: var(--shadow); display: flex; align-items: center; gap:1rem; flex-wrap: wrap; }
+        .audio-player .play-btn { width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #fff; border:none; font-size:1.2rem; cursor:pointer; display: flex; align-items: center; justify-content: center; transition: background var(--transition); flex-shrink: 0; }
+        .play-btn:hover { background: var(--accent-hover); }
+        .audio-player .progress-area { flex:1; min-width:120px; display: flex; flex-direction: column; gap:0.3rem; }
+        .progress-bar { width:100%; height:6px; background: var(--audio-progress); border-radius: 3px; cursor: pointer; position: relative; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--accent); border-radius: 3px; width: 0%; transition: width 0.1s linear; }
+        .time-info { display: flex; justify-content: space-between; font-size:0.75rem; color:var(--text-light); }
+        .speed-selector { display: flex; gap:0.3rem; flex-wrap: wrap; }
+        .speed-btn { border:1px solid var(--border); background: var(--button-bg); color: var(--text); padding:0.25rem 0.55rem; border-radius: 4px; font-size:0.75rem; font-weight:600; cursor:pointer; transition: all var(--transition); }
+        .speed-btn.active { background: var(--accent); color:#fff; border-color: var(--accent); }
+        .audio-label { font-weight:700; font-size:0.85rem; color:var(--heading); white-space: nowrap; }
+        @media (max-width:600px) { .audio-player { flex-direction: column; align-items: stretch; } .audio-label { text-align: center; } }
+        .text-card { background: var(--card); border:1px solid var(--border); border-left:5px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding:1.4rem 1.6rem; margin:1.8rem 0; font-style:italic; font-size:1.05rem; line-height: 1.9; box-shadow: var(--shadow); position: relative; }
+        .text-card .quote-mark { position: absolute; top:-12px; left:14px; font-size:3rem; color:var(--accent); opacity:0.25; line-height:1; }
+        .text-card .author { text-align:right; font-style:normal; font-size:0.9rem; color:var(--text-light); margin-top:0.8rem; }
+        .exercises-section h2 { font-size:1.5rem; color:var(--heading); margin:2rem 0 1rem; border-bottom:3px solid var(--accent); display:inline-block; padding-bottom:0.3rem; }
+        .exercise-card { background: var(--card); border:1px solid var(--border); border-radius: var(--radius-sm); padding:1.2rem 1.4rem; margin-bottom:1.4rem; box-shadow: var(--shadow); }
+        .exercise-card h3 { font-size:1.05rem; color:var(--accent); margin-bottom:0.8rem; display: flex; align-items: center; gap:0.4rem; }
+        .exercise-card table { width:100%; border-collapse: collapse; margin: 0.8rem 0; }
+        .exercise-card th, .exercise-card td { padding:0.55rem 0.7rem; border:1px solid var(--border); text-align:left; font-size:0.9rem; }
+        .exercise-card th { background: var(--audio-bg); font-weight:700; color:var(--heading); }
+        .exercise-card input[type="text"] { width:100%; padding:0.4rem 0.6rem; border:1px solid var(--border); border-radius:4px; background: var(--input-bg); color: var(--text); font-family: inherit; font-size:0.9rem; }
+        .btn-verify { background: var(--accent); color:#fff; border:none; padding:0.5rem 1.2rem; border-radius: 20px; font-weight:600; cursor:pointer; transition: background var(--transition); margin-top:0.6rem; font-size:0.85rem; }
+        .btn-verify:hover { background: var(--accent-hover); }
+        .answer-key { display:none; margin-top:0.8rem; padding:0.8rem; background: var(--audio-bg); border-radius:6px; font-size:0.85rem; color: var(--text-light); border:1px dashed var(--accent); }
+        .answer-key.visible { display:block; }
+        .self-assessment { margin-top: 0.8rem; font-size: 0.9rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+        .self-assessment label { cursor: pointer; }
+        .score-area { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; margin-top: 2rem; box-shadow: var(--shadow); }
+        .score-area h2 { color: var(--heading); margin-bottom: 1rem; }
+        .score-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .score-stat { background: var(--audio-bg); padding: 0.8rem 1.2rem; border-radius: 8px; font-weight: 600; }
+        html[dir="rtl"] body { direction: rtl; }
+        html[dir="rtl"] .container { text-align: right; }
+        html[dir="rtl"] .text-card .author { text-align: left; }
+        html[dir="rtl"] .exercise-card th, html[dir="rtl"] .exercise-card td { text-align: right; }
+        @media (max-width:600px) { .lesson-header h1 { font-size:1.5rem; } .container { padding:1rem 0.8rem 2rem; } }
+        .valeurs-section, .methode-section { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.6rem 1.8rem; margin: 2rem 0; box-shadow: var(--shadow); }
+        .valeurs-section h2, .methode-section h2 { font-size: 1.5rem; color: var(--heading); margin-bottom: 1rem; border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 0.3rem; }
+        .valeur-card { background: var(--audio-bg); border-radius: var(--radius-sm); padding: 1rem 1.2rem; margin-bottom: 1rem; }
+        .valeur-card h3 { color: var(--accent); font-size: 1.1rem; margin-bottom: 0.4rem; }
+        .valeur-card ul { list-style: none; padding: 0; }
+        .valeur-card li { padding: 0.3rem 0; padding-left: 1.4rem; position: relative; color: var(--text-light); }
+        .valeur-card li::before { content: '◆'; position: absolute; left: 0; color: var(--accent); font-size: 0.5rem; top: 0.5rem; }
+        .valeur-card p { margin: 0.5rem 0; }
+    </style>
+</head>
+<body>
+    <div id="main-content" class="container">
+        <p style="margin-bottom:1.5rem; color:var(--text-light);">
+            <a href="revision.html" data-i18n="back_revision">Révision générale</a>
+            › <strong data-i18n="back_current">Concordance des temps : exercices</strong>
+        </p>
+        <div class="lesson-header">
+            <span class="badge" data-i18n="lesson_badge">📘 Conjugaison · Leçon 4</span>
+            <h1 data-i18n="lesson_title">Concordance des temps : exercices<br>(Maîtrise des enchaînements temporels)</h1>
+            <div class="meta">
+                <span data-i18n="lesson_duration">⏱️ 45 minutes</span>
+                <span data-i18n="lesson_meta_audio">🎧 Écoutez le texte puis faites les exercices</span>
+            </div>
+        </div>
+        <div class="audio-player" id="audioPlayer">
+            <span class="audio-label" data-i18n="audio_label">🎧 Écoute littéraire</span>
+            <button class="play-btn" id="playBtn" aria-label="Lecture">▶</button>
+            <div class="progress-area">
+                <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
+                <div class="time-info"><span id="currentTime">0:00</span><span id="duration">0:00</span></div>
+            </div>
+            <div class="speed-selector" id="speedSelector">
+                <button class="speed-btn" data-speed="0.75">0.75x</button>
+                <button class="speed-btn active" data-speed="1">1x</button>
+                <button class="speed-btn" data-speed="1.25">1.25x</button>
+                <button class="speed-btn" data-speed="1.5">1.5x</button>
+            </div>
+        </div>
+        <div class="text-card">
+            <span class="quote-mark">“</span>
+            <p>
+                Le professeur <u>expliqua</u> que la Terre <u>tournait</u> autour du Soleil. Il <u>ajouta</u> que les saisons <u>dépendaient</u> de l'inclinaison de l'axe terrestre. « Si vous <u>observez</u> le ciel cette nuit, vous <u>verrez</u> des étoiles filantes », <u>dit</u>-il. Les élèves <u>écoutaient</u> avec attention, car ils <u>savaient</u> qu'ils <u>auraient</u> un contrôle la semaine suivante. Après qu'il <u>eut terminé</u>, ils <u>posèrent</u> de nombreuses questions. Il <u>fallait</u> qu'ils <u>comprennent</u> bien pour réussir. S'ils <u>avaient étudié</u> régulièrement, ils <u>n'auraient pas eu</u> à s'inquiéter. Le cours <u>se termina</u> et chacun <u>rentra</u> chez soi en pensant à ce qu'il <u>avait appris</u>.
+            </p>
+            <div class="author" data-i18n="text_author">— Le cours d'astronomie, texte original</div>
+        </div>
+        <div class="valeurs-section">
+            <h2 data-i18n="rules_heading">📖 La concordance des temps</h2>
+            <p data-i18n="rules_intro" class="no-bilingual" style="margin-bottom:1.2rem;">La concordance des temps consiste à harmoniser le temps du verbe de la subordonnée avec celui de la principale, selon le sens (antériorité, simultanéité, postériorité) et le mode (indicatif, subjonctif).</p>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_indicatif_title">🔹 À l'indicatif</h3>
+                <ul data-i18n="rules_indicatif_list">
+                    <li><strong>Principale au présent / futur :</strong> subordonnée au présent (simultanéité), passé composé (antériorité), futur (postériorité).</li>
+                    <li><strong>Principale au passé (imparfait, passé simple, passé composé) :</strong> subordonnée à l'imparfait (simultanéité), plus-que-parfait (antériorité), conditionnel présent (futur dans le passé).</li>
+                    <li><strong>Discours indirect :</strong> on transpose les temps selon la règle de concordance.</li>
+                </ul>
+            </div>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_subjonctif_title">🔹 Au subjonctif</h3>
+                <ul data-i18n="rules_subjonctif_list">
+                    <li><strong>Principale au présent / futur :</strong> subordonnée au subjonctif présent (simultanéité ou postériorité), subjonctif passé (antériorité).</li>
+                    <li><strong>Principale au passé :</strong> subordonnée au subjonctif imparfait (littéraire) ou présent (usage courant), subjonctif plus-que-parfait (littéraire) ou passé.</li>
+                </ul>
+            </div>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_si_title">🔹 Après « si »</h3>
+                <ul data-i18n="rules_si_list">
+                    <li><strong>Si + présent →</strong> principale au futur ou présent.</li>
+                    <li><strong>Si + imparfait →</strong> principale au conditionnel présent.</li>
+                    <li><strong>Si + plus-que-parfait →</strong> principale au conditionnel passé.</li>
+                </ul>
+            </div>
+            <p data-i18n="rules_note" style="margin-top:1rem; font-style:italic; color:var(--text-light);">💡 L'essentiel est de respecter la logique temporelle : antériorité, simultanéité, postériorité.</p>
+        </div>
+        <div class="exercises-section">
+            <h2 data-i18n="exercises_heading">✍️ Exercices</h2>
+            <!-- Exercice 1 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo1_title">📌 1. Justifiez la concordance</h3>
+                <p data-i18n="exo1_instruction">Pour chaque phrase, indiquez le rapport temporel (antériorité, simultanéité, postériorité) et vérifiez la concordance.</p>
+                <ol type="a">
+                    <li>Il m'a dit qu'il <u>avait fini</u> son travail. → rapport ? <input type="text" placeholder="antériorité/simultanéité/postériorité"></li>
+                    <li>Quand je suis arrivé, elle <u>dormait</u>. → rapport ? <input type="text" placeholder="..."></li>
+                    <li>Je pense qu'il <u>viendra</u> demain. → rapport ? <input type="text" placeholder="..."></li>
+                    <li>S'il <u>pleuvait</u>, nous resterions à la maison. → rapport ? <input type="text" placeholder="..."></li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo1Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo1Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 2 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo2_title">📌 2. Choisissez le temps correct</h3>
+                <p data-i18n="exo2_instruction">Complétez avec le temps qui convient selon la concordance.</p>
+                <ol type="a">
+                    <li>Il a promis qu'il (venir) ________ nous voir.</li>
+                    <li>Je ne savais pas que tu (être) ________ malade.</li>
+                    <li>Elle espère que vous (réussir) ________ .</li>
+                    <li>Après qu'il (partir) ________ , nous avons soupiré.</li>
+                    <li>Il faudrait que tu (faire) ________ plus attention.</li>
+                    <li>Si j'avais su, je (rester) ________ .</li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo2Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo2Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 3 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo3_title">📌 3. Transformez au discours indirect</h3>
+                <p data-i18n="exo3_instruction">Mettez les phrases au discours indirect en respectant la concordance des temps. Commencez par « Il a dit que... ».</p>
+                <ol type="a">
+                    <li>« Je suis fatigué. » → Il a dit qu'il ________ . <input type="text" placeholder="complétez"></li>
+                    <li>« Nous partirons demain. » → Il a dit qu'ils ________ . <input type="text" placeholder="complétez"></li>
+                    <li>« J'ai déjà mangé. » → Il a dit qu'il ________ . <input type="text" placeholder="complétez"></li>
+                    <li>« Vous devez vous reposer. » → Il a dit que nous ________ . <input type="text" placeholder="complétez"></li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo3Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo3Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 4 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo4_title">📌 4. Corrigez les erreurs de concordance</h3>
+                <p data-i18n="exo4_instruction">Réécrivez chaque phrase en corrigeant l'erreur de temps.</p>
+                <ol type="a">
+                    <li>Il a dit qu'il viendra le lendemain. <input type="text" placeholder="Correction"></li>
+                    <li>Si tu aurais de l'argent, tu achèterais une voiture. <input type="text" placeholder="Correction"></li>
+                    <li>Je pensais qu'il a déjà fini. <input type="text" placeholder="Correction"></li>
+                    <li>Il faut que tu es à l'heure. <input type="text" placeholder="Correction"></li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo4Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo4Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 5 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo5_title">📌 5. Production écrite</h3>
+                <p data-i18n="exo5_instruction">Rédigez un court paragraphe (5-6 phrases) en utilisant correctement la concordance des temps. Commencez par une principale au passé (imparfait ou passé composé) et intégrez au moins une subordonnée avec antériorité, une avec simultanéité, et une avec postériorité. Soulignez les verbes et indiquez les rapports.</p>
+                <textarea rows="6" style="width:100%; padding:0.5rem;" placeholder="Votre paragraphe..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex5" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex5" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex5" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+        </div>
+        <div class="score-area" id="scoreArea">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="score-stats" id="scoreStats">
+                <div class="score-stat"><span data-i18n="score_correct">Correctes :</span> <span id="scoreCorrect">0</span></div>
+                <div class="score-stat"><span data-i18n="score_incorrect">Incorrectes :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="score-stat"><span data-i18n="score_partial">Partielles :</span> <span id="scorePartial">0</span></div>
+                <div class="score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">5</span></div>
+            </div>
+        </div>
+        <div class="score-actions" style="margin-top:1.2rem;">
+            <button id="saveResultsBtn" class="btn-verify" style="margin-right:0.5rem;" data-i18n="save_results">💾 Enregistrer mes résultats</button>
+            <button id="printPdfBtn" class="btn-verify" style="background:#5c5344; margin-right:0.5rem;" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+        </div>
+        <div style="margin-top:2rem; display:flex; justify-content:space-between; flex-wrap:wrap;">
+            <a href="semaine7-conjugaison-tous-temps.html" data-i18n="footer_back" class="no-bilingual">← Leçon précédente</a>
+            <a href="semaine7-orthographe-accords.html" data-i18n="footer_next" class="no-bilingual">Leçon suivante : Les accords dans la phrase complexe →</a>
+        </div>
+    </div>
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                'lesson4_title': 'Leçon 4 – Concordance des temps : exercices | Texte littéraire & Exercices',
+                'lesson_short_title': 'Concordance des temps : exercices',
+                'ach_year_bac': '4ᵉ année secondaire (Bac)',
+                'ach_module_semaine7': 'Méthodologie des épreuves',
+                'back_revision': 'Révision générale',
+                'back_current': 'Concordance des temps : exercices',
+                'lesson_badge': '📘 Conjugaison · Leçon 4',
+                'lesson_title': 'Concordance des temps : exercices<br>(Maîtrise des enchaînements temporels)',
+                'lesson_duration': '⏱️ 45 minutes',
+                'lesson_meta_audio': '🎧 Écoutez le texte puis faites les exercices',
+                'audio_label': '🎧 Écoute littéraire',
+                'text_author': '— Le cours d\'astronomie, texte original',
+                'rules_heading': '📖 La concordance des temps',
+                'rules_intro': 'La concordance des temps consiste à harmoniser le temps du verbe de la subordonnée avec celui de la principale, selon le sens (antériorité, simultanéité, postériorité) et le mode (indicatif, subjonctif).',
+                'rules_indicatif_title': '🔹 À l\'indicatif',
+                'rules_indicatif_list': '<li><strong>Principale au présent / futur :</strong> subordonnée au présent (simultanéité), passé composé (antériorité), futur (postériorité).</li><li><strong>Principale au passé (imparfait, passé simple, passé composé) :</strong> subordonnée à l\'imparfait (simultanéité), plus-que-parfait (antériorité), conditionnel présent (futur dans le passé).</li><li><strong>Discours indirect :</strong> on transpose les temps selon la règle de concordance.</li>',
+                'rules_subjonctif_title': '🔹 Au subjonctif',
+                'rules_subjonctif_list': '<li><strong>Principale au présent / futur :</strong> subordonnée au subjonctif présent (simultanéité ou postériorité), subjonctif passé (antériorité).</li><li><strong>Principale au passé :</strong> subordonnée au subjonctif imparfait (littéraire) ou présent (usage courant), subjonctif plus-que-parfait (littéraire) ou passé.</li>',
+                'rules_si_title': '🔹 Après « si »',
+                'rules_si_list': '<li><strong>Si + présent →</strong> principale au futur ou présent.</li><li><strong>Si + imparfait →</strong> principale au conditionnel présent.</li><li><strong>Si + plus-que-parfait →</strong> principale au conditionnel passé.</li>',
+                'rules_note': '💡 L\'essentiel est de respecter la logique temporelle : antériorité, simultanéité, postériorité.',
+                'exercises_heading': '✍️ Exercices',
+                'exo1_title': '📌 1. Justifiez la concordance',
+                'exo1_instruction': 'Pour chaque phrase, indiquez le rapport temporel (antériorité, simultanéité, postériorité) et vérifiez la concordance.',
+                'exo2_title': '📌 2. Choisissez le temps correct',
+                'exo2_instruction': 'Complétez avec le temps qui convient selon la concordance.',
+                'exo3_title': '📌 3. Transformez au discours indirect',
+                'exo3_instruction': 'Mettez les phrases au discours indirect en respectant la concordance des temps. Commencez par « Il a dit que... ».',
+                'exo4_title': '📌 4. Corrigez les erreurs de concordance',
+                'exo4_instruction': 'Réécrivez chaque phrase en corrigeant l\'erreur de temps.',
+                'exo5_title': '📌 5. Production écrite',
+                'exo5_instruction': 'Rédigez un court paragraphe (5-6 phrases) en utilisant correctement la concordance des temps. Commencez par une principale au passé (imparfait ou passé composé) et intégrez au moins une subordonnée avec antériorité, une avec simultanéité, et une avec postériorité. Soulignez les verbes et indiquez les rapports.',
+                'btn_correction': '🔍 Voir la correction',
+                'footer_back': '← Leçon précédente',
+                'footer_next': 'Leçon suivante : Les accords dans la phrase complexe →',
+                'self_assess_question': 'Ma réponse est :',
+                'self_correct': 'Correcte', 'self_incorrect': 'Incorrecte', 'self_partial': 'Partiellement correcte',
+                'score_title': '📊 Votre auto‑évaluation',
+                'score_correct': 'Correctes :', 'score_incorrect': 'Incorrectes :', 'score_partial': 'Partielles :', 'score_unanswered': 'Sans réponse :',
+                'save_results': '💾 Enregistrer mes résultats', 'save_success': 'Résultats sauvegardés ✓', 'save_error': 'Erreur lors de la sauvegarde',
+                'print_pdf': '🖨️ Imprimer / PDF', 'print_with_answers': 'Corrigé inclus',
+                'print_site_name': 'Educational Dashboard – French', 'print_scholar_year': 'Révision pour le Bac',
+                'print_week': 'Semaine 7', 'print_area': 'Conjugaison',
+                'print_footer_dev': 'Développé par Mejri Ziad', 'print_footer_date': 'Imprimé le', 'print_without_answers': 'Sans corrigé',
+                'toast_signin_required': 'Connectez-vous pour voir les corrections.'
+            },
+            en: {
+                'lesson4_title': 'Lesson 4 – Sequence of tenses: exercises | Literary text & exercises',
+                'lesson_short_title': 'Sequence of tenses: exercises',
+                'ach_year_bac': '12th grade (Bac)', 'ach_module_semaine7': 'Exam methodology',
+                'back_revision': 'General review', 'back_current': 'Sequence of tenses: exercises',
+                'lesson_badge': '📘 Conjugation · Lesson 4',
+                'lesson_title': 'Sequence of tenses: exercises<br>(Mastering temporal sequences)',
+                'lesson_duration': '⏱️ 45 minutes', 'lesson_meta_audio': '🎧 Listen to the text then do the exercises',
+                'audio_label': '🎧 Literary listening', 'text_author': '— The astronomy lesson, original text',
+                'rules_heading': '📖 Sequence of tenses',
+                'rules_intro': 'Sequence of tenses consists in harmonizing the tense of the subordinate verb with that of the main clause, according to meaning (anteriority, simultaneity, posteriority) and mood (indicative, subjunctive).',
+                'rules_indicatif_title': '🔹 In the indicative',
+                'rules_indicatif_list': '<li><strong>Main clause in present/future:</strong> subordinate in present (simultaneity), passé composé (anteriority), future (posteriority).</li><li><strong>Main clause in past (imperfect, simple past, passé composé):</strong> subordinate in imperfect (simultaneity), pluperfect (anteriority), conditional present (future in the past).</li><li><strong>Indirect speech:</strong> tenses are shifted according to the sequence rule.</li>',
+                'rules_subjonctif_title': '🔹 In the subjunctive',
+                'rules_subjonctif_list': '<li><strong>Main clause present/future:</strong> subordinate in present subjunctive (simultaneity or posteriority), past subjunctive (anteriority).</li><li><strong>Main clause past:</strong> subordinate in imperfect subjunctive (literary) or present (common), pluperfect subjunctive (literary) or past.</li>',
+                'rules_si_title': '🔹 After "si"',
+                'rules_si_list': '<li><strong>Si + present →</strong> main clause future or present.</li><li><strong>Si + imperfect →</strong> main clause conditional present.</li><li><strong>Si + pluperfect →</strong> main clause conditional past.</li>',
+                'rules_note': '💡 The key is to respect temporal logic: anteriority, simultaneity, posteriority.',
+                'exercises_heading': '✍️ Exercises',
+                'exo1_title': '📌 1. Justify the sequence',
+                'exo1_instruction': 'For each sentence, indicate the temporal relationship (anteriority, simultaneity, posteriority) and check the sequence.',
+                'exo2_title': '📌 2. Choose the correct tense',
+                'exo2_instruction': 'Fill in with the tense that fits according to sequence.',
+                'exo3_title': '📌 3. Transform to indirect speech',
+                'exo3_instruction': 'Put the sentences into indirect speech respecting the sequence of tenses. Start with "Il a dit que...".',
+                'exo4_title': '📌 4. Correct sequence errors',
+                'exo4_instruction': 'Rewrite each sentence correcting the tense error.',
+                'exo5_title': '📌 5. Written production',
+                'exo5_instruction': 'Write a short paragraph (5-6 sentences) using correct sequence of tenses. Start with a main clause in the past (imperfect or passé composé) and include at least one subordinate with anteriority, one with simultaneity, and one with posteriority. Underline the verbs and indicate the relationships.',
+                'btn_correction': '🔍 See correction',
+                'footer_back': '← Previous lesson', 'footer_next': 'Next lesson: Agreement in complex sentences →',
+                'self_assess_question': 'My answer is:',
+                'self_correct': 'Correct', 'self_incorrect': 'Incorrect', 'self_partial': 'Partially correct',
+                'score_title': '📊 Your self‑assessment',
+                'score_correct': 'Correct:', 'score_incorrect': 'Incorrect:', 'score_partial': 'Partial:', 'score_unanswered': 'Unanswered:',
+                'save_results': '💾 Save my results', 'save_success': 'Results saved ✓', 'save_error': 'Save failed',
+                'print_pdf': '🖨️ Print / PDF', 'print_with_answers': 'With answers',
+                'print_site_name': 'Educational Dashboard – French', 'print_scholar_year': 'Bac Review',
+                'print_week': 'Week 7', 'print_area': 'Conjugation',
+                'print_footer_dev': 'Developed by Mejri Ziad', 'print_footer_date': 'Printed on', 'print_without_answers': 'Without answers',
+                'toast_signin_required': 'Sign in to see the corrections.'
+            },
+            ar: {
+                'lesson4_title': 'الدرس 4 – توافق الأزمنة: تمارين | نص أدبي وتمارين',
+                'lesson_short_title': 'توافق الأزمنة: تمارين',
+                'ach_year_bac': 'السنة الرابعة ثانوي', 'ach_module_semaine7': 'منهجية الامتحانات',
+                'back_revision': 'المراجعة العامة', 'back_current': 'توافق الأزمنة: تمارين',
+                'lesson_badge': '📘 التصريف · الدرس 4',
+                'lesson_title': 'توافق الأزمنة: تمارين<br>(إتقان التسلسل الزمني)',
+                'lesson_duration': '⏱️ 45 دقيقة', 'lesson_meta_audio': '🎧 استمع إلى النص ثم قم بالتمارين',
+                'audio_label': '🎧 استماع أدبي', 'text_author': '— درس الفلك، نص أصلي',
+                'rules_heading': '📖 توافق الأزمنة',
+                'rules_intro': 'توافق الأزمنة هو تنسيق زمن فعل الجملة التابعة مع زمن الجملة الأصلية، حسب المعنى (أسبقية، تزامن، لاحقية) والوضع (دلالي، منصوب).',
+                'rules_indicatif_title': '🔹 في الدلالي',
+                'rules_indicatif_list': '<li><strong>الجملة الأصلية في المضارع/المستقبل:</strong> التابعة في المضارع (تزامن)، الماضي المركب (أسبقية)، المستقبل (لاحقية).</li><li><strong>الأصلية في الماضي (ناقص، بسيط، مركب):</strong> التابعة في الماضي الناقص (تزامن)، الماضي التام (أسبقية)، الشرطي المضارع (مستقبل في الماضي).</li><li><strong>الكلام غير المباشر:</strong> تنقل الأزمنة حسب قاعدة التوافق.</li>',
+                'rules_subjonctif_title': '🔹 في المنصوب',
+                'rules_subjonctif_list': '<li><strong>الأصلية في المضارع/المستقبل:</strong> التابعة في المنصوب المضارع (تزامن أو لاحقية)، المنصوب الماضي (أسبقية).</li><li><strong>الأصلية في الماضي:</strong> التابعة في المنصوب الناقص (أدبي) أو المضارع (شائع)، المنصوب التام (أدبي) أو الماضي.</li>',
+                'rules_si_title': '🔹 بعد "si"',
+                'rules_si_list': '<li><strong>Si + مضارع →</strong> الأصلية في المستقبل أو المضارع.</li><li><strong>Si + ماضي ناقص →</strong> الأصلية في الشرطي المضارع.</li><li><strong>Si + ماضي تام →</strong> الأصلية في الشرطي الماضي.</li>',
+                'rules_note': '💡 الأساس هو احترام المنطق الزمني: أسبقية، تزامن، لاحقية.',
+                'exercises_heading': '✍️ تمارين',
+                'exo1_title': '📌 1. علل التوافق',
+                'exo1_instruction': 'لكل جملة، حدد العلاقة الزمنية (أسبقية، تزامن، لاحقية) وتحقق من التوافق.',
+                'exo2_title': '📌 2. اختر الزمن الصحيح',
+                'exo2_instruction': 'أكمل بالزمن المناسب حسب التوافق.',
+                'exo3_title': '📌 3. حول إلى الكلام غير المباشر',
+                'exo3_instruction': 'ضع الجمل في الكلام غير المباشر محترمًا توافق الأزمنة. ابدأ بـ «Il a dit que...».',
+                'exo4_title': '📌 4. صحح أخطاء التوافق',
+                'exo4_instruction': 'أعد كتابة كل جملة مع تصحيح خطأ الزمن.',
+                'exo5_title': '📌 5. إنتاج كتابي',
+                'exo5_instruction': 'اكتب فقرة قصيرة (5-6 جمل) مستعملاً توافق الأزمنة بشكل صحيح. ابدأ بجملة أصلية في الماضي (ناقص أو مركب) وأدمج جملة تابعة واحدة على الأقل بأسبقية، وواحدة بتزامن، وواحدة بلاحقية. ضع خطا تحت الأفعال وحدد العلاقات.',
+                'btn_correction': '🔍 الاطلاع على التصحيح',
+                'footer_back': '← الدرس السابق', 'footer_next': 'الدرس الموالي: التوافقات في الجملة المعقدة →',
+                'self_assess_question': 'جوابي هو:',
+                'self_correct': 'صحيح', 'self_incorrect': 'خاطئ', 'self_partial': 'صحيح جزئيًا',
+                'score_title': '📊 تقييمك الذاتي',
+                'score_correct': 'صحيح:', 'score_incorrect': 'خاطئ:', 'score_partial': 'جزئي:', 'score_unanswered': 'بدون إجابة:',
+                'save_results': '💾 حفظ نتائجي', 'save_success': 'تم حفظ النتائج ✓', 'save_error': 'خطأ في الحفظ',
+                'print_pdf': '🖨️ طباعة / PDF', 'print_with_answers': 'مع التصحيح',
+                'print_site_name': 'لوحة التحكم التعليمية – الفرنسية', 'print_scholar_year': 'مراجعة البكالوريا',
+                'print_week': 'الأسبوع 7', 'print_area': 'التصريف',
+                'print_footer_dev': 'طوّر بواسطة ماجري زياد', 'print_footer_date': 'طُبع في',
+                'toast_signin_required': 'سجّل الدخول لرؤية التصحيحات.'
+            }
+        });
+        (function() {
+            var container = document.querySelector('.container');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+        })();
+    </script>
+    <script src="ed-french-ini.js"></script>
+    <script>
+        (function() {
+            const audio = new Audio('lessons/revision/sounds/lesson7-4.mp3');
+            const playBtn = document.getElementById('playBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const speedBtns = document.querySelectorAll('.speed-btn');
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+            audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
+            audio.addEventListener('timeupdate', () => {
+                const percent = (audio.currentTime / audio.duration) * 100 || 0;
+                progressFill.style.width = percent + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            });
+            audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) { audio.play(); playBtn.textContent = '⏸'; }
+                else { audio.pause(); playBtn.textContent = '▶'; }
+            });
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const seekTime = (clickX / width) * audio.duration;
+                audio.currentTime = seekTime;
+            });
+            speedBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    speedBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const speed = parseFloat(btn.dataset.speed);
+                    audio.playbackRate = speed;
+                });
+            });
+
+            // Ex1 correction (manual, no table)
+            document.getElementById('exo1Key').innerHTML = '<strong>Correction :</strong><br>a) Antériorité (avait fini = plus-que-parfait, action avant le dire).<br>b) Simultanéité (dormait = imparfait, action en cours pendant l\'arrivée).<br>c) Postériorité (viendra = futur, action après le moment de la pensée).<br>d) Condition (si + imparfait → conditionnel présent).';
+
+            document.getElementById('exo2Key').innerHTML = '<strong>Correction :</strong><br>a) viendrait (futur dans le passé)<br>b) étais (imparfait, simultanéité)<br>c) réussissiez (subjonctif présent)<br>d) était parti (plus-que-parfait)<br>e) fasses (subjonctif présent)<br>f) serais resté (conditionnel passé)';
+
+            document.getElementById('exo3Key').innerHTML = '<strong>Correction :</strong><br>a) Il a dit qu\'il était fatigué.<br>b) Il a dit qu\'ils partiraient le lendemain.<br>c) Il a dit qu\'il avait déjà mangé.<br>d) Il a dit que nous devions nous reposer.';
+
+            document.getElementById('exo4Key').innerHTML = '<strong>Correction :</strong><br>a) Il a dit qu\'il viendrait le lendemain.<br>b) Si tu avais de l\'argent, tu achèterais une voiture.<br>c) Je pensais qu\'il avait déjà fini.<br>d) Il faut que tu sois à l\'heure.';
+
+            window.toggleCorrection = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('visible');
+            };
+
+            function updateScore() {
+                const radioGroups = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5'];
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                radioGroups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else { unanswered++; }
+                });
+                document.getElementById('scoreCorrect').textContent = correct;
+                document.getElementById('scoreIncorrect').textContent = incorrect;
+                document.getElementById('scorePartial').textContent = partial;
+                document.getElementById('scoreUnanswered').textContent = unanswered;
+            }
+
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                const radioGroups = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5'];
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                radioGroups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else { unanswered++; }
+                });
+                const lessonId = 'semaine7-conjugaison-concordance';
+                const lang = localStorage.getItem('lang') || 'fr';
+                const entry = {
+                    lesson_id: lessonId,
+                    lesson_title: { fr: App.getTranslation('lesson_short_title', 'fr'), en: App.getTranslation('lesson_short_title', 'en'), ar: App.getTranslation('lesson_short_title', 'ar') },
+                    year: { fr: App.getTranslation('ach_year_bac', 'fr'), en: App.getTranslation('ach_year_bac', 'en'), ar: App.getTranslation('ach_year_bac', 'ar') },
+                    module: { fr: App.getTranslation('ach_module_semaine7', 'fr'), en: App.getTranslation('ach_module_semaine7', 'en'), ar: App.getTranslation('ach_module_semaine7', 'ar') },
+                    correct, incorrect, partial, unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase.from('profiles').select('achivement').eq('id', user.id).single();
+                if (fetchError) { console.error('Could not fetch profile:', fetchError); return; }
+                let achivement = profileData?.achivement || {};
+                if (!achivement["ED-French"]) achivement["ED-French"] = [];
+                const arr = achivement["ED-French"];
+                const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+                if (existingIdx >= 0) arr[existingIdx] = entry; else arr.push(entry);
+                const { error: updateError } = await App.supabase.from('profiles').update({ achivement: achivement }).eq('id', user.id);
+                if (updateError) { console.error('Save failed:', updateError); App.showToast('save_error', 'error'); }
+                else { App.showToast('save_success', 'success'); App.logUserAction('lesson_saved', { lesson: lessonId, correct, incorrect, partial }); }
+            });
+
+            document.getElementById('printPdfBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) { App.showToast('toast_signin_required', 'error'); document.getElementById('signInBtn')?.click(); return; }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase.from('profiles').select('registration_state').eq('id', user.id).single();
+                    if (!error && profile?.registration_state?.active === true) isRegistered = true;
+                } catch (e) {}
+                const headerHTML = document.querySelector('.lesson-header').cloneNode(true);
+                const textCard = document.querySelector('.text-card').cloneNode(true);
+                const rulesSections = document.querySelectorAll('.valeurs-section, .methode-section');
+                let rulesHTML = ''; rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
+                const exercisesSection = document.querySelector('.exercises-section').cloneNode(true);
+                exercisesSection.querySelectorAll('input, textarea, .btn-verify, .self-assessment').forEach(el => el.remove());
+                if (isRegistered) {
+                    exercisesSection.querySelectorAll('.answer-key').forEach(key => {
+                        key.style.display='block'; key.style.border='none'; key.style.padding='0.5rem 0'; key.style.margin='0.5rem 0'; key.style.background='transparent';
+                    });
+                } else {
+                    exercisesSection.querySelectorAll('.answer-key').forEach(el => el.remove());
+                }
+                const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                const lang = localStorage.getItem('lang') || 'fr';
+                printWindow.document.write(`<!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8"><title>${App.getTranslation('lesson_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title><style>body{font-family:'Georgia',serif;line-height:1.6;max-width:700px;margin:2rem auto;padding:0 1rem;color:#000}.print-header{text-align:center;border-bottom:2px solid #c75b2c;padding-bottom:1rem;margin-bottom:2rem}.print-header .site-name{font-size:1.4rem;font-weight:bold;color:#c75b2c}.print-header .meta-line{font-size:.95rem;color:#444}.print-header .lesson-name{font-size:1.1rem;font-weight:bold;margin-top:.5rem}.print-footer{text-align:center;border-top:1px solid #ccc;padding-top:1rem;margin-top:2rem;font-size:.85rem;color:#666}h1,h2,h3{color:#000}.lesson-header{text-align:center;margin-bottom:2rem}.badge{display:inline-block;background:#c75b2c;color:#fff;padding:.3rem 1rem;border-radius:20px;font-size:.8rem}.text-card{border-left:4px solid #c75b2c;padding:1rem 1.5rem;margin:1.5rem 0;font-style:italic}.text-card .author{text-align:right;font-style:normal;margin-top:.8rem}.valeurs-section,.methode-section{margin:1.5rem 0}.valeur-card{background:#f8f4ec;padding:1rem;margin-bottom:1rem;border-radius:8px}.valeur-card h3{color:#c75b2c}.exercise-card{margin:1.2rem 0}table{width:100%;border-collapse:collapse;margin:.8rem 0}th,td{border:1px solid #ccc;padding:.5rem;text-align:left}th{background:#f0e8d8}.answer-key{display:block;margin-top:.5rem;font-size:.9rem;color:#444}@media print{body{margin:0;padding:0}@page{margin:2cm}}</style></head><body><div class="print-header"><div class="site-name">${App.getTranslation('print_site_name', lang)}</div><div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div><div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div></div>${breadcrumb.outerHTML}${headerHTML.outerHTML}${textCard.outerHTML}${rulesHTML}${exercisesSection.outerHTML}<div class="print-footer">${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}</div></body></html>`);
+                printWindow.document.close(); printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+
+            document.querySelectorAll('input[type="radio"][name^="self_ex"]').forEach(radio => radio.addEventListener('change', updateScore));
+            updateScore();
+        })();
+    </script>
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+</body>
+</html>

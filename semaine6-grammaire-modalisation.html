@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_title">Leçon 2 – La modalisation | Texte littéraire & Exercices</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        :root {
+            --bg: #f9f7f1;
+            --card: #ffffff;
+            --text: #2b2416;
+            --text-light: #5c5344;
+            --heading: #382e1e;
+            --accent: #c75b2c;
+            --accent-hover: #a3441d;
+            --border: #e5ddd0;
+            --shadow: 0 1px 4px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-hover: 0 8px 22px rgba(0,0,0,0.08);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --transition: 0.25s ease;
+            --font-body: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
+            --audio-bg: #f4efe4;
+            --audio-progress: #d8c9aa;
+            --button-bg: #f0e8d8;
+            --button-hover: #e3d5bc;
+            --input-bg: #fcfaf6;
+        }
+        body.dark {
+            --bg: #1e1b17;
+            --card: #2a2620;
+            --text: #e8dfd2;
+            --text-light: #b9aa95;
+            --heading: #f0e4d2;
+            --accent: #e07b4a;
+            --accent-hover: #f08c5c;
+            --border: #3e3830;
+            --shadow: 0 1px 4px rgba(0,0,0,0.25);
+            --shadow-hover: 0 8px 22px rgba(0,0,0,0.35);
+            --audio-bg: #26221b;
+            --audio-progress: #5a4e3c;
+            --button-bg: #3a3329;
+            --button-hover: #4e4437;
+            --input-bg: #333028;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.75;
+            transition: background var(--transition), color var(--transition);
+        }
+        .container { max-width:860px; margin:0 auto; padding:1.8rem 1.4rem 3rem; }
+        .lesson-header { text-align: center; margin-bottom: 2rem; }
+        .badge {
+            display:inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding:0.25rem 1rem;
+            border-radius:20px;
+            font-size:0.8rem;
+            font-weight:700;
+            letter-spacing:0.03em;
+            text-transform: uppercase;
+        }
+        .lesson-header h1 {
+            font-size: 2.1rem;
+            color: var(--heading);
+            margin: 0.6rem 0 0.3rem;
+            line-height: 1.3;
+        }
+        .lesson-header .meta {
+            font-size:0.9rem;
+            color:var(--text-light);
+            display: flex;
+            justify-content: center;
+            gap:1.2rem;
+            flex-wrap: wrap;
+        }
+        .audio-player {
+            background: var(--card);
+            border:1px solid var(--border);
+            border-radius: var(--radius);
+            padding:1rem 1.4rem;
+            margin: 1.5rem 0 2rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap:1rem;
+            flex-wrap: wrap;
+        }
+        .audio-player .play-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            border:none;
+            font-size:1.2rem;
+            cursor:pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background var(--transition);
+            flex-shrink: 0;
+        }
+        .play-btn:hover { background: var(--accent-hover); }
+        .audio-player .progress-area {
+            flex:1;
+            min-width:120px;
+            display: flex;
+            flex-direction: column;
+            gap:0.3rem;
+        }
+        .progress-bar {
+            width:100%;
+            height:6px;
+            background: var(--audio-progress);
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+        .time-info { display: flex; justify-content: space-between; font-size:0.75rem; color:var(--text-light); }
+        .speed-selector { display: flex; gap:0.3rem; flex-wrap: wrap; }
+        .speed-btn {
+            border:1px solid var(--border);
+            background: var(--button-bg);
+            color: var(--text);
+            padding:0.25rem 0.55rem;
+            border-radius: 4px;
+            font-size:0.75rem;
+            font-weight:600;
+            cursor:pointer;
+            transition: all var(--transition);
+        }
+        .speed-btn.active { background: var(--accent); color:#fff; border-color: var(--accent); }
+        .audio-label { font-weight:700; font-size:0.85rem; color:var(--heading); white-space: nowrap; }
+        @media (max-width:600px) {
+            .audio-player { flex-direction: column; align-items: stretch; }
+            .audio-label { text-align: center; }
+        }
+        .text-card {
+            background: var(--card);
+            border:1px solid var(--border);
+            border-left:5px solid var(--accent);
+            border-radius: 0 var(--radius) var(--radius) 0;
+            padding:1.4rem 1.6rem;
+            margin:1.8rem 0;
+            font-style:italic;
+            font-size:1.05rem;
+            line-height: 1.9;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        .text-card .quote-mark {
+            position: absolute;
+            top:-12px;
+            left:14px;
+            font-size:3rem;
+            color:var(--accent);
+            opacity:0.25;
+            line-height:1;
+        }
+        .text-card .author { text-align:right; font-style:normal; font-size:0.9rem; color:var(--text-light); margin-top:0.8rem; }
+        .exercises-section h2 {
+            font-size:1.5rem;
+            color:var(--heading);
+            margin:2rem 0 1rem;
+            border-bottom:3px solid var(--accent);
+            display:inline-block;
+            padding-bottom:0.3rem;
+        }
+        .exercise-card {
+            background: var(--card);
+            border:1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding:1.2rem 1.4rem;
+            margin-bottom:1.4rem;
+            box-shadow: var(--shadow);
+        }
+        .exercise-card h3 { font-size:1.05rem; color:var(--accent); margin-bottom:0.8rem; display: flex; align-items: center; gap:0.4rem; }
+        .exercise-card table { width:100%; border-collapse: collapse; margin: 0.8rem 0; }
+        .exercise-card th, .exercise-card td { padding:0.55rem 0.7rem; border:1px solid var(--border); text-align:left; font-size:0.9rem; }
+        .exercise-card th { background: var(--audio-bg); font-weight:700; color:var(--heading); }
+        .exercise-card input[type="text"] {
+            width:100%;
+            padding:0.4rem 0.6rem;
+            border:1px solid var(--border);
+            border-radius:4px;
+            background: var(--input-bg);
+            color: var(--text);
+            font-family: inherit;
+            font-size:0.9rem;
+        }
+        .btn-verify {
+            background: var(--accent);
+            color:#fff;
+            border:none;
+            padding:0.5rem 1.2rem;
+            border-radius: 20px;
+            font-weight:600;
+            cursor:pointer;
+            transition: background var(--transition);
+            margin-top:0.6rem;
+            font-size:0.85rem;
+        }
+        .btn-verify:hover { background: var(--accent-hover); }
+        .answer-key {
+            display:none;
+            margin-top:0.8rem;
+            padding:0.8rem;
+            background: var(--audio-bg);
+            border-radius:6px;
+            font-size:0.85rem;
+            color: var(--text-light);
+            border:1px dashed var(--accent);
+        }
+        .answer-key.visible { display:block; }
+        .self-assessment { margin-top: 0.8rem; font-size: 0.9rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+        .self-assessment label { cursor: pointer; }
+        .score-area {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: var(--shadow);
+        }
+        .score-area h2 { color: var(--heading); margin-bottom: 1rem; }
+        .score-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .score-stat { background: var(--audio-bg); padding: 0.8rem 1.2rem; border-radius: 8px; font-weight: 600; }
+        html[dir="rtl"] body { direction: rtl; }
+        html[dir="rtl"] .container { text-align: right; }
+        html[dir="rtl"] .text-card .author { text-align: left; }
+        html[dir="rtl"] .exercise-card th, html[dir="rtl"] .exercise-card td { text-align: right; }
+        @media (max-width:600px) {
+            .lesson-header h1 { font-size:1.5rem; }
+            .container { padding:1rem 0.8rem 2rem; }
+        }
+        .valeurs-section, .methode-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.6rem 1.8rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+        .valeurs-section h2, .methode-section h2 {
+            font-size: 1.5rem;
+            color: var(--heading);
+            margin-bottom: 1rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+        .valeur-card {
+            background: var(--audio-bg);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .valeur-card h3 { color: var(--accent); font-size: 1.1rem; margin-bottom: 0.4rem; }
+        .valeur-card ul { list-style: none; padding: 0; }
+        .valeur-card li { padding: 0.3rem 0; padding-left: 1.4rem; position: relative; color: var(--text-light); }
+        .valeur-card li::before { content: '◆'; position: absolute; left: 0; color: var(--accent); font-size: 0.5rem; top: 0.5rem; }
+        .valeur-card p { margin: 0.5rem 0; }
+    </style>
+</head>
+<body>
+    <div id="main-content" class="container">
+        <p style="margin-bottom:1.5rem; color:var(--text-light);">
+            <a href="revision.html" data-i18n="back_revision">Révision générale</a>
+            › <strong data-i18n="back_current">La modalisation</strong>
+        </p>
+        <div class="lesson-header">
+            <span class="badge" data-i18n="lesson_badge">📘 Grammaire · Leçon 2</span>
+            <h1 data-i18n="lesson_title">La modalisation</h1>
+            <div class="meta">
+                <span data-i18n="lesson_duration">⏱️ 45 minutes</span>
+                <span data-i18n="lesson_meta_audio">🎧 Écoutez le texte puis faites les exercices</span>
+            </div>
+        </div>
+        <div class="audio-player" id="audioPlayer">
+            <span class="audio-label" data-i18n="audio_label">🎧 Écoute littéraire</span>
+            <button class="play-btn" id="playBtn" aria-label="Lecture">▶</button>
+            <div class="progress-area">
+                <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
+                <div class="time-info"><span id="currentTime">0:00</span><span id="duration">0:00</span></div>
+            </div>
+            <div class="speed-selector" id="speedSelector">
+                <button class="speed-btn" data-speed="0.75">0.75x</button>
+                <button class="speed-btn active" data-speed="1">1x</button>
+                <button class="speed-btn" data-speed="1.25">1.25x</button>
+                <button class="speed-btn" data-speed="1.5">1.5x</button>
+            </div>
+        </div>
+        <div class="text-card">
+            <span class="quote-mark">“</span>
+            <p>
+                <u>Il est certain que</u> la Terre se réchauffe. <u>Malheureusement</u>, certains <u>doutent encore</u> de l'urgence. <u>Peut-être</u> faudrait-il agir plus vite. <u>Je crois que</u> chacun peut contribuer. <u>Il semble que</u> les jeunes soient plus mobilisés. <u>Selon</u> les scientifiques, il faut réduire les émissions. <u>Bien sûr</u>, des efforts sont déjà faits, <u>mais</u> ils restent insuffisants. <u>Heureusement</u>, des solutions existent. <u>À mon avis</u>, l'avenir dépend de nos choix. <u>Il est possible que</u> nous trouvions un équilibre.
+            </p>
+            <div class="author" data-i18n="text_author">— Réflexions sur le climat, texte original</div>
+        </div>
+        <div class="valeurs-section">
+            <h2 data-i18n="rules_heading">📖 La modalisation</h2>
+            <p data-i18n="rules_intro" class="no-bilingual" style="margin-bottom:1.2rem;">La modalisation regroupe tous les procédés par lesquels l'énonciateur exprime son attitude, ses jugements, ses doutes ou ses certitudes par rapport à ce qu'il dit. Elle permet de nuancer un propos.</p>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_certitude_title">🔹 Expression de la certitude</h3>
+                <p data-i18n="rules_certitude_text">On utilise des verbes comme <strong>affirmer, assurer, certifier</strong>, des adverbes comme <strong>certainement, évidemment, sans doute</strong>, ou des tournures impersonnelles : <strong>il est certain que, il est évident que, il ne fait aucun doute que</strong>.</p>
+            </div>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_doute_title">🔹 Expression du doute ou de l'incertitude</h3>
+                <p data-i18n="rules_doute_text">On emploie des verbes comme <strong>douter, sembler, paraître</strong>, des adverbes comme <strong>peut-être, probablement, apparemment</strong>, ou des tournures : <strong>il est possible que, il semble que, il se peut que</strong>.</p>
+            </div>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_jugement_title">🔹 Expression du jugement ou de l'opinion</h3>
+                <p data-i18n="rules_jugement_text">On utilise des verbes d'opinion : <strong>croire, penser, estimer, trouver, juger</strong>, ou des expressions : <strong>à mon avis, selon moi, d'après</strong>.</p>
+            </div>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_emotion_title">🔹 Expression de l'émotion ou de l'appréciation</h3>
+                <p data-i18n="rules_emotion_text">On emploie des adverbes ou interjections : <strong>heureusement, malheureusement, hélas, tant mieux, dommage</strong>, ou des tournures affectives : <strong>je regrette que, je me réjouis que</strong>.</p>
+            </div>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_modal_verbs_title">🔹 Les verbes modaux</h3>
+                <p data-i18n="rules_modal_verbs_text">Certains verbes expriment l'obligation, la possibilité, la volonté : <strong>devoir, pouvoir, falloir, vouloir, savoir</strong>. Ils modalisent l'énoncé en indiquant le degré de nécessité ou de capacité.</p>
+            </div>
+            <p data-i18n="rules_note" style="margin-top:1rem; font-style:italic; color:var(--text-light);">💡 Repérer la modalisation, c'est identifier comment l'auteur s'implique dans son discours : est-il certain, hésitant, critique, enthousiaste ?</p>
+        </div>
+        <div class="exercises-section">
+            <h2 data-i18n="exercises_heading">✍️ Exercices</h2>
+            <!-- Exercice 1 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo1_title">📌 1. Identifiez le type de modalisation</h3>
+                <p data-i18n="exo1_instruction">Pour chaque élément souligné dans le texte, indiquez s'il exprime la certitude, le doute, l'opinion, le jugement ou l'émotion.</p>
+                <table id="exo1Table">
+                    <thead><tr><th data-i18n="table_element" class="no-bilingual">Élément souligné</th><th data-i18n="table_answer" class="no-bilingual">Type de modalisation</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo1Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo1Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 2 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo2_title">📌 2. Transformez pour exprimer la certitude</h3>
+                <p data-i18n="exo2_instruction">Réécrivez ces phrases en exprimant une certitude absolue.</p>
+                <ol type="a">
+                    <li>Il viendra peut-être. → <input type="text" placeholder="Phrase certaine"></li>
+                    <li>Il semble que ce soit vrai. → <input type="text" placeholder="Phrase certaine"></li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo2Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo2Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 3 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo3_title">📌 3. Transformez pour exprimer le doute</h3>
+                <p data-i18n="exo3_instruction">Réécrivez ces phrases en introduisant une nuance de doute.</p>
+                <ol type="a">
+                    <li>Il est certain qu'il réussira. → <input type="text" placeholder="Phrase dubitative"></li>
+                    <li>Elle est évidemment chez elle. → <input type="text" placeholder="Phrase dubitative"></li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo3Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo3Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 4 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo4_title">📌 4. Repérez les verbes d'opinion</h3>
+                <p data-i18n="exo4_instruction">Dans le texte, relevez deux expressions d'opinion personnelle.</p>
+                <input type="text" placeholder="Expressions d'opinion...">
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo4Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo4Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 5 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo5_title">📌 5. Analysez l'effet d'un modal</h3>
+                <p data-i18n="exo5_instruction">« Malheureusement, certains doutent encore. »<br>Quel est le rôle de « malheureusement » ? Quel sentiment exprime-t-il ?</p>
+                <textarea rows="3" style="width:100%;" placeholder="Votre analyse..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex5" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex5" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex5" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo5Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo5Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 6 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo6_title">📌 6. Complétez avec un modalisateur approprié</h3>
+                <p data-i18n="exo6_instruction">Ajoutez un adverbe ou une expression pour modaliser la phrase selon l'indication.</p>
+                <ol type="a">
+                    <li>(certitude) ________ il a raison. <input type="text" placeholder="modalisateur"></li>
+                    <li>(doute) ________ il viendra. <input type="text" placeholder="modalisateur"></li>
+                    <li>(opinion) ________ , ce film est excellent. <input type="text" placeholder="modalisateur"></li>
+                    <li>(émotion) ________ , il a réussi. <input type="text" placeholder="modalisateur"></li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex6" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex6" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex6" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo6Key')" data-i18n="btn_correction">🔍 Voir des propositions</button>
+                <div id="exo6Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 7 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo7_title">📌 7. Distinguez certitude et opinion</h3>
+                <p data-i18n="exo7_instruction">« Il est certain que la Terre se réchauffe. » / « À mon avis, l'avenir dépend de nos choix. »<br>Quelle phrase exprime une certitude objective et laquelle une opinion subjective ? Justifiez.</p>
+                <textarea rows="3" style="width:100%;" placeholder="Votre réponse..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex7" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex7" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex7" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo7Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo7Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 8 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo8_title">📌 8. Réécrivez en supprimant la modalisation</h3>
+                <p data-i18n="exo8_instruction">Réécrivez la phrase sans aucun modalisateur : « Heureusement, il semble que les jeunes soient plus mobilisés. »</p>
+                <input type="text" placeholder="Phrase neutre...">
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex8" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex8" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex8" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo8Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo8Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 9 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo9_title">📌 9. Rédigez un paragraphe avec plusieurs modalisateurs</h3>
+                <p data-i18n="exo9_instruction">Rédigez un paragraphe (4-5 lignes) sur un sujet de votre choix en utilisant au moins trois types de modalisation différents (certitude, doute, opinion, émotion). Soulignez les modalisateurs et indiquez leur type.</p>
+                <textarea rows="5" style="width:100%;" placeholder="Votre paragraphe..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex9" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex9" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex9" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo9Key')" data-i18n="btn_correction">🔍 Voir une proposition</button>
+                <div id="exo9Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 10 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo10_title">📌 10. Production personnelle finale</h3>
+                <p data-i18n="exo10_instruction">Écrivez un texte argumentatif (8-10 lignes) sur l'importance de l'éducation. Utilisez au moins cinq modalisateurs variés (certitude, doute, opinion, émotion, jugement). Soulignez-les et précisez leur type.</p>
+                <textarea rows="8" style="width:100%; padding:0.5rem;" placeholder="Votre texte..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex10" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex10" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex10" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+        </div>
+        <div class="score-area" id="scoreArea">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="score-stats" id="scoreStats">
+                <div class="score-stat"><span data-i18n="score_correct">Correctes :</span> <span id="scoreCorrect">0</span></div>
+                <div class="score-stat"><span data-i18n="score_incorrect">Incorrectes :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="score-stat"><span data-i18n="score_partial">Partielles :</span> <span id="scorePartial">0</span></div>
+                <div class="score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">10</span></div>
+            </div>
+        </div>
+        <div class="score-actions" style="margin-top:1.2rem;">
+            <button id="saveResultsBtn" class="btn-verify" style="margin-right:0.5rem;" data-i18n="save_results">💾 Enregistrer mes résultats</button>
+            <button id="printPdfBtn" class="btn-verify" style="background:#5c5344; margin-right:0.5rem;" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+        </div>
+        <div style="margin-top:2rem; display:flex; justify-content:space-between; flex-wrap:wrap;">
+            <a href="semaine6-grammaire-connecteurs.html" data-i18n="footer_back" class="no-bilingual">← Leçon précédente</a>
+            <a href="semaine6-conjugaison-indicatif.html" data-i18n="footer_next" class="no-bilingual">Leçon suivante : Révisions des temps de l'indicatif →</a>
+        </div>
+    </div>
+    <!-- ═══════ SCRIPTS ═══════ -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                'lesson_title': 'Leçon 2 – La modalisation | Texte littéraire & Exercices',
+                'lesson_short_title': 'La modalisation',
+                'ach_year_bac': '4ᵉ année secondaire (Bac)',
+                'ach_module_semaine6': 'Analyse de textes littéraires',
+                'back_revision': 'Révision générale',
+                'back_current': 'La modalisation',
+                'lesson_badge': '📘 Grammaire · Leçon 2',
+                'lesson_title': 'La modalisation',
+                'lesson_duration': '⏱️ 45 minutes',
+                'lesson_meta_audio': '🎧 Écoutez le texte puis faites les exercices',
+                'audio_label': '🎧 Écoute littéraire',
+                'text_author': '— Réflexions sur le climat, texte original',
+                'rules_heading': '📖 La modalisation',
+                'rules_intro': 'La modalisation regroupe tous les procédés par lesquels l\'énonciateur exprime son attitude, ses jugements, ses doutes ou ses certitudes par rapport à ce qu\'il dit. Elle permet de nuancer un propos.',
+                'rules_certitude_title': '🔹 Expression de la certitude',
+                'rules_certitude_text': 'On utilise des verbes comme <strong>affirmer, assurer, certifier</strong>, des adverbes comme <strong>certainement, évidemment, sans doute</strong>, ou des tournures impersonnelles : <strong>il est certain que, il est évident que, il ne fait aucun doute que</strong>.',
+                'rules_doute_title': '🔹 Expression du doute ou de l\'incertitude',
+                'rules_doute_text': 'On emploie des verbes comme <strong>douter, sembler, paraître</strong>, des adverbes comme <strong>peut-être, probablement, apparemment</strong>, ou des tournures : <strong>il est possible que, il semble que, il se peut que</strong>.',
+                'rules_jugement_title': '🔹 Expression du jugement ou de l\'opinion',
+                'rules_jugement_text': 'On utilise des verbes d\'opinion : <strong>croire, penser, estimer, trouver, juger</strong>, ou des expressions : <strong>à mon avis, selon moi, d\'après</strong>.',
+                'rules_emotion_title': '🔹 Expression de l\'émotion ou de l\'appréciation',
+                'rules_emotion_text': 'On emploie des adverbes ou interjections : <strong>heureusement, malheureusement, hélas, tant mieux, dommage</strong>, ou des tournures affectives : <strong>je regrette que, je me réjouis que</strong>.',
+                'rules_modal_verbs_title': '🔹 Les verbes modaux',
+                'rules_modal_verbs_text': 'Certains verbes expriment l\'obligation, la possibilité, la volonté : <strong>devoir, pouvoir, falloir, vouloir, savoir</strong>. Ils modalisent l\'énoncé en indiquant le degré de nécessité ou de capacité.',
+                'rules_note': '💡 Repérer la modalisation, c\'est identifier comment l\'auteur s\'implique dans son discours : est-il certain, hésitant, critique, enthousiaste ?',
+                'exercises_heading': '✍️ Exercices',
+                'exo1_title': '📌 1. Identifiez le type de modalisation',
+                'exo1_instruction': 'Pour chaque élément souligné dans le texte, indiquez s\'il exprime la certitude, le doute, l\'opinion, le jugement ou l\'émotion.',
+                'table_element': 'Élément souligné',
+                'table_answer': 'Type de modalisation',
+                'exo2_title': '📌 2. Transformez pour exprimer la certitude',
+                'exo2_instruction': 'Réécrivez ces phrases en exprimant une certitude absolue.',
+                'exo3_title': '📌 3. Transformez pour exprimer le doute',
+                'exo3_instruction': 'Réécrivez ces phrases en introduisant une nuance de doute.',
+                'exo4_title': '📌 4. Repérez les verbes d\'opinion',
+                'exo4_instruction': 'Dans le texte, relevez deux expressions d\'opinion personnelle.',
+                'exo5_title': '📌 5. Analysez l\'effet d\'un modal',
+                'exo5_instruction': '« Malheureusement, certains doutent encore. »<br>Quel est le rôle de « malheureusement » ? Quel sentiment exprime-t-il ?',
+                'exo6_title': '📌 6. Complétez avec un modalisateur approprié',
+                'exo6_instruction': 'Ajoutez un adverbe ou une expression pour modaliser la phrase selon l\'indication.',
+                'exo7_title': '📌 7. Distinguez certitude et opinion',
+                'exo7_instruction': '« Il est certain que la Terre se réchauffe. » / « À mon avis, l\'avenir dépend de nos choix. »<br>Quelle phrase exprime une certitude objective et laquelle une opinion subjective ? Justifiez.',
+                'exo8_title': '📌 8. Réécrivez en supprimant la modalisation',
+                'exo8_instruction': 'Réécrivez la phrase sans aucun modalisateur : « Heureusement, il semble que les jeunes soient plus mobilisés. »',
+                'exo9_title': '📌 9. Rédigez un paragraphe avec plusieurs modalisateurs',
+                'exo9_instruction': 'Rédigez un paragraphe (4-5 lignes) sur un sujet de votre choix en utilisant au moins trois types de modalisation différents (certitude, doute, opinion, émotion). Soulignez les modalisateurs et indiquez leur type.',
+                'exo10_title': '📌 10. Production personnelle finale',
+                'exo10_instruction': 'Écrivez un texte argumentatif (8-10 lignes) sur l\'importance de l\'éducation. Utilisez au moins cinq modalisateurs variés (certitude, doute, opinion, émotion, jugement). Soulignez-les et précisez leur type.',
+                'btn_correction': '🔍 Voir la correction',
+                'footer_back': '← Leçon précédente',
+                'footer_next': 'Leçon suivante : Révisions des temps de l\'indicatif →',
+                'self_assess_question': 'Ma réponse est :',
+                'self_correct': 'Correcte',
+                'self_incorrect': 'Incorrecte',
+                'self_partial': 'Partiellement correcte',
+                'score_title': '📊 Votre auto‑évaluation',
+                'score_correct': 'Correctes :',
+                'score_incorrect': 'Incorrectes :',
+                'score_partial': 'Partielles :',
+                'score_unanswered': 'Sans réponse :',
+                'save_results': '💾 Enregistrer mes résultats',
+                'save_success': 'Résultats sauvegardés ✓',
+                'save_error': 'Erreur lors de la sauvegarde',
+                'print_pdf': '🖨️ Imprimer / PDF',
+                'print_with_answers': 'Corrigé inclus',
+                'print_site_name': 'Educational Dashboard – French',
+                'print_scholar_year': 'Révision pour le Bac',
+                'print_week': 'Semaine 6',
+                'print_area': 'Grammaire',
+                'print_footer_dev': 'Développé par Mejri Ziad',
+                'print_footer_date': 'Imprimé le',
+                'print_without_answers': 'Sans corrigé',
+                'toast_signin_required': 'Connectez-vous pour voir les corrections.'
+            },
+            en: {
+                'lesson_title': 'Lesson 2 – Modalization | Literary Text & Exercises',
+                'lesson_short_title': 'Modalization',
+                'ach_year_bac': '12th grade (Bac)',
+                'ach_module_semaine6': 'Literary Text Analysis',
+                'back_revision': 'General Review',
+                'back_current': 'Modalization',
+                'lesson_badge': '📘 Grammar · Lesson 2',
+                'lesson_title': 'Modalization',
+                'lesson_duration': '⏱️ 45 minutes',
+                'lesson_meta_audio': '🎧 Listen to the text then do the exercises',
+                'audio_label': '🎧 Literary Listening',
+                'text_author': '— Reflections on Climate, original text',
+                'rules_heading': '📖 Modalization',
+                'rules_intro': 'Modalization includes all the processes by which the speaker expresses his attitude, judgments, doubts or certainties about what he says. It allows nuance in a statement.',
+                'rules_certitude_title': '🔹 Expression of certainty',
+                'rules_certitude_text': 'We use verbs like <strong>affirm, assure, certify</strong>, adverbs like <strong>certainly, obviously, undoubtedly</strong>, or impersonal turns: <strong>it is certain that, it is obvious that, there is no doubt that</strong>.',
+                'rules_doute_title': '🔹 Expression of doubt or uncertainty',
+                'rules_doute_text': 'We use verbs like <strong>doubt, seem, appear</strong>, adverbs like <strong>maybe, probably, apparently</strong>, or turns: <strong>it is possible that, it seems that, it may be that</strong>.',
+                'rules_jugement_title': '🔹 Expression of judgment or opinion',
+                'rules_jugement_text': 'We use opinion verbs: <strong>believe, think, consider, find, judge</strong>, or expressions: <strong>in my opinion, according to me, according to</strong>.',
+                'rules_emotion_title': '🔹 Expression of emotion or appreciation',
+                'rules_emotion_text': 'We use adverbs or interjections: <strong>fortunately, unfortunately, alas, so much the better, too bad</strong>, or affective turns: <strong>I regret that, I rejoice that</strong>.',
+                'rules_modal_verbs_title': '🔹 Modal verbs',
+                'rules_modal_verbs_text': 'Some verbs express obligation, possibility, will: <strong>must, can, have to, want, know</strong>. They modalize the statement by indicating the degree of necessity or ability.',
+                'rules_note': '💡 Spotting modalization means identifying how the author involves himself in his speech: is he certain, hesitant, critical, enthusiastic?',
+                'exercises_heading': '✍️ Exercises',
+                'exo1_title': '📌 1. Identify the type of modalization',
+                'exo1_instruction': 'For each underlined element in the text, indicate whether it expresses certainty, doubt, opinion, judgment or emotion.',
+                'table_element': 'Underlined element',
+                'table_answer': 'Type of modalization',
+                'exo2_title': '📌 2. Transform to express certainty',
+                'exo2_instruction': 'Rewrite these sentences expressing absolute certainty.',
+                'exo3_title': '📌 3. Transform to express doubt',
+                'exo3_instruction': 'Rewrite these sentences introducing a nuance of doubt.',
+                'exo4_title': '📌 4. Find opinion verbs',
+                'exo4_instruction': 'In the text, find two expressions of personal opinion.',
+                'exo5_title': '📌 5. Analyze the effect of a modal',
+                'exo5_instruction': '"Unfortunately, some still doubt."<br>What is the role of "unfortunately"? What feeling does it express?',
+                'exo6_title': '📌 6. Complete with an appropriate modalizer',
+                'exo6_instruction': 'Add an adverb or expression to modalize the sentence according to the indication.',
+                'exo7_title': '📌 7. Distinguish certainty and opinion',
+                'exo7_instruction': '"It is certain that the Earth is warming." / "In my opinion, the future depends on our choices."<br>Which sentence expresses objective certainty and which subjective opinion? Justify.',
+                'exo8_title': '📌 8. Rewrite removing modalization',
+                'exo8_instruction': 'Rewrite the sentence without any modalizer: "Fortunately, it seems that young people are more mobilized."',
+                'exo9_title': '📌 9. Write a paragraph with several modalizers',
+                'exo9_instruction': 'Write a paragraph (4-5 lines) on a topic of your choice using at least three different types of modalization (certainty, doubt, opinion, emotion). Underline the modalizers and indicate their type.',
+                'exo10_title': '📌 10. Final personal production',
+                'exo10_instruction': 'Write an argumentative text (8-10 lines) about the importance of education. Use at least five varied modalizers (certainty, doubt, opinion, emotion, judgment). Underline them and specify their type.',
+                'btn_correction': '🔍 See correction',
+                'footer_back': '← Previous lesson',
+                'footer_next': 'Next lesson: Review of indicative tenses →',
+                'self_assess_question': 'My answer is:',
+                'self_correct': 'Correct',
+                'self_incorrect': 'Incorrect',
+                'self_partial': 'Partially correct',
+                'score_title': '📊 Your self‑assessment',
+                'score_correct': 'Correct:',
+                'score_incorrect': 'Incorrect:',
+                'score_partial': 'Partial:',
+                'score_unanswered': 'Unanswered:',
+                'save_results': '💾 Save my results',
+                'save_success': 'Results saved ✓',
+                'save_error': 'Save failed',
+                'print_pdf': '🖨️ Print / PDF',
+                'print_with_answers': 'With answers',
+                'print_site_name': 'Educational Dashboard – French',
+                'print_scholar_year': 'Bac Review',
+                'print_week': 'Week 6',
+                'print_area': 'Grammar',
+                'print_footer_dev': 'Developed by Mejri Ziad',
+                'print_footer_date': 'Printed on',
+                'print_without_answers': 'Without answers',
+                'toast_signin_required': 'Sign in to see the corrections.'
+            },
+            ar: {
+                'lesson_title': 'الدرس 2 – التحوير (الموضعة) | نص أدبي وتمارين',
+                'lesson_short_title': 'التحوير (الموضعة)',
+                'ach_year_bac': 'السنة الرابعة ثانوي',
+                'ach_module_semaine6': 'تحليل النصوص الأدبية',
+                'back_revision': 'المراجعة العامة',
+                'back_current': 'التحوير (الموضعة)',
+                'lesson_badge': '📘 القواعد · الدرس 2',
+                'lesson_title': 'التحوير (الموضعة)',
+                'lesson_duration': '⏱️ 45 دقيقة',
+                'lesson_meta_audio': '🎧 استمع إلى النص ثم قم بالتمارين',
+                'audio_label': '🎧 استماع أدبي',
+                'text_author': '— تأملات حول المناخ، نص أصلي',
+                'rules_heading': '📖 التحوير (الموضعة)',
+                'rules_intro': 'التحوير يشمل جميع الأساليب التي يعبر بها المتحدث عن موقفه وأحكامه وشكوكه أو يقينياته تجاه ما يقوله. إنه يسمح بتلوين الخطاب.',
+                'rules_certitude_title': '🔹 التعبير عن اليقين',
+                'rules_certitude_text': 'نستعمل أفعالا مثل <strong>أكد، أكد، جزم</strong>، وظروفا مثل <strong>بالتأكيد، من الواضح، بلا شك</strong>، أو عبارات غير شخصية: <strong>من المؤكد أن، من الواضح أن، لا شك أن</strong>.',
+                'rules_doute_title': '🔹 التعبير عن الشك أو عدم اليقين',
+                'rules_doute_text': 'نستعمل أفعالا مثل <strong>شك، بدا، ظهر</strong>، وظروفا مثل <strong>ربما، على الأرجح، على ما يبدو</strong>، أو عبارات: <strong>من الممكن أن، يبدو أن، قد يكون أن</strong>.',
+                'rules_jugement_title': '🔹 التعبير عن الحكم أو الرأي',
+                'rules_jugement_text': 'نستعمل أفعال الرأي: <strong>أعتقد، أظن، أقدر، أجد، أحكم</strong>، أو تعابير: <strong>في رأيي، حسب رأيي، وفقا لـ</strong>.',
+                'rules_emotion_title': '🔹 التعبير عن العاطفة أو التقدير',
+                'rules_emotion_text': 'نستعمل ظروفا أو تعجبات: <strong>لحسن الحظ، لسوء الحظ، واحسرتاه، خير، مؤسف</strong>، أو عبارات وجدانية: <strong>أنا آسف أن، أنا سعيد أن</strong>.',
+                'rules_modal_verbs_title': '🔹 الأفعال الشرطية',
+                'rules_modal_verbs_text': 'بعض الأفعال تعبر عن الوجوب أو الإمكان أو الإرادة: <strong>يجب، يمكن، يلزم، يريد، يعرف</strong>. إنها تحوّر الخطاب بتحديد درجة الضرورة أو القدرة.',
+                'rules_note': '💡 رصد التحوير هو تحديد كيف يتدخل الكاتب في خطابه: هل هو متيقن، متردد، ناقد، متحمس؟',
+                'exercises_heading': '✍️ تمارين',
+                'exo1_title': '📌 1. حدد نوع التحوير',
+                'exo1_instruction': 'لكل عنصر مسطر في النص، اذكر ما إذا كان يعبر عن اليقين، الشك، الرأي، الحكم أو العاطفة.',
+                'table_element': 'العنصر المسطر',
+                'table_answer': 'نوع التحوير',
+                'exo2_title': '📌 2. حوّل للتعبير عن اليقين',
+                'exo2_instruction': 'أعد كتابة هذه الجمل معبرا عن يقين مطلق.',
+                'exo3_title': '📌 3. حوّل للتعبير عن الشك',
+                'exo3_instruction': 'أعد كتابة هذه الجمل مقدما ظلالا من الشك.',
+                'exo4_title': '📌 4. رصد أفعال الرأي',
+                'exo4_instruction': 'في النص، استخرج تعبيرين عن الرأي الشخصي.',
+                'exo5_title': '📌 5. حلل أثر محوّر',
+                'exo5_instruction': '« لسوء الحظ، ما زال البعض يشك. »<br>ما دور « لسوء الحظ »؟ ما الشعور الذي يعبر عنه؟',
+                'exo6_title': '📌 6. أكمل بمحوّر مناسب',
+                'exo6_instruction': 'أضف ظرفا أو تعبيرا لتحوير الجملة حسب الإشارة.',
+                'exo7_title': '📌 7. ميز بين اليقين والرأي',
+                'exo7_instruction': '« من المؤكد أن الأرض ترتفع حرارتها. » / « في رأيي، المستقبل يعتمد على خياراتنا. »<br>أي جملة تعبر عن يقين موضوعي وأيها عن رأي شخصي؟ علل.',
+                'exo8_title': '📌 8. أعد الكتابة بإزالة التحوير',
+                'exo8_instruction': 'أعد كتابة الجملة بدون أي محوّر: « لحسن الحظ، يبدو أن الشباب أكثر تعبئة. »',
+                'exo9_title': '📌 9. اكتب فقرة بعدة محوّرات',
+                'exo9_instruction': 'اكتب فقرة (4-5 أسطر) حول موضوع من اختيارك مستعملا ثلاثة أنواع مختلفة من التحوير على الأقل (يقين، شك، رأي، عاطفة). ضع خطا تحت المحوّرات واذكر نوعها.',
+                'exo10_title': '📌 10. إنتاج شخصي نهائي',
+                'exo10_instruction': 'اكتب نصا حجاجيا (8-10 أسطر) حول أهمية التعليم. استعمل خمسة محوّرات متنوعة على الأقل (يقين، شك، رأي، عاطفة، حكم). ضع خطا تحتها وحدد نوعها.',
+                'btn_correction': '🔍 الاطلاع على التصحيح',
+                'footer_back': '← الدرس السابق',
+                'footer_next': 'الدرس الموالي: مراجعة أزمنة الدلالة →',
+                'self_assess_question': 'جوابي هو:',
+                'self_correct': 'صحيح',
+                'self_incorrect': 'خاطئ',
+                'self_partial': 'صحيح جزئيًا',
+                'score_title': '📊 تقييمك الذاتي',
+                'score_correct': 'صحيح:',
+                'score_incorrect': 'خاطئ:',
+                'score_partial': 'جزئي:',
+                'score_unanswered': 'بدون إجابة:',
+                'save_results': '💾 حفظ نتائجي',
+                'save_success': 'تم حفظ النتائج ✓',
+                'save_error': 'خطأ في الحفظ',
+                'print_pdf': '🖨️ طباعة / PDF',
+                'print_with_answers': 'مع التصحيح',
+                'print_site_name': 'لوحة التحكم التعليمية – الفرنسية',
+                'print_scholar_year': 'مراجعة البكالوريا',
+                'print_week': 'الأسبوع 6',
+                'print_area': 'القواعد',
+                'print_footer_dev': 'طوّر بواسطة ماجري زياد',
+                'print_footer_date': 'طُبع في',
+                'toast_signin_required': 'سجّل الدخول لرؤية التصحيحات.'
+            }
+        });
+        (function() {
+            var container = document.querySelector('.container');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+        })();
+    </script>
+    <script src="ed-french-ini.js"></script>
+    <script>
+        (function() {
+            const audio = new Audio('lessons/revision/sounds/semaine6-modalisation.mp3');
+            const playBtn = document.getElementById('playBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const speedBtns = document.querySelectorAll('.speed-btn');
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+            audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
+            audio.addEventListener('timeupdate', () => {
+                const percent = (audio.currentTime / audio.duration) * 100 || 0;
+                progressFill.style.width = percent + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            });
+            audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) { audio.play(); playBtn.textContent = '⏸'; }
+                else { audio.pause(); playBtn.textContent = '▶'; }
+            });
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const seekTime = (clickX / width) * audio.duration;
+                audio.currentTime = seekTime;
+            });
+            speedBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    speedBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const speed = parseFloat(btn.dataset.speed);
+                    audio.playbackRate = speed;
+                });
+            });
+
+            const elements = [
+                "Il est certain que", "Malheureusement", "doutent encore", "Peut-être", "Je crois que",
+                "Il semble que", "Selon", "Bien sûr", "mais", "Heureusement",
+                "À mon avis", "Il est possible que"
+            ];
+            const answersEx1 = [
+                "certitude", "émotion/appréciation", "doute", "doute", "opinion",
+                "doute", "opinion", "certitude", "opposition (connecteur)", "émotion/appréciation",
+                "opinion", "doute"
+            ];
+            const tbody1 = document.querySelector('#exo1Table tbody');
+            elements.forEach((element, i) => {
+                const row = tbody1.insertRow();
+                const cellEl = row.insertCell();
+                cellEl.textContent = element;
+                const cellAnswer = row.insertCell();
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.placeholder = 'type de modalisation';
+                cellAnswer.appendChild(input);
+            });
+            document.getElementById('exo1Key').innerHTML = '<strong>Correction :</strong><br>' + elements.map((e,i) => `${e} → <em>${answersEx1[i]}</em>`).join('<br>');
+            document.getElementById('exo2Key').innerHTML = '<strong>Correction :</strong><br>a) Il viendra certainement / Il est certain qu\'il viendra.<br>b) Il est certain que c\'est vrai.';
+            document.getElementById('exo3Key').innerHTML = '<strong>Correction :</strong><br>a) Il est possible qu\'il réussisse.<br>b) Elle est peut-être chez elle / Il semble qu\'elle soit chez elle.';
+            document.getElementById('exo4Key').innerHTML = '<strong>Correction :</strong> « Je crois que », « À mon avis ».';
+            document.getElementById('exo5Key').innerHTML = '<strong>Correction :</strong> « Malheureusement » exprime le regret de l\'énonciateur. Il marque une évaluation négative de la situation.';
+            document.getElementById('exo6Key').innerHTML = '<strong>Propositions :</strong><br>a) Certainement / Il est certain qu\'<br>b) Peut-être / Il se peut qu\'<br>c) À mon avis / Selon moi<br>d) Heureusement / Malheureusement';
+            document.getElementById('exo7Key').innerHTML = '<strong>Correction :</strong> La première phrase exprime une certitude objective (il est certain que). La deuxième exprime une opinion subjective (à mon avis).';
+            document.getElementById('exo8Key').innerHTML = '<strong>Correction :</strong> Les jeunes sont plus mobilisés.';
+            document.getElementById('exo9Key').innerHTML = '<strong>Proposition :</strong> Il est certain que la lecture est bénéfique. Peut-être certains ne s\'en rendent-ils pas compte. À mon avis, chacun devrait lire davantage. Heureusement, les bibliothèques sont accessibles.';
+            window.toggleCorrection = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('visible');
+            };
+            function updateScore() {
+                const radioGroups = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5', 'self_ex6', 'self_ex7', 'self_ex8', 'self_ex9', 'self_ex10'];
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                radioGroups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                document.getElementById('scoreCorrect').textContent = correct;
+                document.getElementById('scoreIncorrect').textContent = incorrect;
+                document.getElementById('scorePartial').textContent = partial;
+                document.getElementById('scoreUnanswered').textContent = unanswered;
+            }
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                const radioGroups = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5', 'self_ex6', 'self_ex7', 'self_ex8', 'self_ex9', 'self_ex10'];
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                radioGroups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                const lessonId = 'semaine6-grammaire-modalisation';
+                const lang = localStorage.getItem('lang') || 'fr';
+                const entry = {
+                    lesson_id: lessonId,
+                    lesson_title: {
+                        fr: App.getTranslation('lesson_short_title', 'fr'),
+                        en: App.getTranslation('lesson_short_title', 'en'),
+                        ar: App.getTranslation('lesson_short_title', 'ar')
+                    },
+                    year: {
+                        fr: App.getTranslation('ach_year_bac', 'fr'),
+                        en: App.getTranslation('ach_year_bac', 'en'),
+                        ar: App.getTranslation('ach_year_bac', 'ar')
+                    },
+                    module: {
+                        fr: App.getTranslation('ach_module_semaine6', 'fr'),
+                        en: App.getTranslation('ach_module_semaine6', 'en'),
+                        ar: App.getTranslation('ach_module_semaine6', 'ar')
+                    },
+                    correct: correct,
+                    incorrect: incorrect,
+                    partial: partial,
+                    unanswered: unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles')
+                    .select('achivement')
+                    .eq('id', user.id)
+                    .single();
+                if (fetchError) { console.error('Could not fetch profile:', fetchError); return; }
+                let achivement = profileData?.achivement || {};
+                if (!achivement["ED-French"]) achivement["ED-French"] = [];
+                const arr = achivement["ED-French"];
+                const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+                if (existingIdx >= 0) arr[existingIdx] = entry; else arr.push(entry);
+                const { error: updateError } = await App.supabase
+                    .from('profiles')
+                    .update({ achivement: achivement })
+                    .eq('id', user.id);
+                if (updateError) {
+                    console.error('Save failed:', updateError);
+                    App.showToast('save_error', 'error');
+                } else {
+                    App.showToast('save_success', 'success');
+                    App.logUserAction('lesson_saved', { lesson: lessonId, correct, incorrect, partial });
+                }
+            });
+            document.getElementById('printPdfBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles')
+                        .select('registration_state')
+                        .eq('id', user.id)
+                        .single();
+                    if (!error && profile && profile.registration_state && profile.registration_state.active === true) isRegistered = true;
+                } catch (e) {}
+                const headerHTML = document.querySelector('.lesson-header').cloneNode(true);
+                const textCard = document.querySelector('.text-card').cloneNode(true);
+                const rulesSections = document.querySelectorAll('.valeurs-section, .methode-section');
+                let rulesHTML = '';
+                rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
+                const exercisesSection = document.querySelector('.exercises-section').cloneNode(true);
+                exercisesSection.querySelectorAll('input, textarea, .btn-verify, .self-assessment').forEach(el => el.remove());
+                if (isRegistered) {
+                    const answerKeys = exercisesSection.querySelectorAll('.answer-key');
+                    answerKeys.forEach(key => {
+                        key.style.display = 'block';
+                        key.style.border = 'none';
+                        key.style.padding = '0.5rem 0';
+                        key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    exercisesSection.querySelectorAll('.answer-key').forEach(el => el.remove());
+                }
+                const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                const lang = localStorage.getItem('lang') || 'fr';
+                printWindow.document.write(`
+                <!DOCTYPE html>
+                <html lang="${lang}">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>${App.getTranslation('lesson_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title>
+                    <style>
+                        body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.6; max-width: 700px; margin: 2rem auto; padding: 0 1rem; color: #000; }
+                        .print-header { text-align: center; border-bottom: 2px solid #c75b2c; padding-bottom: 1rem; margin-bottom: 2rem; }
+                        .print-header .site-name { font-size: 1.4rem; font-weight: bold; color: #c75b2c; margin: 0 0 0.3rem; }
+                        .print-header .meta-line { font-size: 0.95rem; color: #444; margin: 0.2rem 0; }
+                        .print-header .lesson-name { font-size: 1.1rem; font-weight: bold; color: #000; margin-top: 0.5rem; }
+                        .print-footer { text-align: center; border-top: 1px solid #ccc; padding-top: 1rem; margin-top: 2rem; font-size: 0.85rem; color: #666; }
+                        h1, h2, h3 { color: #000; }
+                        .lesson-header { text-align: center; margin-bottom: 2rem; }
+                        .badge { display: inline-block; background: #c75b2c; color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; text-transform: uppercase; }
+                        .text-card { border-left: 4px solid #c75b2c; padding: 1rem 1.5rem; margin: 1.5rem 0; font-style: italic; }
+                        .quote-mark { font-size: 3rem; color: #c75b2c; opacity: 0.3; position: absolute; top: -10px; left: 10px; }
+                        .text-card .author { text-align: right; font-style: normal; margin-top: 0.8rem; }
+                        .valeurs-section, .methode-section { margin: 1.5rem 0; }
+                        .valeur-card { background: #f8f4ec; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; }
+                        .valeur-card h3 { color: #c75b2c; }
+                        .exercise-card { margin: 1.2rem 0; }
+                        table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; }
+                        th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+                        th { background: #f0e8d8; }
+                        .answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; }
+                        @media print { body { margin: 0; padding: 0; } @page { margin: 2cm; } }
+                    </style>
+                </head>
+                <body>
+                    <div class="print-header">
+                        <div class="site-name">${App.getTranslation('print_site_name', lang)}</div>
+                        <div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div>
+                        <div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div>
+                    </div>
+                    ${breadcrumb.outerHTML}
+                    ${headerHTML.outerHTML}
+                    ${textCard.outerHTML}
+                    ${rulesHTML}
+                    ${exercisesSection.outerHTML}
+                    <div class="print-footer">
+                        ${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}
+                    </div>
+                </body>
+                </html>
+            `);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+            document.querySelectorAll('input[type="radio"][name^="self_ex"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+        })();
+    </script>
+    <!-- ═══════ DIRECT‑TRANSLATION FIX ═══════ -->
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') {
+                                el.innerHTML = next.innerHTML;
+                            }
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+</body>
+</html>

@@ -528,3 +528,286 @@ body.dark .degree4-lessonType-reading-dropdown-emoji {
         width: 100%;
     }
 }
+
+/* ==================================================================
+   SOUND IMAGE SELECTION EXERCISE
+   ================================================================== */
+:root {
+    --degree4-lessonType-reading-soundimage-accent: #c75b2c;
+    --degree4-lessonType-reading-soundimage-border: #e5ddd0;
+    --degree4-lessonType-reading-soundimage-bg: #fcfaf6;
+    --degree4-lessonType-reading-soundimage-text: #2b2416;
+    --degree4-lessonType-reading-soundimage-selected-bg: #f0e8d8;
+    --degree4-lessonType-reading-soundimage-correct-bg: #e8f5e9;
+    --degree4-lessonType-reading-soundimage-wrong-bg: #ffebee;
+    --degree4-lessonType-reading-soundimage-feedback-correct: #2e7d32;
+    --degree4-lessonType-reading-soundimage-feedback-wrong: #c62828;
+}
+
+.degree4-lessonType-reading-soundimage-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+.degree4-lessonType-reading-soundimage-item {
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.2s;
+}
+.degree4-lessonType-reading-soundimage-item:hover {
+    transform: scale(1.05);
+}
+.degree4-lessonType-reading-soundimage-item img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 3px solid var(--degree4-lessonType-reading-soundimage-border);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.degree4-lessonType-reading-soundimage-item.selected img {
+    border-color: var(--degree4-lessonType-reading-soundimage-accent);
+    box-shadow: 0 0 0 2px rgba(199, 91, 44, 0.3);
+}
+.degree4-lessonType-reading-soundimage-item .mark {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: var(--degree4-lessonType-reading-soundimage-accent);
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+.degree4-lessonType-reading-soundimage-item.selected .mark {
+    display: flex;
+}
+.degree4-lessonType-reading-soundimage-item.correct img {
+    border-color: #4caf50;
+    background-color: var(--degree4-lessonType-reading-soundimage-correct-bg);
+}
+.degree4-lessonType-reading-soundimage-item.wrong img {
+    border-color: #f44336;
+    background-color: var(--degree4-lessonType-reading-soundimage-wrong-bg);
+}
+.degree4-lessonType-reading-soundimage-feedback {
+    margin-top: 0.8rem;
+    font-weight: 600;
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+.degree4-lessonType-reading-soundimage-feedback.correct {
+    color: var(--degree4-lessonType-reading-soundimage-feedback-correct);
+    background: #e8f5e9;
+    border: 1px solid #c8e6c9;
+}
+.degree4-lessonType-reading-soundimage-feedback.wrong {
+    color: var(--degree4-lessonType-reading-soundimage-feedback-wrong);
+    background: #ffebee;
+    border: 1px solid #ffcdd2;
+}
+
+/* ==================================================================
+   UNDERLINE WORDS EXERCISE
+   ================================================================== */
+:root {
+    --degree4-lessonType-reading-underline-accent: #c75b2c;
+    --degree4-lessonType-reading-underline-border: #e5ddd0;
+    --degree4-lessonType-reading-underline-bg: #fcfaf6;
+    --degree4-lessonType-reading-underline-text: #2b2416;
+    --degree4-lessonType-reading-underline-correct-bg: #e8f5e9;
+    --degree4-lessonType-reading-underline-wrong-bg: #ffebee;
+    --degree4-lessonType-reading-underline-feedback-correct: #2e7d32;
+    --degree4-lessonType-reading-underline-feedback-wrong: #c62828;
+}
+
+.degree4-lessonType-reading-underline-sentence {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin: 1rem 0;
+    cursor: pointer;
+    user-select: none;
+}
+.degree4-lessonType-reading-underline-word {
+    display: inline-block;
+    padding: 0 2px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s, background-color 0.2s;
+    cursor: pointer;
+}
+.degree4-lessonType-reading-underline-word:hover {
+    background-color: var(--degree4-lessonType-reading-underline-bg);
+}
+.degree4-lessonType-reading-underline-word.underlined {
+    border-bottom-color: var(--degree4-lessonType-reading-underline-accent);
+}
+.degree4-lessonType-reading-underline-word.correct {
+    background-color: var(--degree4-lessonType-reading-underline-correct-bg);
+}
+.degree4-lessonType-reading-underline-word.wrong {
+    background-color: var(--degree4-lessonType-reading-underline-wrong-bg);
+}
+.degree4-lessonType-reading-underline-feedback {
+    margin-top: 0.8rem;
+    font-weight: 600;
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+.degree4-lessonType-reading-underline-feedback.correct {
+    color: var(--degree4-lessonType-reading-underline-feedback-correct);
+    background: #e8f5e9;
+    border: 1px solid #c8e6c9;
+}
+.degree4-lessonType-reading-underline-feedback.wrong {
+    color: var(--degree4-lessonType-reading-underline-feedback-wrong);
+    background: #ffebee;
+    border: 1px solid #ffcdd2;
+}
+
+/* ==================================================================
+   WORD CONNECTION EXERCISE (Syllable Matching)
+   ================================================================== */
+:root {
+    --degree4-lessonType-reading-connection-accent: #c75b2c;
+    --degree4-lessonType-reading-connection-border: #e5ddd0;
+    --degree4-lessonType-reading-connection-bg: #fcfaf6;
+    --degree4-lessonType-reading-connection-text: #2b2416;
+    --degree4-lessonType-reading-connection-selected-bg: #f0e8d8;
+    --degree4-lessonType-reading-connection-matched-bg: #e8f5e9;
+    --degree4-lessonType-reading-connection-wrong-bg: #ffebee;
+    --degree4-lessonType-reading-connection-feedback-correct: #2e7d32;
+    --degree4-lessonType-reading-connection-feedback-wrong: #c62828;
+}
+
+.degree4-lessonType-reading-connection-container {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+}
+.degree4-lessonType-reading-connection-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 150px;
+}
+.degree4-lessonType-reading-connection-item {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--degree4-lessonType-reading-connection-border);
+    border-radius: 8px;
+    cursor: pointer;
+    background: var(--degree4-lessonType-reading-connection-bg);
+    color: var(--degree4-lessonType-reading-connection-text);
+    font-weight: 500;
+    text-align: center;
+    transition: all 0.2s;
+}
+.degree4-lessonType-reading-connection-item:hover {
+    border-color: var(--degree4-lessonType-reading-connection-accent);
+}
+.degree4-lessonType-reading-connection-item.selected {
+    border-color: var(--degree4-lessonType-reading-connection-accent);
+    background: var(--degree4-lessonType-reading-connection-selected-bg);
+}
+.degree4-lessonType-reading-connection-item.matched {
+    border-color: #4caf50;
+    background: var(--degree4-lessonType-reading-connection-matched-bg);
+}
+.degree4-lessonType-reading-connection-item.wrong {
+    border-color: #f44336;
+    background: var(--degree4-lessonType-reading-connection-wrong-bg);
+}
+.degree4-lessonType-reading-connection-pairs {
+    margin-top: 1rem;
+}
+.degree4-lessonType-reading-connection-pair {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 0.3rem;
+}
+.degree4-lessonType-reading-connection-pair span {
+    padding: 0.2rem 0.6rem;
+    background: var(--degree4-lessonType-reading-connection-bg);
+    border-radius: 4px;
+}
+.degree4-lessonType-reading-connection-pair .arrow {
+    color: var(--degree4-lessonType-reading-connection-accent);
+}
+.degree4-lessonType-reading-connection-feedback {
+    margin-top: 0.8rem;
+    font-weight: 600;
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+.degree4-lessonType-reading-connection-feedback.correct {
+    color: var(--degree4-lessonType-reading-connection-feedback-correct);
+    background: #e8f5e9;
+    border: 1px solid #c8e6c9;
+}
+.degree4-lessonType-reading-connection-feedback.wrong {
+    color: var(--degree4-lessonType-reading-connection-feedback-wrong);
+    background: #ffebee;
+    border: 1px solid #ffcdd2;
+}
+
+/* ==================================================================
+   SENTENCE PRODUCTION EXERCISE (with word list)
+   ================================================================== */
+.degree4-lessonType-reading-sentenceprod-container {
+    margin: 1rem 0;
+}
+.degree4-lessonType-reading-sentenceprod-words {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+.degree4-lessonType-reading-sentenceprod-word {
+    padding: 0.3rem 0.8rem;
+    background: var(--degree4-lessonType-reading-connection-bg, #f0e8d8);
+    border: 1px solid var(--degree4-lessonType-reading-connection-border, #e5ddd0);
+    border-radius: 20px;
+    font-weight: 600;
+    color: var(--degree4-lessonType-reading-connection-text, #2b2416);
+}
+.degree4-lessonType-reading-sentenceprod-textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--degree4-lessonType-reading-connection-border, #e5ddd0);
+    border-radius: 6px;
+    background: var(--degree4-lessonType-reading-connection-bg, #fcfaf6);
+    color: var(--degree4-lessonType-reading-connection-text, #2b2416);
+    font-family: inherit;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+.degree4-lessonType-reading-sentenceprod-feedback {
+    margin-top: 0.8rem;
+    font-weight: 600;
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+.degree4-lessonType-reading-sentenceprod-feedback.correct {
+    color: #2e7d32;
+    background: #e8f5e9;
+    border: 1px solid #c8e6c9;
+}
+.degree4-lessonType-reading-sentenceprod-feedback.wrong {
+    color: #c62828;
+    background: #ffebee;
+    border: 1px solid #ffcdd2;
+}

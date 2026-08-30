@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson6_title">Leçon 6 – Tous les homophones grammaticaux | Texte littéraire & Exercices</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ===== Lesson‑specific styles (unchanged) ===== */
+        :root {
+            --bg: #f9f7f1; --card: #ffffff; --text: #2b2416; --text-light: #5c5344;
+            --heading: #382e1e; --accent: #c75b2c; --accent-hover: #a3441d; --border: #e5ddd0;
+            --shadow: 0 1px 4px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-hover: 0 8px 22px rgba(0,0,0,0.08); --radius: 12px; --radius-sm: 8px;
+            --transition: 0.25s ease; --font-body: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
+            --audio-bg: #f4efe4; --audio-progress: #d8c9aa; --button-bg: #f0e8d8; --button-hover: #e3d5bc; --input-bg: #fcfaf6;
+        }
+        body.dark {
+            --bg: #1e1b17; --card: #2a2620; --text: #e8dfd2; --text-light: #b9aa95;
+            --heading: #f0e4d2; --accent: #e07b4a; --accent-hover: #f08c5c; --border: #3e3830;
+            --shadow: 0 1px 4px rgba(0,0,0,0.25); --shadow-hover: 0 8px 22px rgba(0,0,0,0.35);
+            --audio-bg: #26221b; --audio-progress: #5a4e3c; --button-bg: #3a3329; --button-hover: #4e4437; --input-bg: #333028;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: var(--font-body); background: var(--bg); color: var(--text);
+            line-height: 1.75; transition: background var(--transition), color var(--transition);
+        }
+        .container { max-width:860px; margin:0 auto; padding:1.8rem 1.4rem 3rem; }
+        .lesson-header { text-align: center; margin-bottom: 2rem; }
+        .badge { display:inline-block; background: var(--accent); color: #fff; padding:0.25rem 1rem; border-radius:20px; font-size:0.8rem; font-weight:700; letter-spacing:0.03em; text-transform: uppercase; }
+        .lesson-header h1 { font-size: 2.1rem; color: var(--heading); margin: 0.6rem 0 0.3rem; line-height: 1.3; }
+        .lesson-header .meta { font-size:0.9rem; color:var(--text-light); display: flex; justify-content: center; gap:1.2rem; flex-wrap: wrap; }
+        .audio-player { background: var(--card); border:1px solid var(--border); border-radius: var(--radius); padding:1rem 1.4rem; margin: 1.5rem 0 2rem; box-shadow: var(--shadow); display: flex; align-items: center; gap:1rem; flex-wrap: wrap; }
+        .audio-player .play-btn { width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #fff; border:none; font-size:1.2rem; cursor:pointer; display: flex; align-items: center; justify-content: center; transition: background var(--transition); flex-shrink: 0; }
+        .play-btn:hover { background: var(--accent-hover); }
+        .audio-player .progress-area { flex:1; min-width:120px; display: flex; flex-direction: column; gap:0.3rem; }
+        .progress-bar { width:100%; height:6px; background: var(--audio-progress); border-radius: 3px; cursor: pointer; position: relative; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--accent); border-radius: 3px; width: 0%; transition: width 0.1s linear; }
+        .time-info { display: flex; justify-content: space-between; font-size:0.75rem; color:var(--text-light); }
+        .speed-selector { display: flex; gap:0.3rem; flex-wrap: wrap; }
+        .speed-btn { border:1px solid var(--border); background: var(--button-bg); color: var(--text); padding:0.25rem 0.55rem; border-radius: 4px; font-size:0.75rem; font-weight:600; cursor:pointer; transition: all var(--transition); }
+        .speed-btn.active { background: var(--accent); color:#fff; border-color: var(--accent); }
+        .audio-label { font-weight:700; font-size:0.85rem; color:var(--heading); white-space: nowrap; }
+        @media (max-width:600px) { .audio-player { flex-direction: column; align-items: stretch; } .audio-label { text-align: center; } }
+        .text-card { background: var(--card); border:1px solid var(--border); border-left:5px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding:1.4rem 1.6rem; margin:1.8rem 0; font-style:italic; font-size:1.05rem; line-height: 1.9; box-shadow: var(--shadow); position: relative; }
+        .text-card .quote-mark { position: absolute; top:-12px; left:14px; font-size:3rem; color:var(--accent); opacity:0.25; line-height:1; }
+        .text-card .author { text-align:right; font-style:normal; font-size:0.9rem; color:var(--text-light); margin-top:0.8rem; }
+        .exercises-section h2 { font-size:1.5rem; color:var(--heading); margin:2rem 0 1rem; border-bottom:3px solid var(--accent); display:inline-block; padding-bottom:0.3rem; }
+        .exercise-card { background: var(--card); border:1px solid var(--border); border-radius: var(--radius-sm); padding:1.2rem 1.4rem; margin-bottom:1.4rem; box-shadow: var(--shadow); }
+        .exercise-card h3 { font-size:1.05rem; color:var(--accent); margin-bottom:0.8rem; display: flex; align-items: center; gap:0.4rem; }
+        .exercise-card table { width:100%; border-collapse: collapse; margin: 0.8rem 0; }
+        .exercise-card th, .exercise-card td { padding:0.55rem 0.7rem; border:1px solid var(--border); text-align:left; font-size:0.9rem; }
+        .exercise-card th { background: var(--audio-bg); font-weight:700; color:var(--heading); }
+        .exercise-card input[type="text"] { width:100%; padding:0.4rem 0.6rem; border:1px solid var(--border); border-radius:4px; background: var(--input-bg); color: var(--text); font-family: inherit; font-size:0.9rem; }
+        .btn-verify { background: var(--accent); color:#fff; border:none; padding:0.5rem 1.2rem; border-radius: 20px; font-weight:600; cursor:pointer; transition: background var(--transition); margin-top:0.6rem; font-size:0.85rem; }
+        .btn-verify:hover { background: var(--accent-hover); }
+        .answer-key { display:none; margin-top:0.8rem; padding:0.8rem; background: var(--audio-bg); border-radius:6px; font-size:0.85rem; color: var(--text-light); border:1px dashed var(--accent); }
+        .answer-key.visible { display:block; }
+        .self-assessment { margin-top: 0.8rem; font-size: 0.9rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+        .self-assessment label { cursor: pointer; }
+        .score-area { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; margin-top: 2rem; box-shadow: var(--shadow); }
+        .score-area h2 { color: var(--heading); margin-bottom: 1rem; }
+        .score-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .score-stat { background: var(--audio-bg); padding: 0.8rem 1.2rem; border-radius: 8px; font-weight: 600; }
+        html[dir="rtl"] body { direction: rtl; }
+        html[dir="rtl"] .container { text-align: right; }
+        html[dir="rtl"] .text-card .author { text-align: left; }
+        html[dir="rtl"] .exercise-card th, html[dir="rtl"] .exercise-card td { text-align: right; }
+        @media (max-width:600px) { .lesson-header h1 { font-size:1.5rem; } .container { padding:1rem 0.8rem 2rem; } }
+        .valeurs-section, .methode-section { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.6rem 1.8rem; margin: 2rem 0; box-shadow: var(--shadow); }
+        .valeurs-section h2, .methode-section h2 { font-size: 1.5rem; color: var(--heading); margin-bottom: 1rem; border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 0.3rem; }
+        .valeur-card { background: var(--audio-bg); border-radius: var(--radius-sm); padding: 1rem 1.2rem; margin-bottom: 1rem; }
+        .valeur-card h3 { color: var(--accent); font-size: 1.1rem; margin-bottom: 0.4rem; }
+        .valeur-card ul { list-style: none; padding: 0; }
+        .valeur-card li { padding: 0.3rem 0; padding-left: 1.4rem; position: relative; color: var(--text-light); }
+        .valeur-card li::before { content: '◆'; position: absolute; left: 0; color: var(--accent); font-size: 0.5rem; top: 0.5rem; }
+        .valeur-card p { margin: 0.5rem 0; }
+    </style>
+</head>
+<body>
+    <div id="main-content" class="container">
+        <p style="margin-bottom:1.5rem; color:var(--text-light);">
+            <a href="revision.html" data-i18n="back_revision">Révision générale</a>
+            › <strong data-i18n="back_current">Tous les homophones grammaticaux</strong>
+        </p>
+        <div class="lesson-header">
+            <span class="badge" data-i18n="lesson_badge">📘 Orthographe · Leçon 6</span>
+            <h1 data-i18n="lesson_title">Tous les homophones grammaticaux<br>(a/à, ou/où, son/sont, ce/se, ces/ses, leur/leurs…)</h1>
+            <div class="meta">
+                <span data-i18n="lesson_duration">⏱️ 45 minutes</span>
+                <span data-i18n="lesson_meta_audio">🎧 Écoutez le texte puis faites les exercices</span>
+            </div>
+        </div>
+        <div class="audio-player" id="audioPlayer">
+            <span class="audio-label" data-i18n="audio_label">🎧 Écoute littéraire</span>
+            <button class="play-btn" id="playBtn" aria-label="Lecture">▶</button>
+            <div class="progress-area">
+                <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
+                <div class="time-info"><span id="currentTime">0:00</span><span id="duration">0:00</span></div>
+            </div>
+            <div class="speed-selector" id="speedSelector">
+                <button class="speed-btn" data-speed="0.75">0.75x</button>
+                <button class="speed-btn active" data-speed="1">1x</button>
+                <button class="speed-btn" data-speed="1.25">1.25x</button>
+                <button class="speed-btn" data-speed="1.5">1.5x</button>
+            </div>
+        </div>
+        <div class="text-card">
+            <span class="quote-mark">“</span>
+            <p>
+                <u>À</u> la bibliothèque, <u>où</u> je passe <u>souvent</u> mes après-midis, <u>on</u> trouve <u>toutes sortes</u> de livres. <u>Son</u> ambiance calme <u>et</u> <u>ses</u> rayons bien rangés <u>me</u> donnent envie de lire. <u>Ce</u> matin, je <u>me</u> suis installé près de la fenêtre. <u>Leurs</u> couvertures colorées <u>m'</u>attiraient. <u>Mais</u> il ne faut pas <u>se</u> tromper : <u>chaque</u> ouvrage <u>à</u> sa place. <u>Ceux</u> qui <u>sont</u> là <u>sont</u> précieux. <u>Où</u> donc ai-je mis <u>mon</u> carnet ? <u>Ah !</u> le voilà, <u>à</u> côté de moi. <u>Je</u> vais pouvoir noter <u>mes</u> idées.
+            </p>
+            <div class="author" data-i18n="text_author">— La bibliothèque, texte original</div>
+        </div>
+        <div class="valeurs-section">
+            <h2 data-i18n="rules_heading">📖 Homophones grammaticaux : les confusions à éviter</h2>
+            <p data-i18n="rules_intro" class="no-bilingual" style="margin-bottom:1.2rem;">Les homophones sont des mots qui se prononcent de la même manière mais s'écrivent différemment et ont des natures différentes. Voici les principaux.</p>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_a_title">🔹 a / à</h3>
+                <p data-i18n="rules_a_text"><strong>a</strong> = verbe avoir (3e personne du singulier) ; <strong>à</strong> = préposition.<br>Astuce : remplacez par « avait » : si la phrase reste correcte, c'est le verbe avoir.</p>
+            </div>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_ou_title">🔹 ou / où</h3>
+                <p data-i18n="rules_ou_text"><strong>ou</strong> = conjonction de coordination (choix) ; <strong>où</strong> = pronom ou adverbe de lieu/temps.</p>
+            </div>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_son_title">🔹 son / sont</h3>
+                <p data-i18n="rules_son_text"><strong>son</strong> = déterminant possessif (masculin singulier) ; <strong>sont</strong> = verbe être (3e personne du pluriel).</p>
+            </div>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_ce_title">🔹 ce / se</h3>
+                <p data-i18n="rules_ce_text"><strong>ce</strong> = déterminant démonstratif ou pronom ; <strong>se</strong> = pronom réfléchi.</p>
+            </div>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_ces_title">🔹 ces / ses / c'est</h3>
+                <p data-i18n="rules_ces_text"><strong>ces</strong> = déterminant démonstratif pluriel ; <strong>ses</strong> = déterminant possessif pluriel ; <strong>c'est</strong> = pronom démonstratif + verbe être.</p>
+            </div>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_leur_title">🔹 leur / leurs</h3>
+                <p data-i18n="rules_leur_text"><strong>leur</strong> = pronom personnel (invariable) ou déterminant possessif singulier ; <strong>leurs</strong> = déterminant possessif pluriel.</p>
+            </div>
+            <p data-i18n="rules_note" style="margin-top:1rem; font-style:italic; color:var(--text-light);">💡 La méthode : identifier la nature grammaticale du mot dans le contexte.</p>
+        </div>
+        <div class="exercises-section">
+            <h2 data-i18n="exercises_heading">✍️ Exercices</h2>
+            <!-- Exercice 1 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo1_title">📌 1. Choisissez le bon homophone</h3>
+                <p data-i18n="exo1_instruction">Complétez avec a/à, ou/où, son/sont, ce/se, ces/ses, leur/leurs.</p>
+                <ol type="a">
+                    <li>Il ____ (a/à) beaucoup de travail ____ (a/à) faire.</li>
+                    <li>____ (Où/Ou) vas-tu ? Tu veux du thé ____ (ou/où) du café ?</li>
+                    <li>____ (Son/Sont) frère et ____ (son/sont) ami ____ (son/sont) partis.</li>
+                    <li>____ (Ce/Se) matin, il ____ (ce/se) réveille tôt.</li>
+                    <li>J'aime ____ (ces/ses) couleurs ; ____ (c'est/ses) magnifique.</li>
+                    <li>Les enfants ont rangé ____ (leur/leurs) chambre ; ____ (leur/leurs) parents sont fiers.</li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo1Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo1Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 2 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo2_title">📌 2. Complétez avec le bon mot</h3>
+                <p data-i18n="exo2_instruction">Remplissez les blancs avec l'homophone correct (a/à, son/sont, etc.).</p>
+                <ol type="a">
+                    <li>Elle ____ (a/à) une voix magnifique.</li>
+                    <li>____ (Où/Ou) est la gare ?</li>
+                    <li>____ (Sont/Son) livre est sur la table.</li>
+                    <li>Ils ____ (ce/se) sont rencontrés hier.</li>
+                    <li>____ (Ces/Ses) fleurs sont jolies.</li>
+                    <li>____ (Leur/Leurs) maison est grande.</li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo2Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo2Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 3 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo3_title">📌 3. Corrigez les erreurs</h3>
+                <p data-i18n="exo3_instruction">Chaque phrase contient une erreur d'homophone. Corrigez-la.</p>
+                <ol type="a">
+                    <li>Il a oublié son sac à la maison. (correct ou incorrect ?) <input type="text" placeholder="✅ ou correction"></li>
+                    <li>Ce livre est a moi. <input type="text" placeholder="Correction"></li>
+                    <li>Ils sont a la plage. <input type="text" placeholder="Correction"></li>
+                    <li>Ou vas-tu ? <input type="text" placeholder="Correction"></li>
+                    <li>Ces la fin du film. <input type="text" placeholder="Correction"></li>
+                </ol>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo3Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo3Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 4 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo4_title">📌 4. Dictée préparée</h3>
+                <p data-i18n="exo4_instruction">Écoutez ou lisez la phrase suivante, puis écrivez-la correctement en choisissant les bons homophones.</p>
+                <p>« ____ (Ce/Se) matin, ____ (son/sont) ami ____ (a/à) téléphoné ____ (a/à) Marie. Ils ____ (ce/se) sont donné rendez-vous ____ (a/à) midi, ____ (ou/où) ils déjeuneront ensemble. »</p>
+                <textarea rows="2" style="width:100%;" placeholder="Réécrivez la phrase..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo4Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo4Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 5 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo5_title">📌 5. Production écrite</h3>
+                <p data-i18n="exo5_instruction">Rédigez un court paragraphe (5-6 phrases) sur le thème de votre choix. Utilisez au moins une fois chacun des homophones suivants : a/à, ou/où, son/sont, ce/se, ces/ses, leur/leurs. Soulignez les homophones utilisés.</p>
+                <textarea rows="6" style="width:100%; padding:0.5rem;" placeholder="Votre paragraphe..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex5" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex5" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex5" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+        </div>
+        <div class="score-area" id="scoreArea">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="score-stats" id="scoreStats">
+                <div class="score-stat"><span data-i18n="score_correct">Correctes :</span> <span id="scoreCorrect">0</span></div>
+                <div class="score-stat"><span data-i18n="score_incorrect">Incorrectes :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="score-stat"><span data-i18n="score_partial">Partielles :</span> <span id="scorePartial">0</span></div>
+                <div class="score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">5</span></div>
+            </div>
+        </div>
+        <div class="score-actions" style="margin-top:1.2rem;">
+            <button id="saveResultsBtn" class="btn-verify" style="margin-right:0.5rem;" data-i18n="save_results">💾 Enregistrer mes résultats</button>
+            <button id="printPdfBtn" class="btn-verify" style="background:#5c5344; margin-right:0.5rem;" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+        </div>
+        <div style="margin-top:2rem; display:flex; justify-content:space-between; flex-wrap:wrap;">
+            <a href="semaine7-orthographe-accords.html" data-i18n="footer_back" class="no-bilingual">← Leçon précédente</a>
+            <a href="semaine7-expression-commentaire.html" data-i18n="footer_next" class="no-bilingual">Leçon suivante : Méthodologie du commentaire composé →</a>
+        </div>
+    </div>
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                'lesson6_title': 'Leçon 6 – Tous les homophones grammaticaux | Texte littéraire & Exercices',
+                'lesson_short_title': 'Tous les homophones grammaticaux',
+                'ach_year_bac': '4ᵉ année secondaire (Bac)',
+                'ach_module_semaine7': 'Méthodologie des épreuves',
+                'back_revision': 'Révision générale',
+                'back_current': 'Tous les homophones grammaticaux',
+                'lesson_badge': '📘 Orthographe · Leçon 6',
+                'lesson_title': 'Tous les homophones grammaticaux<br>(a/à, ou/où, son/sont, ce/se, ces/ses, leur/leurs…)',
+                'lesson_duration': '⏱️ 45 minutes',
+                'lesson_meta_audio': '🎧 Écoutez le texte puis faites les exercices',
+                'audio_label': '🎧 Écoute littéraire',
+                'text_author': '— La bibliothèque, texte original',
+                'rules_heading': '📖 Homophones grammaticaux : les confusions à éviter',
+                'rules_intro': 'Les homophones sont des mots qui se prononcent de la même manière mais s\'écrivent différemment et ont des natures différentes. Voici les principaux.',
+                'rules_a_title': '🔹 a / à',
+                'rules_a_text': '<strong>a</strong> = verbe avoir (3e personne du singulier) ; <strong>à</strong> = préposition.<br>Astuce : remplacez par « avait » : si la phrase reste correcte, c\'est le verbe avoir.',
+                'rules_ou_title': '🔹 ou / où',
+                'rules_ou_text': '<strong>ou</strong> = conjonction de coordination (choix) ; <strong>où</strong> = pronom ou adverbe de lieu/temps.',
+                'rules_son_title': '🔹 son / sont',
+                'rules_son_text': '<strong>son</strong> = déterminant possessif (masculin singulier) ; <strong>sont</strong> = verbe être (3e personne du pluriel).',
+                'rules_ce_title': '🔹 ce / se',
+                'rules_ce_text': '<strong>ce</strong> = déterminant démonstratif ou pronom ; <strong>se</strong> = pronom réfléchi.',
+                'rules_ces_title': '🔹 ces / ses / c\'est',
+                'rules_ces_text': '<strong>ces</strong> = déterminant démonstratif pluriel ; <strong>ses</strong> = déterminant possessif pluriel ; <strong>c\'est</strong> = pronom démonstratif + verbe être.',
+                'rules_leur_title': '🔹 leur / leurs',
+                'rules_leur_text': '<strong>leur</strong> = pronom personnel (invariable) ou déterminant possessif singulier ; <strong>leurs</strong> = déterminant possessif pluriel.',
+                'rules_note': '💡 La méthode : identifier la nature grammaticale du mot dans le contexte.',
+                'exercises_heading': '✍️ Exercices',
+                'exo1_title': '📌 1. Choisissez le bon homophone',
+                'exo1_instruction': 'Complétez avec a/à, ou/où, son/sont, ce/se, ces/ses, leur/leurs.',
+                'exo2_title': '📌 2. Complétez avec le bon mot',
+                'exo2_instruction': 'Remplissez les blancs avec l\'homophone correct (a/à, son/sont, etc.).',
+                'exo3_title': '📌 3. Corrigez les erreurs',
+                'exo3_instruction': 'Chaque phrase contient une erreur d\'homophone. Corrigez-la.',
+                'exo4_title': '📌 4. Dictée préparée',
+                'exo4_instruction': 'Écoutez ou lisez la phrase suivante, puis écrivez-la correctement en choisissant les bons homophones.',
+                'exo5_title': '📌 5. Production écrite',
+                'exo5_instruction': 'Rédigez un court paragraphe (5-6 phrases) sur le thème de votre choix. Utilisez au moins une fois chacun des homophones suivants : a/à, ou/où, son/sont, ce/se, ces/ses, leur/leurs. Soulignez les homophones utilisés.',
+                'btn_correction': '🔍 Voir la correction',
+                'footer_back': '← Leçon précédente',
+                'footer_next': 'Leçon suivante : Méthodologie du commentaire composé →',
+                'self_assess_question': 'Ma réponse est :',
+                'self_correct': 'Correcte', 'self_incorrect': 'Incorrecte', 'self_partial': 'Partiellement correcte',
+                'score_title': '📊 Votre auto‑évaluation',
+                'score_correct': 'Correctes :', 'score_incorrect': 'Incorrectes :', 'score_partial': 'Partielles :', 'score_unanswered': 'Sans réponse :',
+                'save_results': '💾 Enregistrer mes résultats', 'save_success': 'Résultats sauvegardés ✓', 'save_error': 'Erreur lors de la sauvegarde',
+                'print_pdf': '🖨️ Imprimer / PDF', 'print_with_answers': 'Corrigé inclus',
+                'print_site_name': 'Educational Dashboard – French', 'print_scholar_year': 'Révision pour le Bac',
+                'print_week': 'Semaine 7', 'print_area': 'Orthographe',
+                'print_footer_dev': 'Développé par Mejri Ziad', 'print_footer_date': 'Imprimé le', 'print_without_answers': 'Sans corrigé',
+                'toast_signin_required': 'Connectez-vous pour voir les corrections.'
+            },
+            en: {
+                'lesson6_title': 'Lesson 6 – All grammatical homophones | Literary text & exercises',
+                'lesson_short_title': 'All grammatical homophones',
+                'ach_year_bac': '12th grade (Bac)', 'ach_module_semaine7': 'Exam methodology',
+                'back_revision': 'General review', 'back_current': 'All grammatical homophones',
+                'lesson_badge': '📘 Spelling · Lesson 6',
+                'lesson_title': 'All grammatical homophones<br>(a/à, ou/où, son/sont, ce/se, ces/ses, leur/leurs…)',
+                'lesson_duration': '⏱️ 45 minutes', 'lesson_meta_audio': '🎧 Listen to the text then do the exercises',
+                'audio_label': '🎧 Literary listening', 'text_author': '— The library, original text',
+                'rules_heading': '📖 Grammatical homophones: confusions to avoid',
+                'rules_intro': 'Homophones are words that sound the same but are spelled differently and have different natures. Here are the main ones.',
+                'rules_a_title': '🔹 a / à',
+                'rules_a_text': '<strong>a</strong> = verb avoir (3rd person singular); <strong>à</strong> = preposition.<br>Tip: replace with "avait": if the sentence remains correct, it is the verb avoir.',
+                'rules_ou_title': '🔹 ou / où',
+                'rules_ou_text': '<strong>ou</strong> = coordinating conjunction (choice); <strong>où</strong> = pronoun or adverb of place/time.',
+                'rules_son_title': '🔹 son / sont',
+                'rules_son_text': '<strong>son</strong> = possessive determiner (masculine singular); <strong>sont</strong> = verb être (3rd person plural).',
+                'rules_ce_title': '🔹 ce / se',
+                'rules_ce_text': '<strong>ce</strong> = demonstrative determiner or pronoun; <strong>se</strong> = reflexive pronoun.',
+                'rules_ces_title': '🔹 ces / ses / c\'est',
+                'rules_ces_text': '<strong>ces</strong> = demonstrative determiner plural; <strong>ses</strong> = possessive determiner plural; <strong>c\'est</strong> = demonstrative pronoun + verb être.',
+                'rules_leur_title': '🔹 leur / leurs',
+                'rules_leur_text': '<strong>leur</strong> = personal pronoun (invariable) or possessive determiner singular; <strong>leurs</strong> = possessive determiner plural.',
+                'rules_note': '💡 Method: identify the grammatical nature of the word in context.',
+                'exercises_heading': '✍️ Exercises',
+                'exo1_title': '📌 1. Choose the correct homophone',
+                'exo1_instruction': 'Fill in with a/à, ou/où, son/sont, ce/se, ces/ses, leur/leurs.',
+                'exo2_title': '📌 2. Complete with the correct word',
+                'exo2_instruction': 'Fill in the blanks with the correct homophone (a/à, son/sont, etc.).',
+                'exo3_title': '📌 3. Correct the errors',
+                'exo3_instruction': 'Each sentence contains a homophone error. Correct it.',
+                'exo4_title': '📌 4. Prepared dictation',
+                'exo4_instruction': 'Listen to or read the sentence, then write it correctly choosing the right homophones.',
+                'exo5_title': '📌 5. Written production',
+                'exo5_instruction': 'Write a short paragraph (5-6 sentences) on a topic of your choice. Use at least once each of the following homophones: a/à, ou/où, son/sont, ce/se, ces/ses, leur/leurs. Underline the homophones used.',
+                'btn_correction': '🔍 See correction',
+                'footer_back': '← Previous lesson', 'footer_next': 'Next lesson: Commentary methodology →',
+                'self_assess_question': 'My answer is:',
+                'self_correct': 'Correct', 'self_incorrect': 'Incorrect', 'self_partial': 'Partially correct',
+                'score_title': '📊 Your self‑assessment',
+                'score_correct': 'Correct:', 'score_incorrect': 'Incorrect:', 'score_partial': 'Partial:', 'score_unanswered': 'Unanswered:',
+                'save_results': '💾 Save my results', 'save_success': 'Results saved ✓', 'save_error': 'Save failed',
+                'print_pdf': '🖨️ Print / PDF', 'print_with_answers': 'With answers',
+                'print_site_name': 'Educational Dashboard – French', 'print_scholar_year': 'Bac Review',
+                'print_week': 'Week 7', 'print_area': 'Spelling',
+                'print_footer_dev': 'Developed by Mejri Ziad', 'print_footer_date': 'Printed on', 'print_without_answers': 'Without answers',
+                'toast_signin_required': 'Sign in to see the corrections.'
+            },
+            ar: {
+                'lesson6_title': 'الدرس 6 – كل الهوموفونات القواعدية | نص أدبي وتمارين',
+                'lesson_short_title': 'كل الهوموفونات القواعدية',
+                'ach_year_bac': 'السنة الرابعة ثانوي', 'ach_module_semaine7': 'منهجية الامتحانات',
+                'back_revision': 'المراجعة العامة', 'back_current': 'كل الهوموفونات القواعدية',
+                'lesson_badge': '📘 الإملاء · الدرس 6',
+                'lesson_title': 'كل الهوموفونات القواعدية<br>(a/à, ou/où, son/sont, ce/se, ces/ses, leur/leurs…)',
+                'lesson_duration': '⏱️ 45 دقيقة', 'lesson_meta_audio': '🎧 استمع إلى النص ثم قم بالتمارين',
+                'audio_label': '🎧 استماع أدبي', 'text_author': '— المكتبة، نص أصلي',
+                'rules_heading': '📖 الهوموفونات القواعدية: أخطاء يجب تجنبها',
+                'rules_intro': 'الهوموفونات هي كلمات تُنطق بنفس الطريقة لكنها تُكتب بشكل مختلف ولها طبائع مختلفة. إليك أهمها.',
+                'rules_a_title': '🔹 a / à',
+                'rules_a_text': '<strong>a</strong> = فعل avoir (الغائب المفرد)؛ <strong>à</strong> = حرف جر.<br>حيلة: استبدل بـ «avait» : إذا بقيت الجملة صحيحة، فهو فعل avoir.',
+                'rules_ou_title': '🔹 ou / où',
+                'rules_ou_text': '<strong>ou</strong> = حرف عطف (اختيار)؛ <strong>où</strong> = ضمير أو ظرف مكان/زمان.',
+                'rules_son_title': '🔹 son / sont',
+                'rules_son_text': '<strong>son</strong> = محدد ملكية (مذكر مفرد)؛ <strong>sont</strong> = فعل être (الغائب الجمع).',
+                'rules_ce_title': '🔹 ce / se',
+                'rules_ce_text': '<strong>ce</strong> = محدد إشارة أو ضمير؛ <strong>se</strong> = ضمير انعكاسي.',
+                'rules_ces_title': '🔹 ces / ses / c\'est',
+                'rules_ces_text': '<strong>ces</strong> = محدد إشارة جمع؛ <strong>ses</strong> = محدد ملكية جمع؛ <strong>c\'est</strong> = ضمير إشارة + فعل être.',
+                'rules_leur_title': '🔹 leur / leurs',
+                'rules_leur_text': '<strong>leur</strong> = ضمير شخصي (غير متغير) أو محدد ملكية مفرد؛ <strong>leurs</strong> = محدد ملكية جمع.',
+                'rules_note': '💡 الطريقة: تحديد الطبيعة النحوية للكلمة في السياق.',
+                'exercises_heading': '✍️ تمارين',
+                'exo1_title': '📌 1. اختر الهوموفون الصحيح',
+                'exo1_instruction': 'أكمل بـ a/à, ou/où, son/sont, ce/se, ces/ses, leur/leurs.',
+                'exo2_title': '📌 2. أكمل بالكلمة الصحيحة',
+                'exo2_instruction': 'املأ الفراغات بالهوموفون الصحيح (a/à, son/sont, إلخ).',
+                'exo3_title': '📌 3. صحح الأخطاء',
+                'exo3_instruction': 'كل جملة تحتوي على خطأ هوموفوني. صححه.',
+                'exo4_title': '📌 4. إملاء محضّر',
+                'exo4_instruction': 'استمع أو اقرأ الجملة، ثم اكتبها صحيحة مختارًا الهوموفونات المناسبة.',
+                'exo5_title': '📌 5. إنتاج كتابي',
+                'exo5_instruction': 'اكتب فقرة قصيرة (5-6 جمل) حول موضوع من اختيارك. استعمل مرة واحدة على الأقل كل من الهوموفونات التالية: a/à, ou/où, son/sont, ce/se, ces/ses, leur/leurs. ضع خطا تحت الهوموفونات المستعملة.',
+                'btn_correction': '🔍 الاطلاع على التصحيح',
+                'footer_back': '← الدرس السابق', 'footer_next': 'الدرس الموالي: منهجية التعليق المركب →',
+                'self_assess_question': 'جوابي هو:',
+                'self_correct': 'صحيح', 'self_incorrect': 'خاطئ', 'self_partial': 'صحيح جزئيًا',
+                'score_title': '📊 تقييمك الذاتي',
+                'score_correct': 'صحيح:', 'score_incorrect': 'خاطئ:', 'score_partial': 'جزئي:', 'score_unanswered': 'بدون إجابة:',
+                'save_results': '💾 حفظ نتائجي', 'save_success': 'تم حفظ النتائج ✓', 'save_error': 'خطأ في الحفظ',
+                'print_pdf': '🖨️ طباعة / PDF', 'print_with_answers': 'مع التصحيح',
+                'print_site_name': 'لوحة التحكم التعليمية – الفرنسية', 'print_scholar_year': 'مراجعة البكالوريا',
+                'print_week': 'الأسبوع 7', 'print_area': 'الإملاء',
+                'print_footer_dev': 'طوّر بواسطة ماجري زياد', 'print_footer_date': 'طُبع في',
+                'toast_signin_required': 'سجّل الدخول لرؤية التصحيحات.'
+            }
+        });
+        (function() {
+            var container = document.querySelector('.container');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+        })();
+    </script>
+    <script src="ed-french-ini.js"></script>
+    <script>
+        (function() {
+            const audio = new Audio('lessons/revision/sounds/lesson7-6.mp3');
+            const playBtn = document.getElementById('playBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const speedBtns = document.querySelectorAll('.speed-btn');
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+            audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
+            audio.addEventListener('timeupdate', () => {
+                const percent = (audio.currentTime / audio.duration) * 100 || 0;
+                progressFill.style.width = percent + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            });
+            audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) { audio.play(); playBtn.textContent = '⏸'; }
+                else { audio.pause(); playBtn.textContent = '▶'; }
+            });
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const seekTime = (clickX / width) * audio.duration;
+                audio.currentTime = seekTime;
+            });
+            speedBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    speedBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const speed = parseFloat(btn.dataset.speed);
+                    audio.playbackRate = speed;
+                });
+            });
+
+            // Ex1 correction
+            document.getElementById('exo1Key').innerHTML = '<strong>Correction :</strong><br>a) a, à<br>b) Où, ou<br>c) Son, son, sont<br>d) Ce, se<br>e) ces, c\'est<br>f) leur, leurs';
+
+            // Ex2 correction
+            document.getElementById('exo2Key').innerHTML = '<strong>Correction :</strong><br>a) a<br>b) Où<br>c) Son<br>d) se<br>e) Ces<br>f) Leur';
+
+            // Ex3 correction
+            document.getElementById('exo3Key').innerHTML = '<strong>Correction :</strong><br>a) correct (a = verbe avoir, à = préposition)<br>b) Ce livre est à moi.<br>c) Ils sont à la plage.<br>d) Où vas-tu ?<br>e) C\'est la fin du film.';
+
+            // Ex4 correction
+            document.getElementById('exo4Key').innerHTML = '<strong>Correction :</strong><br>Ce matin, son ami a téléphoné à Marie. Ils se sont donné rendez-vous à midi, où ils déjeuneront ensemble.';
+
+            window.toggleCorrection = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('visible');
+            };
+
+            function updateScore() {
+                const radioGroups = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5'];
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                radioGroups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else { unanswered++; }
+                });
+                document.getElementById('scoreCorrect').textContent = correct;
+                document.getElementById('scoreIncorrect').textContent = incorrect;
+                document.getElementById('scorePartial').textContent = partial;
+                document.getElementById('scoreUnanswered').textContent = unanswered;
+            }
+
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                const radioGroups = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5'];
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                radioGroups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else { unanswered++; }
+                });
+                const lessonId = 'semaine7-orthographe-homophones';
+                const lang = localStorage.getItem('lang') || 'fr';
+                const entry = {
+                    lesson_id: lessonId,
+                    lesson_title: { fr: App.getTranslation('lesson_short_title', 'fr'), en: App.getTranslation('lesson_short_title', 'en'), ar: App.getTranslation('lesson_short_title', 'ar') },
+                    year: { fr: App.getTranslation('ach_year_bac', 'fr'), en: App.getTranslation('ach_year_bac', 'en'), ar: App.getTranslation('ach_year_bac', 'ar') },
+                    module: { fr: App.getTranslation('ach_module_semaine7', 'fr'), en: App.getTranslation('ach_module_semaine7', 'en'), ar: App.getTranslation('ach_module_semaine7', 'ar') },
+                    correct, incorrect, partial, unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase.from('profiles').select('achivement').eq('id', user.id).single();
+                if (fetchError) { console.error('Could not fetch profile:', fetchError); return; }
+                let achivement = profileData?.achivement || {};
+                if (!achivement["ED-French"]) achivement["ED-French"] = [];
+                const arr = achivement["ED-French"];
+                const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+                if (existingIdx >= 0) arr[existingIdx] = entry; else arr.push(entry);
+                const { error: updateError } = await App.supabase.from('profiles').update({ achivement: achivement }).eq('id', user.id);
+                if (updateError) { console.error('Save failed:', updateError); App.showToast('save_error', 'error'); }
+                else { App.showToast('save_success', 'success'); App.logUserAction('lesson_saved', { lesson: lessonId, correct, incorrect, partial }); }
+            });
+
+            document.getElementById('printPdfBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) { App.showToast('toast_signin_required', 'error'); document.getElementById('signInBtn')?.click(); return; }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase.from('profiles').select('registration_state').eq('id', user.id).single();
+                    if (!error && profile?.registration_state?.active === true) isRegistered = true;
+                } catch (e) {}
+                const headerHTML = document.querySelector('.lesson-header').cloneNode(true);
+                const textCard = document.querySelector('.text-card').cloneNode(true);
+                const rulesSections = document.querySelectorAll('.valeurs-section, .methode-section');
+                let rulesHTML = ''; rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
+                const exercisesSection = document.querySelector('.exercises-section').cloneNode(true);
+                exercisesSection.querySelectorAll('input, textarea, .btn-verify, .self-assessment').forEach(el => el.remove());
+                if (isRegistered) {
+                    exercisesSection.querySelectorAll('.answer-key').forEach(key => {
+                        key.style.display='block'; key.style.border='none'; key.style.padding='0.5rem 0'; key.style.margin='0.5rem 0'; key.style.background='transparent';
+                    });
+                } else {
+                    exercisesSection.querySelectorAll('.answer-key').forEach(el => el.remove());
+                }
+                const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                const lang = localStorage.getItem('lang') || 'fr';
+                printWindow.document.write(`<!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8"><title>${App.getTranslation('lesson_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title><style>body{font-family:'Georgia',serif;line-height:1.6;max-width:700px;margin:2rem auto;padding:0 1rem;color:#000}.print-header{text-align:center;border-bottom:2px solid #c75b2c;padding-bottom:1rem;margin-bottom:2rem}.print-header .site-name{font-size:1.4rem;font-weight:bold;color:#c75b2c}.print-header .meta-line{font-size:.95rem;color:#444}.print-header .lesson-name{font-size:1.1rem;font-weight:bold;margin-top:.5rem}.print-footer{text-align:center;border-top:1px solid #ccc;padding-top:1rem;margin-top:2rem;font-size:.85rem;color:#666}h1,h2,h3{color:#000}.lesson-header{text-align:center;margin-bottom:2rem}.badge{display:inline-block;background:#c75b2c;color:#fff;padding:.3rem 1rem;border-radius:20px;font-size:.8rem}.text-card{border-left:4px solid #c75b2c;padding:1rem 1.5rem;margin:1.5rem 0;font-style:italic}.text-card .author{text-align:right;font-style:normal;margin-top:.8rem}.valeurs-section,.methode-section{margin:1.5rem 0}.valeur-card{background:#f8f4ec;padding:1rem;margin-bottom:1rem;border-radius:8px}.valeur-card h3{color:#c75b2c}.exercise-card{margin:1.2rem 0}table{width:100%;border-collapse:collapse;margin:.8rem 0}th,td{border:1px solid #ccc;padding:.5rem;text-align:left}th{background:#f0e8d8}.answer-key{display:block;margin-top:.5rem;font-size:.9rem;color:#444}@media print{body{margin:0;padding:0}@page{margin:2cm}}</style></head><body><div class="print-header"><div class="site-name">${App.getTranslation('print_site_name', lang)}</div><div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div><div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div></div>${breadcrumb.outerHTML}${headerHTML.outerHTML}${textCard.outerHTML}${rulesHTML}${exercisesSection.outerHTML}<div class="print-footer">${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}</div></body></html>`);
+                printWindow.document.close(); printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+
+            document.querySelectorAll('input[type="radio"][name^="self_ex"]').forEach(radio => radio.addEventListener('change', updateScore));
+            updateScore();
+        })();
+    </script>
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+</body>
+</html>

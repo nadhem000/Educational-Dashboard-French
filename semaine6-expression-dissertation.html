@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_title">Leçon 7 – Construire un plan détaillé (dissertation) | Texte & Exercices</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ===== Lesson‑specific styles (unchanged) ===== */
+        :root {
+            --bg: #f9f7f1;
+            --card: #ffffff;
+            --text: #2b2416;
+            --text-light: #5c5344;
+            --heading: #382e1e;
+            --accent: #c75b2c;
+            --accent-hover: #a3441d;
+            --border: #e5ddd0;
+            --shadow: 0 1px 4px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-hover: 0 8px 22px rgba(0,0,0,0.08);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --transition: 0.25s ease;
+            --font-body: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
+            --audio-bg: #f4efe4;
+            --audio-progress: #d8c9aa;
+            --button-bg: #f0e8d8;
+            --button-hover: #e3d5bc;
+            --input-bg: #fcfaf6;
+        }
+        body.dark {
+            --bg: #1e1b17;
+            --card: #2a2620;
+            --text: #e8dfd2;
+            --text-light: #b9aa95;
+            --heading: #f0e4d2;
+            --accent: #e07b4a;
+            --accent-hover: #f08c5c;
+            --border: #3e3830;
+            --shadow: 0 1px 4px rgba(0,0,0,0.25);
+            --shadow-hover: 0 8px 22px rgba(0,0,0,0.35);
+            --audio-bg: #26221b;
+            --audio-progress: #5a4e3c;
+            --button-bg: #3a3329;
+            --button-hover: #4e4437;
+            --input-bg: #333028;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.75;
+            transition: background var(--transition), color var(--transition);
+        }
+        .container { max-width:860px; margin:0 auto; padding:1.8rem 1.4rem 3rem; }
+        .lesson-header { text-align: center; margin-bottom: 2rem; }
+        .badge {
+            display:inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding:0.25rem 1rem;
+            border-radius:20px;
+            font-size:0.8rem;
+            font-weight:700;
+            letter-spacing:0.03em;
+            text-transform: uppercase;
+        }
+        .lesson-header h1 {
+            font-size: 2.1rem;
+            color: var(--heading);
+            margin: 0.6rem 0 0.3rem;
+            line-height: 1.3;
+        }
+        .lesson-header .meta {
+            font-size:0.9rem;
+            color:var(--text-light);
+            display: flex;
+            justify-content: center;
+            gap:1.2rem;
+            flex-wrap: wrap;
+        }
+        .audio-player {
+            background: var(--card);
+            border:1px solid var(--border);
+            border-radius: var(--radius);
+            padding:1rem 1.4rem;
+            margin: 1.5rem 0 2rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap:1rem;
+            flex-wrap: wrap;
+        }
+        .audio-player .play-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            border:none;
+            font-size:1.2rem;
+            cursor:pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background var(--transition);
+            flex-shrink: 0;
+        }
+        .play-btn:hover { background: var(--accent-hover); }
+        .audio-player .progress-area {
+            flex:1;
+            min-width:120px;
+            display: flex;
+            flex-direction: column;
+            gap:0.3rem;
+        }
+        .progress-bar {
+            width:100%;
+            height:6px;
+            background: var(--audio-progress);
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+        .time-info { display: flex; justify-content: space-between; font-size:0.75rem; color:var(--text-light); }
+        .speed-selector { display: flex; gap:0.3rem; flex-wrap: wrap; }
+        .speed-btn {
+            border:1px solid var(--border);
+            background: var(--button-bg);
+            color: var(--text);
+            padding:0.25rem 0.55rem;
+            border-radius: 4px;
+            font-size:0.75rem;
+            font-weight:600;
+            cursor:pointer;
+            transition: all var(--transition);
+        }
+        .speed-btn.active { background: var(--accent); color:#fff; border-color: var(--accent); }
+        .audio-label { font-weight:700; font-size:0.85rem; color:var(--heading); white-space: nowrap; }
+        @media (max-width:600px) {
+            .audio-player { flex-direction: column; align-items: stretch; }
+            .audio-label { text-align: center; }
+        }
+        .text-card {
+            background: var(--card);
+            border:1px solid var(--border);
+            border-left:5px solid var(--accent);
+            border-radius: 0 var(--radius) var(--radius) 0;
+            padding:1.4rem 1.6rem;
+            margin:1.8rem 0;
+            font-style:italic;
+            font-size:1.05rem;
+            line-height: 1.9;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        .text-card .quote-mark {
+            position: absolute;
+            top:-12px;
+            left:14px;
+            font-size:3rem;
+            color:var(--accent);
+            opacity:0.25;
+            line-height:1;
+        }
+        .text-card .author { text-align:right; font-style:normal; font-size:0.9rem; color:var(--text-light); margin-top:0.8rem; }
+        .exercises-section h2 {
+            font-size:1.5rem;
+            color:var(--heading);
+            margin:2rem 0 1rem;
+            border-bottom:3px solid var(--accent);
+            display:inline-block;
+            padding-bottom:0.3rem;
+        }
+        .exercise-card {
+            background: var(--card);
+            border:1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding:1.2rem 1.4rem;
+            margin-bottom:1.4rem;
+            box-shadow: var(--shadow);
+        }
+        .exercise-card h3 { font-size:1.05rem; color:var(--accent); margin-bottom:0.8rem; display: flex; align-items: center; gap:0.4rem; }
+        .exercise-card table { width:100%; border-collapse: collapse; margin: 0.8rem 0; }
+        .exercise-card th, .exercise-card td { padding:0.55rem 0.7rem; border:1px solid var(--border); text-align:left; font-size:0.9rem; }
+        .exercise-card th { background: var(--audio-bg); font-weight:700; color:var(--heading); }
+        .exercise-card input[type="text"] {
+            width:100%;
+            padding:0.4rem 0.6rem;
+            border:1px solid var(--border);
+            border-radius:4px;
+            background: var(--input-bg);
+            color: var(--text);
+            font-family: inherit;
+            font-size:0.9rem;
+        }
+        .btn-verify {
+            background: var(--accent);
+            color:#fff;
+            border:none;
+            padding:0.5rem 1.2rem;
+            border-radius: 20px;
+            font-weight:600;
+            cursor:pointer;
+            transition: background var(--transition);
+            margin-top:0.6rem;
+            font-size:0.85rem;
+        }
+        .btn-verify:hover { background: var(--accent-hover); }
+        .answer-key {
+            display:none;
+            margin-top:0.8rem;
+            padding:0.8rem;
+            background: var(--audio-bg);
+            border-radius:6px;
+            font-size:0.85rem;
+            color: var(--text-light);
+            border:1px dashed var(--accent);
+        }
+        .answer-key.visible { display:block; }
+        .self-assessment { margin-top: 0.8rem; font-size: 0.9rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+        .self-assessment label { cursor: pointer; }
+        .score-area {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: var(--shadow);
+        }
+        .score-area h2 { color: var(--heading); margin-bottom: 1rem; }
+        .score-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .score-stat { background: var(--audio-bg); padding: 0.8rem 1.2rem; border-radius: 8px; font-weight: 600; }
+        html[dir="rtl"] body { direction: rtl; }
+        html[dir="rtl"] .container { text-align: right; }
+        html[dir="rtl"] .text-card .author { text-align: left; }
+        html[dir="rtl"] .exercise-card th, html[dir="rtl"] .exercise-card td { text-align: right; }
+        @media (max-width:600px) {
+            .lesson-header h1 { font-size:1.5rem; }
+            .container { padding:1rem 0.8rem 2rem; }
+        }
+        .methode-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.6rem 1.8rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+        .methode-section h2 {
+            font-size: 1.5rem;
+            color: var(--heading);
+            margin-bottom: 1rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+        .valeur-card {
+            background: var(--audio-bg);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .valeur-card h3 { color: var(--accent); font-size: 1.1rem; margin-bottom: 0.4rem; }
+        .valeur-card ul { list-style: none; padding: 0; }
+        .valeur-card li { padding: 0.3rem 0; padding-left: 1.4rem; position: relative; color: var(--text-light); }
+        .valeur-card li::before { content: '◆'; position: absolute; left: 0; color: var(--accent); font-size: 0.5rem; top: 0.5rem; }
+        .valeur-card p { margin: 0.5rem 0; }
+    </style>
+</head>
+<body>
+    <div id="main-content" class="container">
+        <p style="margin-bottom:1.5rem; color:var(--text-light);">
+            <a href="revision.html" data-i18n="back_revision">Révision générale</a>
+            › <strong data-i18n="back_current">Construire un plan détaillé (dissertation)</strong>
+        </p>
+        <div class="lesson-header">
+            <span class="badge" data-i18n="lesson_badge">✍️ Expression Écrite · Leçon 7</span>
+            <h1 data-i18n="lesson_title">Construire un plan détaillé<br>(dissertation)</h1>
+            <div class="meta">
+                <span data-i18n="lesson_duration">⏱️ 45 minutes</span>
+                <span data-i18n="lesson_meta_audio">🎧 Écoutez le modèle puis faites les exercices</span>
+            </div>
+        </div>
+        <div class="audio-player" id="audioPlayer">
+            <span class="audio-label" data-i18n="audio_label">🎧 Écoute du modèle</span>
+            <button class="play-btn" id="playBtn" aria-label="Lecture">▶</button>
+            <div class="progress-area">
+                <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
+                <div class="time-info"><span id="currentTime">0:00</span><span id="duration">0:00</span></div>
+            </div>
+            <div class="speed-selector" id="speedSelector">
+                <button class="speed-btn" data-speed="0.75">0.75x</button>
+                <button class="speed-btn active" data-speed="1">1x</button>
+                <button class="speed-btn" data-speed="1.25">1.25x</button>
+                <button class="speed-btn" data-speed="1.5">1.5x</button>
+            </div>
+        </div>
+        <div class="text-card">
+            <span class="quote-mark">“</span>
+            <p>
+                <strong>Thèse :</strong> La lecture est bénéfique pour l'esprit.<br><br>
+                <strong>I. La lecture développe l'imagination</strong><br>
+                - Argument 1 : Elle transporte le lecteur dans des univers fictifs.<br>
+                - Exemple : Les romans de Jules Verne.<br>
+                - Argument 2 : Elle stimule la créativité.<br><br>
+                <strong>II. La lecture enrichit les connaissances</strong><br>
+                - Argument 1 : Elle apporte des savoirs variés.<br>
+                - Exemple : Les ouvrages historiques.<br>
+                - Argument 2 : Elle améliore le vocabulaire.<br><br>
+                <strong>III. La lecture favorise l'ouverture d'esprit</strong><br>
+                - Argument 1 : Elle permet de découvrir d'autres cultures.<br>
+                - Argument 2 : Elle développe l'empathie.<br><br>
+                <strong>Conclusion :</strong> La lecture est un outil précieux pour grandir et comprendre le monde.
+            </p>
+            <div class="author" data-i18n="text_author">— Plan détaillé de dissertation</div>
+        </div>
+        <div class="methode-section">
+            <h2 data-i18n="rules_heading">📖 Construire un plan détaillé de dissertation</h2>
+            <p data-i18n="rules_intro" class="no-bilingual" style="margin-bottom:1.2rem;">Un plan détaillé organise les idées en parties et sous-parties, avec arguments et exemples. Il constitue la colonne vertébrale de la dissertation.</p>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_intro_plan_title">🔹 L'introduction</h3>
+                <p data-i18n="rules_intro_plan_text">Elle amène le sujet, pose la problématique et annonce le plan. Elle doit capter l'attention du lecteur.</p>
+            </div>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_parties_title">🔹 Les grandes parties</h3>
+                <p data-i18n="rules_parties_text">Chaque partie défend une idée principale qui soutient la thèse. On utilise souvent trois parties (thèse, antithèse, synthèse ou trois arguments).</p>
+            </div>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_sous_parties_title">🔹 Les sous-parties</h3>
+                <p data-i18n="rules_sous_parties_text">Chaque grande partie se divise en deux ou trois sous-parties, chacune contenant un argument et un exemple précis.</p>
+            </div>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_conclusion_plan_title">🔹 La conclusion</h3>
+                <p data-i18n="rules_conclusion_plan_text">Elle rappelle la thèse, résume brièvement les arguments et ouvre une perspective (élargissement du sujet).</p>
+            </div>
+            <div class="valeur-card">
+                <h3 data-i18n="rules_transitions_title">🔹 Les transitions</h3>
+                <p data-i18n="rules_transitions_text">Entre chaque partie, une phrase de transition assure la cohérence du devoir. Elle résume la partie précédente et annonce la suivante.</p>
+            </div>
+            <p data-i18n="rules_note" style="margin-top:1rem; font-style:italic; color:var(--text-light);">💡 Un bon plan est clair, équilibré et directement lié au sujet. Chaque idée doit être justifiée par un exemple.</p>
+        </div>
+        <div class="exercises-section">
+            <h2 data-i18n="exercises_heading">✍️ Exercices</h2>
+            <!-- Exercice 1 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo1_title">📌 1. Identifiez les parties du plan</h3>
+                <p data-i18n="exo1_instruction">Dans le modèle, quelles sont la thèse, les trois grandes parties, et la conclusion ?</p>
+                <textarea rows="4" style="width:100%;" placeholder="Votre réponse..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo1Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo1Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 2 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo2_title">📌 2. Complétez une sous-partie</h3>
+                <p data-i18n="exo2_instruction">Complétez la sous-partie manquante : « La lecture développe l'imagination » avec un argument et un exemple.</p>
+                <textarea rows="2" style="width:100%;" placeholder="Argument et exemple..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo2Key')" data-i18n="btn_correction">🔍 Voir une proposition</button>
+                <div id="exo2Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 3 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo3_title">📌 3. Proposez un plan pour une dissertation</h3>
+                <p data-i18n="exo3_instruction">Sujet : « Les nouvelles technologies améliorent-elles notre quotidien ? »<br>Proposez une thèse et trois grandes parties.</p>
+                <textarea rows="4" style="width:100%;" placeholder="Votre plan..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo3Key')" data-i18n="btn_correction">🔍 Voir une proposition</button>
+                <div id="exo3Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 4 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo4_title">📌 4. Trouvez des arguments et exemples</h3>
+                <p data-i18n="exo4_instruction">Pour la partie « La lecture enrichit les connaissances », donnez deux arguments et deux exemples précis.</p>
+                <textarea rows="3" style="width:100%;" placeholder="Arguments et exemples..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo4Key')" data-i18n="btn_correction">🔍 Voir des propositions</button>
+                <div id="exo4Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 5 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo5_title">📌 5. Rédigez une introduction</h3>
+                <p data-i18n="exo5_instruction">Rédigez une introduction complète (amorce, problématique, annonce du plan) pour le sujet : « Faut-il limiter l'usage des réseaux sociaux chez les jeunes ? »</p>
+                <textarea rows="4" style="width:100%;" placeholder="Votre introduction..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex5" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex5" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex5" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo5Key')" data-i18n="btn_correction">🔍 Voir une proposition</button>
+                <div id="exo5Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 6 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo6_title">📌 6. Rédigez une conclusion</h3>
+                <p data-i18n="exo6_instruction">À partir du plan sur la lecture, rédigez une conclusion complète (rappel de la thèse, résumé, ouverture).</p>
+                <textarea rows="4" style="width:100%;" placeholder="Votre conclusion..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex6" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex6" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex6" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo6Key')" data-i18n="btn_correction">🔍 Voir une proposition</button>
+                <div id="exo6Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 7 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo7_title">📌 7. Évaluez un plan</h3>
+                <p data-i18n="exo7_instruction">Voici un plan : I. Avantages des réseaux sociaux / II. Inconvénients des réseaux sociaux / III. Comment les utiliser raisonnablement.<br>Ce plan est-il adapté à une dissertation ? Pourquoi ?</p>
+                <textarea rows="3" style="width:100%;" placeholder="Votre analyse..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex7" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex7" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex7" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo7Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo7Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 8 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo8_title">📌 8. Transformez une idée en sous-partie</h3>
+                <p data-i18n="exo8_instruction">Transformez l'idée « La lecture améliore l'expression écrite » en une sous-partie avec argument et exemple.</p>
+                <textarea rows="2" style="width:100%;" placeholder="Sous-partie..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex8" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex8" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex8" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo8Key')" data-i18n="btn_correction">🔍 Voir une proposition</button>
+                <div id="exo8Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 9 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo9_title">📌 9. Créez un plan complet</h3>
+                <p data-i18n="exo9_instruction">Choisissez un sujet et construisez un plan détaillé complet : introduction (thèse), trois parties avec sous-parties, conclusion. Indiquez les transitions.</p>
+                <textarea rows="8" style="width:100%;" placeholder="Votre plan détaillé..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex9" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex9" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex9" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="btn-verify" onclick="toggleCorrection('exo9Key')" data-i18n="btn_correction">🔍 Voir une proposition</button>
+                <div id="exo9Key" class="answer-key"></div>
+            </div>
+            <!-- Exercice 10 -->
+            <div class="exercise-card">
+                <h3 data-i18n="exo10_title">📌 10. Production personnelle finale</h3>
+                <p data-i18n="exo10_instruction">Rédigez le plan détaillé complet d'une dissertation sur le sujet : « Le sport est-il essentiel dans la vie des jeunes ? » Incluez introduction, développement (3 parties avec arguments et exemples), conclusion et transitions.</p>
+                <textarea rows="10" style="width:100%; padding:0.5rem;" placeholder="Votre plan détaillé..."></textarea>
+                <div class="self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex10" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex10" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex10" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+        </div>
+        <div class="score-area" id="scoreArea">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="score-stats" id="scoreStats">
+                <div class="score-stat"><span data-i18n="score_correct">Correctes :</span> <span id="scoreCorrect">0</span></div>
+                <div class="score-stat"><span data-i18n="score_incorrect">Incorrectes :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="score-stat"><span data-i18n="score_partial">Partielles :</span> <span id="scorePartial">0</span></div>
+                <div class="score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">10</span></div>
+            </div>
+        </div>
+        <div class="score-actions" style="margin-top:1.2rem;">
+            <button id="saveResultsBtn" class="btn-verify" style="margin-right:0.5rem;" data-i18n="save_results">💾 Enregistrer mes résultats</button>
+            <button id="printPdfBtn" class="btn-verify" style="background:#5c5344; margin-right:0.5rem;" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+        </div>
+        <div style="margin-top:2rem; display:flex; justify-content:space-between; flex-wrap:wrap;">
+            <a href="semaine6-orthographe-erreurs.html" data-i18n="footer_back" class="no-bilingual">← Leçon précédente</a>
+            <a href="semaine6-etude-argumentation.html" data-i18n="footer_next" class="no-bilingual">Leçon suivante : Analyse d'un texte argumentatif →</a>
+        </div>
+    </div>
+
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                'lesson_title': 'Leçon 7 – Construire un plan détaillé (dissertation) | Texte & Exercices',
+                'lesson_short_title': 'Construire un plan détaillé (dissertation)',
+                'ach_year_bac': '4ᵉ année secondaire (Bac)',
+                'ach_module_semaine6': 'Analyse de textes littéraires',
+                'back_revision': 'Révision générale',
+                'back_current': 'Construire un plan détaillé (dissertation)',
+                'lesson_badge': '✍️ Expression Écrite · Leçon 7',
+                'lesson_title': 'Construire un plan détaillé<br>(dissertation)',
+                'lesson_duration': '⏱️ 45 minutes',
+                'lesson_meta_audio': '🎧 Écoutez le modèle puis faites les exercices',
+                'audio_label': '🎧 Écoute du modèle',
+                'text_author': '— Plan détaillé de dissertation',
+                'rules_heading': '📖 Construire un plan détaillé de dissertation',
+                'rules_intro': 'Un plan détaillé organise les idées en parties et sous-parties, avec arguments et exemples. Il constitue la colonne vertébrale de la dissertation.',
+                'rules_intro_plan_title': '🔹 L\'introduction',
+                'rules_intro_plan_text': 'Elle amène le sujet, pose la problématique et annonce le plan. Elle doit capter l\'attention du lecteur.',
+                'rules_parties_title': '🔹 Les grandes parties',
+                'rules_parties_text': 'Chaque partie défend une idée principale qui soutient la thèse. On utilise souvent trois parties (thèse, antithèse, synthèse ou trois arguments).',
+                'rules_sous_parties_title': '🔹 Les sous-parties',
+                'rules_sous_parties_text': 'Chaque grande partie se divise en deux ou trois sous-parties, chacune contenant un argument et un exemple précis.',
+                'rules_conclusion_plan_title': '🔹 La conclusion',
+                'rules_conclusion_plan_text': 'Elle rappelle la thèse, résume brièvement les arguments et ouvre une perspective (élargissement du sujet).',
+                'rules_transitions_title': '🔹 Les transitions',
+                'rules_transitions_text': 'Entre chaque partie, une phrase de transition assure la cohérence du devoir. Elle résume la partie précédente et annonce la suivante.',
+                'rules_note': '💡 Un bon plan est clair, équilibré et directement lié au sujet. Chaque idée doit être justifiée par un exemple.',
+                'exercises_heading': '✍️ Exercices',
+                'exo1_title': '📌 1. Identifiez les parties du plan',
+                'exo1_instruction': 'Dans le modèle, quelles sont la thèse, les trois grandes parties, et la conclusion ?',
+                'exo2_title': '📌 2. Complétez une sous-partie',
+                'exo2_instruction': 'Complétez la sous-partie manquante : « La lecture développe l\'imagination » avec un argument et un exemple.',
+                'exo3_title': '📌 3. Proposez un plan pour une dissertation',
+                'exo3_instruction': 'Sujet : « Les nouvelles technologies améliorent-elles notre quotidien ? »<br>Proposez une thèse et trois grandes parties.',
+                'exo4_title': '📌 4. Trouvez des arguments et exemples',
+                'exo4_instruction': 'Pour la partie « La lecture enrichit les connaissances », donnez deux arguments et deux exemples précis.',
+                'exo5_title': '📌 5. Rédigez une introduction',
+                'exo5_instruction': 'Rédigez une introduction complète (amorce, problématique, annonce du plan) pour le sujet : « Faut-il limiter l\'usage des réseaux sociaux chez les jeunes ? »',
+                'exo6_title': '📌 6. Rédigez une conclusion',
+                'exo6_instruction': 'À partir du plan sur la lecture, rédigez une conclusion complète (rappel de la thèse, résumé, ouverture).',
+                'exo7_title': '📌 7. Évaluez un plan',
+                'exo7_instruction': 'Voici un plan : I. Avantages des réseaux sociaux / II. Inconvénients des réseaux sociaux / III. Comment les utiliser raisonnablement.<br>Ce plan est-il adapté à une dissertation ? Pourquoi ?',
+                'exo8_title': '📌 8. Transformez une idée en sous-partie',
+                'exo8_instruction': 'Transformez l\'idée « La lecture améliore l\'expression écrite » en une sous-partie avec argument et exemple.',
+                'exo9_title': '📌 9. Créez un plan complet',
+                'exo9_instruction': 'Choisissez un sujet et construisez un plan détaillé complet : introduction (thèse), trois parties avec sous-parties, conclusion. Indiquez les transitions.',
+                'exo10_title': '📌 10. Production personnelle finale',
+                'exo10_instruction': 'Rédigez le plan détaillé complet d\'une dissertation sur le sujet : « Le sport est-il essentiel dans la vie des jeunes ? » Incluez introduction, développement (3 parties avec arguments et exemples), conclusion et transitions.',
+                'btn_correction': '🔍 Voir la correction',
+                'footer_back': '← Leçon précédente',
+                'footer_next': 'Leçon suivante : Analyse d\'un texte argumentatif →',
+                'self_assess_question': 'Ma réponse est :',
+                'self_correct': 'Correcte',
+                'self_incorrect': 'Incorrecte',
+                'self_partial': 'Partiellement correcte',
+                'score_title': '📊 Votre auto‑évaluation',
+                'score_correct': 'Correctes :',
+                'score_incorrect': 'Incorrectes :',
+                'score_partial': 'Partielles :',
+                'score_unanswered': 'Sans réponse :',
+                'save_results': '💾 Enregistrer mes résultats',
+                'save_success': 'Résultats sauvegardés ✓',
+                'save_error': 'Erreur lors de la sauvegarde',
+                'print_pdf': '🖨️ Imprimer / PDF',
+                'print_with_answers': 'Corrigé inclus',
+                'print_site_name': 'Educational Dashboard – French',
+                'print_scholar_year': 'Révision pour le Bac',
+                'print_week': 'Semaine 6',
+                'print_area': 'Expression écrite',
+                'print_footer_dev': 'Développé par Mejri Ziad',
+                'print_footer_date': 'Imprimé le',
+                'print_without_answers': 'Sans corrigé',
+                'toast_signin_required': 'Connectez-vous pour voir les corrections.'
+            },
+            en: {
+                'lesson_title': 'Lesson 7 – Building a Detailed Outline (Dissertation) | Text & Exercises',
+                'lesson_short_title': 'Building a Detailed Outline (Dissertation)',
+                'ach_year_bac': '12th grade (Bac)',
+                'ach_module_semaine6': 'Literary Text Analysis',
+                'back_revision': 'General Review',
+                'back_current': 'Building a Detailed Outline (Dissertation)',
+                'lesson_badge': '✍️ Writing · Lesson 7',
+                'lesson_title': 'Building a Detailed Outline<br>(Dissertation)',
+                'lesson_duration': '⏱️ 45 minutes',
+                'lesson_meta_audio': '🎧 Listen to the model then do the exercises',
+                'audio_label': '🎧 Listen to the model',
+                'text_author': '— Detailed dissertation outline',
+                'rules_heading': '📖 Building a Detailed Dissertation Outline',
+                'rules_intro': 'A detailed outline organizes ideas into parts and sub-parts, with arguments and examples. It is the backbone of the dissertation.',
+                'rules_intro_plan_title': '🔹 Introduction',
+                'rules_intro_plan_text': 'It introduces the subject, poses the problem and announces the plan. It must capture the reader\'s attention.',
+                'rules_parties_title': '🔹 Main parts',
+                'rules_parties_text': 'Each part defends a main idea that supports the thesis. Often three parts are used (thesis, antithesis, synthesis or three arguments).',
+                'rules_sous_parties_title': '🔹 Sub-parts',
+                'rules_sous_parties_text': 'Each main part is divided into two or three sub-parts, each containing an argument and a precise example.',
+                'rules_conclusion_plan_title': '🔹 Conclusion',
+                'rules_conclusion_plan_text': 'It recalls the thesis, briefly summarizes the arguments and opens a perspective (broadening of the subject).',
+                'rules_transitions_title': '🔹 Transitions',
+                'rules_transitions_text': 'Between each part, a transition sentence ensures the coherence of the essay. It summarizes the previous part and announces the next.',
+                'rules_note': '💡 A good outline is clear, balanced and directly linked to the subject. Each idea must be justified by an example.',
+                'exercises_heading': '✍️ Exercises',
+                'exo1_title': '📌 1. Identify the parts of the outline',
+                'exo1_instruction': 'In the model, what are the thesis, the three main parts, and the conclusion?',
+                'exo2_title': '📌 2. Complete a sub-part',
+                'exo2_instruction': 'Complete the missing sub-part: "Reading develops imagination" with an argument and an example.',
+                'exo3_title': '📌 3. Propose an outline for a dissertation',
+                'exo3_instruction': 'Topic: "Do new technologies improve our daily lives?"<br>Propose a thesis and three main parts.',
+                'exo4_title': '📌 4. Find arguments and examples',
+                'exo4_instruction': 'For the part "Reading enriches knowledge", give two arguments and two precise examples.',
+                'exo5_title': '📌 5. Write an introduction',
+                'exo5_instruction': 'Write a complete introduction (hook, problem, announcement of plan) for the topic: "Should social media use be limited among young people?"',
+                'exo6_title': '📌 6. Write a conclusion',
+                'exo6_instruction': 'Based on the reading plan, write a complete conclusion (recall of thesis, summary, opening).',
+                'exo7_title': '📌 7. Evaluate an outline',
+                'exo7_instruction': 'Here is an outline: I. Advantages of social media / II. Disadvantages of social media / III. How to use them reasonably.<br>Is this outline suitable for a dissertation? Why?',
+                'exo8_title': '📌 8. Transform an idea into a sub-part',
+                'exo8_instruction': 'Transform the idea "Reading improves written expression" into a sub-part with argument and example.',
+                'exo9_title': '📌 9. Create a complete outline',
+                'exo9_instruction': 'Choose a topic and build a complete detailed outline: introduction (thesis), three parts with sub-parts, conclusion. Indicate transitions.',
+                'exo10_title': '📌 10. Final personal production',
+                'exo10_instruction': 'Write the complete detailed outline of a dissertation on the topic: "Is sport essential in the lives of young people?" Include introduction, development (3 parts with arguments and examples), conclusion and transitions.',
+                'btn_correction': '🔍 See correction',
+                'footer_back': '← Previous lesson',
+                'footer_next': 'Next lesson: Analyzing an argumentative text →',
+                'self_assess_question': 'My answer is:',
+                'self_correct': 'Correct',
+                'self_incorrect': 'Incorrect',
+                'self_partial': 'Partially correct',
+                'score_title': '📊 Your self‑assessment',
+                'score_correct': 'Correct:',
+                'score_incorrect': 'Incorrect:',
+                'score_partial': 'Partial:',
+                'score_unanswered': 'Unanswered:',
+                'save_results': '💾 Save my results',
+                'save_success': 'Results saved ✓',
+                'save_error': 'Save failed',
+                'print_pdf': '🖨️ Print / PDF',
+                'print_with_answers': 'With answers',
+                'print_site_name': 'Educational Dashboard – French',
+                'print_scholar_year': 'Bac Review',
+                'print_week': 'Week 6',
+                'print_area': 'Writing',
+                'print_footer_dev': 'Developed by Mejri Ziad',
+                'print_footer_date': 'Printed on',
+                'print_without_answers': 'Without answers',
+                'toast_signin_required': 'Sign in to see the corrections.'
+            },
+            ar: {
+                'lesson_title': 'الدرس 7 – بناء خطة مفصلة (مقال) | نص وتمارين',
+                'lesson_short_title': 'بناء خطة مفصلة (مقال)',
+                'ach_year_bac': 'السنة الرابعة ثانوي',
+                'ach_module_semaine6': 'تحليل النصوص الأدبية',
+                'back_revision': 'المراجعة العامة',
+                'back_current': 'بناء خطة مفصلة (مقال)',
+                'lesson_badge': '✍️ التعبير الكتابي · الدرس 7',
+                'lesson_title': 'بناء خطة مفصلة<br>(مقال)',
+                'lesson_duration': '⏱️ 45 دقيقة',
+                'lesson_meta_audio': '🎧 استمع إلى النموذج ثم قم بالتمارين',
+                'audio_label': '🎧 استماع إلى النموذج',
+                'text_author': '— خطة مقال مفصلة',
+                'rules_heading': '📖 بناء خطة مفصلة للمقال',
+                'rules_intro': 'الخطة المفصلة تنظم الأفكار في أجزاء وأجزاء فرعية، مع حجج وأمثلة. إنها العمود الفقري للمقال.',
+                'rules_intro_plan_title': '🔹 المقدمة',
+                'rules_intro_plan_text': 'تقدم الموضوع وتطرح الإشكالية وتعلن عن الخطة. يجب أن تجذب انتباه القارئ.',
+                'rules_parties_title': '🔹 الأجزاء الرئيسية',
+                'rules_parties_text': 'كل جزء يدافع عن فكرة رئيسية تدعم الأطروحة. غالبا ما نستعمل ثلاثة أجزاء (أطروحة، أطروحة مضادة، تركيب أو ثلاث حجج).',
+                'rules_sous_parties_title': '🔹 الأجزاء الفرعية',
+                'rules_sous_parties_text': 'كل جزء رئيسي ينقسم إلى جزأين أو ثلاثة أجزاء فرعية، كل منها يحتوي على حجة ومثال دقيق.',
+                'rules_conclusion_plan_title': '🔹 الخاتمة',
+                'rules_conclusion_plan_text': 'تذكر بالأطروحة وتلخص الحجج بإيجاز وتفتح أفقا (توسيع الموضوع).',
+                'rules_transitions_title': '🔹 الانتقالات',
+                'rules_transitions_text': 'بين كل جزء، جملة انتقالية تضمن تماسك الإنشاء. تلخص الجزء السابق وتعلن عن التالي.',
+                'rules_note': '💡 الخطة الجيدة واضحة ومتوازنة ومرتبطة مباشرة بالموضوع. كل فكرة يجب أن تكون مبررة بمثال.',
+                'exercises_heading': '✍️ تمارين',
+                'exo1_title': '📌 1. حدد أجزاء الخطة',
+                'exo1_instruction': 'في النموذج، ما هي الأطروحة والأجزاء الثلاثة والخاتمة؟',
+                'exo2_title': '📌 2. أكمل جزءا فرعيا',
+                'exo2_instruction': 'أكمل الجزء الفرعي الناقص: « القراءة تنمي الخيال » بحجة ومثال.',
+                'exo3_title': '📌 3. اقترح خطة لمقال',
+                'exo3_instruction': 'الموضوع: « هل تحسن التكنولوجيات الجديدة حياتنا اليومية؟ »<br>اقترح أطروحة وثلاثة أجزاء رئيسية.',
+                'exo4_title': '📌 4. ابحث عن حجج وأمثلة',
+                'exo4_instruction': 'للجزء « القراءة تثري المعرفة »، أعط حجتين ومثالين دقيقين.',
+                'exo5_title': '📌 5. اكتب مقدمة',
+                'exo5_instruction': 'اكتب مقدمة كاملة (تمهيد، إشكالية، إعلان الخطة) للموضوع: « هل يجب الحد من استعمال شبكات التواصل لدى الشباب؟ »',
+                'exo6_title': '📌 6. اكتب خاتمة',
+                'exo6_instruction': 'انطلاقا من خطة القراءة، اكتب خاتمة كاملة (تذكير بالأطروحة، تلخيص، انفتاح).',
+                'exo7_title': '📌 7. قيّم خطة',
+                'exo7_instruction': 'ها هي خطة: I. مزايا شبكات التواصل / II. عيوب شبكات التواصل / III. كيف نستعملها بعقلانية.<br>هل هذه الخطة مناسبة لمقال؟ لماذا؟',
+                'exo8_title': '📌 8. حوّل فكرة إلى جزء فرعي',
+                'exo8_instruction': 'حوّل فكرة « القراءة تحسن التعبير الكتابي » إلى جزء فرعي بحجة ومثال.',
+                'exo9_title': '📌 9. أنشئ خطة كاملة',
+                'exo9_instruction': 'اختر موضوعا وابْنِ خطة مفصلة كاملة: مقدمة (أطروحة)، ثلاثة أجزاء بأجزاء فرعية، خاتمة. حدد الانتقالات.',
+                'exo10_title': '📌 10. إنتاج شخصي نهائي',
+                'exo10_instruction': 'اكتب الخطة المفصلة الكاملة لمقال حول الموضوع: « هل الرياضة ضرورية في حياة الشباب؟ » تضمن مقدمة وتطويرا (3 أجزاء بحجج وأمثلة) وخاتمة وانتقالات.',
+                'btn_correction': '🔍 الاطلاع على التصحيح',
+                'footer_back': '← الدرس السابق',
+                'footer_next': 'الدرس الموالي: تحليل نص حجاجي →',
+                'self_assess_question': 'جوابي هو:',
+                'self_correct': 'صحيح',
+                'self_incorrect': 'خاطئ',
+                'self_partial': 'صحيح جزئيًا',
+                'score_title': '📊 تقييمك الذاتي',
+                'score_correct': 'صحيح:',
+                'score_incorrect': 'خاطئ:',
+                'score_partial': 'جزئي:',
+                'score_unanswered': 'بدون إجابة:',
+                'save_results': '💾 حفظ نتائجي',
+                'save_success': 'تم حفظ النتائج ✓',
+                'save_error': 'خطأ في الحفظ',
+                'print_pdf': '🖨️ طباعة / PDF',
+                'print_with_answers': 'مع التصحيح',
+                'print_site_name': 'لوحة التحكم التعليمية – الفرنسية',
+                'print_scholar_year': 'مراجعة البكالوريا',
+                'print_week': 'الأسبوع 6',
+                'print_area': 'التعبير الكتابي',
+                'print_footer_dev': 'طوّر بواسطة ماجري زياد',
+                'print_footer_date': 'طُبع في',
+                'toast_signin_required': 'سجّل الدخول لرؤية التصحيحات.'
+            }
+        });
+        (function() {
+            var container = document.querySelector('.container');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+        })();
+    </script>
+    <script src="ed-french-ini.js"></script>
+    <script>
+        (function() {
+            const audio = new Audio('lessons/revision/sounds/semaine6-plan.mp3');
+            const playBtn = document.getElementById('playBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const speedBtns = document.querySelectorAll('.speed-btn');
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+            audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
+            audio.addEventListener('timeupdate', () => {
+                const percent = (audio.currentTime / audio.duration) * 100 || 0;
+                progressFill.style.width = percent + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            });
+            audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) { audio.play(); playBtn.textContent = '⏸'; }
+                else { audio.pause(); playBtn.textContent = '▶'; }
+            });
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const seekTime = (clickX / width) * audio.duration;
+                audio.currentTime = seekTime;
+            });
+            speedBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    speedBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const speed = parseFloat(btn.dataset.speed);
+                    audio.playbackRate = speed;
+                });
+            });
+
+            document.getElementById('exo1Key').innerHTML = '<strong>Correction :</strong> Thèse : La lecture est bénéfique pour l\'esprit. Parties : I. La lecture développe l\'imagination ; II. La lecture enrichit les connaissances ; III. La lecture favorise l\'ouverture d\'esprit. Conclusion : La lecture est un outil précieux.';
+            document.getElementById('exo2Key').innerHTML = '<strong>Proposition :</strong> Argument : La lecture permet de visualiser des mondes inconnus. Exemple : Les descriptions dans "Le Petit Prince" de Saint-Exupéry.';
+            document.getElementById('exo3Key').innerHTML = '<strong>Proposition :</strong> Thèse : Les nouvelles technologies améliorent globalement notre quotidien. I. Elles facilitent la communication ; II. Elles donnent accès à une immense information ; III. Elles créent de nouvelles opportunités.';
+            document.getElementById('exo4Key').innerHTML = '<strong>Propositions :</strong> Argument 1 : Elle apporte des connaissances historiques (ex. : "Mémoires de guerre" de De Gaulle). Argument 2 : Elle enrichit le vocabulaire (ex. : les œuvres de Victor Hugo).';
+            document.getElementById('exo5Key').innerHTML = '<strong>Proposition :</strong> Les réseaux sociaux occupent une place croissante dans la vie des jeunes. S\'ils offrent des avantages, ils présentent aussi des dangers. Faut-il alors limiter leur usage chez les jeunes ? Nous verrons d\'abord les bénéfices, ensuite les risques, enfin des solutions.';
+            document.getElementById('exo6Key').innerHTML = '<strong>Proposition :</strong> En conclusion, la lecture est un outil essentiel pour l\'épanouissement intellectuel et humain. Elle développe l\'imagination, enrichit les connaissances et ouvre l\'esprit. Il est donc primordial d\'encourager cette pratique dès le plus jeune âge.';
+            document.getElementById('exo7Key').innerHTML = '<strong>Correction :</strong> Oui, ce plan est adapté car il présente une thèse (avantages), une antithèse (inconvénients) et une synthèse (usage raisonnable), ce qui est classique en dissertation.';
+            document.getElementById('exo8Key').innerHTML = '<strong>Proposition :</strong> La lecture améliore l\'expression écrite car elle expose à des modèles de style variés. Exemple : la lecture de romans classiques aide à maîtriser la syntaxe et le vocabulaire.';
+            document.getElementById('exo9Key').innerHTML = '<strong>Proposition :</strong> Sujet : L\'importance de l\'éducation. Thèse : L\'éducation est un pilier de la société. I. Elle transmet des savoirs ; II. Elle forme des citoyens responsables ; III. Elle favorise l\'égalité des chances. Transition entre I et II : Si l\'éducation transmet des connaissances, elle joue aussi un rôle social. Conclusion : L\'éducation est indispensable au progrès.';
+            window.toggleCorrection = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('visible');
+            };
+            function updateScore() {
+                const radioGroups = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5', 'self_ex6', 'self_ex7', 'self_ex8', 'self_ex9', 'self_ex10'];
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                radioGroups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                document.getElementById('scoreCorrect').textContent = correct;
+                document.getElementById('scoreIncorrect').textContent = incorrect;
+                document.getElementById('scorePartial').textContent = partial;
+                document.getElementById('scoreUnanswered').textContent = unanswered;
+            }
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                const radioGroups = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5', 'self_ex6', 'self_ex7', 'self_ex8', 'self_ex9', 'self_ex10'];
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                radioGroups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                const lessonId = 'semaine6-expression-dissertation';
+                const lang = localStorage.getItem('lang') || 'fr';
+                const entry = {
+                    lesson_id: lessonId,
+                    lesson_title: {
+                        fr: App.getTranslation('lesson_short_title', 'fr'),
+                        en: App.getTranslation('lesson_short_title', 'en'),
+                        ar: App.getTranslation('lesson_short_title', 'ar')
+                    },
+                    year: {
+                        fr: App.getTranslation('ach_year_bac', 'fr'),
+                        en: App.getTranslation('ach_year_bac', 'en'),
+                        ar: App.getTranslation('ach_year_bac', 'ar')
+                    },
+                    module: {
+                        fr: App.getTranslation('ach_module_semaine6', 'fr'),
+                        en: App.getTranslation('ach_module_semaine6', 'en'),
+                        ar: App.getTranslation('ach_module_semaine6', 'ar')
+                    },
+                    correct: correct,
+                    incorrect: incorrect,
+                    partial: partial,
+                    unanswered: unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles')
+                    .select('achivement')
+                    .eq('id', user.id)
+                    .single();
+                if (fetchError) { console.error('Could not fetch profile:', fetchError); return; }
+                let achivement = profileData?.achivement || {};
+                if (!achivement["ED-French"]) achivement["ED-French"] = [];
+                const arr = achivement["ED-French"];
+                const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+                if (existingIdx >= 0) arr[existingIdx] = entry; else arr.push(entry);
+                const { error: updateError } = await App.supabase
+                    .from('profiles')
+                    .update({ achivement: achivement })
+                    .eq('id', user.id);
+                if (updateError) {
+                    console.error('Save failed:', updateError);
+                    App.showToast('save_error', 'error');
+                } else {
+                    App.showToast('save_success', 'success');
+                    App.logUserAction('lesson_saved', { lesson: lessonId, correct, incorrect, partial });
+                }
+            });
+            document.getElementById('printPdfBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles')
+                        .select('registration_state')
+                        .eq('id', user.id)
+                        .single();
+                    if (!error && profile && profile.registration_state && profile.registration_state.active === true) isRegistered = true;
+                } catch (e) {}
+                const headerHTML = document.querySelector('.lesson-header').cloneNode(true);
+                const textCard = document.querySelector('.text-card').cloneNode(true);
+                const rulesSections = document.querySelectorAll('.methode-section');
+                let rulesHTML = '';
+                rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
+                const exercisesSection = document.querySelector('.exercises-section').cloneNode(true);
+                exercisesSection.querySelectorAll('input, textarea, .btn-verify, .self-assessment').forEach(el => el.remove());
+                if (isRegistered) {
+                    const answerKeys = exercisesSection.querySelectorAll('.answer-key');
+                    answerKeys.forEach(key => {
+                        key.style.display = 'block';
+                        key.style.border = 'none';
+                        key.style.padding = '0.5rem 0';
+                        key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    exercisesSection.querySelectorAll('.answer-key').forEach(el => el.remove());
+                }
+                const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                const lang = localStorage.getItem('lang') || 'fr';
+                printWindow.document.write(`
+                <!DOCTYPE html>
+                <html lang="${lang}">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>${App.getTranslation('lesson_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title>
+                    <style>
+                        body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.6; max-width: 700px; margin: 2rem auto; padding: 0 1rem; color: #000; }
+                        .print-header { text-align: center; border-bottom: 2px solid #c75b2c; padding-bottom: 1rem; margin-bottom: 2rem; }
+                        .print-header .site-name { font-size: 1.4rem; font-weight: bold; color: #c75b2c; margin: 0 0 0.3rem; }
+                        .print-header .meta-line { font-size: 0.95rem; color: #444; margin: 0.2rem 0; }
+                        .print-header .lesson-name { font-size: 1.1rem; font-weight: bold; color: #000; margin-top: 0.5rem; }
+                        .print-footer { text-align: center; border-top: 1px solid #ccc; padding-top: 1rem; margin-top: 2rem; font-size: 0.85rem; color: #666; }
+                        h1, h2, h3 { color: #000; }
+                        .lesson-header { text-align: center; margin-bottom: 2rem; }
+                        .badge { display: inline-block; background: #c75b2c; color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; text-transform: uppercase; }
+                        .text-card { border-left: 4px solid #c75b2c; padding: 1rem 1.5rem; margin: 1.5rem 0; font-style: italic; }
+                        .quote-mark { font-size: 3rem; color: #c75b2c; opacity: 0.3; position: absolute; top: -10px; left: 10px; }
+                        .text-card .author { text-align: right; font-style: normal; margin-top: 0.8rem; }
+                        .methode-section { margin: 1.5rem 0; }
+                        .valeur-card { background: #f8f4ec; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; }
+                        .valeur-card h3 { color: #c75b2c; }
+                        .exercise-card { margin: 1.2rem 0; }
+                        .answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; }
+                        @media print { body { margin: 0; padding: 0; } @page { margin: 2cm; } }
+                    </style>
+                </head>
+                <body>
+                    <div class="print-header">
+                        <div class="site-name">${App.getTranslation('print_site_name', lang)}</div>
+                        <div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div>
+                        <div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div>
+                    </div>
+                    ${breadcrumb.outerHTML}
+                    ${headerHTML.outerHTML}
+                    ${textCard.outerHTML}
+                    ${rulesHTML}
+                    ${exercisesSection.outerHTML}
+                    <div class="print-footer">
+                        ${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}
+                    </div>
+                </body>
+                </html>
+            `);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+            document.querySelectorAll('input[type="radio"][name^="self_ex"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+        })();
+    </script>
+    <!-- ═══════ DIRECT‑TRANSLATION FIX ═══════ -->
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') {
+                                el.innerHTML = next.innerHTML;
+                            }
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+</body>
+</html>
