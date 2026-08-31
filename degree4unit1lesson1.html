@@ -3,69 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="lesson_title">Le projet d'écriture – Unité 1</title>
+    <title data-i18n="lesson_title">Poésie – L'école & Le nombre 1</title>
     <link rel="manifest" href="/manifest.json">
     <link rel="stylesheet" href="shared.css">
     <style>
-        /* ===== Degree 4 Project Lesson – Mini Modular Styles (prefixed) ===== */
         :root {
-            --degree4-lessonType-project-bg: #f9f7f1;
-            --degree4-lessonType-project-card: #ffffff;
-            --degree4-lessonType-project-text: #2b2416;
-            --degree4-lessonType-project-text-light: #5c5344;
-            --degree4-lessonType-project-heading: #382e1e;
-            --degree4-lessonType-project-accent: #c75b2c;
-            --degree4-lessonType-project-accent-hover: #a3441d;
-            --degree4-lessonType-project-border: #e5ddd0;
-            --degree4-lessonType-project-shadow: 0 1px 4px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.05);
-            --degree4-lessonType-project-shadow-hover: 0 8px 22px rgba(0,0,0,0.08);
-            --degree4-lessonType-project-radius: 12px;
-            --degree4-lessonType-project-radius-sm: 8px;
-            --degree4-lessonType-project-transition: 0.25s ease;
-            --degree4-lessonType-project-font: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
-            --degree4-lessonType-project-audio-bg: #f4efe4;
-            --degree4-lessonType-project-audio-progress: #d8c9aa;
-            --degree4-lessonType-project-button-bg: #f0e8d8;
-            --degree4-lessonType-project-button-hover: #e3d5bc;
-            --degree4-lessonType-project-input-bg: #fcfaf6;
+            --degree4-lesson-poetry-bg: #f9f7f1;
+            --degree4-lesson-poetry-card: #ffffff;
+            --degree4-lesson-poetry-text: #2b2416;
+            --degree4-lesson-poetry-text-light: #5c5344;
+            --degree4-lesson-poetry-heading: #382e1e;
+            --degree4-lesson-poetry-accent: #8e44ad;
+            --degree4-lesson-poetry-accent-hover: #6c3483;
+            --degree4-lesson-poetry-border: #e5ddd0;
+            --degree4-lesson-poetry-shadow: 0 1px 4px rgba(0,0,0,0.04);
+            --degree4-lesson-poetry-radius: 12px;
+            --degree4-lesson-poetry-radius-sm: 8px;
+            --degree4-lesson-poetry-transition: 0.25s ease;
+            --degree4-lesson-poetry-font: 'Segoe UI', 'Georgia', serif;
+            --degree4-lesson-poetry-audio-bg: #f4efe4;
+            --degree4-lesson-poetry-audio-progress: #d8c9aa;
+            --degree4-lesson-poetry-button-bg: #f0e8d8;
+            --degree4-lesson-poetry-button-hover: #e3d5bc;
         }
         body.dark {
-            --degree4-lessonType-project-bg: #1e1b17;
-            --degree4-lessonType-project-card: #2a2620;
-            --degree4-lessonType-project-text: #e8dfd2;
-            --degree4-lessonType-project-text-light: #b9aa95;
-            --degree4-lessonType-project-heading: #f0e4d2;
-            --degree4-lessonType-project-accent: #e07b4a;
-            --degree4-lessonType-project-accent-hover: #f08c5c;
-            --degree4-lessonType-project-border: #3e3830;
-            --degree4-lessonType-project-shadow: 0 1px 4px rgba(0,0,0,0.25);
-            --degree4-lessonType-project-shadow-hover: 0 8px 22px rgba(0,0,0,0.35);
-            --degree4-lessonType-project-audio-bg: #26221b;
-            --degree4-lessonType-project-audio-progress: #5a4e3c;
-            --degree4-lessonType-project-button-bg: #3a3329;
-            --degree4-lessonType-project-button-hover: #4e4437;
-            --degree4-lessonType-project-input-bg: #333028;
+            --degree4-lesson-poetry-bg: #1e1b17;
+            --degree4-lesson-poetry-card: #2a2620;
+            --degree4-lesson-poetry-text: #e8dfd2;
+            --degree4-lesson-poetry-text-light: #b9aa95;
+            --degree4-lesson-poetry-heading: #f0e4d2;
+            --degree4-lesson-poetry-accent: #b388ff;
+            --degree4-lesson-poetry-accent-hover: #ce93d8;
+            --degree4-lesson-poetry-border: #3e3830;
+            --degree4-lesson-poetry-shadow: 0 1px 4px rgba(0,0,0,0.25);
+            --degree4-lesson-poetry-audio-bg: #26221b;
+            --degree4-lesson-poetry-audio-progress: #5a4e3c;
+            --degree4-lesson-poetry-button-bg: #3a3329;
+            --degree4-lesson-poetry-button-hover: #4e4437;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin:0; padding:0; box-sizing:border-box; }
         body {
-            font-family: var(--degree4-lessonType-project-font);
-            background: var(--degree4-lessonType-project-bg);
-            color: var(--degree4-lessonType-project-text);
+            font-family: var(--degree4-lesson-poetry-font);
+            background: var(--degree4-lesson-poetry-bg);
+            color: var(--degree4-lesson-poetry-text);
             line-height: 1.75;
-            transition: background var(--degree4-lessonType-project-transition), color var(--degree4-lessonType-project-transition);
+            transition: background var(--degree4-lesson-poetry-transition), color var(--degree4-lesson-poetry-transition);
         }
-        .degree4-lessonType-project-container {
-            max-width: 860px;
+        .degree4-lesson-poetry-container {
+            max-width: 900px;
             margin: 0 auto;
             padding: 1.8rem 1.4rem 3rem;
         }
-        .degree4-lessonType-project-header {
+        .degree4-lesson-poetry-header {
             text-align: center;
             margin-bottom: 2rem;
         }
-        .degree4-lessonType-project-badge {
+        .degree4-lesson-poetry-badge {
             display: inline-block;
-            background: var(--degree4-lessonType-project-accent);
+            background: var(--degree4-lesson-poetry-accent);
             color: #fff;
             padding: 0.25rem 1rem;
             border-radius: 20px;
@@ -74,37 +69,59 @@
             letter-spacing: 0.03em;
             text-transform: uppercase;
         }
-        .degree4-lessonType-project-header h1 {
+        .degree4-lesson-poetry-header h1 {
             font-size: 2.1rem;
-            color: var(--degree4-lessonType-project-heading);
+            color: var(--degree4-lesson-poetry-heading);
             margin: 0.6rem 0 0.3rem;
             line-height: 1.3;
         }
-        .degree4-lessonType-project-meta {
+        .degree4-lesson-poetry-meta {
             font-size: 0.9rem;
-            color: var(--degree4-lessonType-project-text-light);
+            color: var(--degree4-lesson-poetry-text-light);
             display: flex;
             justify-content: center;
             gap: 1.2rem;
             flex-wrap: wrap;
         }
-        .degree4-lessonType-project-audio {
-            background: var(--degree4-lessonType-project-card);
-            border: 1px solid var(--degree4-lessonType-project-border);
-            border-radius: var(--degree4-lessonType-project-radius);
-            padding: 1rem 1.4rem;
-            margin: 1.5rem 0 2rem;
-            box-shadow: var(--degree4-lessonType-project-shadow);
+        .degree4-lesson-poetry-card {
+            background: var(--degree4-lesson-poetry-card);
+            border: 1px solid var(--degree4-lesson-poetry-border);
+            border-radius: var(--degree4-lesson-poetry-radius);
+            padding: 1.8rem;
+            margin: 2rem 0;
+            box-shadow: var(--degree4-lesson-poetry-shadow);
+        }
+        .degree4-lesson-poetry-card h2 {
+            font-size: 1.6rem;
+            color: var(--degree4-lesson-poetry-heading);
+            margin-bottom: 0.4rem;
+            border-bottom: 3px solid var(--degree4-lesson-poetry-accent);
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+        .degree4-lesson-poetry-author {
+            font-style: italic;
+            color: var(--degree4-lesson-poetry-text-light);
+            margin-bottom: 1rem;
+        }
+        /* Audio player */
+        .degree4-lesson-poetry-audio {
+            background: var(--degree4-lesson-poetry-card);
+            border: 1px solid var(--degree4-lesson-poetry-border);
+            border-radius: var(--degree4-lesson-poetry-radius);
+            padding: 0.8rem 1.1rem;
+            margin: 0.8rem 0 1.2rem;
+            box-shadow: var(--degree4-lesson-poetry-shadow);
             display: flex;
             align-items: center;
             gap: 1rem;
             flex-wrap: wrap;
         }
-        .degree4-lessonType-project-audio .degree4-lessonType-project-play-btn {
+        .degree4-lesson-poetry-play-btn {
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            background: var(--degree4-lessonType-project-accent);
+            background: var(--degree4-lesson-poetry-accent);
             color: #fff;
             border: none;
             font-size: 1.2rem;
@@ -112,383 +129,648 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background var(--degree4-lessonType-project-transition);
+            transition: background var(--degree4-lesson-poetry-transition);
             flex-shrink: 0;
         }
-        .degree4-lessonType-project-play-btn:hover { background: var(--degree4-lessonType-project-accent-hover); }
-        .degree4-lessonType-project-progress-area {
+        .degree4-lesson-poetry-play-btn:hover { background: var(--degree4-lesson-poetry-accent-hover); }
+        .degree4-lesson-poetry-progress-area {
             flex: 1;
             min-width: 120px;
             display: flex;
             flex-direction: column;
             gap: 0.3rem;
         }
-        .degree4-lessonType-project-progress-bar {
+        .degree4-lesson-poetry-progress-bar {
             width: 100%;
             height: 6px;
-            background: var(--degree4-lessonType-project-audio-progress);
+            background: var(--degree4-lesson-poetry-audio-progress);
             border-radius: 3px;
             cursor: pointer;
             position: relative;
             overflow: hidden;
         }
-        .degree4-lessonType-project-progress-fill {
+        .degree4-lesson-poetry-progress-fill {
             height: 100%;
-            background: var(--degree4-lessonType-project-accent);
+            background: var(--degree4-lesson-poetry-accent);
             border-radius: 3px;
             width: 0%;
             transition: width 0.1s linear;
         }
-        .degree4-lessonType-project-time-info {
+        .degree4-lesson-poetry-time-info {
             display: flex;
             justify-content: space-between;
             font-size: 0.75rem;
-            color: var(--degree4-lessonType-project-text-light);
+            color: var(--degree4-lesson-poetry-text-light);
         }
-        .degree4-lessonType-project-speed-selector {
+        .degree4-lesson-poetry-speed-selector {
             display: flex;
             gap: 0.3rem;
             flex-wrap: wrap;
         }
-        .degree4-lessonType-project-speed-btn {
-            border: 1px solid var(--degree4-lessonType-project-border);
-            background: var(--degree4-lessonType-project-button-bg);
-            color: var(--degree4-lessonType-project-text);
+        .degree4-lesson-poetry-speed-btn {
+            border: 1px solid var(--degree4-lesson-poetry-border);
+            background: var(--degree4-lesson-poetry-button-bg);
+            color: var(--degree4-lesson-poetry-text);
             padding: 0.25rem 0.55rem;
             border-radius: 4px;
             font-size: 0.75rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all var(--degree4-lessonType-project-transition);
+            transition: all var(--degree4-lesson-poetry-transition);
         }
-        .degree4-lessonType-project-speed-btn.active {
-            background: var(--degree4-lessonType-project-accent);
+        .degree4-lesson-poetry-speed-btn.active {
+            background: var(--degree4-lesson-poetry-accent);
             color: #fff;
-            border-color: var(--degree4-lessonType-project-accent);
+            border-color: var(--degree4-lesson-poetry-accent);
         }
-        .degree4-lessonType-project-audio-label {
+        .degree4-lesson-poetry-audio-label {
             font-weight: 700;
             font-size: 0.85rem;
-            color: var(--degree4-lessonType-project-heading);
+            color: var(--degree4-lesson-poetry-heading);
             white-space: nowrap;
         }
         @media (max-width: 600px) {
-            .degree4-lessonType-project-audio { flex-direction: column; align-items: stretch; }
-            .degree4-lessonType-project-audio-label { text-align: center; }
+            .degree4-lesson-poetry-audio { flex-direction: column; align-items: stretch; }
+            .degree4-lesson-poetry-audio-label { text-align: center; }
         }
-        .degree4-lessonType-project-text-card {
-            background: var(--degree4-lessonType-project-card);
-            border: 1px solid var(--degree4-lessonType-project-border);
-            border-left: 5px solid var(--degree4-lessonType-project-accent);
-            border-radius: 0 var(--degree4-lessonType-project-radius) var(--degree4-lessonType-project-radius) 0;
-            padding: 1.4rem 1.6rem;
-            margin: 1.8rem 0;
-            font-style: italic;
+        /* Poem text */
+        .degree4-lesson-poetry-text {
+            white-space: pre-line;
             font-size: 1.05rem;
-            line-height: 1.9;
-            box-shadow: var(--degree4-lessonType-project-shadow);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-style: italic;
+            background: var(--degree4-lesson-poetry-audio-bg);
+            padding: 1.2rem 1.5rem;
+            border-radius: var(--degree4-lesson-poetry-radius-sm);
+            border-left: 4px solid var(--degree4-lesson-poetry-accent);
+        }
+        /* Slideshow */
+        .degree4-lesson-poetry-slideshow {
+            position: relative;
+            margin-top: 1.5rem;
+            border-radius: var(--degree4-lesson-poetry-radius-sm);
+            overflow: hidden;
+            background: #000;
+        }
+        .degree4-lesson-poetry-slideshow .slides {
+            display: flex;
+            transition: opacity 0.5s ease;
             position: relative;
         }
-        .degree4-lessonType-project-quote-mark {
+        .degree4-lesson-poetry-slideshow .slide {
+            min-width: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease;
             position: absolute;
-            top: -12px;
-            left: 14px;
-            font-size: 3rem;
-            color: var(--degree4-lessonType-project-accent);
-            opacity: 0.25;
-            line-height: 1;
-        }
-        .degree4-lessonType-project-author {
-            text-align: right;
-            font-style: normal;
-            font-size: 0.9rem;
-            color: var(--degree4-lessonType-project-text-light);
-            margin-top: 0.8rem;
-        }
-        .degree4-lessonType-project-rules,
-        .degree4-lessonType-project-contract {
-            background: var(--degree4-lessonType-project-card);
-            border: 1px solid var(--degree4-lessonType-project-border);
-            border-radius: var(--degree4-lessonType-project-radius);
-            padding: 1.6rem 1.8rem;
-            margin: 2rem 0;
-            box-shadow: var(--degree4-lessonType-project-shadow);
-        }
-        .degree4-lessonType-project-rules h2,
-        .degree4-lessonType-project-contract h2 {
-            font-size: 1.5rem;
-            color: var(--degree4-lessonType-project-heading);
-            margin-bottom: 1rem;
-            border-bottom: 3px solid var(--degree4-lessonType-project-accent);
-            display: inline-block;
-            padding-bottom: 0.3rem;
-        }
-        .degree4-lessonType-project-rule-card,
-        .degree4-lessonType-project-contract ul {
-            background: var(--degree4-lessonType-project-audio-bg);
-            border-radius: var(--degree4-lessonType-project-radius-sm);
-            padding: 1rem 1.2rem;
-            margin-bottom: 1rem;
-        }
-        .degree4-lessonType-project-rule-card h3 {
-            color: var(--degree4-lessonType-project-accent);
-            font-size: 1.1rem;
-            margin-bottom: 0.4rem;
-        }
-        .degree4-lessonType-project-rule-card ul,
-        .degree4-lessonType-project-contract ul { list-style: none; padding: 0; }
-        .degree4-lessonType-project-rule-card li,
-        .degree4-lessonType-project-contract li {
-            padding: 0.3rem 0;
-            padding-left: 1.4rem;
-            position: relative;
-            color: var(--degree4-lessonType-project-text-light);
-        }
-        .degree4-lessonType-project-rule-card li::before,
-        .degree4-lessonType-project-contract li::before {
-            content: '◆';
-            position: absolute;
+            top: 0;
             left: 0;
-            color: var(--degree4-lessonType-project-accent);
-            font-size: 0.5rem;
-            top: 0.5rem;
         }
-        .degree4-lessonType-project-rule-card p { margin: 0.5rem 0; }
-        .degree4-lessonType-project-self-assess {
-            margin: 1rem 0;
+        .degree4-lesson-poetry-slideshow .slide.active {
+            opacity: 1;
+            position: relative;
+        }
+        .degree4-lesson-poetry-slideshow img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .degree4-lesson-poetry-slideshow-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: #fff;
+            border: none;
+            font-size: 1.8rem;
+            padding: 0.2rem 0.8rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.2s;
+            z-index: 10;
+        }
+        .degree4-lesson-poetry-slideshow-btn:hover { background: rgba(0,0,0,0.8); }
+        .degree4-lesson-poetry-slideshow-btn.prev { left: 10px; }
+        .degree4-lesson-poetry-slideshow-btn.next { right: 10px; }
+        /* Vocabulary */
+        .degree4-lesson-poetry-vocab {
+            background: var(--degree4-lesson-poetry-audio-bg);
+            border-radius: var(--degree4-lesson-poetry-radius-sm);
+            padding: 1rem 1.4rem;
+            margin-top: 1rem;
+        }
+        .degree4-lesson-poetry-vocab h3 {
+            color: var(--degree4-lesson-poetry-accent);
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+        .degree4-lesson-poetry-vocab ul {
+            list-style: none;
+            padding: 0;
+        }
+        .degree4-lesson-poetry-vocab li {
+            padding: 0.25rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            align-items: baseline;
+        }
+        .degree4-lesson-poetry-vocab .word {
+            font-weight: 700;
+            min-width: 120px;
+        }
+        .degree4-lesson-poetry-vocab .translation {
+            color: var(--degree4-lesson-poetry-text-light);
+        }
+        /* Vocabulary exercise */
+        .degree4-lesson-poetry-vocab-exercise {
+            background: var(--degree4-lesson-poetry-audio-bg);
+            border-radius: var(--degree4-lesson-poetry-radius-sm);
+            padding: 1rem 1.4rem;
+            margin-top: 1rem;
+        }
+        .degree4-lesson-poetry-vocab-exercise h4 {
+            color: var(--degree4-lesson-poetry-accent);
+            font-size: 1.05rem;
+            margin-bottom: 0.6rem;
+        }
+        .degree4-lesson-poetry-vocab-exercise ol {
+            list-style: decimal;
+            padding-left: 1.5rem;
+        }
+        .degree4-lesson-poetry-vocab-exercise li {
+            margin-bottom: 0.5rem;
+        }
+        .degree4-lesson-poetry-vocab-exercise input[type="text"] {
+            width: 100%;
+            padding: 0.4rem 0.6rem;
+            border: 1px solid var(--degree4-lesson-poetry-border);
+            border-radius: 4px;
+            background: var(--degree4-lesson-poetry-card);
+            color: var(--degree4-lesson-poetry-text);
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+        .degree4-lesson-poetry-answer-key {
+            display: none;
+            margin-top: 0.8rem;
+            padding: 0.8rem;
+            background: #f4efe4;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: var(--degree4-lesson-poetry-text-light);
+            border: 1px dashed var(--degree4-lesson-poetry-accent);
+        }
+        .degree4-lesson-poetry-answer-key.visible {
+            display: block;
+        }
+        .degree4-lesson-poetry-feedback {
+            margin-top: 0.8rem;
+            font-weight: 600;
+        }
+        .degree4-lesson-poetry-feedback.correct { color: #2e7d32; }
+        .degree4-lesson-poetry-feedback.wrong { color: #c62828; }
+        /* Self-assessment */
+        .degree4-lesson-poetry-self-assess {
+            margin-top: 1rem;
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
             align-items: center;
             font-size: 0.9rem;
         }
-        .degree4-lessonType-project-self-assess label {
+        .degree4-lesson-poetry-self-assess label {
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
         }
-        .degree4-lessonType-project-score-area {
-            background: var(--degree4-lessonType-project-card);
-            border: 1px solid var(--degree4-lessonType-project-border);
-            border-radius: var(--degree4-lessonType-project-radius);
+        .degree4-lesson-poetry-self-assess input[type="radio"] {
+            accent-color: var(--degree4-lesson-poetry-accent);
+        }
+        /* Score area */
+        .degree4-lesson-poetry-score-area {
+            background: var(--degree4-lesson-poetry-card);
+            border: 1px solid var(--degree4-lesson-poetry-border);
+            border-radius: var(--degree4-lesson-poetry-radius);
             padding: 1.5rem;
             margin-top: 2rem;
-            box-shadow: var(--degree4-lessonType-project-shadow);
+            box-shadow: var(--degree4-lesson-poetry-shadow);
         }
-        .degree4-lessonType-project-score-area h2 {
-            color: var(--degree4-lessonType-project-heading);
+        .degree4-lesson-poetry-score-area h2 {
+            color: var(--degree4-lesson-poetry-heading);
             margin-bottom: 1rem;
         }
-        .degree4-lessonType-project-score-stats {
+        .degree4-lesson-poetry-score-stats {
             display: flex;
             gap: 1.5rem;
             flex-wrap: wrap;
         }
-        .degree4-lessonType-project-score-stat {
-            background: var(--degree4-lessonType-project-audio-bg);
+        .degree4-lesson-poetry-score-stat {
+            background: var(--degree4-lesson-poetry-audio-bg);
             padding: 0.8rem 1.2rem;
             border-radius: 8px;
             font-weight: 600;
         }
-        .degree4-lessonType-project-score-actions {
+        .degree4-lesson-poetry-score-actions {
             margin-top: 1rem;
             display: flex;
             gap: 0.8rem;
             flex-wrap: wrap;
         }
-        .degree4-lessonType-project-btn {
-            background: var(--degree4-lessonType-project-accent);
+        .degree4-lesson-poetry-btn {
+            background: var(--degree4-lesson-poetry-accent);
             color: #fff;
             border: none;
             padding: 0.5rem 1.2rem;
             border-radius: 20px;
             font-weight: 600;
             cursor: pointer;
-            transition: background var(--degree4-lessonType-project-transition);
+            transition: background var(--degree4-lesson-poetry-transition);
             font-size: 0.85rem;
         }
-        .degree4-lessonType-project-btn:hover { background: var(--degree4-lessonType-project-accent-hover); }
-        .degree4-lessonType-project-footer-nav {
+        .degree4-lesson-poetry-btn:hover {
+            background: var(--degree4-lesson-poetry-accent-hover);
+        }
+        .degree4-lesson-poetry-btn.secondary {
+            background: var(--degree4-lesson-poetry-button-bg);
+            color: var(--degree4-lesson-poetry-text);
+            border: 1px solid var(--degree4-lesson-poetry-border);
+        }
+        .degree4-lesson-poetry-btn.secondary:hover {
+            background: var(--degree4-lesson-poetry-button-hover);
+        }
+        .degree4-lesson-poetry-footer-nav {
             margin-top: 2rem;
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 1rem;
         }
-        .degree4-lessonType-project-footer-nav a {
-            color: var(--degree4-lessonType-project-accent);
+        .degree4-lesson-poetry-footer-nav a {
+            color: var(--degree4-lesson-poetry-accent);
             text-decoration: none;
             font-weight: 600;
         }
-        .degree4-lessonType-project-footer-nav a:hover { text-decoration: underline; }
+        .degree4-lesson-poetry-footer-nav a:hover { text-decoration: underline; }
         html[dir="rtl"] body { direction: rtl; }
-        html[dir="rtl"] .degree4-lessonType-project-container { text-align: right; }
-        html[dir="rtl"] .degree4-lessonType-project-author { text-align: left; }
+        html[dir="rtl"] .degree4-lesson-poetry-container { text-align: right; }
+        html[dir="rtl"] .degree4-lesson-poetry-author { text-align: left; }
+        html[dir="rtl"] .degree4-lesson-poetry-slideshow-btn.prev { left: auto; right: 10px; }
+        html[dir="rtl"] .degree4-lesson-poetry-slideshow-btn.next { right: auto; left: 10px; }
+        html[dir="rtl"] .degree4-lesson-poetry-vocab li { flex-direction: row-reverse; }
         @media (max-width: 600px) {
-            .degree4-lessonType-project-header h1 { font-size: 1.5rem; }
-            .degree4-lessonType-project-container { padding: 1rem 0.8rem 2rem; }
-            .degree4-lessonType-project-score-stats { gap: 0.8rem; }
+            .degree4-lesson-poetry-header h1 { font-size: 1.5rem; }
+            .degree4-lesson-poetry-container { padding: 1rem 0.8rem 2rem; }
+            .degree4-lesson-poetry-card { padding: 1.2rem; }
+            .degree4-lesson-poetry-two-col { flex-direction: column !important; }
+        }
+        /* Two‑column layout */
+        .degree4-lesson-poetry-two-col {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+        .degree4-lesson-poetry-two-col .col {
+            flex: 1 1 0;
+            min-width: 0;
+        }
+        .degree4-lesson-poetry-two-col .col-slideshow {
+            flex: 1 1 0;
+            min-width: 0;
+        }
+        .degree4-lesson-poetry-two-col .col-slideshow .degree4-lesson-poetry-slideshow {
+            margin-top: 0;
         }
     </style>
 </head>
 <body>
-    <div id="main-content" class="degree4-lessonType-project-container">
-        <!-- Fil d'Ariane -->
-        <p style="margin-bottom:1.5rem; color:var(--degree4-lessonType-project-text-light);">
+    <!-- Hidden shell elements required by ed-french-ini.js -->
+    <div id="toast-container"></div>
+    <button id="signInBtn" style="display:none"></button>
+
+    <div id="main-content" class="degree4-lesson-poetry-container">
+        <!-- Breadcrumb -->
+        <p style="margin-bottom:1.5rem; color:var(--degree4-lesson-poetry-text-light);">
             <a href="degree4.html" data-i18n="back_link">← Retour au programme</a>
-            › <strong data-i18n="current_lesson">Le projet d'écriture</strong>
+            › <strong data-i18n="current_lesson">Poésie</strong>
         </p>
-
-        <!-- En-tête -->
-        <div class="degree4-lessonType-project-header">
-            <span class="degree4-lessonType-project-badge" data-i18n="lesson_badge">📘 Unité 1 · Projet</span>
-            <h1 data-i18n="lesson_title">Le projet d'écriture</h1>
-            <div class="degree4-lessonType-project-meta">
-                <span data-i18n="lesson_subtitle">Raconter un événement de la vie quotidienne</span>
-                <span data-i18n="lesson_duration">⏱️ 45 minutes</span>
-                <span data-i18n="lesson_meta_audio">🎧 Écoutez le texte puis faites la dictée</span>
+        <!-- Header -->
+        <div class="degree4-lesson-poetry-header">
+            <span class="degree4-lesson-poetry-badge" data-i18n="lesson_badge">🎵 Unité 1 · Poésie</span>
+            <h1 data-i18n="lesson_title">Poèmes : L'école & Le nombre 1</h1>
+            <div class="degree4-lesson-poetry-meta">
+                <span data-i18n="lesson_subtitle">Deux poèmes à écouter et à lire</span>
+                <span data-i18n="lesson_duration">⏱️ 30 minutes</span>
             </div>
         </div>
 
-        <!-- Section : Mon contrat (objectifs) -->
-        <div class="degree4-lessonType-project-contract">
-            <h2 data-i18n="contract_title">Mon contrat</h2>
-            <p data-i18n="contract_subtitle">Dans cette unité, je vais apprendre à :</p>
-            <ul>
-                <li data-i18n="goal1">réciter un poème</li>
-                <li data-i18n="goal2">lire et écrire les graphies : z - k - g</li>
-                <li data-i18n="goal3">écrire les majuscules : A-M-N</li>
-                <li data-i18n="goal4">lire des textes : La nouvelle élève. Les deux amies.</li>
-                <li data-i18n="goal5">construire une phrase complète</li>
-                <li data-i18n="goal6">conjuguer le verbe « être » au présent</li>
-                <li data-i18n="goal7">identifier les personnages dans une histoire</li>
-                <li data-i18n="goal8">organiser les événements d'un récit</li>
-                <li data-i18n="goal9">lire un document pour m'informer sur les droits et les devoirs de l'enfant</li>
-                <li data-i18n="goal10">fabriquer « La ronde des enfants »</li>
-                <li data-i18n="goal11">jouer avec les mots contenant les graphies étudiées</li>
-            </ul>
-        </div>
+        <!-- ========== CARD 1 : L'école ========== -->
+        <section class="degree4-lesson-poetry-card">
+            <h2 data-i18n="poem1_title">L'école</h2>
+            <div class="degree4-lesson-poetry-author" data-i18n="poem1_author">Jacques CHARPENTREAU</div>
 
-        <!-- Lecteur audio -->
-        <div class="degree4-lessonType-project-audio" id="degree4LessonTypeProjectAudioPlayer">
-            <span class="degree4-lessonType-project-audio-label" data-i18n="audio_label">🎧 Écoute littéraire</span>
-            <button class="degree4-lessonType-project-play-btn" id="degree4LessonTypeProjectPlayBtn" aria-label="Lecture">▶</button>
-            <div class="degree4-lessonType-project-progress-area">
-                <div class="degree4-lessonType-project-progress-bar" id="degree4LessonTypeProjectProgressBar">
-                    <div class="degree4-lessonType-project-progress-fill" id="degree4LessonTypeProjectProgressFill"></div>
+            <!-- Audio player -->
+            <div class="degree4-lesson-poetry-audio" id="poem1AudioPlayer">
+                <span class="degree4-lesson-poetry-audio-label" data-i18n="audio_label1">🎧 Écoute du poème</span>
+                <button class="degree4-lesson-poetry-play-btn" id="poem1PlayBtn" aria-label="Lecture">▶</button>
+                <div class="degree4-lesson-poetry-progress-area">
+                    <div class="degree4-lesson-poetry-progress-bar" id="poem1ProgressBar">
+                        <div class="degree4-lesson-poetry-progress-fill" id="poem1ProgressFill"></div>
+                    </div>
+                    <div class="degree4-lesson-poetry-time-info">
+                        <span id="poem1CurrentTime">0:00</span>
+                        <span id="poem1Duration">0:00</span>
+                    </div>
                 </div>
-                <div class="degree4-lessonType-project-time-info">
-                    <span id="degree4LessonTypeProjectCurrentTime">0:00</span>
-                    <span id="degree4LessonTypeProjectDuration">0:00</span>
+                <div class="degree4-lesson-poetry-speed-selector">
+                    <button class="degree4-lesson-poetry-speed-btn" data-speed="0.75">0.75x</button>
+                    <button class="degree4-lesson-poetry-speed-btn active" data-speed="1">1x</button>
+                    <button class="degree4-lesson-poetry-speed-btn" data-speed="1.25">1.25x</button>
+                    <button class="degree4-lesson-poetry-speed-btn" data-speed="1.5">1.5x</button>
                 </div>
             </div>
-            <div class="degree4-lessonType-project-speed-selector" id="degree4LessonTypeProjectSpeedSelector">
-                <button class="degree4-lessonType-project-speed-btn" data-speed="0.75">0.75x</button>
-                <button class="degree4-lessonType-project-speed-btn active" data-speed="1">1x</button>
-                <button class="degree4-lessonType-project-speed-btn" data-speed="1.25">1.25x</button>
-                <button class="degree4-lessonType-project-speed-btn" data-speed="1.5">1.5x</button>
+
+            <!-- Two‑column: poem text left, slideshow right -->
+            <div class="degree4-lesson-poetry-two-col">
+                <div class="col">
+                    <!-- Poem text -->
+                    <div class="degree4-lesson-poetry-text no-bilingual" data-i18n="poem1_text">
+                        Dans notre rue,
+                        il y a des autos,
+                        des gens qui s'affolent,
+                        Un grand magasin, une école,
+                        Et puis mon cœur qui bat
+                        Tout bas.
+
+                        Dans cette école, il y a
+                        Des oiseaux chantant tout le jour
+                        Dans les marronniers de la cour.
+                        Mon cœur, mon cœur qui bat
+                        Est là.
+                    </div>
+                </div>
+                <div class="col col-slideshow">
+                    <!-- Slideshow -->
+                    <div class="degree4-lesson-poetry-slideshow" id="slideshow1">
+                        <div class="slides">
+                            <div class="slide active"><img src="assets4/images/degree4/unit1/lesson1/collection1/1.jpg" alt="École 1"></div>
+                            <div class="slide"><img src="assets4/images/degree4/unit1/lesson1/collection1/2.jpg" alt="École 2"></div>
+                            <div class="slide"><img src="assets4/images/degree4/unit1/lesson1/collection1/3.jpg" alt="École 3"></div>
+                        </div>
+                        <button class="degree4-lesson-poetry-slideshow-btn prev" data-slideshow="1">❮</button>
+                        <button class="degree4-lesson-poetry-slideshow-btn next" data-slideshow="1">❯</button>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <!-- Texte de dictée -->
-        <div class="degree4-lessonType-project-text-card">
-            <span class="degree4-lessonType-project-quote-mark">“</span>
-            <p data-i18n="dictation_sentence">Amélie est en classe. Elle dessine des cerises et des fraises.</p>
-            <div class="degree4-lessonType-project-author" data-i18n="text_author">— Dictée de la leçon 1</div>
-        </div>
-
-        <!-- Conseils pour la dictée -->
-        <div class="degree4-lessonType-project-rules">
-            <h2 data-i18n="rules_heading">📖 Conseils pour réussir la dictée</h2>
-            <p data-i18n="rules_intro" class="no-bilingual" style="margin-bottom:1.2rem;">Avant d'écrire, écoute attentivement et observe les mots.</p>
-            <div class="degree4-lessonType-project-rule-card">
-                <h3 data-i18n="rules_tip1_title">🔹 Mots à retenir</h3>
-                <p data-i18n="rules_tip1_text"><strong>Amélie</strong> – une majuscule car c'est un prénom.<br><strong>cerises</strong>, <strong>fraises</strong> – noms au pluriel.</p>
+            <!-- Vocabulary -->
+            <div class="degree4-lesson-poetry-vocab">
+                <h3 data-i18n="poem1_vocab_title">🔹 Explication des mots</h3>
+                <ul>
+                    <li><span class="word">s'affolent</span><span class="translation" data-i18n="poem1_vocab_s_affolent"> - se précipitent, paniquent</span></li>
+                    <li><span class="word">magasin</span><span class="translation" data-i18n="poem1_vocab_magasin"> - boutique, commerce</span></li>
+                    <li><span class="word">cœur</span><span class="translation" data-i18n="poem1_vocab_coeur"> - cœur, âme, sentiment</span></li>
+                    <li><span class="word">bat</span><span class="translation" data-i18n="poem1_vocab_bat"> - bat, palpite</span></li>
+                    <li><span class="word">marronniers</span><span class="translation" data-i18n="poem1_vocab_marronniers"> - châtaigniers</span></li>
+                    <li><span class="word">cour</span><span class="translation" data-i18n="poem1_vocab_cour"> - cour, préau</span></li>
+                </ul>
             </div>
-            <div class="degree4-lessonType-project-rule-card">
-                <h3 data-i18n="rules_tip2_title">🔹 Difficultés orthographiques</h3>
-                <p data-i18n="rules_tip2_text">Le son [z] s'écrit « s » entre deux voyelles (cerises, fraises).<br>Le son [k] s'écrit « c » devant « e » (classe).</p>
+
+            <!-- Basic vocabulary exercise (with correction key) -->
+            <div class="degree4-lesson-poetry-vocab-exercise">
+                <h4 data-i18n="vocab_exercise_title">✏️ Petit exercice de vocabulaire</h4>
+                <ol>
+                    <li><span data-i18n="vocab_q1">Que signifie « s'affolent » ?</span>
+                        <input type="text" id="vocab1_q1" placeholder="...">
+                    </li>
+                    <li><span data-i18n="vocab_q2">Complétez : Un grand ___________ se trouve dans la rue.</span>
+                        <input type="text" id="vocab1_q2" placeholder="...">
+                    </li>
+                    <li><span data-i18n="vocab_q3">Que fait le cœur ? Il ___________ .</span>
+                        <input type="text" id="vocab1_q3" placeholder="...">
+                    </li>
+                </ol>
+                <button class="degree4-lesson-poetry-btn" onclick="toggleCorrection('vocab1Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="vocab1Key" class="degree4-lesson-poetry-answer-key">
+                    <strong>Correction :</strong><br>
+                    a) se précipitent, paniquent<br>
+                    b) magasin<br>
+                    c) bat
+                </div>
+                <div class="degree4-lesson-poetry-self-assess">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_vocab1" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_vocab1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                    <label><input type="radio" name="self_vocab1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                </div>
             </div>
-        </div>
 
-        <!-- Auto-évaluation de la dictée -->
-        <div class="degree4-lessonType-project-self-assess">
-            <span data-i18n="self_assessment_question">Auto-évaluez votre dictée :</span>
-            <label><input type="radio" name="self_dictation" value="correct"> <span data-i18n="self_correct">Correct</span></label>
-            <label><input type="radio" name="self_dictation" value="partial"> <span data-i18n="self_partial">Partiellement correct</span></label>
-            <label><input type="radio" name="self_dictation" value="incorrect"> <span data-i18n="self_incorrect">Incorrect</span></label>
-        </div>
+            <!-- Self-assessment for poem 1 -->
+            <div class="degree4-lesson-poetry-self-assess">
+                <span data-i18n="self_assess_question">Ma compréhension du poème est :</span>
+                <label><input type="radio" name="self_poem1" value="correct" data-i18n="self_correct"> Correcte</label>
+                <label><input type="radio" name="self_poem1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                <label><input type="radio" name="self_poem1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+            </div>
+        </section>
 
-        <!-- Zone de score -->
-        <div class="degree4-lessonType-project-score-area">
+        <!-- ========== CARD 2 : Le nombre 1 ========== -->
+        <section class="degree4-lesson-poetry-card">
+            <h2 data-i18n="poem2_title">Le nombre 1</h2>
+            <div class="degree4-lesson-poetry-author" data-i18n="poem2_author">Pierre CORAN</div>
+
+            <!-- Audio player -->
+            <div class="degree4-lesson-poetry-audio" id="poem2AudioPlayer">
+                <span class="degree4-lesson-poetry-audio-label" data-i18n="audio_label2">🎧 Écoute du poème</span>
+                <button class="degree4-lesson-poetry-play-btn" id="poem2PlayBtn" aria-label="Lecture">▶</button>
+                <div class="degree4-lesson-poetry-progress-area">
+                    <div class="degree4-lesson-poetry-progress-bar" id="poem2ProgressBar">
+                        <div class="degree4-lesson-poetry-progress-fill" id="poem2ProgressFill"></div>
+                    </div>
+                    <div class="degree4-lesson-poetry-time-info">
+                        <span id="poem2CurrentTime">0:00</span>
+                        <span id="poem2Duration">0:00</span>
+                    </div>
+                </div>
+                <div class="degree4-lesson-poetry-speed-selector">
+                    <button class="degree4-lesson-poetry-speed-btn" data-speed="0.75">0.75x</button>
+                    <button class="degree4-lesson-poetry-speed-btn active" data-speed="1">1x</button>
+                    <button class="degree4-lesson-poetry-speed-btn" data-speed="1.25">1.25x</button>
+                    <button class="degree4-lesson-poetry-speed-btn" data-speed="1.5">1.5x</button>
+                </div>
+            </div>
+
+            <!-- Two‑column: slideshow left, poem text right (inverse) -->
+            <div class="degree4-lesson-poetry-two-col">
+                <div class="col col-slideshow">
+                    <!-- Slideshow -->
+                    <div class="degree4-lesson-poetry-slideshow" id="slideshow2">
+                        <div class="slides">
+                            <div class="slide active"><img src="assets4/images/degree4/unit1/lesson1/collection2/1.jpg" alt="Nombre 1"></div>
+                            <div class="slide"><img src="assets4/images/degree4/unit1/lesson1/collection2/2.jpg" alt="Nombre 2"></div>
+                            <div class="slide"><img src="assets4/images/degree4/unit1/lesson1/collection2/3.jpg" alt="Nombre 3"></div>
+                        </div>
+                        <button class="degree4-lesson-poetry-slideshow-btn prev" data-slideshow="2">❮</button>
+                        <button class="degree4-lesson-poetry-slideshow-btn next" data-slideshow="2">❯</button>
+                    </div>
+                </div>
+                <div class="col">
+                    <!-- Poem text -->
+                    <div class="degree4-lesson-poetry-text no-bilingual" data-i18n="poem2_text">
+                        Un jour, 1 voulut
+                        Jouer au cerceau
+                        Avec le zéro.
+
+                        Il courut, courut
+                        A en perdre haleine
+                        Jusqu'à la dizaine.
+
+                        Alors, par caprice,
+                        1 devenu 10
+                        Dribbla la centaine,
+                        Tripla le zéro
+                        Et s'arrêta pile
+                        En plein dans le 1000.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vocabulary -->
+            <div class="degree4-lesson-poetry-vocab">
+                <h3 data-i18n="poem2_vocab_title">🔹 Explication des mots</h3>
+                <ul>
+                    <li><span class="word">voulut</span><span class="translation" data-i18n="poem2_vocab_voulut"> - a voulu, désira</span></li>
+                    <li><span class="word">cerceau</span><span class="translation" data-i18n="poem2_vocab_cerceau"> - cercle, anneau</span></li>
+                    <li><span class="word">zéro</span><span class="translation" data-i18n="poem2_vocab_zero"> - zéro, nul</span></li>
+                    <li><span class="word">perdre haleine</span><span class="translation" data-i18n="poem2_vocab_perdre_haleine"> - perdre le souffle</span></li>
+                    <li><span class="word">dizaine</span><span class="translation" data-i18n="poem2_vocab_dizaine"> - groupe de dix</span></li>
+                    <li><span class="word">caprice</span><span class="translation" data-i18n="poem2_vocab_caprice"> - envie soudaine</span></li>
+                    <li><span class="word">dribbla</span><span class="translation" data-i18n="poem2_vocab_dribbla"> - évita, contourna</span></li>
+                    <li><span class="word">centaine</span><span class="translation" data-i18n="poem2_vocab_centaine"> - groupe de cent</span></li>
+                    <li><span class="word">tripla</span><span class="translation" data-i18n="poem2_vocab_tripla"> - multiplia par trois</span></li>
+                    <li><span class="word">pile</span><span class="translation" data-i18n="poem2_vocab_pile"> - juste, exactement</span></li>
+                </ul>
+            </div>
+
+            <!-- Basic vocabulary exercise (with correction key) -->
+            <div class="degree4-lesson-poetry-vocab-exercise">
+                <h4 data-i18n="vocab_exercise_title">✏️ Petit exercice de vocabulaire</h4>
+                <ol>
+                    <li><span data-i18n="vocab2_q1">Que signifie « voulut » ?</span>
+                        <input type="text" id="vocab2_q1" placeholder="...">
+                    </li>
+                    <li><span data-i18n="vocab2_q2">Un ___________ est un cercle ou un anneau.</span>
+                        <input type="text" id="vocab2_q2" placeholder="...">
+                    </li>
+                    <li><span data-i18n="vocab2_q3">« Perdre haleine » signifie perdre le ___________ .</span>
+                        <input type="text" id="vocab2_q3" placeholder="...">
+                    </li>
+                </ol>
+                <button class="degree4-lesson-poetry-btn" onclick="toggleCorrection('vocab2Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="vocab2Key" class="degree4-lesson-poetry-answer-key">
+                    <strong>Correction :</strong><br>
+                    a) a voulu, désira<br>
+                    b) cerceau<br>
+                    c) souffle
+                </div>
+                <div class="degree4-lesson-poetry-self-assess">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_vocab2" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_vocab2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                    <label><input type="radio" name="self_vocab2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                </div>
+            </div>
+
+            <!-- Self-assessment for poem 2 -->
+            <div class="degree4-lesson-poetry-self-assess">
+                <span data-i18n="self_assess_question">Ma compréhension du poème est :</span>
+                <label><input type="radio" name="self_poem2" value="correct" data-i18n="self_correct"> Correcte</label>
+                <label><input type="radio" name="self_poem2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                <label><input type="radio" name="self_poem2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+            </div>
+        </section>
+
+        <!-- Score Area -->
+        <div class="degree4-lesson-poetry-score-area">
             <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
-            <div class="degree4-lessonType-project-score-stats">
-                <div class="degree4-lessonType-project-score-stat"><span data-i18n="score_correct">Correct :</span> <span id="degree4LessonTypeProjectScoreCorrect">0</span></div>
-                <div class="degree4-lessonType-project-score-stat"><span data-i18n="score_partial">Partiel :</span> <span id="degree4LessonTypeProjectScorePartial">0</span></div>
-                <div class="degree4-lessonType-project-score-stat"><span data-i18n="score_incorrect">Incorrect :</span> <span id="degree4LessonTypeProjectScoreIncorrect">0</span></div>
-                <div class="degree4-lessonType-project-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="degree4LessonTypeProjectScoreUnanswered">1</span></div>
+            <div class="degree4-lesson-poetry-score-stats">
+                <div class="degree4-lesson-poetry-score-stat"><span data-i18n="score_correct">Correct :</span> <span id="scoreCorrect">0</span></div>
+                <div class="degree4-lesson-poetry-score-stat"><span data-i18n="score_partial">Partiel :</span> <span id="scorePartial">0</span></div>
+                <div class="degree4-lesson-poetry-score-stat"><span data-i18n="score_incorrect">Incorrect :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="degree4-lesson-poetry-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">4</span></div>
             </div>
-            <div class="degree4-lessonType-project-score-actions">
-                <button id="degree4LessonTypeProjectSaveResultsBtn" class="degree4-lessonType-project-btn" data-i18n="save_results">💾 Enregistrer mes résultats</button>
-                <button id="degree4LessonTypeProjectPrintBtn" class="degree4-lessonType-project-btn" style="background:#5c5344;" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+            <div class="degree4-lesson-poetry-score-actions">
+                <button id="saveResultsBtn" class="degree4-lesson-poetry-btn" data-i18n="save_results">💾 Enregistrer mes résultats</button>
+                <button id="printBtn" class="degree4-lesson-poetry-btn secondary" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
             </div>
         </div>
 
-        <!-- Navigation -->
-        <div class="degree4-lessonType-project-footer-nav">
+        <!-- Footer navigation -->
+        <div class="degree4-lesson-poetry-footer-nav">
             <a href="degree4.html" data-i18n="footer_back">← Retour au programme</a>
-            <a href="degree4unit1lesson2.html" data-i18n="footer_next">Leçon suivante →</a>
+            <a href="degree4unit1lesson2.html" data-i18n="footer_next">Leçon suivante : La nouvelle élève →</a>
         </div>
     </div>
 
-    <!-- Scripts globaux -->
+    <!-- Scripts -->
     <script src="i18n.js"></script>
     <script src="db-utils.js"></script>
     <script src="offline-sync-utils.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="supabase-client.js"></script>
     <script src="logging.js"></script>
+    <script src="ed-french-ini.js"></script>
 
-    <!-- Traductions inline -->
+    <!-- Translations -->
     <script>
         App.addI18nTranslations({
             fr: {
-                lesson_title: "Le projet d'écriture",
-                lesson_short_title: "Le projet d'écriture",
-                lesson_badge: "📘 Unité 1 · Projet",
-                lesson_subtitle: "Raconter un événement de la vie quotidienne",
-                lesson_duration: "⏱️ 45 minutes",
-                lesson_meta_audio: "🎧 Écoutez le texte puis faites la dictée",
+                lesson_title: "Poésie – L'école & Le nombre 1",
+                lesson_badge: "🎵 Unité 1 · Poésie",
+                lesson_subtitle: "Deux poèmes à écouter et à lire",
+                lesson_duration: "⏱️ 30 minutes",
                 back_link: "← Retour au programme",
-                current_lesson: "Le projet d'écriture",
-                module_name: "Unité 1",
-                contract_title: "Mon contrat",
-                contract_subtitle: "Dans cette unité, je vais apprendre à :",
-                goal1: "réciter un poème",
-                goal2: "lire et écrire les graphies : z - k - g",
-                goal3: "écrire les majuscules : A-M-N",
-                goal4: "lire des textes : La nouvelle élève. Les deux amies.",
-                goal5: "construire une phrase complète",
-                goal6: "conjuguer le verbe « être » au présent",
-                goal7: "identifier les personnages dans une histoire",
-                goal8: "organiser les événements d'un récit",
-                goal9: "lire un document pour m'informer sur les droits et les devoirs de l'enfant",
-                goal10: "fabriquer « La ronde des enfants »",
-                goal11: "jouer avec les mots contenant les graphies étudiées",
-                audio_label: "🎧 Écoute littéraire",
-                dictation_sentence: "Amélie est en classe. Elle dessine des cerises et des fraises.",
-                text_author: "— Dictée de la leçon 1",
-                rules_heading: "📖 Conseils pour réussir la dictée",
-                rules_intro: "Avant d'écrire, écoute attentivement et observe les mots.",
-                rules_tip1_title: "🔹 Mots à retenir",
-                rules_tip1_text: "<strong>Amélie</strong> – une majuscule car c'est un prénom.<br><strong>cerises</strong>, <strong>fraises</strong> – noms au pluriel.",
-                rules_tip2_title: "🔹 Difficultés orthographiques",
-                rules_tip2_text: "Le son [z] s'écrit « s » entre deux voyelles (cerises, fraises).<br>Le son [k] s'écrit « c » devant « e » (classe).",
-                self_assessment_question: "Auto-évaluez votre dictée :",
-                self_correct: "Correct",
-                self_partial: "Partiellement correct",
-                self_incorrect: "Incorrect",
+                current_lesson: "Poésie",
+                poem1_title: "L'école",
+                poem1_author: "Jacques CHARPENTREAU",
+                audio_label1: "🎧 Écoute du poème",
+                poem1_text: "Dans notre rue,\nil y a des autos,\ndes gens qui s'affolent,\nUn grand magasin, une école,\nEt puis mon cœur qui bat\nTout bas.\n\nDans cette école, il y a\nDes oiseaux chantant tout le jour\nDans les marronniers de la cour.\nMon cœur, mon cœur qui bat\nEst là.",
+                poem1_vocab_title: "🔹 Explication des mots",
+                poem1_vocab_s_affolent: " - se précipitent, paniquent",
+                poem1_vocab_magasin: " - boutique, commerce",
+                poem1_vocab_coeur: " - cœur, âme, sentiment",
+                poem1_vocab_bat: " - bat, palpite",
+                poem1_vocab_marronniers: " - châtaigniers",
+                poem1_vocab_cour: " - cour, préau",
+                poem2_title: "Le nombre 1",
+                poem2_author: "Pierre CORAN",
+                audio_label2: "🎧 Écoute du poème",
+                poem2_text: "Un jour, 1 voulut\nJouer au cerceau\nAvec le zéro.\n\nIl courut, courut\nA en perdre haleine\nJusqu'à la dizaine.\n\nAlors, par caprice,\n1 devenu 10\nDribbla la centaine,\nTripla le zéro\nEt s'arrêta pile\nEn plein dans le 1000.",
+                poem2_vocab_title: "🔹 Explication des mots",
+                poem2_vocab_voulut: " - a voulu, désira",
+                poem2_vocab_cerceau: " - cercle, anneau",
+                poem2_vocab_zero: " - zéro, nul",
+                poem2_vocab_perdre_haleine: " - perdre le souffle",
+                poem2_vocab_dizaine: " - groupe de dix",
+                poem2_vocab_caprice: " - envie soudaine",
+                poem2_vocab_dribbla: " - évita, contourna",
+                poem2_vocab_centaine: " - groupe de cent",
+                poem2_vocab_tripla: " - multiplia par trois",
+                poem2_vocab_pile: " - juste, exactement",
+                vocab_exercise_title: "✏️ Petit exercice de vocabulaire",
+                vocab_q1: "Que signifie « s'affolent » ?",
+                vocab_q2: "Complétez : Un grand ___________ se trouve dans la rue.",
+                vocab_q3: "Que fait le cœur ? Il ___________ .",
+                vocab2_q1: "Que signifie « voulut » ?",
+                vocab2_q2: "Un ___________ est un cercle ou un anneau.",
+                vocab2_q3: "« Perdre haleine » signifie perdre le ___________ .",
+                btn_correction: "🔍 Voir la correction",
+                self_assess_question: "Ma réponse est :",
+                self_correct: "Correcte",
+                self_partial: "Partiellement correcte",
+                self_incorrect: "Incorrecte",
                 score_title: "📊 Votre auto‑évaluation",
                 score_correct: "Correct :",
                 score_partial: "Partiel :",
@@ -499,44 +781,59 @@
                 save_error: "Erreur lors de l'enregistrement.",
                 print_pdf: "🖨️ Imprimer / PDF",
                 footer_back: "← Retour au programme",
-                footer_next: "Leçon suivante →",
-                toast_signin_required: "Connectez-vous pour enregistrer vos résultats.",
+                footer_next: "Leçon suivante : La nouvelle élève →",
                 ach_year_degree4: "4ème Année Primaire",
-                ach_module_unit1: "Unité 1"
+                ach_module_unit1: "Unité 1",
+                toast_signin_required: "Connectez-vous pour enregistrer vos résultats.",
+                print_site_name: "Educational Dashboard – Français",
+                print_scholar_year: "4ème Année Primaire",
+                print_week: "Unité 1",
+                print_area: "Poésie",
+                print_footer_dev: "Développé par Mejri Ziad",
+                print_footer_date: "Imprimé le",
             },
             en: {
-                lesson_title: "The Writing Project",
-                lesson_short_title: "The Writing Project",
-                lesson_badge: "📘 Unit 1 · Project",
-                lesson_subtitle: "Narrating an Event from Daily Life",
-                lesson_duration: "⏱️ 45 minutes",
-                lesson_meta_audio: "🎧 Listen to the text then do the dictation",
+                lesson_title: "Poetry – School & Number 1",
+                lesson_badge: "🎵 Unit 1 · Poetry",
+                lesson_subtitle: "Two poems to listen to and read",
+                lesson_duration: "⏱️ 30 minutes",
                 back_link: "← Back to program",
-                current_lesson: "The Writing Project",
-                module_name: "Unit 1",
-                contract_title: "My Charter",
-                contract_subtitle: "In this unit, I will learn how to:",
-                goal1: "Recite a poem",
-                goal2: "Read and write the spellings: z - k - g",
-                goal3: "Write capital letters: A-M-N",
-                goal4: "Read texts: The New Student. The Two Friends.",
-                goal5: "Construct a complete sentence",
-                goal6: "Conjugate the verb 'to be' in the present tense",
-                goal7: "Identify characters in a story",
-                goal8: "Organize events in a narrative",
-                goal9: "Read a document to learn about children's rights and duties",
-                goal10: "Create 'The Children's Circle'",
-                goal11: "Play with words containing the studied spellings",
-                audio_label: "🎧 Literary Listening",
-                dictation_sentence: "Amélie est en classe. Elle dessine des cerises et des fraises.",
-                text_author: "— Dictation for Lesson 1",
-                rules_heading: "📖 Tips for a Successful Dictation",
-                rules_intro: "Before writing, listen carefully and observe the words.",
-                rules_tip1_title: "🔹 Words to Remember",
-                rules_tip1_text: "<strong>Amélie</strong> – capital letter because it's a name.<br><strong>cerises</strong>, <strong>fraises</strong> – plural nouns.",
-                rules_tip2_title: "🔹 Spelling Difficulties",
-                rules_tip2_text: "The sound [z] is written 's' between two vowels (cerises, fraises).<br>The sound [k] is written 'c' before 'e' (classe).",
-                self_assessment_question: "Self-assess your dictation:",
+                current_lesson: "Poetry",
+                poem1_title: "School",
+                poem1_author: "Jacques CHARPENTREAU",
+                audio_label1: "🎧 Listen to the poem",
+                poem1_text: "Dans notre rue,\nil y a des autos,\ndes gens qui s'affolent,\nUn grand magasin, une école,\nEt puis mon cœur qui bat\nTout bas.\n\nDans cette école, il y a\nDes oiseaux chantant tout le jour\nDans les marronniers de la cour.\nMon cœur, mon cœur qui bat\nEst là.",
+                poem1_vocab_title: "🔹 Vocabulary explanation",
+                poem1_vocab_s_affolent: " - rush, panic",
+                poem1_vocab_magasin: " - shop, store",
+                poem1_vocab_coeur: " - heart, soul, feeling",
+                poem1_vocab_bat: " - beats, throbs",
+                poem1_vocab_marronniers: " - chestnut trees",
+                poem1_vocab_cour: " - yard, playground",
+                poem2_title: "Number 1",
+                poem2_author: "Pierre CORAN",
+                audio_label2: "🎧 Listen to the poem",
+                poem2_text: "Un jour, 1 voulut\nJouer au cerceau\nAvec le zéro.\n\nIl courut, courut\nA en perdre haleine\nJusqu'à la dizaine.\n\nAlors, par caprice,\n1 devenu 10\nDribbla la centaine,\nTripla le zéro\nEt s'arrêta pile\nEn plein dans le 1000.",
+                poem2_vocab_title: "🔹 Vocabulary explanation",
+                poem2_vocab_voulut: " - wanted, desired",
+                poem2_vocab_cerceau: " - hoop, ring",
+                poem2_vocab_zero: " - zero, nil",
+                poem2_vocab_perdre_haleine: " - lose breath",
+                poem2_vocab_dizaine: " - group of ten",
+                poem2_vocab_caprice: " - whim, sudden fancy",
+                poem2_vocab_dribbla: " - dribbled, evaded",
+                poem2_vocab_centaine: " - group of hundred",
+                poem2_vocab_tripla: " - tripled, multiplied by three",
+                poem2_vocab_pile: " - exactly, precisely",
+                vocab_exercise_title: "✏️ Small vocabulary exercise",
+                vocab_q1: "What does “s'affolent” mean?",
+                vocab_q2: "Complete: A big ___________ is on the street.",
+                vocab_q3: "What does the heart do? It ___________ .",
+                vocab2_q1: "What does “voulut” mean?",
+                vocab2_q2: "A ___________ is a circle or a ring.",
+                vocab2_q3: "“Perdre haleine” means to lose one’s ___________ .",
+                btn_correction: "🔍 See correction",
+                self_assess_question: "My answer is:",
                 self_correct: "Correct",
                 self_partial: "Partially correct",
                 self_incorrect: "Incorrect",
@@ -550,67 +847,85 @@
                 save_error: "Error saving results.",
                 print_pdf: "🖨️ Print / PDF",
                 footer_back: "← Back to program",
-                footer_next: "Next lesson →",
-                toast_signin_required: "Sign in to save your results.",
+                footer_next: "Next lesson: The New Student →",
                 ach_year_degree4: "4th Grade Primary",
-                ach_module_unit1: "Unit 1"
+                ach_module_unit1: "Unit 1",
+                toast_signin_required: "Sign in to save your results.",
+                print_site_name: "Educational Dashboard – French",
+                print_scholar_year: "4th Grade Primary",
+                print_week: "Unit 1",
+                print_area: "Poetry",
+                print_footer_dev: "Developed by Mejri Ziad",
+                print_footer_date: "Printed on",
             },
             ar: {
-                lesson_title: "المشروع الكتابي",
-                lesson_short_title: "المشروع الكتابي",
-                lesson_badge: "📘 الوحدة الأولى · مشروع",
-                lesson_subtitle: "رواية حدث من الحياة اليومية",
-                lesson_duration: "⏱️ 45 دقيقة",
-                lesson_meta_audio: "🎧 استمع إلى النص ثم قم بالإملاء",
+                lesson_title: "شعر – المدرسة والعدد 1",
+                lesson_badge: "🎵 الوحدة 1 · شعر",
+                lesson_subtitle: "قصيدتان للاستماع والقراءة",
+                lesson_duration: "⏱️ 30 دقيقة",
                 back_link: "← العودة إلى البرنامج",
-                current_lesson: "المشروع الكتابي",
-                module_name: "الوحدة الأولى",
-                contract_title: "ميثاقي",
-                contract_subtitle: "في هذه الوحدة، سأتعلم كيفية:",
-                goal1: "أن أُنشِد قصيدة",
-                goal2: "أن أقرأ وأكتب الرسم الكتابي: z - k - g",
-                goal3: "أن أكتب الحروف الكبيرة: A-M-N",
-                goal4: "أن أقرأ نصوصًا: التلميذة الجديدة. الصديقتان.",
-                goal5: "أن أبني جملةً كاملة",
-                goal6: "أن أصرف فعل «être» في الزمن الحاضر",
-                goal7: "أن أحدد الشخصيات في قصة",
-                goal8: "أن أنظم الأحداث في سرد",
-                goal9: "أن أقرأ وثيقة لأتعرف على حقوق وواجبات الطفل",
-                goal10: "أن أصنع «دائرة الأطفال»",
-                goal11: "أن ألعب بالكلمات التي تحتوي على الرسم الكتابي المدروس",
-                audio_label: "🎧 استماع أدبي",
-                dictation_sentence: "Amélie est en classe. Elle dessine des cerises et des fraises.",
-                text_author: "— إملاء الدرس الأول",
-                rules_heading: "📖 نصائح لإملاء ناجح",
-                rules_intro: "قبل الكتابة، استمع بانتباه ولاحظ الكلمات.",
-                rules_tip1_title: "🔹 كلمات للتذكر",
-                rules_tip1_text: "<strong>Amélie</strong> – حرف كبير لأنه اسم علم.<br><strong>cerises</strong>, <strong>fraises</strong> – أسماء جمع.",
-                rules_tip2_title: "🔹 صعوبات إملائية",
-                rules_tip2_text: "الصوت [z] يُكتب « s » بين حرفي علة (cerises, fraises).<br>الصوت [k] يُكتب « c » أمام « e » (classe).",
-                self_assessment_question: "قيّم إملاءك الذاتي:",
+                current_lesson: "الشعر",
+                poem1_title: "المدرسة",
+                poem1_author: "جاك شاربونترو",
+                audio_label1: "🎧 استمع إلى القصيدة",
+                poem1_text: "Dans notre rue,\nil y a des autos,\ndes gens qui s'affolent,\nUn grand magasin, une école,\nEt puis mon cœur qui bat\nTout bas.\n\nDans cette école, il y a\nDes oiseaux chantant tout le jour\nDans les marronniers de la cour.\nMon cœur, mon cœur qui bat\nEst là.",
+                poem1_vocab_title: "🔹 شرح الكلمات",
+                poem1_vocab_s_affolent: " - يندفعون، يفزعون",
+                poem1_vocab_magasin: " - متجر، دكان",
+                poem1_vocab_coeur: " - قلب، روح، شعور",
+                poem1_vocab_bat: " - يخفق، ينبض",
+                poem1_vocab_marronniers: " - أشجار الكستناء",
+                poem1_vocab_cour: " - ساحة، فناء",
+                poem2_title: "العدد 1",
+                poem2_author: "بيير كوران",
+                audio_label2: "🎧 استمع إلى القصيدة",
+                poem2_text: "Un jour, 1 voulut\nJouer au cerceau\nAvec le zéro.\n\nIl courut, courut\nA en perdre haleine\nJusqu'à la dizaine.\n\nAlors, par caprice,\n1 devenu 10\nDribbla la centaine,\nTripla le zéro\nEt s'arrêta pile\nEn plein dans le 1000.",
+                poem2_vocab_title: "🔹 شرح الكلمات",
+                poem2_vocab_voulut: " - أراد، رغب",
+                poem2_vocab_cerceau: " - طوق، حلقة",
+                poem2_vocab_zero: " - صفر، لا شيء",
+                poem2_vocab_perdre_haleine: " - يفقد النفس",
+                poem2_vocab_dizaine: " - مجموعة عشرة",
+                poem2_vocab_caprice: " - نزوة، رغبة مفاجئة",
+                poem2_vocab_dribbla: " - راوغ، تجنب",
+                poem2_vocab_centaine: " - مجموعة مئة",
+                poem2_vocab_tripla: " - ضاعف ثلاث مرات",
+                poem2_vocab_pile: " - تمامًا، بالضبط",
+                vocab_exercise_title: "✏️ تمرين مفردات صغير",
+                vocab_q1: "ماذا تعني « s'affolent »؟",
+                vocab_q2: "أكمل: يوجد ___________ كبير في الشارع.",
+                vocab_q3: "ماذا يفعل القلب؟ إنه ___________ .",
+                vocab2_q1: "ماذا تعني « voulut »؟",
+                vocab2_q2: "___________ هو دائرة أو حلقة.",
+                vocab2_q3: "« Perdre haleine » تعني فقدان ___________ .",
+                btn_correction: "🔍 الاطلاع على التصحيح",
+                self_assess_question: "جوابي هو:",
                 self_correct: "صحيح",
                 self_partial: "صحيح جزئيًا",
-                self_incorrect: "خطأ",
+                self_incorrect: "خاطئ",
                 score_title: "📊 تقييمك الذاتي",
                 score_correct: "صحيح:",
                 score_partial: "جزئي:",
-                score_incorrect: "خطأ:",
+                score_incorrect: "خاطئ:",
                 score_unanswered: "بدون إجابة:",
                 save_results: "💾 حفظ نتائجي",
                 save_success: "تم حفظ النتائج!",
                 save_error: "خطأ في الحفظ.",
                 print_pdf: "🖨️ طباعة / PDF",
                 footer_back: "← العودة إلى البرنامج",
-                footer_next: "الدرس الموالي ←",
-                toast_signin_required: "سجّل الدخول لحفظ نتائجك.",
+                footer_next: "الدرس الموالي: التلميذة الجديدة ←",
                 ach_year_degree4: "السنة الرابعة ابتدائي",
-                ach_module_unit1: "الوحدة الأولى"
+                ach_module_unit1: "الوحدة الأولى",
+                toast_signin_required: "سجّل الدخول لحفظ نتائجك.",
+                print_site_name: "لوحة التحكم التعليمية – الفرنسية",
+                print_scholar_year: "السنة الرابعة ابتدائي",
+                print_week: "الوحدة 1",
+                print_area: "شعر",
+                print_footer_dev: "طوّر بواسطة ماجري زياد",
+                print_footer_date: "طُبع في",
             }
         });
-    </script>
 
-    <!-- ⚠️ AJOUT IMPORTANT : Activation du système bilingue -->
-    <script>
         (function() {
             var container = document.getElementById('main-content');
             if (container && typeof App.makeBilingual === 'function') {
@@ -623,26 +938,51 @@
         })();
     </script>
 
-    <script src="ed-french-ini.js"></script>
-
-    <!-- Script spécifique préfixé -->
+    <!-- Direct translation fix -->
     <script>
         (function() {
-            'use strict';
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') {
+                                el.innerHTML = next.innerHTML;
+                            }
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
 
-            const DEGREE4_PROJECT_AUDIO_SRC = 'lessons/degree4/sounds/unit1-lesson1.mp3';
-            const DEGREE4_PROJECT_LESSON_ID = 'degree4unit1lesson1';
-            const DEGREE4_PROJECT_ACH_YEAR_KEY = 'ach_year_degree4';
-            const DEGREE4_PROJECT_ACH_MODULE_KEY = 'ach_module_unit1';
-
-            function degree4LessonTypeProjectInitAudio() {
-                const audio = new Audio(DEGREE4_PROJECT_AUDIO_SRC);
-                const playBtn = document.getElementById('degree4LessonTypeProjectPlayBtn');
-                const progressFill = document.getElementById('degree4LessonTypeProjectProgressFill');
-                const progressBar = document.getElementById('degree4LessonTypeProjectProgressBar');
-                const currentTimeEl = document.getElementById('degree4LessonTypeProjectCurrentTime');
-                const durationEl = document.getElementById('degree4LessonTypeProjectDuration');
-                const speedBtns = document.querySelectorAll('.degree4-lessonType-project-speed-btn');
+    <!-- Audio players, slideshows, and correction toggle -->
+    <script>
+        (function() {
+            function initAudioPlayer(prefix, src) {
+                const container = document.getElementById(prefix + 'AudioPlayer');
+                if (!container) return;
+                const audio = new Audio(src);
+                const playBtn = document.getElementById(prefix + 'PlayBtn');
+                const progressFill = document.getElementById(prefix + 'ProgressFill');
+                const progressBar = document.getElementById(prefix + 'ProgressBar');
+                const currentTimeEl = document.getElementById(prefix + 'CurrentTime');
+                const durationEl = document.getElementById(prefix + 'Duration');
+                const speedBtns = container.querySelectorAll('.degree4-lesson-poetry-speed-btn');
                 if (!playBtn || !progressFill || !progressBar) return;
 
                 function formatTime(seconds) {
@@ -676,30 +1016,103 @@
                 });
             }
 
-            function degree4LessonTypeProjectUpdateScore() {
-                const selected = document.querySelector('input[name="self_dictation"]:checked');
-                let correct = 0, partial = 0, incorrect = 0, unanswered = 0;
-                if (selected) {
-                    if (selected.value === 'correct') correct = 1;
-                    else if (selected.value === 'partial') partial = 1;
-                    else if (selected.value === 'incorrect') incorrect = 1;
-                } else {
-                    unanswered = 1;
+            function initSlideshow(slideshowId) {
+                const slideshow = document.getElementById(slideshowId);
+                if (!slideshow) return;
+                const slides = slideshow.querySelectorAll('.slide');
+                const prevBtn = slideshow.querySelector('.prev');
+                const nextBtn = slideshow.querySelector('.next');
+                let current = 0;
+                let autoInterval = null;
+
+                function showSlide(index) {
+                    slides.forEach((slide, i) => {
+                        slide.classList.toggle('active', i === index);
+                    });
                 }
-                document.getElementById('degree4LessonTypeProjectScoreCorrect').textContent = correct;
-                document.getElementById('degree4LessonTypeProjectScorePartial').textContent = partial;
-                document.getElementById('degree4LessonTypeProjectScoreIncorrect').textContent = incorrect;
-                document.getElementById('degree4LessonTypeProjectScoreUnanswered').textContent = unanswered;
+
+                function nextSlide() {
+                    current = (current + 1) % slides.length;
+                    showSlide(current);
+                }
+
+                function prevSlide() {
+                    current = (current - 1 + slides.length) % slides.length;
+                    showSlide(current);
+                }
+
+                function startAutoPlay() {
+                    stopAutoPlay();
+                    autoInterval = setInterval(nextSlide, 4000);
+                }
+
+                function stopAutoPlay() {
+                    if (autoInterval) {
+                        clearInterval(autoInterval);
+                        autoInterval = null;
+                    }
+                }
+
+                if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); startAutoPlay(); });
+                if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); startAutoPlay(); });
+
+                slideshow.addEventListener('mouseenter', stopAutoPlay);
+                slideshow.addEventListener('mouseleave', startAutoPlay);
+
+                startAutoPlay();
             }
 
-            function degree4LessonTypeProjectInitScoring() {
-                document.querySelectorAll('input[name="self_dictation"]').forEach(radio => {
-                    radio.addEventListener('change', degree4LessonTypeProjectUpdateScore);
+            initAudioPlayer('poem1', 'assets4/sounds/degree4/unit1/lesson1/poem1.mp3');
+            initAudioPlayer('poem2', 'assets4/sounds/degree4/unit1/lesson1/poem2.mp3');
+
+            initSlideshow('slideshow1');
+            initSlideshow('slideshow2');
+
+            // Auth‑gated correction toggle (same as in sample lessons)
+            window.toggleCorrection = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('visible');
+            };
+        })();
+    </script>
+
+    <!-- Self-assessment scoring, save, print -->
+    <script>
+        (function() {
+            function updateScore() {
+                const radios = document.querySelectorAll('input[type="radio"][name^="self_"]');
+                const groups = new Set();
+                radios.forEach(r => groups.add(r.name));
+                let correct = 0, partial = 0, incorrect = 0, unanswered = 0;
+                groups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'partial') partial++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                    } else {
+                        unanswered++;
+                    }
                 });
-                degree4LessonTypeProjectUpdateScore();
+                document.getElementById('scoreCorrect').textContent = correct;
+                document.getElementById('scorePartial').textContent = partial;
+                document.getElementById('scoreIncorrect').textContent = incorrect;
+                document.getElementById('scoreUnanswered').textContent = unanswered;
             }
 
-            async function degree4LessonTypeProjectSaveResults() {
+            document.querySelectorAll('input[type="radio"][name^="self_"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
                 if (!App.supabase) return;
                 const { data: { user } } = await App.supabase.auth.getUser();
                 if (!user) {
@@ -708,37 +1121,38 @@
                     if (signInBtn) signInBtn.click();
                     return;
                 }
+                const radios = document.querySelectorAll('input[type="radio"][name^="self_"]');
+                const groups = new Set();
+                radios.forEach(r => groups.add(r.name));
                 let correct = 0, partial = 0, incorrect = 0, unanswered = 0;
-                const selected = document.querySelector('input[name="self_dictation"]:checked');
-                if (selected) {
-                    if (selected.value === 'correct') correct = 1;
-                    else if (selected.value === 'partial') partial = 1;
-                    else if (selected.value === 'incorrect') incorrect = 1;
-                } else {
-                    unanswered = 1;
-                }
-                const lang = localStorage.getItem('lang') || 'fr';
+                groups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'partial') partial++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                    } else {
+                        unanswered++;
+                    }
+                });
                 const entry = {
-                    lesson_id: DEGREE4_PROJECT_LESSON_ID,
+                    lesson_id: 'degree4unit1lesson1',
                     lesson_title: {
-                        fr: App.getTranslation('lesson_short_title', 'fr'),
-                        en: App.getTranslation('lesson_short_title', 'en'),
-                        ar: App.getTranslation('lesson_short_title', 'ar')
+                        fr: App.getTranslation('lesson_title', 'fr'),
+                        en: App.getTranslation('lesson_title', 'en'),
+                        ar: App.getTranslation('lesson_title', 'ar')
                     },
                     year: {
-                        fr: App.getTranslation(DEGREE4_PROJECT_ACH_YEAR_KEY, 'fr'),
-                        en: App.getTranslation(DEGREE4_PROJECT_ACH_YEAR_KEY, 'en'),
-                        ar: App.getTranslation(DEGREE4_PROJECT_ACH_YEAR_KEY, 'ar')
+                        fr: App.getTranslation('ach_year_degree4', 'fr'),
+                        en: App.getTranslation('ach_year_degree4', 'en'),
+                        ar: App.getTranslation('ach_year_degree4', 'ar')
                     },
                     module: {
-                        fr: App.getTranslation(DEGREE4_PROJECT_ACH_MODULE_KEY, 'fr'),
-                        en: App.getTranslation(DEGREE4_PROJECT_ACH_MODULE_KEY, 'en'),
-                        ar: App.getTranslation(DEGREE4_PROJECT_ACH_MODULE_KEY, 'ar')
+                        fr: App.getTranslation('ach_module_unit1', 'fr'),
+                        en: App.getTranslation('ach_module_unit1', 'en'),
+                        ar: App.getTranslation('ach_module_unit1', 'ar')
                     },
-                    correct,
-                    incorrect,
-                    partial,
-                    unanswered,
+                    correct, incorrect, partial, unanswered,
                     updated_at: new Date().toISOString()
                 };
                 const { data: profileData, error: fetchError } = await App.supabase
@@ -746,15 +1160,11 @@
                     .select('achivement')
                     .eq('id', user.id)
                     .single();
-                if (fetchError) {
-                    console.error('Could not fetch profile:', fetchError);
-                    App.showToast('save_error', 'error');
-                    return;
-                }
+                if (fetchError) return;
                 let achivement = profileData?.achivement || {};
                 if (!achivement['ED-French']) achivement['ED-French'] = [];
                 const arr = achivement['ED-French'];
-                const existingIdx = arr.findIndex(e => e.lesson_id === DEGREE4_PROJECT_LESSON_ID);
+                const existingIdx = arr.findIndex(e => e.lesson_id === 'degree4unit1lesson1');
                 if (existingIdx >= 0) arr[existingIdx] = entry;
                 else arr.push(entry);
                 const { error: updateError } = await App.supabase
@@ -762,33 +1172,30 @@
                     .update({ achivement })
                     .eq('id', user.id);
                 if (updateError) {
-                    console.error('Save failed:', updateError);
                     App.showToast('save_error', 'error');
                 } else {
                     App.showToast('save_success', 'success');
-                    App.logUserAction('lesson_saved', { lesson: DEGREE4_PROJECT_LESSON_ID, correct, incorrect, partial });
+                    App.logUserAction('lesson_saved', { lesson: 'degree4unit1lesson1', correct, incorrect, partial });
                 }
-            }
+            });
 
-            async function degree4LessonTypeProjectPrintPdf() {
+            document.getElementById('printBtn').addEventListener('click', async function() {
                 if (!App.supabase) return;
                 const { data: { user } } = await App.supabase.auth.getUser();
                 if (!user) {
                     App.showToast('toast_signin_required', 'error');
-                    const signInBtn = document.getElementById('signInBtn');
-                    if (signInBtn) signInBtn.click();
+                    document.getElementById('signInBtn')?.click();
                     return;
                 }
+
                 const lang = localStorage.getItem('lang') || 'fr';
-                const headerHTML = document.querySelector('.degree4-lessonType-project-header').cloneNode(true);
-                const contractHTML = document.querySelector('.degree4-lessonType-project-contract').cloneNode(true);
-                const textCard = document.querySelector('.degree4-lessonType-project-text-card').cloneNode(true);
-                const rulesSections = document.querySelectorAll('.degree4-lessonType-project-rules');
-                let rulesHTML = '';
-                rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
-                const selfAssess = document.querySelector('.degree4-lessonType-project-self-assess').cloneNode(true);
-                selfAssess.querySelectorAll('input').forEach(el => el.remove());
-                const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+                const content = document.getElementById('main-content').cloneNode(true);
+                content.querySelectorAll(
+                    '.degree4-lesson-poetry-self-assess, .degree4-lesson-poetry-score-area, .degree4-lesson-poetry-audio, .degree4-lesson-poetry-slideshow-btn, .degree4-lesson-poetry-footer-nav, .degree4-lesson-poetry-vocab-exercise button, .degree4-lesson-poetry-vocab-exercise .degree4-lesson-poetry-answer-key'
+                ).forEach(el => el.remove());
+                content.querySelectorAll('.degree4-lesson-poetry-slideshow').forEach(el => el.remove());
+                const breadcrumb = content.querySelector('p[style*="margin-bottom:1.5rem"]');
+                if (breadcrumb) breadcrumb.remove();
 
                 const printWindow = window.open('', '_blank', 'width=800,height=600');
                 printWindow.document.write(`
@@ -796,41 +1203,59 @@
                     <html lang="${lang}">
                     <head>
                         <meta charset="UTF-8">
-                        <title>${App.getTranslation('lesson_short_title', lang)}</title>
+                        <title>${App.getTranslation('lesson_title', lang)}</title>
                         <style>
-                            body { font-family: 'Georgia', 'Times New Roman', serif; line-height: 1.6; max-width: 700px; margin: 2rem auto; padding: 0 1rem; color: #000; }
-                            .print-header { text-align: center; border-bottom: 2px solid #c75b2c; padding-bottom: 1rem; margin-bottom: 2rem; }
-                            .print-header .site-name { font-size: 1.4rem; font-weight: bold; color: #c75b2c; margin: 0 0 0.3rem; }
-                            .print-header .meta-line { font-size: 0.95rem; color: #444; margin: 0.2rem 0; }
-                            .print-header .lesson-name { font-size: 1.1rem; font-weight: bold; color: #000; margin-top: 0.5rem; }
-                            .print-footer { text-align: center; border-top: 1px solid #ccc; padding-top: 1rem; margin-top: 2rem; font-size: 0.85rem; color: #666; }
-                            h1, h2, h3 { color: #000; }
-                            .degree4-lessonType-project-header { text-align: center; margin-bottom: 2rem; }
-                            .degree4-lessonType-project-badge { display: inline-block; background: #c75b2c; color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; text-transform: uppercase; }
-                            .degree4-lessonType-project-contract, .degree4-lessonType-project-rules { margin: 1.5rem 0; }
-                            .degree4-lessonType-project-contract ul, .degree4-lessonType-project-rule-card { background: #f8f4ec; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; }
-                            .degree4-lessonType-project-contract li, .degree4-lessonType-project-rule-card li { padding: 0.3rem 0; }
-                            .degree4-lessonType-project-text-card { border-left: 4px solid #c75b2c; padding: 1rem 1.5rem; margin: 1.5rem 0; font-style: italic; }
-                            .degree4-lessonType-project-quote-mark { font-size: 3rem; color: #c75b2c; opacity: 0.3; }
-                            .degree4-lessonType-project-author { text-align: right; font-style: normal; margin-top: 0.8rem; }
-                            .degree4-lessonType-project-self-assess { margin: 1rem 0; }
-                            @media print { body { margin: 0; padding: 0; } @page { margin: 2cm; } }
+                            body { font-family: 'Georgia', serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+                            .print-header {
+                                text-align: center;
+                                border-bottom: 2px solid #8e44ad;
+                                padding-bottom: 1rem;
+                                margin-bottom: 2rem;
+                            }
+                            .print-header .site-name {
+                                font-size: 1.4rem;
+                                font-weight: bold;
+                                color: #8e44ad;
+                                margin: 0 0 0.3rem;
+                            }
+                            .print-header .meta-line {
+                                font-size: 0.95rem;
+                                color: #444;
+                                margin: 0.2rem 0;
+                            }
+                            .print-header .lesson-name {
+                                font-size: 1.1rem;
+                                font-weight: bold;
+                                color: #000;
+                                margin-top: 0.5rem;
+                            }
+                            .print-footer {
+                                text-align: center;
+                                border-top: 1px solid #ccc;
+                                padding-top: 1rem;
+                                margin-top: 2rem;
+                                font-size: 0.85rem;
+                                color: #666;
+                            }
+                            .degree4-lesson-poetry-card { margin-bottom: 2rem; border: 1px solid #ccc; padding: 1rem; border-radius: 8px; }
+                            .degree4-lesson-poetry-text { white-space: pre-line; font-style: italic; }
+                            .degree4-lesson-poetry-vocab, .degree4-lesson-poetry-vocab-exercise { margin-top: 1rem; background: #f5f0e6; padding: 1rem; border-radius: 8px; }
+                            .degree4-lesson-poetry-vocab ul, .degree4-lesson-poetry-vocab-exercise ol { list-style: none; padding: 0; }
+                            .degree4-lesson-poetry-vocab li, .degree4-lesson-poetry-vocab-exercise li { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
+                            .word { font-weight: bold; min-width: 120px; }
+                            .translation { color: #555; }
+                            @media print { @page { margin: 2cm; } }
                         </style>
                     </head>
                     <body>
                         <div class="print-header">
-                            <div class="site-name">Educational Dashboard – French</div>
-                            <div class="meta-line">${App.getTranslation(DEGREE4_PROJECT_ACH_YEAR_KEY, lang)} – ${App.getTranslation(DEGREE4_PROJECT_ACH_MODULE_KEY, lang)}</div>
-                            <div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div>
+                            <div class="site-name">${App.getTranslation('print_site_name', lang)}</div>
+                            <div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div>
+                            <div class="lesson-name">${App.getTranslation('lesson_title', lang)}</div>
                         </div>
-                        ${breadcrumb.outerHTML}
-                        ${headerHTML.outerHTML}
-                        ${contractHTML.outerHTML}
-                        ${textCard.outerHTML}
-                        ${rulesHTML}
-                        ${selfAssess.outerHTML}
+                        ${content.innerHTML}
                         <div class="print-footer">
-                            Développé par Mejri Ziad – Imprimé le ${new Date().toLocaleDateString('fr-FR')}
+                            ${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}
                         </div>
                     </body>
                     </html>
@@ -838,55 +1263,7 @@
                 printWindow.document.close();
                 printWindow.focus();
                 setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
-            }
-
-            function degree4LessonTypeProjectInit() {
-                const container = document.getElementById('main-content');
-                if (container) {
-                    const lang = localStorage.getItem('lang') || 'fr';
-                    container.dir = lang === 'ar' ? 'rtl' : 'ltr';
-                }
-                degree4LessonTypeProjectInitAudio();
-                degree4LessonTypeProjectInitScoring();
-                document.getElementById('degree4LessonTypeProjectSaveResultsBtn')?.addEventListener('click', degree4LessonTypeProjectSaveResults);
-                document.getElementById('degree4LessonTypeProjectPrintBtn')?.addEventListener('click', degree4LessonTypeProjectPrintPdf);
-            }
-
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', degree4LessonTypeProjectInit);
-            } else {
-                degree4LessonTypeProjectInit();
-            }
-        })();
-    </script>
-
-    <!-- Fix de traduction directe -->
-    <script>
-        (function() {
-            if (typeof applyTranslations !== 'function') return;
-            const originalApply = applyTranslations;
-            window.applyTranslations = function(lang) {
-                originalApply(lang);
-                setTimeout(() => {
-                    document.querySelectorAll('.no-bilingual').forEach(el => {
-                        const next = el.nextElementSibling;
-                        if (next && next.classList.contains('i18n-bilingual')) {
-                            if (lang !== 'fr') el.innerHTML = next.innerHTML;
-                            next.remove();
-                        }
-                    });
-                }, 0);
-            };
-            setTimeout(() => {
-                document.querySelectorAll('.no-bilingual').forEach(el => {
-                    const next = el.nextElementSibling;
-                    if (next && next.classList.contains('i18n-bilingual')) {
-                        const lang = localStorage.getItem('lang') || 'fr';
-                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
-                        next.remove();
-                    }
-                });
-            }, 0);
+            });
         })();
     </script>
 </body>

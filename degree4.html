@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-i18n="degree4.title">4ème Année Primaire – Programme Complet</title>
+  <title data-i18n="degree4_main_title">Programme – 4ème année primaire</title>
   <link rel="manifest" href="/manifest.json">
   <link rel="stylesheet" href="shared.css">
   <style>
@@ -11,13 +11,39 @@
       --heading: #382e1e;
       --shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
       --shadow-lg: 0 4px 14px rgba(0, 0, 0, 0.08);
-      --week-bg: #fdfaf5;
-      --week-header-bg: #f5efe2;
-      --conseils-border: #7a4f34;
+      --unit-bg: #fdfaf5;
+      --unit-header-bg: #f5efe2;
       --bullet-color: #d4c5a9;
       --arrow-color: #c0b090;
       --accent-hover-bg: rgba(199, 91, 44, 0.08);
+
+      /* Category colors – light mode */
+      --cat-poetry: #b8860b;          /* Dark Goldenrod */
+      --cat-reading: #2e8b57;         /* Sea Green */
+      --cat-spelling: #8b0000;        /* Dark Red */
+      --cat-grammar: #4169e1;         /* Royal Blue */
+      --cat-conjugation: #8a2be2;     /* Blue Violet */
+      --cat-writing: #d2691e;         /* Chocolate */
+      --cat-vocabulary: #9932cc;      /* Dark Orchid */
+      --cat-comprehension: #008b8b;   /* Dark Cyan */
+      --cat-evaluation: #b22222;      /* Firebrick */
+      --cat-documentary: #556b2f;     /* Dark Olive Green */
+      --cat-activity: #6a5acd;        /* Slate Blue */
     }
+    body.dark {
+      --cat-poetry: #f0c75e;          /* Lighter Goldenrod */
+      --cat-reading: #7bc8a4;         /* Lighter Sea Green */
+      --cat-spelling: #e57373;        /* Light Red */
+      --cat-grammar: #90caf9;         /* Light Blue */
+      --cat-conjugation: #ce93d8;     /* Light Purple */
+      --cat-writing: #ffab91;         /* Light Orange */
+      --cat-vocabulary: #ce93d8;      /* Light Orchid */
+      --cat-comprehension: #80cbc4;   /* Light Teal */
+      --cat-evaluation: #ef9a9a;      /* Light Firebrick */
+      --cat-documentary: #c5e1a5;     /* Light Green */
+      --cat-activity: #b39ddb;        /* Light Slate Blue */
+    }
+
     body {
       font-family: var(--font);
       background: var(--bg);
@@ -78,7 +104,7 @@
       font-size:0.6rem;
     }
     .unit {
-      background: var(--week-bg);
+      background: var(--unit-bg);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       margin-bottom: 1.5rem;
@@ -86,7 +112,7 @@
       box-shadow: var(--shadow);
     }
     .unit-header {
-      background: var(--week-header-bg);
+      background: var(--unit-header-bg);
       padding: 0.8rem 1.3rem;
       font-weight: 700;
       font-size: 1.1rem;
@@ -101,7 +127,7 @@
       text-align: left;
       font-family: inherit;
       color: inherit;
-      background-color: var(--week-header-bg);
+      background-color: var(--unit-header-bg);
       transition: background 0.2s;
     }
     .unit-header:hover {
@@ -137,11 +163,32 @@
       font-size: 0.8rem;
       transition: transform 0.3s;
     }
+
+    /* Category labels with per-category colors */
+    .category-label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin: 1rem 1.3rem 0.3rem 1.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .cat-poetry       { color: var(--cat-poetry); }
+    .cat-reading      { color: var(--cat-reading); }
+    .cat-spelling     { color: var(--cat-spelling); }
+    .cat-grammar      { color: var(--cat-grammar); }
+    .cat-conjugation  { color: var(--cat-conjugation); }
+    .cat-writing      { color: var(--cat-writing); }
+    .cat-vocabulary   { color: var(--cat-vocabulary); }
+    .cat-comprehension{ color: var(--cat-comprehension); }
+    .cat-evaluation   { color: var(--cat-evaluation); }
+    .cat-documentary  { color: var(--cat-documentary); }
+    .cat-activity     { color: var(--cat-activity); }
+
     .lesson-link {
       display: flex;
       align-items: center;
       gap: 0.7rem;
-      padding: 0.7rem 1.3rem;
+      padding: 0.5rem 1.3rem;
       text-decoration: none;
       color: var(--text);
       border-left: 3px solid transparent;
@@ -159,17 +206,11 @@
       border-radius: 50%;
       flex-shrink: 0;
     }
-    .lesson-icon {
-      flex-shrink: 0;
-      font-size: 1.1rem;
-      width: 1.5rem;
-      text-align: center;
-    }
     .lesson-label {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 600;
       color: var(--text-light);
-      min-width: 140px;
+      min-width: 100px;
       flex-shrink: 0;
     }
     .lesson-title {
@@ -185,19 +226,20 @@
       color: var(--accent);
       transform: translateX(3px);
     }
-    .coming-soon-flag {
-      padding: 1rem 1.3rem;
-      color: var(--text-light);
-      font-style: italic;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--card-bg);
-      border-top: 1px dashed var(--border);
+    .test-link {
+      display: block;
+      text-align: center;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0.8rem 1.3rem 0.8rem 1.3rem;
+      transition: background var(--transition);
     }
-    .coming-soon-flag::before {
-      content: '⏳';
-      font-style: normal;
+    .test-link:hover {
+      background: var(--accent-hover);
     }
     .conseils {
       background: var(--card-bg);
@@ -205,7 +247,7 @@
       padding: 1.5rem;
       box-shadow: var(--shadow);
       margin-top: 2rem;
-      border-top: 4px solid var(--conseils-border);
+      border-top: 4px solid var(--accent);
     }
     .conseils h2 {
       margin-bottom: 1rem;
@@ -258,8 +300,8 @@
       .lesson-label { min-width: auto; font-size: 0.75rem; }
       .lesson-title { width:100%; font-size:0.85rem; }
       .arrow { display:none; }
+      .category-label { margin: 0.8rem 0.8rem 0.2rem 0.8rem; }
     }
-    /* Print styles */
     @media print {
       .no-print { display: none !important; }
       .print-only { display: block !important; }
@@ -273,7 +315,7 @@
       h1 { font-size: 18pt; }
       .unit-body { max-height: none !important; }
       .unit-header { cursor: default; pointer-events: none; }
-      .lesson-link { border-left: none; }
+      .test-link { display: none; }
     }
   </style>
 </head>
@@ -282,264 +324,253 @@
     <a href="index.html" data-i18n="back_link">← Retour à l'accueil</a>
   </nav>
   <main class="container" id="main-content">
-    <h1 data-i18n="degree4.title">📘 4ème Année Primaire – Programme Complet</h1>
-    <p class="subtitle" data-i18n="degree4.subtitle">Programme officiel tunisien – 10 unités</p>
+    <h1 data-i18n="degree4_main_title">📚 Programme de 4ème année primaire</h1>
+    <p class="subtitle" data-i18n="degree4_subtitle">10 unités – Les fondements du français</p>
     <button id="printProgramBtn" class="header-btn no-print" onclick="window.print();" data-i18n="print_button">🖨️ Imprimer le programme</button>
+
+    <!-- Objectives -->
     <div class="objectives">
-      <h2 data-i18n="objectives_heading">🎯 Objectifs de l'année</h2>
+      <h2 data-i18n="objectives_heading">🎯 Objectifs annuels</h2>
       <ul>
-        <li data-i18n="objectives_1">Maîtriser la lecture, l'écriture et l'expression orale.</li>
-        <li data-i18n="objectives_2">Acquérir les bases de la grammaire, de la conjugaison et de l'orthographe.</li>
-        <li data-i18n="objectives_3">Développer le vocabulaire et la compréhension de textes.</li>
-        <li data-i18n="objectives_4">Réaliser des projets écrits et des activités manuelles.</li>
+        <li data-i18n="objectives_1">Développer les compétences de lecture et d'écriture de base.</li>
+        <li data-i18n="objectives_2">Acquérir le vocabulaire essentiel et les structures grammaticales simples.</li>
+        <li data-i18n="objectives_3">S'exprimer oralement et par écrit dans des situations de la vie quotidienne.</li>
+        <li data-i18n="objectives_4">Découvrir la culture francophone à travers textes, poèmes et activités.</li>
       </ul>
     </div>
 
-    <!-- ═════ UNITS (static HTML) ═════ -->
-
-    <!-- Unit 1 (fully detailed) -->
+    <!-- Unit 1 (all lessons ready) -->
     <div class="unit">
       <button class="unit-header" aria-expanded="true" aria-controls="unit1-body">
         <span class="unit-num">1</span>
-        <span data-i18n="degree4.summary.unit1" class="no-bilingual">Unité I</span>
+        <span data-i18n="unit1.title">Raconter un événement de la vie quotidienne</span>
         <span class="collapse-arrow">▼</span>
       </button>
       <div class="unit-body" id="unit1-body">
-        <!-- Projet d'écriture -->
+        <!-- Poésie -->
+        <div class="category-label cat-poetry" data-i18n="unit1.cat_poesie">🎵 Poésie</div>
         <a href="degree4unit1lesson1.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-icon">📝</span>
-          <span class="lesson-label" data-i18n="degree4.unit1.project" class="no-bilingual">Projet d'écriture</span>
-          <span class="lesson-title" data-i18n="degree4.unit1.projectTitle" class="no-bilingual">Raconter un événement de la vie quotidienne</span>
+          <span class="lesson-title" data-i18n="unit1.lesson1.title">L'école (Charpentreau) + Le nombre 1 (Coran)</span>
           <span class="arrow">→</span>
         </a>
-        <!-- Poésie -->
+
+        <!-- Lecture -->
+        <div class="category-label cat-reading" data-i18n="unit1.cat_lecture">📖 Lecture</div>
         <a href="degree4unit1lesson2.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-icon">🎵</span>
-          <span class="lesson-label" data-i18n="degree4.unit1.poetry" class="no-bilingual">Poésie</span>
-          <span class="lesson-title" data-i18n="degree4.unit1.poetryTitle" class="no-bilingual">L'école (Charpentreau) + Le nombre 1 (Coran)</span>
+          <span class="lesson-title" data-i18n="unit1.lesson2.title">La nouvelle élève</span>
           <span class="arrow">→</span>
         </a>
-        <!-- Lecture 1 -->
         <a href="degree4unit1lesson3.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-icon">📖</span>
-          <span class="lesson-label" data-i18n="degree4.unit1.reading" class="no-bilingual">Lecture</span>
-          <span class="lesson-title" data-i18n="degree4.unit1.readingTitle1" class="no-bilingual">La nouvelle élève</span>
+          <span class="lesson-title" data-i18n="unit1.lesson3.title">Les deux amies</span>
           <span class="arrow">→</span>
         </a>
-        <!-- Lecture 2 -->
+
+        <!-- Orthographe -->
+        <div class="category-label cat-spelling" data-i18n="unit1.cat_orthographe">✍️ Orthographe</div>
         <a href="degree4unit1lesson4.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-icon">📖</span>
-          <span class="lesson-label" data-i18n="degree4.unit1.reading" class="no-bilingual">Lecture</span>
-          <span class="lesson-title" data-i18n="degree4.unit1.readingTitle2" class="no-bilingual">Les deux amies</span>
+          <span class="lesson-title" data-i18n="unit1.lesson4.title">Mots contenant z-s</span>
           <span class="arrow">→</span>
         </a>
-        <!-- Orthographe -->
         <a href="degree4unit1lesson5.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-icon">✍️</span>
-          <span class="lesson-label" data-i18n="degree4.unit1.spelling" class="no-bilingual">Orthographe</span>
-          <span class="lesson-title" data-i18n="degree4.unit1.spellingTitle" class="no-bilingual">Mots contenant z-s / k-q / g-gu</span>
+          <span class="lesson-title" data-i18n="unit1.lesson5.title">Mots contenant k-q</span>
           <span class="arrow">→</span>
         </a>
-        <!-- Grammaire -->
         <a href="degree4unit1lesson6.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-icon">📚</span>
-          <span class="lesson-label" data-i18n="degree4.unit1.grammar" class="no-bilingual">Grammaire</span>
-          <span class="lesson-title" data-i18n="degree4.unit1.grammarTitle1" class="no-bilingual">La phrase et la majuscule</span>
+          <span class="lesson-title" data-i18n="unit1.lesson6.title">Mots contenant g-gu</span>
           <span class="arrow">→</span>
         </a>
-        <!-- Conjugaison -->
+
+        <!-- Grammaire -->
+        <div class="category-label cat-grammar" data-i18n="unit1.cat_grammaire">📚 Grammaire</div>
         <a href="degree4unit1lesson7.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-icon">🔄</span>
-          <span class="lesson-label" data-i18n="degree4.unit1.conjugation" class="no-bilingual">Conjugaison</span>
-          <span class="lesson-title" data-i18n="degree4.unit1.conjugationTitle" class="no-bilingual">Verbe être au présent</span>
+          <span class="lesson-title" data-i18n="unit1.lesson7.title">La phrase et la majuscule</span>
           <span class="arrow">→</span>
         </a>
-        <!-- Mini-projet -->
+
+        <!-- Conjugaison -->
+        <div class="category-label cat-conjugation" data-i18n="unit1.cat_conjugaison">🔄 Conjugaison</div>
         <a href="degree4unit1lesson8.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-icon">📝</span>
-          <span class="lesson-label" data-i18n="degree4.unit1.miniproject" class="no-bilingual">Mini-projet d'écriture</span>
-          <span class="lesson-title" data-i18n="degree4.unit1.miniprojectTitle" class="no-bilingual">Présenter un texte: L'invitation (d'après Gisela Durr et Thuswaldner Werner)</span>
+          <span class="lesson-title" data-i18n="unit1.lesson8.title">Verbe être au présent</span>
           <span class="arrow">→</span>
         </a>
-        <!-- Vocabulaire -->
+
+        <!-- Mini-projet d'écriture -->
+        <div class="category-label cat-writing" data-i18n="unit1.cat_miniprojet">📝 Mini-projet d'écriture</div>
         <a href="degree4unit1lesson9.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-icon">🧠</span>
-          <span class="lesson-label" data-i18n="degree4.unit1.vocabulary" class="no-bilingual">Vocabulaire</span>
-          <span class="lesson-title" data-i18n="degree4.unit1.vocabularyTitle" class="no-bilingual">Jouer avec les mots</span>
+          <span class="lesson-title" data-i18n="unit1.lesson9.title">Présenter un texte: L'invitation</span>
           <span class="arrow">→</span>
         </a>
-        <!-- Compréhension -->
+
+        <!-- Vocabulaire -->
+        <div class="category-label cat-vocabulary" data-i18n="unit1.cat_vocabulaire">🧠 Vocabulaire</div>
         <a href="degree4unit1lesson10.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-icon">📘</span>
-          <span class="lesson-label" data-i18n="degree4.unit1.comprehension" class="no-bilingual">Compréhension de texte</span>
-          <span class="lesson-title" data-i18n="degree4.unit1.comprehensionTitle" class="no-bilingual">Jean l'étourdi</span>
+          <span class="lesson-title" data-i18n="unit1.lesson10.title">Jouer avec les mots</span>
           <span class="arrow">→</span>
         </a>
-        <!-- Évaluation intégrée -->
+
+        <!-- Compréhension de texte -->
+        <div class="category-label cat-comprehension" data-i18n="unit1.cat_comprehension">📘 Compréhension de texte</div>
         <a href="degree4unit1lesson11.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-icon">✅</span>
-          <span class="lesson-label" data-i18n="degree4.unit1.evaluation" class="no-bilingual">Évaluation intégrée</span>
-          <span class="lesson-title" data-i18n="degree4.unit1.evaluationTitle" class="no-bilingual">Réutilisation des compétences (verbe être, orthographe, récit)</span>
+          <span class="lesson-title" data-i18n="unit1.lesson11.title">Jean l'étourdi</span>
           <span class="arrow">→</span>
         </a>
-        <!-- Documentaire -->
+
+        <!-- Évaluation intégrée -->
+        <div class="category-label cat-evaluation" data-i18n="unit1.cat_evaluation">✅ Évaluation intégrée</div>
         <a href="degree4unit1lesson12.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-icon">🎬</span>
-          <span class="lesson-label" data-i18n="degree4.unit1.documentary" class="no-bilingual">Documentaire</span>
-          <span class="lesson-title" data-i18n="degree4.unit1.documentaryTitle" class="no-bilingual">Mes droits et devoirs</span>
+          <span class="lesson-title" data-i18n="unit1.lesson12.title">Réutilisation des compétences</span>
           <span class="arrow">→</span>
         </a>
-        <!-- Activité pratique -->
+
+        <!-- Documentaire -->
+        <div class="category-label cat-documentary" data-i18n="unit1.cat_documentaire">🎬 Documentaire</div>
         <a href="degree4unit1lesson13.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-icon">🛠️</span>
-          <span class="lesson-label" data-i18n="degree4.unit1.activity" class="no-bilingual">Activité pratique</span>
-          <span class="lesson-title" data-i18n="degree4.unit1.activityTitle" class="no-bilingual">Fabriquer "La ronde des enfants"</span>
+          <span class="lesson-title" data-i18n="unit1.lesson13.title">Mes droits et devoirs</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <!-- Activité pratique -->
+        <div class="category-label cat-activity" data-i18n="unit1.cat_activite">🛠️ Activité pratique</div>
+        <a href="degree4unit1lesson14.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson14.title">Fabriquer "La ronde des enfants"</span>
           <span class="arrow">→</span>
         </a>
       </div>
     </div>
 
-    <!-- Units 2 to 10 (coming soon) -->
-    <!-- Unit 2 -->
+    <!-- Units 2-10 (placeholder) -->
     <div class="unit">
-      <button class="unit-header" aria-expanded="true" aria-controls="unit2-body">
+      <button class="unit-header" aria-expanded="false" aria-controls="unit2-body">
         <span class="unit-num">2</span>
-        <span data-i18n="degree4.summary.unit2" class="no-bilingual">Unité II</span>
+        <span data-i18n="unit2.title">Bientôt disponible</span>
         <span class="collapse-arrow">▼</span>
       </button>
-      <div class="unit-body" id="unit2-body">
-        <div class="coming-soon-flag" data-i18n="degree4.summary.comingSoon">Bientôt disponible</div>
+      <div class="unit-body collapsed" id="unit2-body">
+        <p style="padding:1rem 1.3rem; color:var(--text-light);" data-i18n="unit_placeholder">Leçons en préparation</p>
       </div>
     </div>
-
     <!-- Unit 3 -->
     <div class="unit">
-      <button class="unit-header" aria-expanded="true" aria-controls="unit3-body">
+      <button class="unit-header" aria-expanded="false" aria-controls="unit3-body">
         <span class="unit-num">3</span>
-        <span data-i18n="degree4.summary.unit3" class="no-bilingual">Unité III</span>
+        <span data-i18n="unit3.title">Bientôt disponible</span>
         <span class="collapse-arrow">▼</span>
       </button>
-      <div class="unit-body" id="unit3-body">
-        <div class="coming-soon-flag" data-i18n="degree4.summary.comingSoon">Bientôt disponible</div>
+      <div class="unit-body collapsed" id="unit3-body">
+        <p style="padding:1rem 1.3rem; color:var(--text-light);" data-i18n="unit_placeholder">Leçons en préparation</p>
       </div>
     </div>
-
     <!-- Unit 4 -->
     <div class="unit">
-      <button class="unit-header" aria-expanded="true" aria-controls="unit4-body">
+      <button class="unit-header" aria-expanded="false" aria-controls="unit4-body">
         <span class="unit-num">4</span>
-        <span data-i18n="degree4.summary.unit4" class="no-bilingual">Unité IV</span>
+        <span data-i18n="unit4.title">Bientôt disponible</span>
         <span class="collapse-arrow">▼</span>
       </button>
-      <div class="unit-body" id="unit4-body">
-        <div class="coming-soon-flag" data-i18n="degree4.summary.comingSoon">Bientôt disponible</div>
+      <div class="unit-body collapsed" id="unit4-body">
+        <p style="padding:1rem 1.3rem; color:var(--text-light);" data-i18n="unit_placeholder">Leçons en préparation</p>
       </div>
     </div>
-
     <!-- Unit 5 -->
     <div class="unit">
-      <button class="unit-header" aria-expanded="true" aria-controls="unit5-body">
+      <button class="unit-header" aria-expanded="false" aria-controls="unit5-body">
         <span class="unit-num">5</span>
-        <span data-i18n="degree4.summary.unit5" class="no-bilingual">Unité V</span>
+        <span data-i18n="unit5.title">Bientôt disponible</span>
         <span class="collapse-arrow">▼</span>
       </button>
-      <div class="unit-body" id="unit5-body">
-        <div class="coming-soon-flag" data-i18n="degree4.summary.comingSoon">Bientôt disponible</div>
+      <div class="unit-body collapsed" id="unit5-body">
+        <p style="padding:1rem 1.3rem; color:var(--text-light);" data-i18n="unit_placeholder">Leçons en préparation</p>
       </div>
     </div>
-
     <!-- Unit 6 -->
     <div class="unit">
-      <button class="unit-header" aria-expanded="true" aria-controls="unit6-body">
+      <button class="unit-header" aria-expanded="false" aria-controls="unit6-body">
         <span class="unit-num">6</span>
-        <span data-i18n="degree4.summary.unit6" class="no-bilingual">Unité VI</span>
+        <span data-i18n="unit6.title">Bientôt disponible</span>
         <span class="collapse-arrow">▼</span>
       </button>
-      <div class="unit-body" id="unit6-body">
-        <div class="coming-soon-flag" data-i18n="degree4.summary.comingSoon">Bientôt disponible</div>
+      <div class="unit-body collapsed" id="unit6-body">
+        <p style="padding:1rem 1.3rem; color:var(--text-light);" data-i18n="unit_placeholder">Leçons en préparation</p>
       </div>
     </div>
-
     <!-- Unit 7 -->
     <div class="unit">
-      <button class="unit-header" aria-expanded="true" aria-controls="unit7-body">
+      <button class="unit-header" aria-expanded="false" aria-controls="unit7-body">
         <span class="unit-num">7</span>
-        <span data-i18n="degree4.summary.unit7" class="no-bilingual">Unité VII</span>
+        <span data-i18n="unit7.title">Bientôt disponible</span>
         <span class="collapse-arrow">▼</span>
       </button>
-      <div class="unit-body" id="unit7-body">
-        <div class="coming-soon-flag" data-i18n="degree4.summary.comingSoon">Bientôt disponible</div>
+      <div class="unit-body collapsed" id="unit7-body">
+        <p style="padding:1rem 1.3rem; color:var(--text-light);" data-i18n="unit_placeholder">Leçons en préparation</p>
       </div>
     </div>
-
     <!-- Unit 8 -->
     <div class="unit">
-      <button class="unit-header" aria-expanded="true" aria-controls="unit8-body">
+      <button class="unit-header" aria-expanded="false" aria-controls="unit8-body">
         <span class="unit-num">8</span>
-        <span data-i18n="degree4.summary.unit8" class="no-bilingual">Unité VIII</span>
+        <span data-i18n="unit8.title">Bientôt disponible</span>
         <span class="collapse-arrow">▼</span>
       </button>
-      <div class="unit-body" id="unit8-body">
-        <div class="coming-soon-flag" data-i18n="degree4.summary.comingSoon">Bientôt disponible</div>
+      <div class="unit-body collapsed" id="unit8-body">
+        <p style="padding:1rem 1.3rem; color:var(--text-light);" data-i18n="unit_placeholder">Leçons en préparation</p>
       </div>
     </div>
-
     <!-- Unit 9 -->
     <div class="unit">
-      <button class="unit-header" aria-expanded="true" aria-controls="unit9-body">
+      <button class="unit-header" aria-expanded="false" aria-controls="unit9-body">
         <span class="unit-num">9</span>
-        <span data-i18n="degree4.summary.unit9" class="no-bilingual">Unité IX</span>
+        <span data-i18n="unit9.title">Bientôt disponible</span>
         <span class="collapse-arrow">▼</span>
       </button>
-      <div class="unit-body" id="unit9-body">
-        <div class="coming-soon-flag" data-i18n="degree4.summary.comingSoon">Bientôt disponible</div>
+      <div class="unit-body collapsed" id="unit9-body">
+        <p style="padding:1rem 1.3rem; color:var(--text-light);" data-i18n="unit_placeholder">Leçons en préparation</p>
       </div>
     </div>
-
     <!-- Unit 10 -->
     <div class="unit">
-      <button class="unit-header" aria-expanded="true" aria-controls="unit10-body">
+      <button class="unit-header" aria-expanded="false" aria-controls="unit10-body">
         <span class="unit-num">10</span>
-        <span data-i18n="degree4.summary.unit10" class="no-bilingual">Unité X</span>
+        <span data-i18n="unit10.title">Bientôt disponible</span>
         <span class="collapse-arrow">▼</span>
       </button>
-      <div class="unit-body" id="unit10-body">
-        <div class="coming-soon-flag" data-i18n="degree4.summary.comingSoon">Bientôt disponible</div>
+      <div class="unit-body collapsed" id="unit10-body">
+        <p style="padding:1rem 1.3rem; color:var(--text-light);" data-i18n="unit_placeholder">Leçons en préparation</p>
       </div>
     </div>
 
-    <!-- Conseils section -->
+    <!-- Conseils -->
     <div class="conseils no-print">
-      <h2 data-i18n="conseils_heading">💡 Conseils pour une année réussie</h2>
-      <div class="conseil-item"><span class="conseil-icon">📋</span> <span data-i18n="conseil_1">📋 <strong>Organisation</strong> : travaillez un peu chaque jour.</span></div>
-      <div class="conseil-item"><span class="conseil-icon">✏️</span> <span data-i18n="conseil_2">✏️ <strong>Méthode active</strong> : lisez, écrivez et récitez.</span></div>
-      <div class="conseil-item"><span class="conseil-icon">📚</span> <span data-i18n="conseil_3">📚 <strong>Ressources</strong> : manuel officiel, cahier d'activités.</span></div>
-      <div class="conseil-item"><span class="conseil-icon">🔗</span> <span data-i18n="conseil_4">🔗 <strong>Cohérence</strong> : chaque leçon doit être suivie d'une production.</span></div>
-      <div class="conseil-item"><span class="conseil-icon">🗣️</span> <span data-i18n="conseil_5">🗣️ <strong>Travaillez l'oral</strong> : lisez à voix haute et échangez.</span></div>
+      <h2 data-i18n="conseils_heading">💡 Conseils pour bien apprendre</h2>
+      <div class="conseil-item"><span class="conseil-icon">📋</span> <span data-i18n="conseil_1">📋 <strong>Organisation</strong> : révise un peu chaque jour.</span></div>
+      <div class="conseil-item"><span class="conseil-icon">✏️</span> <span data-i18n="conseil_2">✏️ <strong>Méthode active</strong> : écris, dessine, répète à voix haute.</span></div>
+      <div class="conseil-item"><span class="conseil-icon">📚</span> <span data-i18n="conseil_3">📚 <strong>Ressources</strong> : utilise ton manuel et les fiches de l'école.</span></div>
+      <div class="conseil-item"><span class="conseil-icon">🔗</span> <span data-i18n="conseil_4">🔗 <strong>Cohérence</strong> : relie chaque leçon à la vie réelle.</span></div>
+      <div class="conseil-item"><span class="conseil-icon">🗣️</span> <span data-i18n="conseil_5">🗣️ <strong>Oral</strong> : lis les textes à voix haute pour t'entraîner.</span></div>
     </div>
 
     <div class="footer no-print">
       <p data-i18n="footer_planning">📘 Programme conçu pour les élèves de 4ème année primaire — Tunisie</p>
-      <p data-i18n="footer_encouragement">Suivez ce programme avec régularité et adaptez‑le à votre rythme. <strong>Bonne année scolaire !</strong></p>
+      <p data-i18n="footer_encouragement">Apprends avec joie et régularité. <strong>Bonne réussite !</strong></p>
     </div>
 
-    <!-- Print-only custom header & footer -->
+    <!-- Print-only header/footer -->
     <div id="print-header" style="display:none;" class="print-only">
-      <h1>Educational Dashboard – French</h1>
-      <p>4ème Année Primaire – Programme Complet</p>
+      <h1>Educational Dashboard – Français</h1>
+      <p>Programme 4ème année primaire</p>
       <hr>
     </div>
     <div id="print-footer" style="display:none;" class="print-only">
@@ -548,6 +579,7 @@
     </div>
   </main>
 
+  <!-- Scripts -->
   <script src="i18n.js"></script>
   <script src="db-utils.js"></script>
   <script src="offline-sync-utils.js"></script>
@@ -555,190 +587,152 @@
   <script src="supabase-client.js"></script>
   <script src="logging.js"></script>
 
-  <!-- Translations -->
+  <!-- Translations for degree4 main page -->
   <script>
     App.addI18nTranslations({
       fr: {
         'back_link': '← Retour à l\'accueil',
-        'degree4.title': '4ème Année Primaire',
-        'degree4.subtitle': 'Programme officiel tunisien – 10 unités',
-        'objectives_heading': '🎯 Objectifs de l\'année',
-        'objectives_1': 'Maîtriser la lecture, l\'écriture et l\'expression orale.',
-        'objectives_2': 'Acquérir les bases de la grammaire, de la conjugaison et de l\'orthographe.',
-        'objectives_3': 'Développer le vocabulaire et la compréhension de textes.',
-        'objectives_4': 'Réaliser des projets écrits et des activités manuelles.',
+        'degree4_main_title': '📚 Programme de 4ème année primaire',
+        'degree4_subtitle': '10 unités – Les fondements du français',
+        'objectives_heading': '🎯 Objectifs annuels',
+        'objectives_1': 'Développer les compétences de lecture et d\'écriture de base.',
+        'objectives_2': 'Acquérir le vocabulaire essentiel et les structures grammaticales simples.',
+        'objectives_3': 'S\'exprimer oralement et par écrit dans des situations de la vie quotidienne.',
+        'objectives_4': 'Découvrir la culture francophone à travers textes, poèmes et activités.',
+        'unit1.title': 'Raconter un événement de la vie quotidienne',
+        'unit1.cat_poesie': '🎵 Poésie',
+        'unit1.cat_lecture': '📖 Lecture',
+        'unit1.cat_orthographe': '✍️ Orthographe',
+        'unit1.cat_grammaire': '📚 Grammaire',
+        'unit1.cat_conjugaison': '🔄 Conjugaison',
+        'unit1.cat_miniprojet': '📝 Mini-projet d\'écriture',
+        'unit1.cat_vocabulaire': '🧠 Vocabulaire',
+        'unit1.cat_comprehension': '📘 Compréhension de texte',
+        'unit1.cat_evaluation': '✅ Évaluation intégrée',
+        'unit1.cat_documentaire': '🎬 Documentaire',
+        'unit1.cat_activite': '🛠️ Activité pratique',
+        'unit1.lesson1.title': 'L\'école (Charpentreau) + Le nombre 1 (Coran)',
+        'unit1.lesson2.title': 'La nouvelle élève',
+        'unit1.lesson3.title': 'Les deux amies',
+        'unit1.lesson4.title': 'Mots contenant z-s',
+        'unit1.lesson5.title': 'Mots contenant k-q',
+        'unit1.lesson6.title': 'Mots contenant g-gu',
+        'unit1.lesson7.title': 'La phrase et la majuscule',
+        'unit1.lesson8.title': 'Verbe être au présent',
+        'unit1.lesson9.title': 'Présenter un texte: L\'invitation',
+        'unit1.lesson10.title': 'Jouer avec les mots',
+        'unit1.lesson11.title': 'Jean l\'étourdi',
+        'unit1.lesson12.title': 'Réutilisation des compétences',
+        'unit1.lesson13.title': 'Mes droits et devoirs',
+        'unit1.lesson14.title': 'Fabriquer "La ronde des enfants"',
+        'unit_placeholder': 'Leçons en préparation',
+        'conseils_heading': '💡 Conseils pour bien apprendre',
+        'conseil_1': '📋 <strong>Organisation</strong> : révise un peu chaque jour.',
+        'conseil_2': '✏️ <strong>Méthode active</strong> : écris, dessine, répète à voix haute.',
+        'conseil_3': '📚 <strong>Ressources</strong> : utilise ton manuel et les fiches de l\'école.',
+        'conseil_4': '🔗 <strong>Cohérence</strong> : relie chaque leçon à la vie réelle.',
+        'conseil_5': '🗣️ <strong>Oral</strong> : lis les textes à voix haute pour t\'entraîner.',
         'footer_planning': '📘 Programme conçu pour les élèves de 4ème année primaire — Tunisie',
-        'footer_encouragement': 'Suivez ce programme avec régularité et adaptez‑le à votre rythme. <strong>Bonne année scolaire !</strong>',
-        'print_button': '🖨️ Imprimer le programme',
-        'back_to_top': 'Retour en haut',
-        'conseils_heading': '💡 Conseils pour une année réussie',
-        'conseil_1': '📋 <strong>Organisation</strong> : travaillez un peu chaque jour.',
-        'conseil_2': '✏️ <strong>Méthode active</strong> : lisez, écrivez et récitez.',
-        'conseil_3': '📚 <strong>Ressources</strong> : manuel officiel, cahier d\'activités.',
-        'conseil_4': '🔗 <strong>Cohérence</strong> : chaque leçon doit être suivie d\'une production.',
-        'conseil_5': '🗣️ <strong>Travaillez l\'oral</strong> : lisez à voix haute et échangez.',
-
-        'degree4.summary.unit1': 'Unité I',
-        'degree4.summary.unit2': 'Unité II',
-        'degree4.summary.unit3': 'Unité III',
-        'degree4.summary.unit4': 'Unité IV',
-        'degree4.summary.unit5': 'Unité V',
-        'degree4.summary.unit6': 'Unité VI',
-        'degree4.summary.unit7': 'Unité VII',
-        'degree4.summary.unit8': 'Unité VIII',
-        'degree4.summary.unit9': 'Unité IX',
-        'degree4.summary.unit10': 'Unité X',
-        'degree4.summary.comingSoon': 'Bientôt disponible',
-
-        'degree4.unit1.project': 'Projet d\'écriture',
-        'degree4.unit1.projectTitle': 'Raconter un événement de la vie quotidienne',
-        'degree4.unit1.poetry': 'Poésie',
-        'degree4.unit1.poetryTitle': "L'école (Charpentreau) + Le nombre 1 (Coran)",
-        'degree4.unit1.reading': 'Lecture',
-        'degree4.unit1.readingTitle1': 'La nouvelle élève',
-        'degree4.unit1.readingTitle2': 'Les deux amies',
-        'degree4.unit1.spelling': 'Orthographe',
-        'degree4.unit1.spellingTitle': 'Mots contenant z-s / k-q / g-gu',
-        'degree4.unit1.grammar': 'Grammaire',
-        'degree4.unit1.grammarTitle1': 'La phrase et la majuscule',
-        'degree4.unit1.conjugation': 'Conjugaison',
-        'degree4.unit1.conjugationTitle': 'Verbe être au présent',
-        'degree4.unit1.miniproject': 'Mini-projet d\'écriture',
-        'degree4.unit1.miniprojectTitle': "Présenter un texte: L'invitation (d'après Gisela Durr et Thuswaldner Werner)",
-        'degree4.unit1.vocabulary': 'Vocabulaire',
-        'degree4.unit1.vocabularyTitle': 'Jouer avec les mots',
-        'degree4.unit1.comprehension': 'Compréhension de texte',
-        'degree4.unit1.comprehensionTitle': "Jean l'étourdi",
-        'degree4.unit1.evaluation': 'Évaluation intégrée',
-        'degree4.unit1.evaluationTitle': 'Réutilisation des compétences (verbe être, orthographe, récit)',
-        'degree4.unit1.documentary': 'Documentaire',
-        'degree4.unit1.documentaryTitle': 'Mes droits et devoirs',
-        'degree4.unit1.activity': 'Activité pratique',
-        'degree4.unit1.activityTitle': 'Fabriquer "La ronde des enfants"'
-      },
-      ar: {
-        'back_link': '← العودة إلى الرئيسية',
-        'degree4.title': 'السنة الرابعة ابتدائي',
-        'degree4.subtitle': 'البرنامج الرسمي التونسي – 10 وحدات',
-        'objectives_heading': '🎯 أهداف السنة',
-        'objectives_1': 'إتقان القراءة والكتابة والتعبير الشفهي.',
-        'objectives_2': 'اكتساب أساسيات القواعد والتصريف والإملاء.',
-        'objectives_3': 'تنمية المفردات وفهم النصوص.',
-        'objectives_4': 'إنجاز مشاريع كتابية وأنشطة يدوية.',
-        'footer_planning': '📘 برنامج موجّه لتلاميذ السنة الرابعة ابتدائي — تونس',
-        'footer_encouragement': 'اتبع هذا البرنامج بانتظام وعدّله حسب وتيرتك. <strong>سنة دراسية موفقة!</strong>',
-        'print_button': '🖨️ طباعة البرنامج',
-        'back_to_top': 'العودة إلى الأعلى',
-        'conseils_heading': '💡 نصائح لسنة دراسية ناجحة',
-        'conseil_1': '📋 <strong>التنظيم</strong>: اعمل قليلاً كل يوم.',
-        'conseil_2': '✏️ <strong>الطريقة النشطة</strong>: اقرأ، اكتب، وردّد.',
-        'conseil_3': '📚 <strong>المصادر</strong>: الكتاب المدرسي الرسمي، كراس الأنشطة.',
-        'conseil_4': '🔗 <strong>التماسك</strong>: على كل درس أن يليه إنتاج كتابي.',
-        'conseil_5': '🗣️ <strong>اشتغل على الشفهي</strong>: اقرأ بصوت عالٍ وتبادل الأفكار.',
-
-        'degree4.summary.unit1': 'الوحدة الأولى',
-        'degree4.summary.unit2': 'الوحدة الثانية',
-        'degree4.summary.unit3': 'الوحدة الثالثة',
-        'degree4.summary.unit4': 'الوحدة الرابعة',
-        'degree4.summary.unit5': 'الوحدة الخامسة',
-        'degree4.summary.unit6': 'الوحدة السادسة',
-        'degree4.summary.unit7': 'الوحدة السابعة',
-        'degree4.summary.unit8': 'الوحدة الثامنة',
-        'degree4.summary.unit9': 'الوحدة التاسعة',
-        'degree4.summary.unit10': 'الوحدة العاشرة',
-        'degree4.summary.comingSoon': 'قريباً',
-
-        'degree4.unit1.project': 'المشروع الكتابي',
-        'degree4.unit1.projectTitle': 'رواية حدث من الحياة اليومية',
-        'degree4.unit1.poetry': 'القصيدة',
-        'degree4.unit1.poetryTitle': "L'école (Charpentreau) + Le nombre 1 (Coran)",
-        'degree4.unit1.reading': 'القراءة',
-        'degree4.unit1.readingTitle1': 'La nouvelle élève',
-        'degree4.unit1.readingTitle2': 'Les deux amies',
-        'degree4.unit1.spelling': 'الإملاء',
-        'degree4.unit1.spellingTitle': 'كلمات تحتوي على z-s / k-q / g-gu',
-        'degree4.unit1.grammar': 'القواعد',
-        'degree4.unit1.grammarTitle1': 'الجملة والحرف الكبير',
-        'degree4.unit1.conjugation': 'التصريف',
-        'degree4.unit1.conjugationTitle': 'فعل être في المضارع',
-        'degree4.unit1.miniproject': 'مشروع كتابي مصغر',
-        'degree4.unit1.miniprojectTitle': "تقديم نص: الدعوة (بناءً على Gisela Durr و Thuswaldner Werner)",
-        'degree4.unit1.vocabulary': 'المفردات',
-        'degree4.unit1.vocabularyTitle': 'ألعب بالكلمات',
-        'degree4.unit1.comprehension': 'فهم النص',
-        'degree4.unit1.comprehensionTitle': "Jean l'étourdi",
-        'degree4.unit1.evaluation': 'التقييم المتكامل',
-        'degree4.unit1.evaluationTitle': 'إعادة استخدام المهارات (فعل être، الإملاء، السرد)',
-        'degree4.unit1.documentary': 'وثائقي',
-        'degree4.unit1.documentaryTitle': 'حقوقي وواجباتي',
-        'degree4.unit1.activity': 'النشاط العملي',
-        'degree4.unit1.activityTitle': 'صنع "دائرة الأطفال" (La ronde des enfants)'
+        'footer_encouragement': 'Apprends avec joie et régularité. <strong>Bonne réussite !</strong>',
+        'print_button': '🖨️ Imprimer le programme'
       },
       en: {
         'back_link': '← Back to home',
-        'degree4.title': '4th Grade Primary',
-        'degree4.subtitle': 'Official Tunisian program – 10 units',
-        'objectives_heading': '🎯 Year Objectives',
-        'objectives_1': 'Master reading, writing and oral expression.',
-        'objectives_2': 'Acquire basics of grammar, conjugation and spelling.',
-        'objectives_3': 'Develop vocabulary and text comprehension.',
-        'objectives_4': 'Complete written projects and manual activities.',
-        'footer_planning': '📘 Program designed for 4th grade primary students — Tunisia',
-        'footer_encouragement': 'Follow this program regularly and adapt it to your pace. <strong>Have a great school year!</strong>',
-        'print_button': '🖨️ Print program',
-        'back_to_top': 'Back to top',
-        'conseils_heading': '💡 Tips for a successful year',
-        'conseil_1': '📋 <strong>Organization</strong>: work a little every day.',
-        'conseil_2': '✏️ <strong>Active method</strong>: read, write and recite.',
-        'conseil_3': '📚 <strong>Resources</strong>: official textbook, activity book.',
-        'conseil_4': '🔗 <strong>Consistency</strong>: each lesson should be followed by a production.',
-        'conseil_5': '🗣️ <strong>Work on oral skills</strong>: read aloud and exchange.',
-
-        'degree4.summary.unit1': 'Unit I',
-        'degree4.summary.unit2': 'Unit II',
-        'degree4.summary.unit3': 'Unit III',
-        'degree4.summary.unit4': 'Unit IV',
-        'degree4.summary.unit5': 'Unit V',
-        'degree4.summary.unit6': 'Unit VI',
-        'degree4.summary.unit7': 'Unit VII',
-        'degree4.summary.unit8': 'Unit VIII',
-        'degree4.summary.unit9': 'Unit IX',
-        'degree4.summary.unit10': 'Unit X',
-        'degree4.summary.comingSoon': 'Coming soon',
-
-        'degree4.unit1.project': 'Writing project',
-        'degree4.unit1.projectTitle': 'Tell an event from daily life',
-        'degree4.unit1.poetry': 'Poetry',
-        'degree4.unit1.poetryTitle': "L'école (Charpentreau) + Le nombre 1 (Coran)",
-        'degree4.unit1.reading': 'Reading',
-        'degree4.unit1.readingTitle1': 'La nouvelle élève',
-        'degree4.unit1.readingTitle2': 'Les deux amies',
-        'degree4.unit1.spelling': 'Spelling',
-        'degree4.unit1.spellingTitle': 'Words containing z-s / k-q / g-gu',
-        'degree4.unit1.grammar': 'Grammar',
-        'degree4.unit1.grammarTitle1': 'The sentence and the capital letter',
-        'degree4.unit1.conjugation': 'Conjugation',
-        'degree4.unit1.conjugationTitle': 'Verb être in the present tense',
-        'degree4.unit1.miniproject': 'Mini writing project',
-        'degree4.unit1.miniprojectTitle': "Present a text: L'invitation (after Gisela Durr and Thuswaldner Werner)",
-        'degree4.unit1.vocabulary': 'Vocabulary',
-        'degree4.unit1.vocabularyTitle': 'Play with words',
-        'degree4.unit1.comprehension': 'Text comprehension',
-        'degree4.unit1.comprehensionTitle': "Jean l'étourdi",
-        'degree4.unit1.evaluation': 'Integrated assessment',
-        'degree4.unit1.evaluationTitle': 'Reuse of skills (verb être, spelling, narrative)',
-        'degree4.unit1.documentary': 'Documentary',
-        'degree4.unit1.documentaryTitle': 'My rights and duties',
-        'degree4.unit1.activity': 'Practical activity',
-        'degree4.unit1.activityTitle': 'Make "La ronde des enfants"'
+        'degree4_main_title': '📚 4th Grade Program',
+        'degree4_subtitle': '10 units – French foundations',
+        'objectives_heading': '🎯 Yearly objectives',
+        'objectives_1': 'Develop basic reading and writing skills.',
+        'objectives_2': 'Acquire essential vocabulary and simple grammar structures.',
+        'objectives_3': 'Express oneself orally and in writing in everyday situations.',
+        'objectives_4': 'Discover Francophone culture through texts, poems and activities.',
+        'unit1.title': 'Tell an everyday life event',
+        'unit1.cat_poesie': '🎵 Poetry',
+        'unit1.cat_lecture': '📖 Reading',
+        'unit1.cat_orthographe': '✍️ Spelling',
+        'unit1.cat_grammaire': '📚 Grammar',
+        'unit1.cat_conjugaison': '🔄 Conjugation',
+        'unit1.cat_miniprojet': '📝 Writing Mini-project',
+        'unit1.cat_vocabulaire': '🧠 Vocabulary',
+        'unit1.cat_comprehension': '📘 Text Comprehension',
+        'unit1.cat_evaluation': '✅ Integrated Assessment',
+        'unit1.cat_documentaire': '🎬 Documentary',
+        'unit1.cat_activite': '🛠️ Practical Activity',
+        'unit1.lesson1.title': 'School (Charpentreau) + Number 1 (Quran)',
+        'unit1.lesson2.title': 'The New Student',
+        'unit1.lesson3.title': 'The Two Friends',
+        'unit1.lesson4.title': 'Words with z-s',
+        'unit1.lesson5.title': 'Words with k-q',
+        'unit1.lesson6.title': 'Words with g-gu',
+        'unit1.lesson7.title': 'The Sentence and Capital Letter',
+        'unit1.lesson8.title': 'Verb to be in present',
+        'unit1.lesson9.title': 'Present a text: The Invitation',
+        'unit1.lesson10.title': 'Play with words',
+        'unit1.lesson11.title': 'Forgetful John',
+        'unit1.lesson12.title': 'Reuse of skills',
+        'unit1.lesson13.title': 'My rights and duties',
+        'unit1.lesson14.title': 'Make "The Children\'s Round"',
+        'unit_placeholder': 'Lessons in preparation',
+        'conseils_heading': '💡 Tips for learning well',
+        'conseil_1': '📋 <strong>Organization</strong>: review a little every day.',
+        'conseil_2': '✏️ <strong>Active method</strong>: write, draw, repeat aloud.',
+        'conseil_3': '📚 <strong>Resources</strong>: use your textbook and school sheets.',
+        'conseil_4': '🔗 <strong>Consistency</strong>: connect each lesson to real life.',
+        'conseil_5': '🗣️ <strong>Oral</strong>: read texts aloud to practice.',
+        'footer_planning': '📘 Program designed for 4th grade students — Tunisia',
+        'footer_encouragement': 'Learn with joy and regularity. <strong>Good luck!</strong>',
+        'print_button': '🖨️ Print program'
+      },
+      ar: {
+        'back_link': '← العودة إلى الرئيسية',
+        'degree4_main_title': '📚 برنامج السنة الرابعة ابتدائي',
+        'degree4_subtitle': '10 وحدات – أساسيات الفرنسية',
+        'objectives_heading': '🎯 الأهداف السنوية',
+        'objectives_1': 'تطوير مهارات القراءة والكتابة الأساسية.',
+        'objectives_2': 'اكتساب المفردات الأساسية والتراكيب النحوية البسيطة.',
+        'objectives_3': 'التعبير شفهياً وكتابياً في مواقف الحياة اليومية.',
+        'objectives_4': 'اكتشاف الثقافة الفرنكوفونية من خلال النصوص والقصائد والأنشطة.',
+        'unit1.title': 'سرد حدث من الحياة اليومية',
+        'unit1.cat_poesie': '🎵 شعر',
+        'unit1.cat_lecture': '📖 قراءة',
+        'unit1.cat_orthographe': '✍️ إملاء',
+        'unit1.cat_grammaire': '📚 قواعد',
+        'unit1.cat_conjugaison': '🔄 تصريف',
+        'unit1.cat_miniprojet': '📝 مشروع كتابة مصغر',
+        'unit1.cat_vocabulaire': '🧠 مفردات',
+        'unit1.cat_comprehension': '📘 فهم النص',
+        'unit1.cat_evaluation': '✅ تقييم مدمج',
+        'unit1.cat_documentaire': '🎬 وثائقي',
+        'unit1.cat_activite': '🛠️ نشاط عملي',
+        'unit1.lesson1.title': 'المدرسة (شاربونترو) + العدد 1 (القرآن)',
+        'unit1.lesson2.title': 'التلميذة الجديدة',
+        'unit1.lesson3.title': 'الصديقتان',
+        'unit1.lesson4.title': 'كلمات تحتوي على z-s',
+        'unit1.lesson5.title': 'كلمات تحتوي على k-q',
+        'unit1.lesson6.title': 'كلمات تحتوي على g-gu',
+        'unit1.lesson7.title': 'الجملة والحرف الكبير',
+        'unit1.lesson8.title': 'فعل يكون في المضارع',
+        'unit1.lesson9.title': 'تقديم نص: الدعوة',
+        'unit1.lesson10.title': 'اللعب بالكلمات',
+        'unit1.lesson11.title': 'جون الشارد الذهن',
+        'unit1.lesson12.title': 'إعادة استخدام المهارات',
+        'unit1.lesson13.title': 'حقوقي وواجباتي',
+        'unit1.lesson14.title': 'صنع "رقصة الأطفال"',
+        'unit_placeholder': 'الدروس قيد الإعداد',
+        'conseils_heading': '💡 نصائح للتعلم الجيد',
+        'conseil_1': '📋 <strong>التنظيم</strong>: راجع قليلاً كل يوم.',
+        'conseil_2': '✏️ <strong>طريقة نشطة</strong>: اكتب، ارسم، كرر بصوت عالٍ.',
+        'conseil_3': '📚 <strong>المصادر</strong>: استعمل كتابك المدرسي وأوراق المدرسة.',
+        'conseil_4': '🔗 <strong>التماسك</strong>: اربط كل درس بالحياة الواقعية.',
+        'conseil_5': '🗣️ <strong>الشفهي</strong>: اقرأ النصوص بصوت عالٍ للتدرب.',
+        'footer_planning': '📘 برنامج موجه لتلاميذ السنة الرابعة ابتدائي — تونس',
+        'footer_encouragement': 'تعلم بفرح وانتظام. <strong>بالتوفيق!</strong>',
+        'print_button': '🖨️ طباعة البرنامج'
       }
     });
-  </script>
 
-  <!-- Make bilingual -->
-  <script>
+    // Apply bilingual
     (function() {
-      var container = document.getElementById('main-content');
+      var container = document.querySelector('.container');
       if (container && typeof App.makeBilingual === 'function') {
         App.makeBilingual(container);
       }
@@ -747,39 +741,7 @@
 
   <script src="ed-french-ini.js"></script>
 
-  <!-- Direct‑translation fix (same as lesson pages) -->
-  <script>
-    (function() {
-      if (typeof applyTranslations !== 'function') return;
-      const originalApply = applyTranslations;
-      window.applyTranslations = function(lang) {
-        originalApply(lang);
-        setTimeout(() => {
-          document.querySelectorAll('.no-bilingual').forEach(el => {
-            const next = el.nextElementSibling;
-            if (next && next.classList.contains('i18n-bilingual')) {
-              if (lang !== 'fr') {
-                el.innerHTML = next.innerHTML;
-              }
-              next.remove();
-            }
-          });
-        }, 0);
-      };
-      setTimeout(() => {
-        document.querySelectorAll('.no-bilingual').forEach(el => {
-          const next = el.nextElementSibling;
-          if (next && next.classList.contains('i18n-bilingual')) {
-            const lang = localStorage.getItem('lang') || 'fr';
-            if (lang !== 'fr') el.innerHTML = next.innerHTML;
-            next.remove();
-          }
-        });
-      }, 0);
-    })();
-  </script>
-
-  <!-- Collapse/expand units -->
+  <!-- Collapse/expand units, back-to-top, click logging -->
   <script>
     function toggleUnit(header) {
       const body = document.getElementById(header.getAttribute('aria-controls'));
@@ -809,10 +771,8 @@
         }
       });
     });
-  </script>
 
-  <!-- Back to top -->
-  <script>
+    // Back to top button
     (function() {
       const btn = document.createElement('button');
       btn.id = 'backToTop';
@@ -828,16 +788,13 @@
         }
       });
     })();
-  </script>
 
-  <!-- Lesson click logging -->
-  <script>
+    // Click logging for lesson links
     (function() {
       document.querySelectorAll('.lesson-link').forEach(link => {
         link.addEventListener('click', function(e) {
           const lessonTitle = this.querySelector('.lesson-title').textContent.trim();
-          const lessonLabel = this.querySelector('.lesson-label').textContent.trim();
-          const details = { lesson: lessonTitle, label: lessonLabel, href: this.href };
+          const details = { lesson: lessonTitle, href: this.href };
           if (typeof App !== 'undefined' && App.supabase) {
             App.supabase.auth.getSession().then(({ data: { session } }) => {
               if (session) {
@@ -852,957 +809,9 @@
         });
       });
     })();
-  </script>
 
-  <!-- Print date and afterprint logging -->
-  <script>
+    // Print date
     document.getElementById('print-date').textContent = new Date().toLocaleDateString('fr-FR');
-    window.addEventListener('afterprint', function() {
-      if (typeof App !== 'undefined') {
-        App.logGeneralAction('degree4_printed');
-        App.supabase.auth.getSession().then(({ data: { session } }) => {
-          if (session) App.logUserAction('degree4_printed');
-        }).catch(() => {});
-      }
-    });
   </script>
 </body>
 </html>
-
-<!-- ## 1. Complete program (text form)
-4ème Année Primaire – Programme Complet
-Programme officiel tunisien – 10 unités
-Objectifs de l'année :
-- Maîtriser la lecture, l'écriture et l'expression orale.
-- Acquérir les bases de la grammaire, de la conjugaison et de l'orthographe.
-- Développer le vocabulaire et la compréhension de textes.
-- Réaliser des projets écrits et des activités manuelles.
-Unité I
-  Projet d'écriture :
-    - Raconter un événement de la vie quotidienne (degree4unit1lesson1.html)
-  Poésie :
-    - L'école (Charpentreau) + Le nombre 1 (Coran) (degree4unit1lesson2.html)
-  Lecture :
-    - La nouvelle élève (degree4unit1lesson3.html)
-    - Les deux amies (degree4unit1lesson4.html)
-  Orthographe :
-    - Mots contenant z-s / k-q / g-gu (degree4unit1lesson5.html)
-  Grammaire :
-    - La phrase et la majuscule (degree4unit1lesson6.html)
-  Conjugaison :
-    - Verbe être au présent (degree4unit1lesson7.html)
-  Mini-projet d'écriture :
-    - Présenter un texte: L'invitation (d'après Gisela Durr et Thuswaldner Werner) (degree4unit1lesson8.html)
-  Vocabulaire :
-    - Jouer avec les mots (degree4unit1lesson9.html)
-  Compréhension de texte :
-    - Jean l'étourdi (degree4unit1lesson10.html)
-  Évaluation intégrée :
-    - Réutilisation des compétences (verbe être, orthographe, récit) (degree4unit1lesson11.html)
-  Documentaire :
-    - Mes droits et devoirs (degree4unit1lesson12.html)
-  Activité pratique :
-    - Fabriquer "La ronde des enfants" (degree4unit1lesson13.html)
-Unité II
-  Projet d'écriture :
-    - Raconter un événement de la vie quotidienne (degree4unit2lesson1.html)
-  Poésie :
-    - L’âge de raison (Jean) + Petit bébé (Delarue-Mardrus) (degree4unit2lesson2.html)
-  Lecture :
-    - Jeannot et sa petite sœur Annie (1) (degree4unit2lesson3.html)
-    - Jeannot et sa petite sœur Annie (2) (degree4unit2lesson4.html)
-  Grammaire :
-    - Types et formes de phrases (degree4unit2lesson5.html)
-    - Verbe « avoir » au présent (degree4unit2lesson6.html)
-  Vocabulaire :
-    - Mots avec ette/elle/erre/esse - ien/ienne - ill/eil/ail (degree4unit2lesson7.html)
-  Découverte :
-    - La famille Duval, les fêtes de famille (degree4unit2lesson8.html)
-  Activité pratique :
-    - Fabriquer une carte amusante (degree4unit2lesson9.html)
-Unité III
-  Projet d'écriture :
-    - Faire parler des personnages en racontant un événement (degree4unit3lesson1.html)
-  Poésie :
-    - L’homme qui te ressemble (Philombe) + Le soleil et la terre (Prévert) (degree4unit3lesson2.html)
-  Lecture :
-    - Les lunettes (degree4unit3lesson3.html)
-    - Un petit écureuil (degree4unit3lesson4.html)
-  Grammaire :
-    - Les deux groupes de la phrase (degree4unit3lesson5.html)
-    - Verbe « aller » au présent (degree4unit3lesson6.html)
-  Vocabulaire :
-    - Mots avec euil/ouil - gn - ph (degree4unit3lesson7.html)
-  Découverte :
-    - Nos amies les bêtes (Chien, Chat) (degree4unit3lesson8.html)
-  Activité pratique :
-    - Fabriquer un chien en carton (degree4unit3lesson9.html)
-Unité IV
-  Projet d'écriture :
-    - Faire parler des personnages en racontant un événement (degree4unit4lesson1.html)
-  Poésie :
-    - Je te donne (Jacob) + On frappe (Prévert) (degree4unit4lesson2.html)
-  Lecture :
-    - Les grenouilles (degree4unit4lesson3.html)
-    - Un tailleur fou (degree4unit4lesson4.html)
-  Grammaire :
-    - Le nom et le déterminant (degree4unit4lesson5.html)
-    - Verbes en « -er » au présent (degree4unit4lesson6.html)
-  Vocabulaire :
-    - Mots avec x - oin - ion - tion - y (degree4unit4lesson7.html)
-  Découverte :
-    - Les commerçants de mon quartier (degree4unit4lesson8.html)
-  Activité pratique :
-    - Tracer un plan du quartier (degree4unit4lesson9.html)
-Unité V
-  Projet d'écriture :
-    - Écrire la recette d'un plat ou d'un gâteau (degree4unit5lesson1.html)
-  Poésie :
-    - Bain de soleil (Prévert) + Le petit chat blanc (Roy) (degree4unit5lesson2.html)
-  Lecture :
-    - La petite malade (degree4unit5lesson3.html)
-    - La punition (degree4unit5lesson4.html)
-    - Comment préparer une tisane (degree4unit5lesson5.html)
-  Grammaire :
-    - Les déterminants (degree4unit5lesson6.html)
-    - Verbes en « -ir » au présent (degree4unit5lesson7.html)
-  Orthographe :
-    - c / ç / s - m devant m, b, p (degree4unit5lesson8.html)
-  Découverte :
-    - Comment je grandis (étapes de la croissance) (degree4unit5lesson9.html)
-  Activité pratique :
-    - Comment se brosser les dents (degree4unit5lesson10.html)
-Unité VI
-  Projet d'écriture :
-    - Écrire la recette d'un plat ou d'un gâteau (degree4unit6lesson1.html)
-  Poésie :
-    - Les bonbons (Topor) + J’ai trempé mon doigt (Obaldia) (degree4unit6lesson2.html)
-  Lecture :
-    - La galette du Petit Chaperon Rouge (degree4unit6lesson3.html)
-    - Un repas à l’école (degree4unit6lesson4.html)
-    - La salade de fruits (degree4unit6lesson5.html)
-  Grammaire :
-    - Phrase minimale et enrichie (degree4unit6lesson6.html)
-    - Verbe « faire » (degree4unit6lesson7.html)
-  Orthographe :
-    - Accord sujet-verbe (degree4unit6lesson8.html)
-  Découverte :
-    - Quelques conseils pour cuisiner (degree4unit6lesson9.html)
-  Activité pratique :
-    - Préparer du POP-CORN (degree4unit6lesson10.html)
-Unité VII
-  Projet d'écriture :
-    - Décrire une fête ou une occupation (degree4unit7lesson1.html)
-  Poésie :
-    - Faire de la musique (Dès) + Je veux rire (Moréas) (degree4unit7lesson2.html)
-  Lecture :
-    - Josette et ses poupées (degree4unit7lesson3.html)
-    - Au parc d’attractions (degree4unit7lesson4.html)
-    - Sur la piste du cirque (degree4unit7lesson5.html)
-  Grammaire :
-    - L'adjectif qualificatif (degree4unit7lesson6.html)
-    - Verbe « mettre » (degree4unit7lesson7.html)
-  Orthographe :
-    - Accord de l'adjectif qualificatif (degree4unit7lesson8.html)
-  Découverte :
-    - Les clowns (degree4unit7lesson9.html)
-  Activité pratique :
-    - Fabriquer des maracas (degree4unit7lesson10.html)
-Unité VIII
-  Projet d'écriture :
-    - Décrire une fête ou une occupation (degree4unit8lesson1.html)
-  Poésie :
-    - Météorologie (Roy) + Une étoile (Guillevic) (degree4unit8lesson2.html)
-  Lecture :
-    - Stéphane et la télévision (degree4unit8lesson3.html)
-    - La parabole (degree4unit8lesson4.html)
-    - Questions pour un jeune champion (degree4unit8lesson5.html)
-  Grammaire :
-    - L'enrichissement du groupe du nom (degree4unit8lesson6.html)
-    - Verbe « prendre » (degree4unit8lesson7.html)
-  Orthographe :
-    - Le pluriel des noms (s / x) (degree4unit8lesson8.html)
-  Découverte :
-    - La télévision (degree4unit8lesson9.html)
-  Activité pratique :
-    - Fabriquer un téléviseur en carton (degree4unit8lesson10.html)
-Unité IX
-  Projet d'écriture :
-    - Écrire une histoire souvent racontée (degree4unit9lesson1.html)
-  Poésie :
-    - Conte-nous une histoire dis ! (Hugo) + D’un coup de baguette (Clausard) (degree4unit9lesson2.html)
-  Lecture :
-    - Pinocchio (1) (degree4unit9lesson3.html)
-    - Pinocchio (2) (degree4unit9lesson4.html)
-    - Pinocchio (3) (degree4unit9lesson5.html)
-    - Pinocchio (4) (degree4unit9lesson6.html)
-    - Pinocchio (5) (degree4unit9lesson7.html)
-    - Pinocchio (6) (degree4unit9lesson8.html)
-  Grammaire :
-    - Révision types et formes de phrases (degree4unit9lesson9.html)
-    - Verbe « partir » (degree4unit9lesson10.html)
-  Orthographe :
-    - Le féminin des noms (1) (degree4unit9lesson11.html)
-  Découverte :
-    - Préparer le recueil des mini-projets (1) (degree4unit9lesson12.html)
-  Activité pratique :
-    - Fabriquer un pantin (degree4unit9lesson13.html)
-Unité X
-  Projet d'écriture :
-    - Écrire une histoire souvent racontée (degree4unit10lesson1.html)
-  Poésie :
-    - Conseils donnés par une sorcière (Tardieu) + Le Pélican (Desnos) (degree4unit10lesson2.html)
-  Lecture :
-    - Le Chat Botté (1) (degree4unit10lesson3.html)
-    - Le Chat Botté (2) (degree4unit10lesson4.html)
-    - Le Chat Botté (3) (degree4unit10lesson5.html)
-    - Le Chat Botté (4) (degree4unit10lesson6.html)
-    - Le Chat Botté (5) (degree4unit10lesson7.html)
-  Grammaire :
-    - Révision des déterminants (degree4unit10lesson8.html)
-    - Verbes « être / avoir / aller » (degree4unit10lesson9.html)
-  Orthographe :
-    - Le féminin des noms (2) (degree4unit10lesson10.html)
-  Découverte :
-    - Préparer le recueil des mini-projets (2) (degree4unit10lesson11.html)
-  Activité pratique :
-    - Faire un dépliant (degree4unit10lesson12.html)
-```
-## 2. Translation objects
-```js
-const translations = {
-  fr: {
-    'back_link': '← Retour à l\'accueil',
-    'degree4.title': '4ème Année Primaire',
-    'degree4.subtitle': 'Programme officiel tunisien – 10 unités',
-    'objectives_heading': '🎯 Objectifs de l\'année',
-    'objectives_1': 'Maîtriser la lecture, l\'écriture et l\'expression orale.',
-    'objectives_2': 'Acquérir les bases de la grammaire, de la conjugaison et de l\'orthographe.',
-    'objectives_3': 'Développer le vocabulaire et la compréhension de textes.',
-    'objectives_4': 'Réaliser des projets écrits et des activités manuelles.',
-    'footer_planning': '📘 Programme conçu pour les élèves de 4ème année primaire — Tunisie',
-    'footer_encouragement': 'Suivez ce programme avec régularité et adaptez‑le à votre rythme. <strong>Bonne année scolaire !</strong>',
-    'print_button': '🖨️ Imprimer le programme',
-    'back_to_top': 'Retour en haut',
-    'degree4.summary.unit1': 'Unité I',
-    'degree4.summary.unit2': 'Unité II',
-    'degree4.summary.unit3': 'Unité III',
-    'degree4.summary.unit4': 'Unité IV',
-    'degree4.summary.unit5': 'Unité V',
-    'degree4.summary.unit6': 'Unité VI',
-    'degree4.summary.unit7': 'Unité VII',
-    'degree4.summary.unit8': 'Unité VIII',
-    'degree4.summary.unit9': 'Unité IX',
-    'degree4.summary.unit10': 'Unité X',
-    'degree4.summary.comingSoon': 'Bientôt disponible',
-    'degree4.unit1.project': 'Projet d\'écriture',
-    'degree4.unit1.projectTitle': 'Raconter un événement de la vie quotidienne',
-    'degree4.unit1.poetry': 'Poésie',
-    'degree4.unit1.poetryTitle': "L'école (Charpentreau) + Le nombre 1 (Coran)",
-    'degree4.unit1.reading': 'Lecture',
-    'degree4.unit1.readingTitle1': 'La nouvelle élève',
-    'degree4.unit1.readingTitle2': 'Les deux amies',
-    'degree4.unit1.spelling': 'Orthographe',
-    'degree4.unit1.spellingTitle': 'Mots contenant z-s / k-q / g-gu',
-    'degree4.unit1.grammar': 'Grammaire',
-    'degree4.unit1.grammarTitle1': 'La phrase et la majuscule',
-    'degree4.unit1.conjugation': 'Conjugaison',
-    'degree4.unit1.conjugationTitle': 'Verbe être au présent',
-    'degree4.unit1.miniproject': 'Mini-projet d\'écriture',
-    'degree4.unit1.miniprojectTitle': "Présenter un texte: L'invitation (d'après Gisela Durr et Thuswaldner Werner)",
-    'degree4.unit1.vocabulary': 'Vocabulaire',
-    'degree4.unit1.vocabularyTitle': 'Jouer avec les mots',
-    'degree4.unit1.comprehension': 'Compréhension de texte',
-    'degree4.unit1.comprehensionTitle': "Jean l'étourdi",
-    'degree4.unit1.evaluation': 'Évaluation intégrée',
-    'degree4.unit1.evaluationTitle': 'Réutilisation des compétences (verbe être, orthographe, récit)',
-    'degree4.unit1.documentary': 'Documentaire',
-    'degree4.unit1.documentaryTitle': 'Mes droits et devoirs',
-    'degree4.unit1.activity': 'Activité pratique',
-    'degree4.unit1.activityTitle': 'Fabriquer "La ronde des enfants"',
-    'degree4.unit2.project': 'Projet d\'écriture',
-    'degree4.unit2.projectTitle': 'Raconter un événement de la vie quotidienne',
-    'degree4.unit2.poetry': 'Poésie',
-    'degree4.unit2.poetryTitle': "L’âge de raison (Jean) + Petit bébé (Delarue-Mardrus)",
-    'degree4.unit2.reading': 'Lecture',
-    'degree4.unit2.readingTitle1': 'Jeannot et sa petite sœur Annie (1)',
-    'degree4.unit2.readingTitle2': 'Jeannot et sa petite sœur Annie (2)',
-    'degree4.unit2.grammar': 'Grammaire',
-    'degree4.unit2.grammarTitle1': 'Types et formes de phrases',
-    'degree4.unit2.grammarTitle2': 'Verbe « avoir » au présent',
-    'degree4.unit2.vocabulary': 'Vocabulaire',
-    'degree4.unit2.vocabularyTitle': 'Mots avec ette/elle/erre/esse - ien/ienne - ill/eil/ail',
-    'degree4.unit2.discovery': 'Découverte',
-    'degree4.unit2.discoveryTitle': 'La famille Duval, les fêtes de famille',
-    'degree4.unit2.activity': 'Activité pratique',
-    'degree4.unit2.activityTitle': 'Fabriquer une carte amusante',
-    'degree4.unit3.project': 'Projet d\'écriture',
-    'degree4.unit3.projectTitle': 'Faire parler des personnages en racontant un événement',
-    'degree4.unit3.poetry': 'Poésie',
-    'degree4.unit3.poetryTitle': "L’homme qui te ressemble (Philombe) + Le soleil et la terre (Prévert)",
-    'degree4.unit3.reading': 'Lecture',
-    'degree4.unit3.readingTitle1': 'Les lunettes',
-    'degree4.unit3.readingTitle2': 'Un petit écureuil',
-    'degree4.unit3.grammar': 'Grammaire',
-    'degree4.unit3.grammarTitle1': 'Les deux groupes de la phrase',
-    'degree4.unit3.grammarTitle2': 'Verbe « aller » au présent',
-    'degree4.unit3.vocabulary': 'Vocabulaire',
-    'degree4.unit3.vocabularyTitle': 'Mots avec euil/ouil - gn - ph',
-    'degree4.unit3.discovery': 'Découverte',
-    'degree4.unit3.discoveryTitle': 'Nos amies les bêtes (Chien, Chat)',
-    'degree4.unit3.activity': 'Activité pratique',
-    'degree4.unit3.activityTitle': 'Fabriquer un chien en carton',
-    'degree4.unit4.project': 'Projet d\'écriture',
-    'degree4.unit4.projectTitle': 'Faire parler des personnages en racontant un événement',
-    'degree4.unit4.poetry': 'Poésie',
-    'degree4.unit4.poetryTitle': "Je te donne (Jacob) + On frappe (Prévert)",
-    'degree4.unit4.reading': 'Lecture',
-    'degree4.unit4.readingTitle1': 'Les grenouilles',
-    'degree4.unit4.readingTitle2': 'Un tailleur fou',
-    'degree4.unit4.grammar': 'Grammaire',
-    'degree4.unit4.grammarTitle1': 'Le nom et le déterminant',
-    'degree4.unit4.grammarTitle2': 'Verbes en « -er » au présent',
-    'degree4.unit4.vocabulary': 'Vocabulaire',
-    'degree4.unit4.vocabularyTitle': 'Mots avec x - oin - ion - tion - y',
-    'degree4.unit4.discovery': 'Découverte',
-    'degree4.unit4.discoveryTitle': 'Les commerçants de mon quartier',
-    'degree4.unit4.activity': 'Activité pratique',
-    'degree4.unit4.activityTitle': 'Tracer un plan du quartier',
-    'degree4.unit5.project': 'Projet d\'écriture',
-    'degree4.unit5.projectTitle': 'Écrire la recette d\'un plat ou d\'un gâteau',
-    'degree4.unit5.poetry': 'Poésie',
-    'degree4.unit5.poetryTitle': "Bain de soleil (Prévert) + Le petit chat blanc (Roy)",
-    'degree4.unit5.reading': 'Lecture',
-    'degree4.unit5.readingTitle1': 'La petite malade',
-    'degree4.unit5.readingTitle2': 'La punition',
-    'degree4.unit5.readingTitle3': 'Comment préparer une tisane',
-    'degree4.unit5.grammar': 'Grammaire',
-    'degree4.unit5.grammarTitle1': 'Les déterminants',
-    'degree4.unit5.grammarTitle2': 'Verbes en « -ir » au présent',
-    'degree4.unit5.spelling': 'Orthographe',
-    'degree4.unit5.spellingTitle': 'c / ç / s - m devant m, b, p',
-    'degree4.unit5.discovery': 'Découverte',
-    'degree4.unit5.discoveryTitle': 'Comment je grandis (étapes de la croissance)',
-    'degree4.unit5.activity': 'Activité pratique',
-    'degree4.unit5.activityTitle': 'Comment se brosser les dents',
-    'degree4.unit6.project': 'Projet d\'écriture',
-    'degree4.unit6.projectTitle': 'Écrire la recette d\'un plat ou d\'un gâteau',
-    'degree4.unit6.poetry': 'Poésie',
-    'degree4.unit6.poetryTitle': "Les bonbons (Topor) + J’ai trempé mon doigt (Obaldia)",
-    'degree4.unit6.reading': 'Lecture',
-    'degree4.unit6.readingTitle1': 'La galette du Petit Chaperon Rouge',
-    'degree4.unit6.readingTitle2': 'Un repas à l’école',
-    'degree4.unit6.readingTitle3': 'La salade de fruits',
-    'degree4.unit6.grammar': 'Grammaire',
-    'degree4.unit6.grammarTitle1': 'Phrase minimale et enrichie',
-    'degree4.unit6.grammarTitle2': 'Verbe « faire »',
-    'degree4.unit6.spelling': 'Orthographe',
-    'degree4.unit6.spellingTitle': 'Accord sujet-verbe',
-    'degree4.unit6.discovery': 'Découverte',
-    'degree4.unit6.discoveryTitle': 'Quelques conseils pour cuisiner',
-    'degree4.unit6.activity': 'Activité pratique',
-    'degree4.unit6.activityTitle': 'Préparer du POP-CORN',
-    'degree4.unit7.project': 'Projet d\'écriture',
-    'degree4.unit7.projectTitle': 'Décrire une fête ou une occupation',
-    'degree4.unit7.poetry': 'Poésie',
-    'degree4.unit7.poetryTitle': "Faire de la musique (Dès) + Je veux rire (Moréas)",
-    'degree4.unit7.reading': 'Lecture',
-    'degree4.unit7.readingTitle1': 'Josette et ses poupées',
-    'degree4.unit7.readingTitle2': 'Au parc d’attractions',
-    'degree4.unit7.readingTitle3': 'Sur la piste du cirque',
-    'degree4.unit7.grammar': 'Grammaire',
-    'degree4.unit7.grammarTitle1': "L'adjectif qualificatif",
-    'degree4.unit7.grammarTitle2': 'Verbe « mettre »',
-    'degree4.unit7.spelling': 'Orthographe',
-    'degree4.unit7.spellingTitle': "Accord de l'adjectif qualificatif",
-    'degree4.unit7.discovery': 'Découverte',
-    'degree4.unit7.discoveryTitle': 'Les clowns',
-    'degree4.unit7.activity': 'Activité pratique',
-    'degree4.unit7.activityTitle': 'Fabriquer des maracas',
-    'degree4.unit8.project': 'Projet d\'écriture',
-    'degree4.unit8.projectTitle': 'Décrire une fête ou une occupation',
-    'degree4.unit8.poetry': 'Poésie',
-    'degree4.unit8.poetryTitle': "Météorologie (Roy) + Une étoile (Guillevic)",
-    'degree4.unit8.reading': 'Lecture',
-    'degree4.unit8.readingTitle1': 'Stéphane et la télévision',
-    'degree4.unit8.readingTitle2': 'La parabole',
-    'degree4.unit8.readingTitle3': 'Questions pour un jeune champion',
-    'degree4.unit8.grammar': 'Grammaire',
-    'degree4.unit8.grammarTitle1': "L'enrichissement du groupe du nom",
-    'degree4.unit8.grammarTitle2': 'Verbe « prendre »',
-    'degree4.unit8.spelling': 'Orthographe',
-    'degree4.unit8.spellingTitle': 'Le pluriel des noms (s / x)',
-    'degree4.unit8.discovery': 'Découverte',
-    'degree4.unit8.discoveryTitle': 'La télévision',
-    'degree4.unit8.activity': 'Activité pratique',
-    'degree4.unit8.activityTitle': 'Fabriquer un téléviseur en carton',
-    'degree4.unit9.project': 'Projet d\'écriture',
-    'degree4.unit9.projectTitle': 'Écrire une histoire souvent racontée',
-    'degree4.unit9.poetry': 'Poésie',
-    'degree4.unit9.poetryTitle': "Conte-nous une histoire dis ! (Hugo) + D’un coup de baguette (Clausard)",
-    'degree4.unit9.reading': 'Lecture',
-    'degree4.unit9.readingTitle1': 'Pinocchio (1)',
-    'degree4.unit9.readingTitle2': 'Pinocchio (2)',
-    'degree4.unit9.readingTitle3': 'Pinocchio (3)',
-    'degree4.unit9.readingTitle4': 'Pinocchio (4)',
-    'degree4.unit9.readingTitle5': 'Pinocchio (5)',
-    'degree4.unit9.readingTitle6': 'Pinocchio (6)',
-    'degree4.unit9.grammar': 'Grammaire',
-    'degree4.unit9.grammarTitle1': 'Révision types et formes de phrases',
-    'degree4.unit9.grammarTitle2': 'Verbe « partir »',
-    'degree4.unit9.spelling': 'Orthographe',
-    'degree4.unit9.spellingTitle': 'Le féminin des noms (1)',
-    'degree4.unit9.discovery': 'Découverte',
-    'degree4.unit9.discoveryTitle': 'Préparer le recueil des mini-projets (1)',
-    'degree4.unit9.activity': 'Activité pratique',
-    'degree4.unit9.activityTitle': 'Fabriquer un pantin',
-    'degree4.unit10.project': 'Projet d\'écriture',
-    'degree4.unit10.projectTitle': 'Écrire une histoire souvent racontée',
-    'degree4.unit10.poetry': 'Poésie',
-    'degree4.unit10.poetryTitle': "Conseils donnés par une sorcière (Tardieu) + Le Pélican (Desnos)",
-    'degree4.unit10.reading': 'Lecture',
-    'degree4.unit10.readingTitle1': 'Le Chat Botté (1)',
-    'degree4.unit10.readingTitle2': 'Le Chat Botté (2)',
-    'degree4.unit10.readingTitle3': 'Le Chat Botté (3)',
-    'degree4.unit10.readingTitle4': 'Le Chat Botté (4)',
-    'degree4.unit10.readingTitle5': 'Le Chat Botté (5)',
-    'degree4.unit10.grammar': 'Grammaire',
-    'degree4.unit10.grammarTitle1': 'Révision des déterminants',
-    'degree4.unit10.grammarTitle2': 'Verbes « être / avoir / aller »',
-    'degree4.unit10.spelling': 'Orthographe',
-    'degree4.unit10.spellingTitle': 'Le féminin des noms (2)',
-    'degree4.unit10.discovery': 'Découverte',
-    'degree4.unit10.discoveryTitle': 'Préparer le recueil des mini-projets (2)',
-    'degree4.unit10.activity': 'Activité pratique',
-    'degree4.unit10.activityTitle': 'Faire un dépliant'
-  },
-  en: {
-    'back_link': '← Back to home',
-    'degree4.title': 'Fourth Year Primary',
-    'degree4.subtitle': 'Official Tunisian program – 10 units',
-    'objectives_heading': '🎯 Year objectives',
-    'objectives_1': 'Master reading, writing and speaking.',
-    'objectives_2': 'Acquire basics of grammar, conjugation and spelling.',
-    'objectives_3': 'Develop vocabulary and text comprehension.',
-    'objectives_4': 'Carry out writing projects and hands-on activities.',
-    'footer_planning': '📘 Program designed for 4th year primary students — Tunisia',
-    'footer_encouragement': 'Follow this program regularly and adapt it to your pace. <strong>Have a good school year!</strong>',
-    'print_button': '🖨️ Print program',
-    'back_to_top': 'Back to top',
-    'degree4.summary.unit1': 'Unit I',
-    'degree4.summary.unit2': 'Unit II',
-    'degree4.summary.unit3': 'Unit III',
-    'degree4.summary.unit4': 'Unit IV',
-    'degree4.summary.unit5': 'Unit V',
-    'degree4.summary.unit6': 'Unit VI',
-    'degree4.summary.unit7': 'Unit VII',
-    'degree4.summary.unit8': 'Unit VIII',
-    'degree4.summary.unit9': 'Unit IX',
-    'degree4.summary.unit10': 'Unit X',
-    'degree4.summary.comingSoon': 'Coming soon',
-    'degree4.unit1.project': 'Writing Project',
-    'degree4.unit1.projectTitle': 'Narrating an event from daily life',
-    'degree4.unit1.poetry': 'Poetry',
-    'degree4.unit1.poetryTitle': "L'école (Charpentreau) + Le nombre 1 (Coran)",
-    'degree4.unit1.reading': 'Reading',
-    'degree4.unit1.readingTitle1': 'La nouvelle élève',
-    'degree4.unit1.readingTitle2': 'Les deux amies',
-    'degree4.unit1.spelling': 'Spelling',
-    'degree4.unit1.spellingTitle': 'Words containing z-s / k-q / g-gu',
-    'degree4.unit1.grammar': 'Grammar',
-    'degree4.unit1.grammarTitle1': 'Sentence and capital letter',
-    'degree4.unit1.conjugation': 'Conjugation',
-    'degree4.unit1.conjugationTitle': 'Verb être in present tense',
-    'degree4.unit1.miniproject': 'Mini writing project',
-    'degree4.unit1.miniprojectTitle': "Presenting a text: The invitation (based on Gisela Durr and Thuswaldner Werner)",
-    'degree4.unit1.vocabulary': 'Vocabulary',
-    'degree4.unit1.vocabularyTitle': 'I play with words',
-    'degree4.unit1.comprehension': 'Text comprehension',
-    'degree4.unit1.comprehensionTitle': "Jean l'étourdi",
-    'degree4.unit1.evaluation': 'Integrated evaluation',
-    'degree4.unit1.evaluationTitle': 'Reusing skills (verb être, spelling, narration)',
-    'degree4.unit1.documentary': 'Documentary',
-    'degree4.unit1.documentaryTitle': 'My rights and duties',
-    'degree4.unit1.activity': 'Practical activity',
-    'degree4.unit1.activityTitle': 'Making the "children\'s circle" (La ronde des enfants)',
-    'degree4.unit2.project': 'Writing Project',
-    'degree4.unit2.projectTitle': 'Narrating an everyday life event',
-    'degree4.unit2.poetry': 'Poetry',
-    'degree4.unit2.poetryTitle': "L’âge de raison (Jean) + Petit bébé (Delarue-Mardrus)",
-    'degree4.unit2.reading': 'Reading',
-    'degree4.unit2.readingTitle1': 'Jeannot et sa petite sœur Annie (1)',
-    'degree4.unit2.readingTitle2': 'Jeannot et sa petite sœur Annie (2)',
-    'degree4.unit2.grammar': 'Grammar',
-    'degree4.unit2.grammarTitle1': 'Types and forms of sentences',
-    'degree4.unit2.grammarTitle2': 'Verb avoir in present tense',
-    'degree4.unit2.vocabulary': 'Vocabulary',
-    'degree4.unit2.vocabularyTitle': 'Words containing ette/elle/erre/esse - ien/ienne - ill/eil/ail',
-    'degree4.unit2.discovery': 'Discovery',
-    'degree4.unit2.discoveryTitle': 'The Duval family, family celebrations',
-    'degree4.unit2.activity': 'Practical Activity',
-    'degree4.unit2.activityTitle': 'Making a funny card (Une carte amusante)',
-    'degree4.unit3.project': 'Writing Project',
-    'degree4.unit3.projectTitle': 'Making characters speak through event narration',
-    'degree4.unit3.poetry': 'Poetry',
-    'degree4.unit3.poetryTitle': "L’homme qui te ressemble (Philombe) + Le soleil et la terre (Prévert)",
-    'degree4.unit3.reading': 'Reading',
-    'degree4.unit3.readingTitle1': 'Les lunettes',
-    'degree4.unit3.readingTitle2': 'Un petit écureuil',
-    'degree4.unit3.grammar': 'Grammar',
-    'degree4.unit3.grammarTitle1': 'Sentence groups',
-    'degree4.unit3.grammarTitle2': 'Verb aller in present tense',
-    'degree4.unit3.vocabulary': 'Vocabulary',
-    'degree4.unit3.vocabularyTitle': 'Words containing euil/ouil - gn - ph',
-    'degree4.unit3.discovery': 'Discovery',
-    'degree4.unit3.discoveryTitle': 'Our animal friends (dog, cat)',
-    'degree4.unit3.activity': 'Practical Activity',
-    'degree4.unit3.activityTitle': 'Making a cardboard dog (Un chien en carton)',
-    'degree4.unit4.project': 'Writing Project',
-    'degree4.unit4.projectTitle': 'Making characters speak through event narration',
-    'degree4.unit4.poetry': 'Poetry',
-    'degree4.unit4.poetryTitle': "Je te donne (Jacob) + On frappe (Prévert)",
-    'degree4.unit4.reading': 'Reading',
-    'degree4.unit4.readingTitle1': 'Les grenouilles',
-    'degree4.unit4.readingTitle2': 'Un tailleur fou',
-    'degree4.unit4.grammar': 'Grammar',
-    'degree4.unit4.grammarTitle1': 'Noun and article',
-    'degree4.unit4.grammarTitle2': 'Regular -er verbs',
-    'degree4.unit4.vocabulary': 'Vocabulary',
-    'degree4.unit4.vocabularyTitle': 'Words containing x - oin - ion - tion - y',
-    'degree4.unit4.discovery': 'Discovery',
-    'degree4.unit4.discoveryTitle': 'Neighborhood merchants',
-    'degree4.unit4.activity': 'Practical Activity',
-    'degree4.unit4.activityTitle': 'Drawing a neighborhood map (Le plan du quartier)',
-    'degree4.unit5.project': 'Writing Project',
-    'degree4.unit5.projectTitle': 'Writing a food or dessert recipe',
-    'degree4.unit5.poetry': 'Poetry',
-    'degree4.unit5.poetryTitle': "Bain de soleil (Prévert) + Le petit chat blanc (Roy)",
-    'degree4.unit5.reading': 'Reading',
-    'degree4.unit5.readingTitle1': 'La petite malade',
-    'degree4.unit5.readingTitle2': 'La punition',
-    'degree4.unit5.readingTitle3': 'Comment préparer une tisane',
-    'degree4.unit5.grammar': 'Grammar',
-    'degree4.unit5.grammarTitle1': 'Articles',
-    'degree4.unit5.grammarTitle2': '-ir verbs',
-    'degree4.unit5.spelling': 'Spelling',
-    'degree4.unit5.spellingTitle': 'c / ç / s - m before m, b, p',
-    'degree4.unit5.discovery': 'Discovery',
-    'degree4.unit5.discoveryTitle': 'How I grow (growth stages)',
-    'degree4.unit5.activity': 'Practical Activity',
-    'degree4.unit5.activityTitle': 'How to brush my teeth (Comment se brosser les dents)',
-    'degree4.unit6.project': 'Writing Project',
-    'degree4.unit6.projectTitle': 'Writing a food or dessert recipe',
-    'degree4.unit6.poetry': 'Poetry',
-    'degree4.unit6.poetryTitle': "Les bonbons (Topor) + J’ai trempé mon doigt (Obaldia)",
-    'degree4.unit6.reading': 'Reading',
-    'degree4.unit6.readingTitle1': 'La galette du Petit Chaperon Rouge',
-    'degree4.unit6.readingTitle2': 'Un repas à l’école',
-    'degree4.unit6.readingTitle3': 'La salade de fruits',
-    'degree4.unit6.grammar': 'Grammar',
-    'degree4.unit6.grammarTitle1': 'Simple and complex sentences',
-    'degree4.unit6.grammarTitle2': 'Verb faire',
-    'degree4.unit6.spelling': 'Spelling',
-    'degree4.unit6.spellingTitle': 'Subject-verb agreement',
-    'degree4.unit6.discovery': 'Discovery',
-    'degree4.unit6.discoveryTitle': 'Cooking tips',
-    'degree4.unit6.activity': 'Practical Activity',
-    'degree4.unit6.activityTitle': 'Preparing popcorn (POP CORN)',
-    'degree4.unit7.project': 'Writing Project',
-    'degree4.unit7.projectTitle': 'Describing a celebration or activity',
-    'degree4.unit7.poetry': 'Poetry',
-    'degree4.unit7.poetryTitle': "Faire de la musique (Dès) + Je veux rire (Moréas)",
-    'degree4.unit7.reading': 'Reading',
-    'degree4.unit7.readingTitle1': 'Josette et ses poupées',
-    'degree4.unit7.readingTitle2': 'Au parc d’attractions',
-    'degree4.unit7.readingTitle3': 'Sur la piste du cirque',
-    'degree4.unit7.grammar': 'Grammar',
-    'degree4.unit7.grammarTitle1': 'Adjective',
-    'degree4.unit7.grammarTitle2': 'Verb mettre',
-    'degree4.unit7.spelling': 'Spelling',
-    'degree4.unit7.spellingTitle': 'Adjective agreement',
-    'degree4.unit7.discovery': 'Discovery',
-    'degree4.unit7.discoveryTitle': 'Clowns (Les clowns)',
-    'degree4.unit7.activity': 'Practical Activity',
-    'degree4.unit7.activityTitle': 'Making maracas (Maracas)',
-    'degree4.unit8.project': 'Writing Project',
-    'degree4.unit8.projectTitle': 'Describing a celebration or activity',
-    'degree4.unit8.poetry': 'Poetry',
-    'degree4.unit8.poetryTitle': "Météorologie (Roy) + Une étoile (Guillevic)",
-    'degree4.unit8.reading': 'Reading',
-    'degree4.unit8.readingTitle1': 'Stéphane et la télévision',
-    'degree4.unit8.readingTitle2': 'La parabole',
-    'degree4.unit8.readingTitle3': 'Questions pour un jeune champion',
-    'degree4.unit8.grammar': 'Grammar',
-    'degree4.unit8.grammarTitle1': 'Noun phrase development',
-    'degree4.unit8.grammarTitle2': 'Verb prendre',
-    'degree4.unit8.spelling': 'Spelling',
-    'degree4.unit8.spellingTitle': 'Noun plural (s / x)',
-    'degree4.unit8.discovery': 'Discovery',
-    'degree4.unit8.discoveryTitle': 'Television',
-    'degree4.unit8.activity': 'Practical Activity',
-    'degree4.unit8.activityTitle': 'Making a cardboard TV (Téléviseur en carton)',
-    'degree4.unit9.project': 'Writing Project',
-    'degree4.unit9.projectTitle': 'Writing a famous story',
-    'degree4.unit9.poetry': 'Poetry',
-    'degree4.unit9.poetryTitle': "Conte-nous une histoire dis ! (Hugo) + D’un coup de baguette (Clausard)",
-    'degree4.unit9.reading': 'Reading',
-    'degree4.unit9.readingTitle1': 'Pinocchio (1)',
-    'degree4.unit9.readingTitle2': 'Pinocchio (2)',
-    'degree4.unit9.readingTitle3': 'Pinocchio (3)',
-    'degree4.unit9.readingTitle4': 'Pinocchio (4)',
-    'degree4.unit9.readingTitle5': 'Pinocchio (5)',
-    'degree4.unit9.readingTitle6': 'Pinocchio (6)',
-    'degree4.unit9.grammar': 'Grammar',
-    'degree4.unit9.grammarTitle1': 'Review of sentence types',
-    'degree4.unit9.grammarTitle2': 'Verb partir',
-    'degree4.unit9.spelling': 'Spelling',
-    'degree4.unit9.spellingTitle': 'Feminine form (1)',
-    'degree4.unit9.discovery': 'Discovery',
-    'degree4.unit9.discoveryTitle': 'How to prepare project portfolio (1)',
-    'degree4.unit9.activity': 'Practical Activity',
-    'degree4.unit9.activityTitle': 'Making a puppet (Un pantin)',
-    'degree4.unit10.project': 'Writing Project',
-    'degree4.unit10.projectTitle': 'Writing a famous story',
-    'degree4.unit10.poetry': 'Poetry',
-    'degree4.unit10.poetryTitle': "Conseils donnés par une sorcière (Tardieu) + Le Pélican (Desnos)",
-    'degree4.unit10.reading': 'Reading',
-    'degree4.unit10.readingTitle1': 'Le Chat Botté (1)',
-    'degree4.unit10.readingTitle2': 'Le Chat Botté (2)',
-    'degree4.unit10.readingTitle3': 'Le Chat Botté (3)',
-    'degree4.unit10.readingTitle4': 'Le Chat Botté (4)',
-    'degree4.unit10.readingTitle5': 'Le Chat Botté (5)',
-    'degree4.unit10.grammar': 'Grammar',
-    'degree4.unit10.grammarTitle1': 'Review of articles',
-    'degree4.unit10.grammarTitle2': 'Verbs être / avoir / aller',
-    'degree4.unit10.spelling': 'Spelling',
-    'degree4.unit10.spellingTitle': 'Feminine form (2)',
-    'degree4.unit10.discovery': 'Discovery',
-    'degree4.unit10.discoveryTitle': 'How to prepare project portfolio (2)',
-    'degree4.unit10.activity': 'Practical Activity',
-    'degree4.unit10.activityTitle': 'Making a brochure (Un dépliant)'
-  },
-  ar: {
-    'back_link': '← العودة إلى الرئيسية',
-    'degree4.title': 'السنة الرابعة ابتدائي',
-    'degree4.subtitle': 'البرنامج الرسمي التونسي – 10 وحدات',
-    'objectives_heading': '🎯 أهداف السنة',
-    'objectives_1': 'إتقان القراءة والكتابة والتعبير الشفهي.',
-    'objectives_2': 'اكتساب أساسيات القواعد والتصريف والإملاء.',
-    'objectives_3': 'تنمية المفردات وفهم النصوص.',
-    'objectives_4': 'إنجاز مشاريع كتابية وأنشطة يدوية.',
-    'footer_planning': '📘 برنامج موجّه لتلاميذ السنة الرابعة ابتدائي — تونس',
-    'footer_encouragement': 'اتبع هذا البرنامج بانتظام وعدّله حسب وتيرتك. <strong>سنة دراسية موفقة!</strong>',
-    'print_button': '🖨️ طباعة البرنامج',
-    'back_to_top': 'العودة إلى الأعلى',
-    'degree4.summary.unit1': 'الوحدة الأولى',
-    'degree4.summary.unit2': 'الوحدة الثانية',
-    'degree4.summary.unit3': 'الوحدة الثالثة',
-    'degree4.summary.unit4': 'الوحدة الرابعة',
-    'degree4.summary.unit5': 'الوحدة الخامسة',
-    'degree4.summary.unit6': 'الوحدة السادسة',
-    'degree4.summary.unit7': 'الوحدة السابعة',
-    'degree4.summary.unit8': 'الوحدة الثامنة',
-    'degree4.summary.unit9': 'الوحدة التاسعة',
-    'degree4.summary.unit10': 'الوحدة العاشرة',
-    'degree4.summary.comingSoon': 'قريباً',
-    'degree4.unit1.project': 'المشروع الكتابي',
-    'degree4.unit1.projectTitle': 'رواية حدث من الحياة اليومية',
-    'degree4.unit1.poetry': 'القصيدة',
-    'degree4.unit1.poetryTitle': "L'école (Charpentreau) + Le nombre 1 (Coran)",
-    'degree4.unit1.reading': 'القراءة',
-    'degree4.unit1.readingTitle1': 'La nouvelle élève',
-    'degree4.unit1.readingTitle2': 'Les deux amies',
-    'degree4.unit1.spelling': 'الإملاء',
-    'degree4.unit1.spellingTitle': 'كلمات تحتوي على z-s / k-q / g-gu',
-    'degree4.unit1.grammar': 'القواعد',
-    'degree4.unit1.grammarTitle1': 'الجملة والحرف الكبير',
-    'degree4.unit1.conjugation': 'التصريف',
-    'degree4.unit1.conjugationTitle': 'فعل être في المضارع',
-    'degree4.unit1.miniproject': 'مشروع كتابي مصغر',
-    'degree4.unit1.miniprojectTitle': "تقديم نص: الدعوة (بناءً على Gisela Durr و Thuswaldner Werner)",
-    'degree4.unit1.vocabulary': 'المفردات',
-    'degree4.unit1.vocabularyTitle': 'ألعب بالكلمات',
-    'degree4.unit1.comprehension': 'فهم النص',
-    'degree4.unit1.comprehensionTitle': "Jean l'étourdi",
-    'degree4.unit1.evaluation': 'التقييم المتكامل',
-    'degree4.unit1.evaluationTitle': 'إعادة استخدام المهارات (فعل être، الإملاء، السرد)',
-    'degree4.unit1.documentary': 'وثائقي',
-    'degree4.unit1.documentaryTitle': 'حقوقي وواجباتي',
-    'degree4.unit1.activity': 'النشاط العملي',
-    'degree4.unit1.activityTitle': 'صنع "دائرة الأطفال" (La ronde des enfants)',
-    'degree4.unit2.project': 'المشروع الكتابي',
-    'degree4.unit2.projectTitle': 'رواية حدث من الحياة اليومية',
-    'degree4.unit2.poetry': 'القصيدة',
-    'degree4.unit2.poetryTitle': "L’âge de raison (Jean) + Petit bébé (Delarue-Mardrus)",
-    'degree4.unit2.reading': 'القراءة',
-    'degree4.unit2.readingTitle1': 'Jeannot et sa petite sœur Annie (1)',
-    'degree4.unit2.readingTitle2': 'Jeannot et sa petite sœur Annie (2)',
-    'degree4.unit2.grammar': 'القواعد',
-    'degree4.unit2.grammarTitle1': 'أنواع وأشكال الجمل',
-    'degree4.unit2.grammarTitle2': 'فعل avoir في المضارع',
-    'degree4.unit2.vocabulary': 'المفردات',
-    'degree4.unit2.vocabularyTitle': 'كلمات تحتوي على ette/elle/erre/esse - ien/ienne - ill/eil/ail',
-    'degree4.unit2.discovery': 'الاكتشاف',
-    'degree4.unit2.discoveryTitle': 'العائلة Duval، أعياد العائلة',
-    'degree4.unit2.activity': 'النشاط العملي',
-    'degree4.unit2.activityTitle': 'صنع بطاقة مضحكة (Une carte amusante)',
-    'degree4.unit3.project': 'المشروع الكتابي',
-    'degree4.unit3.projectTitle': 'جعل الشخصيات تتحدث من خلال رواية حدث',
-    'degree4.unit3.poetry': 'القصيدة',
-    'degree4.unit3.poetryTitle': "L’homme qui te ressemble (Philombe) + Le soleil et la terre (Prévert)",
-    'degree4.unit3.reading': 'القراءة',
-    'degree4.unit3.readingTitle1': 'Les lunettes',
-    'degree4.unit3.readingTitle2': 'Un petit écureuil',
-    'degree4.unit3.grammar': 'القواعد',
-    'degree4.unit3.grammarTitle1': 'مجموعي الجملة',
-    'degree4.unit3.grammarTitle2': 'فعل aller في المضارع',
-    'degree4.unit3.vocabulary': 'المفردات',
-    'degree4.unit3.vocabularyTitle': 'كلمات تحتوي على euil/ouil - gn - ph',
-    'degree4.unit3.discovery': 'الاكتشاف',
-    'degree4.unit3.discoveryTitle': 'أصدقاؤنا الحيوانات (الكلب، القط)',
-    'degree4.unit3.activity': 'النشاط العملي',
-    'degree4.unit3.activityTitle': 'صنع كلب من الورق المقوى (Un chien en carton)',
-    'degree4.unit4.project': 'المشروع الكتابي',
-    'degree4.unit4.projectTitle': 'جعل الشخصيات تتحدث من خلال رواية حدث',
-    'degree4.unit4.poetry': 'القصيدة',
-    'degree4.unit4.poetryTitle': "Je te donne (Jacob) + On frappe (Prévert)",
-    'degree4.unit4.reading': 'القراءة',
-    'degree4.unit4.readingTitle1': 'Les grenouilles',
-    'degree4.unit4.readingTitle2': 'Un tailleur fou',
-    'degree4.unit4.grammar': 'القواعد',
-    'degree4.unit4.grammarTitle1': 'الاسم وأداة التعريف',
-    'degree4.unit4.grammarTitle2': 'الأفعال المنتظمة في -er',
-    'degree4.unit4.vocabulary': 'المفردات',
-    'degree4.unit4.vocabularyTitle': 'كلمات تحتوي على x - oin - ion - tion - y',
-    'degree4.unit4.discovery': 'الاكتشاف',
-    'degree4.unit4.discoveryTitle': 'تجار الحي',
-    'degree4.unit4.activity': 'النشاط العملي',
-    'degree4.unit4.activityTitle': 'رسم خريطة الحي (Le plan du quartier)',
-    'degree4.unit5.project': 'المشروع الكتابي',
-    'degree4.unit5.projectTitle': 'كتابة وصفة طعام أو حلوى',
-    'degree4.unit5.poetry': 'القصيدة',
-    'degree4.unit5.poetryTitle': "Bain de soleil (Prévert) + Le petit chat blanc (Roy)",
-    'degree4.unit5.reading': 'القراءة',
-    'degree4.unit5.readingTitle1': 'La petite malade',
-    'degree4.unit5.readingTitle2': 'La punition',
-    'degree4.unit5.readingTitle3': 'Comment préparer une tisane',
-    'degree4.unit5.grammar': 'القواعد',
-    'degree4.unit5.grammarTitle1': 'أدوات التعريف',
-    'degree4.unit5.grammarTitle2': 'الأفعال في -ir',
-    'degree4.unit5.spelling': 'الإملاء',
-    'degree4.unit5.spellingTitle': 'c / ç / s - m قبل m, b, p',
-    'degree4.unit5.discovery': 'الاكتشاف',
-    'degree4.unit5.discoveryTitle': 'كيف أكبر (مراحل النمو)',
-    'degree4.unit5.activity': 'النشاط العملي',
-    'degree4.unit5.activityTitle': 'كيف أنظف أسناني (Comment se brosser les dents)',
-    'degree4.unit6.project': 'المشروع الكتابي',
-    'degree4.unit6.projectTitle': 'كتابة وصفة طعام أو حلوى',
-    'degree4.unit6.poetry': 'القصيدة',
-    'degree4.unit6.poetryTitle': "Les bonbons (Topor) + J’ai trempé mon doigt (Obaldia)",
-    'degree4.unit6.reading': 'القراءة',
-    'degree4.unit6.readingTitle1': 'La galette du Petit Chaperon Rouge',
-    'degree4.unit6.readingTitle2': 'Un repas à l’école',
-    'degree4.unit6.readingTitle3': 'La salade de fruits',
-    'degree4.unit6.grammar': 'القواعد',
-    'degree4.unit6.grammarTitle1': 'الجملة البسيطة والمطورة',
-    'degree4.unit6.grammarTitle2': 'فعل faire',
-    'degree4.unit6.spelling': 'الإملاء',
-    'degree4.unit6.spellingTitle': 'مطابقة الفاعل والفعل',
-    'degree4.unit6.discovery': 'الاكتشاف',
-    'degree4.unit6.discoveryTitle': 'نصائح للطبخ',
-    'degree4.unit6.activity': 'النشاط العملي',
-    'degree4.unit6.activityTitle': 'تحضير الفشار (POP CORN)',
-    'degree4.unit7.project': 'المشروع الكتابي',
-    'degree4.unit7.projectTitle': 'وصف عيد أو نشاط',
-    'degree4.unit7.poetry': 'القصيدة',
-    'degree4.unit7.poetryTitle': "Faire de la musique (Dès) + Je veux rire (Moréas)",
-    'degree4.unit7.reading': 'القراءة',
-    'degree4.unit7.readingTitle1': 'Josette et ses poupées',
-    'degree4.unit7.readingTitle2': 'Au parc d’attractions',
-    'degree4.unit7.readingTitle3': 'Sur la piste du cirque',
-    'degree4.unit7.grammar': 'القواعد',
-    'degree4.unit7.grammarTitle1': 'الصفة النعتية',
-    'degree4.unit7.grammarTitle2': 'فعل mettre',
-    'degree4.unit7.spelling': 'الإملاء',
-    'degree4.unit7.spellingTitle': 'مطابقة الصفة',
-    'degree4.unit7.discovery': 'الاكتشاف',
-    'degree4.unit7.discoveryTitle': 'المهرجون (Les clowns)',
-    'degree4.unit7.activity': 'النشاط العملي',
-    'degree4.unit7.activityTitle': 'صنع الماراكاس (Maracas)',
-    'degree4.unit8.project': 'المشروع الكتابي',
-    'degree4.unit8.projectTitle': 'وصف عيد أو نشاط',
-    'degree4.unit8.poetry': 'القصيدة',
-    'degree4.unit8.poetryTitle': "Météorologie (Roy) + Une étoile (Guillevic)",
-    'degree4.unit8.reading': 'القراءة',
-    'degree4.unit8.readingTitle1': 'Stéphane et la télévision',
-    'degree4.unit8.readingTitle2': 'La parabole',
-    'degree4.unit8.readingTitle3': 'Questions pour un jeune champion',
-    'degree4.unit8.grammar': 'القواعد',
-    'degree4.unit8.grammarTitle1': 'تطوير مجموعة الاسم',
-    'degree4.unit8.grammarTitle2': 'فعل prendre',
-    'degree4.unit8.spelling': 'الإملاء',
-    'degree4.unit8.spellingTitle': 'جمع الأسماء (s / x)',
-    'degree4.unit8.discovery': 'الاكتشاف',
-    'degree4.unit8.discoveryTitle': 'التلفاز',
-    'degree4.unit8.activity': 'النشاط العملي',
-    'degree4.unit8.activityTitle': 'صنع تلفاز من الورق المقوى (Téléviseur en carton)',
-    'degree4.unit9.project': 'المشروع الكتابي',
-    'degree4.unit9.projectTitle': 'كتابة قصة مشهورة',
-    'degree4.unit9.poetry': 'القصيدة',
-    'degree4.unit9.poetryTitle': "Conte-nous une histoire dis ! (Hugo) + D’un coup de baguette (Clausard)",
-    'degree4.unit9.reading': 'القراءة',
-    'degree4.unit9.readingTitle1': 'Pinocchio (1)',
-    'degree4.unit9.readingTitle2': 'Pinocchio (2)',
-    'degree4.unit9.readingTitle3': 'Pinocchio (3)',
-    'degree4.unit9.readingTitle4': 'Pinocchio (4)',
-    'degree4.unit9.readingTitle5': 'Pinocchio (5)',
-    'degree4.unit9.readingTitle6': 'Pinocchio (6)',
-    'degree4.unit9.grammar': 'القواعد',
-    'degree4.unit9.grammarTitle1': 'مراجعة أنواع الجمل',
-    'degree4.unit9.grammarTitle2': 'فعل partir',
-    'degree4.unit9.spelling': 'الإملاء',
-    'degree4.unit9.spellingTitle': 'المؤنث (1)',
-    'degree4.unit9.discovery': 'الاكتشاف',
-    'degree4.unit9.discoveryTitle': 'كيفية إعداد مجموعة المشاريع (1)',
-    'degree4.unit9.activity': 'النشاط العملي',
-    'degree4.unit9.activityTitle': 'صنع دمية (Un pantin)',
-    'degree4.unit10.project': 'المشروع الكتابي',
-    'degree4.unit10.projectTitle': 'كتابة قصة مشهورة',
-    'degree4.unit10.poetry': 'القصيدة',
-    'degree4.unit10.poetryTitle': "Conseils donnés par une sorcière (Tardieu) + Le Pélican (Desnos)",
-    'degree4.unit10.reading': 'القراءة',
-    'degree4.unit10.readingTitle1': 'Le Chat Botté (1)',
-    'degree4.unit10.readingTitle2': 'Le Chat Botté (2)',
-    'degree4.unit10.readingTitle3': 'Le Chat Botté (3)',
-    'degree4.unit10.readingTitle4': 'Le Chat Botté (4)',
-    'degree4.unit10.readingTitle5': 'Le Chat Botté (5)',
-    'degree4.unit10.grammar': 'القواعد',
-    'degree4.unit10.grammarTitle1': 'مراجعة أدوات التعريف',
-    'degree4.unit10.grammarTitle2': 'أفعال être / avoir / aller',
-    'degree4.unit10.spelling': 'الإملاء',
-    'degree4.unit10.spellingTitle': 'المؤنث (2)',
-    'degree4.unit10.discovery': 'الاكتشاف',
-    'degree4.unit10.discoveryTitle': 'كيفية إعداد مجموعة المشاريع (2)',
-    'degree4.unit10.activity': 'النشاط العملي',
-    'degree4.unit10.activityTitle': 'صنع نشرة (Un dépliant)'
-  }
-};
-```
-## 3. Lesson type per file
-```text
-Unit 1
-degree4unit1lesson1.html → Projet d'écriture
-degree4unit1lesson2.html → Poésie
-degree4unit1lesson3.html → Lecture
-degree4unit1lesson4.html → Lecture
-degree4unit1lesson5.html → Orthographe
-degree4unit1lesson6.html → Grammaire
-degree4unit1lesson7.html → Conjugaison
-degree4unit1lesson8.html → Mini-projet d'écriture
-degree4unit1lesson9.html → Vocabulaire
-degree4unit1lesson10.html → Compréhension de texte
-degree4unit1lesson11.html → Évaluation intégrée
-degree4unit1lesson12.html → Documentaire
-degree4unit1lesson13.html → Activité pratique
-Unit 2
-degree4unit2lesson1.html → Projet d'écriture
-degree4unit2lesson2.html → Poésie
-degree4unit2lesson3.html → Lecture
-degree4unit2lesson4.html → Lecture
-degree4unit2lesson5.html → Grammaire
-degree4unit2lesson6.html → Grammaire
-degree4unit2lesson7.html → Vocabulaire
-degree4unit2lesson8.html → Découverte
-degree4unit2lesson9.html → Activité pratique
-Unit 3
-degree4unit3lesson1.html → Projet d'écriture
-degree4unit3lesson2.html → Poésie
-degree4unit3lesson3.html → Lecture
-degree4unit3lesson4.html → Lecture
-degree4unit3lesson5.html → Grammaire
-degree4unit3lesson6.html → Grammaire
-degree4unit3lesson7.html → Vocabulaire
-degree4unit3lesson8.html → Découverte
-degree4unit3lesson9.html → Activité pratique
-Unit 4
-degree4unit4lesson1.html → Projet d'écriture
-degree4unit4lesson2.html → Poésie
-degree4unit4lesson3.html → Lecture
-degree4unit4lesson4.html → Lecture
-degree4unit4lesson5.html → Grammaire
-degree4unit4lesson6.html → Grammaire
-degree4unit4lesson7.html → Vocabulaire
-degree4unit4lesson8.html → Découverte
-degree4unit4lesson9.html → Activité pratique
-Unit 5
-degree4unit5lesson1.html → Projet d'écriture
-degree4unit5lesson2.html → Poésie
-degree4unit5lesson3.html → Lecture
-degree4unit5lesson4.html → Lecture
-degree4unit5lesson5.html → Lecture
-degree4unit5lesson6.html → Grammaire
-degree4unit5lesson7.html → Grammaire
-degree4unit5lesson8.html → Orthographe
-degree4unit5lesson9.html → Découverte
-degree4unit5lesson10.html → Activité pratique
-Unit 6
-degree4unit6lesson1.html → Projet d'écriture
-degree4unit6lesson2.html → Poésie
-degree4unit6lesson3.html → Lecture
-degree4unit6lesson4.html → Lecture
-degree4unit6lesson5.html → Lecture
-degree4unit6lesson6.html → Grammaire
-degree4unit6lesson7.html → Grammaire
-degree4unit6lesson8.html → Orthographe
-degree4unit6lesson9.html → Découverte
-degree4unit6lesson10.html → Activité pratique
-Unit 7
-degree4unit7lesson1.html → Projet d'écriture
-degree4unit7lesson2.html → Poésie
-degree4unit7lesson3.html → Lecture
-degree4unit7lesson4.html → Lecture
-degree4unit7lesson5.html → Lecture
-degree4unit7lesson6.html → Grammaire
-degree4unit7lesson7.html → Grammaire
-degree4unit7lesson8.html → Orthographe
-degree4unit7lesson9.html → Découverte
-degree4unit7lesson10.html → Activité pratique
-Unit 8
-degree4unit8lesson1.html → Projet d'écriture
-degree4unit8lesson2.html → Poésie
-degree4unit8lesson3.html → Lecture
-degree4unit8lesson4.html → Lecture
-degree4unit8lesson5.html → Lecture
-degree4unit8lesson6.html → Grammaire
-degree4unit8lesson7.html → Grammaire
-degree4unit8lesson8.html → Orthographe
-degree4unit8lesson9.html → Découverte
-degree4unit8lesson10.html → Activité pratique
-Unit 9
-degree4unit9lesson1.html → Projet d'écriture
-degree4unit9lesson2.html → Poésie
-degree4unit9lesson3.html → Lecture
-degree4unit9lesson4.html → Lecture
-degree4unit9lesson5.html → Lecture
-degree4unit9lesson6.html → Lecture
-degree4unit9lesson7.html → Lecture
-degree4unit9lesson8.html → Lecture
-degree4unit9lesson9.html → Grammaire
-degree4unit9lesson10.html → Grammaire
-degree4unit9lesson11.html → Orthographe
-degree4unit9lesson12.html → Découverte
-degree4unit9lesson13.html → Activité pratique
-Unit 10
-degree4unit10lesson1.html → Projet d'écriture
-degree4unit10lesson2.html → Poésie
-degree4unit10lesson3.html → Lecture
-degree4unit10lesson4.html → Lecture
-degree4unit10lesson5.html → Lecture
-degree4unit10lesson6.html → Lecture
-degree4unit10lesson7.html → Lecture
-degree4unit10lesson8.html → Grammaire
-degree4unit10lesson9.html → Grammaire
-degree4unit10lesson10.html → Orthographe
-degree4unit10lesson11.html → Découverte
-degree4unit10lesson12.html → Activité pratique
- -->
