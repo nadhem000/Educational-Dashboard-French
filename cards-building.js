@@ -1,4 +1,4 @@
-// cards-building.js – version 5 (with degree4 link, error handling, accessibility) – App namespace
+// cards-building.js – version 5.1 (section translations, degree4 link, error handling, accessibility) – App namespace
 (function() {
   // 1. Store French translations locally so we can use them immediately
   const fr = {
@@ -14,6 +14,12 @@
     'card.secondaire2.title': '2ᵉ année secondaire',
     'card.secondaire3.title': '3ᵉ année secondaire',
     'card.secondaire4.title': '4ᵉ année secondaire (Bac)',
+    'section_lettres': 'Section Lettres',
+    'section_sciences': 'Section Sciences',
+    'section_economie': 'Section Économie',
+    'section_informatique': 'Section Informatique',
+    'section_mathematiques': 'Section Mathématiques',
+    'section_technique': 'Section Technique',
     'card.revision.title': '📖 Révision générale',
     'coming_soon': '⏳ Contenu à venir',
     'sections_available': 'Sections disponibles (à venir) :',
@@ -22,6 +28,7 @@
     'revision_link': 'Accéder au programme →',
     'cards_error': '❌ Impossible de charger les cartes. Veuillez réessayer.'
   };
+
   // 2. Register translations for all languages
   App.addI18nTranslations({
     fr: fr,
@@ -29,15 +36,21 @@
       'card.primaire4.title': '4th grade',
       'card.primaire4.desc': 'Complete 4th year primary program with 10 units.',
       'card.primaire4.link': 'Access the program →',
-      'card.primaire5.title': '5th grade',
-      'card.primaire6.title': '6th grade',
-      'card.primaire7.title': '7th grade',
-      'card.primaire8.title': '8th grade',
-      'card.primaire9.title': '9th grade',
-      'card.secondaire1.title': '10th grade',
-      'card.secondaire2.title': '11th grade',
-      'card.secondaire3.title': '12th grade',
-      'card.secondaire4.title': '12th grade (Bac)',
+      'card.primaire5.title': '5th basic grade',
+      'card.primaire6.title': '6th basic grade',
+      'card.primaire7.title': '7th basic grade',
+      'card.primaire8.title': '8th basic grade',
+      'card.primaire9.title': '9th basic grade',
+      'card.secondaire1.title': '1st secondary grade',
+      'card.secondaire2.title': '2nd secondary grade',
+      'card.secondaire3.title': '3rd secondary grade',
+      'card.secondaire4.title': '4th secondary grade (Bac)',
+      'section_lettres': 'Literature Section',
+      'section_sciences': 'Science Section',
+      'section_economie': 'Economics Section',
+      'section_informatique': 'Computer Science Section',
+      'section_mathematiques': 'Mathematics Section',
+      'section_technique': 'Technical Section',
       'card.revision.title': '📖 General Review',
       'coming_soon': '⏳ Coming soon',
       'sections_available': 'Available sections (coming soon):',
@@ -59,6 +72,12 @@
       'card.secondaire2.title': 'الثانية ثانوي',
       'card.secondaire3.title': 'الثالثة ثانوي',
       'card.secondaire4.title': 'البكالوريا (السنة الرابعة)',
+      'section_lettres': 'شعبة الآداب',
+      'section_sciences': 'شعبة العلوم',
+      'section_economie': 'شعبة الاقتصاد والتصرف',
+      'section_informatique': 'شعبة الإعلامية',
+      'section_mathematiques': 'شعبة الرياضيات',
+      'section_technique': 'شعبة التقنية',
       'card.revision.title': '📖 مراجعة عامة',
       'coming_soon': '⏳ قريباً',
       'sections_available': 'الأقسام المتاحة (قريباً):',
@@ -68,7 +87,8 @@
       'cards_error': '❌ تعذّر تحميل البطاقات. يرجى المحاولة مرة أخرى.'
     }
   });
-  // Card definitions
+
+  // Card definitions – sections now use translation keys
   const cardsData = [
     { id: 'primaire4', titleKey: 'card.primaire4.title', type: 'degree', link: 'degree4.html', descKey: 'card.primaire4.desc', linkKey: 'card.primaire4.link' },
     { id: 'primaire5', titleKey: 'card.primaire5.title', type: 'coming' },
@@ -77,18 +97,19 @@
     { id: 'primaire8', titleKey: 'card.primaire8.title', type: 'coming' },
     { id: 'primaire9', titleKey: 'card.primaire9.title', type: 'coming' },
     { id: 'secondaire1', titleKey: 'card.secondaire1.title', type: 'coming' },
-    { id: 'secondaire2', titleKey: 'card.secondaire2.title', type: 'secondary', sections: ['Section Lettres', 'Section Sciences', 'Section Économie'] },
-    { id: 'secondaire3', titleKey: 'card.secondaire3.title', type: 'secondary', sections: ['Section Lettres', 'Section Sciences', 'Section Mathématiques'] },
-    { id: 'secondaire4', titleKey: 'card.secondaire4.title', type: 'secondary', sections: ['Section Lettres', 'Section Sciences', 'Section Techniques'] },
+    { id: 'secondaire2', titleKey: 'card.secondaire2.title', type: 'secondary', sections: ['section_lettres', 'section_sciences', 'section_economie', 'section_informatique'] },
+    { id: 'secondaire3', titleKey: 'card.secondaire3.title', type: 'secondary', sections: ['section_lettres', 'section_sciences', 'section_mathematiques', 'section_technique', 'section_informatique'] },
+    { id: 'secondaire4', titleKey: 'card.secondaire4.title', type: 'secondary', sections: ['section_lettres', 'section_sciences', 'section_mathematiques', 'section_technique', 'section_informatique'] },
     { id: 'revision', titleKey: 'card.revision.title', type: 'revision', link: 'revision.html' }
   ];
+
   const grid = document.getElementById('cardGrid');
   if (!grid) return;
   grid.innerHTML = '';
+
   try {
     cardsData.forEach(card => {
       const cardEl = document.createElement('div');
-      // Treat 'degree' like 'revision' for styling and interactivity
       cardEl.className = 'card' + (card.type === 'revision' || card.type === 'degree' ? ' revision' : '');
       if (card.type === 'revision' || card.type === 'degree') {
         cardEl.setAttribute('tabindex', '0');
@@ -96,13 +117,16 @@
         cardEl.setAttribute('aria-disabled', 'true');
         cardEl.setAttribute('tabindex', '-1');
       }
+
       const header = document.createElement('div');
       header.className = 'card-header';
       header.setAttribute('data-i18n', card.titleKey);
       header.innerHTML = (card.type === 'revision' ? '⭐ ' : '📘 ') + (fr[card.titleKey] || card.titleKey);
       cardEl.appendChild(header);
+
       const body = document.createElement('div');
       body.className = 'card-body';
+
       if (card.type === 'coming') {
         const span = document.createElement('span');
         span.className = 'coming-soon';
@@ -114,30 +138,43 @@
         p.setAttribute('data-i18n', 'sections_available');
         p.innerHTML = fr['sections_available'];
         body.appendChild(p);
+
         const ul = document.createElement('ul');
         ul.className = 'sections-list';
-        card.sections.forEach(sec => {
+        card.sections.forEach(secKey => {
           const li = document.createElement('li');
-          li.textContent = sec + ' (prochainement)';
-          li.setAttribute('data-i18n', 'soon');
+
+          // Section name span
+          const secSpan = document.createElement('span');
+          secSpan.setAttribute('data-i18n', secKey);
+          secSpan.textContent = fr[secKey];
+
+          // Suffix span (e.g., " (prochainement)")
+          const suffixSpan = document.createElement('span');
+          suffixSpan.setAttribute('data-i18n', 'soon');
+          suffixSpan.textContent = fr['soon'];
+
+          li.appendChild(secSpan);
+          li.appendChild(suffixSpan);
           ul.appendChild(li);
         });
         body.appendChild(ul);
       } else if (card.type === 'revision' || card.type === 'degree') {
-        // Use custom description and link keys for degree, fallback to revision defaults
         const descKey = card.descKey || 'revision_desc';
         const linkKey = card.linkKey || 'revision_link';
         body.innerHTML = `<p data-i18n="${descKey}">${fr[descKey]}</p>
                         <a href="${card.link}" data-i18n="${linkKey}">${fr[linkKey]}</a>`;
       }
+
       cardEl.appendChild(body);
       grid.appendChild(cardEl);
     });
+
     if (typeof App.makeBilingual === 'function') {
       App.makeBilingual(grid);
     }
     App.applyTranslations();
-    App.logToDB('actions', { type: 'info', message: 'cards-building.js v5 loaded and cards rendered' });
+    App.logToDB('actions', { type: 'info', message: 'cards-building.js v5.1 loaded and cards rendered' });
   } catch (error) {
     grid.innerHTML = `<div class="card"><div class="card-body" data-i18n="cards_error">${fr['cards_error']}</div></div>`;
     App.logToDB('errors', { type: 'error', message: 'cards-building.js failed: ' + error.message });

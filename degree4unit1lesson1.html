@@ -294,22 +294,23 @@
             font-size: 1.05rem;
             margin-bottom: 0.6rem;
         }
-        .degree4-lesson-poetry-vocab-exercise ol {
-            list-style: decimal;
-            padding-left: 1.5rem;
+        .degree4-lesson-poetry-vocab-exercise p {
+            margin: 0.5rem 0 0.2rem;
         }
-        .degree4-lesson-poetry-vocab-exercise li {
-            margin-bottom: 0.5rem;
+        .degree4-lesson-poetry-radio-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            margin: 0.3rem 0 0.8rem 1.2rem;
         }
-        .degree4-lesson-poetry-vocab-exercise input[type="text"] {
-            width: 100%;
-            padding: 0.4rem 0.6rem;
-            border: 1px solid var(--degree4-lesson-poetry-border);
-            border-radius: 4px;
-            background: var(--degree4-lesson-poetry-card);
-            color: var(--degree4-lesson-poetry-text);
-            font-family: inherit;
-            font-size: 0.9rem;
+        .degree4-lesson-poetry-radio-options label {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            cursor: pointer;
+        }
+        .degree4-lesson-poetry-radio-options input[type="radio"] {
+            accent-color: var(--degree4-lesson-poetry-accent);
         }
         .degree4-lesson-poetry-answer-key {
             display: none;
@@ -495,7 +496,6 @@
             <!-- Two‑column: poem text left, slideshow right -->
             <div class="degree4-lesson-poetry-two-col">
                 <div class="col">
-                    <!-- Poem text -->
                     <div class="degree4-lesson-poetry-text no-bilingual" data-i18n="poem1_text">
                         Dans notre rue,
                         il y a des autos,
@@ -512,7 +512,6 @@
                     </div>
                 </div>
                 <div class="col col-slideshow">
-                    <!-- Slideshow -->
                     <div class="degree4-lesson-poetry-slideshow" id="slideshow1">
                         <div class="slides">
                             <div class="slide active"><img src="assets4/images/degree4/unit1/lesson1/collection1/1.jpg" alt="École 1"></div>
@@ -538,27 +537,40 @@
                 </ul>
             </div>
 
-            <!-- Basic vocabulary exercise (with correction key) -->
+            <!-- Basic vocabulary exercise (radio buttons) -->
             <div class="degree4-lesson-poetry-vocab-exercise">
                 <h4 data-i18n="vocab_exercise_title">✏️ Petit exercice de vocabulaire</h4>
-                <ol>
-                    <li><span data-i18n="vocab_q1">Que signifie « s'affolent » ?</span>
-                        <input type="text" id="vocab1_q1" placeholder="...">
-                    </li>
-                    <li><span data-i18n="vocab_q2">Complétez : Un grand ___________ se trouve dans la rue.</span>
-                        <input type="text" id="vocab1_q2" placeholder="...">
-                    </li>
-                    <li><span data-i18n="vocab_q3">Que fait le cœur ? Il ___________ .</span>
-                        <input type="text" id="vocab1_q3" placeholder="...">
-                    </li>
-                </ol>
-                <button class="degree4-lesson-poetry-btn" onclick="toggleCorrection('vocab1Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+
+                <p data-i18n="vocab_q1">Que signifie « s'affolent » ?</p>
+                <div class="degree4-lesson-poetry-radio-options">
+                    <label><input type="radio" name="vocab1_q1" value="a"> Ils se précipitent</label>
+                    <label><input type="radio" name="vocab1_q1" value="b"> Ils chantent</label>
+                    <label><input type="radio" name="vocab1_q1" value="c"> Ils dorment</label>
+                </div>
+
+                <p data-i18n="vocab_q2">Complétez : Un grand ___________ se trouve dans la rue.</p>
+                <div class="degree4-lesson-poetry-radio-options">
+                    <label><input type="radio" name="vocab1_q2" value="a"> magasin</label>
+                    <label><input type="radio" name="vocab1_q2" value="b"> oiseau</label>
+                    <label><input type="radio" name="vocab1_q2" value="c"> arbre</label>
+                </div>
+
+                <p data-i18n="vocab_q3">Que fait le cœur ? Il ___________ .</p>
+                <div class="degree4-lesson-poetry-radio-options">
+                    <label><input type="radio" name="vocab1_q3" value="a"> bat</label>
+                    <label><input type="radio" name="vocab1_q3" value="b"> vole</label>
+                    <label><input type="radio" name="vocab1_q3" value="c"> nage</label>
+                </div>
+
+                <button class="degree4-lesson-poetry-btn" onclick="checkVocabExercise(1)" data-i18n="btn_correction">🔍 Voir la correction</button>
                 <div id="vocab1Key" class="degree4-lesson-poetry-answer-key">
                     <strong>Correction :</strong><br>
-                    a) se précipitent, paniquent<br>
+                    a) Ils se précipitent<br>
                     b) magasin<br>
                     c) bat
                 </div>
+                <div id="vocab1Feedback" class="degree4-lesson-poetry-feedback"></div>
+
                 <div class="degree4-lesson-poetry-self-assess">
                     <span data-i18n="self_assess_question">Ma réponse est :</span>
                     <label><input type="radio" name="self_vocab1" value="correct" data-i18n="self_correct"> Correcte</label>
@@ -605,7 +617,6 @@
             <!-- Two‑column: slideshow left, poem text right (inverse) -->
             <div class="degree4-lesson-poetry-two-col">
                 <div class="col col-slideshow">
-                    <!-- Slideshow -->
                     <div class="degree4-lesson-poetry-slideshow" id="slideshow2">
                         <div class="slides">
                             <div class="slide active"><img src="assets4/images/degree4/unit1/lesson1/collection2/1.jpg" alt="Nombre 1"></div>
@@ -617,7 +628,6 @@
                     </div>
                 </div>
                 <div class="col">
-                    <!-- Poem text -->
                     <div class="degree4-lesson-poetry-text no-bilingual" data-i18n="poem2_text">
                         Un jour, 1 voulut
                         Jouer au cerceau
@@ -654,27 +664,40 @@
                 </ul>
             </div>
 
-            <!-- Basic vocabulary exercise (with correction key) -->
+            <!-- Basic vocabulary exercise (radio buttons) -->
             <div class="degree4-lesson-poetry-vocab-exercise">
                 <h4 data-i18n="vocab_exercise_title">✏️ Petit exercice de vocabulaire</h4>
-                <ol>
-                    <li><span data-i18n="vocab2_q1">Que signifie « voulut » ?</span>
-                        <input type="text" id="vocab2_q1" placeholder="...">
-                    </li>
-                    <li><span data-i18n="vocab2_q2">Un ___________ est un cercle ou un anneau.</span>
-                        <input type="text" id="vocab2_q2" placeholder="...">
-                    </li>
-                    <li><span data-i18n="vocab2_q3">« Perdre haleine » signifie perdre le ___________ .</span>
-                        <input type="text" id="vocab2_q3" placeholder="...">
-                    </li>
-                </ol>
-                <button class="degree4-lesson-poetry-btn" onclick="toggleCorrection('vocab2Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+
+                <p data-i18n="vocab2_q1">Que signifie « voulut » ?</p>
+                <div class="degree4-lesson-poetry-radio-options">
+                    <label><input type="radio" name="vocab2_q1" value="a"> a voulu</label>
+                    <label><input type="radio" name="vocab2_q1" value="b"> a couru</label>
+                    <label><input type="radio" name="vocab2_q1" value="c"> a dormi</label>
+                </div>
+
+                <p data-i18n="vocab2_q2">Un ___________ est un cercle ou un anneau.</p>
+                <div class="degree4-lesson-poetry-radio-options">
+                    <label><input type="radio" name="vocab2_q2" value="a"> cerceau</label>
+                    <label><input type="radio" name="vocab2_q2" value="b"> ballon</label>
+                    <label><input type="radio" name="vocab2_q2" value="c"> cartable</label>
+                </div>
+
+                <p data-i18n="vocab2_q3">« Perdre haleine » signifie perdre le ___________ .</p>
+                <div class="degree4-lesson-poetry-radio-options">
+                    <label><input type="radio" name="vocab2_q3" value="a"> souffle</label>
+                    <label><input type="radio" name="vocab2_q3" value="b"> temps</label>
+                    <label><input type="radio" name="vocab2_q3" value="c"> chemin</label>
+                </div>
+
+                <button class="degree4-lesson-poetry-btn" onclick="checkVocabExercise(2)" data-i18n="btn_correction">🔍 Voir la correction</button>
                 <div id="vocab2Key" class="degree4-lesson-poetry-answer-key">
                     <strong>Correction :</strong><br>
-                    a) a voulu, désira<br>
+                    a) a voulu<br>
                     b) cerceau<br>
                     c) souffle
                 </div>
+                <div id="vocab2Feedback" class="degree4-lesson-poetry-feedback"></div>
+
                 <div class="degree4-lesson-poetry-self-assess">
                     <span data-i18n="self_assess_question">Ma réponse est :</span>
                     <label><input type="radio" name="self_vocab2" value="correct" data-i18n="self_correct"> Correcte</label>
@@ -970,7 +993,7 @@
         })();
     </script>
 
-    <!-- Audio players, slideshows, and correction toggle -->
+    <!-- Audio players, slideshows, correction toggle, and sound function -->
     <script>
         (function() {
             function initAudioPlayer(prefix, src) {
@@ -1068,7 +1091,7 @@
             initSlideshow('slideshow1');
             initSlideshow('slideshow2');
 
-            // Auth‑gated correction toggle (same as in sample lessons)
+            // Auth‑gated correction toggle (used for non‑MCQ, but we use checkVocabExercise for MCQ)
             window.toggleCorrection = async function(id) {
                 const { data: { session } } = await App.supabase.auth.getSession();
                 if (!session) {
@@ -1079,6 +1102,54 @@
                 }
                 const el = document.getElementById(id);
                 if (el) el.classList.toggle('visible');
+            };
+
+            // Sound‑enabled MCQ correction (plays correct/wrong sound and toggles answer key)
+            window.checkVocabExercise = async function(poemNum) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    const signInBtn = document.getElementById('signInBtn');
+                    if (signInBtn) signInBtn.click();
+                    return;
+                }
+
+                const correctAnswers = {
+                    1: { q1: 'a', q2: 'a', q3: 'a' },
+                    2: { q1: 'a', q2: 'a', q3: 'a' }
+                };
+
+                const answers = correctAnswers[poemNum];
+                let allCorrect = true;
+
+                for (let i = 1; i <= 3; i++) {
+                    const selected = document.querySelector(`input[name="vocab${poemNum}_q${i}"]:checked`);
+                    if (!selected || selected.value !== answers[`q${i}`]) {
+                        allCorrect = false;
+                        break;
+                    }
+                }
+
+                // Play sound
+                const soundSrc = allCorrect ? 'assets/sounds/correct-sound.mp3' : 'assets/sounds/wrong-sound.mp3';
+                const sound = new Audio(soundSrc);
+                sound.currentTime = 0;
+                sound.play().catch(() => {});
+
+                // Toggle answer key
+                const key = document.getElementById(`vocab${poemNum}Key`);
+                if (key) key.classList.toggle('visible');
+
+                // Show feedback
+                const feedback = document.getElementById(`vocab${poemNum}Feedback`);
+                if (feedback) {
+                    feedback.textContent = allCorrect
+                        ? '✅ Toutes les réponses sont correctes !'
+                        : '❌ Certaines réponses sont incorrectes.';
+                    feedback.className = allCorrect
+                        ? 'degree4-lesson-poetry-feedback correct'
+                        : 'degree4-lesson-poetry-feedback wrong';
+                }
             };
         })();
     </script>
@@ -1188,12 +1259,40 @@
                     return;
                 }
 
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles')
+                        .select('registration_state')
+                        .eq('id', user.id)
+                        .single();
+                    if (!error && profile && profile.registration_state && profile.registration_state.active === true) {
+                        isRegistered = true;
+                    }
+                } catch (e) { /* ignore */ }
+
                 const lang = localStorage.getItem('lang') || 'fr';
                 const content = document.getElementById('main-content').cloneNode(true);
+
                 content.querySelectorAll(
-                    '.degree4-lesson-poetry-self-assess, .degree4-lesson-poetry-score-area, .degree4-lesson-poetry-audio, .degree4-lesson-poetry-slideshow-btn, .degree4-lesson-poetry-footer-nav, .degree4-lesson-poetry-vocab-exercise button, .degree4-lesson-poetry-vocab-exercise .degree4-lesson-poetry-answer-key'
+                    'input, textarea, .degree4-lesson-poetry-self-assess, .degree4-lesson-poetry-score-area, .degree4-lesson-poetry-audio, .degree4-lesson-poetry-slideshow-btn, .degree4-lesson-poetry-footer-nav, .degree4-lesson-poetry-vocab-exercise button'
                 ).forEach(el => el.remove());
+
+                const answerKeys = content.querySelectorAll('.degree4-lesson-poetry-answer-key');
+                if (isRegistered) {
+                    answerKeys.forEach(key => {
+                        key.style.display = 'block';
+                        key.style.border = 'none';
+                        key.style.padding = '0.5rem 0';
+                        key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    answerKeys.forEach(el => el.remove());
+                }
+
                 content.querySelectorAll('.degree4-lesson-poetry-slideshow').forEach(el => el.remove());
+
                 const breadcrumb = content.querySelector('p[style*="margin-bottom:1.5rem"]');
                 if (breadcrumb) breadcrumb.remove();
 
@@ -1244,6 +1343,7 @@
                             .degree4-lesson-poetry-vocab li, .degree4-lesson-poetry-vocab-exercise li { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
                             .word { font-weight: bold; min-width: 120px; }
                             .translation { color: #555; }
+                            .degree4-lesson-poetry-answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; }
                             @media print { @page { margin: 2cm; } }
                         </style>
                     </head>
@@ -1268,3 +1368,98 @@
     </script>
 </body>
 </html>
+<!-- Differences: Poetry Lesson vs Revision Sample (for building future degree4 lessons)
+============================================================================
+
+1. Print/PDF Function
+   - Revision sample: Removes ALL input, textarea, .btn-verify, .self-assessment elements from cloned content.
+   - Poetry current: Does NOT remove inputs or textareas inside vocabulary exercise.
+   - Fix: Add 'input, textarea' to the removal selector.
+
+2. Conditional Answer Keys in Print
+   - Revision sample: Fetches registration_state; if active, shows answer keys with special print styling; if not, removes them.
+   - Poetry current: Always removes answer keys unconditionally.
+   - Fix: Implement the same conditional logic (fetch registration_state, then display or remove answer keys).
+
+3. Print Header/Footer Colours
+   - Revision sample: Uses accent colour (orange) in print header and footer.
+   - Poetry current: Already uses purple accent; ensure future degree4 lessons use their own accent colour.
+
+4. Hidden Shell Elements
+   - Both have #toast-container and #signInBtn; poetry has them correctly.
+   - Future degree4 lessons must include these hidden elements to prevent App.showToast errors.
+
+5. Audio Player IDs
+   - Revision sample uses a single 'audioPlayer' prefix.
+   - Poetry uses per-poem prefixes 'poem1' and 'poem2' (or 'poemN').
+   - Ensure future multi-audio lessons use consistent prefix naming matching the JS init calls.
+
+6. Slideshow Initialisation
+   - Poetry has auto-advance with pause on hover; revision samples do not have slideshows.
+   - Include the standard slideshow function (with auto-play and manual buttons) for any future lesson needing a gallery.
+
+7. Two‑Column Layout
+   - Poetry uses .degree4-lesson-poetry-two-col with col and col-slideshow; not present in revision samples.
+   - If future lessons need side-by-side content, reuse these classes or create new ones with responsive collapse.
+
+8. Vocabulary / Explanation Section
+   - Poetry has .degree4-lesson-poetry-vocab with word/translation lists; revision samples do not.
+   - For degree4 reading/poetry lessons, include this vocabulary block after the text.
+
+9. Exercise Style
+   - Revision uses .exercise-card with numbered exercises, inputs, and .answer-key.
+   - Poetry uses .degree4-lesson-poetry-vocab-exercise with .degree4-lesson-poetry-answer-key.
+   - Standardise on a consistent exercise container; for poetry, keep the local classes but mimic the correction toggle behaviour.
+
+10. Score Initialisation
+    - Poetry sets scoreUnanswered to 4 (two poems + two vocab exercises); revision samples set based on number of exercises.
+    - Always set the initial unanswered count to the total number of self-assessment groups.
+
+11. Translation Keys
+    - Poetry includes print_site_name, print_scholar_year, print_week, print_area, print_footer_dev, print_footer_date.
+    - Future degree4 lessons must include these keys in fr/en/ar translations.
+
+12. Auth‑Gated Correction
+    - Both use toggleCorrection function with Supabase session check.
+    - Ensure future lessons define this function exactly as in the sample and bind the correction button with onclick="toggleCorrection('keyId')".
+
+13. Script Order
+    - Standard order: i18n.js, db-utils.js, offline-sync-utils.js, supabase CDN, supabase-client.js, logging.js, ed-french-ini.js.
+    - Keep this order; do not include degree4-exercices.js unless using its processors.
+
+14. Direct Translation Fix
+    - Both include the override for no-bilingual elements.
+    - Ensure elements with data-i18n and class no-bilingual are handled correctly; in poetry, poem texts are marked no-bilingual.
+
+15. RTL Support
+    - Both set direction based on lang; poetry also flips slideshow buttons.
+    - Always include the dir-setting script and adjust for RTL if slideshows are present.
+
+16. Supabase Save Entry
+    - Poetry uses ach_year_degree4 and ach_module_unit1 (not ach_year_bac/ach_module_semaine1).
+    - Use appropriate metadata keys for degree4 lessons.
+
+17. Print Function – Removal List
+    - Recommended removal list for print (poetry and future degree4):
+      'input, textarea, .degree4-lesson-poetry-self-assess, .degree4-lesson-poetry-score-area, .degree4-lesson-poetry-audio, .degree4-lesson-poetry-slideshow-btn, .degree4-lesson-poetry-footer-nav, .degree4-lesson-poetry-vocab-exercise button'
+      Then handle answer keys conditionally.
+
+18. Print Function – Answer Key Styling when Registered
+    - When shown in print, set:
+      display:block; border:none; padding:0.5rem 0; margin:0.5rem 0; background:transparent.
+    - For non-registered, remove entirely.
+
+============================================================================
+Checklist for Future degree4 Lesson Files:
+[ ] Include hidden #toast-container and #signInBtn
+[ ] Use correct script order
+[ ] Add print_site_name, print_scholar_year, print_week, print_area, print_footer_dev, print_footer_date keys
+[ ] Use appropriate accent colour (not always purple)
+[ ] If multiple audio players, use unique prefixes and match JS
+[ ] If slideshow, include auto-play with pause on hover
+[ ] Add self-assessment groups per content section and set initial scoreUnanswered
+[ ] Implement auth-gated toggleCorrection for any correction buttons
+[ ] In print handler, remove all inputs, textareas, and interactive elements
+[ ] In print handler, conditionally show/hide answer keys based on registration_state
+[ ] Add print header/footer using translation keys and accent colour
+============================================================================ -->

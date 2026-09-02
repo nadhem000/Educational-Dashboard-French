@@ -3,70 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="lesson_title">Lecture – Unité 1</title>
+    <title data-i18n="lesson_title">Lecture – Les deux amies</title>
     <link rel="manifest" href="/manifest.json">
     <link rel="stylesheet" href="shared.css">
-    <link rel="stylesheet" href="degree4-exercices.css">
     <style>
-        /* ===== Degree 4 Reading Lesson – Prefixed Styles (unchanged) ===== */
         :root {
-            --degree4-lessonType-reading-bg: #f9f7f1;
-            --degree4-lessonType-reading-card: #ffffff;
-            --degree4-lessonType-reading-text: #2b2416;
-            --degree4-lessonType-reading-text-light: #5c5344;
-            --degree4-lessonType-reading-heading: #382e1e;
-            --degree4-lessonType-reading-accent: #c75b2c;
-            --degree4-lessonType-reading-accent-hover: #a3441d;
-            --degree4-lessonType-reading-border: #e5ddd0;
-            --degree4-lessonType-reading-shadow: 0 1px 4px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.05);
-            --degree4-lessonType-reading-shadow-hover: 0 8px 22px rgba(0,0,0,0.08);
-            --degree4-lessonType-reading-radius: 12px;
-            --degree4-lessonType-reading-radius-sm: 8px;
-            --degree4-lessonType-reading-transition: 0.25s ease;
-            --degree4-lessonType-reading-font: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
-            --degree4-lessonType-reading-audio-bg: #f4efe4;
-            --degree4-lessonType-reading-audio-progress: #d8c9aa;
-            --degree4-lessonType-reading-button-bg: #f0e8d8;
-            --degree4-lessonType-reading-button-hover: #e3d5bc;
-            --degree4-lessonType-reading-input-bg: #fcfaf6;
+            --degree4-lesson-reading-bg: #f9f7f1;
+            --degree4-lesson-reading-card: #ffffff;
+            --degree4-lesson-reading-text: #2b2416;
+            --degree4-lesson-reading-text-light: #5c5344;
+            --degree4-lesson-reading-heading: #382e1e;
+            --degree4-lesson-reading-accent: #2e8b57;
+            --degree4-lesson-reading-accent-hover: #1e6b3e;
+            --degree4-lesson-reading-border: #e5ddd0;
+            --degree4-lesson-reading-shadow: 0 1px 4px rgba(0,0,0,0.04);
+            --degree4-lesson-reading-radius: 12px;
+            --degree4-lesson-reading-radius-sm: 8px;
+            --degree4-lesson-reading-transition: 0.25s ease;
+            --degree4-lesson-reading-font: 'Segoe UI', 'Georgia', serif;
+            --degree4-lesson-reading-audio-bg: #f4efe4;
+            --degree4-lesson-reading-audio-progress: #d8c9aa;
+            --degree4-lesson-reading-button-bg: #f0e8d8;
+            --degree4-lesson-reading-button-hover: #e3d5bc;
         }
         body.dark {
-            --degree4-lessonType-reading-bg: #1e1b17;
-            --degree4-lessonType-reading-card: #2a2620;
-            --degree4-lessonType-reading-text: #e8dfd2;
-            --degree4-lessonType-reading-text-light: #b9aa95;
-            --degree4-lessonType-reading-heading: #f0e4d2;
-            --degree4-lessonType-reading-accent: #e07b4a;
-            --degree4-lessonType-reading-accent-hover: #f08c5c;
-            --degree4-lessonType-reading-border: #3e3830;
-            --degree4-lessonType-reading-shadow: 0 1px 4px rgba(0,0,0,0.25);
-            --degree4-lessonType-reading-shadow-hover: 0 8px 22px rgba(0,0,0,0.35);
-            --degree4-lessonType-reading-audio-bg: #26221b;
-            --degree4-lessonType-reading-audio-progress: #5a4e3c;
-            --degree4-lessonType-reading-button-bg: #3a3329;
-            --degree4-lessonType-reading-button-hover: #4e4437;
-            --degree4-lessonType-reading-input-bg: #333028;
+            --degree4-lesson-reading-bg: #1e1b17;
+            --degree4-lesson-reading-card: #2a2620;
+            --degree4-lesson-reading-text: #e8dfd2;
+            --degree4-lesson-reading-text-light: #b9aa95;
+            --degree4-lesson-reading-heading: #f0e4d2;
+            --degree4-lesson-reading-accent: #7bc8a4;
+            --degree4-lesson-reading-accent-hover: #a0d8b8;
+            --degree4-lesson-reading-border: #3e3830;
+            --degree4-lesson-reading-shadow: 0 1px 4px rgba(0,0,0,0.25);
+            --degree4-lesson-reading-audio-bg: #26221b;
+            --degree4-lesson-reading-audio-progress: #5a4e3c;
+            --degree4-lesson-reading-button-bg: #3a3329;
+            --degree4-lesson-reading-button-hover: #4e4437;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin:0; padding:0; box-sizing:border-box; }
         body {
-            font-family: var(--degree4-lessonType-reading-font);
-            background: var(--degree4-lessonType-reading-bg);
-            color: var(--degree4-lessonType-reading-text);
+            font-family: var(--degree4-lesson-reading-font);
+            background: var(--degree4-lesson-reading-bg);
+            color: var(--degree4-lesson-reading-text);
             line-height: 1.75;
-            transition: background var(--degree4-lessonType-reading-transition), color var(--degree4-lessonType-reading-transition);
+            transition: background var(--degree4-lesson-reading-transition), color var(--degree4-lesson-reading-transition);
         }
-        .degree4-lessonType-reading-container {
-            max-width: 900px;
+        .degree4-lesson-reading-container {
+            max-width: 1100px;
             margin: 0 auto;
             padding: 1.8rem 1.4rem 3rem;
         }
-        .degree4-lessonType-reading-header {
+        .degree4-lesson-reading-header {
             text-align: center;
             margin-bottom: 2rem;
         }
-        .degree4-lessonType-reading-badge {
+        .degree4-lesson-reading-badge {
             display: inline-block;
-            background: var(--degree4-lessonType-reading-accent);
+            background: var(--degree4-lesson-reading-accent);
             color: #fff;
             padding: 0.25rem 1rem;
             border-radius: 20px;
@@ -75,58 +69,71 @@
             letter-spacing: 0.03em;
             text-transform: uppercase;
         }
-        .degree4-lessonType-reading-header h1 {
+        .degree4-lesson-reading-header h1 {
             font-size: 2.1rem;
-            color: var(--degree4-lessonType-reading-heading);
+            color: var(--degree4-lesson-reading-heading);
             margin: 0.6rem 0 0.3rem;
             line-height: 1.3;
         }
-        .degree4-lessonType-reading-meta {
+        .degree4-lesson-reading-meta {
             font-size: 0.9rem;
-            color: var(--degree4-lessonType-reading-text-light);
+            color: var(--degree4-lesson-reading-text-light);
             display: flex;
             justify-content: center;
             gap: 1.2rem;
             flex-wrap: wrap;
         }
-        .degree4-lessonType-reading-card {
-            background: var(--degree4-lessonType-reading-card);
-            border: 1px solid var(--degree4-lessonType-reading-border);
-            border-radius: var(--degree4-lessonType-reading-radius);
+        .degree4-lesson-reading-card {
+            background: var(--degree4-lesson-reading-card);
+            border: 1px solid var(--degree4-lesson-reading-border);
+            border-radius: var(--degree4-lesson-reading-radius);
             padding: 1.8rem;
             margin: 2rem 0;
-            box-shadow: var(--degree4-lessonType-reading-shadow);
+            box-shadow: var(--degree4-lesson-reading-shadow);
         }
-        .degree4-lessonType-reading-card h2 {
+        .degree4-lesson-reading-card h2 {
             font-size: 1.6rem;
-            color: var(--degree4-lessonType-reading-heading);
+            color: var(--degree4-lesson-reading-heading);
             margin-bottom: 0.4rem;
-            border-bottom: 3px solid var(--degree4-lessonType-reading-accent);
+            border-bottom: 3px solid var(--degree4-lesson-reading-accent);
             display: inline-block;
             padding-bottom: 0.3rem;
         }
-        .degree4-lessonType-reading-author {
+        .degree4-lesson-reading-author {
             font-style: italic;
-            color: var(--degree4-lessonType-reading-text-light);
+            color: var(--degree4-lesson-reading-text-light);
             margin-bottom: 1rem;
         }
-        .degree4-lessonType-reading-audio {
-            background: var(--degree4-lessonType-reading-card);
-            border: 1px solid var(--degree4-lessonType-reading-border);
-            border-radius: var(--degree4-lessonType-reading-radius);
+        /* Three-column layout */
+        .degree4-lesson-reading-three-col {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        .degree4-lesson-reading-three-col .col {
+            flex: 1 1 0;
+            min-width: 0;
+        }
+        /* Audio player */
+        .degree4-lesson-reading-audio {
+            background: var(--degree4-lesson-reading-card);
+            border: 1px solid var(--degree4-lesson-reading-border);
+            border-radius: var(--degree4-lesson-reading-radius);
             padding: 0.8rem 1.1rem;
-            margin: 0.8rem 0 1.2rem;
-            box-shadow: var(--degree4-lessonType-reading-shadow);
+            margin-bottom: 1rem;
+            box-shadow: var(--degree4-lesson-reading-shadow);
             display: flex;
             align-items: center;
             gap: 1rem;
             flex-wrap: wrap;
         }
-        .degree4-lessonType-reading-audio .degree4-lessonType-reading-play-btn {
+        .degree4-lesson-reading-play-btn {
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            background: var(--degree4-lessonType-reading-accent);
+            background: var(--degree4-lesson-reading-accent);
             color: #fff;
             border: none;
             font-size: 1.2rem;
@@ -134,119 +141,118 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background var(--degree4-lessonType-reading-transition);
+            transition: background var(--degree4-lesson-reading-transition);
             flex-shrink: 0;
         }
-        .degree4-lessonType-reading-play-btn:hover { background: var(--degree4-lessonType-reading-accent-hover); }
-        .degree4-lessonType-reading-progress-area {
+        .degree4-lesson-reading-play-btn:hover { background: var(--degree4-lesson-reading-accent-hover); }
+        .degree4-lesson-reading-progress-area {
             flex: 1;
             min-width: 120px;
             display: flex;
             flex-direction: column;
             gap: 0.3rem;
         }
-        .degree4-lessonType-reading-progress-bar {
+        .degree4-lesson-reading-progress-bar {
             width: 100%;
             height: 6px;
-            background: var(--degree4-lessonType-reading-audio-progress);
+            background: var(--degree4-lesson-reading-audio-progress);
             border-radius: 3px;
             cursor: pointer;
             position: relative;
             overflow: hidden;
         }
-        .degree4-lessonType-reading-progress-fill {
+        .degree4-lesson-reading-progress-fill {
             height: 100%;
-            background: var(--degree4-lessonType-reading-accent);
+            background: var(--degree4-lesson-reading-accent);
             border-radius: 3px;
             width: 0%;
             transition: width 0.1s linear;
         }
-        .degree4-lessonType-reading-time-info {
+        .degree4-lesson-reading-time-info {
             display: flex;
             justify-content: space-between;
             font-size: 0.75rem;
-            color: var(--degree4-lessonType-reading-text-light);
+            color: var(--degree4-lesson-reading-text-light);
         }
-        .degree4-lessonType-reading-speed-selector {
+        .degree4-lesson-reading-speed-selector {
             display: flex;
             gap: 0.3rem;
             flex-wrap: wrap;
         }
-        .degree4-lessonType-reading-speed-btn {
-            border: 1px solid var(--degree4-lessonType-reading-border);
-            background: var(--degree4-lessonType-reading-button-bg);
-            color: var(--degree4-lessonType-reading-text);
+        .degree4-lesson-reading-speed-btn {
+            border: 1px solid var(--degree4-lesson-reading-border);
+            background: var(--degree4-lesson-reading-button-bg);
+            color: var(--degree4-lesson-reading-text);
             padding: 0.25rem 0.55rem;
             border-radius: 4px;
             font-size: 0.75rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all var(--degree4-lessonType-reading-transition);
+            transition: all var(--degree4-lesson-reading-transition);
         }
-        .degree4-lessonType-reading-speed-btn.active {
-            background: var(--degree4-lessonType-reading-accent);
+        .degree4-lesson-reading-speed-btn.active {
+            background: var(--degree4-lesson-reading-accent);
             color: #fff;
-            border-color: var(--degree4-lessonType-reading-accent);
+            border-color: var(--degree4-lesson-reading-accent);
         }
-        .degree4-lessonType-reading-audio-label {
+        .degree4-lesson-reading-audio-label {
             font-weight: 700;
             font-size: 0.85rem;
-            color: var(--degree4-lessonType-reading-heading);
+            color: var(--degree4-lesson-reading-heading);
             white-space: nowrap;
         }
-        @media (max-width: 600px) {
-            .degree4-lessonType-reading-audio { flex-direction: column; align-items: stretch; }
-            .degree4-lessonType-reading-audio-label { text-align: center; }
-        }
-        .degree4-lessonType-reading-text {
+        /* Text */
+        .degree4-lesson-reading-text {
             white-space: pre-line;
             font-size: 1.05rem;
-            line-height: 1.5;
-            margin-bottom: 1rem;
+            line-height: 1.8;
+            font-style: italic;
+            background: var(--degree4-lesson-reading-audio-bg);
+            padding: 1.2rem 1.5rem;
+            border-radius: var(--degree4-lesson-reading-radius-sm);
+            border-left: 4px solid var(--degree4-lesson-reading-accent);
         }
-        .degree4-lessonType-reading-vocab {
-            background: var(--degree4-lessonType-reading-audio-bg);
-            border-radius: var(--degree4-lessonType-reading-radius-sm);
+        /* Vocabulary */
+        .degree4-lesson-reading-vocab {
+            background: var(--degree4-lesson-reading-audio-bg);
+            border-radius: var(--degree4-lesson-reading-radius-sm);
             padding: 1rem 1.4rem;
-            margin-top: 1rem;
         }
-        .degree4-lessonType-reading-vocab h3 {
-            color: var(--degree4-lessonType-reading-accent);
+        .degree4-lesson-reading-vocab h3 {
+            color: var(--degree4-lesson-reading-accent);
             font-size: 1.2rem;
             margin-bottom: 0.8rem;
         }
-        .degree4-lessonType-reading-vocab ul {
+        .degree4-lesson-reading-vocab ul {
             list-style: none;
             padding: 0;
         }
-        .degree4-lessonType-reading-vocab li {
+        .degree4-lesson-reading-vocab li {
             padding: 0.25rem 0;
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
             align-items: baseline;
         }
-        .degree4-lessonType-reading-vocab .word {
+        .degree4-lesson-reading-vocab .word {
             font-weight: 700;
             min-width: 120px;
         }
-        .degree4-lessonType-reading-vocab .translation {
-            color: var(--degree4-lessonType-reading-text-light);
+        .degree4-lesson-reading-vocab .translation {
+            color: var(--degree4-lesson-reading-text-light);
         }
         /* Slideshow */
-        .degree4-lessonType-reading-slideshow {
+        .degree4-lesson-reading-slideshow {
             position: relative;
-            margin-top: 1.5rem;
-            border-radius: var(--degree4-lessonType-reading-radius-sm);
+            border-radius: var(--degree4-lesson-reading-radius-sm);
             overflow: hidden;
             background: #000;
         }
-        .degree4-lessonType-reading-slideshow .slides {
+        .degree4-lesson-reading-slideshow .slides {
             display: flex;
-            transition: opacity 0.5s ease;
             position: relative;
         }
-        .degree4-lessonType-reading-slideshow .slide {
+        .degree4-lesson-reading-slideshow .slide {
             min-width: 100%;
             opacity: 0;
             transition: opacity 0.8s ease;
@@ -254,16 +260,16 @@
             top: 0;
             left: 0;
         }
-        .degree4-lessonType-reading-slideshow .slide.active {
+        .degree4-lesson-reading-slideshow .slide.active {
             opacity: 1;
             position: relative;
         }
-        .degree4-lessonType-reading-slideshow img {
+        .degree4-lesson-reading-slideshow img {
             width: 100%;
             height: auto;
             display: block;
         }
-        .degree4-lessonType-reading-slideshow-btn {
+        .degree4-lesson-reading-slideshow-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
@@ -277,631 +283,560 @@
             transition: background 0.2s;
             z-index: 10;
         }
-        .degree4-lessonType-reading-slideshow-btn:hover {
-            background: rgba(0,0,0,0.8);
+        .degree4-lesson-reading-slideshow-btn:hover { background: rgba(0,0,0,0.8); }
+        .degree4-lesson-reading-slideshow-btn.prev { left: 10px; }
+        .degree4-lesson-reading-slideshow-btn.next { right: 10px; }
+        /* Section 2: Mots outils */
+        .degree4-lesson-reading-tool-words {
+            background: var(--degree4-lesson-reading-audio-bg);
+            border-radius: var(--degree4-lesson-reading-radius);
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            text-align: center;
+            border: 2px dashed var(--degree4-lesson-reading-accent);
         }
-        .degree4-lessonType-reading-slideshow-btn.prev {
-            left: 10px;
+        .degree4-lesson-reading-tool-words h3 {
+            color: var(--degree4-lesson-reading-accent);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
         }
-        .degree4-lessonType-reading-slideshow-btn.next {
-            right: 10px;
+        .degree4-lesson-reading-tool-words ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
         }
-        /* Exercises (old styles kept for compatibility) */
-        .degree4-lessonType-reading-exercise {
-            background: var(--degree4-lessonType-reading-card);
-            border: 1px solid var(--degree4-lessonType-reading-border);
-            border-radius: var(--degree4-lessonType-reading-radius-sm);
-            padding: 1.2rem 1.4rem;
-            margin-bottom: 1.4rem;
-            box-shadow: var(--degree4-lessonType-reading-shadow);
+        .degree4-lesson-reading-tool-words li {
+            font-size: 1.8rem;
+            font-family: 'Comic Sans MS', 'Segoe Print', cursive, sans-serif;
+            font-weight: bold;
+            color: var(--degree4-lesson-reading-accent);
+            background: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-        .degree4-lessonType-reading-exercise h3 {
-            font-size: 1.1rem;
-            color: var(--degree4-lessonType-reading-accent);
-            margin-bottom: 0.8rem;
+        /* Comprehension & thinking */
+        .degree4-lesson-reading-comprehension .question-block {
+            margin-bottom: 1.5rem;
+        }
+        .degree4-lesson-reading-comprehension .question-text {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .degree4-lesson-reading-radio-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            margin-left: 1.2rem;
+        }
+        .degree4-lesson-reading-radio-options label {
             display: flex;
             align-items: center;
             gap: 0.4rem;
+            cursor: pointer;
         }
-        .degree4-lessonType-reading-exercise input[type="text"],
-        .degree4-lessonType-reading-exercise select,
-        .degree4-lessonType-reading-exercise textarea {
-            width: 100%;
-            padding: 0.4rem 0.6rem;
-            border: 1px solid var(--degree4-lessonType-reading-border);
-            border-radius: 4px;
-            background: var(--degree4-lessonType-reading-input-bg);
-            color: var(--degree4-lessonType-reading-text);
-            font-family: inherit;
+        .degree4-lesson-reading-radio-options input[type="radio"] {
+            accent-color: var(--degree4-lesson-reading-accent);
+        }
+        .degree4-lesson-reading-answer-key {
+            display: none;
+            margin-top: 0.8rem;
+            padding: 0.8rem;
+            background: var(--degree4-lesson-reading-audio-bg);
+            border-radius: 6px;
             font-size: 0.9rem;
-            margin-bottom: 0.5rem;
+            color: var(--degree4-lesson-reading-text-light);
+            border: 1px dashed var(--degree4-lesson-reading-accent);
         }
-        .degree4-lessonType-reading-btn {
-            background: var(--degree4-lessonType-reading-accent);
+        .degree4-lesson-reading-answer-key.visible {
+            display: block;
+        }
+        .degree4-lesson-reading-feedback {
+            margin-top: 0.8rem;
+            font-weight: 600;
+        }
+        .degree4-lesson-reading-feedback.correct { color: #2e7d32; }
+        .degree4-lesson-reading-feedback.wrong { color: #c62828; }
+        .degree4-lesson-reading-btn {
+            background: var(--degree4-lesson-reading-accent);
             color: #fff;
             border: none;
             padding: 0.5rem 1.2rem;
             border-radius: 20px;
             font-weight: 600;
             cursor: pointer;
-            transition: background var(--degree4-lessonType-reading-transition);
+            transition: background var(--degree4-lesson-reading-transition);
             font-size: 0.85rem;
-            margin-top: 0.5rem;
         }
-        .degree4-lessonType-reading-btn:hover {
-            background: var(--degree4-lessonType-reading-accent-hover);
+        .degree4-lesson-reading-btn:hover {
+            background: var(--degree4-lesson-reading-accent-hover);
         }
-        .degree4-lessonType-reading-btn.secondary {
-            background: var(--degree4-lessonType-reading-button-bg);
-            color: var(--degree4-lessonType-reading-text);
-            border: 1px solid var(--degree4-lessonType-reading-border);
-        }
-        .degree4-lessonType-reading-btn.secondary:hover {
-            background: var(--degree4-lessonType-reading-button-hover);
-        }
-        .degree4-lessonType-reading-feedback {
-            margin-top: 0.8rem;
-            font-weight: 600;
-        }
-        .degree4-lessonType-reading-feedback.correct {
-            color: #2e7d32;
-        }
-        .degree4-lessonType-reading-feedback.wrong {
-            color: #c62828;
-        }
-        .degree4-lessonType-reading-matching {
-            display: flex;
-            gap: 2rem;
-            align-items: flex-start;
-            margin: 1rem 0;
-            flex-wrap: wrap;
-        }
-        .degree4-lessonType-reading-matching-col {
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-        }
-        .degree4-lessonType-reading-matching-item {
-            padding: 0.6rem 1rem;
-            border: 2px solid var(--degree4-lessonType-reading-border);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-            background: var(--degree4-lessonType-reading-button-bg);
-            min-width: 200px;
-            text-align: center;
-        }
-        .degree4-lessonType-reading-matching-item.selected {
-            border-color: var(--degree4-lessonType-reading-accent);
-            background: var(--degree4-lessonType-reading-audio-bg);
-        }
-        .degree4-lessonType-reading-matching-item.matched {
-            border-color: #2e7d32;
-            background: #e8f5e9;
-        }
-        .degree4-lessonType-reading-matching-item.wrong {
-            border-color: #c62828;
-            background: #ffebee;
-        }
-        .degree4-lessonType-reading-svg-container {
-            position: relative;
-            width: 100%;
-            height: 300px;
-            border: 1px dashed var(--degree4-lessonType-reading-border);
+        .degree4-lesson-reading-self-assess {
             margin-top: 1rem;
-        }
-        .degree4-lessonType-reading-svg-container svg {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-        .degree4-lessonType-reading-character-exercise {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            margin: 1rem 0;
-        }
-        .degree4-lessonType-reading-character-card {
-            text-align: center;
-            flex: 1;
-            min-width: 150px;
-        }
-        .degree4-lessonType-reading-character-card img {
-            width: 100%;
-            max-width: 150px;
-            height: auto;
-            border-radius: 50%;
-            margin-bottom: 0.5rem;
-        }
-        .degree4-lessonType-reading-character-card input {
-            width: 100%;
-            text-align: center;
-        }
-        .degree4-lessonType-reading-completion {
-            margin: 1rem 0;
-        }
-        .degree4-lessonType-reading-hairstyles {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            margin-top: 1rem;
-        }
-        .degree4-lessonType-reading-hairstyle-card {
-            flex: 1;
-            min-width: 180px;
-            text-align: center;
-        }
-        .degree4-lessonType-reading-hairstyle-card img {
-            width: 100%;
-            max-width: 200px;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 0.5rem;
-        }
-        .degree4-lessonType-reading-self-assess {
-            margin: 1rem 0 0.5rem;
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
             align-items: center;
             font-size: 0.9rem;
         }
-        .degree4-lessonType-reading-self-assess label {
+        .degree4-lesson-reading-self-assess label {
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
         }
-        .degree4-lessonType-reading-score-area {
-            background: var(--degree4-lessonType-reading-card);
-            border: 1px solid var(--degree4-lessonType-reading-border);
-            border-radius: var(--degree4-lessonType-reading-radius);
+        .degree4-lesson-reading-self-assess input[type="radio"] {
+            accent-color: var(--degree4-lesson-reading-accent);
+        }
+        .degree4-lesson-reading-comprehension-two-col {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+        .degree4-lesson-reading-comprehension-two-col .col {
+            flex: 1 1 0;
+            min-width: 0;
+        }
+        /* Score area */
+        .degree4-lesson-reading-score-area {
+            background: var(--degree4-lesson-reading-card);
+            border: 1px solid var(--degree4-lesson-reading-border);
+            border-radius: var(--degree4-lesson-reading-radius);
             padding: 1.5rem;
             margin-top: 2rem;
-            box-shadow: var(--degree4-lessonType-reading-shadow);
+            box-shadow: var(--degree4-lesson-reading-shadow);
         }
-        .degree4-lessonType-reading-score-area h2 {
-            color: var(--degree4-lessonType-reading-heading);
+        .degree4-lesson-reading-score-area h2 {
+            color: var(--degree4-lesson-reading-heading);
             margin-bottom: 1rem;
         }
-        .degree4-lessonType-reading-score-stats {
+        .degree4-lesson-reading-score-stats {
             display: flex;
             gap: 1.5rem;
             flex-wrap: wrap;
         }
-        .degree4-lessonType-reading-score-stat {
-            background: var(--degree4-lessonType-reading-audio-bg);
+        .degree4-lesson-reading-score-stat {
+            background: var(--degree4-lesson-reading-audio-bg);
             padding: 0.8rem 1.2rem;
             border-radius: 8px;
             font-weight: 600;
         }
-        .degree4-lessonType-reading-score-actions {
+        .degree4-lesson-reading-score-actions {
             margin-top: 1rem;
             display: flex;
             gap: 0.8rem;
             flex-wrap: wrap;
         }
-        .degree4-lessonType-reading-footer-nav {
-            margin-top: 2rem;
+        /* Sentence sound buttons */
+        .degree4-lesson-reading-sentence-sound-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--degree4-lesson-reading-accent);
+            padding: 0;
+            margin-right: 0.4rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .degree4-lesson-reading-sentence-sound-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+        .degree4-lesson-reading-sentence-item {
             display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
         }
-        .degree4-lessonType-reading-footer-nav a {
-            color: var(--degree4-lessonType-reading-accent);
-            text-decoration: none;
-            font-weight: 600;
+        .degree4-lesson-reading-sentence-item p {
+            margin: 0;
         }
-        .degree4-lessonType-reading-footer-nav a:hover {
-            text-decoration: underline;
-        }
-		/* Styling for tool‑words copy section */
-.degree4-tool-words-copy {
-    margin-top: 1rem;
-    padding: 1rem;
-    background: var(--degree4-lessonType-reading-audio-bg, #f4efe4);
-    border: 2px dashed var(--degree4-lessonType-reading-accent, #c75b2c);
-    border-radius: 10px;
-    text-align: center;
-}
-.degree4-tool-words-copy ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
-.degree4-tool-words-copy li {
-    font-size: 1.8rem;
-    font-family: 'Comic Sans MS', 'Segoe Print', cursive, sans-serif;
-    font-weight: bold;
-    color: var(--degree4-lessonType-reading-accent, #c75b2c);
-    background: white;
-    padding: 0.4rem 1.2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-        html[dir="rtl"] body { direction: rtl; }
-        html[dir="rtl"] .degree4-lessonType-reading-container { text-align: right; }
-        html[dir="rtl"] .degree4-lessonType-reading-author { text-align: left; }
-        html[dir="rtl"] .degree4-lessonType-reading-slideshow-btn.prev { left: auto; right: 10px; }
-        html[dir="rtl"] .degree4-lessonType-reading-slideshow-btn.next { right: auto; left: 10px; }
-        html[dir="rtl"] .degree4-lessonType-reading-vocab li { flex-direction: row-reverse; }
         @media (max-width: 600px) {
-            .degree4-lessonType-reading-header h1 { font-size: 1.5rem; }
-            .degree4-lessonType-reading-container { padding: 1rem 0.8rem 2rem; }
-            .degree4-lessonType-reading-card { padding: 1.2rem; }
-            .degree4-lessonType-reading-exercise { padding: 1rem; }
-            .degree4-lessonType-reading-matching { flex-direction: column; }
-            .degree4-lessonType-reading-matching-item { min-width: 100%; }
+            .degree4-lesson-reading-three-col,
+            .degree4-lesson-reading-comprehension-two-col { flex-direction: column; }
+            .degree4-lesson-reading-audio { flex-direction: column; align-items: stretch; }
+            .degree4-lesson-reading-header h1 { font-size: 1.5rem; }
+            .degree4-lesson-reading-tool-words ul { gap: 1rem; }
         }
     </style>
 </head>
 <body>
-    <div id="main-content" class="degree4-lessonType-reading-container">
+    <!-- Hidden shell elements required by ed-french-ini.js -->
+    <div id="toast-container"></div>
+    <div id="toast"></div>
+    <button id="signInBtn" style="display:none"></button>
+
+    <div id="main-content" class="degree4-lesson-reading-container">
         <!-- Breadcrumb -->
-        <p style="margin-bottom:1.5rem; color:var(--degree4-lessonType-reading-text-light);">
+        <p style="margin-bottom:1.5rem; color:var(--degree4-lesson-reading-text-light);">
             <a href="degree4.html" data-i18n="back_link">← Retour au programme</a>
             › <strong data-i18n="current_lesson">Lecture</strong>
         </p>
 
         <!-- Header -->
-        <div class="degree4-lessonType-reading-header">
-            <span class="degree4-lessonType-reading-badge" data-i18n="lesson_badge">📘 Unité 1 · Lecture</span>
-            <h1 data-i18n="lesson_title">Lecture</h1>
-            <div class="degree4-lessonType-reading-meta">
-                <span data-i18n="lesson_subtitle">Une nouvelle élève</span>
-                <span data-i18n="lesson_duration">⏱️ 45 minutes</span>
+        <div class="degree4-lesson-reading-header">
+            <span class="degree4-lesson-reading-badge" data-i18n="lesson_badge">📖 Unité 1 · Lecture</span>
+            <h1 data-i18n="lesson_title">Les deux amies</h1>
+            <div class="degree4-lesson-reading-meta">
+                <span data-i18n="lesson_subtitle">Texte de lecture</span>
+                <span data-i18n="lesson_duration">⏱️ 30 minutes</span>
             </div>
         </div>
 
-        <!-- Main Text Section -->
-        <section class="degree4-lessonType-reading-card">
-            <h2 data-i18n="reading_title">Une nouvelle élève</h2>
-            <!-- Main Audio Player -->
-            <div class="degree4-lessonType-reading-audio" id="degree4LessonTypeReadingMainAudioPlayer">
-                <span class="degree4-lessonType-reading-audio-label" data-i18n="audio_label">🎧 Écoute du texte</span>
-                <button class="degree4-lessonType-reading-play-btn" id="degree4LessonTypeReadingMainPlayBtn" aria-label="Lecture">▶</button>
-                <div class="degree4-lessonType-reading-progress-area">
-                    <div class="degree4-lessonType-reading-progress-bar" id="degree4LessonTypeReadingMainProgressBar">
-                        <div class="degree4-lessonType-reading-progress-fill" id="degree4LessonTypeReadingMainProgressFill"></div>
-                    </div>
-                    <div class="degree4-lessonType-reading-time-info">
-                        <span id="degree4LessonTypeReadingMainCurrentTime">0:00</span>
-                        <span id="degree4LessonTypeReadingMainDuration">0:00</span>
+        <!-- Section 1: Lecture -->
+        <section class="degree4-lesson-reading-card">
+            <h2 data-i18n="reading_title">Les deux amies</h2>
+            <div class="degree4-lesson-reading-author" data-i18n="reading_author">— Texte de lecture</div>
+            <div class="degree4-lesson-reading-three-col">
+                <div class="col">
+                    <div class="degree4-lesson-reading-text no-bilingual" data-i18n="reading_text">
+                        Caroline, la nouvelle élève, habite loin de l’école. Chaque matin, sa mère l’amène en voiture.
+                        En classe, Caroline est assise à côté de Nadia. Les deux fillettes adorent la musique et la danse. Elles sont devenues amies.
+                        A midi, Caroline et Nadia mangent ensemble à la cantine.
+                        L’après-midi, elles vont chez mademoiselle Leclerc, le professeur de danse.
                     </div>
                 </div>
-                <div class="degree4-lessonType-reading-speed-selector">
-                    <button class="degree4-lessonType-reading-speed-btn" data-speed="0.75">0.75x</button>
-                    <button class="degree4-lessonType-reading-speed-btn active" data-speed="1">1x</button>
-                    <button class="degree4-lessonType-reading-speed-btn" data-speed="1.25">1.25x</button>
-                    <button class="degree4-lessonType-reading-speed-btn" data-speed="1.5">1.5x</button>
+                <div class="col">
+                    <div class="degree4-lesson-reading-vocab">
+                        <h3 data-i18n="vocab_title">🔹 Explication des mots</h3>
+                        <ul>
+                            <li><span class="word">loin de</span><span class="translation" data-i18n="vocab_loin"> - loin de</span></li>
+                            <li><span class="word">à côté de</span><span class="translation" data-i18n="vocab_acote"> - à côté de</span></li>
+                            <li><span class="word">chez</span><span class="translation" data-i18n="vocab_chez"> - chez</span></li>
+                            <li><span class="word">adorent</span><span class="translation" data-i18n="vocab_adorent"> - adorent</span></li>
+                            <li><span class="word">devenues amies</span><span class="translation" data-i18n="vocab_devenues"> - devenues amies</span></li>
+                            <li><span class="word">cantine</span><span class="translation" data-i18n="vocab_cantine"> - cantine</span></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <div class="degree4-lessonType-reading-text no-bilingual" data-i18n="reading_text">
-                C'est lundi matin. Lorsque la leçon de lecture commence, on frappe à la porte de la classe.
-                Le directeur de l'école, monsieur Mercier, entre accompagné d'une fillette aux cheveux tirés en queue de cheval.
-                «Madame Marceau, dit le directeur, voici la nouvelle élève.»
-                La maîtresse sourit à la fillette et lui demande de se présenter.
-                «Bonjour, dit la nouvelle élève, je m'appelle Caroline Lebrun. J'ai neuf ans. J'habite à la rue Pasteur.»
-            </div>
-            <!-- Vocabulary -->
-            <div class="degree4-lessonType-reading-vocab">
-                <h3 data-i18n="vocab_title">🔹 Explication des mots</h3>
-                <ul>
-                    <li><span class="word">lorsque</span><span class="translation" data-i18n="vocab_lorsque"> - lorsque</span></li>
-                    <li><span class="word">frappe</span><span class="translation" data-i18n="vocab_frappe"> - frappe</span></li>
-                    <li><span class="word">directeur</span><span class="translation" data-i18n="vocab_directeur"> - directeur</span></li>
-                    <li><span class="word">accompagné</span><span class="translation" data-i18n="vocab_accompagne"> - accompagné</span></li>
-                    <li><span class="word">fillette</span><span class="translation" data-i18n="vocab_fillette"> - fillette</span></li>
-                    <li><span class="word">cheveux tirés en queue de cheval</span><span class="translation" data-i18n="vocab_cheveux"> - cheveux tirés en queue de cheval</span></li>
-                    <li><span class="word">maîtresse</span><span class="translation" data-i18n="vocab_maitresse"> - maîtresse</span></li>
-                    <li><span class="word">sourit</span><span class="translation" data-i18n="vocab_sourit"> - sourit</span></li>
-                </ul>
-            </div>
-            <!-- Tool Words -->
-            <div class="degree4-lessonType-reading-vocab">
-                <h3 data-i18n="tools_title">🔹 Mots outils</h3>
-                <ul>
-                    <li><span class="word">lorsque</span><span class="translation" data-i18n="tool_lorsque"> - lorsque</span></li>
-                    <li><span class="word">voici</span><span class="translation" data-i18n="tool_voici"> - voici</span></li>
-                </ul>
-            </div>
-            <!-- Slideshow -->
-            <div class="degree4-lessonType-reading-slideshow" id="degree4LessonTypeReadingSlideshow">
-                <div class="slides">
-                    <img src="assets/images/degree4/unit1/lesson3/image1.jpg" class="slide active" alt="Image 1">
-                    <img src="assets/images/degree4/unit1/lesson3/image2.jpg" class="slide" alt="Image 2">
-                    <img src="assets/images/degree4/unit1/lesson3/image3.jpg" class="slide" alt="Image 3">
-                </div>
-                <button class="degree4-lessonType-reading-slideshow-btn prev" onclick="degree4LessonTypeReadingChangeSlide('degree4LessonTypeReadingSlideshow', -1)">&#10094;</button>
-                <button class="degree4-lessonType-reading-slideshow-btn next" onclick="degree4LessonTypeReadingChangeSlide('degree4LessonTypeReadingSlideshow', 1)">&#10095;</button>
-            </div>
-        </section>
-
-        <!-- ══════════════ QUESTIONS AREA (MODIFIED) ══════════════ -->
-        <!-- Comprehension Questions -->
-        <section class="degree4-lessonType-reading-card">
-            <h2 data-i18n="questions_title">Je réponds aux questions.</h2>
-
-            <!-- Q1 -->
-            <div class="degree4-lessonType-reading-exercise" id="comprehension-q1">
-                <h3 data-i18n="q1">1) Quand la nouvelle élève arrive-t-elle en classe?</h3>
-                <input type="text" id="degree4LessonTypeReadingQ1" placeholder="Votre réponse" data-i18n-ph="answer_placeholder">
-                <button class="degree4-lessonType-reading-btn" id="degree4LessonTypeReadingCheckQ1" data-i18n="check_questions">Vérifier</button>
-                <div id="degree4LessonTypeReadingQ1Feedback" class="degree4-lessonType-reading-feedback"></div>
-                <div class="degree4-lessonType-reading-self-assess">
-                    <span data-i18n="self_assess_question">Ma réponse est :</span>
-                    <label><input type="radio" name="self_q1" value="correct" data-i18n="self_correct"> Correcte</label>
-                    <label><input type="radio" name="self_q1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
-                    <label><input type="radio" name="self_q1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
-                </div>
-            </div>
-
-            <!-- Q2 -->
-            <div class="degree4-lessonType-reading-exercise" id="comprehension-q2">
-                <h3 data-i18n="q2">2) Que sais-tu sur cette élève?</h3>
-                <input type="text" id="degree4LessonTypeReadingQ2" placeholder="Votre réponse" data-i18n-ph="answer_placeholder">
-                <button class="degree4-lessonType-reading-btn" id="degree4LessonTypeReadingCheckQ2" data-i18n="check_questions">Vérifier</button>
-                <div id="degree4LessonTypeReadingQ2Feedback" class="degree4-lessonType-reading-feedback"></div>
-                <div class="degree4-lessonType-reading-self-assess">
-                    <span data-i18n="self_assess_question">Ma réponse est :</span>
-                    <label><input type="radio" name="self_q2" value="correct" data-i18n="self_correct"> Correcte</label>
-                    <label><input type="radio" name="self_q2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
-                    <label><input type="radio" name="self_q2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
-                </div>
-            </div>
-
-            <!-- Q3 (dropdown modified) -->
-            <div class="degree4-lessonType-reading-exercise" id="comprehension-q3">
-                <h3 data-i18n="q3">3) Pour mieux se présenter, qu'est-ce qu'elle doit encore dire?</h3>
-                <select id="degree4LessonTypeReadingQ3">
-                    <option value="" data-i18n="choose_option">-- Choisissez --</option>
-                    <option value="salaire" data-i18n="option_salaire">Son salaire</option>
-                    <option value="couleur" data-i18n="option_couleur">Sa couleur préférée</option>
-                    <option value="age" data-i18n="option_age">Son âge</option>
-                </select>
-                <button class="degree4-lessonType-reading-btn" id="degree4LessonTypeReadingCheckQ3" data-i18n="check_questions">Vérifier</button>
-                <div id="degree4LessonTypeReadingQ3Feedback" class="degree4-lessonType-reading-feedback"></div>
-                <div class="degree4-lessonType-reading-self-assess">
-                    <span data-i18n="self_assess_question">Ma réponse est :</span>
-                    <label><input type="radio" name="self_q3" value="correct" data-i18n="self_correct"> Correcte</label>
-                    <label><input type="radio" name="self_q3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
-                    <label><input type="radio" name="self_q3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
-                </div>
-            </div>
-
-            <!-- Q4 (radio button) -->
-            <div class="degree4-lessonType-reading-exercise" id="comprehension-q4">
-                <h3 data-i18n="q4_radio">4) Quelle question peux-tu poser à Caroline ?</h3>
-                <div class="radio-group" id="degree4LessonTypeReadingQ4RadioGroup">
-                    <label><input type="radio" name="degree4LessonTypeReadingQ4Radio" value="nom"> <span data-i18n="q4_opt_nom">Comment t'appelles-tu ?</span></label><br>
-                    <label><input type="radio" name="degree4LessonTypeReadingQ4Radio" value="plat"> <span data-i18n="q4_opt_plat">Quel est ton plat préféré ?</span></label><br>
-                    <label><input type="radio" name="degree4LessonTypeReadingQ4Radio" value="adresse"> <span data-i18n="q4_opt_adresse">Où habites-tu ?</span></label><br>
-                    <label><input type="radio" name="degree4LessonTypeReadingQ4Radio" value="age"> <span data-i18n="q4_opt_age">Quel âge as-tu ?</span></label>
-                </div>
-                <button class="degree4-lessonType-reading-btn" id="degree4LessonTypeReadingCheckQ4" data-i18n="check_questions">Vérifier</button>
-                <div id="degree4LessonTypeReadingQ4Feedback" class="degree4-lessonType-reading-feedback"></div>
-                <div class="degree4-lessonType-reading-self-assess">
-                    <span data-i18n="self_assess_question">Ma réponse est :</span>
-                    <label><input type="radio" name="self_q4" value="correct" data-i18n="self_correct"> Correcte</label>
-                    <label><input type="radio" name="self_q4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
-                    <label><input type="radio" name="self_q4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                <div class="col">
+                    <div class="degree4-lesson-reading-audio" id="readingAudioPlayer">
+                        <span class="degree4-lesson-reading-audio-label" data-i18n="audio_label">🎧 Écoute du texte</span>
+                        <button class="degree4-lesson-reading-play-btn" id="readingPlayBtn" aria-label="Lecture">▶</button>
+                        <div class="degree4-lesson-reading-progress-area">
+                            <div class="degree4-lesson-reading-progress-bar" id="readingProgressBar">
+                                <div class="degree4-lesson-reading-progress-fill" id="readingProgressFill"></div>
+                            </div>
+                            <div class="degree4-lesson-reading-time-info">
+                                <span id="readingCurrentTime">0:00</span>
+                                <span id="readingDuration">0:00</span>
+                            </div>
+                        </div>
+                        <div class="degree4-lesson-reading-speed-selector">
+                            <button class="degree4-lesson-reading-speed-btn" data-speed="0.75">0.75x</button>
+                            <button class="degree4-lesson-reading-speed-btn active" data-speed="1">1x</button>
+                            <button class="degree4-lesson-reading-speed-btn" data-speed="1.25">1.25x</button>
+                            <button class="degree4-lesson-reading-speed-btn" data-speed="1.5">1.5x</button>
+                        </div>
+                    </div>
+                    <div class="degree4-lesson-reading-slideshow" id="readingSlideshow">
+                        <div class="slides">
+                            <div class="slide active"><img src="assets4/images/degree4/unit1/lesson3/image1.jpg" alt="Image 1"></div>
+                            <div class="slide"><img src="assets4/images/degree4/unit1/lesson3/image2.jpg" alt="Image 2"></div>
+                            <div class="slide"><img src="assets4/images/degree4/unit1/lesson3/image3.jpg" alt="Image 3"></div>
+                        </div>
+                        <button class="degree4-lesson-reading-slideshow-btn prev">❮</button>
+                        <button class="degree4-lesson-reading-slideshow-btn next">❯</button>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Thinking Exercises -->
-        <section class="degree4-lessonType-reading-card">
+        <!-- Section 2: Mots outils -->
+        <section class="degree4-lesson-reading-card">
+            <h2 data-i18n="tool_words_title">🔤 Mots outils</h2>
+            <div class="degree4-lesson-reading-tool-words">
+                <h3 data-i18n="tool_words_intro">Je retiens ces mots :</h3>
+                <ul>
+                    <li>loin de</li>
+                    <li>à côté de</li>
+                    <li>chez</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 3: Compréhension -->
+        <section class="degree4-lesson-reading-card degree4-lesson-reading-comprehension">
+            <h2 data-i18n="comprehension_title">📝 Je comprends</h2>
+            <div class="degree4-lesson-reading-comprehension-two-col">
+                <div class="col">
+                    <div class="question-block">
+                        <p class="question-text" data-i18n="comp_q1">1) Qui amène Caroline à l'école chaque matin ?</p>
+                        <div class="degree4-lesson-reading-radio-options">
+                            <label><input type="radio" name="comp_q1" value="a"> Sa mère l'amène en voiture</label>
+                            <label><input type="radio" name="comp_q1" value="b"> Son père l'amène en voiture</label>
+                            <label><input type="radio" name="comp_q1" value="c"> Elle va à pied</label>
+                        </div>
+                    </div>
+                    <div class="question-block">
+                        <p class="question-text" data-i18n="comp_q2">2) Pourquoi les deux fillettes sont-elles devenues amies ?</p>
+                        <div class="degree4-lesson-reading-radio-options">
+                            <label><input type="radio" name="comp_q2" value="a"> Elles habitent près</label>
+                            <label><input type="radio" name="comp_q2" value="b"> Elles adorent la musique et la danse</label>
+                            <label><input type="radio" name="comp_q2" value="c"> Elles sont dans la même classe</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="question-block">
+                        <p class="question-text" data-i18n="comp_q3">3) Que font-elles ensemble ?</p>
+                        <div class="degree4-lesson-reading-radio-options">
+                            <label><input type="radio" name="comp_q3" value="a"> Elles jouent au ballon</label>
+                            <label><input type="radio" name="comp_q3" value="b"> Elles mangent à la cantine et vont chez le professeur de danse</label>
+                            <label><input type="radio" name="comp_q3" value="c"> Elles regardent la télé</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="degree4-lesson-reading-btn" onclick="checkComprehension()" data-i18n="btn_correction">🔍 Voir la correction</button>
+            <div id="compKey" class="degree4-lesson-reading-answer-key">
+                <strong data-i18n="comp_answers_title">Correction :</strong><br>
+                1) a<br>2) b<br>3) b
+            </div>
+            <div id="compFeedback" class="degree4-lesson-reading-feedback"></div>
+            <div class="degree4-lesson-reading-self-assess">
+                <span data-i18n="self_assess_question">Ma réponse est :</span>
+                <label><input type="radio" name="self_comprehension" value="correct" data-i18n="self_correct"> Correcte</label>
+                <label><input type="radio" name="self_comprehension" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                <label><input type="radio" name="self_comprehension" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+            </div>
+        </section>
+
+        <!-- Section 4: Je réfléchis -->
+        <section class="degree4-lesson-reading-card degree4-lesson-reading-comprehension">
             <h2 data-i18n="thinking_title">🧠 Je réfléchis</h2>
 
-            <!-- Character Name Exercise (original) -->
-            <div class="degree4-lessonType-reading-exercise" id="names-exercise">
-                <h3 data-i18n="observe_exercise">1. J'observe les dessins et j'écris les noms des personnages.</h3>
-                <div class="degree4-lessonType-reading-character-exercise">
-                    <div class="degree4-lessonType-reading-character-card">
-                        <img src="assets/images/degree4/unit1/lesson3/characters/director.jpg" alt="Directeur">
-                        <input type="text" id="degree4LessonTypeReadingDirectorName" placeholder="" data-i18n-ph="answer_placeholder">
-                    </div>
-                    <div class="degree4-lessonType-reading-character-card">
-                        <img src="assets/images/degree4/unit1/lesson3/characters/teacher.jpg" alt="Maîtresse">
-                        <input type="text" id="degree4LessonTypeReadingTeacherName" placeholder="" data-i18n-ph="answer_placeholder">
-                    </div>
-                    <div class="degree4-lessonType-reading-character-card">
-                        <img src="assets/images/degree4/unit1/lesson3/characters/caroline.jpg" alt="Caroline">
-                        <input type="text" id="degree4LessonTypeReadingCarolineName" placeholder="" data-i18n-ph="answer_placeholder">
-                    </div>
+            <!-- Exercise 1 -->
+            <div class="question-block">
+                <p class="question-text" data-i18n="ex1_instruction">1. Je complète le tableau pour dire ce que font les deux fillettes Nadia et Caroline.</p>
+                <div class="degree4-lesson-reading-thinking-item">
+                    <p data-i18n="ex1_morning">Le matin, ......</p>
+                    <select id="table_morning">
+                        <option value="">-- Choisir --</option>
+                        <option value="caroline">Caroline va à l'école en voiture avec sa mère</option>
+                        <option value="cantine">Les deux fillettes mangent à la cantine</option>
+                        <option value="danse">Elles vont chez le professeur de danse</option>
+                    </select>
                 </div>
-                <button class="degree4-lessonType-reading-btn" id="degree4LessonTypeReadingCheckNames" data-i18n="check_questions">Vérifier</button>
-                <div id="degree4LessonTypeReadingNamesFeedback" class="degree4-lessonType-reading-feedback"></div>
-                <div class="degree4-lessonType-reading-self-assess">
-                    <span data-i18n="self_assess_question">Ma réponse est :</span>
-                    <label><input type="radio" name="self_names" value="correct" data-i18n="self_correct"> Correcte</label>
-                    <label><input type="radio" name="self_names" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
-                    <label><input type="radio" name="self_names" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                <div class="degree4-lesson-reading-thinking-item">
+                    <p data-i18n="ex1_noon">A midi, ......</p>
+                    <select id="table_noon">
+                        <option value="">-- Choisir --</option>
+                        <option value="caroline">Caroline va à l'école en voiture avec sa mère</option>
+                        <option value="cantine">Les deux fillettes mangent à la cantine</option>
+                        <option value="danse">Elles vont chez le professeur de danse</option>
+                    </select>
                 </div>
-            </div>
-
-            <!-- Matching Exercise (modified right column) -->
-            <div class="degree4-lessonType-reading-exercise" id="matching-exercise">
-                <h3 data-i18n="matching_title">2. Je relie chaque personnage à ce qu'il fait.</h3>
-                <div id="degree4LessonTypeReadingMatchingContainer"></div>
-                <button class="degree4-lessonType-reading-btn" id="degree4LessonTypeReadingCheckMatching" data-i18n="check_matching">Vérifier</button>
-                <div id="degree4LessonTypeReadingMatchingFeedback" class="degree4-lessonType-reading-feedback"></div>
-                <div class="degree4-lessonType-reading-self-assess">
-                    <span data-i18n="self_assess_question">Ma réponse est :</span>
-                    <label><input type="radio" name="self_matching" value="correct" data-i18n="self_correct"> Correcte</label>
-                    <label><input type="radio" name="self_matching" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
-                    <label><input type="radio" name="self_matching" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                <div class="degree4-lesson-reading-thinking-item">
+                    <p data-i18n="ex1_afternoon">L'après-midi, ......</p>
+                    <select id="table_afternoon">
+                        <option value="">-- Choisir --</option>
+                        <option value="caroline">Caroline va à l'école en voiture avec sa mère</option>
+                        <option value="cantine">Les deux fillettes mangent à la cantine</option>
+                        <option value="danse">Elles vont chez le professeur de danse</option>
+                    </select>
                 </div>
-            </div>
-
-            <!-- Completion Exercise 3 (new) -->
-            <div class="degree4-lessonType-reading-exercise" id="completion-main-character">
-                <h3 data-i18n="completion_main_title">3. Je complète.</h3>
-                <p data-i18n="completion_main_sentence">Le personnage principal de cette histoire est</p>
-                <input type="text" id="degree4LessonTypeReadingMainCharacter" placeholder="...">
-                <button class="degree4-lessonType-reading-btn" id="degree4LessonTypeReadingCheckMainCharacter" data-i18n="check_questions">Vérifier</button>
-                <div id="degree4LessonTypeReadingMainCharacterFeedback" class="degree4-lessonType-reading-feedback"></div>
-                <div class="degree4-lessonType-reading-self-assess">
+                <button class="degree4-lesson-reading-btn" onclick="checkEx1()" data-i18n="check_answers">🔍 Vérifier les réponses</button>
+                <div id="ex1Key" class="degree4-lesson-reading-answer-key">
+                    <strong data-i18n="ex1_answers">Correction :</strong><br>
+                    Le matin : Caroline va à l'école en voiture avec sa mère<br>
+                    A midi : Les deux fillettes mangent à la cantine<br>
+                    L'après-midi : Elles vont chez le professeur de danse
+                </div>
+                <div id="ex1Feedback" class="degree4-lesson-reading-feedback"></div>
+                <div class="degree4-lesson-reading-self-assess">
                     <span data-i18n="self_assess_question">Ma réponse est :</span>
-                    <label><input type="radio" name="self_main_character" value="correct" data-i18n="self_correct"> Correcte</label>
-                    <label><input type="radio" name="self_main_character" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
-                    <label><input type="radio" name="self_main_character" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                    <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
                 </div>
             </div>
 
-            <!-- Completion Exercise 4 (new) -->
-            <div class="degree4-lessonType-reading-exercise degree4-lessonType-reading-radio-container" id="comprehension-q4">
-                <h3 data-i18n="completion_dialogues_title">4) Je complète par : le directeur, la maîtresse ou Caroline</h3>
-                <p><span></span> <input type="text" id="degree4LessonTypeReadingDialogue1" placeholder="..."> <span data-i18n="dialogue1_sentence">dit : « J’ai neuf ans, j’habite à la rue Pasteur. »</span></p>
-			<p><span></span> <input type="text" id="degree4LessonTypeReadingDialogue2" placeholder="..."> <span data-i18n="dialogue2_sentence">dit : « Voici une nouvelle élève. »</span></p>
-                <p><span></span> <input type="text" id="degree4LessonTypeReadingDialogue3" placeholder="..."> <span data-i18n="dialogue3_sentence">dit : « Présente-toi à tes camarades. »</span></p>
-                <button class="degree4-lessonType-reading-btn" id="degree4LessonTypeReadingCheckDialogues" data-i18n="check_questions">Vérifier</button>
-                <div id="degree4LessonTypeReadingDialoguesFeedback" class="degree4-lessonType-reading-feedback"></div>
-                <div class="degree4-lessonType-reading-self-assess">
+            <!-- Exercise 2: Ordering -->
+            <div class="question-block">
+                <p class="question-text" data-i18n="ex2_instruction">2. a. Je lis les phrases.</p>
+                <div class="degree4-lesson-reading-thinking-item">
+                    <div class="degree4-lesson-reading-sentence-item">
+                        <button class="degree4-lesson-reading-sentence-sound-btn" onclick="playSentenceSound('phrase1')" aria-label="Écouter">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                        </button>
+                        <p>Les deux fillettes adorent la musique et la danse.</p>
+                    </div>
+                    <div class="degree4-lesson-reading-sentence-item">
+                        <button class="degree4-lesson-reading-sentence-sound-btn" onclick="playSentenceSound('phrase2')" aria-label="Écouter">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                        </button>
+                        <p>La nouvelle élève fait la connaissance de Nadia.</p>
+                    </div>
+                    <div class="degree4-lesson-reading-sentence-item">
+                        <button class="degree4-lesson-reading-sentence-sound-btn" onclick="playSentenceSound('phrase3')" aria-label="Écouter">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                        </button>
+                        <p>Lundi matin, le directeur accompagne Caroline dans sa nouvelle classe.</p>
+                    </div>
+                    <div class="degree4-lesson-reading-sentence-item">
+                        <button class="degree4-lesson-reading-sentence-sound-btn" onclick="playSentenceSound('phrase4')" aria-label="Écouter">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                        </button>
+                        <p>Elles sont devenues amies.</p>
+                    </div>
+                </div>
+                <p class="question-text" data-i18n="ex2b_instruction">b. J'écris chaque phrase à sa place.</p>
+                <div class="degree4-lesson-reading-thinking-item">
+                    <p>Début ......</p>
+                    <select id="order_debut">
+                        <option value="">-- Choisir --</option>
+                        <option value="directeur">Lundi matin, le directeur accompagne Caroline dans sa nouvelle classe</option>
+                        <option value="connaissance">La nouvelle élève fait la connaissance de Nadia</option>
+                        <option value="adorent">Les deux fillettes adorent la musique et la danse</option>
+                        <option value="amies">Elles sont devenues amies</option>
+                    </select>
+                </div>
+                <div class="degree4-lesson-reading-thinking-item">
+                    <p>Ensuite ......</p>
+                    <select id="order_ensuite">
+                        <option value="">-- Choisir --</option>
+                        <option value="directeur">Lundi matin, le directeur accompagne Caroline dans sa nouvelle classe</option>
+                        <option value="connaissance">La nouvelle élève fait la connaissance de Nadia</option>
+                        <option value="adorent">Les deux fillettes adorent la musique et la danse</option>
+                        <option value="amies">Elles sont devenues amies</option>
+                    </select>
+                </div>
+                <div class="degree4-lesson-reading-thinking-item">
+                    <p>Fin ......</p>
+                    <select id="order_fin">
+                        <option value="">-- Choisir --</option>
+                        <option value="directeur">Lundi matin, le directeur accompagne Caroline dans sa nouvelle classe</option>
+                        <option value="connaissance">La nouvelle élève fait la connaissance de Nadia</option>
+                        <option value="adorent">Les deux fillettes adorent la musique et la danse</option>
+                        <option value="amies">Elles sont devenues amies</option>
+                    </select>
+                </div>
+                <button class="degree4-lesson-reading-btn" onclick="checkEx2()" data-i18n="check_answers">🔍 Vérifier les réponses</button>
+                <div id="ex2Key" class="degree4-lesson-reading-answer-key">
+                    <strong data-i18n="ex2_answers">Correction :</strong><br>
+                    Début : Lundi matin, le directeur accompagne Caroline dans sa nouvelle classe<br>
+                    Ensuite : La nouvelle élève fait la connaissance de Nadia<br>
+                    Fin : Elles sont devenues amies
+                </div>
+                <div id="ex2Feedback" class="degree4-lesson-reading-feedback"></div>
+                <div class="degree4-lesson-reading-self-assess">
                     <span data-i18n="self_assess_question">Ma réponse est :</span>
-                    <label><input type="radio" name="self_dialogues" value="correct" data-i18n="self_correct"> Correcte</label>
-                    <label><input type="radio" name="self_dialogues" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
-                    <label><input type="radio" name="self_dialogues" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                    <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                </div>
+            </div>
+
+            <!-- Exercise 3: Sequencing -->
+            <div class="question-block">
+                <p class="question-text" data-i18n="ex3_instruction">3. Je numérote les phrases pour obtenir la suite de l'histoire.</p>
+                <div class="degree4-lesson-reading-thinking-item">
+                    <p>- Avant de se séparer, elles s'embrassent tendrement. <select id="seq_1"><option value="">?</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></p>
+                    <p>- Sur leur chemin, elles achètent de petits gâteaux au chocolat. <select id="seq_2"><option value="">?</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></p>
+                    <p>- Après la classe, Caroline et Nadia rentrent chez elles. <select id="seq_3"><option value="">?</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></p>
+                    <p>- Elles les mangent en riant. <select id="seq_4"><option value="">?</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></p>
+                </div>
+                <button class="degree4-lesson-reading-btn" onclick="checkEx3()" data-i18n="check_answers">🔍 Vérifier les réponses</button>
+                <div id="ex3Key" class="degree4-lesson-reading-answer-key">
+                    <strong data-i18n="ex3_answers">Correction :</strong><br>
+                    1) Après la classe, Caroline et Nadia rentrent chez elles.<br>
+                    2) Sur leur chemin, elles achètent de petits gâteaux au chocolat.<br>
+                    3) Elles les mangent en riant.<br>
+                    4) Avant de se séparer, elles s'embrassent tendrement.
+                </div>
+                <div id="ex3Feedback" class="degree4-lesson-reading-feedback"></div>
+                <div class="degree4-lesson-reading-self-assess">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                    <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
                 </div>
             </div>
         </section>
 
-        <!-- New Section: J’apprends à écrire des mots outils -->
-        <!-- New Section: J’apprends à écrire des mots outils -->
-<section class="degree4-lessonType-reading-card" id="tool-words-writing">
-    <h2 data-i18n="tool_words_writing_title">J’apprends à écrire des mots outils</h2>
-    <p data-i18n="tool_words_writing_intro">Recopie ces mots outils :</p>
-    <div class="degree4-tool-words-copy">
-        <ul>
-            <li>voici</li>
-            <li>lorsque</li>
-        </ul>
-    </div>
-</section>
-
-        <!-- Hairstyles Section -->
-<section class="degree4-lessonType-reading-card">
-    <h2 data-i18n="comprehension_section_title">Je comprends</h2>
-    <div class="degree4-lessonType-reading-hairstyles">
-        <div class="degree4-lessonType-reading-hairstyle-card">
-            <img src="assets/images/degree4/unit1/lesson3/hairstyles/queue-de-cheval.jpg" alt="Queue de cheval">
-            <h3 data-i18n="hairstyle1_title">Cheveux tirés en queue de cheval</h3>
-            <p data-i18n="hairstyle1_desc">Cheveux attachés en forme de queue de cheval - le style que Caroline portait</p>
-        </div>
-        <div class="degree4-lessonType-reading-hairstyle-card">
-            <img src="assets/images/degree4/unit1/lesson3/hairstyles/tresses.jpg" alt="Tresses">
-            <h3 data-i18n="hairstyle2_title">Cheveux tressés</h3>
-            <p data-i18n="hairstyle2_desc">Cheveux tressés ou nattés - un style traditionnel et élégant</p>
-        </div>
-        <div class="degree4-lessonType-reading-hairstyle-card">
-            <img src="assets/images/degree4/unit1/lesson3/hairstyles/couettes.jpg" alt="Couettes">
-            <h3 data-i18n="hairstyle3_title">Cheveux retenus par des couettes</h3>
-            <p data-i18n="hairstyle3_desc">Cheveux attachés en deux petites nattes sur les côtés - un style enfantin et joli</p>
-        </div>
-    </div>
-</section>
-
-        <!-- Scoring Area -->
-        <div class="degree4-lessonType-reading-score-area">
+        <!-- Score Area -->
+        <div class="degree4-lesson-reading-score-area">
             <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
-            <div class="degree4-lessonType-reading-score-stats">
-                <div class="degree4-lessonType-reading-score-stat"><span data-i18n="score_correct">Correct :</span> <span id="degree4LessonTypeReadingScoreCorrect">0</span></div>
-                <div class="degree4-lessonType-reading-score-stat"><span data-i18n="score_partial">Partiel :</span> <span id="degree4LessonTypeReadingScorePartial">0</span></div>
-                <div class="degree4-lessonType-reading-score-stat"><span data-i18n="score_incorrect">Incorrect :</span> <span id="degree4LessonTypeReadingScoreIncorrect">0</span></div>
-                <div class="degree4-lessonType-reading-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="degree4LessonTypeReadingScoreUnanswered">8</span></div>
+            <div class="degree4-lesson-reading-score-stats">
+                <div class="degree4-lesson-reading-score-stat"><span data-i18n="score_correct">Correct :</span> <span id="scoreCorrect">0</span></div>
+                <div class="degree4-lesson-reading-score-stat"><span data-i18n="score_partial">Partiel :</span> <span id="scorePartial">0</span></div>
+                <div class="degree4-lesson-reading-score-stat"><span data-i18n="score_incorrect">Incorrect :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="degree4-lesson-reading-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">4</span></div>
             </div>
-            <div class="degree4-lessonType-reading-score-actions">
-                <button id="degree4LessonTypeReadingSaveResultsBtn" class="degree4-lessonType-reading-btn" data-i18n="save_results">💾 Enregistrer mes résultats</button>
-                <button id="degree4LessonTypeReadingPrintBtn" class="degree4-lessonType-reading-btn" style="background:#5c5344;" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+            <div class="degree4-lesson-reading-score-actions">
+                <button id="saveResultsBtn" class="degree4-lesson-reading-btn" data-i18n="save_results">💾 Enregistrer mes résultats</button>
+                <button id="printBtn" class="degree4-lesson-reading-btn" style="background:#5c5344;" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
             </div>
         </div>
 
         <!-- Footer navigation -->
-        <div class="degree4-lessonType-reading-footer-nav">
+        <div class="degree4-lesson-reading-footer-nav">
             <a href="degree4.html" data-i18n="footer_back">← Retour au programme</a>
             <a href="degree4unit1lesson4.html" data-i18n="footer_next">Leçon suivante →</a>
         </div>
     </div>
 
-    <!-- Global scripts -->
+    <!-- Scripts -->
     <script src="i18n.js"></script>
     <script src="db-utils.js"></script>
     <script src="offline-sync-utils.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="supabase-client.js"></script>
     <script src="logging.js"></script>
-    <script src="degree4-exercices.js"></script>
+    <script src="ed-french-ini.js"></script>
 
     <!-- Translations -->
     <script>
         App.addI18nTranslations({
             fr: {
-                lesson_title: "Lecture",
-                lesson_badge: "📘 Unité 1 · Lecture",
-                lesson_subtitle: "Une nouvelle élève",
-                lesson_duration: "⏱️ 45 minutes",
+                lesson_title: "Les deux amies",
+                lesson_badge: "📖 Unité 1 · Lecture",
+                lesson_subtitle: "Texte de lecture",
+                lesson_duration: "⏱️ 30 minutes",
                 back_link: "← Retour au programme",
                 current_lesson: "Lecture",
+                reading_title: "Les deux amies",
+                reading_author: "— Texte de lecture",
                 audio_label: "🎧 Écoute du texte",
-                reading_title: "Une nouvelle élève",
-                reading_text: "C'est lundi matin. Lorsque la leçon de lecture commence, on frappe à la porte de la classe.\nLe directeur de l'école, monsieur Mercier, entre accompagné d'une fillette aux cheveux tirés en queue de cheval.\n«Madame Marceau, dit le directeur, voici la nouvelle élève.»\nLa maîtresse sourit à la fillette et lui demande de se présenter.\n«Bonjour, dit la nouvelle élève, je m'appelle Caroline Lebrun. J'ai neuf ans. J'habite à la rue Pasteur.»",
+                reading_text: "Caroline, la nouvelle élève, habite loin de l’école. Chaque matin, sa mère l’amène en voiture.\nEn classe, Caroline est assise à côté de Nadia. Les deux fillettes adorent la musique et la danse. Elles sont devenues amies.\nA midi, Caroline et Nadia mangent ensemble à la cantine.\nL’après-midi, elles vont chez mademoiselle Leclerc, le professeur de danse.",
                 vocab_title: "🔹 Explication des mots",
-                vocab_lorsque: " - lorsque",
-                vocab_frappe: " - frappe",
-                vocab_directeur: " - directeur",
-                vocab_accompagne: " - accompagné",
-                vocab_fillette: " - fillette",
-                vocab_cheveux: " - cheveux tirés en queue de cheval",
-                vocab_maitresse: " - maîtresse",
-                vocab_sourit: " - sourit",
-                tools_title: "🔹 Mots outils",
-                tool_lorsque: " - lorsque",
-                tool_voici: " - voici",
-                questions_title: "Je réponds aux questions.",
-                q1: "1) Quand la nouvelle élève arrive-t-elle en classe?",
-                q2: "2) Que sais-tu sur cette élève?",
-                q3: "3) Pour mieux se présenter, qu'est-ce qu'elle doit encore dire?",
-                q4_radio: "4) Quelle question peux-tu poser à Caroline ?",
-                q4_opt_nom: "Comment t'appelles-tu ?",
-                q4_opt_plat: "Quel est ton plat préféré ?",
-                q4_opt_adresse: "Où habites-tu ?",
-                q4_opt_age: "Quel âge as-tu ?",
-                check_questions: "Vérifier",
-                thinking_title: "🧠 Je réfléchis",
-                observe_exercise: "1. J'observe les dessins et j'écris les noms des personnages.",
-                matching_title: "2. Je relie chaque personnage à ce qu'il fait.",
-                check_matching: "Vérifier les associations",
-                completion_main_title: "3. Je complète.",
-                completion_main_sentence: "Le personnage principal de cette histoire est",
-                completion_dialogues_title: "4) Je complète par : le directeur, la maîtresse ou Caroline",
-                dialogue1_prefix: "[text input]",
-                dialogue1_sentence: "dit : « J’ai neuf ans, j’habite à la rue Pasteur. »",
-                dialogue2_prefix: "[text input]",
-                dialogue2_sentence: "dit : « Voici une nouvelle élève. »",
-                dialogue3_prefix: "[text input]",
-                dialogue3_sentence: "dit : « Présente-toi à tes camarades. »",
-                check_completion: "Vérifier",
-                tool_words_writing_title: "J’apprends à écrire des mots outils",
-                tool_words_writing_intro: "Recopie ces mots outils :",
-                hairstyles_title: "💇 Différentes coiffures",
-    comprehension_section_title: "Je comprends",
-                hairstyle1_title: "Cheveux tirés en queue de cheval",
-                hairstyle1_desc: "Cheveux attachés en forme de queue de cheval - le style que Caroline portait",
-                hairstyle2_title: "Cheveux tressés",
-                hairstyle2_desc: "Cheveux tressés ou nattés - un style traditionnel et élégant",
-                hairstyle3_title: "Cheveux retenus par des couettes",
-                hairstyle3_desc: "Cheveux attachés en deux petites nattes sur les côtés - un style enfantin et joli",
+                vocab_loin: " - loin de",
+                vocab_acote: " - à côté de",
+                vocab_chez: " - chez",
+                vocab_adorent: " - adorent",
+                vocab_devenues: " - devenues amies",
+                vocab_cantine: " - cantine",
+                tool_words_title: "🔤 Mots outils",
+                tool_words_intro: "Je retiens ces mots :",
+                comprehension_title: "📝 Je comprends",
+                comp_q1: "1) Qui amène Caroline à l'école chaque matin ?",
+                comp_q2: "2) Pourquoi les deux fillettes sont-elles devenues amies ?",
+                comp_q3: "3) Que font-elles ensemble ?",
+                btn_correction: "🔍 Voir la correction",
+                comp_answers_title: "Correction :",
                 self_assess_question: "Ma réponse est :",
                 self_correct: "Correcte",
                 self_partial: "Partiellement correcte",
                 self_incorrect: "Incorrecte",
+                thinking_title: "🧠 Je réfléchis",
+                ex1_instruction: "1. Je complète le tableau pour dire ce que font les deux fillettes Nadia et Caroline.",
+                ex1_morning: "Le matin, ......",
+                ex1_noon: "A midi, ......",
+                ex1_afternoon: "L'après-midi, ......",
+                ex1_answers: "Correction :",
+                ex2_instruction: "2. a. Je lis les phrases.",
+                ex2b_instruction: "b. J'écris chaque phrase à sa place.",
+                ex2_answers: "Correction :",
+                ex3_instruction: "3. Je numérote les phrases pour obtenir la suite de l'histoire.",
+                ex3_answers: "Correction :",
+                check_answers: "🔍 Vérifier les réponses",
                 score_title: "📊 Votre auto‑évaluation",
                 score_correct: "Correct :",
                 score_partial: "Partiel :",
@@ -913,80 +848,58 @@
                 print_pdf: "🖨️ Imprimer / PDF",
                 footer_back: "← Retour au programme",
                 footer_next: "Leçon suivante →",
-                toast_signin_required: "Connectez-vous pour enregistrer vos résultats.",
                 ach_year_degree4: "4ème Année Primaire",
                 ach_module_unit1: "Unité 1",
-                answer_placeholder: "Votre réponse",
-                choose_option: "-- Choisissez --",
-                option_salaire: "Son salaire",
-                option_couleur: "Sa couleur préférée",
-                option_age: "Son âge",
-                degree4_exercices_all_correct: '✅ Parfait ! Toutes les réponses sont correctes.',
-                degree4_exercices_partial_correct: '⚠️ Vous avez {score}/{total}.',
-                degree4_exercices_none_correct: '❌ Aucune bonne réponse.',
-                degree4_exercices_wrong_with_answer: 'La bonne réponse est : {answer}',
-                degree4_exercices_separator: ' '
+                toast_signin_required: "Connectez-vous pour enregistrer vos résultats.",
+                print_site_name: "Educational Dashboard – Français",
+                print_scholar_year: "4ème Année Primaire",
+                print_week: "Unité 1",
+                print_area: "Lecture",
+                print_footer_dev: "Développé par Mejri Ziad",
+                print_footer_date: "Imprimé le"
             },
             en: {
-                lesson_title: "Reading",
-                lesson_badge: "📘 Unit 1 · Reading",
-                lesson_subtitle: "Une nouvelle élève",
-                lesson_duration: "⏱️ 45 minutes",
+                lesson_title: "The Two Friends",
+                lesson_badge: "📖 Unit 1 · Reading",
+                lesson_subtitle: "Reading text",
+                lesson_duration: "⏱️ 30 minutes",
                 back_link: "← Back to program",
                 current_lesson: "Reading",
-                audio_label: "🎧 Text Listening",
-                reading_title: "Une nouvelle élève",
-                reading_text: "It's Monday morning. When the reading lesson begins, someone knocks on the classroom door.\nThe school director, Mr. Mercier, enters accompanied by a little girl with her hair tied in a ponytail.\n\"Mrs. Marceau,\" says the director, \"here is the new student.\"\nThe teacher smiles at the little girl and asks her to introduce herself.\n\"Hello,\" says the new student, \"my name is Caroline Lebrun. I am nine years old. I live on Pasteur Street.\"",
-                vocab_title: "🔹 Vocabulary Explanation",
-                vocab_lorsque: " - when",
-                vocab_frappe: " - knocks",
-                vocab_directeur: " - director",
-                vocab_accompagne: " - accompanied",
-                vocab_fillette: " - little girl",
-                vocab_cheveux: " - hair tied in a ponytail",
-                vocab_maitresse: " - teacher",
-                vocab_sourit: " - smiles",
-                tools_title: "🔹 Tool Words",
-                tool_lorsque: " - lorsque (when)",
-                tool_voici: " - voici (this is)",
-                questions_title: "I answer the questions.",
-                q1: "1) When does the new student arrive in class?",
-                q2: "2) What do you know about this student?",
-                q3: "3) To introduce herself better, what else should she say?",
-                q4_radio: "4) What question can you ask Caroline?",
-                q4_opt_nom: "What's your name?",
-                q4_opt_plat: "What's your favorite dish?",
-                q4_opt_adresse: "Where do you live?",
-                q4_opt_age: "How old are you?",
-                check_questions: "Check",
-                thinking_title: "🧠 I think",
-                observe_exercise: "1. I observe the drawings and write the names of the characters.",
-                matching_title: "2. Match each character to what they do.",
-                check_matching: "Check Matching",
-                completion_main_title: "3. Complete.",
-                completion_main_sentence: "The main character of this story is",
-                completion_dialogues_title: "4) Complete with: the director, the teacher or Caroline",
-                dialogue1_prefix: "[text input]",
-                dialogue1_sentence: "says: « I am nine years old, I live on Pasteur Street. »",
-                dialogue2_prefix: "[text input]",
-                dialogue2_sentence: "says: « Here is a new student. »",
-                dialogue3_prefix: "[text input]",
-                dialogue3_sentence: "says: « Introduce yourself to your classmates. »",
-                check_completion: "Check",
-                tool_words_writing_title: "I learn to write tool words",
-                tool_words_writing_intro: "Copy these tool words:",
-                hairstyles_title: "💇 Different Hairstyles",
-    comprehension_section_title: "I understand",
-                hairstyle1_title: "Cheveux tirés en queue de cheval",
-                hairstyle1_desc: "Hair tied in a ponytail - the style that Caroline was wearing",
-                hairstyle2_title: "Cheveux tressés",
-                hairstyle2_desc: "Braided or plaited hair - a traditional and elegant style",
-                hairstyle3_title: "Cheveux retenus par des couettes",
-                hairstyle3_desc: "Hair tied in two small braids on the sides - a childish and pretty style",
+                reading_title: "The Two Friends",
+                reading_author: "— Reading text",
+                audio_label: "🎧 Listen to the text",
+                reading_text: "Caroline, the new student, lives far from school. Every morning, her mother drives her.\nIn class, Caroline sits next to Nadia. The two girls love music and dance. They have become friends.\nAt noon, Caroline and Nadia eat together in the cafeteria.\nIn the afternoon, they go to Miss Leclerc, the dance teacher.",
+                vocab_title: "🔹 Vocabulary explanation",
+                vocab_loin: " - far from",
+                vocab_acote: " - next to",
+                vocab_chez: " - at the house of",
+                vocab_adorent: " - love very much",
+                vocab_devenues: " - became friends",
+                vocab_cantine: " - school cafeteria",
+                tool_words_title: "🔤 Tool words",
+                tool_words_intro: "I remember these words:",
+                comprehension_title: "📝 I understand",
+                comp_q1: "1) Who brings Caroline to school every morning?",
+                comp_q2: "2) Why did the two girls become friends?",
+                comp_q3: "3) What do they do together?",
+                btn_correction: "🔍 See correction",
+                comp_answers_title: "Correction:",
                 self_assess_question: "My answer is:",
                 self_correct: "Correct",
                 self_partial: "Partially correct",
                 self_incorrect: "Incorrect",
+                thinking_title: "🧠 I think",
+                ex1_instruction: "1. I complete the table to say what the two girls Nadia and Caroline do.",
+                ex1_morning: "In the morning, ......",
+                ex1_noon: "At noon, ......",
+                ex1_afternoon: "In the afternoon, ......",
+                ex1_answers: "Correction:",
+                ex2_instruction: "2. a. I read the sentences.",
+                ex2b_instruction: "b. I write each sentence in its place.",
+                ex2_answers: "Correction:",
+                ex3_instruction: "3. I number the sentences to get the continuation of the story.",
+                ex3_answers: "Correction:",
+                check_answers: "🔍 Check answers",
                 score_title: "📊 Your self‑assessment",
                 score_correct: "Correct:",
                 score_partial: "Partial:",
@@ -998,80 +911,58 @@
                 print_pdf: "🖨️ Print / PDF",
                 footer_back: "← Back to program",
                 footer_next: "Next lesson →",
-                toast_signin_required: "Sign in to save your results.",
                 ach_year_degree4: "4th Grade Primary",
                 ach_module_unit1: "Unit 1",
-                answer_placeholder: "Your answer",
-                choose_option: "-- Choose --",
-                option_salaire: "His/her salary",
-                option_couleur: "His/her favourite colour",
-                option_age: "His/her age",
-                degree4_exercices_all_correct: '✅ Perfect! All answers are correct.',
-                degree4_exercices_partial_correct: '⚠️ You got {score}/{total}.',
-                degree4_exercices_none_correct: '❌ No correct answers.',
-                degree4_exercices_wrong_with_answer: 'The correct answer is: {answer}',
-                degree4_exercices_separator: ' '
+                toast_signin_required: "Sign in to save your results.",
+                print_site_name: "Educational Dashboard – French",
+                print_scholar_year: "4th Grade Primary",
+                print_week: "Unit 1",
+                print_area: "Reading",
+                print_footer_dev: "Developed by Mejri Ziad",
+                print_footer_date: "Printed on"
             },
             ar: {
-                lesson_title: "القراءة",
-                lesson_badge: "📘 الوحدة الأولى · قراءة",
-                lesson_subtitle: "Une nouvelle élève",
-                lesson_duration: "⏱️ 45 دقيقة",
+                lesson_title: "الصديقتان",
+                lesson_badge: "📖 الوحدة 1 · قراءة",
+                lesson_subtitle: "نص قراءة",
+                lesson_duration: "⏱️ 30 دقيقة",
                 back_link: "← العودة إلى البرنامج",
                 current_lesson: "القراءة",
-                audio_label: "🎧 استماع النص",
-                reading_title: "Une nouvelle élève",
-                reading_text: "إنه صباح يوم الاثنين. عندما يبدأ درس القراءة، يطرق أحدهم باب الفصل.\nيدخل مدير المدرسة، السيد مرسييه، مصحوبًا بطفلة صغيرة شعرها مربوط على شكل ذيل الحصان.\n\"سيدتي مارسو،\" يقول المدير، \"ها هي التلميذة الجديدة.\"\nتبتسم المعلمة للطفلة وتطلب منها أن تقدم نفسها.\n\"مرحبًا،\" تقول التلميذة الجديدة، \"اسمي كارولين ليبرون. عمري تسع سنوات. أسكن في شارع باستور.\"",
+                reading_title: "الصديقتان",
+                reading_author: "— نص قراءة",
+                audio_label: "🎧 استمع إلى النص",
+                reading_text: "كارولين، التلميذة الجديدة، تسكن بعيدًا عن المدرسة. كل صباح، توصلها والدتها بالسيارة.\nفي القسم، تجلس كارولين بجانب نادية. الفتاتان تعشقان الموسيقى والرقص. لقد أصبحتا صديقتين.\nعند الظهيرة، تأكل كارولين ونادية معًا في المطعم المدرسي.\nبعد الظهر، تذهبان إلى الآنسة لوكلير، معلمة الرقص.",
                 vocab_title: "🔹 شرح الكلمات",
-                vocab_lorsque: " - عندما",
-                vocab_frappe: " - يطرق",
-                vocab_directeur: " - مدير",
-                vocab_accompagne: " - يرافقه",
-                vocab_fillette: " - طفلة",
-                vocab_cheveux: " - شعر مربوط على شكل ذيل الحصان",
-                vocab_maitresse: " - معلمة",
-                vocab_sourit: " - تبتسم",
-                tools_title: "🔹 كلمات مفيدة",
-                tool_lorsque: " - lorsque (عندما)",
-                tool_voici: " - voici (ها هو)",
-                questions_title: "أجيب على الأسئلة.",
-                q1: "1) متى تصل التلميذة الجديدة إلى الصف؟",
-                q2: "2) ماذا تعرف عن هذه التلميذة؟",
-                q3: "3) لتقدّم نفسها بشكل أفضل، ماذا يجب أن تقول أيضًا؟",
-                q4_radio: "4) ما السؤال الذي يمكنك طرحه على كارولين؟",
-                q4_opt_nom: "ما اسمك؟",
-                q4_opt_plat: "ما هو طبقك المفضل؟",
-                q4_opt_adresse: "أين تسكنين؟",
-                q4_opt_age: "كم عمرك؟",
-                check_questions: "تحقق",
-                thinking_title: "🧠 أفكر",
-                observe_exercise: "1. ألاحظ الرسوم وأكتب أسماء الشخصيات.",
-                matching_title: "2. أربط كل شخصية بما تقوم به.",
-                check_matching: "تحقق من الربط",
-                completion_main_title: "3. أكمل.",
-                completion_main_sentence: "الشخصية الرئيسية في هذه القصة هي",
-                completion_dialogues_title: "4) أكمل بـ: المدير، المعلمة أو كارولين",
-                dialogue1_prefix: "[text input]",
-                dialogue1_sentence: "يقول/تقول: « عمري تسع سنوات، أسكن في شارع باستور. »",
-                dialogue2_prefix: "[text input]",
-                dialogue2_sentence: "يقول/تقول: « ها هي تلميذة جديدة. »",
-                dialogue3_prefix: "[text input]",
-                dialogue3_sentence: "يقول/تقول: « قدّم نفسك لزملائك. »",
-                check_completion: "تحقق",
-                tool_words_writing_title: "أتعلم كتابة كلمات الأدوات",
-                tool_words_writing_intro: "انسخ هذه الكلمات الأدوات:",
-                hairstyles_title: "💇 أنماط الشعر المختلفة",
-    comprehension_section_title: "أفهم",
-                hairstyle1_title: "Cheveux tirés en queue de cheval",
-                hairstyle1_desc: "شعر مربوط على شكل ذيل الحصان - وهو النمط الذي كانت ترتديه كارولين",
-                hairstyle2_title: "Cheveux tressés",
-                hairstyle2_desc: "شعر مضفر أو مجدول - نمط تقليدي وأنيق",
-                hairstyle3_title: "Cheveux retenus par des couettes",
-                hairstyle3_desc: "شعر مربوط على شكل ضفيرتين صغيرتين على الجانبين - نمط طفولي وجميل",
+                vocab_loin: " - بعيد عن",
+                vocab_acote: " - بجانب",
+                vocab_chez: " - عند / في منزل",
+                vocab_adorent: " - يعشقن / يحبن كثيراً",
+                vocab_devenues: " - أصبحن صديقات",
+                vocab_cantine: " - مقصف المدرسة",
+                tool_words_title: "🔤 كلمات أدوات",
+                tool_words_intro: "أتذكر هذه الكلمات:",
+                comprehension_title: "📝 أفهم",
+                comp_q1: "1) من يوصل كارولين إلى المدرسة كل صباح؟",
+                comp_q2: "2) لماذا أصبحت الفتاتان صديقتين؟",
+                comp_q3: "3) ماذا تفعلان معًا؟",
+                btn_correction: "🔍 الاطلاع على التصحيح",
+                comp_answers_title: "التصحيح:",
                 self_assess_question: "جوابي هو:",
                 self_correct: "صحيح",
                 self_partial: "صحيح جزئيًا",
                 self_incorrect: "خاطئ",
+                thinking_title: "🧠 أفكر",
+                ex1_instruction: "1. أكمل الجدول لأقول ماذا تفعل الفتاتان نادية وكارولين.",
+                ex1_morning: "في الصباح، ......",
+                ex1_noon: "عند الظهيرة، ......",
+                ex1_afternoon: "بعد الظهر، ......",
+                ex1_answers: "التصحيح:",
+                ex2_instruction: "2. أ. أقرأ الجمل.",
+                ex2b_instruction: "ب. أكتب كل جملة في مكانها.",
+                ex2_answers: "التصحيح:",
+                ex3_instruction: "3. أرقم الجمل للحصول على تسلسل القصة.",
+                ex3_answers: "التصحيح:",
+                check_answers: "🔍 تحقق من الإجابات",
                 score_title: "📊 تقييمك الذاتي",
                 score_correct: "صحيح:",
                 score_partial: "جزئي:",
@@ -1083,25 +974,18 @@
                 print_pdf: "🖨️ طباعة / PDF",
                 footer_back: "← العودة إلى البرنامج",
                 footer_next: "الدرس الموالي ←",
-                toast_signin_required: "سجّل الدخول لحفظ نتائجك.",
                 ach_year_degree4: "السنة الرابعة ابتدائي",
                 ach_module_unit1: "الوحدة الأولى",
-                answer_placeholder: "إجابتك",
-                choose_option: "-- اختر --",
-                option_salaire: "راتبه/راتبها",
-                option_couleur: "لونه/لونها المفضل",
-                option_age: "عمره/عمرها",
-                degree4_exercices_all_correct: '✅ ممتاز! جميع الإجابات صحيحة.',
-                degree4_exercices_partial_correct: '⚠️ حصلت على {score}/{total}.',
-                degree4_exercices_none_correct: '❌ لا توجد إجابات صحيحة.',
-                degree4_exercices_wrong_with_answer: 'الإجابة الصحيحة هي: {answer}',
-                degree4_exercices_separator: ' '
+                toast_signin_required: "سجّل الدخول لحفظ نتائجك.",
+                print_site_name: "لوحة التحكم التعليمية – الفرنسية",
+                print_scholar_year: "السنة الرابعة ابتدائي",
+                print_week: "الوحدة 1",
+                print_area: "قراءة",
+                print_footer_dev: "طوّر بواسطة ماجري زياد",
+                print_footer_date: "طُبع في"
             }
         });
-    </script>
 
-    <!-- Bilingual activation and direction -->
-    <script>
         (function() {
             var container = document.getElementById('main-content');
             if (container && typeof App.makeBilingual === 'function') {
@@ -1113,8 +997,6 @@
             if (container) container.dir = (localStorage.getItem('lang') || 'fr') === 'ar' ? 'rtl' : 'ltr';
         })();
     </script>
-
-    <script src="ed-french-ini.js"></script>
 
     <!-- Direct translation fix -->
     <script>
@@ -1148,50 +1030,33 @@
         })();
     </script>
 
-    <!-- Slideshow logic -->
+    <!-- Audio & Slideshow + sentence sound -->
     <script>
-        function degree4LessonTypeReadingChangeSlide(slideshowId, direction) {
-            const slideshow = document.getElementById(slideshowId);
-            if (!slideshow) return;
-            const slides = slideshow.querySelectorAll('.slide');
-            let activeIndex = -1;
-            slides.forEach((slide, index) => {
-                if (slide.classList.contains('active')) {
-                    activeIndex = index;
-                }
+        window.playSentenceSound = function(sentenceName) {
+            const audio = new Audio(`assets4/sounds/degree4/unit1/lesson3/sentences/${sentenceName}.mp3`);
+            audio.play().catch(error => {
+                console.error('Error playing sentence sound:', error);
             });
-            if (activeIndex === -1) activeIndex = 0;
-            slides[activeIndex].classList.remove('active');
-            activeIndex = (activeIndex + direction + slides.length) % slides.length;
-            slides[activeIndex].classList.add('active');
-        }
-    </script>
+        };
 
-    <!-- Audio player logic -->
-    <script>
         (function() {
-            'use strict';
-
-            function degree4LessonTypeReadingInitAudioPlayer(prefix, src) {
+            function initReadingAudio() {
+                const prefix = 'reading';
                 const container = document.getElementById(prefix + 'AudioPlayer');
                 if (!container) return;
-
-                const audio = new Audio(src);
+                const audio = new Audio('assets4/sounds/degree4/unit1/lesson3/main-text.mp3');
                 const playBtn = document.getElementById(prefix + 'PlayBtn');
                 const progressFill = document.getElementById(prefix + 'ProgressFill');
                 const progressBar = document.getElementById(prefix + 'ProgressBar');
                 const currentTimeEl = document.getElementById(prefix + 'CurrentTime');
                 const durationEl = document.getElementById(prefix + 'Duration');
-                const speedBtns = container.querySelectorAll('.degree4-lessonType-reading-speed-btn');
-
-                if (!playBtn || !progressFill || !progressBar) return;
+                const speedBtns = container.querySelectorAll('.degree4-lesson-reading-speed-btn');
 
                 function formatTime(seconds) {
                     const mins = Math.floor(seconds / 60);
                     const secs = Math.floor(seconds % 60);
                     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
                 }
-
                 audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
                 audio.addEventListener('timeupdate', () => {
                     const percent = (audio.currentTime / audio.duration) * 100 || 0;
@@ -1199,19 +1064,16 @@
                     currentTimeEl.textContent = formatTime(audio.currentTime);
                 });
                 audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
-
                 playBtn.addEventListener('click', () => {
                     if (audio.paused) { audio.play(); playBtn.textContent = '⏸'; }
                     else { audio.pause(); playBtn.textContent = '▶'; }
                 });
-
                 progressBar.addEventListener('click', (e) => {
                     const rect = progressBar.getBoundingClientRect();
                     const clickX = e.clientX - rect.left;
                     const width = rect.width;
                     audio.currentTime = (clickX / width) * audio.duration;
                 });
-
                 speedBtns.forEach(btn => {
                     btn.addEventListener('click', () => {
                         speedBtns.forEach(b => b.classList.remove('active'));
@@ -1221,104 +1083,123 @@
                 });
             }
 
-            degree4LessonTypeReadingInitAudioPlayer('degree4LessonTypeReadingMain', 'assets/sounds/degree4/unit1/lesson3/main-text.mp3');
+            function initReadingSlideshow() {
+                const slideshow = document.getElementById('readingSlideshow');
+                if (!slideshow) return;
+                const slides = slideshow.querySelectorAll('.slide');
+                const prevBtn = slideshow.querySelector('.prev');
+                const nextBtn = slideshow.querySelector('.next');
+                let current = 0;
+                let autoInterval = null;
+
+                function showSlide(index) {
+                    slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+                }
+                function nextSlide() { current = (current + 1) % slides.length; showSlide(current); }
+                function prevSlide() { current = (current - 1 + slides.length) % slides.length; showSlide(current); }
+                function startAutoPlay() { stopAutoPlay(); autoInterval = setInterval(nextSlide, 4000); }
+                function stopAutoPlay() { if (autoInterval) { clearInterval(autoInterval); autoInterval = null; } }
+
+                if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); startAutoPlay(); });
+                if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); startAutoPlay(); });
+
+                slideshow.addEventListener('mouseenter', stopAutoPlay);
+                slideshow.addEventListener('mouseleave', startAutoPlay);
+
+                startAutoPlay();
+            }
+
+            initReadingAudio();
+            initReadingSlideshow();
         })();
     </script>
 
-    <!-- Inline Radio Button Processor -->
-    
+    <!-- Exercise functions -->
+    <script>
+        async function requireAuth() {
+            const { data: { session } } = await App.supabase.auth.getSession();
+            if (!session) {
+                App.showToast('toast_signin_required', 'error');
+                const signInBtn = document.getElementById('signInBtn');
+                if (signInBtn) signInBtn.click();
+                return false;
+            }
+            return true;
+        }
 
-    <!-- Modular exercise initialization -->
+        function playSound(src) {
+            const sound = new Audio(src);
+            sound.currentTime = 0;
+            sound.play().catch(() => {});
+        }
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.toggle('visible');
+        }
+        function showFeedback(id, score, total) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.textContent = score === total ? '✅ Toutes les réponses sont correctes !' : score > 0 ? `⚠️ ${score}/${total} bonnes réponses.` : '❌ Aucune bonne réponse.';
+            el.className = score === total ? 'degree4-lesson-reading-feedback correct' : 'degree4-lesson-reading-feedback wrong';
+        }
+
+        window.checkComprehension = async function() {
+            if (!await requireAuth()) return;
+            const answers = { q1: 'a', q2: 'b', q3: 'b' };
+            let score = 0, total = 3;
+            for (let i = 1; i <= 3; i++) {
+                const sel = document.querySelector(`input[name="comp_q${i}"]:checked`);
+                if (sel && sel.value === answers[`q${i}`]) score++;
+            }
+            playSound(score === total ? 'assets/sounds/complete-sound.mp3' : score > 0 ? 'assets/sounds/correct-sound.mp3' : 'assets/sounds/wrong-sound.mp3');
+            toggleAnswer('compKey');
+            showFeedback('compFeedback', score, total);
+        };
+
+        window.checkEx1 = async function() {
+            if (!await requireAuth()) return;
+            const correct = { table_morning: 'caroline', table_noon: 'cantine', table_afternoon: 'danse' };
+            let score = 0, total = 3;
+            for (const id in correct) {
+                const el = document.getElementById(id);
+                if (el && el.value === correct[id]) score++;
+            }
+            playSound(score === total ? 'assets/sounds/complete-sound.mp3' : score > 0 ? 'assets/sounds/correct-sound.mp3' : 'assets/sounds/wrong-sound.mp3');
+            toggleAnswer('ex1Key');
+            showFeedback('ex1Feedback', score, total);
+        };
+
+        window.checkEx2 = async function() {
+            if (!await requireAuth()) return;
+            const correct = { order_debut: 'directeur', order_ensuite: 'connaissance', order_fin: 'amies' };
+            let score = 0, total = 3;
+            for (const id in correct) {
+                const el = document.getElementById(id);
+                if (el && el.value === correct[id]) score++;
+            }
+            playSound(score === total ? 'assets/sounds/complete-sound.mp3' : score > 0 ? 'assets/sounds/correct-sound.mp3' : 'assets/sounds/wrong-sound.mp3');
+            toggleAnswer('ex2Key');
+            showFeedback('ex2Feedback', score, total);
+        };
+
+        window.checkEx3 = async function() {
+            if (!await requireAuth()) return;
+            const correct = { seq_1: '4', seq_2: '2', seq_3: '1', seq_4: '3' };
+            let score = 0, total = 4;
+            for (const id in correct) {
+                const el = document.getElementById(id);
+                if (el && el.value === correct[id]) score++;
+            }
+            playSound(score === total ? 'assets/sounds/complete-sound.mp3' : score > 0 ? 'assets/sounds/correct-sound.mp3' : 'assets/sounds/wrong-sound.mp3');
+            toggleAnswer('ex3Key');
+            showFeedback('ex3Feedback', score, total);
+        };
+    </script>
+
+    <!-- Self-assessment scoring, save, print -->
     <script>
         (function() {
-            'use strict';
-
-            // Q1 text
-            degree4LessonTypeReadingTextInputProcess({
-                checkButtonId: 'degree4LessonTypeReadingCheckQ1',
-                feedbackId: 'degree4LessonTypeReadingQ1Feedback',
-                inputs: [{ id: 'degree4LessonTypeReadingQ1', correctAnswers: ['lundi', 'lundi matin'] }],
-                sounds: { correct: 'assets/sounds/correct-sound.mp3', wrong: 'assets/sounds/wrong-sound.mp3', complete: 'assets/sounds/complete-sound.mp3' }
-            });
-            // Q2 text
-            degree4LessonTypeReadingTextInputProcess({
-                checkButtonId: 'degree4LessonTypeReadingCheckQ2',
-                feedbackId: 'degree4LessonTypeReadingQ2Feedback',
-                inputs: [{ id: 'degree4LessonTypeReadingQ2', correctAnswers: ['caroline', 'caroline lebrun', 'neuf ans', '9 ans', 'rue pasteur'] }],
-                sounds: { correct: 'assets/sounds/correct-sound.mp3', wrong: 'assets/sounds/wrong-sound.mp3', complete: 'assets/sounds/complete-sound.mp3' }
-            });
-            // Q3 dropdown (correct answer changed to couleur)
-            degree4LessonTypeReadingDropdownProcess({
-                checkButtonId: 'degree4LessonTypeReadingCheckQ3',
-                feedbackId: 'degree4LessonTypeReadingQ3Feedback',
-                dropdowns: [{ id: 'degree4LessonTypeReadingQ3', correctValue: 'couleur' }],
-                sounds: { correct: 'assets/sounds/correct-sound.mp3', wrong: 'assets/sounds/wrong-sound.mp3', complete: 'assets/sounds/complete-sound.mp3' }
-            });
-            // Q4 radio
-            degree4LessonTypeReadingRadioProcess({
-    checkButtonId: 'degree4LessonTypeReadingCheckQ4',
-    feedbackId: 'degree4LessonTypeReadingQ4Feedback',
-    radios: [{ name: 'degree4LessonTypeReadingQ4Radio', correctValue: 'plat' }],
-    sounds: {
-        correct: 'assets/sounds/correct-sound.mp3',
-        wrong: 'assets/sounds/wrong-sound.mp3',
-        complete: 'assets/sounds/complete-sound.mp3'
-    }
-});
-
-            // Character names
-            degree4LessonTypeReadingTextInputProcess({
-                checkButtonId: 'degree4LessonTypeReadingCheckNames',
-                feedbackId: 'degree4LessonTypeReadingNamesFeedback',
-                inputs: [
-                    { id: 'degree4LessonTypeReadingDirectorName', correctAnswers: ['mercier', 'monsieur mercier'] },
-                    { id: 'degree4LessonTypeReadingTeacherName', correctAnswers: ['marceau', 'madame marceau'] },
-                    { id: 'degree4LessonTypeReadingCarolineName', correctAnswers: ['caroline', 'lebrun', 'caroline lebrun'] }
-                ],
-                sounds: { correct: 'assets/sounds/correct-sound.mp3', wrong: 'assets/sounds/wrong-sound.mp3', complete: 'assets/sounds/complete-sound.mp3' }
-            });
-
-            // Matching with new right items
-            degree4LessonTypeReadingMatchingProcess({
-                containerId: 'degree4LessonTypeReadingMatchingContainer',
-                checkButtonId: 'degree4LessonTypeReadingCheckMatching',
-                feedbackId: 'degree4LessonTypeReadingMatchingFeedback',
-                leftItems: [
-                    { id: 'director', label: 'Le directeur' },
-                    { id: 'teacher', label: 'La maîtresse' },
-                    { id: 'caroline', label: 'Caroline' }
-                ],
-                rightItems: [
-                    { id: 'present', label: 'présente la nouvelle élève' },
-                    { id: 'teach', label: 'apprend aux élèves à lire' },
-                    { id: 'self_intro', label: 'se présente à la classe' }
-                ],
-                correctMatches: { director: 'present', teacher: 'teach', caroline: 'self_intro' },
-                sounds: { correct: 'assets/sounds/correct-sound.mp3', wrong: 'assets/sounds/wrong-sound.mp3', complete: 'assets/sounds/complete-sound.mp3' }
-            });
-
-            // Completion main character
-            degree4LessonTypeReadingTextInputProcess({
-                checkButtonId: 'degree4LessonTypeReadingCheckMainCharacter',
-                feedbackId: 'degree4LessonTypeReadingMainCharacterFeedback',
-                inputs: [{ id: 'degree4LessonTypeReadingMainCharacter', correctAnswers: ['caroline', 'caroline lebrun'] }],
-                sounds: { correct: 'assets/sounds/correct-sound.mp3', wrong: 'assets/sounds/wrong-sound.mp3', complete: 'assets/sounds/complete-sound.mp3' }
-            });
-
-            // Completion dialogues
-            degree4LessonTypeReadingTextInputProcess({
-                checkButtonId: 'degree4LessonTypeReadingCheckDialogues',
-                feedbackId: 'degree4LessonTypeReadingDialoguesFeedback',
-                inputs: [
-                    { id: 'degree4LessonTypeReadingDialogue1', correctAnswers: ['caroline', 'caroline lebrun'] },
-                    { id: 'degree4LessonTypeReadingDialogue2', correctAnswers: ['le directeur', 'directeur'] },
-                    { id: 'degree4LessonTypeReadingDialogue3', correctAnswers: ['la maîtresse', 'maîtresse'] }
-                ],
-                sounds: { correct: 'assets/sounds/correct-sound.mp3', wrong: 'assets/sounds/wrong-sound.mp3', complete: 'assets/sounds/complete-sound.mp3' }
-            });
-
-            // ---------- Self‑assessment scoring (dynamic) ----------
-            function degree4LessonTypeReadingUpdateScore() {
+            function updateScore() {
                 const radios = document.querySelectorAll('input[type="radio"][name^="self_"]');
                 const groups = new Set();
                 radios.forEach(r => groups.add(r.name));
@@ -1333,25 +1214,23 @@
                         unanswered++;
                     }
                 });
-                document.getElementById('degree4LessonTypeReadingScoreCorrect').textContent = correct;
-                document.getElementById('degree4LessonTypeReadingScorePartial').textContent = partial;
-                document.getElementById('degree4LessonTypeReadingScoreIncorrect').textContent = incorrect;
-                document.getElementById('degree4LessonTypeReadingScoreUnanswered').textContent = unanswered;
+                document.getElementById('scoreCorrect').textContent = correct;
+                document.getElementById('scorePartial').textContent = partial;
+                document.getElementById('scoreIncorrect').textContent = incorrect;
+                document.getElementById('scoreUnanswered').textContent = unanswered;
             }
 
             document.querySelectorAll('input[type="radio"][name^="self_"]').forEach(radio => {
-                radio.addEventListener('change', degree4LessonTypeReadingUpdateScore);
+                radio.addEventListener('change', updateScore);
             });
-            degree4LessonTypeReadingUpdateScore();
+            updateScore();
 
-            // ---------- Save results (dynamic) ----------
-            document.getElementById('degree4LessonTypeReadingSaveResultsBtn').addEventListener('click', async function() {
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
                 if (!App.supabase) return;
                 const { data: { user } } = await App.supabase.auth.getUser();
                 if (!user) {
                     App.showToast('toast_signin_required', 'error');
-                    const signInBtn = document.getElementById('signInBtn');
-                    if (signInBtn) signInBtn.click();
+                    document.getElementById('signInBtn')?.click();
                     return;
                 }
                 const radios = document.querySelectorAll('input[type="radio"][name^="self_"]');
@@ -1368,53 +1247,29 @@
                         unanswered++;
                     }
                 });
-                const lang = localStorage.getItem('lang') || 'fr';
                 const entry = {
                     lesson_id: 'degree4unit1lesson3',
-                    lesson_title: {
-                        fr: App.getTranslation('lesson_title', 'fr'),
-                        en: App.getTranslation('lesson_title', 'en'),
-                        ar: App.getTranslation('lesson_title', 'ar')
-                    },
-                    year: {
-                        fr: App.getTranslation('ach_year_degree4', 'fr'),
-                        en: App.getTranslation('ach_year_degree4', 'en'),
-                        ar: App.getTranslation('ach_year_degree4', 'ar')
-                    },
-                    module: {
-                        fr: App.getTranslation('ach_module_unit1', 'fr'),
-                        en: App.getTranslation('ach_module_unit1', 'en'),
-                        ar: App.getTranslation('ach_module_unit1', 'ar')
-                    },
+                    lesson_title: { fr: App.getTranslation('lesson_title', 'fr'), en: App.getTranslation('lesson_title', 'en'), ar: App.getTranslation('lesson_title', 'ar') },
+                    year: { fr: App.getTranslation('ach_year_degree4', 'fr'), en: App.getTranslation('ach_year_degree4', 'en'), ar: App.getTranslation('ach_year_degree4', 'ar') },
+                    module: { fr: App.getTranslation('ach_module_unit1', 'fr'), en: App.getTranslation('ach_module_unit1', 'en'), ar: App.getTranslation('ach_module_unit1', 'ar') },
                     correct, incorrect, partial, unanswered,
                     updated_at: new Date().toISOString()
                 };
                 const { data: profileData, error: fetchError } = await App.supabase
-                    .from('profiles')
-                    .select('achivement')
-                    .eq('id', user.id)
-                    .single();
+                    .from('profiles').select('achivement').eq('id', user.id).single();
                 if (fetchError) return;
                 let achivement = profileData?.achivement || {};
                 if (!achivement['ED-French']) achivement['ED-French'] = [];
                 const arr = achivement['ED-French'];
                 const existingIdx = arr.findIndex(e => e.lesson_id === 'degree4unit1lesson3');
-                if (existingIdx >= 0) arr[existingIdx] = entry;
-                else arr.push(entry);
+                if (existingIdx >= 0) arr[existingIdx] = entry; else arr.push(entry);
                 const { error: updateError } = await App.supabase
-                    .from('profiles')
-                    .update({ achivement })
-                    .eq('id', user.id);
-                if (updateError) {
-                    App.showToast('save_error', 'error');
-                } else {
-                    App.showToast('save_success', 'success');
-                    App.logUserAction('lesson_saved', { lesson: 'degree4unit1lesson3', correct, incorrect, partial });
-                }
+                    .from('profiles').update({ achivement }).eq('id', user.id);
+                if (updateError) App.showToast('save_error', 'error');
+                else { App.showToast('save_success', 'success'); App.logUserAction('lesson_saved', { lesson: 'degree4unit1lesson3', correct, incorrect, partial }); }
             });
 
-            // ---------- Print / PDF ----------
-            document.getElementById('degree4LessonTypeReadingPrintBtn').addEventListener('click', async function() {
+            document.getElementById('printBtn').addEventListener('click', async function() {
                 if (!App.supabase) return;
                 const { data: { user } } = await App.supabase.auth.getUser();
                 if (!user) {
@@ -1423,24 +1278,35 @@
                     return;
                 }
                 const lang = localStorage.getItem('lang') || 'fr';
-                const printableContent = degree4LessonTypeReadingDropdownGetPrintableContent(document.getElementById('main-content'));
+                const content = document.getElementById('main-content').cloneNode(true);
+                content.querySelectorAll('input, textarea, .degree4-lesson-reading-self-assess, .degree4-lesson-reading-score-area, .degree4-lesson-reading-audio, .degree4-lesson-reading-slideshow-btn, .degree4-lesson-reading-footer-nav, .degree4-lesson-reading-vocab-exercise button').forEach(el => el.remove());
+                content.querySelectorAll('.degree4-lesson-reading-slideshow').forEach(el => el.remove());
+                const breadcrumb = content.querySelector('p[style*="margin-bottom:1.5rem"]');
+                if (breadcrumb) breadcrumb.remove();
                 const printWindow = window.open('', '_blank', 'width=800,height=600');
                 printWindow.document.write(`
-                    <!DOCTYPE html>
-                    <html lang="${lang}">
-                    <head>
-                        <meta charset="UTF-8">
-                        <title>${App.getTranslation('lesson_title', lang)}</title>
-                        <style>
-                            body { font-family: 'Georgia', serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
-                            .reading-card { margin-bottom: 2rem; }
-                            .reading-title { color: #c75b2c; border-bottom: 2px solid #c75b2c; display: inline-block; }
-                            .vocab { margin-top: 1rem; background: #f5f0e6; padding: 1rem; border-radius: 8px; }
-                            @media print { @page { margin: 2cm; } }
-                        </style>
-                    </head>
-                    <body>${printableContent}</body>
-                    </html>
+                    <!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8"><title>${App.getTranslation('lesson_title', lang)}</title>
+                    <style>
+                        body { font-family: 'Georgia', serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+                        .print-header { text-align: center; border-bottom: 2px solid #2e8b57; padding-bottom: 1rem; margin-bottom: 2rem; }
+                        .print-header .site-name { font-size: 1.4rem; font-weight: bold; color: #2e8b57; margin: 0 0 0.3rem; }
+                        .print-header .meta-line { font-size: 0.95rem; color: #444; margin: 0.2rem 0; }
+                        .print-header .lesson-name { font-size: 1.1rem; font-weight: bold; color: #000; margin-top: 0.5rem; }
+                        .print-footer { text-align: center; border-top: 1px solid #ccc; padding-top: 1rem; margin-top: 2rem; font-size: 0.85rem; color: #666; }
+                        .degree4-lesson-reading-card { margin-bottom: 2rem; border: 1px solid #ccc; padding: 1rem; border-radius: 8px; }
+                        .degree4-lesson-reading-text { white-space: pre-line; font-style: italic; }
+                        .degree4-lesson-reading-vocab, .degree4-lesson-reading-vocab-exercise { margin-top: 1rem; background: #f5f0e6; padding: 1rem; border-radius: 8px; }
+                        .degree4-lesson-reading-vocab ul, .degree4-lesson-reading-vocab-exercise ol { list-style: none; padding: 0; }
+                        .degree4-lesson-reading-vocab li, .degree4-lesson-reading-vocab-exercise li { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
+                        .word { font-weight: bold; min-width: 120px; }
+                        .translation { color: #555; }
+                        .degree4-lesson-reading-answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; }
+                        @media print { @page { margin: 2cm; } }
+                    </style></head><body>
+                    <div class="print-header"><div class="site-name">${App.getTranslation('print_site_name', lang)}</div><div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div><div class="lesson-name">${App.getTranslation('lesson_title', lang)}</div></div>
+                    ${content.innerHTML}
+                    <div class="print-footer">${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}</div>
+                    </body></html>
                 `);
                 printWindow.document.close();
                 printWindow.focus();
