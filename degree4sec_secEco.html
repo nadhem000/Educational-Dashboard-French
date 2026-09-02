@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="program_main_title">Programme 4ème année secondaire – Section Économie et Services</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    :root {
+      --heading: #382e1e;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 4px 14px rgba(0, 0, 0, 0.08);
+      --week-bg: #fdfaf5;
+      --week-header-bg: #f5efe2;
+      --conseils-border: #7a4f34;
+      --bullet-color: #d4c5a9;
+      --arrow-color: #c0b090;
+      --accent-hover-bg: rgba(199, 91, 44, 0.08);
+    }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      transition: background var(--transition), color var(--transition);
+    }
+    .back-nav {
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0.5rem 1.5rem;
+    }
+    .back-nav a {
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .back-nav a:hover { text-decoration: underline; }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.4rem 3rem;
+    }
+    h1 {
+      font-size: 2rem;
+      color: var(--heading);
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+    }
+    .objectives {
+      background: var(--card-bg);
+      border-left: 5px solid var(--accent);
+      padding: 1.4rem 1.6rem;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+    }
+    .objectives h2 {
+      color: var(--heading);
+      margin-bottom: 0.8rem;
+    }
+    .objectives ul { list-style: none; padding:0; }
+    .objectives li {
+      padding:0.3rem 0 0.3rem 1.4rem;
+      position:relative;
+      color:var(--text-light);
+    }
+    .objectives li::before {
+      content:'◆';
+      position:absolute;
+      left:0;
+      color:var(--accent);
+      font-size:0.6rem;
+    }
+    .week {
+      background: var(--week-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .week-header {
+      background: var(--week-header-bg);
+      padding: 0.8rem 1.3rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      width: 100%;
+      cursor: pointer;
+      user-select: none;
+      text-align: left;
+      font-family: inherit;
+      color: inherit;
+      background-color: var(--week-header-bg);
+      transition: background 0.2s;
+    }
+    .week-header:hover {
+      background-color: var(--accent-hover-bg);
+    }
+    .week-num {
+      width: 34px;
+      height: 34px;
+      background: var(--accent);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .week-body {
+      overflow: hidden;
+      max-height: 1000px; /* fallback, will be overridden by JS */
+      transition: max-height 0.4s ease;
+    }
+    .week-body.collapsed {
+      max-height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    .week-header.collapsed .collapse-arrow {
+      transform: rotate(-90deg);
+    }
+    .collapse-arrow {
+      margin-left: auto;
+      font-size: 0.8rem;
+      transition: transform 0.3s;
+    }
+    .lesson-link {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.7rem 1.3rem;
+      text-decoration: none;
+      color: var(--text);
+      border-left: 3px solid transparent;
+      transition: all var(--transition);
+    }
+    .lesson-link:hover {
+      background: var(--accent-hover-bg);
+      border-left-color: var(--accent);
+      color: var(--accent-hover);
+    }
+    .lesson-link .bullet {
+      width: 8px;
+      height: 8px;
+      background: var(--bullet-color);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .lesson-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-light);
+      min-width: 110px;
+      flex-shrink: 0;
+    }
+    .lesson-title {
+      font-size: 0.95rem;
+      flex:1;
+    }
+    .arrow {
+      color: var(--arrow-color);
+      font-size: 0.8rem;
+      transition: var(--transition);
+    }
+    .lesson-link:hover .arrow {
+      color: var(--accent);
+      transform: translateX(3px);
+    }
+    .part {
+      margin: 1rem 1.3rem;
+      padding: 0.6rem 0.8rem;
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+    .part-title {
+      font-weight: 600;
+      color: var(--heading);
+      margin-bottom: 0.3rem;
+      font-size: 0.95rem;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 2rem;
+      color: var(--text-light);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+    }
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 99;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transition: opacity 0.3s;
+    }
+    #backToTop.show {
+      display: flex;
+    }
+    @media (max-width: 640px) {
+      h1 { font-size: 1.5rem; }
+      .lesson-link { flex-wrap: wrap; padding: 0.5rem 1rem; }
+      .lesson-label { min-width: auto; font-size: 0.75rem; }
+      .lesson-title { width:100%; font-size:0.85rem; }
+      .arrow { display:none; }
+      .part { margin: 0.5rem 0.8rem; padding: 0.4rem 0.5rem; }
+    }
+    @media print {
+      .no-print { display: none !important; }
+      .print-only { display: block !important; }
+      #print-header, #print-footer {
+        display: block !important;
+        text-align: center;
+        margin: 20px 0;
+      }
+      #print-header h1 { font-size: 18pt; }
+      .container { padding: 0; }
+      h1 { font-size: 18pt; }
+      .week-body { max-height: none !important; }
+      .week-header { cursor: default; pointer-events: none; }
+      .collapse-arrow { display: none; }
+      .part { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="back-nav no-print">
+    <a href="index.html" data-i18n="back_link">← Retour à l'accueil</a>
+  </nav>
+  <main class="container" id="main-content">
+    <h1 data-i18n="program_main_title">📚 Programme de 4ème année secondaire</h1>
+    <p class="subtitle" data-i18n="program_subtitle">Section Économie et Services — Tous les modules</p>
+    <button id="printProgramBtn" class="no-print" onclick="window.print();" data-i18n="print_button">🖨️ Imprimer le programme</button>
+    <div class="objectives">
+      <h2 data-i18n="objectives_heading">🎯 Objectifs du programme</h2>
+      <ul>
+        <li data-i18n="objectives_1">Maîtriser les compétences linguistiques essentielles.</li>
+        <li data-i18n="objectives_2">Développer l'expression écrite et orale.</li>
+        <li data-i18n="objectives_3">Acquérir les méthodes de l'essai et de l'étude de texte.</li>
+        <li data-i18n="objectives_4">Enrichir la culture littéraire et générale.</li>
+      </ul>
+    </div>
+
+    <!-- Module I -->
+    <div class="week">
+      <button class="week-header" aria-expanded="true" aria-controls="module1-body">
+        <span class="week-num">1</span>
+        <span data-i18n="module1.title">Module I : Souvenirs et nostalgie</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="week-body" id="module1-body">
+        <div class="part">
+          <div class="part-title" data-i18n="module1.part1.title">Part 1 : Le discours rapporté</div>
+          <a href="edf_4th_secEco_module1_lesson1_part1.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module1.part1.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module1.part1.lesson1.title">Du discours direct au discours indirect</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module1_lesson2_part1.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module1.part1.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module1.part1.lesson2.title">Cas des phrases interrogatives – Interrogation totale</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module1_lesson3_part1.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module1.part1.lesson3.label">Leçon 3</span><span class="lesson-title" data-i18n="module1.part1.lesson3.title">Cas des phrases interrogatives – Interrogation partielle</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module1_lesson4_part1.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module1.part1.lesson4.label">Leçon 4</span><span class="lesson-title" data-i18n="module1.part1.lesson4.title">Cas des pronoms interrogatifs – partie 1</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module1_lesson5_part1.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module1.part1.lesson5.label">Leçon 5</span><span class="lesson-title" data-i18n="module1.part1.lesson5.title">Les indicateurs du temps et du lieux</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module1_lesson6_part1.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module1.part1.lesson6.label">Leçon 6</span><span class="lesson-title" data-i18n="module1.part1.lesson6.title">Le discours direct / Le discours indirect</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module1_lesson7_part1.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module1.part1.lesson7.label">Leçon 7</span><span class="lesson-title" data-i18n="module1.part1.lesson7.title">Au niveau des temps et des indicateurs de temps et de lieux</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module1_lesson8_part1.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module1.part1.lesson8.label">Leçon 8</span><span class="lesson-title" data-i18n="module1.part1.lesson8.title">Documentation</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module1_lesson9_part1.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module1.part1.lesson9.label">Leçon 9</span><span class="lesson-title" data-i18n="module1.part1.lesson9.title">Introduire le thème</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module1.part2.title">Part 2 : Fiche n°1 : Vocabulaire thématique</div>
+          <a href="edf_4th_secEco_module1_lesson1_part2.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module1.part2.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module1.part2.lesson1.title">Vocabulaire – Exercice</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module1.part3.title">Part 3 : Fiche n°3 : Les procédés d'écriture</div>
+          <a href="edf_4th_secEco_module1_lesson1_part3.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module1.part3.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module1.part3.lesson1.title">Les procédés lexicaux</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module1_lesson2_part3.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module1.part3.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module1.part3.lesson2.title">Les procédés grammaticaux</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module1_lesson3_part3.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module1.part3.lesson3.label">Leçon 3</span><span class="lesson-title" data-i18n="module1.part3.lesson3.title">Les figures de style – figures par analogie</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module1_lesson4_part3.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module1.part3.lesson4.label">Leçon 4</span><span class="lesson-title" data-i18n="module1.part3.lesson4.title">Les figures d'opposition</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module1_lesson5_part3.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module1.part3.lesson5.label">Leçon 5</span><span class="lesson-title" data-i18n="module1.part3.lesson5.title">Les figures de style d'insistance – partie 1</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module1_lesson6_part3.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module1.part3.lesson6.label">Leçon 6</span><span class="lesson-title" data-i18n="module1.part3.lesson6.title">Les figures de style d'insistance – partie 2</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module1_lesson7_part3.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module1.part3.lesson7.label">Leçon 7</span><span class="lesson-title" data-i18n="module1.part3.lesson7.title">Les figures de style de substitution</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module1.part4.title">Part 4 : Fiche n°4 : Activité - Vocabulaire</div>
+          <a href="edf_4th_secEco_module1_lesson1_part4.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module1.part4.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module1.part4.lesson1.title">Vocabulaire – Le synonyme / Les antonymes</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module1_lesson2_part4.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module1.part4.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module1.part4.lesson2.title">Vocabulaire – La polysémie</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module1_lesson3_part4.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module1.part4.lesson3.label">Leçon 3</span><span class="lesson-title" data-i18n="module1.part4.lesson3.title">Vocabulaire – Les mots de la même famille</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module1_lesson4_part4.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module1.part4.lesson4.label">Leçon 4</span><span class="lesson-title" data-i18n="module1.part4.lesson4.title">Vocabulaire – Exercice pratique</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module1.part5.title">Part 5 : Fiche n°5 : Etude de texte</div>
+          <a href="edf_4th_secEco_module1_lesson1_part5.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module1.part5.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module1.part5.lesson1.title">Comment répondre à une question de compréhension (des règles théoriques)</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module1_lesson2_part5.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module1.part5.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module1.part5.lesson2.title">Comment répondre à une question de compréhension (application)</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module1_lesson3_part5.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module1.part5.lesson3.label">Leçon 3</span><span class="lesson-title" data-i18n="module1.part5.lesson3.title">Comment répondre à une question qui porte sur un procédé d'écriture (application)</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module1.part6.title">Part 6 : Fiche d'Essai : Ecrit</div>
+          <a href="edf_4th_secEco_module1_lesson1_part6.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module1.part6.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module1.part6.lesson1.title">Comment peut-on réussir à développer un sujet d'essai</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module1_lesson2_part6.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module1.part6.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module1.part6.lesson2.title">Lire et comprendre le sujet et dégager la problématique</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module1_lesson3_part6.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module1.part6.lesson3.label">Leçon 3</span><span class="lesson-title" data-i18n="module1.part6.lesson3.title">Un sujet développé</span><span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Module II -->
+    <div class="week">
+      <button class="week-header" aria-expanded="true" aria-controls="module2-body">
+        <span class="week-num">2</span>
+        <span data-i18n="module2.title">Module II : Histoires d'amour</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="week-body" id="module2-body">
+        <div class="part">
+          <div class="part-title" data-i18n="module2.part1.title">Part 1 : Sommaire</div>
+          <a href="edf_4th_secEco_module2_lesson1_part1.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module2.part1.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module2.part1.lesson1.title">Sommaire</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module2.part2.title">Part 2 : Fiche 8 : Etude de texte – Questions de repérage et d'interprétation</div>
+          <a href="edf_4th_secEco_module2_lesson1_part2.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module2.part2.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module2.part2.lesson1.title">Lecture du texte support</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module2_lesson2_part2.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module2.part2.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module2.part2.lesson2.title">Lire et expliquer question de repérage</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module2_lesson3_part2.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module2.part2.lesson3.label">Leçon 3</span><span class="lesson-title" data-i18n="module2.part2.lesson3.title">Développement de la question de repérage</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module2_lesson4_part2.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module2.part2.lesson4.label">Leçon 4</span><span class="lesson-title" data-i18n="module2.part2.lesson4.title">Lire et comprendre la question de repérage</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module2_lesson5_part2.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module2.part2.lesson5.label">Leçon 5</span><span class="lesson-title" data-i18n="module2.part2.lesson5.title">Développement de la réponse</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module2.part3.title">Part 3 : Fiche d'Essai – mettre en pratique l'écrit</div>
+          <a href="edf_4th_secEco_module2_lesson1_part3.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module2.part3.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module2.part3.lesson1.title">A- Identifions la thèse</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module2_lesson2_part3.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module2.part3.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module2.part3.lesson2.title">B- Cherchons des arguments et des exemples (Argument 1 et 2)</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module2_lesson3_part3.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module2.part3.lesson3.label">Leçon 3</span><span class="lesson-title" data-i18n="module2.part3.lesson3.title">B- Cherchons des arguments et des exemples (Argument 3)</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module2_lesson4_part3.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module2.part3.lesson4.label">Leçon 4</span><span class="lesson-title" data-i18n="module2.part3.lesson4.title">C- Exerçons-nous ! Développons la thèse</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module2.part4.title">Part 4 : Fiche 1 : Concrètement, Que faut-il savoir ? Suivez le guide !</div>
+          <a href="edf_4th_secEco_module2_lesson1_part4.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module2.part4.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module2.part4.lesson1.title">Suivons le guide – Que peut-on trouver ?</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module2.part5.title">Part 5 : Fiche 5 : Langue : Récit et discours</div>
+          <a href="edf_4th_secEco_module2_lesson1_part5.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module2.part5.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module2.part5.lesson1.title">Suivons le guide – Que peut-on trouver aussi ?</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module2_lesson2_part5.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module2.part5.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module2.part5.lesson2.title">Récit 1 : Roméo et Juliette</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module2_lesson3_part5.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module2.part5.lesson3.label">Leçon 3</span><span class="lesson-title" data-i18n="module2.part5.lesson3.title">Récit 2 : Orphée et Eurydice</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module2_lesson4_part5.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module2.part5.lesson4.label">Leçon 4</span><span class="lesson-title" data-i18n="module2.part5.lesson4.title">Récit 3 : Tristan et Iseut</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module2_lesson5_part5.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module2.part5.lesson5.label">Leçon 5</span><span class="lesson-title" data-i18n="module2.part5.lesson5.title">Définition</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module2_lesson6_part5.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module2.part5.lesson6.label">Leçon 6</span><span class="lesson-title" data-i18n="module2.part5.lesson6.title">Les caractéristiques spécifiques du récit et du discours</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module2.part6.title">Part 6 : Fiche 3 : Allons découvrir le thème ! Exerçons nous !</div>
+          <a href="edf_4th_secEco_module2_lesson1_part6.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module2.part6.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module2.part6.lesson1.title">Question / Réponse</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module2.part7.title">Part 7 : Fiche 4 : Vocabulaire thématique : Expressions et termes bien utiles</div>
+          <a href="edf_4th_secEco_module2_lesson1_part7.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module2.part7.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module2.part7.lesson1.title">Expressions et termes bien utiles</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module2.part8.title">Part 8 : Fiche 6 : Conjugaison : Valeur des modes et des temps = Notions de base</div>
+          <a href="edf_4th_secEco_module2_lesson1_part8.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module2.part8.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module2.part8.lesson1.title">Qu'est-ce qu'un mode ?</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module2_lesson2_part8.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module2.part8.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module2.part8.lesson2.title">Quels sont les différents modes ? L'indicatif – le conditionnel</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module2_lesson3_part8.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module2.part8.lesson3.label">Leçon 3</span><span class="lesson-title" data-i18n="module2.part8.lesson3.title">Quels sont les différents modes ? Le subjonctif – l'impératif</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module2_lesson4_part8.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module2.part8.lesson4.label">Leçon 4</span><span class="lesson-title" data-i18n="module2.part8.lesson4.title">Quels sont les différents modes ? Les modes impersonnels</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module2.part9.title">Part 9 : Fiche 7 : Langue : La caractérisation = Comment saisir la connotation dans une description ?</div>
+          <a href="edf_4th_secEco_module2_lesson1_part9.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module2.part9.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module2.part9.lesson1.title">Les moyens lexicaux</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module2_lesson2_part9.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module2.part9.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module2.part9.lesson2.title">Les moyens stylistiques</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module2_lesson3_part9.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module2.part9.lesson3.label">Leçon 3</span><span class="lesson-title" data-i18n="module2.part9.lesson3.title">Les moyens syntaxiques</span><span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Module III -->
+    <div class="week">
+      <button class="week-header" aria-expanded="true" aria-controls="module3-body">
+        <span class="week-num">3</span>
+        <span data-i18n="module3.title">Module III : Liberté, j'écris ton nom...</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="week-body" id="module3-body">
+        <div class="part">
+          <div class="part-title" data-i18n="module3.part1.title">Part 1 : Votre guide pour découvrir le module</div>
+          <a href="edf_4th_secEco_module3_lesson1_part1.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module3.part1.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module3.part1.lesson1.title">Sommaire</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module3.part2.title">Part 2 : Fiche 1 : Présentation du module</div>
+          <a href="edf_4th_secEco_module3_lesson1_part2.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module3.part2.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module3.part2.lesson1.title">Qu'est-ce que la liberté ?</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module3_lesson2_part2.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module3.part2.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module3.part2.lesson2.title">Quelles conceptions les modernes donnent-ils à la liberté ?</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module3_lesson3_part2.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module3.part2.lesson3.label">Leçon 3</span><span class="lesson-title" data-i18n="module3.part2.lesson3.title">Quelles sont les différentes formes de liberté ?</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module3_lesson4_part2.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module3.part2.lesson4.label">Leçon 4</span><span class="lesson-title" data-i18n="module3.part2.lesson4.title">Découvrons le lexique relatif au thème – Exercice</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module3.part3.title">Part 3 : Fiche 3 : Langue : La comparaison et la métaphore</div>
+          <a href="edf_4th_secEco_module3_lesson1_part3.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module3.part3.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module3.part3.lesson1.title">Support</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module3_lesson2_part3.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module3.part3.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module3.part3.lesson2.title">Définir la comparaison</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module3_lesson3_part3.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module3.part3.lesson3.label">Leçon 3</span><span class="lesson-title" data-i18n="module3.part3.lesson3.title">Définir la métaphore</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module3_lesson4_part3.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module3.part3.lesson4.label">Leçon 4</span><span class="lesson-title" data-i18n="module3.part3.lesson4.title">La métaphore filée</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module3.part4.title">Part 4 : Fiche 4 : Langue : La nominalisation</div>
+          <a href="edf_4th_secEco_module3_lesson1_part4.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module3.part4.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module3.part4.lesson1.title">Définir la nominalisation – 1ère partie</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module3_lesson2_part4.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module3.part4.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module3.part4.lesson2.title">Définir la nominalisation – 2ème partie</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module3.part5.title">Part 5 : Fiche 5 : Ecrit : Essai</div>
+          <a href="edf_4th_secEco_module3_lesson1_part5.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module3.part5.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module3.part5.lesson1.title">Développer une position favorable – Objectif</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module3_lesson2_part5.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module3.part5.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module3.part5.lesson2.title">Développer une position favorable – Développement – 1ère Partie</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module3_lesson3_part5.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module3.part5.lesson3.label">Leçon 3</span><span class="lesson-title" data-i18n="module3.part5.lesson3.title">Développer une position favorable – Développement – 2ème partie</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module3_lesson4_part5.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module3.part5.lesson4.label">Leçon 4</span><span class="lesson-title" data-i18n="module3.part5.lesson4.title">Développer une position favorable – Développement – 3ème partie</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module3_lesson5_part5.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module3.part5.lesson5.label">Leçon 5</span><span class="lesson-title" data-i18n="module3.part5.lesson5.title">Développer une position favorable – Introduction et Conclusion</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module3.part6.title">Part 6 : Fiche 6 : Exerçons-nous ! : Activité lexicale</div>
+          <a href="edf_4th_secEco_module3_lesson1_part6.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module3.part6.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module3.part6.lesson1.title">Des mots et des définitions</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module3_lesson2_part6.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module3.part6.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module3.part6.lesson2.title">Des phrases et des expressions équivalentes – 1ère partie</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module3_lesson3_part6.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module3.part6.lesson3.label">Leçon 3</span><span class="lesson-title" data-i18n="module3.part6.lesson3.title">Des phrases et des expressions équivalentes – 2ème partie</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module3_lesson4_part6.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module3.part6.lesson4.label">Leçon 4</span><span class="lesson-title" data-i18n="module3.part6.lesson4.title">Les antonymies</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module3.part7.title">Part 7 : Fiche 7 : Essai : La liberté</div>
+          <a href="edf_4th_secEco_module3_lesson1_part7.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module3.part7.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module3.part7.lesson1.title">Essai développé – Introduction</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module3_lesson2_part7.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module3.part7.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module3.part7.lesson2.title">Essai développé – Développement – 1ère partie</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module3_lesson3_part7.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module3.part7.lesson3.label">Leçon 3</span><span class="lesson-title" data-i18n="module3.part7.lesson3.title">Essai développé – Développement – 2ème partie</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module3_lesson4_part7.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module3.part7.lesson4.label">Leçon 4</span><span class="lesson-title" data-i18n="module3.part7.lesson4.title">Essai développé – Développement – 3ème partie</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module3_lesson5_part7.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module3.part7.lesson5.label">Leçon 5</span><span class="lesson-title" data-i18n="module3.part7.lesson5.title">Essai développé – Conclusion</span><span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Module IV -->
+    <div class="week">
+      <button class="week-header" aria-expanded="true" aria-controls="module4-body">
+        <span class="week-num">4</span>
+        <span data-i18n="module4.title">Module IV : Guerre et Paix</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="week-body" id="module4-body">
+        <div class="part">
+          <div class="part-title" data-i18n="module4.part1.title">Part 1 : Sommaire</div>
+          <a href="edf_4th_secEco_module4_lesson1_part1.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part1.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module4.part1.lesson1.title">Sommaire</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module4.part2.title">Part 2 : Fiche 1 : Présentation du module</div>
+          <a href="edf_4th_secEco_module4_lesson1_part2.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part2.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module4.part2.lesson1.title">La première guerre mondiale – les causes indirectes</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module4_lesson2_part2.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part2.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module4.part2.lesson2.title">La seconde guerre mondiale – les causes indirectes et directes</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module4_lesson3_part2.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part2.lesson3.label">Leçon 3</span><span class="lesson-title" data-i18n="module4.part2.lesson3.title">Lexique relatif à la guerre</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module4.part3.title">Part 3 : Fiche 2 : Lexique approprié au thème</div>
+          <a href="edf_4th_secEco_module4_lesson1_part3.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part3.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module4.part3.lesson1.title">Les différentes sortes de guerre</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module4_lesson2_part3.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part3.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module4.part3.lesson2.title">Lexique relatif à la paix</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module4_lesson3_part3.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part3.lesson3.label">Leçon 3</span><span class="lesson-title" data-i18n="module4.part3.lesson3.title">Modes personnels / Modes impersonnels – Rappel</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module4_lesson4_part3.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part3.lesson4.label">Leçon 4</span><span class="lesson-title" data-i18n="module4.part3.lesson4.title">Modes personnels / Modes impersonnels – L'indicatif – temps et valeurs d'emploi</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module4_lesson5_part3.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part3.lesson5.label">Leçon 5</span><span class="lesson-title" data-i18n="module4.part3.lesson5.title">Modes personnels / Modes impersonnels – le subjonctif et l'impératif</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module4_lesson6_part3.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part3.lesson6.label">Leçon 6</span><span class="lesson-title" data-i18n="module4.part3.lesson6.title">Modes personnels / Modes impersonnels – le conditionnel et retenons qu'est-ce qu'un mode</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module4_lesson7_part3.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part3.lesson7.label">Leçon 7</span><span class="lesson-title" data-i18n="module4.part3.lesson7.title">Le mode subjonctif – Rappel conjugaison</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module4_lesson8_part3.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part3.lesson8.label">Leçon 8</span><span class="lesson-title" data-i18n="module4.part3.lesson8.title">Le mode subjonctif – Les verbes irréguliers au présent du subjonctif</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module4.part4.title">Part 4 : Fiche 5 : Langue – Rappel du subjonctif</div>
+          <a href="edf_4th_secEco_module4_lesson1_part4.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part4.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module4.part4.lesson1.title">Les différents emplois du mode subjonctif – Dans les indépendantes</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module4_lesson2_part4.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part4.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module4.part4.lesson2.title">Les différents emplois du mode subjonctif – Dans les subordonnées conjonctives</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module4_lesson3_part4.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part4.lesson3.label">Leçon 3</span><span class="lesson-title" data-i18n="module4.part4.lesson3.title">Les différents emplois du mode subjonctif – Dans les subordonnées conjonctives : verbes et constructions impersonnelles suivis du subjonctif</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module4_lesson4_part4.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part4.lesson4.label">Leçon 4</span><span class="lesson-title" data-i18n="module4.part4.lesson4.title">Les différents emplois du mode subjonctif – Dans les subordonnées circonstancielles : cause, conséquence, but</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module4_lesson5_part4.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part4.lesson5.label">Leçon 5</span><span class="lesson-title" data-i18n="module4.part4.lesson5.title">Les différents emplois du mode subjonctif – Dans les subordonnées circonstancielles : temps, concession, condition et supposition</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module4_lesson6_part4.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part4.lesson6.label">Leçon 6</span><span class="lesson-title" data-i18n="module4.part4.lesson6.title">Les emplois libres du subjonctif</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module4.part5.title">Part 5 : Fiche 6 : Etude de texte</div>
+          <a href="edf_4th_secEco_module4_lesson1_part5.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part5.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module4.part5.lesson1.title">Lecture de texte</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module4_lesson2_part5.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part5.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module4.part5.lesson2.title">Explication des questions</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module4_lesson3_part5.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part5.lesson3.label">Leçon 3</span><span class="lesson-title" data-i18n="module4.part5.lesson3.title">Compréhension – développons les réponses Partie 1</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module4_lesson4_part5.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part5.lesson4.label">Leçon 4</span><span class="lesson-title" data-i18n="module4.part5.lesson4.title">Compréhension – développons les réponses Partie 2</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module4_lesson5_part5.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part5.lesson5.label">Leçon 5</span><span class="lesson-title" data-i18n="module4.part5.lesson5.title">Compréhension – développons les réponses Partie 3</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module4_lesson6_part5.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part5.lesson6.label">Leçon 6</span><span class="lesson-title" data-i18n="module4.part5.lesson6.title">Langue – Développons les réponses</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module4_lesson7_part5.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part5.lesson7.label">Leçon 7</span><span class="lesson-title" data-i18n="module4.part5.lesson7.title">Explication du travail de l'essai</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module4.part6.title">Part 6 : Essai développé 1</div>
+          <a href="edf_4th_secEco_module4_lesson1_part6.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part6.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module4.part6.lesson1.title">Essai développé</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module4.part7.title">Part 7 : Essai développé 2</div>
+          <a href="edf_4th_secEco_module4_lesson1_part7.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part7.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module4.part7.lesson1.title">Essai développé – Introduction</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module4_lesson2_part7.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part7.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module4.part7.lesson2.title">Essai développé – Thèse 1</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module4_lesson3_part7.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part7.lesson3.label">Leçon 3</span><span class="lesson-title" data-i18n="module4.part7.lesson3.title">Essai développé – Thèse 2</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module4_lesson4_part7.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module4.part7.lesson4.label">Leçon 4</span><span class="lesson-title" data-i18n="module4.part7.lesson4.title">Essai développé – Thèse 2 et conclusion</span><span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Module V -->
+    <div class="week">
+      <button class="week-header" aria-expanded="true" aria-controls="module5-body">
+        <span class="week-num">5</span>
+        <span data-i18n="module5.title">Module V : L'homme et la science</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="week-body" id="module5-body">
+        <div class="part">
+          <div class="part-title" data-i18n="module5.part1.title">Part 1 : Découvrons le thème</div>
+          <a href="edf_4th_secEco_module5_lesson1_part1.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part1.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module5.part1.lesson1.title">Découvrons le thème 1</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module5_lesson2_part1.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part1.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module5.part1.lesson2.title">Découvrons le thème 2</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module5_lesson3_part1.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part1.lesson3.label">Leçon 3</span><span class="lesson-title" data-i18n="module5.part1.lesson3.title">Découvrons le thème 3</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module5_lesson4_part1.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part1.lesson4.label">Leçon 4</span><span class="lesson-title" data-i18n="module5.part1.lesson4.title">Découvrons le thème 4</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module5_lesson5_part1.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part1.lesson5.label">Leçon 5</span><span class="lesson-title" data-i18n="module5.part1.lesson5.title">Découvrons le thème 5</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module5.part2.title">Part 2 : Fiche 1 : Introduire le thème</div>
+          <a href="edf_4th_secEco_module5_lesson1_part2.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part2.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module5.part2.lesson1.title">Introduire le thème</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module5.part3.title">Part 3 : Fiche 2 : Lexique approprié au thème</div>
+          <a href="edf_4th_secEco_module5_lesson1_part3.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part3.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module5.part3.lesson1.title">Lexique approprié au thème</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module5_lesson2_part3.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part3.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module5.part3.lesson2.title">Le champ lexical de la croyance</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module5_lesson3_part3.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part3.lesson3.label">Leçon 3</span><span class="lesson-title" data-i18n="module5.part3.lesson3.title">Mots de même famille</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module5_lesson4_part3.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part3.lesson4.label">Leçon 4</span><span class="lesson-title" data-i18n="module5.part3.lesson4.title">La dérivation partie</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module5.part4.title">Part 4 : Fiche 3 : Conjugaison – Le conditionnel</div>
+          <a href="edf_4th_secEco_module5_lesson1_part4.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part4.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module5.part4.lesson1.title">Le conditionnel présent</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module5_lesson2_part4.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part4.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module5.part4.lesson2.title">Les emplois du conditionnel</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module5.part5.title">Part 5 : Fiche 3 : Grammaire – L'expression de l'opinion</div>
+          <a href="edf_4th_secEco_module5_lesson1_part5.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part5.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module5.part5.lesson1.title">L'expression de l'opinion – Lecture de texte</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module5_lesson2_part5.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part5.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module5.part5.lesson2.title">L'expression de l'opinion – Questions</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module5_lesson3_part5.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part5.lesson3.label">Leçon 3</span><span class="lesson-title" data-i18n="module5.part5.lesson3.title">L'expression de l'opinion – Corrigé des questions 1</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module5.part6.title">Part 6 : Fiche 4 : Le ton d'un texte</div>
+          <a href="edf_4th_secEco_module5_lesson1_part6.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part6.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module5.part6.lesson1.title">Le ton d'un texte – Définition</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module5_lesson2_part6.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part6.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module5.part6.lesson2.title">Le ton comique et le ton tragique</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module5_lesson3_part6.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part6.lesson3.label">Leçon 3</span><span class="lesson-title" data-i18n="module5.part6.lesson3.title">Le ton ironique</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module5_lesson4_part6.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part6.lesson4.label">Leçon 4</span><span class="lesson-title" data-i18n="module5.part6.lesson4.title">Le ton pathétique</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module5_lesson5_part6.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part6.lesson5.label">Leçon 5</span><span class="lesson-title" data-i18n="module5.part6.lesson5.title">Le ton lyrique</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module5_lesson6_part6.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part6.lesson6.label">Leçon 6</span><span class="lesson-title" data-i18n="module5.part6.lesson6.title">Le ton épique</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module5.part7.title">Part 7 : Fiche 5 : Les liens logiques explicites</div>
+          <a href="edf_4th_secEco_module5_lesson1_part7.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part7.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module5.part7.lesson1.title">Les liens logiques explicites – Définition</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module5_lesson2_part7.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part7.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module5.part7.lesson2.title">L'addition et la cause</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module5_lesson3_part7.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part7.lesson3.label">Leçon 3</span><span class="lesson-title" data-i18n="module5.part7.lesson3.title">La conséquence et l'opposition</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module5_lesson4_part7.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part7.lesson4.label">Leçon 4</span><span class="lesson-title" data-i18n="module5.part7.lesson4.title">Concession et équivalence</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module5_lesson5_part7.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part7.lesson5.label">Leçon 5</span><span class="lesson-title" data-i18n="module5.part7.lesson5.title">Introduire à un exemple</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module5.part8.title">Part 8 : Fiche 6 : Etude de texte</div>
+          <a href="edf_4th_secEco_module5_lesson1_part8.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part8.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module5.part8.lesson1.title">Etude de texte – Lecture de texte</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module5_lesson2_part8.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part8.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module5.part8.lesson2.title">Etude de texte – Langue</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module5.part9.title">Part 9 : Fiche 7 : Idées sur le thème</div>
+          <a href="edf_4th_secEco_module5_lesson1_part9.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part9.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module5.part9.lesson1.title">Problématiques et réflexions</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module5.part10.title">Part 10 : Fiche 8 : Essai développé</div>
+          <a href="edf_4th_secEco_module5_lesson1_part10.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part10.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module5.part10.lesson1.title">Les problématiques</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module5_lesson2_part10.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part10.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module5.part10.lesson2.title">Les bienfaits du progrès – partie 1</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module5_lesson3_part10.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part10.lesson3.label">Leçon 3</span><span class="lesson-title" data-i18n="module5.part10.lesson3.title">Les méfaits du progrès – les effets néfastes et nuisibles partie 1</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module5_lesson4_part10.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part10.lesson4.label">Leçon 4</span><span class="lesson-title" data-i18n="module5.part10.lesson4.title">Conclure</span><span class="arrow">→</span></a>
+        </div>
+        <div class="part">
+          <div class="part-title" data-i18n="module5.part11.title">Part 11 : Fiche 9 : Essai développé 2</div>
+          <a href="edf_4th_secEco_module5_lesson1_part11.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part11.lesson1.label">Leçon 1</span><span class="lesson-title" data-i18n="module5.part11.lesson1.title">Essai 1 – Le progrès scientifique et technique, avantages et inconvénients</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module5_lesson2_part11.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part11.lesson2.label">Leçon 2</span><span class="lesson-title" data-i18n="module5.part11.lesson2.title">Essai 2 – Sujet</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module5_lesson3_part11.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part11.lesson3.label">Leçon 3</span><span class="lesson-title" data-i18n="module5.part11.lesson3.title">Essai 2 – Introduction</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module5_lesson4_part11.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part11.lesson4.label">Leçon 4</span><span class="lesson-title" data-i18n="module5.part11.lesson4.title">Essai 2 – Développement 1</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module5_lesson5_part11.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part11.lesson5.label">Leçon 5</span><span class="lesson-title" data-i18n="module5.part11.lesson5.title">Essai 2 – Développement 2</span><span class="arrow">→</span></a>
+          <a href="edf_4th_secEco_module5_lesson6_part11.html" class="lesson-link"><span class="bullet"></span><span class="lesson-label" data-i18n="module5.part11.lesson6.label">Leçon 6</span><span class="lesson-title" data-i18n="module5.part11.lesson6.title">Essai 2 – Conclusion</span><span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer no-print">
+      <p data-i18n="footer_planning">📘 Programme officiel – Section Économie et Services</p>
+      <p data-i18n="footer_encouragement">Suivez ce programme avec rigueur et adaptez‑le à votre rythme. <strong>Bonne préparation !</strong></p>
+    </div>
+    <div id="print-header" style="display:none;" class="print-only">
+      <h1>Educational Dashboard – French</h1>
+      <p>Programme 4ème année secondaire – Section Économie et Services</p>
+      <hr>
+    </div>
+    <div id="print-footer" style="display:none;" class="print-only">
+      <hr>
+      <p>Imprimé le <span id="print-date"></span> – educational-dashboard-french.netlify.app</p>
+    </div>
+  </main>
+  <script src="i18n.js"></script>
+  <script src="db-utils.js"></script>
+  <script src="offline-sync-utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-client.js"></script>
+  <script src="logging.js"></script>
+  <script>
+    App.addI18nTranslations({
+      fr: {
+        'back_link': '← Retour à l\'accueil',
+        'program_main_title': '📚 Programme de 4ème année secondaire',
+        'program_subtitle': 'Section Économie et Services — Tous les modules',
+        'objectives_heading': '🎯 Objectifs du programme',
+        'objectives_1': 'Maîtriser les compétences linguistiques essentielles.',
+        'objectives_2': 'Développer l\'expression écrite et orale.',
+        'objectives_3': 'Acquérir les méthodes de l\'essai et de l\'étude de texte.',
+        'objectives_4': 'Enrichir la culture littéraire et générale.',
+        'print_button': '🖨️ Imprimer le programme',
+        'footer_planning': '📘 Programme officiel – Section Économie et Services',
+        'footer_encouragement': 'Suivez ce programme avec rigueur et adaptez‑le à votre rythme. <strong>Bonne préparation !</strong>'
+      },
+      en: {
+        'back_link': '← Back to home',
+        'program_main_title': '📚 4th Year Secondary Program',
+        'program_subtitle': 'Economics and Services Section — All Modules',
+        'objectives_heading': '🎯 Program Objectives',
+        'objectives_1': 'Master essential language skills.',
+        'objectives_2': 'Develop written and oral expression.',
+        'objectives_3': 'Acquire methods for essay and text study.',
+        'objectives_4': 'Enrich literary and general culture.',
+        'print_button': '🖨️ Print program',
+        'footer_planning': '📘 Official program – Economics and Services Section',
+        'footer_encouragement': 'Follow this program with rigor and adapt it to your pace. <strong>Good luck!</strong>'
+      },
+      ar: {
+        'back_link': '← العودة إلى الرئيسية',
+        'program_main_title': '📚 برنامج السنة الرابعة ثانوي',
+        'program_subtitle': 'شعبة الاقتصاد والخدمات — جميع الوحدات',
+        'objectives_heading': '🎯 أهداف البرنامج',
+        'objectives_1': 'إتقان المهارات اللغوية الأساسية.',
+        'objectives_2': 'تطوير التعبير الكتابي والشفهي.',
+        'objectives_3': 'اكتساب منهجية المقال ودراسة النص.',
+        'objectives_4': 'إثراء الثقافة الأدبية والعامة.',
+        'print_button': '🖨️ طباعة البرنامج',
+        'footer_planning': '📘 البرنامج الرسمي – شعبة الاقتصاد والخدمات',
+        'footer_encouragement': 'اتبع هذا البرنامج بدقة وعدّله حسب وتيرتك. <strong>حظاً موفقاً!</strong>'
+      }
+    });
+    // All the rest of the translations for module titles, part titles, lesson titles are in French only (fallback).
+    // The original French text will be used if not defined in en/ar.
+    // We could add more but it's not required now.
+  </script>
+  <script>
+    (function() {
+      var container = document.querySelector('.container');
+      if (container && typeof App.makeBilingual === 'function') {
+        App.makeBilingual(container);
+      }
+    })();
+  </script>
+  <script src="ed-french-ini.js"></script>
+  <script>
+    function toggleWeek(header) {
+      const body = document.getElementById(header.getAttribute('aria-controls'));
+      if (!body) return;
+      const isExpanded = header.getAttribute('aria-expanded') === 'true';
+      header.setAttribute('aria-expanded', !isExpanded);
+      header.classList.toggle('collapsed', isExpanded);
+      body.classList.toggle('collapsed', isExpanded);
+      if (!isExpanded) {
+        body.style.maxHeight = body.scrollHeight + 'px';
+        const transitionHandler = () => {
+          body.style.maxHeight = 'none';
+          body.removeEventListener('transitionend', transitionHandler);
+        };
+        body.addEventListener('transitionend', transitionHandler);
+      } else {
+        body.style.maxHeight = '0';
+      }
+    }
+    document.querySelectorAll('.week-header').forEach(btn => {
+      btn.addEventListener('click', () => toggleWeek(btn));
+      btn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleWeek(btn);
+        }
+      });
+    });
+    (function() {
+      const btn = document.createElement('button');
+      btn.id = 'backToTop';
+      btn.setAttribute('aria-label', 'Retour en haut');
+      btn.innerHTML = '⬆';
+      document.body.appendChild(btn);
+      btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+          btn.classList.add('show');
+        } else {
+          btn.classList.remove('show');
+        }
+      });
+      if (typeof App.applyTranslations === 'function') {
+        App.applyTranslations();
+      }
+    })();
+    (function() {
+      document.querySelectorAll('.lesson-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+          const lessonTitle = this.querySelector('.lesson-title').textContent.trim();
+          const lessonLabel = this.querySelector('.lesson-label').textContent.trim();
+          const details = { lesson: lessonTitle, label: lessonLabel, href: this.href };
+          if (typeof App !== 'undefined' && App.supabase) {
+            App.supabase.auth.getSession().then(({ data: { session } }) => {
+              if (session) {
+                App.logUserAction('lesson_click', details);
+              } else {
+                App.logGeneralAction('lesson_click', details);
+              }
+            }).catch(() => {
+              App.logGeneralAction('lesson_click', details);
+            });
+          }
+        });
+      });
+    })();
+  </script>
+  <script>
+    document.getElementById('print-date').textContent = new Date().toLocaleDateString('fr-FR');
+    window.addEventListener('afterprint', function() {
+      if (typeof App !== 'undefined') {
+        App.logGeneralAction('program_printed');
+        App.supabase.auth.getSession().then(({ data: { session } }) => {
+          if (session) App.logUserAction('program_printed');
+        }).catch(() => {});
+      }
+    });
+  </script>
+</body>
+</html>
