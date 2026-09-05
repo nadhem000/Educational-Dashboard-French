@@ -3,7 +3,6 @@ importScripts('db-utils.js');
 const CACHE_NAME = 'ed-french-v2.2.8'; // bump version to force cache refresh
 const urlsToCache = [
     '/',
-    '/index.html',
     '/revision.html',
     '/manifest.json',
     '/assets/icons/icon-96x96.png',
