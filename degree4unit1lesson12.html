@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_title">Évaluation intégrée – Réemploi des acquis</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        :root {
+            --degree4-lesson-evaluation-bg: #f9f7f1;
+            --degree4-lesson-evaluation-card: #ffffff;
+            --degree4-lesson-evaluation-text: #2b2416;
+            --degree4-lesson-evaluation-text-light: #5c5344;
+            --degree4-lesson-evaluation-heading: #382e1e;
+            --degree4-lesson-evaluation-accent: #b22222;
+            --degree4-lesson-evaluation-accent-hover: #8b0000;
+            --degree4-lesson-evaluation-border: #e5ddd0;
+            --degree4-lesson-evaluation-shadow: 0 1px 4px rgba(0,0,0,0.04);
+            --degree4-lesson-evaluation-radius: 12px;
+            --degree4-lesson-evaluation-radius-sm: 8px;
+            --degree4-lesson-evaluation-transition: 0.25s ease;
+            --degree4-lesson-evaluation-font: 'Segoe UI', 'Georgia', serif;
+            --degree4-lesson-evaluation-audio-bg: #f4efe4;
+            --degree4-lesson-evaluation-button-bg: #f0e8d8;
+            --degree4-lesson-evaluation-button-hover: #e3d5bc;
+        }
+        body.dark {
+            --degree4-lesson-evaluation-bg: #1e1b17;
+            --degree4-lesson-evaluation-card: #2a2620;
+            --degree4-lesson-evaluation-text: #e8dfd2;
+            --degree4-lesson-evaluation-text-light: #b9aa95;
+            --degree4-lesson-evaluation-heading: #f0e4d2;
+            --degree4-lesson-evaluation-accent: #ef9a9a;
+            --degree4-lesson-evaluation-accent-hover: #ffcdd2;
+            --degree4-lesson-evaluation-border: #3e3830;
+            --degree4-lesson-evaluation-shadow: 0 1px 4px rgba(0,0,0,0.25);
+            --degree4-lesson-evaluation-audio-bg: #26221b;
+            --degree4-lesson-evaluation-button-bg: #3a3329;
+            --degree4-lesson-evaluation-button-hover: #4e4437;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: var(--degree4-lesson-evaluation-font);
+            background: var(--degree4-lesson-evaluation-bg);
+            color: var(--degree4-lesson-evaluation-text);
+            line-height: 1.75;
+            transition: background var(--degree4-lesson-evaluation-transition), color var(--degree4-lesson-evaluation-transition);
+        }
+        .degree4-lesson-evaluation-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.8rem 1.4rem 3rem;
+        }
+        .degree4-lesson-evaluation-header { text-align: center; margin-bottom: 2rem; }
+        .degree4-lesson-evaluation-badge {
+            display: inline-block;
+            background: var(--degree4-lesson-evaluation-accent);
+            color: #fff;
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+        .degree4-lesson-evaluation-header h1 {
+            font-size: 2.1rem;
+            color: var(--degree4-lesson-evaluation-heading);
+            margin: 0.6rem 0 0.3rem;
+            line-height: 1.3;
+        }
+        .degree4-lesson-evaluation-meta {
+            font-size: 0.9rem;
+            color: var(--degree4-lesson-evaluation-text-light);
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .degree4-lesson-evaluation-card {
+            background: var(--degree4-lesson-evaluation-card);
+            border: 1px solid var(--degree4-lesson-evaluation-border);
+            border-radius: var(--degree4-lesson-evaluation-radius);
+            padding: 1.8rem;
+            margin: 2rem 0;
+            box-shadow: var(--degree4-lesson-evaluation-shadow);
+        }
+        .degree4-lesson-evaluation-card h2 {
+            font-size: 1.6rem;
+            color: var(--degree4-lesson-evaluation-heading);
+            margin-bottom: 0.4rem;
+            border-bottom: 3px solid var(--degree4-lesson-evaluation-accent);
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+        .degree4-lesson-evaluation-section-title {
+            color: var(--degree4-lesson-evaluation-accent);
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem;
+            border-bottom: 1px dashed var(--degree4-lesson-evaluation-border);
+            padding-bottom: 0.3rem;
+        }
+        .degree4-lesson-evaluation-exercise-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--degree4-lesson-evaluation-audio-bg);
+            border-radius: var(--degree4-lesson-evaluation-radius-sm);
+        }
+        .degree4-lesson-evaluation-image-container {
+            text-align: center;
+            margin: 1rem 0;
+        }
+        .degree4-lesson-evaluation-image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: var(--degree4-lesson-evaluation-shadow);
+        }
+        .degree4-lesson-evaluation-question {
+            font-weight: 600;
+            margin: 0.5rem 0;
+            color: var(--degree4-lesson-evaluation-accent);
+        }
+        .degree4-lesson-evaluation-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            margin: 0.5rem 0;
+        }
+        .degree4-lesson-evaluation-options label {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            cursor: pointer;
+        }
+        .degree4-lesson-evaluation-options input[type="radio"] {
+            accent-color: var(--degree4-lesson-evaluation-accent);
+        }
+        .degree4-lesson-evaluation-btn {
+            background: var(--degree4-lesson-evaluation-accent);
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background var(--degree4-lesson-evaluation-transition);
+            font-size: 0.85rem;
+        }
+        .degree4-lesson-evaluation-btn:hover { background: var(--degree4-lesson-evaluation-accent-hover); }
+        .degree4-lesson-evaluation-feedback {
+            margin-top: 0.8rem;
+            font-weight: 600;
+        }
+        .degree4-lesson-evaluation-feedback.correct { color: #2e7d32; }
+        .degree4-lesson-evaluation-feedback.wrong { color: #c62828; }
+        .degree4-lesson-evaluation-answer-key {
+            display: none;
+            margin-top: 0.8rem;
+            padding: 0.8rem;
+            background: var(--degree4-lesson-evaluation-audio-bg);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: var(--degree4-lesson-evaluation-text-light);
+            border: 1px dashed var(--degree4-lesson-evaluation-accent);
+        }
+        .degree4-lesson-evaluation-answer-key.visible { display: block; }
+        .degree4-lesson-evaluation-self-assess {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        .degree4-lesson-evaluation-self-assess label {
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .degree4-lesson-evaluation-self-assess input[type="radio"] {
+            accent-color: var(--degree4-lesson-evaluation-accent);
+        }
+        .degree4-lesson-evaluation-score-area {
+            background: var(--degree4-lesson-evaluation-card);
+            border: 1px solid var(--degree4-lesson-evaluation-border);
+            border-radius: var(--degree4-lesson-evaluation-radius);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: var(--degree4-lesson-evaluation-shadow);
+        }
+        .degree4-lesson-evaluation-score-area h2 {
+            color: var(--degree4-lesson-evaluation-heading);
+            margin-bottom: 1rem;
+        }
+        .degree4-lesson-evaluation-score-stats {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .degree4-lesson-evaluation-score-stat {
+            background: var(--degree4-lesson-evaluation-audio-bg);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        .degree4-lesson-evaluation-score-actions {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        .degree4-lesson-evaluation-footer-nav {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .degree4-lesson-evaluation-footer-nav a {
+            color: var(--degree4-lesson-evaluation-accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .degree4-lesson-evaluation-footer-nav a:hover { text-decoration: underline; }
+        @media (max-width: 600px) {
+            .degree4-lesson-evaluation-header h1 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div id="toast-container"></div>
+    <button id="signInBtn" style="display:none"></button>
+
+    <div id="main-content" class="degree4-lesson-evaluation-container">
+        <!-- Breadcrumb -->
+        <p style="margin-bottom:1.5rem; color:var(--degree4-lesson-evaluation-text-light);">
+            <a href="degree4.html" data-i18n="back_link">← Retour au programme</a>
+            › <strong data-i18n="current_lesson">Évaluation intégrée</strong>
+        </p>
+
+        <!-- Header -->
+        <div class="degree4-lesson-evaluation-header">
+            <span class="degree4-lesson-evaluation-badge" data-i18n="lesson_badge">✅ Unité 1 · Évaluation intégrée</span>
+            <h1 data-i18n="lesson_title">Évaluation intégrée</h1>
+            <div class="degree4-lesson-evaluation-meta">
+                <span data-i18n="lesson_subtitle">Réemploi des acquis</span>
+                <span data-i18n="lesson_duration">⏱️ 30 minutes</span>
+            </div>
+        </div>
+
+        <!-- Exercise 1: Je produis -->
+        <section class="degree4-lesson-evaluation-card">
+            <h2 data-i18n="section1_title">Je produis</h2>
+
+            <!-- Part a: multiple choice -->
+            <div class="degree4-lesson-evaluation-exercise-item">
+                <h3 data-i18n="ex1a_title">1. Je choisis la bonne phrase</h3>
+
+                <p class="degree4-lesson-evaluation-question" data-i18n="ex1a_q1">Où est Gustave ?</p>
+                <div class="degree4-lesson-evaluation-image-container">
+                    <img src="assets4/images/degree4/unit1/lesson12/gustave_reveil.jpg" alt="Gustave dans sa chambre">
+                </div>
+                <div class="degree4-lesson-evaluation-options">
+                    <label><input type="radio" name="ex1a_1" value="a" data-i18n="ex1a_1_a"> Gustave est dans sa chambre.</label>
+                    <label><input type="radio" name="ex1a_1" value="b" data-i18n="ex1a_1_b"> Gustave est dans la cuisine.</label>
+                    <label><input type="radio" name="ex1a_1" value="c" data-i18n="ex1a_1_c"> Gustave est à l'école.</label>
+                </div>
+
+                <p class="degree4-lesson-evaluation-question" data-i18n="ex1a_q2">Que fait-il dans la cuisine ?</p>
+                <div class="degree4-lesson-evaluation-image-container">
+                    <img src="assets4/images/degree4/unit1/lesson12/gustave_petit_dejeuner.jpg" alt="Gustave dans la cuisine">
+                </div>
+                <div class="degree4-lesson-evaluation-options">
+                    <label><input type="radio" name="ex1a_2" value="a" data-i18n="ex1a_2_a"> Il prend son petit déjeuner.</label>
+                    <label><input type="radio" name="ex1a_2" value="b" data-i18n="ex1a_2_b"> Il fait ses devoirs.</label>
+                    <label><input type="radio" name="ex1a_2" value="c" data-i18n="ex1a_2_c"> Il regarde la télévision.</label>
+                </div>
+
+                <p class="degree4-lesson-evaluation-question" data-i18n="ex1a_q3">Où va-t-il ?</p>
+                <div class="degree4-lesson-evaluation-image-container">
+                    <img src="assets4/images/degree4/unit1/lesson12/gustave_part.jpg" alt="Gustave part">
+                </div>
+                <div class="degree4-lesson-evaluation-options">
+                    <label><input type="radio" name="ex1a_3" value="a" data-i18n="ex1a_3_a"> Il va à l'école.</label>
+                    <label><input type="radio" name="ex1a_3" value="b" data-i18n="ex1a_3_b"> Il va au marché.</label>
+                    <label><input type="radio" name="ex1a_3" value="c" data-i18n="ex1a_3_c"> Il reste à la maison.</label>
+                </div>
+
+                <button class="degree4-lesson-evaluation-btn" onclick="checkExercise1()" data-i18n="check_answers">🔍 Vérifier</button>
+                <div id="ex1aKey" class="degree4-lesson-evaluation-answer-key"></div>
+                <div id="ex1aFeedback" class="degree4-lesson-evaluation-feedback"></div>
+                <div class="degree4-lesson-evaluation-self-assess">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex1a" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex1a" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                    <label><input type="radio" name="self_ex1a" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                </div>
+            </div>
+
+            <!-- Part b: ordering multiple choice -->
+            <div class="degree4-lesson-evaluation-exercise-item">
+                <h3 data-i18n="ex1b_title">1.b Je choisis le bon ordre</h3>
+                <p data-i18n="ex1b_desc">Quel est l'ordre correct des phrases ?</p>
+                <div class="degree4-lesson-evaluation-options">
+                    <label><input type="radio" name="ex1b_order" value="a" data-i18n="ex1b_opt_a"> Aujourd'hui, Gustave est bien content. → D'abord, il se réveille dans sa chambre. → Ensuite, il prend son petit déjeuner dans la cuisine. → Enfin, il va à l'école.</label>
+                    <label><input type="radio" name="ex1b_order" value="b" data-i18n="ex1b_opt_b"> D'abord, il se réveille dans sa chambre. → Aujourd'hui, Gustave est bien content. → Enfin, il va à l'école. → Ensuite, il prend son petit déjeuner dans la cuisine.</label>
+                    <label><input type="radio" name="ex1b_order" value="c" data-i18n="ex1b_opt_c"> Ensuite, il prend son petit déjeuner dans la cuisine. → Enfin, il va à l'école. → D'abord, il se réveille dans sa chambre. → Aujourd'hui, Gustave est bien content.</label>
+                </div>
+                <button class="degree4-lesson-evaluation-btn" onclick="checkExercise1b()" data-i18n="check_answers">🔍 Vérifier</button>
+                <div id="ex1bKey" class="degree4-lesson-evaluation-answer-key"></div>
+                <div id="ex1bFeedback" class="degree4-lesson-evaluation-feedback"></div>
+                <div class="degree4-lesson-evaluation-self-assess">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex1b" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex1b" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                    <label><input type="radio" name="self_ex1b" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise 2: Verbe être -->
+        <section class="degree4-lesson-evaluation-card">
+            <h2 data-i18n="section2_title">Exercice verbe être</h2>
+
+            <div class="degree4-lesson-evaluation-exercise-item">
+                <h3 data-i18n="ex2a_title">2. Je complète avec le verbe « être » au présent</h3>
+
+                <p><span class="degree4-lesson-evaluation-question">1.</span> Magali __________ sur le chemin de l'école.</p>
+                <div class="degree4-lesson-evaluation-options">
+                    <label><input type="radio" name="ex2a_1" value="a" data-i18n="ex2a_1_a"> est</label>
+                    <label><input type="radio" name="ex2a_1" value="b" data-i18n="ex2a_1_b"> es</label>
+                    <label><input type="radio" name="ex2a_1" value="c" data-i18n="ex2a_1_c"> suis</label>
+                </div>
+
+                <p><span class="degree4-lesson-evaluation-question">2.</span> «– Tu __________ gentille, lui dit l'aveugle.</p>
+                <div class="degree4-lesson-evaluation-options">
+                    <label><input type="radio" name="ex2a_2" value="a" data-i18n="ex2a_2_a"> es</label>
+                    <label><input type="radio" name="ex2a_2" value="b" data-i18n="ex2a_2_b"> est</label>
+                    <label><input type="radio" name="ex2a_2" value="c" data-i18n="ex2a_2_c"> sommes</label>
+                </div>
+
+                <p><span class="degree4-lesson-evaluation-question">3.</span> – Je __________ heureuse de vous rendre service», répond-elle.</p>
+                <div class="degree4-lesson-evaluation-options">
+                    <label><input type="radio" name="ex2a_3" value="a" data-i18n="ex2a_3_a"> suis</label>
+                    <label><input type="radio" name="ex2a_3" value="b" data-i18n="ex2a_3_b"> es</label>
+                    <label><input type="radio" name="ex2a_3" value="c" data-i18n="ex2a_3_c"> est</label>
+                </div>
+
+                <button class="degree4-lesson-evaluation-btn" onclick="checkExercise2()" data-i18n="check_answers">🔍 Vérifier</button>
+                <div id="ex2aKey" class="degree4-lesson-evaluation-answer-key"></div>
+                <div id="ex2aFeedback" class="degree4-lesson-evaluation-feedback"></div>
+                <div class="degree4-lesson-evaluation-self-assess">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex2a" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex2a" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                    <label><input type="radio" name="self_ex2a" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                </div>
+            </div>
+
+            <div class="degree4-lesson-evaluation-exercise-item">
+                <h3 data-i18n="ex2b_title">2.b Je choisis la phrase qui complète le texte</h3>
+                <p data-i18n="ex2b_desc">Quelle phrase peut compléter le texte ?</p>
+                <div class="degree4-lesson-evaluation-options">
+                    <label><input type="radio" name="ex2b" value="a" data-i18n="ex2b_opt_a"> L'aveugle remercie Magali.</label>
+                    <label><input type="radio" name="ex2b" value="b" data-i18n="ex2b_opt_b"> Magali va au cinéma.</label>
+                    <label><input type="radio" name="ex2b" value="c" data-i18n="ex2b_opt_c"> Il pleut beaucoup.</label>
+                </div>
+                <button class="degree4-lesson-evaluation-btn" onclick="checkExercise2b()" data-i18n="check_answers">🔍 Vérifier</button>
+                <div id="ex2bKey" class="degree4-lesson-evaluation-answer-key"></div>
+                <div id="ex2bFeedback" class="degree4-lesson-evaluation-feedback"></div>
+                <div class="degree4-lesson-evaluation-self-assess">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex2b" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex2b" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                    <label><input type="radio" name="self_ex2b" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise 3: Histoire d'Eric -->
+        <section class="degree4-lesson-evaluation-card">
+            <h2 data-i18n="section3_title">Histoire d'Eric</h2>
+
+            <div class="degree4-lesson-evaluation-exercise-item">
+                <h3 data-i18n="ex3_title">3. Je choisis la bonne réponse</h3>
+
+                <p class="degree4-lesson-evaluation-question" data-i18n="ex3_q1">Où est Eric ?</p>
+                <div class="degree4-lesson-evaluation-image-container">
+                    <img src="assets4/images/degree4/unit1/lesson12/eric_arbre.png" alt="Eric sur un arbre">
+                </div>
+                <div class="degree4-lesson-evaluation-options">
+                    <label><input type="radio" name="ex3_1" value="a" data-i18n="ex3_1_a"> Il est sur une branche d'arbre.</label>
+                    <label><input type="radio" name="ex3_1" value="b" data-i18n="ex3_1_b"> Il est dans la maison.</label>
+                    <label><input type="radio" name="ex3_1" value="c" data-i18n="ex3_1_c"> Il est à l'école.</label>
+                </div>
+
+                <p class="degree4-lesson-evaluation-question" data-i18n="ex3_q2">Que lui arrive-t-il ?</p>
+                <div class="degree4-lesson-evaluation-image-container">
+                    <img src="assets4/images/degree4/unit1/lesson12/branche_casse.png" alt="La branche casse">
+                </div>
+                <div class="degree4-lesson-evaluation-options">
+                    <label><input type="radio" name="ex3_2" value="a" data-i18n="ex3_2_a"> La branche casse sous lui.</label>
+                    <label><input type="radio" name="ex3_2" value="b" data-i18n="ex3_2_b"> Il mange une pomme.</label>
+                    <label><input type="radio" name="ex3_2" value="c" data-i18n="ex3_2_c"> Il chante une chanson.</label>
+                </div>
+
+                <p class="degree4-lesson-evaluation-question" data-i18n="ex3_q3">Comment sont ses parents ?</p>
+                <div class="degree4-lesson-evaluation-image-container">
+                    <img src="assets4/images/degree4/unit1/lesson12/parents_eric_arbre.png" alt="Parents d'Eric">
+                </div>
+                <div class="degree4-lesson-evaluation-options">
+                    <label><input type="radio" name="ex3_3" value="a" data-i18n="ex3_3_a"> Ils sont inquiets.</label>
+                    <label><input type="radio" name="ex3_3" value="b" data-i18n="ex3_3_b"> Ils sont contents.</label>
+                    <label><input type="radio" name="ex3_3" value="c" data-i18n="ex3_3_c"> Ils dorment.</label>
+                </div>
+
+                <button class="degree4-lesson-evaluation-btn" onclick="checkExercise3()" data-i18n="check_answers">🔍 Vérifier</button>
+                <div id="ex3Key" class="degree4-lesson-evaluation-answer-key"></div>
+                <div id="ex3Feedback" class="degree4-lesson-evaluation-feedback"></div>
+                <div class="degree4-lesson-evaluation-self-assess">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                    <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                </div>
+            </div>
+        </section>
+
+        <!-- Score Area -->
+        <div class="degree4-lesson-evaluation-score-area">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="degree4-lesson-evaluation-score-stats">
+                <div class="degree4-lesson-evaluation-score-stat"><span data-i18n="score_correct">Correct :</span> <span id="scoreCorrect">0</span></div>
+                <div class="degree4-lesson-evaluation-score-stat"><span data-i18n="score_partial">Partiel :</span> <span id="scorePartial">0</span></div>
+                <div class="degree4-lesson-evaluation-score-stat"><span data-i18n="score_incorrect">Incorrect :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="degree4-lesson-evaluation-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">4</span></div>
+            </div>
+            <div class="degree4-lesson-evaluation-score-actions">
+                <button id="saveResultsBtn" class="degree4-lesson-evaluation-btn" data-i18n="save_results">💾 Enregistrer mes résultats</button>
+                <button id="printBtn" class="degree4-lesson-evaluation-btn" style="background:#5c5344;" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+            </div>
+        </div>
+
+        <!-- Footer navigation -->
+        <div class="degree4-lesson-evaluation-footer-nav">
+            <a href="degree4.html" data-i18n="footer_back">← Retour au programme</a>
+            <a href="degree4unit1lesson13.html" data-i18n="footer_next">Leçon suivante →</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script src="ed-french-ini.js"></script>
+
+    <!-- Translations -->
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                lesson_title: "Évaluation intégrée",
+                lesson_badge: "✅ Unité 1 · Évaluation intégrée",
+                lesson_subtitle: "Réemploi des acquis",
+                lesson_duration: "⏱️ 30 minutes",
+                back_link: "← Retour au programme",
+                current_lesson: "Évaluation intégrée",
+                section1_title: "Je produis",
+                ex1a_title: "1. Je choisis la bonne phrase",
+                ex1a_q1: "Où est Gustave ?",
+                ex1a_1_a: "Gustave est dans sa chambre.",
+                ex1a_1_b: "Gustave est dans la cuisine.",
+                ex1a_1_c: "Gustave est à l'école.",
+                ex1a_q2: "Que fait-il dans la cuisine ?",
+                ex1a_2_a: "Il prend son petit déjeuner.",
+                ex1a_2_b: "Il fait ses devoirs.",
+                ex1a_2_c: "Il regarde la télévision.",
+                ex1a_q3: "Où va-t-il ?",
+                ex1a_3_a: "Il va à l'école.",
+                ex1a_3_b: "Il va au marché.",
+                ex1a_3_c: "Il reste à la maison.",
+                ex1b_title: "1.b Je choisis le bon ordre",
+                ex1b_desc: "Quel est l'ordre correct des phrases ?",
+                ex1b_opt_a: "Aujourd'hui, Gustave est bien content. → D'abord, il se réveille dans sa chambre. → Ensuite, il prend son petit déjeuner dans la cuisine. → Enfin, il va à l'école.",
+                ex1b_opt_b: "D'abord, il se réveille dans sa chambre. → Aujourd'hui, Gustave est bien content. → Enfin, il va à l'école. → Ensuite, il prend son petit déjeuner dans la cuisine.",
+                ex1b_opt_c: "Ensuite, il prend son petit déjeuner dans la cuisine. → Enfin, il va à l'école. → D'abord, il se réveille dans sa chambre. → Aujourd'hui, Gustave est bien content.",
+                section2_title: "Exercice verbe être",
+                ex2a_title: "2. Je complète avec le verbe « être » au présent",
+                ex2a_1_a: "est",
+                ex2a_1_b: "es",
+                ex2a_1_c: "suis",
+                ex2a_2_a: "es",
+                ex2a_2_b: "est",
+                ex2a_2_c: "sommes",
+                ex2a_3_a: "suis",
+                ex2a_3_b: "es",
+                ex2a_3_c: "est",
+                ex2b_title: "2.b Je choisis la phrase qui complète le texte",
+                ex2b_desc: "Quelle phrase peut compléter le texte ?",
+                ex2b_opt_a: "L'aveugle remercie Magali.",
+                ex2b_opt_b: "Magali va au cinéma.",
+                ex2b_opt_c: "Il pleut beaucoup.",
+                section3_title: "Histoire d'Eric",
+                ex3_title: "3. Je choisis la bonne réponse",
+                ex3_q1: "Où est Eric ?",
+                ex3_1_a: "Il est sur une branche d'arbre.",
+                ex3_1_b: "Il est dans la maison.",
+                ex3_1_c: "Il est à l'école.",
+                ex3_q2: "Que lui arrive-t-il ?",
+                ex3_2_a: "La branche casse sous lui.",
+                ex3_2_b: "Il mange une pomme.",
+                ex3_2_c: "Il chante une chanson.",
+                ex3_q3: "Comment sont ses parents ?",
+                ex3_3_a: "Ils sont inquiets.",
+                ex3_3_b: "Ils sont contents.",
+                ex3_3_c: "Ils dorment.",
+                check_answers: "🔍 Vérifier",
+                self_assess_question: "Ma réponse est :",
+                self_correct: "Correcte",
+                self_partial: "Partiellement correcte",
+                self_incorrect: "Incorrecte",
+                score_title: "📊 Votre auto‑évaluation",
+                score_correct: "Correct :",
+                score_partial: "Partiel :",
+                score_incorrect: "Incorrect :",
+                score_unanswered: "Sans réponse :",
+                save_results: "💾 Enregistrer mes résultats",
+                save_success: "Résultats enregistrés !",
+                save_error: "Erreur lors de l'enregistrement.",
+                print_pdf: "🖨️ Imprimer / PDF",
+                footer_back: "← Retour au programme",
+                footer_next: "Leçon suivante →",
+                ach_year_degree4: "4ème Année Primaire",
+                ach_module_unit1: "Unité 1",
+                toast_signin_required: "Connectez-vous pour enregistrer vos résultats.",
+                print_site_name: "Educational Dashboard – Français",
+                print_scholar_year: "4ème Année Primaire",
+                print_week: "Unité 1",
+                print_area: "Évaluation intégrée",
+                print_footer_dev: "Développé par Mejri Ziad",
+                print_footer_date: "Imprimé le"
+            },
+            en: {
+                lesson_title: "Integrated Evaluation",
+                lesson_badge: "✅ Unit 1 · Integrated Evaluation",
+                lesson_subtitle: "Reuse of acquired skills",
+                lesson_duration: "⏱️ 30 minutes",
+                back_link: "← Back to program",
+                current_lesson: "Integrated Evaluation",
+                section1_title: "I produce",
+                ex1a_title: "1. I choose the correct sentence",
+                ex1a_q1: "Where is Gustave?",
+                ex1a_1_a: "Gustave is in his bedroom.",
+                ex1a_1_b: "Gustave is in the kitchen.",
+                ex1a_1_c: "Gustave is at school.",
+                ex1a_q2: "What is he doing in the kitchen?",
+                ex1a_2_a: "He is having breakfast.",
+                ex1a_2_b: "He is doing his homework.",
+                ex1a_2_c: "He is watching TV.",
+                ex1a_q3: "Where is he going?",
+                ex1a_3_a: "He is going to school.",
+                ex1a_3_b: "He is going to the market.",
+                ex1a_3_c: "He is staying home.",
+                ex1b_title: "1.b I choose the correct order",
+                ex1b_desc: "What is the correct order of the sentences?",
+                ex1b_opt_a: "Today, Gustave is very happy. → First, he wakes up in his bedroom. → Then, he has breakfast in the kitchen. → Finally, he goes to school.",
+                ex1b_opt_b: "First, he wakes up in his bedroom. → Today, Gustave is very happy. → Finally, he goes to school. → Then, he has breakfast in the kitchen.",
+                ex1b_opt_c: "Then, he has breakfast in the kitchen. → Finally, he goes to school. → First, he wakes up in his bedroom. → Today, Gustave is very happy.",
+                section2_title: "Verb être exercise",
+                ex2a_title: "2. I complete with the verb « être » in the present",
+                ex2a_1_a: "est",
+                ex2a_1_b: "es",
+                ex2a_1_c: "suis",
+                ex2a_2_a: "es",
+                ex2a_2_b: "est",
+                ex2a_2_c: "sommes",
+                ex2a_3_a: "suis",
+                ex2a_3_b: "es",
+                ex2a_3_c: "est",
+                ex2b_title: "2.b I choose the sentence that completes the text",
+                ex2b_desc: "Which sentence can complete the text?",
+                ex2b_opt_a: "The blind man thanks Magali.",
+                ex2b_opt_b: "Magali goes to the cinema.",
+                ex2b_opt_c: "It is raining a lot.",
+                section3_title: "Eric's story",
+                ex3_title: "3. I choose the correct answer",
+                ex3_q1: "Where is Eric?",
+                ex3_1_a: "He is on a tree branch.",
+                ex3_1_b: "He is in the house.",
+                ex3_1_c: "He is at school.",
+                ex3_q2: "What happens to him?",
+                ex3_2_a: "The branch breaks under him.",
+                ex3_2_b: "He eats an apple.",
+                ex3_2_c: "He sings a song.",
+                ex3_q3: "How are his parents?",
+                ex3_3_a: "They are worried.",
+                ex3_3_b: "They are happy.",
+                ex3_3_c: "They are sleeping.",
+                check_answers: "🔍 Check",
+                self_assess_question: "My answer is:",
+                self_correct: "Correct",
+                self_partial: "Partially correct",
+                self_incorrect: "Incorrect",
+                score_title: "📊 Your self‑assessment",
+                score_correct: "Correct:",
+                score_partial: "Partial:",
+                score_incorrect: "Incorrect:",
+                score_unanswered: "Unanswered:",
+                save_results: "💾 Save my results",
+                save_success: "Results saved!",
+                save_error: "Error saving results.",
+                print_pdf: "🖨️ Print / PDF",
+                footer_back: "← Back to program",
+                footer_next: "Next lesson →",
+                ach_year_degree4: "4th Grade Primary",
+                ach_module_unit1: "Unit 1",
+                toast_signin_required: "Sign in to save your results.",
+                print_site_name: "Educational Dashboard – French",
+                print_scholar_year: "4th Grade Primary",
+                print_week: "Unit 1",
+                print_area: "Integrated Evaluation",
+                print_footer_dev: "Developed by Mejri Ziad",
+                print_footer_date: "Printed on"
+            },
+            ar: {
+                lesson_title: "التقييم المتكامل",
+                lesson_badge: "✅ الوحدة 1 · تقييم مدمج",
+                lesson_subtitle: "إعادة استخدام المهارات",
+                lesson_duration: "⏱️ 30 دقيقة",
+                back_link: "← العودة إلى البرنامج",
+                current_lesson: "التقييم المتكامل",
+                section1_title: "أنا أنتج",
+                ex1a_title: "1. أختار الجملة الصحيحة",
+                ex1a_q1: "أين يوجد غوستاف؟",
+                ex1a_1_a: "غوستاف في غرفته.",
+                ex1a_1_b: "غوستاف في المطبخ.",
+                ex1a_1_c: "غوستاف في المدرسة.",
+                ex1a_q2: "ماذا يفعل في المطبخ؟",
+                ex1a_2_a: "يتناول فطوره.",
+                ex1a_2_b: "يقوم بواجباته.",
+                ex1a_2_c: "يشاهد التلفاز.",
+                ex1a_q3: "إلى أين يذهب؟",
+                ex1a_3_a: "يذهب إلى المدرسة.",
+                ex1a_3_b: "يذهب إلى السوق.",
+                ex1a_3_c: "يبقى في المنزل.",
+                ex1b_title: "1.ب أختار الترتيب الصحيح",
+                ex1b_desc: "ما هو الترتيب الصحيح للجمل؟",
+                ex1b_opt_a: "اليوم غوستاف سعيد جداً. → أولاً، يستيقظ في غرفته. → ثم يتناول فطوره في المطبخ. → أخيراً يذهب إلى المدرسة.",
+                ex1b_opt_b: "أولاً، يستيقظ في غرفته. → اليوم غوستاف سعيد جداً. → أخيراً يذهب إلى المدرسة. → ثم يتناول فطوره في المطبخ.",
+                ex1b_opt_c: "ثم يتناول فطوره في المطبخ. → أخيراً يذهب إلى المدرسة. → أولاً، يستيقظ في غرفته. → اليوم غوستاف سعيد جداً.",
+                section2_title: "تمرين فعل être",
+                ex2a_title: "2. أكمل بفعل être في المضارع",
+                ex2a_1_a: "est",
+                ex2a_1_b: "es",
+                ex2a_1_c: "suis",
+                ex2a_2_a: "es",
+                ex2a_2_b: "est",
+                ex2a_2_c: "sommes",
+                ex2a_3_a: "suis",
+                ex2a_3_b: "es",
+                ex2a_3_c: "est",
+                ex2b_title: "2.ب أختار الجملة التي تكمل النص",
+                ex2b_desc: "أي جملة يمكن أن تكمل النص؟",
+                ex2b_opt_a: "الأعمى يشكر ماغالي.",
+                ex2b_opt_b: "ماغالي تذهب إلى السينما.",
+                ex2b_opt_c: "إنها تمطر بغزارة.",
+                section3_title: "قصة إيريك",
+                ex3_title: "3. أختار الإجابة الصحيحة",
+                ex3_q1: "أين يوجد إيريك؟",
+                ex3_1_a: "إنه على غصن شجرة.",
+                ex3_1_b: "إنه في المنزل.",
+                ex3_1_c: "إنه في المدرسة.",
+                ex3_q2: "ماذا يحدث له؟",
+                ex3_2_a: "الغصن ينكسر تحته.",
+                ex3_2_b: "يأكل تفاحة.",
+                ex3_2_c: "يغني أغنية.",
+                ex3_q3: "كيف حال والديه؟",
+                ex3_3_a: "إنهما قلقان.",
+                ex3_3_b: "إنهما سعيدان.",
+                ex3_3_c: "إنهما نائمان.",
+                check_answers: "🔍 تحقق",
+                self_assess_question: "جوابي هو:",
+                self_correct: "صحيح",
+                self_partial: "صحيح جزئيًا",
+                self_incorrect: "خاطئ",
+                score_title: "📊 تقييمك الذاتي",
+                score_correct: "صحيح:",
+                score_partial: "جزئي:",
+                score_incorrect: "خاطئ:",
+                score_unanswered: "بدون إجابة:",
+                save_results: "💾 حفظ نتائجي",
+                save_success: "تم حفظ النتائج!",
+                save_error: "خطأ في الحفظ.",
+                print_pdf: "🖨️ طباعة / PDF",
+                footer_back: "← العودة إلى البرنامج",
+                footer_next: "الدرس الموالي ←",
+                ach_year_degree4: "السنة الرابعة ابتدائي",
+                ach_module_unit1: "الوحدة الأولى",
+                toast_signin_required: "سجّل الدخول لحفظ نتائجك.",
+                print_site_name: "لوحة التحكم التعليمية – الفرنسية",
+                print_scholar_year: "السنة الرابعة ابتدائي",
+                print_week: "الوحدة 1",
+                print_area: "التقييم المتكامل",
+                print_footer_dev: "طوّر بواسطة ماجري زياد",
+                print_footer_date: "طُبع في"
+            }
+        });
+
+        (function() {
+            var container = document.getElementById('main-content');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+            App.onLangChange(function(lang) {
+                if (container) container.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            });
+            if (container) container.dir = (localStorage.getItem('lang') || 'fr') === 'ar' ? 'rtl' : 'ltr';
+        })();
+    </script>
+
+    <!-- Direct translation fix -->
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') {
+                                el.innerHTML = next.innerHTML;
+                            }
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+
+    <!-- Exercise logic (multiple choice, auth gated) -->
+    <script>
+        async function requireAuth() {
+            const { data: { session } } = await App.supabase.auth.getSession();
+            if (!session) {
+                App.showToast('toast_signin_required', 'error');
+                document.getElementById('signInBtn')?.click();
+                return false;
+            }
+            return true;
+        }
+
+        function playSound(type) {
+            const src = type === 'correct' ? 'assets/sounds/correct-sound.mp3' : type === 'wrong' ? 'assets/sounds/wrong-sound.mp3' : 'assets/sounds/complete-sound.mp3';
+            new Audio(src).play().catch(()=>{});
+        }
+
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.toggle('visible');
+        }
+
+        function showFeedback(id, isCorrect) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.textContent = isCorrect ? '✅ Correct !' : '❌ Incorrect.';
+            el.className = isCorrect ? 'degree4-lesson-evaluation-feedback correct' : 'degree4-lesson-evaluation-feedback wrong';
+        }
+
+        function checkExercise1() {
+            if (!await requireAuth()) return;
+            const answers = { ex1a_1: 'a', ex1a_2: 'a', ex1a_3: 'a' };
+            let correctCount = 0;
+            for (const name in answers) {
+                const selected = document.querySelector(`input[name="${name}"]:checked`);
+                if (selected && selected.value === answers[name]) correctCount++;
+            }
+            const isAllCorrect = correctCount === 3;
+            playSound(isAllCorrect ? 'complete' : correctCount > 0 ? 'correct' : 'wrong');
+            toggleAnswer('ex1aKey');
+            document.getElementById('ex1aKey').innerHTML = `<strong>Correction :</strong> 1.a, 2.a, 3.a`;
+            showFeedback('ex1aFeedback', isAllCorrect);
+        }
+
+        function checkExercise1b() {
+            if (!await requireAuth()) return;
+            const selected = document.querySelector('input[name="ex1b_order"]:checked');
+            const isCorrect = selected && selected.value === 'a';
+            playSound(isCorrect ? 'correct' : 'wrong');
+            toggleAnswer('ex1bKey');
+            document.getElementById('ex1bKey').innerHTML = `<strong>Correction :</strong> La bonne réponse est l'option A.`;
+            showFeedback('ex1bFeedback', isCorrect);
+        }
+
+        function checkExercise2() {
+            if (!await requireAuth()) return;
+            const answers = { ex2a_1: 'a', ex2a_2: 'a', ex2a_3: 'a' };
+            let correctCount = 0;
+            for (const name in answers) {
+                const selected = document.querySelector(`input[name="${name}"]:checked`);
+                if (selected && selected.value === answers[name]) correctCount++;
+            }
+            const isAllCorrect = correctCount === 3;
+            playSound(isAllCorrect ? 'complete' : correctCount > 0 ? 'correct' : 'wrong');
+            toggleAnswer('ex2aKey');
+            document.getElementById('ex2aKey').innerHTML = `<strong>Correction :</strong> est, es, suis`;
+            showFeedback('ex2aFeedback', isAllCorrect);
+        }
+
+        function checkExercise2b() {
+            if (!await requireAuth()) return;
+            const selected = document.querySelector('input[name="ex2b"]:checked');
+            const isCorrect = selected && selected.value === 'a';
+            playSound(isCorrect ? 'correct' : 'wrong');
+            toggleAnswer('ex2bKey');
+            document.getElementById('ex2bKey').innerHTML = `<strong>Correction :</strong> L'aveugle remercie Magali.`;
+            showFeedback('ex2bFeedback', isCorrect);
+        }
+
+        function checkExercise3() {
+            if (!await requireAuth()) return;
+            const answers = { ex3_1: 'a', ex3_2: 'a', ex3_3: 'a' };
+            let correctCount = 0;
+            for (const name in answers) {
+                const selected = document.querySelector(`input[name="${name}"]:checked`);
+                if (selected && selected.value === answers[name]) correctCount++;
+            }
+            const isAllCorrect = correctCount === 3;
+            playSound(isAllCorrect ? 'complete' : correctCount > 0 ? 'correct' : 'wrong');
+            toggleAnswer('ex3Key');
+            document.getElementById('ex3Key').innerHTML = `<strong>Correction :</strong> 1.a, 2.a, 3.a`;
+            showFeedback('ex3Feedback', isAllCorrect);
+        }
+
+        // Self-assessment scoring
+        (function() {
+            function updateScore() {
+                const radios = document.querySelectorAll('input[type="radio"][name^="self_"]');
+                const groups = new Set();
+                radios.forEach(r => groups.add(r.name));
+                let correct = 0, partial = 0, incorrect = 0, unanswered = 0;
+                groups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'partial') partial++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                document.getElementById('scoreCorrect').textContent = correct;
+                document.getElementById('scorePartial').textContent = partial;
+                document.getElementById('scoreIncorrect').textContent = incorrect;
+                document.getElementById('scoreUnanswered').textContent = unanswered;
+            }
+            document.querySelectorAll('input[type="radio"][name^="self_"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                if (!App.supabase) return;
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const radios = document.querySelectorAll('input[type="radio"][name^="self_"]');
+                const groups = new Set();
+                radios.forEach(r => groups.add(r.name));
+                let correct = 0, partial = 0, incorrect = 0, unanswered = 0;
+                groups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'partial') partial++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                const entry = {
+                    lesson_id: 'degree4unit1lesson12',
+                    lesson_title: { fr: App.getTranslation('lesson_title', 'fr'), en: App.getTranslation('lesson_title', 'en'), ar: App.getTranslation('lesson_title', 'ar') },
+                    year: { fr: App.getTranslation('ach_year_degree4', 'fr'), en: App.getTranslation('ach_year_degree4', 'en'), ar: App.getTranslation('ach_year_degree4', 'ar') },
+                    module: { fr: App.getTranslation('ach_module_unit1', 'fr'), en: App.getTranslation('ach_module_unit1', 'en'), ar: App.getTranslation('ach_module_unit1', 'ar') },
+                    correct, incorrect, partial, unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles').select('achivement').eq('id', user.id).single();
+                if (fetchError) return;
+                let achivement = profileData?.achivement || {};
+                if (!achivement['ED-French']) achivement['ED-French'] = [];
+                const arr = achivement['ED-French'];
+                const existingIdx = arr.findIndex(e => e.lesson_id === 'degree4unit1lesson12');
+                if (existingIdx >= 0) arr[existingIdx] = entry; else arr.push(entry);
+                const { error: updateError } = await App.supabase
+                    .from('profiles').update({ achivement }).eq('id', user.id);
+                if (updateError) App.showToast('save_error', 'error');
+                else { App.showToast('save_success', 'success'); App.logUserAction('lesson_saved', { lesson: 'degree4unit1lesson12', correct, incorrect, partial }); }
+            });
+
+            document.getElementById('printBtn').addEventListener('click', async function() {
+                if (!App.supabase) return;
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles')
+                        .select('registration_state')
+                        .eq('id', user.id)
+                        .single();
+                    if (!error && profile && profile.registration_state && profile.registration_state.active === true) {
+                        isRegistered = true;
+                    }
+                } catch (e) { /* ignore */ }
+                const lang = localStorage.getItem('lang') || 'fr';
+                const content = document.getElementById('main-content').cloneNode(true);
+                content.querySelectorAll('input, .degree4-lesson-evaluation-self-assess, .degree4-lesson-evaluation-score-area, .degree4-lesson-evaluation-footer-nav').forEach(el => el.remove());
+                const answerKeys = content.querySelectorAll('.degree4-lesson-evaluation-answer-key');
+                if (isRegistered) {
+                    answerKeys.forEach(key => {
+                        key.style.display = 'block';
+                        key.style.border = 'none';
+                        key.style.padding = '0.5rem 0';
+                        key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    answerKeys.forEach(el => el.remove());
+                }
+                const breadcrumb = content.querySelector('p[style*="margin-bottom:1.5rem"]');
+                if (breadcrumb) breadcrumb.remove();
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                printWindow.document.write(`
+                    <!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8"><title>${App.getTranslation('lesson_title', lang)}</title>
+                    <style>
+                        body { font-family: 'Georgia', serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+                        .print-header { text-align: center; border-bottom: 2px solid #b22222; padding-bottom: 1rem; margin-bottom: 2rem; }
+                        .print-header .site-name { font-size: 1.4rem; font-weight: bold; color: #b22222; margin: 0 0 0.3rem; }
+                        .print-header .meta-line { font-size: 0.95rem; color: #444; margin: 0.2rem 0; }
+                        .print-header .lesson-name { font-size: 1.1rem; font-weight: bold; color: #000; margin-top: 0.5rem; }
+                        .print-footer { text-align: center; border-top: 1px solid #ccc; padding-top: 1rem; margin-top: 2rem; font-size: 0.85rem; color: #666; }
+                        .degree4-lesson-evaluation-card { margin-bottom: 2rem; border: 1px solid #ccc; padding: 1rem; border-radius: 8px; }
+                        .degree4-lesson-evaluation-options { display: none; }
+                        .degree4-lesson-evaluation-answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; }
+                        @media print { @page { margin: 2cm; } }
+                    </style></head><body>
+                    <div class="print-header"><div class="site-name">${App.getTranslation('print_site_name', lang)}</div><div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div><div class="lesson-name">${App.getTranslation('lesson_title', lang)}</div></div>
+                    ${content.innerHTML}
+                    <div class="print-footer">${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}</div>
+                    </body></html>
+                `);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+        })();
+    </script>
+</body>
+</html>

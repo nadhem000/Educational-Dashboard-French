@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_title">Activité pratique – Fabriquer « La ronde des enfants »</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        :root {
+            --degree4-lesson-activity-bg: #f9f7f1;
+            --degree4-lesson-activity-card: #ffffff;
+            --degree4-lesson-activity-text: #2b2416;
+            --degree4-lesson-activity-text-light: #5c5344;
+            --degree4-lesson-activity-heading: #382e1e;
+            --degree4-lesson-activity-accent: #6a5acd;
+            --degree4-lesson-activity-accent-hover: #483d8b;
+            --degree4-lesson-activity-border: #e5ddd0;
+            --degree4-lesson-activity-shadow: 0 1px 4px rgba(0,0,0,0.04);
+            --degree4-lesson-activity-radius: 12px;
+            --degree4-lesson-activity-radius-sm: 8px;
+            --degree4-lesson-activity-transition: 0.25s ease;
+            --degree4-lesson-activity-font: 'Segoe UI', 'Georgia', serif;
+            --degree4-lesson-activity-audio-bg: #f4efe4;
+            --degree4-lesson-activity-button-bg: #f0e8d8;
+            --degree4-lesson-activity-button-hover: #e3d5bc;
+        }
+        body.dark {
+            --degree4-lesson-activity-bg: #1e1b17;
+            --degree4-lesson-activity-card: #2a2620;
+            --degree4-lesson-activity-text: #e8dfd2;
+            --degree4-lesson-activity-text-light: #b9aa95;
+            --degree4-lesson-activity-heading: #f0e4d2;
+            --degree4-lesson-activity-accent: #b39ddb;
+            --degree4-lesson-activity-accent-hover: #d1c4e9;
+            --degree4-lesson-activity-border: #3e3830;
+            --degree4-lesson-activity-shadow: 0 1px 4px rgba(0,0,0,0.25);
+            --degree4-lesson-activity-audio-bg: #26221b;
+            --degree4-lesson-activity-button-bg: #3a3329;
+            --degree4-lesson-activity-button-hover: #4e4437;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: var(--degree4-lesson-activity-font);
+            background: var(--degree4-lesson-activity-bg);
+            color: var(--degree4-lesson-activity-text);
+            line-height: 1.75;
+            transition: background var(--degree4-lesson-activity-transition), color var(--degree4-lesson-activity-transition);
+        }
+        .degree4-lesson-activity-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.8rem 1.4rem 3rem;
+        }
+        .degree4-lesson-activity-header { text-align: center; margin-bottom: 2rem; }
+        .degree4-lesson-activity-badge {
+            display: inline-block;
+            background: var(--degree4-lesson-activity-accent);
+            color: #fff;
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+        .degree4-lesson-activity-header h1 {
+            font-size: 2.1rem;
+            color: var(--degree4-lesson-activity-heading);
+            margin: 0.6rem 0 0.3rem;
+            line-height: 1.3;
+        }
+        .degree4-lesson-activity-meta {
+            font-size: 0.9rem;
+            color: var(--degree4-lesson-activity-text-light);
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .degree4-lesson-activity-card {
+            background: var(--degree4-lesson-activity-card);
+            border: 1px solid var(--degree4-lesson-activity-border);
+            border-radius: var(--degree4-lesson-activity-radius);
+            padding: 1.8rem;
+            margin: 2rem 0;
+            box-shadow: var(--degree4-lesson-activity-shadow);
+        }
+        .degree4-lesson-activity-card h2 {
+            font-size: 1.6rem;
+            color: var(--degree4-lesson-activity-heading);
+            margin-bottom: 0.4rem;
+            border-bottom: 3px solid var(--degree4-lesson-activity-accent);
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+        .degree4-lesson-activity-section-title {
+            color: var(--degree4-lesson-activity-accent);
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem;
+            border-bottom: 1px dashed var(--degree4-lesson-activity-border);
+            padding-bottom: 0.3rem;
+        }
+        .degree4-lesson-activity-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+        .degree4-lesson-activity-grid .degree4-lesson-activity-card {
+            flex: 1 1 250px;
+            margin: 0;
+        }
+        .degree4-lesson-activity-list {
+            list-style: none;
+            padding: 0;
+        }
+        .degree4-lesson-activity-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed var(--degree4-lesson-activity-border);
+        }
+        .degree4-lesson-activity-list li:last-child {
+            border-bottom: none;
+        }
+        .degree4-lesson-activity-french {
+            font-style: italic;
+            font-weight: 600;
+            color: var(--degree4-lesson-activity-accent);
+        }
+        .degree4-lesson-activity-slideshow {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+            border-radius: var(--degree4-lesson-activity-radius-sm);
+            background: #f0f0f0;
+            margin: 1rem 0;
+        }
+        .degree4-lesson-activity-slideshow img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .degree4-lesson-activity-slideshow img.active {
+            opacity: 1;
+        }
+        .degree4-lesson-activity-slideshow-btn {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+        .degree4-lesson-activity-slideshow-btn button {
+            background: rgba(0,0,0,0.5);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .degree4-lesson-activity-btn {
+            background: var(--degree4-lesson-activity-accent);
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background var(--degree4-lesson-activity-transition);
+            font-size: 0.85rem;
+        }
+        .degree4-lesson-activity-btn:hover { background: var(--degree4-lesson-activity-accent-hover); }
+        .degree4-lesson-activity-self-assess {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        .degree4-lesson-activity-self-assess label {
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .degree4-lesson-activity-self-assess input[type="radio"] {
+            accent-color: var(--degree4-lesson-activity-accent);
+        }
+        .degree4-lesson-activity-score-area {
+            background: var(--degree4-lesson-activity-card);
+            border: 1px solid var(--degree4-lesson-activity-border);
+            border-radius: var(--degree4-lesson-activity-radius);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: var(--degree4-lesson-activity-shadow);
+        }
+        .degree4-lesson-activity-score-area h2 {
+            color: var(--degree4-lesson-activity-heading);
+            margin-bottom: 1rem;
+        }
+        .degree4-lesson-activity-score-stats {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .degree4-lesson-activity-score-stat {
+            background: var(--degree4-lesson-activity-audio-bg);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        .degree4-lesson-activity-score-actions {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        .degree4-lesson-activity-footer-nav {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .degree4-lesson-activity-footer-nav a {
+            color: var(--degree4-lesson-activity-accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .degree4-lesson-activity-footer-nav a:hover { text-decoration: underline; }
+        @media (max-width: 600px) {
+            .degree4-lesson-activity-header h1 { font-size: 1.5rem; }
+            .degree4-lesson-activity-slideshow { height: 200px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="toast-container"></div>
+    <div id="toast"></div>
+    <button id="signInBtn" style="display:none"></button>
+
+    <div id="main-content" class="degree4-lesson-activity-container">
+        <!-- Breadcrumb -->
+        <p style="margin-bottom:1.5rem; color:var(--degree4-lesson-activity-text-light);">
+            <a href="degree4.html" data-i18n="back_link">← Retour au programme</a>
+            › <strong data-i18n="current_lesson">Activité pratique</strong>
+        </p>
+
+        <!-- Header -->
+        <div class="degree4-lesson-activity-header">
+            <span class="degree4-lesson-activity-badge" data-i18n="lesson_badge">🛠️ Unité 1 · Activité pratique</span>
+            <h1 data-i18n="lesson_title">Fabriquer « La ronde des enfants »</h1>
+            <div class="degree4-lesson-activity-meta">
+                <span data-i18n="lesson_subtitle">Activité pratique</span>
+                <span data-i18n="lesson_duration">⏱️ 30 minutes</span>
+            </div>
+        </div>
+
+        <!-- Section 1 : Matériel -->
+        <section class="degree4-lesson-activity-card">
+            <h2 data-i18n="section1_title">Matériel nécessaire</h2>
+            <div class="degree4-lesson-activity-grid">
+                <div class="degree4-lesson-activity-card">
+                    <h3 data-i18n="materials_title">Liste du matériel</h3>
+                    <ul class="degree4-lesson-activity-list">
+                        <li><span class="degree4-lesson-activity-french">une feuille de papier</span> <span data-i18n="material_paper"> - ورقة</span></li>
+                        <li><span class="degree4-lesson-activity-french">des ciseaux</span> <span data-i18n="material_scissors"> - مقص</span></li>
+                        <li><span class="degree4-lesson-activity-french">des crayons de couleur</span> <span data-i18n="material_colors"> - ألوان</span></li>
+                        <li><span class="degree4-lesson-activity-french">un stylo</span> <span data-i18n="material_pen"> - قلم</span></li>
+                    </ul>
+                </div>
+                <div class="degree4-lesson-activity-card">
+                    <h3 data-i18n="materials_images_title">Images du matériel</h3>
+                    <div class="degree4-lesson-activity-slideshow" data-slideshow="materials">
+                        <img src="assets4/images/degree4/unit1/lesson14/materials/1.jpg" class="active" alt="Matériel 1">
+                        <img src="assets4/images/degree4/unit1/lesson14/materials/2.jpg" alt="Matériel 2">
+                        <img src="assets4/images/degree4/unit1/lesson14/materials/3.jpg" alt="Matériel 3">
+                        <div class="degree4-lesson-activity-slideshow-btn">
+                            <button onclick="prevSlide('materials')">❮</button>
+                            <button onclick="nextSlide('materials')">❯</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="degree4-lesson-activity-self-assess">
+                <span data-i18n="self_assess_question">Ma compréhension du matériel est :</span>
+                <label><input type="radio" name="self_mat" value="correct" data-i18n="self_correct"> Correcte</label>
+                <label><input type="radio" name="self_mat" value="partial" data-i18n="self_partial"> Partielle</label>
+                <label><input type="radio" name="self_mat" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+            </div>
+        </section>
+
+        <!-- Section 2 : Étapes -->
+        <section class="degree4-lesson-activity-card">
+            <h2 data-i18n="section2_title">Ce qu'il faut faire</h2>
+            <div class="degree4-lesson-activity-grid">
+                <div class="degree4-lesson-activity-card">
+                    <h3 data-i18n="steps_title">Étapes</h3>
+                    <ol class="degree4-lesson-activity-list">
+                        <li data-i18n="step1">Coupe une bande de papier de 10 cm.</li>
+                        <li data-i18n="step2">Décalque ce bonhomme. Mets un bras et un pied au bord de la bande.</li>
+                        <li data-i18n="step3">Plie la bande.</li>
+                        <li data-i18n="step4">Laisse la bande pliée et découpe ce bonhomme. Ne découpe pas sur les pointillés.</li>
+                        <li data-i18n="step5">Maintenant, écris le prénom de tes copains et de tes copines de classe. Ensuite, décore ta ronde comme tu veux.</li>
+                    </ol>
+                </div>
+                <div class="degree4-lesson-activity-card">
+                    <h3 data-i18n="steps_images_title">Images des étapes</h3>
+                    <div class="degree4-lesson-activity-slideshow" data-slideshow="steps">
+                        <img src="assets4/images/degree4/unit1/lesson14/steps/1.png" class="active" alt="Étape 1">
+                        <img src="assets4/images/degree4/unit1/lesson14/steps/2.png" alt="Étape 2">
+                        <img src="assets4/images/degree4/unit1/lesson14/steps/3.png" alt="Étape 3">
+                        <div class="degree4-lesson-activity-slideshow-btn">
+                            <button onclick="prevSlide('steps')">❮</button>
+                            <button onclick="nextSlide('steps')">❯</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="degree4-lesson-activity-self-assess">
+                <span data-i18n="self_assess_question">Ma compréhension des étapes est :</span>
+                <label><input type="radio" name="self_steps" value="correct" data-i18n="self_correct"> Correcte</label>
+                <label><input type="radio" name="self_steps" value="partial" data-i18n="self_partial"> Partielle</label>
+                <label><input type="radio" name="self_steps" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+            </div>
+        </section>
+
+        <!-- Section 3 : Résultats -->
+        <section class="degree4-lesson-activity-card">
+            <h2 data-i18n="section3_title">Résultats finaux</h2>
+            <div class="degree4-lesson-activity-grid">
+                <div class="degree4-lesson-activity-card">
+                    <h3 data-i18n="results_title">Galerie des résultats</h3>
+                    <div class="degree4-lesson-activity-slideshow" data-slideshow="results">
+                        <img src="assets4/images/degree4/unit1/lesson14/results/1.png" class="active" alt="Résultat 1">
+                    </div>
+                    <p data-i18n="results_description">Après avoir fini de fabriquer « La ronde des enfants », vous pouvez afficher vos résultats et les partager avec vos camarades.</p>
+                </div>
+                <div class="degree4-lesson-activity-card">
+                    <h3 data-i18n="tips_title">Conseils supplémentaires</h3>
+                    <ul class="degree4-lesson-activity-list">
+                        <li data-i18n="tip1">Utilisez des couleurs vives pour rendre « La ronde des enfants » plus attractive.</li>
+                        <li data-i18n="tip2">Vous pouvez ajouter des détails supplémentaires comme dessiner des visages ou des vêtements pour les personnages.</li>
+                        <li data-i18n="tip3">Assurez-vous de couper la bande avec précision pour obtenir un résultat uniforme et beau.</li>
+                        <li data-i18n="tip4">Partagez votre « ronde » avec vos camarades et parlez des noms qui y sont écrits.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="degree4-lesson-activity-self-assess">
+                <span data-i18n="self_assess_question">Ma réalisation est :</span>
+                <label><input type="radio" name="self_result" value="correct" data-i18n="self_correct"> Réussie</label>
+                <label><input type="radio" name="self_result" value="partial" data-i18n="self_partial"> Partiellement réussie</label>
+                <label><input type="radio" name="self_result" value="incorrect" data-i18n="self_incorrect"> Non réussie</label>
+            </div>
+        </section>
+
+        <!-- Score Area -->
+        <div class="degree4-lesson-activity-score-area">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="degree4-lesson-activity-score-stats">
+                <div class="degree4-lesson-activity-score-stat"><span data-i18n="score_correct">Correct :</span> <span id="scoreCorrect">0</span></div>
+                <div class="degree4-lesson-activity-score-stat"><span data-i18n="score_partial">Partiel :</span> <span id="scorePartial">0</span></div>
+                <div class="degree4-lesson-activity-score-stat"><span data-i18n="score_incorrect">Incorrect :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="degree4-lesson-activity-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">3</span></div>
+            </div>
+            <div class="degree4-lesson-activity-score-actions">
+                <button id="saveResultsBtn" class="degree4-lesson-activity-btn" data-i18n="save_results">💾 Enregistrer mes résultats</button>
+                <button id="printBtn" class="degree4-lesson-activity-btn" style="background:#5c5344;" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+            </div>
+        </div>
+
+        <!-- Footer navigation -->
+        <div class="degree4-lesson-activity-footer-nav">
+            <a href="degree4.html" data-i18n="footer_back">← Retour au programme</a>
+            <a href="degree4unit1lesson15.html" data-i18n="footer_next">Leçon suivante →</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script src="ed-french-ini.js"></script>
+
+    <!-- Translations -->
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                lesson_title: "Activité pratique – Fabriquer « La ronde des enfants »",
+                lesson_badge: "🛠️ Unité 1 · Activité pratique",
+                lesson_subtitle: "Activité pratique",
+                lesson_duration: "⏱️ 30 minutes",
+                back_link: "← Retour au programme",
+                current_lesson: "Activité pratique",
+                section1_title: "Matériel nécessaire",
+                materials_title: "Liste du matériel",
+                materials_images_title: "Images du matériel",
+                material_paper: " - papier",
+                material_scissors: " - ciseaux",
+                material_colors: " - couleurs",
+                material_pen: " - stylo",
+                section2_title: "Ce qu'il faut faire",
+                steps_title: "Étapes",
+                steps_images_title: "Images des étapes",
+                step1: "Coupe une bande de papier de 10 cm.",
+                step2: "Décalque ce bonhomme. Mets un bras et un pied au bord de la bande.",
+                step3: "Plie la bande.",
+                step4: "Laisse la bande pliée et découpe ce bonhomme. Ne découpe pas sur les pointillés.",
+                step5: "Maintenant, écris le prénom de tes copains et de tes copines de classe. Ensuite, décore ta ronde comme tu veux.",
+                section3_title: "Résultats finaux",
+                results_title: "Galerie des résultats",
+                results_description: "Après avoir fini de fabriquer « La ronde des enfants », vous pouvez afficher vos résultats et les partager avec vos camarades.",
+                tips_title: "Conseils supplémentaires",
+                tip1: "Utilisez des couleurs vives pour rendre « La ronde des enfants » plus attractive.",
+                tip2: "Vous pouvez ajouter des détails supplémentaires comme dessiner des visages ou des vêtements pour les personnages.",
+                tip3: "Assurez-vous de couper la bande avec précision pour obtenir un résultat uniforme et beau.",
+                tip4: "Partagez votre « ronde » avec vos camarades et parlez des noms qui y sont écrits.",
+                self_assess_question: "Ma réponse est :",
+                self_correct: "Correcte",
+                self_partial: "Partiellement correcte",
+                self_incorrect: "Incorrecte",
+                score_title: "📊 Votre auto‑évaluation",
+                score_correct: "Correct :",
+                score_partial: "Partiel :",
+                score_incorrect: "Incorrect :",
+                score_unanswered: "Sans réponse :",
+                save_results: "💾 Enregistrer mes résultats",
+                save_success: "Résultats enregistrés !",
+                save_error: "Erreur lors de l'enregistrement.",
+                print_pdf: "🖨️ Imprimer / PDF",
+                footer_back: "← Retour au programme",
+                footer_next: "Leçon suivante →",
+                ach_year_degree4: "4ème Année Primaire",
+                ach_module_unit1: "Unité 1",
+                toast_signin_required: "Connectez-vous pour enregistrer vos résultats.",
+                print_site_name: "Educational Dashboard – Français",
+                print_scholar_year: "4ème Année Primaire",
+                print_week: "Unité 1",
+                print_area: "Activité pratique",
+                print_footer_dev: "Développé par Mejri Ziad",
+                print_footer_date: "Imprimé le"
+            },
+            en: {
+                lesson_title: "Practical Activity – Making « La ronde des enfants »",
+                lesson_badge: "🛠️ Unit 1 · Practical Activity",
+                lesson_subtitle: "Practical Activity",
+                lesson_duration: "⏱️ 30 minutes",
+                back_link: "← Back to program",
+                current_lesson: "Practical Activity",
+                section1_title: "Required Materials",
+                materials_title: "Materials List",
+                materials_images_title: "Materials Images",
+                material_paper: " - paper",
+                material_scissors: " - scissors",
+                material_colors: " - colors",
+                material_pen: " - pen",
+                section2_title: "Steps to Follow",
+                steps_title: "Steps",
+                steps_images_title: "Steps Images",
+                step1: "Cut a 10 cm wide strip of paper.",
+                step2: "Trace this figure. Place an arm and a foot at the edge of the strip.",
+                step3: "Fold the strip.",
+                step4: "Keep the strip folded and cut out this figure. Do not cut on the dotted lines.",
+                step5: "Now, write the names of your classmates. Then decorate your circle as you like.",
+                section3_title: "Final Results",
+                results_title: "Results Gallery",
+                results_description: "After finishing making the \"Children's Circle\", you can display your results and share them with your classmates.",
+                tips_title: "Additional Tips",
+                tip1: "Use bright colors to make the \"Children's Circle\" more attractive.",
+                tip2: "You can add additional details like drawing faces or clothes for the characters.",
+                tip3: "Make sure to cut the strip precisely to get an even and beautiful result.",
+                tip4: "Share your \"circle\" with your classmates and talk about the names written on it.",
+                self_assess_question: "My answer is:",
+                self_correct: "Correct",
+                self_partial: "Partially correct",
+                self_incorrect: "Incorrect",
+                score_title: "📊 Your self‑assessment",
+                score_correct: "Correct:",
+                score_partial: "Partial:",
+                score_incorrect: "Incorrect:",
+                score_unanswered: "Unanswered:",
+                save_results: "💾 Save my results",
+                save_success: "Results saved!",
+                save_error: "Error saving results.",
+                print_pdf: "🖨️ Print / PDF",
+                footer_back: "← Back to program",
+                footer_next: "Next lesson →",
+                ach_year_degree4: "4th Grade Primary",
+                ach_module_unit1: "Unit 1",
+                toast_signin_required: "Sign in to save your results.",
+                print_site_name: "Educational Dashboard – French",
+                print_scholar_year: "4th Grade Primary",
+                print_week: "Unit 1",
+                print_area: "Practical Activity",
+                print_footer_dev: "Developed by Mejri Ziad",
+                print_footer_date: "Printed on"
+            },
+            ar: {
+                lesson_title: "نشاط عملي – صنع « دائرة الأطفال »",
+                lesson_badge: "🛠️ الوحدة 1 · نشاط عملي",
+                lesson_subtitle: "نشاط عملي",
+                lesson_duration: "⏱️ 30 دقيقة",
+                back_link: "← العودة إلى البرنامج",
+                current_lesson: "نشاط عملي",
+                section1_title: "الأدوات اللازمة",
+                materials_title: "قائمة الأدوات",
+                materials_images_title: "صور الأدوات",
+                material_paper: " - ورقة",
+                material_scissors: " - مقص",
+                material_colors: " - ألوان",
+                material_pen: " - قلم",
+                section2_title: "خطوات العمل",
+                steps_title: "الخطوات",
+                steps_images_title: "صور الخطوات",
+                step1: "اقطع شريطًا من الورق بعرض 10 سم.",
+                step2: "انقل رسمة هذا الإنسان. ضع ذراعًا وقدمًا على حافة الشريط.",
+                step3: "اطوِ الشريط.",
+                step4: "اترك الشريط مطويًّا واقطع هذا الإنسان. لا تقطع على الخطوط المنقطة.",
+                step5: "الآن، اكتب أسماء أصدقائك وصديقاتك في الصف. بعد ذلك، زيّن دائرتك كما تحب.",
+                section3_title: "النتائج النهائية",
+                results_title: "معرض النتائج",
+                results_description: "بعد الانتهاء من صنع « دائرة الأطفال »، يمكنك عرض نتائجك ومشاركتها مع زملائك.",
+                tips_title: "نصائح إضافية",
+                tip1: "استخدم ألوانًا زاهية لجعل « دائرة الأطفال » أكثر جاذبية.",
+                tip2: "يمكنك إضافة تفاصيل إضافية مثل رسم وجوه أو ملابس للشخصيات.",
+                tip3: "تأكد من قص الشريط بدقة لتحصل على نتيجة متساوية وجميلة.",
+                tip4: "شارك « دائرتك » مع زملائك وتحدث عن أسمائهم المكتوبة عليها.",
+                self_assess_question: "جوابي هو:",
+                self_correct: "صحيح",
+                self_partial: "صحيح جزئيًا",
+                self_incorrect: "خاطئ",
+                score_title: "📊 تقييمك الذاتي",
+                score_correct: "صحيح:",
+                score_partial: "جزئي:",
+                score_incorrect: "خاطئ:",
+                score_unanswered: "بدون إجابة:",
+                save_results: "💾 حفظ نتائجي",
+                save_success: "تم حفظ النتائج!",
+                save_error: "خطأ في الحفظ.",
+                print_pdf: "🖨️ طباعة / PDF",
+                footer_back: "← العودة إلى البرنامج",
+                footer_next: "الدرس الموالي ←",
+                ach_year_degree4: "السنة الرابعة ابتدائي",
+                ach_module_unit1: "الوحدة الأولى",
+                toast_signin_required: "سجّل الدخول لحفظ نتائجك.",
+                print_site_name: "لوحة التحكم التعليمية – الفرنسية",
+                print_scholar_year: "السنة الرابعة ابتدائي",
+                print_week: "الوحدة 1",
+                print_area: "نشاط عملي",
+                print_footer_dev: "طوّر بواسطة ماجري زياد",
+                print_footer_date: "طُبع في"
+            }
+        });
+
+        (function() {
+            var container = document.getElementById('main-content');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+            App.onLangChange(function(lang) {
+                if (container) container.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            });
+            if (container) container.dir = (localStorage.getItem('lang') || 'fr') === 'ar' ? 'rtl' : 'ltr';
+        })();
+    </script>
+
+    <!-- Direct translation fix -->
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') {
+                                el.innerHTML = next.innerHTML;
+                            }
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+
+    <!-- Slideshow logic -->
+    <script>
+        function nextSlide(id) {
+            const container = document.querySelector(`[data-slideshow="${id}"]`);
+            if (!container) return;
+            const imgs = container.querySelectorAll('img');
+            let active = -1;
+            imgs.forEach((img, i) => { if (img.classList.contains('active')) { img.classList.remove('active'); active = i; } });
+            const next = (active + 1) % imgs.length;
+            imgs[next].classList.add('active');
+        }
+        function prevSlide(id) {
+            const container = document.querySelector(`[data-slideshow="${id}"]`);
+            if (!container) return;
+            const imgs = container.querySelectorAll('img');
+            let active = -1;
+            imgs.forEach((img, i) => { if (img.classList.contains('active')) { img.classList.remove('active'); active = i; } });
+            const prev = (active - 1 + imgs.length) % imgs.length;
+            imgs[prev].classList.add('active');
+        }
+    </script>
+
+    <!-- Self-assessment and save/print -->
+    <script>
+        (function() {
+            function updateScore() {
+                const radios = document.querySelectorAll('input[type="radio"][name^="self_"]');
+                const groups = new Set();
+                radios.forEach(r => groups.add(r.name));
+                let correct = 0, partial = 0, incorrect = 0, unanswered = 0;
+                groups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'partial') partial++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                document.getElementById('scoreCorrect').textContent = correct;
+                document.getElementById('scorePartial').textContent = partial;
+                document.getElementById('scoreIncorrect').textContent = incorrect;
+                document.getElementById('scoreUnanswered').textContent = unanswered;
+            }
+            document.querySelectorAll('input[type="radio"][name^="self_"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                if (!App.supabase) return;
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const radios = document.querySelectorAll('input[type="radio"][name^="self_"]');
+                const groups = new Set();
+                radios.forEach(r => groups.add(r.name));
+                let correct = 0, partial = 0, incorrect = 0, unanswered = 0;
+                groups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'partial') partial++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                const entry = {
+                    lesson_id: 'degree4unit1lesson14',
+                    lesson_title: { fr: App.getTranslation('lesson_title', 'fr'), en: App.getTranslation('lesson_title', 'en'), ar: App.getTranslation('lesson_title', 'ar') },
+                    year: { fr: App.getTranslation('ach_year_degree4', 'fr'), en: App.getTranslation('ach_year_degree4', 'en'), ar: App.getTranslation('ach_year_degree4', 'ar') },
+                    module: { fr: App.getTranslation('ach_module_unit1', 'fr'), en: App.getTranslation('ach_module_unit1', 'en'), ar: App.getTranslation('ach_module_unit1', 'ar') },
+                    correct, incorrect, partial, unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles').select('achivement').eq('id', user.id).single();
+                if (fetchError) return;
+                let achivement = profileData?.achivement || {};
+                if (!achivement['ED-French']) achivement['ED-French'] = [];
+                const arr = achivement['ED-French'];
+                const existingIdx = arr.findIndex(e => e.lesson_id === 'degree4unit1lesson14');
+                if (existingIdx >= 0) arr[existingIdx] = entry; else arr.push(entry);
+                const { error: updateError } = await App.supabase
+                    .from('profiles').update({ achivement }).eq('id', user.id);
+                if (updateError) App.showToast('save_error', 'error');
+                else { App.showToast('save_success', 'success'); App.logUserAction('lesson_saved', { lesson: 'degree4unit1lesson14', correct, incorrect, partial }); }
+            });
+
+            document.getElementById('printBtn').addEventListener('click', async function() {
+                if (!App.supabase) return;
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const lang = localStorage.getItem('lang') || 'fr';
+                const content = document.getElementById('main-content').cloneNode(true);
+                content.querySelectorAll('input, .degree4-lesson-activity-self-assess, .degree4-lesson-activity-score-area, .degree4-lesson-activity-footer-nav').forEach(el => el.remove());
+                const breadcrumb = content.querySelector('p[style*="margin-bottom:1.5rem"]');
+                if (breadcrumb) breadcrumb.remove();
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                printWindow.document.write(`
+                    <!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8"><title>${App.getTranslation('lesson_title', lang)}</title>
+                    <style>
+                        body { font-family: 'Georgia', serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+                        .print-header { text-align: center; border-bottom: 2px solid #6a5acd; padding-bottom: 1rem; margin-bottom: 2rem; }
+                        .print-header .site-name { font-size: 1.4rem; font-weight: bold; color: #6a5acd; margin: 0 0 0.3rem; }
+                        .print-header .meta-line { font-size: 0.95rem; color: #444; margin: 0.2rem 0; }
+                        .print-header .lesson-name { font-size: 1.1rem; font-weight: bold; color: #000; margin-top: 0.5rem; }
+                        .print-footer { text-align: center; border-top: 1px solid #ccc; padding-top: 1rem; margin-top: 2rem; font-size: 0.85rem; color: #666; }
+                        .degree4-lesson-activity-card { margin-bottom: 2rem; border: 1px solid #ccc; padding: 1rem; border-radius: 8px; }
+                        .degree4-lesson-activity-slideshow { height: auto; }
+                        .degree4-lesson-activity-slideshow img { position: static; opacity: 1; max-width: 100%; height: auto; margin: 0.5rem 0; }
+                        .degree4-lesson-activity-slideshow-btn { display: none; }
+                        @media print { @page { margin: 2cm; } }
+                    </style></head><body>
+                    <div class="print-header"><div class="site-name">${App.getTranslation('print_site_name', lang)}</div><div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div><div class="lesson-name">${App.getTranslation('lesson_title', lang)}</div></div>
+                    ${content.innerHTML}
+                    <div class="print-footer">${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}</div>
+                    </body></html>
+                `);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+        })();
+    </script>
+</body>
+</html>

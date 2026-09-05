@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_title">Conjugaison – Le verbe « être » au présent</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        :root {
+            --degree4-lesson-conjugaison-bg: #f9f7f1;
+            --degree4-lesson-conjugaison-card: #ffffff;
+            --degree4-lesson-conjugaison-text: #2b2416;
+            --degree4-lesson-conjugaison-text-light: #5c5344;
+            --degree4-lesson-conjugaison-heading: #382e1e;
+            --degree4-lesson-conjugaison-accent: #4b0082; /* dark violet */
+            --degree4-lesson-conjugaison-accent-hover: #6a0dad;
+            --degree4-lesson-conjugaison-border: #e5ddd0;
+            --degree4-lesson-conjugaison-shadow: 0 1px 4px rgba(0,0,0,0.04);
+            --degree4-lesson-conjugaison-radius: 12px;
+            --degree4-lesson-conjugaison-radius-sm: 8px;
+            --degree4-lesson-conjugaison-transition: 0.25s ease;
+            --degree4-lesson-conjugaison-font: 'Segoe UI', 'Georgia', serif;
+            --degree4-lesson-conjugaison-audio-bg: #f4efe4;
+            --degree4-lesson-conjugaison-audio-progress: #d8c9aa;
+            --degree4-lesson-conjugaison-button-bg: #f0e8d8;
+            --degree4-lesson-conjugaison-button-hover: #e3d5bc;
+        }
+        body.dark {
+            --degree4-lesson-conjugaison-bg: #1e1b17;
+            --degree4-lesson-conjugaison-card: #2a2620;
+            --degree4-lesson-conjugaison-text: #e8dfd2;
+            --degree4-lesson-conjugaison-text-light: #b9aa95;
+            --degree4-lesson-conjugaison-heading: #f0e4d2;
+            --degree4-lesson-conjugaison-accent: #b388ff;
+            --degree4-lesson-conjugaison-accent-hover: #ce93d8;
+            --degree4-lesson-conjugaison-border: #3e3830;
+            --degree4-lesson-conjugaison-shadow: 0 1px 4px rgba(0,0,0,0.25);
+            --degree4-lesson-conjugaison-audio-bg: #26221b;
+            --degree4-lesson-conjugaison-audio-progress: #5a4e3c;
+            --degree4-lesson-conjugaison-button-bg: #3a3329;
+            --degree4-lesson-conjugaison-button-hover: #4e4437;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: var(--degree4-lesson-conjugaison-font);
+            background: var(--degree4-lesson-conjugaison-bg);
+            color: var(--degree4-lesson-conjugaison-text);
+            line-height: 1.75;
+            transition: background var(--degree4-lesson-conjugaison-transition), color var(--degree4-lesson-conjugaison-transition);
+        }
+        .degree4-lesson-conjugaison-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.8rem 1.4rem 3rem;
+        }
+        .degree4-lesson-conjugaison-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .degree4-lesson-conjugaison-badge {
+            display: inline-block;
+            background: var(--degree4-lesson-conjugaison-accent);
+            color: #fff;
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+        .degree4-lesson-conjugaison-header h1 {
+            font-size: 2.1rem;
+            color: var(--degree4-lesson-conjugaison-heading);
+            margin: 0.6rem 0 0.3rem;
+            line-height: 1.3;
+        }
+        .degree4-lesson-conjugaison-meta {
+            font-size: 0.9rem;
+            color: var(--degree4-lesson-conjugaison-text-light);
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .degree4-lesson-conjugaison-card {
+            background: var(--degree4-lesson-conjugaison-card);
+            border: 1px solid var(--degree4-lesson-conjugaison-border);
+            border-radius: var(--degree4-lesson-conjugaison-radius);
+            padding: 1.8rem;
+            margin: 2rem 0;
+            box-shadow: var(--degree4-lesson-conjugaison-shadow);
+        }
+        .degree4-lesson-conjugaison-card h2 {
+            font-size: 1.6rem;
+            color: var(--degree4-lesson-conjugaison-heading);
+            margin-bottom: 0.4rem;
+            border-bottom: 3px solid var(--degree4-lesson-conjugaison-accent);
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+        .degree4-lesson-conjugaison-play-btn {
+            background: var(--degree4-lesson-conjugaison-accent);
+            color: #fff;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: background var(--degree4-lesson-conjugaison-transition);
+            flex-shrink: 0;
+        }
+        .degree4-lesson-conjugaison-play-btn:hover { background: var(--degree4-lesson-conjugaison-accent-hover); }
+        .degree4-lesson-conjugaison-sentence-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            margin-bottom: 0.8rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed var(--degree4-lesson-conjugaison-border);
+        }
+        .degree4-lesson-conjugaison-sentence-item p {
+            margin: 0;
+            flex: 1;
+        }
+        .degree4-lesson-conjugaison-answer-key {
+            display: none;
+            margin-top: 0.8rem;
+            padding: 0.8rem;
+            background: var(--degree4-lesson-conjugaison-audio-bg);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: var(--degree4-lesson-conjugaison-text-light);
+            border: 1px dashed var(--degree4-lesson-conjugaison-accent);
+        }
+        .degree4-lesson-conjugaison-answer-key.visible {
+            display: block;
+        }
+        .degree4-lesson-conjugaison-feedback {
+            margin-top: 0.8rem;
+            font-weight: 600;
+        }
+        .degree4-lesson-conjugaison-feedback.correct { color: #2e7d32; }
+        .degree4-lesson-conjugaison-feedback.wrong { color: #c62828; }
+        .degree4-lesson-conjugaison-btn {
+            background: var(--degree4-lesson-conjugaison-accent);
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background var(--degree4-lesson-conjugaison-transition);
+            font-size: 0.85rem;
+        }
+        .degree4-lesson-conjugaison-btn:hover {
+            background: var(--degree4-lesson-conjugaison-accent-hover);
+        }
+        .degree4-lesson-conjugaison-self-assess {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        .degree4-lesson-conjugaison-self-assess label {
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .degree4-lesson-conjugaison-self-assess input[type="radio"] {
+            accent-color: var(--degree4-lesson-conjugaison-accent);
+        }
+        .degree4-lesson-conjugaison-score-area {
+            background: var(--degree4-lesson-conjugaison-card);
+            border: 1px solid var(--degree4-lesson-conjugaison-border);
+            border-radius: var(--degree4-lesson-conjugaison-radius);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: var(--degree4-lesson-conjugaison-shadow);
+        }
+        .degree4-lesson-conjugaison-score-area h2 {
+            color: var(--degree4-lesson-conjugaison-heading);
+            margin-bottom: 1rem;
+        }
+        .degree4-lesson-conjugaison-score-stats {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .degree4-lesson-conjugaison-score-stat {
+            background: var(--degree4-lesson-conjugaison-audio-bg);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        .degree4-lesson-conjugaison-score-actions {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        .degree4-lesson-conjugaison-exercises-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .degree4-lesson-conjugaison-exercise-col {
+            min-width: 0;
+        }
+        .degree4-lesson-conjugaison-select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 2px solid var(--degree4-lesson-conjugaison-border);
+            border-radius: 6px;
+            background: var(--degree4-lesson-conjugaison-card);
+            color: var(--degree4-lesson-conjugaison-text);
+            font-family: inherit;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+        .degree4-lesson-conjugaison-input {
+            width: 80px;
+            padding: 0.3rem;
+            text-align: center;
+            border: 2px solid var(--degree4-lesson-conjugaison-border);
+            border-radius: 6px;
+            background: var(--degree4-lesson-conjugaison-card);
+            color: var(--degree4-lesson-conjugaison-text);
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        /* Matching connection */
+        .degree4-lesson-conjugaison-connection-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            margin-bottom: 15px;
+        }
+        .degree4-lesson-conjugaison-connection-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .degree4-lesson-conjugaison-connection-part {
+            padding: 8px 16px;
+            background-color: #e3f2fd;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            min-width: 60px;
+        }
+        .degree4-lesson-conjugaison-connection-part.selected {
+            background-color: #c8e6c9;
+            box-shadow: 0 0 0 2px #4caf50;
+        }
+        .degree4-lesson-conjugaison-connection-btn {
+            padding: 8px 12px;
+            background-color: var(--degree4-lesson-conjugaison-accent);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin: 8px 0;
+        }
+        .degree4-lesson-conjugaison-connection-btn:disabled {
+            background-color: #bdbdbd;
+            cursor: not-allowed;
+        }
+        .degree4-lesson-conjugaison-connection-line {
+            height: 2px;
+            background-color: var(--degree4-lesson-conjugaison-accent);
+            margin: 10px 0;
+            display: none;
+        }
+        .degree4-lesson-conjugaison-connected-word {
+            font-weight: bold;
+            color: #2e7d32;
+            padding: 8px;
+            border-radius: 4px;
+            background-color: #e8f5e9;
+            display: none;
+        }
+        /* Conjugation table */
+        .degree4-lesson-conjugaison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .degree4-lesson-conjugaison-table th,
+        .degree4-lesson-conjugaison-table td {
+            border: 1px solid var(--degree4-lesson-conjugaison-border);
+            padding: 10px;
+            text-align: center;
+            background: var(--degree4-lesson-conjugaison-card);
+        }
+        .degree4-lesson-conjugaison-table th {
+            background: var(--degree4-lesson-conjugaison-accent);
+            color: #fff;
+        }
+        @media (max-width: 900px) {
+            .degree4-lesson-conjugaison-exercises-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hidden shell elements required by ed-french-ini.js -->
+    <div id="toast-container"></div>
+    <div id="toast"></div>
+    <button id="signInBtn" style="display:none"></button>
+
+    <div id="main-content" class="degree4-lesson-conjugaison-container">
+        <!-- Breadcrumb -->
+        <p style="margin-bottom:1.5rem; color:var(--degree4-lesson-conjugaison-text-light);">
+            <a href="degree4.html" data-i18n="back_link">← Retour au programme</a>
+            › <strong data-i18n="current_lesson">Conjugaison</strong>
+        </p>
+
+        <!-- Header -->
+        <div class="degree4-lesson-conjugaison-header">
+            <span class="degree4-lesson-conjugaison-badge" data-i18n="lesson_badge">🔄 Unité 1 · Conjugaison</span>
+            <h1 data-i18n="lesson_title">Le verbe « être » au présent</h1>
+            <div class="degree4-lesson-conjugaison-meta">
+                <span data-i18n="lesson_subtitle">Conjugaison</span>
+                <span data-i18n="lesson_duration">⏱️ 30 minutes</span>
+            </div>
+        </div>
+
+        <!-- Section 1: Textes d'observation -->
+        <section class="degree4-lesson-conjugaison-card">
+            <h2 data-i18n="observation_title">Textes d'observation</h2>
+            <div style="display:flex; gap:1.5rem; flex-wrap:wrap; align-items:flex-start;">
+                <div style="flex:1; min-width:250px;">
+                    <img src="assets4/images/degree4/unit1/lesson8/girl_dog_forest.jpg" alt="Observation 1" style="max-width:100%; border-radius:8px; margin-bottom:1rem;">
+                    <div class="degree4-lesson-conjugaison-sentence-item"><p>Solange se promène dans la forêt. A midi, la fillette est fatiguée. Elle appelle sa chienne : « Lassie ! Lassie ! Tu es là ? Montre-toi. Je suis ici. »</p></div>
+                </div>
+                <div style="flex:1; min-width:250px;">
+                    <img src="assets4/images/degree4/unit1/lesson8/children_birds.jpg" alt="Observation 2" style="max-width:100%; border-radius:8px; margin-bottom:1rem;">
+                    <div class="degree4-lesson-conjugaison-sentence-item"><p>Claudine et Dominique se promènent dans le jardin de leurs grands-parents. Les deux cousines voient des oiseaux dans un nid. Qu'ils sont beaux ! Elles leur parlent : « Nous sommes amis, petits oiseaux. Vous êtes si mignons ! »</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Tableau de conjugaison -->
+        <section class="degree4-lesson-conjugaison-card">
+            <h2 data-i18n="conjugation_title">Tableau de conjugaison</h2>
+            <table class="degree4-lesson-conjugaison-table">
+                <tr><th data-i18n="pronoun">Pronom</th><th data-i18n="conjugation">Conjugaison</th></tr>
+                <tr><td>Je</td><td>suis</td></tr>
+                <tr><td>Tu</td><td>es</td></tr>
+                <tr><td>Il / Elle</td><td>est</td></tr>
+                <tr><td>Nous</td><td>sommes</td></tr>
+                <tr><td>Vous</td><td>êtes</td></tr>
+                <tr><td>Ils / Elles</td><td>sont</td></tr>
+            </table>
+            <div style="text-align:center; margin-top:1rem;">
+                <button class="degree4-lesson-conjugaison-play-btn" onclick="playConjugationSound()">▶</button>
+                <span data-i18n="listen_conjugation">Écouter la conjugaison</span>
+            </div>
+        </section>
+
+        <!-- Section 3: Exercises (2x2 grid) -->
+        <section class="degree4-lesson-conjugaison-card">
+            <h2 data-i18n="exercises_title">Exercices</h2>
+
+            <div class="degree4-lesson-conjugaison-exercises-grid">
+                <!-- Row 1: Ex1 (matching) | Ex2 (fill blanks) -->
+                <div class="degree4-lesson-conjugaison-exercise-col">
+                    <div class="question-block" style="margin-bottom:2rem;">
+                        <p class="question-text" data-i18n="ex1_instruction">Je relie chaque pronom à la forme correcte du verbe « être ».</p>
+                        <div id="matchingEx1Container"></div>
+                        <button class="degree4-lesson-conjugaison-btn" onclick="checkEx1()" data-i18n="check_answers">🔍 Vérifier les réponses</button>
+                        <div id="ex1Key" class="degree4-lesson-conjugaison-answer-key"></div>
+                        <div id="ex1Feedback" class="degree4-lesson-conjugaison-feedback"></div>
+                        <div class="degree4-lesson-conjugaison-self-assess">
+                            <span data-i18n="self_assess_question">Ma réponse est :</span>
+                            <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+                            <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                            <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="degree4-lesson-conjugaison-exercise-col">
+                    <div class="question-block" style="margin-bottom:2rem;">
+                        <p class="question-text" data-i18n="ex2_instruction">Je complète les phrases avec la forme correcte du verbe « être ».</p>
+                        <ol>
+                            <li>C'est la récréation, vous <input type="text" class="degree4-lesson-conjugaison-input" id="fill1" placeholder="..."> dans la cour.</li>
+                            <li>Je ne <input type="text" class="degree4-lesson-conjugaison-input" id="fill2" placeholder="..."> pas d'accord.</li>
+                            <li>Maman <input type="text" class="degree4-lesson-conjugaison-input" id="fill3" placeholder="..."> inquiète car bébé <input type="text" class="degree4-lesson-conjugaison-input" id="fill4" placeholder="..."> malade.</li>
+                            <li>Tu <input type="text" class="degree4-lesson-conjugaison-input" id="fill5" placeholder="..."> contente parce que tes grands-parents <input type="text" class="degree4-lesson-conjugaison-input" id="fill6" placeholder="..."> là.</li>
+                        </ol>
+                        <button class="degree4-lesson-conjugaison-btn" onclick="checkEx2()" data-i18n="check_answers">🔍 Vérifier les réponses</button>
+                        <div id="ex2Key" class="degree4-lesson-conjugaison-answer-key"></div>
+                        <div id="ex2Feedback" class="degree4-lesson-conjugaison-feedback"></div>
+                        <div class="degree4-lesson-conjugaison-self-assess">
+                            <span data-i18n="self_assess_question">Ma réponse est :</span>
+                            <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+                            <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                            <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="degree4-lesson-conjugaison-exercises-grid">
+                <!-- Row 2: Ex3 (choose correct sentence) | Ex4 (complete table) -->
+                <div class="degree4-lesson-conjugaison-exercise-col">
+                    <div class="question-block" style="margin-bottom:2rem;">
+                        <p class="question-text" data-i18n="ex3_instruction">Je choisis la phrase correcte avec le verbe « être ».</p>
+                        <p data-i18n="ex3_context">Contexte : De retour chez lui, un nouvel élève parle de sa première journée à l'école.</p>
+                        <div class="degree4-lesson-conjugaison-sentence-item"><p>Phrase 1</p></div>
+                        <select class="degree4-lesson-conjugaison-select" id="prod1">
+                            <option value="">-- Choisir --</option>
+                            <option value="correct">Je suis content.</option>
+                            <option value="wrong1">Je es content.</option>
+                            <option value="wrong2">Je sommes content.</option>
+                        </select>
+                        <div class="degree4-lesson-conjugaison-sentence-item"><p>Phrase 2</p></div>
+                        <select class="degree4-lesson-conjugaison-select" id="prod2">
+                            <option value="">-- Choisir --</option>
+                            <option value="correct">Les salles de classe sont grandes.</option>
+                            <option value="wrong1">Les salles de classe est grandes.</option>
+                            <option value="wrong2">Les salles de classe êtes grandes.</option>
+                        </select>
+                        <div class="degree4-lesson-conjugaison-sentence-item"><p>Phrase 3</p></div>
+                        <select class="degree4-lesson-conjugaison-select" id="prod3">
+                            <option value="">-- Choisir --</option>
+                            <option value="correct">La directrice est gentille.</option>
+                            <option value="wrong1">La directrice sommes gentille.</option>
+                            <option value="wrong2">La directrice sont gentille.</option>
+                        </select>
+                        <button class="degree4-lesson-conjugaison-btn" onclick="checkEx3()" data-i18n="check_answers">🔍 Vérifier les réponses</button>
+                        <div id="ex3Key" class="degree4-lesson-conjugaison-answer-key"></div>
+                        <div id="ex3Feedback" class="degree4-lesson-conjugaison-feedback"></div>
+                        <div class="degree4-lesson-conjugaison-self-assess">
+                            <span data-i18n="self_assess_question">Ma réponse est :</span>
+                            <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                            <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                            <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="degree4-lesson-conjugaison-exercise-col">
+                    <div class="question-block" style="margin-bottom:2rem;">
+                        <p class="question-text" data-i18n="ex4_instruction">Je complète le tableau de conjugaison.</p>
+                        <table class="degree4-lesson-conjugaison-table">
+                            <tr><th>Pronom</th><th>Forme</th></tr>
+                            <tr><td>Je</td><td><input type="text" class="degree4-lesson-conjugaison-input" id="table1" placeholder="..."></td></tr>
+                            <tr><td>Tu</td><td><input type="text" class="degree4-lesson-conjugaison-input" id="table2" placeholder="..."></td></tr>
+                            <tr><td>Il / Elle</td><td><input type="text" class="degree4-lesson-conjugaison-input" id="table3" placeholder="..."></td></tr>
+                            <tr><td>Nous</td><td><input type="text" class="degree4-lesson-conjugaison-input" id="table4" placeholder="..."></td></tr>
+                            <tr><td>Vous</td><td><input type="text" class="degree4-lesson-conjugaison-input" id="table5" placeholder="..."></td></tr>
+                            <tr><td>Ils / Elles</td><td><input type="text" class="degree4-lesson-conjugaison-input" id="table6" placeholder="..."></td></tr>
+                        </table>
+                        <button class="degree4-lesson-conjugaison-btn" onclick="checkEx4()" data-i18n="check_answers">🔍 Vérifier les réponses</button>
+                        <div id="ex4Key" class="degree4-lesson-conjugaison-answer-key"></div>
+                        <div id="ex4Feedback" class="degree4-lesson-conjugaison-feedback"></div>
+                        <div class="degree4-lesson-conjugaison-self-assess">
+                            <span data-i18n="self_assess_question">Ma réponse est :</span>
+                            <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
+                            <label><input type="radio" name="self_ex4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                            <label><input type="radio" name="self_ex4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Score Area -->
+        <div class="degree4-lesson-conjugaison-score-area">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="degree4-lesson-conjugaison-score-stats">
+                <div class="degree4-lesson-conjugaison-score-stat"><span data-i18n="score_correct">Correct :</span> <span id="scoreCorrect">0</span></div>
+                <div class="degree4-lesson-conjugaison-score-stat"><span data-i18n="score_partial">Partiel :</span> <span id="scorePartial">0</span></div>
+                <div class="degree4-lesson-conjugaison-score-stat"><span data-i18n="score_incorrect">Incorrect :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="degree4-lesson-conjugaison-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">4</span></div>
+            </div>
+            <div class="degree4-lesson-conjugaison-score-actions">
+                <button id="saveResultsBtn" class="degree4-lesson-conjugaison-btn" data-i18n="save_results">💾 Enregistrer mes résultats</button>
+                <button id="printBtn" class="degree4-lesson-conjugaison-btn" style="background:#5c5344;" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+            </div>
+        </div>
+
+        <!-- Footer navigation -->
+        <div style="margin-top:2rem; display:flex; justify-content:space-between; flex-wrap:wrap;">
+            <a href="degree4.html" data-i18n="footer_back">← Retour au programme</a>
+            <a href="degree4unit1lesson9.html" data-i18n="footer_next">Leçon suivante →</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script src="ed-french-ini.js"></script>
+
+    <!-- Translations -->
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                lesson_title: "Conjugaison – Le verbe « être » au présent",
+                lesson_badge: "🔄 Unité 1 · Conjugaison",
+                lesson_subtitle: "Conjugaison",
+                lesson_duration: "⏱️ 30 minutes",
+                back_link: "← Retour au programme",
+                current_lesson: "Conjugaison",
+                observation_title: "Textes d'observation",
+                conjugation_title: "Tableau de conjugaison",
+                exercises_title: "Exercices",
+                ex1_instruction: "Je relie chaque pronom à la forme correcte du verbe « être ».",
+                ex2_instruction: "Je complète les phrases avec la forme correcte du verbe « être ».",
+                ex3_instruction: "Je choisis la phrase correcte avec le verbe « être ».",
+                ex3_context: "Contexte : De retour chez lui, un nouvel élève parle de sa première journée à l'école.",
+                ex4_instruction: "Je complète le tableau de conjugaison.",
+                check_answers: "🔍 Vérifier les réponses",
+                self_assess_question: "Ma réponse est :",
+                self_correct: "Correcte",
+                self_partial: "Partiellement correcte",
+                self_incorrect: "Incorrecte",
+                score_title: "📊 Votre auto‑évaluation",
+                score_correct: "Correct :",
+                score_partial: "Partiel :",
+                score_incorrect: "Incorrect :",
+                score_unanswered: "Sans réponse :",
+                save_results: "💾 Enregistrer mes résultats",
+                save_success: "Résultats enregistrés !",
+                save_error: "Erreur lors de l'enregistrement.",
+                print_pdf: "🖨️ Imprimer / PDF",
+                footer_back: "← Retour au programme",
+                footer_next: "Leçon suivante →",
+                ach_year_degree4: "4ème Année Primaire",
+                ach_module_unit1: "Unité 1",
+                toast_signin_required: "Connectez-vous pour enregistrer vos résultats.",
+                print_site_name: "Educational Dashboard – Français",
+                print_scholar_year: "4ème Année Primaire",
+                print_week: "Unité 1",
+                print_area: "Conjugaison",
+                print_footer_dev: "Développé par Mejri Ziad",
+                print_footer_date: "Imprimé le",
+                listen_conjugation: "Écouter la conjugaison"
+            },
+            en: {
+                lesson_title: "Conjugation – The verb « être » in the present tense",
+                lesson_badge: "🔄 Unit 1 · Conjugation",
+                lesson_subtitle: "Conjugation",
+                lesson_duration: "⏱️ 30 minutes",
+                back_link: "← Back to program",
+                current_lesson: "Conjugation",
+                observation_title: "Observation texts",
+                conjugation_title: "Conjugation table",
+                exercises_title: "Exercises",
+                ex1_instruction: "I match each pronoun to the correct form of the verb « être ».",
+                ex2_instruction: "I complete the sentences with the correct form of the verb « être ».",
+                ex3_instruction: "I choose the correct sentence with the verb « être ».",
+                ex3_context: "Context: Back home, a new student talks about his first day at school.",
+                ex4_instruction: "I complete the conjugation table.",
+                check_answers: "🔍 Check answers",
+                self_assess_question: "My answer is:",
+                self_correct: "Correct",
+                self_partial: "Partially correct",
+                self_incorrect: "Incorrect",
+                score_title: "📊 Your self‑assessment",
+                score_correct: "Correct:",
+                score_partial: "Partial:",
+                score_incorrect: "Incorrect:",
+                score_unanswered: "Unanswered:",
+                save_results: "💾 Save my results",
+                save_success: "Results saved!",
+                save_error: "Error saving results.",
+                print_pdf: "🖨️ Print / PDF",
+                footer_back: "← Back to program",
+                footer_next: "Next lesson →",
+                ach_year_degree4: "4th Grade Primary",
+                ach_module_unit1: "Unit 1",
+                toast_signin_required: "Sign in to save your results.",
+                print_site_name: "Educational Dashboard – French",
+                print_scholar_year: "4th Grade Primary",
+                print_week: "Unit 1",
+                print_area: "Conjugation",
+                print_footer_dev: "Developed by Mejri Ziad",
+                print_footer_date: "Printed on",
+                listen_conjugation: "Listen to the conjugation"
+            },
+            ar: {
+                lesson_title: "الصرف – الفعل « être » في المضارع",
+                lesson_badge: "🔄 الوحدة 1 · تصريف",
+                lesson_subtitle: "التصريف",
+                lesson_duration: "⏱️ 30 دقيقة",
+                back_link: "← العودة إلى البرنامج",
+                current_lesson: "التصريف",
+                observation_title: "نصوص الملاحظة",
+                conjugation_title: "جدول التصريف",
+                exercises_title: "تمارين",
+                ex1_instruction: "أربط كل ضمير بالشكل الصحيح للفعل « être ».",
+                ex2_instruction: "أكمل الجمل بالشكل الصحيح للفعل « être ».",
+                ex3_instruction: "أختار الجملة الصحيحة مع الفعل « être ».",
+                ex3_context: "السياق: عند عودته إلى المنزل، يتحدث تلميذ جديد عن يومه الأول في المدرسة.",
+                ex4_instruction: "أكمل جدول التصريف.",
+                check_answers: "🔍 تحقق من الإجابات",
+                self_assess_question: "جوابي هو:",
+                self_correct: "صحيح",
+                self_partial: "صحيح جزئيًا",
+                self_incorrect: "خاطئ",
+                score_title: "📊 تقييمك الذاتي",
+                score_correct: "صحيح:",
+                score_partial: "جزئي:",
+                score_incorrect: "خاطئ:",
+                score_unanswered: "بدون إجابة:",
+                save_results: "💾 حفظ نتائجي",
+                save_success: "تم حفظ النتائج!",
+                save_error: "خطأ في الحفظ.",
+                print_pdf: "🖨️ طباعة / PDF",
+                footer_back: "← العودة إلى البرنامج",
+                footer_next: "الدرس الموالي ←",
+                ach_year_degree4: "السنة الرابعة ابتدائي",
+                ach_module_unit1: "الوحدة الأولى",
+                toast_signin_required: "سجّل الدخول لحفظ نتائجك.",
+                print_site_name: "لوحة التحكم التعليمية – الفرنسية",
+                print_scholar_year: "السنة الرابعة ابتدائي",
+                print_week: "الوحدة 1",
+                print_area: "التصريف",
+                print_footer_dev: "طوّر بواسطة ماجري زياد",
+                print_footer_date: "طُبع في",
+                listen_conjugation: "استمع إلى التصريف"
+            }
+        });
+
+        (function() {
+            var container = document.getElementById('main-content');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+            App.onLangChange(function(lang) {
+                if (container) container.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            });
+            if (container) container.dir = (localStorage.getItem('lang') || 'fr') === 'ar' ? 'rtl' : 'ltr';
+        })();
+    </script>
+
+    <!-- Direct translation fix -->
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') {
+                                el.innerHTML = next.innerHTML;
+                            }
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+
+    <!-- Initialization and exercise logic -->
+    <script>
+        (function() {
+            // Ex1: Matching connection
+            const ex1Data = [
+                { left: 'Je', right: 'suis en 4ème année.' },
+                { left: 'Tu', right: 'es mon ami.' },
+                { left: 'Il / Elle', right: 'est nouveau dans la classe.' },
+                { left: 'Nous', right: 'sommes au mois d\'octobre.' },
+                { left: 'Vous', right: 'n\'êtes pas en retard.' },
+                { left: 'Ils / Elles', right: 'sont bien sages.' }
+            ];
+            const ex1Container = document.getElementById('matchingEx1Container');
+            ex1Data.forEach((item, index) => {
+                const row = document.createElement('div');
+                row.className = 'degree4-lesson-conjugaison-connection-row';
+                const col1 = document.createElement('div');
+                col1.className = 'degree4-lesson-conjugaison-connection-col';
+                const leftPart = document.createElement('div');
+                leftPart.className = 'degree4-lesson-conjugaison-connection-part';
+                leftPart.textContent = item.left;
+                leftPart.dataset.id = `left${index}`;
+                leftPart.dataset.part = '1';
+                col1.appendChild(leftPart);
+                const col2 = document.createElement('div');
+                col2.className = 'degree4-lesson-conjugaison-connection-col';
+                const btn = document.createElement('button');
+                btn.className = 'degree4-lesson-conjugaison-connection-btn';
+                btn.textContent = 'Relier';
+                btn.disabled = true;
+                col2.appendChild(btn);
+                const line = document.createElement('div');
+                line.className = 'degree4-lesson-conjugaison-connection-line';
+                col2.appendChild(line);
+                const connected = document.createElement('div');
+                connected.className = 'degree4-lesson-conjugaison-connected-word';
+                col2.appendChild(connected);
+                const col3 = document.createElement('div');
+                col3.className = 'degree4-lesson-conjugaison-connection-col';
+                const rightPart = document.createElement('div');
+                rightPart.className = 'degree4-lesson-conjugaison-connection-part';
+                rightPart.textContent = item.right;
+                rightPart.dataset.id = `right${index}`;
+                rightPart.dataset.part = '2';
+                col3.appendChild(rightPart);
+                row.appendChild(col1);
+                row.appendChild(col2);
+                row.appendChild(col3);
+                ex1Container.appendChild(row);
+                leftPart.addEventListener('click', () => selectEx1Part(row, leftPart));
+                rightPart.addEventListener('click', () => selectEx1Part(row, rightPart));
+                btn.addEventListener('click', () => connectEx1(row));
+            });
+
+            function selectEx1Part(row, part) {
+                const type = part.dataset.part;
+                row.querySelectorAll(`.degree4-lesson-conjugaison-connection-part[data-part="${type}"]`).forEach(p => p.classList.remove('selected'));
+                part.classList.add('selected');
+                const btn = row.querySelector('.degree4-lesson-conjugaison-connection-btn');
+                btn.disabled = !(row.querySelector('[data-part="1"].selected') && row.querySelector('[data-part="2"].selected'));
+            }
+
+            function connectEx1(row) {
+                const part1 = row.querySelector('[data-part="1"].selected');
+                const part2 = row.querySelector('[data-part="2"].selected');
+                if (part1 && part2) {
+                    row.querySelector('.degree4-lesson-conjugaison-connection-line').style.display = 'block';
+                    const connected = row.querySelector('.degree4-lesson-conjugaison-connected-word');
+                    connected.style.display = 'block';
+                    connected.textContent = part1.textContent + ' ' + part2.textContent;
+                    row.querySelector('.degree4-lesson-conjugaison-connection-btn').disabled = true;
+                    row.querySelectorAll('.degree4-lesson-conjugaison-connection-part').forEach(p => p.classList.remove('selected'));
+                }
+            }
+
+            window.checkEx1 = async function() {
+                if (!await requireAuth()) return;
+                const rows = ex1Container.querySelectorAll('.degree4-lesson-conjugaison-connection-row');
+                let score = 0, total = rows.length;
+                let feedbackHTML = '';
+                rows.forEach((row, index) => {
+                    const connected = row.querySelector('.degree4-lesson-conjugaison-connected-word');
+                    const expected = ex1Data[index].left + ' ' + ex1Data[index].right;
+                    if (connected.textContent === expected) {
+                        score++;
+                        feedbackHTML += `<p style="color:green">✓ ${expected}</p>`;
+                    } else {
+                        feedbackHTML += `<p style="color:red">✗ ${connected.textContent || 'non connecté'} → ${expected}</p>`;
+                    }
+                });
+                const percent = Math.round((score / total) * 100);
+                playSound(score === total ? 'complete' : score > 0 ? 'correct' : 'wrong');
+                toggleAnswer('ex1Key');
+                document.getElementById('ex1Key').innerHTML = `<strong>Correction :</strong><br>${feedbackHTML}`;
+                document.getElementById('ex1Feedback').textContent = `Score : ${percent}%`;
+                document.getElementById('ex1Feedback').className = score === total ? 'degree4-lesson-conjugaison-feedback correct' : 'degree4-lesson-conjugaison-feedback wrong';
+            };
+
+            // Ex2: Fill blanks
+            window.checkEx2 = async function() {
+                if (!await requireAuth()) return;
+                const answers = ['êtes', 'suis', 'est', 'est', 'es', 'sont'];
+                let score = 0, total = 6;
+                let feedbackHTML = '';
+                for (let i = 0; i < total; i++) {
+                    const input = document.getElementById(`fill${i+1}`);
+                    const user = input.value.trim().toLowerCase();
+                    if (user === answers[i]) {
+                        score++;
+                        feedbackHTML += `<span style="color:green">✓${answers[i]}</span> `;
+                    } else {
+                        feedbackHTML += `<span style="color:red">✗${answers[i]}</span> `;
+                    }
+                }
+                const percent = Math.round((score / total) * 100);
+                playSound(score === total ? 'complete' : score > 0 ? 'correct' : 'wrong');
+                toggleAnswer('ex2Key');
+                document.getElementById('ex2Key').innerHTML = `<strong>Correction :</strong><br>${feedbackHTML}`;
+                document.getElementById('ex2Feedback').textContent = `Score : ${percent}%`;
+                document.getElementById('ex2Feedback').className = score === total ? 'degree4-lesson-conjugaison-feedback correct' : 'degree4-lesson-conjugaison-feedback wrong';
+            };
+
+            // Ex3: Choose correct sentence
+            window.checkEx3 = async function() {
+                if (!await requireAuth()) return;
+                const s1 = document.getElementById('prod1').value;
+                const s2 = document.getElementById('prod2').value;
+                const s3 = document.getElementById('prod3').value;
+                let score = 0, total = 3;
+                let feedbackHTML = '';
+                if (s1 === 'correct') { score++; feedbackHTML += '<p style="color:green">✓ Phrase 1</p>'; } else feedbackHTML += '<p style="color:red">✗ Phrase 1 → Je suis content.</p>';
+                if (s2 === 'correct') { score++; feedbackHTML += '<p style="color:green">✓ Phrase 2</p>'; } else feedbackHTML += '<p style="color:red">✗ Phrase 2 → Les salles de classe sont grandes.</p>';
+                if (s3 === 'correct') { score++; feedbackHTML += '<p style="color:green">✓ Phrase 3</p>'; } else feedbackHTML += '<p style="color:red">✗ Phrase 3 → La directrice est gentille.</p>';
+                const percent = Math.round((score / total) * 100);
+                playSound(score === total ? 'complete' : score > 0 ? 'correct' : 'wrong');
+                toggleAnswer('ex3Key');
+                document.getElementById('ex3Key').innerHTML = `<strong>Correction :</strong><br>${feedbackHTML}`;
+                document.getElementById('ex3Feedback').textContent = `Score : ${percent}%`;
+                document.getElementById('ex3Feedback').className = score === total ? 'degree4-lesson-conjugaison-feedback correct' : 'degree4-lesson-conjugaison-feedback wrong';
+            };
+
+            // Ex4: Complete table
+            window.checkEx4 = async function() {
+                if (!await requireAuth()) return;
+                const answers = ['suis', 'es', 'est', 'sommes', 'êtes', 'sont'];
+                let score = 0, total = 6;
+                let feedbackHTML = '';
+                for (let i = 0; i < total; i++) {
+                    const input = document.getElementById(`table${i+1}`);
+                    const user = input.value.trim().toLowerCase();
+                    if (user === answers[i]) {
+                        score++;
+                        feedbackHTML += `<span style="color:green">✓${answers[i]}</span> `;
+                    } else {
+                        feedbackHTML += `<span style="color:red">✗${answers[i]}</span> `;
+                    }
+                }
+                const percent = Math.round((score / total) * 100);
+                playSound(score === total ? 'complete' : score > 0 ? 'correct' : 'wrong');
+                toggleAnswer('ex4Key');
+                document.getElementById('ex4Key').innerHTML = `<strong>Correction :</strong><br>${feedbackHTML}`;
+                document.getElementById('ex4Feedback').textContent = `Score : ${percent}%`;
+                document.getElementById('ex4Feedback').className = score === total ? 'degree4-lesson-conjugaison-feedback correct' : 'degree4-lesson-conjugaison-feedback wrong';
+            };
+
+            // Play conjugation audio
+            window.playConjugationSound = function() {
+                new Audio('assets4/sounds/degree4/unit1/lesson8/etre_conjugation.mp3').play().catch(()=>{});
+            };
+
+            // Helpers
+            async function requireAuth() {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return false;
+                }
+                return true;
+            }
+            function playSound(type) {
+                const src = type === 'complete' ? 'assets/sounds/complete-sound.mp3' : type === 'correct' ? 'assets/sounds/correct-sound.mp3' : 'assets/sounds/wrong-sound.mp3';
+                new Audio(src).play().catch(()=>{});
+            }
+            function toggleAnswer(id) {
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('visible');
+            }
+
+            // Standard scoring, save, print
+            function updateScore() {
+                const radios = document.querySelectorAll('input[type="radio"][name^="self_"]');
+                const groups = new Set();
+                radios.forEach(r => groups.add(r.name));
+                let correct = 0, partial = 0, incorrect = 0, unanswered = 0;
+                groups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'partial') partial++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                document.getElementById('scoreCorrect').textContent = correct;
+                document.getElementById('scorePartial').textContent = partial;
+                document.getElementById('scoreIncorrect').textContent = incorrect;
+                document.getElementById('scoreUnanswered').textContent = unanswered;
+            }
+
+            document.querySelectorAll('input[type="radio"][name^="self_"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                if (!App.supabase) return;
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const radios = document.querySelectorAll('input[type="radio"][name^="self_"]');
+                const groups = new Set();
+                radios.forEach(r => groups.add(r.name));
+                let correct = 0, partial = 0, incorrect = 0, unanswered = 0;
+                groups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'partial') partial++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                const entry = {
+                    lesson_id: 'degree4unit1lesson8',
+                    lesson_title: { fr: App.getTranslation('lesson_title', 'fr'), en: App.getTranslation('lesson_title', 'en'), ar: App.getTranslation('lesson_title', 'ar') },
+                    year: { fr: App.getTranslation('ach_year_degree4', 'fr'), en: App.getTranslation('ach_year_degree4', 'en'), ar: App.getTranslation('ach_year_degree4', 'ar') },
+                    module: { fr: App.getTranslation('ach_module_unit1', 'fr'), en: App.getTranslation('ach_module_unit1', 'en'), ar: App.getTranslation('ach_module_unit1', 'ar') },
+                    correct, incorrect, partial, unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles').select('achivement').eq('id', user.id).single();
+                if (fetchError) return;
+                let achivement = profileData?.achivement || {};
+                if (!achivement['ED-French']) achivement['ED-French'] = [];
+                const arr = achivement['ED-French'];
+                const existingIdx = arr.findIndex(e => e.lesson_id === 'degree4unit1lesson8');
+                if (existingIdx >= 0) arr[existingIdx] = entry; else arr.push(entry);
+                const { error: updateError } = await App.supabase
+                    .from('profiles').update({ achivement }).eq('id', user.id);
+                if (updateError) App.showToast('save_error', 'error');
+                else { App.showToast('save_success', 'success'); App.logUserAction('lesson_saved', { lesson: 'degree4unit1lesson8', correct, incorrect, partial }); }
+            });
+
+            document.getElementById('printBtn').addEventListener('click', async function() {
+                if (!App.supabase) return;
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const lang = localStorage.getItem('lang') || 'fr';
+                const content = document.getElementById('main-content').cloneNode(true);
+                content.querySelectorAll('input, textarea, .degree4-lesson-conjugaison-self-assess, .degree4-lesson-conjugaison-score-area, .degree4-lesson-conjugaison-audio, .degree4-lesson-conjugaison-slideshow-btn, .degree4-lesson-conjugaison-footer-nav, .degree4-lesson-conjugaison-vocab-exercise button').forEach(el => el.remove());
+                content.querySelectorAll('.degree4-lesson-conjugaison-slideshow').forEach(el => el.remove());
+                const breadcrumb = content.querySelector('p[style*="margin-bottom:1.5rem"]');
+                if (breadcrumb) breadcrumb.remove();
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                printWindow.document.write(`
+                    <!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8"><title>${App.getTranslation('lesson_title', lang)}</title>
+                    <style>
+                        body { font-family: 'Georgia', serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+                        .print-header { text-align: center; border-bottom: 2px solid #4b0082; padding-bottom: 1rem; margin-bottom: 2rem; }
+                        .print-header .site-name { font-size: 1.4rem; font-weight: bold; color: #4b0082; margin: 0 0 0.3rem; }
+                        .print-header .meta-line { font-size: 0.95rem; color: #444; margin: 0.2rem 0; }
+                        .print-header .lesson-name { font-size: 1.1rem; font-weight: bold; color: #000; margin-top: 0.5rem; }
+                        .print-footer { text-align: center; border-top: 1px solid #ccc; padding-top: 1rem; margin-top: 2rem; font-size: 0.85rem; color: #666; }
+                        .degree4-lesson-conjugaison-card { margin-bottom: 2rem; border: 1px solid #ccc; padding: 1rem; border-radius: 8px; }
+                        .degree4-lesson-conjugaison-text { white-space: pre-line; font-style: italic; }
+                        .degree4-lesson-conjugaison-vocab, .degree4-lesson-conjugaison-vocab-exercise { margin-top: 1rem; background: #f5f0e6; padding: 1rem; border-radius: 8px; }
+                        .degree4-lesson-conjugaison-vocab ul, .degree4-lesson-conjugaison-vocab-exercise ol { list-style: none; padding: 0; }
+                        .degree4-lesson-conjugaison-vocab li, .degree4-lesson-conjugaison-vocab-exercise li { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
+                        .word { font-weight: bold; min-width: 120px; }
+                        .translation { color: #555; }
+                        .degree4-lesson-conjugaison-answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; }
+                        @media print { @page { margin: 2cm; } }
+                    </style></head><body>
+                    <div class="print-header"><div class="site-name">${App.getTranslation('print_site_name', lang)}</div><div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div><div class="lesson-name">${App.getTranslation('lesson_title', lang)}</div></div>
+                    ${content.innerHTML}
+                    <div class="print-footer">${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}</div>
+                    </body></html>
+                `);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+        })();
+    </script>
+</body>
+</html>

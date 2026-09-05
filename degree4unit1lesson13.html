@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_title">Documentaire – Mes droits et mes devoirs</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        :root {
+            --degree4-lesson-documentary-bg: #f9f7f1;
+            --degree4-lesson-documentary-card: #ffffff;
+            --degree4-lesson-documentary-text: #2b2416;
+            --degree4-lesson-documentary-text-light: #5c5344;
+            --degree4-lesson-documentary-heading: #382e1e;
+            --degree4-lesson-documentary-accent: #556b2f;
+            --degree4-lesson-documentary-accent-hover: #3e4f22;
+            --degree4-lesson-documentary-border: #e5ddd0;
+            --degree4-lesson-documentary-shadow: 0 1px 4px rgba(0,0,0,0.04);
+            --degree4-lesson-documentary-radius: 12px;
+            --degree4-lesson-documentary-radius-sm: 8px;
+            --degree4-lesson-documentary-transition: 0.25s ease;
+            --degree4-lesson-documentary-font: 'Segoe UI', 'Georgia', serif;
+            --degree4-lesson-documentary-audio-bg: #f4efe4;
+            --degree4-lesson-documentary-button-bg: #f0e8d8;
+            --degree4-lesson-documentary-button-hover: #e3d5bc;
+        }
+        body.dark {
+            --degree4-lesson-documentary-bg: #1e1b17;
+            --degree4-lesson-documentary-card: #2a2620;
+            --degree4-lesson-documentary-text: #e8dfd2;
+            --degree4-lesson-documentary-text-light: #b9aa95;
+            --degree4-lesson-documentary-heading: #f0e4d2;
+            --degree4-lesson-documentary-accent: #c5e1a5;
+            --degree4-lesson-documentary-accent-hover: #dcedc8;
+            --degree4-lesson-documentary-border: #3e3830;
+            --degree4-lesson-documentary-shadow: 0 1px 4px rgba(0,0,0,0.25);
+            --degree4-lesson-documentary-audio-bg: #26221b;
+            --degree4-lesson-documentary-button-bg: #3a3329;
+            --degree4-lesson-documentary-button-hover: #4e4437;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: var(--degree4-lesson-documentary-font);
+            background: var(--degree4-lesson-documentary-bg);
+            color: var(--degree4-lesson-documentary-text);
+            line-height: 1.75;
+            transition: background var(--degree4-lesson-documentary-transition), color var(--degree4-lesson-documentary-transition);
+        }
+        .degree4-lesson-documentary-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.8rem 1.4rem 3rem;
+        }
+        .degree4-lesson-documentary-header { text-align: center; margin-bottom: 2rem; }
+        .degree4-lesson-documentary-badge {
+            display: inline-block;
+            background: var(--degree4-lesson-documentary-accent);
+            color: #fff;
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+        .degree4-lesson-documentary-header h1 {
+            font-size: 2.1rem;
+            color: var(--degree4-lesson-documentary-heading);
+            margin: 0.6rem 0 0.3rem;
+            line-height: 1.3;
+        }
+        .degree4-lesson-documentary-meta {
+            font-size: 0.9rem;
+            color: var(--degree4-lesson-documentary-text-light);
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .degree4-lesson-documentary-card {
+            background: var(--degree4-lesson-documentary-card);
+            border: 1px solid var(--degree4-lesson-documentary-border);
+            border-radius: var(--degree4-lesson-documentary-radius);
+            padding: 1.8rem;
+            margin: 2rem 0;
+            box-shadow: var(--degree4-lesson-documentary-shadow);
+        }
+        .degree4-lesson-documentary-card h2 {
+            font-size: 1.6rem;
+            color: var(--degree4-lesson-documentary-heading);
+            margin-bottom: 0.4rem;
+            border-bottom: 3px solid var(--degree4-lesson-documentary-accent);
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+        .degree4-lesson-documentary-section-title {
+            color: var(--degree4-lesson-documentary-accent);
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem;
+            border-bottom: 1px dashed var(--degree4-lesson-documentary-border);
+            padding-bottom: 0.3rem;
+        }
+        .degree4-lesson-documentary-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+        .degree4-lesson-documentary-grid .degree4-lesson-documentary-card {
+            flex: 1 1 250px;
+            margin: 0;
+        }
+        .degree4-lesson-documentary-list {
+            list-style: none;
+            padding: 0;
+        }
+        .degree4-lesson-documentary-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed var(--degree4-lesson-documentary-border);
+        }
+        .degree4-lesson-documentary-list li:last-child {
+            border-bottom: none;
+        }
+        .degree4-lesson-documentary-french {
+            font-style: italic;
+            font-weight: 600;
+            color: var(--degree4-lesson-documentary-accent);
+        }
+        .degree4-lesson-documentary-image-container {
+            text-align: center;
+            margin: 1rem 0;
+        }
+        .degree4-lesson-documentary-image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--degree4-lesson-documentary-radius-sm);
+            box-shadow: var(--degree4-lesson-documentary-shadow);
+        }
+        .degree4-lesson-documentary-exercise-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--degree4-lesson-documentary-audio-bg);
+            border-radius: var(--degree4-lesson-documentary-radius-sm);
+        }
+        .degree4-lesson-documentary-question {
+            font-weight: 600;
+            margin: 0.5rem 0;
+            color: var(--degree4-lesson-documentary-accent);
+        }
+        .degree4-lesson-documentary-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            margin: 0.5rem 0;
+        }
+        .degree4-lesson-documentary-options label {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            cursor: pointer;
+        }
+        .degree4-lesson-documentary-options input[type="radio"] {
+            accent-color: var(--degree4-lesson-documentary-accent);
+        }
+        .degree4-lesson-documentary-btn {
+            background: var(--degree4-lesson-documentary-accent);
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background var(--degree4-lesson-documentary-transition);
+            font-size: 0.85rem;
+        }
+        .degree4-lesson-documentary-btn:hover { background: var(--degree4-lesson-documentary-accent-hover); }
+        .degree4-lesson-documentary-feedback {
+            margin-top: 0.8rem;
+            font-weight: 600;
+        }
+        .degree4-lesson-documentary-feedback.correct { color: #2e7d32; }
+        .degree4-lesson-documentary-feedback.wrong { color: #c62828; }
+        .degree4-lesson-documentary-answer-key {
+            display: none;
+            margin-top: 0.8rem;
+            padding: 0.8rem;
+            background: var(--degree4-lesson-documentary-audio-bg);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: var(--degree4-lesson-documentary-text-light);
+            border: 1px dashed var(--degree4-lesson-documentary-accent);
+        }
+        .degree4-lesson-documentary-answer-key.visible { display: block; }
+        .degree4-lesson-documentary-self-assess {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        .degree4-lesson-documentary-self-assess label {
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .degree4-lesson-documentary-self-assess input[type="radio"] {
+            accent-color: var(--degree4-lesson-documentary-accent);
+        }
+        .degree4-lesson-documentary-score-area {
+            background: var(--degree4-lesson-documentary-card);
+            border: 1px solid var(--degree4-lesson-documentary-border);
+            border-radius: var(--degree4-lesson-documentary-radius);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: var(--degree4-lesson-documentary-shadow);
+        }
+        .degree4-lesson-documentary-score-area h2 {
+            color: var(--degree4-lesson-documentary-heading);
+            margin-bottom: 1rem;
+        }
+        .degree4-lesson-documentary-score-stats {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .degree4-lesson-documentary-score-stat {
+            background: var(--degree4-lesson-documentary-audio-bg);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        .degree4-lesson-documentary-score-actions {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        .degree4-lesson-documentary-footer-nav {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .degree4-lesson-documentary-footer-nav a {
+            color: var(--degree4-lesson-documentary-accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .degree4-lesson-documentary-footer-nav a:hover { text-decoration: underline; }
+        @media (max-width: 600px) {
+            .degree4-lesson-documentary-header h1 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div id="toast-container"></div>
+    <div id="toast"></div>
+    <button id="signInBtn" style="display:none"></button>
+
+    <div id="main-content" class="degree4-lesson-documentary-container">
+        <!-- Breadcrumb -->
+        <p style="margin-bottom:1.5rem; color:var(--degree4-lesson-documentary-text-light);">
+            <a href="degree4.html" data-i18n="back_link">← Retour au programme</a>
+            › <strong data-i18n="current_lesson">Documentaire</strong>
+        </p>
+
+        <!-- Header -->
+        <div class="degree4-lesson-documentary-header">
+            <span class="degree4-lesson-documentary-badge" data-i18n="lesson_badge">🎬 Unité 1 · Documentaire</span>
+            <h1 data-i18n="lesson_title">Mes droits et mes devoirs</h1>
+            <div class="degree4-lesson-documentary-meta">
+                <span data-i18n="lesson_subtitle">Droits et devoirs de l'élève</span>
+                <span data-i18n="lesson_duration">⏱️ 30 minutes</span>
+            </div>
+        </div>
+
+        <!-- Section 1 -->
+        <section class="degree4-lesson-documentary-card">
+            <h2 data-i18n="section1_title">Mes droits et mes devoirs à la maison</h2>
+            <div class="degree4-lesson-documentary-image-container">
+                <img src="assets4/images/degree4/unit1/lesson13/maison.jpg" alt="Maison et famille">
+            </div>
+            <div class="degree4-lesson-documentary-grid">
+                <div class="degree4-lesson-documentary-card">
+                    <h3 data-i18n="rights_title">Mes droits</h3>
+                    <ul class="degree4-lesson-documentary-list">
+                        <li><span class="degree4-lesson-documentary-french">d'être aimé et respecté par tous.</span> <span data-i18n="right1">في أن أُحَبَّ ويُحْتَرَم من قبل الجميع.</span></li>
+                        <li><span class="degree4-lesson-documentary-french">de dire ce que je pense.</span> <span data-i18n="right2">في قول ما أفكر فيه.</span></li>
+                        <li><span class="degree4-lesson-documentary-french">de jouer avec mes frères et sœurs.</span> <span data-i18n="right3">في اللعب مع إخوتي.</span></li>
+                        <li><span class="degree4-lesson-documentary-french">d'être nourri et bien habillé.</span> <span data-i18n="right4">في أن أُطْعَم وأُلْبَس جيدًا.</span></li>
+                        <li><span class="degree4-lesson-documentary-french">d'être aidé par ma famille.</span> <span data-i18n="right5">في أن أُساعَد من قبل عائلتي.</span></li>
+                    </ul>
+                </div>
+                <div class="degree4-lesson-documentary-card">
+                    <h3 data-i18n="duties_title">Mes devoirs</h3>
+                    <ul class="degree4-lesson-documentary-list">
+                        <li><span class="degree4-lesson-documentary-french">d'aimer et de respecter ma famille.</span> <span data-i18n="duty1">في أن أُحِبَّ وأحترم عائلتي.</span></li>
+                        <li><span class="degree4-lesson-documentary-french">d'écouter mes parents.</span> <span data-i18n="duty2">في أن أنصت لوالديّ.</span></li>
+                        <li><span class="degree4-lesson-documentary-french">de ranger ma chambre.</span> <span data-i18n="duty3">في أن أرتب غرفتي.</span></li>
+                        <li><span class="degree4-lesson-documentary-french">d'apprendre mes leçons.</span> <span data-i18n="duty4">في أن أتعلّم دروسي.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2 -->
+        <section class="degree4-lesson-documentary-card">
+            <h2 data-i18n="section2_title">Mes droits et mes devoirs à l'école</h2>
+            <div class="degree4-lesson-documentary-image-container">
+                <img src="assets4/images/degree4/unit1/lesson13/ecole.jpg" alt="École et salle de classe">
+            </div>
+            <div class="degree4-lesson-documentary-grid">
+                <div class="degree4-lesson-documentary-card">
+                    <h3 data-i18n="rights_title">Mes droits</h3>
+                    <ul class="degree4-lesson-documentary-list">
+                        <li><span class="degree4-lesson-documentary-french">de dire ce que je pense.</span> <span data-i18n="right6">في قول ما أفكر فيه.</span></li>
+                        <li><span class="degree4-lesson-documentary-french">de demander des explications quand je ne comprends pas.</span> <span data-i18n="right7">في طلب الشرح عندما لا أفهم.</span></li>
+                        <li><span class="degree4-lesson-documentary-french">d'être respecté par tous.</span> <span data-i18n="right8">في أن يُحْتَرَم من قبل الجميع.</span></li>
+                        <li><span class="degree4-lesson-documentary-french">d'être aidé par mes camarades.</span> <span data-i18n="right9">في أن أُساعَد من قبل زملائي.</span></li>
+                        <li><span class="degree4-lesson-documentary-french">de jouer avec qui je veux dans la cour.</span> <span data-i18n="right10">في اللعب مع من أريد في ساحة المدرسة.</span></li>
+                    </ul>
+                </div>
+                <div class="degree4-lesson-documentary-card">
+                    <h3 data-i18n="duties_title">Mes devoirs</h3>
+                    <ul class="degree4-lesson-documentary-list">
+                        <li><span class="degree4-lesson-documentary-french">d'arriver à l'heure.</span> <span data-i18n="duty5">في الوصول في الوقت المحدد.</span></li>
+                        <li><span class="degree4-lesson-documentary-french">de bien travailler.</span> <span data-i18n="duty6">في أن أعمل (أدرس) جيدًا.</span></li>
+                        <li><span class="degree4-lesson-documentary-french">d'écouter la personne qui parle.</span> <span data-i18n="duty7">في الإنصات للشخص الذي يتكلم.</span></li>
+                        <li><span class="degree4-lesson-documentary-french">d'aider mes camarades.</span> <span data-i18n="duty8">في مساعدة زملائي.</span></li>
+                        <li><span class="degree4-lesson-documentary-french">de respecter les autres.</span> <span data-i18n="duty9">في احترام الآخرين.</span></li>
+                        <li><span class="degree4-lesson-documentary-french">de prendre soin de mes affaires.</span> <span data-i18n="duty10">في الاعتناء بأشيائي.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3 -->
+        <section class="degree4-lesson-documentary-card">
+            <h2 data-i18n="exercises_title">Exercices</h2>
+
+            <div class="degree4-lesson-documentary-exercise-item">
+                <h3 data-i18n="ex1_title">1. Je choisis la bonne réponse</h3>
+                <p class="degree4-lesson-documentary-question" data-i18n="ex1_question">À l'école, j'ai le droit...</p>
+                <div class="degree4-lesson-documentary-options">
+                    <label><input type="radio" name="ex1" value="a" data-i18n="ex1_opt_a"> d'être respecté.</label>
+                    <label><input type="radio" name="ex1" value="b" data-i18n="ex1_opt_b"> de crier en classe.</label>
+                    <label><input type="radio" name="ex1" value="c" data-i18n="ex1_opt_c"> d'arriver en retard.</label>
+                </div>
+                <button class="degree4-lesson-documentary-btn" onclick="checkEx1()" data-i18n="check_answers">🔍 Vérifier</button>
+                <div id="ex1Key" class="degree4-lesson-documentary-answer-key"></div>
+                <div id="ex1Feedback" class="degree4-lesson-documentary-feedback"></div>
+                <div class="degree4-lesson-documentary-self-assess">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                    <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                </div>
+            </div>
+
+            <div class="degree4-lesson-documentary-exercise-item">
+                <h3 data-i18n="ex2_title">2. Je choisis la bonne réponse</h3>
+                <p class="degree4-lesson-documentary-question" data-i18n="ex2_question">À la maison, j'ai le devoir...</p>
+                <div class="degree4-lesson-documentary-options">
+                    <label><input type="radio" name="ex2" value="a" data-i18n="ex2_opt_a"> de ranger ma chambre.</label>
+                    <label><input type="radio" name="ex2" value="b" data-i18n="ex2_opt_b"> de jouer toute la journée.</label>
+                    <label><input type="radio" name="ex2" value="c" data-i18n="ex2_opt_c"> de ne pas écouter mes parents.</label>
+                </div>
+                <button class="degree4-lesson-documentary-btn" onclick="checkEx2()" data-i18n="check_answers">🔍 Vérifier</button>
+                <div id="ex2Key" class="degree4-lesson-documentary-answer-key"></div>
+                <div id="ex2Feedback" class="degree4-lesson-documentary-feedback"></div>
+                <div class="degree4-lesson-documentary-self-assess">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                    <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                </div>
+            </div>
+
+            <div class="degree4-lesson-documentary-exercise-item">
+                <h3 data-i18n="ex3_title">3. Je choisis la bonne réponse</h3>
+                <p class="degree4-lesson-documentary-question" data-i18n="ex3_question">Quel est mon devoir à l'école ?</p>
+                <div class="degree4-lesson-documentary-options">
+                    <label><input type="radio" name="ex3" value="a" data-i18n="ex3_opt_a"> d'écouter la personne qui parle.</label>
+                    <label><input type="radio" name="ex3" value="b" data-i18n="ex3_opt_b"> d'arriver en retard.</label>
+                    <label><input type="radio" name="ex3" value="c" data-i18n="ex3_opt_c"> de ne pas faire mes devoirs.</label>
+                </div>
+                <button class="degree4-lesson-documentary-btn" onclick="checkEx3()" data-i18n="check_answers">🔍 Vérifier</button>
+                <div id="ex3Key" class="degree4-lesson-documentary-answer-key"></div>
+                <div id="ex3Feedback" class="degree4-lesson-documentary-feedback"></div>
+                <div class="degree4-lesson-documentary-self-assess">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                    <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                </div>
+            </div>
+        </section>
+
+        <!-- Score Area -->
+        <div class="degree4-lesson-documentary-score-area">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="degree4-lesson-documentary-score-stats">
+                <div class="degree4-lesson-documentary-score-stat"><span data-i18n="score_correct">Correct :</span> <span id="scoreCorrect">0</span></div>
+                <div class="degree4-lesson-documentary-score-stat"><span data-i18n="score_partial">Partiel :</span> <span id="scorePartial">0</span></div>
+                <div class="degree4-lesson-documentary-score-stat"><span data-i18n="score_incorrect">Incorrect :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="degree4-lesson-documentary-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">3</span></div>
+            </div>
+            <div class="degree4-lesson-documentary-score-actions">
+                <button id="saveResultsBtn" class="degree4-lesson-documentary-btn" data-i18n="save_results">💾 Enregistrer mes résultats</button>
+                <button id="printBtn" class="degree4-lesson-documentary-btn" style="background:#5c5344;" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+            </div>
+        </div>
+
+        <!-- Footer navigation -->
+        <div class="degree4-lesson-documentary-footer-nav">
+            <a href="degree4.html" data-i18n="footer_back">← Retour au programme</a>
+            <a href="degree4unit1lesson14.html" data-i18n="footer_next">Leçon suivante →</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script src="ed-french-ini.js"></script>
+
+    <!-- Translations -->
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                lesson_title: "Documentaire – Mes droits et mes devoirs",
+                lesson_badge: "🎬 Unité 1 · Documentaire",
+                lesson_subtitle: "Droits et devoirs de l'élève",
+                lesson_duration: "⏱️ 30 minutes",
+                back_link: "← Retour au programme",
+                current_lesson: "Documentaire",
+                section1_title: "Mes droits et mes devoirs à la maison",
+                section2_title: "Mes droits et mes devoirs à l'école",
+                rights_title: "Mes droits",
+                duties_title: "Mes devoirs",
+                right1: "في أن أُحَبَّ ويُحْتَرَم من قبل الجميع.",
+                right2: "في قول ما أفكر فيه.",
+                right3: "في اللعب مع إخوتي.",
+                right4: "في أن أُطْعَم وأُلْبَس جيدًا.",
+                right5: "في أن أُساعَد من قبل عائلتي.",
+                right6: "في قول ما أفكر فيه.",
+                right7: "في طلب الشرح عندما لا أفهم.",
+                right8: "في أن يُحْتَرَم من قبل الجميع.",
+                right9: "في أن أُساعَد من قبل زملائي.",
+                right10: "في اللعب مع من أريد في ساحة المدرسة.",
+                duty1: "في أن أُحِبَّ وأحترم عائلتي.",
+                duty2: "في أن أنصت لوالديّ.",
+                duty3: "في أن أرتب غرفتي.",
+                duty4: "في أن أتعلّم دروسي.",
+                duty5: "في الوصول في الوقت المحدد.",
+                duty6: "في أن أعمل (أدرس) جيدًا.",
+                duty7: "في الإنصات للشخص الذي يتكلم.",
+                duty8: "في مساعدة زملائي.",
+                duty9: "في احترام الآخرين.",
+                duty10: "في الاعتناء بأشيائي.",
+                exercises_title: "Exercices",
+                ex1_title: "1. Je choisis la bonne réponse",
+                ex1_question: "À l'école, j'ai le droit...",
+                ex1_opt_a: "d'être respecté.",
+                ex1_opt_b: "de crier en classe.",
+                ex1_opt_c: "d'arriver en retard.",
+                ex2_title: "2. Je choisis la bonne réponse",
+                ex2_question: "À la maison, j'ai le devoir...",
+                ex2_opt_a: "de ranger ma chambre.",
+                ex2_opt_b: "de jouer toute la journée.",
+                ex2_opt_c: "de ne pas écouter mes parents.",
+                ex3_title: "3. Je choisis la bonne réponse",
+                ex3_question: "Quel est mon devoir à l'école ?",
+                ex3_opt_a: "d'écouter la personne qui parle.",
+                ex3_opt_b: "d'arriver en retard.",
+                ex3_opt_c: "de ne pas faire mes devoirs.",
+                check_answers: "🔍 Vérifier",
+                self_assess_question: "Ma réponse est :",
+                self_correct: "Correcte",
+                self_partial: "Partiellement correcte",
+                self_incorrect: "Incorrecte",
+                score_title: "📊 Votre auto‑évaluation",
+                score_correct: "Correct :",
+                score_partial: "Partiel :",
+                score_incorrect: "Incorrect :",
+                score_unanswered: "Sans réponse :",
+                save_results: "💾 Enregistrer mes résultats",
+                save_success: "Résultats enregistrés !",
+                save_error: "Erreur lors de l'enregistrement.",
+                print_pdf: "🖨️ Imprimer / PDF",
+                footer_back: "← Retour au programme",
+                footer_next: "Leçon suivante →",
+                ach_year_degree4: "4ème Année Primaire",
+                ach_module_unit1: "Unité 1",
+                toast_signin_required: "Connectez-vous pour enregistrer vos résultats.",
+                print_site_name: "Educational Dashboard – Français",
+                print_scholar_year: "4ème Année Primaire",
+                print_week: "Unité 1",
+                print_area: "Documentaire",
+                print_footer_dev: "Développé par Mejri Ziad",
+                print_footer_date: "Imprimé le"
+            },
+            en: {
+                lesson_title: "Documentary – My rights and duties",
+                lesson_badge: "🎬 Unit 1 · Documentary",
+                lesson_subtitle: "Student rights and duties",
+                lesson_duration: "⏱️ 30 minutes",
+                back_link: "← Back to program",
+                current_lesson: "Documentary",
+                section1_title: "My rights and duties at home",
+                section2_title: "My rights and duties at school",
+                rights_title: "My rights",
+                duties_title: "My duties",
+                right1: "To be loved and respected by everyone.",
+                right2: "To say what I think.",
+                right3: "To play with my siblings.",
+                right4: "To be well fed and clothed.",
+                right5: "To be helped by my family.",
+                right6: "To say what I think.",
+                right7: "To ask for explanation when I don't understand.",
+                right8: "To be respected by everyone.",
+                right9: "To be helped by my classmates.",
+                right10: "To play with whoever I want in the schoolyard.",
+                duty1: "To love and respect my family.",
+                duty2: "To listen to my parents.",
+                duty3: "To tidy my room.",
+                duty4: "To learn my lessons.",
+                duty5: "To arrive on time.",
+                duty6: "To work (study) well.",
+                duty7: "To listen to the person who is speaking.",
+                duty8: "To help my classmates.",
+                duty9: "To respect others.",
+                duty10: "To take care of my things.",
+                exercises_title: "Exercises",
+                ex1_title: "1. I choose the correct answer",
+                ex1_question: "At school, I have the right...",
+                ex1_opt_a: "to be respected.",
+                ex1_opt_b: "to shout in class.",
+                ex1_opt_c: "to arrive late.",
+                ex2_title: "2. I choose the correct answer",
+                ex2_question: "At home, I have the duty...",
+                ex2_opt_a: "to tidy my room.",
+                ex2_opt_b: "to play all day.",
+                ex2_opt_c: "not to listen to my parents.",
+                ex3_title: "3. I choose the correct answer",
+                ex3_question: "What is my duty at school?",
+                ex3_opt_a: "to listen to the person who is speaking.",
+                ex3_opt_b: "to arrive late.",
+                ex3_opt_c: "not to do my homework.",
+                check_answers: "🔍 Check",
+                self_assess_question: "My answer is:",
+                self_correct: "Correct",
+                self_partial: "Partially correct",
+                self_incorrect: "Incorrect",
+                score_title: "📊 Your self‑assessment",
+                score_correct: "Correct:",
+                score_partial: "Partial:",
+                score_incorrect: "Incorrect:",
+                score_unanswered: "Unanswered:",
+                save_results: "💾 Save my results",
+                save_success: "Results saved!",
+                save_error: "Error saving results.",
+                print_pdf: "🖨️ Print / PDF",
+                footer_back: "← Back to program",
+                footer_next: "Next lesson →",
+                ach_year_degree4: "4th Grade Primary",
+                ach_module_unit1: "Unit 1",
+                toast_signin_required: "Sign in to save your results.",
+                print_site_name: "Educational Dashboard – French",
+                print_scholar_year: "4th Grade Primary",
+                print_week: "Unit 1",
+                print_area: "Documentary",
+                print_footer_dev: "Developed by Mejri Ziad",
+                print_footer_date: "Printed on"
+            },
+            ar: {
+                lesson_title: "وثائقي – حقوقي وواجباتي",
+                lesson_badge: "🎬 الوحدة 1 · وثائقي",
+                lesson_subtitle: "حقوق وواجبات التلميذ",
+                lesson_duration: "⏱️ 30 دقيقة",
+                back_link: "← العودة إلى البرنامج",
+                current_lesson: "وثائقي",
+                section1_title: "حقوقي وواجباتي في البيت",
+                section2_title: "حقوقي وواجباتي في المدرسة",
+                rights_title: "حقوقي",
+                duties_title: "واجباتي",
+                right1: "في أن أُحَبَّ ويُحْتَرَم من قبل الجميع.",
+                right2: "في قول ما أفكر فيه.",
+                right3: "في اللعب مع إخوتي.",
+                right4: "في أن أُطْعَم وأُلْبَس جيدًا.",
+                right5: "في أن أُساعَد من قبل عائلتي.",
+                right6: "في قول ما أفكر فيه.",
+                right7: "في طلب الشرح عندما لا أفهم.",
+                right8: "في أن يُحْتَرَم من قبل الجميع.",
+                right9: "في أن أُساعَد من قبل زملائي.",
+                right10: "في اللعب مع من أريد في ساحة المدرسة.",
+                duty1: "في أن أُحِبَّ وأحترم عائلتي.",
+                duty2: "في أن أنصت لوالديّ.",
+                duty3: "في أن أرتب غرفتي.",
+                duty4: "في أن أتعلّم دروسي.",
+                duty5: "في الوصول في الوقت المحدد.",
+                duty6: "في أن أعمل (أدرس) جيدًا.",
+                duty7: "في الإنصات للشخص الذي يتكلم.",
+                duty8: "في مساعدة زملائي.",
+                duty9: "في احترام الآخرين.",
+                duty10: "في الاعتناء بأشيائي.",
+                exercises_title: "تمارين",
+                ex1_title: "1. أختار الإجابة الصحيحة",
+                ex1_question: "في المدرسة، لي الحق...",
+                ex1_opt_a: "في أن أُحْتَرَم.",
+                ex1_opt_b: "في الصراخ في القسم.",
+                ex1_opt_c: "في الوصول متأخرًا.",
+                ex2_title: "2. أختار الإجابة الصحيحة",
+                ex2_question: "في البيت، عليّ الواجب...",
+                ex2_opt_a: "في ترتيب غرفتي.",
+                ex2_opt_b: "في اللعب طوال اليوم.",
+                ex2_opt_c: "في عدم الاستماع لوالديّ.",
+                ex3_title: "3. أختار الإجابة الصحيحة",
+                ex3_question: "ما هو واجبي في المدرسة؟",
+                ex3_opt_a: "الإنصات للشخص الذي يتكلم.",
+                ex3_opt_b: "الوصول متأخرًا.",
+                ex3_opt_c: "عدم إنجاز واجباتي.",
+                check_answers: "🔍 تحقق",
+                self_assess_question: "جوابي هو:",
+                self_correct: "صحيح",
+                self_partial: "صحيح جزئيًا",
+                self_incorrect: "خاطئ",
+                score_title: "📊 تقييمك الذاتي",
+                score_correct: "صحيح:",
+                score_partial: "جزئي:",
+                score_incorrect: "خاطئ:",
+                score_unanswered: "بدون إجابة:",
+                save_results: "💾 حفظ نتائجي",
+                save_success: "تم حفظ النتائج!",
+                save_error: "خطأ في الحفظ.",
+                print_pdf: "🖨️ طباعة / PDF",
+                footer_back: "← العودة إلى البرنامج",
+                footer_next: "الدرس الموالي ←",
+                ach_year_degree4: "السنة الرابعة ابتدائي",
+                ach_module_unit1: "الوحدة الأولى",
+                toast_signin_required: "سجّل الدخول لحفظ نتائجك.",
+                print_site_name: "لوحة التحكم التعليمية – الفرنسية",
+                print_scholar_year: "السنة الرابعة ابتدائي",
+                print_week: "الوحدة 1",
+                print_area: "وثائقي",
+                print_footer_dev: "طوّر بواسطة ماجري زياد",
+                print_footer_date: "طُبع في"
+            }
+        });
+
+        (function() {
+            var container = document.getElementById('main-content');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+            App.onLangChange(function(lang) {
+                if (container) container.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            });
+            if (container) container.dir = (localStorage.getItem('lang') || 'fr') === 'ar' ? 'rtl' : 'ltr';
+        })();
+    </script>
+
+    <!-- Direct translation fix -->
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') {
+                                el.innerHTML = next.innerHTML;
+                            }
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+
+    <!-- Exercise logic -->
+    <script>
+        async function requireAuth() {
+            const { data: { session } } = await App.supabase.auth.getSession();
+            if (!session) {
+                App.showToast('toast_signin_required', 'error');
+                document.getElementById('signInBtn')?.click();
+                return false;
+            }
+            return true;
+        }
+
+        function playSound(type) {
+            const src = type === 'correct' ? 'assets/sounds/correct-sound.mp3' : type === 'wrong' ? 'assets/sounds/wrong-sound.mp3' : 'assets/sounds/complete-sound.mp3';
+            new Audio(src).play().catch(()=>{});
+        }
+
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.toggle('visible');
+        }
+
+        function showFeedback(id, isCorrect) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.textContent = isCorrect ? '✅ Correct !' : '❌ Incorrect.';
+            el.className = isCorrect ? 'degree4-lesson-documentary-feedback correct' : 'degree4-lesson-documentary-feedback wrong';
+        }
+
+        window.checkEx1 = function() {
+            if (!await requireAuth()) return;
+            const selected = document.querySelector('input[name="ex1"]:checked');
+            const isCorrect = selected && selected.value === 'a';
+            playSound(isCorrect ? 'correct' : 'wrong');
+            toggleAnswer('ex1Key');
+            document.getElementById('ex1Key').innerHTML = `<strong>Correction :</strong> d'être respecté.`;
+            showFeedback('ex1Feedback', isCorrect);
+        }
+
+        window.checkEx2 = function() {
+            if (!await requireAuth()) return;
+            const selected = document.querySelector('input[name="ex2"]:checked');
+            const isCorrect = selected && selected.value === 'a';
+            playSound(isCorrect ? 'correct' : 'wrong');
+            toggleAnswer('ex2Key');
+            document.getElementById('ex2Key').innerHTML = `<strong>Correction :</strong> de ranger ma chambre.`;
+            showFeedback('ex2Feedback', isCorrect);
+        }
+
+        window.checkEx3 = function() {
+            if (!await requireAuth()) return;
+            const selected = document.querySelector('input[name="ex3"]:checked');
+            const isCorrect = selected && selected.value === 'a';
+            playSound(isCorrect ? 'correct' : 'wrong');
+            toggleAnswer('ex3Key');
+            document.getElementById('ex3Key').innerHTML = `<strong>Correction :</strong> d'écouter la personne qui parle.`;
+            showFeedback('ex3Feedback', isCorrect);
+        }
+
+        // Self-assessment scoring
+        (function() {
+            function updateScore() {
+                const radios = document.querySelectorAll('input[type="radio"][name^="self_"]');
+                const groups = new Set();
+                radios.forEach(r => groups.add(r.name));
+                let correct = 0, partial = 0, incorrect = 0, unanswered = 0;
+                groups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'partial') partial++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                document.getElementById('scoreCorrect').textContent = correct;
+                document.getElementById('scorePartial').textContent = partial;
+                document.getElementById('scoreIncorrect').textContent = incorrect;
+                document.getElementById('scoreUnanswered').textContent = unanswered;
+            }
+            document.querySelectorAll('input[type="radio"][name^="self_"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                if (!App.supabase) return;
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const radios = document.querySelectorAll('input[type="radio"][name^="self_"]');
+                const groups = new Set();
+                radios.forEach(r => groups.add(r.name));
+                let correct = 0, partial = 0, incorrect = 0, unanswered = 0;
+                groups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'partial') partial++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                const entry = {
+                    lesson_id: 'degree4unit1lesson13',
+                    lesson_title: { fr: App.getTranslation('lesson_title', 'fr'), en: App.getTranslation('lesson_title', 'en'), ar: App.getTranslation('lesson_title', 'ar') },
+                    year: { fr: App.getTranslation('ach_year_degree4', 'fr'), en: App.getTranslation('ach_year_degree4', 'en'), ar: App.getTranslation('ach_year_degree4', 'ar') },
+                    module: { fr: App.getTranslation('ach_module_unit1', 'fr'), en: App.getTranslation('ach_module_unit1', 'en'), ar: App.getTranslation('ach_module_unit1', 'ar') },
+                    correct, incorrect, partial, unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles').select('achivement').eq('id', user.id).single();
+                if (fetchError) return;
+                let achivement = profileData?.achivement || {};
+                if (!achivement['ED-French']) achivement['ED-French'] = [];
+                const arr = achivement['ED-French'];
+                const existingIdx = arr.findIndex(e => e.lesson_id === 'degree4unit1lesson13');
+                if (existingIdx >= 0) arr[existingIdx] = entry; else arr.push(entry);
+                const { error: updateError } = await App.supabase
+                    .from('profiles').update({ achivement }).eq('id', user.id);
+                if (updateError) App.showToast('save_error', 'error');
+                else { App.showToast('save_success', 'success'); App.logUserAction('lesson_saved', { lesson: 'degree4unit1lesson13', correct, incorrect, partial }); }
+            });
+
+            document.getElementById('printBtn').addEventListener('click', async function() {
+                if (!App.supabase) return;
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles')
+                        .select('registration_state')
+                        .eq('id', user.id)
+                        .single();
+                    if (!error && profile && profile.registration_state && profile.registration_state.active === true) {
+                        isRegistered = true;
+                    }
+                } catch (e) { /* ignore */ }
+                const lang = localStorage.getItem('lang') || 'fr';
+                const content = document.getElementById('main-content').cloneNode(true);
+                content.querySelectorAll('input, .degree4-lesson-documentary-self-assess, .degree4-lesson-documentary-score-area, .degree4-lesson-documentary-footer-nav').forEach(el => el.remove());
+                const answerKeys = content.querySelectorAll('.degree4-lesson-documentary-answer-key');
+                if (isRegistered) {
+                    answerKeys.forEach(key => {
+                        key.style.display = 'block';
+                        key.style.border = 'none';
+                        key.style.padding = '0.5rem 0';
+                        key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    answerKeys.forEach(el => el.remove());
+                }
+                const breadcrumb = content.querySelector('p[style*="margin-bottom:1.5rem"]');
+                if (breadcrumb) breadcrumb.remove();
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                printWindow.document.write(`
+                    <!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8"><title>${App.getTranslation('lesson_title', lang)}</title>
+                    <style>
+                        body { font-family: 'Georgia', serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+                        .print-header { text-align: center; border-bottom: 2px solid #556b2f; padding-bottom: 1rem; margin-bottom: 2rem; }
+                        .print-header .site-name { font-size: 1.4rem; font-weight: bold; color: #556b2f; margin: 0 0 0.3rem; }
+                        .print-header .meta-line { font-size: 0.95rem; color: #444; margin: 0.2rem 0; }
+                        .print-header .lesson-name { font-size: 1.1rem; font-weight: bold; color: #000; margin-top: 0.5rem; }
+                        .print-footer { text-align: center; border-top: 1px solid #ccc; padding-top: 1rem; margin-top: 2rem; font-size: 0.85rem; color: #666; }
+                        .degree4-lesson-documentary-card { margin-bottom: 2rem; border: 1px solid #ccc; padding: 1rem; border-radius: 8px; }
+                        .degree4-lesson-documentary-options { display: none; }
+                        .degree4-lesson-documentary-answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; }
+                        @media print { @page { margin: 2cm; } }
+                    </style></head><body>
+                    <div class="print-header"><div class="site-name">${App.getTranslation('print_site_name', lang)}</div><div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div><div class="lesson-name">${App.getTranslation('lesson_title', lang)}</div></div>
+                    ${content.innerHTML}
+                    <div class="print-footer">${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}</div>
+                    </body></html>
+                `);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+        })();
+    </script>
+</body>
+</html>

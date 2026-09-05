@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_title">Compréhension de texte – Jean l'étourdi</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        :root {
+            --degree4-lesson-comprehension-bg: #f9f7f1;
+            --degree4-lesson-comprehension-card: #ffffff;
+            --degree4-lesson-comprehension-text: #2b2416;
+            --degree4-lesson-comprehension-text-light: #5c5344;
+            --degree4-lesson-comprehension-heading: #382e1e;
+            --degree4-lesson-comprehension-accent: #008b8b; /* teal */
+            --degree4-lesson-comprehension-accent-hover: #006666;
+            --degree4-lesson-comprehension-border: #e5ddd0;
+            --degree4-lesson-comprehension-shadow: 0 1px 4px rgba(0,0,0,0.04);
+            --degree4-lesson-comprehension-radius: 12px;
+            --degree4-lesson-comprehension-radius-sm: 8px;
+            --degree4-lesson-comprehension-transition: 0.25s ease;
+            --degree4-lesson-comprehension-font: 'Segoe UI', 'Georgia', serif;
+            --degree4-lesson-comprehension-audio-bg: #f4efe4;
+            --degree4-lesson-comprehension-audio-progress: #d8c9aa;
+            --degree4-lesson-comprehension-button-bg: #f0e8d8;
+            --degree4-lesson-comprehension-button-hover: #e3d5bc;
+        }
+        body.dark {
+            --degree4-lesson-comprehension-bg: #1e1b17;
+            --degree4-lesson-comprehension-card: #2a2620;
+            --degree4-lesson-comprehension-text: #e8dfd2;
+            --degree4-lesson-comprehension-text-light: #b9aa95;
+            --degree4-lesson-comprehension-heading: #f0e4d2;
+            --degree4-lesson-comprehension-accent: #80cbc4;
+            --degree4-lesson-comprehension-accent-hover: #b2dfdb;
+            --degree4-lesson-comprehension-border: #3e3830;
+            --degree4-lesson-comprehension-shadow: 0 1px 4px rgba(0,0,0,0.25);
+            --degree4-lesson-comprehension-audio-bg: #26221b;
+            --degree4-lesson-comprehension-audio-progress: #5a4e3c;
+            --degree4-lesson-comprehension-button-bg: #3a3329;
+            --degree4-lesson-comprehension-button-hover: #4e4437;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: var(--degree4-lesson-comprehension-font);
+            background: var(--degree4-lesson-comprehension-bg);
+            color: var(--degree4-lesson-comprehension-text);
+            line-height: 1.75;
+            transition: background var(--degree4-lesson-comprehension-transition), color var(--degree4-lesson-comprehension-transition);
+        }
+        .degree4-lesson-comprehension-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.8rem 1.4rem 3rem;
+        }
+        .degree4-lesson-comprehension-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .degree4-lesson-comprehension-badge {
+            display: inline-block;
+            background: var(--degree4-lesson-comprehension-accent);
+            color: #fff;
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+        .degree4-lesson-comprehension-header h1 {
+            font-size: 2.1rem;
+            color: var(--degree4-lesson-comprehension-heading);
+            margin: 0.6rem 0 0.3rem;
+            line-height: 1.3;
+        }
+        .degree4-lesson-comprehension-meta {
+            font-size: 0.9rem;
+            color: var(--degree4-lesson-comprehension-text-light);
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .degree4-lesson-comprehension-card {
+            background: var(--degree4-lesson-comprehension-card);
+            border: 1px solid var(--degree4-lesson-comprehension-border);
+            border-radius: var(--degree4-lesson-comprehension-radius);
+            padding: 1.8rem;
+            margin: 2rem 0;
+            box-shadow: var(--degree4-lesson-comprehension-shadow);
+        }
+        .degree4-lesson-comprehension-card h2 {
+            font-size: 1.6rem;
+            color: var(--degree4-lesson-comprehension-heading);
+            margin-bottom: 0.4rem;
+            border-bottom: 3px solid var(--degree4-lesson-comprehension-accent);
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+        .degree4-lesson-comprehension-play-btn {
+            background: var(--degree4-lesson-comprehension-accent);
+            color: #fff;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: background var(--degree4-lesson-comprehension-transition);
+            flex-shrink: 0;
+        }
+        .degree4-lesson-comprehension-play-btn:hover { background: var(--degree4-lesson-comprehension-accent-hover); }
+        .degree4-lesson-comprehension-sentence-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            margin-bottom: 0.8rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed var(--degree4-lesson-comprehension-border);
+        }
+        .degree4-lesson-comprehension-sentence-item p {
+            margin: 0;
+            flex: 1;
+        }
+        .degree4-lesson-comprehension-answer-key {
+            display: none;
+            margin-top: 0.8rem;
+            padding: 0.8rem;
+            background: var(--degree4-lesson-comprehension-audio-bg);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: var(--degree4-lesson-comprehension-text-light);
+            border: 1px dashed var(--degree4-lesson-comprehension-accent);
+        }
+        .degree4-lesson-comprehension-answer-key.visible {
+            display: block;
+        }
+        .degree4-lesson-comprehension-feedback {
+            margin-top: 0.8rem;
+            font-weight: 600;
+        }
+        .degree4-lesson-comprehension-feedback.correct { color: #2e7d32; }
+        .degree4-lesson-comprehension-feedback.wrong { color: #c62828; }
+        .degree4-lesson-comprehension-btn {
+            background: var(--degree4-lesson-comprehension-accent);
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background var(--degree4-lesson-comprehension-transition);
+            font-size: 0.85rem;
+        }
+        .degree4-lesson-comprehension-btn:hover {
+            background: var(--degree4-lesson-comprehension-accent-hover);
+        }
+        .degree4-lesson-comprehension-self-assess {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        .degree4-lesson-comprehension-self-assess label {
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .degree4-lesson-comprehension-self-assess input[type="radio"] {
+            accent-color: var(--degree4-lesson-comprehension-accent);
+        }
+        .degree4-lesson-comprehension-score-area {
+            background: var(--degree4-lesson-comprehension-card);
+            border: 1px solid var(--degree4-lesson-comprehension-border);
+            border-radius: var(--degree4-lesson-comprehension-radius);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: var(--degree4-lesson-comprehension-shadow);
+        }
+        .degree4-lesson-comprehension-score-area h2 {
+            color: var(--degree4-lesson-comprehension-heading);
+            margin-bottom: 1rem;
+        }
+        .degree4-lesson-comprehension-score-stats {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .degree4-lesson-comprehension-score-stat {
+            background: var(--degree4-lesson-comprehension-audio-bg);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        .degree4-lesson-comprehension-score-actions {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        .degree4-lesson-comprehension-exercises-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .degree4-lesson-comprehension-exercise-col {
+            min-width: 0;
+        }
+        .degree4-lesson-comprehension-select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 2px solid var(--degree4-lesson-comprehension-border);
+            border-radius: 6px;
+            background: var(--degree4-lesson-comprehension-card);
+            color: var(--degree4-lesson-comprehension-text);
+            font-family: inherit;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+        .degree4-lesson-comprehension-image {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        @media (max-width: 900px) {
+            .degree4-lesson-comprehension-exercises-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hidden shell elements required by ed-french-ini.js -->
+    <div id="toast-container"></div>
+    <div id="toast"></div>
+    <button id="signInBtn" style="display:none"></button>
+
+    <div id="main-content" class="degree4-lesson-comprehension-container">
+        <!-- Breadcrumb -->
+        <p style="margin-bottom:1.5rem; color:var(--degree4-lesson-comprehension-text-light);">
+            <a href="degree4.html" data-i18n="back_link">← Retour au programme</a>
+            › <strong data-i18n="current_lesson">Compréhension de texte</strong>
+        </p>
+
+        <!-- Header -->
+        <div class="degree4-lesson-comprehension-header">
+            <span class="degree4-lesson-comprehension-badge" data-i18n="lesson_badge">📖 Unité 1 · Compréhension de texte</span>
+            <h1 data-i18n="lesson_title">Jean l'étourdi</h1>
+            <div class="degree4-lesson-comprehension-meta">
+                <span data-i18n="lesson_subtitle">Compréhension de texte</span>
+                <span data-i18n="lesson_duration">⏱️ 30 minutes</span>
+            </div>
+        </div>
+
+        <!-- Section 1: Text -->
+        <section class="degree4-lesson-comprehension-card">
+            <h2 data-i18n="text_title">Texte : Jean l'étourdi</h2>
+            <div style="display:flex; align-items:center; gap:1rem;">
+                <button class="degree4-lesson-comprehension-play-btn" onclick="playTextSound()">▶</button>
+                <span data-i18n="listen_text">Écouter le texte</span>
+            </div>
+            <img src="assets4/images/degree4/unit1/lesson11/jean_etourdi.jpg" alt="Jean l'étourdi" class="degree4-lesson-comprehension-image">
+            <div class="degree4-lesson-comprehension-sentence-item"><p>Ensuite, Jean prend son petit déjeuner, puis il prépare ses affaires et prend son cartable. Avant de sortir, il caresse son chien.</p></div>
+            <div class="degree4-lesson-comprehension-sentence-item"><p>Il traverse la rue et arrive devant l'école. Mais il n'y a personne ! Il rentre alors à la maison. Il dit à sa mère : « Incroyable ! Aujourd'hui, personne n'est venu à l'école.</p></div>
+            <div class="degree4-lesson-comprehension-sentence-item"><p>– C'est normal, répond la mère. Aujourd'hui c'est dimanche ! ».</p></div>
+        </section>
+
+        <!-- Section 2: Exercises (2x2 grid) -->
+        <section class="degree4-lesson-comprehension-card">
+            <h2 data-i18n="exercises_title">Exercices</h2>
+
+            <div class="degree4-lesson-comprehension-exercises-grid">
+                <!-- Row 1: Ex1 (number of characters) | Ex2 (who said) -->
+                <div class="degree4-lesson-comprehension-exercise-col">
+                    <div class="question-block" style="margin-bottom:2rem;">
+                        <p class="question-text" data-i18n="ex1_instruction">Combien y a-t-il de personnages ?</p>
+                        <select class="degree4-lesson-comprehension-select" id="charCount">
+                            <option value="">-- Choisir --</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                        <button class="degree4-lesson-comprehension-btn" onclick="checkEx1()" data-i18n="check_answers">🔍 Vérifier</button>
+                        <div id="ex1Key" class="degree4-lesson-comprehension-answer-key"></div>
+                        <div id="ex1Feedback" class="degree4-lesson-comprehension-feedback"></div>
+                        <div class="degree4-lesson-comprehension-self-assess">
+                            <span data-i18n="self_assess_question">Ma réponse est :</span>
+                            <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+                            <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                            <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="degree4-lesson-comprehension-exercise-col">
+                    <div class="question-block" style="margin-bottom:2rem;">
+                        <p class="question-text" data-i18n="ex2_instruction">Qui a dit « Incroyable ! » ?</p>
+                        <select class="degree4-lesson-comprehension-select" id="whoSaid1">
+                            <option value="">-- Choisir --</option>
+                            <option value="jean">Jean</option>
+                            <option value="mere">Sa mère</option>
+                            <option value="chien">Le chien</option>
+                            <option value="ecole">L'école</option>
+                        </select>
+                        <p class="question-text" data-i18n="ex2b_instruction">Qui a dit « C'est normal. Aujourd'hui c'est dimanche ! » ?</p>
+                        <select class="degree4-lesson-comprehension-select" id="whoSaid2">
+                            <option value="">-- Choisir --</option>
+                            <option value="jean">Jean</option>
+                            <option value="mere">Sa mère</option>
+                            <option value="directeur">Le directeur</option>
+                            <option value="ami">Un ami</option>
+                        </select>
+                        <button class="degree4-lesson-comprehension-btn" onclick="checkEx2()" data-i18n="check_answers">🔍 Vérifier</button>
+                        <div id="ex2Key" class="degree4-lesson-comprehension-answer-key"></div>
+                        <div id="ex2Feedback" class="degree4-lesson-comprehension-feedback"></div>
+                        <div class="degree4-lesson-comprehension-self-assess">
+                            <span data-i18n="self_assess_question">Ma réponse est :</span>
+                            <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+                            <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                            <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="degree4-lesson-comprehension-exercises-grid">
+                <!-- Row 2: Ex3 (order word) | Ex4 (beginning) -->
+                <div class="degree4-lesson-comprehension-exercise-col">
+                    <div class="question-block" style="margin-bottom:2rem;">
+                        <p class="question-text" data-i18n="ex3_instruction">Quel mot n'indique pas l'ordre ?</p>
+                        <select class="degree4-lesson-comprehension-select" id="orderWord">
+                            <option value="">-- Choisir --</option>
+                            <option value="ensuite">Ensuite</option>
+                            <option value="puis">Puis</option>
+                            <option value="chien">Chien</option>
+                            <option value="alors">Alors</option>
+                        </select>
+                        <button class="degree4-lesson-comprehension-btn" onclick="checkEx3()" data-i18n="check_answers">🔍 Vérifier</button>
+                        <div id="ex3Key" class="degree4-lesson-comprehension-answer-key"></div>
+                        <div id="ex3Feedback" class="degree4-lesson-comprehension-feedback"></div>
+                        <div class="degree4-lesson-comprehension-self-assess">
+                            <span data-i18n="self_assess_question">Ma réponse est :</span>
+                            <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                            <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                            <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="degree4-lesson-comprehension-exercise-col">
+                    <div class="question-block" style="margin-bottom:2rem;">
+                        <p class="question-text" data-i18n="ex4_instruction">Je choisis le début logique de l'histoire.</p>
+                        <select class="degree4-lesson-comprehension-select" id="beginningChoice">
+                            <option value="">-- Choisir --</option>
+                            <option value="correct">Jean se réveille en retard.</option>
+                            <option value="wrong1">Jean dort toute la journée.</option>
+                            <option value="wrong2">Jean va à la plage.</option>
+                        </select>
+                        <button class="degree4-lesson-comprehension-btn" onclick="checkEx4()" data-i18n="check_answers">🔍 Vérifier</button>
+                        <div id="ex4Key" class="degree4-lesson-comprehension-answer-key"></div>
+                        <div id="ex4Feedback" class="degree4-lesson-comprehension-feedback"></div>
+                        <div class="degree4-lesson-comprehension-self-assess">
+                            <span data-i18n="self_assess_question">Ma réponse est :</span>
+                            <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
+                            <label><input type="radio" name="self_ex4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                            <label><input type="radio" name="self_ex4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Score Area -->
+        <div class="degree4-lesson-comprehension-score-area">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="degree4-lesson-comprehension-score-stats">
+                <div class="degree4-lesson-comprehension-score-stat"><span data-i18n="score_correct">Correct :</span> <span id="scoreCorrect">0</span></div>
+                <div class="degree4-lesson-comprehension-score-stat"><span data-i18n="score_partial">Partiel :</span> <span id="scorePartial">0</span></div>
+                <div class="degree4-lesson-comprehension-score-stat"><span data-i18n="score_incorrect">Incorrect :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="degree4-lesson-comprehension-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">4</span></div>
+            </div>
+            <div class="degree4-lesson-comprehension-score-actions">
+                <button id="saveResultsBtn" class="degree4-lesson-comprehension-btn" data-i18n="save_results">💾 Enregistrer mes résultats</button>
+                <button id="printBtn" class="degree4-lesson-comprehension-btn" style="background:#5c5344;" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+            </div>
+        </div>
+
+        <!-- Footer navigation -->
+        <div style="margin-top:2rem; display:flex; justify-content:space-between; flex-wrap:wrap;">
+            <a href="degree4.html" data-i18n="footer_back">← Retour au programme</a>
+            <a href="degree4unit1lesson12.html" data-i18n="footer_next">Leçon suivante →</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script src="ed-french-ini.js"></script>
+
+    <!-- Translations -->
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                lesson_title: "Compréhension de texte – Jean l'étourdi",
+                lesson_badge: "📖 Unité 1 · Compréhension de texte",
+                lesson_subtitle: "Compréhension de texte",
+                lesson_duration: "⏱️ 30 minutes",
+                back_link: "← Retour au programme",
+                current_lesson: "Compréhension de texte",
+                text_title: "Texte : Jean l'étourdi",
+                listen_text: "Écouter le texte",
+                exercises_title: "Exercices",
+                ex1_instruction: "Combien y a-t-il de personnages ?",
+                ex2_instruction: "Qui a dit « Incroyable ! » ?",
+                ex2b_instruction: "Qui a dit « C'est normal. Aujourd'hui c'est dimanche ! » ?",
+                ex3_instruction: "Quel mot n'indique pas l'ordre ?",
+                ex4_instruction: "Je choisis le début logique de l'histoire.",
+                check_answers: "🔍 Vérifier",
+                self_assess_question: "Ma réponse est :",
+                self_correct: "Correcte",
+                self_partial: "Partiellement correcte",
+                self_incorrect: "Incorrecte",
+                score_title: "📊 Votre auto‑évaluation",
+                score_correct: "Correct :",
+                score_partial: "Partiel :",
+                score_incorrect: "Incorrect :",
+                score_unanswered: "Sans réponse :",
+                save_results: "💾 Enregistrer mes résultats",
+                save_success: "Résultats enregistrés !",
+                save_error: "Erreur lors de l'enregistrement.",
+                print_pdf: "🖨️ Imprimer / PDF",
+                footer_back: "← Retour au programme",
+                footer_next: "Leçon suivante →",
+                ach_year_degree4: "4ème Année Primaire",
+                ach_module_unit1: "Unité 1",
+                toast_signin_required: "Connectez-vous pour enregistrer vos résultats.",
+                print_site_name: "Educational Dashboard – Français",
+                print_scholar_year: "4ème Année Primaire",
+                print_week: "Unité 1",
+                print_area: "Compréhension de texte",
+                print_footer_dev: "Développé par Mejri Ziad",
+                print_footer_date: "Imprimé le"
+            },
+            en: {
+                lesson_title: "Reading Comprehension – Jean l'étourdi",
+                lesson_badge: "📖 Unit 1 · Reading Comprehension",
+                lesson_subtitle: "Reading Comprehension",
+                lesson_duration: "⏱️ 30 minutes",
+                back_link: "← Back to program",
+                current_lesson: "Reading Comprehension",
+                text_title: "Text: Jean l'étourdi",
+                listen_text: "Listen to the text",
+                exercises_title: "Exercises",
+                ex1_instruction: "How many characters are there?",
+                ex2_instruction: "Who said “Incredible!”?",
+                ex2b_instruction: "Who said “It's normal. Today is Sunday!”?",
+                ex3_instruction: "Which word does not indicate order?",
+                ex4_instruction: "I choose the logical beginning of the story.",
+                check_answers: "🔍 Check",
+                self_assess_question: "My answer is:",
+                self_correct: "Correct",
+                self_partial: "Partially correct",
+                self_incorrect: "Incorrect",
+                score_title: "📊 Your self‑assessment",
+                score_correct: "Correct:",
+                score_partial: "Partial:",
+                score_incorrect: "Incorrect:",
+                score_unanswered: "Unanswered:",
+                save_results: "💾 Save my results",
+                save_success: "Results saved!",
+                save_error: "Error saving results.",
+                print_pdf: "🖨️ Print / PDF",
+                footer_back: "← Back to program",
+                footer_next: "Next lesson →",
+                ach_year_degree4: "4th Grade Primary",
+                ach_module_unit1: "Unit 1",
+                toast_signin_required: "Sign in to save your results.",
+                print_site_name: "Educational Dashboard – French",
+                print_scholar_year: "4th Grade Primary",
+                print_week: "Unit 1",
+                print_area: "Reading Comprehension",
+                print_footer_dev: "Developed by Mejri Ziad",
+                print_footer_date: "Printed on"
+            },
+            ar: {
+                lesson_title: "فهم النص – جان المتهور",
+                lesson_badge: "📖 الوحدة 1 · فهم النص",
+                lesson_subtitle: "فهم النص",
+                lesson_duration: "⏱️ 30 دقيقة",
+                back_link: "← العودة إلى البرنامج",
+                current_lesson: "فهم النص",
+                text_title: "النص: جان المتهور",
+                listen_text: "استمع إلى النص",
+                exercises_title: "تمارين",
+                ex1_instruction: "كم عدد الشخصيات؟",
+                ex2_instruction: "من قال « لا يصدق! »؟",
+                ex2b_instruction: "من قال « هذا طبيعي. اليوم الأحد! »؟",
+                ex3_instruction: "ما الكلمة التي لا تدل على الترتيب؟",
+                ex4_instruction: "أختار البداية المنطقية للقصة.",
+                check_answers: "🔍 تحقق",
+                self_assess_question: "جوابي هو:",
+                self_correct: "صحيح",
+                self_partial: "صحيح جزئيًا",
+                self_incorrect: "خاطئ",
+                score_title: "📊 تقييمك الذاتي",
+                score_correct: "صحيح:",
+                score_partial: "جزئي:",
+                score_incorrect: "خاطئ:",
+                score_unanswered: "بدون إجابة:",
+                save_results: "💾 حفظ نتائجي",
+                save_success: "تم حفظ النتائج!",
+                save_error: "خطأ في الحفظ.",
+                print_pdf: "🖨️ طباعة / PDF",
+                footer_back: "← العودة إلى البرنامج",
+                footer_next: "الدرس الموالي ←",
+                ach_year_degree4: "السنة الرابعة ابتدائي",
+                ach_module_unit1: "الوحدة الأولى",
+                toast_signin_required: "سجّل الدخول لحفظ نتائجك.",
+                print_site_name: "لوحة التحكم التعليمية – الفرنسية",
+                print_scholar_year: "السنة الرابعة ابتدائي",
+                print_week: "الوحدة 1",
+                print_area: "فهم النص",
+                print_footer_dev: "طوّر بواسطة ماجري زياد",
+                print_footer_date: "طُبع في"
+            }
+        });
+
+        (function() {
+            var container = document.getElementById('main-content');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+            App.onLangChange(function(lang) {
+                if (container) container.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            });
+            if (container) container.dir = (localStorage.getItem('lang') || 'fr') === 'ar' ? 'rtl' : 'ltr';
+        })();
+    </script>
+
+    <!-- Direct translation fix -->
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') {
+                                el.innerHTML = next.innerHTML;
+                            }
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+
+    <!-- Initialization and exercise logic -->
+    <script>
+        (function() {
+            window.playTextSound = function() {
+                new Audio('assets4/sounds/degree4/unit1/lesson11/Jean_the_Reckless.mp3').play().catch(()=>{});
+            };
+
+            window.checkEx1 = async function() {
+                if (!await requireAuth()) return;
+                const select = document.getElementById('charCount');
+                const isCorrect = select.value === '2';
+                playSound(isCorrect ? 'correct' : 'wrong');
+                toggleAnswer('ex1Key');
+                document.getElementById('ex1Key').innerHTML = isCorrect ? '<strong>Correction :</strong> ✓' : '<strong>Correction :</strong> 2 personnages (Jean et sa mère)';
+                document.getElementById('ex1Feedback').textContent = isCorrect ? '✅ Correct !' : '❌ Incorrect.';
+                document.getElementById('ex1Feedback').className = isCorrect ? 'degree4-lesson-comprehension-feedback correct' : 'degree4-lesson-comprehension-feedback wrong';
+            };
+
+            window.checkEx2 = async function() {
+                if (!await requireAuth()) return;
+                const s1 = document.getElementById('whoSaid1').value;
+                const s2 = document.getElementById('whoSaid2').value;
+                let score = 0;
+                if (s1 === 'jean') score++;
+                if (s2 === 'mere') score++;
+                const isCorrect = score === 2;
+                playSound(isCorrect ? 'correct' : 'wrong');
+                toggleAnswer('ex2Key');
+                document.getElementById('ex2Key').innerHTML = isCorrect ? '<strong>Correction :</strong> ✓' : '<strong>Correction :</strong> Jean et sa mère';
+                document.getElementById('ex2Feedback').textContent = isCorrect ? '✅ Correct !' : '❌ Incorrect.';
+                document.getElementById('ex2Feedback').className = isCorrect ? 'degree4-lesson-comprehension-feedback correct' : 'degree4-lesson-comprehension-feedback wrong';
+            };
+
+            window.checkEx3 = async function() {
+                if (!await requireAuth()) return;
+                const select = document.getElementById('orderWord');
+                const isCorrect = select.value === 'chien';
+                playSound(isCorrect ? 'correct' : 'wrong');
+                toggleAnswer('ex3Key');
+                document.getElementById('ex3Key').innerHTML = isCorrect ? '<strong>Correction :</strong> ✓' : '<strong>Correction :</strong> Chien';
+                document.getElementById('ex3Feedback').textContent = isCorrect ? '✅ Correct !' : '❌ Incorrect.';
+                document.getElementById('ex3Feedback').className = isCorrect ? 'degree4-lesson-comprehension-feedback correct' : 'degree4-lesson-comprehension-feedback wrong';
+            };
+
+            window.checkEx4 = async function() {
+                if (!await requireAuth()) return;
+                const select = document.getElementById('beginningChoice');
+                const isCorrect = select.value === 'correct';
+                playSound(isCorrect ? 'correct' : 'wrong');
+                toggleAnswer('ex4Key');
+                document.getElementById('ex4Key').innerHTML = isCorrect ? '<strong>Correction :</strong> ✓' : '<strong>Correction :</strong> Jean se réveille en retard.';
+                document.getElementById('ex4Feedback').textContent = isCorrect ? '✅ Correct !' : '❌ Incorrect.';
+                document.getElementById('ex4Feedback').className = isCorrect ? 'degree4-lesson-comprehension-feedback correct' : 'degree4-lesson-comprehension-feedback wrong';
+            };
+
+            // Helpers
+            async function requireAuth() {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return false;
+                }
+                return true;
+            }
+            function playSound(type) {
+                const src = type === 'correct' ? 'assets/sounds/correct-sound.mp3' : 'assets/sounds/wrong-sound.mp3';
+                new Audio(src).play().catch(()=>{});
+            }
+            function toggleAnswer(id) {
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('visible');
+            }
+
+            // Standard scoring, save, print
+            function updateScore() {
+                const radios = document.querySelectorAll('input[type="radio"][name^="self_"]');
+                const groups = new Set();
+                radios.forEach(r => groups.add(r.name));
+                let correct = 0, partial = 0, incorrect = 0, unanswered = 0;
+                groups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'partial') partial++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                document.getElementById('scoreCorrect').textContent = correct;
+                document.getElementById('scorePartial').textContent = partial;
+                document.getElementById('scoreIncorrect').textContent = incorrect;
+                document.getElementById('scoreUnanswered').textContent = unanswered;
+            }
+
+            document.querySelectorAll('input[type="radio"][name^="self_"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                if (!App.supabase) return;
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const radios = document.querySelectorAll('input[type="radio"][name^="self_"]');
+                const groups = new Set();
+                radios.forEach(r => groups.add(r.name));
+                let correct = 0, partial = 0, incorrect = 0, unanswered = 0;
+                groups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'partial') partial++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                const entry = {
+                    lesson_id: 'degree4unit1lesson11',
+                    lesson_title: { fr: App.getTranslation('lesson_title', 'fr'), en: App.getTranslation('lesson_title', 'en'), ar: App.getTranslation('lesson_title', 'ar') },
+                    year: { fr: App.getTranslation('ach_year_degree4', 'fr'), en: App.getTranslation('ach_year_degree4', 'en'), ar: App.getTranslation('ach_year_degree4', 'ar') },
+                    module: { fr: App.getTranslation('ach_module_unit1', 'fr'), en: App.getTranslation('ach_module_unit1', 'en'), ar: App.getTranslation('ach_module_unit1', 'ar') },
+                    correct, incorrect, partial, unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles').select('achivement').eq('id', user.id).single();
+                if (fetchError) return;
+                let achivement = profileData?.achivement || {};
+                if (!achivement['ED-French']) achivement['ED-French'] = [];
+                const arr = achivement['ED-French'];
+                const existingIdx = arr.findIndex(e => e.lesson_id === 'degree4unit1lesson11');
+                if (existingIdx >= 0) arr[existingIdx] = entry; else arr.push(entry);
+                const { error: updateError } = await App.supabase
+                    .from('profiles').update({ achivement }).eq('id', user.id);
+                if (updateError) App.showToast('save_error', 'error');
+                else { App.showToast('save_success', 'success'); App.logUserAction('lesson_saved', { lesson: 'degree4unit1lesson11', correct, incorrect, partial }); }
+            });
+
+            document.getElementById('printBtn').addEventListener('click', async function() {
+                if (!App.supabase) return;
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const lang = localStorage.getItem('lang') || 'fr';
+                const content = document.getElementById('main-content').cloneNode(true);
+                content.querySelectorAll('input, textarea, .degree4-lesson-comprehension-self-assess, .degree4-lesson-comprehension-score-area, .degree4-lesson-comprehension-audio, .degree4-lesson-comprehension-slideshow-btn, .degree4-lesson-comprehension-footer-nav, .degree4-lesson-comprehension-vocab-exercise button').forEach(el => el.remove());
+                content.querySelectorAll('.degree4-lesson-comprehension-slideshow').forEach(el => el.remove());
+                const breadcrumb = content.querySelector('p[style*="margin-bottom:1.5rem"]');
+                if (breadcrumb) breadcrumb.remove();
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                printWindow.document.write(`
+                    <!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8"><title>${App.getTranslation('lesson_title', lang)}</title>
+                    <style>
+                        body { font-family: 'Georgia', serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+                        .print-header { text-align: center; border-bottom: 2px solid #008b8b; padding-bottom: 1rem; margin-bottom: 2rem; }
+                        .print-header .site-name { font-size: 1.4rem; font-weight: bold; color: #008b8b; margin: 0 0 0.3rem; }
+                        .print-header .meta-line { font-size: 0.95rem; color: #444; margin: 0.2rem 0; }
+                        .print-header .lesson-name { font-size: 1.1rem; font-weight: bold; color: #000; margin-top: 0.5rem; }
+                        .print-footer { text-align: center; border-top: 1px solid #ccc; padding-top: 1rem; margin-top: 2rem; font-size: 0.85rem; color: #666; }
+                        .degree4-lesson-comprehension-card { margin-bottom: 2rem; border: 1px solid #ccc; padding: 1rem; border-radius: 8px; }
+                        .degree4-lesson-comprehension-text { white-space: pre-line; font-style: italic; }
+                        .degree4-lesson-comprehension-vocab, .degree4-lesson-comprehension-vocab-exercise { margin-top: 1rem; background: #f5f0e6; padding: 1rem; border-radius: 8px; }
+                        .degree4-lesson-comprehension-vocab ul, .degree4-lesson-comprehension-vocab-exercise ol { list-style: none; padding: 0; }
+                        .degree4-lesson-comprehension-vocab li, .degree4-lesson-comprehension-vocab-exercise li { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
+                        .word { font-weight: bold; min-width: 120px; }
+                        .translation { color: #555; }
+                        .degree4-lesson-comprehension-answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; }
+                        @media print { @page { margin: 2cm; } }
+                    </style></head><body>
+                    <div class="print-header"><div class="site-name">${App.getTranslation('print_site_name', lang)}</div><div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div><div class="lesson-name">${App.getTranslation('lesson_title', lang)}</div></div>
+                    ${content.innerHTML}
+                    <div class="print-footer">${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}</div>
+                    </body></html>
+                `);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+        })();
+    </script>
+</body>
+</html>

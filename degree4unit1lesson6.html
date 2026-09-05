@@ -451,15 +451,15 @@
             </div>
         </section>
 
-        <!-- Section 4: Exercises (two columns) -->
+        <!-- Section 4: Exercises (2x2 grid) -->
         <section class="degree4-lesson-orthographe-card">
             <h2 data-i18n="exercises_title">Exercices</h2>
 
             <div class="degree4-lesson-orthographe-exercises-grid">
-                <!-- Ex1: Mark x or xx -->
+                <!-- Row 1: Ex1 (selection) | Ex2 (underline) -->
                 <div class="degree4-lesson-orthographe-exercise-col">
                     <div class="question-block" style="margin-bottom:2rem;">
-                        <p class="question-text" data-i18n="ex1_instruction">Je mets une croix (x) sous le dessin quand j'entends [j] et deux croix (xx) quand j'entends [gu].</p>
+                        <p class="question-text" data-i18n="ex1_instruction">Je mets un signe (✓) sous l'image quand j'entends le son [g].</p>
                         <div class="degree4-lesson-orthographe-image-grid" id="ex1ImageGrid"></div>
                         <button class="degree4-lesson-orthographe-btn" onclick="checkEx1()" data-i18n="check_answers">🔍 Vérifier les réponses</button>
                         <div id="ex1Key" class="degree4-lesson-orthographe-answer-key"></div>
@@ -472,11 +472,49 @@
                         </div>
                     </div>
                 </div>
-                <!-- Ex2: Connection (moved to second column) -->
                 <div class="degree4-lesson-orthographe-exercise-col">
                     <div class="question-block" style="margin-bottom:2rem;">
-                        <p class="question-text" data-i18n="ex2_instruction">Je relie par une flèche et j'écris les mots.</p>
-                        <div id="ex2ConnectionContainer"></div>
+                        <p class="question-text" data-i18n="ex2_instruction">Je lis la phrase et souligne les mots où j'entends le son [g].</p>
+                        <div class="degree4-lesson-orthographe-sentence-item">
+                            <button class="degree4-lesson-orthographe-play-btn" onclick="playSentenceSound('grand_mere_grippe')">▶</button>
+                            <p>Grand-mère a la grippe. Grand-père appelle le docteur. « Ce n'est pas grave, dit le médecin, quelques comprimés, beaucoup de fruits et de légumes, deux jours au lit et elle sera guérie. »</p>
+                        </div>
+                        <div class="degree4-lesson-orthographe-interactive-text" id="ex2Text" style="margin-bottom:1rem;">
+                            <p>
+                                <span class="degree4-lesson-orthographe-word" data-word="Grand-mère">Grand-mère</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="a">a</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="la">la</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="grippe">grippe.</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="Grand-père">Grand-père</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="appelle">appelle</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="le">le</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="docteur.">docteur.</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="Ce">Ce</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="n'est">n'est</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="pas">pas</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="grave,">grave,</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="dit">dit</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="le">le</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="médecin,">médecin,</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="quelques">quelques</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="comprimés,">comprimés,</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="beaucoup">beaucoup</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="de">de</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="fruits">fruits</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="et">et</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="de">de</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="légumes,">légumes,</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="deux">deux</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="jours">jours</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="au">au</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="lit">lit</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="et">et</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="elle">elle</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="sera">sera</span>
+                                <span class="degree4-lesson-orthographe-word" data-word="guérie.">guérie.</span>
+                            </p>
+                        </div>
+                        <button class="degree4-lesson-orthographe-btn" onclick="clearUnderlines()" data-i18n="clear_underlines">↺ Effacer les soulignements</button>
                         <button class="degree4-lesson-orthographe-btn" onclick="checkEx2()" data-i18n="check_answers">🔍 Vérifier les réponses</button>
                         <div id="ex2Key" class="degree4-lesson-orthographe-answer-key"></div>
                         <div id="ex2Feedback" class="degree4-lesson-orthographe-feedback"></div>
@@ -491,15 +529,29 @@
             </div>
 
             <div class="degree4-lesson-orthographe-exercises-grid">
-                <!-- Ex3: Rearrange words -->
+                <!-- Row 2: Ex3 (connection) | Ex4 (rearrange with images) -->
                 <div class="degree4-lesson-orthographe-exercise-col">
                     <div class="question-block" style="margin-bottom:2rem;">
-                        <p class="question-text" data-i18n="ex3_instruction">Je remets les mots en ordre pour former une phrase.</p>
-                        <!-- Sentence 1 -->
+                        <p class="question-text" data-i18n="ex3_instruction">Je relie par une flèche et j'écris les mots.</p>
+                        <div id="ex3ConnectionContainer"></div>
+                        <button class="degree4-lesson-orthographe-btn" onclick="checkEx3()" data-i18n="check_answers">🔍 Vérifier les réponses</button>
+                        <div id="ex3Key" class="degree4-lesson-orthographe-answer-key"></div>
+                        <div id="ex3Feedback" class="degree4-lesson-orthographe-feedback"></div>
+                        <div class="degree4-lesson-orthographe-self-assess">
+                            <span data-i18n="self_assess_question">Ma réponse est :</span>
+                            <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                            <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                            <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="degree4-lesson-orthographe-exercise-col">
+                    <div class="question-block" style="margin-bottom:2rem;">
+                        <p class="question-text" data-i18n="ex4_instruction">Je remets les mots en ordre pour former une phrase.</p>
                         <div class="degree4-lesson-orthographe-rearrange-container">
-                            <div class="degree4-lesson-orthographe-sentence-item">
+                            <div class="degree4-lesson-orthographe-sentence-item" style="flex-direction: column; align-items: center; text-align: center; gap: 0.5rem;">
                                 <button class="degree4-lesson-orthographe-play-btn" onclick="playSentenceSound('garcon_gouter')">▶</button>
-                                <p>Le petit garçon prend son goûter</p>
+                                <img src="assets4/images/degree4/unit1/lesson6/garcon_gouter.jpg" alt="Le petit garçon prend son goûter" style="max-width: 250px; height: auto; border-radius: 8px;">
                             </div>
                             <div id="rearrangeWords1" class="degree4-lesson-orthographe-words-container"></div>
                             <div id="rearrangeResult1" class="degree4-lesson-orthographe-result-area"></div>
@@ -507,11 +559,10 @@
                             <button class="degree4-lesson-orthographe-btn" onclick="checkRearrange(1)">🔍 Vérifier</button>
                             <div id="rearrangeFeedback1" class="degree4-lesson-orthographe-feedback"></div>
                         </div>
-                        <!-- Sentence 2 -->
                         <div class="degree4-lesson-orthographe-rearrange-container">
-                            <div class="degree4-lesson-orthographe-sentence-item">
+                            <div class="degree4-lesson-orthographe-sentence-item" style="flex-direction: column; align-items: center; text-align: center; gap: 0.5rem;">
                                 <button class="degree4-lesson-orthographe-play-btn" onclick="playSentenceSound('garcon_mange')">▶</button>
-                                <p>Il mange du pain, de la confiture de figue et boit du jus d'orange</p>
+                                <img src="assets4/images/degree4/unit1/lesson6/garcon_mange.jpg" alt="Il mange du pain, de la confiture de figue et boit du jus d'orange" style="max-width: 250px; height: auto; border-radius: 8px;">
                             </div>
                             <div id="rearrangeWords2" class="degree4-lesson-orthographe-words-container"></div>
                             <div id="rearrangeResult2" class="degree4-lesson-orthographe-result-area"></div>
@@ -521,13 +572,12 @@
                         </div>
                         <div class="degree4-lesson-orthographe-self-assess">
                             <span data-i18n="self_assess_question">Ma réponse est :</span>
-                            <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
-                            <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
-                            <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                            <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
+                            <label><input type="radio" name="self_ex4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                            <label><input type="radio" name="self_ex4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
                         </div>
                     </div>
                 </div>
-                <!-- Ex4: Empty or maybe another exercise? We'll keep the layout balanced with a placeholder or another rearrange. Since original had 3 exercises, we'll have 3. For the second row, only one column used. We can leave the second column empty or add a note. We'll just not add a fourth exercise, and the grid will have one column with rearrange, the other empty. That's acceptable. -->
             </div>
         </section>
 
@@ -538,7 +588,7 @@
                 <div class="degree4-lesson-orthographe-score-stat"><span data-i18n="score_correct">Correct :</span> <span id="scoreCorrect">0</span></div>
                 <div class="degree4-lesson-orthographe-score-stat"><span data-i18n="score_partial">Partiel :</span> <span id="scorePartial">0</span></div>
                 <div class="degree4-lesson-orthographe-score-stat"><span data-i18n="score_incorrect">Incorrect :</span> <span id="scoreIncorrect">0</span></div>
-                <div class="degree4-lesson-orthographe-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">3</span></div>
+                <div class="degree4-lesson-orthographe-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">4</span></div>
             </div>
             <div class="degree4-lesson-orthographe-score-actions">
                 <button id="saveResultsBtn" class="degree4-lesson-orthographe-btn" data-i18n="save_results">💾 Enregistrer mes résultats</button>
@@ -583,9 +633,10 @@
                 rule_title: "Règle",
                 rule_text: "La lettre g peut représenter le son [g] dans certains mots français, et gu représente le son [g] devant e, i, y.",
                 exercises_title: "Exercices",
-                ex1_instruction: "Je mets une croix (x) sous le dessin quand j'entends [j] et deux croix (xx) quand j'entends [gu].",
-                ex2_instruction: "Je relie par une flèche et j'écris les mots.",
-                ex3_instruction: "Je remets les mots en ordre pour former une phrase.",
+                ex1_instruction: "Je mets un signe (✓) sous l'image quand j'entends le son [g].",
+                ex2_instruction: "Je lis la phrase et souligne les mots où j'entends le son [g].",
+                ex3_instruction: "Je relie par une flèche et j'écris les mots.",
+                ex4_instruction: "Je remets les mots en ordre pour former une phrase.",
                 clear_underlines: "↺ Effacer les soulignements",
                 check_answers: "🔍 Vérifier les réponses",
                 self_assess_question: "Ma réponse est :",
@@ -629,11 +680,12 @@
                 feminine_title: "Feminine",
                 words_title: "Words:",
                 rule_title: "Rule",
-                rule_text: "The letter g can represent the sound [j] in some French words, and gu represents the sound [g] before e, i, y.",
+                rule_text: "The letter g can represent the sound [g] in some French words, and gu represents the sound [g] before e, i, y.",
                 exercises_title: "Exercises",
-                ex1_instruction: "I put a cross (x) under the drawing when I hear [j] and two crosses (xx) when I hear [gu].",
-                ex2_instruction: "I connect with an arrow and write the words.",
-                ex3_instruction: "I rearrange the words to form a sentence.",
+                ex1_instruction: "I put a sign (✓) under the image when I hear the sound [g].",
+                ex2_instruction: "I read the sentence and underline the words where I hear the sound [g].",
+                ex3_instruction: "I connect with an arrow and write the words.",
+                ex4_instruction: "I rearrange the words to form a sentence.",
                 clear_underlines: "↺ Clear underlines",
                 check_answers: "🔍 Check answers",
                 self_assess_question: "My answer is:",
@@ -679,9 +731,10 @@
                 rule_title: "القاعدة",
                 rule_text: "الحرف g يمكن أن يمثل الصوت [g] في بعض الكلمات الفرنسية، وgu يمثل الصوت [g] أمام e, i, y.",
                 exercises_title: "تمارين",
-                ex1_instruction: "أضع علامة (x) تحت الرسم عندما أسمع [j] وعلامتين (xx) عندما أسمع [gu].",
-                ex2_instruction: "أربط بسهم وأكتب الكلمات.",
-                ex3_instruction: "أعيد ترتيب الكلمات لتكوين جملة.",
+                ex1_instruction: "أضع إشارة (✓) تحت الرسم عندما أسمع الصوت [g].",
+                ex2_instruction: "أقرأ الجملة وأسطّر الكلمات التي أسمع فيها الصوت [g].",
+                ex3_instruction: "أربط بسهم وأكتب الكلمات.",
+                ex4_instruction: "أعيد ترتيب الكلمات لتكوين جملة.",
                 clear_underlines: "↺ مسح التسطير",
                 check_answers: "🔍 تحقق من الإجابات",
                 self_assess_question: "جوابي هو:",
@@ -758,41 +811,29 @@
     <!-- Initialization and exercise logic -->
     <script>
         (function() {
-            // Ex1: mark x/xx
+            // Ex1: simple image selection with sound buttons
             const ex1Images = [
-                { src: 'legumes.jpg', sound: 'gu', correctMark: 'x', label: 'légumes', word: 'legumes' },
-                { src: 'glace.jpg', sound: 'gu', correctMark: 'x', label: 'glace', word: 'glace' },
-                { src: 'fromage.jpg', sound: 'g', correctMark: 'xx', label: 'fromage', word: 'fromage' },
-                { src: 'bougie.jpg', sound: 'g', correctMark: 'xx', label: 'bougie', word: 'bougie' },
-                { src: 'garcon.jpg', sound: 'gu', correctMark: 'x', label: 'garçon', word: 'garcon' },
-                { src: 'cafe.jpg', sound: 'none', correctMark: '', label: 'café', word: 'cafe' }
+                { src: 'legumes.jpg', sound: 'g', label: 'légumes', word: 'legumes' },
+                { src: 'glace.jpg', sound: 'g', label: 'glace', word: 'glace' },
+                { src: 'fromage.jpg', sound: 'other', label: 'fromage', word: 'fromage' },
+                { src: 'bougie.jpg', sound: 'other', label: 'bougie', word: 'bougie' },
+                { src: 'garcon.jpg', sound: 'g', label: 'garçon', word: 'garcon' },
+                { src: 'cafe.jpg', sound: 'other', label: 'café', word: 'cafe' }
             ];
             const ex1Grid = document.getElementById('ex1ImageGrid');
             ex1Images.forEach(img => {
                 const div = document.createElement('div');
                 div.className = 'degree4-lesson-orthographe-image-item';
-                div.dataset.correctMark = img.correctMark;
+                div.dataset.sound = img.sound;
                 div.innerHTML = `
                     <button class="degree4-lesson-orthographe-play-btn" onclick="playWordSound('${img.word}')" style="position:absolute; top:5px; left:5px; z-index:2;">▶</button>
                     <img src="assets4/images/degree4/unit1/lesson6/${img.src}" alt="${img.label}">
                     <p>${img.label}</p>
-                    <div style="display:flex; justify-content:center; gap:5px; margin-top:5px;">
-                        <button class="degree4-lesson-orthographe-btn" data-mark="x" onclick="markEx1(this, 'x')">X</button>
-                        <button class="degree4-lesson-orthographe-btn" data-mark="xx" onclick="markEx1(this, 'xx')">XX</button>
-                    </div>
                 `;
-                div.querySelectorAll('.degree4-lesson-orthographe-btn').forEach(btn => {
-                    btn.addEventListener('click', (e) => e.stopPropagation());
-                });
+                div.addEventListener('click', () => div.classList.toggle('selected'));
+                div.querySelector('button').addEventListener('click', (e) => e.stopPropagation());
                 ex1Grid.appendChild(div);
             });
-
-            window.markEx1 = function(button, mark) {
-                const item = button.closest('.degree4-lesson-orthographe-image-item');
-                item.querySelectorAll('.degree4-lesson-orthographe-btn').forEach(b => b.classList.remove('selected'));
-                button.classList.add('selected');
-                item.dataset.userMark = mark;
-            };
 
             window.checkEx1 = async function() {
                 if (!await requireAuth()) return;
@@ -800,13 +841,15 @@
                 let score = 0, total = items.length;
                 let feedbackHTML = '';
                 items.forEach(item => {
-                    const correct = item.dataset.correctMark;
-                    const user = item.dataset.userMark || '';
-                    if (user === correct) {
+                    const shouldSelect = item.dataset.sound === 'g';
+                    const isSelected = item.classList.contains('selected');
+                    if (shouldSelect && isSelected) {
                         score++;
                         feedbackHTML += `<p style="color:green">✓ ${item.querySelector('p').textContent}</p>`;
-                    } else {
-                        feedbackHTML += `<p style="color:red">✗ ${item.querySelector('p').textContent} (attendu: ${correct || 'aucun'})</p>`;
+                    } else if (shouldSelect && !isSelected) {
+                        feedbackHTML += `<p style="color:red">✗ ${item.querySelector('p').textContent} (doit être sélectionné)</p>`;
+                    } else if (!shouldSelect && isSelected) {
+                        feedbackHTML += `<p style="color:red">✗ ${item.querySelector('p').textContent} (ne doit pas être sélectionné)</p>`;
                     }
                 });
                 const percent = Math.round((score / total) * 100);
@@ -817,14 +860,46 @@
                 document.getElementById('ex1Feedback').className = score === total ? 'degree4-lesson-orthographe-feedback correct' : 'degree4-lesson-orthographe-feedback wrong';
             };
 
-            // Ex2: Connection
+            // Ex2: underline words
+            window.clearUnderlines = function() {
+                document.querySelectorAll('.degree4-lesson-orthographe-word.underlined').forEach(w => w.classList.remove('underlined'));
+            };
+            window.checkEx2 = async function() {
+                if (!await requireAuth()) return;
+                const correctWords = ['Grand-mère', 'Grand-père', 'grippe', 'grave', 'guérie', 'Gérard', 'girafes', 'guépards', 'guitare', 'gâteaux', 'gourmands'];
+                const userWords = [];
+                document.querySelectorAll('#ex2Text .degree4-lesson-orthographe-word.underlined').forEach(w => userWords.push(w.dataset.word));
+                let correctCount = 0;
+                let feedbackHTML = '';
+                correctWords.forEach(word => {
+                    if (userWords.includes(word)) {
+                        correctCount++;
+                        feedbackHTML += `<p style="color:green">✓ ${word}</p>`;
+                    } else {
+                        feedbackHTML += `<p style="color:red">✗ ${word} (non souligné)</p>`;
+                    }
+                });
+                userWords.forEach(word => {
+                    if (!correctWords.includes(word)) {
+                        feedbackHTML += `<p style="color:red">✗ ${word} (ne devrait pas être souligné)</p>`;
+                    }
+                });
+                const percent = Math.round((correctCount / correctWords.length) * 100);
+                playSound(correctCount === correctWords.length ? 'complete' : correctCount > 0 ? 'correct' : 'wrong');
+                toggleAnswer('ex2Key');
+                document.getElementById('ex2Key').innerHTML = `<strong>Correction :</strong><br>${feedbackHTML}`;
+                document.getElementById('ex2Feedback').textContent = `Score : ${percent}%`;
+                document.getElementById('ex2Feedback').className = correctCount === correctWords.length ? 'degree4-lesson-orthographe-feedback correct' : 'degree4-lesson-orthographe-feedback wrong';
+            };
+
+            // Ex3: Connection
             const connectionData = [
                 { word: 'gigot', parts1: ['gu', 'gi', 'ge'], parts2: ['gott', 'ge', 'got'], correct1: 'gi', correct2: 'got' },
                 { word: 'plage', parts1: ['plu', 'ple', 'pla'], parts2: ['gi', 'gue', 'ge'], correct1: 'pla', correct2: 'ge' },
                 { word: 'bague', parts1: ['bo', 'be', 'ba'], parts2: ['gu', 'ge', 'gue'], correct1: 'ba', correct2: 'gue' },
                 { word: 'gilet', parts1: ['ge', 'gu', 'gi'], parts2: ['lot', 'lit', 'let'], correct1: 'gi', correct2: 'let' }
             ];
-            const ex2Container = document.getElementById('ex2ConnectionContainer');
+            const ex3Container = document.getElementById('ex3ConnectionContainer');
             connectionData.forEach(item => {
                 const row = document.createElement('div');
                 row.className = 'degree4-lesson-orthographe-connection-row';
@@ -868,7 +943,7 @@
                 row.appendChild(col1);
                 row.appendChild(col2);
                 row.appendChild(col3);
-                ex2Container.appendChild(row);
+                ex3Container.appendChild(row);
             });
 
             function selectPart(row, part) {
@@ -891,9 +966,9 @@
                 }
             }
 
-            window.checkEx2 = async function() {
+            window.checkEx3 = async function() {
                 if (!await requireAuth()) return;
-                const rows = document.querySelectorAll('#ex2ConnectionContainer .degree4-lesson-orthographe-connection-row');
+                const rows = document.querySelectorAll('#ex3ConnectionContainer .degree4-lesson-orthographe-connection-row');
                 let score = 0, total = rows.length;
                 let feedbackHTML = '';
                 rows.forEach(row => {
@@ -909,28 +984,35 @@
                 });
                 const percent = Math.round((score / total) * 100);
                 playSound(score === total ? 'complete' : score > 0 ? 'correct' : 'wrong');
-                toggleAnswer('ex2Key');
-                document.getElementById('ex2Key').innerHTML = `<strong>Correction :</strong><br>${feedbackHTML}`;
-                document.getElementById('ex2Feedback').textContent = `Score : ${percent}%`;
-                document.getElementById('ex2Feedback').className = score === total ? 'degree4-lesson-orthographe-feedback correct' : 'degree4-lesson-orthographe-feedback wrong';
+                toggleAnswer('ex3Key');
+                document.getElementById('ex3Key').innerHTML = `<strong>Correction :</strong><br>${feedbackHTML}`;
+                document.getElementById('ex3Feedback').textContent = `Score : ${percent}%`;
+                document.getElementById('ex3Feedback').className = score === total ? 'degree4-lesson-orthographe-feedback correct' : 'degree4-lesson-orthographe-feedback wrong';
             };
 
-            // Ex3: Rearrange
+            // Ex4: Rearrange with images
             const rearrangeData = {
                 1: {
                     words: ["Le", "petit", "garçon", "prend", "son", "goûter"],
-                    target: "Le petit garçon prend son goûter"
+                    target: "Le petit garçon prend son goûter",
+                    containerId: 'rearrangeWords1',
+                    resultId: 'rearrangeResult1',
+                    feedbackId: 'rearrangeFeedback1'
                 },
                 2: {
                     words: ["Il", "mange", "du", "pain,", "de", "la", "confiture", "de", "figue", "et", "boit", "du", "jus", "d'orange"],
-                    target: "Il mange du pain, de la confiture de figue et boit du jus d'orange"
+                    target: "Il mange du pain, de la confiture de figue et boit du jus d'orange",
+                    containerId: 'rearrangeWords2',
+                    resultId: 'rearrangeResult2',
+                    feedbackId: 'rearrangeFeedback2'
                 }
             };
 
             Object.keys(rearrangeData).forEach(num => {
-                const container = document.getElementById(`rearrangeWords${num}`);
-                const result = document.getElementById(`rearrangeResult${num}`);
-                const shuffled = [...rearrangeData[num].words].sort(() => Math.random() - 0.5);
+                const data = rearrangeData[num];
+                const container = document.getElementById(data.containerId);
+                const result = document.getElementById(data.resultId);
+                const shuffled = [...data.words].sort(() => Math.random() - 0.5);
                 shuffled.forEach(word => {
                     const tile = document.createElement('div');
                     tile.className = 'degree4-lesson-orthographe-word-tile';
@@ -943,8 +1025,9 @@
             });
 
             window.clearRearrange = function(num) {
-                const container = document.getElementById(`rearrangeWords${num}`);
-                const result = document.getElementById(`rearrangeResult${num}`);
+                const data = rearrangeData[num];
+                const container = document.getElementById(data.containerId);
+                const result = document.getElementById(data.resultId);
                 while (result.firstChild) {
                     container.appendChild(result.firstChild);
                 }
@@ -952,14 +1035,14 @@
 
             window.checkRearrange = async function(num) {
                 if (!await requireAuth()) return;
-                const result = document.getElementById(`rearrangeResult${num}`);
+                const data = rearrangeData[num];
+                const result = document.getElementById(data.resultId);
                 const userWords = Array.from(result.children).map(el => el.textContent);
                 const userSentence = userWords.join(' ');
-                const target = rearrangeData[num].target;
-                const isCorrect = userSentence === target;
+                const isCorrect = userSentence === data.target;
                 playSound(isCorrect ? 'complete' : 'wrong');
-                const feedback = document.getElementById(`rearrangeFeedback${num}`);
-                feedback.textContent = isCorrect ? '✅ Correct !' : `❌ Incorrect. La phrase correcte est : ${target}`;
+                const feedback = document.getElementById(data.feedbackId);
+                feedback.textContent = isCorrect ? '✅ Correct !' : `❌ Incorrect. La phrase correcte est : ${data.target}`;
                 feedback.className = isCorrect ? 'degree4-lesson-orthographe-feedback correct' : 'degree4-lesson-orthographe-feedback wrong';
             };
 
@@ -988,6 +1071,11 @@
             window.playWordSound = function(word) {
                 new Audio(`assets4/sounds/degree4/unit1/lesson6/${word}.mp3`).play().catch(()=>{});
             };
+
+            // Setup word underlining
+            document.querySelectorAll('.degree4-lesson-orthographe-word').forEach(word => {
+                word.addEventListener('click', () => word.classList.toggle('underlined'));
+            });
 
             // Standard scoring, save, print
             function updateScore() {

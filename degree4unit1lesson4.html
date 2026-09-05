@@ -325,6 +325,42 @@
         .degree4-lesson-orthographe-exercise-col {
             min-width: 0;
         }
+        /* Rearrange styles (copied from lessons 5/6) */
+        .degree4-lesson-orthographe-rearrange-container {
+            margin: 15px 0;
+        }
+        .degree4-lesson-orthographe-words-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        .degree4-lesson-orthographe-word-tile {
+            padding: 6px 12px;
+            background-color: #e8f4f8;
+            border: 1px solid var(--degree4-lesson-orthographe-accent);
+            border-radius: 20px;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.2s;
+        }
+        .degree4-lesson-orthographe-word-tile:hover {
+            background-color: #d1e7f3;
+        }
+        .degree4-lesson-orthographe-result-area {
+            min-height: 40px;
+            border: 1px dashed var(--degree4-lesson-orthographe-accent);
+            border-radius: 6px;
+            padding: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+        .degree4-lesson-orthographe-result-area .degree4-lesson-orthographe-word-tile {
+            background-color: #c8e6c9;
+            border-color: #2e7d32;
+        }
         @media (max-width: 900px) {
             .degree4-lesson-orthographe-exercises-grid {
                 grid-template-columns: 1fr;
@@ -508,7 +544,7 @@
             </div>
 
             <div class="degree4-lesson-orthographe-exercises-grid">
-                <!-- Second row: Ex3 | Ex4 -->
+                <!-- Second row: Ex3 | Ex4 (now rearrange) -->
                 <div class="degree4-lesson-orthographe-exercise-col">
                     <div class="question-block" style="margin-bottom:2rem;">
                         <p class="question-text" data-i18n="ex3_instruction">Je relie par une flèche et j'écris les mots.</p>
@@ -526,22 +562,34 @@
                 </div>
                 <div class="degree4-lesson-orthographe-exercise-col">
                     <div class="question-block" style="margin-bottom:2rem;">
-                        <p class="question-text" data-i18n="ex4_instruction">Je produis une phrase.</p>
-                        <div class="degree4-lesson-orthographe-sentence-group" style="margin-bottom:1.5rem;">
-                            <p data-i18n="ex4_desc1">Regarde l'image et écris une phrase en utilisant les mots suivants:</p>
-                            <img src="assets4/images/degree4/unit1/lesson4/zazie_market.jpg" alt="Zazie au marché" style="max-width:100%; height:auto; border-radius:8px;">
-                            <p>Au marché | Zazie | des fraises | achète | et | des cerises</p>
-                            <textarea id="sentence1" rows="3" style="width:100%; padding:0.5rem; border:1px solid var(--degree4-lesson-orthographe-border); border-radius:4px;"></textarea>
+                        <p class="question-text" data-i18n="ex4_instruction">Je remets les mots en ordre pour former une phrase.</p>
+                        
+                        <!-- Rearrange Exercise 1 -->
+                        <div class="degree4-lesson-orthographe-rearrange-container">
+                            <div class="degree4-lesson-orthographe-sentence-item" style="flex-direction: column; align-items: center; text-align: center; gap: 0.5rem;">
+                                <button class="degree4-lesson-orthographe-play-btn" onclick="playSentenceSound('zazie_market')">▶</button>
+                                <img src="assets4/images/degree4/unit1/lesson4/zazie_market.jpg" alt="Zazie au marché" style="max-width: 250px; height: auto; border-radius: 8px;">
+                            </div>
+                            <div id="rearrangeWords1" class="degree4-lesson-orthographe-words-container"></div>
+                            <div id="rearrangeResult1" class="degree4-lesson-orthographe-result-area"></div>
+                            <button class="degree4-lesson-orthographe-btn" onclick="clearRearrange(1)">↺ Effacer</button>
+                            <button class="degree4-lesson-orthographe-btn" onclick="checkRearrange(1)">🔍 Vérifier</button>
+                            <div id="rearrangeFeedback1" class="degree4-lesson-orthographe-feedback"></div>
                         </div>
-                        <div class="degree4-lesson-orthographe-sentence-group" style="margin-bottom:1.5rem;">
-                            <p data-i18n="ex4_desc2">Regarde l'image et écris une phrase en utilisant les mots suivants:</p>
-                            <img src="assets4/images/degree4/unit1/lesson4/gazelle.jpg" alt="Une gazelle" style="max-width:100%; height:auto; border-radius:8px;">
-                            <p>Une gazelle | la savane | dans | court</p>
-                            <textarea id="sentence2" rows="3" style="width:100%; padding:0.5rem; border:1px solid var(--degree4-lesson-orthographe-border); border-radius:4px;"></textarea>
+                        
+                        <!-- Rearrange Exercise 2 -->
+                        <div class="degree4-lesson-orthographe-rearrange-container">
+                            <div class="degree4-lesson-orthographe-sentence-item" style="flex-direction: column; align-items: center; text-align: center; gap: 0.5rem;">
+                                <button class="degree4-lesson-orthographe-play-btn" onclick="playSentenceSound('gazelle')">▶</button>
+                                <img src="assets4/images/degree4/unit1/lesson4/gazelle.jpg" alt="Une gazelle" style="max-width: 250px; height: auto; border-radius: 8px;">
+                            </div>
+                            <div id="rearrangeWords2" class="degree4-lesson-orthographe-words-container"></div>
+                            <div id="rearrangeResult2" class="degree4-lesson-orthographe-result-area"></div>
+                            <button class="degree4-lesson-orthographe-btn" onclick="clearRearrange(2)">↺ Effacer</button>
+                            <button class="degree4-lesson-orthographe-btn" onclick="checkRearrange(2)">🔍 Vérifier</button>
+                            <div id="rearrangeFeedback2" class="degree4-lesson-orthographe-feedback"></div>
                         </div>
-                        <button class="degree4-lesson-orthographe-btn" onclick="checkEx4()" data-i18n="check_answers">🔍 Vérifier les phrases</button>
-                        <div id="ex4Key" class="degree4-lesson-orthographe-answer-key"></div>
-                        <div id="ex4Feedback" class="degree4-lesson-orthographe-feedback"></div>
+                        
                         <div class="degree4-lesson-orthographe-self-assess">
                             <span data-i18n="self_assess_question">Ma réponse est :</span>
                             <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
@@ -609,9 +657,10 @@
                 ex1_instruction: "Je mets un signe (✓) sous l'image quand j'entends le son [z].",
                 ex2_instruction: "Je lis la phrase et souligne les mots où j'entends le son [z].",
                 ex3_instruction: "Je relie par une flèche et j'écris les mots.",
-                ex4_instruction: "Je produis une phrase.",
-                ex4_desc1: "Regarde l'image et écris une phrase en utilisant les mots suivants:",
-                ex4_desc2: "Regarde l'image et écris une phrase en utilisant les mots suivants:",
+                ex4_instruction: "Je remets les mots en ordre pour former une phrase.",
+                // Updated descriptions for rearrange
+                ex4_desc1: "Écoute la phrase et remets les mots en ordre.",
+                ex4_desc2: "Écoute la phrase et remets les mots en ordre.",
                 clear_underlines: "↺ Effacer les soulignements",
                 check_answers: "🔍 Vérifier les réponses",
                 self_assess_question: "Ma réponse est :",
@@ -661,9 +710,9 @@
                 ex1_instruction: "I put a sign (✓) under the image when I hear the sound [z].",
                 ex2_instruction: "I read the sentence and underline the words where I hear the sound [z].",
                 ex3_instruction: "I connect with an arrow and write the words.",
-                ex4_instruction: "I produce a sentence.",
-                ex4_desc1: "Look at the image and write a sentence using the following words:",
-                ex4_desc2: "Look at the image and write a sentence using the following words:",
+                ex4_instruction: "I rearrange the words to form a sentence.",
+                ex4_desc1: "Listen to the sentence and rearrange the words.",
+                ex4_desc2: "Listen to the sentence and rearrange the words.",
                 clear_underlines: "↺ Clear underlines",
                 check_answers: "🔍 Check answers",
                 self_assess_question: "My answer is:",
@@ -713,9 +762,9 @@
                 ex1_instruction: "أضع إشارة (✓) تحت الرسم عندما أسمع الصوت [z].",
                 ex2_instruction: "أقرأ الجملة وأسطّر الكلمات التي أسمع فيها الصوت [z].",
                 ex3_instruction: "أربط بسهم وأكتب الكلمات.",
-                ex4_instruction: "أنتج جملة.",
-                ex4_desc1: "انظر إلى الصورة واكتب جملة باستخدام الكلمات التالية:",
-                ex4_desc2: "انظر إلى الصورة واكتب جملة باستخدام الكلمات التالية:",
+                ex4_instruction: "أعيد ترتيب الكلمات لتكوين جملة.",
+                ex4_desc1: "استمع إلى الجملة وأعد ترتيب الكلمات.",
+                ex4_desc2: "استمع إلى الجملة وأعد ترتيب الكلمات.",
                 clear_underlines: "↺ مسح التسطير",
                 check_answers: "🔍 تحقق من الإجابات",
                 self_assess_question: "جوابي هو:",
@@ -794,30 +843,29 @@
         (function() {
             // Populate image grid for ex1
             const ex1Images = [
-    { src: 'zebre.jpg', sound: 'z', label: 'zèbre', word: 'zebre' },
-    { src: 'oie.jpg', sound: 's', label: 'oie', word: 'oie' },
-    { src: 'valise.jpg', sound: 'z', label: 'valise', word: 'valise' },
-    { src: 'ardoise.jpg', sound: 'z', label: 'ardoise', word: 'ardoise' },
-    { src: 'veste.jpg', sound: 's', label: 'veste', word: 'veste' },
-    { src: 'soleil.jpg', sound: 's', label: 'soleil', word: 'soleil' },
-    { src: 'chaise.jpg', sound: 'z', label: 'chaise', word: 'chaise' },
-    { src: 'fraise.jpg', sound: 'z', label: 'fraise', word: 'fraise' }
-];
+                { src: 'zebre.jpg', sound: 'z', label: 'zèbre', word: 'zebre' },
+                { src: 'oie.jpg', sound: 's', label: 'oie', word: 'oie' },
+                { src: 'valise.jpg', sound: 'z', label: 'valise', word: 'valise' },
+                { src: 'ardoise.jpg', sound: 'z', label: 'ardoise', word: 'ardoise' },
+                { src: 'veste.jpg', sound: 's', label: 'veste', word: 'veste' },
+                { src: 'soleil.jpg', sound: 's', label: 'soleil', word: 'soleil' },
+                { src: 'chaise.jpg', sound: 'z', label: 'chaise', word: 'chaise' },
+                { src: 'fraise.jpg', sound: 'z', label: 'fraise', word: 'fraise' }
+            ];
             const ex1Grid = document.getElementById('ex1ImageGrid');
             ex1Images.forEach(img => {
-    const div = document.createElement('div');
-    div.className = 'degree4-lesson-orthographe-image-item';
-    div.dataset.sound = img.sound;
-    div.innerHTML = `
-        <button class="degree4-lesson-orthographe-play-btn" onclick="playWordSound('${img.word}')" style="position:absolute; top:5px; left:5px; z-index:2;">▶</button>
-        <img src="assets4/images/degree4/unit1/lesson4/${img.src}" alt="${img.label}">
-        <p>${img.label}</p>
-    `;
-    div.addEventListener('click', () => div.classList.toggle('selected'));
-    // Prevent toggling selected when clicking the button
-    div.querySelector('button').addEventListener('click', (e) => e.stopPropagation());
-    ex1Grid.appendChild(div);
-});
+                const div = document.createElement('div');
+                div.className = 'degree4-lesson-orthographe-image-item';
+                div.dataset.sound = img.sound;
+                div.innerHTML = `
+                    <button class="degree4-lesson-orthographe-play-btn" onclick="playWordSound('${img.word}')" style="position:absolute; top:5px; left:5px; z-index:2;">▶</button>
+                    <img src="assets4/images/degree4/unit1/lesson4/${img.src}" alt="${img.label}">
+                    <p>${img.label}</p>
+                `;
+                div.addEventListener('click', () => div.classList.toggle('selected'));
+                div.querySelector('button').addEventListener('click', (e) => e.stopPropagation());
+                ex1Grid.appendChild(div);
+            });
 
             // Populate connection rows for ex3
             const connectionData = [
@@ -894,7 +942,7 @@
                 }
             }
 
-            // Helper functions
+            // Helpers
             async function requireAuth() {
                 const { data: { session } } = await App.supabase.auth.getSession();
                 if (!session) {
@@ -917,9 +965,10 @@
             window.playSentenceSound = function(name) {
                 new Audio(`assets4/sounds/degree4/unit1/lesson4/sentences/${name}.mp3`).play().catch(()=>{});
             };
-window.playWordSound = function(word) {
-    new Audio(`assets4/sounds/degree4/unit1/lesson4/${word}.mp3`).play().catch(()=>{});
-};
+            window.playWordSound = function(word) {
+                new Audio(`assets4/sounds/degree4/unit1/lesson4/${word}.mp3`).play().catch(()=>{});
+            };
+
             // Ex1 check
             window.checkEx1 = async function() {
                 if (!await requireAuth()) return;
@@ -1003,22 +1052,61 @@ window.playWordSound = function(word) {
                 document.getElementById('ex3Feedback').className = score === total ? 'degree4-lesson-orthographe-feedback correct' : 'degree4-lesson-orthographe-feedback wrong';
             };
 
-            // Ex4 check
-            window.checkEx4 = async function() {
+            // ====== Ex4: Rearrange (replaces previous textarea version) ======
+            const rearrangeData = {
+                1: {
+                    words: ["Zazie", "achète", "des", "fraises", "et", "des", "cerises", "au", "marché"],
+                    target: "Zazie achète des fraises et des cerises au marché",
+                    containerId: 'rearrangeWords1',
+                    resultId: 'rearrangeResult1',
+                    feedbackId: 'rearrangeFeedback1'
+                },
+                2: {
+                    words: ["Une", "gazelle", "court", "dans", "la", "savane"],
+                    target: "Une gazelle court dans la savane",
+                    containerId: 'rearrangeWords2',
+                    resultId: 'rearrangeResult2',
+                    feedbackId: 'rearrangeFeedback2'
+                }
+            };
+
+            // Initialize rearrange exercises
+            Object.keys(rearrangeData).forEach(num => {
+                const data = rearrangeData[num];
+                const container = document.getElementById(data.containerId);
+                const result = document.getElementById(data.resultId);
+                const shuffled = [...data.words].sort(() => Math.random() - 0.5);
+                shuffled.forEach(word => {
+                    const tile = document.createElement('div');
+                    tile.className = 'degree4-lesson-orthographe-word-tile';
+                    tile.textContent = word;
+                    tile.addEventListener('click', () => {
+                        result.appendChild(tile);
+                    });
+                    container.appendChild(tile);
+                });
+            });
+
+            window.clearRearrange = function(num) {
+                const data = rearrangeData[num];
+                const container = document.getElementById(data.containerId);
+                const result = document.getElementById(data.resultId);
+                while (result.firstChild) {
+                    container.appendChild(result.firstChild);
+                }
+            };
+
+            window.checkRearrange = async function(num) {
                 if (!await requireAuth()) return;
-                const correct1 = "Zazie achète des fraises et des cerises au marché";
-                const correct2 = "Une gazelle court dans la savane";
-                const s1 = document.getElementById('sentence1').value.trim().toLowerCase();
-                const s2 = document.getElementById('sentence2').value.trim().toLowerCase();
-                let score = 0, total = 2;
-                let feedbackHTML = '';
-                if (s1 === correct1.toLowerCase()) { score++; feedbackHTML += `<p style="color:green">✓ Phrase 1</p>`; } else feedbackHTML += `<p style="color:red">✗ Phrase 1 → ${correct1}</p>`;
-                if (s2 === correct2.toLowerCase()) { score++; feedbackHTML += `<p style="color:green">✓ Phrase 2</p>`; } else feedbackHTML += `<p style="color:red">✗ Phrase 2 → ${correct2}</p>`;
-                playSound(score === total ? 'complete' : score > 0 ? 'correct' : 'wrong');
-                toggleAnswer('ex4Key');
-                document.getElementById('ex4Key').innerHTML = `<strong>Correction :</strong><br>${feedbackHTML}`;
-                document.getElementById('ex4Feedback').textContent = `Score : ${Math.round((score/total)*100)}%`;
-                document.getElementById('ex4Feedback').className = score === total ? 'degree4-lesson-orthographe-feedback correct' : 'degree4-lesson-orthographe-feedback wrong';
+                const data = rearrangeData[num];
+                const result = document.getElementById(data.resultId);
+                const userWords = Array.from(result.children).map(el => el.textContent);
+                const userSentence = userWords.join(' ');
+                const isCorrect = userSentence === data.target;
+                playSound(isCorrect ? 'complete' : 'wrong');
+                const feedback = document.getElementById(data.feedbackId);
+                feedback.textContent = isCorrect ? '✅ Correct !' : `❌ Incorrect. La phrase correcte est : ${data.target}`;
+                feedback.className = isCorrect ? 'degree4-lesson-orthographe-feedback correct' : 'degree4-lesson-orthographe-feedback wrong';
             };
 
             // Setup word underlining
