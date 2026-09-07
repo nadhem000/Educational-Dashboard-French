@@ -27,6 +27,12 @@
       line-height: 1.7;
       transition: background var(--transition), color var(--transition);
     }
+	body.dark {
+  --module-bg: #25211c;        /* dark background for modules */
+  --module-header-bg: #332e25; /* dark background for module headers */
+  --part-bg: #2a2620;          /* dark background for part separators and coming-soon */
+  --part-border: #3e3830;      /* darker border for part separators */
+}
     .back-nav {
       background: var(--card-bg);
       border-bottom: 1px solid var(--border);
@@ -123,7 +129,7 @@
     }
     .module-body {
       overflow: hidden;
-      max-height: 1000px;
+      max-height: none;
       transition: max-height 0.4s ease;
     }
     .module-body.collapsed {
