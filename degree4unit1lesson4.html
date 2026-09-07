@@ -7,6 +7,7 @@
     <link rel="manifest" href="/manifest.json">
     <link rel="stylesheet" href="shared.css">
     <style>
+        /* CSS unchanged from original */
         :root {
             --degree4-lesson-orthographe-bg: #f9f7f1;
             --degree4-lesson-orthographe-card: #ffffff;
@@ -99,7 +100,6 @@
             display: inline-block;
             padding-bottom: 0.3rem;
         }
-        /* Sentence sound buttons */
         .degree4-lesson-orthographe-play-btn {
             background: var(--degree4-lesson-orthographe-accent);
             color: #fff;
@@ -128,7 +128,6 @@
             margin: 0;
             flex: 1;
         }
-        /* Image grid */
         .degree4-lesson-orthographe-image-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -158,7 +157,6 @@
             object-fit: cover;
             border-radius: 5px;
         }
-        /* Word underline */
         .degree4-lesson-orthographe-word {
             cursor: pointer;
             padding: 2px 4px;
@@ -174,7 +172,6 @@
             text-decoration-thickness: 2px;
             background-color: #e8f4fc;
         }
-        /* Connection exercise */
         .degree4-lesson-orthographe-connection-row {
             display: flex;
             align-items: center;
@@ -234,7 +231,6 @@
             background-color: #e8f5e9;
             display: none;
         }
-        /* Feedback */
         .degree4-lesson-orthographe-answer-key {
             display: none;
             margin-top: 0.8rem;
@@ -285,7 +281,6 @@
         .degree4-lesson-orthographe-self-assess input[type="radio"] {
             accent-color: var(--degree4-lesson-orthographe-accent);
         }
-        /* Score area */
         .degree4-lesson-orthographe-score-area {
             background: var(--degree4-lesson-orthographe-card);
             border: 1px solid var(--degree4-lesson-orthographe-border);
@@ -315,7 +310,6 @@
             gap: 0.8rem;
             flex-wrap: wrap;
         }
-        /* Two-column exercises layout */
         .degree4-lesson-orthographe-exercises-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -325,7 +319,6 @@
         .degree4-lesson-orthographe-exercise-col {
             min-width: 0;
         }
-        /* Rearrange styles (copied from lessons 5/6) */
         .degree4-lesson-orthographe-rearrange-container {
             margin: 15px 0;
         }
@@ -377,7 +370,6 @@
 <body>
     <!-- Hidden shell elements required by ed-french-ini.js -->
     <div id="toast-container"></div>
-    <div id="toast"></div>
     <button id="signInBtn" style="display:none"></button>
 
     <div id="main-content" class="degree4-lesson-orthographe-container">
@@ -434,25 +426,25 @@
             <div style="display:flex; gap:1.5rem; flex-wrap:wrap;">
                 <div style="flex:1;">
                     <h3 data-i18n="plural_title">Pluriel</h3>
-                    <p>des gazelles</p>
-                    <p>des fraises</p>
-                    <p>des zèbres</p>
+                    <p data-i18n="plural_word1">des gazelles</p>
+                    <p data-i18n="plural_word2">des fraises</p>
+                    <p data-i18n="plural_word3">des zèbres</p>
                 </div>
                 <div style="flex:1;">
                     <h3 data-i18n="singular_title">Singulier</h3>
-                    <p>une gazelle</p>
-                    <p>une fraise</p>
-                    <p>un zèbre</p>
+                    <p data-i18n="singular_word1">une gazelle</p>
+                    <p data-i18n="singular_word2">une fraise</p>
+                    <p data-i18n="singular_word3">un zèbre</p>
                 </div>
             </div>
             <div class="degree4-lesson-orthographe-image-grid" style="max-width:400px; margin-top:1rem;">
                 <div class="degree4-lesson-orthographe-image-item">
                     <img src="assets4/images/degree4/unit1/lesson4/lezard.jpg" alt="un lézard">
-                    <p>un lézard</p>
+                    <p data-i18n="image_leopard">un lézard</p>
                 </div>
                 <div class="degree4-lesson-orthographe-image-item">
                     <img src="assets4/images/degree4/unit1/lesson4/valise.jpg" alt="une valise">
-                    <p>une valise</p>
+                    <p data-i18n="image_valise">une valise</p>
                 </div>
             </div>
         </section>
@@ -489,14 +481,13 @@
                 <div class="degree4-lesson-orthographe-exercise-col">
                     <div class="question-block" style="margin-bottom:2rem;">
                         <p class="question-text" data-i18n="ex2_instruction">Je lis la phrase et souligne les mots où j'entends le son [z].</p>
-                        <!-- Additional sentence sound buttons -->
                         <div class="degree4-lesson-orthographe-sentence-item">
                             <button class="degree4-lesson-orthographe-play-btn" onclick="playSentenceSound('denise_et_elisabeth')">▶</button>
-                            <p>Denise et Élisabeth regardent un film de Zorro à la télévision.</p>
+                            <p data-i18n="ex2_sentence1">Denise et Élisabeth regardent un film de Zorro à la télévision.</p>
                         </div>
                         <div class="degree4-lesson-orthographe-sentence-item">
                             <button class="degree4-lesson-orthographe-play-btn" onclick="playSentenceSound('elise_et_ses_cousins')">▶</button>
-                            <p>Elise et ses cousins vont au zoo. Ils regardent les zèbres et les gazelles.</p>
+                            <p data-i18n="ex2_sentence2">Elise et ses cousins vont au zoo. Ils regardent les zèbres et les gazelles.</p>
                         </div>
                         <div class="degree4-lesson-orthographe-interactive-text" id="ex2Text" style="margin-bottom:1rem;">
                             <p>
@@ -544,7 +535,7 @@
             </div>
 
             <div class="degree4-lesson-orthographe-exercises-grid">
-                <!-- Second row: Ex3 | Ex4 (now rearrange) -->
+                <!-- Second row: Ex3 | Ex4 (rearrange) -->
                 <div class="degree4-lesson-orthographe-exercise-col">
                     <div class="question-block" style="margin-bottom:2rem;">
                         <p class="question-text" data-i18n="ex3_instruction">Je relie par une flèche et j'écris les mots.</p>
@@ -572,8 +563,8 @@
                             </div>
                             <div id="rearrangeWords1" class="degree4-lesson-orthographe-words-container"></div>
                             <div id="rearrangeResult1" class="degree4-lesson-orthographe-result-area"></div>
-                            <button class="degree4-lesson-orthographe-btn" onclick="clearRearrange(1)">↺ Effacer</button>
-                            <button class="degree4-lesson-orthographe-btn" onclick="checkRearrange(1)">🔍 Vérifier</button>
+                            <button class="degree4-lesson-orthographe-btn" onclick="clearRearrange(1)" data-i18n="clear">↺ Effacer</button>
+                            <button class="degree4-lesson-orthographe-btn" onclick="checkRearrange(1)" data-i18n="check">🔍 Vérifier</button>
                             <div id="rearrangeFeedback1" class="degree4-lesson-orthographe-feedback"></div>
                         </div>
                         
@@ -585,8 +576,8 @@
                             </div>
                             <div id="rearrangeWords2" class="degree4-lesson-orthographe-words-container"></div>
                             <div id="rearrangeResult2" class="degree4-lesson-orthographe-result-area"></div>
-                            <button class="degree4-lesson-orthographe-btn" onclick="clearRearrange(2)">↺ Effacer</button>
-                            <button class="degree4-lesson-orthographe-btn" onclick="checkRearrange(2)">🔍 Vérifier</button>
+                            <button class="degree4-lesson-orthographe-btn" onclick="clearRearrange(2)" data-i18n="clear">↺ Effacer</button>
+                            <button class="degree4-lesson-orthographe-btn" onclick="checkRearrange(2)" data-i18n="check">🔍 Vérifier</button>
                             <div id="rearrangeFeedback2" class="degree4-lesson-orthographe-feedback"></div>
                         </div>
                         
@@ -651,17 +642,26 @@
                 observation_title: "Observation [z]",
                 plural_title: "Pluriel",
                 singular_title: "Singulier",
+                plural_word1: "des gazelles",
+                plural_word2: "des fraises",
+                plural_word3: "des zèbres",
+                singular_word1: "une gazelle",
+                singular_word2: "une fraise",
+                singular_word3: "un zèbre",
+                image_leopard: "un lézard",
+                image_valise: "une valise",
                 rule_title: "Règle",
                 rule_text: "La lettre s peut représenter le son [z] dans certains mots français.",
                 exercises_title: "Exercices",
                 ex1_instruction: "Je mets un signe (✓) sous l'image quand j'entends le son [z].",
                 ex2_instruction: "Je lis la phrase et souligne les mots où j'entends le son [z].",
+                ex2_sentence1: "Denise et Élisabeth regardent un film de Zorro à la télévision.",
+                ex2_sentence2: "Elise et ses cousins vont au zoo. Ils regardent les zèbres et les gazelles.",
                 ex3_instruction: "Je relie par une flèche et j'écris les mots.",
                 ex4_instruction: "Je remets les mots en ordre pour former une phrase.",
-                // Updated descriptions for rearrange
-                ex4_desc1: "Écoute la phrase et remets les mots en ordre.",
-                ex4_desc2: "Écoute la phrase et remets les mots en ordre.",
                 clear_underlines: "↺ Effacer les soulignements",
+                clear: "↺ Effacer",
+                check: "🔍 Vérifier",
                 check_answers: "🔍 Vérifier les réponses",
                 self_assess_question: "Ma réponse est :",
                 self_correct: "Correcte",
@@ -704,16 +704,26 @@
                 observation_title: "Observation [z]",
                 plural_title: "Plural",
                 singular_title: "Singular",
+                plural_word1: "gazelles",
+                plural_word2: "strawberries",
+                plural_word3: "zebras",
+                singular_word1: "a gazelle",
+                singular_word2: "a strawberry",
+                singular_word3: "a zebra",
+                image_leopard: "a lizard",
+                image_valise: "a suitcase",
                 rule_title: "Rule",
                 rule_text: "The letter s can represent the sound [z] in some French words.",
                 exercises_title: "Exercises",
                 ex1_instruction: "I put a sign (✓) under the image when I hear the sound [z].",
                 ex2_instruction: "I read the sentence and underline the words where I hear the sound [z].",
+                ex2_sentence1: "Denise and Elisabeth watch a Zorro film on television.",
+                ex2_sentence2: "Elise and her cousins go to the zoo. They look at zebras and gazelles.",
                 ex3_instruction: "I connect with an arrow and write the words.",
                 ex4_instruction: "I rearrange the words to form a sentence.",
-                ex4_desc1: "Listen to the sentence and rearrange the words.",
-                ex4_desc2: "Listen to the sentence and rearrange the words.",
                 clear_underlines: "↺ Clear underlines",
+                clear: "↺ Clear",
+                check: "🔍 Check",
                 check_answers: "🔍 Check answers",
                 self_assess_question: "My answer is:",
                 self_correct: "Correct",
@@ -756,16 +766,26 @@
                 observation_title: "ملاحظة الصوت [z]",
                 plural_title: "جمع",
                 singular_title: "مفرد",
+                plural_word1: "غزلان",
+                plural_word2: "فراولة",
+                plural_word3: "حمر وحشية",
+                singular_word1: "غزالة",
+                singular_word2: "فراولة",
+                singular_word3: "حمار وحشي",
+                image_leopard: "سحلية",
+                image_valise: "حقيبة سفر",
                 rule_title: "القاعدة",
                 rule_text: "الحرف s يمكن أن يمثل الصوت [z] في بعض الكلمات الفرنسية.",
                 exercises_title: "تمارين",
                 ex1_instruction: "أضع إشارة (✓) تحت الرسم عندما أسمع الصوت [z].",
                 ex2_instruction: "أقرأ الجملة وأسطّر الكلمات التي أسمع فيها الصوت [z].",
+                ex2_sentence1: "دينيس وإليزابيث يشاهدان فيلم زورو على التلفاز.",
+                ex2_sentence2: "إليز وأبناء عمها يذهبون إلى حديقة الحيوان. يشاهدون الحمر الوحشية والغزلان.",
                 ex3_instruction: "أربط بسهم وأكتب الكلمات.",
                 ex4_instruction: "أعيد ترتيب الكلمات لتكوين جملة.",
-                ex4_desc1: "استمع إلى الجملة وأعد ترتيب الكلمات.",
-                ex4_desc2: "استمع إلى الجملة وأعد ترتيب الكلمات.",
                 clear_underlines: "↺ مسح التسطير",
+                clear: "↺ مسح",
+                check: "🔍 تحقق",
                 check_answers: "🔍 تحقق من الإجابات",
                 self_assess_question: "جوابي هو:",
                 self_correct: "صحيح",
@@ -799,10 +819,7 @@
             if (container && typeof App.makeBilingual === 'function') {
                 App.makeBilingual(container);
             }
-            App.onLangChange(function(lang) {
-                if (container) container.dir = lang === 'ar' ? 'rtl' : 'ltr';
-            });
-            if (container) container.dir = (localStorage.getItem('lang') || 'fr') === 'ar' ? 'rtl' : 'ltr';
+            // Direction change removed
         })();
     </script>
 
@@ -961,7 +978,6 @@
                 if (el) el.classList.toggle('visible');
             }
 
-            // Sentence sound
             window.playSentenceSound = function(name) {
                 new Audio(`assets4/sounds/degree4/unit1/lesson4/sentences/${name}.mp3`).play().catch(()=>{});
             };
@@ -1052,7 +1068,7 @@
                 document.getElementById('ex3Feedback').className = score === total ? 'degree4-lesson-orthographe-feedback correct' : 'degree4-lesson-orthographe-feedback wrong';
             };
 
-            // ====== Ex4: Rearrange (replaces previous textarea version) ======
+            // ====== Ex4: Rearrange ======
             const rearrangeData = {
                 1: {
                     words: ["Zazie", "achète", "des", "fraises", "et", "des", "cerises", "au", "marché"],
@@ -1070,7 +1086,6 @@
                 }
             };
 
-            // Initialize rearrange exercises
             Object.keys(rearrangeData).forEach(num => {
                 const data = rearrangeData[num];
                 const container = document.getElementById(data.containerId);
@@ -1193,10 +1208,32 @@
                     document.getElementById('signInBtn')?.click();
                     return;
                 }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles')
+                        .select('registration_state')
+                        .eq('id', user.id)
+                        .single();
+                    if (!error && profile && profile.registration_state && profile.registration_state.active === true) {
+                        isRegistered = true;
+                    }
+                } catch (e) { /* ignore */ }
                 const lang = localStorage.getItem('lang') || 'fr';
                 const content = document.getElementById('main-content').cloneNode(true);
-                content.querySelectorAll('input, textarea, .degree4-lesson-orthographe-self-assess, .degree4-lesson-orthographe-score-area, .degree4-lesson-orthographe-audio, .degree4-lesson-orthographe-slideshow-btn, .degree4-lesson-orthographe-footer-nav, .degree4-lesson-orthographe-vocab-exercise button').forEach(el => el.remove());
-                content.querySelectorAll('.degree4-lesson-orthographe-slideshow').forEach(el => el.remove());
+                content.querySelectorAll('input, .degree4-lesson-orthographe-self-assess, .degree4-lesson-orthographe-score-area, .degree4-lesson-orthographe-footer-nav, .degree4-lesson-orthographe-btn, .degree4-lesson-orthographe-play-btn').forEach(el => el.remove());
+                const answerKeys = content.querySelectorAll('.degree4-lesson-orthographe-answer-key');
+                if (isRegistered) {
+                    answerKeys.forEach(key => {
+                        key.style.display = 'block';
+                        key.style.border = 'none';
+                        key.style.padding = '0.5rem 0';
+                        key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    answerKeys.forEach(el => el.remove());
+                }
                 const breadcrumb = content.querySelector('p[style*="margin-bottom:1.5rem"]');
                 if (breadcrumb) breadcrumb.remove();
                 const printWindow = window.open('', '_blank', 'width=800,height=600');
@@ -1210,12 +1247,7 @@
                         .print-header .lesson-name { font-size: 1.1rem; font-weight: bold; color: #000; margin-top: 0.5rem; }
                         .print-footer { text-align: center; border-top: 1px solid #ccc; padding-top: 1rem; margin-top: 2rem; font-size: 0.85rem; color: #666; }
                         .degree4-lesson-orthographe-card { margin-bottom: 2rem; border: 1px solid #ccc; padding: 1rem; border-radius: 8px; }
-                        .degree4-lesson-orthographe-text { white-space: pre-line; font-style: italic; }
-                        .degree4-lesson-orthographe-vocab, .degree4-lesson-orthographe-vocab-exercise { margin-top: 1rem; background: #f5f0e6; padding: 1rem; border-radius: 8px; }
-                        .degree4-lesson-orthographe-vocab ul, .degree4-lesson-orthographe-vocab-exercise ol { list-style: none; padding: 0; }
-                        .degree4-lesson-orthographe-vocab li, .degree4-lesson-orthographe-vocab-exercise li { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
-                        .word { font-weight: bold; min-width: 120px; }
-                        .translation { color: #555; }
+                        .degree4-lesson-orthographe-options { display: none; }
                         .degree4-lesson-orthographe-answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; }
                         @media print { @page { margin: 2cm; } }
                     </style></head><body>

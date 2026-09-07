@@ -245,7 +245,6 @@
 </head>
 <body>
     <div id="toast-container"></div>
-    <div id="toast"></div>
     <button id="signInBtn" style="display:none"></button>
 
     <div id="main-content" class="degree4-lesson-activity-container">
@@ -565,15 +564,12 @@
         });
 
         (function() {
-            var container = document.getElementById('main-content');
-            if (container && typeof App.makeBilingual === 'function') {
-                App.makeBilingual(container);
-            }
-            App.onLangChange(function(lang) {
-                if (container) container.dir = lang === 'ar' ? 'rtl' : 'ltr';
-            });
-            if (container) container.dir = (localStorage.getItem('lang') || 'fr') === 'ar' ? 'rtl' : 'ltr';
-        })();
+    var container = document.getElementById('main-content');
+    if (container && typeof App.makeBilingual === 'function') {
+        App.makeBilingual(container);
+    }
+    // Direction change removed: only text translations will be applied.
+})();
     </script>
 
     <!-- Direct translation fix -->
@@ -712,7 +708,7 @@
                 }
                 const lang = localStorage.getItem('lang') || 'fr';
                 const content = document.getElementById('main-content').cloneNode(true);
-                content.querySelectorAll('input, .degree4-lesson-activity-self-assess, .degree4-lesson-activity-score-area, .degree4-lesson-activity-footer-nav').forEach(el => el.remove());
+                content.querySelectorAll('input, textarea, .degree4-lesson-activity-self-assess, .degree4-lesson-activity-score-area, .degree4-lesson-activity-footer-nav, .degree4-lesson-activity-slideshow-btn').forEach(el => el.remove());
                 const breadcrumb = content.querySelector('p[style*="margin-bottom:1.5rem"]');
                 if (breadcrumb) breadcrumb.remove();
                 const printWindow = window.open('', '_blank', 'width=800,height=600');
@@ -728,7 +724,6 @@
                         .degree4-lesson-activity-card { margin-bottom: 2rem; border: 1px solid #ccc; padding: 1rem; border-radius: 8px; }
                         .degree4-lesson-activity-slideshow { height: auto; }
                         .degree4-lesson-activity-slideshow img { position: static; opacity: 1; max-width: 100%; height: auto; margin: 0.5rem 0; }
-                        .degree4-lesson-activity-slideshow-btn { display: none; }
                         @media print { @page { margin: 2cm; } }
                     </style></head><body>
                     <div class="print-header"><div class="site-name">${App.getTranslation('print_site_name', lang)}</div><div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div><div class="lesson-name">${App.getTranslation('lesson_title', lang)}</div></div>

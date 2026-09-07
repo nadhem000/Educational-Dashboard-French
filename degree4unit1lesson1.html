@@ -825,7 +825,7 @@
                 poem1_title: "School",
                 poem1_author: "Jacques CHARPENTREAU",
                 audio_label1: "🎧 Listen to the poem",
-                poem1_text: "Dans notre rue,\nil y a des autos,\ndes gens qui s'affolent,\nUn grand magasin, une école,\nEt puis mon cœur qui bat\nTout bas.\n\nDans cette école, il y a\nDes oiseaux chantant tout le jour\nDans les marronniers de la cour.\nMon cœur, mon cœur qui bat\nEst là.",
+                poem1_text: "In our street,\nthere are cars,\npeople rushing about,\nA big store, a school,\nAnd then my heart beating\nSoftly.\n\nIn this school, there are\nBirds singing all day long\nIn the chestnut trees of the playground.\nMy heart, my heart beating\nIs there.",
                 poem1_vocab_title: "🔹 Vocabulary explanation",
                 poem1_vocab_s_affolent: " - rush, panic",
                 poem1_vocab_magasin: " - shop, store",
@@ -836,7 +836,7 @@
                 poem2_title: "Number 1",
                 poem2_author: "Pierre CORAN",
                 audio_label2: "🎧 Listen to the poem",
-                poem2_text: "Un jour, 1 voulut\nJouer au cerceau\nAvec le zéro.\n\nIl courut, courut\nA en perdre haleine\nJusqu'à la dizaine.\n\nAlors, par caprice,\n1 devenu 10\nDribbla la centaine,\nTripla le zéro\nEt s'arrêta pile\nEn plein dans le 1000.",
+                poem2_text: "One day, 1 wanted\nTo play hoop\nWith the zero.\n\nHe ran, ran\nUntil out of breath\nUp to ten.\n\nThen, on a whim,\n1 became 10\nDribbled the hundred,\nTripled the zero\nAnd stopped right\nIn the middle of 1000.",
                 poem2_vocab_title: "🔹 Vocabulary explanation",
                 poem2_vocab_voulut: " - wanted, desired",
                 poem2_vocab_cerceau: " - hoop, ring",
@@ -891,7 +891,7 @@
                 poem1_title: "المدرسة",
                 poem1_author: "جاك شاربونترو",
                 audio_label1: "🎧 استمع إلى القصيدة",
-                poem1_text: "Dans notre rue,\nil y a des autos,\ndes gens qui s'affolent,\nUn grand magasin, une école,\nEt puis mon cœur qui bat\nTout bas.\n\nDans cette école, il y a\nDes oiseaux chantant tout le jour\nDans les marronniers de la cour.\nMon cœur, mon cœur qui bat\nEst là.",
+                poem1_text: "في شارعنا،\nهناك سيارات،\nأناس يتزاحمون،\nمتجر كبير، مدرسة،\nثم قلبي الذي يخفق\nبهدوء.\n\nفي هذه المدرسة، هناك\nطيور تغني طوال اليوم\nفي أشجار الكستناء في الساحة.\nقلبي، قلبي الذي يخفق\nموجود هناك.",
                 poem1_vocab_title: "🔹 شرح الكلمات",
                 poem1_vocab_s_affolent: " - يندفعون، يفزعون",
                 poem1_vocab_magasin: " - متجر، دكان",
@@ -902,7 +902,7 @@
                 poem2_title: "العدد 1",
                 poem2_author: "بيير كوران",
                 audio_label2: "🎧 استمع إلى القصيدة",
-                poem2_text: "Un jour, 1 voulut\nJouer au cerceau\nAvec le zéro.\n\nIl courut, courut\nA en perdre haleine\nJusqu'à la dizaine.\n\nAlors, par caprice,\n1 devenu 10\nDribbla la centaine,\nTripla le zéro\nEt s'arrêta pile\nEn plein dans le 1000.",
+                poem2_text: "في يوم من الأيام، أراد 1\nأن يلعب بالطوق\nمع الصفر.\n\nركض، ركض\nحتى فقد أنفاسه\nحتى العشرة.\n\nثم، بدافع نزوة،\n1 أصبح 10\nراوغ المئة،\nضاعف الصفر ثلاث مرات\nوتوقف تمامًا\nفي منتصف 1000.",
                 poem2_vocab_title: "🔹 شرح الكلمات",
                 poem2_vocab_voulut: " - أراد، رغب",
                 poem2_vocab_cerceau: " - طوق، حلقة",
@@ -950,15 +950,12 @@
         });
 
         (function() {
-            var container = document.getElementById('main-content');
-            if (container && typeof App.makeBilingual === 'function') {
-                App.makeBilingual(container);
-            }
-            App.onLangChange(function(lang) {
-                if (container) container.dir = lang === 'ar' ? 'rtl' : 'ltr';
-            });
-            if (container) container.dir = (localStorage.getItem('lang') || 'fr') === 'ar' ? 'rtl' : 'ltr';
-        })();
+    var container = document.getElementById('main-content');
+    if (container && typeof App.makeBilingual === 'function') {
+        App.makeBilingual(container);
+    }
+    // Direction change removed: only text translations will be applied.
+})();
     </script>
 
     <!-- Direct translation fix -->

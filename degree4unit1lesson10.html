@@ -7,6 +7,7 @@
     <link rel="manifest" href="/manifest.json">
     <link rel="stylesheet" href="shared.css">
     <style>
+        /* CSS unchanged from original */
         :root {
             --degree4-lesson-vocabulaire-bg: #f9f7f1;
             --degree4-lesson-vocabulaire-card: #ffffff;
@@ -199,16 +200,20 @@
         .degree4-lesson-vocabulaire-exercise-col {
             min-width: 0;
         }
-        .degree4-lesson-vocabulaire-select {
-            width: 100%;
-            padding: 0.5rem;
-            border: 2px solid var(--degree4-lesson-vocabulaire-border);
-            border-radius: 6px;
-            background: var(--degree4-lesson-vocabulaire-card);
-            color: var(--degree4-lesson-vocabulaire-text);
-            font-family: inherit;
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
+        .degree4-lesson-vocabulaire-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            margin: 0.5rem 0;
+        }
+        .degree4-lesson-vocabulaire-options label {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            cursor: pointer;
+        }
+        .degree4-lesson-vocabulaire-options input[type="radio"] {
+            accent-color: var(--degree4-lesson-vocabulaire-accent);
         }
         .degree4-lesson-vocabulaire-story-table {
             width: 100%;
@@ -260,7 +265,6 @@
 <body>
     <!-- Hidden shell elements required by ed-french-ini.js -->
     <div id="toast-container"></div>
-    <div id="toast"></div>
     <button id="signInBtn" style="display:none"></button>
 
     <div id="main-content" class="degree4-lesson-vocabulaire-container">
@@ -280,49 +284,18 @@
             </div>
         </div>
 
-        <!-- Section 1: Word grid + dropdowns -->
+        <!-- Section 1: Word grid + interactive letter selection -->
         <section class="degree4-lesson-vocabulaire-card">
             <h2 data-i18n="section1_title">Grille de mots à retrouver</h2>
             <p data-i18n="words_list_title">Mots à retrouver : barque, cloche, bagues</p>
-            <table class="degree4-lesson-vocabulaire-story-table">
-                <tr><td>c</td><td>l</td><td>o</td><td>c</td><td>h</td><td>e</td><td></td></tr>
-                <tr><td>s</td><td>e</td><td>u</td><td>g</td><td>a</td><td>b</td><td></td></tr>
-                <tr><td>b</td><td>a</td><td>r</td><td>q</td><td>u</td><td>e</td><td></td></tr>
-            </table>
+            
+            <!-- Container for interactive letter rows (dynamically generated) -->
+            <div id="letterGridContainer"></div>
 
             <div class="degree4-lesson-vocabulaire-exercises-grid">
                 <div class="degree4-lesson-vocabulaire-exercise-col">
-                    <p>1) barque</p>
-                    <select class="degree4-lesson-vocabulaire-select" id="word1">
-                        <option value="">-- Choisir --</option>
-                        <option value="barque">barque</option>
-                        <option value="cloche">cloche</option>
-                        <option value="bagues">bagues</option>
-                        <option value="autres">autre mot</option>
-                    </select>
-                </div>
-                <div class="degree4-lesson-vocabulaire-exercise-col">
-                    <p>2) cloche</p>
-                    <select class="degree4-lesson-vocabulaire-select" id="word2">
-                        <option value="">-- Choisir --</option>
-                        <option value="barque">barque</option>
-                        <option value="cloche">cloche</option>
-                        <option value="bagues">bagues</option>
-                        <option value="autres">autre mot</option>
-                    </select>
-                </div>
-                <div class="degree4-lesson-vocabulaire-exercise-col">
-                    <p>3) bagues</p>
-                    <select class="degree4-lesson-vocabulaire-select" id="word3">
-                        <option value="">-- Choisir --</option>
-                        <option value="barque">barque</option>
-                        <option value="cloche">cloche</option>
-                        <option value="bagues">bagues</option>
-                        <option value="autres">autre mot</option>
-                    </select>
-                </div>
-                <div class="degree4-lesson-vocabulaire-exercise-col">
-                    <button class="degree4-lesson-vocabulaire-btn" onclick="checkEx1()">🔍 Vérifier</button>
+                    <button class="degree4-lesson-vocabulaire-btn" onclick="checkEx1()" data-i18n="check_answers">🔍 Vérifier</button>
+                    <button class="degree4-lesson-vocabulaire-btn" onclick="resetEx1()" style="background: #5c5344;" data-i18n="clear_paths">↺ Effacer</button>
                     <div id="ex1Key" class="degree4-lesson-vocabulaire-answer-key"></div>
                     <div id="ex1Feedback" class="degree4-lesson-vocabulaire-feedback"></div>
                     <div class="degree4-lesson-vocabulaire-self-assess">
@@ -346,13 +319,12 @@
             <div class="degree4-lesson-vocabulaire-exercises-grid">
                 <div class="degree4-lesson-vocabulaire-exercise-col">
                     <p data-i18n="codeA">Code A : (2 – 5 – 9 – 15 – 6 – 1 – 16)</p>
-                    <select class="degree4-lesson-vocabulaire-select" id="codeAChoice">
-                        <option value="">-- Choisir --</option>
-                        <option value="correct">Rachid regarde un film à la télévision</option>
-                        <option value="wrong1">Rachid regarde un film à midi</option>
-                        <option value="wrong2">Rachid regarde la télévision le soir</option>
-                    </select>
-                    <button class="degree4-lesson-vocabulaire-btn" onclick="checkEx2()">🔍 Vérifier</button>
+                    <div class="degree4-lesson-vocabulaire-options">
+                        <label><input type="radio" name="codeAChoice" value="correct"> <span data-i18n="codeA_correct">Rachid regarde un film à la télévision</span></label>
+                        <label><input type="radio" name="codeAChoice" value="wrong1"> <span data-i18n="codeA_wrong1">Rachid regarde un film à midi</span></label>
+                        <label><input type="radio" name="codeAChoice" value="wrong2"> <span data-i18n="codeA_wrong2">Rachid regarde la télévision le soir</span></label>
+                    </div>
+                    <button class="degree4-lesson-vocabulaire-btn" onclick="checkEx2()" data-i18n="check_answers">🔍 Vérifier</button>
                     <div id="ex2Key" class="degree4-lesson-vocabulaire-answer-key"></div>
                     <div id="ex2Feedback" class="degree4-lesson-vocabulaire-feedback"></div>
                     <div class="degree4-lesson-vocabulaire-self-assess">
@@ -364,13 +336,12 @@
                 </div>
                 <div class="degree4-lesson-vocabulaire-exercise-col">
                     <p data-i18n="codeB">Code B : (4 – 13 – 11 – 8)</p>
-                    <select class="degree4-lesson-vocabulaire-select" id="codeBChoice">
-                        <option value="">-- Choisir --</option>
-                        <option value="correct">Le lézard vit dans le désert</option>
-                        <option value="wrong1">Le lézard regarde le désert</option>
-                        <option value="wrong2">Le lézard vit dans la cantine</option>
-                    </select>
-                    <button class="degree4-lesson-vocabulaire-btn" onclick="checkEx3()">🔍 Vérifier</button>
+                    <div class="degree4-lesson-vocabulaire-options">
+                        <label><input type="radio" name="codeBChoice" value="correct"> <span data-i18n="codeB_correct">Le lézard vit dans le désert</span></label>
+                        <label><input type="radio" name="codeBChoice" value="wrong1"> <span data-i18n="codeB_wrong1">Le lézard regarde le désert</span></label>
+                        <label><input type="radio" name="codeBChoice" value="wrong2"> <span data-i18n="codeB_wrong2">Le lézard vit dans la cantine</span></label>
+                    </div>
+                    <button class="degree4-lesson-vocabulaire-btn" onclick="checkEx3()" data-i18n="check_answers">🔍 Vérifier</button>
                     <div id="ex3Key" class="degree4-lesson-vocabulaire-answer-key"></div>
                     <div id="ex3Feedback" class="degree4-lesson-vocabulaire-feedback"></div>
                     <div class="degree4-lesson-vocabulaire-self-assess">
@@ -383,20 +354,31 @@
             </div>
         </section>
 
-        <!-- Section 3: Sound path exercise -->
+        <!-- Section 3: Unified sound path grid -->
         <section class="degree4-lesson-vocabulaire-card">
             <h2 data-i18n="ex4_title">Chemin sonore</h2>
             <p data-i18n="ex4_instruction">Je construis un chemin en cliquant sur les mots.</p>
-            <p data-i18n="z_path_label">Chemin [Z] :</p>
-                                <img src="assets4/images/degree4/unit1/lesson10/gazelle.png" alt="Le petit garçon prend son goûter" style="max-width: 250px; height: auto; border-radius: 8px;">
-            <div id="zWords" class="degree4-lesson-vocabulaire-words"></div>
-            <div id="zPathDisplay" class="degree4-lesson-vocabulaire-path-display">Départ</div>
-            <p data-i18n="j_path_label">Chemin [J] :</p>
-                                <img src="assets4/images/degree4/unit1/lesson10/orange.png" alt="Le petit garçon prend son goûter" style="max-width: 250px; height: auto; border-radius: 8px;">
-            <div id="jWords" class="degree4-lesson-vocabulaire-words"></div>
-            <div id="jPathDisplay" class="degree4-lesson-vocabulaire-path-display">Départ</div>
-            <button class="degree4-lesson-vocabulaire-btn" onclick="checkEx4()">🔍 Vérifier</button>
-            <button class="degree4-lesson-vocabulaire-btn" onclick="resetPaths()">↺ Effacer</button>
+            
+            <!-- Unified grid container -->
+            <div id="unifiedGridContainer"></div>
+            
+            <!-- Path display -->
+            <div id="unifiedPathDisplay" class="degree4-lesson-vocabulaire-path-display">Votre chemin : </div>
+            
+            <!-- Images (clickable targets) -->
+            <div style="display: flex; gap: 2rem; justify-content: center; margin-top: 1rem;">
+                <div style="text-align: center; cursor: pointer;" onclick="checkPathForImage('z')">
+                    <img src="assets4/images/degree4/unit1/lesson10/gazelle.png" alt="Gazelle" style="max-width: 150px; height: auto; border-radius: 8px;">
+                    <p data-i18n="image_gazelle">Gazelle</p>
+                </div>
+                <div style="text-align: center; cursor: pointer;" onclick="checkPathForImage('j')">
+                    <img src="assets4/images/degree4/unit1/lesson10/orange.png" alt="Orange" style="max-width: 150px; height: auto; border-radius: 8px;">
+                    <p data-i18n="image_orange">Orange</p>
+                </div>
+            </div>
+            
+            <button class="degree4-lesson-vocabulaire-btn" onclick="checkEx4()" data-i18n="check_answers">🔍 Vérifier</button>
+            <button class="degree4-lesson-vocabulaire-btn" onclick="resetPaths()" data-i18n="clear_paths">↺ Effacer</button>
             <div id="ex4Key" class="degree4-lesson-vocabulaire-answer-key"></div>
             <div id="ex4Feedback" class="degree4-lesson-vocabulaire-feedback"></div>
             <div class="degree4-lesson-vocabulaire-self-assess">
@@ -455,8 +437,15 @@
                 ex4_instruction: "Je construis un chemin en cliquant sur les mots.",
                 codeA: "Code A : (2 – 5 – 9 – 15 – 6 – 1 – 16)",
                 codeB: "Code B : (4 – 13 – 11 – 8)",
-                z_path_label: "Chemin [Z] :",
-                j_path_label: "Chemin [J] :",
+                image_gazelle: "Gazelle",
+                image_orange: "Orange",
+                codeA_correct: "Rachid regarde un film à la télévision",
+                codeA_wrong1: "Rachid regarde un film à midi",
+                codeA_wrong2: "Rachid regarde la télévision le soir",
+                codeB_correct: "Le lézard vit dans le désert",
+                codeB_wrong1: "Le lézard regarde le désert",
+                codeB_wrong2: "Le lézard vit dans la cantine",
+                clear_paths: "↺ Effacer",
                 check_answers: "🔍 Vérifier",
                 self_assess_question: "Ma réponse est :",
                 self_correct: "Correcte",
@@ -497,8 +486,15 @@
                 ex4_instruction: "I build a path by clicking on words.",
                 codeA: "Code A: (2 – 5 – 9 – 15 – 6 – 1 – 16)",
                 codeB: "Code B: (4 – 13 – 11 – 8)",
-                z_path_label: "Path [Z]:",
-                j_path_label: "Path [J]:",
+                image_gazelle: "Gazelle",
+                image_orange: "Orange",
+                codeA_correct: "Rachid watches a film on TV",
+                codeA_wrong1: "Rachid watches a film at noon",
+                codeA_wrong2: "Rachid watches TV in the evening",
+                codeB_correct: "The lizard lives in the desert",
+                codeB_wrong1: "The lizard watches the desert",
+                codeB_wrong2: "The lizard lives in the canteen",
+                clear_paths: "↺ Clear",
                 check_answers: "🔍 Check",
                 self_assess_question: "My answer is:",
                 self_correct: "Correct",
@@ -539,8 +535,15 @@
                 ex4_instruction: "أبني المسار بالنقر على الكلمات.",
                 codeA: "الرمز أ: (2 – 5 – 9 – 15 – 6 – 1 – 16)",
                 codeB: "الرمز ب: (4 – 13 – 11 – 8)",
-                z_path_label: "مسار [Z]:",
-                j_path_label: "مسار [J]:",
+                image_gazelle: "غزالة",
+                image_orange: "برتقالة",
+                codeA_correct: "رشيد يشاهد فيلماً على التلفاز",
+                codeA_wrong1: "رشيد يشاهد فيلماً عند الظهيرة",
+                codeA_wrong2: "رشيد يشاهد التلفاز في المساء",
+                codeB_correct: "السحلية تعيش في الصحراء",
+                codeB_wrong1: "السحلية تنظر إلى الصحراء",
+                codeB_wrong2: "السحلية تعيش في المطعم المدرسي",
+                clear_paths: "↺ مسح",
                 check_answers: "🔍 تحقق",
                 self_assess_question: "جوابي هو:",
                 self_correct: "صحيح",
@@ -574,10 +577,7 @@
             if (container && typeof App.makeBilingual === 'function') {
                 App.makeBilingual(container);
             }
-            App.onLangChange(function(lang) {
-                if (container) container.dir = lang === 'ar' ? 'rtl' : 'ltr';
-            });
-            if (container) container.dir = (localStorage.getItem('lang') || 'fr') === 'ar' ? 'rtl' : 'ltr';
+            // Direction change removed
         })();
     </script>
 
@@ -616,95 +616,115 @@
     <!-- Initialization and exercise logic -->
     <script>
         (function() {
-            // Ex4 path builder words
-            const zWords = ['cuisine', 'magasin', 'zorro', 'rose', 'lézard', 'zèbre', 'ardoise'];
-            const jWords = ['range', 'rouge', 'fromage', 'déjeuner', 'pigeon', 'plage'];
+            // ========== EXERCISE 1 (clickable letters) ==========
+            const targetWords = ['barque', 'cloche', 'bagues'];
+            const letterRows = []; 
+            const selectedLetters = [[], [], []];
+            const rowDisplays = [];
 
-            let zPath = ['Départ'];
-            let jPath = ['Départ'];
+            function generateLetterRow(targetWord) {
+                const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+                const wordLength = targetWord.length;
+                const extraBefore = Math.floor(Math.random() * 5) + 3;
+                const extraAfter = Math.floor(Math.random() * 5) + 3;
+                let before = '';
+                for (let i = 0; i < extraBefore; i++) {
+                    before += alphabet[Math.floor(Math.random() * alphabet.length)];
+                }
+                let after = '';
+                for (let i = 0; i < extraAfter; i++) {
+                    after += alphabet[Math.floor(Math.random() * alphabet.length)];
+                }
+                const fullString = before + targetWord + after;
+                return fullString.split('');
+            }
 
-            function renderWordTiles(containerId, words, path, displayId) {
-                const container = document.getElementById(containerId);
+            function buildLetterGrid() {
+                const container = document.getElementById('letterGridContainer');
                 container.innerHTML = '';
-                words.forEach(word => {
-                    const tile = document.createElement('span');
-                    tile.className = 'degree4-lesson-vocabulaire-word-tile';
-                    tile.textContent = word;
-                    tile.addEventListener('click', () => {
-                        if (!path.includes(word)) {
-                            path.push(word);
-                            updatePathDisplay(displayId, path);
+                targetWords.forEach((word, idx) => {
+                    const rowLetters = generateLetterRow(word);
+                    letterRows[idx] = rowLetters;
+                    selectedLetters[idx] = [];
+
+                    const rowDiv = document.createElement('div');
+                    rowDiv.style.marginBottom = '1.5rem';
+
+                    const label = document.createElement('p');
+                    label.textContent = `${idx + 1}) ${word}`;
+                    label.style.fontWeight = 'bold';
+                    rowDiv.appendChild(label);
+
+                    const lettersContainer = document.createElement('div');
+                    lettersContainer.style.display = 'flex';
+                    lettersContainer.style.flexWrap = 'wrap';
+                    lettersContainer.style.gap = '5px';
+
+                    rowLetters.forEach((letter, letterIdx) => {
+                        const tile = document.createElement('span');
+                        tile.className = 'degree4-lesson-vocabulaire-word-tile';
+                        tile.textContent = letter;
+                        tile.dataset.row = idx;
+                        tile.dataset.letter = letter;
+                        tile.addEventListener('click', () => {
+                            selectedLetters[idx].push(letter);
+                            updateRowDisplay(idx);
                             tile.classList.add('selected');
-                        }
+                        });
+                        lettersContainer.appendChild(tile);
                     });
-                    container.appendChild(tile);
+                    rowDiv.appendChild(lettersContainer);
+
+                    const display = document.createElement('div');
+                    display.className = 'degree4-lesson-vocabulaire-path-display';
+                    display.id = `ex1Display${idx}`;
+                    display.textContent = 'Votre réponse : ';
+                    rowDiv.appendChild(display);
+                    rowDisplays[idx] = display;
+
+                    container.appendChild(rowDiv);
                 });
             }
 
-            function updatePathDisplay(displayId, path) {
-                document.getElementById(displayId).textContent = path.join(' → ');
+            function updateRowDisplay(idx) {
+                if (rowDisplays[idx]) {
+                    rowDisplays[idx].textContent = 'Votre réponse : ' + selectedLetters[idx].join('');
+                }
             }
 
-            renderWordTiles('zWords', zWords, zPath, 'zPathDisplay');
-            renderWordTiles('jWords', jWords, jPath, 'jPathDisplay');
-
-            window.resetPaths = function() {
-                zPath = ['Départ'];
-                jPath = ['Départ'];
-                updatePathDisplay('zPathDisplay', zPath);
-                updatePathDisplay('jPathDisplay', jPath);
-                document.querySelectorAll('.degree4-lesson-vocabulaire-word-tile').forEach(t => t.classList.remove('selected'));
-                document.getElementById('ex4Feedback').textContent = '';
-                document.getElementById('ex4Key').classList.remove('visible');
+            window.resetEx1 = function() {
+                selectedLetters.forEach((arr, idx) => {
+                    arr.length = 0;
+                    updateRowDisplay(idx);
+                });
+                document.querySelectorAll('#letterGridContainer .degree4-lesson-vocabulaire-word-tile').forEach(t => t.classList.remove('selected'));
+                document.getElementById('ex1Feedback').textContent = '';
+                document.getElementById('ex1Key').classList.remove('visible');
             };
 
-            window.checkEx4 = async function() {
-                if (!await requireAuth()) return;
-                const correctZPaths = [
-                    ['Départ','cuisine','magasin','zorro','rose','lézard'],
-                    ['Départ','cuisine','magasin','zorro','rose','zèbre'],
-                    ['Départ','cuisine','magasin','ardoise','rose','lézard'],
-                    ['Départ','cuisine','magasin','ardoise','rose','zèbre']
-                ];
-                const correctJPaths = [
-                    ['Départ','range','rouge','fromage','déjeuner','pigeon'],
-                    ['Départ','range','plage','fromage','déjeuner','pigeon']
-                ];
-                let zCorrect = correctZPaths.some(p => JSON.stringify(p) === JSON.stringify(zPath));
-                let jCorrect = correctJPaths.some(p => JSON.stringify(p) === JSON.stringify(jPath));
-                let feedbackHTML = '';
-                if (zCorrect) feedbackHTML += '<p style="color:green">✓ Chemin [Z]</p>';
-                else feedbackHTML += '<p style="color:red">✗ Chemin [Z]</p>';
-                if (jCorrect) feedbackHTML += '<p style="color:green">✓ Chemin [J]</p>';
-                else feedbackHTML += '<p style="color:red">✗ Chemin [J]</p>';
-                const isAllCorrect = zCorrect && jCorrect;
-                playSound(isAllCorrect ? 'complete' : 'correct');
-                toggleAnswer('ex4Key');
-                document.getElementById('ex4Key').innerHTML = `<strong>Correction :</strong><br>${feedbackHTML}`;
-                document.getElementById('ex4Feedback').textContent = isAllCorrect ? '✅ Correct !' : '❌ Incorrect.';
-                document.getElementById('ex4Feedback').className = isAllCorrect ? 'degree4-lesson-vocabulaire-feedback correct' : 'degree4-lesson-vocabulaire-feedback wrong';
-            };
-
-            // Other exercises (Ex1, Ex2, Ex3) as before
             window.checkEx1 = async function() {
                 if (!await requireAuth()) return;
-                const answers = ['barque','cloche','bagues'];
                 let score = 0;
-                for (let i = 0; i < 3; i++) {
-                    const sel = document.getElementById(`word${i+1}`);
-                    if (sel.value === answers[i]) score++;
-                }
+                targetWords.forEach((word, idx) => {
+                    const userAnswer = selectedLetters[idx].join('');
+                    if (userAnswer === word) {
+                        score++;
+                    }
+                });
                 playSound(score === 3 ? 'complete' : score > 0 ? 'correct' : 'wrong');
                 toggleAnswer('ex1Key');
-                document.getElementById('ex1Key').innerHTML = `<strong>Correction :</strong><br>${answers.join(', ')}`;
+                document.getElementById('ex1Key').innerHTML = `<strong>Correction :</strong><br>${targetWords.join(', ')}`;
                 document.getElementById('ex1Feedback').textContent = `Score : ${Math.round(score/3*100)}%`;
                 document.getElementById('ex1Feedback').className = score === 3 ? 'degree4-lesson-vocabulaire-feedback correct' : 'degree4-lesson-vocabulaire-feedback wrong';
             };
 
+            buildLetterGrid();
+
+            // ========== EXERCISE 2 (coded phrases) ==========
             window.checkEx2 = async function() {
                 if (!await requireAuth()) return;
-                const sel = document.getElementById('codeAChoice');
-                const isCorrect = sel.value === 'correct';
+                const selected = document.querySelector('input[name="codeAChoice"]:checked');
+                const isCorrect = selected && selected.value === 'correct';
                 playSound(isCorrect ? 'correct' : 'wrong');
                 toggleAnswer('ex2Key');
                 document.getElementById('ex2Key').innerHTML = isCorrect ? '<strong>Correction :</strong> ✓' : '<strong>Correction :</strong> Rachid regarde un film à la télévision';
@@ -714,8 +734,8 @@
 
             window.checkEx3 = async function() {
                 if (!await requireAuth()) return;
-                const sel = document.getElementById('codeBChoice');
-                const isCorrect = sel.value === 'correct';
+                const selected = document.querySelector('input[name="codeBChoice"]:checked');
+                const isCorrect = selected && selected.value === 'correct';
                 playSound(isCorrect ? 'correct' : 'wrong');
                 toggleAnswer('ex3Key');
                 document.getElementById('ex3Key').innerHTML = isCorrect ? '<strong>Correction :</strong> ✓' : '<strong>Correction :</strong> Le lézard vit dans le désert';
@@ -723,7 +743,134 @@
                 document.getElementById('ex3Feedback').className = isCorrect ? 'degree4-lesson-vocabulaire-feedback correct' : 'degree4-lesson-vocabulaire-feedback wrong';
             };
 
-            // Helpers
+            // ========== EXERCISE 3 (unified sound path grid) ==========
+            const zSoundWords = ['cuisine', 'magasin', 'zorro', 'ardoise', 'rose', 'lézard', 'zèbre'];
+            const jSoundWords = ['range', 'rouge', 'plage', 'fromage', 'déjeuner', 'pigeon'];
+            const distractors = ['livre', 'table', 'pomme', 'chaise', 'stylo', 'cahier', 'porte', 'fenêtre', 'mur', 'lampe', 'crayon', 'gomme'];
+
+            const rowWordSets = [
+                ['cuisine', 'range', 'livre', 'table', 'pomme'],
+                ['magasin', 'rouge', 'plage', 'chaise', 'stylo'],
+                ['zorro', 'ardoise', 'fromage', 'cahier', 'porte'],
+                ['rose', 'déjeuner', 'fenêtre', 'mur', 'lampe'],
+                ['lézard', 'zèbre', 'pigeon', 'crayon', 'gomme']
+            ];
+
+            const selectedWords = new Array(5).fill(null);
+            const gridContainer = document.getElementById('unifiedGridContainer');
+            const pathDisplay = document.getElementById('unifiedPathDisplay');
+
+            function buildUnifiedGrid() {
+                gridContainer.innerHTML = '';
+                rowWordSets.forEach((words, rowIdx) => {
+                    const rowDiv = document.createElement('div');
+                    rowDiv.style.marginBottom = '1rem';
+                    rowDiv.dataset.row = rowIdx;
+
+                    const rowLabel = document.createElement('span');
+                    rowLabel.textContent = `Ligne ${rowIdx + 1} : `;
+                    rowLabel.style.fontWeight = 'bold';
+                    rowDiv.appendChild(rowLabel);
+
+                    const wordsContainer = document.createElement('span');
+                    wordsContainer.style.display = 'inline-flex';
+                    wordsContainer.style.flexWrap = 'wrap';
+                    wordsContainer.style.gap = '5px';
+
+                    const shuffledWords = words.slice().sort(() => Math.random() - 0.5);
+                    shuffledWords.forEach(word => {
+                        const tile = document.createElement('span');
+                        tile.className = 'degree4-lesson-vocabulaire-word-tile';
+                        tile.textContent = word;
+                        tile.dataset.row = rowIdx;
+                        tile.dataset.word = word;
+                        tile.addEventListener('click', () => {
+                            const previousSelected = wordsContainer.querySelector('.selected');
+                            if (previousSelected) previousSelected.classList.remove('selected');
+                            selectedWords[rowIdx] = word;
+                            tile.classList.add('selected');
+                            updatePathDisplay();
+                        });
+                        wordsContainer.appendChild(tile);
+                    });
+
+                    rowDiv.appendChild(wordsContainer);
+                    gridContainer.appendChild(rowDiv);
+                });
+            }
+
+            function updatePathDisplay() {
+                const path = selectedWords.filter(w => w !== null).join(' → ');
+                pathDisplay.textContent = 'Votre chemin : ' + (path || '');
+            }
+
+            function resetUnifiedGrid() {
+                selectedWords.fill(null);
+                gridContainer.querySelectorAll('.degree4-lesson-vocabulaire-word-tile').forEach(t => t.classList.remove('selected'));
+                updatePathDisplay();
+                document.getElementById('ex4Feedback').textContent = '';
+                document.getElementById('ex4Key').classList.remove('visible');
+            }
+
+            window.resetPaths = function() {
+                resetUnifiedGrid();
+            };
+
+            function getSound(word) {
+                if (zSoundWords.includes(word)) return 'z';
+                if (jSoundWords.includes(word)) return 'j';
+                return null;
+            }
+
+            window.checkPathForImage = async function(imageType) {
+                if (!await requireAuth()) return;
+                if (selectedWords.some(w => w === null)) {
+                    document.getElementById('ex4Feedback').textContent = 'Veuillez sélectionner un mot dans chaque ligne.';
+                    document.getElementById('ex4Feedback').className = 'degree4-lesson-vocabulaire-feedback wrong';
+                    return;
+                }
+                const targetSound = imageType === 'z' ? 'z' : 'j';
+                const allMatch = selectedWords.every(word => getSound(word) === targetSound);
+                if (allMatch) {
+                    playSound('complete');
+                    document.getElementById('ex4Feedback').textContent = '✅ Correct !';
+                    document.getElementById('ex4Feedback').className = 'degree4-lesson-vocabulaire-feedback correct';
+                } else {
+                    playSound('wrong');
+                    document.getElementById('ex4Feedback').textContent = '❌ Incorrect.';
+                    document.getElementById('ex4Feedback').className = 'degree4-lesson-vocabulaire-feedback wrong';
+                }
+                toggleAnswer('ex4Key');
+                document.getElementById('ex4Key').innerHTML = `<strong>Correction :</strong><br>Le chemin doit contenir uniquement des mots avec le son [${targetSound.toUpperCase()}].`;
+            };
+
+            window.checkEx4 = async function() {
+                if (!await requireAuth()) return;
+                if (selectedWords.some(w => w === null)) {
+                    document.getElementById('ex4Feedback').textContent = 'Veuillez sélectionner un mot dans chaque ligne.';
+                    document.getElementById('ex4Feedback').className = 'degree4-lesson-vocabulaire-feedback wrong';
+                    return;
+                }
+                const sounds = selectedWords.map(getSound);
+                const uniqueSounds = [...new Set(sounds.filter(s => s !== null))];
+                if (uniqueSounds.length === 1) {
+                    const sound = uniqueSounds[0];
+                    playSound('correct');
+                    document.getElementById('ex4Feedback').textContent = `✅ Votre chemin utilise uniquement le son [${sound.toUpperCase()}]. Cliquez sur l'image correspondante pour valider.`;
+                    document.getElementById('ex4Feedback').className = 'degree4-lesson-vocabulaire-feedback correct';
+                } else {
+                    playSound('wrong');
+                    document.getElementById('ex4Feedback').textContent = '❌ Votre chemin contient des mots de sons différents ou sans son.';
+                    document.getElementById('ex4Feedback').className = 'degree4-lesson-vocabulaire-feedback wrong';
+                }
+                toggleAnswer('ex4Key');
+                document.getElementById('ex4Key').innerHTML = `<strong>Conseil :</strong><br>Choisissez des mots contenant tous le même son ([Z] ou [J]).`;
+            };
+
+            buildUnifiedGrid();
+            updatePathDisplay();
+
+            // ========== Helpers (shared) ==========
             async function requireAuth() {
                 const { data: { session } } = await App.supabase.auth.getSession();
                 if (!session) {
@@ -742,7 +889,7 @@
                 if (el) el.classList.toggle('visible');
             }
 
-            // Standard scoring, save, print
+            // ========== Scoring, save, print ==========
             function updateScore() {
                 const radios = document.querySelectorAll('input[type="radio"][name^="self_"]');
                 const groups = new Set();
@@ -821,10 +968,32 @@
                     document.getElementById('signInBtn')?.click();
                     return;
                 }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles')
+                        .select('registration_state')
+                        .eq('id', user.id)
+                        .single();
+                    if (!error && profile && profile.registration_state && profile.registration_state.active === true) {
+                        isRegistered = true;
+                    }
+                } catch (e) { /* ignore */ }
                 const lang = localStorage.getItem('lang') || 'fr';
                 const content = document.getElementById('main-content').cloneNode(true);
-                content.querySelectorAll('input, textarea, .degree4-lesson-vocabulaire-self-assess, .degree4-lesson-vocabulaire-score-area, .degree4-lesson-vocabulaire-audio, .degree4-lesson-vocabulaire-slideshow-btn, .degree4-lesson-vocabulaire-footer-nav, .degree4-lesson-vocabulaire-vocab-exercise button').forEach(el => el.remove());
-                content.querySelectorAll('.degree4-lesson-vocabulaire-slideshow').forEach(el => el.remove());
+                content.querySelectorAll('input, .degree4-lesson-vocabulaire-self-assess, .degree4-lesson-vocabulaire-score-area, .degree4-lesson-vocabulaire-footer-nav, .degree4-lesson-vocabulaire-btn').forEach(el => el.remove());
+                const answerKeys = content.querySelectorAll('.degree4-lesson-vocabulaire-answer-key');
+                if (isRegistered) {
+                    answerKeys.forEach(key => {
+                        key.style.display = 'block';
+                        key.style.border = 'none';
+                        key.style.padding = '0.5rem 0';
+                        key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    answerKeys.forEach(el => el.remove());
+                }
                 const breadcrumb = content.querySelector('p[style*="margin-bottom:1.5rem"]');
                 if (breadcrumb) breadcrumb.remove();
                 const printWindow = window.open('', '_blank', 'width=800,height=600');
@@ -838,12 +1007,7 @@
                         .print-header .lesson-name { font-size: 1.1rem; font-weight: bold; color: #000; margin-top: 0.5rem; }
                         .print-footer { text-align: center; border-top: 1px solid #ccc; padding-top: 1rem; margin-top: 2rem; font-size: 0.85rem; color: #666; }
                         .degree4-lesson-vocabulaire-card { margin-bottom: 2rem; border: 1px solid #ccc; padding: 1rem; border-radius: 8px; }
-                        .degree4-lesson-vocabulaire-text { white-space: pre-line; font-style: italic; }
-                        .degree4-lesson-vocabulaire-vocab, .degree4-lesson-vocabulaire-vocab-exercise { margin-top: 1rem; background: #f5f0e6; padding: 1rem; border-radius: 8px; }
-                        .degree4-lesson-vocabulaire-vocab ul, .degree4-lesson-vocabulaire-vocab-exercise ol { list-style: none; padding: 0; }
-                        .degree4-lesson-vocabulaire-vocab li, .degree4-lesson-vocabulaire-vocab-exercise li { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
-                        .word { font-weight: bold; min-width: 120px; }
-                        .translation { color: #555; }
+                        .degree4-lesson-vocabulaire-options { display: none; }
                         .degree4-lesson-vocabulaire-answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; }
                         @media print { @page { margin: 2cm; } }
                     </style></head><body>

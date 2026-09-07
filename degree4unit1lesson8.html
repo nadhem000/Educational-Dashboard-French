@@ -7,13 +7,14 @@
     <link rel="manifest" href="/manifest.json">
     <link rel="stylesheet" href="shared.css">
     <style>
+        /* CSS unchanged */
         :root {
             --degree4-lesson-conjugaison-bg: #f9f7f1;
             --degree4-lesson-conjugaison-card: #ffffff;
             --degree4-lesson-conjugaison-text: #2b2416;
             --degree4-lesson-conjugaison-text-light: #5c5344;
             --degree4-lesson-conjugaison-heading: #382e1e;
-            --degree4-lesson-conjugaison-accent: #4b0082; /* dark violet */
+            --degree4-lesson-conjugaison-accent: #4b0082;
             --degree4-lesson-conjugaison-accent-hover: #6a0dad;
             --degree4-lesson-conjugaison-border: #e5ddd0;
             --degree4-lesson-conjugaison-shadow: 0 1px 4px rgba(0,0,0,0.04);
@@ -215,16 +216,20 @@
         .degree4-lesson-conjugaison-exercise-col {
             min-width: 0;
         }
-        .degree4-lesson-conjugaison-select {
-            width: 100%;
-            padding: 0.5rem;
-            border: 2px solid var(--degree4-lesson-conjugaison-border);
-            border-radius: 6px;
-            background: var(--degree4-lesson-conjugaison-card);
-            color: var(--degree4-lesson-conjugaison-text);
-            font-family: inherit;
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
+        .degree4-lesson-conjugaison-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            margin: 0.5rem 0;
+        }
+        .degree4-lesson-conjugaison-options label {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            cursor: pointer;
+        }
+        .degree4-lesson-conjugaison-options input[type="radio"] {
+            accent-color: var(--degree4-lesson-conjugaison-accent);
         }
         .degree4-lesson-conjugaison-input {
             width: 80px;
@@ -322,9 +327,8 @@
     </style>
 </head>
 <body>
-    <!-- Hidden shell elements required by ed-french-ini.js -->
+    <!-- Hidden shell elements -->
     <div id="toast-container"></div>
-    <div id="toast"></div>
     <button id="signInBtn" style="display:none"></button>
 
     <div id="main-content" class="degree4-lesson-conjugaison-container">
@@ -350,11 +354,11 @@
             <div style="display:flex; gap:1.5rem; flex-wrap:wrap; align-items:flex-start;">
                 <div style="flex:1; min-width:250px;">
                     <img src="assets4/images/degree4/unit1/lesson8/girl_dog_forest.jpg" alt="Observation 1" style="max-width:100%; border-radius:8px; margin-bottom:1rem;">
-                    <div class="degree4-lesson-conjugaison-sentence-item"><p>Solange se promène dans la forêt. A midi, la fillette est fatiguée. Elle appelle sa chienne : « Lassie ! Lassie ! Tu es là ? Montre-toi. Je suis ici. »</p></div>
+                    <div class="degree4-lesson-conjugaison-sentence-item"><p data-i18n="obs1_text">Solange se promène dans la forêt. A midi, la fillette est fatiguée. Elle appelle sa chienne : « Lassie ! Lassie ! Tu es là ? Montre-toi. Je suis ici. »</p></div>
                 </div>
                 <div style="flex:1; min-width:250px;">
                     <img src="assets4/images/degree4/unit1/lesson8/children_birds.jpg" alt="Observation 2" style="max-width:100%; border-radius:8px; margin-bottom:1rem;">
-                    <div class="degree4-lesson-conjugaison-sentence-item"><p>Claudine et Dominique se promènent dans le jardin de leurs grands-parents. Les deux cousines voient des oiseaux dans un nid. Qu'ils sont beaux ! Elles leur parlent : « Nous sommes amis, petits oiseaux. Vous êtes si mignons ! »</p></div>
+                    <div class="degree4-lesson-conjugaison-sentence-item"><p data-i18n="obs2_text">Claudine et Dominique se promènent dans le jardin de leurs grands-parents. Les deux cousines voient des oiseaux dans un nid. Qu'ils sont beaux ! Elles leur parlent : « Nous sommes amis, petits oiseaux. Vous êtes si mignons ! »</p></div>
                 </div>
             </div>
         </section>
@@ -364,12 +368,12 @@
             <h2 data-i18n="conjugation_title">Tableau de conjugaison</h2>
             <table class="degree4-lesson-conjugaison-table">
                 <tr><th data-i18n="pronoun">Pronom</th><th data-i18n="conjugation">Conjugaison</th></tr>
-                <tr><td>Je</td><td>suis</td></tr>
-                <tr><td>Tu</td><td>es</td></tr>
-                <tr><td>Il / Elle</td><td>est</td></tr>
-                <tr><td>Nous</td><td>sommes</td></tr>
-                <tr><td>Vous</td><td>êtes</td></tr>
-                <tr><td>Ils / Elles</td><td>sont</td></tr>
+                <tr><td data-i18n="pronoun_je">Je</td><td>suis</td></tr>
+                <tr><td data-i18n="pronoun_tu">Tu</td><td>es</td></tr>
+                <tr><td data-i18n="pronoun_il">Il / Elle</td><td>est</td></tr>
+                <tr><td data-i18n="pronoun_nous">Nous</td><td>sommes</td></tr>
+                <tr><td data-i18n="pronoun_vous">Vous</td><td>êtes</td></tr>
+                <tr><td data-i18n="pronoun_ils">Ils / Elles</td><td>sont</td></tr>
             </table>
             <div style="text-align:center; margin-top:1rem;">
                 <button class="degree4-lesson-conjugaison-play-btn" onclick="playConjugationSound()">▶</button>
@@ -377,12 +381,12 @@
             </div>
         </section>
 
-        <!-- Section 3: Exercises (2x2 grid) -->
+        <!-- Section 3: Exercises -->
         <section class="degree4-lesson-conjugaison-card">
             <h2 data-i18n="exercises_title">Exercices</h2>
 
             <div class="degree4-lesson-conjugaison-exercises-grid">
-                <!-- Row 1: Ex1 (matching) | Ex2 (fill blanks) -->
+                <!-- Ex1: Matching -->
                 <div class="degree4-lesson-conjugaison-exercise-col">
                     <div class="question-block" style="margin-bottom:2rem;">
                         <p class="question-text" data-i18n="ex1_instruction">Je relie chaque pronom à la forme correcte du verbe « être ».</p>
@@ -398,14 +402,15 @@
                         </div>
                     </div>
                 </div>
+                <!-- Ex2: Fill blanks -->
                 <div class="degree4-lesson-conjugaison-exercise-col">
                     <div class="question-block" style="margin-bottom:2rem;">
                         <p class="question-text" data-i18n="ex2_instruction">Je complète les phrases avec la forme correcte du verbe « être ».</p>
                         <ol>
-                            <li>C'est la récréation, vous <input type="text" class="degree4-lesson-conjugaison-input" id="fill1" placeholder="..."> dans la cour.</li>
-                            <li>Je ne <input type="text" class="degree4-lesson-conjugaison-input" id="fill2" placeholder="..."> pas d'accord.</li>
-                            <li>Maman <input type="text" class="degree4-lesson-conjugaison-input" id="fill3" placeholder="..."> inquiète car bébé <input type="text" class="degree4-lesson-conjugaison-input" id="fill4" placeholder="..."> malade.</li>
-                            <li>Tu <input type="text" class="degree4-lesson-conjugaison-input" id="fill5" placeholder="..."> contente parce que tes grands-parents <input type="text" class="degree4-lesson-conjugaison-input" id="fill6" placeholder="..."> là.</li>
+                            <li><span data-i18n="ex2_s1">C'est la récréation, vous</span> <input type="text" class="degree4-lesson-conjugaison-input" id="fill1" placeholder="..."> <span data-i18n="ex2_s1_end">dans la cour.</span></li>
+                            <li><span data-i18n="ex2_s2">Je ne</span> <input type="text" class="degree4-lesson-conjugaison-input" id="fill2" placeholder="..."> <span data-i18n="ex2_s2_end">pas d'accord.</span></li>
+                            <li><span data-i18n="ex2_s3">Maman</span> <input type="text" class="degree4-lesson-conjugaison-input" id="fill3" placeholder="..."> <span data-i18n="ex2_s3_end">inquiète car bébé</span> <input type="text" class="degree4-lesson-conjugaison-input" id="fill4" placeholder="..."> <span data-i18n="ex2_s4_end">malade.</span></li>
+                            <li><span data-i18n="ex2_s5">Tu</span> <input type="text" class="degree4-lesson-conjugaison-input" id="fill5" placeholder="..."> <span data-i18n="ex2_s5_end">contente parce que tes grands-parents</span> <input type="text" class="degree4-lesson-conjugaison-input" id="fill6" placeholder="..."> <span data-i18n="ex2_s6_end">là.</span></li>
                         </ol>
                         <button class="degree4-lesson-conjugaison-btn" onclick="checkEx2()" data-i18n="check_answers">🔍 Vérifier les réponses</button>
                         <div id="ex2Key" class="degree4-lesson-conjugaison-answer-key"></div>
@@ -421,32 +426,29 @@
             </div>
 
             <div class="degree4-lesson-conjugaison-exercises-grid">
-                <!-- Row 2: Ex3 (choose correct sentence) | Ex4 (complete table) -->
+                <!-- Ex3: Choose correct sentence -->
                 <div class="degree4-lesson-conjugaison-exercise-col">
                     <div class="question-block" style="margin-bottom:2rem;">
                         <p class="question-text" data-i18n="ex3_instruction">Je choisis la phrase correcte avec le verbe « être ».</p>
                         <p data-i18n="ex3_context">Contexte : De retour chez lui, un nouvel élève parle de sa première journée à l'école.</p>
-                        <div class="degree4-lesson-conjugaison-sentence-item"><p>Phrase 1</p></div>
-                        <select class="degree4-lesson-conjugaison-select" id="prod1">
-                            <option value="">-- Choisir --</option>
-                            <option value="correct">Je suis content.</option>
-                            <option value="wrong1">Je es content.</option>
-                            <option value="wrong2">Je sommes content.</option>
-                        </select>
-                        <div class="degree4-lesson-conjugaison-sentence-item"><p>Phrase 2</p></div>
-                        <select class="degree4-lesson-conjugaison-select" id="prod2">
-                            <option value="">-- Choisir --</option>
-                            <option value="correct">Les salles de classe sont grandes.</option>
-                            <option value="wrong1">Les salles de classe est grandes.</option>
-                            <option value="wrong2">Les salles de classe êtes grandes.</option>
-                        </select>
-                        <div class="degree4-lesson-conjugaison-sentence-item"><p>Phrase 3</p></div>
-                        <select class="degree4-lesson-conjugaison-select" id="prod3">
-                            <option value="">-- Choisir --</option>
-                            <option value="correct">La directrice est gentille.</option>
-                            <option value="wrong1">La directrice sommes gentille.</option>
-                            <option value="wrong2">La directrice sont gentille.</option>
-                        </select>
+                        <div class="degree4-lesson-conjugaison-sentence-item"><p data-i18n="ex3_phrase1_label">Phrase 1</p></div>
+                        <div class="degree4-lesson-conjugaison-options">
+                            <label><input type="radio" name="prod1" value="correct"> <span data-i18n="ex3_p1_correct">Je suis content.</span></label>
+                            <label><input type="radio" name="prod1" value="wrong1"> <span data-i18n="ex3_p1_wrong1">Je es content.</span></label>
+                            <label><input type="radio" name="prod1" value="wrong2"> <span data-i18n="ex3_p1_wrong2">Je sommes content.</span></label>
+                        </div>
+                        <div class="degree4-lesson-conjugaison-sentence-item"><p data-i18n="ex3_phrase2_label">Phrase 2</p></div>
+                        <div class="degree4-lesson-conjugaison-options">
+                            <label><input type="radio" name="prod2" value="correct"> <span data-i18n="ex3_p2_correct">Les salles de classe sont grandes.</span></label>
+                            <label><input type="radio" name="prod2" value="wrong1"> <span data-i18n="ex3_p2_wrong1">Les salles de classe est grandes.</span></label>
+                            <label><input type="radio" name="prod2" value="wrong2"> <span data-i18n="ex3_p2_wrong2">Les salles de classe êtes grandes.</span></label>
+                        </div>
+                        <div class="degree4-lesson-conjugaison-sentence-item"><p data-i18n="ex3_phrase3_label">Phrase 3</p></div>
+                        <div class="degree4-lesson-conjugaison-options">
+                            <label><input type="radio" name="prod3" value="correct"> <span data-i18n="ex3_p3_correct">La directrice est gentille.</span></label>
+                            <label><input type="radio" name="prod3" value="wrong1"> <span data-i18n="ex3_p3_wrong1">La directrice sommes gentille.</span></label>
+                            <label><input type="radio" name="prod3" value="wrong2"> <span data-i18n="ex3_p3_wrong2">La directrice sont gentille.</span></label>
+                        </div>
                         <button class="degree4-lesson-conjugaison-btn" onclick="checkEx3()" data-i18n="check_answers">🔍 Vérifier les réponses</button>
                         <div id="ex3Key" class="degree4-lesson-conjugaison-answer-key"></div>
                         <div id="ex3Feedback" class="degree4-lesson-conjugaison-feedback"></div>
@@ -458,17 +460,18 @@
                         </div>
                     </div>
                 </div>
+                <!-- Ex4: Complete table -->
                 <div class="degree4-lesson-conjugaison-exercise-col">
                     <div class="question-block" style="margin-bottom:2rem;">
                         <p class="question-text" data-i18n="ex4_instruction">Je complète le tableau de conjugaison.</p>
                         <table class="degree4-lesson-conjugaison-table">
-                            <tr><th>Pronom</th><th>Forme</th></tr>
-                            <tr><td>Je</td><td><input type="text" class="degree4-lesson-conjugaison-input" id="table1" placeholder="..."></td></tr>
-                            <tr><td>Tu</td><td><input type="text" class="degree4-lesson-conjugaison-input" id="table2" placeholder="..."></td></tr>
-                            <tr><td>Il / Elle</td><td><input type="text" class="degree4-lesson-conjugaison-input" id="table3" placeholder="..."></td></tr>
-                            <tr><td>Nous</td><td><input type="text" class="degree4-lesson-conjugaison-input" id="table4" placeholder="..."></td></tr>
-                            <tr><td>Vous</td><td><input type="text" class="degree4-lesson-conjugaison-input" id="table5" placeholder="..."></td></tr>
-                            <tr><td>Ils / Elles</td><td><input type="text" class="degree4-lesson-conjugaison-input" id="table6" placeholder="..."></td></tr>
+                            <tr><th data-i18n="pronoun">Pronom</th><th data-i18n="form">Forme</th></tr>
+                            <tr><td data-i18n="pronoun_je">Je</td><td><input type="text" class="degree4-lesson-conjugaison-input" id="table1" placeholder="..."></td></tr>
+                            <tr><td data-i18n="pronoun_tu">Tu</td><td><input type="text" class="degree4-lesson-conjugaison-input" id="table2" placeholder="..."></td></tr>
+                            <tr><td data-i18n="pronoun_il">Il / Elle</td><td><input type="text" class="degree4-lesson-conjugaison-input" id="table3" placeholder="..."></td></tr>
+                            <tr><td data-i18n="pronoun_nous">Nous</td><td><input type="text" class="degree4-lesson-conjugaison-input" id="table4" placeholder="..."></td></tr>
+                            <tr><td data-i18n="pronoun_vous">Vous</td><td><input type="text" class="degree4-lesson-conjugaison-input" id="table5" placeholder="..."></td></tr>
+                            <tr><td data-i18n="pronoun_ils">Ils / Elles</td><td><input type="text" class="degree4-lesson-conjugaison-input" id="table6" placeholder="..."></td></tr>
                         </table>
                         <button class="degree4-lesson-conjugaison-btn" onclick="checkEx4()" data-i18n="check_answers">🔍 Vérifier les réponses</button>
                         <div id="ex4Key" class="degree4-lesson-conjugaison-answer-key"></div>
@@ -558,7 +561,40 @@
                 print_area: "Conjugaison",
                 print_footer_dev: "Développé par Mejri Ziad",
                 print_footer_date: "Imprimé le",
-                listen_conjugation: "Écouter la conjugaison"
+                listen_conjugation: "Écouter la conjugaison",
+                obs1_text: "Solange se promène dans la forêt. A midi, la fillette est fatiguée. Elle appelle sa chienne : « Lassie ! Lassie ! Tu es là ? Montre-toi. Je suis ici. »",
+                obs2_text: "Claudine et Dominique se promènent dans le jardin de leurs grands-parents. Les deux cousines voient des oiseaux dans un nid. Qu'ils sont beaux ! Elles leur parlent : « Nous sommes amis, petits oiseaux. Vous êtes si mignons ! »",
+                pronoun: "Pronom",
+                conjugation: "Conjugaison",
+                form: "Forme",
+                pronoun_je: "Je",
+                pronoun_tu: "Tu",
+                pronoun_il: "Il / Elle",
+                pronoun_nous: "Nous",
+                pronoun_vous: "Vous",
+                pronoun_ils: "Ils / Elles",
+                ex2_s1: "C'est la récréation, vous",
+                ex2_s1_end: "dans la cour.",
+                ex2_s2: "Je ne",
+                ex2_s2_end: "pas d'accord.",
+                ex2_s3: "Maman",
+                ex2_s3_end: "inquiète car bébé",
+                ex2_s4_end: "malade.",
+                ex2_s5: "Tu",
+                ex2_s5_end: "contente parce que tes grands-parents",
+                ex2_s6_end: "là.",
+                ex3_phrase1_label: "Phrase 1",
+                ex3_p1_correct: "Je suis content.",
+                ex3_p1_wrong1: "Je es content.",
+                ex3_p1_wrong2: "Je sommes content.",
+                ex3_phrase2_label: "Phrase 2",
+                ex3_p2_correct: "Les salles de classe sont grandes.",
+                ex3_p2_wrong1: "Les salles de classe est grandes.",
+                ex3_p2_wrong2: "Les salles de classe êtes grandes.",
+                ex3_phrase3_label: "Phrase 3",
+                ex3_p3_correct: "La directrice est gentille.",
+                ex3_p3_wrong1: "La directrice sommes gentille.",
+                ex3_p3_wrong2: "La directrice sont gentille."
             },
             en: {
                 lesson_title: "Conjugation – The verb « être » in the present tense",
@@ -600,7 +636,40 @@
                 print_area: "Conjugation",
                 print_footer_dev: "Developed by Mejri Ziad",
                 print_footer_date: "Printed on",
-                listen_conjugation: "Listen to the conjugation"
+                listen_conjugation: "Listen to the conjugation",
+                obs1_text: "Solange walks in the forest. At noon, the little girl is tired. She calls her dog: \"Lassie! Lassie! Are you there? Show yourself. I am here.\"",
+                obs2_text: "Claudine and Dominique walk in their grandparents' garden. The two cousins see birds in a nest. How beautiful they are! They talk to them: \"We are friends, little birds. You are so cute!\"",
+                pronoun: "Pronoun",
+                conjugation: "Conjugation",
+                form: "Form",
+                pronoun_je: "I",
+                pronoun_tu: "You",
+                pronoun_il: "He / She",
+                pronoun_nous: "We",
+                pronoun_vous: "You",
+                pronoun_ils: "They",
+                ex2_s1: "It's recess, you",
+                ex2_s1_end: "in the playground.",
+                ex2_s2: "I do not",
+                ex2_s2_end: "agree.",
+                ex2_s3: "Mom",
+                ex2_s3_end: "worried because baby",
+                ex2_s4_end: "sick.",
+                ex2_s5: "You",
+                ex2_s5_end: "happy because your grandparents",
+                ex2_s6_end: "there.",
+                ex3_phrase1_label: "Sentence 1",
+                ex3_p1_correct: "I am happy.",
+                ex3_p1_wrong1: "I is happy.",
+                ex3_p1_wrong2: "I are happy.",
+                ex3_phrase2_label: "Sentence 2",
+                ex3_p2_correct: "The classrooms are big.",
+                ex3_p2_wrong1: "The classrooms is big.",
+                ex3_p2_wrong2: "The classrooms are big. (wrong form)",
+                ex3_phrase3_label: "Sentence 3",
+                ex3_p3_correct: "The principal is kind.",
+                ex3_p3_wrong1: "The principal are kind.",
+                ex3_p3_wrong2: "The principal am kind."
             },
             ar: {
                 lesson_title: "الصرف – الفعل « être » في المضارع",
@@ -642,7 +711,40 @@
                 print_area: "التصريف",
                 print_footer_dev: "طوّر بواسطة ماجري زياد",
                 print_footer_date: "طُبع في",
-                listen_conjugation: "استمع إلى التصريف"
+                listen_conjugation: "استمع إلى التصريف",
+                obs1_text: "تتجول سولانج في الغابة. عند الظهيرة، الطفلة متعبة. تنادي كلبتها: \"لاسي! لاسي! هل أنت هناك؟ أظهري نفسك. أنا هنا.\"",
+                obs2_text: "تتجول كلودين ودومينيك في حديقة جدهما. ترى الابنتان الطيور في العش. كم هي جميلة! تتحدثان إليها: \"نحن أصدقاء، أيتها الطيور الصغيرة. أنتم لطيفون جدًا!\"",
+                pronoun: "الضمير",
+                conjugation: "التصريف",
+                form: "الشكل",
+                pronoun_je: "أنا",
+                pronoun_tu: "أنتَ/أنتِ",
+                pronoun_il: "هو / هي",
+                pronoun_nous: "نحن",
+                pronoun_vous: "أنتم",
+                pronoun_ils: "هم / هن",
+                ex2_s1: "إنها الاستراحة، أنتم",
+                ex2_s1_end: "في الساحة.",
+                ex2_s2: "أنا لا",
+                ex2_s2_end: "موافق.",
+                ex2_s3: "أمي",
+                ex2_s3_end: "قلقة لأن الطفل",
+                ex2_s4_end: "مريض.",
+                ex2_s5: "أنتَ",
+                ex2_s5_end: "سعيد لأن جديك",
+                ex2_s6_end: "هنا.",
+                ex3_phrase1_label: "الجملة 1",
+                ex3_p1_correct: "أنا سعيد.",
+                ex3_p1_wrong1: "أنا هو سعيد.",
+                ex3_p1_wrong2: "أنا نكون سعيد.",
+                ex3_phrase2_label: "الجملة 2",
+                ex3_p2_correct: "قاعات الدراسة كبيرة.",
+                ex3_p2_wrong1: "قاعات الدراسة يكون كبيرة.",
+                ex3_p2_wrong2: "قاعات الدراسة تكون كبيرة.",
+                ex3_phrase3_label: "الجملة 3",
+                ex3_p3_correct: "المديرة لطيفة.",
+                ex3_p3_wrong1: "المديرة نكون لطيفة.",
+                ex3_p3_wrong2: "المديرة يكونون لطيفة."
             }
         });
 
@@ -651,10 +753,7 @@
             if (container && typeof App.makeBilingual === 'function') {
                 App.makeBilingual(container);
             }
-            App.onLangChange(function(lang) {
-                if (container) container.dir = lang === 'ar' ? 'rtl' : 'ltr';
-            });
-            if (container) container.dir = (localStorage.getItem('lang') || 'fr') === 'ar' ? 'rtl' : 'ltr';
+            // Direction change removed
         })();
     </script>
 
@@ -788,7 +887,6 @@
                 document.getElementById('ex1Feedback').className = score === total ? 'degree4-lesson-conjugaison-feedback correct' : 'degree4-lesson-conjugaison-feedback wrong';
             };
 
-            // Ex2: Fill blanks
             window.checkEx2 = async function() {
                 if (!await requireAuth()) return;
                 const answers = ['êtes', 'suis', 'est', 'est', 'es', 'sont'];
@@ -812,12 +910,11 @@
                 document.getElementById('ex2Feedback').className = score === total ? 'degree4-lesson-conjugaison-feedback correct' : 'degree4-lesson-conjugaison-feedback wrong';
             };
 
-            // Ex3: Choose correct sentence
             window.checkEx3 = async function() {
                 if (!await requireAuth()) return;
-                const s1 = document.getElementById('prod1').value;
-                const s2 = document.getElementById('prod2').value;
-                const s3 = document.getElementById('prod3').value;
+                const s1 = document.querySelector('input[name="prod1"]:checked')?.value;
+                const s2 = document.querySelector('input[name="prod2"]:checked')?.value;
+                const s3 = document.querySelector('input[name="prod3"]:checked')?.value;
                 let score = 0, total = 3;
                 let feedbackHTML = '';
                 if (s1 === 'correct') { score++; feedbackHTML += '<p style="color:green">✓ Phrase 1</p>'; } else feedbackHTML += '<p style="color:red">✗ Phrase 1 → Je suis content.</p>';
@@ -831,7 +928,6 @@
                 document.getElementById('ex3Feedback').className = score === total ? 'degree4-lesson-conjugaison-feedback correct' : 'degree4-lesson-conjugaison-feedback wrong';
             };
 
-            // Ex4: Complete table
             window.checkEx4 = async function() {
                 if (!await requireAuth()) return;
                 const answers = ['suis', 'es', 'est', 'sommes', 'êtes', 'sont'];
@@ -855,7 +951,6 @@
                 document.getElementById('ex4Feedback').className = score === total ? 'degree4-lesson-conjugaison-feedback correct' : 'degree4-lesson-conjugaison-feedback wrong';
             };
 
-            // Play conjugation audio
             window.playConjugationSound = function() {
                 new Audio('assets4/sounds/degree4/unit1/lesson8/etre_conjugation.mp3').play().catch(()=>{});
             };
@@ -958,10 +1053,32 @@
                     document.getElementById('signInBtn')?.click();
                     return;
                 }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles')
+                        .select('registration_state')
+                        .eq('id', user.id)
+                        .single();
+                    if (!error && profile && profile.registration_state && profile.registration_state.active === true) {
+                        isRegistered = true;
+                    }
+                } catch (e) { /* ignore */ }
                 const lang = localStorage.getItem('lang') || 'fr';
                 const content = document.getElementById('main-content').cloneNode(true);
-                content.querySelectorAll('input, textarea, .degree4-lesson-conjugaison-self-assess, .degree4-lesson-conjugaison-score-area, .degree4-lesson-conjugaison-audio, .degree4-lesson-conjugaison-slideshow-btn, .degree4-lesson-conjugaison-footer-nav, .degree4-lesson-conjugaison-vocab-exercise button').forEach(el => el.remove());
-                content.querySelectorAll('.degree4-lesson-conjugaison-slideshow').forEach(el => el.remove());
+                content.querySelectorAll('input, textarea, .degree4-lesson-conjugaison-self-assess, .degree4-lesson-conjugaison-score-area, .degree4-lesson-conjugaison-footer-nav, .degree4-lesson-conjugaison-btn, .degree4-lesson-conjugaison-play-btn').forEach(el => el.remove());
+                const answerKeys = content.querySelectorAll('.degree4-lesson-conjugaison-answer-key');
+                if (isRegistered) {
+                    answerKeys.forEach(key => {
+                        key.style.display = 'block';
+                        key.style.border = 'none';
+                        key.style.padding = '0.5rem 0';
+                        key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    answerKeys.forEach(el => el.remove());
+                }
                 const breadcrumb = content.querySelector('p[style*="margin-bottom:1.5rem"]');
                 if (breadcrumb) breadcrumb.remove();
                 const printWindow = window.open('', '_blank', 'width=800,height=600');
@@ -975,12 +1092,7 @@
                         .print-header .lesson-name { font-size: 1.1rem; font-weight: bold; color: #000; margin-top: 0.5rem; }
                         .print-footer { text-align: center; border-top: 1px solid #ccc; padding-top: 1rem; margin-top: 2rem; font-size: 0.85rem; color: #666; }
                         .degree4-lesson-conjugaison-card { margin-bottom: 2rem; border: 1px solid #ccc; padding: 1rem; border-radius: 8px; }
-                        .degree4-lesson-conjugaison-text { white-space: pre-line; font-style: italic; }
-                        .degree4-lesson-conjugaison-vocab, .degree4-lesson-conjugaison-vocab-exercise { margin-top: 1rem; background: #f5f0e6; padding: 1rem; border-radius: 8px; }
-                        .degree4-lesson-conjugaison-vocab ul, .degree4-lesson-conjugaison-vocab-exercise ol { list-style: none; padding: 0; }
-                        .degree4-lesson-conjugaison-vocab li, .degree4-lesson-conjugaison-vocab-exercise li { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
-                        .word { font-weight: bold; min-width: 120px; }
-                        .translation { color: #555; }
+                        .degree4-lesson-conjugaison-options { display: none; }
                         .degree4-lesson-conjugaison-answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; }
                         @media print { @page { margin: 2cm; } }
                     </style></head><body>

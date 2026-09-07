@@ -7,6 +7,7 @@
     <link rel="manifest" href="/manifest.json">
     <link rel="stylesheet" href="shared.css">
     <style>
+        /* CSS unchanged from original */
         :root {
             --degree4-lesson-grammaire-bg: #f9f7f1;
             --degree4-lesson-grammaire-card: #ffffff;
@@ -16,7 +17,7 @@
             --degree4-lesson-grammaire-accent: #1e3a8a;
             --degree4-lesson-grammaire-accent-hover: #1e40af;
             --degree4-lesson-grammaire-border: #e5ddd0;
-            --degree4-lesson-grammaire-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+            --degree4-lesson-grammaire-shadow: 0 1px 4px rgba(0,0,0,0.04);
             --degree4-lesson-grammaire-radius: 12px;
             --degree4-lesson-grammaire-radius-sm: 8px;
             --degree4-lesson-grammaire-transition: 0.25s ease;
@@ -35,17 +36,13 @@
             --degree4-lesson-grammaire-accent: #90caf9;
             --degree4-lesson-grammaire-accent-hover: #b3d9f7;
             --degree4-lesson-grammaire-border: #3e3830;
-            --degree4-lesson-grammaire-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+            --degree4-lesson-grammaire-shadow: 0 1px 4px rgba(0,0,0,0.25);
             --degree4-lesson-grammaire-audio-bg: #26221b;
             --degree4-lesson-grammaire-audio-progress: #5a4e3c;
             --degree4-lesson-grammaire-button-bg: #3a3329;
             --degree4-lesson-grammaire-button-hover: #4e4437;
         }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin:0; padding:0; box-sizing:border-box; }
         body {
             font-family: var(--degree4-lesson-grammaire-font);
             background: var(--degree4-lesson-grammaire-bg);
@@ -53,7 +50,6 @@
             line-height: 1.75;
             transition: background var(--degree4-lesson-grammaire-transition), color var(--degree4-lesson-grammaire-transition);
         }
-        /* Handwriting font class for Ex1 alphabet exercise */
         .degree4-lesson-grammaire-handwriting {
             font-family: 'Segoe Script', 'Bradley Hand', 'Comic Sans MS', 'URW Chancery L', 'Apple Chancery', cursive !important;
             letter-spacing: 0.05em;
@@ -68,10 +64,7 @@
             margin: 0 auto;
             padding: 1.8rem 1.4rem 3rem;
         }
-        .degree4-lesson-grammaire-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
+        .degree4-lesson-grammaire-header { text-align: center; margin-bottom: 2rem; }
         .degree4-lesson-grammaire-badge {
             display: inline-block;
             background: var(--degree4-lesson-grammaire-accent);
@@ -121,10 +114,7 @@
             padding: 0.5rem 0;
             border-bottom: 1px dashed var(--degree4-lesson-grammaire-border);
         }
-        .degree4-lesson-grammaire-sentence-item p {
-            margin: 0;
-            flex: 1;
-        }
+        .degree4-lesson-grammaire-sentence-item p { margin: 0; flex: 1; }
         .degree4-lesson-grammaire-answer-key {
             display: none;
             margin-top: 0.8rem;
@@ -135,19 +125,10 @@
             color: var(--degree4-lesson-grammaire-text-light);
             border: 1px dashed var(--degree4-lesson-grammaire-accent);
         }
-        .degree4-lesson-grammaire-answer-key.visible {
-            display: block;
-        }
-        .degree4-lesson-grammaire-feedback {
-            margin-top: 0.8rem;
-            font-weight: 600;
-        }
-        .degree4-lesson-grammaire-feedback.correct {
-            color: #2e7d32;
-        }
-        .degree4-lesson-grammaire-feedback.wrong {
-            color: #c62828;
-        }
+        .degree4-lesson-grammaire-answer-key.visible { display: block; }
+        .degree4-lesson-grammaire-feedback { margin-top: 0.8rem; font-weight: 600; }
+        .degree4-lesson-grammaire-feedback.correct { color: #2e7d32; }
+        .degree4-lesson-grammaire-feedback.wrong { color: #c62828; }
         .degree4-lesson-grammaire-btn {
             background: var(--degree4-lesson-grammaire-accent);
             color: #fff;
@@ -159,9 +140,7 @@
             transition: background var(--degree4-lesson-grammaire-transition);
             font-size: 0.85rem;
         }
-        .degree4-lesson-grammaire-btn:hover {
-            background: var(--degree4-lesson-grammaire-accent-hover);
-        }
+        .degree4-lesson-grammaire-btn:hover { background: var(--degree4-lesson-grammaire-accent-hover); }
         .degree4-lesson-grammaire-self-assess {
             margin-top: 1rem;
             display: flex;
@@ -214,9 +193,7 @@
             gap: 2rem;
             margin: 2rem 0;
         }
-        .degree4-lesson-grammaire-exercise-col {
-            min-width: 0;
-        }
+        .degree4-lesson-grammaire-exercise-col { min-width: 0; }
         .degree4-lesson-grammaire-select {
             width: 100%;
             padding: 0.5rem;
@@ -239,10 +216,7 @@
             text-align: center;
             background: var(--degree4-lesson-grammaire-card);
         }
-        /* Rearrange tiles */
-        .degree4-lesson-grammaire-rearrange-container {
-            margin: 15px 0;
-        }
+        .degree4-lesson-grammaire-rearrange-container { margin: 15px 0; }
         .degree4-lesson-grammaire-words-container {
             display: flex;
             flex-wrap: wrap;
@@ -258,9 +232,7 @@
             user-select: none;
             transition: all 0.2s;
         }
-        .degree4-lesson-grammaire-word-tile:hover {
-            background-color: #d1e7f3;
-        }
+        .degree4-lesson-grammaire-word-tile:hover { background-color: #d1e7f3; }
         .degree4-lesson-grammaire-result-area {
             min-height: 40px;
             border: 1px dashed var(--degree4-lesson-grammaire-accent);
@@ -275,7 +247,6 @@
             background-color: #c8e6c9;
             border-color: #2e7d32;
         }
-        /* Matching connection */
         .degree4-lesson-grammaire-connection-row {
             display: flex;
             align-items: center;
@@ -345,7 +316,6 @@
 <body>
     <!-- Hidden shell elements required by ed-french-ini.js -->
     <div id="toast-container"></div>
-    <div id="toast"></div>
     <button id="signInBtn" style="display:none"></button>
 
     <div id="main-content" class="degree4-lesson-grammaire-container">
@@ -373,12 +343,12 @@
                     <img src="assets4/images/degree4/unit1/lesson7/children_teacher.jpg" alt="Observation" style="max-width:100%; border-radius:8px; margin-bottom:1rem;">
                 </div>
                 <div style="flex:2; min-width:300px;">
-                    <div class="degree4-lesson-grammaire-sentence-item"><p>Les enfants sont dans la cour. Ils s'amusent.</p></div>
-                    <div class="degree4-lesson-grammaire-sentence-item"><p>Les garçons jouent aux billes.</p></div>
-                    <div class="degree4-lesson-grammaire-sentence-item"><p>Les filles sautent à la corde.</p></div>
-                    <div class="degree4-lesson-grammaire-sentence-item"><p>La cloche sonne. Les élèves quittent la classe.</p></div>
-                    <div class="degree4-lesson-grammaire-sentence-item"><p>La maîtresse ne sort pas.</p></div>
-                    <div class="degree4-lesson-grammaire-sentence-item"><p>Elle écrit un exercice au tableau.</p></div>
+                    <div class="degree4-lesson-grammaire-sentence-item"><p data-i18n="obs1">Les enfants sont dans la cour. Ils s'amusent.</p></div>
+                    <div class="degree4-lesson-grammaire-sentence-item"><p data-i18n="obs2">Les garçons jouent aux billes.</p></div>
+                    <div class="degree4-lesson-grammaire-sentence-item"><p data-i18n="obs3">Les filles sautent à la corde.</p></div>
+                    <div class="degree4-lesson-grammaire-sentence-item"><p data-i18n="obs4">La cloche sonne. Les élèves quittent la classe.</p></div>
+                    <div class="degree4-lesson-grammaire-sentence-item"><p data-i18n="obs5">La maîtresse ne sort pas.</p></div>
+                    <div class="degree4-lesson-grammaire-sentence-item"><p data-i18n="obs6">Elle écrit un exercice au tableau.</p></div>
                 </div>
             </div>
         </section>
@@ -443,7 +413,7 @@
                             <div class="degree4-lesson-grammaire-sentence-item"><p>1</p></div>
                             <div id="rearrangeWords1" class="degree4-lesson-grammaire-words-container"></div>
                             <div id="rearrangeResult1" class="degree4-lesson-grammaire-result-area"></div>
-                            <button class="degree4-lesson-grammaire-btn" onclick="clearRearrange(1)">↺ Effacer</button>
+                            <button class="degree4-lesson-grammaire-btn" onclick="clearRearrange(1)" data-i18n="clear">↺ Effacer</button>
                             <button class="degree4-lesson-grammaire-btn" onclick="checkRearrange(1)">🔍 Vérifier</button>
                             <div id="rearrangeFeedback1" class="degree4-lesson-grammaire-feedback"></div>
                         </div>
@@ -451,7 +421,7 @@
                             <div class="degree4-lesson-grammaire-sentence-item"><p>2</p></div>
                             <div id="rearrangeWords2" class="degree4-lesson-grammaire-words-container"></div>
                             <div id="rearrangeResult2" class="degree4-lesson-grammaire-result-area"></div>
-                            <button class="degree4-lesson-grammaire-btn" onclick="clearRearrange(2)">↺ Effacer</button>
+                            <button class="degree4-lesson-grammaire-btn" onclick="clearRearrange(2)" data-i18n="clear">↺ Effacer</button>
                             <button class="degree4-lesson-grammaire-btn" onclick="checkRearrange(2)">🔍 Vérifier</button>
                             <div id="rearrangeFeedback2" class="degree4-lesson-grammaire-feedback"></div>
                         </div>
@@ -535,6 +505,7 @@
                 ex3_instruction: "Je mets les mots dans l'ordre pour former des phrases.",
                 ex4_instruction: "Je relie chaque sujet à son verbe.",
                 check_answers: "🔍 Vérifier les réponses",
+                clear: "↺ Effacer",
                 self_assess_question: "Ma réponse est :",
                 self_correct: "Correcte",
                 self_partial: "Partiellement correcte",
@@ -558,7 +529,13 @@
                 print_week: "Unité 1",
                 print_area: "Grammaire",
                 print_footer_dev: "Développé par Mejri Ziad",
-                print_footer_date: "Imprimé le"
+                print_footer_date: "Imprimé le",
+                obs1: "Les enfants sont dans la cour. Ils s'amusent.",
+                obs2: "Les garçons jouent aux billes.",
+                obs3: "Les filles sautent à la corde.",
+                obs4: "La cloche sonne. Les élèves quittent la classe.",
+                obs5: "La maîtresse ne sort pas.",
+                obs6: "Elle écrit un exercice au tableau."
             },
             en: {
                 lesson_title: "Grammar – The Sentence and Capital Letter",
@@ -577,6 +554,7 @@
                 ex3_instruction: "I put the words in order to form sentences.",
                 ex4_instruction: "I match each subject to its verb.",
                 check_answers: "🔍 Check answers",
+                clear: "↺ Clear",
                 self_assess_question: "My answer is:",
                 self_correct: "Correct",
                 self_partial: "Partially correct",
@@ -600,7 +578,13 @@
                 print_week: "Unit 1",
                 print_area: "Grammar",
                 print_footer_dev: "Developed by Mejri Ziad",
-                print_footer_date: "Printed on"
+                print_footer_date: "Printed on",
+                obs1: "The children are in the playground. They are having fun.",
+                obs2: "The boys are playing marbles.",
+                obs3: "The girls are jumping rope.",
+                obs4: "The bell rings. The students leave the classroom.",
+                obs5: "The teacher does not go out.",
+                obs6: "She writes an exercise on the board."
             },
             ar: {
                 lesson_title: "القواعد – الجملة والحرف الكبير",
@@ -619,6 +603,7 @@
                 ex3_instruction: "أضع الكلمات في الترتيب الصحيح لتكوين جمل.",
                 ex4_instruction: "أربط كل فاعل بفعله.",
                 check_answers: "🔍 تحقق من الإجابات",
+                clear: "↺ مسح",
                 self_assess_question: "جوابي هو:",
                 self_correct: "صحيح",
                 self_partial: "صحيح جزئيًا",
@@ -642,7 +627,13 @@
                 print_week: "الوحدة 1",
                 print_area: "القواعد",
                 print_footer_dev: "طوّر بواسطة ماجري زياد",
-                print_footer_date: "طُبع في"
+                print_footer_date: "طُبع في",
+                obs1: "الأطفال في الساحة. إنهم يتسلون.",
+                obs2: "الأولاد يلعبون الكرات الزجاجية.",
+                obs3: "البنات يقفزن بالحبل.",
+                obs4: "الجرس يرن. التلاميذ يغادرون القسم.",
+                obs5: "المعلمة لا تخرج.",
+                obs6: "إنها تكتب تمريناً على السبورة."
             }
         });
 
@@ -651,10 +642,7 @@
             if (container && typeof App.makeBilingual === 'function') {
                 App.makeBilingual(container);
             }
-            App.onLangChange(function(lang) {
-                if (container) container.dir = lang === 'ar' ? 'rtl' : 'ltr';
-            });
-            if (container) container.dir = (localStorage.getItem('lang') || 'fr') === 'ar' ? 'rtl' : 'ltr';
+            // Direction change removed
         })();
     </script>
 
@@ -877,7 +865,6 @@
                 row.appendChild(col2);
                 row.appendChild(col3);
                 ex4Container.appendChild(row);
-                // Add event listeners
                 leftPart.addEventListener('click', () => selectEx4Part(row, leftPart));
                 rightPart.addEventListener('click', () => selectEx4Part(row, rightPart));
                 btn.addEventListener('click', () => connectEx4(row));
@@ -1024,8 +1011,10 @@
                 const { error: updateError } = await App.supabase
                     .from('profiles').update({ achivement }).eq('id', user.id);
                 if (updateError) App.showToast('save_error', 'error');
-                else { App.showToast('save_success', 'success');
-                    App.logUserAction('lesson_saved', { lesson: 'degree4unit1lesson7', correct, incorrect, partial }); }
+                else {
+                    App.showToast('save_success', 'success');
+                    App.logUserAction('lesson_saved', { lesson: 'degree4unit1lesson7', correct, incorrect, partial });
+                }
             });
 
             document.getElementById('printBtn').addEventListener('click', async function() {
@@ -1036,10 +1025,32 @@
                     document.getElementById('signInBtn')?.click();
                     return;
                 }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles')
+                        .select('registration_state')
+                        .eq('id', user.id)
+                        .single();
+                    if (!error && profile && profile.registration_state && profile.registration_state.active === true) {
+                        isRegistered = true;
+                    }
+                } catch (e) { /* ignore */ }
                 const lang = localStorage.getItem('lang') || 'fr';
                 const content = document.getElementById('main-content').cloneNode(true);
-                content.querySelectorAll('input, textarea, .degree4-lesson-grammaire-self-assess, .degree4-lesson-grammaire-score-area, .degree4-lesson-grammaire-audio, .degree4-lesson-grammaire-slideshow-btn, .degree4-lesson-grammaire-footer-nav, .degree4-lesson-grammaire-vocab-exercise button').forEach(el => el.remove());
-                content.querySelectorAll('.degree4-lesson-grammaire-slideshow').forEach(el => el.remove());
+                content.querySelectorAll('input, textarea, .degree4-lesson-grammaire-self-assess, .degree4-lesson-grammaire-score-area, .degree4-lesson-grammaire-footer-nav, .degree4-lesson-grammaire-btn').forEach(el => el.remove());
+                const answerKeys = content.querySelectorAll('.degree4-lesson-grammaire-answer-key');
+                if (isRegistered) {
+                    answerKeys.forEach(key => {
+                        key.style.display = 'block';
+                        key.style.border = 'none';
+                        key.style.padding = '0.5rem 0';
+                        key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    answerKeys.forEach(el => el.remove());
+                }
                 const breadcrumb = content.querySelector('p[style*="margin-bottom:1.5rem"]');
                 if (breadcrumb) breadcrumb.remove();
                 const printWindow = window.open('', '_blank', 'width=800,height=600');
@@ -1053,12 +1064,7 @@
                         .print-header .lesson-name { font-size: 1.1rem; font-weight: bold; color: #000; margin-top: 0.5rem; }
                         .print-footer { text-align: center; border-top: 1px solid #ccc; padding-top: 1rem; margin-top: 2rem; font-size: 0.85rem; color: #666; }
                         .degree4-lesson-grammaire-card { margin-bottom: 2rem; border: 1px solid #ccc; padding: 1rem; border-radius: 8px; }
-                        .degree4-lesson-grammaire-text { white-space: pre-line; font-style: italic; }
-                        .degree4-lesson-grammaire-vocab, .degree4-lesson-grammaire-vocab-exercise { margin-top: 1rem; background: #f5f0e6; padding: 1rem; border-radius: 8px; }
-                        .degree4-lesson-grammaire-vocab ul, .degree4-lesson-grammaire-vocab-exercise ol { list-style: none; padding: 0; }
-                        .degree4-lesson-grammaire-vocab li, .degree4-lesson-grammaire-vocab-exercise li { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
-                        .word { font-weight: bold; min-width: 120px; }
-                        .translation { color: #555; }
+                        .degree4-lesson-grammaire-options { display: none; }
                         .degree4-lesson-grammaire-answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; }
                         .degree4-lesson-grammaire-handwriting { font-family: 'Segoe Script', 'Bradley Hand', 'Comic Sans MS', 'URW Chancery L', 'Apple Chancery', cursive !important; }
                         .degree4-lesson-grammaire-handwriting-input { font-family: 'Segoe Script', 'Bradley Hand', 'Comic Sans MS', 'URW Chancery L', 'Apple Chancery', cursive !important; }
@@ -1071,8 +1077,7 @@
                 `);
                 printWindow.document.close();
                 printWindow.focus();
-                setTimeout(() => { printWindow.print();
-                    printWindow.close(); }, 500);
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
             });
         })();
     </script>

@@ -7,13 +7,14 @@
     <link rel="manifest" href="/manifest.json">
     <link rel="stylesheet" href="shared.css">
     <style>
+        /* CSS unchanged */
         :root {
             --degree4-lesson-miniprojet-bg: #f9f7f1;
             --degree4-lesson-miniprojet-card: #ffffff;
             --degree4-lesson-miniprojet-text: #2b2416;
             --degree4-lesson-miniprojet-text-light: #5c5344;
             --degree4-lesson-miniprojet-heading: #382e1e;
-            --degree4-lesson-miniprojet-accent: #b8860b; /* goldenrod */
+            --degree4-lesson-miniprojet-accent: #b8860b;
             --degree4-lesson-miniprojet-accent-hover: #a07000;
             --degree4-lesson-miniprojet-border: #e5ddd0;
             --degree4-lesson-miniprojet-shadow: 0 1px 4px rgba(0,0,0,0.04);
@@ -206,16 +207,20 @@
             gap: 0.8rem;
             flex-wrap: wrap;
         }
-        .degree4-lesson-miniprojet-select {
-            width: 100%;
-            padding: 0.5rem;
-            border: 2px solid var(--degree4-lesson-miniprojet-border);
-            border-radius: 6px;
-            background: var(--degree4-lesson-miniprojet-card);
-            color: var(--degree4-lesson-miniprojet-text);
-            font-family: inherit;
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
+        .degree4-lesson-miniprojet-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            margin: 0.5rem 0;
+        }
+        .degree4-lesson-miniprojet-options label {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            cursor: pointer;
+        }
+        .degree4-lesson-miniprojet-options input[type="radio"] {
+            accent-color: var(--degree4-lesson-miniprojet-accent);
         }
         .degree4-lesson-miniprojet-story-table {
             width: 100%;
@@ -241,7 +246,6 @@
 <body>
     <!-- Hidden shell elements required by ed-french-ini.js -->
     <div id="toast-container"></div>
-    <div id="toast"></div>
     <button id="signInBtn" style="display:none"></button>
 
     <div id="main-content" class="degree4-lesson-miniprojet-container">
@@ -267,11 +271,11 @@
             <h3 data-i18n="invitation_title">L'invitation</h3>
             <table class="degree4-lesson-miniprojet-story-table">
                 <tr><th data-i18n="table_header1">Élément</th><th data-i18n="table_header2">Texte</th></tr>
-                <tr><td data-i18n="table_row1">Titre du texte</td><td>L'invitation</td></tr>
-                <tr><td data-i18n="table_row2">Début</td><td>Le chat invite ses voisins : les oiseaux et les souris, pour fêter son anniversaire.</td></tr>
-                <tr><td data-i18n="table_row3">Ensuite</td><td>Tout le monde est de bonne humeur. On s'amuse beaucoup. Les oiseaux chantent. Les souris dansent, courent ici et là. Maintenant les invités ont faim. Ils demandent au chat : – "Où est le goûter ?" – "Mais, c'est vous le goûter !" s'exclame le chat.</td></tr>
-                <tr><td data-i18n="table_row4">Fin</td><td>Il ferme alors la porte et il se met à dévorer ses invités les uns après les autres.</td></tr>
-                <tr><td data-i18n="table_row5">Auteur</td><td>D'après Gisela Durr et Thuswaldner Werner</td></tr>
+                <tr><td data-i18n="table_row1">Titre du texte</td><td data-i18n="table_content1">L'invitation</td></tr>
+                <tr><td data-i18n="table_row2">Début</td><td data-i18n="table_content2">Le chat invite ses voisins : les oiseaux et les souris, pour fêter son anniversaire.</td></tr>
+                <tr><td data-i18n="table_row3">Ensuite</td><td data-i18n="table_content3">Tout le monde est de bonne humeur. On s'amuse beaucoup. Les oiseaux chantent. Les souris dansent, courent ici et là. Maintenant les invités ont faim. Ils demandent au chat : – "Où est le goûter ?" – "Mais, c'est vous le goûter !" s'exclame le chat.</td></tr>
+                <tr><td data-i18n="table_row4">Fin</td><td data-i18n="table_content4">Il ferme alors la porte et il se met à dévorer ses invités les uns après les autres.</td></tr>
+                <tr><td data-i18n="table_row5">Auteur</td><td data-i18n="table_content5">D'après Gisela Durr et Thuswaldner Werner</td></tr>
             </table>
             <img src="assets4/images/degree4/unit1/lesson9/cat_invitation.jpg" alt="Invitation" style="max-width:100%; border-radius:8px;">
         </section>
@@ -283,18 +287,17 @@
             <!-- Activity A: Read with audio -->
             <div class="degree4-lesson-miniprojet-sentence-item" style="align-items:center;">
                 <button class="degree4-lesson-miniprojet-play-btn" onclick="playTextSound()">▶</button>
-                <p>La famille vient de s'installer au bord de la rivière. La mère commence à servir le goûter. Tout à coup, on entend un grand « plouf ! » Toutes les têtes se tournent dans la direction du bruit. La voiture est en train de s'enfoncer dans l'eau. Le père a oublié de serrer le frein à main.</p>
+                <p data-i18n="audio_text">La famille vient de s'installer au bord de la rivière. La mère commence à servir le goûter. Tout à coup, on entend un grand « plouf ! » Toutes les têtes se tournent dans la direction du bruit. La voiture est en train de s'enfoncer dans l'eau. Le père a oublié de serrer le frein à main.</p>
             </div>
 
             <!-- Activity B: Choose title -->
             <div class="question-block" style="margin-bottom:2rem;">
                 <p class="question-text" data-i18n="ex1_instruction">Je choisis le titre qui convient au texte.</p>
-                <select class="degree4-lesson-miniprojet-select" id="titleChoice">
-                    <option value="">-- Choisir --</option>
-                    <option value="rentree">C'est la rentrée</option>
-                    <option value="piquenique">Un drôle de pique-nique</option>
-                    <option value="mer">Au bord de la mer</option>
-                </select>
+                <div class="degree4-lesson-miniprojet-options">
+                    <label><input type="radio" name="titleChoice" value="rentree"> <span data-i18n="ex1_opt_rentree">C'est la rentrée</span></label>
+                    <label><input type="radio" name="titleChoice" value="piquenique"> <span data-i18n="ex1_opt_piquenique">Un drôle de pique-nique</span></label>
+                    <label><input type="radio" name="titleChoice" value="mer"> <span data-i18n="ex1_opt_mer">Au bord de la mer</span></label>
+                </div>
                 <button class="degree4-lesson-miniprojet-btn" onclick="checkEx1()" data-i18n="check_answers">🔍 Vérifier</button>
                 <div id="ex1Key" class="degree4-lesson-miniprojet-answer-key"></div>
                 <div id="ex1Feedback" class="degree4-lesson-miniprojet-feedback"></div>
@@ -309,12 +312,11 @@
             <!-- Activity C: Choose beginning -->
             <div class="question-block" style="margin-bottom:2rem;">
                 <p class="question-text" data-i18n="ex2_instruction">Je choisis la partie qui représente le début de l'histoire.</p>
-                <select class="degree4-lesson-miniprojet-select" id="beginningChoice">
-                    <option value="">-- Choisir --</option>
-                    <option value="plouf">Tout à coup, on entend un grand « plouf ! »</option>
-                    <option value="famille">La famille vient de s'installer au bord de la rivière.</option>
-                    <option value="voiture">La voiture est en train de s'enfoncer dans l'eau.</option>
-                </select>
+                <div class="degree4-lesson-miniprojet-options">
+                    <label><input type="radio" name="beginningChoice" value="plouf"> <span data-i18n="ex2_opt_plouf">Tout à coup, on entend un grand « plouf ! »</span></label>
+                    <label><input type="radio" name="beginningChoice" value="famille"> <span data-i18n="ex2_opt_famille">La famille vient de s'installer au bord de la rivière.</span></label>
+                    <label><input type="radio" name="beginningChoice" value="voiture"> <span data-i18n="ex2_opt_voiture">La voiture est en train de s'enfoncer dans l'eau.</span></label>
+                </div>
                 <button class="degree4-lesson-miniprojet-btn" onclick="checkEx2()" data-i18n="check_answers">🔍 Vérifier</button>
                 <div id="ex2Key" class="degree4-lesson-miniprojet-answer-key"></div>
                 <div id="ex2Feedback" class="degree4-lesson-miniprojet-feedback"></div>
@@ -330,12 +332,11 @@
             <div class="question-block" style="margin-bottom:2rem;">
                 <p class="question-text" data-i18n="ex3_instruction">Je choisis la fin logique de l'histoire.</p>
                 <img src="assets4/images/degree4/unit1/lesson9/car_river.jpg" alt="Fin" style="max-width:200px; border-radius:8px; margin-bottom:1rem;">
-                <select class="degree4-lesson-miniprojet-select" id="endingChoice">
-                    <option value="">-- Choisir --</option>
-                    <option value="sauver">Le père saute dans l'eau pour sauver la voiture.</option>
-                    <option value="rentrer">La famille rentre à la maison.</option>
-                    <option value="gouter">Ils mangent le goûter tranquillement.</option>
-                </select>
+                <div class="degree4-lesson-miniprojet-options">
+                    <label><input type="radio" name="endingChoice" value="sauver"> <span data-i18n="ex3_opt_sauver">Le père saute dans l'eau pour sauver la voiture.</span></label>
+                    <label><input type="radio" name="endingChoice" value="rentrer"> <span data-i18n="ex3_opt_rentrer">La famille rentre à la maison.</span></label>
+                    <label><input type="radio" name="endingChoice" value="gouter"> <span data-i18n="ex3_opt_gouter">Ils mangent le goûter tranquillement.</span></label>
+                </div>
                 <button class="degree4-lesson-miniprojet-btn" onclick="checkEx3()" data-i18n="check_answers">🔍 Vérifier</button>
                 <div id="ex3Key" class="degree4-lesson-miniprojet-answer-key"></div>
                 <div id="ex3Feedback" class="degree4-lesson-miniprojet-feedback"></div>
@@ -398,10 +399,25 @@
                 table_row3: "Ensuite",
                 table_row4: "Fin",
                 table_row5: "Auteur",
+                table_content1: "L'invitation",
+                table_content2: "Le chat invite ses voisins : les oiseaux et les souris, pour fêter son anniversaire.",
+                table_content3: "Tout le monde est de bonne humeur. On s'amuse beaucoup. Les oiseaux chantent. Les souris dansent, courent ici et là. Maintenant les invités ont faim. Ils demandent au chat : – \"Où est le goûter ?\" – \"Mais, c'est vous le goûter !\" s'exclame le chat.",
+                table_content4: "Il ferme alors la porte et il se met à dévorer ses invités les uns après les autres.",
+                table_content5: "D'après Gisela Durr et Thuswaldner Werner",
                 activities_title: "Activités",
+                audio_text: "La famille vient de s'installer au bord de la rivière. La mère commence à servir le goûter. Tout à coup, on entend un grand « plouf ! » Toutes les têtes se tournent dans la direction du bruit. La voiture est en train de s'enfoncer dans l'eau. Le père a oublié de serrer le frein à main.",
                 ex1_instruction: "Je choisis le titre qui convient au texte.",
+                ex1_opt_rentree: "C'est la rentrée",
+                ex1_opt_piquenique: "Un drôle de pique-nique",
+                ex1_opt_mer: "Au bord de la mer",
                 ex2_instruction: "Je choisis la partie qui représente le début de l'histoire.",
+                ex2_opt_plouf: "Tout à coup, on entend un grand « plouf ! »",
+                ex2_opt_famille: "La famille vient de s'installer au bord de la rivière.",
+                ex2_opt_voiture: "La voiture est en train de s'enfoncer dans l'eau.",
                 ex3_instruction: "Je choisis la fin logique de l'histoire.",
+                ex3_opt_sauver: "Le père saute dans l'eau pour sauver la voiture.",
+                ex3_opt_rentrer: "La famille rentre à la maison.",
+                ex3_opt_gouter: "Ils mangent le goûter tranquillement.",
                 check_answers: "🔍 Vérifier",
                 self_assess_question: "Ma réponse est :",
                 self_correct: "Correcte",
@@ -444,10 +460,25 @@
                 table_row3: "Then",
                 table_row4: "End",
                 table_row5: "Author",
+                table_content1: "The Invitation",
+                table_content2: "The cat invites his neighbors: the birds and the mice, to celebrate his birthday.",
+                table_content3: "Everyone is in a good mood. They have a lot of fun. The birds sing. The mice dance, run here and there. Now the guests are hungry. They ask the cat: – \"Where is the snack?\" – \"But you are the snack!\" exclaims the cat.",
+                table_content4: "He then closes the door and starts devouring his guests one after another.",
+                table_content5: "After Gisela Durr and Thuswaldner Werner",
                 activities_title: "Activities",
+                audio_text: "The family has just settled by the river. The mother starts serving the snack. Suddenly, we hear a big \"splash!\" All heads turn in the direction of the noise. The car is sinking into the water. The father forgot to set the handbrake.",
                 ex1_instruction: "I choose the title that fits the text.",
+                ex1_opt_rentree: "Back to school",
+                ex1_opt_piquenique: "A funny picnic",
+                ex1_opt_mer: "By the sea",
                 ex2_instruction: "I choose the part that represents the beginning of the story.",
+                ex2_opt_plouf: "Suddenly, we hear a big \"splash!\"",
+                ex2_opt_famille: "The family has just settled by the river.",
+                ex2_opt_voiture: "The car is sinking into the water.",
                 ex3_instruction: "I choose the logical ending of the story.",
+                ex3_opt_sauver: "The father jumps into the water to save the car.",
+                ex3_opt_rentrer: "The family goes home.",
+                ex3_opt_gouter: "They eat the snack quietly.",
                 check_answers: "🔍 Check",
                 self_assess_question: "My answer is:",
                 self_correct: "Correct",
@@ -490,10 +521,25 @@
                 table_row3: "ثم",
                 table_row4: "النهاية",
                 table_row5: "اسم المؤلف",
+                table_content1: "الدعوة",
+                table_content2: "القط يدعو جيرانه: العصافير والفئران، للاحتفال بعيد ميلاده.",
+                table_content3: "الجميع في مزاج جيد. يستمتعون كثيرًا. العصافير تغني. الفئران ترقص وتجري هنا وهناك. الآن الضيوف جائعون. يسألون القط: – \"أين الوجبة الخفيفة؟\" – \"ولكن أنتم الوجبة الخفيفة!\" يصيح القط.",
+                table_content4: "ثم يغلق الباب ويبدأ في التهام ضيوفه واحدًا تلو الآخر.",
+                table_content5: "مقتبس من جيزيلا دور وثوسفالدنر فيرنر",
                 activities_title: "الأنشطة",
+                audio_text: "استقرت العائلة للتو على ضفة النهر. تبدأ الأم بتقديم الوجبة الخفيفة. فجأة، نسمع \"بلوب!\" كبيرًا. تدور جميع الرؤوس في اتجاه الصوت. السيارة تغرق في الماء. نسي الأب أن يشد فرملة اليد.",
                 ex1_instruction: "أختار العنوان المناسب للنص.",
+                ex1_opt_rentree: "العودة إلى المدرسة",
+                ex1_opt_piquenique: "نزهة مضحكة",
+                ex1_opt_mer: "على شاطئ البحر",
                 ex2_instruction: "أختار الجزء الذي يمثل بداية القصة.",
+                ex2_opt_plouf: "فجأة، نسمع \"بلوب!\" كبيرًا.",
+                ex2_opt_famille: "استقرت العائلة للتو على ضفة النهر.",
+                ex2_opt_voiture: "السيارة تغرق في الماء.",
                 ex3_instruction: "أختار النهاية المنطقية للقصة.",
+                ex3_opt_sauver: "يقفز الأب في الماء لإنقاذ السيارة.",
+                ex3_opt_rentrer: "تعود العائلة إلى المنزل.",
+                ex3_opt_gouter: "يأكلون الوجبة الخفيفة بهدوء.",
                 check_answers: "🔍 تحقق",
                 self_assess_question: "جوابي هو:",
                 self_correct: "صحيح",
@@ -527,10 +573,7 @@
             if (container && typeof App.makeBilingual === 'function') {
                 App.makeBilingual(container);
             }
-            App.onLangChange(function(lang) {
-                if (container) container.dir = lang === 'ar' ? 'rtl' : 'ltr';
-            });
-            if (container) container.dir = (localStorage.getItem('lang') || 'fr') === 'ar' ? 'rtl' : 'ltr';
+            // Direction change removed
         })();
     </script>
 
@@ -573,48 +616,6 @@
                 new Audio('assets4/sounds/degree4/unit1/lesson9/Invitation.mp3').play().catch(()=>{});
             };
 
-            window.checkEx1 = async function() {
-                if (!await requireAuth()) return;
-                const select = document.getElementById('titleChoice');
-                const correct = 'piquenique';
-                const isCorrect = select.value === correct;
-                playSound(isCorrect ? 'correct' : 'wrong');
-                toggleAnswer('ex1Key');
-                document.getElementById('ex1Key').innerHTML = isCorrect
-                    ? '<strong>Correction :</strong> ✓'
-                    : '<strong>Correction :</strong> La bonne réponse est « Un drôle de pique-nique ».';
-                document.getElementById('ex1Feedback').textContent = isCorrect ? '✅ Correct !' : '❌ Incorrect.';
-                document.getElementById('ex1Feedback').className = isCorrect ? 'degree4-lesson-miniprojet-feedback correct' : 'degree4-lesson-miniprojet-feedback wrong';
-            };
-
-            window.checkEx2 = async function() {
-                if (!await requireAuth()) return;
-                const select = document.getElementById('beginningChoice');
-                const correct = 'famille';
-                const isCorrect = select.value === correct;
-                playSound(isCorrect ? 'correct' : 'wrong');
-                toggleAnswer('ex2Key');
-                document.getElementById('ex2Key').innerHTML = isCorrect
-                    ? '<strong>Correction :</strong> ✓'
-                    : '<strong>Correction :</strong> La bonne réponse est « La famille vient de s\'installer au bord de la rivière. »';
-                document.getElementById('ex2Feedback').textContent = isCorrect ? '✅ Correct !' : '❌ Incorrect.';
-                document.getElementById('ex2Feedback').className = isCorrect ? 'degree4-lesson-miniprojet-feedback correct' : 'degree4-lesson-miniprojet-feedback wrong';
-            };
-
-            window.checkEx3 = async function() {
-                if (!await requireAuth()) return;
-                const select = document.getElementById('endingChoice');
-                const correct = 'sauver';
-                const isCorrect = select.value === correct;
-                playSound(isCorrect ? 'correct' : 'wrong');
-                toggleAnswer('ex3Key');
-                document.getElementById('ex3Key').innerHTML = isCorrect
-                    ? '<strong>Correction :</strong> ✓'
-                    : '<strong>Correction :</strong> La bonne réponse est « Le père saute dans l\'eau pour sauver la voiture. »';
-                document.getElementById('ex3Feedback').textContent = isCorrect ? '✅ Correct !' : '❌ Incorrect.';
-                document.getElementById('ex3Feedback').className = isCorrect ? 'degree4-lesson-miniprojet-feedback correct' : 'degree4-lesson-miniprojet-feedback wrong';
-            };
-
             // Helpers
             async function requireAuth() {
                 const { data: { session } } = await App.supabase.auth.getSession();
@@ -633,8 +634,44 @@
                 const el = document.getElementById(id);
                 if (el) el.classList.toggle('visible');
             }
+            function showFeedback(id, isCorrect) {
+                const el = document.getElementById(id);
+                if (!el) return;
+                el.textContent = isCorrect ? '✅ Correct !' : '❌ Incorrect.';
+                el.className = isCorrect ? 'degree4-lesson-miniprojet-feedback correct' : 'degree4-lesson-miniprojet-feedback wrong';
+            }
 
-            // Standard scoring, save, print
+            window.checkEx1 = async function() {
+                if (!await requireAuth()) return;
+                const selected = document.querySelector('input[name="titleChoice"]:checked');
+                const isCorrect = selected && selected.value === 'piquenique';
+                playSound(isCorrect ? 'correct' : 'wrong');
+                toggleAnswer('ex1Key');
+                document.getElementById('ex1Key').innerHTML = isCorrect ? '<strong>Correction :</strong> ✓' : '<strong>Correction :</strong> Un drôle de pique-nique';
+                showFeedback('ex1Feedback', isCorrect);
+            };
+
+            window.checkEx2 = async function() {
+                if (!await requireAuth()) return;
+                const selected = document.querySelector('input[name="beginningChoice"]:checked');
+                const isCorrect = selected && selected.value === 'famille';
+                playSound(isCorrect ? 'correct' : 'wrong');
+                toggleAnswer('ex2Key');
+                document.getElementById('ex2Key').innerHTML = isCorrect ? '<strong>Correction :</strong> ✓' : '<strong>Correction :</strong> La famille vient de s\'installer au bord de la rivière.';
+                showFeedback('ex2Feedback', isCorrect);
+            };
+
+            window.checkEx3 = async function() {
+                if (!await requireAuth()) return;
+                const selected = document.querySelector('input[name="endingChoice"]:checked');
+                const isCorrect = selected && selected.value === 'sauver';
+                playSound(isCorrect ? 'correct' : 'wrong');
+                toggleAnswer('ex3Key');
+                document.getElementById('ex3Key').innerHTML = isCorrect ? '<strong>Correction :</strong> ✓' : '<strong>Correction :</strong> Le père saute dans l\'eau pour sauver la voiture.';
+                showFeedback('ex3Feedback', isCorrect);
+            };
+
+            // Scoring, save, print
             function updateScore() {
                 const radios = document.querySelectorAll('input[type="radio"][name^="self_"]');
                 const groups = new Set();
@@ -713,10 +750,32 @@
                     document.getElementById('signInBtn')?.click();
                     return;
                 }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles')
+                        .select('registration_state')
+                        .eq('id', user.id)
+                        .single();
+                    if (!error && profile && profile.registration_state && profile.registration_state.active === true) {
+                        isRegistered = true;
+                    }
+                } catch (e) { /* ignore */ }
                 const lang = localStorage.getItem('lang') || 'fr';
                 const content = document.getElementById('main-content').cloneNode(true);
-                content.querySelectorAll('input, textarea, .degree4-lesson-miniprojet-self-assess, .degree4-lesson-miniprojet-score-area, .degree4-lesson-miniprojet-audio, .degree4-lesson-miniprojet-slideshow-btn, .degree4-lesson-miniprojet-footer-nav, .degree4-lesson-miniprojet-vocab-exercise button').forEach(el => el.remove());
-                content.querySelectorAll('.degree4-lesson-miniprojet-slideshow').forEach(el => el.remove());
+                content.querySelectorAll('input, .degree4-lesson-miniprojet-self-assess, .degree4-lesson-miniprojet-score-area, .degree4-lesson-miniprojet-footer-nav, .degree4-lesson-miniprojet-btn, .degree4-lesson-miniprojet-play-btn').forEach(el => el.remove());
+                const answerKeys = content.querySelectorAll('.degree4-lesson-miniprojet-answer-key');
+                if (isRegistered) {
+                    answerKeys.forEach(key => {
+                        key.style.display = 'block';
+                        key.style.border = 'none';
+                        key.style.padding = '0.5rem 0';
+                        key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    answerKeys.forEach(el => el.remove());
+                }
                 const breadcrumb = content.querySelector('p[style*="margin-bottom:1.5rem"]');
                 if (breadcrumb) breadcrumb.remove();
                 const printWindow = window.open('', '_blank', 'width=800,height=600');
@@ -730,12 +789,7 @@
                         .print-header .lesson-name { font-size: 1.1rem; font-weight: bold; color: #000; margin-top: 0.5rem; }
                         .print-footer { text-align: center; border-top: 1px solid #ccc; padding-top: 1rem; margin-top: 2rem; font-size: 0.85rem; color: #666; }
                         .degree4-lesson-miniprojet-card { margin-bottom: 2rem; border: 1px solid #ccc; padding: 1rem; border-radius: 8px; }
-                        .degree4-lesson-miniprojet-text { white-space: pre-line; font-style: italic; }
-                        .degree4-lesson-miniprojet-vocab, .degree4-lesson-miniprojet-vocab-exercise { margin-top: 1rem; background: #f5f0e6; padding: 1rem; border-radius: 8px; }
-                        .degree4-lesson-miniprojet-vocab ul, .degree4-lesson-miniprojet-vocab-exercise ol { list-style: none; padding: 0; }
-                        .degree4-lesson-miniprojet-vocab li, .degree4-lesson-miniprojet-vocab-exercise li { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
-                        .word { font-weight: bold; min-width: 120px; }
-                        .translation { color: #555; }
+                        .degree4-lesson-miniprojet-options { display: none; }
                         .degree4-lesson-miniprojet-answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; }
                         @media print { @page { margin: 2cm; } }
                     </style></head><body>

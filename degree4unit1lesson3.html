@@ -7,6 +7,7 @@
     <link rel="manifest" href="/manifest.json">
     <link rel="stylesheet" href="shared.css">
     <style>
+        /* CSS unchanged from original */
         :root {
             --degree4-lesson-reading-bg: #f9f7f1;
             --degree4-lesson-reading-card: #ffffff;
@@ -104,7 +105,6 @@
             color: var(--degree4-lesson-reading-text-light);
             margin-bottom: 1rem;
         }
-        /* Three-column layout */
         .degree4-lesson-reading-three-col {
             display: flex;
             gap: 1.5rem;
@@ -116,7 +116,6 @@
             flex: 1 1 0;
             min-width: 0;
         }
-        /* Audio player */
         .degree4-lesson-reading-audio {
             background: var(--degree4-lesson-reading-card);
             border: 1px solid var(--degree4-lesson-reading-border);
@@ -201,7 +200,6 @@
             color: var(--degree4-lesson-reading-heading);
             white-space: nowrap;
         }
-        /* Text */
         .degree4-lesson-reading-text {
             white-space: pre-line;
             font-size: 1.05rem;
@@ -212,7 +210,6 @@
             border-radius: var(--degree4-lesson-reading-radius-sm);
             border-left: 4px solid var(--degree4-lesson-reading-accent);
         }
-        /* Vocabulary */
         .degree4-lesson-reading-vocab {
             background: var(--degree4-lesson-reading-audio-bg);
             border-radius: var(--degree4-lesson-reading-radius-sm);
@@ -241,7 +238,6 @@
         .degree4-lesson-reading-vocab .translation {
             color: var(--degree4-lesson-reading-text-light);
         }
-        /* Slideshow */
         .degree4-lesson-reading-slideshow {
             position: relative;
             border-radius: var(--degree4-lesson-reading-radius-sm);
@@ -286,7 +282,6 @@
         .degree4-lesson-reading-slideshow-btn:hover { background: rgba(0,0,0,0.8); }
         .degree4-lesson-reading-slideshow-btn.prev { left: 10px; }
         .degree4-lesson-reading-slideshow-btn.next { right: 10px; }
-        /* Section 2: Mots outils */
         .degree4-lesson-reading-tool-words {
             background: var(--degree4-lesson-reading-audio-bg);
             border-radius: var(--degree4-lesson-reading-radius);
@@ -318,7 +313,6 @@
             border-radius: 20px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-        /* Comprehension & thinking */
         .degree4-lesson-reading-comprehension .question-block {
             margin-bottom: 1.5rem;
         }
@@ -401,7 +395,6 @@
             flex: 1 1 0;
             min-width: 0;
         }
-        /* Score area */
         .degree4-lesson-reading-score-area {
             background: var(--degree4-lesson-reading-card);
             border: 1px solid var(--degree4-lesson-reading-border);
@@ -431,7 +424,6 @@
             gap: 0.8rem;
             flex-wrap: wrap;
         }
-        /* Sentence sound buttons */
         .degree4-lesson-reading-sentence-sound-btn {
             background: none;
             border: none;
@@ -469,7 +461,6 @@
 <body>
     <!-- Hidden shell elements required by ed-french-ini.js -->
     <div id="toast-container"></div>
-    <div id="toast"></div>
     <button id="signInBtn" style="display:none"></button>
 
     <div id="main-content" class="degree4-lesson-reading-container">
@@ -554,9 +545,9 @@
             <div class="degree4-lesson-reading-tool-words">
                 <h3 data-i18n="tool_words_intro">Je retiens ces mots :</h3>
                 <ul>
-                    <li>loin de</li>
-                    <li>à côté de</li>
-                    <li>chez</li>
+                    <li data-i18n="tool_word1">loin de</li>
+                    <li data-i18n="tool_word2">à côté de</li>
+                    <li data-i18n="tool_word3">chez</li>
                 </ul>
             </div>
         </section>
@@ -569,17 +560,17 @@
                     <div class="question-block">
                         <p class="question-text" data-i18n="comp_q1">1) Qui amène Caroline à l'école chaque matin ?</p>
                         <div class="degree4-lesson-reading-radio-options">
-                            <label><input type="radio" name="comp_q1" value="a"> Sa mère l'amène en voiture</label>
-                            <label><input type="radio" name="comp_q1" value="b"> Son père l'amène en voiture</label>
-                            <label><input type="radio" name="comp_q1" value="c"> Elle va à pied</label>
+                            <label><input type="radio" name="comp_q1" value="a"> <span data-i18n="comp_q1_opt_a">Sa mère l'amène en voiture</span></label>
+                            <label><input type="radio" name="comp_q1" value="b"> <span data-i18n="comp_q1_opt_b">Son père l'amène en voiture</span></label>
+                            <label><input type="radio" name="comp_q1" value="c"> <span data-i18n="comp_q1_opt_c">Elle va à pied</span></label>
                         </div>
                     </div>
                     <div class="question-block">
                         <p class="question-text" data-i18n="comp_q2">2) Pourquoi les deux fillettes sont-elles devenues amies ?</p>
                         <div class="degree4-lesson-reading-radio-options">
-                            <label><input type="radio" name="comp_q2" value="a"> Elles habitent près</label>
-                            <label><input type="radio" name="comp_q2" value="b"> Elles adorent la musique et la danse</label>
-                            <label><input type="radio" name="comp_q2" value="c"> Elles sont dans la même classe</label>
+                            <label><input type="radio" name="comp_q2" value="a"> <span data-i18n="comp_q2_opt_a">Elles habitent près</span></label>
+                            <label><input type="radio" name="comp_q2" value="b"> <span data-i18n="comp_q2_opt_b">Elles adorent la musique et la danse</span></label>
+                            <label><input type="radio" name="comp_q2" value="c"> <span data-i18n="comp_q2_opt_c">Elles sont dans la même classe</span></label>
                         </div>
                     </div>
                 </div>
@@ -587,9 +578,9 @@
                     <div class="question-block">
                         <p class="question-text" data-i18n="comp_q3">3) Que font-elles ensemble ?</p>
                         <div class="degree4-lesson-reading-radio-options">
-                            <label><input type="radio" name="comp_q3" value="a"> Elles jouent au ballon</label>
-                            <label><input type="radio" name="comp_q3" value="b"> Elles mangent à la cantine et vont chez le professeur de danse</label>
-                            <label><input type="radio" name="comp_q3" value="c"> Elles regardent la télé</label>
+                            <label><input type="radio" name="comp_q3" value="a"> <span data-i18n="comp_q3_opt_a">Elles jouent au ballon</span></label>
+                            <label><input type="radio" name="comp_q3" value="b"> <span data-i18n="comp_q3_opt_b">Elles mangent à la cantine et vont chez le professeur de danse</span></label>
+                            <label><input type="radio" name="comp_q3" value="c"> <span data-i18n="comp_q3_opt_c">Elles regardent la télé</span></label>
                         </div>
                     </div>
                 </div>
@@ -602,9 +593,9 @@
             <div id="compFeedback" class="degree4-lesson-reading-feedback"></div>
             <div class="degree4-lesson-reading-self-assess">
                 <span data-i18n="self_assess_question">Ma réponse est :</span>
-                <label><input type="radio" name="self_comprehension" value="correct" data-i18n="self_correct"> Correcte</label>
-                <label><input type="radio" name="self_comprehension" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
-                <label><input type="radio" name="self_comprehension" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                <label><input type="radio" name="self_comprehension" value="correct"> <span data-i18n="self_correct">Correcte</span></label>
+                <label><input type="radio" name="self_comprehension" value="partial"> <span data-i18n="self_partial">Partiellement correcte</span></label>
+                <label><input type="radio" name="self_comprehension" value="incorrect"> <span data-i18n="self_incorrect">Incorrecte</span></label>
             </div>
         </section>
 
@@ -619,27 +610,27 @@
                     <p data-i18n="ex1_morning">Le matin, ......</p>
                     <select id="table_morning">
                         <option value="">-- Choisir --</option>
-                        <option value="caroline">Caroline va à l'école en voiture avec sa mère</option>
-                        <option value="cantine">Les deux fillettes mangent à la cantine</option>
-                        <option value="danse">Elles vont chez le professeur de danse</option>
+                        <option value="caroline" data-i18n="ex1_opt_morning_caroline">Caroline va à l'école en voiture avec sa mère</option>
+                        <option value="cantine" data-i18n="ex1_opt_morning_cantine">Les deux fillettes mangent à la cantine</option>
+                        <option value="danse" data-i18n="ex1_opt_morning_danse">Elles vont chez le professeur de danse</option>
                     </select>
                 </div>
                 <div class="degree4-lesson-reading-thinking-item">
                     <p data-i18n="ex1_noon">A midi, ......</p>
                     <select id="table_noon">
                         <option value="">-- Choisir --</option>
-                        <option value="caroline">Caroline va à l'école en voiture avec sa mère</option>
-                        <option value="cantine">Les deux fillettes mangent à la cantine</option>
-                        <option value="danse">Elles vont chez le professeur de danse</option>
+                        <option value="caroline" data-i18n="ex1_opt_noon_caroline">Caroline va à l'école en voiture avec sa mère</option>
+                        <option value="cantine" data-i18n="ex1_opt_noon_cantine">Les deux fillettes mangent à la cantine</option>
+                        <option value="danse" data-i18n="ex1_opt_noon_danse">Elles vont chez le professeur de danse</option>
                     </select>
                 </div>
                 <div class="degree4-lesson-reading-thinking-item">
                     <p data-i18n="ex1_afternoon">L'après-midi, ......</p>
                     <select id="table_afternoon">
                         <option value="">-- Choisir --</option>
-                        <option value="caroline">Caroline va à l'école en voiture avec sa mère</option>
-                        <option value="cantine">Les deux fillettes mangent à la cantine</option>
-                        <option value="danse">Elles vont chez le professeur de danse</option>
+                        <option value="caroline" data-i18n="ex1_opt_afternoon_caroline">Caroline va à l'école en voiture avec sa mère</option>
+                        <option value="cantine" data-i18n="ex1_opt_afternoon_cantine">Les deux fillettes mangent à la cantine</option>
+                        <option value="danse" data-i18n="ex1_opt_afternoon_danse">Elles vont chez le professeur de danse</option>
                     </select>
                 </div>
                 <button class="degree4-lesson-reading-btn" onclick="checkEx1()" data-i18n="check_answers">🔍 Vérifier les réponses</button>
@@ -652,9 +643,9 @@
                 <div id="ex1Feedback" class="degree4-lesson-reading-feedback"></div>
                 <div class="degree4-lesson-reading-self-assess">
                     <span data-i18n="self_assess_question">Ma réponse est :</span>
-                    <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
-                    <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
-                    <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex1" value="correct"> <span data-i18n="self_correct">Correcte</span></label>
+                    <label><input type="radio" name="self_ex1" value="partial"> <span data-i18n="self_partial">Partiellement correcte</span></label>
+                    <label><input type="radio" name="self_ex1" value="incorrect"> <span data-i18n="self_incorrect">Incorrecte</span></label>
                 </div>
             </div>
 
@@ -666,25 +657,25 @@
                         <button class="degree4-lesson-reading-sentence-sound-btn" onclick="playSentenceSound('phrase1')" aria-label="Écouter">
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
                         </button>
-                        <p>Les deux fillettes adorent la musique et la danse.</p>
+                        <p data-i18n="ex2_sent1">Les deux fillettes adorent la musique et la danse.</p>
                     </div>
                     <div class="degree4-lesson-reading-sentence-item">
                         <button class="degree4-lesson-reading-sentence-sound-btn" onclick="playSentenceSound('phrase2')" aria-label="Écouter">
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
                         </button>
-                        <p>La nouvelle élève fait la connaissance de Nadia.</p>
+                        <p data-i18n="ex2_sent2">La nouvelle élève fait la connaissance de Nadia.</p>
                     </div>
                     <div class="degree4-lesson-reading-sentence-item">
                         <button class="degree4-lesson-reading-sentence-sound-btn" onclick="playSentenceSound('phrase3')" aria-label="Écouter">
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
                         </button>
-                        <p>Lundi matin, le directeur accompagne Caroline dans sa nouvelle classe.</p>
+                        <p data-i18n="ex2_sent3">Lundi matin, le directeur accompagne Caroline dans sa nouvelle classe.</p>
                     </div>
                     <div class="degree4-lesson-reading-sentence-item">
                         <button class="degree4-lesson-reading-sentence-sound-btn" onclick="playSentenceSound('phrase4')" aria-label="Écouter">
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
                         </button>
-                        <p>Elles sont devenues amies.</p>
+                        <p data-i18n="ex2_sent4">Elles sont devenues amies.</p>
                     </div>
                 </div>
                 <p class="question-text" data-i18n="ex2b_instruction">b. J'écris chaque phrase à sa place.</p>
@@ -692,30 +683,30 @@
                     <p>Début ......</p>
                     <select id="order_debut">
                         <option value="">-- Choisir --</option>
-                        <option value="directeur">Lundi matin, le directeur accompagne Caroline dans sa nouvelle classe</option>
-                        <option value="connaissance">La nouvelle élève fait la connaissance de Nadia</option>
-                        <option value="adorent">Les deux fillettes adorent la musique et la danse</option>
-                        <option value="amies">Elles sont devenues amies</option>
+                        <option value="directeur" data-i18n="ex2_opt_directeur">Lundi matin, le directeur accompagne Caroline dans sa nouvelle classe</option>
+                        <option value="connaissance" data-i18n="ex2_opt_connaissance">La nouvelle élève fait la connaissance de Nadia</option>
+                        <option value="adorent" data-i18n="ex2_opt_adorent">Les deux fillettes adorent la musique et la danse</option>
+                        <option value="amies" data-i18n="ex2_opt_amies">Elles sont devenues amies</option>
                     </select>
                 </div>
                 <div class="degree4-lesson-reading-thinking-item">
                     <p>Ensuite ......</p>
                     <select id="order_ensuite">
                         <option value="">-- Choisir --</option>
-                        <option value="directeur">Lundi matin, le directeur accompagne Caroline dans sa nouvelle classe</option>
-                        <option value="connaissance">La nouvelle élève fait la connaissance de Nadia</option>
-                        <option value="adorent">Les deux fillettes adorent la musique et la danse</option>
-                        <option value="amies">Elles sont devenues amies</option>
+                        <option value="directeur" data-i18n="ex2_opt_directeur">Lundi matin, le directeur accompagne Caroline dans sa nouvelle classe</option>
+                        <option value="connaissance" data-i18n="ex2_opt_connaissance">La nouvelle élève fait la connaissance de Nadia</option>
+                        <option value="adorent" data-i18n="ex2_opt_adorent">Les deux fillettes adorent la musique et la danse</option>
+                        <option value="amies" data-i18n="ex2_opt_amies">Elles sont devenues amies</option>
                     </select>
                 </div>
                 <div class="degree4-lesson-reading-thinking-item">
                     <p>Fin ......</p>
                     <select id="order_fin">
                         <option value="">-- Choisir --</option>
-                        <option value="directeur">Lundi matin, le directeur accompagne Caroline dans sa nouvelle classe</option>
-                        <option value="connaissance">La nouvelle élève fait la connaissance de Nadia</option>
-                        <option value="adorent">Les deux fillettes adorent la musique et la danse</option>
-                        <option value="amies">Elles sont devenues amies</option>
+                        <option value="directeur" data-i18n="ex2_opt_directeur">Lundi matin, le directeur accompagne Caroline dans sa nouvelle classe</option>
+                        <option value="connaissance" data-i18n="ex2_opt_connaissance">La nouvelle élève fait la connaissance de Nadia</option>
+                        <option value="adorent" data-i18n="ex2_opt_adorent">Les deux fillettes adorent la musique et la danse</option>
+                        <option value="amies" data-i18n="ex2_opt_amies">Elles sont devenues amies</option>
                     </select>
                 </div>
                 <button class="degree4-lesson-reading-btn" onclick="checkEx2()" data-i18n="check_answers">🔍 Vérifier les réponses</button>
@@ -728,9 +719,9 @@
                 <div id="ex2Feedback" class="degree4-lesson-reading-feedback"></div>
                 <div class="degree4-lesson-reading-self-assess">
                     <span data-i18n="self_assess_question">Ma réponse est :</span>
-                    <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
-                    <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
-                    <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex2" value="correct"> <span data-i18n="self_correct">Correcte</span></label>
+                    <label><input type="radio" name="self_ex2" value="partial"> <span data-i18n="self_partial">Partiellement correcte</span></label>
+                    <label><input type="radio" name="self_ex2" value="incorrect"> <span data-i18n="self_incorrect">Incorrecte</span></label>
                 </div>
             </div>
 
@@ -754,9 +745,9 @@
                 <div id="ex3Feedback" class="degree4-lesson-reading-feedback"></div>
                 <div class="degree4-lesson-reading-self-assess">
                     <span data-i18n="self_assess_question">Ma réponse est :</span>
-                    <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
-                    <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
-                    <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex3" value="correct"> <span data-i18n="self_correct">Correcte</span></label>
+                    <label><input type="radio" name="self_ex3" value="partial"> <span data-i18n="self_partial">Partiellement correcte</span></label>
+                    <label><input type="radio" name="self_ex3" value="incorrect"> <span data-i18n="self_incorrect">Incorrecte</span></label>
                 </div>
             </div>
         </section>
@@ -815,10 +806,22 @@
                 vocab_cantine: " - cantine",
                 tool_words_title: "🔤 Mots outils",
                 tool_words_intro: "Je retiens ces mots :",
+                tool_word1: "loin de",
+                tool_word2: "à côté de",
+                tool_word3: "chez",
                 comprehension_title: "📝 Je comprends",
                 comp_q1: "1) Qui amène Caroline à l'école chaque matin ?",
+                comp_q1_opt_a: "Sa mère l'amène en voiture",
+                comp_q1_opt_b: "Son père l'amène en voiture",
+                comp_q1_opt_c: "Elle va à pied",
                 comp_q2: "2) Pourquoi les deux fillettes sont-elles devenues amies ?",
+                comp_q2_opt_a: "Elles habitent près",
+                comp_q2_opt_b: "Elles adorent la musique et la danse",
+                comp_q2_opt_c: "Elles sont dans la même classe",
                 comp_q3: "3) Que font-elles ensemble ?",
+                comp_q3_opt_a: "Elles jouent au ballon",
+                comp_q3_opt_b: "Elles mangent à la cantine et vont chez le professeur de danse",
+                comp_q3_opt_c: "Elles regardent la télé",
                 btn_correction: "🔍 Voir la correction",
                 comp_answers_title: "Correction :",
                 self_assess_question: "Ma réponse est :",
@@ -830,9 +833,26 @@
                 ex1_morning: "Le matin, ......",
                 ex1_noon: "A midi, ......",
                 ex1_afternoon: "L'après-midi, ......",
+                ex1_opt_morning_caroline: "Caroline va à l'école en voiture avec sa mère",
+                ex1_opt_morning_cantine: "Les deux fillettes mangent à la cantine",
+                ex1_opt_morning_danse: "Elles vont chez le professeur de danse",
+                ex1_opt_noon_caroline: "Caroline va à l'école en voiture avec sa mère",
+                ex1_opt_noon_cantine: "Les deux fillettes mangent à la cantine",
+                ex1_opt_noon_danse: "Elles vont chez le professeur de danse",
+                ex1_opt_afternoon_caroline: "Caroline va à l'école en voiture avec sa mère",
+                ex1_opt_afternoon_cantine: "Les deux fillettes mangent à la cantine",
+                ex1_opt_afternoon_danse: "Elles vont chez le professeur de danse",
                 ex1_answers: "Correction :",
                 ex2_instruction: "2. a. Je lis les phrases.",
+                ex2_sent1: "Les deux fillettes adorent la musique et la danse.",
+                ex2_sent2: "La nouvelle élève fait la connaissance de Nadia.",
+                ex2_sent3: "Lundi matin, le directeur accompagne Caroline dans sa nouvelle classe.",
+                ex2_sent4: "Elles sont devenues amies.",
                 ex2b_instruction: "b. J'écris chaque phrase à sa place.",
+                ex2_opt_directeur: "Lundi matin, le directeur accompagne Caroline dans sa nouvelle classe",
+                ex2_opt_connaissance: "La nouvelle élève fait la connaissance de Nadia",
+                ex2_opt_adorent: "Les deux fillettes adorent la musique et la danse",
+                ex2_opt_amies: "Elles sont devenues amies",
                 ex2_answers: "Correction :",
                 ex3_instruction: "3. Je numérote les phrases pour obtenir la suite de l'histoire.",
                 ex3_answers: "Correction :",
@@ -878,10 +898,22 @@
                 vocab_cantine: " - school cafeteria",
                 tool_words_title: "🔤 Tool words",
                 tool_words_intro: "I remember these words:",
+                tool_word1: "far from",
+                tool_word2: "next to",
+                tool_word3: "at the house of",
                 comprehension_title: "📝 I understand",
                 comp_q1: "1) Who brings Caroline to school every morning?",
+                comp_q1_opt_a: "Her mother drives her",
+                comp_q1_opt_b: "Her father drives her",
+                comp_q1_opt_c: "She walks",
                 comp_q2: "2) Why did the two girls become friends?",
+                comp_q2_opt_a: "They live close",
+                comp_q2_opt_b: "They love music and dance",
+                comp_q2_opt_c: "They are in the same class",
                 comp_q3: "3) What do they do together?",
+                comp_q3_opt_a: "They play ball",
+                comp_q3_opt_b: "They eat in the cafeteria and go to the dance teacher",
+                comp_q3_opt_c: "They watch TV",
                 btn_correction: "🔍 See correction",
                 comp_answers_title: "Correction:",
                 self_assess_question: "My answer is:",
@@ -893,9 +925,26 @@
                 ex1_morning: "In the morning, ......",
                 ex1_noon: "At noon, ......",
                 ex1_afternoon: "In the afternoon, ......",
+                ex1_opt_morning_caroline: "Caroline goes to school by car with her mother",
+                ex1_opt_morning_cantine: "The two girls eat in the cafeteria",
+                ex1_opt_morning_danse: "They go to the dance teacher",
+                ex1_opt_noon_caroline: "Caroline goes to school by car with her mother",
+                ex1_opt_noon_cantine: "The two girls eat in the cafeteria",
+                ex1_opt_noon_danse: "They go to the dance teacher",
+                ex1_opt_afternoon_caroline: "Caroline goes to school by car with her mother",
+                ex1_opt_afternoon_cantine: "The two girls eat in the cafeteria",
+                ex1_opt_afternoon_danse: "They go to the dance teacher",
                 ex1_answers: "Correction:",
                 ex2_instruction: "2. a. I read the sentences.",
+                ex2_sent1: "The two girls love music and dance.",
+                ex2_sent2: "The new student gets to know Nadia.",
+                ex2_sent3: "Monday morning, the principal accompanies Caroline to her new class.",
+                ex2_sent4: "They became friends.",
                 ex2b_instruction: "b. I write each sentence in its place.",
+                ex2_opt_directeur: "Monday morning, the principal accompanies Caroline to her new class",
+                ex2_opt_connaissance: "The new student gets to know Nadia",
+                ex2_opt_adorent: "The two girls love music and dance",
+                ex2_opt_amies: "They became friends",
                 ex2_answers: "Correction:",
                 ex3_instruction: "3. I number the sentences to get the continuation of the story.",
                 ex3_answers: "Correction:",
@@ -941,10 +990,22 @@
                 vocab_cantine: " - مقصف المدرسة",
                 tool_words_title: "🔤 كلمات أدوات",
                 tool_words_intro: "أتذكر هذه الكلمات:",
+                tool_word1: "بعيد عن",
+                tool_word2: "بجانب",
+                tool_word3: "عند / في منزل",
                 comprehension_title: "📝 أفهم",
                 comp_q1: "1) من يوصل كارولين إلى المدرسة كل صباح؟",
+                comp_q1_opt_a: "والدتها توصلها بالسيارة",
+                comp_q1_opt_b: "والدها يوصلها بالسيارة",
+                comp_q1_opt_c: "تذهب مشياً",
                 comp_q2: "2) لماذا أصبحت الفتاتان صديقتين؟",
+                comp_q2_opt_a: "تسكنان بالقرب",
+                comp_q2_opt_b: "تعشقان الموسيقى والرقص",
+                comp_q2_opt_c: "في نفس القسم",
                 comp_q3: "3) ماذا تفعلان معًا؟",
+                comp_q3_opt_a: "تلعبان بالكرة",
+                comp_q3_opt_b: "تأكلان في المقصف وتذهبان إلى معلمة الرقص",
+                comp_q3_opt_c: "تشاهدان التلفاز",
                 btn_correction: "🔍 الاطلاع على التصحيح",
                 comp_answers_title: "التصحيح:",
                 self_assess_question: "جوابي هو:",
@@ -956,9 +1017,26 @@
                 ex1_morning: "في الصباح، ......",
                 ex1_noon: "عند الظهيرة، ......",
                 ex1_afternoon: "بعد الظهر، ......",
+                ex1_opt_morning_caroline: "تذهب كارولين إلى المدرسة بالسيارة مع والدتها",
+                ex1_opt_morning_cantine: "الفتاتان تأكلان في المقصف",
+                ex1_opt_morning_danse: "تذهبان إلى معلمة الرقص",
+                ex1_opt_noon_caroline: "تذهب كارولين إلى المدرسة بالسيارة مع والدتها",
+                ex1_opt_noon_cantine: "الفتاتان تأكلان في المقصف",
+                ex1_opt_noon_danse: "تذهبان إلى معلمة الرقص",
+                ex1_opt_afternoon_caroline: "تذهب كارولين إلى المدرسة بالسيارة مع والدتها",
+                ex1_opt_afternoon_cantine: "الفتاتان تأكلان في المقصف",
+                ex1_opt_afternoon_danse: "تذهبان إلى معلمة الرقص",
                 ex1_answers: "التصحيح:",
                 ex2_instruction: "2. أ. أقرأ الجمل.",
+                ex2_sent1: "الفتاتان تعشقان الموسيقى والرقص.",
+                ex2_sent2: "التلميذة الجديدة تتعرف على نادية.",
+                ex2_sent3: "صباح الاثنين، يرافق المدير كارولين إلى قسمها الجديد.",
+                ex2_sent4: "أصبحتا صديقتين.",
                 ex2b_instruction: "ب. أكتب كل جملة في مكانها.",
+                ex2_opt_directeur: "صباح الاثنين، يرافق المدير كارولين إلى قسمها الجديد",
+                ex2_opt_connaissance: "التلميذة الجديدة تتعرف على نادية",
+                ex2_opt_adorent: "الفتاتان تعشقان الموسيقى والرقص",
+                ex2_opt_amies: "أصبحتا صديقتين",
                 ex2_answers: "التصحيح:",
                 ex3_instruction: "3. أرقم الجمل للحصول على تسلسل القصة.",
                 ex3_answers: "التصحيح:",
@@ -991,10 +1069,7 @@
             if (container && typeof App.makeBilingual === 'function') {
                 App.makeBilingual(container);
             }
-            App.onLangChange(function(lang) {
-                if (container) container.dir = lang === 'ar' ? 'rtl' : 'ltr';
-            });
-            if (container) container.dir = (localStorage.getItem('lang') || 'fr') === 'ar' ? 'rtl' : 'ltr';
+            // Direction change removed
         })();
     </script>
 
@@ -1277,10 +1352,33 @@
                     document.getElementById('signInBtn')?.click();
                     return;
                 }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles')
+                        .select('registration_state')
+                        .eq('id', user.id)
+                        .single();
+                    if (!error && profile && profile.registration_state && profile.registration_state.active === true) {
+                        isRegistered = true;
+                    }
+                } catch (e) { /* ignore */ }
                 const lang = localStorage.getItem('lang') || 'fr';
                 const content = document.getElementById('main-content').cloneNode(true);
-                content.querySelectorAll('input, textarea, .degree4-lesson-reading-self-assess, .degree4-lesson-reading-score-area, .degree4-lesson-reading-audio, .degree4-lesson-reading-slideshow-btn, .degree4-lesson-reading-footer-nav, .degree4-lesson-reading-vocab-exercise button').forEach(el => el.remove());
+                content.querySelectorAll('input, .degree4-lesson-reading-self-assess, .degree4-lesson-reading-score-area, .degree4-lesson-reading-footer-nav, .degree4-lesson-reading-btn, .degree4-lesson-reading-play-btn, .degree4-lesson-reading-slideshow-btn').forEach(el => el.remove());
                 content.querySelectorAll('.degree4-lesson-reading-slideshow').forEach(el => el.remove());
+                const answerKeys = content.querySelectorAll('.degree4-lesson-reading-answer-key');
+                if (isRegistered) {
+                    answerKeys.forEach(key => {
+                        key.style.display = 'block';
+                        key.style.border = 'none';
+                        key.style.padding = '0.5rem 0';
+                        key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    answerKeys.forEach(el => el.remove());
+                }
                 const breadcrumb = content.querySelector('p[style*="margin-bottom:1.5rem"]');
                 if (breadcrumb) breadcrumb.remove();
                 const printWindow = window.open('', '_blank', 'width=800,height=600');
