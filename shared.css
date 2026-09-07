@@ -943,3 +943,48 @@ body.dark .profile-action-secondary:hover {
 body.dark .profile-action-danger:hover {
   background: rgba(248,81,73,0.15);
 }
+/* ===== Styles pour les liens de section (Accéder) ===== */
+.section-link {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0.2rem 0.8rem;
+  border-radius: 20px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background var(--transition), transform var(--transition);
+}
+.section-link:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+/* ===== Surcharges mode sombre pour les cartes ===== */
+body.dark .card {
+  background: var(--card-bg);
+  color: var(--text);
+  border-color: var(--border);
+}
+body.dark .card.revision,
+body.dark .card.degree {
+  background: var(--card-bg);
+  color: var(--text);
+}
+body.dark .card-header {
+  background: var(--week-header-bg);
+  color: var(--text);
+}
+body.dark .card-body {
+  color: var(--text-light);
+}
+body.dark .sections-list li {
+  color: var(--text-light);
+}
+body.dark .coming-soon {
+  color: var(--text-light);
+}
+body.dark .card-body a:not(.section-link) {
+  color: var(--accent);
+}
