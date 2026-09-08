@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_title">Leçon 1 – Écouter un récit oral, en rendre compte | Le Petit Prince</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ===== Degree9 Unit 1 Lesson 1 – Oral comprehension (prefix: degree9-unit1-lesson1-oral) ===== */
+        /* Distinct style: "Storybook Night" – deep indigo, warm gold, rounded cards, paper texture background */
+        :root {
+            --degree9-unit1-lesson1-oral-bg: #f5f0e8;
+            --degree9-unit1-lesson1-oral-card: #fffef9;
+            --degree9-unit1-lesson1-oral-text: #2b2416;
+            --degree9-unit1-lesson1-oral-text-light: #5c5344;
+            --degree9-unit1-lesson1-oral-heading: #2c3e50;
+            --degree9-unit1-lesson1-oral-accent: #8e44ad;        /* Deep purple */
+            --degree9-unit1-lesson1-oral-accent-hover: #6c3483;
+            --degree9-unit1-lesson1-oral-border: #e0d6c8;
+            --degree9-unit1-lesson1-oral-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.08);
+            --degree9-unit1-lesson1-oral-radius: 18px;
+            --degree9-unit1-lesson1-oral-radius-sm: 12px;
+            --degree9-unit1-lesson1-oral-transition: 0.25s ease;
+            --degree9-unit1-lesson1-oral-font: 'Georgia', 'Times New Roman', serif;
+            --degree9-unit1-lesson1-oral-audio-bg: #f0e9dd;
+            --degree9-unit1-lesson1-oral-audio-progress: #d8c9aa;
+            --degree9-unit1-lesson1-oral-button-bg: #e8dcc8;
+            --degree9-unit1-lesson1-oral-button-hover: #d5c3a5;
+            --degree9-unit1-lesson1-oral-input-bg: #faf6ef;
+        }
+        body.dark {
+            --degree9-unit1-lesson1-oral-bg: #1a1a2e;
+            --degree9-unit1-lesson1-oral-card: #16213e;
+            --degree9-unit1-lesson1-oral-text: #e8dfd2;
+            --degree9-unit1-lesson1-oral-text-light: #b9aa95;
+            --degree9-unit1-lesson1-oral-heading: #f0e4d2;
+            --degree9-unit1-lesson1-oral-accent: #bb86fc;
+            --degree9-unit1-lesson1-oral-accent-hover: #d7a1f9;
+            --degree9-unit1-lesson1-oral-border: #3e3830;
+            --degree9-unit1-lesson1-oral-shadow: 0 2px 8px rgba(0,0,0,0.35);
+            --degree9-unit1-lesson1-oral-audio-bg: #26221b;
+            --degree9-unit1-lesson1-oral-audio-progress: #5a4e3c;
+            --degree9-unit1-lesson1-oral-button-bg: #3a3329;
+            --degree9-unit1-lesson1-oral-button-hover: #4e4437;
+            --degree9-unit1-lesson1-oral-input-bg: #333028;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            font-family: var(--degree9-unit1-lesson1-oral-font);
+            background: var(--degree9-unit1-lesson1-oral-bg);
+            color: var(--degree9-unit1-lesson1-oral-text);
+            line-height: 1.75;
+            transition: background var(--degree9-unit1-lesson1-oral-transition), color var(--degree9-unit1-lesson1-oral-transition);
+        }
+
+        .degree9-unit1-lesson1-oral-container {
+            max-width: none;
+            margin: 0 auto;
+            padding: 1.8rem 1.4rem 3rem;
+            max-height: none; 
+        }
+
+        .degree9-unit1-lesson1-oral-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .degree9-unit1-lesson1-oral-badge {
+            display: inline-block;
+            background: var(--degree9-unit1-lesson1-oral-accent);
+            color: #fff;
+            padding: 0.35rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .degree9-unit1-lesson1-oral-header h1 {
+            font-size: 2.2rem;
+            color: var(--degree9-unit1-lesson1-oral-heading);
+            margin: 0.8rem 0 0.4rem;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+        .degree9-unit1-lesson1-oral-meta {
+            font-size: 0.95rem;
+            color: var(--degree9-unit1-lesson1-oral-text-light);
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .degree9-unit1-lesson1-oral-audio-player {
+            background: var(--degree9-unit1-lesson1-oral-card);
+            border: 1px solid var(--degree9-unit1-lesson1-oral-border);
+            border-radius: var(--degree9-unit1-lesson1-oral-radius);
+            padding: 1rem 1.4rem;
+            margin: 1.5rem 0 2rem;
+            box-shadow: var(--degree9-unit1-lesson1-oral-shadow);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .degree9-unit1-lesson1-oral-play-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--degree9-unit1-lesson1-oral-accent);
+            color: #fff;
+            border: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background var(--degree9-unit1-lesson1-oral-transition);
+            flex-shrink: 0;
+        }
+        .degree9-unit1-lesson1-oral-play-btn:hover { background: var(--degree9-unit1-lesson1-oral-accent-hover); }
+        .degree9-unit1-lesson1-oral-progress-area {
+            flex: 1;
+            min-width: 120px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+        .degree9-unit1-lesson1-oral-progress-bar {
+            width: 100%;
+            height: 6px;
+            background: var(--degree9-unit1-lesson1-oral-audio-progress);
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .degree9-unit1-lesson1-oral-progress-fill {
+            height: 100%;
+            background: var(--degree9-unit1-lesson1-oral-accent);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+        .degree9-unit1-lesson1-oral-time-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--degree9-unit1-lesson1-oral-text-light);
+        }
+        .degree9-unit1-lesson1-oral-speed-selector {
+            display: flex;
+            gap: 0.3rem;
+            flex-wrap: wrap;
+        }
+        .degree9-unit1-lesson1-oral-speed-btn {
+            border: 1px solid var(--degree9-unit1-lesson1-oral-border);
+            background: var(--degree9-unit1-lesson1-oral-button-bg);
+            color: var(--degree9-unit1-lesson1-oral-text);
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--degree9-unit1-lesson1-oral-transition);
+        }
+        .degree9-unit1-lesson1-oral-speed-btn.active {
+            background: var(--degree9-unit1-lesson1-oral-accent);
+            color: #fff;
+            border-color: var(--degree9-unit1-lesson1-oral-accent);
+        }
+        .degree9-unit1-lesson1-oral-audio-label {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--degree9-unit1-lesson1-oral-heading);
+            white-space: nowrap;
+        }
+        @media (max-width: 600px) {
+            .degree9-unit1-lesson1-oral-audio-player { flex-direction: column; align-items: stretch; }
+            .degree9-unit1-lesson1-oral-audio-label { text-align: center; }
+        }
+
+        .degree9-unit1-lesson1-oral-text-card {
+            background: var(--degree9-unit1-lesson1-oral-card);
+            border: 1px solid var(--degree9-unit1-lesson1-oral-border);
+            border-left: 6px solid var(--degree9-unit1-lesson1-oral-accent);
+            border-radius: 0 var(--degree9-unit1-lesson1-oral-radius) var(--degree9-unit1-lesson1-oral-radius) 0;
+            padding: 1.5rem 1.8rem;
+            margin: 1.8rem 0;
+            font-style: italic;
+            font-size: 1.05rem;
+            line-height: 1.9;
+            box-shadow: var(--degree9-unit1-lesson1-oral-shadow);
+            position: relative;
+        }
+        .degree9-unit1-lesson1-oral-quote-mark {
+            position: absolute;
+            top: -15px;
+            left: 14px;
+            font-size: 3.5rem;
+            color: var(--degree9-unit1-lesson1-oral-accent);
+            opacity: 0.3;
+            line-height: 1;
+        }
+        .degree9-unit1-lesson1-oral-text-card .degree9-unit1-lesson1-oral-author {
+            text-align: right;
+            font-style: normal;
+            font-size: 0.9rem;
+            color: var(--degree9-unit1-lesson1-oral-text-light);
+            margin-top: 0.8rem;
+        }
+
+        .degree9-unit1-lesson1-oral-section h2 {
+            font-size: 1.6rem;
+            color: var(--degree9-unit1-lesson1-oral-heading);
+            margin: 2.2rem 0 1.2rem;
+            border-bottom: 3px solid var(--degree9-unit1-lesson1-oral-accent);
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+        .degree9-unit1-lesson1-oral-card {
+            background: var(--degree9-unit1-lesson1-oral-card);
+            border: 1px solid var(--degree9-unit1-lesson1-oral-border);
+            border-radius: var(--degree9-unit1-lesson1-oral-radius);
+            padding: 1.5rem 1.8rem;
+            margin-bottom: 1.8rem;
+            box-shadow: var(--degree9-unit1-lesson1-oral-shadow);
+        }
+        .degree9-unit1-lesson1-oral-card h3 {
+            font-size: 1.2rem;
+            color: var(--degree9-unit1-lesson1-oral-accent);
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+        .degree9-unit1-lesson1-oral-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin: 0.8rem 0;
+        }
+        .degree9-unit1-lesson1-oral-options label {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+            font-size: 0.95rem;
+            padding: 0.3rem 0.5rem;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+        .degree9-unit1-lesson1-oral-options label:hover {
+            background: var(--degree9-unit1-lesson1-oral-audio-bg);
+        }
+        .degree9-unit1-lesson1-oral-options input[type="radio"] {
+            accent-color: var(--degree9-unit1-lesson1-oral-accent);
+        }
+        .degree9-unit1-lesson1-oral-btn {
+            background: var(--degree9-unit1-lesson1-oral-accent);
+            color: #fff;
+            border: none;
+            padding: 0.6rem 1.4rem;
+            border-radius: 24px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background var(--degree9-unit1-lesson1-oral-transition);
+            margin-top: 0.6rem;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .degree9-unit1-lesson1-oral-btn:hover { background: var(--degree9-unit1-lesson1-oral-accent-hover); }
+        .degree9-unit1-lesson1-oral-answer-key {
+            display: none;
+            margin-top: 0.8rem;
+            padding: 0.8rem 1rem;
+            background: var(--degree9-unit1-lesson1-oral-audio-bg);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--degree9-unit1-lesson1-oral-text-light);
+            border: 1px dashed var(--degree9-unit1-lesson1-oral-accent);
+        }
+        .degree9-unit1-lesson1-oral-answer-key.visible { display: block; }
+        .degree9-unit1-lesson1-oral-feedback {
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+        .degree9-unit1-lesson1-oral-feedback.correct { color: #2e7d32; }
+        .degree9-unit1-lesson1-oral-feedback.wrong { color: #c62828; }
+
+        .degree9-unit1-lesson1-oral-self-assess {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        .degree9-unit1-lesson1-oral-self-assess label {
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .degree9-unit1-lesson1-oral-self-assess input[type="radio"] {
+            accent-color: var(--degree9-unit1-lesson1-oral-accent);
+        }
+
+        .degree9-unit1-lesson1-oral-score-area {
+            background: var(--degree9-unit1-lesson1-oral-card);
+            border: 1px solid var(--degree9-unit1-lesson1-oral-border);
+            border-radius: var(--degree9-unit1-lesson1-oral-radius);
+            padding: 1.5rem 1.8rem;
+            margin-top: 2rem;
+            box-shadow: var(--degree9-unit1-lesson1-oral-shadow);
+        }
+        .degree9-unit1-lesson1-oral-score-area h2 {
+            color: var(--degree9-unit1-lesson1-oral-heading);
+            margin-bottom: 1rem;
+        }
+        .degree9-unit1-lesson1-oral-score-stats {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .degree9-unit1-lesson1-oral-score-stat {
+            background: var(--degree9-unit1-lesson1-oral-audio-bg);
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+        .degree9-unit1-lesson1-oral-score-actions {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        html[dir="rtl"] .degree9-unit1-lesson1-oral-container { text-align: right; }
+        html[dir="rtl"] .degree9-unit1-lesson1-oral-text-card .degree9-unit1-lesson1-oral-author { text-align: left; }
+
+        /* Distinctive fill-blank select styling */
+        .degree9-unit1-lesson1-oral-blank-select {
+            display: inline-block;
+            min-width: 130px;
+            padding: 0.25rem 0.5rem;
+            border: 2px dashed var(--degree9-unit1-lesson1-oral-accent);
+            border-radius: 6px;
+            background: var(--degree9-unit1-lesson1-oral-input-bg);
+            color: var(--degree9-unit1-lesson1-oral-text);
+            font-size: 0.9rem;
+            margin: 0 0.2rem;
+            font-family: inherit;
+        }
+        .degree9-unit1-lesson1-oral-blank-select:focus {
+            outline: none;
+            border-style: solid;
+            box-shadow: 0 0 0 2px var(--degree9-unit1-lesson1-oral-accent);
+        }
+
+        /* Questions grid - two columns */
+        .degree9-unit1-lesson1-oral-questions-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .degree9-unit1-lesson1-oral-questions-grid .degree9-unit1-lesson1-oral-card {
+            margin-bottom: 0; /* remove card bottom margin inside grid */
+        }
+        @media (max-width: 900px) {
+            .degree9-unit1-lesson1-oral-questions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Dark mode answer key background fix */
+        body.dark .degree9-unit1-lesson1-oral-answer-key {
+            background-color: #26221b;
+            color: #e8dfd2;
+        }
+        body.dark .degree9-unit1-lesson1-oral-blank-select {
+            background-color: #333028;
+            color: #e8dfd2;
+        }
+        body.dark .degree9-unit1-lesson1-oral-blank-select option {
+            background-color: #333028;
+            color: #e8dfd2;
+        }
+
+        /* New classes for previously inline styles */
+        .degree9-unit1-lesson1-oral-resource-list {
+    list-style-type: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;     /* Centre horizontalement les li */
+    justify-content: center; /* Centre verticalement si hauteur fixe */
+    text-align: center;      /* Pour centrer le texte dans chaque li */
+}
+        .degree9-unit1-lesson1-oral-fill-wrapper {
+            margin-top: 1.5rem;
+        }
+        .degree9-unit1-lesson1-oral-subheading {
+            margin-top: 1rem;
+        }
+        .degree9-unit1-lesson1-oral-btn-secondary {
+            background: #5c5344;
+        }
+        /* Optional dark mode override for the secondary button */
+        body.dark .degree9-unit1-lesson1-oral-btn-secondary {
+            background: #6b5d4a;
+        }
+        .degree9-unit1-lesson1-oral-footer-nav {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+		margin-bottom:1.5rem;
+		color: var(--degree9-unit1-lesson2-oral-text-light);
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0.5rem 1.5rem;
+		}
+    .degree9-unit1-lesson1-oral-footer-nav a {
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .degree9-unit1-lesson1-oral-footer-nav a:hover {
+	text-decoration: underline;
+	}
+        .degree9-unit1-lesson1-oral-breadcrumb {
+		margin-bottom:1.5rem;
+		color: var(--degree9-unit1-lesson2-oral-text-light);
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0.5rem 1.5rem;
+		}
+    .degree9-unit1-lesson1-oral-breadcrumb a {
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .degree9-unit1-lesson1-oral-breadcrumb a:hover {
+	text-decoration: underline;
+	}
+    </style>
+</head>
+<body>
+    <!-- Hidden shell elements required by ed-french-ini.js -->
+    <div id="toast-container"></div>
+    <button id="signInBtn" style="display:none"></button>
+
+    <div id="main-content" class="degree9-unit1-lesson1-oral-container">
+        <!-- Breadcrumb -->
+        <p class="degree9-unit1-lesson1-oral-breadcrumb">
+            <a href="degree9.html" data-i18n="back_link">← Retour au programme</a>
+            › <strong data-i18n="current_lesson">Écouter un récit oral, en rendre compte</strong>
+        </p>
+
+        <!-- Header -->
+        <div class="degree9-unit1-lesson1-oral-header">
+            <span class="degree9-unit1-lesson1-oral-badge" data-i18n="lesson_badge">🎧 Écoute et expression orale · Leçon 1</span>
+            <h1 data-i18n="lesson_title">Écouter un récit oral,<br>en rendre compte</h1>
+            <div class="degree9-unit1-lesson1-oral-meta">
+                <span data-i18n="lesson_duration">⏱️ 45 minutes</span>
+                <span data-i18n="lesson_meta_audio">🎧 Écoutez l'enregistrement puis faites les exercices</span>
+            </div>
+        </div>
+
+        <!-- Audio player -->
+        <div class="degree9-unit1-lesson1-oral-audio-player" id="audioPlayer">
+            <span class="degree9-unit1-lesson1-oral-audio-label" data-i18n="audio_label">🎧 Écoute littéraire</span>
+            <button class="degree9-unit1-lesson1-oral-play-btn" id="playBtn" aria-label="Lecture">▶</button>
+            <div class="degree9-unit1-lesson1-oral-progress-area">
+                <div class="degree9-unit1-lesson1-oral-progress-bar" id="progressBar">
+                    <div class="degree9-unit1-lesson1-oral-progress-fill" id="progressFill"></div>
+                </div>
+                <div class="degree9-unit1-lesson1-oral-time-info">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">2:46</span>
+                </div>
+            </div>
+            <div class="degree9-unit1-lesson1-oral-speed-selector" id="speedSelector">
+                <button class="degree9-unit1-lesson1-oral-speed-btn" data-speed="0.75">0.75x</button>
+                <button class="degree9-unit1-lesson1-oral-speed-btn active" data-speed="1">1x</button>
+                <button class="degree9-unit1-lesson1-oral-speed-btn" data-speed="1.25">1.25x</button>
+                <button class="degree9-unit1-lesson1-oral-speed-btn" data-speed="1.5">1.5x</button>
+            </div>
+        </div>
+
+        <!-- Literary text / transcription -->
+        <div class="degree9-unit1-lesson1-oral-text-card">
+            <span class="degree9-unit1-lesson1-oral-quote-mark">“</span>
+            <p data-i18n="text_para1">J'ai vécu seul, sans personne avec qui parler véritablement, jusqu'à une panne dans le désert du Sahara, il y a six ans. Quelque chose s'était cassé dans mon moteur. Et comme je n'avais avec moi ni mécanicien, ni passagers, je me préparai à essayer de réussir, tout seul, une réparation difficile. C'était pour moi une question de vie ou de mort. J'avais à peine de l'eau à boire pour huit jours.</p>
+            <p data-i18n="text_para2">Le premier soir je me suis donc endormi sur le sable à mille milles de toute terre habitée. J'étais bien plus isolé qu'un naufragé sur un radeau au milieu de l'océan. Alors vous imaginez ma surprise, au lever du jour, quand une drôle de petite voix m'a réveillé.</p>
+            <p data-i18n="text_para3">– S'il vous plaît... dessine-moi un mouton !<br>– Hein !<br>– Dessine-moi un mouton...</p>
+            <p data-i18n="text_para4">J'ai sauté sur mes pieds comme si j'avais été frappé par la foudre. J'ai bien frotté mes yeux. J'ai bien regardé. Et j'ai vu un petit bonhomme tout à fait extraordinaire qui me considérait gravement. Il ne me semblait ni égaré, ni mort de faim, ni mort de fatigue, ni mort de soif, ni mort de peur. Il n'avait en rien l'apparence d'un enfant perdu au milieu du désert, à mille milles de toute région habitée.</p>
+            <p data-i18n="text_para5">– Mais... qu'est-ce que tu fais là ?<br>– S'il vous plaît... dessine-moi un mouton...</p>
+            <p data-i18n="text_para6">Quand le mystère est trop impressionnant, on n'ose pas désobéir. Aussi absurde que cela me semblât, je sortis de ma poche une feuille de papier et un stylographe et je dessinais.</p>
+            <p data-i18n="text_para7">Il regarda attentivement :<br>– Non ! Celui-là est déjà très malade. Fais-en un autre.<br>Je dessinai un autre mouton.<br>– Tu vois bien... ce n'est pas un mouton, c'est un bélier. Il a des cornes...<br>Je refis donc encore mon dessin.<br>– Celui-là est trop vieux. Je veux un mouton qui vive longtemps.</p>
+            <p data-i18n="text_para8">J'avais hâte de commencer le démontage de mon moteur, je griffonnai une caisse ... avec trois trous d'aération et lançai :<br>– Ça c'est la caisse, le mouton que tu veux est dedans.</p>
+            <p data-i18n="text_para9">– C'est tout à fait comme ça que je le voulais ! Crois-tu qu'il faille beaucoup d'herbe à ce mouton ?<br>– Pourquoi ?<br>– Parce que chez moi c'est tout petit...<br>– Ça suffira sûrement. Je t'ai donné un tout petit mouton.<br>– Pas si petit que ça... Tiens ! Il s'est endormi...</p>
+            <p data-i18n="text_para10">Et c'est ainsi que je fis la connaissance du petit prince.</p>
+            <div class="degree9-unit1-lesson1-oral-author" data-i18n="text_author">— Antoine de Saint-Exupéry, Le Petit Prince</div>
+        </div>
+
+        <!-- Comprehension questions (MCQ) - now in two columns -->
+        <section class="degree9-unit1-lesson1-oral-section">
+            <h2 data-i18n="mcq_heading">🎧 Rendre compte de notre compréhension</h2>
+
+            <div class="degree9-unit1-lesson1-oral-questions-grid">
+                <!-- Q1 -->
+                <div class="degree9-unit1-lesson1-oral-card">
+                    <h3 data-i18n="q1_title">Où et quand se passe la scène ?</h3>
+                    <div class="degree9-unit1-lesson1-oral-options">
+                        <label><input type="radio" name="q1" value="a"> <span data-i18n="q1_a">Dans une forêt, le soir.</span></label>
+                        <label><input type="radio" name="q1" value="b"> <span data-i18n="q1_b">Dans le désert du Sahara, au lever du jour, six ans avant le moment où le narrateur raconte.</span></label>
+                        <label><input type="radio" name="q1" value="c"> <span data-i18n="q1_c">Sur un bateau, en pleine mer, la nuit.</span></label>
+                    </div>
+                    <button class="degree9-unit1-lesson1-oral-btn" onclick="checkMCQ('q1', 'b', 'q1Key', 'q1Feedback')" data-i18n="check_answers">🔍 Vérifier</button>
+                    <div id="q1Key" class="degree9-unit1-lesson1-oral-answer-key"></div>
+                    <div id="q1Feedback" class="degree9-unit1-lesson1-oral-feedback"></div>
+                    <div class="degree9-unit1-lesson1-oral-self-assess">
+                        <span data-i18n="self_assess_question">Ma réponse est :</span>
+                        <label><input type="radio" name="self_q1" value="correct" data-i18n="self_correct"> Correcte</label>
+                        <label><input type="radio" name="self_q1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                        <label><input type="radio" name="self_q1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="degree9-unit1-lesson1-oral-card">
+                    <h3 data-i18n="q2_title">Qui peut être le narrateur ?</h3>
+                    <div class="degree9-unit1-lesson1-oral-options">
+                        <label><input type="radio" name="q2" value="a"> <span data-i18n="q2_a">Un mécanicien venu réparer l’avion.</span></label>
+                        <label><input type="radio" name="q2" value="b"> <span data-i18n="q2_b">Un enfant égaré dans le désert.</span></label>
+                        <label><input type="radio" name="q2" value="c"> <span data-i18n="q2_c">Un aviateur tombé en panne dans le désert.</span></label>
+                    </div>
+                    <button class="degree9-unit1-lesson1-oral-btn" onclick="checkMCQ('q2', 'c', 'q2Key', 'q2Feedback')" data-i18n="check_answers">🔍 Vérifier</button>
+                    <div id="q2Key" class="degree9-unit1-lesson1-oral-answer-key"></div>
+                    <div id="q2Feedback" class="degree9-unit1-lesson1-oral-feedback"></div>
+                    <div class="degree9-unit1-lesson1-oral-self-assess">
+                        <span data-i18n="self_assess_question">Ma réponse est :</span>
+                        <label><input type="radio" name="self_q2" value="correct" data-i18n="self_correct"> Correcte</label>
+                        <label><input type="radio" name="self_q2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                        <label><input type="radio" name="self_q2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    </div>
+                </div>
+
+                <!-- Q3a & Q3b (same card) -->
+                <div class="degree9-unit1-lesson1-oral-card">
+                    <h3 data-i18n="q3a_title">Qui peut être l'enfant ?</h3>
+                    <div class="degree9-unit1-lesson1-oral-options">
+                        <label><input type="radio" name="q3a" value="a"> <span data-i18n="q3a_a">Un petit berger du désert.</span></label>
+                        <label><input type="radio" name="q3a" value="b"> <span data-i18n="q3a_b">Un petit bonhomme extraordinaire, le petit prince.</span></label>
+                        <label><input type="radio" name="q3a" value="c"> <span data-i18n="q3a_c">Un bélier transformé en enfant.</span></label>
+                    </div>
+                    <button class="degree9-unit1-lesson1-oral-btn" onclick="checkMCQ('q3a', 'b', 'q3aKey', 'q3aFeedback')" data-i18n="check_answers">🔍 Vérifier</button>
+                    <div id="q3aKey" class="degree9-unit1-lesson1-oral-answer-key"></div>
+                    <div id="q3aFeedback" class="degree9-unit1-lesson1-oral-feedback"></div>
+                    <div class="degree9-unit1-lesson1-oral-self-assess">
+                        <span data-i18n="self_assess_question">Ma réponse est :</span>
+                        <label><input type="radio" name="self_q3a" value="correct" data-i18n="self_correct"> Correcte</label>
+                        <label><input type="radio" name="self_q3a" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                        <label><input type="radio" name="self_q3a" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    </div>
+
+                    <h3 class="degree9-unit1-lesson1-oral-subheading" data-i18n="q3b_title">D'où vient-il ?</h3>
+                    <div class="degree9-unit1-lesson1-oral-options">
+                        <label><input type="radio" name="q3b" value="a"> <span data-i18n="q3b_a">D’un village proche du Sahara.</span></label>
+                        <label><input type="radio" name="q3b" value="b"> <span data-i18n="q3b_b">D’une toute petite planète.</span></label>
+                        <label><input type="radio" name="q3b" value="c"> <span data-i18n="q3b_c">D’un bateau naufragé.</span></label>
+                    </div>
+                    <button class="degree9-unit1-lesson1-oral-btn" onclick="checkMCQ('q3b', 'b', 'q3bKey', 'q3bFeedback')" data-i18n="check_answers">🔍 Vérifier</button>
+                    <div id="q3bKey" class="degree9-unit1-lesson1-oral-answer-key"></div>
+                    <div id="q3bFeedback" class="degree9-unit1-lesson1-oral-feedback"></div>
+                    <div class="degree9-unit1-lesson1-oral-self-assess">
+                        <span data-i18n="self_assess_question">Ma réponse est :</span>
+                        <label><input type="radio" name="self_q3b" value="correct" data-i18n="self_correct"> Correcte</label>
+                        <label><input type="radio" name="self_q3b" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                        <label><input type="radio" name="self_q3b" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    </div>
+                </div>
+
+                <!-- Q4a & Q4b (same card) -->
+                <div class="degree9-unit1-lesson1-oral-card">
+                    <h3 data-i18n="q4a_title">Que demande l'enfant au narrateur ?</h3>
+                    <div class="degree9-unit1-lesson1-oral-options">
+                        <label><input type="radio" name="q4a" value="a"> <span data-i18n="q4a_a">À boire et à manger.</span></label>
+                        <label><input type="radio" name="q4a" value="b"> <span data-i18n="q4a_b">De lui dessiner un mouton.</span></label>
+                        <label><input type="radio" name="q4a" value="c"> <span data-i18n="q4a_c">De réparer le moteur de l’avion.</span></label>
+                    </div>
+                    <button class="degree9-unit1-lesson1-oral-btn" onclick="checkMCQ('q4a', 'b', 'q4aKey', 'q4aFeedback')" data-i18n="check_answers">🔍 Vérifier</button>
+                    <div id="q4aKey" class="degree9-unit1-lesson1-oral-answer-key"></div>
+                    <div id="q4aFeedback" class="degree9-unit1-lesson1-oral-feedback"></div>
+                    <div class="degree9-unit1-lesson1-oral-self-assess">
+                        <span data-i18n="self_assess_question">Ma réponse est :</span>
+                        <label><input type="radio" name="self_q4a" value="correct" data-i18n="self_correct"> Correcte</label>
+                        <label><input type="radio" name="self_q4a" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                        <label><input type="radio" name="self_q4a" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    </div>
+
+                    <h3 class="degree9-unit1-lesson1-oral-subheading" data-i18n="q4b_title">Comment lui parle-t-il ?</h3>
+                    <div class="degree9-unit1-lesson1-oral-options">
+                        <label><input type="radio" name="q4b" value="a"> <span data-i18n="q4b_a">Avec colère et impatience.</span></label>
+                        <label><input type="radio" name="q4b" value="b"> <span data-i18n="q4b_b">Avec simplicité, politesse et une insistance calme.</span></label>
+                        <label><input type="radio" name="q4b" value="c"> <span data-i18n="q4b_c">En se moquant de lui.</span></label>
+                    </div>
+                    <button class="degree9-unit1-lesson1-oral-btn" onclick="checkMCQ('q4b', 'b', 'q4bKey', 'q4bFeedback')" data-i18n="check_answers">🔍 Vérifier</button>
+                    <div id="q4bKey" class="degree9-unit1-lesson1-oral-answer-key"></div>
+                    <div id="q4bFeedback" class="degree9-unit1-lesson1-oral-feedback"></div>
+                    <div class="degree9-unit1-lesson1-oral-self-assess">
+                        <span data-i18n="self_assess_question">Ma réponse est :</span>
+                        <label><input type="radio" name="self_q4b" value="correct" data-i18n="self_correct"> Correcte</label>
+                        <label><input type="radio" name="self_q4b" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                        <label><input type="radio" name="self_q4b" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    </div>
+                </div>
+            </div>
+
+                <!-- Q5 -->
+                <div class="degree9-unit1-lesson1-oral-card">
+                    <h3 data-i18n="q5_title">De quelle façon le narrateur réagit-il aux demandes de l'enfant ?</h3>
+                    <div class="degree9-unit1-lesson1-oral-options">
+                        <label><input type="radio" name="q5" value="a"> <span data-i18n="q5_a">Il refuse et se met en colère.</span></label>
+                        <label><input type="radio" name="q5" value="b"> <span data-i18n="q5_b">Il est très surpris, mais il obéit et se montre bienveillant.</span></label>
+                        <label><input type="radio" name="q5" value="c"> <span data-i18n="q5_c">Il ne l’écoute pas et continue de dormir.</span></label>
+                    </div>
+                    <button class="degree9-unit1-lesson1-oral-btn" onclick="checkMCQ('q5', 'b', 'q5Key', 'q5Feedback')" data-i18n="check_answers">🔍 Vérifier</button>
+                    <div id="q5Key" class="degree9-unit1-lesson1-oral-answer-key"></div>
+                    <div id="q5Feedback" class="degree9-unit1-lesson1-oral-feedback"></div>
+                    <div class="degree9-unit1-lesson1-oral-self-assess">
+                        <span data-i18n="self_assess_question">Ma réponse est :</span>
+                        <label><input type="radio" name="self_q5" value="correct" data-i18n="self_correct"> Correcte</label>
+                        <label><input type="radio" name="self_q5" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                        <label><input type="radio" name="self_q5" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    </div>
+                </div>
+        </section>
+
+        <!-- Oral activities -->
+        <section class="degree9-unit1-lesson1-oral-section">
+            <h2 data-i18n="activities_heading">🎭 Activités orales</h2>
+            <div class="degree9-unit1-lesson1-oral-card">
+                <h3 data-i18n="read_aloud_title">Nous lisons le texte à haute voix</h3>
+                <p data-i18n="read_aloud_text">Lisez à deux le dialogue entre le petit prince et le narrateur en essayant de rendre compte des émotions et des attitudes des deux personnages (la surprise du narrateur et son attitude bienveillante à l'égard du petit prince – la simplicité et la spontanéité du petit prince...).</p>
+            </div>
+            <div class="degree9-unit1-lesson1-oral-card">
+                <h3 data-i18n="retell_title">Nous racontons à notre tour</h3>
+                <ol>
+                    <li data-i18n="retell_1">Racontez à votre manière cette même scène en restituant ses éléments essentiels.</li>
+                    <li data-i18n="retell_2">Vous est-il arrivé d'être mal compris par un adulte ou par un enfant de votre âge ? Racontez cette scène à vos camarades en intégrant dans votre récit deux ou trois répliques.</li>
+                </ol>
+
+                <!-- Fill in blanks embedded here as exercise 2 follow-up -->
+                <div class="degree9-unit1-lesson1-oral-fill-wrapper">
+                    <h3 data-i18n="fill_heading">✍️ Exercice : complétez le paragraphe</h3>
+                    <p data-i18n="fill_instruction">Complétez le paragraphe en choisissant les mots appropriés dans les listes déroulantes.</p>
+                    <p data-i18n="fill_wordlist_label"><strong>Liste de mots disponibles :</strong> D’abord, raconter, Ensuite, aborder, demander, adressé, répondre, Par la suite, insisté, rétorqué, rapporter, Finalement, accueillant, bienveillant, C’est, moi, insister, surpris, étonné, inattendue.</p>
+                    <div id="fillBlanksContainer" style="margin-top:1rem;"></div>
+                    <button class="degree9-unit1-lesson1-oral-btn" onclick="checkFillBlanks()" data-i18n="check_answers">🔍 Vérifier</button>
+                    <div id="fillKey" class="degree9-unit1-lesson1-oral-answer-key"></div>
+                    <div id="fillFeedback" class="degree9-unit1-lesson1-oral-feedback"></div>
+                    <div class="degree9-unit1-lesson1-oral-self-assess">
+                        <span data-i18n="self_assess_question">Ma réponse est :</span>
+                        <label><input type="radio" name="self_fill" value="correct" data-i18n="self_correct"> Correcte</label>
+                        <label><input type="radio" name="self_fill" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                        <label><input type="radio" name="self_fill" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Linguistic resources -->
+        <section class="degree9-unit1-lesson1-oral-section">
+            <h2 data-i18n="resources_heading">📚 Ressources linguistiques</h2>
+            <div class="degree9-unit1-lesson1-oral-card">
+                <ul class="degree9-unit1-lesson1-oral-resource-list">
+                    <li data-i18n="res1">🔹 Rapporter – Raconter</li>
+                    <li data-i18n="res2">🔹 Aborder – S'adresser à ...</li>
+                    <li data-i18n="res3">🔹 Demander – Répondre – Rétorquer – Insister</li>
+                    <li data-i18n="res4">🔹 D'abord – Ensuite – Par la suite</li>
+                    <li data-i18n="res5">🔹 C'est ... – C'est ... qui ...</li>
+                    <li data-i18n="res6">🔹 Surpris – Étonné – Surprenant – Inattendu</li>
+                    <li data-i18n="res7">🔹 Accueillant – Aimable – Bienveillant</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Score area -->
+        <div class="degree9-unit1-lesson1-oral-score-area">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="degree9-unit1-lesson1-oral-score-stats">
+                <div class="degree9-unit1-lesson1-oral-score-stat"><span data-i18n="score_correct">Correct :</span> <span id="scoreCorrect">0</span></div>
+                <div class="degree9-unit1-lesson1-oral-score-stat"><span data-i18n="score_partial">Partiel :</span> <span id="scorePartial">0</span></div>
+                <div class="degree9-unit1-lesson1-oral-score-stat"><span data-i18n="score_incorrect">Incorrect :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="degree9-unit1-lesson1-oral-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">7</span></div>
+            </div>
+            <div class="degree9-unit1-lesson1-oral-score-actions">
+                <button id="saveResultsBtn" class="degree9-unit1-lesson1-oral-btn" data-i18n="save_results">💾 Enregistrer mes résultats</button>
+                <button id="printBtn" class="degree9-unit1-lesson1-oral-btn degree9-unit1-lesson1-oral-btn-secondary" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+            </div>
+        </div>
+
+        <!-- Footer nav -->
+        <div class="degree9-unit1-lesson1-oral-footer-nav">
+            <a href="degree9.html" data-i18n="footer_back" class="degree9-unit1-lesson1-oral-breadcrumb">← Retour au programme</a>
+            <a href="degree9unit1lesson2.html" data-i18n="footer_next" class="degree9-unit1-lesson1-oral-breadcrumb">Leçon suivante →</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script src="ed-french-ini.js"></script>
+
+    <!-- Translations (full trilingual) -->
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                lesson_title: "Leçon 1 – Écouter un récit oral, en rendre compte | Le Petit Prince",
+                lesson_badge: "🎧 Écoute et expression orale · Leçon 1",
+                lesson_duration: "⏱️ 45 minutes",
+                lesson_meta_audio: "🎧 Écoutez l'enregistrement puis faites les exercices",
+                back_link: "← Retour au programme",
+                current_lesson: "Écouter un récit oral, en rendre compte",
+                audio_label: "🎧 Écoute littéraire",
+                text_author: "— Antoine de Saint-Exupéry, Le Petit Prince",
+                text_para1: "J'ai vécu seul, sans personne avec qui parler véritablement, jusqu'à une panne dans le désert du Sahara, il y a six ans. Quelque chose s'était cassé dans mon moteur. Et comme je n'avais avec moi ni mécanicien, ni passagers, je me préparai à essayer de réussir, tout seul, une réparation difficile. C'était pour moi une question de vie ou de mort. J'avais à peine de l'eau à boire pour huit jours.",
+                text_para2: "Le premier soir je me suis donc endormi sur le sable à mille milles de toute terre habitée. J'étais bien plus isolé qu'un naufragé sur un radeau au milieu de l'océan. Alors vous imaginez ma surprise, au lever du jour, quand une drôle de petite voix m'a réveillé.",
+                text_para3: "– S'il vous plaît... dessine-moi un mouton !\n– Hein !\n– Dessine-moi un mouton...",
+                text_para4: "J'ai sauté sur mes pieds comme si j'avais été frappé par la foudre. J'ai bien frotté mes yeux. J'ai bien regardé. Et j'ai vu un petit bonhomme tout à fait extraordinaire qui me considérait gravement. Il ne me semblait ni égaré, ni mort de faim, ni mort de fatigue, ni mort de soif, ni mort de peur. Il n'avait en rien l'apparence d'un enfant perdu au milieu du désert, à mille milles de toute région habitée.",
+                text_para5: "– Mais... qu'est-ce que tu fais là ?\n– S'il vous plaît... dessine-moi un mouton...",
+                text_para6: "Quand le mystère est trop impressionnant, on n'ose pas désobéir. Aussi absurde que cela me semblât, je sortis de ma poche une feuille de papier et un stylographe et je dessinais.",
+                text_para7: "Il regarda attentivement :\n– Non ! Celui-là est déjà très malade. Fais-en un autre.\nJe dessinai un autre mouton.\n– Tu vois bien... ce n'est pas un mouton, c'est un bélier. Il a des cornes...\nJe refis donc encore mon dessin.\n– Celui-là est trop vieux. Je veux un mouton qui vive longtemps.",
+                text_para8: "J'avais hâte de commencer le démontage de mon moteur, je griffonnai une caisse ... avec trois trous d'aération et lançai :\n– Ça c'est la caisse, le mouton que tu veux est dedans.",
+                text_para9: "– C'est tout à fait comme ça que je le voulais ! Crois-tu qu'il faille beaucoup d'herbe à ce mouton ?\n– Pourquoi ?\n– Parce que chez moi c'est tout petit...\n– Ça suffira sûrement. Je t'ai donné un tout petit mouton.\n– Pas si petit que ça... Tiens ! Il s'est endormi...",
+                text_para10: "Et c'est ainsi que je fis la connaissance du petit prince.",
+                mcq_heading: "🎧 Rendre compte de notre compréhension",
+                q1_title: "Où et quand se passe la scène ?",
+                q1_a: "Dans une forêt, le soir.",
+                q1_b: "Dans le désert du Sahara, au lever du jour, six ans avant le moment où le narrateur raconte.",
+                q1_c: "Sur un bateau, en pleine mer, la nuit.",
+                q2_title: "Qui peut être le narrateur ?",
+                q2_a: "Un mécanicien venu réparer l’avion.",
+                q2_b: "Un enfant égaré dans le désert.",
+                q2_c: "Un aviateur tombé en panne dans le désert.",
+                q3a_title: "Qui peut être l'enfant ?",
+                q3a_a: "Un petit berger du désert.",
+                q3a_b: "Un petit bonhomme extraordinaire, le petit prince.",
+                q3a_c: "Un bélier transformé en enfant.",
+                q3b_title: "D'où vient-il ?",
+                q3b_a: "D’un village proche du Sahara.",
+                q3b_b: "D’une toute petite planète.",
+                q3b_c: "D’un bateau naufragé.",
+                q4a_title: "Que demande l'enfant au narrateur ?",
+                q4a_a: "À boire et à manger.",
+                q4a_b: "De lui dessiner un mouton.",
+                q4a_c: "De réparer le moteur de l’avion.",
+                q4b_title: "Comment lui parle-t-il ?",
+                q4b_a: "Avec colère et impatience.",
+                q4b_b: "Avec simplicité, politesse et une insistance calme.",
+                q4b_c: "En se moquant de lui.",
+                q5_title: "De quelle façon le narrateur réagit-il aux demandes de l'enfant ?",
+                q5_a: "Il refuse et se met en colère.",
+                q5_b: "Il est très surpris, mais il obéit et se montre bienveillant.",
+                q5_c: "Il ne l’écoute pas et continue de dormir.",
+                check_answers: "🔍 Vérifier",
+                activities_heading: "🎭 Activités orales",
+                read_aloud_title: "Nous lisons le texte à haute voix",
+                read_aloud_text: "Lisez à deux le dialogue entre le petit prince et le narrateur en essayant de rendre compte des émotions et des attitudes des deux personnages (la surprise du narrateur et son attitude bienveillante à l'égard du petit prince – la simplicité et la spontanéité du petit prince...).",
+                retell_title: "Nous racontons à notre tour",
+                retell_1: "Racontez à votre manière cette même scène en restituant ses éléments essentiels.",
+                retell_2: "Vous est-il arrivé d'être mal compris par un adulte ou par un enfant de votre âge ? Racontez cette scène à vos camarades en intégrant dans votre récit deux ou trois répliques.",
+                fill_heading: "✍️ Exercice : complétez le paragraphe",
+                fill_instruction: "Complétez le paragraphe en choisissant les mots appropriés dans les listes déroulantes.",
+                fill_wordlist_label: "Liste de mots disponibles : D’abord, raconter, Ensuite, aborder, demander, adressé, répondre, Par la suite, insisté, rétorqué, rapporter, Finalement, accueillant, bienveillant, C’est, moi, insister, surpris, étonné, inattendue.",
+                resources_heading: "📚 Ressources linguistiques",
+                res1: "🔹 Rapporter – Raconter",
+                res2: "🔹 Aborder – S'adresser à ...",
+                res3: "🔹 Demander – Répondre – Rétorquer – Insister",
+                res4: "🔹 D'abord – Ensuite – Par la suite",
+                res5: "🔹 C'est ... – C'est ... qui ...",
+                res6: "🔹 Surpris – Étonné – Surprenant – Inattendu",
+                res7: "🔹 Accueillant – Aimable – Bienveillant",
+                self_assess_question: "Ma réponse est :",
+                self_correct: "Correcte",
+                self_partial: "Partiellement correcte",
+                self_incorrect: "Incorrecte",
+                score_title: "📊 Votre auto‑évaluation",
+                score_correct: "Correct :",
+                score_partial: "Partiel :",
+                score_incorrect: "Incorrect :",
+                score_unanswered: "Sans réponse :",
+                save_results: "💾 Enregistrer mes résultats",
+                save_success: "Résultats enregistrés !",
+                save_error: "Erreur lors de l'enregistrement.",
+                print_pdf: "🖨️ Imprimer / PDF",
+                footer_back: "← Retour au programme",
+                footer_next: "Leçon suivante →",
+                ach_year_degree9: "9ème Année Primaire",
+                ach_module_unit1: "Unité 1",
+                toast_signin_required: "Connectez-vous pour enregistrer vos résultats.",
+                print_site_name: "Educational Dashboard – Français",
+                print_scholar_year: "9ème Année Primaire",
+                print_week: "Unité 1",
+                print_area: "Écoute et expression orale",
+                print_footer_dev: "Développé par Mejri Ziad",
+                print_footer_date: "Imprimé le"
+            },
+            en: {
+                lesson_title: "Lesson 1 – Listen to an oral story and report it | The Little Prince",
+                lesson_badge: "🎧 Listening & Speaking · Lesson 1",
+                lesson_duration: "⏱️ 45 minutes",
+                lesson_meta_audio: "🎧 Listen to the recording then do the exercises",
+                back_link: "← Back to program",
+                current_lesson: "Listen to an oral story and report it",
+                audio_label: "🎧 Literary listening",
+                text_author: "— Antoine de Saint-Exupéry, The Little Prince",
+                text_para1: "I lived alone, without anyone to really talk to, until a breakdown in the Sahara Desert six years ago. Something had broken in my engine. And since I had neither a mechanic nor passengers with me, I prepared to try to succeed, all alone, in a difficult repair. It was a matter of life or death for me. I had barely enough water to drink for eight days.",
+                text_para2: "The first night I fell asleep on the sand a thousand miles from any inhabited land. I was more isolated than a shipwrecked sailor on a raft in the middle of the ocean. So you can imagine my surprise at daybreak when a strange little voice woke me up.",
+                text_para3: "– Please... draw me a sheep!\n– Huh!\n– Draw me a sheep...",
+                text_para4: "I jumped to my feet as if I had been struck by lightning. I rubbed my eyes well. I looked carefully. And I saw a most extraordinary little fellow who was watching me gravely. He seemed neither lost, nor starving, nor dying of fatigue, nor dying of thirst, nor dying of fear. He did not look at all like a child lost in the middle of the desert, a thousand miles from any inhabited region.",
+                text_para5: "– But... what are you doing here?\n– Please... draw me a sheep...",
+                text_para6: "When a mystery is too overwhelming, one does not dare disobey. Absurd as it seemed to me, I took a sheet of paper and a pen out of my pocket and I began to draw.",
+                text_para7: "He looked attentively:\n– No! That one is already very sick. Make another.\nI drew another sheep.\n– You see... it's not a sheep, it's a ram. It has horns...\nSo I drew again.\n– That one is too old. I want a sheep that will live a long time.",
+                text_para8: "I was in a hurry to start dismantling my engine, so I scribbled a crate... with three air holes and said:\n– This is the crate. The sheep you want is inside.",
+                text_para9: "– That's exactly how I wanted it! Do you think he needs a lot of grass?\n– Why?\n– Because where I live everything is very small...\n– That will surely be enough. I gave you a very small sheep.\n– Not so small... Look! He's gone to sleep...",
+                text_para10: "And that's how I made the acquaintance of the little prince.",
+                mcq_heading: "🎧 Checking our understanding",
+                q1_title: "Where and when does the scene take place?",
+                q1_a: "In a forest, in the evening.",
+                q1_b: "In the Sahara Desert, at daybreak, six years before the narrator tells the story.",
+                q1_c: "On a boat, at sea, at night.",
+                q2_title: "Who might the narrator be?",
+                q2_a: "A mechanic who came to repair the plane.",
+                q2_b: "A child lost in the desert.",
+                q2_c: "An aviator stranded in the desert.",
+                q3a_title: "Who might the child be?",
+                q3a_a: "A little shepherd from the desert.",
+                q3a_b: "A most extraordinary little fellow, the little prince.",
+                q3a_c: "A ram transformed into a child.",
+                q3b_title: "Where does he come from?",
+                q3b_a: "From a village near the Sahara.",
+                q3b_b: "From a very small planet.",
+                q3b_c: "From a shipwrecked boat.",
+                q4a_title: "What does the child ask the narrator?",
+                q4a_a: "Something to eat and drink.",
+                q4a_b: "To draw him a sheep.",
+                q4a_c: "To repair the plane engine.",
+                q4b_title: "How does he speak to him?",
+                q4b_a: "With anger and impatience.",
+                q4b_b: "With simplicity, politeness and calm insistence.",
+                q4b_c: "Mockingly.",
+                q5_title: "How does the narrator react to the child's requests?",
+                q5_a: "He refuses and gets angry.",
+                q5_b: "He is very surprised, but he obeys and shows kindness.",
+                q5_c: "He ignores him and continues sleeping.",
+                check_answers: "🔍 Check",
+                activities_heading: "🎭 Oral activities",
+                read_aloud_title: "We read the text aloud",
+                read_aloud_text: "Read the dialogue between the little prince and the narrator in pairs, trying to convey the emotions and attitudes of both characters (the narrator's surprise and his kindness towards the little prince – the little prince's simplicity and spontaneity...).",
+                retell_title: "We tell in our turn",
+                retell_1: "Retell this same scene in your own way, keeping its essential elements.",
+                retell_2: "Have you ever been misunderstood by an adult or a child your age? Tell this scene to your classmates, including two or three lines of dialogue in your story.",
+                fill_heading: "✍️ Exercise: complete the paragraph",
+                fill_instruction: "Complete the paragraph by choosing the appropriate words from the dropdown lists.",
+                fill_wordlist_label: "Available words: First, tell, Next, approach, ask, addressed, answer, Later, insisted, retorted, report, Finally, welcoming, kind, It's, me, insist, surprised, astonished, unexpected.",
+                resources_heading: "📚 Linguistic resources",
+                res1: "🔹 Report – Tell",
+                res2: "🔹 Approach – Address ...",
+                res3: "🔹 Ask – Answer – Retort – Insist",
+                res4: "🔹 First – Next – Later",
+                res5: "🔹 It is ... – It is ... who ...",
+                res6: "🔹 Surprised – Astonished – Surprising – Unexpected",
+                res7: "🔹 Welcoming – Friendly – Kind",
+                self_assess_question: "My answer is:",
+                self_correct: "Correct",
+                self_partial: "Partially correct",
+                self_incorrect: "Incorrect",
+                score_title: "📊 Your self‑assessment",
+                score_correct: "Correct:",
+                score_partial: "Partial:",
+                score_incorrect: "Incorrect:",
+                score_unanswered: "Unanswered:",
+                save_results: "💾 Save my results",
+                save_success: "Results saved!",
+                save_error: "Error saving results.",
+                print_pdf: "🖨️ Print / PDF",
+                footer_back: "← Back to program",
+                footer_next: "Next lesson →",
+                ach_year_degree9: "9th Grade Primary",
+                ach_module_unit1: "Unit 1",
+                toast_signin_required: "Sign in to save your results.",
+                print_site_name: "Educational Dashboard – French",
+                print_scholar_year: "9th Grade Primary",
+                print_week: "Unit 1",
+                print_area: "Listening & Speaking",
+                print_footer_dev: "Developed by Mejri Ziad",
+                print_footer_date: "Printed on"
+            },
+            ar: {
+                lesson_title: "الدرس 1 – الاستماع إلى رواية شفوية وإعادة سردها | الأمير الصغير",
+                lesson_badge: "🎧 الاستماع والتحدث · الدرس 1",
+                lesson_duration: "⏱️ 45 دقيقة",
+                lesson_meta_audio: "🎧 استمع إلى التسجيل ثم قم بالتمارين",
+                back_link: "← العودة إلى البرنامج",
+                current_lesson: "الاستماع إلى رواية شفوية وإعادة سردها",
+                audio_label: "🎧 استماع أدبي",
+                text_author: "— أنطوان دو سانت إيكسوبيري، الأمير الصغير",
+                text_para1: "عشت وحيدًا، دون أحد أستطيع التحدث إليه حقًا، حتى حدث عطل في صحراء الساحل قبل ست سنوات. كان شيء ما قد كسر في محركي. وبما أنه لم يكن معي لا ميكانيكي ولا ركاب، استعددت لمحاولة النجاح، وحدي، في إصلاح صعب. كانت مسألة حياة أو موت بالنسبة لي. بالكاد كان لدي ماء يكفي للشرب لمدة ثمانية أيام.",
+                text_para2: "في الليلة الأولى، غفوت على الرمال على بعد ألف ميل من أي أرض مأهولة. كنت أكثر عزلة من غريق على طوف في وسط المحيط. فتخيلوا دهشتي، عند طلوع النهار، عندما أيقظني صوت صغير غريب.",
+                text_para3: "– من فضلك... ارسم لي خروفًا!\n– هاه!\n– ارسم لي خروفًا...",
+                text_para4: "قفزت على قدمي كما لو كنت مصابًا بالبرق. فركت عينيّ جيدًا. نظرت جيدًا. ورأيت رجلًا صغيرًا استثنائيًا ينظر إلي بجدية. لم يبدُ ضائعًا ولا جائعًا ولا متعبًا ولا عطشانًا ولا خائفًا. لم يكن لديه أي مظهر لطفل ضائع في وسط الصحراء، على بعد ألف ميل من أي منطقة مأهولة.",
+                text_para5: "– لكن... ماذا تفعل هنا؟\n– من فضلك... ارسم لي خروفًا...",
+                text_para6: "عندما يكون اللغز مثيرًا للإعجاب، لا يجرؤ المرء على العصيان. على الرغم من أنه بدا لي سخيفًا، أخرجت من جيبي ورقة وقلمًا وبدأت الرسم.",
+                text_para7: "نظر باهتمام:\n– لا! هذا مريض جدًا بالفعل. اصنع لي آخر.\nرسمت خروفًا آخر.\n– ألا ترى... إنه ليس خروفًا، إنه كبش. لديه قرون...\nفأعدت الرسم مرة أخرى.\n– هذا كبير جدًا في السن. أريد خروفًا يعيش طويلًا.",
+                text_para8: "كنت في عجلة من أمري لبدء تفكيك محركي، فخربشت صندوقًا... بثلاث فتحات تهوية وقلت:\n– هذا هو الصندوق. الخروف الذي تريده في الداخل.",
+                text_para9: "– هكذا أردته تمامًا! هل تعتقد أنه يحتاج إلى الكثير من العشب؟\n– لماذا؟\n– لأن منزلي صغير جدًا...\n– هذا سيكون كافيًا بالتأكيد. أعطيتك خروفًا صغيرًا جدًا.\n– ليس صغيرًا إلى هذا الحد... انظر! لقد نام...",
+                text_para10: "وهكذا تعرفت على الأمير الصغير.",
+                mcq_heading: "🎧 التحقق من فهمنا",
+                q1_title: "أين ومتى تدور أحداث المشهد؟",
+                q1_a: "في غابة، مساءً.",
+                q1_b: "في صحراء الساحل، عند طلوع النهار، قبل ست سنوات من لحظة سرد الراوي.",
+                q1_c: "على قارب، في عرض البحر، ليلًا.",
+                q2_title: "من قد يكون الراوي؟",
+                q2_a: "ميكانيكي جاء لإصلاح الطائرة.",
+                q2_b: "طفل ضائع في الصحراء.",
+                q2_c: "طيار تعطلت طائرته في الصحراء.",
+                q3a_title: "من قد يكون الطفل؟",
+                q3a_a: "راعي غنم صغير من الصحراء.",
+                q3a_b: "رجل صغير استثنائي، الأمير الصغير.",
+                q3a_c: "كبش تحول إلى طفل.",
+                q3b_title: "من أين يأتي؟",
+                q3b_a: "من قرية قريبة من الساحل.",
+                q3b_b: "من كوكب صغير جدًا.",
+                q3b_c: "من قارب غارق.",
+                q4a_title: "ماذا يطلب الطفل من الراوي؟",
+                q4a_a: "شرابًا وطعامًا.",
+                q4a_b: "أن يرسم له خروفًا.",
+                q4a_c: "إصلاح محرك الطائرة.",
+                q4b_title: "كيف يتحدث إليه؟",
+                q4b_a: "بغضب ونفاد صبر.",
+                q4b_b: "ببساطة وتهذيب وإصرار هادئ.",
+                q4b_c: "بسخرية منه.",
+                q5_title: "كيف يتفاعل الراوي مع طلبات الطفل؟",
+                q5_a: "يرفض ويغضب.",
+                q5_b: "مندهش جدًا، لكنه يطيع ويظهر طيبة.",
+                q5_c: "لا يستمع إليه ويواصل النوم.",
+                check_answers: "🔍 تحقق",
+                activities_heading: "🎭 أنشطة شفهية",
+                read_aloud_title: "نقرأ النص بصوت عالٍ",
+                read_aloud_text: "اقرأوا الحوار بين الأمير الصغير والراوي في أزواج محاولين التعبير عن مشاعر ومواقف الشخصيتين (دهشة الراوي وموقفه الطيب تجاه الأمير الصغير – بساطة وعفوية الأمير الصغير...).",
+                retell_title: "نروي بدورنا",
+                retell_1: "أعد سرد هذا المشهد بطريقتك الخاصة مع الحفاظ على عناصره الأساسية.",
+                retell_2: "هل حدث أن أساء فهمك شخص بالغ أو طفل في مثل عمرك؟ احكِ هذا المشهد لزملائك مع دمج جملتين أو ثلاث من الحوار في قصتك.",
+                fill_heading: "✍️ تمرين: أكمل الفقرة",
+                fill_instruction: "أكمل الفقرة باختيار الكلمات المناسبة من القوائم المنسدلة.",
+                fill_wordlist_label: "الكلمات المتاحة: أولاً، أروي، ثم، أقترب، أطلب، خاطبت، أجيب، بعد ذلك، أصررت، رد، أبلغ، أخيرًا، مرحب، طيب، إنه، أنا، أصر، متفاجئ، مندهش، غير متوقع.",
+                resources_heading: "📚 الموارد اللغوية",
+                res1: "🔹 أبلغ – أروي",
+                res2: "🔹 أقترب – أخاطب ...",
+                res3: "🔹 أطلب – أجيب – أرد – أصر",
+                res4: "🔹 أولاً – ثم – بعد ذلك",
+                res5: "🔹 إنه ... – إنه ... الذي ...",
+                res6: "🔹 متفاجئ – مندهش – مفاجئ – غير متوقع",
+                res7: "🔹 مرحب – لطيف – طيب",
+                self_assess_question: "جوابي هو:",
+                self_correct: "صحيح",
+                self_partial: "صحيح جزئيًا",
+                self_incorrect: "خاطئ",
+                score_title: "📊 تقييمك الذاتي",
+                score_correct: "صحيح:",
+                score_partial: "جزئي:",
+                score_incorrect: "خاطئ:",
+                score_unanswered: "بدون إجابة:",
+                save_results: "💾 حفظ نتائجي",
+                save_success: "تم حفظ النتائج!",
+                save_error: "خطأ في الحفظ.",
+                print_pdf: "🖨️ طباعة / PDF",
+                footer_back: "← العودة إلى البرنامج",
+                footer_next: "الدرس الموالي ←",
+                ach_year_degree9: "السنة التاسعة ابتدائي",
+                ach_module_unit1: "الوحدة الأولى",
+                toast_signin_required: "سجّل الدخول لحفظ نتائجك.",
+                print_site_name: "لوحة التحكم التعليمية – الفرنسية",
+                print_scholar_year: "السنة التاسعة ابتدائي",
+                print_week: "الوحدة 1",
+                print_area: "الاستماع والتحدث",
+                print_footer_dev: "طوّر بواسطة ماجري زياد",
+                print_footer_date: "طُبع في"
+            }
+        });
+
+        (function() {
+            var container = document.getElementById('main-content');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+        })();
+    </script>
+
+    <!-- Direct translation fix -->
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') {
+                                el.innerHTML = next.innerHTML;
+                            }
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+
+    <!-- Init, audio, exercise logic, scoring, save, print -->
+    <script>
+        (function() {
+            // ---- Audio player ----
+            const audioSrc = 'assets9/degree9/unit1/lesson1/petit_prince.mp3';
+            const audio = new Audio(audioSrc);
+            const playBtn = document.getElementById('playBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const speedBtns = document.querySelectorAll('.degree9-unit1-lesson1-oral-speed-btn');
+
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+
+            audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
+            audio.addEventListener('timeupdate', () => {
+                const percent = (audio.currentTime / audio.duration) * 100 || 0;
+                progressFill.style.width = percent + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            });
+            audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) { audio.play().catch(()=>{}); playBtn.textContent = '⏸'; }
+                else { audio.pause(); playBtn.textContent = '▶'; }
+            });
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const seekTime = (clickX / width) * audio.duration;
+                audio.currentTime = seekTime;
+            });
+            speedBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    speedBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const speed = parseFloat(btn.dataset.speed);
+                    audio.playbackRate = speed;
+                });
+            });
+
+            // ---- Auth helper ----
+            async function requireAuth() {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return false;
+                }
+                return true;
+            }
+
+            // ---- MCQ check (auth-gated) ----
+            window.checkMCQ = async function(questionName, correctValue, keyId, feedbackId) {
+                if (!await requireAuth()) return;
+                const selected = document.querySelector(`input[name="${questionName}"]:checked`);
+                const isCorrect = selected && selected.value === correctValue;
+                const keyEl = document.getElementById(keyId);
+                const fbEl = document.getElementById(feedbackId);
+                if (keyEl) {
+                    keyEl.innerHTML = isCorrect ? '<strong>Correction :</strong> ✓' : '<strong>Correction :</strong> ' + getCorrectText(questionName);
+                    keyEl.classList.add('visible');
+                }
+                if (fbEl) {
+                    fbEl.textContent = isCorrect ? '✅ Correct !' : '❌ Incorrect.';
+                    fbEl.className = 'degree9-unit1-lesson1-oral-feedback ' + (isCorrect ? 'correct' : 'wrong');
+                }
+            };
+            function getCorrectText(questionName) {
+                const map = {
+                    q1: 'Dans le désert du Sahara, au lever du jour, six ans avant le moment où le narrateur raconte.',
+                    q2: 'Un aviateur tombé en panne dans le désert.',
+                    q3a: 'Un petit bonhomme extraordinaire, le petit prince.',
+                    q3b: 'D’une toute petite planète.',
+                    q4a: 'De lui dessiner un mouton.',
+                    q4b: 'Avec simplicité, politesse et une insistance calme.',
+                    q5: 'Il est très surpris, mais il obéit et se montre bienveillant.'
+                };
+                return map[questionName] || '';
+            }
+
+            // ---- Fill in blanks (auth-gated) ----
+            const blankWords = ['D’abord','raconter','Ensuite','aborder','demander','adressé','répondre','Par la suite','insisté','rétorqué','raconter','D’abord','surpris','étonné','inattendue','Ensuite','rapporter','Finalement','accueillant','bienveillant','C’est','moi','insister'];
+            const correctAnswers = ['D’abord','raconter','Ensuite','aborder','demander','adressé','répondre','Par la suite','insisté','D’abord','insister','rétorqué','raconter','Ensuite','surpris','étonné','inattendue','Par la suite','rapporter','Finalement','accueillant','bienveillant','C’est','moi','insister'];
+            const fillContainer = document.getElementById('fillBlanksContainer');
+            const paragraphParts = [
+                '{blank0} je vais vous {blank1} une scène où je me suis senti mal compris par un adulte. ',
+                '{blank2} j’ai décidé d’{blank3} mon père pour lui {blank4} la permission de sortir. Je me suis {blank5} à lui poliment : « Papa, est-ce que je peux aller au cinéma avec mes amis ? » Il a refusé de me {blank6} tout de suite ; il a préféré me poser des questions. « As-tu fini tes devoirs ? » m’a-t-il demandé. J’ai répondu que oui. ',
+                '{blank7} il a {blank8} en disant : « Tu mens, tu n’as pas pu tout finir si vite. » ',
+                '{blank9} j’ai voulu {blank10} encore une fois, mais il m’a {blank11} : « Arrête de {blank12} n’importe quoi ! » ',
+                '{blank13} j’étais très {blank14} et même {blank15} par cette réaction {blank16}. ',
+                '{blank17} je lui ai apporté mon cahier de texte pour lui {blank18} les faits. Il a vérifié, puis il a reconnu son erreur. ',
+                '{blank19} il s’est montré plus {blank20} et {blank21} avec moi. ',
+                '{blank22} c’est {blank23} qui avais raison, et j’ai compris qu’il ne faut pas hésiter à {blank24} calmement pour se faire entendre.'
+            ];
+            const fullParagraph = paragraphParts.join('');
+            const selectOptions = blankWords.map(word => `<option value="${word}">${word}</option>`).join('');
+
+            function buildSelect(index) {
+                return `<select class="degree9-unit1-lesson1-oral-blank-select" id="blank${index}">${selectOptions}</select>`;
+            }
+            let html = fullParagraph.replace(/\{blank(\d+)\}/g, (match, num) => buildSelect(num));
+            fillContainer.innerHTML = html;
+
+            window.checkFillBlanks = async function() {
+                if (!await requireAuth()) return;
+                let allCorrect = true;
+                let someCorrect = false;
+                for (let i = 0; i < correctAnswers.length; i++) {
+                    const sel = document.getElementById(`blank${i}`);
+                    if (!sel) continue;
+                    const val = sel.value;
+                    if (val === correctAnswers[i]) someCorrect = true;
+                    else allCorrect = false;
+                }
+                const isCorrect = allCorrect;
+                const fbEl = document.getElementById('fillFeedback');
+                const keyEl = document.getElementById('fillKey');
+                if (keyEl) {
+                    let correctionHtml = '<strong>Correction :</strong><br>';
+                    correctAnswers.forEach((ans, i) => {
+                        correctionHtml += `Blank ${i+1}: ${ans}<br>`;
+                    });
+                    keyEl.innerHTML = correctionHtml;
+                    keyEl.classList.add('visible');
+                }
+                if (fbEl) {
+                    fbEl.textContent = isCorrect ? '✅ Tout est correct !' : (someCorrect ? '⚠️ Partiellement correct.' : '❌ Incorrect.');
+                    fbEl.className = 'degree9-unit1-lesson1-oral-feedback ' + (isCorrect ? 'correct' : 'wrong');
+                }
+            };
+
+            // ---- Self-assessment scoring ----
+            function updateScore() {
+                const radioGroups = document.querySelectorAll('input[type="radio"][name^="self_"]');
+                const groups = new Set();
+                radioGroups.forEach(r => groups.add(r.name));
+                let correct = 0, partial = 0, incorrect = 0, unanswered = 0;
+                groups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'partial') partial++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                document.getElementById('scoreCorrect').textContent = correct;
+                document.getElementById('scorePartial').textContent = partial;
+                document.getElementById('scoreIncorrect').textContent = incorrect;
+                document.getElementById('scoreUnanswered').textContent = unanswered;
+            }
+            document.querySelectorAll('input[type="radio"][name^="self_"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+
+            // ---- Save results ----
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                if (!App.supabase) return;
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const radioGroups = document.querySelectorAll('input[type="radio"][name^="self_"]');
+                const groups = new Set();
+                radioGroups.forEach(r => groups.add(r.name));
+                let correct = 0, partial = 0, incorrect = 0, unanswered = 0;
+                groups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'partial') partial++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                const entry = {
+                    lesson_id: 'degree9unit1lesson1',
+                    lesson_title: { fr: App.getTranslation('lesson_title', 'fr'), en: App.getTranslation('lesson_title', 'en'), ar: App.getTranslation('lesson_title', 'ar') },
+                    year: { fr: App.getTranslation('ach_year_degree9', 'fr'), en: App.getTranslation('ach_year_degree9', 'en'), ar: App.getTranslation('ach_year_degree9', 'ar') },
+                    module: { fr: App.getTranslation('ach_module_unit1', 'fr'), en: App.getTranslation('ach_module_unit1', 'en'), ar: App.getTranslation('ach_module_unit1', 'ar') },
+                    correct, incorrect, partial, unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles').select('achivement').eq('id', user.id).single();
+                if (fetchError) return;
+                let achivement = profileData?.achivement || {};
+                if (!achivement['ED-French']) achivement['ED-French'] = [];
+                const arr = achivement['ED-French'];
+                const existingIdx = arr.findIndex(e => e.lesson_id === 'degree9unit1lesson1');
+                if (existingIdx >= 0) arr[existingIdx] = entry; else arr.push(entry);
+                const { error: updateError } = await App.supabase
+                    .from('profiles').update({ achivement }).eq('id', user.id);
+                if (updateError) App.showToast('save_error', 'error');
+                else { App.showToast('save_success', 'success'); App.logUserAction('lesson_saved', { lesson: 'degree9unit1lesson1', correct, incorrect, partial }); }
+            });
+
+            // ---- Print / PDF ----
+            document.getElementById('printBtn').addEventListener('click', async function() {
+                if (!App.supabase) return;
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles')
+                        .select('registration_state')
+                        .eq('id', user.id)
+                        .single();
+                    if (!error && profile && profile.registration_state && profile.registration_state.active === true) {
+                        isRegistered = true;
+                    }
+                } catch (e) { /* ignore */ }
+                const lang = localStorage.getItem('lang') || 'fr';
+                const content = document.getElementById('main-content').cloneNode(true);
+                content.querySelectorAll('input, .degree9-unit1-lesson1-oral-self-assess, .degree9-unit1-lesson1-oral-score-area, .degree9-unit1-lesson1-oral-btn, .degree9-unit1-lesson1-oral-play-btn, .degree9-unit1-lesson1-oral-audio-player').forEach(el => el.remove());
+                const answerKeys = content.querySelectorAll('.degree9-unit1-lesson1-oral-answer-key');
+                if (isRegistered) {
+                    answerKeys.forEach(key => {
+                        key.style.display = 'block';
+                        key.style.border = 'none';
+                        key.style.padding = '0.5rem 0';
+                        key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    answerKeys.forEach(el => el.remove());
+                }
+                const breadcrumb = content.querySelector('p[style*="margin-bottom:1.5rem"]');
+                if (breadcrumb) breadcrumb.remove();
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                printWindow.document.write(`
+                    <!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8"><title>${App.getTranslation('lesson_title', lang)}</title>
+                    <style>
+                        body { font-family: 'Georgia', serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+                        .print-header { text-align: center; border-bottom: 2px solid #8e44ad; padding-bottom: 1rem; margin-bottom: 2rem; }
+                        .print-header .site-name { font-size: 1.4rem; font-weight: bold; color: #8e44ad; margin: 0 0 0.3rem; }
+                        .print-header .meta-line { font-size: 0.95rem; color: #444; margin: 0.2rem 0; }
+                        .print-header .lesson-name { font-size: 1.1rem; font-weight: bold; color: #000; margin-top: 0.5rem; }
+                        .print-footer { text-align: center; border-top: 1px solid #ccc; padding-top: 1rem; margin-top: 2rem; font-size: 0.85rem; color: #666; }
+                        .degree9-unit1-lesson1-oral-card { margin-bottom: 2rem; border: 1px solid #ccc; padding: 1rem; border-radius: 8px; }
+                        .degree9-unit1-lesson1-oral-options { display: none; }
+                        .degree9-unit1-lesson1-oral-answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; }
+                        @media print { @page { margin: 2cm; } }
+                    </style></head><body>
+                    <div class="print-header"><div class="site-name">${App.getTranslation('print_site_name', lang)}</div><div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div><div class="lesson-name">${App.getTranslation('lesson_title', lang)}</div></div>
+                    ${content.innerHTML}
+                    <div class="print-footer">${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}</div>
+                    </body></html>
+                `);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+        })();
+    </script>
+</body>
+</html>

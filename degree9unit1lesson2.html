@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_title">Leçon 2 – Nous observons des images et nous en faisons un récit oral</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ===== Degree9 Unit 1 Lesson 2 – Oral comprehension (prefix: degree9-unit1-lesson2-oral2) ===== */
+        /* Same design as lesson 1 but distinct prefix */
+        :root {
+            --degree9-unit1-lesson2-oral2-bg: #f5f0e8;
+            --degree9-unit1-lesson2-oral2-card: #fffef9;
+            --degree9-unit1-lesson2-oral2-text: #2b2416;
+            --degree9-unit1-lesson2-oral2-text-light: #5c5344;
+            --degree9-unit1-lesson2-oral2-heading: #2c3e50;
+            --degree9-unit1-lesson2-oral2-accent: #8e44ad;
+            --degree9-unit1-lesson2-oral2-accent-hover: #6c3483;
+            --degree9-unit1-lesson2-oral2-border: #e0d6c8;
+            --degree9-unit1-lesson2-oral2-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.08);
+            --degree9-unit1-lesson2-oral2-radius: 18px;
+            --degree9-unit1-lesson2-oral2-radius-sm: 12px;
+            --degree9-unit1-lesson2-oral2-transition: 0.25s ease;
+            --degree9-unit1-lesson2-oral2-font: 'Georgia', 'Times New Roman', serif;
+            --degree9-unit1-lesson2-oral2-audio-bg: #f0e9dd;
+            --degree9-unit1-lesson2-oral2-audio-progress: #d8c9aa;
+            --degree9-unit1-lesson2-oral2-button-bg: #e8dcc8;
+            --degree9-unit1-lesson2-oral2-button-hover: #d5c3a5;
+            --degree9-unit1-lesson2-oral2-input-bg: #faf6ef;
+        }
+        body.dark {
+            --degree9-unit1-lesson2-oral2-bg: #1a1a2e;
+            --degree9-unit1-lesson2-oral2-card: #16213e;
+            --degree9-unit1-lesson2-oral2-text: #e8dfd2;
+            --degree9-unit1-lesson2-oral2-text-light: #b9aa95;
+            --degree9-unit1-lesson2-oral2-heading: #f0e4d2;
+            --degree9-unit1-lesson2-oral2-accent: #bb86fc;
+            --degree9-unit1-lesson2-oral2-accent-hover: #d7a1f9;
+            --degree9-unit1-lesson2-oral2-border: #3e3830;
+            --degree9-unit1-lesson2-oral2-shadow: 0 2px 8px rgba(0,0,0,0.35);
+            --degree9-unit1-lesson2-oral2-audio-bg: #26221b;
+            --degree9-unit1-lesson2-oral2-audio-progress: #5a4e3c;
+            --degree9-unit1-lesson2-oral2-button-bg: #3a3329;
+            --degree9-unit1-lesson2-oral2-button-hover: #4e4437;
+            --degree9-unit1-lesson2-oral2-input-bg: #333028;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            font-family: var(--degree9-unit1-lesson2-oral2-font);
+            background: var(--degree9-unit1-lesson2-oral2-bg);
+            color: var(--degree9-unit1-lesson2-oral2-text);
+            line-height: 1.75;
+            transition: background var(--degree9-unit1-lesson2-oral2-transition), color var(--degree9-unit1-lesson2-oral2-transition);
+        }
+
+        .degree9-unit1-lesson2-oral2-container {
+            max-width: none;
+            margin: 0 auto;
+            padding: 1.8rem 1.4rem 3rem;
+        }
+
+        /* All styles copied from lesson1 with prefix replaced */
+        .degree9-unit1-lesson2-oral2-header { text-align: center; margin-bottom: 2rem; }
+        .degree9-unit1-lesson2-oral2-badge { display:inline-block; background: var(--degree9-unit1-lesson2-oral2-accent); color:#fff; padding:0.35rem 1.2rem; border-radius:30px; font-size:0.85rem; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
+        .degree9-unit1-lesson2-oral2-header h1 { font-size:2.2rem; color: var(--degree9-unit1-lesson2-oral2-heading); margin:0.8rem 0 0.4rem; line-height:1.2; font-weight:700; }
+        .degree9-unit1-lesson2-oral2-meta { font-size:0.95rem; color: var(--degree9-unit1-lesson2-oral2-text-light); display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap; }
+
+        .degree9-unit1-lesson2-oral2-audio-player { background: var(--degree9-unit1-lesson2-oral2-card); border:1px solid var(--degree9-unit1-lesson2-oral2-border); border-radius: var(--degree9-unit1-lesson2-oral2-radius); padding:1rem 1.4rem; margin:1.5rem 0 2rem; box-shadow: var(--degree9-unit1-lesson2-oral2-shadow); display:flex; align-items:center; gap:1rem; flex-wrap:wrap; }
+        .degree9-unit1-lesson2-oral2-play-btn { width:48px; height:48px; border-radius:12px; background: var(--degree9-unit1-lesson2-oral2-accent); color:#fff; border:none; font-size:1.4rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition: background var(--degree9-unit1-lesson2-oral2-transition); flex-shrink:0; }
+        .degree9-unit1-lesson2-oral2-play-btn:hover { background: var(--degree9-unit1-lesson2-oral2-accent-hover); }
+        .degree9-unit1-lesson2-oral2-progress-area { flex:1; min-width:120px; display:flex; flex-direction:column; gap:0.3rem; }
+        .degree9-unit1-lesson2-oral2-progress-bar { width:100%; height:6px; background: var(--degree9-unit1-lesson2-oral2-audio-progress); border-radius:3px; cursor:pointer; position:relative; overflow:hidden; }
+        .degree9-unit1-lesson2-oral2-progress-fill { height:100%; background: var(--degree9-unit1-lesson2-oral2-accent); border-radius:3px; width:0%; transition:width 0.1s linear; }
+        .degree9-unit1-lesson2-oral2-time-info { display:flex; justify-content:space-between; font-size:0.75rem; color: var(--degree9-unit1-lesson2-oral2-text-light); }
+        .degree9-unit1-lesson2-oral2-speed-selector { display:flex; gap:0.3rem; flex-wrap:wrap; }
+        .degree9-unit1-lesson2-oral2-speed-btn { border:1px solid var(--degree9-unit1-lesson2-oral2-border); background: var(--degree9-unit1-lesson2-oral2-button-bg); color: var(--degree9-unit1-lesson2-oral2-text); padding:0.3rem 0.6rem; border-radius:6px; font-size:0.75rem; font-weight:600; cursor:pointer; transition: all var(--degree9-unit1-lesson2-oral2-transition); }
+        .degree9-unit1-lesson2-oral2-speed-btn.active { background: var(--degree9-unit1-lesson2-oral2-accent); color:#fff; border-color: var(--degree9-unit1-lesson2-oral2-accent); }
+        .degree9-unit1-lesson2-oral2-audio-label { font-weight:700; font-size:0.9rem; color: var(--degree9-unit1-lesson2-oral2-heading); white-space:nowrap; }
+
+        .degree9-unit1-lesson2-oral2-text-card { background: var(--degree9-unit1-lesson2-oral2-card); border:1px solid var(--degree9-unit1-lesson2-oral2-border); border-left:6px solid var(--degree9-unit1-lesson2-oral2-accent); border-radius: 0 var(--degree9-unit1-lesson2-oral2-radius) var(--degree9-unit1-lesson2-oral2-radius) 0; padding:1.5rem 1.8rem; margin:1.8rem 0; font-style:italic; font-size:1.05rem; line-height:1.9; box-shadow: var(--degree9-unit1-lesson2-oral2-shadow); position:relative; }
+        .degree9-unit1-lesson2-oral2-quote-mark { position:absolute; top:-15px; left:14px; font-size:3.5rem; color: var(--degree9-unit1-lesson2-oral2-accent); opacity:0.3; line-height:1; }
+        .degree9-unit1-lesson2-oral2-text-card .degree9-unit1-lesson2-oral2-author { text-align:right; font-style:normal; font-size:0.9rem; color: var(--degree9-unit1-lesson2-oral2-text-light); margin-top:0.8rem; }
+
+        .degree9-unit1-lesson2-oral2-section h2 { font-size:1.6rem; color: var(--degree9-unit1-lesson2-oral2-heading); margin:2.2rem 0 1.2rem; border-bottom:3px solid var(--degree9-unit1-lesson2-oral2-accent); display:inline-block; padding-bottom:0.3rem; }
+        .degree9-unit1-lesson2-oral2-card { background: var(--degree9-unit1-lesson2-oral2-card); border:1px solid var(--degree9-unit1-lesson2-oral2-border); border-radius: var(--degree9-unit1-lesson2-oral2-radius); padding:1.5rem 1.8rem; margin-bottom:1.8rem; box-shadow: var(--degree9-unit1-lesson2-oral2-shadow); }
+        .degree9-unit1-lesson2-oral2-card h3 { font-size:1.2rem; color: var(--degree9-unit1-lesson2-oral2-accent); margin-bottom:0.8rem; font-weight:700; }
+        .degree9-unit1-lesson2-oral2-options { display:flex; flex-direction:column; gap:0.4rem; margin:0.8rem 0; }
+        .degree9-unit1-lesson2-oral2-options label { display:flex; align-items:center; gap:0.6rem; cursor:pointer; font-size:0.95rem; padding:0.3rem 0.5rem; border-radius:6px; transition: background 0.2s; }
+        .degree9-unit1-lesson2-oral2-options label:hover { background: var(--degree9-unit1-lesson2-oral2-audio-bg); }
+        .degree9-unit1-lesson2-oral2-options input[type="radio"] { accent-color: var(--degree9-unit1-lesson2-oral2-accent); }
+        .degree9-unit1-lesson2-oral2-btn { background: var(--degree9-unit1-lesson2-oral2-accent); color:#fff; border:none; padding:0.6rem 1.4rem; border-radius:24px; font-weight:600; cursor:pointer; transition: background var(--degree9-unit1-lesson2-oral2-transition); margin-top:0.6rem; font-size:0.9rem; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
+        .degree9-unit1-lesson2-oral2-btn:hover { background: var(--degree9-unit1-lesson2-oral2-accent-hover); }
+        .degree9-unit1-lesson2-oral2-answer-key { display:none; margin-top:0.8rem; padding:0.8rem 1rem; background: var(--degree9-unit1-lesson2-oral2-audio-bg); border-radius:8px; font-size:0.9rem; color: var(--degree9-unit1-lesson2-oral2-text-light); border:1px dashed var(--degree9-unit1-lesson2-oral2-accent); }
+        .degree9-unit1-lesson2-oral2-answer-key.visible { display:block; }
+        .degree9-unit1-lesson2-oral2-feedback { margin-top:0.5rem; font-weight:600; }
+        .degree9-unit1-lesson2-oral2-feedback.correct { color:#2e7d32; }
+        .degree9-unit1-lesson2-oral2-feedback.wrong { color:#c62828; }
+
+        .degree9-unit1-lesson2-oral2-self-assess { margin-top:1rem; display:flex; flex-wrap:wrap; gap:1rem; align-items:center; font-size:0.9rem; }
+        .degree9-unit1-lesson2-oral2-self-assess label { cursor:pointer; display:inline-flex; align-items:center; gap:0.3rem; }
+        .degree9-unit1-lesson2-oral2-self-assess input[type="radio"] { accent-color: var(--degree9-unit1-lesson2-oral2-accent); }
+
+        .degree9-unit1-lesson2-oral2-score-area { background: var(--degree9-unit1-lesson2-oral2-card); border:1px solid var(--degree9-unit1-lesson2-oral2-border); border-radius: var(--degree9-unit1-lesson2-oral2-radius); padding:1.5rem 1.8rem; margin-top:2rem; box-shadow: var(--degree9-unit1-lesson2-oral2-shadow); }
+        .degree9-unit1-lesson2-oral2-score-area h2 { color: var(--degree9-unit1-lesson2-oral2-heading); margin-bottom:1rem; }
+        .degree9-unit1-lesson2-oral2-score-stats { display:flex; gap:1.5rem; flex-wrap:wrap; }
+        .degree9-unit1-lesson2-oral2-score-stat { background: var(--degree9-unit1-lesson2-oral2-audio-bg); padding:0.8rem 1.2rem; border-radius:12px; font-weight:600; }
+        .degree9-unit1-lesson2-oral2-score-actions { margin-top:1rem; display:flex; gap:0.8rem; flex-wrap:wrap; }
+
+        .degree9-unit1-lesson2-oral2-blank-select { display:inline-block; min-width:130px; padding:0.25rem 0.5rem; border:2px dashed var(--degree9-unit1-lesson2-oral2-accent); border-radius:6px; background: var(--degree9-unit1-lesson2-oral2-input-bg); color: var(--degree9-unit1-lesson2-oral2-text); font-size:0.9rem; margin:0 0.2rem; font-family:inherit; }
+        .degree9-unit1-lesson2-oral2-blank-select:focus { outline:none; border-style:solid; box-shadow:0 0 0 2px var(--degree9-unit1-lesson2-oral2-accent); }
+
+        .degree9-unit1-lesson2-oral2-questions-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:1.5rem; }
+        .degree9-unit1-lesson2-oral2-questions-grid .degree9-unit1-lesson2-oral2-card { margin-bottom:0; }
+        @media (max-width:900px) { .degree9-unit1-lesson2-oral2-questions-grid { grid-template-columns:1fr; } }
+
+        body.dark .degree9-unit1-lesson2-oral2-answer-key { background-color:#26221b; color:#e8dfd2; }
+        body.dark .degree9-unit1-lesson2-oral2-blank-select { background-color:#333028; color:#e8dfd2; }
+        body.dark .degree9-unit1-lesson2-oral2-blank-select option { background-color:#333028; color:#e8dfd2; }
+
+        .degree9-unit1-lesson2-oral2-resource-list { list-style-type:none; padding-left:0; text-align:center; }
+        .degree9-unit1-lesson2-oral2-fill-wrapper { margin-top:1.5rem; }
+        .degree9-unit1-lesson2-oral2-subheading { margin-top:1rem; }
+        .degree9-unit1-lesson2-oral2-btn-secondary { background:#5c5344; }
+        body.dark .degree9-unit1-lesson2-oral2-btn-secondary { background:#6b5d4a; }
+.degree9-unit1-lesson2-oral2-image-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);  /* 2 columns */
+    gap: 1rem;
+    justify-items: center;
+    align-items: center;
+    margin: 1.5rem 0;
+}
+.degree9-unit1-lesson2-oral2-image-gallery img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--degree9-unit1-lesson2-oral2-radius-sm);
+    box-shadow: var(--degree9-unit1-lesson2-oral2-shadow);
+    display: block;
+}
+@media (max-width: 600px) {
+    .degree9-unit1-lesson2-oral2-image-gallery {
+        grid-template-columns: 1fr;   /* stack vertically on phones */
+    }
+}
+        .degree9-unit1-lesson2-oral2-footer-nav {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+		margin-bottom:1.5rem;
+		color: var(--degree9-unit1-lesson2-oral2-text-light);
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0.5rem 1.5rem;
+		}
+    .degree9-unit1-lesson2-oral2-footer-nav a {
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .degree9-unit1-lesson2-oral2-footer-nav a:hover {
+	text-decoration: underline;
+	}
+        .degree9-unit1-lesson2-oral2-breadcrumb {
+		margin-bottom:1.5rem;
+		color: var(--degree9-unit1-lesson2-oral2-text-light);
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0.5rem 1.5rem;
+		}
+    .degree9-unit1-lesson2-oral2-breadcrumb a {
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .degree9-unit1-lesson2-oral2-breadcrumb a:hover {
+	text-decoration: underline;
+	}
+       
+    </style>
+</head>
+<body>
+    <div id="toast-container"></div>
+    <button id="signInBtn" style="display:none"></button>
+
+    <div id="main-content" class="degree9-unit1-lesson2-oral2-container">
+        <p class="degree9-unit1-lesson2-oral2-breadcrumb">
+            <a href="degree9.html" data-i18n="back_link">← Retour au programme</a>
+            › <strong data-i18n="current_lesson">Nous observons des images et nous en faisons un récit oral</strong>
+        </p>
+
+        <div class="degree9-unit1-lesson2-oral2-header">
+            <span class="degree9-unit1-lesson2-oral2-badge" data-i18n="lesson_badge">🎧 Écoute et expression orale · Leçon 2</span>
+            <h1 data-i18n="lesson_title">Nous observons des images et nous en faisons un récit oral</h1>
+            <div class="degree9-unit1-lesson2-oral2-meta">
+                <span data-i18n="lesson_duration">⏱️ 45 minutes</span>
+                <span data-i18n="lesson_meta">🎧 Écoutez le récit final puis faites les exercices</span>
+            </div>
+        </div>
+
+        <!-- Image gallery section (replaces the initial text) -->
+        <section class="degree9-unit1-lesson2-oral2-section">
+            <h2 data-i18n="images_heading">🖼️ Nous observons des images</h2>
+            <div class="degree9-unit1-lesson2-oral2-card">
+                <p data-i18n="images_intro">Ces quatre situations retracent le parcours de vie du jeune médecin représenté dans la quatrième image.</p>
+                <div class="degree9-unit1-lesson2-oral2-image-gallery">
+                    <img src="assets9/degree9/unit1/lesson2/image1.png" alt="Image 1 - Enfant mécanicien" data-i18n="img1_alt">
+                    <img src="assets9/degree9/unit1/lesson2/image2.png" alt="Image 2 - Père conduisant l'enfant à l'école" data-i18n="img2_alt">
+                    <img src="assets9/degree9/unit1/lesson2/image3.png" alt="Image 3 - Enseignante dans une école pauvre" data-i18n="img3_alt">
+                    <img src="assets9/degree9/unit1/lesson2/image4.png" alt="Image 4 - Jeune médecin aidant des enfants" data-i18n="img4_alt">
+                </div>
+                <p data-i18n="images_note">S'adressant à un groupe d'enfants orphelins pris en charge par son association, ce jeune médecin part de l'exemple de sa propre réussite pour les inciter à travailler davantage et à faire preuve de courage et de persévérance.</p>
+                <p data-i18n="images_speech_prompt">Faites-le parler en insistant sur :</p>
+                <ul>
+                    <li data-i18n="images_point1">Les difficultés qu'il a rencontrées quand il était enfant (Image 1) ;</li>
+                    <li data-i18n="images_point2">La rencontre avec la personne qui l'a aidé (Image 2) ;</li>
+                    <li data-i18n="images_point3">Les études qu'il a faites (Image 3) ;</li>
+                    <li data-i18n="images_point4">Sa réussite dans la vie (Image 4) ;</li>
+                    <li data-i18n="images_point5">Son engagement actuel dans la protection des enfants en difficulté.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Exercises section (5 exercises) -->
+        <section class="degree9-unit1-lesson2-oral2-section">
+            <h2 data-i18n="exercises_heading">✍️ Exercices</h2>
+    <div class="degree9-unit1-lesson2-oral2-questions-grid">
+
+            <!-- Exercise 1: Fill blanks -->
+            <div class="degree9-unit1-lesson2-oral2-card" id="ex1-card">
+                <h3 data-i18n="ex1_title">📌 1. Les difficultés que j’ai rencontrées quand j’étais enfant</h3>
+                <p data-i18n="ex1_instruction">Complétez le paragraphe avec les mots de la liste.</p>
+                <p data-i18n="ex1_wordlist"><strong>Liste :</strong> mécanicien – école – retard – pauvreté – courage – motivé – financer – progressivement</p>
+                <div id="ex1Container"></div>
+                <button class="degree9-unit1-lesson2-oral2-btn" onclick="checkEx1()" data-i18n="check_answers">🔍 Vérifier</button>
+                <div id="ex1Key" class="degree9-unit1-lesson2-oral2-answer-key"></div>
+                <div id="ex1Feedback" class="degree9-unit1-lesson2-oral2-feedback"></div>
+                <div class="degree9-unit1-lesson2-oral2-self-assess">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                    <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                </div>
+            </div>
+
+            <!-- Exercise 2: Choose correct form -->
+            <div class="degree9-unit1-lesson2-oral2-card" id="ex2-card">
+                <h3 data-i18n="ex2_title">📌 2. La rencontre avec la personne qui m’a aidé</h3>
+                <p data-i18n="ex2_instruction">Pour chaque numéro, choisissez la bonne réponse parmi les trois propositions.</p>
+                <div id="ex2Container"></div>
+                <button class="degree9-unit1-lesson2-oral2-btn" onclick="checkEx2()" data-i18n="check_answers">🔍 Vérifier</button>
+                <div id="ex2Key" class="degree9-unit1-lesson2-oral2-answer-key"></div>
+                <div id="ex2Feedback" class="degree9-unit1-lesson2-oral2-feedback"></div>
+                <div class="degree9-unit1-lesson2-oral2-self-assess">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                    <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                </div>
+            </div>
+
+            <!-- Exercise 3: Order sentences -->
+            <div class="degree9-unit1-lesson2-oral2-card" id="ex3-card">
+                <h3 data-i18n="ex3_title">📌 3. Les études que j’ai faites</h3>
+                <p data-i18n="ex3_instruction">Reconstituez le paragraphe en remettant ces phrases dans le bon ordre.</p>
+                <div id="ex3Container"></div>
+                <button class="degree9-unit1-lesson2-oral2-btn" onclick="checkEx3()" data-i18n="check_answers">🔍 Vérifier</button>
+                <div id="ex3Key" class="degree9-unit1-lesson2-oral2-answer-key"></div>
+                <div id="ex3Feedback" class="degree9-unit1-lesson2-oral2-feedback"></div>
+                <div class="degree9-unit1-lesson2-oral2-self-assess">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                    <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                </div>
+            </div>
+
+            <!-- Exercise 4: Match -->
+            <div class="degree9-unit1-lesson2-oral2-card" id="ex4-card">
+                <h3 data-i18n="ex4_title">📌 4. Ma réussite dans la vie</h3>
+                <p data-i18n="ex4_instruction">Associez chaque début de phrase à sa fin.</p>
+                <div id="ex4Container"></div>
+                <button class="degree9-unit1-lesson2-oral2-btn" onclick="checkEx4()" data-i18n="check_answers">🔍 Vérifier</button>
+                <div id="ex4Key" class="degree9-unit1-lesson2-oral2-answer-key"></div>
+                <div id="ex4Feedback" class="degree9-unit1-lesson2-oral2-feedback"></div>
+                <div class="degree9-unit1-lesson2-oral2-self-assess">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                    <label><input type="radio" name="self_ex4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                </div>
+            </div>
+
+	</div>
+            <!-- Exercise 5: Write questions -->
+            <div class="degree9-unit1-lesson2-oral2-card" id="ex5-card">
+                <h3 data-i18n="ex5_title">📌 5. Mon engagement actuel dans la protection des enfants en difficulté</h3>
+                <p data-i18n="ex5_instruction">Écrivez la question qui correspond à chaque réponse, en utilisant la première personne comme dans le discours du médecin.</p>
+                <div id="ex5Container"></div>
+                <button class="degree9-unit1-lesson2-oral2-btn" onclick="showEx5Correction()" data-i18n="check_answers">🔍 Voir la correction</button>
+                <div id="ex5Key" class="degree9-unit1-lesson2-oral2-answer-key"></div>
+                <div class="degree9-unit1-lesson2-oral2-self-assess">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex5" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex5" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                    <label><input type="radio" name="self_ex5" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final text with audio -->
+        <section class="degree9-unit1-lesson2-oral2-section">
+            <h2 data-i18n="final_text_heading">🎧 Texte final : le parcours du jeune médecin</h2>
+            <div class="degree9-unit1-lesson2-oral2-card">
+                <!-- Audio player for final text -->
+                <div class="degree9-unit1-lesson2-oral2-audio-player" id="finalAudioPlayer">
+                    <span class="degree9-unit1-lesson2-oral2-audio-label" data-i18n="audio_label_final">🎧 Écoute du récit</span>
+                    <button class="degree9-unit1-lesson2-oral2-play-btn" id="finalPlayBtn" aria-label="Lecture">▶</button>
+                    <div class="degree9-unit1-lesson2-oral2-progress-area">
+                        <div class="degree9-unit1-lesson2-oral2-progress-bar" id="finalProgressBar">
+                            <div class="degree9-unit1-lesson2-oral2-progress-fill" id="finalProgressFill"></div>
+                        </div>
+                        <div class="degree9-unit1-lesson2-oral2-time-info">
+                            <span id="finalCurrentTime">0:00</span>
+                            <span id="finalDuration">0:00</span>
+                        </div>
+                    </div>
+                    <div class="degree9-unit1-lesson2-oral2-speed-selector" id="finalSpeedSelector">
+                        <button class="degree9-unit1-lesson2-oral2-speed-btn" data-speed="0.75">0.75x</button>
+                        <button class="degree9-unit1-lesson2-oral2-speed-btn active" data-speed="1">1x</button>
+                        <button class="degree9-unit1-lesson2-oral2-speed-btn" data-speed="1.25">1.25x</button>
+                        <button class="degree9-unit1-lesson2-oral2-speed-btn" data-speed="1.5">1.5x</button>
+                    </div>
+                </div>
+
+                <!-- Final text content -->
+                <div class="degree9-unit1-lesson2-oral2-text-card">
+                    <span class="degree9-unit1-lesson2-oral2-quote-mark">“</span>
+                    <p data-i18n="final_para1">À l’époque, quand j’étais un petit garçon en Afrique, je travaillais comme mécanicien de vélos dans la rue pour aider ma famille. Je ne pouvais pas aller à l’école tous les jours, et j’avais un grand retard scolaire. Malgré la pauvreté qui nous frappait durement, je n’ai jamais perdu le courage de continuer à apprendre. Chaque soir, je rêvais d’un avenir meilleur. Mais il fallait aussi que je finance moi-même mes petites dépenses, ce qui rendait tout plus difficile. Progressivement, j’ai compris que sans instruction, je ne pourrais pas sortir de cette situation. Pourtant, je restais motivé et je faisais preuve d’une grande persévérance.</p>
+                    <p data-i18n="final_para2">À ce moment-là, mon père, malgré sa pauvreté, a décidé de me conduire à l’école. Il était très généreux envers moi et voulait m’offrir un avenir meilleur. Il m’a soutenu moralement et m’a encouragé à travailler dur. Grâce à lui, j’ai pu rattraper mon retard scolaire. Il a même financé mes frais de scolarité en faisant de petits travaux. C’est lui qui m’a pris en charge et qui a apporté de l’aide précieuse à notre famille.</p>
+                    <p data-i18n="final_para3">À l’école, une enseignante dévouée nous encadrait avec patience et essayait de nous rendre heureux malgré la pauvreté. En même temps, une association caritative m’a accordé une bourse d’études et m’a apporté un soutien scolaire régulier. Grâce à ce soutien, j’ai rattrapé mon retard scolaire et j’ai commencé à aimer l’école. J’étais très motivé et je travaillais chaque jour avec sérieux et détermination. Petit à petit, j’ai réalisé des progrès spectaculaires dans toutes les matières. Progressivement, j’ai retrouvé confiance en moi et j’ai su que je voulais devenir médecin.</p>
+                    <p data-i18n="final_para4">Aujourd’hui, je suis médecin et je dispense des soins gratuits aux enfants malades. J’ai réalisé des progrès spectaculaires qui m’ont permis de réussir brillamment mes études. Ma réussite montre que le travail et la persévérance paient toujours. Désormais, je peux aider les enfants en difficulté comme moi autrefois. Je n’oublie jamais que j’étais un enfant pauvre qui rêvait d’un avenir meilleur.</p>
+                    <p data-i18n="final_para5">Désormais, j’ai créé une association caritative pour aider les enfants en difficulté. Mon association parraine des enfants orphelins et les encadre au quotidien. Je dispense des soins gratuits dans les quartiers pauvres. Je soutiens moralement et financièrement les familles qui en ont besoin. J’accorde des bourses d’études aux enfants méritants.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Linguistic resources -->
+        <section class="degree9-unit1-lesson2-oral2-section">
+            <h2 data-i18n="resources_heading">📚 Ressources linguistiques</h2>
+            <div class="degree9-unit1-lesson2-oral2-card">
+                <ul class="degree9-unit1-lesson2-oral2-resource-list">
+                    <li data-i18n="res1">🔹 Association caritative – Prendre en charge – Encadrer – Soutenir moralement et financièrement – Apporter de l'aide à ... – Accorder une bourse d'études – Apporter un soutien scolaire – Parrainer des enfants – Financer des frais de scolarité – Dispenser des soins gratuits</li>
+                    <li data-i18n="res2">🔹 Rattraper son retard scolaire – Être motivé – Réaliser des progrès spectaculaires</li>
+                    <li data-i18n="res3">🔹 À l'époque – À ce moment-là – En même temps – Dès lors – Aujourd'hui – Désormais</li>
+                    <li data-i18n="res4">🔹 Progressivement – Petit à petit</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Score area -->
+        <div class="degree9-unit1-lesson2-oral2-score-area">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="degree9-unit1-lesson2-oral2-score-stats">
+                <div class="degree9-unit1-lesson2-oral2-score-stat"><span data-i18n="score_correct">Correct :</span> <span id="scoreCorrect">0</span></div>
+                <div class="degree9-unit1-lesson2-oral2-score-stat"><span data-i18n="score_partial">Partiel :</span> <span id="scorePartial">0</span></div>
+                <div class="degree9-unit1-lesson2-oral2-score-stat"><span data-i18n="score_incorrect">Incorrect :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="degree9-unit1-lesson2-oral2-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">5</span></div>
+            </div>
+            <div class="degree9-unit1-lesson2-oral2-score-actions">
+                <button id="saveResultsBtn" class="degree9-unit1-lesson2-oral2-btn" data-i18n="save_results">💾 Enregistrer mes résultats</button>
+                <button id="printBtn" class="degree9-unit1-lesson2-oral2-btn degree9-unit1-lesson2-oral2-btn-secondary" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+            </div>
+        </div>
+
+        <div class="degree9-unit1-lesson2-oral2-footer-nav">
+            <a href="degree9.html" data-i18n="footer_back">← Retour au programme</a>
+            <a href="degree9unit1lesson3.html" data-i18n="footer_next">Leçon suivante →</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script src="ed-french-ini.js"></script>
+
+    <!-- Translations -->
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                lesson_title: "Leçon 2 – Nous observons des images et nous en faisons un récit oral",
+                lesson_badge: "🎧 Écoute et expression orale · Leçon 2",
+                lesson_duration: "⏱️ 45 minutes",
+                lesson_meta: "🎧 Écoutez le récit final puis faites les exercices",
+                back_link: "← Retour au programme",
+                current_lesson: "Nous observons des images et nous en faisons un récit oral",
+                images_heading: "🖼️ Nous observons des images",
+                images_intro: "Ces quatre situations retracent le parcours de vie du jeune médecin représenté dans la quatrième image.",
+                img1_alt: "Image 1 - Enfant mécanicien",
+                img2_alt: "Image 2 - Père conduisant l'enfant à l'école",
+                img3_alt: "Image 3 - Enseignante dans une école pauvre",
+                img4_alt: "Image 4 - Jeune médecin aidant des enfants",
+                images_note: "S'adressant à un groupe d'enfants orphelins pris en charge par son association, ce jeune médecin part de l'exemple de sa propre réussite pour les inciter à travailler davantage et à faire preuve de courage et de persévérance.",
+                images_speech_prompt: "Faites-le parler en insistant sur :",
+                images_point1: "Les difficultés qu'il a rencontrées quand il était enfant (Image 1) ;",
+                images_point2: "La rencontre avec la personne qui l'a aidé (Image 2) ;",
+                images_point3: "Les études qu'il a faites (Image 3) ;",
+                images_point4: "Sa réussite dans la vie (Image 4) ;",
+                images_point5: "Son engagement actuel dans la protection des enfants en difficulté.",
+                exercises_heading: "✍️ Exercices",
+                ex1_title: "📌 1. Les difficultés que j’ai rencontrées quand j’étais enfant",
+                ex1_instruction: "Complétez le paragraphe avec les mots de la liste.",
+                ex1_wordlist: "Liste : mécanicien – école – retard – pauvreté – courage – motivé – financer – progressivement",
+                ex2_title: "📌 2. La rencontre avec la personne qui m’a aidé",
+                ex2_instruction: "Pour chaque numéro, choisissez la bonne réponse parmi les trois propositions.",
+                ex3_title: "📌 3. Les études que j’ai faites",
+                ex3_instruction: "Reconstituez le paragraphe en remettant ces phrases dans le bon ordre.",
+                ex4_title: "📌 4. Ma réussite dans la vie",
+                ex4_instruction: "Associez chaque début de phrase à sa fin.",
+                ex5_title: "📌 5. Mon engagement actuel dans la protection des enfants en difficulté",
+                ex5_instruction: "Écrivez la question qui correspond à chaque réponse, en utilisant la première personne comme dans le discours du médecin.",
+                check_answers: "🔍 Vérifier",
+                final_text_heading: "🎧 Texte final : le parcours du jeune médecin",
+                audio_label_final: "🎧 Écoute du récit",
+                final_para1: "À l’époque, quand j’étais un petit garçon en Afrique, je travaillais comme mécanicien de vélos dans la rue pour aider ma famille. Je ne pouvais pas aller à l’école tous les jours, et j’avais un grand retard scolaire. Malgré la pauvreté qui nous frappait durement, je n’ai jamais perdu le courage de continuer à apprendre. Chaque soir, je rêvais d’un avenir meilleur. Mais il fallait aussi que je finance moi-même mes petites dépenses, ce qui rendait tout plus difficile. Progressivement, j’ai compris que sans instruction, je ne pourrais pas sortir de cette situation. Pourtant, je restais motivé et je faisais preuve d’une grande persévérance.",
+                final_para2: "À ce moment-là, mon père, malgré sa pauvreté, a décidé de me conduire à l’école. Il était très généreux envers moi et voulait m’offrir un avenir meilleur. Il m’a soutenu moralement et m’a encouragé à travailler dur. Grâce à lui, j’ai pu rattraper mon retard scolaire. Il a même financé mes frais de scolarité en faisant de petits travaux. C’est lui qui m’a pris en charge et qui a apporté de l’aide précieuse à notre famille.",
+                final_para3: "À l’école, une enseignante dévouée nous encadrait avec patience et essayait de nous rendre heureux malgré la pauvreté. En même temps, une association caritative m’a accordé une bourse d’études et m’a apporté un soutien scolaire régulier. Grâce à ce soutien, j’ai rattrapé mon retard scolaire et j’ai commencé à aimer l’école. J’étais très motivé et je travaillais chaque jour avec sérieux et détermination. Petit à petit, j’ai réalisé des progrès spectaculaires dans toutes les matières. Progressivement, j’ai retrouvé confiance en moi et j’ai su que je voulais devenir médecin.",
+                final_para4: "Aujourd’hui, je suis médecin et je dispense des soins gratuits aux enfants malades. J’ai réalisé des progrès spectaculaires qui m’ont permis de réussir brillamment mes études. Ma réussite montre que le travail et la persévérance paient toujours. Désormais, je peux aider les enfants en difficulté comme moi autrefois. Je n’oublie jamais que j’étais un enfant pauvre qui rêvait d’un avenir meilleur.",
+                final_para5: "Désormais, j’ai créé une association caritative pour aider les enfants en difficulté. Mon association parraine des enfants orphelins et les encadre au quotidien. Je dispense des soins gratuits dans les quartiers pauvres. Je soutiens moralement et financièrement les familles qui en ont besoin. J’accorde des bourses d’études aux enfants méritants.",
+                resources_heading: "📚 Ressources linguistiques",
+                res1: "🔹 Association caritative – Prendre en charge – Encadrer – Soutenir moralement et financièrement – Apporter de l'aide à ... – Accorder une bourse d'études – Apporter un soutien scolaire – Parrainer des enfants – Financer des frais de scolarité – Dispenser des soins gratuits",
+                res2: "🔹 Rattraper son retard scolaire – Être motivé – Réaliser des progrès spectaculaires",
+                res3: "🔹 À l'époque – À ce moment-là – En même temps – Dès lors – Aujourd'hui – Désormais",
+                res4: "🔹 Progressivement – Petit à petit",
+                self_assess_question: "Ma réponse est :",
+                self_correct: "Correcte",
+                self_partial: "Partiellement correcte",
+                self_incorrect: "Incorrecte",
+                score_title: "📊 Votre auto‑évaluation",
+                score_correct: "Correct :",
+                score_partial: "Partiel :",
+                score_incorrect: "Incorrect :",
+                score_unanswered: "Sans réponse :",
+                save_results: "💾 Enregistrer mes résultats",
+                save_success: "Résultats enregistrés !",
+                save_error: "Erreur lors de l'enregistrement.",
+                print_pdf: "🖨️ Imprimer / PDF",
+                footer_back: "← Retour au programme",
+                footer_next: "Leçon suivante →",
+                ach_year_degree9: "9ème Année Primaire",
+                ach_module_unit1: "Unité 1",
+                toast_signin_required: "Connectez-vous pour enregistrer vos résultats.",
+                print_site_name: "Educational Dashboard – Français",
+                print_scholar_year: "9ème Année Primaire",
+                print_week: "Unité 1",
+                print_area: "Écoute et expression orale",
+                print_footer_dev: "Développé par Mejri Ziad",
+                print_footer_date: "Imprimé le"
+            },
+            en: {
+                lesson_title: "Lesson 2 – Observe images and create an oral story",
+                lesson_badge: "🎧 Listening & Speaking · Lesson 2",
+                lesson_duration: "⏱️ 45 minutes",
+                lesson_meta: "🎧 Listen to the final story then do the exercises",
+                back_link: "← Back to program",
+                current_lesson: "Observe images and create an oral story",
+                images_heading: "🖼️ We observe images",
+                images_intro: "These four situations retrace the life journey of the young doctor shown in the fourth image.",
+                img1_alt: "Image 1 - Child mechanic",
+                img2_alt: "Image 2 - Father leading child to school",
+                img3_alt: "Image 3 - Teacher in a poor school",
+                img4_alt: "Image 4 - Young doctor helping children",
+                images_note: "Addressing a group of orphaned children supported by his association, this young doctor uses his own success as an example to encourage them to work harder and show courage and perseverance.",
+                images_speech_prompt: "Make him speak, insisting on:",
+                images_point1: "The difficulties he encountered as a child (Image 1);",
+                images_point2: "Meeting the person who helped him (Image 2);",
+                images_point3: "The studies he did (Image 3);",
+                images_point4: "His success in life (Image 4);",
+                images_point5: "His current commitment to protecting children in need.",
+                exercises_heading: "✍️ Exercises",
+                ex1_title: "📌 1. The difficulties I faced as a child",
+                ex1_instruction: "Complete the paragraph with the words from the list.",
+                ex1_wordlist: "List: mechanic – school – delay – poverty – courage – motivated – finance – gradually",
+                ex2_title: "📌 2. Meeting the person who helped me",
+                ex2_instruction: "For each number, choose the correct answer from the three options.",
+                ex3_title: "📌 3. The studies I did",
+                ex3_instruction: "Reconstruct the paragraph by putting these sentences in the correct order.",
+                ex4_title: "📌 4. My success in life",
+                ex4_instruction: "Match each beginning of a sentence to its ending.",
+                ex5_title: "📌 5. My current commitment to protecting children in need",
+                ex5_instruction: "Write the question corresponding to each answer, using the first person as in the doctor's speech.",
+                check_answers: "🔍 Check",
+                final_text_heading: "🎧 Final text: the journey of the young doctor",
+                audio_label_final: "🎧 Listen to the story",
+                final_para1: "At that time, when I was a little boy in Africa, I worked as a bicycle mechanic in the street to help my family. I couldn't go to school every day, and I had a big educational delay. Despite the poverty that hit us hard, I never lost the courage to keep learning. Every evening, I dreamed of a better future. But I also had to finance my own small expenses, which made everything more difficult. Gradually, I understood that without education, I couldn't get out of this situation. Yet I remained motivated and showed great perseverance.",
+                final_para2: "At that moment, my father, despite his poverty, decided to take me to school. He was very generous towards me and wanted to offer me a better future. He supported me morally and encouraged me to work hard. Thanks to him, I was able to catch up on my school delay. He even financed my school fees by doing odd jobs. He is the one who took me in and brought precious help to our family.",
+                final_para3: "At school, a dedicated teacher supervised us with patience and tried to make us happy despite poverty. At the same time, a charity granted me a scholarship and provided regular academic support. Thanks to this support, I caught up on my school delay and began to love school. I was very motivated and worked every day with seriousness and determination. Little by little, I made spectacular progress in all subjects. Gradually, I regained confidence and knew I wanted to become a doctor.",
+                final_para4: "Today, I am a doctor and I provide free care to sick children. I made spectacular progress that allowed me to succeed brilliantly in my studies. My success shows that work and perseverance always pay off. Now, I can help children in difficulty like I once was. I never forget that I was a poor child who dreamed of a better future.",
+                final_para5: "Now, I have created a charity to help children in need. My association sponsors orphaned children and supports them daily. I provide free care in poor neighborhoods. I support families in need morally and financially. I grant scholarships to deserving children.",
+                resources_heading: "📚 Linguistic resources",
+                res1: "🔹 Charity – Take charge – Supervise – Support morally and financially – Bring help to ... – Grant a scholarship – Provide academic support – Sponsor children – Finance school fees – Provide free care",
+                res2: "🔹 Catch up on school delay – Be motivated – Make spectacular progress",
+                res3: "🔹 At that time – At that moment – At the same time – Since then – Today – Now",
+                res4: "🔹 Gradually – Little by little",
+                self_assess_question: "My answer is:",
+                self_correct: "Correct",
+                self_partial: "Partially correct",
+                self_incorrect: "Incorrect",
+                score_title: "📊 Your self‑assessment",
+                score_correct: "Correct:",
+                score_partial: "Partial:",
+                score_incorrect: "Incorrect:",
+                score_unanswered: "Unanswered:",
+                save_results: "💾 Save my results",
+                save_success: "Results saved!",
+                save_error: "Error saving results.",
+                print_pdf: "🖨️ Print / PDF",
+                footer_back: "← Back to program",
+                footer_next: "Next lesson →",
+                ach_year_degree9: "9th Grade Primary",
+                ach_module_unit1: "Unit 1",
+                toast_signin_required: "Sign in to save your results.",
+                print_site_name: "Educational Dashboard – French",
+                print_scholar_year: "9th Grade Primary",
+                print_week: "Unit 1",
+                print_area: "Listening & Speaking",
+                print_footer_dev: "Developed by Mejri Ziad",
+                print_footer_date: "Printed on"
+            },
+            ar: {
+                lesson_title: "الدرس 2 – نلاحظ الصور ونروي قصة شفهية",
+                lesson_badge: "🎧 الاستماع والتحدث · الدرس 2",
+                lesson_duration: "⏱️ 45 دقيقة",
+                lesson_meta: "🎧 استمع إلى القصة النهائية ثم قم بالتمارين",
+                back_link: "← العودة إلى البرنامج",
+                current_lesson: "نلاحظ الصور ونروي قصة شفهية",
+                images_heading: "🖼️ نلاحظ الصور",
+                images_intro: "هذه المواقف الأربعة تروي مسار حياة الطبيب الشاب الممثل في الصورة الرابعة.",
+                img1_alt: "الصورة 1 - طفل ميكانيكي",
+                img2_alt: "الصورة 2 - أب يقود طفله إلى المدرسة",
+                img3_alt: "الصورة 3 - معلمة في مدرسة فقيرة",
+                img4_alt: "الصورة 4 - طبيب شاب يساعد الأطفال",
+                images_note: "مخاطبًا مجموعة من الأطفال الأيتام الذين تتكفل بهم جمعيته، يستخدم هذا الطبيب الشاب نجاحه كمثال لتشجيعهم على العمل بجد والتحلي بالشجاعة والمثابرة.",
+                images_speech_prompt: "اجعله يتحدث مع التركيز على:",
+                images_point1: "الصعوبات التي واجهها عندما كان طفلًا (الصورة 1)؛",
+                images_point2: "لقاء الشخص الذي ساعده (الصورة 2)؛",
+                images_point3: "الدراسات التي قام بها (الصورة 3)؛",
+                images_point4: "نجاحه في الحياة (الصورة 4)؛",
+                images_point5: "التزامه الحالي بحماية الأطفال المحتاجين.",
+                exercises_heading: "✍️ تمارين",
+                ex1_title: "📌 1. الصعوبات التي واجهتها عندما كنت طفلًا",
+                ex1_instruction: "أكمل الفقرة بالكلمات من القائمة.",
+                ex1_wordlist: "القائمة: ميكانيكي – مدرسة – تأخر – فقر – شجاعة – متحفز – تمويل – تدريجيًا",
+                ex2_title: "📌 2. لقاء الشخص الذي ساعدني",
+                ex2_instruction: "لكل رقم، اختر الإجابة الصحيحة من بين ثلاثة خيارات.",
+                ex3_title: "📌 3. الدراسات التي قمت بها",
+                ex3_instruction: "أعد بناء الفقرة بوضع هذه الجمل في الترتيب الصحيح.",
+                ex4_title: "📌 4. نجاحي في الحياة",
+                ex4_instruction: "اربط كل بداية جملة بنهايتها.",
+                ex5_title: "📌 5. التزامي الحالي بحماية الأطفال المحتاجين",
+                ex5_instruction: "اكتب السؤال المقابل لكل إجابة، باستخدام ضمير المتكلم كما في خطاب الطبيب.",
+                check_answers: "🔍 تحقق",
+                final_text_heading: "🎧 النص النهائي: رحلة الطبيب الشاب",
+                audio_label_final: "🎧 استمع إلى القصة",
+                final_para1: "في ذلك الوقت، عندما كنت طفلًا صغيرًا في أفريقيا، عملت كميكانيكي دراجات في الشارع لمساعدة عائلتي. لم أستطع الذهاب إلى المدرسة كل يوم، وكان لدي تأخر دراسي كبير. على الرغم من الفقر الذي ضربنا بشدة، لم أفقد أبدًا شجاعة مواصلة التعلم. كل مساء، كنت أحلم بمستقبل أفضل. لكن كان عليّ أيضًا تمويل نفقاتي الصغيرة بنفسي، مما جعل كل شيء أكثر صعوبة. تدريجيًا، أدركت أنه بدون تعليم، لا يمكنني الخروج من هذا الوضع. ومع ذلك، بقيت متحفزًا وأظهرت مثابرة كبيرة.",
+                final_para2: "في تلك اللحظة، قرر والدي، على الرغم من فقره، أن يأخذني إلى المدرسة. كان كريمًا جدًا معي وأراد أن يقدم لي مستقبلًا أفضل. دعمني معنويًا وشجعني على العمل بجد. بفضله، تمكنت من تعويض تأخري الدراسي. حتى أنه مول رسوم دراستي بالقيام بأعمال صغيرة. هو الذي أخذني على عاتقه وقدم مساعدة ثمينة لعائلتنا.",
+                final_para3: "في المدرسة، كانت معلمة مخلصة تشرف علينا بصبر وتحاول أن تجعلنا سعداء على الرغم من الفقر. في الوقت نفسه، منحتني جمعية خيرية منحة دراسية وقدمت دعمًا أكاديميًا منتظمًا. بفضل هذا الدعم، عوضت تأخري الدراسي وبدأت أحب المدرسة. كنت متحفزًا جدًا وعملت كل يوم بجدية وتصميم. شيئًا فشيئًا، حققت تقدمًا مذهلاً في جميع المواد. تدريجيًا، استعدت الثقة وعرفت أنني أريد أن أصبح طبيبًا.",
+                final_para4: "اليوم، أنا طبيب وأقدم رعاية مجانية للأطفال المرضى. لقد حققت تقدمًا مذهلاً سمح لي بالنجاح ببراعة في دراستي. نجاحي يظهر أن العمل والمثابرة يؤتيان ثمارهما دائمًا. الآن، يمكنني مساعدة الأطفال المحتاجين كما كنت في السابق. لا أنسى أبدًا أنني كنت طفلًا فقيرًا يحلم بمستقبل أفضل.",
+                final_para5: "الآن، أنشأت جمعية خيرية لمساعدة الأطفال المحتاجين. جمعيتي ترعى الأطفال الأيتام وتدعمهم يوميًا. أقدم رعاية مجانية في الأحياء الفقيرة. أدعم العائلات المحتاجة معنويًا وماليًا. أمنح منحًا دراسية للأطفال المستحقين.",
+                resources_heading: "📚 الموارد اللغوية",
+                res1: "🔹 جمعية خيرية – التكفل – الإشراف – الدعم المعنوي والمالي – تقديم المساعدة لـ ... – منح منحة دراسية – تقديم دعم أكاديمي – رعاية الأطفال – تمويل الرسوم الدراسية – تقديم رعاية مجانية",
+                res2: "🔹 تعويض التأخر الدراسي – التحفيز – تحقيق تقدم مذهل",
+                res3: "🔹 في ذلك الوقت – في تلك اللحظة – في الوقت نفسه – منذ ذلك الحين – اليوم – الآن",
+                res4: "🔹 تدريجيًا – شيئًا فشيئًا",
+                self_assess_question: "جوابي هو:",
+                self_correct: "صحيح",
+                self_partial: "صحيح جزئيًا",
+                self_incorrect: "خاطئ",
+                score_title: "📊 تقييمك الذاتي",
+                score_correct: "صحيح:",
+                score_partial: "جزئي:",
+                score_incorrect: "خاطئ:",
+                score_unanswered: "بدون إجابة:",
+                save_results: "💾 حفظ نتائجي",
+                save_success: "تم حفظ النتائج!",
+                save_error: "خطأ في الحفظ.",
+                print_pdf: "🖨️ طباعة / PDF",
+                footer_back: "← العودة إلى البرنامج",
+                footer_next: "الدرس الموالي ←",
+                ach_year_degree9: "السنة التاسعة ابتدائي",
+                ach_module_unit1: "الوحدة الأولى",
+                toast_signin_required: "سجّل الدخول لحفظ نتائجك.",
+                print_site_name: "لوحة التحكم التعليمية – الفرنسية",
+                print_scholar_year: "السنة التاسعة ابتدائي",
+                print_week: "الوحدة 1",
+                print_area: "الاستماع والتحدث",
+                print_footer_dev: "طوّر بواسطة ماجري زياد",
+                print_footer_date: "طُبع في"
+            }
+        });
+
+        (function() {
+            var container = document.getElementById('main-content');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+        })();
+    </script>
+
+    <!-- Direct translation fix -->
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') {
+                                el.innerHTML = next.innerHTML;
+                            }
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+
+    <!-- Init, audio (final), exercise logic, scoring, save, print -->
+    <script>
+        (function() {
+            // ---- Final text audio player ----
+            const finalAudioSrc = 'assets9/degree9/unit1/lesson2/final_text.mp3';
+            const finalAudio = new Audio(finalAudioSrc);
+            const finalPlayBtn = document.getElementById('finalPlayBtn');
+            const finalProgressFill = document.getElementById('finalProgressFill');
+            const finalProgressBar = document.getElementById('finalProgressBar');
+            const finalCurrentTime = document.getElementById('finalCurrentTime');
+            const finalDuration = document.getElementById('finalDuration');
+            const finalSpeedBtns = document.querySelectorAll('#finalSpeedSelector .degree9-unit1-lesson2-oral2-speed-btn');
+
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+
+            finalAudio.addEventListener('loadedmetadata', () => { finalDuration.textContent = formatTime(finalAudio.duration); });
+            finalAudio.addEventListener('timeupdate', () => {
+                const percent = (finalAudio.currentTime / finalAudio.duration) * 100 || 0;
+                finalProgressFill.style.width = percent + '%';
+                finalCurrentTime.textContent = formatTime(finalAudio.currentTime);
+            });
+            finalAudio.addEventListener('ended', () => { finalPlayBtn.textContent = '▶'; });
+            finalPlayBtn.addEventListener('click', () => {
+                if (finalAudio.paused) { finalAudio.play().catch(()=>{}); finalPlayBtn.textContent = '⏸'; }
+                else { finalAudio.pause(); finalPlayBtn.textContent = '▶'; }
+            });
+            finalProgressBar.addEventListener('click', (e) => {
+                const rect = finalProgressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const seekTime = (clickX / width) * finalAudio.duration;
+                finalAudio.currentTime = seekTime;
+            });
+            finalSpeedBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    finalSpeedBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const speed = parseFloat(btn.dataset.speed);
+                    finalAudio.playbackRate = speed;
+                });
+            });
+
+            // ---- Auth helper ----
+            async function requireAuth() {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return false;
+                }
+                return true;
+            }
+
+            // ---- Exercise 1: Fill blanks ----
+            const ex1Words = ['mécanicien', 'école', 'retard', 'pauvreté', 'courage', 'motivé', 'financer', 'progressivement'];
+            const ex1Correct = ['mécanicien', 'école', 'retard', 'pauvreté', 'courage', 'financer', 'progressivement', 'motivé'];
+            const ex1Paragraph = "À l’époque, quand j’étais un petit garçon en Afrique, je travaillais comme {0} de vélos dans la rue pour aider ma famille. Je ne pouvais pas aller à l’{1} tous les jours, et j’avais un grand {2} scolaire. Malgré la {3} qui nous frappait durement, je n’ai jamais perdu le {4} de continuer à apprendre. Chaque soir, je rêvais d’un avenir meilleur. Mais il fallait aussi que je {5} moi-même mes petites dépenses, ce qui rendait tout plus difficile. {6}, j’ai compris que sans instruction, je ne pourrais pas sortir de cette situation. Pourtant, je restais {7} et je faisais preuve d’une grande persévérance.";
+            const ex1Container = document.getElementById('ex1Container');
+            function buildEx1() {
+                let html = ex1Paragraph;
+                ex1Words.forEach((word, i) => {
+                    const options = ex1Words.map(w => `<option value="${w}">${w}</option>`).join('');
+                    const select = `<select class="degree9-unit1-lesson2-oral2-blank-select" id="ex1blank${i}">${options}</select>`;
+                    html = html.replace(`{${i}}`, select);
+                });
+                ex1Container.innerHTML = html;
+            }
+            buildEx1();
+
+            window.checkEx1 = async function() {
+                if (!await requireAuth()) return;
+                let allCorrect = true;
+                let someCorrect = false;
+                for (let i = 0; i < ex1Correct.length; i++) {
+                    const sel = document.getElementById(`ex1blank${i}`);
+                    if (!sel) continue;
+                    if (sel.value === ex1Correct[i]) someCorrect = true;
+                    else allCorrect = false;
+                }
+                const isCorrect = allCorrect;
+                const keyEl = document.getElementById('ex1Key');
+                const fbEl = document.getElementById('ex1Feedback');
+                if (keyEl) {
+                    let correction = '<strong>Correction :</strong><br>';
+                    ex1Correct.forEach((ans, i) => { correction += `Blank ${i+1}: ${ans}<br>`; });
+                    keyEl.innerHTML = correction;
+                    keyEl.classList.add('visible');
+                }
+                if (fbEl) {
+                    fbEl.textContent = isCorrect ? '✅ Tout est correct !' : (someCorrect ? '⚠️ Partiellement correct.' : '❌ Incorrect.');
+                    fbEl.className = 'degree9-unit1-lesson2-oral2-feedback ' + (isCorrect ? 'correct' : 'wrong');
+                }
+            };
+
+            // ---- Exercise 2: Multiple choice ----
+            const ex2Questions = [
+                { prompt: "À ce moment-là, mon père, malgré sa pauvreté, a décidé de me (1) __________ à l’école.", name: "ex2q1", options: ["conduire", "conduit", "conduira"], correct: "conduire" },
+                { prompt: "Il était très (2) __________ envers moi et voulait m’offrir un avenir meilleur.", name: "ex2q2", options: ["généreux", "généreuse", "générosité"], correct: "généreux" },
+                { prompt: "Il m’a (3) __________ moralement et m’a encouragé à travailler dur.", name: "ex2q3", options: ["soutenu", "soutenue", "soutenir"], correct: "soutenu" },
+                { prompt: "Grâce à lui, j’ai pu (4) __________ mon retard scolaire.", name: "ex2q4", options: ["rattraper", "rattrapé", "rattrape"], correct: "rattraper" },
+                { prompt: "Il a même (5) __________ mes frais de scolarité en faisant de petits travaux.", name: "ex2q5", options: ["financé", "financée", "financer"], correct: "financé" },
+                { prompt: "C’est lui qui m’a (6) __________ en charge et qui a (7) __________ de l’aide précieuse à notre famille.", name: "ex2q6", options: ["pris", "prise", "prendre"], correct: "pris", secondName: "ex2q7", secondOptions: ["apporté", "apportée", "apporter"], secondCorrect: "apporté" }
+            ];
+            const ex2Container = document.getElementById('ex2Container');
+            function buildEx2() {
+                let html = '';
+                ex2Questions.forEach((q, idx) => {
+                    html += `<p><strong>${idx+1}.</strong> ${q.prompt}</p>`;
+                    html += '<div class="degree9-unit1-lesson2-oral2-options">';
+                    q.options.forEach(opt => {
+                        html += `<label><input type="radio" name="${q.name}" value="${opt}"> <span>${opt}</span></label>`;
+                    });
+                    html += '</div>';
+                    if (q.secondName) {
+                        html += '<p><strong>7.</strong> (suite)</p>';
+                        html += '<div class="degree9-unit1-lesson2-oral2-options">';
+                        q.secondOptions.forEach(opt => {
+                            html += `<label><input type="radio" name="${q.secondName}" value="${opt}"> <span>${opt}</span></label>`;
+                        });
+                        html += '</div>';
+                    }
+                });
+                ex2Container.innerHTML = html;
+            }
+            buildEx2();
+
+            window.checkEx2 = async function() {
+                if (!await requireAuth()) return;
+                let allCorrect = true;
+                let someCorrect = false;
+                const checks = [
+                    { name: "ex2q1", correct: "conduire" },
+                    { name: "ex2q2", correct: "généreux" },
+                    { name: "ex2q3", correct: "soutenu" },
+                    { name: "ex2q4", correct: "rattraper" },
+                    { name: "ex2q5", correct: "financé" },
+                    { name: "ex2q6", correct: "pris" },
+                    { name: "ex2q7", correct: "apporté" }
+                ];
+                checks.forEach(c => {
+                    const selected = document.querySelector(`input[name="${c.name}"]:checked`);
+                    if (selected && selected.value === c.correct) someCorrect = true;
+                    else allCorrect = false;
+                });
+                const isCorrect = allCorrect;
+                const keyEl = document.getElementById('ex2Key');
+                const fbEl = document.getElementById('ex2Feedback');
+                if (keyEl) {
+                    keyEl.innerHTML = '<strong>Correction :</strong><br>1. a) conduire<br>2. a) généreux<br>3. a) soutenu<br>4. a) rattraper<br>5. a) financé<br>6. a) pris<br>7. a) apporté';
+                    keyEl.classList.add('visible');
+                }
+                if (fbEl) {
+                    fbEl.textContent = isCorrect ? '✅ Tout est correct !' : (someCorrect ? '⚠️ Partiellement correct.' : '❌ Incorrect.');
+                    fbEl.className = 'degree9-unit1-lesson2-oral2-feedback ' + (isCorrect ? 'correct' : 'wrong');
+                }
+            };
+
+            // ---- Exercise 3: Order sentences ----
+            const ex3Sentences = [
+                { id: 'A', text: 'Grâce à ce soutien, j’ai rattrapé mon retard scolaire et j’ai commencé à aimer l’école.' },
+                { id: 'B', text: 'À l’école, une enseignante dévouée nous encadrait avec patience et essayait de nous rendre heureux malgré la pauvreté.' },
+                { id: 'C', text: 'En même temps, une association caritative m’a accordé une bourse d’études et m’a apporté un soutien scolaire régulier.' },
+                { id: 'D', text: 'J’étais très motivé et je travaillais chaque jour avec sérieux et détermination.' },
+                { id: 'E', text: 'Petit à petit, j’ai réalisé des progrès spectaculaires dans toutes les matières.' },
+                { id: 'F', text: 'Progressivement, j’ai retrouvé confiance en moi et j’ai su que je voulais devenir médecin.' }
+            ];
+            const ex3CorrectOrder = ['B', 'C', 'A', 'D', 'E', 'F'];
+            const ex3Container = document.getElementById('ex3Container');
+            function buildEx3() {
+                let html = '';
+                ex3Sentences.forEach(s => {
+                    html += `<div style="margin-bottom:0.5rem;"><strong>${s.id}.</strong> ${s.text}</div>`;
+                });
+                html += '<p style="margin-top:1rem;">Choisissez l\'ordre (1 à 6) pour chaque phrase :</p>';
+                ex3Sentences.forEach(s => {
+                    let select = `<select class="degree9-unit1-lesson2-oral2-blank-select" id="ex3order_${s.id}">`;
+                    for (let i=1;i<=6;i++) {
+                        select += `<option value="${i}">${i}</option>`;
+                    }
+                    select += '</select>';
+                    html += `<div style="display:flex; align-items:center; gap:0.5rem; margin:0.3rem 0;"><span>${s.id}.</span> ${select}</div>`;
+                });
+                ex3Container.innerHTML = html;
+            }
+            buildEx3();
+
+            window.checkEx3 = async function() {
+                if (!await requireAuth()) return;
+                const positions = {};
+                ex3Sentences.forEach(s => {
+                    const sel = document.getElementById(`ex3order_${s.id}`);
+                    if (sel) positions[s.id] = parseInt(sel.value);
+                });
+                let allCorrect = true;
+                let someCorrect = false;
+                ex3CorrectOrder.forEach((id, index) => {
+                    const pos = positions[id];
+                    if (pos === index+1) someCorrect = true;
+                    else allCorrect = false;
+                });
+                const isCorrect = allCorrect;
+                const keyEl = document.getElementById('ex3Key');
+                const fbEl = document.getElementById('ex3Feedback');
+                if (keyEl) {
+                    keyEl.innerHTML = '<strong>Correction :</strong> B – C – A – D – E – F';
+                    keyEl.classList.add('visible');
+                }
+                if (fbEl) {
+                    fbEl.textContent = isCorrect ? '✅ Tout est correct !' : (someCorrect ? '⚠️ Partiellement correct.' : '❌ Incorrect.');
+                    fbEl.className = 'degree9-unit1-lesson2-oral2-feedback ' + (isCorrect ? 'correct' : 'wrong');
+                }
+            };
+
+            // ---- Exercise 4: Match ----
+            const ex4Beginnings = [
+                "Aujourd’hui, je suis médecin et je dispense…",
+                "J’ai réalisé des progrès spectaculaires…",
+                "Ma réussite montre…",
+                "Désormais, je peux aider…",
+                "Je n’oublie jamais que j’étais…"
+            ];
+            const ex4Endings = {
+                a: "des soins gratuits aux enfants malades.",
+                b: "qui m’ont permis de réussir brillamment mes études.",
+                c: "que le travail et la persévérance paient toujours.",
+                d: "les enfants en difficulté comme moi autrefois.",
+                e: "un enfant pauvre qui rêvait d’un avenir meilleur."
+            };
+            const ex4Correct = {1:'a',2:'b',3:'c',4:'d',5:'e'};
+            const ex4Container = document.getElementById('ex4Container');
+            function buildEx4() {
+                let html = '<table style="width:100%; border-collapse:collapse;">';
+                html += '<tr><th>Début</th><th>Fin</th></tr>';
+                ex4Beginnings.forEach((begin, idx) => {
+                    const num = idx+1;
+                    html += `<tr><td>${num}. ${begin}</td><td><select class="degree9-unit1-lesson2-oral2-blank-select" id="ex4match_${num}">`;
+                    for (let letter in ex4Endings) {
+                        html += `<option value="${letter}">${letter}. ${ex4Endings[letter]}</option>`;
+                    }
+                    html += '</select></td></tr>';
+                });
+                html += '</table>';
+                html += '<p><strong>Fin de phrase :</strong></p>';
+                for (let letter in ex4Endings) {
+                    html += `<p><strong>${letter}.</strong> ${ex4Endings[letter]}</p>`;
+                }
+                ex4Container.innerHTML = html;
+            }
+            buildEx4();
+
+            window.checkEx4 = async function() {
+                if (!await requireAuth()) return;
+                let allCorrect = true;
+                let someCorrect = false;
+                for (let num in ex4Correct) {
+                    const sel = document.getElementById(`ex4match_${num}`);
+                    if (sel && sel.value === ex4Correct[num]) someCorrect = true;
+                    else allCorrect = false;
+                }
+                const isCorrect = allCorrect;
+                const keyEl = document.getElementById('ex4Key');
+                const fbEl = document.getElementById('ex4Feedback');
+                if (keyEl) {
+                    keyEl.innerHTML = '<strong>Correction :</strong> 1–a, 2–b, 3–c, 4–d, 5–e';
+                    keyEl.classList.add('visible');
+                }
+                if (fbEl) {
+                    fbEl.textContent = isCorrect ? '✅ Tout est correct !' : (someCorrect ? '⚠️ Partiellement correct.' : '❌ Incorrect.');
+                    fbEl.className = 'degree9-unit1-lesson2-oral2-feedback ' + (isCorrect ? 'correct' : 'wrong');
+                }
+            };
+
+            // ---- Exercise 5: Write questions (no automatic check, just show correction) ----
+            const ex5Answers = [
+                "J’ai créé une association caritative pour aider les enfants en difficulté.",
+                "Mon association parraine des enfants orphelins et les encadre au quotidien.",
+                "Je dispense des soins gratuits dans les quartiers pauvres.",
+                "Je soutiens moralement et financièrement les familles qui en ont besoin.",
+                "J’accorde des bourses d’études aux enfants méritants."
+            ];
+            const ex5Container = document.getElementById('ex5Container');
+            function buildEx5() {
+                let html = '';
+                ex5Answers.forEach((ans, idx) => {
+                    html += `<p><strong>Réponse ${idx+1} :</strong> ${ans}</p>`;
+                    html += `<p>Question : <input type="text" id="ex5q${idx}" style="width:100%; padding:0.4rem; margin-bottom:0.5rem;"></p>`;
+                });
+                ex5Container.innerHTML = html;
+            }
+            buildEx5();
+
+            window.showEx5Correction = async function() {
+                if (!await requireAuth()) return;
+                const keyEl = document.getElementById('ex5Key');
+                if (keyEl) {
+                    keyEl.innerHTML = '<strong>Correction possible :</strong><br>1. Qu’avez-vous créé pour aider les enfants en difficulté ?<br>2. Que fait votre association pour les enfants orphelins ?<br>3. Où dispensez-vous des soins gratuits ?<br>4. Comment soutenez-vous les familles dans le besoin ?<br>5. Qu’accordez-vous aux enfants méritants ?';
+                    keyEl.classList.add('visible');
+                }
+            };
+
+            // ---- Self-assessment scoring (now 5 exercises) ----
+            function updateScore() {
+                const radioGroups = document.querySelectorAll('input[type="radio"][name^="self_"]');
+                const groups = new Set();
+                radioGroups.forEach(r => groups.add(r.name));
+                let correct = 0, partial = 0, incorrect = 0, unanswered = 0;
+                groups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'partial') partial++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                document.getElementById('scoreCorrect').textContent = correct;
+                document.getElementById('scorePartial').textContent = partial;
+                document.getElementById('scoreIncorrect').textContent = incorrect;
+                document.getElementById('scoreUnanswered').textContent = unanswered;
+            }
+            document.querySelectorAll('input[type="radio"][name^="self_"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+
+            // ---- Save results ----
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                if (!App.supabase) return;
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const radioGroups = document.querySelectorAll('input[type="radio"][name^="self_"]');
+                const groups = new Set();
+                radioGroups.forEach(r => groups.add(r.name));
+                let correct = 0, partial = 0, incorrect = 0, unanswered = 0;
+                groups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'partial') partial++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                const entry = {
+                    lesson_id: 'degree9unit1lesson2',
+                    lesson_title: { fr: App.getTranslation('lesson_title', 'fr'), en: App.getTranslation('lesson_title', 'en'), ar: App.getTranslation('lesson_title', 'ar') },
+                    year: { fr: App.getTranslation('ach_year_degree9', 'fr'), en: App.getTranslation('ach_year_degree9', 'en'), ar: App.getTranslation('ach_year_degree9', 'ar') },
+                    module: { fr: App.getTranslation('ach_module_unit1', 'fr'), en: App.getTranslation('ach_module_unit1', 'en'), ar: App.getTranslation('ach_module_unit1', 'ar') },
+                    correct, incorrect, partial, unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles').select('achivement').eq('id', user.id).single();
+                if (fetchError) return;
+                let achivement = profileData?.achivement || {};
+                if (!achivement['ED-French']) achivement['ED-French'] = [];
+                const arr = achivement['ED-French'];
+                const existingIdx = arr.findIndex(e => e.lesson_id === 'degree9unit1lesson2');
+                if (existingIdx >= 0) arr[existingIdx] = entry; else arr.push(entry);
+                const { error: updateError } = await App.supabase
+                    .from('profiles').update({ achivement }).eq('id', user.id);
+                if (updateError) App.showToast('save_error', 'error');
+                else { App.showToast('save_success', 'success'); App.logUserAction('lesson_saved', { lesson: 'degree9unit1lesson2', correct, incorrect, partial }); }
+            });
+
+            // ---- Print / PDF ----
+            document.getElementById('printBtn').addEventListener('click', async function() {
+                if (!App.supabase) return;
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles')
+                        .select('registration_state')
+                        .eq('id', user.id)
+                        .single();
+                    if (!error && profile && profile.registration_state && profile.registration_state.active === true) {
+                        isRegistered = true;
+                    }
+                } catch (e) { /* ignore */ }
+                const lang = localStorage.getItem('lang') || 'fr';
+                const content = document.getElementById('main-content').cloneNode(true);
+                content.querySelectorAll('input, .degree9-unit1-lesson2-oral2-self-assess, .degree9-unit1-lesson2-oral2-score-area, .degree9-unit1-lesson2-oral2-btn, .degree9-unit1-lesson2-oral2-play-btn, .degree9-unit1-lesson2-oral2-audio-player').forEach(el => el.remove());
+                const answerKeys = content.querySelectorAll('.degree9-unit1-lesson2-oral2-answer-key');
+                if (isRegistered) {
+                    answerKeys.forEach(key => {
+                        key.style.display = 'block';
+                        key.style.border = 'none';
+                        key.style.padding = '0.5rem 0';
+                        key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    answerKeys.forEach(el => el.remove());
+                }
+                const breadcrumb = content.querySelector('p[style*="margin-bottom:1.5rem"]');
+                if (breadcrumb) breadcrumb.remove();
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                printWindow.document.write(`
+                    <!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8"><title>${App.getTranslation('lesson_title', lang)}</title>
+                    <style>
+                        body { font-family: 'Georgia', serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+                        .print-header { text-align: center; border-bottom: 2px solid #8e44ad; padding-bottom: 1rem; margin-bottom: 2rem; }
+                        .print-header .site-name { font-size: 1.4rem; font-weight: bold; color: #8e44ad; margin: 0 0 0.3rem; }
+                        .print-header .meta-line { font-size: 0.95rem; color: #444; margin: 0.2rem 0; }
+                        .print-header .lesson-name { font-size: 1.1rem; font-weight: bold; color: #000; margin-top: 0.5rem; }
+                        .print-footer { text-align: center; border-top: 1px solid #ccc; padding-top: 1rem; margin-top: 2rem; font-size: 0.85rem; color: #666; }
+                        .degree9-unit1-lesson2-oral2-card { margin-bottom: 2rem; border: 1px solid #ccc; padding: 1rem; border-radius: 8px; }
+                        .degree9-unit1-lesson2-oral2-options { display: none; }
+                        .degree9-unit1-lesson2-oral2-answer-key { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: #444; }
+                        @media print { @page { margin: 2cm; } }
+                    </style></head><body>
+                    <div class="print-header"><div class="site-name">${App.getTranslation('print_site_name', lang)}</div><div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div><div class="lesson-name">${App.getTranslation('lesson_title', lang)}</div></div>
+                    ${content.innerHTML}
+                    <div class="print-footer">${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}</div>
+                    </body></html>
+                `);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+        })();
+    </script>
+</body>
+</html>

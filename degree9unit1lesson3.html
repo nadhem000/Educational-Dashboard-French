@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_title">Leçon 3 – Mon premier dessin | Lecture</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ===== Degree9 Unit 1 Lesson 3 – Lecture (prefix: degree9-unit1-lesson3-lecture) ===== */
+        :root {
+            --degree9-unit1-lesson3-lecture-bg: #f5f0e8;
+            --degree9-unit1-lesson3-lecture-card: #fffef9;
+            --degree9-unit1-lesson3-lecture-text: #2b2416;
+            --degree9-unit1-lesson3-lecture-text-light: #5c5344;
+            --degree9-unit1-lesson3-lecture-heading: #2c3e50;
+            --degree9-unit1-lesson3-lecture-accent: #2980b9;
+            --degree9-unit1-lesson3-lecture-accent-hover: #1f618d;
+            --degree9-unit1-lesson3-lecture-border: #e0d6c8;
+            --degree9-unit1-lesson3-lecture-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.08);
+            --degree9-unit1-lesson3-lecture-radius: 18px;
+            --degree9-unit1-lesson3-lecture-radius-sm: 12px;
+            --degree9-unit1-lesson3-lecture-transition: 0.25s ease;
+            --degree9-unit1-lesson3-lecture-font: 'Georgia', 'Times New Roman', serif;
+            --degree9-unit1-lesson3-lecture-audio-bg: #f0e9dd;
+            --degree9-unit1-lesson3-lecture-audio-progress: #d8c9aa;
+            --degree9-unit1-lesson3-lecture-button-bg: #e8dcc8;
+            --degree9-unit1-lesson3-lecture-button-hover: #d5c3a5;
+            --degree9-unit1-lesson3-lecture-input-bg: #faf6ef;
+        }
+        body.dark {
+            --degree9-unit1-lesson3-lecture-bg: #1a1a2e;
+            --degree9-unit1-lesson3-lecture-card: #16213e;
+            --degree9-unit1-lesson3-lecture-text: #e8dfd2;
+            --degree9-unit1-lesson3-lecture-text-light: #b9aa95;
+            --degree9-unit1-lesson3-lecture-heading: #f0e4d2;
+            --degree9-unit1-lesson3-lecture-accent: #5dade2;
+            --degree9-unit1-lesson3-lecture-accent-hover: #85c1e9;
+            --degree9-unit1-lesson3-lecture-border: #3e3830;
+            --degree9-unit1-lesson3-lecture-shadow: 0 2px 8px rgba(0,0,0,0.35);
+            --degree9-unit1-lesson3-lecture-audio-bg: #26221b;
+            --degree9-unit1-lesson3-lecture-audio-progress: #5a4e3c;
+            --degree9-unit1-lesson3-lecture-button-bg: #3a3329;
+            --degree9-unit1-lesson3-lecture-button-hover: #4e4437;
+            --degree9-unit1-lesson3-lecture-input-bg: #333028;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            font-family: var(--degree9-unit1-lesson3-lecture-font);
+            background: var(--degree9-unit1-lesson3-lecture-bg);
+            color: var(--degree9-unit1-lesson3-lecture-text);
+            line-height: 1.75;
+            transition: background var(--degree9-unit1-lesson3-lecture-transition), color var(--degree9-unit1-lesson3-lecture-transition);
+        }
+
+        .degree9-unit1-lesson3-lecture-container { max-width: none; margin:0 auto; padding:1.8rem 1.4rem 3rem; }
+
+        .degree9-unit1-lesson3-lecture-header { text-align:center; margin-bottom:2rem; }
+        .degree9-unit1-lesson3-lecture-badge { display:inline-block; background: var(--degree9-unit1-lesson3-lecture-accent); color:#fff; padding:0.35rem 1.2rem; border-radius:30px; font-size:0.85rem; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
+        .degree9-unit1-lesson3-lecture-header h1 { font-size:2.2rem; color: var(--degree9-unit1-lesson3-lecture-heading); margin:0.8rem 0 0.4rem; line-height:1.2; font-weight:700; }
+        .degree9-unit1-lesson3-lecture-meta { font-size:0.95rem; color: var(--degree9-unit1-lesson3-lecture-text-light); display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap; }
+
+        .degree9-unit1-lesson3-lecture-audio-player { background: var(--degree9-unit1-lesson3-lecture-card); border:1px solid var(--degree9-unit1-lesson3-lecture-border); border-radius: var(--degree9-unit1-lesson3-lecture-radius); padding:1rem 1.4rem; margin:1.5rem 0 2rem; box-shadow: var(--degree9-unit1-lesson3-lecture-shadow); display:flex; align-items:center; gap:1rem; flex-wrap:wrap; }
+        .degree9-unit1-lesson3-lecture-play-btn { width:48px; height:48px; border-radius:12px; background: var(--degree9-unit1-lesson3-lecture-accent); color:#fff; border:none; font-size:1.4rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition: background var(--degree9-unit1-lesson3-lecture-transition); flex-shrink:0; }
+        .degree9-unit1-lesson3-lecture-play-btn:hover { background: var(--degree9-unit1-lesson3-lecture-accent-hover); }
+        .degree9-unit1-lesson3-lecture-progress-area { flex:1; min-width:120px; display:flex; flex-direction:column; gap:0.3rem; }
+        .degree9-unit1-lesson3-lecture-progress-bar { width:100%; height:6px; background: var(--degree9-unit1-lesson3-lecture-audio-progress); border-radius:3px; cursor:pointer; position:relative; overflow:hidden; }
+        .degree9-unit1-lesson3-lecture-progress-fill { height:100%; background: var(--degree9-unit1-lesson3-lecture-accent); border-radius:3px; width:0%; transition:width 0.1s linear; }
+        .degree9-unit1-lesson3-lecture-time-info { display:flex; justify-content:space-between; font-size:0.75rem; color: var(--degree9-unit1-lesson3-lecture-text-light); }
+        .degree9-unit1-lesson3-lecture-speed-selector { display:flex; gap:0.3rem; flex-wrap:wrap; }
+        .degree9-unit1-lesson3-lecture-speed-btn { border:1px solid var(--degree9-unit1-lesson3-lecture-border); background: var(--degree9-unit1-lesson3-lecture-button-bg); color: var(--degree9-unit1-lesson3-lecture-text); padding:0.3rem 0.6rem; border-radius:6px; font-size:0.75rem; font-weight:600; cursor:pointer; transition: all var(--degree9-unit1-lesson3-lecture-transition); }
+        .degree9-unit1-lesson3-lecture-speed-btn.active { background: var(--degree9-unit1-lesson3-lecture-accent); color:#fff; border-color: var(--degree9-unit1-lesson3-lecture-accent); }
+        .degree9-unit1-lesson3-lecture-audio-label { font-weight:700; font-size:0.9rem; color: var(--degree9-unit1-lesson3-lecture-heading); white-space:nowrap; }
+
+        .degree9-unit1-lesson3-lecture-text-card { background: var(--degree9-unit1-lesson3-lecture-card); border:1px solid var(--degree9-unit1-lesson3-lecture-border); border-left:6px solid var(--degree9-unit1-lesson3-lecture-accent); border-radius:0 var(--degree9-unit1-lesson3-lecture-radius) var(--degree9-unit1-lesson3-lecture-radius) 0; padding:1.5rem 1.8rem; margin:1.8rem 0; font-style:italic; font-size:1.05rem; line-height:1.9; box-shadow: var(--degree9-unit1-lesson3-lecture-shadow); position:relative; }
+        .degree9-unit1-lesson3-lecture-text-card .degree9-unit1-lesson3-lecture-author { text-align:right; font-style:normal; font-size:0.9rem; color: var(--degree9-unit1-lesson3-lecture-text-light); margin-top:0.8rem; }
+
+        .degree9-unit1-lesson3-lecture-author-presentation { background: var(--degree9-unit1-lesson3-lecture-card); border:1px solid var(--degree9-unit1-lesson3-lecture-border); border-radius: var(--degree9-unit1-lesson3-lecture-radius); padding:1.2rem 1.5rem; margin:1rem 0 2rem; box-shadow: var(--degree9-unit1-lesson3-lecture-shadow); }
+        .degree9-unit1-lesson3-lecture-author-presentation h3 { color: var(--degree9-unit1-lesson3-lecture-accent); font-size:1.1rem; margin-bottom:0.5rem; }
+
+        .degree9-unit1-lesson3-lecture-section h2 { font-size:1.6rem; color: var(--degree9-unit1-lesson3-lecture-heading); margin:2.2rem 0 1.2rem; border-bottom:3px solid var(--degree9-unit1-lesson3-lecture-accent); display:inline-block; padding-bottom:0.3rem; }
+        .degree9-unit1-lesson3-lecture-card { background: var(--degree9-unit1-lesson3-lecture-card); border:1px solid var(--degree9-unit1-lesson3-lecture-border); border-radius: var(--degree9-unit1-lesson3-lecture-radius); padding:1.5rem 1.8rem; margin-bottom:1.8rem; box-shadow: var(--degree9-unit1-lesson3-lecture-shadow); }
+        .degree9-unit1-lesson3-lecture-card h3 { font-size:1.2rem; color: var(--degree9-unit1-lesson3-lecture-accent); margin-bottom:0.8rem; font-weight:700; }
+        .degree9-unit1-lesson3-lecture-options { display:flex; flex-direction:column; gap:0.4rem; margin:0.8rem 0; }
+        .degree9-unit1-lesson3-lecture-options label { display:flex; align-items:center; gap:0.6rem; cursor:pointer; font-size:0.95rem; padding:0.3rem 0.5rem; border-radius:6px; transition: background 0.2s; }
+        .degree9-unit1-lesson3-lecture-options label:hover { background: var(--degree9-unit1-lesson3-lecture-audio-bg); }
+        .degree9-unit1-lesson3-lecture-options input[type="radio"] { accent-color: var(--degree9-unit1-lesson3-lecture-accent); }
+        .degree9-unit1-lesson3-lecture-btn { background: var(--degree9-unit1-lesson3-lecture-accent); color:#fff; border:none; padding:0.6rem 1.4rem; border-radius:24px; font-weight:600; cursor:pointer; transition: background var(--degree9-unit1-lesson3-lecture-transition); margin-top:0.6rem; font-size:0.9rem; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
+        .degree9-unit1-lesson3-lecture-btn:hover { background: var(--degree9-unit1-lesson3-lecture-accent-hover); }
+        .degree9-unit1-lesson3-lecture-answer-key { display:none; margin-top:0.8rem; padding:0.8rem 1rem; background: var(--degree9-unit1-lesson3-lecture-audio-bg); border-radius:8px; font-size:0.9rem; color: var(--degree9-unit1-lesson3-lecture-text-light); border:1px dashed var(--degree9-unit1-lesson3-lecture-accent); }
+        .degree9-unit1-lesson3-lecture-answer-key.visible { display:block; }
+        .degree9-unit1-lesson3-lecture-feedback { margin-top:0.5rem; font-weight:600; }
+        .degree9-unit1-lesson3-lecture-feedback.correct { color:#2e7d32; }
+        .degree9-unit1-lesson3-lecture-feedback.wrong { color:#c62828; }
+
+        .degree9-unit1-lesson3-lecture-self-assess { margin-top:1rem; display:flex; flex-wrap:wrap; gap:1rem; align-items:center; font-size:0.9rem; }
+        .degree9-unit1-lesson3-lecture-self-assess label { cursor:pointer; display:inline-flex; align-items:center; gap:0.3rem; }
+        .degree9-unit1-lesson3-lecture-self-assess input[type="radio"] { accent-color: var(--degree9-unit1-lesson3-lecture-accent); }
+
+        .degree9-unit1-lesson3-lecture-score-area { background: var(--degree9-unit1-lesson3-lecture-card); border:1px solid var(--degree9-unit1-lesson3-lecture-border); border-radius: var(--degree9-unit1-lesson3-lecture-radius); padding:1.5rem 1.8rem; margin-top:2rem; box-shadow: var(--degree9-unit1-lesson3-lecture-shadow); }
+        .degree9-unit1-lesson3-lecture-score-area h2 { color: var(--degree9-unit1-lesson3-lecture-heading); margin-bottom:1rem; }
+        .degree9-unit1-lesson3-lecture-score-stats { display:flex; gap:1.5rem; flex-wrap:wrap; }
+        .degree9-unit1-lesson3-lecture-score-stat { background: var(--degree9-unit1-lesson3-lecture-audio-bg); padding:0.8rem 1.2rem; border-radius:12px; font-weight:600; }
+        .degree9-unit1-lesson3-lecture-score-actions { margin-top:1rem; display:flex; gap:0.8rem; flex-wrap:wrap; }
+
+        .degree9-unit1-lesson3-lecture-blank-select, .degree9-unit1-lesson3-lecture-text-input { width:100%; padding:0.4rem 0.6rem; border:2px dashed var(--degree9-unit1-lesson3-lecture-accent); border-radius:6px; background: var(--degree9-unit1-lesson3-lecture-input-bg); color: var(--degree9-unit1-lesson3-lecture-text); font-size:0.9rem; font-family:inherit; margin:0.3rem 0; }
+        .degree9-unit1-lesson3-lecture-blank-select:focus, .degree9-unit1-lesson3-lecture-text-input:focus { outline:none; border-style:solid; box-shadow:0 0 0 2px var(--degree9-unit1-lesson3-lecture-accent); }
+
+        .degree9-unit1-lesson3-lecture-questions-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:1.5rem; }
+        .degree9-unit1-lesson3-lecture-questions-grid .degree9-unit1-lesson3-lecture-card { margin-bottom:0; }
+        @media (max-width:900px) { .degree9-unit1-lesson3-lecture-questions-grid { grid-template-columns:1fr; } }
+
+        body.dark .degree9-unit1-lesson3-lecture-answer-key { background-color:#26221b; color:#e8dfd2; }
+        body.dark .degree9-unit1-lesson3-lecture-blank-select, body.dark .degree9-unit1-lesson3-lecture-text-input { background-color:#333028; color:#e8dfd2; }
+
+        .degree9-unit1-lesson3-lecture-resource-list { list-style-type:none; padding-left:0; text-align:center; }
+        .degree9-unit1-lesson3-lecture-image { max-width:100%; height:auto; border-radius: var(--degree9-unit1-lesson3-lecture-radius-sm); margin:1rem 0; box-shadow: var(--degree9-unit1-lesson3-lecture-shadow); }
+        .degree9-unit1-lesson3-lecture-image-grid { display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; }
+        .degree9-unit1-lesson3-lecture-image-grid img { max-width:45%; height:auto; }
+        @media (max-width:600px) { .degree9-unit1-lesson3-lecture-image-grid img { max-width:100%; } }
+
+        .degree9-unit1-lesson3-lecture-two-col { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin:1.5rem 0; }
+        @media (max-width:800px) { .degree9-unit1-lesson3-lecture-two-col { grid-template-columns:1fr; } }
+
+        .degree9-unit1-lesson3-lecture-breadcrumb {
+            margin-bottom:1.5rem;
+            color: var(--degree9-unit1-lesson3-lecture-text-light);
+            background: var(--degree9-unit1-lesson3-lecture-card);
+            border-bottom:1px solid var(--degree9-unit1-lesson3-lecture-border);
+            padding:0.5rem 1.5rem;
+        }
+        .degree9-unit1-lesson3-lecture-breadcrumb a {
+            font-weight:600;
+            color: var(--degree9-unit1-lesson3-lecture-accent);
+            text-decoration:none;
+        }
+        .degree9-unit1-lesson3-lecture-breadcrumb a:hover { text-decoration:underline; }
+
+        .degree9-unit1-lesson3-lecture-footer-nav {
+            margin-top:2rem;
+            display:flex;
+            justify-content:space-between;
+            flex-wrap:wrap;
+            background: var(--degree9-unit1-lesson3-lecture-card);
+            border-top:1px solid var(--degree9-unit1-lesson3-lecture-border);
+            padding:0.5rem 1.5rem;
+        }
+        .degree9-unit1-lesson3-lecture-footer-nav a {
+            font-weight:600;
+            color: var(--degree9-unit1-lesson3-lecture-accent);
+            text-decoration:none;
+        }
+        .degree9-unit1-lesson3-lecture-footer-nav a:hover { text-decoration:underline; }
+    </style>
+</head>
+<body>
+    <div id="toast-container"></div>
+    <button id="signInBtn" style="display:none"></button>
+
+    <div id="main-content" class="degree9-unit1-lesson3-lecture-container">
+        <p class="degree9-unit1-lesson3-lecture-breadcrumb">
+            <a href="degree9.html" data-i18n="back_link">← Retour au programme</a>
+            › <strong data-i18n="current_lesson">Mon premier dessin</strong>
+        </p>
+
+        <div class="degree9-unit1-lesson3-lecture-header">
+            <span class="degree9-unit1-lesson3-lecture-badge" data-i18n="lesson_badge">📖 Lecture · Leçon 3</span>
+            <h1 data-i18n="lesson_title">Mon premier dessin</h1>
+            <div class="degree9-unit1-lesson3-lecture-meta">
+                <span data-i18n="lesson_duration">⏱️ 45 minutes</span>
+                <span data-i18n="lesson_meta">📖 Lisez le texte puis répondez aux questions</span>
+            </div>
+        </div>
+
+        <!-- Audio player for the text -->
+        <div class="degree9-unit1-lesson3-lecture-audio-player" id="audioPlayer">
+            <span class="degree9-unit1-lesson3-lecture-audio-label" data-i18n="audio_label">🎧 Écoute du texte</span>
+            <button class="degree9-unit1-lesson3-lecture-play-btn" id="playBtn" aria-label="Lecture">▶</button>
+            <div class="degree9-unit1-lesson3-lecture-progress-area">
+                <div class="degree9-unit1-lesson3-lecture-progress-bar" id="progressBar">
+                    <div class="degree9-unit1-lesson3-lecture-progress-fill" id="progressFill"></div>
+                </div>
+                <div class="degree9-unit1-lesson3-lecture-time-info">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+            <div class="degree9-unit1-lesson3-lecture-speed-selector" id="speedSelector">
+                <button class="degree9-unit1-lesson3-lecture-speed-btn" data-speed="0.75">0.75x</button>
+                <button class="degree9-unit1-lesson3-lecture-speed-btn active" data-speed="1">1x</button>
+                <button class="degree9-unit1-lesson3-lecture-speed-btn" data-speed="1.25">1.25x</button>
+                <button class="degree9-unit1-lesson3-lecture-speed-btn" data-speed="1.5">1.5x</button>
+            </div>
+        </div>
+
+        <!-- Text section -->
+        <section class="degree9-unit1-lesson3-lecture-section">
+            <h2 data-i18n="text_heading">📄 Texte : Mon premier dessin</h2>
+            <div class="degree9-unit1-lesson3-lecture-card">
+                <p data-i18n="text_intro">Les enfants doués dans les domaines artistiques, littéraires ou autres sont-ils toujours encouragés par les adultes ? Lisez le texte suivant et vous aurez des éléments de réponse à cette question.</p>
+                <div class="degree9-unit1-lesson3-lecture-text-card">
+                    <p data-i18n="text_para1">Lorsque j'avais six ans j'ai vu, une fois, une magnifique image, dans un livre sur la Forêt Vierge qui s'appelait « Histoires Vécues ». Ça représentait un serpent boa qui avalait un fauve. Voilà la copie du dessin.</p>
+                    <img class="degree9-unit1-lesson3-lecture-image" src="assets9/degree9/unit1/lesson3/image1.png" alt="Boa avalant un fauve" data-i18n="img1_alt">
+                    <p data-i18n="text_para2">On disait dans le livre : « Les serpents boas avalent leur proie tout entière, sans la mâcher. Ensuite ils ne peuvent plus bouger et ils dorment pendant les six mois de leur digestion ».</p>
+                    <p data-i18n="text_para3">J'ai alors beaucoup réfléchi sur les aventures de la jungle et, à mon tour, j'ai réussi, avec un crayon de couleur, à tracer mon premier dessin. Mon dessin numéro 1. Il était comme ça :</p>
+                    <img class="degree9-unit1-lesson3-lecture-image" src="assets9/degree9/unit1/lesson3/image2.png" alt="Dessin numéro 1" data-i18n="img2_alt">
+                    <p data-i18n="text_para4">J'ai montré mon chef-d'œuvre aux grandes personnes et je leur ai demandé si mon dessin leur faisait peur. Elles m'ont répondu : - Pourquoi un chapeau ferait-il peur ?</p>
+                    <p data-i18n="text_para5">Mon dessin ne représentait pas un chapeau. Il représentait un serpent boa qui digérait un éléphant. J'ai alors dessiné l'intérieur du serpent boa, afin que les grandes personnes puissent comprendre. Elles ont toujours besoin d'explications. Mon dessin numéro 2 était comme ça :</p>
+                    <img class="degree9-unit1-lesson3-lecture-image" src="assets9/degree9/unit1/lesson3/image3.png" alt="Dessin numéro 2" data-i18n="img3_alt">
+                    <p data-i18n="text_para6">Les grandes personnes m'ont conseillé de laisser de côté les dessins de serpents boas ouverts ou fermés, et de m'intéresser plutôt à la géographie, à l'histoire, au calcul et à la grammaire. C'est ainsi que j'ai abandonné, à l'âge de six ans, une magnifique carrière de peintre.</p>
+                    <p data-i18n="text_para7">J'avais été découragé par l'insuccès de mon dessin numéro 1 et de mon dessin numéro 2. Les grandes personnes ne comprennent jamais rien toutes seules, et c'est fatigant, pour les enfants, de toujours leur donner des explications.</p>
+                    <div class="degree9-unit1-lesson3-lecture-author" data-i18n="text_author">— Antoine de Saint-Exupéry, Le Petit Prince (1943)</div>
+                </div>
+                <p data-i18n="vocab_title"><strong>Vocabulaire :</strong></p>
+                <p data-i18n="vocab1">1- Le lion, le tigre et la panthère sont des fauves.</p>
+                <p data-i18n="vocab2">2- La transformation des aliments dans l'estomac avant leur assimilation.</p>
+                <p data-i18n="vocab3">3- L'échec.</p>
+            </div>
+        </section>
+
+        <!-- Author presentation -->
+        <div class="degree9-unit1-lesson3-lecture-author-presentation">
+            <h3 data-i18n="author_title">👤 Antoine de Saint-Exupéry (1900-1944)</h3>
+            <p data-i18n="author_bio">Il a mené simultanément une carrière d'aviateur et d'écrivain. Il a disparu au cours d'une mission pendant la Seconde Guerre mondiale. Ses principaux ouvrages sont <em>Vol de nuit</em> (1931), <em>Le Petit Prince</em> (1943) et <em>Citadelle</em> (1948).</p>
+        </div>
+
+        <!-- Analysis questions -->
+        <section class="degree9-unit1-lesson3-lecture-section">
+            <h2 data-i18n="analysis_heading">🔍 Nous analysons le texte</h2>
+            <div class="degree9-unit1-lesson3-lecture-questions-grid">
+                <!-- Q1 -->
+                <div class="degree9-unit1-lesson3-lecture-card">
+                    <h3 data-i18n="q1_title">1. En quoi la lecture du livre sur la Forêt Vierge a-t-elle marqué le narrateur ?</h3>
+                    <div class="degree9-unit1-lesson3-lecture-options">
+                        <label><input type="radio" name="q1" value="a"> <span data-i18n="q1_a">Elle lui a donné l'idée de son premier dessin.</span></label>
+                        <label><input type="radio" name="q1" value="b"> <span data-i18n="q1_b">Elle lui a fait peur.</span></label>
+                        <label><input type="radio" name="q1" value="c"> <span data-i18n="q1_c">Elle l'a incité à devenir écrivain.</span></label>
+                    </div>
+                    <button class="degree9-unit1-lesson3-lecture-btn" onclick="checkMCQ('q1', 'a', 'q1Key', 'q1Feedback')" data-i18n="check_answers">🔍 Vérifier</button>
+                    <div id="q1Key" class="degree9-unit1-lesson3-lecture-answer-key"></div>
+                    <div id="q1Feedback" class="degree9-unit1-lesson3-lecture-feedback"></div>
+                    <div class="degree9-unit1-lesson3-lecture-self-assess">
+                        <span data-i18n="self_assess_question">Ma réponse est :</span>
+                        <label><input type="radio" name="self_q1" value="correct" data-i18n="self_correct"> Correcte</label>
+                        <label><input type="radio" name="self_q1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                        <label><input type="radio" name="self_q1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    </div>
+                </div>
+                <!-- Q2 -->
+                <div class="degree9-unit1-lesson3-lecture-card">
+                    <h3 data-i18n="q2_title">2. Quels sont les deux dessins qu'il a réalisés ? Que représentent-ils selon lui ?</h3>
+                    <div class="degree9-unit1-lesson3-lecture-options">
+                        <label><input type="radio" name="q2" value="a"> <span data-i18n="q2_a">Un chapeau et un serpent.</span></label>
+                        <label><input type="radio" name="q2" value="b"> <span data-i18n="q2_b">Un boa avalant un fauve et l'intérieur du boa digérant un éléphant.</span></label>
+                        <label><input type="radio" name="q2" value="c"> <span data-i18n="q2_c">Une forêt vierge et un éléphant.</span></label>
+                    </div>
+                    <button class="degree9-unit1-lesson3-lecture-btn" onclick="checkMCQ('q2', 'b', 'q2Key', 'q2Feedback')" data-i18n="check_answers">🔍 Vérifier</button>
+                    <div id="q2Key" class="degree9-unit1-lesson3-lecture-answer-key"></div>
+                    <div id="q2Feedback" class="degree9-unit1-lesson3-lecture-feedback"></div>
+                    <div class="degree9-unit1-lesson3-lecture-self-assess">
+                        <span data-i18n="self_assess_question">Ma réponse est :</span>
+                        <label><input type="radio" name="self_q2" value="correct" data-i18n="self_correct"> Correcte</label>
+                        <label><input type="radio" name="self_q2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                        <label><input type="radio" name="self_q2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    </div>
+                </div>
+                <!-- Q3 -->
+                <div class="degree9-unit1-lesson3-lecture-card">
+                    <h3 data-i18n="q3_title">3. Quelle réaction espérait-il provoquer en montrant son premier dessin aux « grandes personnes » ?</h3>
+                    <div class="degree9-unit1-lesson3-lecture-options">
+                        <label><input type="radio" name="q3" value="a"> <span data-i18n="q3_a">De l'admiration.</span></label>
+                        <label><input type="radio" name="q3" value="b"> <span data-i18n="q3_b">De la peur.</span></label>
+                        <label><input type="radio" name="q3" value="c"> <span data-i18n="q3_c">Du rire.</span></label>
+                    </div>
+                    <button class="degree9-unit1-lesson3-lecture-btn" onclick="checkMCQ('q3', 'b', 'q3Key', 'q3Feedback')" data-i18n="check_answers">🔍 Vérifier</button>
+                    <div id="q3Key" class="degree9-unit1-lesson3-lecture-answer-key"></div>
+                    <div id="q3Feedback" class="degree9-unit1-lesson3-lecture-feedback"></div>
+                    <div class="degree9-unit1-lesson3-lecture-self-assess">
+                        <span data-i18n="self_assess_question">Ma réponse est :</span>
+                        <label><input type="radio" name="self_q3" value="correct" data-i18n="self_correct"> Correcte</label>
+                        <label><input type="radio" name="self_q3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                        <label><input type="radio" name="self_q3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    </div>
+                </div>
+                <!-- Q4 -->
+                <div class="degree9-unit1-lesson3-lecture-card">
+                    <h3 data-i18n="q4_title">4. Dans quel but l'enfant a-t-il exécuté son deuxième dessin ?</h3>
+                    <div class="degree9-unit1-lesson3-lecture-options">
+                        <label><input type="radio" name="q4" value="a"> <span data-i18n="q4_a">Pour montrer l'intérieur du boa et aider les adultes à comprendre.</span></label>
+                        <label><input type="radio" name="q4" value="b"> <span data-i18n="q4_b">Pour faire un portrait.</span></label>
+                        <label><input type="radio" name="q4" value="c"> <span data-i18n="q4_c">Pour dessiner un chapeau.</span></label>
+                    </div>
+                    <button class="degree9-unit1-lesson3-lecture-btn" onclick="checkMCQ('q4', 'a', 'q4Key', 'q4Feedback')" data-i18n="check_answers">🔍 Vérifier</button>
+                    <div id="q4Key" class="degree9-unit1-lesson3-lecture-answer-key"></div>
+                    <div id="q4Feedback" class="degree9-unit1-lesson3-lecture-feedback"></div>
+                    <div class="degree9-unit1-lesson3-lecture-self-assess">
+                        <span data-i18n="self_assess_question">Ma réponse est :</span>
+                        <label><input type="radio" name="self_q4" value="correct" data-i18n="self_correct"> Correcte</label>
+                        <label><input type="radio" name="self_q4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                        <label><input type="radio" name="self_q4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    </div>
+                </div>
+                <!-- Q5 -->
+                <div class="degree9-unit1-lesson3-lecture-card">
+                    <h3 data-i18n="q5_title">5. Quelle a été la réaction des adultes quand il le leur a montré ?</h3>
+                    <div class="degree9-unit1-lesson3-lecture-options">
+                        <label><input type="radio" name="q5" value="a"> <span data-i18n="q5_a">Ils ont été effrayés.</span></label>
+                        <label><input type="radio" name="q5" value="b"> <span data-i18n="q5_b">Ils lui ont conseillé de se concentrer sur les matières scolaires.</span></label>
+                        <label><input type="radio" name="q5" value="c"> <span data-i18n="q5_c">Ils ont beaucoup ri.</span></label>
+                    </div>
+                    <button class="degree9-unit1-lesson3-lecture-btn" onclick="checkMCQ('q5', 'b', 'q5Key', 'q5Feedback')" data-i18n="check_answers">🔍 Vérifier</button>
+                    <div id="q5Key" class="degree9-unit1-lesson3-lecture-answer-key"></div>
+                    <div id="q5Feedback" class="degree9-unit1-lesson3-lecture-feedback"></div>
+                    <div class="degree9-unit1-lesson3-lecture-self-assess">
+                        <span data-i18n="self_assess_question">Ma réponse est :</span>
+                        <label><input type="radio" name="self_q5" value="correct" data-i18n="self_correct"> Correcte</label>
+                        <label><input type="radio" name="self_q5" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                        <label><input type="radio" name="self_q5" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    </div>
+                </div>
+                <!-- Q6 -->
+                <div class="degree9-unit1-lesson3-lecture-card">
+                    <h3 data-i18n="q6_title">6. De quoi cet enfant paraît-il accuser les adultes ?</h3>
+                    <div class="degree9-unit1-lesson3-lecture-options">
+                        <label><input type="radio" name="q6" value="a"> <span data-i18n="q6_a">D'être trop sévères.</span></label>
+                        <label><input type="radio" name="q6" value="b"> <span data-i18n="q6_b">De ne jamais rien comprendre par eux-mêmes.</span></label>
+                        <label><input type="radio" name="q6" value="c"> <span data-i18n="q6_c">De ne pas aimer les enfants.</span></label>
+                    </div>
+                    <button class="degree9-unit1-lesson3-lecture-btn" onclick="checkMCQ('q6', 'b', 'q6Key', 'q6Feedback')" data-i18n="check_answers">🔍 Vérifier</button>
+                    <div id="q6Key" class="degree9-unit1-lesson3-lecture-answer-key"></div>
+                    <div id="q6Feedback" class="degree9-unit1-lesson3-lecture-feedback"></div>
+                    <div class="degree9-unit1-lesson3-lecture-self-assess">
+                        <span data-i18n="self_assess_question">Ma réponse est :</span>
+                        <label><input type="radio" name="self_q6" value="correct" data-i18n="self_correct"> Correcte</label>
+                        <label><input type="radio" name="self_q6" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                        <label><input type="radio" name="self_q6" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Appreciation question -->
+        <section class="degree9-unit1-lesson3-lecture-section">
+            <h2 data-i18n="appreciation_heading">💬 Nous apprécions le texte</h2>
+            <div class="degree9-unit1-lesson3-lecture-card">
+                <h3 data-i18n="appreciation_title">Selon vous, la fin du texte est-elle triste ou amusante ? Pourquoi ?</h3>
+                <textarea class="degree9-unit1-lesson3-lecture-text-input" rows="4" placeholder="Votre réponse..." data-i18n="appreciation_placeholder"></textarea>
+				<button class="degree9-unit1-lesson3-lecture-btn" onclick="showAppreciationExample()" data-i18n="show_example">💡 Voir un exemple de réponse</button>
+<div id="appreciationKey" class="degree9-unit1-lesson3-lecture-answer-key"></div>
+                <div class="degree9-unit1-lesson3-lecture-self-assess">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_appreciation" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_appreciation" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                    <label><input type="radio" name="self_appreciation" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vocabulary exercises with variety -->
+        <section class="degree9-unit1-lesson3-lecture-section">
+            <h2 data-i18n="vocab_exercises_heading">✍️ Nous enrichissons notre vocabulaire</h2>
+            <div class="degree9-unit1-lesson3-lecture-two-col">
+                <!-- Vocab exercise 1: Choose the correct word (multiple choice) -->
+                <div class="degree9-unit1-lesson3-lecture-card">
+                    <h3 data-i18n="vocab_ex1_title">1. « Compréhensif » ou « Compréhensible » ?</h3>
+                    <p data-i18n="vocab_ex1_instruction">Choisissez le mot qui convient dans chaque phrase.</p>
+                    <div id="vocabEx1Container"></div>
+                    <button class="degree9-unit1-lesson3-lecture-btn" onclick="checkVocabEx1()" data-i18n="check_answers">🔍 Vérifier</button>
+                    <div id="vocabEx1Key" class="degree9-unit1-lesson3-lecture-answer-key"></div>
+                    <div id="vocabEx1Feedback" class="degree9-unit1-lesson3-lecture-feedback"></div>
+                    <div class="degree9-unit1-lesson3-lecture-self-assess">
+                        <span data-i18n="self_assess_question">Ma réponse est :</span>
+                        <label><input type="radio" name="self_vocab1" value="correct" data-i18n="self_correct"> Correcte</label>
+                        <label><input type="radio" name="self_vocab1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                        <label><input type="radio" name="self_vocab1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    </div>
+                </div>
+
+                <!-- Vocab exercise 2: Fill with génie/talent/dons (selects) -->
+                <div class="degree9-unit1-lesson3-lecture-card">
+                    <h3 data-i18n="vocab_ex2_title">2. Complétez avec « du génie », « du talent », « des dons »</h3>
+                    <p data-i18n="vocab_ex2_instruction">Choisissez l'expression correcte.</p>
+                    <p><strong>a)</strong> Ma cousine a <select class="degree9-unit1-lesson3-lecture-blank-select" id="vocab2a"><option value=""></option><option value="des dons">des dons</option><option value="du talent">du talent</option><option value="du génie">du génie</option></select>.</p>
+                    <p><strong>b)</strong> Mon camarade a <select class="degree9-unit1-lesson3-lecture-blank-select" id="vocab2b"><option value=""></option><option value="des dons">des dons</option><option value="du talent">du talent</option><option value="du génie">du génie</option></select> de poète.</p>
+                    <p><strong>c)</strong> Ce pianiste a vraiment <select class="degree9-unit1-lesson3-lecture-blank-select" id="vocab2c"><option value=""></option><option value="des dons">des dons</option><option value="du talent">du talent</option><option value="du génie">du génie</option></select>.</p>
+                    <button class="degree9-unit1-lesson3-lecture-btn" onclick="checkVocab2()" data-i18n="check_answers">🔍 Vérifier</button>
+                    <div id="vocab2Key" class="degree9-unit1-lesson3-lecture-answer-key"></div>
+                    <div id="vocab2Feedback" class="degree9-unit1-lesson3-lecture-feedback"></div>
+                    <div class="degree9-unit1-lesson3-lecture-self-assess">
+                        <span data-i18n="self_assess_question">Ma réponse est :</span>
+                        <label><input type="radio" name="self_vocab2" value="correct" data-i18n="self_correct"> Correcte</label>
+                        <label><input type="radio" name="self_vocab2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                        <label><input type="radio" name="self_vocab2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vocab exercise 3: Find adjectives and use in sentences (full width) -->
+            <div class="degree9-unit1-lesson3-lecture-card">
+                <h3 data-i18n="vocab_ex3_title">3. Trouvez les adjectifs correspondants et employez-les</h3>
+                <p data-i18n="vocab_ex3_instruction">Trouvez l'adjectif correspondant à chaque nom, puis utilisez-le dans une phrase.</p>
+                <div class="degree9-unit1-lesson3-lecture-two-col">
+                    <div>
+                        <p><strong>a)</strong> Le génie → <input type="text" class="degree9-unit1-lesson3-lecture-text-input" id="adj_genie" placeholder="adjectif..."></p>
+                        <p><strong>Phrase :</strong> <input type="text" class="degree9-unit1-lesson3-lecture-text-input" placeholder="Votre phrase..."></p>
+                    </div>
+                    <div>
+                        <p><strong>b)</strong> Le talent → <input type="text" class="degree9-unit1-lesson3-lecture-text-input" id="adj_talent" placeholder="adjectif..."></p>
+                        <p><strong>Phrase :</strong> <input type="text" class="degree9-unit1-lesson3-lecture-text-input" placeholder="Votre phrase..."></p>
+                    </div>
+                </div>
+				<button class="degree9-unit1-lesson3-lecture-btn" onclick="showVocabEx3Example()" data-i18n="show_example">💡 Voir la correction</button>
+<div id="vocabEx3Key" class="degree9-unit1-lesson3-lecture-answer-key"></div>
+                <div class="degree9-unit1-lesson3-lecture-self-assess">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_vocab3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_vocab3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                    <label><input type="radio" name="self_vocab3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional reading section -->
+        <section class="degree9-unit1-lesson3-lecture-section">
+            <h2 data-i18n="additional_reading_heading">📚 Nous complétons notre lecture</h2>
+            <div class="degree9-unit1-lesson3-lecture-card">
+                <ul style="list-style-type: disc; padding-left: 1.5rem;">
+                    <li data-i18n="add1">Le Petit Prince a été publié pour la première fois à New York en 1943.</li>
+                    <li data-i18n="add2">C'est l'auteur lui-même qui l'a illustré.</li>
+                    <li data-i18n="add3">Il existe plus de 160 traductions du Petit Prince.</li>
+                    <li data-i18n="add4">Il y a plusieurs adaptations de ce conte (Film soviétique en 1966, film américain en 1974, téléfilm allemand en 1990, dessins animés japonais en 1978, dessins animés américains en 1979, comédie musicale en 2002, opéra en 2003 ...).</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Score area -->
+        <div class="degree9-unit1-lesson3-lecture-score-area">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="degree9-unit1-lesson3-lecture-score-stats">
+                <div class="degree9-unit1-lesson3-lecture-score-stat"><span data-i18n="score_correct">Correct :</span> <span id="scoreCorrect">0</span></div>
+                <div class="degree9-unit1-lesson3-lecture-score-stat"><span data-i18n="score_partial">Partiel :</span> <span id="scorePartial">0</span></div>
+                <div class="degree9-unit1-lesson3-lecture-score-stat"><span data-i18n="score_incorrect">Incorrect :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="degree9-unit1-lesson3-lecture-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">10</span></div>
+            </div>
+            <div class="degree9-unit1-lesson3-lecture-score-actions">
+                <button id="saveResultsBtn" class="degree9-unit1-lesson3-lecture-btn" data-i18n="save_results">💾 Enregistrer mes résultats</button>
+                <button id="printBtn" class="degree9-unit1-lesson3-lecture-btn" style="background:#5c5344;" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+            </div>
+        </div>
+
+        <div class="degree9-unit1-lesson3-lecture-footer-nav">
+            <a href="degree9.html" data-i18n="footer_back">← Retour au programme</a>
+            <a href="degree9unit1lesson4.html" data-i18n="footer_next">Leçon suivante →</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script src="ed-french-ini.js"></script>
+
+    <!-- Translations (full) -->
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                lesson_title: "Leçon 3 – Mon premier dessin | Lecture",
+                lesson_badge: "📖 Lecture · Leçon 3",
+                lesson_duration: "⏱️ 45 minutes",
+                lesson_meta: "📖 Lisez le texte puis répondez aux questions",
+                back_link: "← Retour au programme",
+                current_lesson: "Mon premier dessin",
+                audio_label: "🎧 Écoute du texte",
+                text_heading: "📄 Texte : Mon premier dessin",
+                text_intro: "Les enfants doués dans les domaines artistiques, littéraires ou autres sont-ils toujours encouragés par les adultes ? Lisez le texte suivant et vous aurez des éléments de réponse à cette question.",
+                text_para1: "Lorsque j'avais six ans j'ai vu, une fois, une magnifique image, dans un livre sur la Forêt Vierge qui s'appelait « Histoires Vécues ». Ça représentait un serpent boa qui avalait un fauve. Voilà la copie du dessin.",
+                img1_alt: "Boa avalant un fauve",
+                text_para2: "On disait dans le livre : « Les serpents boas avalent leur proie tout entière, sans la mâcher. Ensuite ils ne peuvent plus bouger et ils dorment pendant les six mois de leur digestion ».",
+                text_para3: "J'ai alors beaucoup réfléchi sur les aventures de la jungle et, à mon tour, j'ai réussi, avec un crayon de couleur, à tracer mon premier dessin. Mon dessin numéro 1. Il était comme ça :",
+                img2_alt: "Dessin numéro 1",
+                text_para4: "J'ai montré mon chef-d'œuvre aux grandes personnes et je leur ai demandé si mon dessin leur faisait peur. Elles m'ont répondu : - Pourquoi un chapeau ferait-il peur ?",
+                text_para5: "Mon dessin ne représentait pas un chapeau. Il représentait un serpent boa qui digérait un éléphant. J'ai alors dessiné l'intérieur du serpent boa, afin que les grandes personnes puissent comprendre. Elles ont toujours besoin d'explications. Mon dessin numéro 2 était comme ça :",
+                img3_alt: "Dessin numéro 2",
+                text_para6: "Les grandes personnes m'ont conseillé de laisser de côté les dessins de serpents boas ouverts ou fermés, et de m'intéresser plutôt à la géographie, à l'histoire, au calcul et à la grammaire. C'est ainsi que j'ai abandonné, à l'âge de six ans, une magnifique carrière de peintre.",
+                text_para7: "J'avais été découragé par l'insuccès de mon dessin numéro 1 et de mon dessin numéro 2. Les grandes personnes ne comprennent jamais rien toutes seules, et c'est fatigant, pour les enfants, de toujours leur donner des explications.",
+                text_author: "— Antoine de Saint-Exupéry, Le Petit Prince (1943)",
+                vocab_title: "Vocabulaire :",
+                vocab1: "1- Le lion, le tigre et la panthère sont des fauves.",
+                vocab2: "2- La transformation des aliments dans l'estomac avant leur assimilation.",
+                vocab3: "3- L'échec.",
+                author_title: "👤 Antoine de Saint-Exupéry (1900-1944)",
+                author_bio: "Il a mené simultanément une carrière d'aviateur et d'écrivain. Il a disparu au cours d'une mission pendant la Seconde Guerre mondiale. Ses principaux ouvrages sont <em>Vol de nuit</em> (1931), <em>Le Petit Prince</em> (1943) et <em>Citadelle</em> (1948).",
+                analysis_heading: "🔍 Nous analysons le texte",
+                q1_title: "1. En quoi la lecture du livre sur la Forêt Vierge a-t-elle marqué le narrateur ?",
+                q1_a: "Elle lui a donné l'idée de son premier dessin.",
+                q1_b: "Elle lui a fait peur.",
+                q1_c: "Elle l'a incité à devenir écrivain.",
+                q2_title: "2. Quels sont les deux dessins qu'il a réalisés ? Que représentent-ils selon lui ?",
+                q2_a: "Un chapeau et un serpent.",
+                q2_b: "Un boa avalant un fauve et l'intérieur du boa digérant un éléphant.",
+                q2_c: "Une forêt vierge et un éléphant.",
+                q3_title: "3. Quelle réaction espérait-il provoquer en montrant son premier dessin aux « grandes personnes » ?",
+                q3_a: "De l'admiration.",
+                q3_b: "De la peur.",
+                q3_c: "Du rire.",
+                q4_title: "4. Dans quel but l'enfant a-t-il exécuté son deuxième dessin ?",
+                q4_a: "Pour montrer l'intérieur du boa et aider les adultes à comprendre.",
+                q4_b: "Pour faire un portrait.",
+                q4_c: "Pour dessiner un chapeau.",
+                q5_title: "5. Quelle a été la réaction des adultes quand il le leur a montré ?",
+                q5_a: "Ils ont été effrayés.",
+                q5_b: "Ils lui ont conseillé de se concentrer sur les matières scolaires.",
+                q5_c: "Ils ont beaucoup ri.",
+                q6_title: "6. De quoi cet enfant paraît-il accuser les adultes ?",
+                q6_a: "D'être trop sévères.",
+                q6_b: "De ne jamais rien comprendre par eux-mêmes.",
+                q6_c: "De ne pas aimer les enfants.",
+                check_answers: "🔍 Vérifier",
+                appreciation_heading: "💬 Nous apprécions le texte",
+                appreciation_title: "Selon vous, la fin du texte est-elle triste ou amusante ? Pourquoi ?",
+                appreciation_placeholder: "Votre réponse...",
+                vocab_exercises_heading: "✍️ Nous enrichissons notre vocabulaire",
+                vocab_ex1_title: "1. « Compréhensif » ou « Compréhensible » ?",
+                vocab_ex1_instruction: "Choisissez le mot qui convient dans chaque phrase.",
+                vocab_ex2_title: "2. Complétez avec « du génie », « du talent », « des dons »",
+                vocab_ex2_instruction: "Choisissez l'expression correcte.",
+                vocab_ex3_title: "3. Trouvez les adjectifs correspondants et employez-les",
+                vocab_ex3_instruction: "Trouvez l'adjectif correspondant à chaque nom, puis utilisez-le dans une phrase.",
+                additional_reading_heading: "📚 Nous complétons notre lecture",
+                add1: "Le Petit Prince a été publié pour la première fois à New York en 1943.",
+                add2: "C'est l'auteur lui-même qui l'a illustré.",
+                add3: "Il existe plus de 160 traductions du Petit Prince.",
+                add4: "Il y a plusieurs adaptations de ce conte (Film soviétique en 1966, film américain en 1974, téléfilm allemand en 1990, dessins animés japonais en 1978, dessins animés américains en 1979, comédie musicale en 2002, opéra en 2003 ...).",
+				show_example: "💡 Voir un exemple de réponse",
+                self_assess_question: "Ma réponse est :",
+                self_correct: "Correcte",
+                self_partial: "Partiellement correcte",
+                self_incorrect: "Incorrecte",
+                score_title: "📊 Votre auto‑évaluation",
+                score_correct: "Correct :",
+                score_partial: "Partiel :",
+                score_incorrect: "Incorrect :",
+                score_unanswered: "Sans réponse :",
+                save_results: "💾 Enregistrer mes résultats",
+                save_success: "Résultats enregistrés !",
+                save_error: "Erreur lors de l'enregistrement.",
+                print_pdf: "🖨️ Imprimer / PDF",
+                footer_back: "← Retour au programme",
+                footer_next: "Leçon suivante →",
+                ach_year_degree9: "9ème Année Primaire",
+                ach_module_unit1: "Unité 1",
+                toast_signin_required: "Connectez-vous pour enregistrer vos résultats.",
+                print_site_name: "Educational Dashboard – Français",
+                print_scholar_year: "9ème Année Primaire",
+                print_week: "Unité 1",
+                print_area: "Lecture",
+                print_footer_dev: "Développé par Mejri Ziad",
+                print_footer_date: "Imprimé le"
+            },
+            en: {
+                lesson_title: "Lesson 3 – My First Drawing | Reading",
+                lesson_badge: "📖 Reading · Lesson 3",
+                lesson_duration: "⏱️ 45 minutes",
+                lesson_meta: "📖 Read the text then answer the questions",
+                back_link: "← Back to program",
+                current_lesson: "My First Drawing",
+                audio_label: "🎧 Listen to the text",
+                text_heading: "📄 Text: My First Drawing",
+                text_intro: "Are gifted children in artistic, literary or other fields always encouraged by adults? Read the following text and you will find some answers.",
+                text_para1: "When I was six years old, I once saw a magnificent picture in a book about the Primeval Forest called 'True Stories'. It showed a boa constrictor swallowing a wild beast. Here is a copy of the drawing.",
+                img1_alt: "Boa swallowing a wild beast",
+                text_para2: "The book said: 'Boa constrictors swallow their prey whole, without chewing. Then they cannot move and they sleep during the six months of their digestion'.",
+                text_para3: "I thought a lot about jungle adventures and, in turn, I managed, with a colored pencil, to make my first drawing. My drawing number 1. It looked like this:",
+                img2_alt: "Drawing number 1",
+                text_para4: "I showed my masterpiece to the grown-ups and asked them if my drawing frightened them. They answered: 'Why would a hat be frightening?'",
+                text_para5: "My drawing was not a hat. It was a boa constrictor digesting an elephant. I then drew the inside of the boa so that the grown-ups could understand. They always need explanations. My drawing number 2 was like this:",
+                img3_alt: "Drawing number 2",
+                text_para6: "The grown-ups advised me to put aside drawings of open or closed boa constrictors and to interest myself in geography, history, arithmetic and grammar. That is how I abandoned, at the age of six, a magnificent career as a painter.",
+                text_para7: "I had been discouraged by the failure of my drawing number 1 and drawing number 2. Grown-ups never understand anything by themselves, and it is tiring for children to always have to give explanations.",
+                text_author: "— Antoine de Saint-Exupéry, The Little Prince (1943)",
+                vocab_title: "Vocabulary:",
+                vocab1: "1- The lion, tiger and panther are wild beasts.",
+                vocab2: "2- The transformation of food in the stomach before assimilation.",
+                vocab3: "3- Failure.",
+                author_title: "👤 Antoine de Saint-Exupéry (1900-1944)",
+                author_bio: "He simultaneously pursued careers as an aviator and a writer. He disappeared during a mission in World War II. His main works are <em>Night Flight</em> (1931), <em>The Little Prince</em> (1943) and <em>Citadelle</em> (1948).",
+                analysis_heading: "🔍 We analyze the text",
+                q1_title: "1. How did reading the book about the Primeval Forest mark the narrator?",
+                q1_a: "It gave him the idea for his first drawing.",
+                q1_b: "It frightened him.",
+                q1_c: "It inspired him to become a writer.",
+                q2_title: "2. What are the two drawings he made? What do they represent according to him?",
+                q2_a: "A hat and a snake.",
+                q2_b: "A boa swallowing a wild beast and the inside of the boa digesting an elephant.",
+                q2_c: "A primeval forest and an elephant.",
+                q3_title: "3. What reaction did he hope to provoke by showing his first drawing to the 'grown-ups'?",
+                q3_a: "Admiration.",
+                q3_b: "Fear.",
+                q3_c: "Laughter.",
+                q4_title: "4. For what purpose did the child make his second drawing?",
+                q4_a: "To show the inside of the boa and help adults understand.",
+                q4_b: "To make a portrait.",
+                q4_c: "To draw a hat.",
+                q5_title: "5. What was the adults' reaction when he showed it to them?",
+                q5_a: "They were frightened.",
+                q5_b: "They advised him to focus on school subjects.",
+                q5_c: "They laughed a lot.",
+                q6_title: "6. What does the child seem to accuse the adults of?",
+                q6_a: "Being too strict.",
+                q6_b: "Never understanding anything by themselves.",
+                q6_c: "Not liking children.",
+                check_answers: "🔍 Check",
+                appreciation_heading: "💬 We appreciate the text",
+                appreciation_title: "In your opinion, is the ending of the text sad or funny? Why?",
+                appreciation_placeholder: "Your answer...",
+                vocab_exercises_heading: "✍️ We enrich our vocabulary",
+                vocab_ex1_title: "1. 'Understanding' or 'Understandable'?",
+                vocab_ex1_instruction: "Choose the correct word in each sentence.",
+                vocab_ex2_title: "2. Complete with 'genius', 'talent', 'gifts'",
+                vocab_ex2_instruction: "Choose the correct expression.",
+                vocab_ex3_title: "3. Find the corresponding adjectives and use them",
+                vocab_ex3_instruction: "Find the adjective corresponding to each noun, then use it in a sentence.",
+                additional_reading_heading: "📚 We complete our reading",
+                add1: "The Little Prince was first published in New York in 1943.",
+                add2: "It was illustrated by the author himself.",
+                add3: "There are more than 160 translations of The Little Prince.",
+                add4: "There are several adaptations of this tale (Soviet film in 1966, American film in 1974, German TV film in 1990, Japanese animated series in 1978, American animated series in 1979, musical in 2002, opera in 2003 ...).",
+				show_example: "💡 See an example answer",
+                self_assess_question: "My answer is:",
+                self_correct: "Correct",
+                self_partial: "Partially correct",
+                self_incorrect: "Incorrect",
+                score_title: "📊 Your self‑assessment",
+                score_correct: "Correct:",
+                score_partial: "Partial:",
+                score_incorrect: "Incorrect:",
+                score_unanswered: "Unanswered:",
+                save_results: "💾 Save my results",
+                save_success: "Results saved!",
+                save_error: "Error saving results.",
+                print_pdf: "🖨️ Print / PDF",
+                footer_back: "← Back to program",
+                footer_next: "Next lesson →",
+                ach_year_degree9: "9th Grade Primary",
+                ach_module_unit1: "Unit 1",
+                toast_signin_required: "Sign in to save your results.",
+                print_site_name: "Educational Dashboard – French",
+                print_scholar_year: "9th Grade Primary",
+                print_week: "Unit 1",
+                print_area: "Reading",
+                print_footer_dev: "Developed by Mejri Ziad",
+                print_footer_date: "Printed on"
+            },
+            ar: {
+                lesson_title: "الدرس 3 – رسمتي الأولى | قراءة",
+                lesson_badge: "📖 قراءة · الدرس 3",
+                lesson_duration: "⏱️ 45 دقيقة",
+                lesson_meta: "📖 اقرأ النص ثم أجب عن الأسئلة",
+                back_link: "← العودة إلى البرنامج",
+                current_lesson: "رسمتي الأولى",
+                audio_label: "🎧 استمع إلى النص",
+                text_heading: "📄 النص: رسمتي الأولى",
+                text_intro: "هل الأطفال الموهوبون في المجالات الفنية أو الأدبية أو غيرها مشجعون دائمًا من قبل الكبار؟ اقرأ النص التالي وستجد عناصر للإجابة عن هذا السؤال.",
+                text_para1: "عندما كنت في السادسة من عمري، رأيت مرة صورة رائعة في كتاب عن الغابة العذراء يسمى 'قصص حقيقية'. كانت تمثل ثعبان بوا يبتلع وحشًا. هذه نسخة من الرسم.",
+                img1_alt: "بوا يبتلع وحشًا",
+                text_para2: "كان مكتوبًا في الكتاب: 'ثعابين البوا تبتلع فريستها كاملة دون مضغ. ثم لا تستطيع الحركة وتنام خلال الأشهر الستة من الهضم'.",
+                text_para3: "فكرت كثيرًا في مغامرات الغابة، وبدوري تمكنت، بقلم ملون، من رسم رسمتي الأولى. رسمتي رقم 1. كانت هكذا:",
+                img2_alt: "الرسم رقم 1",
+                text_para4: "عرضت تحفتي على الكبار وسألتهم إذا كانت رسمتي تخيفهم. أجابوني: 'لماذا تخيف القبعة؟'",
+                text_para5: "لم تكن رسمتي قبعة. كانت تمثل ثعبان بوا يهضم فيلًا. فرسمت بعد ذلك داخل الثعبان حتى يفهم الكبار. هم دائمًا بحاجة إلى تفسيرات. رسمتي رقم 2 كانت هكذا:",
+                img3_alt: "الرسم رقم 2",
+                text_para6: "نصحني الكبار بترك رسومات ثعابين البوا المفتوحة أو المغلقة، والاهتمام بدلاً من ذلك بالجغرافيا والتاريخ والحساب والقواعد. هكذا تخليت، في السادسة من عمري، عن مسيرة رائعة كرسام.",
+                text_para7: "لقد أصابني الإحباط بسبب فشل رسمتي رقم 1 ورسمتي رقم 2. الكبار لا يفهمون أبدًا شيئًا بأنفسهم، ومن المتعب للأطفال أن يقدموا لهم دائمًا تفسيرات.",
+                text_author: "— أنطوان دو سانت إيكسوبيري، الأمير الصغير (1943)",
+                vocab_title: "المفردات:",
+                vocab1: "1- الأسد والنمر والفهد وحوش.",
+                vocab2: "2- تحول الغذاء في المعدة قبل امتصاصه.",
+                vocab3: "3- الفشل.",
+                author_title: "👤 أنطوان دو سانت إيكسوبيري (1900-1944)",
+                author_bio: "جمع بين مهنة الطيار والكاتب. اختفى خلال مهمة في الحرب العالمية الثانية. من أهم مؤلفاته <em>طيران الليل</em> (1931)، <em>الأمير الصغير</em> (1943) و<em>القلعة</em> (1948).",
+                analysis_heading: "🔍 نحلل النص",
+                q1_title: "1. كيف أثرت قراءة الكتاب عن الغابة العذراء على الراوي؟",
+                q1_a: "أعطته فكرة رسمه الأول.",
+                q1_b: "أخافته.",
+                q1_c: "ألهمته ليصبح كاتبًا.",
+                q2_title: "2. ما هما الرسمان اللذان رسمهما؟ ماذا يمثلان حسب رأيه؟",
+                q2_a: "قبعة وثعبان.",
+                q2_b: "بوا يبتلع وحشًا وداخل البوا يهضم فيلًا.",
+                q2_c: "غابة عذراء وفيل.",
+                q3_title: "3. ما رد الفعل الذي كان يأمل إثارةه بعرض رسمه الأول على 'الكبار'؟",
+                q3_a: "الإعجاب.",
+                q3_b: "الخوف.",
+                q3_c: "الضحك.",
+                q4_title: "4. لأي غرض رسم الطفل رسمه الثاني؟",
+                q4_a: "لإظهار داخل البوا ومساعدة الكبار على الفهم.",
+                q4_b: "لرسم صورة شخصية.",
+                q4_c: "لرسم قبعة.",
+                q5_title: "5. ما كان رد فعل الكبار عندما عرضه عليهم؟",
+                q5_a: "خافوا.",
+                q5_b: "نصحوه بالتركيز على المواد الدراسية.",
+                q5_c: "ضحكوا كثيرًا.",
+                q6_title: "6. بماذا يبدو أن الطفل يتهم الكبار؟",
+                q6_a: "بأنهم صارمون جدًا.",
+                q6_b: "بأنهم لا يفهمون شيئًا بأنفسهم أبدًا.",
+                q6_c: "بأنهم لا يحبون الأطفال.",
+                check_answers: "🔍 تحقق",
+                appreciation_heading: "💬 نقدر النص",
+                appreciation_title: "برأيك، هل نهاية النص حزينة أم مضحكة؟ لماذا؟",
+                appreciation_placeholder: "إجابتك...",
+                vocab_exercises_heading: "✍️ نثري مفرداتنا",
+                vocab_ex1_title: "1. 'متفهم' أم 'مفهوم'؟",
+                vocab_ex1_instruction: "اختر الكلمة المناسبة في كل جملة.",
+                vocab_ex2_title: "2. أكمل بـ 'عبقرية'، 'موهبة'، 'مواهب'",
+                vocab_ex2_instruction: "اختر التعبير الصحيح.",
+                vocab_ex3_title: "3. ابحث عن الصفات المقابلة واستخدمها",
+                vocab_ex3_instruction: "ابحث عن الصفة المقابلة لكل اسم، ثم استخدمها في جملة.",
+                additional_reading_heading: "📚 نكمل قراءتنا",
+                add1: "نُشر الأمير الصغير لأول مرة في نيويورك عام 1943.",
+                add2: "الرسوم من صنع المؤلف نفسه.",
+                add3: "توجد أكثر من 160 ترجمة للأمير الصغير.",
+                add4: "توجد عدة اقتباسات لهذه الحكاية (فيلم سوفيتي 1966، فيلم أمريكي 1974، فيلم تلفزيوني ألماني 1990، رسوم متحركة يابانية 1978، رسوم متحركة أمريكية 1979، مسرحية غنائية 2002، أوبرا 2003 ...).",
+				show_example: "💡 عرض مثال للإجابة",
+                self_assess_question: "جوابي هو:",
+                self_correct: "صحيح",
+                self_partial: "صحيح جزئيًا",
+                self_incorrect: "خاطئ",
+                score_title: "📊 تقييمك الذاتي",
+                score_correct: "صحيح:",
+                score_partial: "جزئي:",
+                score_incorrect: "خاطئ:",
+                score_unanswered: "بدون إجابة:",
+                save_results: "💾 حفظ نتائجي",
+                save_success: "تم حفظ النتائج!",
+                save_error: "خطأ في الحفظ.",
+                print_pdf: "🖨️ طباعة / PDF",
+                footer_back: "← العودة إلى البرنامج",
+                footer_next: "الدرس الموالي ←",
+                ach_year_degree9: "السنة التاسعة ابتدائي",
+                ach_module_unit1: "الوحدة الأولى",
+                toast_signin_required: "سجّل الدخول لحفظ نتائجك.",
+                print_site_name: "لوحة التحكم التعليمية – الفرنسية",
+                print_scholar_year: "السنة التاسعة ابتدائي",
+                print_week: "الوحدة 1",
+                print_area: "قراءة",
+                print_footer_dev: "طوّر بواسطة ماجري زياد",
+                print_footer_date: "طُبع في"
+            }
+        });
+        (function() {
+            var container = document.getElementById('main-content');
+            if (container && typeof App.makeBilingual === 'function') App.makeBilingual(container);
+        })();
+    </script>
+
+    <!-- Direct translation fix -->
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+
+    <!-- Init, audio, exercise logic, scoring, save, print -->
+    <script>
+        (function() {
+            // Audio player
+            const audioSrc = 'assets9/degree9/unit1/lesson3/mon_premier_dessin.mp3';
+            const audio = new Audio(audioSrc);
+            const playBtn = document.getElementById('playBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const speedBtns = document.querySelectorAll('.degree9-unit1-lesson3-lecture-speed-btn');
+
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+
+            audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
+            audio.addEventListener('timeupdate', () => {
+                const percent = (audio.currentTime / audio.duration) * 100 || 0;
+                progressFill.style.width = percent + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            });
+            audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) { audio.play().catch(()=>{}); playBtn.textContent = '⏸'; }
+                else { audio.pause(); playBtn.textContent = '▶'; }
+            });
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const seekTime = (clickX / width) * audio.duration;
+                audio.currentTime = seekTime;
+            });
+            speedBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    speedBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    audio.playbackRate = parseFloat(btn.dataset.speed);
+                });
+            });
+
+            // Auth helper
+            async function requireAuth() {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return false;
+                }
+                return true;
+            }
+
+            // MCQ check
+            window.checkMCQ = async function(qName, correctVal, keyId, fbId) {
+                if (!await requireAuth()) return;
+                const selected = document.querySelector(`input[name="${qName}"]:checked`);
+                const isCorrect = selected && selected.value === correctVal;
+                const keyEl = document.getElementById(keyId);
+                const fbEl = document.getElementById(fbId);
+                if (keyEl) {
+                    keyEl.innerHTML = isCorrect ? '<strong>Correction :</strong> ✓' : '<strong>Correction :</strong> ' + getCorrectText(qName);
+                    keyEl.classList.add('visible');
+                }
+                if (fbEl) {
+                    fbEl.textContent = isCorrect ? '✅ Correct !' : '❌ Incorrect.';
+                    fbEl.className = 'degree9-unit1-lesson3-lecture-feedback ' + (isCorrect ? 'correct' : 'wrong');
+                }
+            };
+            function getCorrectText(q) {
+                const map = {
+                    q1: 'Elle lui a donné l\'idée de son premier dessin.',
+                    q2: 'Un boa avalant un fauve et l\'intérieur du boa digérant un éléphant.',
+                    q3: 'De la peur.',
+                    q4: 'Pour montrer l\'intérieur du boa et aider les adultes à comprendre.',
+                    q5: 'Ils lui ont conseillé de se concentrer sur les matières scolaires.',
+                    q6: 'De ne jamais rien comprendre par eux-mêmes.'
+                };
+                return map[q] || '';
+            }
+
+            // Vocab Ex1: multiple choice built dynamically
+            const vocabEx1Data = [
+                { sentence: "Ce professeur est très ___, il comprend les difficultés des élèves.", correct: "compréhensif", options: ["compréhensif", "compréhensible"] },
+                { sentence: "Son explication est ___, tout le monde a compris.", correct: "compréhensible", options: ["compréhensif", "compréhensible"] },
+                { sentence: "Elle a un comportement ___ envers les enfants.", correct: "compréhensif", options: ["compréhensif", "compréhensible"] },
+                { sentence: "Ce texte est facilement ___.", correct: "compréhensible", options: ["compréhensif", "compréhensible"] }
+            ];
+            const vocabEx1Container = document.getElementById('vocabEx1Container');
+            vocabEx1Data.forEach((item, i) => {
+                const div = document.createElement('div');
+                div.innerHTML = `<p><strong>${i+1}.</strong> ${item.sentence}</p>`;
+                const optDiv = document.createElement('div');
+                optDiv.className = 'degree9-unit1-lesson3-lecture-options';
+                item.options.forEach(opt => {
+                    optDiv.innerHTML += `<label><input type="radio" name="vocabEx1_${i}" value="${opt}"> ${opt}</label>`;
+                });
+                div.appendChild(optDiv);
+                vocabEx1Container.appendChild(div);
+            });
+
+            window.checkVocabEx1 = async function() {
+                if (!await requireAuth()) return;
+                let allCorrect = true, someCorrect = false;
+                vocabEx1Data.forEach((item, i) => {
+                    const selected = document.querySelector(`input[name="vocabEx1_${i}"]:checked`);
+                    if (selected && selected.value === item.correct) someCorrect = true;
+                    else allCorrect = false;
+                });
+                const isCorrect = allCorrect;
+                document.getElementById('vocabEx1Key').innerHTML = '<strong>Correction :</strong><br>' + vocabEx1Data.map((item,i) => `${i+1}. ${item.correct}`).join('<br>');
+                document.getElementById('vocabEx1Key').classList.add('visible');
+                const fb = document.getElementById('vocabEx1Feedback');
+                fb.textContent = isCorrect ? '✅ Tout est correct !' : (someCorrect ? '⚠️ Partiellement correct.' : '❌ Incorrect.');
+                fb.className = 'degree9-unit1-lesson3-lecture-feedback ' + (isCorrect ? 'correct' : 'wrong');
+            };
+
+            // Vocab Ex2 check
+            window.checkVocab2 = async function() {
+                if (!await requireAuth()) return;
+                const correct = { vocab2a: 'des dons', vocab2b: 'du talent', vocab2c: 'du génie' };
+                let allCorrect = true, someCorrect = false;
+                for (const id in correct) {
+                    const sel = document.getElementById(id);
+                    if (sel && sel.value === correct[id]) someCorrect = true;
+                    else allCorrect = false;
+                }
+                const isCorrect = allCorrect;
+                document.getElementById('vocab2Key').innerHTML = '<strong>Correction :</strong><br>a) des dons<br>b) du talent<br>c) du génie';
+                document.getElementById('vocab2Key').classList.add('visible');
+                const fb = document.getElementById('vocab2Feedback');
+                fb.textContent = isCorrect ? '✅ Tout est correct !' : (someCorrect ? '⚠️ Partiellement correct.' : '❌ Incorrect.');
+                fb.className = 'degree9-unit1-lesson3-lecture-feedback ' + (isCorrect ? 'correct' : 'wrong');
+            };
+// Show appreciation example
+window.showAppreciationExample = async function() {
+    if (!await requireAuth()) return;
+    const keyEl = document.getElementById('appreciationKey');
+    if (keyEl) {
+        keyEl.innerHTML = '<strong>Exemple de réponse :</strong> La fin est à la fois triste et amusante. Triste, car l’enfant abandonne son rêve de devenir peintre à cause de l’incompréhension des adultes. Amusante, parce qu’il décrit avec ironie le manque d’imagination des grandes personnes.';
+        keyEl.classList.add('visible');
+    }
+};
+
+// Show vocab exercise 3 example
+window.showVocabEx3Example = async function() {
+    if (!await requireAuth()) return;
+    const keyEl = document.getElementById('vocabEx3Key');
+    if (keyEl) {
+        keyEl.innerHTML = '<strong>Adjectifs :</strong><br>a) Le génie → <em>génial</em> (Ex. : Il a eu une idée géniale.)<br>b) Le talent → <em>talentueux</em> (Ex. : C’est un pianiste talentueux.)';
+        keyEl.classList.add('visible');
+    }
+};
+            // Self-assessment scoring
+            function updateScore() {
+                const radioGroups = document.querySelectorAll('input[type="radio"][name^="self_"]');
+                const groups = new Set();
+                radioGroups.forEach(r => groups.add(r.name));
+                let correct = 0, partial = 0, incorrect = 0, unanswered = 0;
+                groups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'partial') partial++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                    } else unanswered++;
+                });
+                document.getElementById('scoreCorrect').textContent = correct;
+                document.getElementById('scorePartial').textContent = partial;
+                document.getElementById('scoreIncorrect').textContent = incorrect;
+                document.getElementById('scoreUnanswered').textContent = unanswered;
+            }
+            document.querySelectorAll('input[type="radio"][name^="self_"]').forEach(radio => radio.addEventListener('change', updateScore));
+            updateScore();
+
+            // Save results
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                if (!App.supabase) return;
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const radioGroups = document.querySelectorAll('input[type="radio"][name^="self_"]');
+                const groups = new Set();
+                radioGroups.forEach(r => groups.add(r.name));
+                let correct = 0, partial = 0, incorrect = 0, unanswered = 0;
+                groups.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'partial') partial++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                    } else unanswered++;
+                });
+                const entry = {
+                    lesson_id: 'degree9unit1lesson3',
+                    lesson_title: { fr: App.getTranslation('lesson_title', 'fr'), en: 'Lesson 3 – My First Drawing | Reading', ar: 'الدرس 3 – رسمتي الأولى | قراءة' },
+                    year: { fr: App.getTranslation('ach_year_degree9', 'fr'), en: '9th Grade Primary', ar: 'السنة التاسعة ابتدائي' },
+                    module: { fr: App.getTranslation('ach_module_unit1', 'fr'), en: 'Unit 1', ar: 'الوحدة الأولى' },
+                    correct, incorrect, partial, unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase.from('profiles').select('achivement').eq('id', user.id).single();
+                if (fetchError) return;
+                let achivement = profileData?.achivement || {};
+                if (!achivement['ED-French']) achivement['ED-French'] = [];
+                const arr = achivement['ED-French'];
+                const existingIdx = arr.findIndex(e => e.lesson_id === 'degree9unit1lesson3');
+                if (existingIdx >= 0) arr[existingIdx] = entry; else arr.push(entry);
+                const { error: updateError } = await App.supabase.from('profiles').update({ achivement }).eq('id', user.id);
+                if (updateError) App.showToast('save_error', 'error');
+                else { App.showToast('save_success', 'success'); App.logUserAction('lesson_saved', { lesson: 'degree9unit1lesson3', correct, incorrect, partial }); }
+            });
+
+            // Print / PDF
+            document.getElementById('printBtn').addEventListener('click', async function() {
+                if (!App.supabase) return;
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase.from('profiles').select('registration_state').eq('id', user.id).single();
+                    if (!error && profile?.registration_state?.active === true) isRegistered = true;
+                } catch (e) {}
+                const lang = localStorage.getItem('lang') || 'fr';
+                const content = document.getElementById('main-content').cloneNode(true);
+                content.querySelectorAll('input, .degree9-unit1-lesson3-lecture-self-assess, .degree9-unit1-lesson3-lecture-score-area, .degree9-unit1-lesson3-lecture-btn, .degree9-unit1-lesson3-lecture-play-btn, .degree9-unit1-lesson3-lecture-audio-player').forEach(el => el.remove());
+                const answerKeys = content.querySelectorAll('.degree9-unit1-lesson3-lecture-answer-key');
+                if (isRegistered) {
+                    answerKeys.forEach(key => { key.style.display='block'; key.style.border='none'; key.style.padding='0.5rem 0'; key.style.margin='0.5rem 0'; key.style.background='transparent'; });
+                } else answerKeys.forEach(el => el.remove());
+                const breadcrumb = content.querySelector('.degree9-unit1-lesson3-lecture-breadcrumb');
+                if (breadcrumb) breadcrumb.remove();
+                const footerNav = content.querySelector('.degree9-unit1-lesson3-lecture-footer-nav');
+                if (footerNav) footerNav.remove();
+
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                printWindow.document.write(`
+                    <!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8"><title>${App.getTranslation('lesson_title', lang)}</title>
+                    <style>
+                        body { font-family: 'Georgia', serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; color:#000; }
+                        .print-header { text-align:center; border-bottom:2px solid #2980b9; padding-bottom:1rem; margin-bottom:2rem; }
+                        .print-header .site-name { font-size:1.4rem; font-weight:bold; color:#2980b9; margin:0 0 0.3rem; }
+                        .print-header .meta-line { font-size:0.95rem; color:#444; margin:0.2rem 0; }
+                        .print-header .lesson-name { font-size:1.1rem; font-weight:bold; color:#000; margin-top:0.5rem; }
+                        .print-footer { text-align:center; border-top:1px solid #ccc; padding-top:1rem; margin-top:2rem; font-size:0.85rem; color:#666; }
+                        .degree9-unit1-lesson3-lecture-card { margin-bottom:2rem; border:1px solid #ccc; padding:1rem; border-radius:8px; }
+                        .degree9-unit1-lesson3-lecture-options { display:none; }
+                        .degree9-unit1-lesson3-lecture-answer-key { display:block; margin-top:0.5rem; font-size:0.9rem; color:#444; }
+                        @media print { @page { margin:2cm; } }
+                    </style></head><body>
+                    <div class="print-header">
+                        <div class="site-name">${App.getTranslation('print_site_name', lang)}</div>
+                        <div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div>
+                        <div class="lesson-name">${App.getTranslation('lesson_title', lang)}</div>
+                    </div>
+                    ${content.innerHTML}
+                    <div class="print-footer">${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}</div>
+                    </body></html>
+                `);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+        })();
+    </script>
+</body>
+</html>

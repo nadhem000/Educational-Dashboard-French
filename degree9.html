@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="degree9_main_title">Programme – 9ème année primaire</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    :root {
+      --heading: #382e1e;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 4px 14px rgba(0, 0, 0, 0.08);
+      --unit-bg: #fdfaf5;
+      --unit-header-bg: #f5efe2;
+      --bullet-color: #d4c5a9;
+      --arrow-color: #c0b090;
+      --accent-hover-bg: rgba(199, 91, 44, 0.08);
+
+      /* Category colors – light mode */
+      --cat-poetry: #b8860b;          /* Dark Goldenrod */
+      --cat-reading: #2e8b57;         /* Sea Green */
+      --cat-spelling: #8b0000;        /* Dark Red */
+      --cat-grammar: #4169e1;         /* Royal Blue */
+      --cat-conjugation: #8a2be2;     /* Blue Violet */
+      --cat-writing: #d2691e;         /* Chocolate */
+      --cat-vocabulary: #9932cc;      /* Dark Orchid */
+      --cat-comprehension: #008b8b;   /* Dark Cyan */
+      --cat-evaluation: #b22222;      /* Firebrick */
+      --cat-documentary: #556b2f;     /* Dark Olive Green */
+      --cat-activity: #6a5acd;        /* Slate Blue */
+    }
+    body.dark {
+      --cat-poetry: #f0c75e;          /* Lighter Goldenrod */
+      --cat-reading: #7bc8a4;         /* Lighter Sea Green */
+      --cat-spelling: #e57373;        /* Light Red */
+      --cat-grammar: #90caf9;         /* Light Blue */
+      --cat-conjugation: #ce93d8;     /* Light Purple */
+      --cat-writing: #ffab91;         /* Light Orange */
+      --cat-vocabulary: #ce93d8;      /* Light Orchid */
+      --cat-comprehension: #80cbc4;   /* Light Teal */
+      --cat-evaluation: #ef9a9a;      /* Light Firebrick */
+      --cat-documentary: #c5e1a5;     /* Light Green */
+      --cat-activity: #b39ddb;        /* Light Slate Blue */
+      --unit-bg: #25211c;        /* dark background for units */
+      --unit-header-bg: #332e25; /* slightly lighter dark for headers */
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      transition: background var(--transition), color var(--transition);
+    }
+    .back-nav {
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0.5rem 1.5rem;
+    }
+    .back-nav a {
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .back-nav a:hover { text-decoration: underline; }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.4rem 3rem;
+    }
+    h1 {
+      font-size: 2rem;
+      color: var(--heading);
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+    }
+    .objectives {
+      background: var(--card-bg);
+      border-left: 5px solid var(--accent);
+      padding: 1.4rem 1.6rem;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+    }
+    .objectives h2 {
+      color: var(--heading);
+      margin-bottom: 0.8rem;
+    }
+    .objectives ul { list-style: none; padding:0; }
+    .objectives li {
+      padding:0.3rem 0 0.3rem 1.4rem;
+      position:relative;
+      color:var(--text-light);
+    }
+    .objectives li::before {
+      content:'◆';
+      position:absolute;
+      left:0;
+      color:var(--accent);
+      font-size:0.6rem;
+    }
+    .unit {
+      background: var(--unit-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .unit-header {
+      background: var(--unit-header-bg);
+      padding: 0.8rem 1.3rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      width: 100%;
+      cursor: pointer;
+      user-select: none;
+      text-align: left;
+      font-family: inherit;
+      color: inherit;
+      background-color: var(--unit-header-bg);
+      transition: background 0.2s;
+    }
+    .unit-header:hover {
+      background-color: var(--accent-hover-bg);
+    }
+    .unit-num {
+      width: 34px;
+      height: 34px;
+      background: var(--accent);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .unit-body {
+      overflow: hidden;
+      max-height: none;
+      transition: max-height 0.4s ease;
+    }
+    .unit-body.collapsed {
+      max-height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    .unit-header.collapsed .collapse-arrow {
+      transform: rotate(-90deg);
+    }
+    .collapse-arrow {
+      margin-left: auto;
+      font-size: 0.8rem;
+      transition: transform 0.3s;
+    }
+
+    /* Category labels with per-category colors */
+    .category-label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin: 1rem 1.3rem 0.3rem 1.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .cat-poetry       { color: var(--cat-poetry); }
+    .cat-reading      { color: var(--cat-reading); }
+    .cat-spelling     { color: var(--cat-spelling); }
+    .cat-grammar      { color: var(--cat-grammar); }
+    .cat-conjugation  { color: var(--cat-conjugation); }
+    .cat-writing      { color: var(--cat-writing); }
+    .cat-vocabulary   { color: var(--cat-vocabulary); }
+    .cat-comprehension{ color: var(--cat-comprehension); }
+    .cat-evaluation   { color: var(--cat-evaluation); }
+    .cat-documentary  { color: var(--cat-documentary); }
+    .cat-activity     { color: var(--cat-activity); }
+
+    .lesson-link {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.5rem 1.3rem;
+      text-decoration: none;
+      color: var(--text);
+      border-left: 3px solid transparent;
+      transition: all var(--transition);
+    }
+    .lesson-link:hover {
+      background: var(--accent-hover-bg);
+      border-left-color: var(--accent);
+      color: var(--accent-hover);
+    }
+    .lesson-link .bullet {
+      width: 8px;
+      height: 8px;
+      background: var(--bullet-color);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .lesson-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-light);
+      min-width: 100px;
+      flex-shrink: 0;
+    }
+    .lesson-title {
+      font-size: 0.95rem;
+      flex:1;
+    }
+    .arrow {
+      color: var(--arrow-color);
+      font-size: 0.8rem;
+      transition: var(--transition);
+    }
+    .lesson-link:hover .arrow {
+      color: var(--accent);
+      transform: translateX(3px);
+    }
+    .test-link {
+      display: block;
+      text-align: center;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0.8rem 1.3rem 0.8rem 1.3rem;
+      transition: background var(--transition);
+    }
+    .test-link:hover {
+      background: var(--accent-hover);
+    }
+    .conseils {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      margin-top: 2rem;
+      border-top: 4px solid var(--accent);
+    }
+    .conseils h2 {
+      margin-bottom: 1rem;
+      color: var(--heading);
+    }
+    .conseil-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.5rem 0;
+      color: var(--text-light);
+    }
+    .conseil-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 2rem;
+      color: var(--text-light);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+    }
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 99;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transition: opacity 0.3s;
+    }
+    #backToTop.show {
+      display: flex;
+    }
+    @media (max-width: 640px) {
+      h1 { font-size: 1.5rem; }
+      .lesson-link { flex-wrap: wrap; padding: 0.5rem 1rem; }
+      .lesson-label { min-width: auto; font-size: 0.75rem; }
+      .lesson-title { width:100%; font-size:0.85rem; }
+      .arrow { display:none; }
+      .category-label { margin: 0.8rem 0.8rem 0.2rem 0.8rem; }
+    }
+    @media print {
+      .no-print { display: none !important; }
+      .print-only { display: block !important; }
+      #print-header, #print-footer {
+        display: block !important;
+        text-align: center;
+        margin: 20px 0;
+      }
+      #print-header h1 { font-size: 18pt; }
+      .container { padding: 0; }
+      h1 { font-size: 18pt; }
+      .unit-body { max-height: none !important; }
+      .unit-header { cursor: default; pointer-events: none; }
+      .test-link { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="back-nav no-print">
+    <a href="index.html" data-i18n="back_link">← Retour à l'accueil</a>
+  </nav>
+  <main class="container" id="main-content">
+    <h1 data-i18n="degree9_main_title">📚 Programme de 9ème année primaire</h1>
+    <p class="subtitle" data-i18n="degree9_subtitle">Module 1 – Des causes à défendre : des enfants de tous les pays</p>
+    <button id="printProgramBtn" class="header-btn no-print" onclick="window.print();" data-i18n="print_button">🖨️ Imprimer le programme</button>
+
+    <!-- Objectives -->
+    <div class="objectives">
+      <h2 data-i18n="objectives_heading">🎯 Objectifs annuels</h2>
+      <ul>
+        <li data-i18n="objectives_1">Approfondir la compréhension de textes littéraires et informatifs.</li>
+        <li data-i18n="objectives_2">Maîtriser les temps du récit (passé simple, imparfait) et les expressions temporelles.</li>
+        <li data-i18n="objectives_3">Développer une argumentation simple à l'oral et à l'écrit.</li>
+        <li data-i18n="objectives_4">S'ouvrir à des problématiques universelles (droits de l'enfant, tolérance, solidarité).</li>
+      </ul>
+    </div>
+
+    <!-- Unit 1 (Module 1) -->
+    <div class="unit">
+      <button class="unit-header" aria-expanded="true" aria-controls="unit1-body">
+        <span class="unit-num">1</span>
+        <span data-i18n="unit1.title">Des causes à défendre : des enfants de tous les pays</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="unit-body" id="unit1-body">
+        <!-- Écoute et expression orale -->
+        <div class="category-label cat-reading" data-i18n="unit1.cat_ecoute">🎧 Écoute et expression orale</div>
+        <a href="degree9unit1lesson1.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson1.title">Écouter un récit oral et le raconter à nouveau</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="degree9unit1lesson2.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson2.title">Raconter des histoires à partir d'images</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <!-- Lecture -->
+        <div class="category-label cat-reading" data-i18n="unit1.cat_lecture">📖 Lecture</div>
+        <a href="degree9unit1lesson3.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson3.title">Le Petit Prince (extrait d'Antoine de Saint-Exupéry)</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="degree9unit1lesson4.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson4.title">Mon premier dessin (Louis Montay)</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="degree9unit1lesson5.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson5.title">Il ne faut pas gâter les enfants (Jules Vallès)</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="degree9unit1lesson6.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson6.title">Une meilleure solution (Anna-Greta Winberg)</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="degree9unit1lesson7.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson7.title">La cicatrice (Bruce Lowery)</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="degree9unit1lesson8.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson8.title">Les cœurs purs (Jean-Roger Caussimon)</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="degree9unit1lesson9.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson9.title">Les histoires d'Afrique (Daniel Pennac)</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <!-- Analyse -->
+        <div class="category-label cat-grammar" data-i18n="unit1.cat_analyse">🔍 Analyse</div>
+        <a href="degree9unit1lesson10.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson10.title">Décrire et analyser des images</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="degree9unit1lesson11.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson11.title">Textes juridiques : la Convention des droits de l'enfant (simplifiée)</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <!-- Grammaire -->
+        <div class="category-label cat-grammar" data-i18n="unit1.cat_grammaire">📚 Grammaire</div>
+        <a href="degree9unit1lesson12.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson12.title">Expression du temps : adverbes et propositions subordonnées temporelles</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="degree9unit1lesson13.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson13.title">Temps du récit : passé simple et imparfait</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <!-- Orthographe -->
+        <div class="category-label cat-spelling" data-i18n="unit1.cat_orthographe">✍️ Orthographe</div>
+        <a href="degree9unit1lesson14.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson14.title">Homophones « Quel(le)(s) » / « Qu'elle(s) »</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <!-- Production écrite -->
+        <div class="category-label cat-writing" data-i18n="unit1.cat_production">📝 Production écrite</div>
+        <a href="degree9unit1lesson15.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson15.title">Écrire un récit avec dialogue</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Unit 2 placeholder -->
+    <div class="unit">
+      <button class="unit-header" aria-expanded="false" aria-controls="unit2-body">
+        <span class="unit-num">2</span>
+        <span data-i18n="unit2.title">Bientôt disponible</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="unit-body collapsed" id="unit2-body">
+        <p style="padding:1rem 1.3rem; color:var(--text-light);" data-i18n="unit_placeholder">Leçons en préparation</p>
+      </div>
+    </div>
+
+    <!-- Unit 3 placeholder -->
+    <div class="unit">
+      <button class="unit-header" aria-expanded="false" aria-controls="unit3-body">
+        <span class="unit-num">3</span>
+        <span data-i18n="unit3.title">Bientôt disponible</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="unit-body collapsed" id="unit3-body">
+        <p style="padding:1rem 1.3rem; color:var(--text-light);" data-i18n="unit_placeholder">Leçons en préparation</p>
+      </div>
+    </div>
+
+    <!-- Unit 4 placeholder -->
+    <div class="unit">
+      <button class="unit-header" aria-expanded="false" aria-controls="unit4-body">
+        <span class="unit-num">4</span>
+        <span data-i18n="unit4.title">Bientôt disponible</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="unit-body collapsed" id="unit4-body">
+        <p style="padding:1rem 1.3rem; color:var(--text-light);" data-i18n="unit_placeholder">Leçons en préparation</p>
+      </div>
+    </div>
+
+    <!-- Unit 5 placeholder -->
+    <div class="unit">
+      <button class="unit-header" aria-expanded="false" aria-controls="unit5-body">
+        <span class="unit-num">5</span>
+        <span data-i18n="unit5.title">Bientôt disponible</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="unit-body collapsed" id="unit5-body">
+        <p style="padding:1rem 1.3rem; color:var(--text-light);" data-i18n="unit_placeholder">Leçons en préparation</p>
+      </div>
+    </div>
+
+    <!-- Unit 6 placeholder -->
+    <div class="unit">
+      <button class="unit-header" aria-expanded="false" aria-controls="unit6-body">
+        <span class="unit-num">6</span>
+        <span data-i18n="unit6.title">Bientôt disponible</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="unit-body collapsed" id="unit6-body">
+        <p style="padding:1rem 1.3rem; color:var(--text-light);" data-i18n="unit_placeholder">Leçons en préparation</p>
+      </div>
+    </div>
+
+    <!-- Conseils -->
+    <div class="conseils no-print">
+      <h2 data-i18n="conseils_heading">💡 Conseils pour bien apprendre</h2>
+      <div class="conseil-item"><span class="conseil-icon">📋</span> <span data-i18n="conseil_1">📋 <strong>Organisation</strong> : planifie tes révisions sur la semaine.</span></div>
+      <div class="conseil-item"><span class="conseil-icon">✏️</span> <span data-i18n="conseil_2">✏️ <strong>Méthode active</strong> : résume, compare, discute des textes.</span></div>
+      <div class="conseil-item"><span class="conseil-icon">📚</span> <span data-i18n="conseil_3">📚 <strong>Ressources</strong> : consulte le manuel et des sources variées.</span></div>
+      <div class="conseil-item"><span class="conseil-icon">🔗</span> <span data-i18n="conseil_4">🔗 <strong>Cohérence</strong> : relie les leçons aux enjeux du monde actuel.</span></div>
+      <div class="conseil-item"><span class="conseil-icon">🗣️</span> <span data-i18n="conseil_5">🗣️ <strong>Oral</strong> : participe aux débats et exprime ton opinion.</span></div>
+    </div>
+
+    <div class="footer no-print">
+      <p data-i18n="footer_planning">📘 Programme conçu pour les élèves de 9ème année primaire — Tunisie</p>
+      <p data-i18n="footer_encouragement">Apprends avec curiosité et esprit critique. <strong>Bonne réussite !</strong></p>
+    </div>
+
+    <!-- Print-only header/footer -->
+    <div id="print-header" style="display:none;" class="print-only">
+      <h1>Educational Dashboard – Français</h1>
+      <p>Programme 9ème année primaire – Module 1</p>
+      <hr>
+    </div>
+    <div id="print-footer" style="display:none;" class="print-only">
+      <hr>
+      <p>Imprimé le <span id="print-date"></span> – educational-dashboard-french.netlify.app</p>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="i18n.js"></script>
+  <script src="db-utils.js"></script>
+  <script src="offline-sync-utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-client.js"></script>
+  <script src="logging.js"></script>
+
+  <!-- Translations for degree9 main page -->
+  <script>
+    App.addI18nTranslations({
+      fr: {
+        'back_link': '← Retour à l\'accueil',
+        'degree9_main_title': '📚 Programme de 9ème année primaire',
+        'degree9_subtitle': 'Module 1 – Des causes à défendre : des enfants de tous les pays',
+        'objectives_heading': '🎯 Objectifs annuels',
+        'objectives_1': 'Approfondir la compréhension de textes littéraires et informatifs.',
+        'objectives_2': 'Maîtriser les temps du récit (passé simple, imparfait) et les expressions temporelles.',
+        'objectives_3': 'Développer une argumentation simple à l\'oral et à l\'écrit.',
+        'objectives_4': 'S\'ouvrir à des problématiques universelles (droits de l\'enfant, tolérance, solidarité).',
+        'unit1.title': 'Des causes à défendre : des enfants de tous les pays',
+        'unit1.cat_ecoute': '🎧 Écoute et expression orale',
+        'unit1.cat_lecture': '📖 Lecture',
+        'unit1.cat_analyse': '🔍 Analyse',
+        'unit1.cat_grammaire': '📚 Grammaire',
+        'unit1.cat_orthographe': '✍️ Orthographe',
+        'unit1.cat_production': '📝 Production écrite',
+        'unit1.lesson1.title': 'Écouter un récit oral et le raconter à nouveau',
+        'unit1.lesson2.title': 'Raconter des histoires à partir d\'images',
+        'unit1.lesson3.title': 'Le Petit Prince (extrait d\'Antoine de Saint-Exupéry)',
+        'unit1.lesson4.title': 'Mon premier dessin (Louis Montay)',
+        'unit1.lesson5.title': 'Il ne faut pas gâter les enfants (Jules Vallès)',
+        'unit1.lesson6.title': 'Une meilleure solution (Anna-Greta Winberg)',
+        'unit1.lesson7.title': 'La cicatrice (Bruce Lowery)',
+        'unit1.lesson8.title': 'Les cœurs purs (Jean-Roger Caussimon)',
+        'unit1.lesson9.title': 'Les histoires d\'Afrique (Daniel Pennac)',
+        'unit1.lesson10.title': 'Décrire et analyser des images',
+        'unit1.lesson11.title': 'Textes juridiques : la Convention des droits de l\'enfant (simplifiée)',
+        'unit1.lesson12.title': 'Expression du temps : adverbes et propositions subordonnées temporelles',
+        'unit1.lesson13.title': 'Temps du récit : passé simple et imparfait',
+        'unit1.lesson14.title': 'Homophones « Quel(le)(s) » / « Qu\'elle(s) »',
+        'unit1.lesson15.title': 'Écrire un récit avec dialogue',
+        'unit2.title': 'Bientôt disponible',
+        'unit3.title': 'Bientôt disponible',
+        'unit4.title': 'Bientôt disponible',
+        'unit5.title': 'Bientôt disponible',
+        'unit6.title': 'Bientôt disponible',
+        'unit_placeholder': 'Leçons en préparation',
+        'conseils_heading': '💡 Conseils pour bien apprendre',
+        'conseil_1': '📋 <strong>Organisation</strong> : planifie tes révisions sur la semaine.',
+        'conseil_2': '✏️ <strong>Méthode active</strong> : résume, compare, discute des textes.',
+        'conseil_3': '📚 <strong>Ressources</strong> : consulte le manuel et des sources variées.',
+        'conseil_4': '🔗 <strong>Cohérence</strong> : relie les leçons aux enjeux du monde actuel.',
+        'conseil_5': '🗣️ <strong>Oral</strong> : participe aux débats et exprime ton opinion.',
+        'footer_planning': '📘 Programme conçu pour les élèves de 9ème année primaire — Tunisie',
+        'footer_encouragement': 'Apprends avec curiosité et esprit critique. <strong>Bonne réussite !</strong>',
+        'print_button': '🖨️ Imprimer le programme'
+      },
+      en: {
+        'back_link': '← Back to home',
+        'degree9_main_title': '📚 9th Grade Program',
+        'degree9_subtitle': 'Module 1 – Causes to defend: children from all countries',
+        'objectives_heading': '🎯 Yearly objectives',
+        'objectives_1': 'Deepen understanding of literary and informational texts.',
+        'objectives_2': 'Master narrative tenses (simple past, imperfect) and time expressions.',
+        'objectives_3': 'Develop simple argumentation orally and in writing.',
+        'objectives_4': 'Open up to universal issues (children\'s rights, tolerance, solidarity).',
+        'unit1.title': 'Causes to defend: children from all countries',
+        'unit1.cat_ecoute': '🎧 Listening and Speaking',
+        'unit1.cat_lecture': '📖 Reading',
+        'unit1.cat_analyse': '🔍 Analysis',
+        'unit1.cat_grammaire': '📚 Grammar',
+        'unit1.cat_orthographe': '✍️ Spelling',
+        'unit1.cat_production': '📝 Writing Production',
+        'unit1.lesson1.title': 'Listen to an oral story and retell it',
+        'unit1.lesson2.title': 'Tell stories from pictures',
+        'unit1.lesson3.title': 'The Little Prince (excerpt from Antoine de Saint-Exupéry)',
+        'unit1.lesson4.title': 'My First Drawing (Louis Montay)',
+        'unit1.lesson5.title': 'Do not spoil children (Jules Vallès)',
+        'unit1.lesson6.title': 'A Better Solution (Anna-Greta Winberg)',
+        'unit1.lesson7.title': 'The Scar (Bruce Lowery)',
+        'unit1.lesson8.title': 'Pure Hearts (Jean-Roger Caussimon)',
+        'unit1.lesson9.title': 'African Stories (Daniel Pennac)',
+        'unit1.lesson10.title': 'Describe and analyze images',
+        'unit1.lesson11.title': 'Legal texts: the Convention on the Rights of the Child (simplified)',
+        'unit1.lesson12.title': 'Time expressions: adverbs and temporal subordinate clauses',
+        'unit1.lesson13.title': 'Narrative tenses: simple past and imperfect',
+        'unit1.lesson14.title': 'Homophones "Quel(le)(s)" / "Qu\'elle(s)"',
+        'unit1.lesson15.title': 'Write a narrative with dialogue',
+        'unit2.title': 'Coming soon',
+        'unit3.title': 'Coming soon',
+        'unit4.title': 'Coming soon',
+        'unit5.title': 'Coming soon',
+        'unit6.title': 'Coming soon',
+        'unit_placeholder': 'Lessons in preparation',
+        'conseils_heading': '💡 Tips for learning well',
+        'conseil_1': '📋 <strong>Organization</strong>: plan your reviews over the week.',
+        'conseil_2': '✏️ <strong>Active method</strong>: summarize, compare, discuss texts.',
+        'conseil_3': '📚 <strong>Resources</strong>: consult the textbook and various sources.',
+        'conseil_4': '🔗 <strong>Consistency</strong>: connect lessons to current world issues.',
+        'conseil_5': '🗣️ <strong>Oral</strong>: participate in debates and express your opinion.',
+        'footer_planning': '📘 Program designed for 9th grade students — Tunisia',
+        'footer_encouragement': 'Learn with curiosity and critical thinking. <strong>Good luck!</strong>',
+        'print_button': '🖨️ Print program'
+      },
+      ar: {
+        'back_link': '← العودة إلى الرئيسية',
+        'degree9_main_title': '📚 برنامج السنة التاسعة ابتدائي',
+        'degree9_subtitle': 'المحور الأول: قضايا يجب الدفاع عنها: أطفال من جميع البلدان',
+        'objectives_heading': '🎯 الأهداف السنوية',
+        'objectives_1': 'تعميق فهم النصوص الأدبية والمعلوماتية.',
+        'objectives_2': 'إتقان أزمنة السرد (الماضي البسيط، الناقص) والتعابير الزمنية.',
+        'objectives_3': 'تطوير حجة بسيطة شفهياً وكتابياً.',
+        'objectives_4': 'الانفتاح على قضايا كونية (حقوق الطفل، التسامح، التضامن).',
+        'unit1.title': 'قضايا يجب الدفاع عنها: أطفال من جميع البلدان',
+        'unit1.cat_ecoute': '🎧 الاستماع والتحدث',
+        'unit1.cat_lecture': '📖 القراءة',
+        'unit1.cat_analyse': '🔍 التحليل',
+        'unit1.cat_grammaire': '📚 القواعد',
+        'unit1.cat_orthographe': '✍️ الإملاء',
+        'unit1.cat_production': '📝 الإنتاج الكتابي',
+        'unit1.lesson1.title': 'الاستماع إلى رواية شفوية وإعادة سردها',
+        'unit1.lesson2.title': 'رواية قصص من خلال الصور',
+        'unit1.lesson3.title': 'الامير الصغير (مقتطف لأنطوان دو سانت إيكسوبيري)',
+        'unit1.lesson4.title': 'رسمتي الأولى (لويس مونتيه)',
+        'unit1.lesson5.title': 'لا ينبغي إفساد الأطفال (جول فاليس)',
+        'unit1.lesson6.title': 'حل أفضل (آنا غريتا وينبيرغ)',
+        'unit1.lesson7.title': 'الندبة (بروس لوري)',
+        'unit1.lesson8.title': 'القلوب النقية (جان روجيه كوسيمون)',
+        'unit1.lesson9.title': 'حكايات من إفريقيا (دانييل بيناك)',
+        'unit1.lesson10.title': 'وصف الصور وتحليلها',
+        'unit1.lesson11.title': 'النصوص القانونية: اتفاقية حقوق الطفل (نصوص قانونية مبسطة)',
+        'unit1.lesson12.title': 'التعبير عن الزمن: الظروف الزمنية، الجمل الظرفية الزمنية',
+        'unit1.lesson13.title': 'أزمنة السرد: الماضي البسيط والناقص',
+        'unit1.lesson14.title': 'التهجئة: المتشابهات اللفظية «Quel(le)(s)» / «Qu\'elle(s)»',
+        'unit1.lesson15.title': 'كتابة نص سردي يحتوي على حوار',
+        'unit2.title': 'قريباً',
+        'unit3.title': 'قريباً',
+        'unit4.title': 'قريباً',
+        'unit5.title': 'قريباً',
+        'unit6.title': 'قريباً',
+        'unit_placeholder': 'الدروس قيد الإعداد',
+        'conseils_heading': '💡 نصائح للتعلم الجيد',
+        'conseil_1': '📋 <strong>التنظيم</strong>: خطط لمراجعاتك على مدى الأسبوع.',
+        'conseil_2': '✏️ <strong>طريقة نشطة</strong>: لخص، قارن، ناقش النصوص.',
+        'conseil_3': '📚 <strong>المصادر</strong>: استعن بالكتاب المدرسي ومصادر متنوعة.',
+        'conseil_4': '🔗 <strong>التماسك</strong>: اربط الدروس بقضايا العالم المعاصر.',
+        'conseil_5': '🗣️ <strong>الشفهي</strong>: شارك في النقاشات وعبّر عن رأيك.',
+        'footer_planning': '📘 برنامج موجه لتلاميذ السنة التاسعة ابتدائي — تونس',
+        'footer_encouragement': 'تعلم بفضول وروح نقدية. <strong>بالتوفيق!</strong>',
+        'print_button': '🖨️ طباعة البرنامج'
+      }
+    });
+
+    // Apply bilingual
+    (function() {
+      var container = document.querySelector('.container');
+      if (container && typeof App.makeBilingual === 'function') {
+        App.makeBilingual(container);
+      }
+    })();
+  </script>
+
+  <script src="ed-french-ini.js"></script>
+
+  <!-- Collapse/expand units, back-to-top, click logging -->
+  <script>
+    function toggleUnit(header) {
+      const body = document.getElementById(header.getAttribute('aria-controls'));
+      if (!body) return;
+      const isExpanded = header.getAttribute('aria-expanded') === 'true';
+      header.setAttribute('aria-expanded', !isExpanded);
+      header.classList.toggle('collapsed', isExpanded);
+      body.classList.toggle('collapsed', isExpanded);
+      if (!isExpanded) {
+        body.style.maxHeight = body.scrollHeight + 'px';
+        const transitionHandler = () => {
+          body.style.maxHeight = 'none';
+          body.removeEventListener('transitionend', transitionHandler);
+        };
+        body.addEventListener('transitionend', transitionHandler);
+      } else {
+        body.style.maxHeight = '0';
+      }
+    }
+
+    document.querySelectorAll('.unit-header').forEach(btn => {
+      btn.addEventListener('click', () => toggleUnit(btn));
+      btn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleUnit(btn);
+        }
+      });
+    });
+
+    // Back to top button
+    (function() {
+      const btn = document.createElement('button');
+      btn.id = 'backToTop';
+      btn.setAttribute('aria-label', 'Retour en haut');
+      btn.innerHTML = '⬆';
+      document.body.appendChild(btn);
+      btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+          btn.classList.add('show');
+        } else {
+          btn.classList.remove('show');
+        }
+      });
+    })();
+
+    // Click logging for lesson links
+    (function() {
+      document.querySelectorAll('.lesson-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+          const lessonTitle = this.querySelector('.lesson-title').textContent.trim();
+          const details = { lesson: lessonTitle, href: this.href };
+          if (typeof App !== 'undefined' && App.supabase) {
+            App.supabase.auth.getSession().then(({ data: { session } }) => {
+              if (session) {
+                App.logUserAction('lesson_click', details);
+              } else {
+                App.logGeneralAction('lesson_click', details);
+              }
+            }).catch(() => {
+              App.logGeneralAction('lesson_click', details);
+            });
+          }
+        });
+      });
+    })();
+
+    // Print date
+    document.getElementById('print-date').textContent = new Date().toLocaleDateString('fr-FR');
+  </script>
+</body>
+</html>

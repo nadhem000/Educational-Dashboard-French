@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="degree7_main_title">Programme – 7ème année primaire</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    :root {
+      --heading: #382e1e;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 4px 14px rgba(0, 0, 0, 0.08);
+      --unit-bg: #fdfaf5;
+      --unit-header-bg: #f5efe2;
+      --bullet-color: #d4c5a9;
+      --arrow-color: #c0b090;
+      --accent-hover-bg: rgba(199, 91, 44, 0.08);
+
+      /* Category colors – light mode */
+      --cat-poetry: #b8860b;
+      --cat-reading: #2e8b57;
+      --cat-spelling: #8b0000;
+      --cat-grammar: #4169e1;
+      --cat-conjugation: #8a2be2;
+      --cat-writing: #d2691e;
+      --cat-vocabulary: #9932cc;
+      --cat-comprehension: #008b8b;
+      --cat-evaluation: #b22222;
+      --cat-documentary: #556b2f;
+      --cat-activity: #6a5acd;
+    }
+    body.dark {
+      --cat-poetry: #f0c75e;
+      --cat-reading: #7bc8a4;
+      --cat-spelling: #e57373;
+      --cat-grammar: #90caf9;
+      --cat-conjugation: #ce93d8;
+      --cat-writing: #ffab91;
+      --cat-vocabulary: #ce93d8;
+      --cat-comprehension: #80cbc4;
+      --cat-evaluation: #ef9a9a;
+      --cat-documentary: #c5e1a5;
+      --cat-activity: #b39ddb;
+      --unit-bg: #25211c;
+      --unit-header-bg: #332e25;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      transition: background var(--transition), color var(--transition);
+    }
+    .back-nav {
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0.5rem 1.5rem;
+    }
+    .back-nav a {
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .back-nav a:hover { text-decoration: underline; }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.4rem 3rem;
+    }
+    h1 {
+      font-size: 2rem;
+      color: var(--heading);
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+    }
+    .objectives {
+      background: var(--card-bg);
+      border-left: 5px solid var(--accent);
+      padding: 1.4rem 1.6rem;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+    }
+    .objectives h2 {
+      color: var(--heading);
+      margin-bottom: 0.8rem;
+    }
+    .objectives ul { list-style: none; padding:0; }
+    .objectives li {
+      padding:0.3rem 0 0.3rem 1.4rem;
+      position:relative;
+      color:var(--text-light);
+    }
+    .objectives li::before {
+      content:'◆';
+      position:absolute;
+      left:0;
+      color:var(--accent);
+      font-size:0.6rem;
+    }
+    .unit {
+      background: var(--unit-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .unit-header {
+      background: var(--unit-header-bg);
+      padding: 0.8rem 1.3rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      width: 100%;
+      cursor: pointer;
+      user-select: none;
+      text-align: left;
+      font-family: inherit;
+      color: inherit;
+      background-color: var(--unit-header-bg);
+      transition: background 0.2s;
+    }
+    .unit-header:hover {
+      background-color: var(--accent-hover-bg);
+    }
+    .unit-num {
+      width: 34px;
+      height: 34px;
+      background: var(--accent);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .unit-body {
+      overflow: hidden;
+      max-height: none;
+      transition: max-height 0.4s ease;
+    }
+    .unit-body.collapsed {
+      max-height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    .unit-header.collapsed .collapse-arrow {
+      transform: rotate(-90deg);
+    }
+    .collapse-arrow {
+      margin-left: auto;
+      font-size: 0.8rem;
+      transition: transform 0.3s;
+    }
+
+    .category-label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin: 1rem 1.3rem 0.3rem 1.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .cat-poetry       { color: var(--cat-poetry); }
+    .cat-reading      { color: var(--cat-reading); }
+    .cat-spelling     { color: var(--cat-spelling); }
+    .cat-grammar      { color: var(--cat-grammar); }
+    .cat-conjugation  { color: var(--cat-conjugation); }
+    .cat-writing      { color: var(--cat-writing); }
+    .cat-vocabulary   { color: var(--cat-vocabulary); }
+    .cat-comprehension{ color: var(--cat-comprehension); }
+    .cat-evaluation   { color: var(--cat-evaluation); }
+    .cat-documentary  { color: var(--cat-documentary); }
+    .cat-activity     { color: var(--cat-activity); }
+
+    .lesson-link {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.5rem 1.3rem;
+      text-decoration: none;
+      color: var(--text);
+      border-left: 3px solid transparent;
+      transition: all var(--transition);
+    }
+    .lesson-link:hover {
+      background: var(--accent-hover-bg);
+      border-left-color: var(--accent);
+      color: var(--accent-hover);
+    }
+    .lesson-link .bullet {
+      width: 8px;
+      height: 8px;
+      background: var(--bullet-color);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .lesson-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-light);
+      min-width: 100px;
+      flex-shrink: 0;
+    }
+    .lesson-title {
+      font-size: 0.95rem;
+      flex:1;
+    }
+    .arrow {
+      color: var(--arrow-color);
+      font-size: 0.8rem;
+      transition: var(--transition);
+    }
+    .lesson-link:hover .arrow {
+      color: var(--accent);
+      transform: translateX(3px);
+    }
+    .test-link {
+      display: block;
+      text-align: center;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0.8rem 1.3rem 0.8rem 1.3rem;
+      transition: background var(--transition);
+    }
+    .test-link:hover {
+      background: var(--accent-hover);
+    }
+    .conseils {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      margin-top: 2rem;
+      border-top: 4px solid var(--accent);
+    }
+    .conseils h2 {
+      margin-bottom: 1rem;
+      color: var(--heading);
+    }
+    .conseil-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.5rem 0;
+      color: var(--text-light);
+    }
+    .conseil-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 2rem;
+      color: var(--text-light);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+    }
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 99;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transition: opacity 0.3s;
+    }
+    #backToTop.show {
+      display: flex;
+    }
+    @media (max-width: 640px) {
+      h1 { font-size: 1.5rem; }
+      .lesson-link { flex-wrap: wrap; padding: 0.5rem 1rem; }
+      .lesson-label { min-width: auto; font-size: 0.75rem; }
+      .lesson-title { width:100%; font-size:0.85rem; }
+      .arrow { display:none; }
+      .category-label { margin: 0.8rem 0.8rem 0.2rem 0.8rem; }
+    }
+    @media print {
+      .no-print { display: none !important; }
+      .print-only { display: block !important; }
+      #print-header, #print-footer {
+        display: block !important;
+        text-align: center;
+        margin: 20px 0;
+      }
+      #print-header h1 { font-size: 18pt; }
+      .container { padding: 0; }
+      h1 { font-size: 18pt; }
+      .unit-body { max-height: none !important; }
+      .unit-header { cursor: default; pointer-events: none; }
+      .test-link { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="back-nav no-print">
+    <a href="index.html" data-i18n="back_link">← Retour à l'accueil</a>
+  </nav>
+  <main class="container" id="main-content">
+    <h1 data-i18n="degree7_main_title">📚 Programme de 7ème année primaire</h1>
+    <p class="subtitle" data-i18n="degree7_subtitle">Unité 1 – Les fondements du français</p>
+    <button id="printProgramBtn" class="header-btn no-print" onclick="window.print();" data-i18n="print_button">🖨️ Imprimer le programme</button>
+
+    <!-- Objectives -->
+    <div class="objectives">
+      <h2 data-i18n="objectives_heading">🎯 Objectifs annuels</h2>
+      <ul>
+        <li data-i18n="objectives_1">Consolider la maîtrise de la langue française (orthographe, conjugaison, syntaxe, vocabulaire).</li>
+        <li data-i18n="objectives_2">Développer les compétences de lecture et de compréhension de textes variés.</li>
+        <li data-i18n="objectives_3">Améliorer l’expression écrite et orale dans des situations diversifiées.</li>
+        <li data-i18n="objectives_4">S’ouvrir à la culture et à la littérature francophones.</li>
+      </ul>
+    </div>
+
+    <!-- Unit 1 -->
+    <div class="unit">
+      <button class="unit-header" aria-expanded="true" aria-controls="unit1-body">
+        <span class="unit-num">1</span>
+        <span data-i18n="unit1.title">Unité 1 – Les fondements du français</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="unit-body" id="unit1-body">
+        <!-- Orthographe -->
+        <div class="category-label cat-spelling" data-i18n="unit1.cat_orthographe">✍️ Orthographe</div>
+        <a href="degree7unit1lesson1.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson1.title">Les homophones : se / ce, ses / ces, s’est / c’est</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <!-- Conjugaison -->
+        <div class="category-label cat-conjugation" data-i18n="unit1.cat_conjugaison">🔄 Conjugaison</div>
+        <a href="degree7unit1lesson2.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson2.title">Le présent et le passé composé : les valeurs</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="degree7unit1lesson3.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson3.title">Conjugaison des verbes irréguliers</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="degree7unit1lesson4.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson4.title">Les verbes pronominaux au présent et au passé composé</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <!-- Syntaxe -->
+        <div class="category-label cat-grammar" data-i18n="unit1.cat_syntaxe">📚 Syntaxe</div>
+        <a href="degree7unit1lesson5.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson5.title">Les types et les formes de phrases : les quatre types, la forme affirmative et la forme négative</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <!-- Vocabulaire -->
+        <div class="category-label cat-vocabulary" data-i18n="unit1.cat_vocabulaire">🧠 Vocabulaire</div>
+        <a href="degree7unit1lesson6.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson6.title">Le couvert</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="degree7unit1lesson7.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson7.title">Les bonnes manières</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="degree7unit1lesson8.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson8.title">Les verbes de perception</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="degree7unit1lesson9.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson9.title">L’adoption</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="degree7unit1lesson10.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson10.title">Dire l’heure</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <!-- ECRIT -->
+        <div class="category-label cat-writing" data-i18n="unit1.cat_ecrit">📝 Écrit</div>
+        <a href="degree7unit1lesson11.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson11.title">Comprendre des consignes I</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="degree7unit1lesson12.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson12.title">Comprendre des consignes II</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="degree7unit1lesson13.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson13.title">Récit I – Qui raconte ? / Les mots de reprise</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="degree7unit1lesson14.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson14.title">Récit II – Production et auto-évaluation</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <!-- LECTURE -->
+        <div class="category-label cat-reading" data-i18n="unit1.cat_lecture">📖 Lecture</div>
+        <a href="degree7unit1lesson15.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson15.title">Lorsque l’enfant paraît... (Victor Hugo)</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="degree7unit1lesson16.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson16.title">À table (Claude Simon)</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="degree7unit1lesson17.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson17.title">Le skate-board (Laudec & Cauvin)</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="degree7unit1lesson18.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson18.title">Souhaits d’enfants (Astrid Lindgren)</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="degree7unit1lesson19.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson19.title">B.D. Aux champs (Maupassant & Paillet)</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="degree7unit1lesson20.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson20.title">Le départ (Sempé & Goscinny)</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="degree7unit1lesson21.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson21.title">Lire/Rire : Chou (Bernard Friot)</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="degree7unit1lesson22.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson22.title">Au marché (Sempé & Goscinny)</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <!-- ORAL -->
+        <div class="category-label cat-comprehension" data-i18n="unit1.cat_oral">🗣️ Oral</div>
+        <a href="degree7unit1lesson23.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson23.title">Se présenter / Présenter quelqu’un</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="degree7unit1lesson24.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson24.title">Écouter une chanson / Participer à une discussion</span>
+          <span class="arrow">→</span>
+        </a>
+
+        <!-- Activités -->
+        <div class="category-label cat-activity" data-i18n="unit1.cat_activites">🛠️ Activités</div>
+        <a href="degree7unit1lesson25.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="unit1.lesson25.title">Activités pratiques</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Unit 2 placeholder -->
+    <div class="unit">
+      <button class="unit-header" aria-expanded="false" aria-controls="unit2-body">
+        <span class="unit-num">2</span>
+        <span data-i18n="unit2.title">Bientôt disponible</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="unit-body collapsed" id="unit2-body">
+        <p style="padding:1rem 1.3rem; color:var(--text-light);" data-i18n="unit_placeholder">Leçons en préparation</p>
+      </div>
+    </div>
+
+    <!-- Unit 3 placeholder -->
+    <div class="unit">
+      <button class="unit-header" aria-expanded="false" aria-controls="unit3-body">
+        <span class="unit-num">3</span>
+        <span data-i18n="unit3.title">Bientôt disponible</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="unit-body collapsed" id="unit3-body">
+        <p style="padding:1rem 1.3rem; color:var(--text-light);" data-i18n="unit_placeholder">Leçons en préparation</p>
+      </div>
+    </div>
+
+    <!-- Unit 4 placeholder -->
+    <div class="unit">
+      <button class="unit-header" aria-expanded="false" aria-controls="unit4-body">
+        <span class="unit-num">4</span>
+        <span data-i18n="unit4.title">Bientôt disponible</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="unit-body collapsed" id="unit4-body">
+        <p style="padding:1rem 1.3rem; color:var(--text-light);" data-i18n="unit_placeholder">Leçons en préparation</p>
+      </div>
+    </div>
+
+    <!-- Unit 5 placeholder -->
+    <div class="unit">
+      <button class="unit-header" aria-expanded="false" aria-controls="unit5-body">
+        <span class="unit-num">5</span>
+        <span data-i18n="unit5.title">Bientôt disponible</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="unit-body collapsed" id="unit5-body">
+        <p style="padding:1rem 1.3rem; color:var(--text-light);" data-i18n="unit_placeholder">Leçons en préparation</p>
+      </div>
+    </div>
+
+    <!-- Unit 6 placeholder -->
+    <div class="unit">
+      <button class="unit-header" aria-expanded="false" aria-controls="unit6-body">
+        <span class="unit-num">6</span>
+        <span data-i18n="unit6.title">Bientôt disponible</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="unit-body collapsed" id="unit6-body">
+        <p style="padding:1rem 1.3rem; color:var(--text-light);" data-i18n="unit_placeholder">Leçons en préparation</p>
+      </div>
+    </div>
+
+    <!-- Conseils -->
+    <div class="conseils no-print">
+      <h2 data-i18n="conseils_heading">💡 Conseils pour bien apprendre</h2>
+      <div class="conseil-item"><span class="conseil-icon">📋</span> <span data-i18n="conseil_1">📋 <strong>Organisation</strong> : planifie tes révisions sur la semaine.</span></div>
+      <div class="conseil-item"><span class="conseil-icon">✏️</span> <span data-i18n="conseil_2">✏️ <strong>Méthode active</strong> : résume, compare, discute des textes.</span></div>
+      <div class="conseil-item"><span class="conseil-icon">📚</span> <span data-i18n="conseil_3">📚 <strong>Ressources</strong> : consulte le manuel et des sources variées.</span></div>
+      <div class="conseil-item"><span class="conseil-icon">🔗</span> <span data-i18n="conseil_4">🔗 <strong>Cohérence</strong> : relie les leçons aux enjeux du monde actuel.</span></div>
+      <div class="conseil-item"><span class="conseil-icon">🗣️</span> <span data-i18n="conseil_5">🗣️ <strong>Oral</strong> : participe aux débats et exprime ton opinion.</span></div>
+    </div>
+
+    <div class="footer no-print">
+      <p data-i18n="footer_planning">📘 Programme conçu pour les élèves de 7ème année primaire — Tunisie</p>
+      <p data-i18n="footer_encouragement">Apprends avec curiosité et esprit critique. <strong>Bonne réussite !</strong></p>
+    </div>
+
+    <!-- Print-only header/footer -->
+    <div id="print-header" style="display:none;" class="print-only">
+      <h1>Educational Dashboard – Français</h1>
+      <p>Programme 7ème année primaire – Unité 1</p>
+      <hr>
+    </div>
+    <div id="print-footer" style="display:none;" class="print-only">
+      <hr>
+      <p>Imprimé le <span id="print-date"></span> – educational-dashboard-french.netlify.app</p>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="i18n.js"></script>
+  <script src="db-utils.js"></script>
+  <script src="offline-sync-utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-client.js"></script>
+  <script src="logging.js"></script>
+
+  <!-- Translations for degree7 main page -->
+  <script>
+    App.addI18nTranslations({
+      fr: {
+        'back_link': '← Retour à l\'accueil',
+        'degree7_main_title': '📚 Programme de 7ème année primaire',
+        'degree7_subtitle': 'Unité 1 – Les fondements du français',
+        'objectives_heading': '🎯 Objectifs annuels',
+        'objectives_1': 'Consolider la maîtrise de la langue française (orthographe, conjugaison, syntaxe, vocabulaire).',
+        'objectives_2': 'Développer les compétences de lecture et de compréhension de textes variés.',
+        'objectives_3': 'Améliorer l’expression écrite et orale dans des situations diversifiées.',
+        'objectives_4': 'S’ouvrir à la culture et à la littérature francophones.',
+        'unit1.title': 'Unité 1 – Les fondements du français',
+        'unit1.cat_orthographe': '✍️ Orthographe',
+        'unit1.cat_conjugaison': '🔄 Conjugaison',
+        'unit1.cat_syntaxe': '📚 Syntaxe',
+        'unit1.cat_vocabulaire': '🧠 Vocabulaire',
+        'unit1.cat_ecrit': '📝 Écrit',
+        'unit1.cat_lecture': '📖 Lecture',
+        'unit1.cat_oral': '🗣️ Oral',
+        'unit1.cat_activites': '🛠️ Activités',
+        'unit1.lesson1.title': 'Les homophones : se / ce, ses / ces, s’est / c’est',
+        'unit1.lesson2.title': 'Le présent et le passé composé : les valeurs',
+        'unit1.lesson3.title': 'Conjugaison des verbes irréguliers',
+        'unit1.lesson4.title': 'Les verbes pronominaux au présent et au passé composé',
+        'unit1.lesson5.title': 'Les types et les formes de phrases : les quatre types, la forme affirmative et la forme négative',
+        'unit1.lesson6.title': 'Le couvert',
+        'unit1.lesson7.title': 'Les bonnes manières',
+        'unit1.lesson8.title': 'Les verbes de perception',
+        'unit1.lesson9.title': 'L’adoption',
+        'unit1.lesson10.title': 'Dire l’heure',
+        'unit1.lesson11.title': 'Comprendre des consignes I',
+        'unit1.lesson12.title': 'Comprendre des consignes II',
+        'unit1.lesson13.title': 'Récit I – Qui raconte ? / Les mots de reprise',
+        'unit1.lesson14.title': 'Récit II – Production et auto-évaluation',
+        'unit1.lesson15.title': 'Lorsque l’enfant paraît... (Victor Hugo)',
+        'unit1.lesson16.title': 'À table (Claude Simon)',
+        'unit1.lesson17.title': 'Le skate-board (Laudec & Cauvin)',
+        'unit1.lesson18.title': 'Souhaits d’enfants (Astrid Lindgren)',
+        'unit1.lesson19.title': 'B.D. Aux champs (Maupassant & Paillet)',
+        'unit1.lesson20.title': 'Le départ (Sempé & Goscinny)',
+        'unit1.lesson21.title': 'Lire/Rire : Chou (Bernard Friot)',
+        'unit1.lesson22.title': 'Au marché (Sempé & Goscinny)',
+        'unit1.lesson23.title': 'Se présenter / Présenter quelqu’un',
+        'unit1.lesson24.title': 'Écouter une chanson / Participer à une discussion',
+        'unit1.lesson25.title': 'Activités pratiques',
+        'unit2.title': 'Bientôt disponible',
+        'unit3.title': 'Bientôt disponible',
+        'unit4.title': 'Bientôt disponible',
+        'unit5.title': 'Bientôt disponible',
+        'unit6.title': 'Bientôt disponible',
+        'unit_placeholder': 'Leçons en préparation',
+        'conseils_heading': '💡 Conseils pour bien apprendre',
+        'conseil_1': '📋 <strong>Organisation</strong> : planifie tes révisions sur la semaine.',
+        'conseil_2': '✏️ <strong>Méthode active</strong> : résume, compare, discute des textes.',
+        'conseil_3': '📚 <strong>Ressources</strong> : consulte le manuel et des sources variées.',
+        'conseil_4': '🔗 <strong>Cohérence</strong> : relie les leçons aux enjeux du monde actuel.',
+        'conseil_5': '🗣️ <strong>Oral</strong> : participe aux débats et exprime ton opinion.',
+        'footer_planning': '📘 Programme conçu pour les élèves de 7ème année primaire — Tunisie',
+        'footer_encouragement': 'Apprends avec curiosité et esprit critique. <strong>Bonne réussite !</strong>',
+        'print_button': '🖨️ Imprimer le programme'
+      },
+      en: {
+        'back_link': '← Back to home',
+        'degree7_main_title': '📚 7th Grade Program',
+        'degree7_subtitle': 'Unit 1 – French foundations',
+        'objectives_heading': '🎯 Yearly objectives',
+        'objectives_1': 'Consolidate mastery of French (spelling, conjugation, syntax, vocabulary).',
+        'objectives_2': 'Develop reading and comprehension skills of various texts.',
+        'objectives_3': 'Improve written and oral expression in diverse situations.',
+        'objectives_4': 'Open up to Francophone culture and literature.',
+        'unit1.title': 'Unit 1 – French foundations',
+        'unit1.cat_orthographe': '✍️ Spelling',
+        'unit1.cat_conjugaison': '🔄 Conjugation',
+        'unit1.cat_syntaxe': '📚 Syntax',
+        'unit1.cat_vocabulaire': '🧠 Vocabulary',
+        'unit1.cat_ecrit': '📝 Writing',
+        'unit1.cat_lecture': '📖 Reading',
+        'unit1.cat_oral': '🗣️ Speaking',
+        'unit1.cat_activites': '🛠️ Activities',
+        'unit1.lesson1.title': 'Homophones: se/ce, ses/ces, s’est/c’est',
+        'unit1.lesson2.title': 'Present and past perfect: values',
+        'unit1.lesson3.title': 'Irregular verb conjugation',
+        'unit1.lesson4.title': 'Pronominal verbs in present and past perfect',
+        'unit1.lesson5.title': 'Sentence types and forms: four types, affirmative and negative',
+        'unit1.lesson6.title': 'Table setting',
+        'unit1.lesson7.title': 'Good manners',
+        'unit1.lesson8.title': 'Verbs of perception',
+        'unit1.lesson9.title': 'Adoption',
+        'unit1.lesson10.title': 'Telling time',
+        'unit1.lesson11.title': 'Understanding instructions I',
+        'unit1.lesson12.title': 'Understanding instructions II',
+        'unit1.lesson13.title': 'Narrative I – Who tells the story? / Referential words',
+        'unit1.lesson14.title': 'Narrative II – Production and self-evaluation',
+        'unit1.lesson15.title': 'When the child appears... (Victor Hugo)',
+        'unit1.lesson16.title': 'At the table (Claude Simon)',
+        'unit1.lesson17.title': 'The skateboard (Laudec & Cauvin)',
+        'unit1.lesson18.title': 'Children’s wishes (Astrid Lindgren)',
+        'unit1.lesson19.title': 'Comic: In the fields (Maupassant & Paillet)',
+        'unit1.lesson20.title': 'The departure (Sempé & Goscinny)',
+        'unit1.lesson21.title': 'Read/Laugh: Cabbage (Bernard Friot)',
+        'unit1.lesson22.title': 'At the market (Sempé & Goscinny)',
+        'unit1.lesson23.title': 'Introduce yourself / Introduce someone',
+        'unit1.lesson24.title': 'Listen to a song / Participate in a discussion',
+        'unit1.lesson25.title': 'Practical activities',
+        'unit2.title': 'Coming soon',
+        'unit3.title': 'Coming soon',
+        'unit4.title': 'Coming soon',
+        'unit5.title': 'Coming soon',
+        'unit6.title': 'Coming soon',
+        'unit_placeholder': 'Lessons in preparation',
+        'conseils_heading': '💡 Tips for learning well',
+        'conseil_1': '📋 <strong>Organization</strong>: plan your reviews over the week.',
+        'conseil_2': '✏️ <strong>Active method</strong>: summarize, compare, discuss texts.',
+        'conseil_3': '📚 <strong>Resources</strong>: consult the textbook and various sources.',
+        'conseil_4': '🔗 <strong>Consistency</strong>: connect lessons to current world issues.',
+        'conseil_5': '🗣️ <strong>Oral</strong>: participate in debates and express your opinion.',
+        'footer_planning': '📘 Program designed for 7th grade students — Tunisia',
+        'footer_encouragement': 'Learn with curiosity and critical thinking. <strong>Good luck!</strong>',
+        'print_button': '🖨️ Print program'
+      },
+      ar: {
+        'back_link': '← العودة إلى الرئيسية',
+        'degree7_main_title': '📚 برنامج السنة السابعة ابتدائي',
+        'degree7_subtitle': 'الوحدة الأولى – أساسيات الفرنسية',
+        'objectives_heading': '🎯 الأهداف السنوية',
+        'objectives_1': 'تعزيز إتقان اللغة الفرنسية (الإملاء، التصريف، النحو، المفردات).',
+        'objectives_2': 'تطوير مهارات القراءة والفهم لنصوص متنوعة.',
+        'objectives_3': 'تحسين التعبير الكتابي والشفهي في مواقف متنوعة.',
+        'objectives_4': 'الانفتاح على الثقافة والأدب الفرنكوفونيين.',
+        'unit1.title': 'الوحدة الأولى – أساسيات الفرنسية',
+        'unit1.cat_orthographe': '✍️ الإملاء',
+        'unit1.cat_conjugaison': '🔄 التصريف',
+        'unit1.cat_syntaxe': '📚 النحو',
+        'unit1.cat_vocabulaire': '🧠 المفردات',
+        'unit1.cat_ecrit': '📝 الكتابة',
+        'unit1.cat_lecture': '📖 القراءة',
+        'unit1.cat_oral': '🗣️ الشفهي',
+        'unit1.cat_activites': '🛠️ أنشطة',
+        'unit1.lesson1.title': 'الهوموفونات: se/ce, ses/ces, s’est/c’est',
+        'unit1.lesson2.title': 'المضارع والماضي المركب: القيم',
+        'unit1.lesson3.title': 'تصريف الأفعال الشاذة',
+        'unit1.lesson4.title': 'الأفعال الانعكاسية في المضارع والماضي المركب',
+        'unit1.lesson5.title': 'أنواع الجمل وأشكالها: الأنواع الأربعة، الإثبات والنفي',
+        'unit1.lesson6.title': 'أدوات المائدة',
+        'unit1.lesson7.title': 'الآداب الحسنة',
+        'unit1.lesson8.title': 'أفعال الإدراك',
+        'unit1.lesson9.title': 'التبني',
+        'unit1.lesson10.title': 'قول الساعة',
+        'unit1.lesson11.title': 'فهم التعليمات 1',
+        'unit1.lesson12.title': 'فهم التعليمات 2',
+        'unit1.lesson13.title': 'السرد 1 – من يروي؟ / كلمات الإحالة',
+        'unit1.lesson14.title': 'السرد 2 – إنتاج وتقييم ذاتي',
+        'unit1.lesson15.title': 'عندما يظهر الطفل... (فيكتور هوغو)',
+        'unit1.lesson16.title': 'على المائدة (كلود سيمون)',
+        'unit1.lesson17.title': 'لوح التزلج (لوديك وكوفان)',
+        'unit1.lesson18.title': 'أمنيات الأطفال (أستريد ليندغرين)',
+        'unit1.lesson19.title': 'قصة مصورة: في الحقول (موباسان وبايي)',
+        'unit1.lesson20.title': 'الرحيل (سامبي وغوسيني)',
+        'unit1.lesson21.title': 'اقرأ/اضحك: كرنب (برنار فريو)',
+        'unit1.lesson22.title': 'في السوق (سامبي وغوسيني)',
+        'unit1.lesson23.title': 'قدّم نفسك / قدّم شخصاً',
+        'unit1.lesson24.title': 'استمع إلى أغنية / شارك في نقاش',
+        'unit1.lesson25.title': 'أنشطة عملية',
+        'unit2.title': 'قريباً',
+        'unit3.title': 'قريباً',
+        'unit4.title': 'قريباً',
+        'unit5.title': 'قريباً',
+        'unit6.title': 'قريباً',
+        'unit_placeholder': 'الدروس قيد الإعداد',
+        'conseils_heading': '💡 نصائح للتعلم الجيد',
+        'conseil_1': '📋 <strong>التنظيم</strong>: خطط لمراجعاتك على مدى الأسبوع.',
+        'conseil_2': '✏️ <strong>طريقة نشطة</strong>: لخص، قارن، ناقش النصوص.',
+        'conseil_3': '📚 <strong>المصادر</strong>: استعن بالكتاب المدرسي ومصادر متنوعة.',
+        'conseil_4': '🔗 <strong>التماسك</strong>: اربط الدروس بقضايا العالم المعاصر.',
+        'conseil_5': '🗣️ <strong>الشفهي</strong>: شارك في النقاشات وعبّر عن رأيك.',
+        'footer_planning': '📘 برنامج موجه لتلاميذ السنة السابعة ابتدائي — تونس',
+        'footer_encouragement': 'تعلم بفضول وروح نقدية. <strong>بالتوفيق!</strong>',
+        'print_button': '🖨️ طباعة البرنامج'
+      }
+    });
+
+    // Apply bilingual
+    (function() {
+      var container = document.querySelector('.container');
+      if (container && typeof App.makeBilingual === 'function') {
+        App.makeBilingual(container);
+      }
+    })();
+  </script>
+
+  <script src="ed-french-ini.js"></script>
+
+  <!-- Collapse/expand units, back-to-top, click logging -->
+  <script>
+    function toggleUnit(header) {
+      const body = document.getElementById(header.getAttribute('aria-controls'));
+      if (!body) return;
+      const isExpanded = header.getAttribute('aria-expanded') === 'true';
+      header.setAttribute('aria-expanded', !isExpanded);
+      header.classList.toggle('collapsed', isExpanded);
+      body.classList.toggle('collapsed', isExpanded);
+      if (!isExpanded) {
+        body.style.maxHeight = body.scrollHeight + 'px';
+        const transitionHandler = () => {
+          body.style.maxHeight = 'none';
+          body.removeEventListener('transitionend', transitionHandler);
+        };
+        body.addEventListener('transitionend', transitionHandler);
+      } else {
+        body.style.maxHeight = '0';
+      }
+    }
+
+    document.querySelectorAll('.unit-header').forEach(btn => {
+      btn.addEventListener('click', () => toggleUnit(btn));
+      btn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleUnit(btn);
+        }
+      });
+    });
+
+    // Back to top button
+    (function() {
+      const btn = document.createElement('button');
+      btn.id = 'backToTop';
+      btn.setAttribute('aria-label', 'Retour en haut');
+      btn.innerHTML = '⬆';
+      document.body.appendChild(btn);
+      btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+          btn.classList.add('show');
+        } else {
+          btn.classList.remove('show');
+        }
+      });
+    })();
+
+    // Click logging for lesson links
+    (function() {
+      document.querySelectorAll('.lesson-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+          const lessonTitle = this.querySelector('.lesson-title').textContent.trim();
+          const details = { lesson: lessonTitle, href: this.href };
+          if (typeof App !== 'undefined' && App.supabase) {
+            App.supabase.auth.getSession().then(({ data: { session } }) => {
+              if (session) {
+                App.logUserAction('lesson_click', details);
+              } else {
+                App.logGeneralAction('lesson_click', details);
+              }
+            }).catch(() => {
+              App.logGeneralAction('lesson_click', details);
+            });
+          }
+        });
+      });
+    })();
+
+    // Print date
+    document.getElementById('print-date').textContent = new Date().toLocaleDateString('fr-FR');
+  </script>
+</body>
+</html>

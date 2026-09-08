@@ -1,4 +1,4 @@
-// cards-building.js – version 5.3 (4th secondary section Éco link, section list kept, error handling, accessibility) – App namespace
+// cards-building.js – version 5.4 (added links for grades 5, 7, 9 – App namespace)
 (function() {
   // 1. Store French translations locally so we can use them immediately
   const fr = {
@@ -6,10 +6,16 @@
     'card.primaire4.desc': 'Programme complet de la 4ème année primaire avec 10 unités.',
     'card.primaire4.link': 'Accéder au programme →',
     'card.primaire5.title': '5ᵉ année primaire',
+    'card.primaire5.desc': 'Programme complet de la 5ème année primaire avec 6 unités.',
+    'card.primaire5.link': 'Accéder au programme →',
     'card.primaire6.title': '6ᵉ année primaire',
     'card.primaire7.title': '7ᵉ année primaire',
+    'card.primaire7.desc': 'Programme complet de la 7ème année primaire avec 6 unités.',
+    'card.primaire7.link': 'Accéder au programme →',
     'card.primaire8.title': '8ᵉ année primaire',
     'card.primaire9.title': '9ᵉ année primaire',
+    'card.primaire9.desc': 'Programme complet de la 9ème année primaire avec 6 unités.',
+    'card.primaire9.link': 'Accéder au programme →',
     'card.secondaire1.title': '1ʳᵉ année secondaire',
     'card.secondaire2.title': '2ᵉ année secondaire',
     'card.secondaire3.title': '3ᵉ année secondaire',
@@ -38,10 +44,16 @@
       'card.primaire4.desc': 'Complete 4th year primary program with 10 units.',
       'card.primaire4.link': 'Access the program →',
       'card.primaire5.title': '5th basic grade',
+      'card.primaire5.desc': 'Complete 5th year primary program with 6 units.',
+      'card.primaire5.link': 'Access the program →',
       'card.primaire6.title': '6th basic grade',
       'card.primaire7.title': '7th basic grade',
+      'card.primaire7.desc': 'Complete 7th year primary program with 6 units.',
+      'card.primaire7.link': 'Access the program →',
       'card.primaire8.title': '8th basic grade',
       'card.primaire9.title': '9th basic grade',
+      'card.primaire9.desc': 'Complete 9th year primary program with 6 units.',
+      'card.primaire9.link': 'Access the program →',
       'card.secondaire1.title': '1st secondary grade',
       'card.secondaire2.title': '2nd secondary grade',
       'card.secondaire3.title': '3rd secondary grade',
@@ -66,10 +78,16 @@
       'card.primaire4.desc': 'البرنامج الكامل للسنة الرابعة ابتدائي مع 10 وحدات.',
       'card.primaire4.link': 'الوصول إلى البرنامج ←',
       'card.primaire5.title': 'السنة الخامسة ابتدائي',
+      'card.primaire5.desc': 'البرنامج الكامل للسنة الخامسة ابتدائي مع 6 وحدات.',
+      'card.primaire5.link': 'الوصول إلى البرنامج ←',
       'card.primaire6.title': 'السنة السادسة ابتدائي',
       'card.primaire7.title': 'السنة السابعة ابتدائي',
+      'card.primaire7.desc': 'البرنامج الكامل للسنة السابعة ابتدائي مع 6 وحدات.',
+      'card.primaire7.link': 'الوصول إلى البرنامج ←',
       'card.primaire8.title': 'السنة الثامنة ابتدائي',
       'card.primaire9.title': 'السنة التاسعة ابتدائي',
+      'card.primaire9.desc': 'البرنامج الكامل للسنة التاسعة ابتدائي مع 6 وحدات.',
+      'card.primaire9.link': 'الوصول إلى البرنامج ←',
       'card.secondaire1.title': 'الأولى ثانوي',
       'card.secondaire2.title': 'الثانية ثانوي',
       'card.secondaire3.title': 'الثالثة ثانوي',
@@ -91,14 +109,14 @@
     }
   });
 
-  // Card definitions – 4th year keeps the section list, but Section Économie is now linked
+  // Card definitions – now includes active links for grades 5, 7, 9
   const cardsData = [
     { id: 'primaire4', titleKey: 'card.primaire4.title', type: 'degree', link: 'degree4.html', descKey: 'card.primaire4.desc', linkKey: 'card.primaire4.link' },
-    { id: 'primaire5', titleKey: 'card.primaire5.title', type: 'coming' },
+    { id: 'primaire5', titleKey: 'card.primaire5.title', type: 'degree', link: 'degree5.html', descKey: 'card.primaire5.desc', linkKey: 'card.primaire5.link' },
     { id: 'primaire6', titleKey: 'card.primaire6.title', type: 'coming' },
-    { id: 'primaire7', titleKey: 'card.primaire7.title', type: 'coming' },
+    { id: 'primaire7', titleKey: 'card.primaire7.title', type: 'degree', link: 'degree7.html', descKey: 'card.primaire7.desc', linkKey: 'card.primaire7.link' },
     { id: 'primaire8', titleKey: 'card.primaire8.title', type: 'coming' },
-    { id: 'primaire9', titleKey: 'card.primaire9.title', type: 'coming' },
+    { id: 'primaire9', titleKey: 'card.primaire9.title', type: 'degree', link: 'degree9.html', descKey: 'card.primaire9.desc', linkKey: 'card.primaire9.link' },
     { id: 'secondaire1', titleKey: 'card.secondaire1.title', type: 'coming' },
     { id: 'secondaire2', titleKey: 'card.secondaire2.title', type: 'secondary', sections: ['section_lettres', 'section_sciences', 'section_economie', 'section_informatique'] },
     { id: 'secondaire3', titleKey: 'card.secondaire3.title', type: 'secondary', sections: ['section_lettres', 'section_sciences', 'section_economie', 'section_mathematiques', 'section_technique', 'section_informatique'] },
@@ -197,7 +215,7 @@
       App.makeBilingual(grid);
     }
     App.applyTranslations();
-    App.logToDB('actions', { type: 'info', message: 'cards-building.js v5.3 loaded and cards rendered' });
+    App.logToDB('actions', { type: 'info', message: 'cards-building.js v5.4 loaded and cards rendered' });
   } catch (error) {
     grid.innerHTML = `<div class="card"><div class="card-body" data-i18n="cards_error">${fr['cards_error']}</div></div>`;
     App.logToDB('errors', { type: 'error', message: 'cards-building.js failed: ' + error.message });
