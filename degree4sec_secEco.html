@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-i18n="module_main_title">Programme de Module 1 – 4ᵉ année secondaire – Section Économie et Gestion</title>
+  <title data-i18n="degree4secEco_main_title">Programme – 4ème année secondaire (Section Économie et Gestion)</title>
   <link rel="manifest" href="/manifest.json">
   <link rel="stylesheet" href="shared.css">
   <style>
@@ -11,15 +11,41 @@
       --heading: #382e1e;
       --shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
       --shadow-lg: 0 4px 14px rgba(0, 0, 0, 0.08);
-      --module-bg: #fdfaf5;
-      --module-header-bg: #f5efe2;
-      --conseils-border: #7a4f34;
+      --unit-bg: #fdfaf5;
+      --unit-header-bg: #f5efe2;
       --bullet-color: #d4c5a9;
       --arrow-color: #c0b090;
       --accent-hover-bg: rgba(199, 91, 44, 0.08);
-      --part-bg: #faf6ee;
-      --part-border: #e8ddcc;
+
+      /* Category colors – light mode */
+      --cat-poetry: #b8860b;
+      --cat-reading: #2e8b57;
+      --cat-spelling: #8b0000;
+      --cat-grammar: #4169e1;
+      --cat-conjugation: #8a2be2;
+      --cat-writing: #d2691e;
+      --cat-vocabulary: #9932cc;
+      --cat-comprehension: #008b8b;
+      --cat-evaluation: #b22222;
+      --cat-documentary: #556b2f;
+      --cat-activity: #6a5acd;
     }
+    body.dark {
+      --cat-poetry: #f0c75e;
+      --cat-reading: #7bc8a4;
+      --cat-spelling: #e57373;
+      --cat-grammar: #90caf9;
+      --cat-conjugation: #ce93d8;
+      --cat-writing: #ffab91;
+      --cat-vocabulary: #ce93d8;
+      --cat-comprehension: #80cbc4;
+      --cat-evaluation: #ef9a9a;
+      --cat-documentary: #c5e1a5;
+      --cat-activity: #b39ddb;
+      --unit-bg: #25211c;
+      --unit-header-bg: #332e25;
+    }
+
     body {
       font-family: var(--font);
       background: var(--bg);
@@ -27,12 +53,6 @@
       line-height: 1.7;
       transition: background var(--transition), color var(--transition);
     }
-	body.dark {
-  --module-bg: #25211c;        /* dark background for modules */
-  --module-header-bg: #332e25; /* dark background for module headers */
-  --part-bg: #2a2620;          /* dark background for part separators and coming-soon */
-  --part-border: #3e3830;      /* darker border for part separators */
-}
     .back-nav {
       background: var(--card-bg);
       border-bottom: 1px solid var(--border);
@@ -85,16 +105,16 @@
       color:var(--accent);
       font-size:0.6rem;
     }
-    .module {
-      background: var(--module-bg);
+    .unit {
+      background: var(--unit-bg);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       margin-bottom: 1.5rem;
       overflow: hidden;
       box-shadow: var(--shadow);
     }
-    .module-header {
-      background: var(--module-header-bg);
+    .unit-header {
+      background: var(--unit-header-bg);
       padding: 0.8rem 1.3rem;
       font-weight: 700;
       font-size: 1.1rem;
@@ -109,13 +129,13 @@
       text-align: left;
       font-family: inherit;
       color: inherit;
-      background-color: var(--module-header-bg);
+      background-color: var(--unit-header-bg);
       transition: background 0.2s;
     }
-    .module-header:hover {
+    .unit-header:hover {
       background-color: var(--accent-hover-bg);
     }
-    .module-num {
+    .unit-num {
       width: 34px;
       height: 34px;
       background: var(--accent);
@@ -127,17 +147,17 @@
       font-weight: 700;
       flex-shrink: 0;
     }
-    .module-body {
+    .unit-body {
       overflow: hidden;
       max-height: none;
       transition: max-height 0.4s ease;
     }
-    .module-body.collapsed {
+    .unit-body.collapsed {
       max-height: 0;
       padding-top: 0;
       padding-bottom: 0;
     }
-    .module-header.collapsed .collapse-arrow {
+    .unit-header.collapsed .collapse-arrow {
       transform: rotate(-90deg);
     }
     .collapse-arrow {
@@ -145,21 +165,31 @@
       font-size: 0.8rem;
       transition: transform 0.3s;
     }
-    .part-separator {
-      background: var(--part-bg);
-      border-top: 1px solid var(--part-border);
-      border-bottom: 1px solid var(--part-border);
-      padding: 0.6rem 1.3rem;
-      font-weight: 700;
+
+    .category-label {
       font-size: 0.95rem;
-      color: var(--heading);
-      margin-top: 0.3rem;
+      font-weight: 700;
+      margin: 1rem 1.3rem 0.3rem 1.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
     }
+    .cat-poetry       { color: var(--cat-poetry); }
+    .cat-reading      { color: var(--cat-reading); }
+    .cat-spelling     { color: var(--cat-spelling); }
+    .cat-grammar      { color: var(--cat-grammar); }
+    .cat-conjugation  { color: var(--cat-conjugation); }
+    .cat-writing      { color: var(--cat-writing); }
+    .cat-vocabulary   { color: var(--cat-vocabulary); }
+    .cat-comprehension{ color: var(--cat-comprehension); }
+    .cat-evaluation   { color: var(--cat-evaluation); }
+    .cat-documentary  { color: var(--cat-documentary); }
+    .cat-activity     { color: var(--cat-activity); }
+
     .lesson-link {
       display: flex;
       align-items: center;
       gap: 0.7rem;
-      padding: 0.7rem 1.3rem;
+      padding: 0.5rem 1.3rem;
       text-decoration: none;
       color: var(--text);
       border-left: 3px solid transparent;
@@ -178,10 +208,10 @@
       flex-shrink: 0;
     }
     .lesson-label {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 600;
       color: var(--text-light);
-      min-width: 110px;
+      min-width: 100px;
       flex-shrink: 0;
     }
     .lesson-title {
@@ -212,20 +242,13 @@
     .test-link:hover {
       background: var(--accent-hover);
     }
-    .coming-soon {
-      text-align:center;
-      padding:1.5rem 1rem;
-      color:var(--text-light);
-      font-style:italic;
-      background: var(--part-bg);
-    }
     .conseils {
       background: var(--card-bg);
       border-radius: var(--radius);
       padding: 1.5rem;
       box-shadow: var(--shadow);
       margin-top: 2rem;
-      border-top: 4px solid var(--conseils-border);
+      border-top: 4px solid var(--accent);
     }
     .conseils h2 {
       margin-bottom: 1rem;
@@ -278,8 +301,7 @@
       .lesson-label { min-width: auto; font-size: 0.75rem; }
       .lesson-title { width:100%; font-size:0.85rem; }
       .arrow { display:none; }
-      .test-link { margin: 0.6rem 0.8rem; }
-      .part-separator { padding: 0.5rem 1rem; font-size: 0.85rem; }
+      .category-label { margin: 0.8rem 0.8rem 0.2rem 0.8rem; }
     }
     @media print {
       .no-print { display: none !important; }
@@ -292,8 +314,8 @@
       #print-header h1 { font-size: 18pt; }
       .container { padding: 0; }
       h1 { font-size: 18pt; }
-      .module-body { max-height: none !important; }
-      .module-header { cursor: default; pointer-events: none; }
+      .unit-body { max-height: none !important; }
+      .unit-header { cursor: default; pointer-events: none; }
       .test-link { display: none; }
     }
   </style>
@@ -303,312 +325,256 @@
     <a href="index.html" data-i18n="back_link">← Retour à l'accueil</a>
   </nav>
   <main class="container" id="main-content">
-    <h1 data-i18n="module_main_title">📖 Programme de Module 1 – 4ᵉ année secondaire – Section Économie et Gestion</h1>
-    <p class="subtitle" data-i18n="module_subtitle">8 modules pour tout consolider</p>
+    <h1 data-i18n="degree4secEco_main_title">📚 Programme de 4ème année secondaire</h1>
+    <p class="subtitle" data-i18n="degree4secEco_subtitle">Section Économie et Gestion – Module 1 : Souvenirs et nostalgie</p>
     <button id="printProgramBtn" class="header-btn no-print" onclick="window.print();" data-i18n="print_button">🖨️ Imprimer le programme</button>
+
+    <!-- Objectives -->
     <div class="objectives">
-      <h2 data-i18n="objectives_heading">🎯 Objectifs du module 1</h2>
+      <h2 data-i18n="objectives_heading">🎯 Objectifs du module</h2>
       <ul>
-        <li data-i18n="objectives_1">Maîtriser les compétences fondamentales : lecture, écriture, expression orale.</li>
-        <li data-i18n="objectives_2">Renforcer les automatismes en grammaire, conjugaison, orthographe.</li>
-        <li data-i18n="objectives_3">S'approprier la méthodologie des exercices clés du Bac (commentaire, dissertation, résumé).</li>
-        <li data-i18n="objectives_4">Enrichir sa culture littéraire à travers les grands thèmes du programme.</li>
+        <li data-i18n="objectives_1">Maîtriser le discours rapporté (direct / indirect) dans toutes ses formes.</li>
+        <li data-i18n="objectives_2">Enrichir le vocabulaire thématique et reconnaître les procédés d'écriture.</li>
+        <li data-i18n="objectives_3">Développer les compétences d'analyse de texte et de rédaction d'essai.</li>
+        <li data-i18n="objectives_4">S'approprier les outils linguistiques pour réussir les épreuves du Bac.</li>
       </ul>
     </div>
 
     <!-- Module 1 -->
-    <div class="module">
-      <button class="module-header" aria-expanded="true" aria-controls="module1-body">
-        <span class="module-num">1</span>
-        <span data-i18n="module1.title">Souvenirs et nostalgie</span>
+    <div class="unit">
+      <button class="unit-header" aria-expanded="true" aria-controls="module1-body">
+        <span class="unit-num">1</span>
+        <span data-i18n="module1.title">Module 1 – Souvenirs et nostalgie</span>
         <span class="collapse-arrow">▼</span>
       </button>
-      <div class="module-body" id="module1-body">
-
-        <!-- Part 1 -->
-        <div class="part-separator" data-i18n="module1.part1.title">Partie 1 : Le discours rapporté</div>
-        <a href="ed_fr_4th_secEco_module1_lesson1_partA.html" class="lesson-link">
+      <div class="unit-body" id="module1-body">
+        <!-- Part 1: Langue -->
+        <div class="category-label cat-grammar" data-i18n="module1.part1">📚 Partie 1 : Langue</div>
+        <a href="degree4secEco_mod1_langue_1.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-label" data-i18n="module1.part1a.label">Partie 1a</span>
-          <span class="lesson-title" data-i18n="module1.part1a.title">Du discours direct au discours indirect</span>
+          <span class="lesson-title" data-i18n="module1.part1.lesson1">Le discours rapporté : Du discours direct au discours indirect</span>
           <span class="arrow">→</span>
         </a>
-        <a href="ed_fr_4th_secEco_module1_lesson1_partB.html" class="lesson-link">
+        <a href="degree4secEco_mod1_langue_2.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-label" data-i18n="module1.part1b.label">Partie 1b</span>
-          <span class="lesson-title" data-i18n="module1.part1b.title">Cas des phrases interrogatives – Interrogation totale</span>
+          <span class="lesson-title" data-i18n="module1.part1.lesson2">Le discours rapporté : Cas des phrases interrogatives – Interrogation totale</span>
           <span class="arrow">→</span>
         </a>
-        <a href="ed_fr_4th_secEco_module1_lesson1_partC.html" class="lesson-link">
+        <a href="degree4secEco_mod1_langue_3.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-label" data-i18n="module1.part1c.label">Partie 1c</span>
-          <span class="lesson-title" data-i18n="module1.part1c.title">Cas des phrases interrogatives – Interrogation partielle</span>
+          <span class="lesson-title" data-i18n="module1.part1.lesson3">Le discours rapporté : Cas des phrases interrogatives – Interrogation partielle</span>
           <span class="arrow">→</span>
         </a>
-        <a href="ed_fr_4th_secEco_module1_lesson1_partD.html" class="lesson-link">
+        <a href="degree4secEco_mod1_langue_4.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-label" data-i18n="module1.part1d.label">Partie 1d</span>
-          <span class="lesson-title" data-i18n="module1.part1d.title">Cas des pronoms interrogatifs – partie 1</span>
+          <span class="lesson-title" data-i18n="module1.part1.lesson4">Le discours rapporté : Cas des pronoms interrogatifs – partie 1</span>
           <span class="arrow">→</span>
         </a>
-        <a href="ed_fr_4th_secEco_module1_lesson1_partE.html" class="lesson-link">
+        <a href="degree4secEco_mod1_langue_5.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-label" data-i18n="module1.part1e.label">Partie 1e</span>
-          <span class="lesson-title" data-i18n="module1.part1e.title">Les indicateurs du temps et du lieu</span>
+          <span class="lesson-title" data-i18n="module1.part1.lesson5">Le discours rapporté : Les indicateurs du temps et du lieu</span>
           <span class="arrow">→</span>
         </a>
-        <a href="ed_fr_4th_secEco_module1_lesson1_partF.html" class="lesson-link">
+        <a href="degree4secEco_mod1_langue_6.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-label" data-i18n="module1.part1f.label">Partie 1f</span>
-          <span class="lesson-title" data-i18n="module1.part1f.title">Le discours direct / Le discours indirect</span>
+          <span class="lesson-title" data-i18n="module1.part1.lesson6">Le discours rapporté : Le discours direct / Le discours indirect</span>
           <span class="arrow">→</span>
         </a>
-        <a href="ed_fr_4th_secEco_module1_lesson1_partG.html" class="lesson-link">
+        <a href="degree4secEco_mod1_langue_7.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-label" data-i18n="module1.part1g.label">Partie 1g</span>
-          <span class="lesson-title" data-i18n="module1.part1g.title">Au niveau des temps et des indicateurs de temps et de lieux</span>
+          <span class="lesson-title" data-i18n="module1.part1.lesson7">Le discours rapporté : Au niveau des temps et des indicateurs de temps et de lieux</span>
           <span class="arrow">→</span>
         </a>
-        <a href="ed_fr_4th_secEco_module1_lesson1_partH.html" class="lesson-link">
+        <a href="degree4secEco_mod1_langue_8.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-label" data-i18n="module1.part1h.label">Partie 1h</span>
-          <span class="lesson-title" data-i18n="module1.part1h.title">Documentation</span>
-          <span class="arrow">→</span>
-        </a>
-        <a href="ed_fr_4th_secEco_module1_lesson1_partI.html" class="lesson-link">
-          <span class="bullet"></span>
-          <span class="lesson-label" data-i18n="module1.part1i.label">Partie 1i</span>
-          <span class="lesson-title" data-i18n="module1.part1i.title">Introduire le thème</span>
+          <span class="lesson-title" data-i18n="module1.part1.lesson8">Documentation</span>
           <span class="arrow">→</span>
         </a>
 
-        <!-- Part 2 -->
-        <div class="part-separator" data-i18n="module1.part2.title">Partie 2 : Vocabulaire thématique</div>
-        <a href="ed_fr_4th_secEco_module1_lesson2_partA.html" class="lesson-link">
+        <!-- Part 2: Vocabulaire thématique -->
+        <div class="category-label cat-vocabulary" data-i18n="module1.part2">🧠 Partie 2 : Vocabulaire thématique</div>
+        <a href="degree4secEco_mod1_vocab_1.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-label" data-i18n="module1.part2a.label">Partie 2a</span>
-          <span class="lesson-title" data-i18n="module1.part2a.title">Vocabulaire – Exercice</span>
+          <span class="lesson-title" data-i18n="module1.part2.lesson1">Introduire le thème</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="degree4secEco_mod1_vocab_2.html" class="lesson-link">
+          <span class="bullet"></span>
+          <span class="lesson-title" data-i18n="module1.part2.lesson2">Vocabulaire – Exercice</span>
           <span class="arrow">→</span>
         </a>
 
-        <!-- Part 3 -->
-        <div class="part-separator" data-i18n="module1.part3.title">Partie 3 : Les procédés d'écriture</div>
-        <a href="ed_fr_4th_secEco_module1_lesson3_partA.html" class="lesson-link">
+        <!-- Part 3: Les procédés d'écriture -->
+        <div class="category-label cat-writing" data-i18n="module1.part3">📝 Partie 3 : Les procédés d'écriture</div>
+        <a href="degree4secEco_mod1_procedes_1.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-label" data-i18n="module1.part3a.label">Partie 3a</span>
-          <span class="lesson-title" data-i18n="module1.part3a.title">Les procédés lexicaux</span>
+          <span class="lesson-title" data-i18n="module1.part3.lesson1">Les procédés d'écriture – Les procédés lexicaux</span>
           <span class="arrow">→</span>
         </a>
-        <a href="ed_fr_4th_secEco_module1_lesson3_partB.html" class="lesson-link">
+        <a href="degree4secEco_mod1_procedes_2.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-label" data-i18n="module1.part3b.label">Partie 3b</span>
-          <span class="lesson-title" data-i18n="module1.part3b.title">Les procédés grammaticaux</span>
+          <span class="lesson-title" data-i18n="module1.part3.lesson2">Les procédés d'écriture – Les procédés grammaticaux</span>
           <span class="arrow">→</span>
         </a>
-        <a href="ed_fr_4th_secEco_module1_lesson3_partC.html" class="lesson-link">
+        <a href="degree4secEco_mod1_procedes_3.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-label" data-i18n="module1.part3c.label">Partie 3c</span>
-          <span class="lesson-title" data-i18n="module1.part3c.title">Les figures de style – figures par analogie</span>
+          <span class="lesson-title" data-i18n="module1.part3.lesson3">Les procédés d'écriture – Les figures de style – figures par analogie</span>
           <span class="arrow">→</span>
         </a>
-        <a href="ed_fr_4th_secEco_module1_lesson3_partD.html" class="lesson-link">
+        <a href="degree4secEco_mod1_procedes_4.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-label" data-i18n="module1.part3d.label">Partie 3d</span>
-          <span class="lesson-title" data-i18n="module1.part3d.title">Les figures d'opposition</span>
+          <span class="lesson-title" data-i18n="module1.part3.lesson4">Les procédés d'écriture – Les figures d'opposition</span>
           <span class="arrow">→</span>
         </a>
-        <a href="ed_fr_4th_secEco_module1_lesson3_partE.html" class="lesson-link">
+        <a href="degree4secEco_mod1_procedes_5.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-label" data-i18n="module1.part3e.label">Partie 3e</span>
-          <span class="lesson-title" data-i18n="module1.part3e.title">Les figures de style d'insistance – partie 1</span>
+          <span class="lesson-title" data-i18n="module1.part3.lesson5">Les procédés d'écriture – Les figures de style d'insistance – partie 1</span>
           <span class="arrow">→</span>
         </a>
-        <a href="ed_fr_4th_secEco_module1_lesson3_partF.html" class="lesson-link">
+        <a href="degree4secEco_mod1_procedes_6.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-label" data-i18n="module1.part3f.label">Partie 3f</span>
-          <span class="lesson-title" data-i18n="module1.part3f.title">Les figures de style d'insistance – partie 2</span>
+          <span class="lesson-title" data-i18n="module1.part3.lesson6">Les procédés d'écriture – Les figures de style d'insistance – partie 2</span>
           <span class="arrow">→</span>
         </a>
-        <a href="ed_fr_4th_secEco_module1_lesson3_partG.html" class="lesson-link">
+        <a href="degree4secEco_mod1_procedes_7.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-label" data-i18n="module1.part3g.label">Partie 3g</span>
-          <span class="lesson-title" data-i18n="module1.part3g.title">Les figures de style de substitution</span>
+          <span class="lesson-title" data-i18n="module1.part3.lesson7">Les procédés d'écriture – Les figures de style de substitution</span>
           <span class="arrow">→</span>
         </a>
 
-        <!-- Part 4 -->
-        <div class="part-separator" data-i18n="module1.part4.title">Partie 4 : Activité – Vocabulaire</div>
-        <a href="ed_fr_4th_secEco_module1_lesson4_partA.html" class="lesson-link">
+        <!-- Part 4: Activité - Vocabulaire -->
+        <div class="category-label cat-vocabulary" data-i18n="module1.part4">🧠 Partie 4 : Activité - Vocabulaire</div>
+        <a href="degree4secEco_mod1_actvocab_1.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-label" data-i18n="module1.part4a.label">Partie 4a</span>
-          <span class="lesson-title" data-i18n="module1.part4a.title">Le synonyme / Les antonymes</span>
+          <span class="lesson-title" data-i18n="module1.part4.lesson1">Vocabulaire – Le synonyme / Les antonymes</span>
           <span class="arrow">→</span>
         </a>
-        <a href="ed_fr_4th_secEco_module1_lesson4_partB.html" class="lesson-link">
+        <a href="degree4secEco_mod1_actvocab_2.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-label" data-i18n="module1.part4b.label">Partie 4b</span>
-          <span class="lesson-title" data-i18n="module1.part4b.title">La polysémie</span>
+          <span class="lesson-title" data-i18n="module1.part4.lesson2">Vocabulaire – La polysémie</span>
           <span class="arrow">→</span>
         </a>
-        <a href="ed_fr_4th_secEco_module1_lesson4_partC.html" class="lesson-link">
+        <a href="degree4secEco_mod1_actvocab_3.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-label" data-i18n="module1.part4c.label">Partie 4c</span>
-          <span class="lesson-title" data-i18n="module1.part4c.title">Les mots de la même famille</span>
+          <span class="lesson-title" data-i18n="module1.part4.lesson3">Vocabulaire – Les mots de la même famille</span>
           <span class="arrow">→</span>
         </a>
-        <a href="ed_fr_4th_secEco_module1_lesson4_partD.html" class="lesson-link">
+        <a href="degree4secEco_mod1_actvocab_4.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-label" data-i18n="module1.part4d.label">Partie 4d</span>
-          <span class="lesson-title" data-i18n="module1.part4d.title">Exercice pratique</span>
+          <span class="lesson-title" data-i18n="module1.part4.lesson4">Vocabulaire – Exercice pratique</span>
           <span class="arrow">→</span>
         </a>
 
-        <!-- Part 5 -->
-        <div class="part-separator" data-i18n="module1.part5.title">Partie 5 : Étude de texte</div>
-        <a href="ed_fr_4th_secEco_module1_lesson5_partA.html" class="lesson-link">
+        <!-- Part 5: Etude de texte -->
+        <div class="category-label cat-reading" data-i18n="module1.part5">📖 Partie 5 : Étude de texte</div>
+        <a href="degree4secEco_mod1_etude_1.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-label" data-i18n="module1.part5a.label">Partie 5a</span>
-          <span class="lesson-title" data-i18n="module1.part5a.title">Comment répondre à une question de compréhension (des règles théoriques)</span>
+          <span class="lesson-title" data-i18n="module1.part5.lesson1">Étude de texte – Comment répondre à une question de compréhension (règles théoriques)</span>
           <span class="arrow">→</span>
         </a>
-        <a href="ed_fr_4th_secEco_module1_lesson5_partB.html" class="lesson-link">
+        <a href="degree4secEco_mod1_etude_2.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-label" data-i18n="module1.part5b.label">Partie 5b</span>
-          <span class="lesson-title" data-i18n="module1.part5b.title">Comment répondre à une question de compréhension (application)</span>
+          <span class="lesson-title" data-i18n="module1.part5.lesson2">Étude de texte – Comment répondre à une question de compréhension (application)</span>
           <span class="arrow">→</span>
         </a>
-        <a href="ed_fr_4th_secEco_module1_lesson5_partC.html" class="lesson-link">
+        <a href="degree4secEco_mod1_etude_3.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-label" data-i18n="module1.part5c.label">Partie 5c</span>
-          <span class="lesson-title" data-i18n="module1.part5c.title">Comment répondre à une question qui porte sur un procédé d'écriture (application)</span>
+          <span class="lesson-title" data-i18n="module1.part5.lesson3">Étude de texte – Comment répondre à une question qui porte sur un procédé d'écriture (application)</span>
           <span class="arrow">→</span>
         </a>
 
-        <!-- Part 6 -->
-        <div class="part-separator" data-i18n="module1.part6.title">Partie 6 : Essai – Écrit</div>
-        <a href="ed_fr_4th_secEco_module1_lesson6_partA.html" class="lesson-link">
+        <!-- Part 6: Essai -->
+        <div class="category-label cat-writing" data-i18n="module1.part6">📝 Partie 6 : Essai</div>
+        <a href="degree4secEco_mod1_essai_1.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-label" data-i18n="module1.part6a.label">Partie 6a</span>
-          <span class="lesson-title" data-i18n="module1.part6a.title">Comment peut-on réussir à développer un sujet d'essai</span>
+          <span class="lesson-title" data-i18n="module1.part6.lesson1">Fiche d'essai : Comment réussir à développer un sujet d'essai</span>
           <span class="arrow">→</span>
         </a>
-        <a href="ed_fr_4th_secEco_module1_lesson6_partB.html" class="lesson-link">
+        <a href="degree4secEco_mod1_essai_2.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-label" data-i18n="module1.part6b.label">Partie 6b</span>
-          <span class="lesson-title" data-i18n="module1.part6b.title">Lire et comprendre le sujet et dégager la problématique</span>
+          <span class="lesson-title" data-i18n="module1.part6.lesson2">Essai – Lire et comprendre le sujet et dégager la problématique</span>
           <span class="arrow">→</span>
         </a>
-        <a href="ed_fr_4th_secEco_module1_lesson6_partC.html" class="lesson-link">
+        <a href="degree4secEco_mod1_essai_3.html" class="lesson-link">
           <span class="bullet"></span>
-          <span class="lesson-label" data-i18n="module1.part6c.label">Partie 6c</span>
-          <span class="lesson-title" data-i18n="module1.part6c.title">Un sujet développé</span>
+          <span class="lesson-title" data-i18n="module1.part6.lesson3">Essai – Un sujet développé</span>
           <span class="arrow">→</span>
         </a>
-
-        <a href="ed_fr_4th_secEco_module1_test.html" class="test-link" data-i18n="test_link">📝 Test général</a>
       </div>
     </div>
 
-    <!-- Modules 2-8 (placeholders) -->
-    <div class="module">
-      <button class="module-header" aria-expanded="true" aria-controls="module2-body">
-        <span class="module-num">2</span>
-        <span data-i18n="module2.title">Consolidation grammaticale</span>
+    <!-- Placeholder modules 2-6 -->
+    <div class="unit">
+      <button class="unit-header" aria-expanded="false" aria-controls="module2-body">
+        <span class="unit-num">2</span>
+        <span data-i18n="module2.title">Bientôt disponible</span>
         <span class="collapse-arrow">▼</span>
       </button>
-      <div class="module-body" id="module2-body">
-        <p class="coming-soon" data-i18n="coming_soon">Contenu à venir bientôt</p>
-        <a href="ed_fr_4th_secEco_module2_test.html" class="test-link" data-i18n="test_link">📝 Test général</a>
+      <div class="unit-body collapsed" id="module2-body">
+        <p style="padding:1rem 1.3rem; color:var(--text-light);" data-i18n="unit_placeholder">Leçons en préparation</p>
+      </div>
+    </div>
+    <!-- Add placeholders for modules 3,4,5,6 -->
+    <div class="unit">
+      <button class="unit-header" aria-expanded="false" aria-controls="module3-body">
+        <span class="unit-num">3</span>
+        <span data-i18n="module3.title">Bientôt disponible</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="unit-body collapsed" id="module3-body">
+        <p style="padding:1rem 1.3rem; color:var(--text-light);" data-i18n="unit_placeholder">Leçons en préparation</p>
+      </div>
+    </div>
+    <div class="unit">
+      <button class="unit-header" aria-expanded="false" aria-controls="module4-body">
+        <span class="unit-num">4</span>
+        <span data-i18n="module4.title">Bientôt disponible</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="unit-body collapsed" id="module4-body">
+        <p style="padding:1rem 1.3rem; color:var(--text-light);" data-i18n="unit_placeholder">Leçons en préparation</p>
+      </div>
+    </div>
+    <div class="unit">
+      <button class="unit-header" aria-expanded="false" aria-controls="module5-body">
+        <span class="unit-num">5</span>
+        <span data-i18n="module5.title">Bientôt disponible</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="unit-body collapsed" id="module5-body">
+        <p style="padding:1rem 1.3rem; color:var(--text-light);" data-i18n="unit_placeholder">Leçons en préparation</p>
+      </div>
+    </div>
+    <div class="unit">
+      <button class="unit-header" aria-expanded="false" aria-controls="module6-body">
+        <span class="unit-num">6</span>
+        <span data-i18n="module6.title">Bientôt disponible</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="unit-body collapsed" id="module6-body">
+        <p style="padding:1rem 1.3rem; color:var(--text-light);" data-i18n="unit_placeholder">Leçons en préparation</p>
       </div>
     </div>
 
-    <div class="module">
-      <button class="module-header" aria-expanded="true" aria-controls="module3-body">
-        <span class="module-num">3</span>
-        <span data-i18n="module3.title">Maîtrise de la conjugaison</span>
-        <span class="collapse-arrow">▼</span>
-      </button>
-      <div class="module-body" id="module3-body">
-        <p class="coming-soon" data-i18n="coming_soon">Contenu à venir bientôt</p>
-        <a href="ed_fr_4th_secEco_module3_test.html" class="test-link" data-i18n="test_link">📝 Test général</a>
-      </div>
-    </div>
-
-    <div class="module">
-      <button class="module-header" aria-expanded="true" aria-controls="module4-body">
-        <span class="module-num">4</span>
-        <span data-i18n="module4.title">Orthographe et précision</span>
-        <span class="collapse-arrow">▼</span>
-      </button>
-      <div class="module-body" id="module4-body">
-        <p class="coming-soon" data-i18n="coming_soon">Contenu à venir bientôt</p>
-        <a href="ed_fr_4th_secEco_module4_test.html" class="test-link" data-i18n="test_link">📝 Test général</a>
-      </div>
-    </div>
-
-    <div class="module">
-      <button class="module-header" aria-expanded="true" aria-controls="module5-body">
-        <span class="module-num">5</span>
-        <span data-i18n="module5.title">Expression écrite structurée</span>
-        <span class="collapse-arrow">▼</span>
-      </button>
-      <div class="module-body" id="module5-body">
-        <p class="coming-soon" data-i18n="coming_soon">Contenu à venir bientôt</p>
-        <a href="ed_fr_4th_secEco_module5_test.html" class="test-link" data-i18n="test_link">📝 Test général</a>
-      </div>
-    </div>
-
-    <div class="module">
-      <button class="module-header" aria-expanded="true" aria-controls="module6-body">
-        <span class="module-num">6</span>
-        <span data-i18n="module6.title">Analyse de textes littéraires</span>
-        <span class="collapse-arrow">▼</span>
-      </button>
-      <div class="module-body" id="module6-body">
-        <p class="coming-soon" data-i18n="coming_soon">Contenu à venir bientôt</p>
-        <a href="ed_fr_4th_secEco_module6_test.html" class="test-link" data-i18n="test_link">📝 Test général</a>
-      </div>
-    </div>
-
-    <div class="module">
-      <button class="module-header" aria-expanded="true" aria-controls="module7-body">
-        <span class="module-num">7</span>
-        <span data-i18n="module7.title">Méthodologie des épreuves</span>
-        <span class="collapse-arrow">▼</span>
-      </button>
-      <div class="module-body" id="module7-body">
-        <p class="coming-soon" data-i18n="coming_soon">Contenu à venir bientôt</p>
-        <a href="ed_fr_4th_secEco_module7_test.html" class="test-link" data-i18n="test_link">📝 Test général</a>
-      </div>
-    </div>
-
-    <div class="module">
-      <button class="module-header" aria-expanded="true" aria-controls="module8-body">
-        <span class="module-num">8</span>
-        <span data-i18n="module8.title">Révisions intensives et bilan</span>
-        <span class="collapse-arrow">▼</span>
-      </button>
-      <div class="module-body" id="module8-body">
-        <p class="coming-soon" data-i18n="coming_soon">Contenu à venir bientôt</p>
-        <a href="ed_fr_4th_secEco_module8_test.html" class="test-link" data-i18n="test_link">📝 Test général</a>
-      </div>
-    </div>
-
+    <!-- Conseils -->
     <div class="conseils no-print">
-      <h2 data-i18n="conseils_heading">💡 Conseils pour une révision efficace</h2>
-      <div class="conseil-item"><span class="conseil-icon">📋</span> <span data-i18n="conseil_1">📋 <strong>Organisation</strong> : planifiez 2h/jour, alternez les matières.</span></div>
-      <div class="conseil-item"><span class="conseil-icon">✏️</span> <span data-i18n="conseil_2">✏️ <strong>Méthode active</strong> : prenez des notes, faites des fiches, reformulez.</span></div>
-      <div class="conseil-item"><span class="conseil-icon">📚</span> <span data-i18n="conseil_3">📚 <strong>Ressources</strong> : manuel officiel, annales du Bac, edunet.tn.</span></div>
-      <div class="conseil-item"><span class="conseil-icon">🔗</span> <span data-i18n="conseil_4">🔗 <strong>Cohérence</strong> : chaque séance de lecture doit être suivie d'une production écrite.</span></div>
-      <div class="conseil-item"><span class="conseil-icon">🗣️</span> <span data-i18n="conseil_5">🗣️ <strong>Travaillez l'oral</strong> : lisez vos textes à voix haute.</span></div>
+      <h2 data-i18n="conseils_heading">💡 Conseils pour bien apprendre</h2>
+      <div class="conseil-item"><span class="conseil-icon">📋</span> <span data-i18n="conseil_1">📋 <strong>Organisation</strong> : planifiez vos révisions sur la semaine.</span></div>
+      <div class="conseil-item"><span class="conseil-icon">✏️</span> <span data-i18n="conseil_2">✏️ <strong>Méthode active</strong> : résumez, comparez, discutez des textes.</span></div>
+      <div class="conseil-item"><span class="conseil-icon">📚</span> <span data-i18n="conseil_3">📚 <strong>Ressources</strong> : consultez le manuel officiel et des annales du Bac.</span></div>
+      <div class="conseil-item"><span class="conseil-icon">🔗</span> <span data-i18n="conseil_4">🔗 <strong>Cohérence</strong> : reliez chaque leçon aux épreuves types.</span></div>
+      <div class="conseil-item"><span class="conseil-icon">🗣️</span> <span data-i18n="conseil_5">🗣️ <strong>Oral</strong> : entraînez-vous à reformuler les idées à voix haute.</span></div>
     </div>
+
     <div class="footer no-print">
-      <p data-i18n="footer_planning">📘 Programme conçu pour les élèves de 4ᵉ année secondaire – Section Économie et Gestion — Tunisie</p>
-      <p data-i18n="footer_encouragement">Suivez ce planning avec rigueur et adaptez‑le à votre rythme. <strong>Bonne préparation !</strong></p>
+      <p data-i18n="footer_planning">📘 Programme conçu pour les élèves de 4ème année secondaire (Section Économie et Gestion) — Tunisie</p>
+      <p data-i18n="footer_encouragement">Travaillez avec rigueur et persévérance. <strong>Bonne réussite au Bac !</strong></p>
     </div>
+
+    <!-- Print-only header/footer -->
     <div id="print-header" style="display:none;" class="print-only">
-      <h1>Educational Dashboard – French</h1>
-      <p>Programme de Module 1 – 4ᵉ année secondaire – Section Économie et Gestion</p>
+      <h1>Educational Dashboard – Français</h1>
+      <p>Programme 4ème année secondaire – Section Économie et Gestion – Module 1</p>
       <hr>
     </div>
     <div id="print-footer" style="display:none;" class="print-only">
@@ -617,6 +583,7 @@
     </div>
   </main>
 
+  <!-- Scripts -->
   <script src="i18n.js"></script>
   <script src="db-utils.js"></script>
   <script src="offline-sync-utils.js"></script>
@@ -624,282 +591,189 @@
   <script src="supabase-client.js"></script>
   <script src="logging.js"></script>
 
+  <!-- Translations -->
   <script>
     App.addI18nTranslations({
       fr: {
         'back_link': '← Retour à l\'accueil',
-        'module_main_title': '📖 Programme de Module 1 – 4ᵉ année secondaire – Section Économie et Gestion',
-        'module_subtitle': '8 modules pour tout consolider',
-        'objectives_heading': '🎯 Objectifs du module 1',
-        'objectives_1': 'Maîtriser les compétences fondamentales : lecture, écriture, expression orale.',
-        'objectives_2': 'Renforcer les automatismes en grammaire, conjugaison, orthographe.',
-        'objectives_3': "S'approprier la méthodologie des exercices clés du Bac (commentaire, dissertation, résumé).",
-        'objectives_4': 'Enrichir sa culture littéraire à travers les grands thèmes du programme.',
-        'module1.title': 'Souvenirs et nostalgie',
-        'module1.part1.title': 'Partie 1 : Le discours rapporté',
-        'module1.part1a.label': 'Partie 1a',
-        'module1.part1a.title': 'Du discours direct au discours indirect',
-        'module1.part1b.label': 'Partie 1b',
-        'module1.part1b.title': 'Cas des phrases interrogatives – Interrogation totale',
-        'module1.part1c.label': 'Partie 1c',
-        'module1.part1c.title': 'Cas des phrases interrogatives – Interrogation partielle',
-        'module1.part1d.label': 'Partie 1d',
-        'module1.part1d.title': 'Cas des pronoms interrogatifs – partie 1',
-        'module1.part1e.label': 'Partie 1e',
-        'module1.part1e.title': 'Les indicateurs du temps et du lieu',
-        'module1.part1f.label': 'Partie 1f',
-        'module1.part1f.title': 'Le discours direct / Le discours indirect',
-        'module1.part1g.label': 'Partie 1g',
-        'module1.part1g.title': 'Au niveau des temps et des indicateurs de temps et de lieux',
-        'module1.part1h.label': 'Partie 1h',
-        'module1.part1h.title': 'Documentation',
-        'module1.part1i.label': 'Partie 1i',
-        'module1.part1i.title': 'Introduire le thème',
-        'module1.part2.title': 'Partie 2 : Vocabulaire thématique',
-        'module1.part2a.label': 'Partie 2a',
-        'module1.part2a.title': 'Vocabulaire – Exercice',
-        'module1.part3.title': "Partie 3 : Les procédés d'écriture",
-        'module1.part3a.label': 'Partie 3a',
-        'module1.part3a.title': 'Les procédés lexicaux',
-        'module1.part3b.label': 'Partie 3b',
-        'module1.part3b.title': 'Les procédés grammaticaux',
-        'module1.part3c.label': 'Partie 3c',
-        'module1.part3c.title': 'Les figures de style – figures par analogie',
-        'module1.part3d.label': 'Partie 3d',
-        'module1.part3d.title': "Les figures d'opposition",
-        'module1.part3e.label': 'Partie 3e',
-        'module1.part3e.title': "Les figures de style d'insistance – partie 1",
-        'module1.part3f.label': 'Partie 3f',
-        'module1.part3f.title': "Les figures de style d'insistance – partie 2",
-        'module1.part3g.label': 'Partie 3g',
-        'module1.part3g.title': 'Les figures de style de substitution',
-        'module1.part4.title': 'Partie 4 : Activité – Vocabulaire',
-        'module1.part4a.label': 'Partie 4a',
-        'module1.part4a.title': 'Le synonyme / Les antonymes',
-        'module1.part4b.label': 'Partie 4b',
-        'module1.part4b.title': 'La polysémie',
-        'module1.part4c.label': 'Partie 4c',
-        'module1.part4c.title': 'Les mots de la même famille',
-        'module1.part4d.label': 'Partie 4d',
-        'module1.part4d.title': 'Exercice pratique',
-        'module1.part5.title': 'Partie 5 : Étude de texte',
-        'module1.part5a.label': 'Partie 5a',
-        'module1.part5a.title': 'Comment répondre à une question de compréhension (des règles théoriques)',
-        'module1.part5b.label': 'Partie 5b',
-        'module1.part5b.title': 'Comment répondre à une question de compréhension (application)',
-        'module1.part5c.label': 'Partie 5c',
-        'module1.part5c.title': "Comment répondre à une question qui porte sur un procédé d'écriture (application)",
-        'module1.part6.title': 'Partie 6 : Essai – Écrit',
-        'module1.part6a.label': 'Partie 6a',
-        'module1.part6a.title': "Comment peut-on réussir à développer un sujet d'essai",
-        'module1.part6b.label': 'Partie 6b',
-        'module1.part6b.title': 'Lire et comprendre le sujet et dégager la problématique',
-        'module1.part6c.label': 'Partie 6c',
-        'module1.part6c.title': 'Un sujet développé',
-        'module2.title': 'Consolidation grammaticale',
-        'module3.title': 'Maîtrise de la conjugaison',
-        'module4.title': 'Orthographe et précision',
-        'module5.title': 'Expression écrite structurée',
-        'module6.title': 'Analyse de textes littéraires',
-        'module7.title': 'Méthodologie des épreuves',
-        'module8.title': 'Révisions intensives et bilan',
-        'coming_soon': 'Contenu à venir bientôt',
-        'conseils_heading': '💡 Conseils pour une révision efficace',
-        'conseil_1': '📋 <strong>Organisation</strong> : planifiez 2h/jour, alternez les matières.',
-        'conseil_2': '✏️ <strong>Méthode active</strong> : prenez des notes, faites des fiches, reformulez.',
-        'conseil_3': '📚 <strong>Ressources</strong> : manuel officiel, annales du Bac, edunet.tn.',
-        'conseil_4': '🔗 <strong>Cohérence</strong> : chaque séance de lecture doit être suivie d\'une production écrite.',
-        'conseil_5': '🗣️ <strong>Travaillez l\'oral</strong> : lisez vos textes à voix haute.',
-        'footer_planning': '📘 Programme conçu pour les élèves de 4ᵉ année secondaire – Section Économie et Gestion — Tunisie',
-        'footer_encouragement': 'Suivez ce planning avec rigueur et adaptez‑le à votre rythme. <strong>Bonne préparation !</strong>',
-        'back_to_top': 'Retour en haut',
-        'print_button': '🖨️ Imprimer le programme',
-        'test_link': '📝 Test général'
+        'degree4secEco_main_title': '📚 Programme de 4ème année secondaire',
+        'degree4secEco_subtitle': 'Section Économie et Gestion – Module 1 : Souvenirs et nostalgie',
+        'objectives_heading': '🎯 Objectifs du module',
+        'objectives_1': 'Maîtriser le discours rapporté (direct / indirect) dans toutes ses formes.',
+        'objectives_2': 'Enrichir le vocabulaire thématique et reconnaître les procédés d\'écriture.',
+        'objectives_3': 'Développer les compétences d\'analyse de texte et de rédaction d\'essai.',
+        'objectives_4': 'S\'approprier les outils linguistiques pour réussir les épreuves du Bac.',
+        'module1.title': 'Module 1 – Souvenirs et nostalgie',
+        'module1.part1': '📚 Partie 1 : Langue',
+        'module1.part1.lesson1': 'Le discours rapporté : Du discours direct au discours indirect',
+        'module1.part1.lesson2': 'Le discours rapporté : Cas des phrases interrogatives – Interrogation totale',
+        'module1.part1.lesson3': 'Le discours rapporté : Cas des phrases interrogatives – Interrogation partielle',
+        'module1.part1.lesson4': 'Le discours rapporté : Cas des pronoms interrogatifs – partie 1',
+        'module1.part1.lesson5': 'Le discours rapporté : Les indicateurs du temps et du lieu',
+        'module1.part1.lesson6': 'Le discours rapporté : Le discours direct / Le discours indirect',
+        'module1.part1.lesson7': 'Le discours rapporté : Au niveau des temps et des indicateurs de temps et de lieux',
+        'module1.part1.lesson8': 'Documentation',
+        'module1.part2': '🧠 Partie 2 : Vocabulaire thématique',
+        'module1.part2.lesson1': 'Introduire le thème',
+        'module1.part2.lesson1': 'Vocabulaire – Exercice',
+        'module1.part3': '📝 Partie 3 : Les procédés d\'écriture',
+        'module1.part3.lesson1': 'Les procédés d\'écriture – Les procédés lexicaux',
+        'module1.part3.lesson2': 'Les procédés d\'écriture – Les procédés grammaticaux',
+        'module1.part3.lesson3': 'Les procédés d\'écriture – Les figures de style – figures par analogie',
+        'module1.part3.lesson4': 'Les procédés d\'écriture – Les figures d\'opposition',
+        'module1.part3.lesson5': 'Les procédés d\'écriture – Les figures de style d\'insistance – partie 1',
+        'module1.part3.lesson6': 'Les procédés d\'écriture – Les figures de style d\'insistance – partie 2',
+        'module1.part3.lesson7': 'Les procédés d\'écriture – Les figures de style de substitution',
+        'module1.part4': '🧠 Partie 4 : Activité - Vocabulaire',
+        'module1.part4.lesson1': 'Vocabulaire – Le synonyme / Les antonymes',
+        'module1.part4.lesson2': 'Vocabulaire – La polysémie',
+        'module1.part4.lesson3': 'Vocabulaire – Les mots de la même famille',
+        'module1.part4.lesson4': 'Vocabulaire – Exercice pratique',
+        'module1.part5': '📖 Partie 5 : Étude de texte',
+        'module1.part5.lesson1': 'Étude de texte – Comment répondre à une question de compréhension (règles théoriques)',
+        'module1.part5.lesson2': 'Étude de texte – Comment répondre à une question de compréhension (application)',
+        'module1.part5.lesson3': 'Étude de texte – Comment répondre à une question qui porte sur un procédé d\'écriture (application)',
+        'module1.part6': '📝 Partie 6 : Essai',
+        'module1.part6.lesson1': 'Fiche d\'essai : Comment réussir à développer un sujet d\'essai',
+        'module1.part6.lesson2': 'Essai – Lire et comprendre le sujet et dégager la problématique',
+        'module1.part6.lesson3': 'Essai – Un sujet développé',
+        'module2.title': 'Bientôt disponible',
+        'module3.title': 'Bientôt disponible',
+        'module4.title': 'Bientôt disponible',
+        'module5.title': 'Bientôt disponible',
+        'module6.title': 'Bientôt disponible',
+        'unit_placeholder': 'Leçons en préparation',
+        'conseils_heading': '💡 Conseils pour bien apprendre',
+        'conseil_1': '📋 <strong>Organisation</strong> : planifiez vos révisions sur la semaine.',
+        'conseil_2': '✏️ <strong>Méthode active</strong> : résumez, comparez, discutez des textes.',
+        'conseil_3': '📚 <strong>Ressources</strong> : consultez le manuel officiel et des annales du Bac.',
+        'conseil_4': '🔗 <strong>Cohérence</strong> : reliez chaque leçon aux épreuves types.',
+        'conseil_5': '🗣️ <strong>Oral</strong> : entraînez-vous à reformuler les idées à voix haute.',
+        'footer_planning': '📘 Programme conçu pour les élèves de 4ème année secondaire (Section Économie et Gestion) — Tunisie',
+        'footer_encouragement': 'Travaillez avec rigueur et persévérance. <strong>Bonne réussite au Bac !</strong>',
+        'print_button': '🖨️ Imprimer le programme'
       },
       en: {
         'back_link': '← Back to home',
-        'module_main_title': '📖 Module 1 Program – 12th grade – Economics and Management section',
-        'module_subtitle': '8 modules to consolidate everything',
-        'objectives_heading': '🎯 Module 1 objectives',
-        'objectives_1': 'Master fundamental skills: reading, writing, speaking.',
-        'objectives_2': 'Reinforce grammar, conjugation, spelling automaticities.',
-        'objectives_3': 'Acquire methodology for key Bac exercises (commentary, dissertation, summary).',
-        'objectives_4': 'Enrich literary culture through the program’s main themes.',
-        'module1.title': 'Memories and Nostalgia',
-        'module1.part1.title': 'Part 1: Reported Speech',
-        'module1.part1a.label': 'Part 1a',
-        'module1.part1a.title': 'From direct to indirect speech',
-        'module1.part1b.label': 'Part 1b',
-        'module1.part1b.title': 'Interrogative sentences – Total question',
-        'module1.part1c.label': 'Part 1c',
-        'module1.part1c.title': 'Interrogative sentences – Partial question',
-        'module1.part1d.label': 'Part 1d',
-        'module1.part1d.title': 'Interrogative pronouns – part 1',
-        'module1.part1e.label': 'Part 1e',
-        'module1.part1e.title': 'Time and place indicators',
-        'module1.part1f.label': 'Part 1f',
-        'module1.part1f.title': 'Direct speech / Indirect speech',
-        'module1.part1g.label': 'Part 1g',
-        'module1.part1g.title': 'Tenses and time/place indicators',
-        'module1.part1h.label': 'Part 1h',
-        'module1.part1h.title': 'Documentation',
-        'module1.part1i.label': 'Part 1i',
-        'module1.part1i.title': 'Introducing the theme',
-        'module1.part2.title': 'Part 2: Thematic Vocabulary',
-        'module1.part2a.label': 'Part 2a',
-        'module1.part2a.title': 'Vocabulary – Exercise',
-        'module1.part3.title': 'Part 3: Writing Techniques',
-        'module1.part3a.label': 'Part 3a',
-        'module1.part3a.title': 'Lexical techniques',
-        'module1.part3b.label': 'Part 3b',
-        'module1.part3b.title': 'Grammatical techniques',
-        'module1.part3c.label': 'Part 3c',
-        'module1.part3c.title': 'Figures of speech – analogy figures',
-        'module1.part3d.label': 'Part 3d',
-        'module1.part3d.title': 'Opposition figures',
-        'module1.part3e.label': 'Part 3e',
-        'module1.part3e.title': 'Emphasis figures – part 1',
-        'module1.part3f.label': 'Part 3f',
-        'module1.part3f.title': 'Emphasis figures – part 2',
-        'module1.part3g.label': 'Part 3g',
-        'module1.part3g.title': 'Substitution figures',
-        'module1.part4.title': 'Part 4: Vocabulary Activity',
-        'module1.part4a.label': 'Part 4a',
-        'module1.part4a.title': 'Synonyms / Antonyms',
-        'module1.part4b.label': 'Part 4b',
-        'module1.part4b.title': 'Polysemy',
-        'module1.part4c.label': 'Part 4c',
-        'module1.part4c.title': 'Words of the same family',
-        'module1.part4d.label': 'Part 4d',
-        'module1.part4d.title': 'Practical exercise',
-        'module1.part5.title': 'Part 5: Text Study',
-        'module1.part5a.label': 'Part 5a',
-        'module1.part5a.title': 'How to answer a comprehension question (theoretical rules)',
-        'module1.part5b.label': 'Part 5b',
-        'module1.part5b.title': 'How to answer a comprehension question (application)',
-        'module1.part5c.label': 'Part 5c',
-        'module1.part5c.title': 'How to answer a question about a writing technique (application)',
-        'module1.part6.title': 'Part 6: Essay Writing',
-        'module1.part6a.label': 'Part 6a',
-        'module1.part6a.title': 'How to successfully develop an essay topic',
-        'module1.part6b.label': 'Part 6b',
-        'module1.part6b.title': 'Read and understand the topic and identify the problem',
-        'module1.part6c.label': 'Part 6c',
-        'module1.part6c.title': 'A developed topic',
-        'module2.title': 'Grammatical Consolidation',
-        'module3.title': 'Mastering Conjugation',
-        'module4.title': 'Spelling and Precision',
-        'module5.title': 'Structured Writing',
-        'module6.title': 'Literary Text Analysis',
-        'module7.title': 'Exam Methodology',
-        'module8.title': 'Intensive Review and Assessment',
-        'coming_soon': 'Content coming soon',
-        'conseils_heading': '💡 Tips for Effective Review',
-        'conseil_1': '📋 <strong>Organisation</strong>: plan 2h/day, alternate subjects.',
-        'conseil_2': '✏️ <strong>Active method</strong>: take notes, make flashcards, rephrase.',
-        'conseil_3': '📚 <strong>Resources</strong>: official textbook, Bac past papers, edunet.tn.',
-        'conseil_4': '🔗 <strong>Consistency</strong>: each reading session should be followed by a writing task.',
-        'conseil_5': '🗣️ <strong>Work on oral skills</strong>: read your texts aloud.',
-        'footer_planning': '📘 Program designed for 12th grade students – Economics and Management section — Tunisia',
-        'footer_encouragement': 'Follow this planning rigorously and adapt it to your pace. <strong>Good luck!</strong>',
-        'back_to_top': 'Back to top',
-        'print_button': '🖨️ Print program',
-        'test_link': '📝 General Test'
+        'degree4secEco_main_title': '📚 4th Year Secondary Program',
+        'degree4secEco_subtitle': 'Economics and Management Section – Module 1: Memories and Nostalgia',
+        'objectives_heading': '🎯 Module objectives',
+        'objectives_1': 'Master reported speech (direct/indirect) in all its forms.',
+        'objectives_2': 'Enrich thematic vocabulary and recognize writing techniques.',
+        'objectives_3': 'Develop text analysis and essay writing skills.',
+        'objectives_4': 'Acquire linguistic tools to succeed in the Bac exams.',
+        'module1.title': 'Module 1 – Memories and Nostalgia',
+        'module1.part1': '📚 Part 1: Language',
+        'module1.part1.lesson1': 'Reported speech: From direct to indirect speech',
+        'module1.part1.lesson2': 'Reported speech: Interrogative sentences – Total question',
+        'module1.part1.lesson3': 'Reported speech: Interrogative sentences – Partial question',
+        'module1.part1.lesson4': 'Reported speech: Interrogative pronouns – part 1',
+        'module1.part1.lesson5': 'Reported speech: Time and place indicators',
+        'module1.part1.lesson6': 'Reported speech: Direct speech / Indirect speech',
+        'module1.part1.lesson7': 'Reported speech: Tenses and time/place indicators',
+        'module1.part1.lesson8': 'Documentation',
+        'module1.part2': '🧠 Part 2: Thematic Vocabulary',
+        'module1.part2.lesson1': 'Introducing the theme',
+        'module1.part2.lesson2': 'Vocabulary – Exercise',
+        'module1.part3': '📝 Part 3: Writing Techniques',
+        'module1.part3.lesson1': 'Writing techniques – Lexical devices',
+        'module1.part3.lesson2': 'Writing techniques – Grammatical devices',
+        'module1.part3.lesson3': 'Writing techniques – Figures of speech – analogy',
+        'module1.part3.lesson4': 'Writing techniques – Figures of opposition',
+        'module1.part3.lesson5': 'Writing techniques – Figures of emphasis – part 1',
+        'module1.part3.lesson6': 'Writing techniques – Figures of emphasis – part 2',
+        'module1.part3.lesson7': 'Writing techniques – Figures of substitution',
+        'module1.part4': '🧠 Part 4: Vocabulary Activity',
+        'module1.part4.lesson1': 'Vocabulary – Synonyms / Antonyms',
+        'module1.part4.lesson2': 'Vocabulary – Polysemy',
+        'module1.part4.lesson3': 'Vocabulary – Word families',
+        'module1.part4.lesson4': 'Vocabulary – Practical exercise',
+        'module1.part5': '📖 Part 5: Text Study',
+        'module1.part5.lesson1': 'Text study – How to answer a comprehension question (theoretical rules)',
+        'module1.part5.lesson2': 'Text study – How to answer a comprehension question (application)',
+        'module1.part5.lesson3': 'Text study – How to answer a question about a writing technique (application)',
+        'module1.part6': '📝 Part 6: Essay',
+        'module1.part6.lesson1': 'Essay sheet: How to successfully develop an essay topic',
+        'module1.part6.lesson2': 'Essay – Read and understand the topic and identify the problem',
+        'module1.part6.lesson3': 'Essay – A developed topic',
+        'module2.title': 'Coming soon',
+        'module3.title': 'Coming soon',
+        'module4.title': 'Coming soon',
+        'module5.title': 'Coming soon',
+        'module6.title': 'Coming soon',
+        'unit_placeholder': 'Lessons in preparation',
+        'conseils_heading': '💡 Tips for learning well',
+        'conseil_1': '📋 <strong>Organization</strong>: plan your reviews over the week.',
+        'conseil_2': '✏️ <strong>Active method</strong>: summarize, compare, discuss texts.',
+        'conseil_3': '📚 <strong>Resources</strong>: consult the official textbook and Bac past papers.',
+        'conseil_4': '🔗 <strong>Consistency</strong>: connect each lesson to typical exam exercises.',
+        'conseil_5': '🗣️ <strong>Oral</strong>: practice rephrasing ideas aloud.',
+        'footer_planning': '📘 Program designed for 4th year secondary students (Economics and Management Section) — Tunisia',
+        'footer_encouragement': 'Work with rigor and perseverance. <strong>Good luck in the Bac!</strong>',
+        'print_button': '🖨️ Print program'
       },
       ar: {
         'back_link': '← العودة إلى الرئيسية',
-        'module_main_title': '📖 برنامج الوحدة 1 – السنة الرابعة ثانوي – شعبة الاقتصاد والتصرف',
-        'module_subtitle': '8 وحدات لتثبيت كل شيء',
-        'objectives_heading': '🎯 أهداف الوحدة 1',
-        'objectives_1': 'إتقان المهارات الأساسية: القراءة، الكتابة، التعبير الشفهي.',
-        'objectives_2': 'تعزيز الآليات في القواعد، التصريف، الإملاء.',
-        'objectives_3': 'اكتساب منهجية تمارين البكالوريا الأساسية (تعليق، مقال، تلخيص).',
-        'objectives_4': 'إثراء الثقافة الأدبية من خلال المحاور الكبرى للبرنامج.',
-        'module1.title': 'ذكريات وحنين',
-        'module1.part1.title': 'الجزء 1: الكلام المنقول',
-        'module1.part1a.label': 'الجزء 1أ',
-        'module1.part1a.title': 'من الكلام المباشر إلى الكلام غير المباشر',
-        'module1.part1b.label': 'الجزء 1ب',
-        'module1.part1b.title': 'الجمل الاستفهامية – الاستفهام الكلي',
-        'module1.part1c.label': 'الجزء 1ج',
-        'module1.part1c.title': 'الجمل الاستفهامية – الاستفهام الجزئي',
-        'module1.part1d.label': 'الجزء 1د',
-        'module1.part1d.title': 'الضمائر الاستفهامية – الجزء 1',
-        'module1.part1e.label': 'الجزء 1هـ',
-        'module1.part1e.title': 'مؤشرات الزمان والمكان',
-        'module1.part1f.label': 'الجزء 1و',
-        'module1.part1f.title': 'الكلام المباشر / الكلام غير المباشر',
-        'module1.part1g.label': 'الجزء 1ز',
-        'module1.part1g.title': 'الأزمنة ومؤشرات الزمان والمكان',
-        'module1.part1h.label': 'الجزء 1ح',
-        'module1.part1h.title': 'توثيق',
-        'module1.part1i.label': 'الجزء 1ط',
-        'module1.part1i.title': 'تقديم الموضوع',
-        'module1.part2.title': 'الجزء 2: مفردات موضوعاتية',
-        'module1.part2a.label': 'الجزء 2أ',
-        'module1.part2a.title': 'مفردات – تمرين',
-        'module1.part3.title': 'الجزء 3: أساليب الكتابة',
-        'module1.part3a.label': 'الجزء 3أ',
-        'module1.part3a.title': 'الأساليب المعجمية',
-        'module1.part3b.label': 'الجزء 3ب',
-        'module1.part3b.title': 'الأساليب النحوية',
-        'module1.part3c.label': 'الجزء 3ج',
-        'module1.part3c.title': 'الصور البيانية – صور التشبيه',
-        'module1.part3d.label': 'الجزء 3د',
-        'module1.part3d.title': 'صور التضاد',
-        'module1.part3e.label': 'الجزء 3هـ',
-        'module1.part3e.title': 'صور التوكيد – الجزء 1',
-        'module1.part3f.label': 'الجزء 3و',
-        'module1.part3f.title': 'صور التوكيد – الجزء 2',
-        'module1.part3g.label': 'الجزء 3ز',
-        'module1.part3g.title': 'صور الاستبدال',
-        'module1.part4.title': 'الجزء 4: نشاط – مفردات',
-        'module1.part4a.label': 'الجزء 4أ',
-        'module1.part4a.title': 'المرادف / الأضداد',
-        'module1.part4b.label': 'الجزء 4ب',
-        'module1.part4b.title': 'تعدد المعاني',
-        'module1.part4c.label': 'الجزء 4ج',
-        'module1.part4c.title': 'كلمات من نفس العائلة',
-        'module1.part4d.label': 'الجزء 4د',
-        'module1.part4d.title': 'تمرين تطبيقي',
-        'module1.part5.title': 'الجزء 5: دراسة النص',
-        'module1.part5a.label': 'الجزء 5أ',
-        'module1.part5a.title': 'كيفية الإجابة عن سؤال فهم (قواعد نظرية)',
-        'module1.part5b.label': 'الجزء 5ب',
-        'module1.part5b.title': 'كيفية الإجابة عن سؤال فهم (تطبيق)',
-        'module1.part5c.label': 'الجزء 5ج',
-        'module1.part5c.title': 'كيفية الإجابة عن سؤال حول أسلوب كتابة (تطبيق)',
-        'module1.part6.title': 'الجزء 6: مقال كتابي',
-        'module1.part6a.label': 'الجزء 6أ',
-        'module1.part6a.title': 'كيف تنجح في تطوير موضوع مقال',
-        'module1.part6b.label': 'الجزء 6ب',
-        'module1.part6b.title': 'قراءة وفهم الموضوع واستخراج الإشكالية',
-        'module1.part6c.label': 'الجزء 6ج',
-        'module1.part6c.title': 'موضوع مطور',
-        'module2.title': 'التثبيت القواعدي',
-        'module3.title': 'إتقان التصريف',
-        'module4.title': 'الإملاء والدقة',
-        'module5.title': 'التعبير الكتابي المنظم',
-        'module6.title': 'تحليل النصوص الأدبية',
-        'module7.title': 'منهجية الامتحانات',
-        'module8.title': 'مراجعة مكثفة وتقييم',
-        'coming_soon': 'المحتوى قريباً',
-        'conseils_heading': '💡 نصائح لمراجعة فعالة',
-        'conseil_1': '📋 <strong>التنظيم</strong>: خطط لساعتين يومياً، نوع المواد.',
-        'conseil_2': '✏️ <strong>الطريقة النشطة</strong>: دوّن ملاحظات، اصنع بطاقات، أعد الصياغة.',
-        'conseil_3': '📚 <strong>المصادر</strong>: الكتاب المدرسي الرسمي، حوليات البكالوريا، edunet.tn.',
-        'conseil_4': '🔗 <strong>التماسك</strong>: على كل حصة قراءة أن تليها كتابة.',
-        'conseil_5': '🗣️ <strong>اشتغل على الشفهي</strong>: اقرأ نصوصك بصوت عالٍ.',
-        'footer_planning': '📘 برنامج موجّه لتلاميذ السنة الرابعة ثانوي – شعبة الاقتصاد والتصرف — تونس',
-        'footer_encouragement': 'اتبع هذا التخطيط بدقة وعدّله حسب وتيرتك. <strong>حظاً موفقاً!</strong>',
-        'back_to_top': 'العودة إلى الأعلى',
-        'print_button': '🖨️ طباعة البرنامج',
-        'test_link': '📝 اختبار عام'
+        'degree4secEco_main_title': '📚 برنامج السنة الرابعة ثانوي',
+        'degree4secEco_subtitle': 'شعبة الاقتصاد والتصرف – الوحدة الأولى: ذكريات وحنين',
+        'objectives_heading': '🎯 أهداف الوحدة',
+        'objectives_1': 'إتقان الكلام المنقول (المباشر/غير المباشر) بجميع أشكاله.',
+        'objectives_2': 'إثراء المعجم الموضوعاتي والتعرف على أساليب الكتابة.',
+        'objectives_3': 'تطوير مهارات تحليل النص وكتابة المقال.',
+        'objectives_4': 'امتلاك الأدوات اللغوية للنجاح في اختبارات البكالوريا.',
+        'module1.title': 'الوحدة الأولى – ذكريات وحنين',
+        'module1.part1': '📚 الجزء 1: اللغة',
+        'module1.part1.lesson1': 'الكلام المنقول: من المباشر إلى غير المباشر',
+        'module1.part1.lesson2': 'الكلام المنقول: الجمل الاستفهامية – استفهام كلي',
+        'module1.part1.lesson3': 'الكلام المنقول: الجمل الاستفهامية – استفهام جزئي',
+        'module1.part1.lesson4': 'الكلام المنقول: ضمائر الاستفهام – جزء 1',
+        'module1.part1.lesson5': 'الكلام المنقول: مؤشرات الزمان والمكان',
+        'module1.part1.lesson6': 'الكلام المنقول: المباشر / غير المباشر',
+        'module1.part1.lesson7': 'الكلام المنقول: الأزمنة ومؤشرات الزمان والمكان',
+        'module1.part1.lesson8': 'توثيق',
+        'module1.part2': '🧠 الجزء 2: معجم موضوعاتي',
+        'module1.part2.lesson1': 'تقديم الموضوع',
+        'module1.part2.lesson2': 'معجم – تمرين',
+        'module1.part3': '📝 الجزء 3: أساليب الكتابة',
+        'module1.part3.lesson1': 'أساليب الكتابة – الأساليب المعجمية',
+        'module1.part3.lesson2': 'أساليب الكتابة – الأساليب النحوية',
+        'module1.part3.lesson3': 'أساليب الكتابة – الصور البيانية – التشبيه',
+        'module1.part3.lesson4': 'أساليب الكتابة – صور التضاد',
+        'module1.part3.lesson5': 'أساليب الكتابة – صور التوكيد – جزء 1',
+        'module1.part3.lesson6': 'أساليب الكتابة – صور التوكيد – جزء 2',
+        'module1.part3.lesson7': 'أساليب الكتابة – صور الاستبدال',
+        'module1.part4': '🧠 الجزء 4: نشاط - معجم',
+        'module1.part4.lesson1': 'معجم – المترادفات / الأضداد',
+        'module1.part4.lesson2': 'معجم – تعدد المعاني',
+        'module1.part4.lesson3': 'معجم – كلمات من نفس العائلة',
+        'module1.part4.lesson4': 'معجم – تمرين تطبيقي',
+        'module1.part5': '📖 الجزء 5: دراسة النص',
+        'module1.part5.lesson1': 'دراسة النص – كيفية الإجابة عن سؤال فهم (قواعد نظرية)',
+        'module1.part5.lesson2': 'دراسة النص – كيفية الإجابة عن سؤال فهم (تطبيق)',
+        'module1.part5.lesson3': 'دراسة النص – كيفية الإجابة عن سؤال حول أسلوب كتابة (تطبيق)',
+        'module1.part6': '📝 الجزء 6: مقال',
+        'module1.part6.lesson1': 'بطاقة مقال: كيف تنجح في تطوير موضوع مقال',
+        'module1.part6.lesson2': 'مقال – قراءة وفهم الموضوع واستخراج الإشكالية',
+        'module1.part6.lesson3': 'مقال – موضوع مطور',
+        'module2.title': 'قريباً',
+        'module3.title': 'قريباً',
+        'module4.title': 'قريباً',
+        'module5.title': 'قريباً',
+        'module6.title': 'قريباً',
+        'unit_placeholder': 'الدروس قيد الإعداد',
+        'conseils_heading': '💡 نصائح للتعلم الجيد',
+        'conseil_1': '📋 <strong>التنظيم</strong>: خطط لمراجعاتك على مدى الأسبوع.',
+        'conseil_2': '✏️ <strong>طريقة نشطة</strong>: لخص، قارن، ناقش النصوص.',
+        'conseil_3': '📚 <strong>المصادر</strong>: استعن بالكتاب المدرسي الرسمي وحوليات البكالوريا.',
+        'conseil_4': '🔗 <strong>التماسك</strong>: اربط كل درس بتمارين نموذجية.',
+        'conseil_5': '🗣️ <strong>الشفهي</strong>: تدرب على إعادة صياغة الأفكار بصوت عالٍ.',
+        'footer_planning': '📘 برنامج موجه لتلاميذ السنة الرابعة ثانوي (شعبة الاقتصاد والتصرف) — تونس',
+        'footer_encouragement': 'اعمل بجد ومثابرة. <strong>بالتوفيق في البكالوريا!</strong>',
+        'print_button': '🖨️ طباعة البرنامج'
       }
     });
-  </script>
 
-  <script>
+    // Apply bilingual
     (function() {
       var container = document.querySelector('.container');
       if (container && typeof App.makeBilingual === 'function') {
@@ -907,9 +781,12 @@
       }
     })();
   </script>
+
   <script src="ed-french-ini.js"></script>
+
+  <!-- Collapse/expand, back-to-top, click logging -->
   <script>
-    function toggleModule(header) {
+    function toggleUnit(header) {
       const body = document.getElementById(header.getAttribute('aria-controls'));
       if (!body) return;
       const isExpanded = header.getAttribute('aria-expanded') === 'true';
@@ -927,15 +804,18 @@
         body.style.maxHeight = '0';
       }
     }
-    document.querySelectorAll('.module-header').forEach(btn => {
-      btn.addEventListener('click', () => toggleModule(btn));
+
+    document.querySelectorAll('.unit-header').forEach(btn => {
+      btn.addEventListener('click', () => toggleUnit(btn));
       btn.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          toggleModule(btn);
+          toggleUnit(btn);
         }
       });
     });
+
+    // Back to top button
     (function() {
       const btn = document.createElement('button');
       btn.id = 'backToTop';
@@ -950,42 +830,31 @@
           btn.classList.remove('show');
         }
       });
-      if (typeof App.applyTranslations === 'function') {
-        App.applyTranslations();
-      }
     })();
+
+    // Click logging
     (function() {
-      document.querySelectorAll('.lesson-link, .test-link').forEach(link => {
+      document.querySelectorAll('.lesson-link').forEach(link => {
         link.addEventListener('click', function(e) {
-          const isTest = this.classList.contains('test-link');
-          const lessonTitle = isTest ? this.textContent.trim() : this.querySelector('.lesson-title').textContent.trim();
-          const lessonLabel = isTest ? 'Test' : this.querySelector('.lesson-label').textContent.trim();
-          const details = { lesson: lessonTitle, label: lessonLabel, href: this.href };
+          const lessonTitle = this.querySelector('.lesson-title').textContent.trim();
+          const details = { lesson: lessonTitle, href: this.href };
           if (typeof App !== 'undefined' && App.supabase) {
             App.supabase.auth.getSession().then(({ data: { session } }) => {
               if (session) {
-                App.logUserAction(isTest ? 'test_click' : 'lesson_click', details);
+                App.logUserAction('lesson_click', details);
               } else {
-                App.logGeneralAction(isTest ? 'test_click' : 'lesson_click', details);
+                App.logGeneralAction('lesson_click', details);
               }
             }).catch(() => {
-              App.logGeneralAction(isTest ? 'test_click' : 'lesson_click', details);
+              App.logGeneralAction('lesson_click', details);
             });
           }
         });
       });
     })();
-  </script>
-  <script>
+
+    // Print date
     document.getElementById('print-date').textContent = new Date().toLocaleDateString('fr-FR');
-    window.addEventListener('afterprint', function() {
-      if (typeof App !== 'undefined') {
-        App.logGeneralAction('module_printed');
-        App.supabase.auth.getSession().then(({ data: { session } }) => {
-          if (session) App.logUserAction('module_printed');
-        }).catch(() => {});
-      }
-    });
   </script>
 </body>
 </html>
