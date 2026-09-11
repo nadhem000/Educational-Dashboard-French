@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lessonE1_title">Étude de texte – Comment répondre à une question de compréhension (règles théoriques) | Lecture & Méthodologie</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ===== Étude de texte 1 – Reading (prefix: degree4sec-secEco-unit1-etude1-reading-) ===== */
+        /* Palette: Forest Green & Parchment (Reading theme) */
+        :root {
+            --degree4sec-secEco-unit1-etude1-reading-bg: #f5f1e8;
+            --degree4sec-secEco-unit1-etude1-reading-card: #fffdf7;
+            --degree4sec-secEco-unit1-etude1-reading-text: #2b2416;
+            --degree4sec-secEco-unit1-etude1-reading-text-light: #5c5344;
+            --degree4sec-secEco-unit1-etude1-reading-heading: #1f4e3d;
+            --degree4sec-secEco-unit1-etude1-reading-accent: #3d7a56;
+            --degree4sec-secEco-unit1-etude1-reading-accent-hover: #2a5a3e;
+            --degree4sec-secEco-unit1-etude1-reading-border: #ddd6c4;
+            --degree4sec-secEco-unit1-etude1-reading-shadow: 0 1px 3px rgba(31,78,61,0.06), 0 6px 18px rgba(31,78,61,0.05);
+            --degree4sec-secEco-unit1-etude1-reading-radius: 14px;
+            --degree4sec-secEco-unit1-etude1-reading-radius-sm: 8px;
+            --degree4sec-secEco-unit1-etude1-reading-transition: 0.25s ease;
+            --degree4sec-secEco-unit1-etude1-reading-font: 'Georgia', 'Times New Roman', serif;
+            --degree4sec-secEco-unit1-etude1-reading-audio-bg: #e8efe6;
+            --degree4sec-secEco-unit1-etude1-reading-audio-progress: #b8c9b4;
+            --degree4sec-secEco-unit1-etude1-reading-button-bg: #dde7da;
+            --degree4sec-secEco-unit1-etude1-reading-button-hover: #c6d5c1;
+            --degree4sec-secEco-unit1-etude1-reading-input-bg: #faf7ef;
+        }
+        body.dark {
+            --degree4sec-secEco-unit1-etude1-reading-bg: #1a2019;
+            --degree4sec-secEco-unit1-etude1-reading-card: #232b22;
+            --degree4sec-secEco-unit1-etude1-reading-text: #e8e5d8;
+            --degree4sec-secEco-unit1-etude1-reading-text-light: #b3ae9c;
+            --degree4sec-secEco-unit1-etude1-reading-heading: #a8d5b8;
+            --degree4sec-secEco-unit1-etude1-reading-accent: #7fc79b;
+            --degree4sec-secEco-unit1-etude1-reading-accent-hover: #a3d8b6;
+            --degree4sec-secEco-unit1-etude1-reading-border: #35402f;
+            --degree4sec-secEco-unit1-etude1-reading-shadow: 0 1px 4px rgba(0,0,0,0.3);
+            --degree4sec-secEco-unit1-etude1-reading-audio-bg: #26301f;
+            --degree4sec-secEco-unit1-etude1-reading-audio-progress: #4c5a44;
+            --degree4sec-secEco-unit1-etude1-reading-button-bg: #33402c;
+            --degree4sec-secEco-unit1-etude1-reading-button-hover: #45553c;
+            --degree4sec-secEco-unit1-etude1-reading-input-bg: #2c3428;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            font-family: var(--degree4sec-secEco-unit1-etude1-reading-font);
+            background: var(--degree4sec-secEco-unit1-etude1-reading-bg);
+            background-image:
+                radial-gradient(circle at 15% 20%, rgba(61,122,86,0.04) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(61,122,86,0.03) 0%, transparent 40%);
+            color: var(--degree4sec-secEco-unit1-etude1-reading-text);
+            line-height: 1.8;
+            transition: background var(--degree4sec-secEco-unit1-etude1-reading-transition), color var(--degree4sec-secEco-unit1-etude1-reading-transition);
+        }
+
+        .back-nav {
+            background: var(--degree4sec-secEco-unit1-etude1-reading-card);
+            border-bottom: 1px solid var(--degree4sec-secEco-unit1-etude1-reading-border);
+            padding: 0.5rem 1.5rem;
+        }
+        .back-nav a {
+            font-weight: 600;
+            color: var(--degree4sec-secEco-unit1-etude1-reading-accent);
+            text-decoration: none;
+        }
+        .back-nav a:hover { text-decoration: underline; }
+
+        .degree4sec-secEco-unit1-etude1-reading-container { max-width: 1060px; margin: 0 auto; padding: 1.8rem 1.4rem 3rem; }
+
+        .degree4sec-secEco-unit1-etude1-reading-lesson-header { text-align: center; margin-bottom: 2rem; }
+        .degree4sec-secEco-unit1-etude1-reading-badge {
+            display:inline-block;
+            background: var(--degree4sec-secEco-unit1-etude1-reading-accent);
+            color: #fff;
+            padding: 0.3rem 1.1rem;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        .degree4sec-secEco-unit1-etude1-reading-lesson-header h1 {
+            font-size: 2.1rem;
+            color: var(--degree4sec-secEco-unit1-etude1-reading-heading);
+            margin: 0.7rem 0 0.4rem;
+            line-height: 1.25;
+            font-weight: 700;
+        }
+        .degree4sec-secEco-unit1-etude1-reading-lesson-header .degree4sec-secEco-unit1-etude1-reading-meta {
+            font-size: 0.9rem;
+            color: var(--degree4sec-secEco-unit1-etude1-reading-text-light);
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        /* Audio player */
+        .degree4sec-secEco-unit1-etude1-reading-audio-player {
+            background: var(--degree4sec-secEco-unit1-etude1-reading-card);
+            border: 1px solid var(--degree4sec-secEco-unit1-etude1-reading-border);
+            border-radius: var(--degree4sec-secEco-unit1-etude1-reading-radius);
+            padding: 1rem 1.4rem;
+            margin: 1.5rem 0 2rem;
+            box-shadow: var(--degree4sec-secEco-unit1-etude1-reading-shadow);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .degree4sec-secEco-unit1-etude1-reading-play-btn {
+            width: 46px; height: 46px; border-radius: 50%;
+            background: var(--degree4sec-secEco-unit1-etude1-reading-accent);
+            color: #fff; border: none; font-size: 1.2rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background var(--degree4sec-secEco-unit1-etude1-reading-transition);
+            flex-shrink: 0;
+        }
+        .degree4sec-secEco-unit1-etude1-reading-play-btn:hover { background: var(--degree4sec-secEco-unit1-etude1-reading-accent-hover); }
+        .degree4sec-secEco-unit1-etude1-reading-progress-area { flex: 1; min-width: 120px; display: flex; flex-direction: column; gap: 0.3rem; }
+        .degree4sec-secEco-unit1-etude1-reading-progress-bar {
+            width: 100%; height: 6px; background: var(--degree4sec-secEco-unit1-etude1-reading-audio-progress);
+            border-radius: 3px; cursor: pointer; position: relative; overflow: hidden;
+        }
+        .degree4sec-secEco-unit1-etude1-reading-progress-fill {
+            height: 100%; background: var(--degree4sec-secEco-unit1-etude1-reading-accent);
+            border-radius: 3px; width: 0%; transition: width 0.1s linear;
+        }
+        .degree4sec-secEco-unit1-etude1-reading-time-info {
+            display: flex; justify-content: space-between; font-size: 0.75rem;
+            color: var(--degree4sec-secEco-unit1-etude1-reading-text-light);
+        }
+        .degree4sec-secEco-unit1-etude1-reading-speed-selector { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+        .degree4sec-secEco-unit1-etude1-reading-speed-btn {
+            border: 1px solid var(--degree4sec-secEco-unit1-etude1-reading-border);
+            background: var(--degree4sec-secEco-unit1-etude1-reading-button-bg);
+            color: var(--degree4sec-secEco-unit1-etude1-reading-text);
+            padding: 0.3rem 0.6rem; border-radius: 4px;
+            font-size: 0.75rem; font-weight: 600; cursor: pointer;
+            transition: all var(--degree4sec-secEco-unit1-etude1-reading-transition);
+        }
+        .degree4sec-secEco-unit1-etude1-reading-speed-btn.active {
+            background: var(--degree4sec-secEco-unit1-etude1-reading-accent);
+            color: #fff; border-color: var(--degree4sec-secEco-unit1-etude1-reading-accent);
+        }
+        .degree4sec-secEco-unit1-etude1-reading-audio-label {
+            font-weight: 700; font-size: 0.9rem;
+            color: var(--degree4sec-secEco-unit1-etude1-reading-heading);
+            white-space: nowrap;
+        }
+        @media (max-width:600px) {
+            .degree4sec-secEco-unit1-etude1-reading-audio-player { flex-direction: column; align-items: stretch; }
+            .degree4sec-secEco-unit1-etude1-reading-audio-label { text-align: center; }
+        }
+
+        /* Text card – paper-like, wide, with drop-cap */
+        .degree4sec-secEco-unit1-etude1-reading-text-card {
+            background: var(--degree4sec-secEco-unit1-etude1-reading-card);
+            border: 1px solid var(--degree4sec-secEco-unit1-etude1-reading-border);
+            border-radius: var(--degree4sec-secEco-unit1-etude1-reading-radius);
+            padding: 2rem 2.2rem 1.8rem;
+            margin: 1.8rem 0;
+            font-size: 1.05rem;
+            line-height: 2;
+            box-shadow: var(--degree4sec-secEco-unit1-etude1-reading-shadow);
+            position: relative;
+        }
+        .degree4sec-secEco-unit1-etude1-reading-text-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, var(--degree4sec-secEco-unit1-etude1-reading-accent), transparent);
+            border-radius: var(--degree4sec-secEco-unit1-etude1-reading-radius) var(--degree4sec-secEco-unit1-etude1-reading-radius) 0 0;
+        }
+        .degree4sec-secEco-unit1-etude1-reading-text-title {
+            text-align: center;
+            font-size: 1.35rem;
+            color: var(--degree4sec-secEco-unit1-etude1-reading-heading);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+        .degree4sec-secEco-unit1-etude1-reading-text-card p {
+            margin-bottom: 1.1rem;
+            text-align: justify;
+        }
+        .degree4sec-secEco-unit1-etude1-reading-text-card p:first-of-type::first-letter {
+            float: left;
+            font-size: 3.6rem;
+            line-height: 0.85;
+            padding: 0.4rem 0.6rem 0 0;
+            color: var(--degree4sec-secEco-unit1-etude1-reading-accent);
+            font-weight: 700;
+            font-family: 'Georgia', serif;
+        }
+        .degree4sec-secEco-unit1-etude1-reading-text-author {
+            text-align: right;
+            font-style: italic;
+            font-size: 0.9rem;
+            color: var(--degree4sec-secEco-unit1-etude1-reading-text-light);
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px dashed var(--degree4sec-secEco-unit1-etude1-reading-border);
+        }
+
+        /* Section headings with ornament */
+        .degree4sec-secEco-unit1-etude1-reading-section h2 {
+            font-size: 1.5rem;
+            color: var(--degree4sec-secEco-unit1-etude1-reading-heading);
+            margin: 2.4rem 0 1rem;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+            position: relative;
+        }
+        .degree4sec-secEco-unit1-etude1-reading-section h2::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 40%; bottom: 0; height: 3px;
+            background: var(--degree4sec-secEco-unit1-etude1-reading-accent);
+            border-radius: 2px;
+        }
+
+        /* Valeurs-section (rules and methodology cards) */
+        .degree4sec-secEco-unit1-etude1-reading-valeurs-section {
+            background: var(--degree4sec-secEco-unit1-etude1-reading-card);
+            border: 1px solid var(--degree4sec-secEco-unit1-etude1-reading-border);
+            border-radius: var(--degree4sec-secEco-unit1-etude1-reading-radius);
+            padding: 1.6rem 1.8rem;
+            margin: 2rem 0;
+            box-shadow: var(--degree4sec-secEco-unit1-etude1-reading-shadow);
+        }
+        .degree4sec-secEco-unit1-etude1-reading-valeurs-section h2 {
+            font-size: 1.5rem;
+            color: var(--degree4sec-secEco-unit1-etude1-reading-heading);
+            margin-bottom: 1rem;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+            border-bottom: 3px solid var(--degree4sec-secEco-unit1-etude1-reading-accent);
+        }
+        .degree4sec-secEco-unit1-etude1-reading-valeur-card {
+            background: var(--degree4sec-secEco-unit1-etude1-reading-audio-bg);
+            border-left: 4px solid var(--degree4sec-secEco-unit1-etude1-reading-accent);
+            border-radius: 0 var(--degree4sec-secEco-unit1-etude1-reading-radius-sm) var(--degree4sec-secEco-unit1-etude1-reading-radius-sm) 0;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .degree4sec-secEco-unit1-etude1-reading-valeur-card h3 {
+            color: var(--degree4sec-secEco-unit1-etude1-reading-accent);
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+        .degree4sec-secEco-unit1-etude1-reading-valeur-card ul { list-style: none; padding: 0; }
+        .degree4sec-secEco-unit1-etude1-reading-valeur-card li {
+            padding: 0.3rem 0 0.3rem 1.4rem;
+            position: relative;
+            color: var(--degree4sec-secEco-unit1-etude1-reading-text-light);
+        }
+        .degree4sec-secEco-unit1-etude1-reading-valeur-card li::before {
+            content: '◆';
+            position: absolute; left: 0;
+            color: var(--degree4sec-secEco-unit1-etude1-reading-accent);
+            font-size: 0.55rem; top: 0.6rem;
+        }
+        .degree4sec-secEco-unit1-etude1-reading-valeur-card p { margin: 0.5rem 0; }
+
+        /* Methodology step cards */
+        .degree4sec-secEco-unit1-etude1-reading-step {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            background: var(--degree4sec-secEco-unit1-etude1-reading-audio-bg);
+            border-radius: var(--degree4sec-secEco-unit1-etude1-reading-radius-sm);
+            padding: 1rem 1.2rem;
+            margin-bottom: 0.9rem;
+        }
+        .degree4sec-secEco-unit1-etude1-reading-step-num {
+            width: 38px; height: 38px;
+            background: var(--degree4sec-secEco-unit1-etude1-reading-accent);
+            color: #fff;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 1.05rem;
+            flex-shrink: 0;
+        }
+        .degree4sec-secEco-unit1-etude1-reading-step-body { flex: 1; }
+        .degree4sec-secEco-unit1-etude1-reading-step-body h3 {
+            color: var(--degree4sec-secEco-unit1-etude1-reading-accent);
+            font-size: 1.05rem;
+            margin-bottom: 0.3rem;
+        }
+        .degree4sec-secEco-unit1-etude1-reading-step-body ul {
+            list-style: none; padding: 0;
+        }
+        .degree4sec-secEco-unit1-etude1-reading-step-body li {
+            padding: 0.25rem 0 0.25rem 1.3rem;
+            position: relative;
+            color: var(--degree4sec-secEco-unit1-etude1-reading-text-light);
+            font-size: 0.95rem;
+        }
+        .degree4sec-secEco-unit1-etude1-reading-step-body li::before {
+            content: '›';
+            position: absolute; left: 0;
+            color: var(--degree4sec-secEco-unit1-etude1-reading-accent);
+            font-weight: 700;
+        }
+
+        /* Note callout */
+        .degree4sec-secEco-unit1-etude1-reading-note {
+            background: linear-gradient(135deg, rgba(61,122,86,0.08), rgba(61,122,86,0.03));
+            border: 1px dashed var(--degree4sec-secEco-unit1-etude1-reading-accent);
+            border-radius: var(--degree4sec-secEco-unit1-etude1-reading-radius-sm);
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+            color: var(--degree4sec-secEco-unit1-etude1-reading-text);
+        }
+        .degree4sec-secEco-unit1-etude1-reading-note strong { color: var(--degree4sec-secEco-unit1-etude1-reading-accent); }
+
+        /* Exercises */
+        .degree4sec-secEco-unit1-etude1-reading-exercises-section {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start;
+        }
+        .degree4sec-secEco-unit1-etude1-reading-exercises-section h2 {
+            grid-column: 1 / -1;
+            font-size: 1.5rem;
+            color: var(--degree4sec-secEco-unit1-etude1-reading-heading);
+            margin: 2rem 0 1rem;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+            border-bottom: 3px solid var(--degree4sec-secEco-unit1-etude1-reading-accent);
+        }
+        .degree4sec-secEco-unit1-etude1-reading-exercise-card {
+            background: var(--degree4sec-secEco-unit1-etude1-reading-card);
+            border: 1px solid var(--degree4sec-secEco-unit1-etude1-reading-border);
+            border-radius: var(--degree4sec-secEco-unit1-etude1-reading-radius-sm);
+            padding: 1.2rem 1.4rem;
+            margin-bottom: 0;
+            box-shadow: var(--degree4sec-secEco-unit1-etude1-reading-shadow);
+        }
+        .degree4sec-secEco-unit1-etude1-reading-exercise-col-left { grid-column: 1 / 2; }
+        .degree4sec-secEco-unit1-etude1-reading-exercise-col-right { grid-column: 2 / 3; }
+        .degree4sec-secEco-unit1-etude1-reading-exercise-card h3 {
+            font-size: 1.05rem;
+            color: var(--degree4sec-secEco-unit1-etude1-reading-accent);
+            margin-bottom: 0.8rem;
+            display: flex; align-items: center; gap: 0.4rem;
+        }
+        .degree4sec-secEco-unit1-etude1-reading-exercise-card table {
+            width: 100%; border-collapse: collapse; margin: 0.8rem 0;
+        }
+        .degree4sec-secEco-unit1-etude1-reading-exercise-card th,
+        .degree4sec-secEco-unit1-etude1-reading-exercise-card td {
+            padding: 0.55rem 0.7rem;
+            border: 1px solid var(--degree4sec-secEco-unit1-etude1-reading-border);
+            text-align: left; font-size: 0.9rem;
+        }
+        .degree4sec-secEco-unit1-etude1-reading-exercise-card th {
+            background: var(--degree4sec-secEco-unit1-etude1-reading-audio-bg);
+            font-weight: 700;
+            color: var(--degree4sec-secEco-unit1-etude1-reading-heading);
+        }
+        .degree4sec-secEco-unit1-etude1-reading-exercise-card input[type="text"],
+        .degree4sec-secEco-unit1-etude1-reading-exercise-card textarea {
+            width: 100%; padding: 0.4rem 0.6rem;
+            border: 1px solid var(--degree4sec-secEco-unit1-etude1-reading-border);
+            border-radius: 4px;
+            background: var(--degree4sec-secEco-unit1-etude1-reading-input-bg);
+            color: var(--degree4sec-secEco-unit1-etude1-reading-text);
+            font-family: inherit; font-size: 0.9rem;
+        }
+        .degree4sec-secEco-unit1-etude1-reading-exercise-card textarea { resize: vertical; }
+        .degree4sec-secEco-unit1-etude1-reading-exercise-card input:focus,
+        .degree4sec-secEco-unit1-etude1-reading-exercise-card textarea:focus {
+            outline: none;
+            border-color: var(--degree4sec-secEco-unit1-etude1-reading-accent);
+        }
+        .degree4sec-secEco-unit1-etude1-reading-btn-verify {
+            background: var(--degree4sec-secEco-unit1-etude1-reading-accent);
+            color: #fff; border: none; padding: 0.5rem 1.2rem;
+            border-radius: 20px; font-weight: 600; cursor: pointer;
+            transition: background var(--degree4sec-secEco-unit1-etude1-reading-transition);
+            margin-top: 0.6rem; font-size: 0.85rem;
+        }
+        .degree4sec-secEco-unit1-etude1-reading-btn-verify:hover { background: var(--degree4sec-secEco-unit1-etude1-reading-accent-hover); }
+        .degree4sec-secEco-unit1-etude1-reading-answer-key {
+            display: none; margin-top: 0.8rem; padding: 0.8rem;
+            background: var(--degree4sec-secEco-unit1-etude1-reading-audio-bg);
+            border-radius: 6px; font-size: 0.85rem;
+            color: var(--degree4sec-secEco-unit1-etude1-reading-text-light);
+            border: 1px dashed var(--degree4sec-secEco-unit1-etude1-reading-accent);
+        }
+        .degree4sec-secEco-unit1-etude1-reading-answer-key.visible { display: block; }
+
+        .degree4sec-secEco-unit1-etude1-reading-self-assessment {
+            margin-top: 0.8rem; font-size: 0.9rem;
+            display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
+        }
+        .degree4sec-secEco-unit1-etude1-reading-self-assessment label { cursor: pointer; }
+
+        /* Score area */
+        .degree4sec-secEco-unit1-etude1-reading-score-area {
+            background: var(--degree4sec-secEco-unit1-etude1-reading-card);
+            border: 1px solid var(--degree4sec-secEco-unit1-etude1-reading-border);
+            border-radius: var(--degree4sec-secEco-unit1-etude1-reading-radius);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: var(--degree4sec-secEco-unit1-etude1-reading-shadow);
+        }
+        .degree4sec-secEco-unit1-etude1-reading-score-area h2 {
+            color: var(--degree4sec-secEco-unit1-etude1-reading-heading);
+            margin-bottom: 1rem;
+        }
+        .degree4sec-secEco-unit1-etude1-reading-score-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .degree4sec-secEco-unit1-etude1-reading-score-stat {
+            background: var(--degree4sec-secEco-unit1-etude1-reading-audio-bg);
+            padding: 0.8rem 1.2rem; border-radius: 8px; font-weight: 600;
+        }
+
+        /* Footer */
+        .degree4sec-secEco-unit1-etude1-reading-footer-nav {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            background: var(--degree4sec-secEco-unit1-etude1-reading-card);
+            border-top: 1px solid var(--degree4sec-secEco-unit1-etude1-reading-border);
+            padding: 0.8rem 1.5rem;
+            border-radius: 0 0 var(--degree4sec-secEco-unit1-etude1-reading-radius) var(--degree4sec-secEco-unit1-etude1-reading-radius);
+        }
+        .degree4sec-secEco-unit1-etude1-reading-footer-nav a {
+            font-weight: 600;
+            color: var(--degree4sec-secEco-unit1-etude1-reading-accent);
+            text-decoration: none;
+        }
+        .degree4sec-secEco-unit1-etude1-reading-footer-nav a:hover { text-decoration: underline; }
+
+        /* RTL */
+        html[dir="rtl"] body { direction: rtl; }
+        html[dir="rtl"] .degree4sec-secEco-unit1-etude1-reading-container { text-align: right; }
+        html[dir="rtl"] .degree4sec-secEco-unit1-etude1-reading-text-author { text-align: left; }
+        html[dir="rtl"] .degree4sec-secEco-unit1-etude1-reading-exercise-card th,
+        html[dir="rtl"] .degree4sec-secEco-unit1-etude1-reading-exercise-card td { text-align: right; }
+        html[dir="rtl"] .degree4sec-secEco-unit1-etude1-reading-text-card p:first-of-type::first-letter {
+            float: right;
+            padding: 0.4rem 0 0 0.6rem;
+        }
+
+        @media (max-width:800px) {
+            .degree4sec-secEco-unit1-etude1-reading-exercises-section { grid-template-columns: 1fr; }
+            .degree4sec-secEco-unit1-etude1-reading-exercise-col-left,
+            .degree4sec-secEco-unit1-etude1-reading-exercise-col-right { grid-column: auto; }
+        }
+        @media (max-width:600px) {
+            .degree4sec-secEco-unit1-etude1-reading-lesson-header h1 { font-size: 1.5rem; }
+            .degree4sec-secEco-unit1-etude1-reading-container { padding: 1rem 0.8rem 2rem; }
+            .degree4sec-secEco-unit1-etude1-reading-text-card { padding: 1.4rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hidden shell elements required by ed-french-ini.js -->
+    <div id="toast-container"></div>
+    <button id="signInBtn" style="display:none"></button>
+
+    <nav class="back-nav no-print">
+        <a href="index.html" data-i18n="back_link">← Retour à l'accueil</a>
+    </nav>
+
+    <div id="main-content" class="degree4sec-secEco-unit1-etude1-reading-container">
+        <!-- Breadcrumb -->
+        <p style="margin-bottom:1.5rem; color:var(--degree4sec-secEco-unit1-etude1-reading-text-light);">
+            <a href="degree4sec_sececo.html" data-i18n="back_revision">Module 1</a>
+            › <strong data-i18n="back_current">Étude de texte – règles théoriques</strong>
+        </p>
+
+        <div class="degree4sec-secEco-unit1-etude1-reading-lesson-header">
+            <span class="degree4sec-secEco-unit1-etude1-reading-badge" data-i18n="lesson_badge">📖 Lecture · Étude de texte 1</span>
+            <h1 data-i18n="lesson_title">Comment répondre à une question<br>de compréhension</h1>
+            <div class="degree4sec-secEco-unit1-etude1-reading-meta">
+                <span data-i18n="lesson_duration">⏱️ 60 minutes</span>
+                <span data-i18n="lesson_meta_audio">🎧 Écoutez le texte puis étudiez la méthode</span>
+            </div>
+        </div>
+
+        <!-- Audio player -->
+        <div class="degree4sec-secEco-unit1-etude1-reading-audio-player" id="audioPlayer">
+            <span class="degree4sec-secEco-unit1-etude1-reading-audio-label" data-i18n="audio_label">🎧 Écoute littéraire</span>
+            <button class="degree4sec-secEco-unit1-etude1-reading-play-btn" id="playBtn" aria-label="Lecture">▶</button>
+            <div class="degree4sec-secEco-unit1-etude1-reading-progress-area">
+                <div class="degree4sec-secEco-unit1-etude1-reading-progress-bar" id="progressBar">
+                    <div class="degree4sec-secEco-unit1-etude1-reading-progress-fill" id="progressFill"></div>
+                </div>
+                <div class="degree4sec-secEco-unit1-etude1-reading-time-info">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+            <div class="degree4sec-secEco-unit1-etude1-reading-speed-selector" id="speedSelector">
+                <button class="degree4sec-secEco-unit1-etude1-reading-speed-btn" data-speed="0.75">0.75x</button>
+                <button class="degree4sec-secEco-unit1-etude1-reading-speed-btn active" data-speed="1">1x</button>
+                <button class="degree4sec-secEco-unit1-etude1-reading-speed-btn" data-speed="1.25">1.25x</button>
+                <button class="degree4sec-secEco-unit1-etude1-reading-speed-btn" data-speed="1.5">1.5x</button>
+            </div>
+        </div>
+
+        <!-- Literary text (7 paragraphs) -->
+        <div class="degree4sec-secEco-unit1-etude1-reading-text-card">
+            <div class="degree4sec-secEco-unit1-etude1-reading-text-title" data-i18n="text_title">La maison aux volets bleus</div>
+            <p data-i18n="text_para1">Trente ans. Trente longues années s'étaient écoulées depuis que j'avais quitté le petit village de mon enfance. Assis dans le train qui me ramenait vers le sud, je regardais défiler les paysages familiers avec une émotion que je ne parvenais pas à nommer. Chaque colline, chaque olivier, chaque pierre sèche me semblait chargé d'un souvenir. Je fermais les yeux et je revoyais les visages, j'entendais les voix, je sentais les parfums.</p>
+            <p data-i18n="text_para2">Le village n'avait presque pas changé. Les ruelles étroites, encore chaudes de la chaleur du jour, sentaient la terre et le jasmin. Au détour de la dernière venelle, je la vis enfin : la maison de mon enfance, celle que j'appelais autrefois « la maison aux volets bleus ». Les volets avaient perdu de leur éclat, mais le bleu était toujours là, pâli par le soleil et par le temps.</p>
+            <p data-i18n="text_para3">Je m'arrêtai devant la porte. Sur le seuil, je revis ma grand-mère, telle qu'elle apparaissait dans mes souvenirs : ses mains farinées de boulangère, son tablier brodé, sa voix douce qui racontait les histoires d'autrefois. Chaque matin, elle pétrissait le pain en fredonnant une vieille chanson andalouse. « Le pain, disait-elle souvent, c'est la mémoire du temps. »</p>
+            <p data-i18n="text_para4">Les soirs d'été, toute la famille se réunissait sous la treille du jardin. Mon père grillait des épis de maïs, ma mère apportait des pastèques bien fraîches, et nous, les enfants, nous courions entre les figuiers en riant. La lumière dorée du couchant transformait chaque visage en un tableau vivant. Ces instants, je les croyais éternels.</p>
+            <p data-i18n="text_para5">Au fond du jardin, il y avait l'atelier de mon père. Il travaillait le bois avec une patience infinie. L'odeur de la sciure, le bruit régulier du rabot, les copeaux qui volaient comme des pétales — tout cela me revient aujourd'hui avec une netteté presque douloureuse. C'est lui qui m'avait appris à réparer, à construire, à ne jamais abandonner.</p>
+            <p data-i18n="text_para6">La maison est habitée aujourd'hui par des inconnus. Une voiture moderne est garée devant le figuier. Les volets ont été repeints en blanc. Le jardin n'a plus la même allure. Je reste immobile sur le trottoir d'en face, étranger dans mon propre passé. Le temps, ce grand architecte, a redessiné les lieux sans me demander mon avis.</p>
+            <p data-i18n="text_para7">Pourtant, quelque chose demeure. C'est un parfum, une lumière, une voix dans le vent. La maison a beau avoir changé de visage, elle garde mon enfance comme un trésor secret. Je comprends alors que la nostalgie n'est pas une blessure, mais une manière de rendre hommage à ce qui fut. Le passé ne revient pas, mais il ne s'efface jamais tout à fait. Il vit en nous, patient, lumineux, indestructible.</p>
+            <div class="degree4sec-secEco-unit1-etude1-reading-text-author" data-i18n="text_author">— Récit inédit, d'après un témoignage</div>
+        </div>
+
+        <!-- Methodology section -->
+        <div class="degree4sec-secEco-unit1-etude1-reading-valeurs-section">
+            <h2 data-i18n="method_heading">📖 Méthode : comment répondre à une question de compréhension</h2>
+            <p data-i18n="method_intro" style="margin-bottom:1.2rem;">Répondre à une question de compréhension ne s'improvise pas. Cela exige de la méthode, de la rigueur et un retour constant au texte. Voici les <strong>quatre étapes fondamentales</strong> que vous devez appliquer systématiquement, quelle que soit la question posée.</p>
+
+            <div class="degree4sec-secEco-unit1-etude1-reading-step">
+                <div class="degree4sec-secEco-unit1-etude1-reading-step-num">1</div>
+                <div class="degree4sec-secEco-unit1-etude1-reading-step-body">
+                    <h3 data-i18n="step1_title">Identifier le type de question</h3>
+                    <ul data-i18n="step1_list">
+                        <li><strong>Question explicite :</strong> la réponse est écrite noir sur blanc dans le texte.</li>
+                        <li><strong>Question implicite :</strong> la réponse se déduit du texte (inférence, interprétation).</li>
+                        <li><strong>Question d'appréciation :</strong> la réponse fait appel à votre opinion personnelle, appuyée par le texte.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="degree4sec-secEco-unit1-etude1-reading-step">
+                <div class="degree4sec-secEco-unit1-etude1-reading-step-num">2</div>
+                <div class="degree4sec-secEco-unit1-etude1-reading-step-body">
+                    <h3 data-i18n="step2_title">Localiser les éléments de réponse dans le texte</h3>
+                    <ul data-i18n="step2_list">
+                        <li>Repérer le passage concerné (paragraphe, phrase).</li>
+                        <li>Souligner les mots-clés et les expressions significatives.</li>
+                        <li>Distinguer les faits (ce qui est dit) des interprétations (ce qui est suggéré).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="degree4sec-secEco-unit1-etude1-reading-step">
+                <div class="degree4sec-secEco-unit1-etude1-reading-step-num">3</div>
+                <div class="degree4sec-secEco-unit1-etude1-reading-step-body">
+                    <h3 data-i18n="step3_title">Rédiger la réponse</h3>
+                    <ul data-i18n="step3_list">
+                        <li>Rédiger une <strong>phrase complète</strong> (sujet + verbe + complément).</li>
+                        <li><strong>Reprendre les termes de la question</strong> pour ne pas répondre à côté.</li>
+                        <li><strong>Reformuler</strong> avec ses propres mots (ne pas recopier le texte mot pour mot).</li>
+                        <li><strong>Citer le texte entre guillemets</strong> pour justifier la réponse.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="degree4sec-secEco-unit1-etude1-reading-step">
+                <div class="degree4sec-secEco-unit1-etude1-reading-step-num">4</div>
+                <div class="degree4sec-secEco-unit1-etude1-reading-step-body">
+                    <h3 data-i18n="step4_title">Relire et vérifier</h3>
+                    <ul data-i18n="step4_list">
+                        <li>La réponse répond-elle réellement à la question posée ?</li>
+                        <li>Est-elle justifiée par le texte (citation, référence précise) ?</li>
+                        <li>La langue est-elle correcte (orthographe, grammaire, ponctuation) ?</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="degree4sec-secEco-unit1-etude1-reading-note">
+                <strong data-i18n="note_title">💡 À retenir :</strong> <span data-i18n="note_text">une bonne réponse de compréhension est <em>juste</em> (elle correspond au texte), <em>complète</em> (elle traite tous les aspects de la question), <em>justifiée</em> (elle s'appuie sur une citation) et <em>correctement rédigée</em> (phrase claire et bien construite).</span>
+            </div>
+        </div>
+
+        <!-- Exercises grid -->
+        <div class="degree4sec-secEco-unit1-etude1-reading-exercises-section">
+            <h2 data-i18n="exercises_heading">✍️ Exercices d'application</h2>
+
+            <!-- Ex 1 -->
+            <div class="degree4sec-secEco-unit1-etude1-reading-exercise-card degree4sec-secEco-unit1-etude1-reading-exercise-col-left">
+                <h3 data-i18n="exo1_title">📌 1. Identifier le type de question</h3>
+                <p data-i18n="exo1_instruction">Indiquez pour chaque question s'il s'agit d'une question explicite (E), implicite (I) ou d'appréciation (A).</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_question" class="no-bilingual">Question</th>
+                            <th data-i18n="table_type" class="no-bilingual">E / I / A</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>« Où se trouve la maison du narrateur ? »</td><td><input type="text" placeholder="E, I ou A"></td></tr>
+                        <tr><td>« Que ressent le narrateur en retrouvant sa maison ? »</td><td><input type="text" placeholder="E, I ou A"></td></tr>
+                        <tr><td>« Selon vous, la nostalgie est-elle une souffrance ? »</td><td><input type="text" placeholder="E, I ou A"></td></tr>
+                        <tr><td>« Que faisait la grand-mère chaque matin ? »</td><td><input type="text" placeholder="E, I ou A"></td></tr>
+                        <tr><td>« Pourquoi la maison garde-t-elle un trésor secret ? »</td><td><input type="text" placeholder="E, I ou A"></td></tr>
+                    </tbody>
+                </table>
+                <div class="degree4sec-secEco-unit1-etude1-reading-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-etude1-reading-btn-verify" onclick="toggleCorrection('exo1Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo1Key" class="degree4sec-secEco-unit1-etude1-reading-answer-key"></div>
+            </div>
+
+            <!-- Ex 2 -->
+            <div class="degree4sec-secEco-unit1-etude1-reading-exercise-card degree4sec-secEco-unit1-etude1-reading-exercise-col-right">
+                <h3 data-i18n="exo2_title">📌 2. Questions explicites : répondre avec le texte</h3>
+                <p data-i18n="exo2_instruction">Répondez à ces questions en reprenant les termes de la question et en citant le texte entre guillemets.</p>
+                <ol type="a">
+                    <li><span data-i18n="exo2_q1">Depuis combien de temps le narrateur avait-il quitté son village ?</span> <textarea rows="2" placeholder="Réponse avec citation..."></textarea></li>
+                    <li><span data-i18n="exo2_q2">Que faisait la grand-mère chaque matin ?</span> <textarea rows="2" placeholder="Réponse avec citation..."></textarea></li>
+                    <li><span data-i18n="exo2_q3">Que faisait le père dans son atelier ?</span> <textarea rows="2" placeholder="Réponse avec citation..."></textarea></li>
+                </ol>
+                <div class="degree4sec-secEco-unit1-etude1-reading-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-etude1-reading-btn-verify" onclick="toggleCorrection('exo2Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo2Key" class="degree4sec-secEco-unit1-etude1-reading-answer-key"></div>
+            </div>
+
+            <!-- Ex 3 -->
+            <div class="degree4sec-secEco-unit1-etude1-reading-exercise-card degree4sec-secEco-unit1-etude1-reading-exercise-col-left">
+                <h3 data-i18n="exo3_title">📌 3. Choisissez la meilleure réponse</h3>
+                <p data-i18n="exo3_instruction">Pour chaque question, sélectionnez la réponse la mieux construite (phrase complète + reformulation + citation).</p>
+                <p><strong>Question :</strong> Pourquoi le narrateur se sent-il « étranger dans son propre passé » ?</p>
+                <label><input type="radio" name="mcq1" value="a"> Parce que des inconnus habitent la maison.</label><br>
+                <label><input type="radio" name="mcq1" value="b"> Le narrateur se sent étranger dans son propre passé parce que des « inconnus » habitent désormais la maison et que les volets, autrefois bleus, ont été « repeints en blanc ».</label><br>
+                <label><input type="radio" name="mcq1" value="c"> Parce qu'il a oublié les lieux.</label>
+                <p style="margin-top:0.8rem;"><strong>Question :</strong> Que symbolise l'expression « la mémoire du temps » employée par la grand-mère ?</p>
+                <label><input type="radio" name="mcq2" value="a"> Le pain.</label><br>
+                <label><input type="radio" name="mcq2" value="b"> La grand-mère compare le pain à « la mémoire du temps » : selon elle, le pain fait revivre les souvenirs et les traditions familiales.</label><br>
+                <label><input type="radio" name="mcq2" value="c"> La grand-mère aime faire du pain.</label>
+                <p style="margin-top:0.8rem;"><strong>Question :</strong> Quelle est la visée du dernier paragraphe ?</p>
+                <label><input type="radio" name="mcq3" value="a"> Décrire la maison actuelle.</label><br>
+                <label><input type="radio" name="mcq3" value="b"> Le dernier paragraphe défend l'idée que la nostalgie est une « manière de rendre hommage à ce qui fut » et que le passé « ne s'efface jamais tout à fait ».</label><br>
+                <label><input type="radio" name="mcq3" value="c"> Raconter un souvenir d'enfance.</label>
+                <div class="degree4sec-secEco-unit1-etude1-reading-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-etude1-reading-btn-verify" onclick="toggleCorrection('exo3Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo3Key" class="degree4sec-secEco-unit1-etude1-reading-answer-key"></div>
+            </div>
+
+            <!-- Ex 4 -->
+            <div class="degree4sec-secEco-unit1-etude1-reading-exercise-card degree4sec-secEco-unit1-etude1-reading-exercise-col-right">
+                <h3 data-i18n="exo4_title">📌 4. Reformuler sans recopier</h3>
+                <p data-i18n="exo4_instruction">Reformulez avec vos propres mots les citations suivantes du texte.</p>
+                <ol type="a">
+                    <li>« Trente longues années s'étaient écoulées » → <input type="text" placeholder="Reformulation..."></li>
+                    <li>« La lumière dorée du couchant transformait chaque visage en un tableau vivant » → <input type="text" placeholder="Reformulation..."></li>
+                    <li>« La maison a beau avoir changé de visage » → <input type="text" placeholder="Reformulation..."></li>
+                </ol>
+                <div class="degree4sec-secEco-unit1-etude1-reading-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-etude1-reading-btn-verify" onclick="toggleCorrection('exo4Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo4Key" class="degree4sec-secEco-unit1-etude1-reading-answer-key"></div>
+            </div>
+
+            <!-- Ex 5 -->
+            <div class="degree4sec-secEco-unit1-etude1-reading-exercise-card degree4sec-secEco-unit1-etude1-reading-exercise-col-left">
+                <h3 data-i18n="exo5_title">📌 5. Analyse d'une réponse</h3>
+                <p data-i18n="exo5_instruction">Lisez cette réponse d'élève, puis expliquez en une phrase pourquoi elle est incomplète.</p>
+                <p style="font-style:italic; margin:0.6rem 0; padding:0.8rem; background:var(--degree4sec-secEco-unit1-etude1-reading-audio-bg); border-radius:6px;" data-i18n="exo5_answer"><strong>Question :</strong> Que faisait la grand-mère chaque matin ?<br><strong>Réponse d'élève :</strong> Du pain.</p>
+                <textarea rows="3" placeholder="Votre explication..."></textarea>
+                <div class="degree4sec-secEco-unit1-etude1-reading-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex5" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex5" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex5" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-etude1-reading-btn-verify" onclick="toggleCorrection('exo5Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo5Key" class="degree4sec-secEco-unit1-etude1-reading-answer-key"></div>
+            </div>
+
+            <!-- Ex 6 -->
+            <div class="degree4sec-secEco-unit1-etude1-reading-exercise-card degree4sec-secEco-unit1-etude1-reading-exercise-col-right">
+                <h3 data-i18n="exo6_title">📌 6. Question implicite</h3>
+                <p data-i18n="exo6_instruction">Répondez à cette question implicite en vous appuyant sur des indices du texte.</p>
+                <p style="font-style:italic; margin-bottom:0.5rem;" data-i18n="exo6_question">Pourquoi le narrateur dit-il que la nostalgie « n'est pas une blessure » ?</p>
+                <textarea rows="3" placeholder="Votre réponse avec indices du texte..."></textarea>
+                <div class="degree4sec-secEco-unit1-etude1-reading-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex6" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex6" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex6" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-etude1-reading-btn-verify" onclick="toggleCorrection('exo6Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo6Key" class="degree4sec-secEco-unit1-etude1-reading-answer-key"></div>
+            </div>
+
+            <!-- Ex 7 -->
+            <div class="degree4sec-secEco-unit1-etude1-reading-exercise-card degree4sec-secEco-unit1-etude1-reading-exercise-col-left">
+                <h3 data-i18n="exo7_title">📌 7. Remettre les étapes dans l'ordre</h3>
+                <p data-i18n="exo7_instruction">Numérotez de 1 à 4 les étapes de la méthode pour répondre à une question de compréhension.</p>
+                <ol>
+                    <li><span data-i18n="exo7_a">Relire et vérifier la réponse.</span> <input type="text" placeholder="1-4" style="width:60px;"></li>
+                    <li><span data-i18n="exo7_b">Identifier le type de question.</span> <input type="text" placeholder="1-4" style="width:60px;"></li>
+                    <li><span data-i18n="exo7_c">Rédiger la réponse (phrase complète + citation).</span> <input type="text" placeholder="1-4" style="width:60px;"></li>
+                    <li><span data-i18n="exo7_d">Localiser les éléments de réponse dans le texte.</span> <input type="text" placeholder="1-4" style="width:60px;"></li>
+                </ol>
+                <div class="degree4sec-secEco-unit1-etude1-reading-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex7" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex7" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex7" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-etude1-reading-btn-verify" onclick="toggleCorrection('exo7Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo7Key" class="degree4sec-secEco-unit1-etude1-reading-answer-key"></div>
+            </div>
+
+            <!-- Ex 8 -->
+            <div class="degree4sec-secEco-unit1-etude1-reading-exercise-card degree4sec-secEco-unit1-etude1-reading-exercise-col-right">
+                <h3 data-i18n="exo8_title">📌 8. Vrai ou faux ?</h3>
+                <p data-i18n="exo8_instruction">Indiquez si chaque affirmation est vraie (V) ou fausse (F).</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_statement" class="no-bilingual">Affirmation</th>
+                            <th data-i18n="table_vf" class="no-bilingual">V / F</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td data-i18n="exo8_q1">On peut répondre à une question de compréhension par un seul mot.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo8_q2">Il faut reformuler avec ses propres mots plutôt que recopier.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo8_q3">Une bonne réponse doit toujours être justifiée par une citation du texte.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo8_q4">Les questions implicites se répondent directement à partir du texte, sans inférence.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo8_q5">Il faut relire sa réponse pour vérifier qu'elle répond bien à la question.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                    </tbody>
+                </table>
+                <div class="degree4sec-secEco-unit1-etude1-reading-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex8" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex8" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex8" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-etude1-reading-btn-verify" onclick="toggleCorrection('exo8Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo8Key" class="degree4sec-secEco-unit1-etude1-reading-answer-key"></div>
+            </div>
+
+            <!-- Ex 9 -->
+            <div class="degree4sec-secEco-unit1-etude1-reading-exercise-card degree4sec-secEco-unit1-etude1-reading-exercise-col-left">
+                <h3 data-i18n="exo9_title">📌 9. Associez chaque question à sa citation</h3>
+                <p data-i18n="exo9_instruction">Pour chaque question, indiquez la citation du texte qui permet d'y répondre (numéro du paragraphe).</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_question" class="no-bilingual">Question</th>
+                            <th data-i18n="table_para" class="no-bilingual">Paragraphe</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Où se trouve la maison du narrateur ?</td><td><input type="text" placeholder="§ n°"></td></tr>
+                        <tr><td>Qui est ma grand-mère ?</td><td><input type="text" placeholder="§ n°"></td></tr>
+                        <tr><td>Que faisait la famille le soir ?</td><td><input type="text" placeholder="§ n°"></td></tr>
+                        <tr><td>Quel métier exerçait le père ?</td><td><input type="text" placeholder="§ n°"></td></tr>
+                        <tr><td>Quelle est la conclusion du narrateur ?</td><td><input type="text" placeholder="§ n°"></td></tr>
+                    </tbody>
+                </table>
+                <div class="degree4sec-secEco-unit1-etude1-reading-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex9" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex9" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex9" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-etude1-reading-btn-verify" onclick="toggleCorrection('exo9Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo9Key" class="degree4sec-secEco-unit1-etude1-reading-answer-key"></div>
+            </div>
+
+            <!-- Ex 10 -->
+            <div class="degree4sec-secEco-unit1-etude1-reading-exercise-card degree4sec-secEco-unit1-etude1-reading-exercise-col-right">
+                <h3 data-i18n="exo10_title">📌 10. Rédiger une réponse complète</h3>
+                <p data-i18n="exo10_instruction">Rédigez une réponse complète (phrase + reformulation + citation) à la question suivante.</p>
+                <p style="font-style:italic; margin-bottom:0.5rem;" data-i18n="exo10_question">Quel rôle joue le père dans les souvenirs du narrateur ?</p>
+                <textarea rows="4" placeholder="Votre réponse complète..."></textarea>
+                <div class="degree4sec-secEco-unit1-etude1-reading-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex10" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex10" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex10" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-etude1-reading-btn-verify" onclick="toggleCorrection('exo10Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo10Key" class="degree4sec-secEco-unit1-etude1-reading-answer-key"></div>
+            </div>
+        </div>
+
+        <!-- Production -->
+        <div style="margin-top:2rem;">
+            <div class="degree4sec-secEco-unit1-etude1-reading-exercise-card">
+                <h3 data-i18n="exo11_title">📌 11. Production personnelle</h3>
+                <p data-i18n="exo11_instruction">Rédigez une question de compréhension (explicite, implicite ou d'appréciation) sur le texte <em>La maison aux volets bleus</em>, puis proposez une réponse complète en appliquant la méthode en 4 étapes.</p>
+                <textarea rows="6" placeholder="Votre question et votre réponse complète..."></textarea>
+                <div class="degree4sec-secEco-unit1-etude1-reading-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex11" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex11" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex11" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-etude1-reading-btn-verify" onclick="showProductionExample()" data-i18n="show_example">💡 Voir un exemple de réponse</button>
+                <div id="productionExample" class="degree4sec-secEco-unit1-etude1-reading-answer-key"></div>
+            </div>
+        </div>
+
+        <!-- Score area -->
+        <div class="degree4sec-secEco-unit1-etude1-reading-score-area" id="scoreArea">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="degree4sec-secEco-unit1-etude1-reading-score-stats" id="scoreStats">
+                <div class="degree4sec-secEco-unit1-etude1-reading-score-stat"><span data-i18n="score_correct">Correctes :</span> <span id="scoreCorrect">0</span></div>
+                <div class="degree4sec-secEco-unit1-etude1-reading-score-stat"><span data-i18n="score_incorrect">Incorrectes :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="degree4sec-secEco-unit1-etude1-reading-score-stat"><span data-i18n="score_partial">Partielles :</span> <span id="scorePartial">0</span></div>
+                <div class="degree4sec-secEco-unit1-etude1-reading-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">11</span></div>
+            </div>
+        </div>
+        <div class="degree4sec-secEco-unit1-etude1-reading-score-actions" style="margin-top:1.2rem;">
+            <button id="saveResultsBtn" class="degree4sec-secEco-unit1-etude1-reading-btn-verify" style="margin-right:0.5rem;" data-i18n="save_results">💾 Enregistrer mes résultats</button>
+            <button id="printPdfBtn" class="degree4sec-secEco-unit1-etude1-reading-btn-verify" style="background:#2a5a3e; margin-right:0.5rem;" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+        </div>
+
+        <!-- Footer nav -->
+        <div class="degree4sec-secEco-unit1-etude1-reading-footer-nav">
+            <a href="degree4sec_sececo.html" data-i18n="footer_back" class="no-bilingual">← Retour au programme</a>
+            <a href="degree4secEco_mod1_etude_2.html" data-i18n="footer_next" class="no-bilingual">Leçon suivante : Étude de texte – application →</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                'lessonE1_title': "Étude de texte – Comment répondre à une question de compréhension (règles théoriques) | Lecture & Méthodologie",
+                'lesson_short_title': "Étude de texte – comprendre et répondre (théorie)",
+                'ach_year_4sec_secEco': "4ᵉ année secondaire (Section Économie)",
+                'ach_module_module1': "Module 1 : Souvenirs et nostalgie",
+                'back_link': "← Retour à l'accueil",
+                'back_revision': "Module 1",
+                'back_current': "Étude de texte – règles théoriques",
+                'lesson_badge': "📖 Lecture · Étude de texte 1",
+                'lesson_title': "Comment répondre à une question<br>de compréhension",
+                'lesson_duration': "⏱️ 60 minutes",
+                'lesson_meta_audio': "🎧 Écoutez le texte puis étudiez la méthode",
+                'audio_label': "🎧 Écoute littéraire",
+                'text_title': "La maison aux volets bleus",
+                'text_para1': "Trente ans. Trente longues années s'étaient écoulées depuis que j'avais quitté le petit village de mon enfance. Assis dans le train qui me ramenait vers le sud, je regardais défiler les paysages familiers avec une émotion que je ne parvenais pas à nommer. Chaque colline, chaque olivier, chaque pierre sèche me semblait chargé d'un souvenir. Je fermais les yeux et je revoyais les visages, j'entendais les voix, je sentais les parfums.",
+                'text_para2': "Le village n'avait presque pas changé. Les ruelles étroites, encore chaudes de la chaleur du jour, sentaient la terre et le jasmin. Au détour de la dernière venelle, je la vis enfin : la maison de mon enfance, celle que j'appelais autrefois « la maison aux volets bleus ». Les volets avaient perdu de leur éclat, mais le bleu était toujours là, pâli par le soleil et par le temps.",
+                'text_para3': "Je m'arrêtai devant la porte. Sur le seuil, je revis ma grand-mère, telle qu'elle apparaissait dans mes souvenirs : ses mains farinées de boulangère, son tablier brodé, sa voix douce qui racontait les histoires d'autrefois. Chaque matin, elle pétrissait le pain en fredonnant une vieille chanson andalouse. « Le pain, disait-elle souvent, c'est la mémoire du temps. »",
+                'text_para4': "Les soirs d'été, toute la famille se réunissait sous la treille du jardin. Mon père grillait des épis de maïs, ma mère apportait des pastèques bien fraîches, et nous, les enfants, nous courions entre les figuiers en riant. La lumière dorée du couchant transformait chaque visage en un tableau vivant. Ces instants, je les croyais éternels.",
+                'text_para5': "Au fond du jardin, il y avait l'atelier de mon père. Il travaillait le bois avec une patience infinie. L'odeur de la sciure, le bruit régulier du rabot, les copeaux qui volaient comme des pétales — tout cela me revient aujourd'hui avec une netteté presque douloureuse. C'est lui qui m'avait appris à réparer, à construire, à ne jamais abandonner.",
+                'text_para6': "La maison est habitée aujourd'hui par des inconnus. Une voiture moderne est garée devant le figuier. Les volets ont été repeints en blanc. Le jardin n'a plus la même allure. Je reste immobile sur le trottoir d'en face, étranger dans mon propre passé. Le temps, ce grand architecte, a redessiné les lieux sans me demander mon avis.",
+                'text_para7': "Pourtant, quelque chose demeure. C'est un parfum, une lumière, une voix dans le vent. La maison a beau avoir changé de visage, elle garde mon enfance comme un trésor secret. Je comprends alors que la nostalgie n'est pas une blessure, mais une manière de rendre hommage à ce qui fut. Le passé ne revient pas, mais il ne s'efface jamais tout à fait. Il vit en nous, patient, lumineux, indestructible.",
+                'text_author': "— Récit inédit, d'après un témoignage",
+                'method_heading': "📖 Méthode : comment répondre à une question de compréhension",
+                'method_intro': "Répondre à une question de compréhension ne s'improvise pas. Cela exige de la méthode, de la rigueur et un retour constant au texte. Voici les <strong>quatre étapes fondamentales</strong> que vous devez appliquer systématiquement, quelle que soit la question posée.",
+                'step1_title': "Identifier le type de question",
+                'step1_list': "<li><strong>Question explicite :</strong> la réponse est écrite noir sur blanc dans le texte.</li><li><strong>Question implicite :</strong> la réponse se déduit du texte (inférence, interprétation).</li><li><strong>Question d'appréciation :</strong> la réponse fait appel à votre opinion personnelle, appuyée par le texte.</li>",
+                'step2_title': "Localiser les éléments de réponse dans le texte",
+                'step2_list': "<li>Repérer le passage concerné (paragraphe, phrase).</li><li>Souligner les mots-clés et les expressions significatives.</li><li>Distinguer les faits (ce qui est dit) des interprétations (ce qui est suggéré).</li>",
+                'step3_title': "Rédiger la réponse",
+                'step3_list': "<li>Rédiger une <strong>phrase complète</strong> (sujet + verbe + complément).</li><li><strong>Reprendre les termes de la question</strong> pour ne pas répondre à côté.</li><li><strong>Reformuler</strong> avec ses propres mots (ne pas recopier le texte mot pour mot).</li><li><strong>Citer le texte entre guillemets</strong> pour justifier la réponse.</li>",
+                'step4_title': "Relire et vérifier",
+                'step4_list': "<li>La réponse répond-elle réellement à la question posée ?</li><li>Est-elle justifiée par le texte (citation, référence précise) ?</li><li>La langue est-elle correcte (orthographe, grammaire, ponctuation) ?</li>",
+                'note_title': "💡 À retenir :",
+                'note_text': "une bonne réponse de compréhension est <em>juste</em> (elle correspond au texte), <em>complète</em> (elle traite tous les aspects de la question), <em>justifiée</em> (elle s'appuie sur une citation) et <em>correctement rédigée</em> (phrase claire et bien construite).",
+                'exercises_heading': "✍️ Exercices d'application",
+                'exo1_title': "📌 1. Identifier le type de question",
+                'exo1_instruction': "Indiquez pour chaque question s'il s'agit d'une question explicite (E), implicite (I) ou d'appréciation (A).",
+                'table_question': "Question",
+                'table_type': "E / I / A",
+                'table_statement': "Affirmation",
+                'table_vf': "V / F",
+                'table_para': "Paragraphe",
+                'btn_correction': "🔍 Voir la correction",
+                'exo2_title': "📌 2. Questions explicites : répondre avec le texte",
+                'exo2_instruction': "Répondez à ces questions en reprenant les termes de la question et en citant le texte entre guillemets.",
+                'exo2_q1': "Depuis combien de temps le narrateur avait-il quitté son village ?",
+                'exo2_q2': "Que faisait la grand-mère chaque matin ?",
+                'exo2_q3': "Que faisait le père dans son atelier ?",
+                'exo3_title': "📌 3. Choisissez la meilleure réponse",
+                'exo3_instruction': "Pour chaque question, sélectionnez la réponse la mieux construite (phrase complète + reformulation + citation).",
+                'exo4_title': "📌 4. Reformuler sans recopier",
+                'exo4_instruction': "Reformulez avec vos propres mots les citations suivantes du texte.",
+                'exo5_title': "📌 5. Analyse d'une réponse",
+                'exo5_instruction': "Lisez cette réponse d'élève, puis expliquez en une phrase pourquoi elle est incomplète.",
+                'exo5_answer': "<strong>Question :</strong> Que faisait la grand-mère chaque matin ?<br><strong>Réponse d'élève :</strong> Du pain.",
+                'exo6_title': "📌 6. Question implicite",
+                'exo6_instruction': "Répondez à cette question implicite en vous appuyant sur des indices du texte.",
+                'exo6_question': "Pourquoi le narrateur dit-il que la nostalgie « n'est pas une blessure » ?",
+                'exo7_title': "📌 7. Remettre les étapes dans l'ordre",
+                'exo7_instruction': "Numérotez de 1 à 4 les étapes de la méthode pour répondre à une question de compréhension.",
+                'exo7_a': "Relire et vérifier la réponse.",
+                'exo7_b': "Identifier le type de question.",
+                'exo7_c': "Rédiger la réponse (phrase complète + citation).",
+                'exo7_d': "Localiser les éléments de réponse dans le texte.",
+                'exo8_title': "📌 8. Vrai ou faux ?",
+                'exo8_instruction': "Indiquez si chaque affirmation est vraie (V) ou fausse (F).",
+                'exo8_q1': "On peut répondre à une question de compréhension par un seul mot.",
+                'exo8_q2': "Il faut reformuler avec ses propres mots plutôt que recopier.",
+                'exo8_q3': "Une bonne réponse doit toujours être justifiée par une citation du texte.",
+                'exo8_q4': "Les questions implicites se répondent directement à partir du texte, sans inférence.",
+                'exo8_q5': "Il faut relire sa réponse pour vérifier qu'elle répond bien à la question.",
+                'exo9_title': "📌 9. Associez chaque question à sa citation",
+                'exo9_instruction': "Pour chaque question, indiquez la citation du texte qui permet d'y répondre (numéro du paragraphe).",
+                'exo10_title': "📌 10. Rédiger une réponse complète",
+                'exo10_instruction': "Rédigez une réponse complète (phrase + reformulation + citation) à la question suivante.",
+                'exo10_question': "Quel rôle joue le père dans les souvenirs du narrateur ?",
+                'exo11_title': "📌 11. Production personnelle",
+                'exo11_instruction': "Rédigez une question de compréhension (explicite, implicite ou d'appréciation) sur le texte <em>La maison aux volets bleus</em>, puis proposez une réponse complète en appliquant la méthode en 4 étapes.",
+                'show_example': "💡 Voir un exemple de réponse",
+                'footer_back': "← Retour au programme",
+                'footer_next': "Leçon suivante : Étude de texte – application →",
+                'self_assess_question': "Ma réponse est :",
+                'self_correct': "Correcte",
+                'self_incorrect': "Incorrecte",
+                'self_partial': "Partiellement correcte",
+                'score_title': "📊 Votre auto‑évaluation",
+                'score_correct': "Correctes :",
+                'score_incorrect': "Incorrectes :",
+                'score_partial': "Partielles :",
+                'score_unanswered': "Sans réponse :",
+                'save_results': "💾 Enregistrer mes résultats",
+                'save_success': "Résultats sauvegardés ✓",
+                'save_error': "Erreur lors de la sauvegarde",
+                'print_pdf': "🖨️ Imprimer / PDF",
+                'print_with_answers': "Corrigé inclus",
+                'print_site_name': "Educational Dashboard – French",
+                'print_scholar_year': "Module 1 – Souvenirs et nostalgie",
+                'print_week': "Étude de texte 1",
+                'print_area': "Lecture",
+                'print_footer_dev': "Développé par Mejri Ziad",
+                'print_footer_date': "Imprimé le",
+                'print_without_answers': "Sans corrigé",
+                'toast_signin_required': "Connectez-vous pour voir les corrections."
+            },
+            en: {
+                'lessonE1_title': "Text Study – How to Answer a Comprehension Question (Theoretical Rules) | Reading & Methodology",
+                'lesson_short_title': "Text study – understanding and answering (theory)",
+                'ach_year_4sec_secEco': "4th year secondary (Economy section)",
+                'ach_module_module1': "Module 1: Memories and Nostalgia",
+                'back_link': "← Back to home",
+                'back_revision': "Module 1",
+                'back_current': "Text study – theoretical rules",
+                'lesson_badge': "📖 Reading · Text Study 1",
+                'lesson_title': "How to Answer a Comprehension Question",
+                'lesson_duration': "⏱️ 60 minutes",
+                'lesson_meta_audio': "🎧 Listen to the text then study the method",
+                'audio_label': "🎧 Literary Listening",
+                'text_title': "The House with Blue Shutters",
+                'text_para1': "Thirty years. Thirty long years had passed since I had left the small village of my childhood. Sitting on the train that was bringing me back to the south, I watched the familiar landscapes roll by with an emotion I could not name. Every hill, every olive tree, every dry stone seemed loaded with a memory. I closed my eyes and saw the faces again, heard the voices, smelled the scents.",
+                'text_para2': "The village had barely changed. The narrow alleys, still warm from the day's heat, smelled of earth and jasmine. At the turn of the last lane, I finally saw it: the house of my childhood, the one I used to call \"the house with blue shutters\". The shutters had lost their shine, but the blue was still there, faded by the sun and by time.",
+                'text_para3': "I stopped at the door. On the threshold, I saw my grandmother again, as she appeared in my memories: her flour-covered baker's hands, her embroidered apron, her soft voice telling stories of long ago. Every morning, she kneaded bread while humming an old Andalusian song. \"Bread,\" she often said, \"is the memory of time.\"",
+                'text_para4': "On summer evenings, the whole family gathered under the arbour in the garden. My father grilled corn on the cob, my mother brought fresh watermelon, and we, the children, ran laughing between the fig trees. The golden light of sunset turned every face into a living painting. Those moments, I believed them eternal.",
+                'text_para5': "At the bottom of the garden was my father's workshop. He worked wood with infinite patience. The smell of sawdust, the regular sound of the plane, the shavings flying like petals — all this comes back to me today with almost painful clarity. He was the one who had taught me to repair, to build, to never give up.",
+                'text_para6': "The house is inhabited today by strangers. A modern car is parked in front of the fig tree. The shutters have been repainted white. The garden no longer looks the same. I stand motionless on the opposite sidewalk, a stranger in my own past. Time, that great architect, has redrawn the place without asking my opinion.",
+                'text_para7': "Yet something remains. It is a scent, a light, a voice in the wind. The house may have changed its face, but it keeps my childhood like a secret treasure. I understand then that nostalgia is not a wound, but a way of paying homage to what was. The past does not return, but it never fades away completely. It lives within us, patient, luminous, indestructible.",
+                'text_author': "— Original text, based on a testimony",
+                'method_heading': "📖 Method: how to answer a comprehension question",
+                'method_intro': "Answering a comprehension question cannot be improvised. It requires method, rigour and a constant return to the text. Here are the <strong>four fundamental steps</strong> you must apply systematically, whatever the question.",
+                'step1_title': "Identify the type of question",
+                'step1_list': "<li><strong>Explicit question:</strong> the answer is written plainly in the text.</li><li><strong>Implicit question:</strong> the answer is inferred from the text (inference, interpretation).</li><li><strong>Appreciation question:</strong> the answer calls for your personal opinion, supported by the text.</li>",
+                'step2_title': "Locate the answer elements in the text",
+                'step2_list': "<li>Find the relevant passage (paragraph, sentence).</li><li>Underline the key words and significant expressions.</li><li>Distinguish facts (what is said) from interpretations (what is suggested).</li>",
+                'step3_title': "Write the answer",
+                'step3_list': "<li>Write a <strong>complete sentence</strong> (subject + verb + complement).</li><li><strong>Reuse the terms of the question</strong> so you don't answer off-topic.</li><li><strong>Reformulate</strong> in your own words (do not copy the text word for word).</li><li><strong>Quote the text in quotation marks</strong> to justify the answer.</li>",
+                'step4_title': "Reread and check",
+                'step4_list': "<li>Does the answer really address the question asked?</li><li>Is it justified by the text (quotation, precise reference)?</li><li>Is the language correct (spelling, grammar, punctuation)?</li>",
+                'note_title': "💡 Remember:",
+                'note_text': "a good comprehension answer is <em>correct</em> (it matches the text), <em>complete</em> (it addresses all aspects of the question), <em>justified</em> (it relies on a quotation) and <em>well written</em> (clear, well-constructed sentence).",
+                'exercises_heading': "✍️ Application exercises",
+                'exo1_title': "📌 1. Identify the type of question",
+                'exo1_instruction': "Indicate for each question whether it is explicit (E), implicit (I) or an appreciation question (A).",
+                'table_question': "Question",
+                'table_type': "E / I / A",
+                'table_statement': "Statement",
+                'table_vf': "T / F",
+                'table_para': "Paragraph",
+                'btn_correction': "🔍 See the correction",
+                'exo2_title': "📌 2. Explicit questions: answer with the text",
+                'exo2_instruction': "Answer these questions by reusing the terms of the question and quoting the text in quotation marks.",
+                'exo2_q1': "How long ago had the narrator left his village?",
+                'exo2_q2': "What did the grandmother do every morning?",
+                'exo2_q3': "What did the father do in his workshop?",
+                'exo3_title': "📌 3. Choose the best answer",
+                'exo3_instruction': "For each question, select the best-constructed answer (complete sentence + reformulation + quotation).",
+                'exo4_title': "📌 4. Reformulate without copying",
+                'exo4_instruction': "Reformulate these quotations from the text in your own words.",
+                'exo5_title': "📌 5. Analyse an answer",
+                'exo5_instruction': "Read this student answer, then explain in one sentence why it is incomplete.",
+                'exo5_answer': "<strong>Question:</strong> What did the grandmother do every morning?<br><strong>Student answer:</strong> Bread.",
+                'exo6_title': "📌 6. Implicit question",
+                'exo6_instruction': "Answer this implicit question using clues from the text.",
+                'exo6_question': "Why does the narrator say that nostalgia \"is not a wound\"?",
+                'exo7_title': "📌 7. Put the steps in order",
+                'exo7_instruction': "Number from 1 to 4 the steps of the method for answering a comprehension question.",
+                'exo7_a': "Reread and check the answer.",
+                'exo7_b': "Identify the type of question.",
+                'exo7_c': "Write the answer (complete sentence + quotation).",
+                'exo7_d': "Locate the answer elements in the text.",
+                'exo8_title': "📌 8. True or false?",
+                'exo8_instruction': "Indicate whether each statement is true (T) or false (F).",
+                'exo8_q1': "You can answer a comprehension question with a single word.",
+                'exo8_q2': "You should reformulate in your own words rather than copy.",
+                'exo8_q3': "A good answer must always be justified by a quotation from the text.",
+                'exo8_q4': "Implicit questions are answered directly from the text, without inference.",
+                'exo8_q5': "You should reread your answer to check that it really answers the question.",
+                'exo9_title': "📌 9. Match each question to its quotation",
+                'exo9_instruction': "For each question, indicate the quotation from the text that allows you to answer it (paragraph number).",
+                'exo10_title': "📌 10. Write a complete answer",
+                'exo10_instruction': "Write a complete answer (sentence + reformulation + quotation) to the following question.",
+                'exo10_question': "What role does the father play in the narrator's memories?",
+                'exo11_title': "📌 11. Personal production",
+                'exo11_instruction': "Write a comprehension question (explicit, implicit or appreciation) on the text <em>The House with Blue Shutters</em>, then propose a complete answer applying the 4-step method.",
+                'show_example': "💡 See an example answer",
+                'footer_back': "← Back to program",
+                'footer_next': "Next lesson: Text study – application →",
+                'self_assess_question': "My answer is:",
+                'self_correct': "Correct",
+                'self_incorrect': "Incorrect",
+                'self_partial': "Partially correct",
+                'score_title': "📊 Your self‑assessment",
+                'score_correct': "Correct:",
+                'score_incorrect': "Incorrect:",
+                'score_partial': "Partial:",
+                'score_unanswered': "Unanswered:",
+                'save_results': "💾 Save my results",
+                'save_success': "Results saved ✓",
+                'save_error': "Save failed",
+                'print_pdf': "🖨️ Print / PDF",
+                'print_with_answers': "With answers",
+                'print_site_name': "Educational Dashboard – French",
+                'print_scholar_year': "Module 1 – Memories and Nostalgia",
+                'print_week': "Text Study 1",
+                'print_area': "Reading",
+                'print_footer_dev': "Developed by Mejri Ziad",
+                'print_footer_date': "Printed on",
+                'print_without_answers': "Without answers",
+                'toast_signin_required': "Sign in to see the corrections."
+            },
+            ar: {
+                'lessonE1_title': "دراسة النص – كيفية الإجابة عن سؤال فهم (قواعد نظرية) | قراءة ومنهجية",
+                'lesson_short_title': "دراسة النص – الفهم والإجابة (نظري)",
+                'ach_year_4sec_secEco': "السنة الرابعة ثانوي (شعبة الاقتصاد)",
+                'ach_module_module1': "الوحدة 1: ذكريات وحنين",
+                'back_link': "← العودة إلى الرئيسية",
+                'back_revision': "الوحدة 1",
+                'back_current': "دراسة النص – قواعد نظرية",
+                'lesson_badge': "📖 قراءة · دراسة النص 1",
+                'lesson_title': "كيفية الإجابة عن سؤال فهم",
+                'lesson_duration': "⏱️ 60 دقيقة",
+                'lesson_meta_audio': "🎧 استمع إلى النص ثم ادرس المنهجية",
+                'audio_label': "🎧 استماع أدبي",
+                'text_title': "البيت ذو المصاريع الزرقاء",
+                'text_para1': "ثلاثون سنة. ثلاثون سنة طويلة مضت منذ أن تركت القرية الصغيرة التي نشأت فيها. جالساً في القطار الذي يعيدني إلى الجنوب، كنت أتأمل المشاهد المألوفة بمشاعر لا أستطيع تسميتها. كل تل، كل شجرة زيتون، كل حجر يابس بدا محمّلاً بذكرى. أغمضت عيني فرأيت الوجوه مرة أخرى، وسمعت الأصوات، وشممت العطور.",
+                'text_para2': "لم تتغير القرية تقريباً. الأزقة الضيقة، التي لا تزال دافئة من حرارة النهار، كانت تفوح منها رائحة التراب والياسمين. عند منحنى آخر زقاق، رأيتها أخيراً: بيت طفولتي، الذي كنت أسميه قديماً « البيت ذا المصاريع الزرقاء ». فقدت المصاريع بريقها، لكن الأزرق كان لا يزال هناك، شاحباً بفعل الشمس والزمن.",
+                'text_para3': "توقفت أمام الباب. على العتبة، رأيت جدتي من جديد، كما كانت تظهر في ذكرياتي: يداها المغطاتان بالدقيق، مريولتها المطرزة، صوتها الناعم الذي كان يروي حكايات الأمس. كل صباح، كانت تعجن الخبز وهي تدندن أغنية أندلسية قديمة. كانت تقول دائماً: « الخبز ذكرى الزمن. »",
+                'text_para4': "في أمسيات الصيف، كانت العائلة كلها تجتمع تحت عريشة الحديقة. كان أبي يشوي أكواز الذرة، وأمي تحضر البطيخ الطازج، ونحن الأطفال نركض بين أشجار التين ضاحكين. كانت أشعة الغروب الذهبية تحوّل كل وجه إلى لوحة حية. تلك اللحظات، ظننتها خالدة.",
+                'text_para5': "في أسفل الحديقة، كانت ورشة أبي. كان يعمل الخشب بصبر لا متناهٍ. رائحة نشارة الخشب، صوت المسحاة المنتظم، النشارة التي كانت تطير كالبتلات — كل هذا يعود إليّ اليوم بوضوح يكاد يكون مؤلماً. هو من علّمني الإصلاح، والبناء، وعدم الاستسلام أبداً.",
+                'text_para6': "البيت يسكنه اليوم غرباء. سيارة حديثة متوقفة أمام شجرة التين. المصاريع أُعيد طلاؤها بالأبيض. الحديقة لم تعد تبدو كما كانت. أبقى ساكناً على الرصيف المقابل، غريباً في ماضيّ. الزمن، ذلك المعماري العظيم، أعاد رسم المكان دون أن يسألني.",
+                'text_para7': "ومع ذلك، يبقى شيء ما. إنه عطر، ضوء، صوت في الريح. البيت، وإن تغيّر وجهه، يحتفظ بطفولتي ككنز سري. أفهم حينها أن الحنين ليس جرحاً، بل طريقة لتكريم ما كان. الماضي لا يعود، لكنه لا يُمحى أبداً. يعيش فينا، صابراً، مشرقاً، لا يقهر.",
+                'text_author': "— نص أصلي، مقتبس من شهادة",
+                'method_heading': "📖 المنهجية: كيفية الإجابة عن سؤال فهم",
+                'method_intro': "الإجابة عن سؤال فهم لا تُرتجل. إنها تتطلب منهجية ودقة وعودة دائمة إلى النص. إليك <strong>الخطوات الأربع الأساسية</strong> التي يجب تطبيقها بشكل منهجي، أياً كان السؤال المطروح.",
+                'step1_title': "تحديد نوع السؤال",
+                'step1_list': "<li><strong>سؤال صريح:</strong> الجواب مكتوب بوضوح في النص.</li><li><strong>سؤال ضمني:</strong> الجواب يُستنتج من النص (استنتاج، تفسير).</li><li><strong>سؤال تقديري:</strong> الجواب يستدعي رأيك الشخصي، مدعوماً بالنص.</li>",
+                'step2_title': "تحديد عناصر الجواب في النص",
+                'step2_list': "<li>تحديد المقطع المعني (فقرة، جملة).</li><li>تسطير الكلمات المفتاحية والتعبيرات الدالة.</li><li>التمييز بين الوقائع (ما قيل) والتفسيرات (ما أُشير إليه).</li>",
+                'step3_title': "صياغة الجواب",
+                'step3_list': "<li>كتابة <strong>جملة كاملة</strong> (فاعل + فعل + متمم).</li><li><strong>استخدام ألفاظ السؤال</strong> لعدم الخروج عن الموضوع.</li><li><strong>إعادة الصياغة</strong> بكلماتك الخاصة (عدم النسخ الحرفي).</li><li><strong>اقتباس النص بين علامتي تنصيص</strong> لتبرير الجواب.</li>",
+                'step4_title': "إعادة القراءة والتحقق",
+                'step4_list': "<li>هل يجيب الجواب فعلاً عن السؤال المطروح؟</li><li>هل هو مبرر بالنص (اقتباس، إشارة دقيقة)؟</li><li>هل اللغة سليمة (إملاء، نحو، ترقيم)؟</li>",
+                'note_title': "💡 تذكر:",
+                'note_text': "الجواب الجيد عن سؤال فهم يكون <em>صحيحاً</em> (يطابق النص)، و<em>كاملاً</em> (يتناول جميع جوانب السؤال)، و<em>مبرراً</em> (يستند إلى اقتباس) و<em>محكماً</em> (جملة واضحة ومبنية جيداً).",
+                'exercises_heading': "✍️ تمارين تطبيقية",
+                'exo1_title': "📌 1. تحديد نوع السؤال",
+                'exo1_instruction': "حدد لكل سؤال إن كان صريحاً (E) أو ضمنياً (I) أو تقديرياً (A).",
+                'table_question': "السؤال",
+                'table_type': "E / I / A",
+                'table_statement': "العبارة",
+                'table_vf': "ص / خ",
+                'table_para': "الفقرة",
+                'btn_correction': "🔍 الاطلاع على التصحيح",
+                'exo2_title': "📌 2. أسئلة صريحة: أجب من النص",
+                'exo2_instruction': "أجب عن هذه الأسئلة بإعادة ألفاظ السؤال واقتباس النص بين علامتي تنصيص.",
+                'exo2_q1': "منذ متى ترك الراوي قريته؟",
+                'exo2_q2': "ماذا كانت الجدة تفعل كل صباح؟",
+                'exo2_q3': "ماذا كان الأب يفعل في ورشته؟",
+                'exo3_title': "📌 3. اختر أفضل جواب",
+                'exo3_instruction': "لكل سؤال، اختر الجواب الأفضل بناءً (جملة كاملة + إعادة صياغة + اقتباس).",
+                'exo4_title': "📌 4. أعد الصياغة دون نسخ",
+                'exo4_instruction': "أعد صياغة الاقتباسات التالية من النص بكلماتك الخاصة.",
+                'exo5_title': "📌 5. تحليل جواب",
+                'exo5_instruction': "اقرأ جواب هذا التلميذ، ثم اشرح في جملة واحدة لماذا هو ناقص.",
+                'exo5_answer': "<strong>السؤال:</strong> ماذا كانت الجدة تفعل كل صباح؟<br><strong>جواب التلميذ:</strong> خبزاً.",
+                'exo6_title': "📌 6. سؤال ضمني",
+                'exo6_instruction': "أجب عن هذا السؤال الضمني بالاعتماد على قرائن من النص.",
+                'exo6_question': "لماذا يقول الراوي إن الحنين « ليس جرحاً »؟",
+                'exo7_title': "📌 7. رتب الخطوات",
+                'exo7_instruction': "رقّم من 1 إلى 4 خطوات منهجية الإجابة عن سؤال فهم.",
+                'exo7_a': "إعادة القراءة والتحقق من الجواب.",
+                'exo7_b': "تحديد نوع السؤال.",
+                'exo7_c': "صياغة الجواب (جملة كاملة + اقتباس).",
+                'exo7_d': "تحديد عناصر الجواب في النص.",
+                'exo8_title': "📌 8. صواب أم خطأ؟",
+                'exo8_instruction': "حدد إن كانت كل عبارة صحيحة (ص) أم خاطئة (خ).",
+                'exo8_q1': "يمكن الإجابة عن سؤال فهم بكلمة واحدة.",
+                'exo8_q2': "يجب إعادة الصياغة بكلماتك الخاصة بدلاً من النسخ.",
+                'exo8_q3': "يجب أن يكون الجواب الجيد دائماً مبرراً باقتباس من النص.",
+                'exo8_q4': "الأسئلة الضمنية تُجاب مباشرة من النص، دون استنتاج.",
+                'exo8_q5': "يجب إعادة قراءة الجواب للتحقق من أنه يجيب فعلاً عن السؤال.",
+                'exo9_title': "📌 9. اربط كل سؤال باقتباسه",
+                'exo9_instruction': "لكل سؤال، حدد الاقتباس من النص الذي يتيح الإجابة عنه (رقم الفقرة).",
+                'exo10_title': "📌 10. اكتب جواباً كاملاً",
+                'exo10_instruction': "اكتب جواباً كاملاً (جملة + إعادة صياغة + اقتباس) للسؤال التالي.",
+                'exo10_question': "ما الدور الذي يلعبه الأب في ذكريات الراوي؟",
+                'exo11_title': "📌 11. إنتاج شخصي",
+                'exo11_instruction': "اكتب سؤال فهم (صريحاً أو ضمنياً أو تقديرياً) عن نص <em>البيت ذو المصاريع الزرقاء</em>، ثم اقترح جواباً كاملاً بتطبيق المنهجية في 4 خطوات.",
+                'show_example': "💡 عرض مثال للإجابة",
+                'footer_back': "← العودة إلى البرنامج",
+                'footer_next': "الدرس الموالي: دراسة النص – تطبيق ←",
+                'self_assess_question': "جوابي هو:",
+                'self_correct': "صحيح",
+                'self_incorrect': "خاطئ",
+                'self_partial': "صحيح جزئيًا",
+                'score_title': "📊 تقييمك الذاتي",
+                'score_correct': "صحيح:",
+                'score_incorrect': "خاطئ:",
+                'score_partial': "جزئي:",
+                'score_unanswered': "بدون إجابة:",
+                'save_results': "💾 حفظ نتائجي",
+                'save_success': "تم حفظ النتائج ✓",
+                'save_error': "خطأ في الحفظ",
+                'print_pdf': "🖨️ طباعة / PDF",
+                'print_with_answers': "مع التصحيح",
+                'print_site_name': "لوحة التحكم التعليمية – الفرنسية",
+                'print_scholar_year': "الوحدة 1 – ذكريات وحنين",
+                'print_week': "دراسة النص 1",
+                'print_area': "قراءة",
+                'print_footer_dev': "طوّر بواسطة ماجري زياد",
+                'print_footer_date': "طُبع في",
+                'print_without_answers': "بدون تصحيح",
+                'toast_signin_required': "سجّل الدخول لرؤية التصحيحات."
+            }
+        });
+
+        (function() {
+            var container = document.querySelector('.degree4sec-secEco-unit1-etude1-reading-container');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+        })();
+    </script>
+    <script src="ed-french-ini.js"></script>
+    <script>
+        (function() {
+            const audio = new Audio('assets4secEco/sounds/degree4secEco/unit1/etude1/etude_texte_1.mp3');
+            const playBtn = document.getElementById('playBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const speedBtns = document.querySelectorAll('.degree4sec-secEco-unit1-etude1-reading-speed-btn');
+
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+
+            audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
+            audio.addEventListener('timeupdate', () => {
+                const percent = (audio.currentTime / audio.duration) * 100 || 0;
+                progressFill.style.width = percent + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            });
+            audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) { audio.play().catch(()=>{}); playBtn.textContent = '⏸'; }
+                else { audio.pause(); playBtn.textContent = '▶'; }
+            });
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const seekTime = (clickX / width) * audio.duration;
+                audio.currentTime = seekTime;
+            });
+            speedBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    speedBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    audio.playbackRate = parseFloat(btn.dataset.speed);
+                });
+            });
+
+            // Static answer keys
+            document.getElementById('exo1Key').innerHTML = '<strong>Correction :</strong><br>1. E<br>2. I<br>3. A<br>4. E<br>5. I';
+            document.getElementById('exo2Key').innerHTML = '<strong>Correction (exemples) :</strong><br>a) Le narrateur avait quitté son village depuis « trente longues années ».<br>b) Chaque matin, la grand-mère « pétrissait le pain en fredonnant une vieille chanson andalouse ».<br>c) Dans son atelier, le père « travaillait le bois avec une patience infinie ».';
+            document.getElementById('exo3Key').innerHTML = '<strong>Correction :</strong><br>1. b<br>2. b<br>3. b';
+            document.getElementById('exo4Key').innerHTML = '<strong>Corrections possibles :</strong><br>a) Il s\'était écoulé très longtemps depuis son départ du village.<br>b) La belle lumière du soir donnait à chaque visage une apparence presque picturale.<br>c) Bien que la maison se soit transformée au fil du temps…';
+            document.getElementById('exo5Key').innerHTML = '<strong>Correction :</strong> Cette réponse est incomplète car elle n\'est pas rédigée (il manque une phrase complète), ne reprend pas les termes de la question, ne reformule pas avec ses propres mots et ne cite pas le texte. Une réponse correcte serait : « Chaque matin, la grand-mère pétrissait le pain en fredonnant une vieille chanson andalouse », comme l\'indique le texte.';
+            document.getElementById('exo6Key').innerHTML = '<strong>Correction :</strong> Le narrateur dit que la nostalgie « n\'est pas une blessure » parce qu\'elle lui permet de « rendre hommage à ce qui fut » et qu\'elle garde son enfance « comme un trésor secret ». Autrement dit, loin d\'être une souffrance, elle est une forme de fidélité heureuse au passé.';
+            document.getElementById('exo7Key').innerHTML = '<strong>Correction :</strong><br>1. Identifier le type de question. → <strong>2</strong><br>2. Localiser les éléments de réponse. → <strong>4</strong><br>3. Rédiger la réponse. → <strong>3</strong><br>4. Relire et vérifier. → <strong>1</strong>';
+            document.getElementById('exo8Key').innerHTML = '<strong>Correction :</strong><br>1. Faux (il faut une phrase complète)<br>2. Vrai<br>3. Vrai<br>4. Faux (elles demandent une inférence)<br>5. Vrai';
+            document.getElementById('exo9Key').innerHTML = '<strong>Correction :</strong><br>• Où se trouve la maison ? → § 2<br>• Qui est la grand-mère ? → § 3<br>• Que faisait la famille le soir ? → § 4<br>• Quel métier exerçait le père ? → § 5<br>• Quelle est la conclusion ? → § 7';
+            document.getElementById('exo10Key').innerHTML = '<strong>Correction (exemple) :</strong> Le père joue un rôle central dans les souvenirs du narrateur : il lui a transmis des valeurs essentielles. En effet, le texte indique qu\'il travaillait « le bois avec une patience infinie » et que « c\'est lui qui avait appris [au narrateur] à réparer, à construire, à ne jamais abandonner ».';
+
+            // Auth-gated correction
+            window.toggleCorrection = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('visible');
+            };
+
+            // Show production example
+            window.showProductionExample = async function() {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const el = document.getElementById('productionExample');
+                if (el) {
+                    el.innerHTML = '<strong>Exemple de production :</strong><br><br><strong>Question (implicite) :</strong> Pourquoi la maison garde-t-elle « un trésor secret » selon le narrateur ?<br><br><strong>Réponse complète :</strong> Selon le narrateur, la maison garde un « trésor secret » parce qu\'elle conserve, malgré ses transformations, la mémoire vivante de son enfance. En effet, le texte souligne que « la maison a beau avoir changé de visage, elle garde mon enfance comme un trésor secret ». Ce trésor, invisible aux yeux des nouveaux occupants, réside dans les souvenirs intacts que le narrateur porte en lui.';
+                    el.classList.add('visible');
+                }
+            };
+
+            // Self-assessment scoring
+            const SELF_GROUPS = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5',
+                                 'self_ex6', 'self_ex7', 'self_ex8', 'self_ex9', 'self_ex10', 'self_ex11'];
+
+            function computeScore() {
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                SELF_GROUPS.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                return { correct, incorrect, partial, unanswered };
+            }
+
+            function updateScore() {
+                const s = computeScore();
+                document.getElementById('scoreCorrect').textContent = s.correct;
+                document.getElementById('scoreIncorrect').textContent = s.incorrect;
+                document.getElementById('scorePartial').textContent = s.partial;
+                document.getElementById('scoreUnanswered').textContent = s.unanswered;
+            }
+
+            document.querySelectorAll('input[type="radio"][name^="self_ex"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+
+            // Save results
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const s = computeScore();
+                const lessonId = 'degree4sec-secEco-unit1-etude1-reading';
+                const entry = {
+                    lesson_id: lessonId,
+                    lesson_title: {
+                        fr: App.getTranslation('lesson_short_title', 'fr'),
+                        en: App.getTranslation('lesson_short_title', 'en'),
+                        ar: App.getTranslation('lesson_short_title', 'ar')
+                    },
+                    year: {
+                        fr: App.getTranslation('ach_year_4sec_secEco', 'fr'),
+                        en: App.getTranslation('ach_year_4sec_secEco', 'en'),
+                        ar: App.getTranslation('ach_year_4sec_secEco', 'ar')
+                    },
+                    module: {
+                        fr: App.getTranslation('ach_module_module1', 'fr'),
+                        en: App.getTranslation('ach_module_module1', 'en'),
+                        ar: App.getTranslation('ach_module_module1', 'ar')
+                    },
+                    correct: s.correct,
+                    incorrect: s.incorrect,
+                    partial: s.partial,
+                    unanswered: s.unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles').select('achivement').eq('id', user.id).single();
+                if (fetchError) return;
+                let achivement = profileData?.achivement || {};
+                if (!achivement["ED-French"]) achivement["ED-French"] = [];
+                const arr = achivement["ED-French"];
+                const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+                if (existingIdx >= 0) arr[existingIdx] = entry;
+                else arr.push(entry);
+                const { error: updateError } = await App.supabase
+                    .from('profiles').update({ achivement }).eq('id', user.id);
+                if (updateError) App.showToast('save_error', 'error');
+                else {
+                    App.showToast('save_success', 'success');
+                    App.logUserAction('lesson_saved', { lesson: lessonId, correct: s.correct, incorrect: s.incorrect, partial: s.partial });
+                }
+            });
+
+            // Print / PDF
+            document.getElementById('printPdfBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles').select('registration_state').eq('id', user.id).single();
+                    if (!error && profile?.registration_state?.active === true) isRegistered = true;
+                } catch (e) {}
+                const lang = localStorage.getItem('lang') || 'fr';
+                const headerHTML = document.querySelector('.degree4sec-secEco-unit1-etude1-reading-lesson-header').cloneNode(true);
+                const textCard = document.querySelector('.degree4sec-secEco-unit1-etude1-reading-text-card').cloneNode(true);
+                const rulesSections = document.querySelectorAll('.degree4sec-secEco-unit1-etude1-reading-valeurs-section');
+                let rulesHTML = '';
+                rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
+                const exercisesSection = document.querySelector('.degree4sec-secEco-unit1-etude1-reading-exercises-section').cloneNode(true);
+                exercisesSection.querySelectorAll('input, textarea, .degree4sec-secEco-unit1-etude1-reading-btn-verify, .degree4sec-secEco-unit1-etude1-reading-self-assessment').forEach(el => el.remove());
+                if (isRegistered) {
+                    exercisesSection.querySelectorAll('.degree4sec-secEco-unit1-etude1-reading-answer-key').forEach(key => {
+                        key.style.display = 'block'; key.style.border = 'none';
+                        key.style.padding = '0.5rem 0'; key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    exercisesSection.querySelectorAll('.degree4sec-secEco-unit1-etude1-reading-answer-key').forEach(el => el.remove());
+                }
+                const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                printWindow.document.write(`<!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8"><title>${App.getTranslation('lesson_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title><style>
+                    body { font-family: 'Georgia', serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; color:#000; }
+                    .print-header { text-align:center; border-bottom:2px solid #3d7a56; padding-bottom:1rem; margin-bottom:2rem; }
+                    .print-header .site-name { font-size:1.4rem; font-weight:bold; color:#3d7a56; margin:0 0 0.3rem; }
+                    .print-header .meta-line { font-size:0.95rem; color:#444; margin:0.2rem 0; }
+                    .print-header .lesson-name { font-size:1.1rem; font-weight:bold; color:#000; margin-top:0.5rem; }
+                    .print-footer { text-align:center; border-top:1px solid #ccc; padding-top:1rem; margin-top:2rem; font-size:0.85rem; color:#666; }
+                    .degree4sec-secEco-unit1-etude1-reading-lesson-header { text-align:center; margin-bottom:2rem; }
+                    .degree4sec-secEco-unit1-etude1-reading-badge { display:inline-block; background:#3d7a56; color:#fff; padding:0.3rem 1rem; border-radius:20px; font-size:0.8rem; text-transform:uppercase; }
+                    .degree4sec-secEco-unit1-etude1-reading-text-card { border-left:4px solid #3d7a56; padding:1rem 1.5rem; margin:1.5rem 0; }
+                    .degree4sec-secEco-unit1-etude1-reading-valeurs-section { margin:1.5rem 0; }
+                    .degree4sec-secEco-unit1-etude1-reading-valeur-card { background:#f4f1e8; padding:1rem; margin-bottom:1rem; border-radius:8px; }
+                    .degree4sec-secEco-unit1-etude1-reading-valeur-card h3 { color:#3d7a56; }
+                    .degree4sec-secEco-unit1-etude1-reading-step { margin:1rem 0; padding:1rem; background:#f4f1e8; border-radius:8px; }
+                    .degree4sec-secEco-unit1-etude1-reading-step-num { display:inline-block; width:30px; height:30px; background:#3d7a56; color:#fff; border-radius:50%; text-align:center; line-height:30px; font-weight:bold; margin-right:0.5rem; }
+                    .degree4sec-secEco-unit1-etude1-reading-exercise-card { margin:1.2rem 0; }
+                    table { width:100%; border-collapse:collapse; margin:0.8rem 0; }
+                    th, td { border:1px solid #ccc; padding:0.5rem; text-align:left; }
+                    th { background:#dde7da; }
+                    .degree4sec-secEco-unit1-etude1-reading-answer-key { display:block; margin-top:0.5rem; font-size:0.9rem; color:#444; }
+                    @media print { @page { margin:2cm; } }
+                </style></head><body>
+                    <div class="print-header"><div class="site-name">${App.getTranslation('print_site_name', lang)}</div><div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div><div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div></div>
+                    ${breadcrumb.outerHTML}${headerHTML.outerHTML}${textCard.outerHTML}${rulesHTML}${exercisesSection.outerHTML}
+                    <div class="print-footer">${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}</div>
+                </body></html>`);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+        })();
+    </script>
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lessonEssai1_title">Fiche d'essai – Comment réussir à développer un sujet d'essai | Méthodologie & Exemple</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ===== Essai 1 – Writing (prefix: degree4sec-secEco-unit1-essai1-writing-) ===== */
+        /* Palette: Burgundy & Warm Parchment (Essay theme) */
+        :root {
+            --degree4sec-secEco-unit1-essai1-writing-bg: #f7f2ec;
+            --degree4sec-secEco-unit1-essai1-writing-card: #fffdfa;
+            --degree4sec-secEco-unit1-essai1-writing-text: #2b1f18;
+            --degree4sec-secEco-unit1-essai1-writing-text-light: #6b5c4f;
+            --degree4sec-secEco-unit1-essai1-writing-heading: #6b1f3a;
+            --degree4sec-secEco-unit1-essai1-writing-accent: #a8385c;
+            --degree4sec-secEco-unit1-essai1-writing-accent-hover: #8b2942;
+            --degree4sec-secEco-unit1-essai1-writing-border: #e0d0c0;
+            --degree4sec-secEco-unit1-essai1-writing-shadow: 0 1px 3px rgba(107,31,58,0.06), 0 6px 18px rgba(107,31,58,0.05);
+            --degree4sec-secEco-unit1-essai1-writing-radius: 14px;
+            --degree4sec-secEco-unit1-essai1-writing-radius-sm: 8px;
+            --degree4sec-secEco-unit1-essai1-writing-transition: 0.25s ease;
+            --degree4sec-secEco-unit1-essai1-writing-font: 'Georgia', 'Times New Roman', serif;
+            --degree4sec-secEco-unit1-essai1-writing-audio-bg: #f2e6e0;
+            --degree4sec-secEco-unit1-essai1-writing-audio-progress: #d4b8b0;
+            --degree4sec-secEco-unit1-essai1-writing-button-bg: #ede0d8;
+            --degree4sec-secEco-unit1-essai1-writing-button-hover: #dcc4ba;
+            --degree4sec-secEco-unit1-essai1-writing-input-bg: #faf5ef;
+        }
+        body.dark {
+            --degree4sec-secEco-unit1-essai1-writing-bg: #1e1418;
+            --degree4sec-secEco-unit1-essai1-writing-card: #2a1e23;
+            --degree4sec-secEco-unit1-essai1-writing-text: #ede0d8;
+            --degree4sec-secEco-unit1-essai1-writing-text-light: #c0a89e;
+            --degree4sec-secEco-unit1-essai1-writing-heading: #f0c8d8;
+            --degree4sec-secEco-unit1-essai1-writing-accent: #e88ca8;
+            --degree4sec-secEco-unit1-essai1-writing-accent-hover: #f4aac2;
+            --degree4sec-secEco-unit1-essai1-writing-border: #4a343c;
+            --degree4sec-secEco-unit1-essai1-writing-shadow: 0 1px 4px rgba(0,0,0,0.35);
+            --degree4sec-secEco-unit1-essai1-writing-audio-bg: #33242a;
+            --degree4sec-secEco-unit1-essai1-writing-audio-progress: #5c444c;
+            --degree4sec-secEco-unit1-essai1-writing-button-bg: #3d2c32;
+            --degree4sec-secEco-unit1-essai1-writing-button-hover: #52403f;
+            --degree4sec-secEco-unit1-essai1-writing-input-bg: #36272d;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            font-family: var(--degree4sec-secEco-unit1-essai1-writing-font);
+            background: var(--degree4sec-secEco-unit1-essai1-writing-bg);
+            background-image:
+                radial-gradient(circle at 12% 15%, rgba(168,56,92,0.04) 0%, transparent 40%),
+                radial-gradient(circle at 88% 85%, rgba(168,56,92,0.03) 0%, transparent 40%);
+            color: var(--degree4sec-secEco-unit1-essai1-writing-text);
+            line-height: 1.8;
+            transition: background var(--degree4sec-secEco-unit1-essai1-writing-transition), color var(--degree4sec-secEco-unit1-essai1-writing-transition);
+        }
+
+        .back-nav {
+            background: var(--degree4sec-secEco-unit1-essai1-writing-card);
+            border-bottom: 1px solid var(--degree4sec-secEco-unit1-essai1-writing-border);
+            padding: 0.5rem 1.5rem;
+        }
+        .back-nav a {
+            font-weight: 600;
+            color: var(--degree4sec-secEco-unit1-essai1-writing-accent);
+            text-decoration: none;
+        }
+        .back-nav a:hover { text-decoration: underline; }
+
+        .degree4sec-secEco-unit1-essai1-writing-container { max-width: 1060px; margin: 0 auto; padding: 1.8rem 1.4rem 3rem; }
+
+        .degree4sec-secEco-unit1-essai1-writing-lesson-header { text-align: center; margin-bottom: 2rem; }
+        .degree4sec-secEco-unit1-essai1-writing-badge {
+            display:inline-block;
+            background: var(--degree4sec-secEco-unit1-essai1-writing-accent);
+            color: #fff;
+            padding: 0.3rem 1.1rem;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        .degree4sec-secEco-unit1-essai1-writing-lesson-header h1 {
+            font-size: 2.1rem;
+            color: var(--degree4sec-secEco-unit1-essai1-writing-heading);
+            margin: 0.7rem 0 0.4rem;
+            line-height: 1.25;
+            font-weight: 700;
+        }
+        .degree4sec-secEco-unit1-essai1-writing-lesson-header .degree4sec-secEco-unit1-essai1-writing-meta {
+            font-size: 0.9rem;
+            color: var(--degree4sec-secEco-unit1-essai1-writing-text-light);
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .degree4sec-secEco-unit1-essai1-writing-audio-player {
+            background: var(--degree4sec-secEco-unit1-essai1-writing-card);
+            border: 1px solid var(--degree4sec-secEco-unit1-essai1-writing-border);
+            border-radius: var(--degree4sec-secEco-unit1-essai1-writing-radius);
+            padding: 1rem 1.4rem;
+            margin: 1.5rem 0 2rem;
+            box-shadow: var(--degree4sec-secEco-unit1-essai1-writing-shadow);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .degree4sec-secEco-unit1-essai1-writing-play-btn {
+            width: 46px; height: 46px; border-radius: 50%;
+            background: var(--degree4sec-secEco-unit1-essai1-writing-accent);
+            color: #fff; border: none; font-size: 1.2rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background var(--degree4sec-secEco-unit1-essai1-writing-transition);
+            flex-shrink: 0;
+        }
+        .degree4sec-secEco-unit1-essai1-writing-play-btn:hover { background: var(--degree4sec-secEco-unit1-essai1-writing-accent-hover); }
+        .degree4sec-secEco-unit1-essai1-writing-progress-area { flex: 1; min-width: 120px; display: flex; flex-direction: column; gap: 0.3rem; }
+        .degree4sec-secEco-unit1-essai1-writing-progress-bar {
+            width: 100%; height: 6px; background: var(--degree4sec-secEco-unit1-essai1-writing-audio-progress);
+            border-radius: 3px; cursor: pointer; position: relative; overflow: hidden;
+        }
+        .degree4sec-secEco-unit1-essai1-writing-progress-fill {
+            height: 100%; background: var(--degree4sec-secEco-unit1-essai1-writing-accent);
+            border-radius: 3px; width: 0%; transition: width 0.1s linear;
+        }
+        .degree4sec-secEco-unit1-essai1-writing-time-info {
+            display: flex; justify-content: space-between; font-size: 0.75rem;
+            color: var(--degree4sec-secEco-unit1-essai1-writing-text-light);
+        }
+        .degree4sec-secEco-unit1-essai1-writing-speed-selector { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+        .degree4sec-secEco-unit1-essai1-writing-speed-btn {
+            border: 1px solid var(--degree4sec-secEco-unit1-essai1-writing-border);
+            background: var(--degree4sec-secEco-unit1-essai1-writing-button-bg);
+            color: var(--degree4sec-secEco-unit1-essai1-writing-text);
+            padding: 0.3rem 0.6rem; border-radius: 4px;
+            font-size: 0.75rem; font-weight: 600; cursor: pointer;
+            transition: all var(--degree4sec-secEco-unit1-essai1-writing-transition);
+        }
+        .degree4sec-secEco-unit1-essai1-writing-speed-btn.active {
+            background: var(--degree4sec-secEco-unit1-essai1-writing-accent);
+            color: #fff; border-color: var(--degree4sec-secEco-unit1-essai1-writing-accent);
+        }
+        .degree4sec-secEco-unit1-essai1-writing-audio-label {
+            font-weight: 700; font-size: 0.9rem;
+            color: var(--degree4sec-secEco-unit1-essai1-writing-heading);
+            white-space: nowrap;
+        }
+        @media (max-width:600px) {
+            .degree4sec-secEco-unit1-essai1-writing-audio-player { flex-direction: column; align-items: stretch; }
+            .degree4sec-secEco-unit1-essai1-writing-audio-label { text-align: center; }
+        }
+
+        /* Sujet box – decorated with corner ribbon */
+        .degree4sec-secEco-unit1-essai1-writing-sujet {
+            background: var(--degree4sec-secEco-unit1-essai1-writing-card);
+            border: 2px solid var(--degree4sec-secEco-unit1-essai1-writing-accent);
+            border-radius: var(--degree4sec-secEco-unit1-essai1-writing-radius);
+            padding: 2rem 2.2rem 1.8rem;
+            margin: 1.8rem 0;
+            font-size: 1.05rem;
+            line-height: 2;
+            box-shadow: var(--degree4sec-secEco-unit1-essai1-writing-shadow);
+            position: relative;
+        }
+        .degree4sec-secEco-unit1-essai1-writing-sujet::before {
+            content: 'SUJET';
+            position: absolute;
+            top: -14px;
+            left: 24px;
+            background: var(--degree4sec-secEco-unit1-essai1-writing-accent);
+            color: #fff;
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .degree4sec-secEco-unit1-essai1-writing-sujet .quote {
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--degree4sec-secEco-unit1-essai1-writing-heading);
+            margin-bottom: 1rem;
+            line-height: 1.75;
+            padding-left: 1rem;
+            border-left: 3px solid var(--degree4sec-secEco-unit1-essai1-writing-accent);
+        }
+        .degree4sec-secEco-unit1-essai1-writing-sujet .consigne {
+            font-size: 1rem;
+            color: var(--degree4sec-secEco-unit1-essai1-writing-text);
+            margin-top: 0.8rem;
+        }
+        .degree4sec-secEco-unit1-essai1-writing-sujet .type-tag {
+            display: inline-block;
+            background: var(--degree4sec-secEco-unit1-essai1-writing-audio-bg);
+            color: var(--degree4sec-secEco-unit1-essai1-writing-accent);
+            padding: 0.15rem 0.7rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-right: 0.4rem;
+            text-transform: uppercase;
+        }
+
+        /* Section headings */
+        .degree4sec-secEco-unit1-essai1-writing-section h2 {
+            font-size: 1.5rem;
+            color: var(--degree4sec-secEco-unit1-essai1-writing-heading);
+            margin: 2.4rem 0 1rem;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+            position: relative;
+        }
+        .degree4sec-secEco-unit1-essai1-writing-section h2::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 40%; bottom: 0; height: 3px;
+            background: var(--degree4sec-secEco-unit1-essai1-writing-accent);
+            border-radius: 2px;
+        }
+
+        .degree4sec-secEco-unit1-essai1-writing-valeurs-section {
+            background: var(--degree4sec-secEco-unit1-essai1-writing-card);
+            border: 1px solid var(--degree4sec-secEco-unit1-essai1-writing-border);
+            border-radius: var(--degree4sec-secEco-unit1-essai1-writing-radius);
+            padding: 1.6rem 1.8rem;
+            margin: 2rem 0;
+            box-shadow: var(--degree4sec-secEco-unit1-essai1-writing-shadow);
+        }
+        .degree4sec-secEco-unit1-essai1-writing-valeurs-section h2 {
+            font-size: 1.5rem;
+            color: var(--degree4sec-secEco-unit1-essai1-writing-heading);
+            margin-bottom: 1rem;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+            border-bottom: 3px solid var(--degree4sec-secEco-unit1-essai1-writing-accent);
+        }
+        .degree4sec-secEco-unit1-essai1-writing-valeur-card {
+            background: var(--degree4sec-secEco-unit1-essai1-writing-audio-bg);
+            border-left: 4px solid var(--degree4sec-secEco-unit1-essai1-writing-accent);
+            border-radius: 0 var(--degree4sec-secEco-unit1-essai1-writing-radius-sm) var(--degree4sec-secEco-unit1-essai1-writing-radius-sm) 0;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .degree4sec-secEco-unit1-essai1-writing-valeur-card h3 {
+            color: var(--degree4sec-secEco-unit1-essai1-writing-accent);
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+        .degree4sec-secEco-unit1-essai1-writing-valeur-card ul { list-style: none; padding: 0; }
+        .degree4sec-secEco-unit1-essai1-writing-valeur-card li {
+            padding: 0.3rem 0 0.3rem 1.4rem;
+            position: relative;
+            color: var(--degree4sec-secEco-unit1-essai1-writing-text-light);
+        }
+        .degree4sec-secEco-unit1-essai1-writing-valeur-card li::before {
+            content: '◆';
+            position: absolute; left: 0;
+            color: var(--degree4sec-secEco-unit1-essai1-writing-accent);
+            font-size: 0.55rem; top: 0.6rem;
+        }
+        .degree4sec-secEco-unit1-essai1-writing-valeur-card p { margin: 0.5rem 0; }
+
+        /* Structure visualization: three notebook cards (intro / dev / concl) */
+        .degree4sec-secEco-unit1-essai1-writing-structure {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        @media (max-width:800px) {
+            .degree4sec-secEco-unit1-essai1-writing-structure { grid-template-columns: 1fr; }
+        }
+        .degree4sec-secEco-unit1-essai1-writing-struct-card {
+            background: var(--degree4sec-secEco-unit1-essai1-writing-audio-bg);
+            border-top: 4px solid var(--degree4sec-secEco-unit1-essai1-writing-accent);
+            border-radius: 0 0 var(--degree4sec-secEco-unit1-essai1-writing-radius-sm) var(--degree4sec-secEco-unit1-essai1-writing-radius-sm);
+            padding: 1rem 1.1rem;
+        }
+        .degree4sec-secEco-unit1-essai1-writing-struct-card h4 {
+            color: var(--degree4sec-secEco-unit1-essai1-writing-heading);
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .degree4sec-secEco-unit1-essai1-writing-struct-card ul {
+            list-style: none; padding: 0;
+            font-size: 0.9rem;
+        }
+        .degree4sec-secEco-unit1-essai1-writing-struct-card li {
+            padding: 0.25rem 0 0.25rem 1.2rem;
+            position: relative;
+            color: var(--degree4sec-secEco-unit1-essai1-writing-text-light);
+        }
+        .degree4sec-secEco-unit1-essai1-writing-struct-card li::before {
+            content: '›';
+            position: absolute; left: 0;
+            color: var(--degree4sec-secEco-unit1-essai1-writing-accent);
+            font-weight: 700;
+        }
+
+        /* Argument cards (numbered) */
+        .degree4sec-secEco-unit1-essai1-writing-argument {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        .degree4sec-secEco-unit1-essai1-writing-argument-num {
+            width: 40px; height: 40px;
+            background: var(--degree4sec-secEco-unit1-essai1-writing-accent);
+            color: #fff;
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 1.1rem;
+            flex-shrink: 0;
+            font-family: 'Georgia', serif;
+        }
+        .degree4sec-secEco-unit1-essai1-writing-argument-body {
+            flex: 1;
+            background: var(--degree4sec-secEco-unit1-essai1-writing-audio-bg);
+            border-radius: var(--degree4sec-secEco-unit1-essai1-writing-radius-sm);
+            padding: 1rem 1.2rem;
+        }
+        .degree4sec-secEco-unit1-essai1-writing-argument-body h4 {
+            color: var(--degree4sec-secEco-unit1-essai1-writing-heading);
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+        .degree4sec-secEco-unit1-essai1-writing-argument-body p {
+            font-size: 0.92rem;
+            color: var(--degree4sec-secEco-unit1-essai1-writing-text-light);
+            margin: 0.3rem 0;
+        }
+
+        /* Note callout */
+        .degree4sec-secEco-unit1-essai1-writing-note {
+            background: linear-gradient(135deg, rgba(168,56,92,0.08), rgba(168,56,92,0.03));
+            border: 1px dashed var(--degree4sec-secEco-unit1-essai1-writing-accent);
+            border-radius: var(--degree4sec-secEco-unit1-essai1-writing-radius-sm);
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+            color: var(--degree4sec-secEco-unit1-essai1-writing-text);
+        }
+        .degree4sec-secEco-unit1-essai1-writing-note strong { color: var(--degree4sec-secEco-unit1-essai1-writing-accent); }
+
+        /* Exercises */
+        .degree4sec-secEco-unit1-essai1-writing-exercises-section {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start;
+        }
+        .degree4sec-secEco-unit1-essai1-writing-exercises-section h2 {
+            grid-column: 1 / -1;
+            font-size: 1.5rem;
+            color: var(--degree4sec-secEco-unit1-essai1-writing-heading);
+            margin: 2rem 0 1rem;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+            border-bottom: 3px solid var(--degree4sec-secEco-unit1-essai1-writing-accent);
+        }
+        .degree4sec-secEco-unit1-essai1-writing-exercise-card {
+            background: var(--degree4sec-secEco-unit1-essai1-writing-card);
+            border: 1px solid var(--degree4sec-secEco-unit1-essai1-writing-border);
+            border-radius: var(--degree4sec-secEco-unit1-essai1-writing-radius-sm);
+            padding: 1.2rem 1.4rem;
+            margin-bottom: 0;
+            box-shadow: var(--degree4sec-secEco-unit1-essai1-writing-shadow);
+        }
+        .degree4sec-secEco-unit1-essai1-writing-exercise-col-left { grid-column: 1 / 2; }
+        .degree4sec-secEco-unit1-essai1-writing-exercise-col-right { grid-column: 2 / 3; }
+        .degree4sec-secEco-unit1-essai1-writing-exercise-card h3 {
+            font-size: 1.05rem;
+            color: var(--degree4sec-secEco-unit1-essai1-writing-accent);
+            margin-bottom: 0.8rem;
+            display: flex; align-items: center; gap: 0.4rem;
+        }
+        .degree4sec-secEco-unit1-essai1-writing-exercise-card table {
+            width: 100%; border-collapse: collapse; margin: 0.8rem 0;
+        }
+        .degree4sec-secEco-unit1-essai1-writing-exercise-card th,
+        .degree4sec-secEco-unit1-essai1-writing-exercise-card td {
+            padding: 0.55rem 0.7rem;
+            border: 1px solid var(--degree4sec-secEco-unit1-essai1-writing-border);
+            text-align: left; font-size: 0.9rem;
+        }
+        .degree4sec-secEco-unit1-essai1-writing-exercise-card th {
+            background: var(--degree4sec-secEco-unit1-essai1-writing-audio-bg);
+            font-weight: 700;
+            color: var(--degree4sec-secEco-unit1-essai1-writing-heading);
+        }
+        .degree4sec-secEco-unit1-essai1-writing-exercise-card input[type="text"],
+        .degree4sec-secEco-unit1-essai1-writing-exercise-card textarea {
+            width: 100%; padding: 0.4rem 0.6rem;
+            border: 1px solid var(--degree4sec-secEco-unit1-essai1-writing-border);
+            border-radius: 4px;
+            background: var(--degree4sec-secEco-unit1-essai1-writing-input-bg);
+            color: var(--degree4sec-secEco-unit1-essai1-writing-text);
+            font-family: inherit; font-size: 0.9rem;
+        }
+        .degree4sec-secEco-unit1-essai1-writing-exercise-card textarea { resize: vertical; }
+        .degree4sec-secEco-unit1-essai1-writing-exercise-card input:focus,
+        .degree4sec-secEco-unit1-essai1-writing-exercise-card textarea:focus {
+            outline: none;
+            border-color: var(--degree4sec-secEco-unit1-essai1-writing-accent);
+        }
+        .degree4sec-secEco-unit1-essai1-writing-btn-verify {
+            background: var(--degree4sec-secEco-unit1-essai1-writing-accent);
+            color: #fff; border: none; padding: 0.5rem 1.2rem;
+            border-radius: 20px; font-weight: 600; cursor: pointer;
+            transition: background var(--degree4sec-secEco-unit1-essai1-writing-transition);
+            margin-top: 0.6rem; font-size: 0.85rem;
+        }
+        .degree4sec-secEco-unit1-essai1-writing-btn-verify:hover { background: var(--degree4sec-secEco-unit1-essai1-writing-accent-hover); }
+        .degree4sec-secEco-unit1-essai1-writing-answer-key {
+            display: none; margin-top: 0.8rem; padding: 0.8rem;
+            background: var(--degree4sec-secEco-unit1-essai1-writing-audio-bg);
+            border-radius: 6px; font-size: 0.85rem;
+            color: var(--degree4sec-secEco-unit1-essai1-writing-text-light);
+            border: 1px dashed var(--degree4sec-secEco-unit1-essai1-writing-accent);
+        }
+        .degree4sec-secEco-unit1-essai1-writing-answer-key.visible { display: block; }
+
+        .degree4sec-secEco-unit1-essai1-writing-self-assessment {
+            margin-top: 0.8rem; font-size: 0.9rem;
+            display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
+        }
+        .degree4sec-secEco-unit1-essai1-writing-self-assessment label { cursor: pointer; }
+
+        .degree4sec-secEco-unit1-essai1-writing-score-area {
+            background: var(--degree4sec-secEco-unit1-essai1-writing-card);
+            border: 1px solid var(--degree4sec-secEco-unit1-essai1-writing-border);
+            border-radius: var(--degree4sec-secEco-unit1-essai1-writing-radius);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: var(--degree4sec-secEco-unit1-essai1-writing-shadow);
+        }
+        .degree4sec-secEco-unit1-essai1-writing-score-area h2 {
+            color: var(--degree4sec-secEco-unit1-essai1-writing-heading);
+            margin-bottom: 1rem;
+        }
+        .degree4sec-secEco-unit1-essai1-writing-score-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .degree4sec-secEco-unit1-essai1-writing-score-stat {
+            background: var(--degree4sec-secEco-unit1-essai1-writing-audio-bg);
+            padding: 0.8rem 1.2rem; border-radius: 8px; font-weight: 600;
+        }
+
+        .degree4sec-secEco-unit1-essai1-writing-footer-nav {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            background: var(--degree4sec-secEco-unit1-essai1-writing-card);
+            border-top: 1px solid var(--degree4sec-secEco-unit1-essai1-writing-border);
+            padding: 0.8rem 1.5rem;
+            border-radius: 0 0 var(--degree4sec-secEco-unit1-essai1-writing-radius) var(--degree4sec-secEco-unit1-essai1-writing-radius);
+        }
+        .degree4sec-secEco-unit1-essai1-writing-footer-nav a {
+            font-weight: 600;
+            color: var(--degree4sec-secEco-unit1-essai1-writing-accent);
+            text-decoration: none;
+        }
+        .degree4sec-secEco-unit1-essai1-writing-footer-nav a:hover { text-decoration: underline; }
+
+        html[dir="rtl"] body { direction: rtl; }
+        html[dir="rtl"] .degree4sec-secEco-unit1-essai1-writing-container { text-align: right; }
+        html[dir="rtl"] .degree4sec-secEco-unit1-essai1-writing-exercise-card th,
+        html[dir="rtl"] .degree4sec-secEco-unit1-essai1-writing-exercise-card td { text-align: right; }
+        html[dir="rtl"] .degree4sec-secEco-unit1-essai1-writing-sujet .quote {
+            padding-left: 0;
+            padding-right: 1rem;
+            border-left: none;
+            border-right: 3px solid var(--degree4sec-secEco-unit1-essai1-writing-accent);
+        }
+        html[dir="rtl"] .degree4sec-secEco-unit1-essai1-writing-sujet::before {
+            left: auto;
+            right: 24px;
+        }
+
+        @media (max-width:800px) {
+            .degree4sec-secEco-unit1-essai1-writing-exercises-section { grid-template-columns: 1fr; }
+            .degree4sec-secEco-unit1-essai1-writing-exercise-col-left,
+            .degree4sec-secEco-unit1-essai1-writing-exercise-col-right { grid-column: auto; }
+        }
+        @media (max-width:600px) {
+            .degree4sec-secEco-unit1-essai1-writing-lesson-header h1 { font-size: 1.5rem; }
+            .degree4sec-secEco-unit1-essai1-writing-container { padding: 1rem 0.8rem 2rem; }
+            .degree4sec-secEco-unit1-essai1-writing-sujet { padding: 1.4rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hidden shell elements required by ed-french-ini.js -->
+    <div id="toast-container"></div>
+    <button id="signInBtn" style="display:none"></button>
+
+    <nav class="back-nav no-print">
+        <a href="index.html" data-i18n="back_link">← Retour à l'accueil</a>
+    </nav>
+
+    <div id="main-content" class="degree4sec-secEco-unit1-essai1-writing-container">
+        <!-- Breadcrumb -->
+        <p style="margin-bottom:1.5rem; color:var(--degree4sec-secEco-unit1-essai1-writing-text-light);">
+            <a href="degree4sec_sececo.html" data-i18n="back_revision">Module 1</a>
+            › <strong data-i18n="back_current">Fiche d'essai</strong>
+        </p>
+
+        <div class="degree4sec-secEco-unit1-essai1-writing-lesson-header">
+            <span class="degree4sec-secEco-unit1-essai1-writing-badge" data-i18n="lesson_badge">📝 Essai · Fiche 1</span>
+            <h1 data-i18n="lesson_title">Comment réussir à développer<br>un sujet d'essai</h1>
+            <div class="degree4sec-secEco-unit1-essai1-writing-meta">
+                <span data-i18n="lesson_duration">⏱️ 60 minutes</span>
+                <span data-i18n="lesson_meta_audio">🎧 Écoutez le sujet puis étudiez la méthode</span>
+            </div>
+        </div>
+
+        <!-- Audio player -->
+        <div class="degree4sec-secEco-unit1-essai1-writing-audio-player" id="audioPlayer">
+            <span class="degree4sec-secEco-unit1-essai1-writing-audio-label" data-i18n="audio_label">🎧 Écoute du sujet</span>
+            <button class="degree4sec-secEco-unit1-essai1-writing-play-btn" id="playBtn" aria-label="Lecture">▶</button>
+            <div class="degree4sec-secEco-unit1-essai1-writing-progress-area">
+                <div class="degree4sec-secEco-unit1-essai1-writing-progress-bar" id="progressBar">
+                    <div class="degree4sec-secEco-unit1-essai1-writing-progress-fill" id="progressFill"></div>
+                </div>
+                <div class="degree4sec-secEco-unit1-essai1-writing-time-info">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+            <div class="degree4sec-secEco-unit1-essai1-writing-speed-selector" id="speedSelector">
+                <button class="degree4sec-secEco-unit1-essai1-writing-speed-btn" data-speed="0.75">0.75x</button>
+                <button class="degree4sec-secEco-unit1-essai1-writing-speed-btn active" data-speed="1">1x</button>
+                <button class="degree4sec-secEco-unit1-essai1-writing-speed-btn" data-speed="1.25">1.25x</button>
+                <button class="degree4sec-secEco-unit1-essai1-writing-speed-btn" data-speed="1.5">1.5x</button>
+            </div>
+        </div>
+
+        <!-- Sujet box -->
+        <div class="degree4sec-secEco-unit1-essai1-writing-sujet">
+            <p class="quote" data-i18n="sujet_quote">« On ne se souvient jamais du passé tel qu'il a été : la nostalgie embellit tout ce qu'elle touche. »</p>
+            <p class="consigne">
+                <span class="type-tag" data-i18n="sujet_type_tag">Sujet déductif · Argumentatif</span>
+                <span data-i18n="sujet_consigne">Vous développerez cette thèse en vous appuyant sur des arguments et des exemples précis, puisés dans votre expérience personnelle et dans vos lectures.</span>
+            </p>
+        </div>
+
+        <!-- Introduction to methodology -->
+        <div class="degree4sec-secEco-unit1-essai1-writing-valeurs-section">
+            <h2 data-i18n="method_intro_heading">📖 Qu'est-ce qu'un essai ?</h2>
+            <p data-i18n="method_intro_text">Un <strong>essai</strong> est un texte argumentatif dans lequel vous défendez une idée (une <em>thèse</em>) à l'aide d'arguments organisés et d'exemples précis. Contrairement au résumé ou au commentaire, l'essai vous engage personnellement : vous prenez position, vous organisez votre pensée et vous convainquez votre lecteur.</p>
+
+            <div class="degree4sec-secEco-unit1-essai1-writing-structure">
+                <div class="degree4sec-secEco-unit1-essai1-writing-struct-card">
+                    <h4 data-i18n="struct_intro">Introduction</h4>
+                    <ul data-i18n="struct_intro_list">
+                        <li>Amorce (accroche)</li>
+                        <li>Présentation du thème</li>
+                        <li>Formulation de la problématique</li>
+                        <li>Annonce du plan</li>
+                    </ul>
+                </div>
+                <div class="degree4sec-secEco-unit1-essai1-writing-struct-card">
+                    <h4 data-i18n="struct_dev">Développement</h4>
+                    <ul data-i18n="struct_dev_list">
+                        <li>2 ou 3 paragraphes argumentatifs</li>
+                        <li>Chaque paragraphe : une <strong>idée</strong> directrice</li>
+                        <li>Un <strong>argument</strong> qui l'explique</li>
+                        <li>Un ou deux <strong>exemples</strong> précis</li>
+                        <li>Une phrase de transition vers l'idée suivante</li>
+                    </ul>
+                </div>
+                <div class="degree4sec-secEco-unit1-essai1-writing-struct-card">
+                    <h4 data-i18n="struct_concl">Conclusion</h4>
+                    <ul data-i18n="struct_concl_list">
+                        <li>Bilan des idées développées</li>
+                        <li>Réponse claire à la problématique</li>
+                        <li>Ouverture (facultative)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Types of essay subjects -->
+        <div class="degree4sec-secEco-unit1-essai1-writing-valeurs-section">
+            <h2 data-i18n="types_heading">📖 Les trois types de sujets d'essai</h2>
+            <div class="degree4sec-secEco-unit1-essai1-writing-valeur-card">
+                <h3 data-i18n="type_deductif_title">🔹 Sujet déductif (ou argumentatif simple)</h3>
+                <p data-i18n="type_deductif_text">La thèse est <strong>donnée</strong> dans le sujet. Vous devez la <em>défendre</em> à l'aide d'arguments. Il n'y a pas de réfutation à apporter. C'est le type du sujet de cette fiche.</p>
+            </div>
+            <div class="degree4sec-secEco-unit1-essai1-writing-valeur-card">
+                <h3 data-i18n="type_dialectique_title">🔹 Sujet dialectique</h3>
+                <p data-i18n="type_dialectique_text">Deux thèses opposées sont à confronter : <em>thèse – antithèse – synthèse</em>. On examine successivement le pour et le contre avant de dépasser l'opposition.</p>
+            </div>
+            <div class="degree4sec-secEco-unit1-essai1-writing-valeur-card">
+                <h3 data-i18n="type_them_compar_title">🔹 Sujet thématique ou comparatif</h3>
+                <p data-i18n="type_them_compar_text">On vous demande d'analyser un thème ou de comparer deux notions, deux œuvres, deux personnages, sans nécessairement prendre parti.</p>
+            </div>
+            <div class="degree4sec-secEco-unit1-essai1-writing-note">
+                <strong data-i18n="note_title_1">💡 À retenir :</strong> <span data-i18n="note_text_1">chaque type de sujet appelle un plan différent. Identifier le type de sujet est donc <strong>la toute première étape</strong> avant d'écrire.</span>
+            </div>
+        </div>
+
+        <!-- Step-by-step method -->
+        <div class="degree4sec-secEco-unit1-essai1-writing-valeurs-section">
+            <h2 data-i18n="steps_heading">📖 La méthode en 5 étapes</h2>
+
+            <div class="degree4sec-secEco-unit1-essai1-writing-argument">
+                <div class="degree4sec-secEco-unit1-essai1-writing-argument-num">1</div>
+                <div class="degree4sec-secEco-unit1-essai1-writing-argument-body">
+                    <h4 data-i18n="step1_title">Lire attentivement le sujet</h4>
+                    <p data-i18n="step1_text">Repérer le <strong>thème</strong> (de quoi parle-t-on ?), la <strong>thèse</strong> (quelle idée doit être défendue ?), les <strong>mots-clés</strong> et la <strong>consigne</strong> (que doit-on faire ? défendre, discuter, comparer…).</p>
+                </div>
+            </div>
+
+            <div class="degree4sec-secEco-unit1-essai1-writing-argument">
+                <div class="degree4sec-secEco-unit1-essai1-writing-argument-num">2</div>
+                <div class="degree4sec-secEco-unit1-essai1-writing-argument-body">
+                    <h4 data-i18n="step2_title">Formuler la problématique</h4>
+                    <p data-i18n="step2_text">Transformer la thèse en <strong>question</strong> à laquelle l'essai répondra. Exemple : la thèse « la nostalgie embellit le passé » devient : <em>« En quoi la nostalgie transforme-t-elle notre regard sur le passé ? »</em></p>
+                </div>
+            </div>
+
+            <div class="degree4sec-secEco-unit1-essai1-writing-argument">
+                <div class="degree4sec-secEco-unit1-essai1-writing-argument-num">3</div>
+                <div class="degree4sec-secEco-unit1-essai1-writing-argument-body">
+                    <h4 data-i18n="step3_title">Bâtir le plan</h4>
+                    <p data-i18n="step3_text">Chercher <strong>deux ou trois arguments</strong> qui défendent la thèse, puis associer à chaque argument <strong>un ou deux exemples</strong> précis (lecture, souvenir, film, actualité…).</p>
+                </div>
+            </div>
+
+            <div class="degree4sec-secEco-unit1-essai1-writing-argument">
+                <div class="degree4sec-secEco-unit1-essai1-writing-argument-num">4</div>
+                <div class="degree4sec-secEco-unit1-essai1-writing-argument-body">
+                    <h4 data-i18n="step4_title">Rédiger</h4>
+                    <p data-i18n="step4_text">Introduire le sujet, développer chaque argument dans un paragraphe distinct (idée → argument → exemple), et conclure en répondant clairement à la problématique.</p>
+                </div>
+            </div>
+
+            <div class="degree4sec-secEco-unit1-essai1-writing-argument">
+                <div class="degree4sec-secEco-unit1-essai1-writing-argument-num">5</div>
+                <div class="degree4sec-secEco-unit1-essai1-writing-argument-body">
+                    <h4 data-i18n="step5_title">Relire et vérifier</h4>
+                    <p data-i18n="step5_text">Vérifier la cohérence (chaque argument défend bien la thèse), l'enchaînement des idées (mots de liaison), la correction de la langue et la présence d'exemples précis.</p>
+                </div>
+            </div>
+
+            <div class="degree4sec-secEco-unit1-essai1-writing-note">
+                <strong data-i18n="note_title_2">💡 Astuce :</strong> <span data-i18n="note_text_2">avant d'écrire, <strong>notez vos idées en vrac</strong> sur un brouillon (arguments, exemples, mots-clés). Vous les organiserez ensuite dans un plan clair.</span>
+            </div>
+        </div>
+
+        <!-- Worked example: applied to the given sujet -->
+        <div class="degree4sec-secEco-unit1-essai1-writing-valeurs-section">
+            <h2 data-i18n="worked_heading">📖 Exemple appliqué au sujet proposé</h2>
+            <p data-i18n="worked_intro" style="margin-bottom:1rem;">Reprenons le sujet <em>« la nostalgie embellit tout ce qu'elle touche »</em> et appliquons chaque étape concrètement.</p>
+
+            <div class="degree4sec-secEco-unit1-essai1-writing-valeur-card">
+                <h3 data-i18n="worked_theme_title">🔹 Thème et thèse</h3>
+                <p data-i18n="worked_theme_text"><strong>Thème :</strong> la nostalgie et le souvenir. <strong>Thèse à défendre :</strong> la nostalgie transforme notre regard sur le passé en l'embellissant.</p>
+            </div>
+
+            <div class="degree4sec-secEco-unit1-essai1-writing-valeur-card">
+                <h3 data-i18n="worked_problem_title">🔹 Problématique</h3>
+                <p data-i18n="worked_problem_text"><em>« Pourquoi la nostalgie embellit-elle le passé, et quel rôle joue-t-elle dans la construction de notre identité ? »</em></p>
+            </div>
+
+            <div class="degree4sec-secEco-unit1-essai1-writing-valeur-card">
+                <h3 data-i18n="worked_plan_title">🔹 Plan proposé</h3>
+                <ul data-i18n="worked_plan_list">
+                    <li><strong>Argument 1 :</strong> La nostalgie agit comme un filtre sélectif de la mémoire. <em>Exemple :</em> un souvenir d'enfance ne retient que les moments heureux, oubliant les difficultés.</li>
+                    <li><strong>Argument 2 :</strong> La nostalgie idéalise les lieux et les personnes du passé. <em>Exemple :</em> retourner dans la maison d'enfance et la trouver plus petite, plus modeste que dans nos souvenirs.</li>
+                    <li><strong>Argument 3 :</strong> La nostalgie nous aide à construire notre identité présente. <em>Exemple :</em> le succès d'œuvres littéraires comme <em>Le Petit Prince</em>, où l'adulte retrouve l'enfant qu'il a été.</li>
+                </ul>
+            </div>
+
+            <div class="degree4sec-secEco-unit1-essai1-writing-note">
+                <strong data-i18n="note_title_3">💡 Remarque :</strong> <span data-i18n="note_text_3">dans un <strong>sujet déductif</strong>, tous les arguments doivent défendre la <em>même thèse</em>. Il n'y a ni réfutation, ni thèse opposée.</span>
+            </div>
+        </div>
+
+        <!-- Exercises grid -->
+        <div class="degree4sec-secEco-unit1-essai1-writing-exercises-section">
+            <h2 data-i18n="exercises_heading">✍️ Exercices d'application</h2>
+
+            <!-- Ex 1 -->
+            <div class="degree4sec-secEco-unit1-essai1-writing-exercise-card degree4sec-secEco-unit1-essai1-writing-exercise-col-left">
+                <h3 data-i18n="exo1_title">📌 1. Identifier les parties d'un essai</h3>
+                <p data-i18n="exo1_instruction">Associez chaque élément à la partie de l'essai qui lui correspond (Introduction, Développement, Conclusion).</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_element" class="no-bilingual">Élément</th>
+                            <th data-i18n="table_part" class="no-bilingual">Partie</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Amorce qui capte l'attention du lecteur.</td><td><input type="text" placeholder="I / D / C"></td></tr>
+                        <tr><td>Argument illustré par un exemple.</td><td><input type="text" placeholder="I / D / C"></td></tr>
+                        <tr><td>Réponse synthétique à la problématique.</td><td><input type="text" placeholder="I / D / C"></td></tr>
+                        <tr><td>Annonce du plan.</td><td><input type="text" placeholder="I / D / C"></td></tr>
+                        <tr><td>Idée directrice d'un paragraphe.</td><td><input type="text" placeholder="I / D / C"></td></tr>
+                    </tbody>
+                </table>
+                <div class="degree4sec-secEco-unit1-essai1-writing-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-essai1-writing-btn-verify" onclick="toggleCorrection('exo1Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo1Key" class="degree4sec-secEco-unit1-essai1-writing-answer-key"></div>
+            </div>
+
+            <!-- Ex 2 -->
+            <div class="degree4sec-secEco-unit1-essai1-writing-exercise-card degree4sec-secEco-unit1-essai1-writing-exercise-col-right">
+                <h3 data-i18n="exo2_title">📌 2. Identifier le type de sujet</h3>
+                <p data-i18n="exo2_instruction">Indiquez si chaque sujet est déductif (D), dialectique (DI) ou thématique/comparatif (T).</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_sujet" class="no-bilingual">Sujet</th>
+                            <th data-i18n="table_type" class="no-bilingual">Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>« La nostalgie embellit toujours le passé. Discutez. »</td><td><input type="text" placeholder="D / DI / T"></td></tr>
+                        <tr><td>« Certains pensent que le souvenir embellit le passé, d'autres affirment qu'il faut s'en méfier. Qu'en pensez-vous ? »</td><td><input type="text" placeholder="D / DI / T"></td></tr>
+                        <tr><td>« Comparez le rôle du souvenir dans <em>Le Petit Prince</em> et dans <em>Les Misérables</em>. »</td><td><input type="text" placeholder="D / DI / T"></td></tr>
+                        <tr><td>« Le retour aux lieux de l'enfance aide à mieux se connaître. Vous développerez cette idée. »</td><td><input type="text" placeholder="D / DI / T"></td></tr>
+                    </tbody>
+                </table>
+                <div class="degree4sec-secEco-unit1-essai1-writing-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-essai1-writing-btn-verify" onclick="toggleCorrection('exo2Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo2Key" class="degree4sec-secEco-unit1-essai1-writing-answer-key"></div>
+            </div>
+
+            <!-- Ex 3 -->
+            <div class="degree4sec-secEco-unit1-essai1-writing-exercise-card degree4sec-secEco-unit1-essai1-writing-exercise-col-left">
+                <h3 data-i18n="exo3_title">📌 3. Choisissez la meilleure problématique</h3>
+                <p data-i18n="exo3_instruction">Pour le sujet <em>« La nostalgie embellit tout ce qu'elle touche »</em>, sélectionnez la problématique la plus pertinente.</p>
+                <label><input type="radio" name="mcq1" value="a"> Est-ce que la nostalgie existe ?</label><br>
+                <label><input type="radio" name="mcq1" value="b"> En quoi la nostalgie transforme-t-elle notre regard sur le passé, et pourquoi embellit-elle nos souvenirs ?</label><br>
+                <label><input type="radio" name="mcq1" value="c"> Qu'est-ce que le passé ?</label>
+                <div class="degree4sec-secEco-unit1-essai1-writing-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-essai1-writing-btn-verify" onclick="toggleCorrection('exo3Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo3Key" class="degree4sec-secEco-unit1-essai1-writing-answer-key"></div>
+            </div>
+
+            <!-- Ex 4 -->
+            <div class="degree4sec-secEco-unit1-essai1-writing-exercise-card degree4sec-secEco-unit1-essai1-writing-exercise-col-right">
+                <h3 data-i18n="exo4_title">📌 4. Analyser le sujet proposé</h3>
+                <p data-i18n="exo4_instruction">Pour le sujet <em>« On ne se souvient jamais du passé tel qu'il a été : la nostalgie embellit tout ce qu'elle touche »</em>, complétez l'analyse.</p>
+                <p><strong>Thème :</strong> <input type="text" placeholder="De quoi parle-t-on ?"></p>
+                <p><strong>Thèse à défendre :</strong> <textarea rows="2" placeholder="Quelle idée doit être défendue ?"></textarea></p>
+                <p><strong>Type de sujet :</strong> <input type="text" placeholder="déductif / dialectique / thématique"></p>
+                <div class="degree4sec-secEco-unit1-essai1-writing-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-essai1-writing-btn-verify" onclick="toggleCorrection('exo4Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo4Key" class="degree4sec-secEco-unit1-essai1-writing-answer-key"></div>
+            </div>
+
+            <!-- Ex 5 -->
+            <div class="degree4sec-secEco-unit1-essai1-writing-exercise-card degree4sec-secEco-unit1-essai1-writing-exercise-col-left">
+                <h3 data-i18n="exo5_title">📌 5. Distinguer argument et exemple</h3>
+                <p data-i18n="exo5_instruction">Classez chaque énoncé dans la bonne colonne : argument (A) ou exemple (E).</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_phrase" class="no-bilingual">Énoncé</th>
+                            <th data-i18n="table_type" class="no-bilingual">A / E</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>La nostalgie agit comme un filtre sélectif de la mémoire.</td><td><input type="text" placeholder="A ou E"></td></tr>
+                        <tr><td>Ainsi, le Petit Prince, adulte, se souvient de sa planète avec tendresse mais sans en évoquer les dangers.</td><td><input type="text" placeholder="A ou E"></td></tr>
+                        <tr><td>Le souvenir embellit toujours les lieux de l'enfance.</td><td><input type="text" placeholder="A ou E"></td></tr>
+                        <tr><td>De retour au village natal, beaucoup de personnes trouvent les lieux plus petits qu'autrefois.</td><td><input type="text" placeholder="A ou E"></td></tr>
+                    </tbody>
+                </table>
+                <div class="degree4sec-secEco-unit1-essai1-writing-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex5" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex5" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex5" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-essai1-writing-btn-verify" onclick="toggleCorrection('exo5Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo5Key" class="degree4sec-secEco-unit1-essai1-writing-answer-key"></div>
+            </div>
+
+            <!-- Ex 6 -->
+            <div class="degree4sec-secEco-unit1-essai1-writing-exercise-card degree4sec-secEco-unit1-essai1-writing-exercise-col-right">
+                <h3 data-i18n="exo6_title">📌 6. Vrai ou faux ?</h3>
+                <p data-i18n="exo6_instruction">Indiquez si chaque affirmation est vraie (V) ou fausse (F).</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_statement" class="no-bilingual">Affirmation</th>
+                            <th data-i18n="table_vf" class="no-bilingual">V / F</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td data-i18n="exo6_q1">Dans un sujet déductif, on doit présenter thèse et antithèse.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo6_q2">Une introduction d'essai contient toujours une amorce, une problématique et l'annonce du plan.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo6_q3">Un exemple doit toujours être précis (tiré d'une lecture, d'un souvenir, d'un film…).</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo6_q4">Chaque paragraphe du développement peut contenir plusieurs arguments sans lien.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo6_q5">La conclusion doit répondre clairement à la problématique.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                    </tbody>
+                </table>
+                <div class="degree4sec-secEco-unit1-essai1-writing-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex6" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex6" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex6" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-essai1-writing-btn-verify" onclick="toggleCorrection('exo6Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo6Key" class="degree4sec-secEco-unit1-essai1-writing-answer-key"></div>
+            </div>
+
+            <!-- Ex 7 -->
+            <div class="degree4sec-secEco-unit1-essai1-writing-exercise-card degree4sec-secEco-unit1-essai1-writing-exercise-col-left">
+                <h3 data-i18n="exo7_title">📌 7. Remettre les étapes dans l'ordre</h3>
+                <p data-i18n="exo7_instruction">Numérotez de 1 à 5 les étapes de la méthode pour développer un sujet d'essai.</p>
+                <ol>
+                    <li><span data-i18n="exo7_a">Rédiger l'introduction, le développement et la conclusion.</span> <input type="text" placeholder="1-5" style="width:60px;"></li>
+                    <li><span data-i18n="exo7_b">Formuler la problématique.</span> <input type="text" placeholder="1-5" style="width:60px;"></li>
+                    <li><span data-i18n="exo7_c">Relire et vérifier la cohérence.</span> <input type="text" placeholder="1-5" style="width:60px;"></li>
+                    <li><span data-i18n="exo7_d">Lire attentivement le sujet et repérer thème, thèse, mots-clés.</span> <input type="text" placeholder="1-5" style="width:60px;"></li>
+                    <li><span data-i18n="exo7_e">Bâtir le plan : arguments + exemples.</span> <input type="text" placeholder="1-5" style="width:60px;"></li>
+                </ol>
+                <div class="degree4sec-secEco-unit1-essai1-writing-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex7" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex7" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex7" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-essai1-writing-btn-verify" onclick="toggleCorrection('exo7Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo7Key" class="degree4sec-secEco-unit1-essai1-writing-answer-key"></div>
+            </div>
+
+            <!-- Ex 8 -->
+            <div class="degree4sec-secEco-unit1-essai1-writing-exercise-card degree4sec-secEco-unit1-essai1-writing-exercise-col-right">
+                <h3 data-i18n="exo8_title">📌 8. Compléter un plan</h3>
+                <p data-i18n="exo8_instruction">Complétez le plan pour le sujet déductif <em>« La nostalgie embellit tout ce qu'elle touche »</em>.</p>
+                <p><strong>Introduction :</strong> <textarea rows="2" placeholder="Amorce + problématique + annonce du plan..."></textarea></p>
+                <p><strong>Argument 1 :</strong> <input type="text" placeholder="Idée directrice..."></p>
+                <p><strong>Argument 2 :</strong> <input type="text" placeholder="Idée directrice..."></p>
+                <p><strong>Argument 3 :</strong> <input type="text" placeholder="Idée directrice..."></p>
+                <p><strong>Conclusion :</strong> <textarea rows="2" placeholder="Bilan + réponse à la problématique..."></textarea></p>
+                <div class="degree4sec-secEco-unit1-essai1-writing-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex8" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex8" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex8" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-essai1-writing-btn-verify" onclick="toggleCorrection('exo8Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo8Key" class="degree4sec-secEco-unit1-essai1-writing-answer-key"></div>
+            </div>
+
+            <!-- Ex 9 -->
+            <div class="degree4sec-secEco-unit1-essai1-writing-exercise-card degree4sec-secEco-unit1-essai1-writing-exercise-col-left">
+                <h3 data-i18n="exo9_title">📌 9. Rédiger une introduction</h3>
+                <p data-i18n="exo9_instruction">Rédigez une introduction complète (amorce + présentation du thème + problématique + annonce du plan) pour le sujet proposé.</p>
+                <textarea rows="5" placeholder="Votre introduction..."></textarea>
+                <div class="degree4sec-secEco-unit1-essai1-writing-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex9" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex9" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex9" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-essai1-writing-btn-verify" onclick="showExample('introExample')" data-i18n="show_example">💡 Voir un exemple</button>
+                <div id="introExample" class="degree4sec-secEco-unit1-essai1-writing-answer-key"></div>
+            </div>
+
+            <!-- Ex 10 -->
+            <div class="degree4sec-secEco-unit1-essai1-writing-exercise-card degree4sec-secEco-unit1-essai1-writing-exercise-col-right">
+                <h3 data-i18n="exo10_title">📌 10. Rédiger un paragraphe argumentatif</h3>
+                <p data-i18n="exo10_instruction">Rédigez un paragraphe argumentatif complet (idée + argument + exemple) pour défendre l'un des arguments du plan.</p>
+                <textarea rows="5" placeholder="Idée → argument → exemple..."></textarea>
+                <div class="degree4sec-secEco-unit1-essai1-writing-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex10" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex10" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex10" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-essai1-writing-btn-verify" onclick="showExample('paraExample')" data-i18n="show_example">💡 Voir un exemple</button>
+                <div id="paraExample" class="degree4sec-secEco-unit1-essai1-writing-answer-key"></div>
+            </div>
+        </div>
+
+        <!-- Full production -->
+        <div style="margin-top:2rem;">
+            <div class="degree4sec-secEco-unit1-essai1-writing-exercise-card">
+                <h3 data-i18n="exo11_title">📌 11. Production personnelle</h3>
+                <p data-i18n="exo11_instruction">Rédigez un essai complet (introduction + 3 paragraphes argumentatifs + conclusion) en réponse au sujet proposé. Votre essai doit :</p>
+                <ul style="padding-left:1.5rem; margin-bottom:0.8rem;">
+                    <li data-i18n="exo11_point1">Commencer par une amorce captivante ;</li>
+                    <li data-i18n="exo11_point2">Formuler clairement la problématique ;</li>
+                    <li data-i18n="exo11_point3">Développer trois arguments défendant la thèse ;</li>
+                    <li data-i18n="exo11_point4">Illustrer chaque argument par un exemple précis ;</li>
+                    <li data-i18n="exo11_point5">Se terminer par une conclusion qui répond à la problématique.</li>
+                </ul>
+                <textarea rows="10" placeholder="Votre essai complet..."></textarea>
+                <div class="degree4sec-secEco-unit1-essai1-writing-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex11" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex11" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex11" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-essai1-writing-btn-verify" onclick="showExample('essaiExample')" data-i18n="show_example">💡 Voir un exemple de plan-type</button>
+                <div id="essaiExample" class="degree4sec-secEco-unit1-essai1-writing-answer-key"></div>
+            </div>
+        </div>
+
+        <!-- Score area -->
+        <div class="degree4sec-secEco-unit1-essai1-writing-score-area" id="scoreArea">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="degree4sec-secEco-unit1-essai1-writing-score-stats" id="scoreStats">
+                <div class="degree4sec-secEco-unit1-essai1-writing-score-stat"><span data-i18n="score_correct">Correctes :</span> <span id="scoreCorrect">0</span></div>
+                <div class="degree4sec-secEco-unit1-essai1-writing-score-stat"><span data-i18n="score_incorrect">Incorrectes :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="degree4sec-secEco-unit1-essai1-writing-score-stat"><span data-i18n="score_partial">Partielles :</span> <span id="scorePartial">0</span></div>
+                <div class="degree4sec-secEco-unit1-essai1-writing-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">11</span></div>
+            </div>
+        </div>
+        <div class="degree4sec-secEco-unit1-essai1-writing-score-actions" style="margin-top:1.2rem;">
+            <button id="saveResultsBtn" class="degree4sec-secEco-unit1-essai1-writing-btn-verify" style="margin-right:0.5rem;" data-i18n="save_results">💾 Enregistrer mes résultats</button>
+            <button id="printPdfBtn" class="degree4sec-secEco-unit1-essai1-writing-btn-verify" style="background:#8b2942; margin-right:0.5rem;" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+        </div>
+
+        <!-- Footer nav -->
+        <div class="degree4sec-secEco-unit1-essai1-writing-footer-nav">
+            <a href="degree4sec_sececo.html" data-i18n="footer_back" class="no-bilingual">← Retour au programme</a>
+            <a href="degree4secEco_mod1_essai_2.html" data-i18n="footer_next" class="no-bilingual">Leçon suivante : Lire et comprendre le sujet →</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                'lessonEssai1_title': "Fiche d'essai – Comment réussir à développer un sujet d'essai | Méthodologie & Exemple",
+                'lesson_short_title': "Fiche d'essai – développer un sujet",
+                'ach_year_4sec_secEco': "4ᵉ année secondaire (Section Économie)",
+                'ach_module_module1': "Module 1 : Souvenirs et nostalgie",
+                'back_link': "← Retour à l'accueil",
+                'back_revision': "Module 1",
+                'back_current': "Fiche d'essai",
+                'lesson_badge': "📝 Essai · Fiche 1",
+                'lesson_title': "Comment réussir à développer<br>un sujet d'essai",
+                'lesson_duration': "⏱️ 60 minutes",
+                'lesson_meta_audio': "🎧 Écoutez le sujet puis étudiez la méthode",
+                'audio_label': "🎧 Écoute du sujet",
+                'sujet_quote': "« On ne se souvient jamais du passé tel qu'il a été : la nostalgie embellit tout ce qu'elle touche. »",
+                'sujet_type_tag': "Sujet déductif · Argumentatif",
+                'sujet_consigne': "Vous développerez cette thèse en vous appuyant sur des arguments et des exemples précis, puisés dans votre expérience personnelle et dans vos lectures.",
+                'method_intro_heading': "📖 Qu'est-ce qu'un essai ?",
+                'method_intro_text': "Un <strong>essai</strong> est un texte argumentatif dans lequel vous défendez une idée (une <em>thèse</em>) à l'aide d'arguments organisés et d'exemples précis. Contrairement au résumé ou au commentaire, l'essai vous engage personnellement : vous prenez position, vous organisez votre pensée et vous convainquez votre lecteur.",
+                'struct_intro': "Introduction",
+                'struct_intro_list': "<li>Amorce (accroche)</li><li>Présentation du thème</li><li>Formulation de la problématique</li><li>Annonce du plan</li>",
+                'struct_dev': "Développement",
+                'struct_dev_list': "<li>2 ou 3 paragraphes argumentatifs</li><li>Chaque paragraphe : une <strong>idée</strong> directrice</li><li>Un <strong>argument</strong> qui l'explique</li><li>Un ou deux <strong>exemples</strong> précis</li><li>Une phrase de transition vers l'idée suivante</li>",
+                'struct_concl': "Conclusion",
+                'struct_concl_list': "<li>Bilan des idées développées</li><li>Réponse claire à la problématique</li><li>Ouverture (facultative)</li>",
+                'types_heading': "📖 Les trois types de sujets d'essai",
+                'type_deductif_title': "🔹 Sujet déductif (ou argumentatif simple)",
+                'type_deductif_text': "La thèse est <strong>donnée</strong> dans le sujet. Vous devez la <em>défendre</em> à l'aide d'arguments. Il n'y a pas de réfutation à apporter. C'est le type du sujet de cette fiche.",
+                'type_dialectique_title': "🔹 Sujet dialectique",
+                'type_dialectique_text': "Deux thèses opposées sont à confronter : <em>thèse – antithèse – synthèse</em>. On examine successivement le pour et le contre avant de dépasser l'opposition.",
+                'type_them_compar_title': "🔹 Sujet thématique ou comparatif",
+                'type_them_compar_text': "On vous demande d'analyser un thème ou de comparer deux notions, deux œuvres, deux personnages, sans nécessairement prendre parti.",
+                'note_title_1': "💡 À retenir :",
+                'note_text_1': "chaque type de sujet appelle un plan différent. Identifier le type de sujet est donc <strong>la toute première étape</strong> avant d'écrire.",
+                'steps_heading': "📖 La méthode en 5 étapes",
+                'step1_title': "Lire attentivement le sujet",
+                'step1_text': "Repérer le <strong>thème</strong> (de quoi parle-t-on ?), la <strong>thèse</strong> (quelle idée doit être défendue ?), les <strong>mots-clés</strong> et la <strong>consigne</strong> (que doit-on faire ? défendre, discuter, comparer…).",
+                'step2_title': "Formuler la problématique",
+                'step2_text': "Transformer la thèse en <strong>question</strong> à laquelle l'essai répondra. Exemple : la thèse « la nostalgie embellit le passé » devient : <em>« En quoi la nostalgie transforme-t-elle notre regard sur le passé ? »</em>",
+                'step3_title': "Bâtir le plan",
+                'step3_text': "Chercher <strong>deux ou trois arguments</strong> qui défendent la thèse, puis associer à chaque argument <strong>un ou deux exemples</strong> précis (lecture, souvenir, film, actualité…).",
+                'step4_title': "Rédiger",
+                'step4_text': "Introduire le sujet, développer chaque argument dans un paragraphe distinct (idée → argument → exemple), et conclure en répondant clairement à la problématique.",
+                'step5_title': "Relire et vérifier",
+                'step5_text': "Vérifier la cohérence (chaque argument défend bien la thèse), l'enchaînement des idées (mots de liaison), la correction de la langue et la présence d'exemples précis.",
+                'note_title_2': "💡 Astuce :",
+                'note_text_2': "avant d'écrire, <strong>notez vos idées en vrac</strong> sur un brouillon (arguments, exemples, mots-clés). Vous les organiserez ensuite dans un plan clair.",
+                'worked_heading': "📖 Exemple appliqué au sujet proposé",
+                'worked_intro': "Reprenons le sujet <em>« la nostalgie embellit tout ce qu'elle touche »</em> et appliquons chaque étape concrètement.",
+                'worked_theme_title': "🔹 Thème et thèse",
+                'worked_theme_text': "<strong>Thème :</strong> la nostalgie et le souvenir. <strong>Thèse à défendre :</strong> la nostalgie transforme notre regard sur le passé en l'embellissant.",
+                'worked_problem_title': "🔹 Problématique",
+                'worked_problem_text': "<em>« Pourquoi la nostalgie embellit-elle le passé, et quel rôle joue-t-elle dans la construction de notre identité ? »</em>",
+                'worked_plan_title': "🔹 Plan proposé",
+                'worked_plan_list': "<li><strong>Argument 1 :</strong> La nostalgie agit comme un filtre sélectif de la mémoire. <em>Exemple :</em> un souvenir d'enfance ne retient que les moments heureux, oubliant les difficultés.</li><li><strong>Argument 2 :</strong> La nostalgie idéalise les lieux et les personnes du passé. <em>Exemple :</em> retourner dans la maison d'enfance et la trouver plus petite, plus modeste que dans nos souvenirs.</li><li><strong>Argument 3 :</strong> La nostalgie nous aide à construire notre identité présente. <em>Exemple :</em> le succès d'œuvres littéraires comme <em>Le Petit Prince</em>, où l'adulte retrouve l'enfant qu'il a été.</li>",
+                'note_title_3': "💡 Remarque :",
+                'note_text_3': "dans un <strong>sujet déductif</strong>, tous les arguments doivent défendre la <em>même thèse</em>. Il n'y a ni réfutation, ni thèse opposée.",
+                'exercises_heading': "✍️ Exercices d'application",
+                'exo1_title': "📌 1. Identifier les parties d'un essai",
+                'exo1_instruction': "Associez chaque élément à la partie de l'essai qui lui correspond (Introduction, Développement, Conclusion).",
+                'table_element': "Élément",
+                'table_part': "Partie",
+                'table_sujet': "Sujet",
+                'table_type': "Type",
+                'table_phrase': "Énoncé",
+                'table_statement': "Affirmation",
+                'table_vf': "V / F",
+                'btn_correction': "🔍 Voir la correction",
+                'exo2_title': "📌 2. Identifier le type de sujet",
+                'exo2_instruction': "Indiquez si chaque sujet est déductif (D), dialectique (DI) ou thématique/comparatif (T).",
+                'exo3_title': "📌 3. Choisissez la meilleure problématique",
+                'exo3_instruction': "Pour le sujet <em>« La nostalgie embellit tout ce qu'elle touche »</em>, sélectionnez la problématique la plus pertinente.",
+                'exo4_title': "📌 4. Analyser le sujet proposé",
+                'exo4_instruction': "Pour le sujet <em>« On ne se souvient jamais du passé tel qu'il a été : la nostalgie embellit tout ce qu'elle touche »</em>, complétez l'analyse.",
+                'exo5_title': "📌 5. Distinguer argument et exemple",
+                'exo5_instruction': "Classez chaque énoncé dans la bonne colonne : argument (A) ou exemple (E).",
+                'exo6_title': "📌 6. Vrai ou faux ?",
+                'exo6_instruction': "Indiquez si chaque affirmation est vraie (V) ou fausse (F).",
+                'exo6_q1': "Dans un sujet déductif, on doit présenter thèse et antithèse.",
+                'exo6_q2': "Une introduction d'essai contient toujours une amorce, une problématique et l'annonce du plan.",
+                'exo6_q3': "Un exemple doit toujours être précis (tiré d'une lecture, d'un souvenir, d'un film…).",
+                'exo6_q4': "Chaque paragraphe du développement peut contenir plusieurs arguments sans lien.",
+                'exo6_q5': "La conclusion doit répondre clairement à la problématique.",
+                'exo7_title': "📌 7. Remettre les étapes dans l'ordre",
+                'exo7_instruction': "Numérotez de 1 à 5 les étapes de la méthode pour développer un sujet d'essai.",
+                'exo7_a': "Rédiger l'introduction, le développement et la conclusion.",
+                'exo7_b': "Formuler la problématique.",
+                'exo7_c': "Relire et vérifier la cohérence.",
+                'exo7_d': "Lire attentivement le sujet et repérer thème, thèse, mots-clés.",
+                'exo7_e': "Bâtir le plan : arguments + exemples.",
+                'exo8_title': "📌 8. Compléter un plan",
+                'exo8_instruction': "Complétez le plan pour le sujet déductif <em>« La nostalgie embellit tout ce qu'elle touche »</em>.",
+                'exo9_title': "📌 9. Rédiger une introduction",
+                'exo9_instruction': "Rédigez une introduction complète (amorce + présentation du thème + problématique + annonce du plan) pour le sujet proposé.",
+                'exo10_title': "📌 10. Rédiger un paragraphe argumentatif",
+                'exo10_instruction': "Rédigez un paragraphe argumentatif complet (idée + argument + exemple) pour défendre l'un des arguments du plan.",
+                'exo11_title': "📌 11. Production personnelle",
+                'exo11_instruction': "Rédigez un essai complet (introduction + 3 paragraphes argumentatifs + conclusion) en réponse au sujet proposé. Votre essai doit :",
+                'exo11_point1': "Commencer par une amorce captivante ;",
+                'exo11_point2': "Formuler clairement la problématique ;",
+                'exo11_point3': "Développer trois arguments défendant la thèse ;",
+                'exo11_point4': "Illustrer chaque argument par un exemple précis ;",
+                'exo11_point5': "Se terminer par une conclusion qui répond à la problématique.",
+                'show_example': "💡 Voir un exemple",
+                'footer_back': "← Retour au programme",
+                'footer_next': "Leçon suivante : Lire et comprendre le sujet →",
+                'self_assess_question': "Ma réponse est :",
+                'self_correct': "Correcte",
+                'self_incorrect': "Incorrecte",
+                'self_partial': "Partiellement correcte",
+                'score_title': "📊 Votre auto‑évaluation",
+                'score_correct': "Correctes :",
+                'score_incorrect': "Incorrectes :",
+                'score_partial': "Partielles :",
+                'score_unanswered': "Sans réponse :",
+                'save_results': "💾 Enregistrer mes résultats",
+                'save_success': "Résultats sauvegardés ✓",
+                'save_error': "Erreur lors de la sauvegarde",
+                'print_pdf': "🖨️ Imprimer / PDF",
+                'print_with_answers': "Corrigé inclus",
+                'print_site_name': "Educational Dashboard – French",
+                'print_scholar_year': "Module 1 – Souvenirs et nostalgie",
+                'print_week': "Essai 1",
+                'print_area': "Essai",
+                'print_footer_dev': "Développé par Mejri Ziad",
+                'print_footer_date': "Imprimé le",
+                'print_without_answers': "Sans corrigé",
+                'toast_signin_required': "Connectez-vous pour voir les corrections."
+            },
+            en: {
+                'lessonEssai1_title': "Essay Sheet – How to Successfully Develop an Essay Topic | Methodology & Example",
+                'lesson_short_title': "Essay sheet – developing a topic",
+                'ach_year_4sec_secEco': "4th year secondary (Economy section)",
+                'ach_module_module1': "Module 1: Memories and Nostalgia",
+                'back_link': "← Back to home",
+                'back_revision': "Module 1",
+                'back_current': "Essay sheet",
+                'lesson_badge': "📝 Essay · Sheet 1",
+                'lesson_title': "How to Successfully Develop<br>an Essay Topic",
+                'lesson_duration': "⏱️ 60 minutes",
+                'lesson_meta_audio': "🎧 Listen to the topic then study the method",
+                'audio_label': "🎧 Listening to the topic",
+                'sujet_quote': "\"We never remember the past as it was: nostalgia embellishes everything it touches.\"",
+                'sujet_type_tag': "Deductive topic · Argumentative",
+                'sujet_consigne': "You will develop this thesis by relying on precise arguments and examples, drawn from your personal experience and your reading.",
+                'method_intro_heading': "📖 What is an essay?",
+                'method_intro_text': "An <strong>essay</strong> is an argumentative text in which you defend an idea (a <em>thesis</em>) using organized arguments and precise examples. Unlike a summary or commentary, an essay commits you personally: you take a position, organize your thought, and convince your reader.",
+                'struct_intro': "Introduction",
+                'struct_intro_list': "<li>Opening (hook)</li><li>Presentation of the theme</li><li>Formulation of the problem</li><li>Announcement of the plan</li>",
+                'struct_dev': "Development",
+                'struct_dev_list': "<li>2 or 3 argumentative paragraphs</li><li>Each paragraph: one leading <strong>idea</strong></li><li>An <strong>argument</strong> explaining it</li><li>One or two precise <strong>examples</strong></li><li>A transition sentence to the next idea</li>",
+                'struct_concl': "Conclusion",
+                'struct_concl_list': "<li>Summary of ideas developed</li><li>Clear answer to the problem</li><li>Opening (optional)</li>",
+                'types_heading': "📖 The three types of essay topics",
+                'type_deductif_title': "🔹 Deductive topic (or simple argumentative)",
+                'type_deductif_text': "The thesis is <strong>given</strong> in the topic. You must <em>defend</em> it with arguments. There is no refutation to provide. This is the type of the topic in this sheet.",
+                'type_dialectique_title': "🔹 Dialectical topic",
+                'type_dialectique_text': "Two opposing theses must be confronted: <em>thesis – antithesis – synthesis</em>. We examine successively the pros and cons before transcending the opposition.",
+                'type_them_compar_title': "🔹 Thematic or comparative topic",
+                'type_them_compar_text': "You are asked to analyse a theme or compare two notions, two works, two characters, without necessarily taking sides.",
+                'note_title_1': "💡 Remember:",
+                'note_text_1': "each type of topic requires a different plan. Identifying the type of topic is therefore <strong>the very first step</strong> before writing.",
+                'steps_heading': "📖 The 5-step method",
+                'step1_title': "Read the topic carefully",
+                'step1_text': "Identify the <strong>theme</strong> (what is being discussed?), the <strong>thesis</strong> (what idea must be defended?), the <strong>key words</strong> and the <strong>instruction</strong> (what are we asked to do? defend, discuss, compare…).",
+                'step2_title': "Formulate the problem",
+                'step2_text': "Transform the thesis into a <strong>question</strong> that the essay will answer. Example: the thesis \"nostalgia embellishes the past\" becomes: <em>\"How does nostalgia transform our view of the past?\"</em>",
+                'step3_title': "Build the plan",
+                'step3_text': "Find <strong>two or three arguments</strong> that defend the thesis, then associate each argument with <strong>one or two precise examples</strong> (reading, memory, film, current events…).",
+                'step4_title': "Write",
+                'step4_text': "Introduce the topic, develop each argument in a distinct paragraph (idea → argument → example), and conclude by clearly answering the problem.",
+                'step5_title': "Reread and check",
+                'step5_text': "Check the coherence (each argument defends the thesis), the flow of ideas (linking words), the correctness of the language, and the presence of precise examples.",
+                'note_title_2': "💡 Tip:",
+                'note_text_2': "before writing, <strong>jot down your ideas freely</strong> on a draft (arguments, examples, keywords). You will then organize them into a clear plan.",
+                'worked_heading': "📖 Example applied to the proposed topic",
+                'worked_intro': "Let's take the topic <em>\"nostalgia embellishes everything it touches\"</em> and apply each step concretely.",
+                'worked_theme_title': "🔹 Theme and thesis",
+                'worked_theme_text': "<strong>Theme:</strong> nostalgia and memory. <strong>Thesis to defend:</strong> nostalgia transforms our view of the past by embellishing it.",
+                'worked_problem_title': "🔹 Problem",
+                'worked_problem_text': "<em>\"Why does nostalgia embellish the past, and what role does it play in the construction of our identity?\"</em>",
+                'worked_plan_title': "🔹 Proposed plan",
+                'worked_plan_list': "<li><strong>Argument 1:</strong> Nostalgia acts as a selective filter of memory. <em>Example:</em> a childhood memory retains only the happy moments, forgetting the difficulties.</li><li><strong>Argument 2:</strong> Nostalgia idealizes the places and people of the past. <em>Example:</em> returning to the childhood home and finding it smaller, more modest than in our memories.</li><li><strong>Argument 3:</strong> Nostalgia helps us build our present identity. <em>Example:</em> the success of literary works like <em>The Little Prince</em>, where the adult rediscovers the child he once was.</li>",
+                'note_title_3': "💡 Note:",
+                'note_text_3': "in a <strong>deductive topic</strong>, all arguments must defend the <em>same thesis</em>. There is no refutation or opposing thesis.",
+                'exercises_heading': "✍️ Application exercises",
+                'exo1_title': "📌 1. Identify the parts of an essay",
+                'exo1_instruction': "Match each element to the part of the essay it belongs to (Introduction, Development, Conclusion).",
+                'table_element': "Element",
+                'table_part': "Part",
+                'table_sujet': "Topic",
+                'table_type': "Type",
+                'table_phrase': "Statement",
+                'table_statement': "Statement",
+                'table_vf': "T / F",
+                'btn_correction': "🔍 See the correction",
+                'exo2_title': "📌 2. Identify the type of topic",
+                'exo2_instruction': "Indicate whether each topic is deductive (D), dialectical (DI) or thematic/comparative (T).",
+                'exo3_title': "📌 3. Choose the best problem",
+                'exo3_instruction': "For the topic <em>\"Nostalgia embellishes everything it touches\"</em>, select the most relevant problem.",
+                'exo4_title': "📌 4. Analyse the proposed topic",
+                'exo4_instruction': "For the topic <em>\"We never remember the past as it was: nostalgia embellishes everything it touches\"</em>, complete the analysis.",
+                'exo5_title': "📌 5. Distinguish argument and example",
+                'exo5_instruction': "Classify each statement in the right column: argument (A) or example (E).",
+                'exo6_title': "📌 6. True or false?",
+                'exo6_instruction': "Indicate whether each statement is true (T) or false (F).",
+                'exo6_q1': "In a deductive topic, one must present thesis and antithesis.",
+                'exo6_q2': "An essay introduction always contains an opening, a problem, and the announcement of the plan.",
+                'exo6_q3': "An example must always be precise (from a reading, a memory, a film…).",
+                'exo6_q4': "Each paragraph of the development can contain several unrelated arguments.",
+                'exo6_q5': "The conclusion must clearly answer the problem.",
+                'exo7_title': "📌 7. Put the steps in order",
+                'exo7_instruction': "Number from 1 to 5 the steps of the method to develop an essay topic.",
+                'exo7_a': "Write the introduction, development and conclusion.",
+                'exo7_b': "Formulate the problem.",
+                'exo7_c': "Reread and check the coherence.",
+                'exo7_d': "Read the topic carefully and identify theme, thesis, key words.",
+                'exo7_e': "Build the plan: arguments + examples.",
+                'exo8_title': "📌 8. Complete a plan",
+                'exo8_instruction': "Complete the plan for the deductive topic <em>\"Nostalgia embellishes everything it touches\"</em>.",
+                'exo9_title': "📌 9. Write an introduction",
+                'exo9_instruction': "Write a complete introduction (opening + presentation of the theme + problem + announcement of the plan) for the proposed topic.",
+                'exo10_title': "📌 10. Write an argumentative paragraph",
+                'exo10_instruction': "Write a complete argumentative paragraph (idea + argument + example) to defend one of the arguments in the plan.",
+                'exo11_title': "📌 11. Personal production",
+                'exo11_instruction': "Write a complete essay (introduction + 3 argumentative paragraphs + conclusion) in response to the proposed topic. Your essay must:",
+                'exo11_point1': "Begin with a captivating opening;",
+                'exo11_point2': "Clearly formulate the problem;",
+                'exo11_point3': "Develop three arguments defending the thesis;",
+                'exo11_point4': "Illustrate each argument with a precise example;",
+                'exo11_point5': "End with a conclusion that answers the problem.",
+                'show_example': "💡 See an example",
+                'footer_back': "← Back to program",
+                'footer_next': "Next lesson: Read and understand the topic →",
+                'self_assess_question': "My answer is:",
+                'self_correct': "Correct",
+                'self_incorrect': "Incorrect",
+                'self_partial': "Partially correct",
+                'score_title': "📊 Your self‑assessment",
+                'score_correct': "Correct:",
+                'score_incorrect': "Incorrect:",
+                'score_partial': "Partial:",
+                'score_unanswered': "Unanswered:",
+                'save_results': "💾 Save my results",
+                'save_success': "Results saved ✓",
+                'save_error': "Save failed",
+                'print_pdf': "🖨️ Print / PDF",
+                'print_with_answers': "With answers",
+                'print_site_name': "Educational Dashboard – French",
+                'print_scholar_year': "Module 1 – Memories and Nostalgia",
+                'print_week': "Essay 1",
+                'print_area': "Essay",
+                'print_footer_dev': "Developed by Mejri Ziad",
+                'print_footer_date': "Printed on",
+                'print_without_answers': "Without answers",
+                'toast_signin_required': "Sign in to see the corrections."
+            },
+            ar: {
+                'lessonEssai1_title': "بطاقة مقال – كيف تنجح في تطوير موضوع مقال | منهجية ومثال",
+                'lesson_short_title': "بطاقة مقال – تطوير موضوع",
+                'ach_year_4sec_secEco': "السنة الرابعة ثانوي (شعبة الاقتصاد)",
+                'ach_module_module1': "الوحدة 1: ذكريات وحنين",
+                'back_link': "← العودة إلى الرئيسية",
+                'back_revision': "الوحدة 1",
+                'back_current': "بطاقة مقال",
+                'lesson_badge': "📝 مقال · البطاقة 1",
+                'lesson_title': "كيف تنجح في تطوير<br>موضوع مقال",
+                'lesson_duration': "⏱️ 60 دقيقة",
+                'lesson_meta_audio': "🎧 استمع إلى الموضوع ثم ادرس المنهجية",
+                'audio_label': "🎧 استماع إلى الموضوع",
+                'sujet_quote': "« لا نتذكر الماضي أبداً كما كان: الحنين يجمّل كل ما يلمسه. »",
+                'sujet_type_tag': "موضوع استنباطي · حجاجي",
+                'sujet_consigne': "ستطوّر هذه الأطروحة بالاعتماد على حجج وأمثلة دقيقة، مستمدة من تجربتك الشخصية ومن قراءاتك.",
+                'method_intro_heading': "📖 ما هو المقال؟",
+                'method_intro_text': "المقال هو نص حجاجي تدافع فيه عن فكرة (أطروحة) بمساعدة حجج منظمة وأمثلة دقيقة. على عكس الملخص أو التعليق، يُشركك المقال شخصياً: تتخذ موقفاً، تنظّم فكرك، وتُقنع قارئك.",
+                'struct_intro': "المقدمة",
+                'struct_intro_list': "<li>الاستهلال (الجذب)</li><li>تقديم الموضوع</li><li>صياغة الإشكالية</li><li>الإعلان عن الخطة</li>",
+                'struct_dev': "التطوير",
+                'struct_dev_list': "<li>فقرة أو فقرتان أو ثلاث فقرات حجاجية</li><li>كل فقرة: فكرة موجّهة واحدة</li><li>حجة تشرحها</li><li>مثال أو مثالان دقيقان</li><li>جملة انتقالية نحو الفكرة التالية</li>",
+                'struct_concl': "الخاتمة",
+                'struct_concl_list': "<li>حصيلة الأفكار المطوّرة</li><li>جواب واضح عن الإشكالية</li><li>انفتاح (اختياري)</li>",
+                'types_heading': "📖 الأنواع الثلاثة لمواضيع المقال",
+                'type_deductif_title': "🔹 الموضوع الاستنباطي (أو الحجاجي البسيط)",
+                'type_deductif_text': "الأطروحة <strong>معطاة</strong> في الموضوع. يجب <em>الدفاع</em> عنها بالحجج. لا يوجد ردّ لتقديمه. هذا هو نوع موضوع هذه البطاقة.",
+                'type_dialectique_title': "🔹 الموضوع الجدلي",
+                'type_dialectique_text': "أطروحتان متعارضتان يجب مواجهتهما: <em>الأطروحة – النقيض – التركيب</em>. ندرس بالتتابع المؤيد والمعارض قبل تجاوز التعارض.",
+                'type_them_compar_title': "🔹 الموضوع الموضوعاتي أو المقارن",
+                'type_them_compar_text': "يُطلب منك تحليل موضوع أو مقارنة مفهومين، عملين، شخصيتين، دون اتخاذ موقف بالضرورة.",
+                'note_title_1': "💡 تذكر:",
+                'note_text_1': "كل نوع من المواضيع يستدعي خطة مختلفة. تحديد نوع الموضوع هو <strong>الخطوة الأولى</strong> قبل الكتابة.",
+                'steps_heading': "📖 المنهجية في 5 خطوات",
+                'step1_title': "اقرأ الموضوع بعناية",
+                'step1_text': "تحديد <strong>الموضوع</strong> (عمّ يتحدث؟)، و<strong>الأطروحة</strong> (أي فكرة يجب الدفاع عنها؟)، و<strong>الكلمات المفتاحية</strong>، و<strong>التعليمة</strong> (ما يُطلب منا؟ الدفاع، المناقشة، المقارنة…).",
+                'step2_title': "صياغة الإشكالية",
+                'step2_text': "تحويل الأطروحة إلى <strong>سؤال</strong> سيجيب عنه المقال. مثال: الأطروحة « الحنين يجمّل الماضي » تصبح: <em>« كيف يحوّل الحنين نظرتنا إلى الماضي؟ »</em>",
+                'step3_title': "بناء الخطة",
+                'step3_text': "البحث عن <strong>حجتين أو ثلاث</strong> تدافعان عن الأطروحة، ثم ربط كل حجة بـ<strong>مثال أو مثالين دقيقين</strong> (قراءة، ذكرى، فيلم، حدث جارٍ…).",
+                'step4_title': "الكتابة",
+                'step4_text': "تقديم الموضوع، تطوير كل حجة في فقرة مستقلة (فكرة ← حجة ← مثال)، والخاتمة بالجواب الواضح عن الإشكالية.",
+                'step5_title': "إعادة القراءة والتحقق",
+                'step5_text': "التحقق من التماسك (كل حجة تدافع عن الأطروحة)، وترابط الأفكار (روابط منطقية)، وسلامة اللغة، ووجود أمثلة دقيقة.",
+                'note_title_2': "💡 نصيحة:",
+                'note_text_2': "قبل الكتابة، <strong>دوّن أفكارك بحرية</strong> على مسودة (حجج، أمثلة، كلمات مفتاحية). ستنظّمها لاحقاً في خطة واضحة.",
+                'worked_heading': "📖 مثال مطبّق على الموضوع المقترح",
+                'worked_intro': "لنأخذ الموضوع <em>« الحنين يجمّل كل ما يلمسه »</em> ونطبّق كل خطوة بشكل ملموس.",
+                'worked_theme_title': "🔹 الموضوع والأطروحة",
+                'worked_theme_text': "<strong>الموضوع:</strong> الحنين والذكرى. <strong>الأطروحة للدفاع:</strong> الحنين يحوّل نظرتنا إلى الماضي بجعله أجمل.",
+                'worked_problem_title': "🔹 الإشكالية",
+                'worked_problem_text': "<em>« لماذا يجمّل الحنين الماضي، وما الدور الذي يلعبه في بناء هويتنا؟ »</em>",
+                'worked_plan_title': "🔹 الخطة المقترحة",
+                'worked_plan_list': "<li><strong>الحجة 1:</strong> الحنين يعمل كمرشح انتقائي للذاكرة. <em>مثال:</em> ذكرى الطفولة تحتفظ فقط باللحظات السعيدة، متناسية الصعوبات.</li><li><strong>الحجة 2:</strong> الحنين يمثّل الأماكن والأشخاص الماضيين بشكل مثالي. <em>مثال:</em> العودة إلى بيت الطفولة وإيجاده أصغر وأكثر تواضعاً مما في ذاكرتنا.</li><li><strong>الحجة 3:</strong> الحنين يساعدنا على بناء هويتنا الحاضرة. <em>مثال:</em> نجاح أعمال أدبية مثل <em>الأمير الصغير</em>، حيث يستعيد الراشد الطفل الذي كانه.</li>",
+                'note_title_3': "💡 ملاحظة:",
+                'note_text_3': "في <strong>الموضوع الاستنباطي</strong>، يجب أن تدافع كل الحجج عن <em>نفس الأطروحة</em>. لا يوجد ردّ ولا أطروحة مضادة.",
+                'exercises_heading': "✍️ تمارين تطبيقية",
+                'exo1_title': "📌 1. تحديد أجزاء المقال",
+                'exo1_instruction': "اربط كل عنصر بالجزء الذي ينتمي إليه في المقال (المقدمة، التطوير، الخاتمة).",
+                'table_element': "العنصر",
+                'table_part': "الجزء",
+                'table_sujet': "الموضوع",
+                'table_type': "النوع",
+                'table_phrase': "العبارة",
+                'table_statement': "العبارة",
+                'table_vf': "ص / خ",
+                'btn_correction': "🔍 الاطلاع على التصحيح",
+                'exo2_title': "📌 2. تحديد نوع الموضوع",
+                'exo2_instruction': "حدد إن كان كل موضوع استنباطياً (D)، جدلياً (DI) أو موضوعاتياً/مقارناً (T).",
+                'exo3_title': "📌 3. اختر أفضل إشكالية",
+                'exo3_instruction': "بالنسبة لموضوع <em>« الحنين يجمّل كل ما يلمسه »</em>، اختر الإشكالية الأكثر ملاءمة.",
+                'exo4_title': "📌 4. تحليل الموضوع المقترح",
+                'exo4_instruction': "بالنسبة لموضوع <em>« لا نتذكر الماضي أبداً كما كان: الحنين يجمّل كل ما يلمسه »</em>، أكمل التحليل.",
+                'exo5_title': "📌 5. التمييز بين الحجة والمثال",
+                'exo5_instruction': "صنّف كل عبارة في العمود المناسب: حجة (A) أو مثال (E).",
+                'exo6_title': "📌 6. صواب أم خطأ؟",
+                'exo6_instruction': "حدد إن كانت كل عبارة صحيحة (ص) أم خاطئة (خ).",
+                'exo6_q1': "في الموضوع الاستنباطي، يجب تقديم الأطروحة والنقيض.",
+                'exo6_q2': "مقدمة المقال تحتوي دائماً على استهلال وإشكالية وإعلان عن الخطة.",
+                'exo6_q3': "يجب أن يكون المثال دائماً دقيقاً (من قراءة، ذكرى، فيلم…).",
+                'exo6_q4': "يمكن لكل فقرة من التطوير أن تحتوي على عدة حجج دون رابط.",
+                'exo6_q5': "يجب أن تجيب الخاتمة بوضوح عن الإشكالية.",
+                'exo7_title': "📌 7. ترتيب الخطوات",
+                'exo7_instruction': "رقّم من 1 إلى 5 خطوات منهجية تطوير موضوع مقال.",
+                'exo7_a': "كتابة المقدمة والتطوير والخاتمة.",
+                'exo7_b': "صياغة الإشكالية.",
+                'exo7_c': "إعادة القراءة والتحقق من التماسك.",
+                'exo7_d': "قراءة الموضوع بعناية وتحديد الموضوع والأطروحة والكلمات المفتاحية.",
+                'exo7_e': "بناء الخطة: الحجج + الأمثلة.",
+                'exo8_title': "📌 8. إكمال خطة",
+                'exo8_instruction': "أكمل الخطة للموضوع الاستنباطي <em>« الحنين يجمّل كل ما يلمسه »</em>.",
+                'exo9_title': "📌 9. كتابة مقدمة",
+                'exo9_instruction': "اكتب مقدمة كاملة (استهلال + تقديم الموضوع + إشكالية + إعلان الخطة) للموضوع المقترح.",
+                'exo10_title': "📌 10. كتابة فقرة حجاجية",
+                'exo10_instruction': "اكتب فقرة حجاجية كاملة (فكرة + حجة + مثال) للدفاع عن إحدى حجج الخطة.",
+                'exo11_title': "📌 11. إنتاج شخصي",
+                'exo11_instruction': "اكتب مقالاً كاملاً (مقدمة + 3 فقرات حجاجية + خاتمة) جواباً على الموضوع المقترح. يجب أن يكون مقالك:",
+                'exo11_point1': "يبدأ باستهلal جاذب؛",
+                'exo11_point2': "يصوغ بوضوح الإشكالية؛",
+                'exo11_point3': "يطوّر ثلاث حجج تدافع عن الأطروحة؛",
+                'exo11_point4': "يوضّح كل حجة بمثال دقيق؛",
+                'exo11_point5': "ينتهي بخاتمة تجيب عن الإشكالية.",
+                'show_example': "💡 عرض مثال",
+                'footer_back': "← العودة إلى البرنامج",
+                'footer_next': "الدرس الموالي: قراءة وفهم الموضوع ←",
+                'self_assess_question': "جوابي هو:",
+                'self_correct': "صحيح",
+                'self_incorrect': "خاطئ",
+                'self_partial': "صحيح جزئيًا",
+                'score_title': "📊 تقييمك الذاتي",
+                'score_correct': "صحيح:",
+                'score_incorrect': "خاطئ:",
+                'score_partial': "جزئي:",
+                'score_unanswered': "بدون إجابة:",
+                'save_results': "💾 حفظ نتائجي",
+                'save_success': "تم حفظ النتائج ✓",
+                'save_error': "خطأ في الحفظ",
+                'print_pdf': "🖨️ طباعة / PDF",
+                'print_with_answers': "مع التصحيح",
+                'print_site_name': "لوحة التحكم التعليمية – الفرنسية",
+                'print_scholar_year': "الوحدة 1 – ذكريات وحنين",
+                'print_week': "مقال 1",
+                'print_area': "مقال",
+                'print_footer_dev': "طوّر بواسطة ماجري زياد",
+                'print_footer_date': "طُبع في",
+                'print_without_answers': "بدون تصحيح",
+                'toast_signin_required': "سجّل الدخول لرؤية التصحيحات."
+            }
+        });
+
+        (function() {
+            var container = document.querySelector('.degree4sec-secEco-unit1-essai1-writing-container');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+        })();
+    </script>
+    <script src="ed-french-ini.js"></script>
+    <script>
+        (function() {
+            const audio = new Audio('assets4secEco/sounds/degree4secEco/unit1/essai1/sujet_essai.mp3');
+            const playBtn = document.getElementById('playBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const speedBtns = document.querySelectorAll('.degree4sec-secEco-unit1-essai1-writing-speed-btn');
+
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+
+            audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
+            audio.addEventListener('timeupdate', () => {
+                const percent = (audio.currentTime / audio.duration) * 100 || 0;
+                progressFill.style.width = percent + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            });
+            audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) { audio.play().catch(()=>{}); playBtn.textContent = '⏸'; }
+                else { audio.pause(); playBtn.textContent = '▶'; }
+            });
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const seekTime = (clickX / width) * audio.duration;
+                audio.currentTime = seekTime;
+            });
+            speedBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    speedBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    audio.playbackRate = parseFloat(btn.dataset.speed);
+                });
+            });
+
+            // Static answer keys
+            document.getElementById('exo1Key').innerHTML = '<strong>Correction :</strong><br>1. I<br>2. D<br>3. C<br>4. I<br>5. D';
+            document.getElementById('exo2Key').innerHTML = '<strong>Correction :</strong><br>1. D<br>2. DI<br>3. T<br>4. D';
+            document.getElementById('exo3Key').innerHTML = '<strong>Correction :</strong> Réponse <strong>b</strong>.<br>La problématique doit transformer la thèse en question ouverte et directement liée au sujet. L\'option b) reprend les termes essentiels (« nostalgie », « passé ») et annonce l\'axe d\'étude (le regard sur le passé).';
+            document.getElementById('exo4Key').innerHTML = '<strong>Correction :</strong><br><strong>Thème :</strong> la nostalgie et le souvenir du passé.<br><strong>Thèse à défendre :</strong> la nostalgie embellit le passé et transforme notre regard.<br><strong>Type de sujet :</strong> déductif (ou argumentatif simple).';
+            document.getElementById('exo5Key').innerHTML = '<strong>Correction :</strong><br>1. A<br>2. E<br>3. A<br>4. E';
+            document.getElementById('exo6Key').innerHTML = '<strong>Correction :</strong><br>1. Faux<br>2. Vrai<br>3. Vrai<br>4. Faux<br>5. Vrai';
+            document.getElementById('exo7Key').innerHTML = '<strong>Correction :</strong><br>1. Rédiger → <strong>4</strong><br>2. Formuler la problématique → <strong>2</strong><br>3. Relire et vérifier → <strong>5</strong><br>4. Lire le sujet → <strong>1</strong><br>5. Bâtir le plan → <strong>3</strong>';
+            document.getElementById('exo8Key').innerHTML = '<strong>Correction (exemple) :</strong><br><strong>Introduction :</strong> amorce sur la force des souvenirs → thème de la nostalgie → problématique → annonce du plan.<br><strong>Argument 1 :</strong> La nostalgie filtre la mémoire en ne gardant que les moments heureux.<br><strong>Argument 2 :</strong> La nostalgie idéalise les lieux et les personnes du passé.<br><strong>Argument 3 :</strong> La nostalgie nourrit notre identité présente.<br><strong>Conclusion :</strong> bilan des trois idées → réponse à la problématique : oui, la nostalgie embellit le passé, mais elle nourrit aussi notre présent.';
+
+            // Auth-gated correction
+            window.toggleCorrection = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('visible');
+            };
+
+            // Show example (for intro/paragraph/essay)
+            window.showExample = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const el = document.getElementById(id);
+                if (!el) return;
+                if (id === 'introExample') {
+                    el.innerHTML = '<strong>Exemple d\'introduction :</strong><br>« Nous avons tous, un jour, feuilleté un vieil album de photos avec une émotion particulière. Les souvenirs qui remontent alors semblent plus doux, plus lumineux, plus parfaits qu\'ils ne l\'étaient réellement. C\'est que la nostalgie, ce regard tendre porté sur le passé, transforme tout ce qu\'elle touche. Pourquoi embellit-elle ainsi nos souvenirs ? En quoi cette transformation éclaire-t-elle notre identité présente ? Nous verrons d\'abord que la nostalgie filtre la mémoire, puis qu\'elle idéalise les lieux et les êtres, enfin qu\'elle nourrit notre construction personnelle. »';
+                } else if (id === 'paraExample') {
+                    el.innerHTML = '<strong>Exemple de paragraphe argumentatif :</strong><br>« En premier lieu, la nostalgie agit comme un filtre sélectif de la mémoire. En effet, lorsqu\'on se remémore une période passée, l\'esprit tend à en effacer les difficultés pour ne conserver que les instants agréables. Ainsi, un adulte qui évoque son enfance se souvient des jeux dans la cour, des rires partagés, mais oublie presque toujours les peurs, les frustrations ou les ennuis. Le souvenir est donc moins une reproduction fidèle du passé qu\'une reconstruction embellie par le temps. »';
+                } else if (id === 'essaiExample') {
+                    el.innerHTML = '<strong>Plan-type d\'un essai déductif complet :</strong><br><br><strong>Introduction :</strong> amorce (album de photos, chanson, lieu familier) → présentation du thème → problématique → annonce des trois axes.<br><br><strong>§1 – La nostalgie filtre la mémoire :</strong> idée → explication → exemple (souvenir d\'enfance) → transition.<br><br><strong>§2 – La nostalgie idéalise les lieux et les êtres :</strong> idée → explication → exemple (retour au village natal ; littérature : <em>Le Petit Prince</em>) → transition.<br><br><strong>§3 – La nostalgie nourrit notre identité présente :</strong> idée → explication → exemple (récit autobiographique, chanson) → transition.<br><br><strong>Conclusion :</strong> bilan des trois idées → réponse claire : oui, la nostalgie embellit le passé, mais elle éclaire aussi notre présent et nourrit notre construction identitaire.';
+                }
+                el.classList.add('visible');
+            };
+
+            // Self-assessment scoring
+            const SELF_GROUPS = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5',
+                                 'self_ex6', 'self_ex7', 'self_ex8', 'self_ex9', 'self_ex10', 'self_ex11'];
+
+            function computeScore() {
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                SELF_GROUPS.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                return { correct, incorrect, partial, unanswered };
+            }
+
+            function updateScore() {
+                const s = computeScore();
+                document.getElementById('scoreCorrect').textContent = s.correct;
+                document.getElementById('scoreIncorrect').textContent = s.incorrect;
+                document.getElementById('scorePartial').textContent = s.partial;
+                document.getElementById('scoreUnanswered').textContent = s.unanswered;
+            }
+
+            document.querySelectorAll('input[type="radio"][name^="self_ex"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+
+            // Save results
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const s = computeScore();
+                const lessonId = 'degree4sec-secEco-unit1-essai1-writing';
+                const entry = {
+                    lesson_id: lessonId,
+                    lesson_title: {
+                        fr: App.getTranslation('lesson_short_title', 'fr'),
+                        en: App.getTranslation('lesson_short_title', 'en'),
+                        ar: App.getTranslation('lesson_short_title', 'ar')
+                    },
+                    year: {
+                        fr: App.getTranslation('ach_year_4sec_secEco', 'fr'),
+                        en: App.getTranslation('ach_year_4sec_secEco', 'en'),
+                        ar: App.getTranslation('ach_year_4sec_secEco', 'ar')
+                    },
+                    module: {
+                        fr: App.getTranslation('ach_module_module1', 'fr'),
+                        en: App.getTranslation('ach_module_module1', 'en'),
+                        ar: App.getTranslation('ach_module_module1', 'ar')
+                    },
+                    correct: s.correct,
+                    incorrect: s.incorrect,
+                    partial: s.partial,
+                    unanswered: s.unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles').select('achivement').eq('id', user.id).single();
+                if (fetchError) return;
+                let achivement = profileData?.achivement || {};
+                if (!achivement["ED-French"]) achivement["ED-French"] = [];
+                const arr = achivement["ED-French"];
+                const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+                if (existingIdx >= 0) arr[existingIdx] = entry;
+                else arr.push(entry);
+                const { error: updateError } = await App.supabase
+                    .from('profiles').update({ achivement }).eq('id', user.id);
+                if (updateError) App.showToast('save_error', 'error');
+                else {
+                    App.showToast('save_success', 'success');
+                    App.logUserAction('lesson_saved', { lesson: lessonId, correct: s.correct, incorrect: s.incorrect, partial: s.partial });
+                }
+            });
+
+            // Print / PDF
+            document.getElementById('printPdfBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles').select('registration_state').eq('id', user.id).single();
+                    if (!error && profile?.registration_state?.active === true) isRegistered = true;
+                } catch (e) {}
+                const lang = localStorage.getItem('lang') || 'fr';
+                const headerHTML = document.querySelector('.degree4sec-secEco-unit1-essai1-writing-lesson-header').cloneNode(true);
+                const sujetBox = document.querySelector('.degree4sec-secEco-unit1-essai1-writing-sujet').cloneNode(true);
+                const rulesSections = document.querySelectorAll('.degree4sec-secEco-unit1-essai1-writing-valeurs-section');
+                let rulesHTML = '';
+                rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
+                const exercisesSection = document.querySelector('.degree4sec-secEco-unit1-essai1-writing-exercises-section').cloneNode(true);
+                exercisesSection.querySelectorAll('input, textarea, .degree4sec-secEco-unit1-essai1-writing-btn-verify, .degree4sec-secEco-unit1-essai1-writing-self-assessment').forEach(el => el.remove());
+                if (isRegistered) {
+                    exercisesSection.querySelectorAll('.degree4sec-secEco-unit1-essai1-writing-answer-key').forEach(key => {
+                        key.style.display = 'block'; key.style.border = 'none';
+                        key.style.padding = '0.5rem 0'; key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    exercisesSection.querySelectorAll('.degree4sec-secEco-unit1-essai1-writing-answer-key').forEach(el => el.remove());
+                }
+                const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                printWindow.document.write(`<!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8"><title>${App.getTranslation('lesson_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title><style>
+                    body { font-family: 'Georgia', serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; color:#000; }
+                    .print-header { text-align:center; border-bottom:2px solid #a8385c; padding-bottom:1rem; margin-bottom:2rem; }
+                    .print-header .site-name { font-size:1.4rem; font-weight:bold; color:#a8385c; margin:0 0 0.3rem; }
+                    .print-header .meta-line { font-size:0.95rem; color:#444; margin:0.2rem 0; }
+                    .print-header .lesson-name { font-size:1.1rem; font-weight:bold; color:#000; margin-top:0.5rem; }
+                    .print-footer { text-align:center; border-top:1px solid #ccc; padding-top:1rem; margin-top:2rem; font-size:0.85rem; color:#666; }
+                    .degree4sec-secEco-unit1-essai1-writing-lesson-header { text-align:center; margin-bottom:2rem; }
+                    .degree4sec-secEco-unit1-essai1-writing-badge { display:inline-block; background:#a8385c; color:#fff; padding:0.3rem 1rem; border-radius:20px; font-size:0.8rem; text-transform:uppercase; }
+                    .degree4sec-secEco-unit1-essai1-writing-sujet { border:2px solid #a8385c; padding:1.2rem 1.5rem; margin:1.5rem 0; border-radius:8px; }
+                    .degree4sec-secEco-unit1-essai1-writing-sujet .quote { font-style:italic; color:#6b1f3a; margin-bottom:0.8rem; }
+                    .degree4sec-secEco-unit1-essai1-writing-valeurs-section { margin:1.5rem 0; }
+                    .degree4sec-secEco-unit1-essai1-writing-valeur-card { background:#f2e6e0; padding:1rem; margin-bottom:1rem; border-radius:8px; }
+                    .degree4sec-secEco-unit1-essai1-writing-valeur-card h3 { color:#a8385c; }
+                    .degree4sec-secEco-unit1-essai1-writing-structure { display:block; }
+                    .degree4sec-secEco-unit1-essai1-writing-struct-card { border-top:3px solid #a8385c; background:#f2e6e0; padding:1rem; margin-bottom:1rem; border-radius:0 0 8px 8px; }
+                    .degree4sec-secEco-unit1-essai1-writing-struct-card h4 { color:#6b1f3a; }
+                    .degree4sec-secEco-unit1-essai1-writing-argument { margin:1rem 0; }
+                    .degree4sec-secEco-unit1-essai1-writing-argument-num { display:inline-block; width:30px; height:30px; background:#a8385c; color:#fff; border-radius:6px; text-align:center; line-height:30px; font-weight:bold; margin-right:0.5rem; }
+                    .degree4sec-secEco-unit1-essai1-writing-exercise-card { margin:1.2rem 0; }
+                    table { width:100%; border-collapse:collapse; margin:0.8rem 0; }
+                    th, td { border:1px solid #ccc; padding:0.5rem; text-align:left; }
+                    th { background:#ede0d8; }
+                    .degree4sec-secEco-unit1-essai1-writing-answer-key { display:block; margin-top:0.5rem; font-size:0.9rem; color:#444; }
+                    @media print { @page { margin:2cm; } }
+                </style></head><body>
+                    <div class="print-header"><div class="site-name">${App.getTranslation('print_site_name', lang)}</div><div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div><div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div></div>
+                    ${breadcrumb.outerHTML}${headerHTML.outerHTML}${sujetBox.outerHTML}${rulesHTML}${exercisesSection.outerHTML}
+                    <div class="print-footer">${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}</div>
+                </body></html>`);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+        })();
+    </script>
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lessonE3_title">Étude de texte – Comment répondre à une question qui porte sur un procédé d'écriture (application) | Lecture & Méthodologie</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ===== Étude de texte 3 – Reading (prefix: degree4sec-secEco-unit1-etude3-reading-) ===== */
+        /* Palette: Forest Green & Parchment (Reading theme) */
+        :root {
+            --degree4sec-secEco-unit1-etude3-reading-bg: #f5f1e8;
+            --degree4sec-secEco-unit1-etude3-reading-card: #fffdf7;
+            --degree4sec-secEco-unit1-etude3-reading-text: #2b2416;
+            --degree4sec-secEco-unit1-etude3-reading-text-light: #5c5344;
+            --degree4sec-secEco-unit1-etude3-reading-heading: #1f4e3d;
+            --degree4sec-secEco-unit1-etude3-reading-accent: #3d7a56;
+            --degree4sec-secEco-unit1-etude3-reading-accent-hover: #2a5a3e;
+            --degree4sec-secEco-unit1-etude3-reading-border: #ddd6c4;
+            --degree4sec-secEco-unit1-etude3-reading-shadow: 0 1px 3px rgba(31,78,61,0.06), 0 6px 18px rgba(31,78,61,0.05);
+            --degree4sec-secEco-unit1-etude3-reading-radius: 14px;
+            --degree4sec-secEco-unit1-etude3-reading-radius-sm: 8px;
+            --degree4sec-secEco-unit1-etude3-reading-transition: 0.25s ease;
+            --degree4sec-secEco-unit1-etude3-reading-font: 'Georgia', 'Times New Roman', serif;
+            --degree4sec-secEco-unit1-etude3-reading-audio-bg: #e8efe6;
+            --degree4sec-secEco-unit1-etude3-reading-audio-progress: #b8c9b4;
+            --degree4sec-secEco-unit1-etude3-reading-button-bg: #dde7da;
+            --degree4sec-secEco-unit1-etude3-reading-button-hover: #c6d5c1;
+            --degree4sec-secEco-unit1-etude3-reading-input-bg: #faf7ef;
+        }
+        body.dark {
+            --degree4sec-secEco-unit1-etude3-reading-bg: #1a2019;
+            --degree4sec-secEco-unit1-etude3-reading-card: #232b22;
+            --degree4sec-secEco-unit1-etude3-reading-text: #e8e5d8;
+            --degree4sec-secEco-unit1-etude3-reading-text-light: #b3ae9c;
+            --degree4sec-secEco-unit1-etude3-reading-heading: #a8d5b8;
+            --degree4sec-secEco-unit1-etude3-reading-accent: #7fc79b;
+            --degree4sec-secEco-unit1-etude3-reading-accent-hover: #a3d8b6;
+            --degree4sec-secEco-unit1-etude3-reading-border: #35402f;
+            --degree4sec-secEco-unit1-etude3-reading-shadow: 0 1px 4px rgba(0,0,0,0.3);
+            --degree4sec-secEco-unit1-etude3-reading-audio-bg: #26301f;
+            --degree4sec-secEco-unit1-etude3-reading-audio-progress: #4c5a44;
+            --degree4sec-secEco-unit1-etude3-reading-button-bg: #33402c;
+            --degree4sec-secEco-unit1-etude3-reading-button-hover: #45553c;
+            --degree4sec-secEco-unit1-etude3-reading-input-bg: #2c3428;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            font-family: var(--degree4sec-secEco-unit1-etude3-reading-font);
+            background: var(--degree4sec-secEco-unit1-etude3-reading-bg);
+            background-image:
+                radial-gradient(circle at 15% 20%, rgba(61,122,86,0.04) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(61,122,86,0.03) 0%, transparent 40%);
+            color: var(--degree4sec-secEco-unit1-etude3-reading-text);
+            line-height: 1.8;
+            transition: background var(--degree4sec-secEco-unit1-etude3-reading-transition), color var(--degree4sec-secEco-unit1-etude3-reading-transition);
+        }
+
+        .back-nav {
+            background: var(--degree4sec-secEco-unit1-etude3-reading-card);
+            border-bottom: 1px solid var(--degree4sec-secEco-unit1-etude3-reading-border);
+            padding: 0.5rem 1.5rem;
+        }
+        .back-nav a {
+            font-weight: 600;
+            color: var(--degree4sec-secEco-unit1-etude3-reading-accent);
+            text-decoration: none;
+        }
+        .back-nav a:hover { text-decoration: underline; }
+
+        .degree4sec-secEco-unit1-etude3-reading-container { max-width: 1060px; margin: 0 auto; padding: 1.8rem 1.4rem 3rem; }
+
+        .degree4sec-secEco-unit1-etude3-reading-lesson-header { text-align: center; margin-bottom: 2rem; }
+        .degree4sec-secEco-unit1-etude3-reading-badge {
+            display:inline-block;
+            background: var(--degree4sec-secEco-unit1-etude3-reading-accent);
+            color: #fff;
+            padding: 0.3rem 1.1rem;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-lesson-header h1 {
+            font-size: 2.1rem;
+            color: var(--degree4sec-secEco-unit1-etude3-reading-heading);
+            margin: 0.7rem 0 0.4rem;
+            line-height: 1.25;
+            font-weight: 700;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-lesson-header .degree4sec-secEco-unit1-etude3-reading-meta {
+            font-size: 0.9rem;
+            color: var(--degree4sec-secEco-unit1-etude3-reading-text-light);
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .degree4sec-secEco-unit1-etude3-reading-audio-player {
+            background: var(--degree4sec-secEco-unit1-etude3-reading-card);
+            border: 1px solid var(--degree4sec-secEco-unit1-etude3-reading-border);
+            border-radius: var(--degree4sec-secEco-unit1-etude3-reading-radius);
+            padding: 1rem 1.4rem;
+            margin: 1.5rem 0 2rem;
+            box-shadow: var(--degree4sec-secEco-unit1-etude3-reading-shadow);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-play-btn {
+            width: 46px; height: 46px; border-radius: 50%;
+            background: var(--degree4sec-secEco-unit1-etude3-reading-accent);
+            color: #fff; border: none; font-size: 1.2rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background var(--degree4sec-secEco-unit1-etude3-reading-transition);
+            flex-shrink: 0;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-play-btn:hover { background: var(--degree4sec-secEco-unit1-etude3-reading-accent-hover); }
+        .degree4sec-secEco-unit1-etude3-reading-progress-area { flex: 1; min-width: 120px; display: flex; flex-direction: column; gap: 0.3rem; }
+        .degree4sec-secEco-unit1-etude3-reading-progress-bar {
+            width: 100%; height: 6px; background: var(--degree4sec-secEco-unit1-etude3-reading-audio-progress);
+            border-radius: 3px; cursor: pointer; position: relative; overflow: hidden;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-progress-fill {
+            height: 100%; background: var(--degree4sec-secEco-unit1-etude3-reading-accent);
+            border-radius: 3px; width: 0%; transition: width 0.1s linear;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-time-info {
+            display: flex; justify-content: space-between; font-size: 0.75rem;
+            color: var(--degree4sec-secEco-unit1-etude3-reading-text-light);
+        }
+        .degree4sec-secEco-unit1-etude3-reading-speed-selector { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+        .degree4sec-secEco-unit1-etude3-reading-speed-btn {
+            border: 1px solid var(--degree4sec-secEco-unit1-etude3-reading-border);
+            background: var(--degree4sec-secEco-unit1-etude3-reading-button-bg);
+            color: var(--degree4sec-secEco-unit1-etude3-reading-text);
+            padding: 0.3rem 0.6rem; border-radius: 4px;
+            font-size: 0.75rem; font-weight: 600; cursor: pointer;
+            transition: all var(--degree4sec-secEco-unit1-etude3-reading-transition);
+        }
+        .degree4sec-secEco-unit1-etude3-reading-speed-btn.active {
+            background: var(--degree4sec-secEco-unit1-etude3-reading-accent);
+            color: #fff; border-color: var(--degree4sec-secEco-unit1-etude3-reading-accent);
+        }
+        .degree4sec-secEco-unit1-etude3-reading-audio-label {
+            font-weight: 700; font-size: 0.9rem;
+            color: var(--degree4sec-secEco-unit1-etude3-reading-heading);
+            white-space: nowrap;
+        }
+        @media (max-width:600px) {
+            .degree4sec-secEco-unit1-etude3-reading-audio-player { flex-direction: column; align-items: stretch; }
+            .degree4sec-secEco-unit1-etude3-reading-audio-label { text-align: center; }
+        }
+
+        .degree4sec-secEco-unit1-etude3-reading-text-card {
+            background: var(--degree4sec-secEco-unit1-etude3-reading-card);
+            border: 1px solid var(--degree4sec-secEco-unit1-etude3-reading-border);
+            border-radius: var(--degree4sec-secEco-unit1-etude3-reading-radius);
+            padding: 2rem 2.2rem 1.8rem;
+            margin: 1.8rem 0;
+            font-size: 1.05rem;
+            line-height: 2;
+            box-shadow: var(--degree4sec-secEco-unit1-etude3-reading-shadow);
+            position: relative;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-text-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, var(--degree4sec-secEco-unit1-etude3-reading-accent), transparent);
+            border-radius: var(--degree4sec-secEco-unit1-etude3-reading-radius) var(--degree4sec-secEco-unit1-etude3-reading-radius) 0 0;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-text-title {
+            text-align: center;
+            font-size: 1.35rem;
+            color: var(--degree4sec-secEco-unit1-etude3-reading-heading);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-text-card p {
+            margin-bottom: 1.1rem;
+            text-align: justify;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-text-card p:first-of-type::first-letter {
+            float: left;
+            font-size: 3.6rem;
+            line-height: 0.85;
+            padding: 0.4rem 0.6rem 0 0;
+            color: var(--degree4sec-secEco-unit1-etude3-reading-accent);
+            font-weight: 700;
+            font-family: 'Georgia', serif;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-text-author {
+            text-align: right;
+            font-style: italic;
+            font-size: 0.9rem;
+            color: var(--degree4sec-secEco-unit1-etude3-reading-text-light);
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px dashed var(--degree4sec-secEco-unit1-etude3-reading-border);
+        }
+
+        .degree4sec-secEco-unit1-etude3-reading-valeurs-section {
+            background: var(--degree4sec-secEco-unit1-etude3-reading-card);
+            border: 1px solid var(--degree4sec-secEco-unit1-etude3-reading-border);
+            border-radius: var(--degree4sec-secEco-unit1-etude3-reading-radius);
+            padding: 1.6rem 1.8rem;
+            margin: 2rem 0;
+            box-shadow: var(--degree4sec-secEco-unit1-etude3-reading-shadow);
+        }
+        .degree4sec-secEco-unit1-etude3-reading-valeurs-section h2 {
+            font-size: 1.5rem;
+            color: var(--degree4sec-secEco-unit1-etude3-reading-heading);
+            margin-bottom: 1rem;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+            border-bottom: 3px solid var(--degree4sec-secEco-unit1-etude3-reading-accent);
+        }
+        .degree4sec-secEco-unit1-etude3-reading-valeur-card {
+            background: var(--degree4sec-secEco-unit1-etude3-reading-audio-bg);
+            border-left: 4px solid var(--degree4sec-secEco-unit1-etude3-reading-accent);
+            border-radius: 0 var(--degree4sec-secEco-unit1-etude3-reading-radius-sm) var(--degree4sec-secEco-unit1-etude3-reading-radius-sm) 0;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-valeur-card h3 {
+            color: var(--degree4sec-secEco-unit1-etude3-reading-accent);
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-valeur-card ul { list-style: none; padding: 0; }
+        .degree4sec-secEco-unit1-etude3-reading-valeur-card li {
+            padding: 0.3rem 0 0.3rem 1.4rem;
+            position: relative;
+            color: var(--degree4sec-secEco-unit1-etude3-reading-text-light);
+        }
+        .degree4sec-secEco-unit1-etude3-reading-valeur-card li::before {
+            content: '◆';
+            position: absolute; left: 0;
+            color: var(--degree4sec-secEco-unit1-etude3-reading-accent);
+            font-size: 0.55rem; top: 0.6rem;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-valeur-card p { margin: 0.5rem 0; }
+
+        /* Device analysis table */
+        .degree4sec-secEco-unit1-etude3-reading-device-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-device-table th,
+        .degree4sec-secEco-unit1-etude3-reading-device-table td {
+            padding: 0.6rem 0.8rem;
+            border: 1px solid var(--degree4sec-secEco-unit1-etude3-reading-border);
+            text-align: left;
+            font-size: 0.9rem;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-device-table th {
+            background: var(--degree4sec-secEco-unit1-etude3-reading-accent);
+            color: #fff;
+            font-weight: 700;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-device-table tr:nth-child(even) td {
+            background: var(--degree4sec-secEco-unit1-etude3-reading-audio-bg);
+        }
+
+        /* Method steps */
+        .degree4sec-secEco-unit1-etude3-reading-step {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            background: var(--degree4sec-secEco-unit1-etude3-reading-audio-bg);
+            border-radius: var(--degree4sec-secEco-unit1-etude3-reading-radius-sm);
+            padding: 1rem 1.2rem;
+            margin-bottom: 0.9rem;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-step-num {
+            width: 38px; height: 38px;
+            background: var(--degree4sec-secEco-unit1-etude3-reading-accent);
+            color: #fff;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 1.05rem;
+            flex-shrink: 0;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-step-body { flex: 1; }
+        .degree4sec-secEco-unit1-etude3-reading-step-body h3 {
+            color: var(--degree4sec-secEco-unit1-etude3-reading-accent);
+            font-size: 1.05rem;
+            margin-bottom: 0.4rem;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-step-body p { font-size: 0.95rem; color: var(--degree4sec-secEco-unit1-etude3-reading-text-light); }
+
+        /* Model answer block */
+        .degree4sec-secEco-unit1-etude3-reading-model {
+            background: linear-gradient(135deg, rgba(61,122,86,0.06), rgba(61,122,86,0.02));
+            border: 1px solid var(--degree4sec-secEco-unit1-etude3-reading-accent);
+            border-radius: var(--degree4sec-secEco-unit1-etude3-reading-radius-sm);
+            padding: 1rem 1.2rem;
+            margin: 0.8rem 0;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-model .label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #fff;
+            background: var(--degree4sec-secEco-unit1-etude3-reading-accent);
+            padding: 0.15rem 0.6rem;
+            border-radius: 12px;
+            margin-bottom: 0.5rem;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-model p {
+            margin: 0.3rem 0;
+            font-size: 0.95rem;
+            color: var(--degree4sec-secEco-unit1-etude3-reading-text);
+        }
+
+        .degree4sec-secEco-unit1-etude3-reading-note {
+            background: linear-gradient(135deg, rgba(61,122,86,0.08), rgba(61,122,86,0.03));
+            border: 1px dashed var(--degree4sec-secEco-unit1-etude3-reading-accent);
+            border-radius: var(--degree4sec-secEco-unit1-etude3-reading-radius-sm);
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+            color: var(--degree4sec-secEco-unit1-etude3-reading-text);
+        }
+        .degree4sec-secEco-unit1-etude3-reading-note strong { color: var(--degree4sec-secEco-unit1-etude3-reading-accent); }
+
+        .degree4sec-secEco-unit1-etude3-reading-exercises-section {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-exercises-section h2 {
+            grid-column: 1 / -1;
+            font-size: 1.5rem;
+            color: var(--degree4sec-secEco-unit1-etude3-reading-heading);
+            margin: 2rem 0 1rem;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+            border-bottom: 3px solid var(--degree4sec-secEco-unit1-etude3-reading-accent);
+        }
+        .degree4sec-secEco-unit1-etude3-reading-exercise-card {
+            background: var(--degree4sec-secEco-unit1-etude3-reading-card);
+            border: 1px solid var(--degree4sec-secEco-unit1-etude3-reading-border);
+            border-radius: var(--degree4sec-secEco-unit1-etude3-reading-radius-sm);
+            padding: 1.2rem 1.4rem;
+            margin-bottom: 0;
+            box-shadow: var(--degree4sec-secEco-unit1-etude3-reading-shadow);
+        }
+        .degree4sec-secEco-unit1-etude3-reading-exercise-col-left { grid-column: 1 / 2; }
+        .degree4sec-secEco-unit1-etude3-reading-exercise-col-right { grid-column: 2 / 3; }
+        .degree4sec-secEco-unit1-etude3-reading-exercise-card h3 {
+            font-size: 1.05rem;
+            color: var(--degree4sec-secEco-unit1-etude3-reading-accent);
+            margin-bottom: 0.8rem;
+            display: flex; align-items: center; gap: 0.4rem;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-exercise-card table {
+            width: 100%; border-collapse: collapse; margin: 0.8rem 0;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-exercise-card th,
+        .degree4sec-secEco-unit1-etude3-reading-exercise-card td {
+            padding: 0.55rem 0.7rem;
+            border: 1px solid var(--degree4sec-secEco-unit1-etude3-reading-border);
+            text-align: left; font-size: 0.9rem;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-exercise-card th {
+            background: var(--degree4sec-secEco-unit1-etude3-reading-audio-bg);
+            font-weight: 700;
+            color: var(--degree4sec-secEco-unit1-etude3-reading-heading);
+        }
+        .degree4sec-secEco-unit1-etude3-reading-exercise-card input[type="text"],
+        .degree4sec-secEco-unit1-etude3-reading-exercise-card textarea {
+            width: 100%; padding: 0.4rem 0.6rem;
+            border: 1px solid var(--degree4sec-secEco-unit1-etude3-reading-border);
+            border-radius: 4px;
+            background: var(--degree4sec-secEco-unit1-etude3-reading-input-bg);
+            color: var(--degree4sec-secEco-unit1-etude3-reading-text);
+            font-family: inherit; font-size: 0.9rem;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-exercise-card textarea { resize: vertical; }
+        .degree4sec-secEco-unit1-etude3-reading-exercise-card input:focus,
+        .degree4sec-secEco-unit1-etude3-reading-exercise-card textarea:focus {
+            outline: none;
+            border-color: var(--degree4sec-secEco-unit1-etude3-reading-accent);
+        }
+        .degree4sec-secEco-unit1-etude3-reading-btn-verify {
+            background: var(--degree4sec-secEco-unit1-etude3-reading-accent);
+            color: #fff; border: none; padding: 0.5rem 1.2rem;
+            border-radius: 20px; font-weight: 600; cursor: pointer;
+            transition: background var(--degree4sec-secEco-unit1-etude3-reading-transition);
+            margin-top: 0.6rem; font-size: 0.85rem;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-btn-verify:hover { background: var(--degree4sec-secEco-unit1-etude3-reading-accent-hover); }
+        .degree4sec-secEco-unit1-etude3-reading-answer-key {
+            display: none; margin-top: 0.8rem; padding: 0.8rem;
+            background: var(--degree4sec-secEco-unit1-etude3-reading-audio-bg);
+            border-radius: 6px; font-size: 0.85rem;
+            color: var(--degree4sec-secEco-unit1-etude3-reading-text-light);
+            border: 1px dashed var(--degree4sec-secEco-unit1-etude3-reading-accent);
+        }
+        .degree4sec-secEco-unit1-etude3-reading-answer-key.visible { display: block; }
+
+        .degree4sec-secEco-unit1-etude3-reading-self-assessment {
+            margin-top: 0.8rem; font-size: 0.9rem;
+            display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-self-assessment label { cursor: pointer; }
+
+        .degree4sec-secEco-unit1-etude3-reading-score-area {
+            background: var(--degree4sec-secEco-unit1-etude3-reading-card);
+            border: 1px solid var(--degree4sec-secEco-unit1-etude3-reading-border);
+            border-radius: var(--degree4sec-secEco-unit1-etude3-reading-radius);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: var(--degree4sec-secEco-unit1-etude3-reading-shadow);
+        }
+        .degree4sec-secEco-unit1-etude3-reading-score-area h2 {
+            color: var(--degree4sec-secEco-unit1-etude3-reading-heading);
+            margin-bottom: 1rem;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-score-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .degree4sec-secEco-unit1-etude3-reading-score-stat {
+            background: var(--degree4sec-secEco-unit1-etude3-reading-audio-bg);
+            padding: 0.8rem 1.2rem; border-radius: 8px; font-weight: 600;
+        }
+
+        .degree4sec-secEco-unit1-etude3-reading-footer-nav {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            background: var(--degree4sec-secEco-unit1-etude3-reading-card);
+            border-top: 1px solid var(--degree4sec-secEco-unit1-etude3-reading-border);
+            padding: 0.8rem 1.5rem;
+            border-radius: 0 0 var(--degree4sec-secEco-unit1-etude3-reading-radius) var(--degree4sec-secEco-unit1-etude3-reading-radius);
+        }
+        .degree4sec-secEco-unit1-etude3-reading-footer-nav a {
+            font-weight: 600;
+            color: var(--degree4sec-secEco-unit1-etude3-reading-accent);
+            text-decoration: none;
+        }
+        .degree4sec-secEco-unit1-etude3-reading-footer-nav a:hover { text-decoration: underline; }
+
+        html[dir="rtl"] body { direction: rtl; }
+        html[dir="rtl"] .degree4sec-secEco-unit1-etude3-reading-container { text-align: right; }
+        html[dir="rtl"] .degree4sec-secEco-unit1-etude3-reading-text-author { text-align: left; }
+        html[dir="rtl"] .degree4sec-secEco-unit1-etude3-reading-exercise-card th,
+        html[dir="rtl"] .degree4sec-secEco-unit1-etude3-reading-exercise-card td { text-align: right; }
+        html[dir="rtl"] .degree4sec-secEco-unit1-etude3-reading-text-card p:first-of-type::first-letter {
+            float: right;
+            padding: 0.4rem 0 0 0.6rem;
+        }
+
+        @media (max-width:800px) {
+            .degree4sec-secEco-unit1-etude3-reading-exercises-section { grid-template-columns: 1fr; }
+            .degree4sec-secEco-unit1-etude3-reading-exercise-col-left,
+            .degree4sec-secEco-unit1-etude3-reading-exercise-col-right { grid-column: auto; }
+        }
+        @media (max-width:600px) {
+            .degree4sec-secEco-unit1-etude3-reading-lesson-header h1 { font-size: 1.5rem; }
+            .degree4sec-secEco-unit1-etude3-reading-container { padding: 1rem 0.8rem 2rem; }
+            .degree4sec-secEco-unit1-etude3-reading-text-card { padding: 1.4rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div id="toast-container"></div>
+    <button id="signInBtn" style="display:none"></button>
+
+    <nav class="back-nav no-print">
+        <a href="index.html" data-i18n="back_link">← Retour à l'accueil</a>
+    </nav>
+
+    <div id="main-content" class="degree4sec-secEco-unit1-etude3-reading-container">
+        <!-- Breadcrumb -->
+        <p style="margin-bottom:1.5rem; color:var(--degree4sec-secEco-unit1-etude3-reading-text-light);">
+            <a href="degree4sec_sececo.html" data-i18n="back_revision">Module 1</a>
+            › <strong data-i18n="back_current">Étude de texte – procédés d'écriture</strong>
+        </p>
+
+        <div class="degree4sec-secEco-unit1-etude3-reading-lesson-header">
+            <span class="degree4sec-secEco-unit1-etude3-reading-badge" data-i18n="lesson_badge">📖 Lecture · Étude de texte 3</span>
+            <h1 data-i18n="lesson_title">Comment répondre à une question<br>qui porte sur un procédé d'écriture</h1>
+            <div class="degree4sec-secEco-unit1-etude3-reading-meta">
+                <span data-i18n="lesson_duration">⏱️ 60 minutes</span>
+                <span data-i18n="lesson_meta_audio">🎧 Écoutez le texte puis analysez les procédés d'écriture</span>
+            </div>
+        </div>
+
+        <!-- Audio player -->
+        <div class="degree4sec-secEco-unit1-etude3-reading-audio-player" id="audioPlayer">
+            <span class="degree4sec-secEco-unit1-etude3-reading-audio-label" data-i18n="audio_label">🎧 Écoute littéraire</span>
+            <button class="degree4sec-secEco-unit1-etude3-reading-play-btn" id="playBtn" aria-label="Lecture">▶</button>
+            <div class="degree4sec-secEco-unit1-etude3-reading-progress-area">
+                <div class="degree4sec-secEco-unit1-etude3-reading-progress-bar" id="progressBar">
+                    <div class="degree4sec-secEco-unit1-etude3-reading-progress-fill" id="progressFill"></div>
+                </div>
+                <div class="degree4sec-secEco-unit1-etude3-reading-time-info">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+            <div class="degree4sec-secEco-unit1-etude3-reading-speed-selector" id="speedSelector">
+                <button class="degree4sec-secEco-unit1-etude3-reading-speed-btn" data-speed="0.75">0.75x</button>
+                <button class="degree4sec-secEco-unit1-etude3-reading-speed-btn active" data-speed="1">1x</button>
+                <button class="degree4sec-secEco-unit1-etude3-reading-speed-btn" data-speed="1.25">1.25x</button>
+                <button class="degree4sec-secEco-unit1-etude3-reading-speed-btn" data-speed="1.5">1.5x</button>
+            </div>
+        </div>
+
+        <!-- Literary text (rich in devices) -->
+        <div class="degree4sec-secEco-unit1-etude3-reading-text-card">
+            <div class="degree4sec-secEco-unit1-etude3-reading-text-title" data-i18n="text_title">Les mains de ma mère</div>
+            <p data-i18n="text_para1">Je les ai longtemps regardées sans les voir. Les mains de ma mère, noueuses comme les racines d'un vieil olivier, racontaient à elles seules une vie entière de labeur. Elles étaient un jardin de rides, un livre ouvert où chaque ligne creusée parlait d'amour et de patience.</p>
+            <p data-i18n="text_para2">Quand j'étais enfant, ces mains me paraissaient immenses. Elles étaient un abri, une promesse, une chaleur. Le matin, elles pétrissaient la pâte en fredonnant ; l'après-midi, elles reprisaient les vêtements usés ; le soir, elles se posaient sur mon front brûlant comme une caresse qui chassait la fièvre. Ces mains ne s'arrêtaient jamais.</p>
+            <p data-i18n="text_para3">Oh ! Ces mains ! Comme elles m'ont manqué quand je suis parti étudier à la ville ! Comme elles me semblaient loin, ces mains qui savaient tout réparer, tout consoler, tout préparer ! Le temps, ce voleur discret, les a peu à peu transformées, mais il n'a jamais pu leur enlever leur douceur.</p>
+            <p data-i18n="text_para4">Aujourd'hui, lorsque je rends visite à ma mère, je prends ses mains dans les miennes et je les regarde longuement. Elles tremblent un peu. Elles sont plus fines, plus fragiles. La peau, autrefois tendue, s'est affaissée comme un voile fatigué. Mais dans le creux de ces paumes, je retrouve tout ce que je suis devenu.</p>
+            <p data-i18n="text_para5">Mes enfants, eux, ne comprennent pas encore. Ils voient de vieilles mains. Ils ne voient pas les milliers de repas préparés, les nuits blanches, les prières silencieuses, les larmes essuyées, les fiertés retenues. Ils ne voient pas que ces mains sont des cathédrales de mémoire.</p>
+            <p data-i18n="text_para6">Un jour, je le sais, ces mains se reposeront pour toujours. Ce jour-là, il me restera leur souvenir, leurs gestes, leur empreinte invisible. Et je comprendrai, peut-être trop tard, que les mains d'une mère sont la première maison de l'enfant, la première patrie du cœur.</p>
+            <p data-i18n="text_para7">Alors je les embrasse, ces mains d'argile et d'or, ces mains qui ont fait de moi un homme. Je les embrasse comme on embrasse une relique, une promesse, une prière. Car il n'y a pas, dans une vie entière, de trésor plus précieux que les mains fatiguées d'une mère.</p>
+            <div class="degree4sec-secEco-unit1-etude3-reading-text-author" data-i18n="text_author">— Récit inédit, d'après un témoignage</div>
+        </div>
+
+        <!-- Method section -->
+        <div class="degree4sec-secEco-unit1-etude3-reading-valeurs-section">
+            <h2 data-i18n="method_heading">📖 Méthode : répondre à une question sur un procédé d'écriture</h2>
+            <p data-i18n="method_intro" style="margin-bottom:1.2rem;">Répondre à une question portant sur un <strong>procédé d'écriture</strong> exige une démarche rigoureuse : il ne suffit pas de nommer le procédé, il faut aussi <strong>analyser son effet</strong> et <strong>interpréter son rôle</strong> dans le texte. Voici les <strong>quatre étapes</strong> à suivre.</p>
+
+            <div class="degree4sec-secEco-unit1-etude3-reading-step">
+                <div class="degree4sec-secEco-unit1-etude3-reading-step-num">1</div>
+                <div class="degree4sec-secEco-unit1-etude3-reading-step-body">
+                    <h3 data-i18n="step1_title">Repérer et citer le procédé</h3>
+                    <p data-i18n="step1_text">Identifier dans le texte l'expression ou la phrase qui contient le procédé demandé et la <strong>citer entre guillemets</strong>.</p>
+                </div>
+            </div>
+
+            <div class="degree4sec-secEco-unit1-etude3-reading-step">
+                <div class="degree4sec-secEco-unit1-etude3-reading-step-num">2</div>
+                <div class="degree4sec-secEco-unit1-etude3-reading-step-body">
+                    <h3 data-i18n="step2_title">Nommer et décrire le procédé</h3>
+                    <p data-i18n="step2_text">Identifier le nom exact du procédé (comparaison, métaphore, personnification, énumération, anaphore…) et expliquer en quoi l'expression relève bien de ce procédé.</p>
+                </div>
+            </div>
+
+            <div class="degree4sec-secEco-unit1-etude3-reading-step">
+                <div class="degree4sec-secEco-unit1-etude3-reading-step-num">3</div>
+                <div class="degree4sec-secEco-unit1-etude3-reading-step-body">
+                    <h3 data-i18n="step3_title">Analyser l'effet produit</h3>
+                    <p data-i18n="step3_text">Expliquer <strong>ce que le procédé fait ressentir</strong> ou <strong>comprendre</strong> : impression de grandeur, de tendresse, de fragilité, d'accumulation…</p>
+                </div>
+            </div>
+
+            <div class="degree4sec-secEco-unit1-etude3-reading-step">
+                <div class="degree4sec-secEco-unit1-etude3-reading-step-num">4</div>
+                <div class="degree4sec-secEco-unit1-etude3-reading-step-body">
+                    <h3 data-i18n="step4_title">Interpréter le rôle du procédé</h3>
+                    <p data-i18n="step4_text">Mettre le procédé en lien avec le <strong>thème</strong>, l'<strong>atmosphère</strong> ou l'<strong>intention de l'auteur</strong> : ici, magnifier les mains de la mère comme symbole d'amour et de mémoire.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Device reference table -->
+        <div class="degree4sec-secEco-unit1-etude3-reading-valeurs-section">
+            <h2 data-i18n="devices_heading">📚 Petit précis des procédés d'écriture</h2>
+            <table class="degree4sec-secEco-unit1-etude3-reading-device-table">
+                <thead>
+                    <tr>
+                        <th data-i18n="device_col_name" class="no-bilingual">Procédé</th>
+                        <th data-i18n="device_col_def" class="no-bilingual">Définition</th>
+                        <th data-i18n="device_col_ex" class="no-bilingual">Exemple dans le texte</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td data-i18n="device_comparison">Comparaison</td><td data-i18n="device_comparison_def">Rapproche deux éléments à l'aide d'un outil (comme, tel, pareil à).</td><td data-i18n="device_comparison_ex">« noueuses comme les racines d'un vieil olivier »</td></tr>
+                    <tr><td data-i18n="device_metaphor">Métaphore</td><td data-i18n="device_metaphor_def">Rapproche deux éléments sans outil de comparaison.</td><td data-i18n="device_metaphor_ex">« un jardin de rides », « des cathédrales de mémoire »</td></tr>
+                    <tr><td data-i18n="device_personification">Personnification</td><td data-i18n="device_personification_def">Attribue des traits humains à une chose ou à une idée.</td><td data-i18n="device_personification_ex">« Le temps, ce voleur discret »</td></tr>
+                    <tr><td data-i18n="device_enumeration">Énumération / accumulation</td><td data-i18n="device_enumeration_def">Liste plusieurs éléments de même nature.</td><td data-i18n="device_enumeration_ex">« les repas, les nuits, les prières, les larmes, les fiertés »</td></tr>
+                    <tr><td data-i18n="device_anaphora">Anaphore</td><td data-i18n="device_anaphora_def">Répétition d'un mot ou d'un groupe en début de phrase.</td><td data-i18n="device_anaphora_ex">« Elles étaient un abri, une promesse, une chaleur. »</td></tr>
+                    <tr><td data-i18n="device_exclamation">Exclamation / apostrophe</td><td data-i18n="device_exclamation_def">Exprime une émotion forte, interpelle un être ou un objet.</td><td data-i18n="device_exclamation_ex">« Oh ! Ces mains ! Comme elles m'ont manqué ! »</td></tr>
+                    <tr><td data-i18n="device_lexical_field">Champ lexical</td><td data-i18n="device_lexical_field_def">Ensemble de mots liés à un même thème.</td><td data-i18n="device_lexical_field_ex">Champ lexical du travail et de la tendresse</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Guided application of the method -->
+        <div class="degree4sec-secEco-unit1-etude3-reading-valeurs-section">
+            <h2 data-i18n="guided_heading">📖 Application guidée de la méthode</h2>
+            <div class="degree4sec-secEco-unit1-etude3-reading-valeur-card">
+                <h3 data-i18n="guided_question">❓ Question : « Relevez dans le texte une comparaison et une métaphore. Analysez l'effet produit par ces deux images. »</h3>
+            </div>
+
+            <div class="degree4sec-secEco-unit1-etude3-reading-model">
+                <span class="label" data-i18n="model_label">Réponse modèle (4 étapes)</span>
+                <p><strong>1. Citer :</strong> Le texte contient la comparaison « noueuses comme les racines d'un vieil olivier » et la métaphore « un jardin de rides ».</p>
+                <p><strong>2. Nommer / décrire :</strong> La première est une <em>comparaison</em> (présence de l'outil « comme ») ; la seconde est une <em>métaphore</em> (rapprochement direct, sans outil).</p>
+                <p><strong>3. Effet produit :</strong> La comparaison aux racines d'un olivier suggère la solidité, l'ancienneté et l'enracinement ; la métaphore du « jardin de rides » adoucit la vieillesse en la présentant comme un paysage vivant et cultivé.</p>
+                <p><strong>4. Interprétation :</strong> Ces deux images magnifient les mains de la mère, à la fois robustes et belles, et donnent au texte une tonalité à la fois tendre et respectueuse.</p>
+            </div>
+        </div>
+
+        <!-- Note -->
+        <div class="degree4sec-secEco-unit1-etude3-reading-note">
+            <strong data-i18n="note_title">💡 Rappel :</strong> <span data-i18n="note_text">une bonne réponse sur un procédé d'écriture suit toujours le schéma <strong>citer → nommer → analyser → interpréter</strong>. Ne jamais se contenter de nommer le procédé : il faut expliquer son effet.</span>
+        </div>
+
+        <!-- Exercises grid -->
+        <div class="degree4sec-secEco-unit1-etude3-reading-exercises-section">
+            <h2 data-i18n="exercises_heading">✍️ Exercices d'application</h2>
+
+            <!-- Ex 1 -->
+            <div class="degree4sec-secEco-unit1-etude3-reading-exercise-card degree4sec-secEco-unit1-etude3-reading-exercise-col-left">
+                <h3 data-i18n="exo1_title">📌 1. Identifier les procédés</h3>
+                <p data-i18n="exo1_instruction">Associez chaque extrait du texte au procédé qui lui correspond.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_excerpt" class="no-bilingual">Extrait</th>
+                            <th data-i18n="table_device" class="no-bilingual">Procédé</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>« noueuses comme les racines d'un vieil olivier »</td><td><input type="text" placeholder="procédé"></td></tr>
+                        <tr><td>« un jardin de rides »</td><td><input type="text" placeholder="procédé"></td></tr>
+                        <tr><td>« Le temps, ce voleur discret »</td><td><input type="text" placeholder="procédé"></td></tr>
+                        <tr><td>« Elles étaient un abri, une promesse, une chaleur. »</td><td><input type="text" placeholder="procédé"></td></tr>
+                        <tr><td>« Oh ! Ces mains ! »</td><td><input type="text" placeholder="procédé"></td></tr>
+                    </tbody>
+                </table>
+                <div class="degree4sec-secEco-unit1-etude3-reading-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-etude3-reading-btn-verify" onclick="toggleCorrection('exo1Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo1Key" class="degree4sec-secEco-unit1-etude3-reading-answer-key"></div>
+            </div>
+
+            <!-- Ex 2 -->
+            <div class="degree4sec-secEco-unit1-etude3-reading-exercise-card degree4sec-secEco-unit1-etude3-reading-exercise-col-right">
+                <h3 data-i18n="exo2_title">📌 2. Champ lexical</h3>
+                <p data-i18n="exo2_instruction">Relevez quatre mots appartenant au champ lexical du corps et indiquez le thème qu'il éclaire dans le texte.</p>
+                <p><strong>Mots :</strong> <input type="text" placeholder="4 mots séparés par des virgules..."></p>
+                <p><strong>Thème éclairé :</strong> <textarea rows="2" placeholder="Thème et effet..."></textarea></p>
+                <div class="degree4sec-secEco-unit1-etude3-reading-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-etude3-reading-btn-verify" onclick="toggleCorrection('exo2Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo2Key" class="degree4sec-secEco-unit1-etude3-reading-answer-key"></div>
+            </div>
+
+            <!-- Ex 3 -->
+            <div class="degree4sec-secEco-unit1-etude3-reading-exercise-card degree4sec-secEco-unit1-etude3-reading-exercise-col-left">
+                <h3 data-i18n="exo3_title">📌 3. Choisissez la meilleure analyse</h3>
+                <p data-i18n="exo3_instruction">Sélectionnez l'analyse la mieux construite (citation + nom + effet + interprétation).</p>
+                <p><strong>Procédé :</strong> « des cathédrales de mémoire »</p>
+                <label><input type="radio" name="mcq1" value="a"> C'est une métaphore.</label><br>
+                <label><input type="radio" name="mcq1" value="b"> Dans l'expression « des cathédrales de mémoire », on relève une <em>métaphore</em> : les mains de la mère sont comparées à des édifices majestueux qui abritent des souvenirs sacrés. Cette image donne aux mains une dimension sacrée et monumentale et souligne le respect du narrateur.</label><br>
+                <label><input type="radio" name="mcq1" value="c"> C'est une comparaison parce qu'il y a un « de ».</label>
+                <p style="margin-top:0.8rem;"><strong>Procédé :</strong> « Le temps, ce voleur discret »</p>
+                <label><input type="radio" name="mcq2" value="a"> C'est une énumération.</label><br>
+                <label><input type="radio" name="mcq2" value="b"> Dans l'expression « Le temps, ce voleur discret », le temps est <em>personnifié</em> sous les traits d'un voleur. Cette image suggère que le temps dérobe insensiblement la jeunesse et la force, mais qu'il reste discret, presque silencieux.</label><br>
+                <label><input type="radio" name="mcq2" value="c"> C'est une comparaison avec « comme ».</label>
+                <p style="margin-top:0.8rem;"><strong>Procédé :</strong> « Oh ! Ces mains ! Comme elles m'ont manqué ! »</p>
+                <label><input type="radio" name="mcq3" value="a"> C'est une exclamation / apostrophe qui traduit l'émotion du narrateur.</label><br>
+                <label><input type="radio" name="mcq3" value="b"> Les exclamations « Oh ! Ces mains ! » et « Comme elles m'ont manqué ! » traduisent l'<em>émotion intense</em> du narrateur ; l'<em>apostrophe</em> adressée aux mains leur donne une présence presque vivante et renforce la nostalgie.</label><br>
+                <label><input type="radio" name="mcq3" value="c"> C'est un dialogue.</label>
+                <div class="degree4sec-secEco-unit1-etude3-reading-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-etude3-reading-btn-verify" onclick="toggleCorrection('exo3Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo3Key" class="degree4sec-secEco-unit1-etude3-reading-answer-key"></div>
+            </div>
+
+            <!-- Ex 4 -->
+            <div class="degree4sec-secEco-unit1-etude3-reading-exercise-card degree4sec-secEco-unit1-etude3-reading-exercise-col-right">
+                <h3 data-i18n="exo4_title">📌 4. Analyser l'effet d'une image</h3>
+                <p data-i18n="exo4_instruction">Analysez l'effet produit par l'image suivante en suivant les 4 étapes (citer, nommer, effet, interpréter).</p>
+                <p style="font-style:italic; margin:0.6rem 0; padding:0.8rem; background:var(--degree4sec-secEco-unit1-etude3-reading-audio-bg); border-radius:6px;" data-i18n="exo4_quote">« les mains d'une mère sont la première maison de l'enfant, la première patrie du cœur »</p>
+                <textarea rows="4" placeholder="Votre analyse..."></textarea>
+                <div class="degree4sec-secEco-unit1-etude3-reading-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-etude3-reading-btn-verify" onclick="toggleCorrection('exo4Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo4Key" class="degree4sec-secEco-unit1-etude3-reading-answer-key"></div>
+            </div>
+
+            <!-- Ex 5 -->
+            <div class="degree4sec-secEco-unit1-etude3-reading-exercise-card degree4sec-secEco-unit1-etude3-reading-exercise-col-left">
+                <h3 data-i18n="exo5_title">📌 5. Analyser une réponse d'élève</h3>
+                <p data-i18n="exo5_instruction">Lisez cette réponse, puis expliquez en une phrase pourquoi elle est insuffisante.</p>
+                <p style="font-style:italic; margin:0.6rem 0; padding:0.8rem; background:var(--degree4sec-secEco-unit1-etude3-reading-audio-bg); border-radius:6px;" data-i18n="exo5_answer"><strong>Question :</strong> Quelle image le narrateur utilise-t-il pour décrire les mains de sa mère ?<br><strong>Réponse d'élève :</strong> Une métaphore.</p>
+                <textarea rows="3" placeholder="Votre explication..."></textarea>
+                <div class="degree4sec-secEco-unit1-etude3-reading-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex5" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex5" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex5" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-etude3-reading-btn-verify" onclick="toggleCorrection('exo5Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo5Key" class="degree4sec-secEco-unit1-etude3-reading-answer-key"></div>
+            </div>
+
+            <!-- Ex 6 -->
+            <div class="degree4sec-secEco-unit1-etude3-reading-exercise-card degree4sec-secEco-unit1-etude3-reading-exercise-col-right">
+                <h3 data-i18n="exo6_title">📌 6. Comparaison ou métaphore ?</h3>
+                <p data-i18n="exo6_instruction">Classez chaque expression dans la bonne colonne.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_expression" class="no-bilingual">Expression</th>
+                            <th data-i18n="table_type" class="no-bilingual">Comparaison / Métaphore</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>« comme les racines d'un vieil olivier »</td><td><input type="text" placeholder="C ou M"></td></tr>
+                        <tr><td>« un livre ouvert »</td><td><input type="text" placeholder="C ou M"></td></tr>
+                        <tr><td>« comme une caresse »</td><td><input type="text" placeholder="C ou M"></td></tr>
+                        <tr><td>« des cathédrales de mémoire »</td><td><input type="text" placeholder="C ou M"></td></tr>
+                        <tr><td>« s'est affaissée comme un voile fatigué »</td><td><input type="text" placeholder="C ou M"></td></tr>
+                    </tbody>
+                </table>
+                <div class="degree4sec-secEco-unit1-etude3-reading-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex6" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex6" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex6" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-etude3-reading-btn-verify" onclick="toggleCorrection('exo6Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo6Key" class="degree4sec-secEco-unit1-etude3-reading-answer-key"></div>
+            </div>
+
+            <!-- Ex 7 -->
+            <div class="degree4sec-secEco-unit1-etude3-reading-exercise-card degree4sec-secEco-unit1-etude3-reading-exercise-col-left">
+                <h3 data-i18n="exo7_title">📌 7. Vrai ou faux ?</h3>
+                <p data-i18n="exo7_instruction">Indiquez si chaque affirmation est vraie (V) ou fausse (F).</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_statement" class="no-bilingual">Affirmation</th>
+                            <th data-i18n="table_vf" class="no-bilingual">V / F</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td data-i18n="exo7_q1">Une comparaison utilise toujours un outil (comme, tel, pareil à).</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo7_q2">Une métaphore utilise un outil de comparaison.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo7_q3">La personnification attribue des traits humains à une chose.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo7_q4">Analyser un procédé, c'est simplement le nommer.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo7_q5">Il faut toujours citer le texte pour justifier son analyse.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                    </tbody>
+                </table>
+                <div class="degree4sec-secEco-unit1-etude3-reading-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex7" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex7" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex7" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-etude3-reading-btn-verify" onclick="toggleCorrection('exo7Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo7Key" class="degree4sec-secEco-unit1-etude3-reading-answer-key"></div>
+            </div>
+
+            <!-- Ex 8 -->
+            <div class="degree4sec-secEco-unit1-etude3-reading-exercise-card degree4sec-secEco-unit1-etude3-reading-exercise-col-right">
+                <h3 data-i18n="exo8_title">📌 8. Effet d'une énumération</h3>
+                <p data-i18n="exo8_instruction">Analysez l'effet de l'énumération suivante, puis interprétez son rôle dans le texte.</p>
+                <p style="font-style:italic; margin:0.6rem 0; padding:0.8rem; background:var(--degree4sec-secEco-unit1-etude3-reading-audio-bg); border-radius:6px;" data-i18n="exo8_quote">« les milliers de repas préparés, les nuits blanches, les prières silencieuses, les larmes essuyées, les fiertés retenues »</p>
+                <textarea rows="4" placeholder="Votre analyse en 4 étapes..."></textarea>
+                <div class="degree4sec-secEco-unit1-etude3-reading-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex8" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex8" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex8" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-etude3-reading-btn-verify" onclick="toggleCorrection('exo8Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo8Key" class="degree4sec-secEco-unit1-etude3-reading-answer-key"></div>
+            </div>
+
+            <!-- Ex 9 -->
+            <div class="degree4sec-secEco-unit1-etude3-reading-exercise-card degree4sec-secEco-unit1-etude3-reading-exercise-col-left">
+                <h3 data-i18n="exo9_title">📌 9. Rédiger une réponse complète</h3>
+                <p data-i18n="exo9_instruction">Rédigez une réponse complète (citer → nommer → effet → interpréter) à la question suivante.</p>
+                <p style="font-style:italic; margin-bottom:0.5rem;" data-i18n="exo9_question">Quel procédé le narrateur emploie-t-il pour décrire les mains de sa mère dans le premier paragraphe ? Analysez son effet.</p>
+                <textarea rows="4" placeholder="Votre réponse complète..."></textarea>
+                <div class="degree4sec-secEco-unit1-etude3-reading-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex9" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex9" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex9" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-etude3-reading-btn-verify" onclick="toggleCorrection('exo9Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo9Key" class="degree4sec-secEco-unit1-etude3-reading-answer-key"></div>
+            </div>
+
+            <!-- Ex 10 -->
+            <div class="degree4sec-secEco-unit1-etude3-reading-exercise-card degree4sec-secEco-unit1-etude3-reading-exercise-col-right">
+                <h3 data-i18n="exo10_title">📌 10. Corriger une réponse incomplète</h3>
+                <p data-i18n="exo10_instruction">Cette réponse est incomplète. Réécrivez-la en appliquant correctement la méthode.</p>
+                <p style="font-style:italic; margin:0.6rem 0; padding:0.8rem; background:var(--degree4sec-secEco-unit1-etude3-reading-audio-bg); border-radius:6px;" data-i18n="exo10_answer"><strong>Question :</strong> Quel procédé est utilisé dans « les mains d'argile et d'or » ?<br><strong>Réponse :</strong> Une métaphore.</p>
+                <textarea rows="4" placeholder="Votre réponse corrigée..."></textarea>
+                <div class="degree4sec-secEco-unit1-etude3-reading-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex10" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex10" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex10" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-etude3-reading-btn-verify" onclick="toggleCorrection('exo10Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo10Key" class="degree4sec-secEco-unit1-etude3-reading-answer-key"></div>
+            </div>
+        </div>
+
+        <!-- Production -->
+        <div style="margin-top:2rem;">
+            <div class="degree4sec-secEco-unit1-etude3-reading-exercise-card">
+                <h3 data-i18n="exo11_title">📌 11. Production personnelle</h3>
+                <p data-i18n="exo11_instruction">Rédigez une question sur un procédé d'écriture à propos du texte <em>Les mains de ma mère</em>, puis proposez une réponse complète en suivant le schéma : citer → nommer → analyser l'effet → interpréter.</p>
+                <textarea rows="7" placeholder="Votre question et votre réponse complète..."></textarea>
+                <div class="degree4sec-secEco-unit1-etude3-reading-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex11" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex11" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex11" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree4sec-secEco-unit1-etude3-reading-btn-verify" onclick="showProductionExample()" data-i18n="show_example">💡 Voir un exemple de réponse</button>
+                <div id="productionExample" class="degree4sec-secEco-unit1-etude3-reading-answer-key"></div>
+            </div>
+        </div>
+
+        <!-- Score area -->
+        <div class="degree4sec-secEco-unit1-etude3-reading-score-area" id="scoreArea">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="degree4sec-secEco-unit1-etude3-reading-score-stats" id="scoreStats">
+                <div class="degree4sec-secEco-unit1-etude3-reading-score-stat"><span data-i18n="score_correct">Correctes :</span> <span id="scoreCorrect">0</span></div>
+                <div class="degree4sec-secEco-unit1-etude3-reading-score-stat"><span data-i18n="score_incorrect">Incorrectes :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="degree4sec-secEco-unit1-etude3-reading-score-stat"><span data-i18n="score_partial">Partielles :</span> <span id="scorePartial">0</span></div>
+                <div class="degree4sec-secEco-unit1-etude3-reading-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">11</span></div>
+            </div>
+        </div>
+        <div class="degree4sec-secEco-unit1-etude3-reading-score-actions" style="margin-top:1.2rem;">
+            <button id="saveResultsBtn" class="degree4sec-secEco-unit1-etude3-reading-btn-verify" style="margin-right:0.5rem;" data-i18n="save_results">💾 Enregistrer mes résultats</button>
+            <button id="printPdfBtn" class="degree4sec-secEco-unit1-etude3-reading-btn-verify" style="background:#2a5a3e; margin-right:0.5rem;" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+        </div>
+
+        <!-- Footer nav -->
+        <div class="degree4sec-secEco-unit1-etude3-reading-footer-nav">
+            <a href="degree4sec_sececo.html" data-i18n="footer_back" class="no-bilingual">← Retour au programme</a>
+            <a href="degree4secEco_mod1_essai_1.html" data-i18n="footer_next" class="no-bilingual">Leçon suivante : Fiche d'essai →</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                'lessonE3_title': "Étude de texte – Comment répondre à une question qui porte sur un procédé d'écriture (application) | Lecture & Méthodologie",
+                'lesson_short_title': "Étude de texte – analyser un procédé d'écriture",
+                'ach_year_4sec_secEco': "4ᵉ année secondaire (Section Économie)",
+                'ach_module_module1': "Module 1 : Souvenirs et nostalgie",
+                'back_link': "← Retour à l'accueil",
+                'back_revision': "Module 1",
+                'back_current': "Étude de texte – procédés d'écriture",
+                'lesson_badge': "📖 Lecture · Étude de texte 3",
+                'lesson_title': "Comment répondre à une question<br>qui porte sur un procédé d'écriture",
+                'lesson_duration': "⏱️ 60 minutes",
+                'lesson_meta_audio': "🎧 Écoutez le texte puis analysez les procédés d'écriture",
+                'audio_label': "🎧 Écoute littéraire",
+                'text_title': "Les mains de ma mère",
+                'text_para1': "Je les ai longtemps regardées sans les voir. Les mains de ma mère, noueuses comme les racines d'un vieil olivier, racontaient à elles seules une vie entière de labeur. Elles étaient un jardin de rides, un livre ouvert où chaque ligne creusée parlait d'amour et de patience.",
+                'text_para2': "Quand j'étais enfant, ces mains me paraissaient immenses. Elles étaient un abri, une promesse, une chaleur. Le matin, elles pétrissaient la pâte en fredonnant ; l'après-midi, elles reprisaient les vêtements usés ; le soir, elles se posaient sur mon front brûlant comme une caresse qui chassait la fièvre. Ces mains ne s'arrêtaient jamais.",
+                'text_para3': "Oh ! Ces mains ! Comme elles m'ont manqué quand je suis parti étudier à la ville ! Comme elles me semblaient loin, ces mains qui savaient tout réparer, tout consoler, tout préparer ! Le temps, ce voleur discret, les a peu à peu transformées, mais il n'a jamais pu leur enlever leur douceur.",
+                'text_para4': "Aujourd'hui, lorsque je rends visite à ma mère, je prends ses mains dans les miennes et je les regarde longuement. Elles tremblent un peu. Elles sont plus fines, plus fragiles. La peau, autrefois tendue, s'est affaissée comme un voile fatigué. Mais dans le creux de ces paumes, je retrouve tout ce que je suis devenu.",
+                'text_para5': "Mes enfants, eux, ne comprennent pas encore. Ils voient de vieilles mains. Ils ne voient pas les milliers de repas préparés, les nuits blanches, les prières silencieuses, les larmes essuyées, les fiertés retenues. Ils ne voient pas que ces mains sont des cathédrales de mémoire.",
+                'text_para6': "Un jour, je le sais, ces mains se reposeront pour toujours. Ce jour-là, il me restera leur souvenir, leurs gestes, leur empreinte invisible. Et je comprendrai, peut-être trop tard, que les mains d'une mère sont la première maison de l'enfant, la première patrie du cœur.",
+                'text_para7': "Alors je les embrasse, ces mains d'argile et d'or, ces mains qui ont fait de moi un homme. Je les embrasse comme on embrasse une relique, une promesse, une prière. Car il n'y a pas, dans une vie entière, de trésor plus précieux que les mains fatiguées d'une mère.",
+                'text_author': "— Récit inédit, d'après un témoignage",
+                'method_heading': "📖 Méthode : répondre à une question sur un procédé d'écriture",
+                'method_intro': "Répondre à une question portant sur un <strong>procédé d'écriture</strong> exige une démarche rigoureuse : il ne suffit pas de nommer le procédé, il faut aussi <strong>analyser son effet</strong> et <strong>interpréter son rôle</strong> dans le texte. Voici les <strong>quatre étapes</strong> à suivre.",
+                'step1_title': "Repérer et citer le procédé",
+                'step1_text': "Identifier dans le texte l'expression ou la phrase qui contient le procédé demandé et la <strong>citer entre guillemets</strong>.",
+                'step2_title': "Nommer et décrire le procédé",
+                'step2_text': "Identifier le nom exact du procédé (comparaison, métaphore, personnification, énumération, anaphore…) et expliquer en quoi l'expression relève bien de ce procédé.",
+                'step3_title': "Analyser l'effet produit",
+                'step3_text': "Expliquer <strong>ce que le procédé fait ressentir</strong> ou <strong>comprendre</strong> : impression de grandeur, de tendresse, de fragilité, d'accumulation…",
+                'step4_title': "Interpréter le rôle du procédé",
+                'step4_text': "Mettre le procédé en lien avec le <strong>thème</strong>, l'<strong>atmosphère</strong> ou l'<strong>intention de l'auteur</strong> : ici, magnifier les mains de la mère comme symbole d'amour et de mémoire.",
+                'devices_heading': "📚 Petit précis des procédés d'écriture",
+                'device_col_name': "Procédé",
+                'device_col_def': "Définition",
+                'device_col_ex': "Exemple dans le texte",
+                'device_comparison': "Comparaison",
+                'device_comparison_def': "Rapproche deux éléments à l'aide d'un outil (comme, tel, pareil à).",
+                'device_comparison_ex': "« noueuses comme les racines d'un vieil olivier »",
+                'device_metaphor': "Métaphore",
+                'device_metaphor_def': "Rapproche deux éléments sans outil de comparaison.",
+                'device_metaphor_ex': "« un jardin de rides », « des cathédrales de mémoire »",
+                'device_personification': "Personnification",
+                'device_personification_def': "Attribue des traits humains à une chose ou à une idée.",
+                'device_personification_ex': "« Le temps, ce voleur discret »",
+                'device_enumeration': "Énumération / accumulation",
+                'device_enumeration_def': "Liste plusieurs éléments de même nature.",
+                'device_enumeration_ex': "« les repas, les nuits, les prières, les larmes, les fiertés »",
+                'device_anaphora': "Anaphore",
+                'device_anaphora_def': "Répétition d'un mot ou d'un groupe en début de phrase.",
+                'device_anaphora_ex': "« Elles étaient un abri, une promesse, une chaleur. »",
+                'device_exclamation': "Exclamation / apostrophe",
+                'device_exclamation_def': "Exprime une émotion forte, interpelle un être ou un objet.",
+                'device_exclamation_ex': "« Oh ! Ces mains ! Comme elles m'ont manqué ! »",
+                'device_lexical_field': "Champ lexical",
+                'device_lexical_field_def': "Ensemble de mots liés à un même thème.",
+                'device_lexical_field_ex': "Champ lexical du travail et de la tendresse",
+                'guided_heading': "📖 Application guidée de la méthode",
+                'guided_question': "❓ Question : « Relevez dans le texte une comparaison et une métaphore. Analysez l'effet produit par ces deux images. »",
+                'model_label': "Réponse modèle (4 étapes)",
+                'note_title': "💡 Rappel :",
+                'note_text': "une bonne réponse sur un procédé d'écriture suit toujours le schéma <strong>citer → nommer → analyser → interpréter</strong>. Ne jamais se contenter de nommer le procédé : il faut expliquer son effet.",
+                'exercises_heading': "✍️ Exercices d'application",
+                'exo1_title': "📌 1. Identifier les procédés",
+                'exo1_instruction': "Associez chaque extrait du texte au procédé qui lui correspond.",
+                'table_excerpt': "Extrait",
+                'table_device': "Procédé",
+                'table_expression': "Expression",
+                'table_type': "Comparaison / Métaphore",
+                'table_statement': "Affirmation",
+                'table_vf': "V / F",
+                'btn_correction': "🔍 Voir la correction",
+                'exo2_title': "📌 2. Champ lexical",
+                'exo2_instruction': "Relevez quatre mots appartenant au champ lexical du corps et indiquez le thème qu'il éclaire dans le texte.",
+                'exo3_title': "📌 3. Choisissez la meilleure analyse",
+                'exo3_instruction': "Sélectionnez l'analyse la mieux construite (citation + nom + effet + interprétation).",
+                'exo4_title': "📌 4. Analyser l'effet d'une image",
+                'exo4_instruction': "Analysez l'effet produit par l'image suivante en suivant les 4 étapes (citer, nommer, effet, interpréter).",
+                'exo4_quote': "« les mains d'une mère sont la première maison de l'enfant, la première patrie du cœur »",
+                'exo5_title': "📌 5. Analyser une réponse d'élève",
+                'exo5_instruction': "Lisez cette réponse, puis expliquez en une phrase pourquoi elle est insuffisante.",
+                'exo5_answer': "<strong>Question :</strong> Quelle image le narrateur utilise-t-il pour décrire les mains de sa mère ?<br><strong>Réponse d'élève :</strong> Une métaphore.",
+                'exo6_title': "📌 6. Comparaison ou métaphore ?",
+                'exo6_instruction': "Classez chaque expression dans la bonne colonne.",
+                'exo7_title': "📌 7. Vrai ou faux ?",
+                'exo7_instruction': "Indiquez si chaque affirmation est vraie (V) ou fausse (F).",
+                'exo7_q1': "Une comparaison utilise toujours un outil (comme, tel, pareil à).",
+                'exo7_q2': "Une métaphore utilise un outil de comparaison.",
+                'exo7_q3': "La personnification attribue des traits humains à une chose.",
+                'exo7_q4': "Analyser un procédé, c'est simplement le nommer.",
+                'exo7_q5': "Il faut toujours citer le texte pour justifier son analyse.",
+                'exo8_title': "📌 8. Effet d'une énumération",
+                'exo8_instruction': "Analysez l'effet de l'énumération suivante, puis interprétez son rôle dans le texte.",
+                'exo8_quote': "« les milliers de repas préparés, les nuits blanches, les prières silencieuses, les larmes essuyées, les fiertés retenues »",
+                'exo9_title': "📌 9. Rédiger une réponse complète",
+                'exo9_instruction': "Rédigez une réponse complète (citer → nommer → effet → interpréter) à la question suivante.",
+                'exo9_question': "Quel procédé le narrateur emploie-t-il pour décrire les mains de sa mère dans le premier paragraphe ? Analysez son effet.",
+                'exo10_title': "📌 10. Corriger une réponse incomplète",
+                'exo10_instruction': "Cette réponse est incomplète. Réécrivez-la en appliquant correctement la méthode.",
+                'exo10_answer': "<strong>Question :</strong> Quel procédé est utilisé dans « les mains d'argile et d'or » ?<br><strong>Réponse :</strong> Une métaphore.",
+                'exo11_title': "📌 11. Production personnelle",
+                'exo11_instruction': "Rédigez une question sur un procédé d'écriture à propos du texte <em>Les mains de ma mère</em>, puis proposez une réponse complète en suivant le schéma : citer → nommer → analyser l'effet → interpréter.",
+                'show_example': "💡 Voir un exemple de réponse",
+                'footer_back': "← Retour au programme",
+                'footer_next': "Leçon suivante : Fiche d'essai →",
+                'self_assess_question': "Ma réponse est :",
+                'self_correct': "Correcte",
+                'self_incorrect': "Incorrecte",
+                'self_partial': "Partiellement correcte",
+                'score_title': "📊 Votre auto‑évaluation",
+                'score_correct': "Correctes :",
+                'score_incorrect': "Incorrectes :",
+                'score_partial': "Partielles :",
+                'score_unanswered': "Sans réponse :",
+                'save_results': "💾 Enregistrer mes résultats",
+                'save_success': "Résultats sauvegardés ✓",
+                'save_error': "Erreur lors de la sauvegarde",
+                'print_pdf': "🖨️ Imprimer / PDF",
+                'print_with_answers': "Corrigé inclus",
+                'print_site_name': "Educational Dashboard – French",
+                'print_scholar_year': "Module 1 – Souvenirs et nostalgie",
+                'print_week': "Étude de texte 3",
+                'print_area': "Lecture",
+                'print_footer_dev': "Développé par Mejri Ziad",
+                'print_footer_date': "Imprimé le",
+                'print_without_answers': "Sans corrigé",
+                'toast_signin_required': "Connectez-vous pour voir les corrections."
+            },
+            en: {
+                'lessonE3_title': "Text Study – How to Answer a Question about a Writing Device (Application) | Reading & Methodology",
+                'lesson_short_title': "Text study – analysing a writing device",
+                'ach_year_4sec_secEco': "4th year secondary (Economy section)",
+                'ach_module_module1': "Module 1: Memories and Nostalgia",
+                'back_link': "← Back to home",
+                'back_revision': "Module 1",
+                'back_current': "Text study – writing devices",
+                'lesson_badge': "📖 Reading · Text Study 3",
+                'lesson_title': "How to Answer a Question<br>about a Writing Device",
+                'lesson_duration': "⏱️ 60 minutes",
+                'lesson_meta_audio': "🎧 Listen to the text then analyse the writing devices",
+                'audio_label': "🎧 Literary Listening",
+                'text_title': "My Mother's Hands",
+                'text_para1': "For a long time, I looked at them without seeing them. My mother's hands, gnarled like the roots of an old olive tree, told on their own a whole life of labour. They were a garden of wrinkles, an open book where every carved line spoke of love and patience.",
+                'text_para2': "When I was a child, these hands seemed immense to me. They were a shelter, a promise, a warmth. In the morning, they kneaded the dough while humming; in the afternoon, they mended worn clothes; in the evening, they rested on my burning forehead like a caress that drove away fever. These hands never stopped.",
+                'text_para3': "Oh! These hands! How I missed them when I left to study in the city! How far away they seemed, those hands that knew how to repair everything, comfort everything, prepare everything! Time, that discreet thief, gradually transformed them, but it never managed to take away their gentleness.",
+                'text_para4': "Today, when I visit my mother, I take her hands in mine and look at them for a long time. They tremble a little. They are thinner, more fragile. The skin, once taut, has sagged like a tired veil. But in the hollow of these palms, I find everything I have become.",
+                'text_para5': "My own children do not yet understand. They see old hands. They do not see the thousands of meals prepared, the sleepless nights, the silent prayers, the wiped tears, the held-back pride. They do not see that these hands are cathedrals of memory.",
+                'text_para6': "One day, I know, these hands will rest forever. That day, I will have their memory, their gestures, their invisible imprint. And I will understand, perhaps too late, that a mother's hands are the child's first home, the heart's first homeland.",
+                'text_para7': "So I kiss them, these hands of clay and gold, these hands that made me a man. I kiss them as one kisses a relic, a promise, a prayer. For there is not, in a whole life, a treasure more precious than the tired hands of a mother.",
+                'text_author': "— Original text, based on a testimony",
+                'method_heading': "📖 Method: answering a question about a writing device",
+                'method_intro': "Answering a question about a <strong>writing device</strong> requires a rigorous approach: it is not enough to name the device, you must also <strong>analyse its effect</strong> and <strong>interpret its role</strong> in the text. Here are the <strong>four steps</strong> to follow.",
+                'step1_title': "Locate and quote the device",
+                'step1_text': "Identify in the text the expression or sentence containing the requested device and <strong>quote it in quotation marks</strong>.",
+                'step2_title': "Name and describe the device",
+                'step2_text': "Identify the exact name of the device (simile, metaphor, personification, enumeration, anaphora…) and explain how the expression qualifies as this device.",
+                'step3_title': "Analyse the effect produced",
+                'step3_text': "Explain <strong>what the device makes one feel</strong> or <strong>understand</strong>: an impression of grandeur, tenderness, fragility, accumulation…",
+                'step4_title': "Interpret the role of the device",
+                'step4_text': "Link the device to the <strong>theme</strong>, the <strong>atmosphere</strong> or the <strong>author's intention</strong>: here, magnifying the mother's hands as a symbol of love and memory.",
+                'devices_heading': "📚 A short guide to writing devices",
+                'device_col_name': "Device",
+                'device_col_def': "Definition",
+                'device_col_ex': "Example in the text",
+                'device_comparison': "Simile",
+                'device_comparison_def': "Links two elements with a linking word (like, as).",
+                'device_comparison_ex': "\"gnarled like the roots of an old olive tree\"",
+                'device_metaphor': "Metaphor",
+                'device_metaphor_def': "Links two elements without a linking word.",
+                'device_metaphor_ex': "\"a garden of wrinkles\", \"cathedrals of memory\"",
+                'device_personification': "Personification",
+                'device_personification_def': "Gives human traits to a thing or an idea.",
+                'device_personification_ex': "\"Time, that discreet thief\"",
+                'device_enumeration': "Enumeration / accumulation",
+                'device_enumeration_def': "Lists several elements of the same kind.",
+                'device_enumeration_ex': "\"the meals, the nights, the prayers, the tears, the pride\"",
+                'device_anaphora': "Anaphora",
+                'device_anaphora_def': "Repetition of a word or group at the start of a sentence.",
+                'device_anaphora_ex': "\"They were a shelter, a promise, a warmth.\"",
+                'device_exclamation': "Exclamation / apostrophe",
+                'device_exclamation_def': "Expresses strong emotion, addresses a being or object.",
+                'device_exclamation_ex': "\"Oh! These hands! How I missed them!\"",
+                'device_lexical_field': "Lexical field",
+                'device_lexical_field_def': "Set of words related to the same theme.",
+                'device_lexical_field_ex': "Lexical field of work and tenderness",
+                'guided_heading': "📖 Guided application of the method",
+                'guided_question': "❓ Question: \"Find one simile and one metaphor in the text. Analyse the effect produced by these two images.\"",
+                'model_label': "Model answer (4 steps)",
+                'note_title': "💡 Reminder:",
+                'note_text': "a good answer on a writing device always follows the pattern <strong>quote → name → analyse → interpret</strong>. Never settle for naming the device: you must explain its effect.",
+                'exercises_heading': "✍️ Application exercises",
+                'exo1_title': "📌 1. Identify the devices",
+                'exo1_instruction': "Match each excerpt from the text with the device it uses.",
+                'table_excerpt': "Excerpt",
+                'table_device': "Device",
+                'table_expression': "Expression",
+                'table_type': "Simile / Metaphor",
+                'table_statement': "Statement",
+                'table_vf': "T / F",
+                'btn_correction': "🔍 See the correction",
+                'exo2_title': "📌 2. Lexical field",
+                'exo2_instruction': "Find four words belonging to the lexical field of the body and indicate the theme it highlights in the text.",
+                'exo3_title': "📌 3. Choose the best analysis",
+                'exo3_instruction': "Select the best-constructed analysis (quotation + name + effect + interpretation).",
+                'exo4_title': "📌 4. Analyse the effect of an image",
+                'exo4_instruction': "Analyse the effect produced by the following image following the 4 steps (quote, name, effect, interpret).",
+                'exo4_quote': "\"a mother's hands are the child's first home, the heart's first homeland\"",
+                'exo5_title': "📌 5. Analyse a student answer",
+                'exo5_instruction': "Read this answer, then explain in one sentence why it is insufficient.",
+                'exo5_answer': "<strong>Question:</strong> What image does the narrator use to describe his mother's hands?<br><strong>Student answer:</strong> A metaphor.",
+                'exo6_title': "📌 6. Simile or metaphor?",
+                'exo6_instruction': "Classify each expression in the right column.",
+                'exo7_title': "📌 7. True or false?",
+                'exo7_instruction': "Indicate whether each statement is true (T) or false (F).",
+                'exo7_q1': "A simile always uses a linking word (like, as).",
+                'exo7_q2': "A metaphor uses a linking word.",
+                'exo7_q3': "Personification gives human traits to a thing.",
+                'exo7_q4': "Analysing a device simply means naming it.",
+                'exo7_q5': "You must always quote the text to justify your analysis.",
+                'exo8_title': "📌 8. Effect of an enumeration",
+                'exo8_instruction': "Analyse the effect of the following enumeration, then interpret its role in the text.",
+                'exo8_quote': "\"the thousands of meals prepared, the sleepless nights, the silent prayers, the wiped tears, the held-back pride\"",
+                'exo9_title': "📌 9. Write a complete answer",
+                'exo9_instruction': "Write a complete answer (quote → name → effect → interpret) to the following question.",
+                'exo9_question': "What device does the narrator use to describe his mother's hands in the first paragraph? Analyse its effect.",
+                'exo10_title': "📌 10. Correct an incomplete answer",
+                'exo10_instruction': "This answer is incomplete. Rewrite it by correctly applying the method.",
+                'exo10_answer': "<strong>Question:</strong> What device is used in \"hands of clay and gold\"?<br><strong>Answer:</strong> A metaphor.",
+                'exo11_title': "📌 11. Personal production",
+                'exo11_instruction': "Write a question on a writing device about the text <em>My Mother's Hands</em>, then propose a complete answer following the pattern: quote → name → analyse the effect → interpret.",
+                'show_example': "💡 See an example answer",
+                'footer_back': "← Back to program",
+                'footer_next': "Next lesson: Essay sheet →",
+                'self_assess_question': "My answer is:",
+                'self_correct': "Correct",
+                'self_incorrect': "Incorrect",
+                'self_partial': "Partially correct",
+                'score_title': "📊 Your self‑assessment",
+                'score_correct': "Correct:",
+                'score_incorrect': "Incorrect:",
+                'score_partial': "Partial:",
+                'score_unanswered': "Unanswered:",
+                'save_results': "💾 Save my results",
+                'save_success': "Results saved ✓",
+                'save_error': "Save failed",
+                'print_pdf': "🖨️ Print / PDF",
+                'print_with_answers': "With answers",
+                'print_site_name': "Educational Dashboard – French",
+                'print_scholar_year': "Module 1 – Memories and Nostalgia",
+                'print_week': "Text Study 3",
+                'print_area': "Reading",
+                'print_footer_dev': "Developed by Mejri Ziad",
+                'print_footer_date': "Printed on",
+                'print_without_answers': "Without answers",
+                'toast_signin_required': "Sign in to see the corrections."
+            },
+            ar: {
+                'lessonE3_title': "دراسة النص – كيفية الإجابة عن سؤال يتعلق بأسلوب كتابة (تطبيق) | قراءة ومنهجية",
+                'lesson_short_title': "دراسة النص – تحليل أسلوب كتابة",
+                'ach_year_4sec_secEco': "السنة الرابعة ثانوي (شعبة الاقتصاد)",
+                'ach_module_module1': "الوحدة 1: ذكريات وحنين",
+                'back_link': "← العودة إلى الرئيسية",
+                'back_revision': "الوحدة 1",
+                'back_current': "دراسة النص – أساليب الكتابة",
+                'lesson_badge': "📖 قراءة · دراسة النص 3",
+                'lesson_title': "كيفية الإجابة عن سؤال<br>يتعلق بأسلوب كتابة",
+                'lesson_duration': "⏱️ 60 دقيقة",
+                'lesson_meta_audio': "🎧 استمع إلى النص ثم حلّل أساليب الكتابة",
+                'audio_label': "🎧 استماع أدبي",
+                'text_title': "يدا أمي",
+                'text_para1': "طالما نظرت إليهما دون أن أراهما. يدا أمي، متعقدتان كجذور زيتونة عجوز، كانتا ترويان وحدهما حياة كاملة من الكدح. كانتا حديقة من التجاعيد، كتاباً مفتوحاً حيث يتحدث كل سطر منقوش عن الحب والصبر.",
+                'text_para2': "عندما كنت طفلاً، بدت لي هاتان اليدان هائلتين. كانتا مأوى، وعداً، دفئاً. في الصباح، كانتا تعجنان العجين وهما تدندان؛ بعد الظهر، كانتا ترقعان الملابس البالية؛ في المساء، كانتا تستريحان على جبهتي المحمومة كلمسة تطرد الحمى. هاتان اليدان لم تتوقفا أبداً.",
+                'text_para3': "آه! هذه اليدان! كم افتقدتهما عندما رحلت للدراسة في المدينة! كم بدت بعيدة، تلك اليدان التي كانت تعرف كيف تصلح كل شيء، وتواسي كل شيء، وتحضّر كل شيء! الزمن، ذلك اللص الخفي، غيّرهما شيئاً فشيئاً، لكنه لم يستطع أبداً أن يسلبهما حنانهما.",
+                'text_para4': "اليوم، عندما أزور أمي، آخذ يديها في يديّ وأنظر إليهما طويلاً. إنهما ترتجفان قليلاً. أصبحتا أنحف وأضعف. الجلد، الذي كان مشدوداً، ارتخى كحجاب متعب. لكن في تجويف هاتين الراحتين، أجد كل ما أصبحت عليه.",
+                'text_para5': "أطفالي، هم، لا يفهمون بعد. يرون يدين عجوزين. لا يرون آلاف الوجبات المحضرة، والليالي البيضاء، والدعوات الصامتة، والدموع الممسوحة، والفخر المكتوم. لا يرون أن هاتين اليدين كاتدرائيتان من الذاكرة.",
+                'text_para6': "يوماً ما، أعلم ذلك، سترتاح هاتان اليدان إلى الأبد. في ذلك اليوم، سيتبقى لي ذكرهما، وحركاتهما، وأثرهما اللامرئي. وسأفهم، ربما بعد فوات الأوان، أن يدي الأم هي بيت الطفل الأول، والوطن الأول للقلب.",
+                'text_para7': "لذلك أقبّلهما، هاتين اليدين من الطين والذهب، هاتين اليدين اللتين صنعتا مني رجلاً. أقبّلهما كما يُقبّل المرء ذخيرة، وعداً، صلاة. فلا يوجد، في حياة كاملة، كنز أثمن من يدي أم متعبتين.",
+                'text_author': "— نص أصلي، مقتبس من شهادة",
+                'method_heading': "📖 المنهجية: الإجابة عن سؤال حول أسلوب كتابة",
+                'method_intro': "الإجابة عن سؤال يتعلق بـ<strong>أسلوب كتابة</strong> تتطلب مقاربة صارمة: لا يكفي تسمية الأسلوب، بل يجب أيضاً <strong>تحليل أثره</strong> و<strong>تفسير دوره</strong> في النص. إليك <strong>الخطوات الأربع</strong>.",
+                'step1_title': "تحديد الأسلوب واقتباسه",
+                'step1_text': "تحديد في النص التعبير أو الجملة التي تحتوي على الأسلوب المطلوب و<strong>اقتباسها بين علامتي تنصيص</strong>.",
+                'step2_title': "تسمية الأسلوب ووصفه",
+                'step2_text': "تحديد الاسم الدقيق للأسلوب (تشبيه، استعارة، تشخيص، تعداد، تكرار…) وشرح كيف ينتمي التعبير إلى هذا الأسلوب.",
+                'step3_title': "تحليل الأثر المنتج",
+                'step3_text': "شرح <strong>ما يجعلك الأسلوب تشعر به</strong> أو <strong>تفهمه</strong>: انطباع بالعظمة، بالحنان، بالهشاشة، بالتراكم…",
+                'step4_title': "تفسير دور الأسلوب",
+                'step4_text': "ربط الأسلوب بـ<strong>الموضوع</strong> و<strong>الجو العام</strong> و<strong>نية المؤلف</strong>: هنا، تعظيم يدي الأم كرمز للحب والذاكرة.",
+                'devices_heading': "📚 دليل موجز لأساليب الكتابة",
+                'device_col_name': "الأسلوب",
+                'device_col_def': "التعريف",
+                'device_col_ex': "مثال من النص",
+                'device_comparison': "التشبيه",
+                'device_comparison_def': "يقرب عنصرين بواسطة أداة تشبيه (مثل، كما).",
+                'device_comparison_ex': "« متعقدتان كجذور زيتونة عجوز »",
+                'device_metaphor': "الاستعارة",
+                'device_metaphor_def': "تقرب عنصرين دون أداة تشبيه.",
+                'device_metaphor_ex': "« حديقة من التجاعيد »، « كاتدرائيتان من الذاكرة »",
+                'device_personification': "التشخيص",
+                'device_personification_def': "يعطي صفات بشرية لشيء أو فكرة.",
+                'device_personification_ex': "« الزمن، ذلك اللص الخفي »",
+                'device_enumeration': "التعداد / التراكم",
+                'device_enumeration_def': "يسرد عدة عناصر من نفس النوع.",
+                'device_enumeration_ex': "« الوجبات، الليالي، الدعوات، الدموع، الفخر »",
+                'device_anaphora': "التكرار",
+                'device_anaphora_def': "تكرار كلمة أو مجموعة في بداية الجملة.",
+                'device_anaphora_ex': "« كانتا مأوى، وعداً، دفئاً. »",
+                'device_exclamation': "التعجب / النداء",
+                'device_exclamation_def': "يعبر عن انفعال قوي، يخاطب كائناً أو شيئاً.",
+                'device_exclamation_ex': "« آه! هذه اليدان! كم افتقدتهما! »",
+                'device_lexical_field': "الحقل المعجمي",
+                'device_lexical_field_def': "مجموعة كلمات مرتبطة بموضوع واحد.",
+                'device_lexical_field_ex': "حقل الكدح والحنان",
+                'guided_heading': "📖 تطبيق موجّه للمنهجية",
+                'guided_question': "❓ السؤال: « استخرج من النص تشبيهاً واستعارة. حلّل الأثر الذي تنتجه هاتان الصورتان. »",
+                'model_label': "جواب نموذجي (الخطوات الأربع)",
+                'note_title': "💡 تذكير:",
+                'note_text': "الجواب الجيد حول أسلوب كتابة يتبع دائماً المسار <strong>اقتباس ← تسمية ← تحليل ← تفسير</strong>. لا تكتفِ بتسمية الأسلوب: يجب شرح أثره.",
+                'exercises_heading': "✍️ تمارين تطبيقية",
+                'exo1_title': "📌 1. تحديد الأساليب",
+                'exo1_instruction': "اربط كل مقطع من النص بالأسلوب الذي يوافقه.",
+                'table_excerpt': "المقطع",
+                'table_device': "الأسلوب",
+                'table_expression': "التعبير",
+                'table_type': "تشبيه / استعارة",
+                'table_statement': "العبارة",
+                'table_vf': "ص / خ",
+                'btn_correction': "🔍 الاطلاع على التصحيح",
+                'exo2_title': "📌 2. الحقل المعجمي",
+                'exo2_instruction': "استخرج أربع كلمات تنتمي إلى حقل الجسد وحدد الموضوع الذي تضيئه في النص.",
+                'exo3_title': "📌 3. اختر أفضل تحليل",
+                'exo3_instruction': "اختر التحليل الأفضل بناءً (اقتباس + تسمية + أثر + تفسير).",
+                'exo4_title': "📌 4. تحليل أثر صورة",
+                'exo4_instruction': "حلّل الأثر الذي تنتجه الصورة التالية باتباع الخطوات الأربع (اقتباس، تسمية، أثر، تفسير).",
+                'exo4_quote': "« يدي الأم هي بيت الطفل الأول، والوطن الأول للقلب »",
+                'exo5_title': "📌 5. تحليل جواب تلميذ",
+                'exo5_instruction': "اقرأ هذا الجواب، ثم اشرح في جملة واحدة لماذا هو غير كافٍ.",
+                'exo5_answer': "<strong>السؤال:</strong> ما الصورة التي يستعملها الراوي لوصف يدي أمه؟<br><strong>جواب التلميذ:</strong> استعارة.",
+                'exo6_title': "📌 6. تشبيه أم استعارة؟",
+                'exo6_instruction': "صنّف كل تعبير في العمود المناسب.",
+                'exo7_title': "📌 7. صواب أم خطأ؟",
+                'exo7_instruction': "حدد إن كانت كل عبارة صحيحة (ص) أم خاطئة (خ).",
+                'exo7_q1': "التشبيه يستعمل دائماً أداة تشبيه (مثل، كما).",
+                'exo7_q2': "الاستعارة تستعمل أداة تشبيه.",
+                'exo7_q3': "التشخيص يعطي صفات بشرية لشيء.",
+                'exo7_q4': "تحليل الأسلوب يعني مجرد تسميته.",
+                'exo7_q5': "يجب دائماً اقتباس النص لتبرير التحليل.",
+                'exo8_title': "📌 8. أثر التعداد",
+                'exo8_instruction': "حلّل أثر التعداد التالي، ثم فسّر دوره في النص.",
+                'exo8_quote': "« آلاف الوجبات المحضرة، والليالي البيضاء، والدعوات الصامتة، والدموع الممسوحة، والفخر المكتوم »",
+                'exo9_title': "📌 9. اكتب جواباً كاملاً",
+                'exo9_instruction': "اكتب جواباً كاملاً (اقتباس ← تسمية ← أثر ← تفسير) عن السؤال التالي.",
+                'exo9_question': "ما الأسلوب الذي يستعمله الراوي لوصف يدي أمه في الفقرة الأولى؟ حلّل أثره.",
+                'exo10_title': "📌 10. صحح جواباً ناقصاً",
+                'exo10_instruction': "هذا الجواب ناقص. أعد كتابته بتطبيق المنهجية بشكل صحيح.",
+                'exo10_answer': "<strong>السؤال:</strong> ما الأسلوب المستعمل في « اليدين من الطين والذهب »؟<br><strong>الجواب:</strong> استعارة.",
+                'exo11_title': "📌 11. إنتاج شخصي",
+                'exo11_instruction': "اكتب سؤالاً حول أسلوب كتابة يتعلق بنص <em>يدا أمي</em>، ثم اقترح جواباً كاملاً باتباع المسار: اقتباس ← تسمية ← تحليل الأثر ← تفسير.",
+                'show_example': "💡 عرض مثال للإجابة",
+                'footer_back': "← العودة إلى البرنامج",
+                'footer_next': "الدرس الموالي: بطاقة مقال ←",
+                'self_assess_question': "جوابي هو:",
+                'self_correct': "صحيح",
+                'self_incorrect': "خاطئ",
+                'self_partial': "صحيح جزئيًا",
+                'score_title': "📊 تقييمك الذاتي",
+                'score_correct': "صحيح:",
+                'score_incorrect': "خاطئ:",
+                'score_partial': "جزئي:",
+                'score_unanswered': "بدون إجابة:",
+                'save_results': "💾 حفظ نتائجي",
+                'save_success': "تم حفظ النتائج ✓",
+                'save_error': "خطأ في الحفظ",
+                'print_pdf': "🖨️ طباعة / PDF",
+                'print_with_answers': "مع التصحيح",
+                'print_site_name': "لوحة التحكم التعليمية – الفرنسية",
+                'print_scholar_year': "الوحدة 1 – ذكريات وحنين",
+                'print_week': "دراسة النص 3",
+                'print_area': "قراءة",
+                'print_footer_dev': "طوّر بواسطة ماجري زياد",
+                'print_footer_date': "طُبع في",
+                'print_without_answers': "بدون تصحيح",
+                'toast_signin_required': "سجّل الدخول لرؤية التصحيحات."
+            }
+        });
+
+        (function() {
+            var container = document.querySelector('.degree4sec-secEco-unit1-etude3-reading-container');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+        })();
+    </script>
+    <script src="ed-french-ini.js"></script>
+    <script>
+        (function() {
+            const audio = new Audio('assets4secEco/sounds/degree4secEco/unit1/etude3/etude_texte_3.mp3');
+            const playBtn = document.getElementById('playBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const speedBtns = document.querySelectorAll('.degree4sec-secEco-unit1-etude3-reading-speed-btn');
+
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+
+            audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
+            audio.addEventListener('timeupdate', () => {
+                const percent = (audio.currentTime / audio.duration) * 100 || 0;
+                progressFill.style.width = percent + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            });
+            audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) { audio.play().catch(()=>{}); playBtn.textContent = '⏸'; }
+                else { audio.pause(); playBtn.textContent = '▶'; }
+            });
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const seekTime = (clickX / width) * audio.duration;
+                audio.currentTime = seekTime;
+            });
+            speedBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    speedBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    audio.playbackRate = parseFloat(btn.dataset.speed);
+                });
+            });
+
+            // Static answer keys
+            document.getElementById('exo1Key').innerHTML = '<strong>Correction :</strong><br>1. Comparaison<br>2. Métaphore<br>3. Personnification<br>4. Accumulation (ou énumération)<br>5. Exclamation';
+            document.getElementById('exo2Key').innerHTML = '<strong>Correction (exemples) :</strong><br>Mots : mains, rides, peau, paumes, front, larmes.<br>Thème éclairé : le corps vieillissant de la mère, qui devient le support d\'une mémoire intime et tendre. Le champ lexical du corps inscrit le souvenir dans une réalité physique et sensible.';
+            document.getElementById('exo3Key').innerHTML = '<strong>Correction :</strong><br>1. b<br>2. b<br>3. b';
+            document.getElementById('exo4Key').innerHTML = '<strong>Correction (exemple) :</strong> <strong>Citer :</strong> « les mains d\'une mère sont la première maison de l\'enfant, la première patrie du cœur ». <strong>Nommer :</strong> il s\'agit d\'une métaphore (deux images superposées : « première maison » et « première patrie »). <strong>Effet :</strong> ces deux images associent la mère à un lieu d\'origine, à la fois refuge et patrie. <strong>Interpréter :</strong> le texte donne ainsi aux mains maternelles une valeur fondatrice et sacrée, à la fois intime et universelle.';
+            document.getElementById('exo5Key').innerHTML = '<strong>Correction :</strong> Cette réponse est insuffisante car elle se contente de nommer le procédé sans le <em>citer</em>, sans <em>analyser l\'effet produit</em>, ni <em>interpréter son rôle</em>. Une réponse complète serait : « Le narrateur emploie la métaphore « un jardin de rides » pour suggérer que la vieillesse, loin d\'être laide, est un paysage vivant et cultivé ; cette image adoucit le temps qui passe et magnifie la beauté des mains maternelles. »';
+            document.getElementById('exo6Key').innerHTML = '<strong>Correction :</strong><br>1. Comparaison<br>2. Métaphore<br>3. Comparaison<br>4. Métaphore<br>5. Comparaison';
+            document.getElementById('exo7Key').innerHTML = '<strong>Correction :</strong><br>1. Vrai<br>2. Faux<br>3. Vrai<br>4. Faux<br>5. Vrai';
+            document.getElementById('exo8Key').innerHTML = '<strong>Correction :</strong> <strong>Citer :</strong> « les milliers de repas préparés, les nuits blanches, les prières silencieuses, les larmes essuyées, les fiertés retenues ». <strong>Nommer :</strong> c\'est une <em>énumération</em>, renforcée par une construction <em>anaphorique</em> (répétition du rythme). <strong>Effet :</strong> l\'accumulation crée une impression d\'abondance et d\'infatigabilité ; elle fait sentir l\'étendue du sacrifice maternel. <strong>Interpréter :</strong> l\'énumération donne à la mère une dimension quasi héroïque et transforme le souvenir personnel en hommage universel.';
+            document.getElementById('exo9Key').innerHTML = '<strong>Correction (exemple) :</strong> Dans le premier paragraphe, le narrateur compare les mains de sa mère à des éléments de la nature : la comparaison « noueuses comme les racines d\'un vieil olivier » et la métaphore « un jardin de rides » se succèdent. Ces deux images suggèrent que ces mains sont marquées par l\'âge et le travail, mais qu\'elles conservent une beauté vivante et profonde. Le narrateur donne ainsi à sa mère une dimension à la fois humble et sacrée, et transforme le souvenir intime en hommage.';
+            document.getElementById('exo10Key').innerHTML = '<strong>Correction :</strong> L\'expression « les mains d\'argile et d\'or » est une <em>métaphore</em> : elle associe les mains de la mère à deux matières opposées — l\'argile, humble et fragile, et l\'or, précieux et inaltérable. Cette image suggère que les mains maternelles, à la fois fragiles et précieuses, sont le trésor le plus rare. Elle renforce le caractère sacré du souvenir maternel.';
+
+            // Auth-gated correction
+            window.toggleCorrection = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('visible');
+            };
+
+            // Show production example
+            window.showProductionExample = async function() {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const el = document.getElementById('productionExample');
+                if (el) {
+                    el.innerHTML = '<strong>Exemple de production :</strong><br><br><strong>Question :</strong> Quel procédé renforce la dimension sacrée des mains dans le dernier paragraphe ? Analysez son effet.<br><br><strong>Réponse complète :</strong> <strong>Citer :</strong> le narrateur écrit qu\'il embrasse « ces mains d\'argile et d\'or » et qu\'il les embrasse « comme on embrasse une relique, une promesse, une prière ». <strong>Nommer :</strong> on relève d\'une part une <em>métaphore</em> (« mains d\'argile et d\'or »), d\'autre part une <em>comparaison</em> à trois termes (relique, promesse, prière). <strong>Effet :</strong> ces images associent les mains à des réalités à la fois fragiles et sacrées ; elles donnent au geste du narrateur une dimension quasi religieuse. <strong>Interpréter :</strong> en rapprochant la mère du registre du sacré, le texte magnifie une dernière fois son rôle fondateur et fait de l\'amour filial un véritable hommage.';
+                    el.classList.add('visible');
+                }
+            };
+
+            // Self-assessment scoring
+            const SELF_GROUPS = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5',
+                                 'self_ex6', 'self_ex7', 'self_ex8', 'self_ex9', 'self_ex10', 'self_ex11'];
+
+            function computeScore() {
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                SELF_GROUPS.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                return { correct, incorrect, partial, unanswered };
+            }
+
+            function updateScore() {
+                const s = computeScore();
+                document.getElementById('scoreCorrect').textContent = s.correct;
+                document.getElementById('scoreIncorrect').textContent = s.incorrect;
+                document.getElementById('scorePartial').textContent = s.partial;
+                document.getElementById('scoreUnanswered').textContent = s.unanswered;
+            }
+
+            document.querySelectorAll('input[type="radio"][name^="self_ex"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+
+            // Save results
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const s = computeScore();
+                const lessonId = 'degree4sec-secEco-unit1-etude3-reading';
+                const entry = {
+                    lesson_id: lessonId,
+                    lesson_title: {
+                        fr: App.getTranslation('lesson_short_title', 'fr'),
+                        en: App.getTranslation('lesson_short_title', 'en'),
+                        ar: App.getTranslation('lesson_short_title', 'ar')
+                    },
+                    year: {
+                        fr: App.getTranslation('ach_year_4sec_secEco', 'fr'),
+                        en: App.getTranslation('ach_year_4sec_secEco', 'en'),
+                        ar: App.getTranslation('ach_year_4sec_secEco', 'ar')
+                    },
+                    module: {
+                        fr: App.getTranslation('ach_module_module1', 'fr'),
+                        en: App.getTranslation('ach_module_module1', 'en'),
+                        ar: App.getTranslation('ach_module_module1', 'ar')
+                    },
+                    correct: s.correct,
+                    incorrect: s.incorrect,
+                    partial: s.partial,
+                    unanswered: s.unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles').select('achivement').eq('id', user.id).single();
+                if (fetchError) return;
+                let achivement = profileData?.achivement || {};
+                if (!achivement["ED-French"]) achivement["ED-French"] = [];
+                const arr = achivement["ED-French"];
+                const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+                if (existingIdx >= 0) arr[existingIdx] = entry;
+                else arr.push(entry);
+                const { error: updateError } = await App.supabase
+                    .from('profiles').update({ achivement }).eq('id', user.id);
+                if (updateError) App.showToast('save_error', 'error');
+                else {
+                    App.showToast('save_success', 'success');
+                    App.logUserAction('lesson_saved', { lesson: lessonId, correct: s.correct, incorrect: s.incorrect, partial: s.partial });
+                }
+            });
+
+            // Print / PDF
+            document.getElementById('printPdfBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles').select('registration_state').eq('id', user.id).single();
+                    if (!error && profile?.registration_state?.active === true) isRegistered = true;
+                } catch (e) {}
+                const lang = localStorage.getItem('lang') || 'fr';
+                const headerHTML = document.querySelector('.degree4sec-secEco-unit1-etude3-reading-lesson-header').cloneNode(true);
+                const textCard = document.querySelector('.degree4sec-secEco-unit1-etude3-reading-text-card').cloneNode(true);
+                const rulesSections = document.querySelectorAll('.degree4sec-secEco-unit1-etude3-reading-valeurs-section');
+                let rulesHTML = '';
+                rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
+                const exercisesSection = document.querySelector('.degree4sec-secEco-unit1-etude3-reading-exercises-section').cloneNode(true);
+                exercisesSection.querySelectorAll('input, textarea, .degree4sec-secEco-unit1-etude3-reading-btn-verify, .degree4sec-secEco-unit1-etude3-reading-self-assessment').forEach(el => el.remove());
+                if (isRegistered) {
+                    exercisesSection.querySelectorAll('.degree4sec-secEco-unit1-etude3-reading-answer-key').forEach(key => {
+                        key.style.display = 'block'; key.style.border = 'none';
+                        key.style.padding = '0.5rem 0'; key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    exercisesSection.querySelectorAll('.degree4sec-secEco-unit1-etude3-reading-answer-key').forEach(el => el.remove());
+                }
+                const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                printWindow.document.write(`<!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8"><title>${App.getTranslation('lesson_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title><style>
+                    body { font-family: 'Georgia', serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; color:#000; }
+                    .print-header { text-align:center; border-bottom:2px solid #3d7a56; padding-bottom:1rem; margin-bottom:2rem; }
+                    .print-header .site-name { font-size:1.4rem; font-weight:bold; color:#3d7a56; margin:0 0 0.3rem; }
+                    .print-header .meta-line { font-size:0.95rem; color:#444; margin:0.2rem 0; }
+                    .print-header .lesson-name { font-size:1.1rem; font-weight:bold; color:#000; margin-top:0.5rem; }
+                    .print-footer { text-align:center; border-top:1px solid #ccc; padding-top:1rem; margin-top:2rem; font-size:0.85rem; color:#666; }
+                    .degree4sec-secEco-unit1-etude3-reading-lesson-header { text-align:center; margin-bottom:2rem; }
+                    .degree4sec-secEco-unit1-etude3-reading-badge { display:inline-block; background:#3d7a56; color:#fff; padding:0.3rem 1rem; border-radius:20px; font-size:0.8rem; text-transform:uppercase; }
+                    .degree4sec-secEco-unit1-etude3-reading-text-card { border-left:4px solid #3d7a56; padding:1rem 1.5rem; margin:1.5rem 0; }
+                    .degree4sec-secEco-unit1-etude3-reading-valeurs-section { margin:1.5rem 0; }
+                    .degree4sec-secEco-unit1-etude3-reading-valeur-card { background:#f4f1e8; padding:1rem; margin-bottom:1rem; border-radius:8px; }
+                    .degree4sec-secEco-unit1-etude3-reading-valeur-card h3 { color:#3d7a56; }
+                    .degree4sec-secEco-unit1-etude3-reading-model { background:#f4f1e8; padding:1rem; border-radius:8px; border-left:3px solid #3d7a56; }
+                    .degree4sec-secEco-unit1-etude3-reading-step { margin:1rem 0; padding:1rem; background:#f4f1e8; border-radius:8px; }
+                    .degree4sec-secEco-unit1-etude3-reading-step-num { display:inline-block; width:30px; height:30px; background:#3d7a56; color:#fff; border-radius:50%; text-align:center; line-height:30px; font-weight:bold; margin-right:0.5rem; }
+                    .degree4sec-secEco-unit1-etude3-reading-exercise-card { margin:1.2rem 0; }
+                    table { width:100%; border-collapse:collapse; margin:0.8rem 0; }
+                    th, td { border:1px solid #ccc; padding:0.5rem; text-align:left; }
+                    th { background:#dde7da; }
+                    .degree4sec-secEco-unit1-etude3-reading-answer-key { display:block; margin-top:0.5rem; font-size:0.9rem; color:#444; }
+                    @media print { @page { margin:2cm; } }
+                </style></head><body>
+                    <div class="print-header"><div class="site-name">${App.getTranslation('print_site_name', lang)}</div><div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div><div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div></div>
+                    ${breadcrumb.outerHTML}${headerHTML.outerHTML}${textCard.outerHTML}${rulesHTML}${exercisesSection.outerHTML}
+                    <div class="print-footer">${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}</div>
+                </body></html>`);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+        })();
+    </script>
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+</body>
+</html>
