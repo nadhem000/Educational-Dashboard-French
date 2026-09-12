@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_title">Leçon 11 – Compréhension et analyse de consignes I | Écrit</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ===== Degree7 Unit1 Lesson11 – Écrit (prefix: degree7-unit1-lesson11-ecrit-) ===== */
+        /* Palette: Chocolate / Orange – shades of orange (matching cat-writing #d2691e) */
+        :root {
+            --degree7-unit1-lesson11-ecrit-bg: #fbf5ee;
+            --degree7-unit1-lesson11-ecrit-card: #fffdfa;
+            --degree7-unit1-lesson11-ecrit-text: #2b1c10;
+            --degree7-unit1-lesson11-ecrit-text-light: #6b4a30;
+            --degree7-unit1-lesson11-ecrit-heading: #7a3a15;
+            --degree7-unit1-lesson11-ecrit-accent: #d2691e;
+            --degree7-unit1-lesson11-ecrit-accent-hover: #a9500f;
+            --degree7-unit1-lesson11-ecrit-soft: #e89a5c;
+            --degree7-unit1-lesson11-ecrit-light: #f8e2cd;
+            --degree7-unit1-lesson11-ecrit-border: #e8d2b8;
+            --degree7-unit1-lesson11-ecrit-shadow: 0 1px 3px rgba(210,105,30,0.06), 0 6px 18px rgba(210,105,30,0.05);
+            --degree7-unit1-lesson11-ecrit-radius: 14px;
+            --degree7-unit1-lesson11-ecrit-radius-sm: 8px;
+            --degree7-unit1-lesson11-ecrit-transition: 0.25s ease;
+            --degree7-unit1-lesson11-ecrit-font: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
+            --degree7-unit1-lesson11-ecrit-audio-bg: #f8e2cd;
+            --degree7-unit1-lesson11-ecrit-audio-progress: #dcb890;
+            --degree7-unit1-lesson11-ecrit-button-bg: #f3d9c1;
+            --degree7-unit1-lesson11-ecrit-button-hover: #e8c1a0;
+            --degree7-unit1-lesson11-ecrit-input-bg: #fdf5ec;
+        }
+        body.dark {
+            --degree7-unit1-lesson11-ecrit-bg: #1e1510;
+            --degree7-unit1-lesson11-ecrit-card: #2a1e16;
+            --degree7-unit1-lesson11-ecrit-text: #ede0d3;
+            --degree7-unit1-lesson11-ecrit-text-light: #c0a68b;
+            --degree7-unit1-lesson11-ecrit-heading: #f0c9a5;
+            --degree7-unit1-lesson11-ecrit-accent: #e89a5c;
+            --degree7-unit1-lesson11-ecrit-accent-hover: #f0b07c;
+            --degree7-unit1-lesson11-ecrit-soft: #d9773a;
+            --degree7-unit1-lesson11-ecrit-light: #3a281c;
+            --degree7-unit1-lesson11-ecrit-border: #4a3222;
+            --degree7-unit1-lesson11-ecrit-shadow: 0 1px 4px rgba(0,0,0,0.35);
+            --degree7-unit1-lesson11-ecrit-audio-bg: #35231a;
+            --degree7-unit1-lesson11-ecrit-audio-progress: #5c4430;
+            --degree7-unit1-lesson11-ecrit-button-bg: #402c1e;
+            --degree7-unit1-lesson11-ecrit-button-hover: #523a28;
+            --degree7-unit1-lesson11-ecrit-input-bg: #35231a;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            font-family: var(--degree7-unit1-lesson11-ecrit-font);
+            background: var(--degree7-unit1-lesson11-ecrit-bg);
+            background-image:
+                radial-gradient(circle at 15% 15%, rgba(210,105,30,0.04) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(210,105,30,0.03) 0%, transparent 40%);
+            color: var(--degree7-unit1-lesson11-ecrit-text);
+            line-height: 1.8;
+            transition: background var(--degree7-unit1-lesson11-ecrit-transition), color var(--degree7-unit1-lesson11-ecrit-transition);
+        }
+
+        .back-nav {
+            background: var(--degree7-unit1-lesson11-ecrit-card);
+            border-bottom: 1px solid var(--degree7-unit1-lesson11-ecrit-border);
+            padding: 0.5rem 1.5rem;
+        }
+        .back-nav a {
+            font-weight: 600;
+            color: var(--degree7-unit1-lesson11-ecrit-accent);
+            text-decoration: none;
+        }
+        .back-nav a:hover { text-decoration: underline; }
+
+        .degree7-unit1-lesson11-ecrit-container { max-width:1060px; margin:0 auto; padding:1.8rem 1.4rem 3rem; }
+
+        .degree7-unit1-lesson11-ecrit-lesson-header { text-align: center; margin-bottom: 2rem; }
+        .degree7-unit1-lesson11-ecrit-badge {
+            display:inline-block;
+            background: var(--degree7-unit1-lesson11-ecrit-accent);
+            color: #fff;
+            padding: 0.3rem 1.1rem;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        .degree7-unit1-lesson11-ecrit-lesson-header h1 {
+            font-size: 2.1rem;
+            color: var(--degree7-unit1-lesson11-ecrit-heading);
+            margin: 0.7rem 0 0.4rem;
+            line-height: 1.25;
+            font-weight: 700;
+        }
+        .degree7-unit1-lesson11-ecrit-lesson-header .degree7-unit1-lesson11-ecrit-meta {
+            font-size: 0.9rem;
+            color: var(--degree7-unit1-lesson11-ecrit-text-light);
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .degree7-unit1-lesson11-ecrit-audio-player {
+            background: var(--degree7-unit1-lesson11-ecrit-card);
+            border: 1px solid var(--degree7-unit1-lesson11-ecrit-border);
+            border-radius: var(--degree7-unit1-lesson11-ecrit-radius);
+            padding: 1rem 1.4rem;
+            margin: 1.5rem 0 2rem;
+            box-shadow: var(--degree7-unit1-lesson11-ecrit-shadow);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .degree7-unit1-lesson11-ecrit-play-btn {
+            width: 46px; height: 46px; border-radius: 50%;
+            background: var(--degree7-unit1-lesson11-ecrit-accent);
+            color: #fff; border: none; font-size: 1.2rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background var(--degree7-unit1-lesson11-ecrit-transition);
+            flex-shrink: 0;
+        }
+        .degree7-unit1-lesson11-ecrit-play-btn:hover { background: var(--degree7-unit1-lesson11-ecrit-accent-hover); }
+        .degree7-unit1-lesson11-ecrit-progress-area { flex:1; min-width:120px; display:flex; flex-direction:column; gap:0.3rem; }
+        .degree7-unit1-lesson11-ecrit-progress-bar {
+            width:100%; height:6px; background: var(--degree7-unit1-lesson11-ecrit-audio-progress);
+            border-radius: 3px; cursor:pointer; position:relative; overflow:hidden;
+        }
+        .degree7-unit1-lesson11-ecrit-progress-fill {
+            height:100%; background: var(--degree7-unit1-lesson11-ecrit-accent);
+            border-radius: 3px; width: 0%; transition: width 0.1s linear;
+        }
+        .degree7-unit1-lesson11-ecrit-time-info {
+            display:flex; justify-content:space-between; font-size:0.75rem;
+            color: var(--degree7-unit1-lesson11-ecrit-text-light);
+        }
+        .degree7-unit1-lesson11-ecrit-speed-selector { display:flex; gap:0.3rem; flex-wrap:wrap; }
+        .degree7-unit1-lesson11-ecrit-speed-btn {
+            border:1px solid var(--degree7-unit1-lesson11-ecrit-border);
+            background: var(--degree7-unit1-lesson11-ecrit-button-bg);
+            color: var(--degree7-unit1-lesson11-ecrit-text);
+            padding:0.3rem 0.6rem; border-radius: 4px;
+            font-size:0.75rem; font-weight:600; cursor:pointer;
+            transition: all var(--degree7-unit1-lesson11-ecrit-transition);
+        }
+        .degree7-unit1-lesson11-ecrit-speed-btn.active {
+            background: var(--degree7-unit1-lesson11-ecrit-accent);
+            color: #fff; border-color: var(--degree7-unit1-lesson11-ecrit-accent);
+        }
+        .degree7-unit1-lesson11-ecrit-audio-label {
+            font-weight:700; font-size:0.9rem;
+            color: var(--degree7-unit1-lesson11-ecrit-heading);
+            white-space:nowrap;
+        }
+        @media (max-width:600px) {
+            .degree7-unit1-lesson11-ecrit-audio-player { flex-direction: column; align-items: stretch; }
+            .degree7-unit1-lesson11-ecrit-audio-label { text-align: center; }
+        }
+
+        .degree7-unit1-lesson11-ecrit-text-card {
+            background: var(--degree7-unit1-lesson11-ecrit-card);
+            border: 1px solid var(--degree7-unit1-lesson11-ecrit-border);
+            border-left: 5px solid var(--degree7-unit1-lesson11-ecrit-accent);
+            border-radius: 0 var(--degree7-unit1-lesson11-ecrit-radius) var(--degree7-unit1-lesson11-ecrit-radius) 0;
+            padding: 1.5rem 1.8rem;
+            margin: 1.8rem 0;
+            font-size: 1.02rem;
+            line-height: 1.9;
+            box-shadow: var(--degree7-unit1-lesson11-ecrit-shadow);
+            position: relative;
+        }
+        .degree7-unit1-lesson11-ecrit-text-card .degree7-unit1-lesson11-ecrit-quote-mark {
+            position: absolute; top:-15px; left:14px; font-size:3.5rem;
+            color: var(--degree7-unit1-lesson11-ecrit-accent); opacity:0.3; line-height:1;
+            font-family: 'Georgia', serif;
+        }
+        .degree7-unit1-lesson11-ecrit-text-card p { margin-bottom: 0.8rem; }
+
+        .degree7-unit1-lesson11-ecrit-situation {
+            background: var(--degree7-unit1-lesson11-ecrit-light);
+            border-left: 4px solid var(--degree7-unit1-lesson11-ecrit-accent);
+            border-radius: 0 var(--degree7-unit1-lesson11-ecrit-radius-sm) var(--degree7-unit1-lesson11-ecrit-radius-sm) 0;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .degree7-unit1-lesson11-ecrit-situation h3 {
+            color: var(--degree7-unit1-lesson11-ecrit-accent);
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+        }
+        .degree7-unit1-lesson11-ecrit-situation p { margin: 0.4rem 0; font-size: 0.95rem; }
+        .degree7-unit1-lesson11-ecrit-situation .consigne-line {
+            margin-top: 0.6rem;
+            font-weight: 600;
+            color: var(--degree7-unit1-lesson11-ecrit-heading);
+            font-style: italic;
+        }
+
+        .degree7-unit1-lesson11-ecrit-section h2 {
+            font-size: 1.5rem;
+            color: var(--degree7-unit1-lesson11-ecrit-heading);
+            margin: 2.4rem 0 1rem;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+            position: relative;
+        }
+        .degree7-unit1-lesson11-ecrit-section h2::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 40%; bottom: 0; height: 3px;
+            background: var(--degree7-unit1-lesson11-ecrit-accent);
+            border-radius: 2px;
+        }
+
+        .degree7-unit1-lesson11-ecrit-valeurs-section {
+            background: var(--degree7-unit1-lesson11-ecrit-card);
+            border: 1px solid var(--degree7-unit1-lesson11-ecrit-border);
+            border-radius: var(--degree7-unit1-lesson11-ecrit-radius);
+            padding: 1.6rem 1.8rem;
+            margin: 2rem 0;
+            box-shadow: var(--degree7-unit1-lesson11-ecrit-shadow);
+        }
+        .degree7-unit1-lesson11-ecrit-valeurs-section h2 {
+            font-size: 1.5rem;
+            color: var(--degree7-unit1-lesson11-ecrit-heading);
+            margin-bottom: 1rem;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+            border-bottom: 3px solid var(--degree7-unit1-lesson11-ecrit-accent);
+        }
+        .degree7-unit1-lesson11-ecrit-valeur-card {
+            background: var(--degree7-unit1-lesson11-ecrit-light);
+            border-radius: var(--degree7-unit1-lesson11-ecrit-radius-sm);
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .degree7-unit1-lesson11-ecrit-valeur-card h3 {
+            color: var(--degree7-unit1-lesson11-ecrit-accent);
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+        .degree7-unit1-lesson11-ecrit-valeur-card p { margin: 0.4rem 0; color: var(--degree7-unit1-lesson11-ecrit-text); }
+        .degree7-unit1-lesson11-ecrit-valeur-card ul { list-style: none; padding: 0; }
+        .degree7-unit1-lesson11-ecrit-valeur-card li {
+            padding: 0.3rem 0 0.3rem 1.4rem;
+            position: relative;
+            color: var(--degree7-unit1-lesson11-ecrit-text);
+        }
+        .degree7-unit1-lesson11-ecrit-valeur-card li::before {
+            content: '◆';
+            position: absolute; left: 0;
+            color: var(--degree7-unit1-lesson11-ecrit-accent);
+            font-size: 0.55rem; top: 0.6rem;
+        }
+
+        .degree7-unit1-lesson11-ecrit-checklist-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        .degree7-unit1-lesson11-ecrit-checklist-table th,
+        .degree7-unit1-lesson11-ecrit-checklist-table td {
+            padding: 0.7rem 0.9rem;
+            border: 1px solid var(--degree7-unit1-lesson11-ecrit-border);
+            text-align: left;
+            font-size: 0.92rem;
+            vertical-align: top;
+        }
+        .degree7-unit1-lesson11-ecrit-checklist-table th {
+            background: var(--degree7-unit1-lesson11-ecrit-accent);
+            color: #fff;
+            font-weight: 700;
+        }
+        .degree7-unit1-lesson11-ecrit-checklist-table tr:nth-child(even) td {
+            background: var(--degree7-unit1-lesson11-ecrit-light);
+        }
+
+        .degree7-unit1-lesson11-ecrit-note {
+            background: linear-gradient(135deg, rgba(210,105,30,0.06), rgba(210,105,30,0.02));
+            border: 1px dashed var(--degree7-unit1-lesson11-ecrit-accent);
+            border-radius: var(--degree7-unit1-lesson11-ecrit-radius-sm);
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+            color: var(--degree7-unit1-lesson11-ecrit-text);
+        }
+        .degree7-unit1-lesson11-ecrit-note strong { color: var(--degree7-unit1-lesson11-ecrit-accent); }
+
+        .degree7-unit1-lesson11-ecrit-exercises-section {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start;
+        }
+        .degree7-unit1-lesson11-ecrit-exercises-section h2 {
+            grid-column: 1 / -1;
+            font-size: 1.5rem;
+            color: var(--degree7-unit1-lesson11-ecrit-heading);
+            margin: 2rem 0 1rem;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+            border-bottom: 3px solid var(--degree7-unit1-lesson11-ecrit-accent);
+        }
+        .degree7-unit1-lesson11-ecrit-exercise-card {
+            background: var(--degree7-unit1-lesson11-ecrit-card);
+            border: 1px solid var(--degree7-unit1-lesson11-ecrit-border);
+            border-radius: var(--degree7-unit1-lesson11-ecrit-radius-sm);
+            padding: 1.2rem 1.4rem;
+            margin-bottom: 0;
+            box-shadow: var(--degree7-unit1-lesson11-ecrit-shadow);
+        }
+        .degree7-unit1-lesson11-ecrit-exercise-col-left { grid-column: 1 / 2; }
+        .degree7-unit1-lesson11-ecrit-exercise-col-right { grid-column: 2 / 3; }
+        .degree7-unit1-lesson11-ecrit-exercise-card h3 {
+            font-size: 1.05rem;
+            color: var(--degree7-unit1-lesson11-ecrit-accent);
+            margin-bottom: 0.8rem;
+            display: flex; align-items: center; gap: 0.4rem;
+        }
+        .degree7-unit1-lesson11-ecrit-exercise-card table {
+            width: 100%; border-collapse: collapse; margin: 0.8rem 0;
+        }
+        .degree7-unit1-lesson11-ecrit-exercise-card th,
+        .degree7-unit1-lesson11-ecrit-exercise-card td {
+            padding: 0.55rem 0.7rem;
+            border: 1px solid var(--degree7-unit1-lesson11-ecrit-border);
+            text-align: left; font-size: 0.9rem;
+        }
+        .degree7-unit1-lesson11-ecrit-exercise-card th {
+            background: var(--degree7-unit1-lesson11-ecrit-light);
+            font-weight: 700;
+            color: var(--degree7-unit1-lesson11-ecrit-heading);
+        }
+        .degree7-unit1-lesson11-ecrit-exercise-card input[type="text"],
+        .degree7-unit1-lesson11-ecrit-exercise-card textarea {
+            width: 100%; padding: 0.4rem 0.6rem;
+            border: 1px solid var(--degree7-unit1-lesson11-ecrit-border);
+            border-radius: 4px;
+            background: var(--degree7-unit1-lesson11-ecrit-input-bg);
+            color: var(--degree7-unit1-lesson11-ecrit-text);
+            font-family: inherit; font-size: 0.9rem;
+        }
+        .degree7-unit1-lesson11-ecrit-exercise-card textarea { resize: vertical; }
+        .degree7-unit1-lesson11-ecrit-exercise-card input:focus,
+        .degree7-unit1-lesson11-ecrit-exercise-card textarea:focus {
+            outline: none;
+            border-color: var(--degree7-unit1-lesson11-ecrit-accent);
+        }
+        .degree7-unit1-lesson11-ecrit-inline-input {
+            width: 130px !important;
+            padding: 0.25rem 0.5rem !important;
+            display: inline-block;
+            margin: 0 0.2rem;
+        }
+        .degree7-unit1-lesson11-ecrit-btn-verify {
+            background: var(--degree7-unit1-lesson11-ecrit-accent);
+            color: #fff; border: none; padding: 0.5rem 1.2rem;
+            border-radius: 20px; font-weight: 600; cursor: pointer;
+            transition: background var(--degree7-unit1-lesson11-ecrit-transition);
+            margin-top: 0.6rem; font-size: 0.85rem;
+        }
+        .degree7-unit1-lesson11-ecrit-btn-verify:hover { background: var(--degree7-unit1-lesson11-ecrit-accent-hover); }
+        .degree7-unit1-lesson11-ecrit-answer-key {
+            display: none; margin-top: 0.8rem; padding: 0.8rem;
+            background: var(--degree7-unit1-lesson11-ecrit-light);
+            border-radius: 6px; font-size: 0.85rem;
+            color: var(--degree7-unit1-lesson11-ecrit-text);
+            border: 1px dashed var(--degree7-unit1-lesson11-ecrit-accent);
+        }
+        .degree7-unit1-lesson11-ecrit-answer-key.visible { display: block; }
+
+        .degree7-unit1-lesson11-ecrit-self-assessment {
+            margin-top: 0.8rem; font-size: 0.9rem;
+            display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
+        }
+        .degree7-unit1-lesson11-ecrit-self-assessment label { cursor: pointer; }
+
+        .degree7-unit1-lesson11-ecrit-score-area {
+            background: var(--degree7-unit1-lesson11-ecrit-card);
+            border: 1px solid var(--degree7-unit1-lesson11-ecrit-border);
+            border-radius: var(--degree7-unit1-lesson11-ecrit-radius);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: var(--degree7-unit1-lesson11-ecrit-shadow);
+        }
+        .degree7-unit1-lesson11-ecrit-score-area h2 {
+            color: var(--degree7-unit1-lesson11-ecrit-heading);
+            margin-bottom: 1rem;
+        }
+        .degree7-unit1-lesson11-ecrit-score-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .degree7-unit1-lesson11-ecrit-score-stat {
+            background: var(--degree7-unit1-lesson11-ecrit-light);
+            padding: 0.8rem 1.2rem; border-radius: 8px; font-weight: 600;
+        }
+
+        .degree7-unit1-lesson11-ecrit-footer-nav {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            background: var(--degree7-unit1-lesson11-ecrit-card);
+            border-top: 1px solid var(--degree7-unit1-lesson11-ecrit-border);
+            padding: 0.8rem 1.5rem;
+            border-radius: 0 0 var(--degree7-unit1-lesson11-ecrit-radius) var(--degree7-unit1-lesson11-ecrit-radius);
+        }
+        .degree7-unit1-lesson11-ecrit-footer-nav a {
+            font-weight: 600;
+            color: var(--degree7-unit1-lesson11-ecrit-accent);
+            text-decoration: none;
+        }
+        .degree7-unit1-lesson11-ecrit-footer-nav a:hover { text-decoration: underline; }
+
+        html[dir="rtl"] body { direction: rtl; }
+        html[dir="rtl"] .degree7-unit1-lesson11-ecrit-container { text-align: right; }
+        html[dir="rtl"] .degree7-unit1-lesson11-ecrit-exercise-card th,
+        html[dir="rtl"] .degree7-unit1-lesson11-ecrit-exercise-card td,
+        html[dir="rtl"] .degree7-unit1-lesson11-ecrit-checklist-table th,
+        html[dir="rtl"] .degree7-unit1-lesson11-ecrit-checklist-table td { text-align: right; }
+
+        @media (max-width:800px) {
+            .degree7-unit1-lesson11-ecrit-exercises-section { grid-template-columns: 1fr; }
+            .degree7-unit1-lesson11-ecrit-exercise-col-left,
+            .degree7-unit1-lesson11-ecrit-exercise-col-right { grid-column: auto; }
+        }
+        @media (max-width:600px) {
+            .degree7-unit1-lesson11-ecrit-lesson-header h1 { font-size: 1.5rem; }
+            .degree7-unit1-lesson11-ecrit-container { padding: 1rem 0.8rem 2rem; }
+            .degree7-unit1-lesson11-ecrit-text-card { padding: 1.4rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div id="toast-container"></div>
+    <button id="signInBtn" style="display:none"></button>
+
+    <nav class="back-nav no-print">
+        <a href="index.html" data-i18n="back_link">← Retour à l'accueil</a>
+    </nav>
+
+    <div id="main-content" class="degree7-unit1-lesson11-ecrit-container">
+        <!-- Breadcrumb -->
+        <p style="margin-bottom:1.5rem; color:var(--degree7-unit1-lesson11-ecrit-text-light);">
+            <a href="degree7.html" data-i18n="back_revision">Unité 1</a>
+            › <strong data-i18n="back_current">Compréhension et analyse de consignes I</strong>
+        </p>
+
+        <div class="degree7-unit1-lesson11-ecrit-lesson-header">
+            <span class="degree7-unit1-lesson11-ecrit-badge" data-i18n="lesson_badge">📝 Écrit · Leçon 11</span>
+            <h1 data-i18n="lesson_title">Compréhension et analyse<br>de consignes I</h1>
+            <div class="degree7-unit1-lesson11-ecrit-meta">
+                <span data-i18n="lesson_duration">⏱️ 45 minutes</span>
+                <span data-i18n="lesson_meta_audio">🎧 Écoutez les situations puis faites les exercices</span>
+            </div>
+        </div>
+
+        <!-- Audio player -->
+        <div class="degree7-unit1-lesson11-ecrit-audio-player" id="audioPlayer">
+            <span class="degree7-unit1-lesson11-ecrit-audio-label" data-i18n="audio_label">🎧 Écoute des situations</span>
+            <button class="degree7-unit1-lesson11-ecrit-play-btn" id="playBtn" aria-label="Lecture">▶</button>
+            <div class="degree7-unit1-lesson11-ecrit-progress-area">
+                <div class="degree7-unit1-lesson11-ecrit-progress-bar" id="progressBar">
+                    <div class="degree7-unit1-lesson11-ecrit-progress-fill" id="progressFill"></div>
+                </div>
+                <div class="degree7-unit1-lesson11-ecrit-time-info">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+            <div class="degree7-unit1-lesson11-ecrit-speed-selector" id="speedSelector">
+                <button class="degree7-unit1-lesson11-ecrit-speed-btn" data-speed="0.75">0.75x</button>
+                <button class="degree7-unit1-lesson11-ecrit-speed-btn active" data-speed="1">1x</button>
+                <button class="degree7-unit1-lesson11-ecrit-speed-btn" data-speed="1.25">1.25x</button>
+                <button class="degree7-unit1-lesson11-ecrit-speed-btn" data-speed="1.5">1.5x</button>
+            </div>
+        </div>
+
+        <!-- Observation: 4 situations -->
+        <section class="degree7-unit1-lesson11-ecrit-section">
+            <h2 data-i18n="text_heading">📖 J'observe et je comprends</h2>
+
+            <div class="degree7-unit1-lesson11-ecrit-valeurs-section">
+                <div class="degree7-unit1-lesson11-ecrit-situation">
+                    <h3 data-i18n="sit1_title">Situation 1</h3>
+                    <p data-i18n="sit1_text">« Tu t'amuses bien, bonhomme ? La journée est bonne, pas vrai ? »<br>Le soir, l'enfant prépare ses leçons. Il doit rédiger un récit au présent et à la première personne. Il en profite pour faire le récit de cette partie de pêche, de cette bonne journée.</p>
+                    <p class="consigne-line" data-i18n="sit1_consigne">Imagine ce qu'il écrit.</p>
+                </div>
+
+                <div class="degree7-unit1-lesson11-ecrit-situation">
+                    <h3 data-i18n="sit2_title">Situation 2</h3>
+                    <p data-i18n="sit2_text">Le même soir, le père qui est écrivain pense encore au seul petit poisson qu'il a pris et qu'il a remis à l'eau. Une idée lui vient à l'esprit. Il se dit : « Et si j'en faisais le héros d'un court récit pour enfants ! Et si ce petit poisson se mettait à parler, à raconter son aventure à sa maman… » Puis il se met à écrire.</p>
+                    <p class="consigne-line" data-i18n="sit2_consigne">Imagine ce qu'il écrit.</p>
+                </div>
+
+                <div class="degree7-unit1-lesson11-ecrit-situation">
+                    <h3 data-i18n="sit3_title">Situation 3</h3>
+                    <p data-i18n="sit3_text">Tu reçois la lettre suivante :<br><br>« Paris, le 17 septembre 2006<br>Cher …,<br>Dans ta dernière lettre, tu me parles d'une journée passée chez tes grands-parents. Tu as beaucoup de chance, tu sais, d'avoir une grand-mère et un grand-père ! Je n'ai pas connu les miens, hélas ! J'aimerais bien que tu me fasses le récit de cette journée et que tu m'en parles avec plus de détails. Dis-moi comment ils t'ont reçu, ce qu'ils ont fait pour que tu te sentes bien et tout et tout. Tu sais, quand je lirai ta lettre, je sentirai que je suis un peu, moi aussi, chez mes grands-parents. Passe le bonjour à toute la famille et embrasse grand-mère et grand-père pour moi. Bien amicalement, François. »</p>
+                    <p class="consigne-line" data-i18n="sit3_consigne">Réponds à cette lettre.</p>
+                </div>
+
+                <div class="degree7-unit1-lesson11-ecrit-situation">
+                    <h3 data-i18n="sit4_title">Situation 4</h3>
+                    <p data-i18n="sit4_text">Certaines familles partent en vacances et abandonnent des animaux (chiens et chats notamment) sans penser au mal qu'elles font à ces pauvres bêtes. Un chien abandonné fait le récit de sa première nuit de solitude à un autre animal abandonné comme lui.</p>
+                    <p class="consigne-line" data-i18n="sit4_consigne">Imagine et écris ce qu'il dit.</p>
+                </div>
+            </div>
+
+            <div class="degree7-unit1-lesson11-ecrit-note">
+                <strong data-i18n="comp_heading">🔎 Je comprends la situation :</strong>
+                <ul style="padding-left:1.4rem; margin-top:0.4rem;">
+                    <li data-i18n="comp_q1">Repère la tâche demandée dans chacune des quatre situations.</li>
+                    <li data-i18n="comp_q2">Quel est le point commun aux trois premières situations ?</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Rules: method -->
+        <section class="degree7-unit1-lesson11-ecrit-section">
+            <h2 data-i18n="rules_heading">📖 La méthode : analyser une consigne</h2>
+
+            <div class="degree7-unit1-lesson11-ecrit-valeurs-section">
+                <p data-i18n="rules_intro" style="margin-bottom:1rem;">Une <strong>situation d'écrit</strong> est composée de plusieurs éléments qu'il faut identifier pour bien répondre à la tâche demandée. Voici les éléments à repérer, et les questions à se poser.</p>
+
+                <div class="degree7-unit1-lesson11-ecrit-valeur-card">
+                    <h3 data-i18n="rule_elem_title">🔹 Les éléments de la situation d'écrit</h3>
+                    <ul data-i18n="rule_elem_list">
+                        <li>Le <strong>support</strong> : carte, lettre, image, texte, dialogue…</li>
+                        <li>Les <strong>phrases explicatives</strong> qui présentent le contexte et les personnages.</li>
+                        <li>La <strong>consigne</strong> proprement dite, qui dit ce qu'il faut faire.</li>
+                    </ul>
+                </div>
+
+                <div class="degree7-unit1-lesson11-ecrit-valeur-card">
+                    <h3 data-i18n="rule_questions_title">🔹 Les questions à se poser</h3>
+                    <ul data-i18n="rule_questions_list">
+                        <li>Quels sont les <strong>éléments</strong> de la situation qu'on me propose ?</li>
+                        <li>Quelles <strong>précisions</strong> me donne-t-on pour que la situation soit claire ?</li>
+                        <li>Quel est le <strong>type d'écrit demandé</strong> (récit, dialogue, lettre, description…) ?</li>
+                        <li>Comment savoir que <strong>ce que j'écris répond bien à la consigne</strong> ?</li>
+                    </ul>
+                </div>
+
+                <div class="degree7-unit1-lesson11-ecrit-valeur-card">
+                    <h3 data-i18n="rule_check_title">🔹 La grille d'auto-évaluation</h3>
+                    <table class="degree7-unit1-lesson11-ecrit-checklist-table">
+                        <thead>
+                            <tr>
+                                <th data-i18n="grille_col_q" class="no-bilingual">Question</th>
+                                <th data-i18n="grille_col_yes" class="no-bilingual">Oui</th>
+                                <th data-i18n="grille_col_no" class="no-bilingual">Non</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td data-i18n="grille_r1">J'ai compris la situation.</td><td><input type="radio" name="grille1" value="oui"></td><td><input type="radio" name="grille1" value="non"></td></tr>
+                            <tr><td data-i18n="grille_r2">Je sais ce que je dois faire.</td><td><input type="radio" name="grille2" value="oui"></td><td><input type="radio" name="grille2" value="non"></td></tr>
+                            <tr><td data-i18n="grille_r3">Le travail fait avec mon camarade m'aide à me corriger.</td><td><input type="radio" name="grille3" value="oui"></td><td><input type="radio" name="grille3" value="non"></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="degree7-unit1-lesson11-ecrit-valeur-card">
+                    <h3 data-i18n="rule_example_title">🔹 Exemple appliqué à la situation 1</h3>
+                    <ul data-i18n="rule_example_list">
+                        <li><strong>Support :</strong> un dialogue et une vignette montrant un père et son fils au bord d'une rivière.</li>
+                        <li><strong>Contexte :</strong> une partie de pêche père-fils.</li>
+                        <li><strong>Type d'écrit :</strong> un récit au présent, à la première personne.</li>
+                        <li><strong>Consigne :</strong> « Imagine ce qu'il écrit ».</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercises -->
+        <div class="degree7-unit1-lesson11-ecrit-exercises-section">
+            <h2 data-i18n="exercises_heading">✍️ Je m'exerce</h2>
+
+            <!-- Ex 1 -->
+            <div class="degree7-unit1-lesson11-ecrit-exercise-card degree7-unit1-lesson11-ecrit-exercise-col-left">
+                <h3 data-i18n="exo1_title">📌 1. Identifier les éléments de chaque situation</h3>
+                <p data-i18n="exo1_instruction">Complète le tableau en indiquant le support et le type d'écrit demandé pour chaque situation.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="t_situation" class="no-bilingual">Situation</th>
+                            <th data-i18n="t_support" class="no-bilingual">Support</th>
+                            <th data-i18n="t_type" class="no-bilingual">Type d'écrit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Situation 1</td><td><input type="text" placeholder="..."></td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>Situation 2</td><td><input type="text" placeholder="..."></td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>Situation 3</td><td><input type="text" placeholder="..."></td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>Situation 4</td><td><input type="text" placeholder="..."></td><td><input type="text" placeholder="..."></td></tr>
+                    </tbody>
+                </table>
+                <button class="degree7-unit1-lesson11-ecrit-btn-verify" onclick="toggleCorrection('exo1Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo1Key" class="degree7-unit1-lesson11-ecrit-answer-key"></div>
+                <div class="degree7-unit1-lesson11-ecrit-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 2 -->
+            <div class="degree7-unit1-lesson11-ecrit-exercise-card degree7-unit1-lesson11-ecrit-exercise-col-right">
+                <h3 data-i18n="exo2_title">📌 2. Les questions à se poser</h3>
+                <p data-i18n="exo2_instruction">Entoure dans la liste suivante les questions qu'il faut toujours se poser pour comprendre une situation d'écrit.</p>
+                <div style="display:flex; flex-direction:column; gap:0.3rem; margin:0.5rem 0;">
+                    <label><input type="checkbox" name="q_a"> <span data-i18n="exo2_a">Quels sont les éléments de la situation d'écrit qu'on me propose ?</span></label>
+                    <label><input type="checkbox" name="q_b"> <span data-i18n="exo2_b">Quel temps fait-il aujourd'hui ?</span></label>
+                    <label><input type="checkbox" name="q_c"> <span data-i18n="exo2_c">Quelles sont les précisions qu'on me donne pour que la situation soit claire ?</span></label>
+                    <label><input type="checkbox" name="q_d"> <span data-i18n="exo2_d">Quel est le type d'écrit demandé ?</span></label>
+                    <label><input type="checkbox" name="q_e"> <span data-i18n="exo2_e">Combien de temps me reste-t-il avant la récréation ?</span></label>
+                    <label><input type="checkbox" name="q_f"> <span data-i18n="exo2_f">Comment savoir que ce que j'écris répond bien à la consigne ?</span></label>
+                </div>
+                <button class="degree7-unit1-lesson11-ecrit-btn-verify" onclick="toggleCorrection('exo2Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo2Key" class="degree7-unit1-lesson11-ecrit-answer-key"></div>
+                <div class="degree7-unit1-lesson11-ecrit-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 3 -->
+            <div class="degree7-unit1-lesson11-ecrit-exercise-card degree7-unit1-lesson11-ecrit-exercise-col-left">
+                <h3 data-i18n="exo3_title">📌 3. Analyser la situation 1</h3>
+                <p data-i18n="exo3_instruction">Réponds aux questions portant sur la situation 1.</p>
+                <ol type="a">
+                    <li><span data-i18n="exo3_q1">Où la scène va-t-elle se passer ?</span> <input type="text" placeholder="..."></li>
+                    <li><span data-i18n="exo3_q2">S'agit-il d'événements réels ou imaginaires ?</span> <input type="text" placeholder="..."></li>
+                    <li><span data-i18n="exo3_q3">À quel temps le texte sera-t-il écrit ?</span> <input type="text" placeholder="..."></li>
+                    <li><span data-i18n="exo3_q4">À quelle personne sera-t-il écrit ?</span> <input type="text" placeholder="..."></li>
+                    <li><span data-i18n="exo3_q5">Où trouve-t-on la réponse à ces deux dernières questions ?</span> <input type="text" placeholder="..."></li>
+                </ol>
+                <button class="degree7-unit1-lesson11-ecrit-btn-verify" onclick="toggleCorrection('exo3Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo3Key" class="degree7-unit1-lesson11-ecrit-answer-key"></div>
+                <div class="degree7-unit1-lesson11-ecrit-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 4 -->
+            <div class="degree7-unit1-lesson11-ecrit-exercise-card degree7-unit1-lesson11-ecrit-exercise-col-right">
+                <h3 data-i18n="exo4_title">📌 4. Vrai ou faux sur la consigne ?</h3>
+                <p data-i18n="exo4_instruction">Indique si chaque affirmation est vraie (V) ou fausse (F).</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="t_statement" class="no-bilingual">Affirmation</th>
+                            <th data-i18n="t_vf" class="no-bilingual">V / F</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td data-i18n="exo4_q1">La consigne indique ce qu'il faut faire.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo4_q2">Le support et la consigne sont toujours identiques.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo4_q3">Les phrases explicatives précisent le contexte (lieux, temps, personnages).</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo4_q4">« Imagine ce qu'il écrit » signifie uniquement d'imaginer, sans rien écrire.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo4_q5">La grille d'auto-évaluation permet de vérifier si l'on a compris la situation.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                    </tbody>
+                </table>
+                <button class="degree7-unit1-lesson11-ecrit-btn-verify" onclick="toggleCorrection('exo4Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo4Key" class="degree7-unit1-lesson11-ecrit-answer-key"></div>
+                <div class="degree7-unit1-lesson11-ecrit-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 5 -->
+            <div class="degree7-unit1-lesson11-ecrit-exercise-card degree7-unit1-lesson11-ecrit-exercise-col-left">
+                <h3 data-i18n="exo5_title">📌 5. Compléter la grille d'auto-évaluation</h3>
+                <p data-i18n="exo5_instruction">Remplis la grille pour évaluer ton travail sur la situation 1.</p>
+                <table class="degree7-unit1-lesson11-ecrit-checklist-table">
+                    <thead>
+                        <tr>
+                            <th data-i18n="grille_col_q" class="no-bilingual">Question</th>
+                            <th data-i18n="grille_col_yes" class="no-bilingual">Oui</th>
+                            <th data-i18n="grille_col_no" class="no-bilingual">Non</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td data-i18n="grille_r1">J'ai compris la situation.</td><td><input type="radio" name="grille5_1" value="oui"></td><td><input type="radio" name="grille5_1" value="non"></td></tr>
+                        <tr><td data-i18n="grille_r2">Je sais ce que je dois faire.</td><td><input type="radio" name="grille5_2" value="oui"></td><td><input type="radio" name="grille5_2" value="non"></td></tr>
+                        <tr><td data-i18n="grille_r3">Le travail fait avec mon camarade m'aide à me corriger.</td><td><input type="radio" name="grille5_3" value="oui"></td><td><input type="radio" name="grille5_3" value="non"></td></tr>
+                    </tbody>
+                </table>
+                <div class="degree7-unit1-lesson11-ecrit-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex5" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex5" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex5" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 6 -->
+            <div class="degree7-unit1-lesson11-ecrit-exercise-card degree7-unit1-lesson11-ecrit-exercise-col-right">
+                <h3 data-i18n="exo6_title">📌 6. Écrire les premières phrases du récit de l'enfant</h3>
+                <p data-i18n="exo6_instruction">À partir de la situation 1, écris les deux ou trois premières phrases du récit fait par l'enfant. Indique le temps, le lieu, et présente les personnages.</p>
+                <textarea rows="4" placeholder="Votre récit..."></textarea>
+                <div class="degree7-unit1-lesson11-ecrit-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex6" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex6" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex6" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree7-unit1-lesson11-ecrit-btn-verify" onclick="showExample('exo6Example')" data-i18n="show_example">💡 Voir un exemple</button>
+                <div id="exo6Example" class="degree7-unit1-lesson11-ecrit-answer-key"></div>
+            </div>
+
+            <!-- Ex 7 -->
+            <div class="degree7-unit1-lesson11-ecrit-exercise-card degree7-unit1-lesson11-ecrit-exercise-col-left">
+                <h3 data-i18n="exo7_title">📌 7. Analyser la situation 3</h3>
+                <p data-i18n="exo7_instruction">Réponds aux questions portant sur la situation 3.</p>
+                <ol type="a">
+                    <li><span data-i18n="exo7_q1">Quel est le support ?</span> <input type="text" placeholder="..."></li>
+                    <li><span data-i18n="exo7_q2">Qui écrit et à qui ?</span> <input type="text" placeholder="..."></li>
+                    <li><span data-i18n="exo7_q3">Que demande François dans sa lettre ?</span> <textarea rows="2" placeholder="..."></textarea></li>
+                    <li><span data-i18n="exo7_q4">Quel type d'écrit dois-tu produire ?</span> <input type="text" placeholder="..."></li>
+                </ol>
+                <button class="degree7-unit1-lesson11-ecrit-btn-verify" onclick="toggleCorrection('exo7Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo7Key" class="degree7-unit1-lesson11-ecrit-answer-key"></div>
+                <div class="degree7-unit1-lesson11-ecrit-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex7" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex7" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex7" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 8 -->
+            <div class="degree7-unit1-lesson11-ecrit-exercise-card degree7-unit1-lesson11-ecrit-exercise-col-right">
+                <h3 data-i18n="exo8_title">📌 8. Classer les éléments</h3>
+                <p data-i18n="exo8_instruction">Classe chaque élément dans la bonne catégorie : support (S), contexte (C) ou consigne (Co).</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="t_element" class="no-bilingual">Élément</th>
+                            <th data-i18n="t_category" class="no-bilingual">S / C / Co</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>« Tu t'amuses bien, bonhomme ? La journée est bonne, pas vrai ? »</td><td><input type="text" placeholder="S / C / Co"></td></tr>
+                        <tr><td>« Imagine ce qu'il écrit. »</td><td><input type="text" placeholder="S / C / Co"></td></tr>
+                        <tr><td>« Une journée passée chez les grands-parents »</td><td><input type="text" placeholder="S / C / Co"></td></tr>
+                        <tr><td>« Une lettre reçue de Paris »</td><td><input type="text" placeholder="S / C / Co"></td></tr>
+                        <tr><td>« Réponds à cette lettre. »</td><td><input type="text" placeholder="S / C / Co"></td></tr>
+                    </tbody>
+                </table>
+                <button class="degree7-unit1-lesson11-ecrit-btn-verify" onclick="toggleCorrection('exo8Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo8Key" class="degree7-unit1-lesson11-ecrit-answer-key"></div>
+                <div class="degree7-unit1-lesson11-ecrit-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex8" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex8" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex8" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 9 -->
+            <div class="degree7-unit1-lesson11-ecrit-exercise-card degree7-unit1-lesson11-ecrit-exercise-col-left">
+                <h3 data-i18n="exo9_title">📌 9. Compléter la grille des questions</h3>
+                <p data-i18n="exo9_instruction">Complète la grille avec les questions à se poser pour analyser une situation d'écrit.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="t_what" class="no-bilingual">Ce qu'il faut repérer</th>
+                            <th data-i18n="t_question" class="no-bilingual">La question à se poser</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Support</td><td><input type="text" placeholder="Quel est...?"></td></tr>
+                        <tr><td>Contexte</td><td><input type="text" placeholder="Quelles sont...?"></td></tr>
+                        <tr><td>Type d'écrit</td><td><input type="text" placeholder="Quel type...?"></td></tr>
+                        <tr><td>Consigne</td><td><input type="text" placeholder="Que dois-je...?"></td></tr>
+                    </tbody>
+                </table>
+                <button class="degree7-unit1-lesson11-ecrit-btn-verify" onclick="toggleCorrection('exo9Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo9Key" class="degree7-unit1-lesson11-ecrit-answer-key"></div>
+                <div class="degree7-unit1-lesson11-ecrit-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex9" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex9" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex9" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 10 -->
+            <div class="degree7-unit1-lesson11-ecrit-exercise-card degree7-unit1-lesson11-ecrit-exercise-col-right">
+                <h3 data-i18n="exo10_title">📌 10. Analyser la situation 4</h3>
+                <p data-i18n="exo10_instruction">Réponds aux questions portant sur la situation 4.</p>
+                <ol type="a">
+                    <li><span data-i18n="exo10_q1">Qui parle dans ce récit ?</span> <input type="text" placeholder="..."></li>
+                    <li><span data-i18n="exo10_q2">À qui parle-t-il ?</span> <input type="text" placeholder="..."></li>
+                    <li><span data-i18n="exo10_q3">Quel événement raconte-t-il ?</span> <input type="text" placeholder="..."></li>
+                    <li><span data-i18n="exo10_q4">Quel type d'écrit dois-tu produire ?</span> <input type="text" placeholder="..."></li>
+                </ol>
+                <button class="degree7-unit1-lesson11-ecrit-btn-verify" onclick="toggleCorrection('exo10Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo10Key" class="degree7-unit1-lesson11-ecrit-answer-key"></div>
+                <div class="degree7-unit1-lesson11-ecrit-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex10" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex10" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex10" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Production -->
+        <div style="margin-top:2rem;">
+            <div class="degree7-unit1-lesson11-ecrit-exercise-card">
+                <h3 data-i18n="exo11_title">📌 11. Production personnelle</h3>
+                <p data-i18n="exo11_instruction">Choisis l'une des quatre situations et produis le texte demandé. Avant d'écrire, analyse la situation en utilisant les questions de la méthode. Ton texte doit comporter au moins 6 phrases.</p>
+                <textarea rows="8" placeholder="Votre texte..."></textarea>
+                <div class="degree7-unit1-lesson11-ecrit-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex11" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex11" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex11" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree7-unit1-lesson11-ecrit-btn-verify" onclick="showProductionExample()" data-i18n="show_example">💡 Voir un exemple de réponse</button>
+                <div id="productionExample" class="degree7-unit1-lesson11-ecrit-answer-key"></div>
+            </div>
+        </div>
+
+        <!-- Score area -->
+        <div class="degree7-unit1-lesson11-ecrit-score-area" id="scoreArea">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="degree7-unit1-lesson11-ecrit-score-stats" id="scoreStats">
+                <div class="degree7-unit1-lesson11-ecrit-score-stat"><span data-i18n="score_correct">Correctes :</span> <span id="scoreCorrect">0</span></div>
+                <div class="degree7-unit1-lesson11-ecrit-score-stat"><span data-i18n="score_incorrect">Incorrectes :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="degree7-unit1-lesson11-ecrit-score-stat"><span data-i18n="score_partial">Partielles :</span> <span id="scorePartial">0</span></div>
+                <div class="degree7-unit1-lesson11-ecrit-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">11</span></div>
+            </div>
+        </div>
+        <div class="degree7-unit1-lesson11-ecrit-score-actions" style="margin-top:1.2rem;">
+            <button id="saveResultsBtn" class="degree7-unit1-lesson11-ecrit-btn-verify" style="margin-right:0.5rem;" data-i18n="save_results">💾 Enregistrer mes résultats</button>
+            <button id="printPdfBtn" class="degree7-unit1-lesson11-ecrit-btn-verify" style="background:#a9500f; margin-right:0.5rem;" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+        </div>
+
+        <!-- Footer nav -->
+        <div class="degree7-unit1-lesson11-ecrit-footer-nav">
+            <a href="degree7.html" data-i18n="footer_back" class="no-bilingual">← Retour au programme</a>
+            <a href="degree7unit1lesson12.html" data-i18n="footer_next" class="no-bilingual">Leçon suivante : Comprendre des consignes II →</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                'lesson_title': "Leçon 11 – Compréhension et analyse de consignes I | Écrit",
+                'lesson_short_title': "Compréhension et analyse de consignes I",
+                'ach_year_degree7': "7ème Année Primaire",
+                'ach_module_unit1': "Unité 1 – Les fondements du français",
+                'back_link': "← Retour à l'accueil",
+                'back_revision': "Unité 1",
+                'back_current': "Compréhension et analyse de consignes I",
+                'lesson_badge': "📝 Écrit · Leçon 11",
+                'lesson_title': "Compréhension et analyse<br>de consignes I",
+                'lesson_duration': "⏱️ 45 minutes",
+                'lesson_meta_audio': "🎧 Écoutez les situations puis faites les exercices",
+                'audio_label': "🎧 Écoute des situations",
+                'text_heading': "📖 J'observe et je comprends",
+                'sit1_title': "Situation 1",
+                'sit1_text': "« Tu t'amuses bien, bonhomme ? La journée est bonne, pas vrai ? » Le soir, l'enfant prépare ses leçons. Il doit rédiger un récit au présent et à la première personne. Il en profite pour faire le récit de cette partie de pêche, de cette bonne journée.",
+                'sit1_consigne': "Imagine ce qu'il écrit.",
+                'sit2_title': "Situation 2",
+                'sit2_text': "Le même soir, le père qui est écrivain pense encore au seul petit poisson qu'il a pris et qu'il a remis à l'eau. Une idée lui vient à l'esprit. Il se dit : « Et si j'en faisais le héros d'un court récit pour enfants ! Et si ce petit poisson se mettait à parler, à raconter son aventure à sa maman… » Puis il se met à écrire.",
+                'sit2_consigne': "Imagine ce qu'il écrit.",
+                'sit3_title': "Situation 3",
+                'sit3_text': "Tu reçois la lettre suivante : Paris, le 17 septembre 2006. Cher …, dans ta dernière lettre, tu me parles d'une journée passée chez tes grands-parents. Tu as beaucoup de chance, tu sais, d'avoir une grand-mère et un grand-père ! Je n'ai pas connu les miens, hélas ! J'aimerais bien que tu me fasses le récit de cette journée et que tu m'en parles avec plus de détails. Dis-moi comment ils t'ont reçu, ce qu'ils ont fait pour que tu te sentes bien et tout et tout. Tu sais, quand je lirai ta lettre, je sentirai que je suis un peu, moi aussi, chez mes grands-parents. Passe le bonjour à toute la famille et embrasse grand-mère et grand-père pour moi. Bien amicalement, François.",
+                'sit3_consigne': "Réponds à cette lettre.",
+                'sit4_title': "Situation 4",
+                'sit4_text': "Certaines familles partent en vacances et abandonnent des animaux (chiens et chats notamment) sans penser au mal qu'elles font à ces pauvres bêtes. Un chien abandonné fait le récit de sa première nuit de solitude à un autre animal abandonné comme lui.",
+                'sit4_consigne': "Imagine et écris ce qu'il dit.",
+                'comp_heading': "🔎 Je comprends la situation :",
+                'comp_q1': "Repère la tâche demandée dans chacune des quatre situations.",
+                'comp_q2': "Quel est le point commun aux trois premières situations ?",
+                'rules_heading': "📖 La méthode : analyser une consigne",
+                'rules_intro': "Une <strong>situation d'écrit</strong> est composée de plusieurs éléments qu'il faut identifier pour bien répondre à la tâche demandée. Voici les éléments à repérer, et les questions à se poser.",
+                'rule_elem_title': "🔹 Les éléments de la situation d'écrit",
+                'rule_elem_list': "<li>Le <strong>support</strong> : carte, lettre, image, texte, dialogue…</li><li>Les <strong>phrases explicatives</strong> qui présentent le contexte et les personnages.</li><li>La <strong>consigne</strong> proprement dite, qui dit ce qu'il faut faire.</li>",
+                'rule_questions_title': "🔹 Les questions à se poser",
+                'rule_questions_list': "<li>Quels sont les <strong>éléments</strong> de la situation qu'on me propose ?</li><li>Quelles <strong>précisions</strong> me donne-t-on pour que la situation soit claire ?</li><li>Quel est le <strong>type d'écrit demandé</strong> (récit, dialogue, lettre, description…) ?</li><li>Comment savoir que <strong>ce que j'écris répond bien à la consigne</strong> ?</li>",
+                'rule_check_title': "🔹 La grille d'auto-évaluation",
+                'grille_col_q': "Question", 'grille_col_yes': "Oui", 'grille_col_no': "Non",
+                'grille_r1': "J'ai compris la situation.",
+                'grille_r2': "Je sais ce que je dois faire.",
+                'grille_r3': "Le travail fait avec mon camarade m'aide à me corriger.",
+                'rule_example_title': "🔹 Exemple appliqué à la situation 1",
+                'rule_example_list': "<li><strong>Support :</strong> un dialogue et une vignette montrant un père et son fils au bord d'une rivière.</li><li><strong>Contexte :</strong> une partie de pêche père-fils.</li><li><strong>Type d'écrit :</strong> un récit au présent, à la première personne.</li><li><strong>Consigne :</strong> « Imagine ce qu'il écrit ».</li>",
+                'exercises_heading': "✍️ Je m'exerce",
+                'exo1_title': "📌 1. Identifier les éléments de chaque situation",
+                'exo1_instruction': "Complète le tableau en indiquant le support et le type d'écrit demandé pour chaque situation.",
+                't_situation': "Situation", 't_support': "Support", 't_type': "Type d'écrit",
+                't_statement': "Affirmation", 't_vf': "V / F", 't_element': "Élément", 't_category': "S / C / Co",
+                't_what': "Ce qu'il faut repérer", 't_question': "La question à se poser",
+                'exo2_title': "📌 2. Les questions à se poser",
+                'exo2_instruction': "Entoure dans la liste suivante les questions qu'il faut toujours se poser pour comprendre une situation d'écrit.",
+                'exo2_a': "Quels sont les éléments de la situation d'écrit qu'on me propose ?",
+                'exo2_b': "Quel temps fait-il aujourd'hui ?",
+                'exo2_c': "Quelles sont les précisions qu'on me donne pour que la situation soit claire ?",
+                'exo2_d': "Quel est le type d'écrit demandé ?",
+                'exo2_e': "Combien de temps me reste-t-il avant la récréation ?",
+                'exo2_f': "Comment savoir que ce que j'écris répond bien à la consigne ?",
+                'exo3_title': "📌 3. Analyser la situation 1",
+                'exo3_instruction': "Réponds aux questions portant sur la situation 1.",
+                'exo3_q1': "Où la scène va-t-elle se passer ?",
+                'exo3_q2': "S'agit-il d'événements réels ou imaginaires ?",
+                'exo3_q3': "À quel temps le texte sera-t-il écrit ?",
+                'exo3_q4': "À quelle personne sera-t-il écrit ?",
+                'exo3_q5': "Où trouve-t-on la réponse à ces deux dernières questions ?",
+                'exo4_title': "📌 4. Vrai ou faux sur la consigne ?",
+                'exo4_instruction': "Indique si chaque affirmation est vraie (V) ou fausse (F).",
+                'exo4_q1': "La consigne indique ce qu'il faut faire.",
+                'exo4_q2': "Le support et la consigne sont toujours identiques.",
+                'exo4_q3': "Les phrases explicatives précisent le contexte (lieux, temps, personnages).",
+                'exo4_q4': "« Imagine ce qu'il écrit » signifie uniquement d'imaginer, sans rien écrire.",
+                'exo4_q5': "La grille d'auto-évaluation permet de vérifier si l'on a compris la situation.",
+                'exo5_title': "📌 5. Compléter la grille d'auto-évaluation",
+                'exo5_instruction': "Remplis la grille pour évaluer ton travail sur la situation 1.",
+                'exo6_title': "📌 6. Écrire les premières phrases du récit de l'enfant",
+                'exo6_instruction': "À partir de la situation 1, écris les deux ou trois premières phrases du récit fait par l'enfant. Indique le temps, le lieu, et présente les personnages.",
+                'exo7_title': "📌 7. Analyser la situation 3",
+                'exo7_instruction': "Réponds aux questions portant sur la situation 3.",
+                'exo7_q1': "Quel est le support ?",
+                'exo7_q2': "Qui écrit et à qui ?",
+                'exo7_q3': "Que demande François dans sa lettre ?",
+                'exo7_q4': "Quel type d'écrit dois-tu produire ?",
+                'exo8_title': "📌 8. Classer les éléments",
+                'exo8_instruction': "Classe chaque élément dans la bonne catégorie : support (S), contexte (C) ou consigne (Co).",
+                'exo9_title': "📌 9. Compléter la grille des questions",
+                'exo9_instruction': "Complète la grille avec les questions à se poser pour analyser une situation d'écrit.",
+                'exo10_title': "📌 10. Analyser la situation 4",
+                'exo10_instruction': "Réponds aux questions portant sur la situation 4.",
+                'exo10_q1': "Qui parle dans ce récit ?",
+                'exo10_q2': "À qui parle-t-il ?",
+                'exo10_q3': "Quel événement raconte-t-il ?",
+                'exo10_q4': "Quel type d'écrit dois-tu produire ?",
+                'exo11_title': "📌 11. Production personnelle",
+                'exo11_instruction': "Choisis l'une des quatre situations et produis le texte demandé. Avant d'écrire, analyse la situation en utilisant les questions de la méthode. Ton texte doit comporter au moins 6 phrases.",
+                'show_example': "💡 Voir un exemple",
+                'btn_verify': "🔍 Vérifier", 'btn_correction': "🔍 Voir la correction",
+                'footer_back': "← Retour au programme",
+                'footer_next': "Leçon suivante : Comprendre des consignes II →",
+                'self_assess_question': "Ma réponse est :",
+                'self_correct': "Correcte", 'self_incorrect': "Incorrecte", 'self_partial': "Partiellement correcte",
+                'score_title': "📊 Votre auto‑évaluation",
+                'score_correct': "Correctes :", 'score_incorrect': "Incorrectes :", 'score_partial': "Partielles :", 'score_unanswered': "Sans réponse :",
+                'save_results': "💾 Enregistrer mes résultats", 'save_success': "Résultats sauvegardés ✓", 'save_error': "Erreur lors de la sauvegarde",
+                'print_pdf': "🖨️ Imprimer / PDF", 'print_with_answers': "Corrigé inclus",
+                'print_site_name': "Educational Dashboard – Français",
+                'print_scholar_year': "7ème Année Primaire", 'print_week': "Unité 1", 'print_area': "Écrit",
+                'print_footer_dev': "Développé par Mejri Ziad", 'print_footer_date': "Imprimé le",
+                'print_without_answers': "Sans corrigé",
+                'toast_signin_required': "Connectez-vous pour voir les corrections."
+            },
+            en: {
+                'lesson_title': "Lesson 11 – Understanding and Analyzing Instructions I | Writing",
+                'lesson_short_title': "Understanding and analyzing instructions I",
+                'ach_year_degree7': "7th Grade Primary",
+                'ach_module_unit1': "Unit 1 – French foundations",
+                'back_link': "← Back to home",
+                'back_revision': "Unit 1",
+                'back_current': "Understanding and analyzing instructions I",
+                'lesson_badge': "📝 Writing · Lesson 11",
+                'lesson_title': "Understanding and analyzing<br>instructions I",
+                'lesson_duration': "⏱️ 45 minutes",
+                'lesson_meta_audio': "🎧 Listen to the situations then do the exercises",
+                'audio_label': "🎧 Listening to the situations",
+                'text_heading': "📖 I observe and understand",
+                'sit1_title': "Situation 1",
+                'sit1_text': "\"Are you having fun, little man? It's a good day, isn't it?\" In the evening, the child prepares his lessons. He must write a narrative in the present tense and in the first person. He takes the opportunity to narrate that fishing trip, that good day.",
+                'sit1_consigne': "Imagine what he writes.",
+                'sit2_title': "Situation 2",
+                'sit2_text': "That same evening, the father, who is a writer, thinks again about the single little fish he caught and put back in the water. An idea comes to him. He says to himself: \"What if I made it the hero of a short story for children! What if this little fish started to talk, to tell his adventure to his mother…\" Then he starts writing.",
+                'sit2_consigne': "Imagine what he writes.",
+                'sit3_title': "Situation 3",
+                'sit3_text': "You receive the following letter: Paris, 17 September 2006. Dear …, in your last letter you told me about a day spent at your grandparents'. You are very lucky, you know, to have a grandmother and a grandfather! I never knew mine, alas! I would like you to tell me the story of that day and to tell me about it in more detail. Tell me how they welcomed you, what they did to make you feel good and everything. You know, when I read your letter, I will feel that I am, a bit, at my grandparents' too. Say hello to the whole family and kiss grandmother and grandfather for me. Yours sincerely, François.",
+                'sit3_consigne': "Reply to this letter.",
+                'sit4_title': "Situation 4",
+                'sit4_text': "Some families go on vacation and abandon animals (dogs and cats in particular) without thinking of the harm they do to these poor creatures. An abandoned dog tells the story of his first night of loneliness to another abandoned animal like him.",
+                'sit4_consigne': "Imagine and write what he says.",
+                'comp_heading': "🔎 I understand the situation:",
+                'comp_q1': "Locate the task asked in each of the four situations.",
+                'comp_q2': "What is the common point of the first three situations?",
+                'rules_heading': "📖 The method: analyzing instructions",
+                'rules_intro': "A <strong>writing situation</strong> is made up of several elements that must be identified in order to properly respond to the required task. Here are the elements to identify, and the questions to ask yourself.",
+                'rule_elem_title': "🔹 Elements of the writing situation",
+                'rule_elem_list': "<li>The <strong>support</strong>: card, letter, image, text, dialogue…</li><li>The <strong>explanatory sentences</strong> that present the context and the characters.</li><li>The <strong>instruction</strong> itself, which says what to do.</li>",
+                'rule_questions_title': "🔹 Questions to ask yourself",
+                'rule_questions_list': "<li>What are the <strong>elements</strong> of the situation I am given?</li><li>What <strong>details</strong> are given to make the situation clear?</li><li>What is the <strong>type of writing required</strong> (narrative, dialogue, letter, description…)?</li><li>How do I know that <strong>what I write responds correctly to the instruction</strong>?</li>",
+                'rule_check_title': "🔹 Self-assessment grid",
+                'grille_col_q': "Question", 'grille_col_yes': "Yes", 'grille_col_no': "No",
+                'grille_r1': "I understood the situation.",
+                'grille_r2': "I know what I have to do.",
+                'grille_r3': "The work done with my classmate helps me to correct myself.",
+                'rule_example_title': "🔹 Example applied to situation 1",
+                'rule_example_list': "<li><strong>Support:</strong> a dialogue and a vignette showing a father and his son by a river.</li><li><strong>Context:</strong> a father-son fishing trip.</li><li><strong>Type of writing:</strong> a narrative in the present tense, in the first person.</li><li><strong>Instruction:</strong> \"Imagine what he writes.\"</li>",
+                'exercises_heading': "✍️ I practise",
+                'exo1_title': "📌 1. Identify the elements of each situation",
+                'exo1_instruction': "Complete the table by indicating the support and the type of writing required for each situation.",
+                't_situation': "Situation", 't_support': "Support", 't_type': "Type of writing",
+                't_statement': "Statement", 't_vf': "T / F", 't_element': "Element", 't_category': "S / C / I",
+                't_what': "What to identify", 't_question': "The question to ask",
+                'exo2_title': "📌 2. Questions to ask yourself",
+                'exo2_instruction': "Circle in the following list the questions you should always ask to understand a writing situation.",
+                'exo2_a': "What are the elements of the situation I am given?",
+                'exo2_b': "What is the weather like today?",
+                'exo2_c': "What details are given to make the situation clear?",
+                'exo2_d': "What is the type of writing required?",
+                'exo2_e': "How much time do I have before recess?",
+                'exo2_f': "How do I know that what I write responds correctly to the instruction?",
+                'exo3_title': "📌 3. Analyze situation 1",
+                'exo3_instruction': "Answer the questions about situation 1.",
+                'exo3_q1': "Where will the scene take place?",
+                'exo3_q2': "Are these real or imaginary events?",
+                'exo3_q3': "In which tense will the text be written?",
+                'exo3_q4': "In which person will it be written?",
+                'exo3_q5': "Where do you find the answer to these last two questions?",
+                'exo4_title': "📌 4. True or false about the instruction?",
+                'exo4_instruction': "Indicate whether each statement is true (T) or false (F).",
+                'exo4_q1': "The instruction tells what to do.",
+                'exo4_q2': "The support and the instruction are always the same.",
+                'exo4_q3': "The explanatory sentences specify the context (places, time, characters).",
+                'exo4_q4': "\"Imagine what he writes\" means only to imagine, without writing anything.",
+                'exo4_q5': "The self-assessment grid allows you to check whether you have understood the situation.",
+                'exo5_title': "📌 5. Complete the self-assessment grid",
+                'exo5_instruction': "Fill in the grid to evaluate your work on situation 1.",
+                'exo6_title': "📌 6. Write the first sentences of the child's narrative",
+                'exo6_instruction': "Based on situation 1, write the first two or three sentences of the narrative made by the child. Indicate the time, the place, and present the characters.",
+                'exo7_title': "📌 7. Analyze situation 3",
+                'exo7_instruction': "Answer the questions about situation 3.",
+                'exo7_q1': "What is the support?",
+                'exo7_q2': "Who writes and to whom?",
+                'exo7_q3': "What does François ask in his letter?",
+                'exo7_q4': "What type of writing do you have to produce?",
+                'exo8_title': "📌 8. Classify the elements",
+                'exo8_instruction': "Classify each element in the correct category: support (S), context (C) or instruction (I).",
+                'exo9_title': "📌 9. Complete the questions grid",
+                'exo9_instruction': "Complete the grid with the questions to ask to analyze a writing situation.",
+                'exo10_title': "📌 10. Analyze situation 4",
+                'exo10_instruction': "Answer the questions about situation 4.",
+                'exo10_q1': "Who speaks in this narrative?",
+                'exo10_q2': "To whom does he speak?",
+                'exo10_q3': "What event does he narrate?",
+                'exo10_q4': "What type of writing do you have to produce?",
+                'exo11_title': "📌 11. Personal production",
+                'exo11_instruction': "Choose one of the four situations and produce the requested text. Before writing, analyze the situation using the method questions. Your text must have at least 6 sentences.",
+                'show_example': "💡 See an example",
+                'btn_verify': "🔍 Check", 'btn_correction': "🔍 See the correction",
+                'footer_back': "← Back to program",
+                'footer_next': "Next lesson: Understanding instructions II →",
+                'self_assess_question': "My answer is:",
+                'self_correct': "Correct", 'self_incorrect': "Incorrect", 'self_partial': "Partially correct",
+                'score_title': "📊 Your self‑assessment",
+                'score_correct': "Correct:", 'score_incorrect': "Incorrect:", 'score_partial': "Partial:", 'score_unanswered': "Unanswered:",
+                'save_results': "💾 Save my results", 'save_success': "Results saved ✓", 'save_error': "Save failed",
+                'print_pdf': "🖨️ Print / PDF", 'print_with_answers': "With answers",
+                'print_site_name': "Educational Dashboard – French",
+                'print_scholar_year': "7th Grade Primary", 'print_week': "Unit 1", 'print_area': "Writing",
+                'print_footer_dev': "Developed by Mejri Ziad", 'print_footer_date': "Printed on",
+                'print_without_answers': "Without answers",
+                'toast_signin_required': "Sign in to see the corrections."
+            },
+            ar: {
+                'lesson_title': "الدرس 11 – فهم وتحليل التعليمات 1 | الكتابة",
+                'lesson_short_title': "فهم وتحليل التعليمات 1",
+                'ach_year_degree7': "السنة السابعة ابتدائي",
+                'ach_module_unit1': "الوحدة 1 – أساسيات الفرنسية",
+                'back_link': "← العودة إلى الرئيسية",
+                'back_revision': "الوحدة 1",
+                'back_current': "فهم وتحليل التعليمات 1",
+                'lesson_badge': "📝 الكتابة · الدرس 11",
+                'lesson_title': "فهم وتحليل<br>التعليمات 1",
+                'lesson_duration': "⏱️ 45 دقيقة",
+                'lesson_meta_audio': "🎧 استمع إلى المواقف ثم قم بالتمارين",
+                'audio_label': "🎧 استماع إلى المواقف",
+                'text_heading': "📖 ألاحظ وأفهم",
+                'sit1_title': "الحالة 1",
+                'sit1_text': "« هل تستمتع يا صغيري؟ اليوم جميل، أليس كذلك؟ » في المساء، يحضّر الطفل دروسه. عليه أن يكتب سرداً في المضارع وبضمير المتكلم. يستغل الفرصة ليسرد رحلة الصيد هذه، هذا اليوم الجميل.",
+                'sit1_consigne': "تخيّل ما يكتبه.",
+                'sit2_title': "الحالة 2",
+                'sit2_text': "في نفس المساء، الأب الذي هو كاتب يفكر مرة أخرى في السمكة الصغيرة الوحيدة التي اصطادها وأعادها إلى الماء. تخطر له فكرة. يقول لنفسه: « وماذا لو جعلتها بطلة قصة قصيرة للأطفال! وماذا لو بدأت هذه السمكة الصغيرة تتحدث، تحكي مغامرتها لأمها… » ثم يبدأ الكتابة.",
+                'sit2_consigne': "تخيّل ما يكتبه.",
+                'sit3_title': "الحالة 3",
+                'sit3_text': "تتلقى الرسالة التالية: باريس، 17 سبتمبر 2006. عزيزي …، في رسالتك الأخيرة حدثتني عن يوم قضيته عند جدّيك. أنت محظوظ جداً كما تعلم، لوجود جدة وجد لك! لم أعرف جدّي أبداً للأسف! أتمنى أن تسرد لي هذا اليوم وتبلغني بتفاصيل أكثر. أخبرني كيف استقبلوك، وما فعلوه لتشعر أنك بخير وكل شيء. كما تعلم، عندما أقرأ رسالتك، سأشعر أنني أنا أيضاً عند جدّيّ. أبلغ سلامي للعائلة كلها وقبّل جدتك وجدك عني. مع أطيب تحياتي، فرانسوا.",
+                'sit3_consigne': "أجب عن هذه الرسالة.",
+                'sit4_title': "الحالة 4",
+                'sit4_text': "بعض العائلات تذهب في عطلة وتتخلى عن حيوانات (كلاب وقطط خاصة) دون التفكير في الأذى الذي تسببه لهذه المساكين. يحكي كلب متروك قصة ليلته الأولى من الوحدة لحيوان آخر متروك مثله.",
+                'sit4_consigne': "تخيّل واكتب ما يقوله.",
+                'comp_heading': "🔎 أفهم الحالة:",
+                'comp_q1': "حدد المهمة المطلوبة في كل من الحالات الأربع.",
+                'comp_q2': "ما هي النقطة المشتركة بين الحالات الثلاث الأولى؟",
+                'rules_heading': "📖 المنهجية: تحليل تعليمة",
+                'rules_intro': "<strong>حالة الكتابة</strong> تتكون من عدة عناصر يجب تحديدها للرد بشكل صحيح على المهمة المطلوبة. إليك العناصر التي يجب تحديدها والأسئلة التي يجب طرحها.",
+                'rule_elem_title': "🔹 عناصر حالة الكتابة",
+                'rule_elem_list': "<li><strong>الدعم</strong>: بطاقة، رسالة، صورة، نص، حوار…</li><li><strong>الجمل التوضيحية</strong> التي تقدم السياق والشخصيات.</li><li><strong>التعليمة</strong> نفسها، التي تقول ما يجب فعله.</li>",
+                'rule_questions_title': "🔹 الأسئلة التي يجب طرحها",
+                'rule_questions_list': "<li>ما هي <strong>العناصر</strong> في الحالة المقترحة؟</li><li>ما هي <strong>التفاصيل</strong> التي أُعطيت ليكون السياق واضحاً؟</li><li>ما هو <strong>نوع الكتابة المطلوب</strong> (سرد، حوار، رسالة، وصف…)؟</li><li>كيف أعرف أن <strong>ما أكتبه يجيب بشكل صحيح عن التعليمة</strong>؟</li>",
+                'rule_check_title': "🔹 شبكة التقييم الذاتي",
+                'grille_col_q': "السؤال", 'grille_col_yes': "نعم", 'grille_col_no': "لا",
+                'grille_r1': "فهمت الحالة.",
+                'grille_r2': "أعرف ما يجب عليّ فعله.",
+                'grille_r3': "العمل المنجز مع زميلي يساعدني على تصحيح نفسي.",
+                'rule_example_title': "🔹 مثال مطبق على الحالة 1",
+                'rule_example_list': "<li><strong>الدعم:</strong> حوار ومشهد صغير يُظهر أباً وابنه على ضفة نهر.</li><li><strong>السياق:</strong> رحلة صيد بين أب وابنه.</li><li><strong>نوع الكتابة:</strong> سرد في المضارع، بضمير المتكلم.</li><li><strong>التعليمة:</strong> « تخيّل ما يكتبه ».</li>",
+                'exercises_heading': "✍️ أتمرن",
+                'exo1_title': "📌 1. تحديد عناصر كل حالة",
+                'exo1_instruction': "أكمل الجدول بتحديد الدعم ونوع الكتابة المطلوب لكل حالة.",
+                't_situation': "الحالة", 't_support': "الدعم", 't_type': "نوع الكتابة",
+                't_statement': "العبارة", 't_vf': "ص / خ", 't_element': "العنصر", 't_category': "S / C / I",
+                't_what': "ما يجب تحديده", 't_question': "السؤال الذي يجب طرحه",
+                'exo2_title': "📌 2. الأسئلة التي يجب طرحها",
+                'exo2_instruction': "ضع دائرة حول الأسئلة التي يجب طرحها دائماً لفهم حالة كتابة.",
+                'exo2_a': "ما هي عناصر الحالة المقترحة؟",
+                'exo2_b': "كيف هو الطقس اليوم؟",
+                'exo2_c': "ما هي التفاصيل المُعطاة ليكون السياق واضحاً؟",
+                'exo2_d': "ما هو نوع الكتابة المطلوب؟",
+                'exo2_e': "كم من الوقت تبقى لي قبل الاستراحة؟",
+                'exo2_f': "كيف أعرف أن ما أكتبه يجيب بشكل صحيح عن التعليمة؟",
+                'exo3_title': "📌 3. تحليل الحالة 1",
+                'exo3_instruction': "أجب عن الأسئلة المتعلقة بالحالة 1.",
+                'exo3_q1': "أين سيدور المشهد؟",
+                'exo3_q2': "هل الأحداث حقيقية أم خيالية؟",
+                'exo3_q3': "في أي زمن سيُكتب النص؟",
+                'exo3_q4': "بأي ضمير سيُكتب؟",
+                'exo3_q5': "أين نجد جواب هذين السؤالين الأخيرين؟",
+                'exo4_title': "📌 4. صواب أم خطأ حول التعليمة؟",
+                'exo4_instruction': "حدد إن كانت كل عبارة صحيحة (ص) أم خاطئة (خ).",
+                'exo4_q1': "التعليمة تشير إلى ما يجب فعله.",
+                'exo4_q2': "الدعم والتعليمة متطابقان دائماً.",
+                'exo4_q3': "الجمل التوضيحية تحدد السياق (الأماكن، الزمان، الشخصيات).",
+                'exo4_q4': "« تخيّل ما يكتبه » تعني فقط التخيل دون كتابة أي شيء.",
+                'exo4_q5': "شبكة التقييم الذاتي تتيح التحقق من فهم الحالة.",
+                'exo5_title': "📌 5. أكمل شبكة التقييم الذاتي",
+                'exo5_instruction': "املأ الشبكة لتقييم عملك على الحالة 1.",
+                'exo6_title': "📌 6. اكتب الجمل الأولى من سرد الطفل",
+                'exo6_instruction': "انطلاقاً من الحالة 1، اكتب الجملتين أو الثلاث الأولى من السرد الذي يكتبه الطفل. حدد الزمان والمكان وقدم الشخصيات.",
+                'exo7_title': "📌 7. تحليل الحالة 3",
+                'exo7_instruction': "أجب عن الأسئلة المتعلقة بالحالة 3.",
+                'exo7_q1': "ما هو الدعم؟",
+                'exo7_q2': "من يكتب ولمن؟",
+                'exo7_q3': "ماذا يطلب فرانسوا في رسالته؟",
+                'exo7_q4': "ما نوع الكتابة التي يجب أن تنتجها؟",
+                'exo8_title': "📌 8. تصنيف العناصر",
+                'exo8_instruction': "صنّف كل عنصر في الفئة المناسبة: دعم (S)، سياق (C) أو تعليمة (I).",
+                'exo9_title': "📌 9. أكمل شبكة الأسئلة",
+                'exo9_instruction': "أكمل الشبكة بالأسئلة التي يجب طرحها لتحليل حالة كتابة.",
+                'exo10_title': "📌 10. تحليل الحالة 4",
+                'exo10_instruction': "أجب عن الأسئلة المتعلقة بالحالة 4.",
+                'exo10_q1': "من يتحدث في هذا السرد؟",
+                'exo10_q2': "لمن يتحدث؟",
+                'exo10_q3': "ما الحدث الذي يرويه؟",
+                'exo10_q4': "ما نوع الكتابة التي يجب أن تنتجها؟",
+                'exo11_title': "📌 11. إنتاج شخصي",
+                'exo11_instruction': "اختر إحدى الحالات الأربع واكتب النص المطلوب. قبل الكتابة، حلّل الحالة باستخدام أسئلة المنهجية. يجب أن يحتوي نصك على 6 جمل على الأقل.",
+                'show_example': "💡 عرض مثال",
+                'btn_verify': "🔍 تحقق", 'btn_correction': "🔍 الاطلاع على التصحيح",
+                'footer_back': "← العودة إلى البرنامج",
+                'footer_next': "الدرس الموالي: فهم التعليمات 2 ←",
+                'self_assess_question': "جوابي هو:",
+                'self_correct': "صحيح", 'self_incorrect': "خاطئ", 'self_partial': "صحيح جزئيًا",
+                'score_title': "📊 تقييمك الذاتي",
+                'score_correct': "صحيح:", 'score_incorrect': "خاطئ:", 'score_partial': "جزئي:", 'score_unanswered': "بدون إجابة:",
+                'save_results': "💾 حفظ نتائجي", 'save_success': "تم حفظ النتائج ✓", 'save_error': "خطأ في الحفظ",
+                'print_pdf': "🖨️ طباعة / PDF", 'print_with_answers': "مع التصحيح",
+                'print_site_name': "لوحة التحكم التعليمية – الفرنسية",
+                'print_scholar_year': "السنة السابعة ابتدائي", 'print_week': "الوحدة 1", 'print_area': "الكتابة",
+                'print_footer_dev': "طوّر بواسطة ماجري زياد", 'print_footer_date': "طُبع في",
+                'print_without_answers': "بدون تصحيح",
+                'toast_signin_required': "سجّل الدخول لرؤية التصحيحات."
+            }
+        });
+
+        (function() {
+            var container = document.querySelector('.degree7-unit1-lesson11-ecrit-container');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+        })();
+    </script>
+    <script src="ed-french-ini.js"></script>
+    <script>
+        (function() {
+            const audio = new Audio('assets7/sounds/degree7/unit1/lesson11/consignes1.mp3');
+            const playBtn = document.getElementById('playBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const speedBtns = document.querySelectorAll('.degree7-unit1-lesson11-ecrit-speed-btn');
+
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+
+            audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
+            audio.addEventListener('timeupdate', () => {
+                const percent = (audio.currentTime / audio.duration) * 100 || 0;
+                progressFill.style.width = percent + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            });
+            audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) { audio.play().catch(()=>{}); playBtn.textContent = '⏸'; }
+                else { audio.pause(); playBtn.textContent = '▶'; }
+            });
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const seekTime = (clickX / width) * audio.duration;
+                audio.currentTime = seekTime;
+            });
+            speedBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    speedBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    audio.playbackRate = parseFloat(btn.dataset.speed);
+                });
+            });
+
+            async function requireAuth() {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return false;
+                }
+                return true;
+            }
+
+            window.toggleCorrection = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('visible');
+            };
+
+            window.showExample = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const el = document.getElementById(id);
+                if (!el) return;
+                if (id === 'exo6Example') {
+                    el.innerHTML = '<strong>Exemple de récit (l\'enfant raconte) :</strong><br>« Aujourd\'hui, je suis allé pêcher avec mon père au bord de la rivière. Le soleil brille et l\'air est doux. Mon père me dit : "Tu t\'amuses bien, bonhomme ?" Je souris, car c\'est vraiment une belle journée. »';
+                }
+                el.classList.add('visible');
+            };
+
+            window.showProductionExample = async function() {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const el = document.getElementById('productionExample');
+                if (el) {
+                    el.innerHTML = '<strong>Exemple de production (Situation 4 – le chien abandonné parle) :</strong><br>« Hier soir, mes maîtres m\'ont laissé au bord de la route et la voiture est repartie. Je n\'ai pas compris pourquoi. J\'ai couru un peu, mais la nuit est tombée très vite. Je me suis couché sous un buisson, tremblant de froid et de peur. Je n\'avais jamais dormi dehors, sans personne pour me caresser. Ce matin, j\'ai faim et je ne sais pas où aller. Toi qui es abandonné comme moi, dis-moi comment tu fais pour ne pas avoir trop peur ? »';
+                    el.classList.add('visible');
+                }
+            };
+
+            // Static answer keys
+            document.getElementById('exo1Key').innerHTML = '<strong>Correction (exemples) :</strong><br>1. Dialogue + vignette (père/fils) → Récit au présent, 1re personne.<br>2. Texte descriptif + intention de l\'écrivain → Récit pour enfants avec un poisson qui parle.<br>3. Lettre reçue → Réponse à une lettre (récit d\'une journée).<br>4. Récit à imaginer → Témoignage d\'un chien abandonné.';
+            document.getElementById('exo2Key').innerHTML = '<strong>Correction :</strong><br>Les questions à entourer sont : <strong>a, c, d, f</strong>.<br>Les questions b et e ne concernent pas l\'analyse d\'une consigne.';
+            document.getElementById('exo3Key').innerHTML = '<strong>Correction :</strong><br>a) La scène se passe au bord d\'une rivière.<br>b) Il s\'agit d\'événements réels, vécus par l\'enfant.<br>c) Le texte sera écrit au présent.<br>d) Le texte sera écrit à la première personne (je).<br>e) On trouve la réponse dans l\'énoncé du sujet : « rédiger un récit au présent et à la première personne ».';
+            document.getElementById('exo4Key').innerHTML = '<strong>Correction :</strong><br>1. Vrai<br>2. Faux<br>3. Vrai<br>4. Faux (il faut imaginer et écrire)<br>5. Vrai';
+            document.getElementById('exo7Key').innerHTML = '<strong>Correction :</strong><br>a) Une lettre reçue de Paris.<br>b) François écrit à son correspondant.<br>c) François demande de raconter une journée passée chez les grands-parents, avec détails.<br>d) Une lettre de réponse (récit d\'une journée).';
+            document.getElementById('exo8Key').innerHTML = '<strong>Correction :</strong><br>1. S (support)<br>2. Co (consigne)<br>3. C (contexte)<br>4. S (support)<br>5. Co (consigne)';
+            document.getElementById('exo9Key').innerHTML = '<strong>Correction (exemples) :</strong><br>• Support → Quel est le support ?<br>• Contexte → Quelles sont les précisions (lieu, temps, personnages) ?<br>• Type d\'écrit → Quel type d\'écrit est demandé ?<br>• Consigne → Que dois-je faire exactement ?';
+            document.getElementById('exo10Key').innerHTML = '<strong>Correction :</strong><br>a) Un chien abandonné parle (narrateur à la 1re personne).<br>b) À un autre animal abandonné comme lui.<br>c) Sa première nuit de solitude.<br>d) Un récit à la première personne (témoignage imaginaire).';
+
+            // Self-assessment scoring
+            const SELF_GROUPS = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5',
+                                 'self_ex6', 'self_ex7', 'self_ex8', 'self_ex9', 'self_ex10', 'self_ex11'];
+
+            function computeScore() {
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                SELF_GROUPS.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                return { correct, incorrect, partial, unanswered };
+            }
+
+            function updateScore() {
+                const s = computeScore();
+                document.getElementById('scoreCorrect').textContent = s.correct;
+                document.getElementById('scoreIncorrect').textContent = s.incorrect;
+                document.getElementById('scorePartial').textContent = s.partial;
+                document.getElementById('scoreUnanswered').textContent = s.unanswered;
+            }
+
+            document.querySelectorAll('input[type="radio"][name^="self_ex"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const s = computeScore();
+                const lessonId = 'degree7unit1lesson11';
+                const entry = {
+                    lesson_id: lessonId,
+                    lesson_title: {
+                        fr: App.getTranslation('lesson_short_title', 'fr'),
+                        en: App.getTranslation('lesson_short_title', 'en'),
+                        ar: App.getTranslation('lesson_short_title', 'ar')
+                    },
+                    year: {
+                        fr: App.getTranslation('ach_year_degree7', 'fr'),
+                        en: App.getTranslation('ach_year_degree7', 'en'),
+                        ar: App.getTranslation('ach_year_degree7', 'ar')
+                    },
+                    module: {
+                        fr: App.getTranslation('ach_module_unit1', 'fr'),
+                        en: App.getTranslation('ach_module_unit1', 'en'),
+                        ar: App.getTranslation('ach_module_unit1', 'ar')
+                    },
+                    correct: s.correct,
+                    incorrect: s.incorrect,
+                    partial: s.partial,
+                    unanswered: s.unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles').select('achivement').eq('id', user.id).single();
+                if (fetchError) return;
+                let achivement = profileData?.achivement || {};
+                if (!achivement['ED-French']) achivement['ED-French'] = [];
+                const arr = achivement['ED-French'];
+                const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+                if (existingIdx >= 0) arr[existingIdx] = entry;
+                else arr.push(entry);
+                const { error: updateError } = await App.supabase
+                    .from('profiles').update({ achivement }).eq('id', user.id);
+                if (updateError) App.showToast('save_error', 'error');
+                else {
+                    App.showToast('save_success', 'success');
+                    App.logUserAction('lesson_saved', { lesson: lessonId, correct: s.correct, incorrect: s.incorrect, partial: s.partial });
+                }
+            });
+
+            document.getElementById('printPdfBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles').select('registration_state').eq('id', user.id).single();
+                    if (!error && profile?.registration_state?.active === true) isRegistered = true;
+                } catch (e) {}
+                const lang = localStorage.getItem('lang') || 'fr';
+                const headerHTML = document.querySelector('.degree7-unit1-lesson11-ecrit-lesson-header').cloneNode(true);
+                const rulesSections = document.querySelectorAll('.degree7-unit1-lesson11-ecrit-valeurs-section');
+                let rulesHTML = '';
+                rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
+                const textSection = document.querySelector('.degree7-unit1-lesson11-ecrit-section').cloneNode(true);
+                const exercisesSection = document.querySelector('.degree7-unit1-lesson11-ecrit-exercises-section').cloneNode(true);
+                exercisesSection.querySelectorAll('input, textarea, .degree7-unit1-lesson11-ecrit-btn-verify, .degree7-unit1-lesson11-ecrit-self-assessment').forEach(el => el.remove());
+                if (isRegistered) {
+                    exercisesSection.querySelectorAll('.degree7-unit1-lesson11-ecrit-answer-key').forEach(key => {
+                        key.style.display = 'block'; key.style.border = 'none';
+                        key.style.padding = '0.5rem 0'; key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    exercisesSection.querySelectorAll('.degree7-unit1-lesson11-ecrit-answer-key').forEach(el => el.remove());
+                }
+                const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                printWindow.document.write(`<!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8"><title>${App.getTranslation('lesson_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title><style>
+                    body { font-family: 'Georgia', serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; color:#000; }
+                    .print-header { text-align:center; border-bottom:2px solid #d2691e; padding-bottom:1rem; margin-bottom:2rem; }
+                    .print-header .site-name { font-size:1.4rem; font-weight:bold; color:#d2691e; margin:0 0 0.3rem; }
+                    .print-header .meta-line { font-size:0.95rem; color:#444; margin:0.2rem 0; }
+                    .print-header .lesson-name { font-size:1.1rem; font-weight:bold; color:#000; margin-top:0.5rem; }
+                    .print-footer { text-align:center; border-top:1px solid #ccc; padding-top:1rem; margin-top:2rem; font-size:0.85rem; color:#666; }
+                    .degree7-unit1-lesson11-ecrit-lesson-header { text-align:center; margin-bottom:2rem; }
+                    .degree7-unit1-lesson11-ecrit-badge { display:inline-block; background:#d2691e; color:#fff; padding:0.3rem 1rem; border-radius:20px; font-size:0.8rem; text-transform:uppercase; }
+                    .degree7-unit1-lesson11-ecrit-valeurs-section { margin:1.5rem 0; }
+                    .degree7-unit1-lesson11-ecrit-valeur-card { background:#f8e2cd; padding:1rem; margin-bottom:1rem; border-radius:8px; }
+                    .degree7-unit1-lesson11-ecrit-valeur-card h3 { color:#d2691e; }
+                    .degree7-unit1-lesson11-ecrit-situation { background:#f8e2cd; padding:1rem; margin:1rem 0; border-left:4px solid #d2691e; border-radius:0 8px 8px 0; }
+                    .degree7-unit1-lesson11-ecrit-situation h3 { color:#d2691e; }
+                    .degree7-unit1-lesson11-ecrit-exercise-card { margin:1.2rem 0; }
+                    table { width:100%; border-collapse:collapse; margin:0.8rem 0; }
+                    th, td { border:1px solid #ccc; padding:0.5rem; text-align:left; }
+                    th { background:#f8e2cd; }
+                    .degree7-unit1-lesson11-ecrit-answer-key { display:block; margin-top:0.5rem; font-size:0.9rem; color:#444; }
+                    .degree7-unit1-lesson11-ecrit-checklist-table th { background:#d2691e; color:#fff; }
+                    @media print { @page { margin:2cm; } }
+                </style></head><body>
+                    <div class="print-header"><div class="site-name">${App.getTranslation('print_site_name', lang)}</div><div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div><div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div></div>
+                    ${breadcrumb.outerHTML}${headerHTML.outerHTML}${textSection.outerHTML}${rulesHTML}${exercisesSection.outerHTML}
+                    <div class="print-footer">${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}</div>
+                </body></html>`);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+        })();
+    </script>
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+</body>
+</html>

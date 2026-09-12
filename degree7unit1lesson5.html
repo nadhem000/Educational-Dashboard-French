@@ -1,0 +1,1754 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_title">Leçon 5 – Les types et les formes de phrases | Syntaxe</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ===== Degree7 Unit1 Lesson5 – Syntaxe (prefix: degree7-unit1-lesson5-syntaxe-) ===== */
+        /* Palette: Royal Blue – shades of blue (matching cat-grammar #4169e1) */
+        :root {
+            --degree7-unit1-lesson5-syntaxe-bg: #f3f6fc;
+            --degree7-unit1-lesson5-syntaxe-card: #fbfcff;
+            --degree7-unit1-lesson5-syntaxe-text: #1a1f2e;
+            --degree7-unit1-lesson5-syntaxe-text-light: #4a5468;
+            --degree7-unit1-lesson5-syntaxe-heading: #1e3a8a;
+            --degree7-unit1-lesson5-syntaxe-accent: #4169e1;
+            --degree7-unit1-lesson5-syntaxe-accent-hover: #2c4bb8;
+            --degree7-unit1-lesson5-syntaxe-soft: #6a8ce0;
+            --degree7-unit1-lesson5-syntaxe-light: #dde5f5;
+            --degree7-unit1-lesson5-syntaxe-border: #d0d9ec;
+            --degree7-unit1-lesson5-syntaxe-shadow: 0 1px 3px rgba(65,105,225,0.06), 0 6px 18px rgba(30,58,138,0.06);
+            --degree7-unit1-lesson5-syntaxe-radius: 14px;
+            --degree7-unit1-lesson5-syntaxe-radius-sm: 8px;
+            --degree7-unit1-lesson5-syntaxe-transition: 0.25s ease;
+            --degree7-unit1-lesson5-syntaxe-font: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
+            --degree7-unit1-lesson5-syntaxe-audio-bg: #e2e9f7;
+            --degree7-unit1-lesson5-syntaxe-audio-progress: #b8c7e6;
+            --degree7-unit1-lesson5-syntaxe-button-bg: #d7e0f2;
+            --degree7-unit1-lesson5-syntaxe-button-hover: #bfccea;
+            --degree7-unit1-lesson5-syntaxe-input-bg: #f8faff;
+            /* Sentence-type colors */
+            --degree7-unit1-lesson5-syntaxe-decl: #2e7d32;
+            --degree7-unit1-lesson5-syntaxe-interro: #1976d2;
+            --degree7-unit1-lesson5-syntaxe-exclam: #c2185b;
+            --degree7-unit1-lesson5-syntaxe-imper: #ef6c00;
+        }
+        body.dark {
+            --degree7-unit1-lesson5-syntaxe-bg: #0f1420;
+            --degree7-unit1-lesson5-syntaxe-card: #1a2233;
+            --degree7-unit1-lesson5-syntaxe-text: #e2e8f5;
+            --degree7-unit1-lesson5-syntaxe-text-light: #9aa8c4;
+            --degree7-unit1-lesson5-syntaxe-heading: #a4bcf5;
+            --degree7-unit1-lesson5-syntaxe-accent: #7b9ce8;
+            --degree7-unit1-lesson5-syntaxe-accent-hover: #9db5ee;
+            --degree7-unit1-lesson5-syntaxe-soft: #5c7dd4;
+            --degree7-unit1-lesson5-syntaxe-light: #24304a;
+            --degree7-unit1-lesson5-syntaxe-border: #2e3a55;
+            --degree7-unit1-lesson5-syntaxe-shadow: 0 1px 4px rgba(0,0,0,0.35);
+            --degree7-unit1-lesson5-syntaxe-audio-bg: #1f2940;
+            --degree7-unit1-lesson5-syntaxe-audio-progress: #3a4763;
+            --degree7-unit1-lesson5-syntaxe-button-bg: #26324c;
+            --degree7-unit1-lesson5-syntaxe-button-hover: #344162;
+            --degree7-unit1-lesson5-syntaxe-input-bg: #212c44;
+            --degree7-unit1-lesson5-syntaxe-decl: #81c784;
+            --degree7-unit1-lesson5-syntaxe-interro: #64b5f6;
+            --degree7-unit1-lesson5-syntaxe-exclam: #f06292;
+            --degree7-unit1-lesson5-syntaxe-imper: #ffb74d;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            font-family: var(--degree7-unit1-lesson5-syntaxe-font);
+            background: var(--degree7-unit1-lesson5-syntaxe-bg);
+            background-image:
+                radial-gradient(circle at 15% 15%, rgba(65,105,225,0.05) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(30,58,138,0.04) 0%, transparent 40%);
+            color: var(--degree7-unit1-lesson5-syntaxe-text);
+            line-height: 1.8;
+            transition: background var(--degree7-unit1-lesson5-syntaxe-transition), color var(--degree7-unit1-lesson5-syntaxe-transition);
+        }
+
+        .back-nav {
+            background: var(--degree7-unit1-lesson5-syntaxe-card);
+            border-bottom: 1px solid var(--degree7-unit1-lesson5-syntaxe-border);
+            padding: 0.5rem 1.5rem;
+        }
+        .back-nav a {
+            font-weight: 600;
+            color: var(--degree7-unit1-lesson5-syntaxe-accent);
+            text-decoration: none;
+        }
+        .back-nav a:hover { text-decoration: underline; }
+
+        .degree7-unit1-lesson5-syntaxe-container { max-width:1060px; margin:0 auto; padding:1.8rem 1.4rem 3rem; }
+
+        .degree7-unit1-lesson5-syntaxe-lesson-header { text-align: center; margin-bottom: 2rem; }
+        .degree7-unit1-lesson5-syntaxe-badge {
+            display:inline-block;
+            background: var(--degree7-unit1-lesson5-syntaxe-accent);
+            color: #fff;
+            padding: 0.3rem 1.1rem;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        .degree7-unit1-lesson5-syntaxe-lesson-header h1 {
+            font-size: 2.1rem;
+            color: var(--degree7-unit1-lesson5-syntaxe-heading);
+            margin: 0.7rem 0 0.4rem;
+            line-height: 1.25;
+            font-weight: 700;
+        }
+        .degree7-unit1-lesson5-syntaxe-lesson-header .degree7-unit1-lesson5-syntaxe-meta {
+            font-size: 0.9rem;
+            color: var(--degree7-unit1-lesson5-syntaxe-text-light);
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        /* Audio player */
+        .degree7-unit1-lesson5-syntaxe-audio-player {
+            background: var(--degree7-unit1-lesson5-syntaxe-card);
+            border: 1px solid var(--degree7-unit1-lesson5-syntaxe-border);
+            border-radius: var(--degree7-unit1-lesson5-syntaxe-radius);
+            padding: 1rem 1.4rem;
+            margin: 1.5rem 0 2rem;
+            box-shadow: var(--degree7-unit1-lesson5-syntaxe-shadow);
+            display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+        }
+        .degree7-unit1-lesson5-syntaxe-play-btn {
+            width: 46px; height: 46px; border-radius: 50%;
+            background: var(--degree7-unit1-lesson5-syntaxe-accent);
+            color: #fff; border: none; font-size: 1.2rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background var(--degree7-unit1-lesson5-syntaxe-transition);
+            flex-shrink: 0;
+        }
+        .degree7-unit1-lesson5-syntaxe-play-btn:hover { background: var(--degree7-unit1-lesson5-syntaxe-accent-hover); }
+        .degree7-unit1-lesson5-syntaxe-progress-area { flex:1; min-width:120px; display:flex; flex-direction:column; gap:0.3rem; }
+        .degree7-unit1-lesson5-syntaxe-progress-bar {
+            width:100%; height:6px; background: var(--degree7-unit1-lesson5-syntaxe-audio-progress);
+            border-radius: 3px; cursor:pointer; position:relative; overflow:hidden;
+        }
+        .degree7-unit1-lesson5-syntaxe-progress-fill {
+            height:100%; background: var(--degree7-unit1-lesson5-syntaxe-accent);
+            border-radius: 3px; width: 0%; transition: width 0.1s linear;
+        }
+        .degree7-unit1-lesson5-syntaxe-time-info {
+            display:flex; justify-content:space-between; font-size:0.75rem;
+            color: var(--degree7-unit1-lesson5-syntaxe-text-light);
+        }
+        .degree7-unit1-lesson5-syntaxe-speed-selector { display:flex; gap:0.3rem; flex-wrap:wrap; }
+        .degree7-unit1-lesson5-syntaxe-speed-btn {
+            border:1px solid var(--degree7-unit1-lesson5-syntaxe-border);
+            background: var(--degree7-unit1-lesson5-syntaxe-button-bg);
+            color: var(--degree7-unit1-lesson5-syntaxe-text);
+            padding:0.3rem 0.6rem; border-radius: 4px;
+            font-size:0.75rem; font-weight:600; cursor:pointer;
+            transition: all var(--degree7-unit1-lesson5-syntaxe-transition);
+        }
+        .degree7-unit1-lesson5-syntaxe-speed-btn.active {
+            background: var(--degree7-unit1-lesson5-syntaxe-accent);
+            color: #fff; border-color: var(--degree7-unit1-lesson5-syntaxe-accent);
+        }
+        .degree7-unit1-lesson5-syntaxe-audio-label {
+            font-weight:700; font-size:0.9rem;
+            color: var(--degree7-unit1-lesson5-syntaxe-heading);
+            white-space:nowrap;
+        }
+        @media (max-width:600px) {
+            .degree7-unit1-lesson5-syntaxe-audio-player { flex-direction: column; align-items: stretch; }
+            .degree7-unit1-lesson5-syntaxe-audio-label { text-align: center; }
+        }
+
+        /* Text card */
+        .degree7-unit1-lesson5-syntaxe-text-card {
+            background: var(--degree7-unit1-lesson5-syntaxe-card);
+            border: 1px solid var(--degree7-unit1-lesson5-syntaxe-border);
+            border-left: 5px solid var(--degree7-unit1-lesson5-syntaxe-accent);
+            border-radius: 0 var(--degree7-unit1-lesson5-syntaxe-radius) var(--degree7-unit1-lesson5-syntaxe-radius) 0;
+            padding: 1.5rem 1.8rem;
+            margin: 1.8rem 0;
+            font-size: 1.05rem;
+            line-height: 1.9;
+            box-shadow: var(--degree7-unit1-lesson5-syntaxe-shadow);
+            position: relative;
+        }
+        .degree7-unit1-lesson5-syntaxe-text-card .degree7-unit1-lesson5-syntaxe-quote-mark {
+            position: absolute; top:-15px; left:14px; font-size:3.5rem;
+            color: var(--degree7-unit1-lesson5-syntaxe-accent); opacity:0.3; line-height:1;
+            font-family: 'Georgia', serif;
+        }
+        .degree7-unit1-lesson5-syntaxe-text-card p { margin-bottom: 0.8rem; }
+        .degree7-unit1-lesson5-syntaxe-text-card p:last-of-type { margin-bottom: 0; }
+        .degree7-unit1-lesson5-syntaxe-text-author {
+            text-align: right;
+            font-style: italic;
+            font-size: 0.9rem;
+            color: var(--degree7-unit1-lesson5-syntaxe-text-light);
+            margin-top: 0.8rem;
+        }
+
+        /* Section headings */
+        .degree7-unit1-lesson5-syntaxe-section h2 {
+            font-size: 1.5rem;
+            color: var(--degree7-unit1-lesson5-syntaxe-heading);
+            margin: 2.4rem 0 1rem;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+            position: relative;
+        }
+        .degree7-unit1-lesson5-syntaxe-section h2::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 40%; bottom: 0; height: 3px;
+            background: var(--degree7-unit1-lesson5-syntaxe-accent);
+            border-radius: 2px;
+        }
+
+        /* Rules section */
+        .degree7-unit1-lesson5-syntaxe-valeurs-section {
+            background: var(--degree7-unit1-lesson5-syntaxe-card);
+            border: 1px solid var(--degree7-unit1-lesson5-syntaxe-border);
+            border-radius: var(--degree7-unit1-lesson5-syntaxe-radius);
+            padding: 1.6rem 1.8rem;
+            margin: 2rem 0;
+            box-shadow: var(--degree7-unit1-lesson5-syntaxe-shadow);
+        }
+        .degree7-unit1-lesson5-syntaxe-valeurs-section h2 {
+            font-size: 1.5rem;
+            color: var(--degree7-unit1-lesson5-syntaxe-heading);
+            margin-bottom: 1rem;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+            border-bottom: 3px solid var(--degree7-unit1-lesson5-syntaxe-accent);
+        }
+        .degree7-unit1-lesson5-syntaxe-valeur-card {
+            background: var(--degree7-unit1-lesson5-syntaxe-light);
+            border-radius: var(--degree7-unit1-lesson5-syntaxe-radius-sm);
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .degree7-unit1-lesson5-syntaxe-valeur-card h3 {
+            color: var(--degree7-unit1-lesson5-syntaxe-accent);
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+        .degree7-unit1-lesson5-syntaxe-valeur-card p { margin: 0.4rem 0; color: var(--degree7-unit1-lesson5-syntaxe-text); }
+        .degree7-unit1-lesson5-syntaxe-valeur-card ul { list-style: none; padding: 0; }
+        .degree7-unit1-lesson5-syntaxe-valeur-card li {
+            padding: 0.3rem 0 0.3rem 1.4rem;
+            position: relative;
+            color: var(--degree7-unit1-lesson5-syntaxe-text);
+        }
+        .degree7-unit1-lesson5-syntaxe-valeur-card li::before {
+            content: '◆';
+            position: absolute; left: 0;
+            color: var(--degree7-unit1-lesson5-syntaxe-accent);
+            font-size: 0.55rem; top: 0.6rem;
+        }
+
+        /* Types table */
+        .degree7-unit1-lesson5-syntaxe-types-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        .degree7-unit1-lesson5-syntaxe-types-table th,
+        .degree7-unit1-lesson5-syntaxe-types-table td {
+            padding: 0.7rem 0.9rem;
+            border: 1px solid var(--degree7-unit1-lesson5-syntaxe-border);
+            text-align: left;
+            font-size: 0.92rem;
+            vertical-align: top;
+        }
+        .degree7-unit1-lesson5-syntaxe-types-table th {
+            background: var(--degree7-unit1-lesson5-syntaxe-accent);
+            color: #fff;
+            font-weight: 700;
+        }
+        .degree7-unit1-lesson5-syntaxe-types-table tr:nth-child(even) td {
+            background: var(--degree7-unit1-lesson5-syntaxe-light);
+        }
+        .degree7-unit1-lesson5-syntaxe-types-table .type-name {
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+        .degree7-unit1-lesson5-syntaxe-types-table .type-decl { color: var(--degree7-unit1-lesson5-syntaxe-decl); }
+        .degree7-unit1-lesson5-syntaxe-types-table .type-interro { color: var(--degree7-unit1-lesson5-syntaxe-interro); }
+        .degree7-unit1-lesson5-syntaxe-types-table .type-exclam { color: var(--degree7-unit1-lesson5-syntaxe-exclam); }
+        .degree7-unit1-lesson5-syntaxe-types-table .type-imper { color: var(--degree7-unit1-lesson5-syntaxe-imper); }
+
+        /* Note callout */
+        .degree7-unit1-lesson5-syntaxe-note {
+            background: linear-gradient(135deg, rgba(65,105,225,0.07), rgba(30,58,138,0.03));
+            border: 1px dashed var(--degree7-unit1-lesson5-syntaxe-accent);
+            border-radius: var(--degree7-unit1-lesson5-syntaxe-radius-sm);
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+            color: var(--degree7-unit1-lesson5-syntaxe-text);
+        }
+        .degree7-unit1-lesson5-syntaxe-note strong { color: var(--degree7-unit1-lesson5-syntaxe-accent); }
+
+        /* Je découvre grid */
+        .degree7-unit1-lesson5-syntaxe-discover-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        @media (max-width:700px) { .degree7-unit1-lesson5-syntaxe-discover-grid { grid-template-columns: 1fr; } }
+        .degree7-unit1-lesson5-syntaxe-discover-item {
+            background: var(--degree7-unit1-lesson5-syntaxe-light);
+            border-left: 4px solid var(--degree7-unit1-lesson5-syntaxe-accent);
+            border-radius: var(--degree7-unit1-lesson5-syntaxe-radius-sm);
+            padding: 0.9rem 1.1rem;
+            font-size: 0.92rem;
+        }
+        .degree7-unit1-lesson5-syntaxe-discover-item .q-num {
+            display: inline-block;
+            background: var(--degree7-unit1-lesson5-syntaxe-accent);
+            color: #fff;
+            width: 24px; height: 24px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-right: 0.4rem;
+        }
+
+        /* Sentence type badges (legend) */
+        .degree7-unit1-lesson5-syntaxe-type-badges {
+            display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 0.8rem 0 1.2rem;
+        }
+        .degree7-unit1-lesson5-syntaxe-type-badge {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.4rem 0.9rem; border-radius: 20px;
+            font-size: 0.85rem; font-weight: 700;
+            background: var(--degree7-unit1-lesson5-syntaxe-card);
+            border: 2px solid;
+        }
+        .degree7-unit1-lesson5-syntaxe-type-badge.decl { border-color: var(--degree7-unit1-lesson5-syntaxe-decl); color: var(--degree7-unit1-lesson5-syntaxe-decl); }
+        .degree7-unit1-lesson5-syntaxe-type-badge.interro { border-color: var(--degree7-unit1-lesson5-syntaxe-interro); color: var(--degree7-unit1-lesson5-syntaxe-interro); }
+        .degree7-unit1-lesson5-syntaxe-type-badge.exclam { border-color: var(--degree7-unit1-lesson5-syntaxe-exclam); color: var(--degree7-unit1-lesson5-syntaxe-exclam); }
+        .degree7-unit1-lesson5-syntaxe-type-badge.imper { border-color: var(--degree7-unit1-lesson5-syntaxe-imper); color: var(--degree7-unit1-lesson5-syntaxe-imper); }
+
+        /* BD image block */
+        .degree7-unit1-lesson5-syntaxe-bd-block {
+            text-align: center;
+            padding: 1rem;
+            background: var(--degree7-unit1-lesson5-syntaxe-light);
+            border-radius: var(--degree7-unit1-lesson5-syntaxe-radius-sm);
+            margin: 0.8rem 0;
+        }
+        .degree7-unit1-lesson5-syntaxe-bd-block img {
+            max-width: 100%;
+            max-height: 260px;
+            border-radius: var(--degree7-unit1-lesson5-syntaxe-radius-sm);
+            box-shadow: var(--degree7-unit1-lesson5-syntaxe-shadow);
+        }
+        .degree7-unit1-lesson5-syntaxe-bd-caption {
+            font-size: 0.85rem;
+            color: var(--degree7-unit1-lesson5-syntaxe-text-light);
+            font-style: italic;
+            margin-top: 0.6rem;
+        }
+
+        /* Situations list */
+        .degree7-unit1-lesson5-syntaxe-situation-item {
+            background: var(--degree7-unit1-lesson5-syntaxe-light);
+            border-radius: var(--degree7-unit1-lesson5-syntaxe-radius-sm);
+            padding: 0.7rem 1rem;
+            margin-bottom: 0.6rem;
+            display: flex; align-items: flex-start; gap: 0.7rem;
+        }
+        .degree7-unit1-lesson5-syntaxe-situation-item .num {
+            flex-shrink: 0;
+            width: 26px; height: 26px; border-radius: 50%;
+            background: var(--degree7-unit1-lesson5-syntaxe-accent);
+            color: #fff; font-weight: 700; font-size: 0.8rem;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .degree7-unit1-lesson5-syntaxe-situation-item .content { flex: 1; }
+        .degree7-unit1-lesson5-syntaxe-situation-item .content p { margin-bottom: 0.4rem; font-size: 0.9rem; }
+        .degree7-unit1-lesson5-syntaxe-situation-item textarea {
+            width: 100%;
+            padding: 0.4rem 0.6rem;
+            border: 1px solid var(--degree7-unit1-lesson5-syntaxe-border);
+            border-radius: 4px;
+            background: var(--degree7-unit1-lesson5-syntaxe-input-bg);
+            color: var(--degree7-unit1-lesson5-syntaxe-text);
+            font-family: inherit; font-size: 0.88rem;
+            resize: vertical;
+        }
+
+        /* Exercises grid */
+        .degree7-unit1-lesson5-syntaxe-exercises-section {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start;
+        }
+        .degree7-unit1-lesson5-syntaxe-exercises-section h2 {
+            grid-column: 1 / -1;
+            font-size: 1.5rem;
+            color: var(--degree7-unit1-lesson5-syntaxe-heading);
+            margin: 2rem 0 1rem;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+            border-bottom: 3px solid var(--degree7-unit1-lesson5-syntaxe-accent);
+        }
+        .degree7-unit1-lesson5-syntaxe-exercise-card {
+            background: var(--degree7-unit1-lesson5-syntaxe-card);
+            border: 1px solid var(--degree7-unit1-lesson5-syntaxe-border);
+            border-radius: var(--degree7-unit1-lesson5-syntaxe-radius-sm);
+            padding: 1.2rem 1.4rem;
+            margin-bottom: 0;
+            box-shadow: var(--degree7-unit1-lesson5-syntaxe-shadow);
+        }
+        .degree7-unit1-lesson5-syntaxe-exercise-col-left { grid-column: 1 / 2; }
+        .degree7-unit1-lesson5-syntaxe-exercise-col-right { grid-column: 2 / 3; }
+        .degree7-unit1-lesson5-syntaxe-exercise-card h3 {
+            font-size: 1.05rem;
+            color: var(--degree7-unit1-lesson5-syntaxe-accent);
+            margin-bottom: 0.8rem;
+            display: flex; align-items: center; gap: 0.4rem;
+        }
+        .degree7-unit1-lesson5-syntaxe-exercise-card table {
+            width: 100%; border-collapse: collapse; margin: 0.8rem 0;
+        }
+        .degree7-unit1-lesson5-syntaxe-exercise-card th,
+        .degree7-unit1-lesson5-syntaxe-exercise-card td {
+            padding: 0.55rem 0.7rem;
+            border: 1px solid var(--degree7-unit1-lesson5-syntaxe-border);
+            text-align: left; font-size: 0.9rem;
+        }
+        .degree7-unit1-lesson5-syntaxe-exercise-card th {
+            background: var(--degree7-unit1-lesson5-syntaxe-light);
+            font-weight: 700;
+            color: var(--degree7-unit1-lesson5-syntaxe-heading);
+        }
+        .degree7-unit1-lesson5-syntaxe-exercise-card input[type="text"],
+        .degree7-unit1-lesson5-syntaxe-exercise-card textarea {
+            width: 100%; padding: 0.4rem 0.6rem;
+            border: 1px solid var(--degree7-unit1-lesson5-syntaxe-border);
+            border-radius: 4px;
+            background: var(--degree7-unit1-lesson5-syntaxe-input-bg);
+            color: var(--degree7-unit1-lesson5-syntaxe-text);
+            font-family: inherit; font-size: 0.9rem;
+        }
+        .degree7-unit1-lesson5-syntaxe-exercise-card textarea { resize: vertical; }
+        .degree7-unit1-lesson5-syntaxe-exercise-card input:focus,
+        .degree7-unit1-lesson5-syntaxe-exercise-card textarea:focus {
+            outline: none;
+            border-color: var(--degree7-unit1-lesson5-syntaxe-accent);
+        }
+        .degree7-unit1-lesson5-syntaxe-btn-verify {
+            background: var(--degree7-unit1-lesson5-syntaxe-accent);
+            color: #fff; border: none; padding: 0.5rem 1.2rem;
+            border-radius: 20px; font-weight: 600; cursor: pointer;
+            transition: background var(--degree7-unit1-lesson5-syntaxe-transition);
+            margin-top: 0.6rem; font-size: 0.85rem;
+        }
+        .degree7-unit1-lesson5-syntaxe-btn-verify:hover { background: var(--degree7-unit1-lesson5-syntaxe-accent-hover); }
+        .degree7-unit1-lesson5-syntaxe-answer-key {
+            display: none; margin-top: 0.8rem; padding: 0.8rem;
+            background: var(--degree7-unit1-lesson5-syntaxe-light);
+            border-radius: 6px; font-size: 0.85rem;
+            color: var(--degree7-unit1-lesson5-syntaxe-text);
+            border: 1px dashed var(--degree7-unit1-lesson5-syntaxe-accent);
+        }
+        .degree7-unit1-lesson5-syntaxe-answer-key.visible { display: block; }
+
+        .degree7-unit1-lesson5-syntaxe-self-assessment {
+            margin-top: 0.8rem; font-size: 0.9rem;
+            display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
+        }
+        .degree7-unit1-lesson5-syntaxe-self-assessment label { cursor: pointer; }
+
+        /* Score area */
+        .degree7-unit1-lesson5-syntaxe-score-area {
+            background: var(--degree7-unit1-lesson5-syntaxe-card);
+            border: 1px solid var(--degree7-unit1-lesson5-syntaxe-border);
+            border-radius: var(--degree7-unit1-lesson5-syntaxe-radius);
+            padding: 1.5rem; margin-top: 2rem;
+            box-shadow: var(--degree7-unit1-lesson5-syntaxe-shadow);
+        }
+        .degree7-unit1-lesson5-syntaxe-score-area h2 {
+            color: var(--degree7-unit1-lesson5-syntaxe-heading);
+            margin-bottom: 1rem;
+        }
+        .degree7-unit1-lesson5-syntaxe-score-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .degree7-unit1-lesson5-syntaxe-score-stat {
+            background: var(--degree7-unit1-lesson5-syntaxe-light);
+            padding: 0.8rem 1.2rem; border-radius: 8px; font-weight: 600;
+        }
+
+        .degree7-unit1-lesson5-syntaxe-footer-nav {
+            margin-top: 2rem;
+            display: flex; justify-content: space-between; flex-wrap: wrap;
+            background: var(--degree7-unit1-lesson5-syntaxe-card);
+            border-top: 1px solid var(--degree7-unit1-lesson5-syntaxe-border);
+            padding: 0.8rem 1.5rem;
+            border-radius: 0 0 var(--degree7-unit1-lesson5-syntaxe-radius) var(--degree7-unit1-lesson5-syntaxe-radius);
+        }
+        .degree7-unit1-lesson5-syntaxe-footer-nav a {
+            font-weight: 600;
+            color: var(--degree7-unit1-lesson5-syntaxe-accent);
+            text-decoration: none;
+        }
+        .degree7-unit1-lesson5-syntaxe-footer-nav a:hover { text-decoration: underline; }
+
+        html[dir="rtl"] body { direction: rtl; }
+        html[dir="rtl"] .degree7-unit1-lesson5-syntaxe-container { text-align: right; }
+        html[dir="rtl"] .degree7-unit1-lesson5-syntaxe-exercise-card th,
+        html[dir="rtl"] .degree7-unit1-lesson5-syntaxe-exercise-card td,
+        html[dir="rtl"] .degree7-unit1-lesson5-syntaxe-types-table th,
+        html[dir="rtl"] .degree7-unit1-lesson5-syntaxe-types-table td { text-align: right; }
+
+        @media (max-width:800px) {
+            .degree7-unit1-lesson5-syntaxe-exercises-section { grid-template-columns: 1fr; }
+            .degree7-unit1-lesson5-syntaxe-exercise-col-left,
+            .degree7-unit1-lesson5-syntaxe-exercise-col-right { grid-column: auto; }
+        }
+        @media (max-width:600px) {
+            .degree7-unit1-lesson5-syntaxe-lesson-header h1 { font-size: 1.5rem; }
+            .degree7-unit1-lesson5-syntaxe-container { padding: 1rem 0.8rem 2rem; }
+            .degree7-unit1-lesson5-syntaxe-text-card { padding: 1.4rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div id="toast-container"></div>
+    <button id="signInBtn" style="display:none"></button>
+
+    <nav class="back-nav no-print">
+        <a href="index.html" data-i18n="back_link">← Retour à l'accueil</a>
+    </nav>
+
+    <div id="main-content" class="degree7-unit1-lesson5-syntaxe-container">
+        <!-- Breadcrumb -->
+        <p style="margin-bottom:1.5rem; color:var(--degree7-unit1-lesson5-syntaxe-text-light);">
+            <a href="degree7.html" data-i18n="back_revision">Unité 1</a>
+            › <strong data-i18n="back_current">Les types et les formes de phrases</strong>
+        </p>
+
+        <div class="degree7-unit1-lesson5-syntaxe-lesson-header">
+            <span class="degree7-unit1-lesson5-syntaxe-badge" data-i18n="lesson_badge">📚 Syntaxe · Leçon 5</span>
+            <h1 data-i18n="lesson_title">Les types et les formes de phrases<br>Les quatre types · Les deux formes</h1>
+            <div class="degree7-unit1-lesson5-syntaxe-meta">
+                <span data-i18n="lesson_duration">⏱️ 45 minutes</span>
+                <span data-i18n="lesson_meta_audio">🎧 Écoutez le texte puis faites les exercices</span>
+            </div>
+        </div>
+
+        <!-- Audio player -->
+        <div class="degree7-unit1-lesson5-syntaxe-audio-player" id="audioPlayer">
+            <span class="degree7-unit1-lesson5-syntaxe-audio-label" data-i18n="audio_label">🎧 Écoute du texte</span>
+            <button class="degree7-unit1-lesson5-syntaxe-play-btn" id="playBtn" aria-label="Lecture">▶</button>
+            <div class="degree7-unit1-lesson5-syntaxe-progress-area">
+                <div class="degree7-unit1-lesson5-syntaxe-progress-bar" id="progressBar">
+                    <div class="degree7-unit1-lesson5-syntaxe-progress-fill" id="progressFill"></div>
+                </div>
+                <div class="degree7-unit1-lesson5-syntaxe-time-info">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+            <div class="degree7-unit1-lesson5-syntaxe-speed-selector" id="speedSelector">
+                <button class="degree7-unit1-lesson5-syntaxe-speed-btn" data-speed="0.75">0.75x</button>
+                <button class="degree7-unit1-lesson5-syntaxe-speed-btn active" data-speed="1">1x</button>
+                <button class="degree7-unit1-lesson5-syntaxe-speed-btn" data-speed="1.25">1.25x</button>
+                <button class="degree7-unit1-lesson5-syntaxe-speed-btn" data-speed="1.5">1.5x</button>
+            </div>
+        </div>
+
+        <!-- J'observe text -->
+        <section class="degree7-unit1-lesson5-syntaxe-section">
+            <h2 data-i18n="text_heading">📖 J'observe</h2>
+            <div class="degree7-unit1-lesson5-syntaxe-text-card">
+                <span class="degree7-unit1-lesson5-syntaxe-quote-mark">“</span>
+                <p data-i18n="text_para1">J'ai douze ans mercredi prochain. (…) Comme l'an dernier, papa m'a demandé :</p>
+                <p data-i18n="text_para2">– Qu'est-ce qui te ferait plaisir pour ton anniversaire ? Dis-moi ce que tu veux, et je te l'offre.</p>
+                <p data-i18n="text_para3">Comme l'an dernier, j'ai répondu, sans trop y croire :</p>
+                <p data-i18n="text_para4">– Un flacon d'eau de toilette Superman. (…)</p>
+                <p data-i18n="text_para5">– Superman ! a ricané mon père, tu me fais marcher, pas vrai ? Allez, je sais bien ce que tu veux : Scrubble II, le tout nouveau jeu vidéo, c'est ça, hein ? Ne t'en fais pas, tu l'auras !</p>
+                <p data-i18n="text_para6">Je n'ai pas protesté. A quoi bon ? Papa m'offrira Scrubble II. Parce qu'il meurt d'envie de l'avoir.</p>
+                <div class="degree7-unit1-lesson5-syntaxe-text-author" data-i18n="text_author">— Bernard FRIOT</div>
+            </div>
+
+            <div class="degree7-unit1-lesson5-syntaxe-note">
+                <strong data-i18n="consigne_title">➤ Consigne :</strong>
+                <span data-i18n="consigne_text">Lis attentivement le texte. Observe la ponctuation et les différents messages que le père et le fils veulent transmettre. Repère les phrases qui donnent une information, celles qui posent une question, celles qui expriment une émotion et celles qui donnent un ordre ou un conseil.</span>
+            </div>
+        </section>
+
+        <!-- Je découvre -->
+        <section class="degree7-unit1-lesson5-syntaxe-section">
+            <h2 data-i18n="discover_heading">🔍 Je découvre</h2>
+            <div class="degree7-unit1-lesson5-syntaxe-discover-grid">
+                <div class="degree7-unit1-lesson5-syntaxe-discover-item">
+                    <span class="q-num">1</span>
+                    <span data-i18n="discover_q1">Qu'est-ce qui t'amuse dans cet extrait ?</span>
+                </div>
+                <div class="degree7-unit1-lesson5-syntaxe-discover-item">
+                    <span class="q-num">2</span>
+                    <span data-i18n="discover_q2">Qu'est-ce qui, dans les propos du père, montre que c'est lui qui choisit le cadeau ?</span>
+                </div>
+                <div class="degree7-unit1-lesson5-syntaxe-discover-item">
+                    <span class="q-num">3</span>
+                    <span data-i18n="discover_q3">Les phrases que le père prononce sont-elles du même type ? Justifie ta réponse.</span>
+                </div>
+                <div class="degree7-unit1-lesson5-syntaxe-discover-item">
+                    <span class="q-num">4</span>
+                    <span data-i18n="discover_q4">Relève dans le texte une phrase où le père demande une information, une autre où il s'étonne et une troisième où il demande à son fils de lui faire part de son souhait.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Règle -->
+        <section class="degree7-unit1-lesson5-syntaxe-section">
+            <h2 data-i18n="rules_heading">📖 La règle</h2>
+
+            <div class="degree7-unit1-lesson5-syntaxe-valeurs-section">
+                <h2 data-i18n="rules_types_heading">1. Les quatre types de phrases</h2>
+                <p data-i18n="rules_types_intro" style="margin-bottom:1rem;">Selon la nature du message que l'on veut communiquer, on utilise un <strong>type de phrase</strong> différent. Il existe quatre types de phrases.</p>
+
+                <div class="degree7-unit1-lesson5-syntaxe-type-badges">
+                    <span class="degree7-unit1-lesson5-syntaxe-type-badge decl" data-i18n="badge_decl">Déclaratif</span>
+                    <span class="degree7-unit1-lesson5-syntaxe-type-badge interro" data-i18n="badge_interro">Interrogatif</span>
+                    <span class="degree7-unit1-lesson5-syntaxe-type-badge exclam" data-i18n="badge_exclam">Exclamatif</span>
+                    <span class="degree7-unit1-lesson5-syntaxe-type-badge imper" data-i18n="badge_imper">Impératif</span>
+                </div>
+
+                <table class="degree7-unit1-lesson5-syntaxe-types-table">
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_type" class="no-bilingual">Type de phrase</th>
+                            <th data-i18n="table_role" class="no-bilingual">À quoi ça sert ?</th>
+                            <th data-i18n="table_punct" class="no-bilingual">Ponctuation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="type-name type-decl" data-i18n="type_decl_name">Les phrases déclaratives</td>
+                            <td data-i18n="type_decl_role">Donner une information.</td>
+                            <td data-i18n="type_decl_punct">Point (.)</td>
+                        </tr>
+                        <tr>
+                            <td class="type-name type-imper" data-i18n="type_imper_name">Les phrases impératives</td>
+                            <td data-i18n="type_imper_role">Donner un ordre, un conseil, interdire.</td>
+                            <td data-i18n="type_imper_punct">Point ou point d'exclamation (. ou !)</td>
+                        </tr>
+                        <tr>
+                            <td class="type-name type-exclam" data-i18n="type_exclam_name">Les phrases exclamatives</td>
+                            <td data-i18n="type_exclam_role">Exprimer un sentiment, une émotion.</td>
+                            <td data-i18n="type_exclam_punct">Point d'exclamation (!)</td>
+                        </tr>
+                        <tr>
+                            <td class="type-name type-interro" data-i18n="type_interro_name">Les phrases interrogatives</td>
+                            <td data-i18n="type_interro_role">Demander une information.</td>
+                            <td data-i18n="type_interro_punct">Point d'interrogation (?)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="degree7-unit1-lesson5-syntaxe-note">
+                    <strong data-i18n="exemples_title">💡 Exemples :</strong>
+                    <ul style="padding-left:1.2rem; margin-top:0.4rem;">
+                        <li data-i18n="ex_decl"><strong>Déclaratif :</strong> « J'ai douze ans mercredi prochain. »</li>
+                        <li data-i18n="ex_interro"><strong>Interrogatif :</strong> « Qu'est-ce qui te ferait plaisir ? »</li>
+                        <li data-i18n="ex_exclam"><strong>Exclamatif :</strong> « Quel plaisir de voir l'enfant paraître ! »</li>
+                        <li data-i18n="ex_imper"><strong>Impératif :</strong> « Tiens-toi droit ! » / « Ne mâche pas la bouche ouverte ! »</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="degree7-unit1-lesson5-syntaxe-valeurs-section">
+                <h2 data-i18n="rules_forms_heading">2. Les deux formes de phrases</h2>
+                <p data-i18n="rules_forms_intro" style="margin-bottom:1rem;">Quand nous parlons ou écrivons, nous <strong>affirmons</strong> ou nous <strong>nions</strong> des faits, des sentiments… Une phrase, quel que soit son type, est soit <strong>affirmative</strong>, soit <strong>négative</strong>.</p>
+
+                <div class="degree7-unit1-lesson5-syntaxe-valeur-card">
+                    <h3 data-i18n="forme_affirm_title">🔹 La forme affirmative</h3>
+                    <p data-i18n="forme_affirm_text">La phrase affirme ce qu'elle dit.</p>
+                    <p style="font-style:italic;" data-i18n="forme_affirm_ex">« En famille, l'atmosphère est gaie. »</p>
+                </div>
+
+                <div class="degree7-unit1-lesson5-syntaxe-valeur-card">
+                    <h3 data-i18n="forme_neg_title">🔹 La forme négative</h3>
+                    <p data-i18n="forme_neg_text">La phrase nie ce qu'elle dit. Elle se construit avec des adverbes de négation (<em>ne… pas, ne… plus, ne… jamais, ne… rien, ne… personne</em>…).</p>
+                    <p style="font-style:italic;" data-i18n="forme_neg_ex">« Les grands-parents ne doivent pas se sentir exclus. »</p>
+                </div>
+
+                <div class="degree7-unit1-lesson5-syntaxe-note">
+                    <strong data-i18n="astuce_forms_title">💡 Astuce :</strong>
+                    <span data-i18n="astuce_forms_text">Une phrase déclarative, interrogative, exclamative ou impérative peut être soit <strong>affirmative</strong>, soit <strong>négative</strong>. Les deux critères (type et forme) sont indépendants.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercises -->
+        <div class="degree7-unit1-lesson5-syntaxe-exercises-section">
+            <h2 data-i18n="exercises_heading">✍️ Je m'exerce</h2>
+
+            <!-- Ex 1 -->
+            <div class="degree7-unit1-lesson5-syntaxe-exercise-card degree7-unit1-lesson5-syntaxe-exercise-col-left">
+                <h3 data-i18n="exo1_title">📌 1. Identifie le type de chaque phrase</h3>
+                <p data-i18n="exo1_instruction">Indique le type de chaque phrase : D (déclaratif), I (interrogatif), E (exclamatif) ou Imp (impératif).</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_phrase" class="no-bilingual">Phrase</th>
+                            <th data-i18n="table_type_col" class="no-bilingual">Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>J'ai douze ans mercredi prochain.</td><td><input type="text" placeholder="D/I/E/Imp"></td></tr>
+                        <tr><td>Qu'est-ce qui te ferait plaisir ?</td><td><input type="text" placeholder="D/I/E/Imp"></td></tr>
+                        <tr><td>Superman !</td><td><input type="text" placeholder="D/I/E/Imp"></td></tr>
+                        <tr><td>Ne t'en fais pas !</td><td><input type="text" placeholder="D/I/E/Imp"></td></tr>
+                        <tr><td>Tu me fais marcher, pas vrai ?</td><td><input type="text" placeholder="D/I/E/Imp"></td></tr>
+                    </tbody>
+                </table>
+                <button class="degree7-unit1-lesson5-syntaxe-btn-verify" onclick="toggleCorrection('exo1Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo1Key" class="degree7-unit1-lesson5-syntaxe-answer-key"></div>
+                <div class="degree7-unit1-lesson5-syntaxe-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 2 -->
+            <div class="degree7-unit1-lesson5-syntaxe-exercise-card degree7-unit1-lesson5-syntaxe-exercise-col-right">
+                <h3 data-i18n="exo2_title">📌 2. Associe chaque phrase à son type</h3>
+                <p data-i18n="exo2_instruction">Écris la lettre du type qui correspond à chaque phrase.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_phrase" class="no-bilingual">Phrase</th>
+                            <th data-i18n="table_letter_col" class="no-bilingual">Type (a–d)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Le ciel est bleu aujourd'hui.</td><td><input type="text" placeholder="a-d"></td></tr>
+                        <tr><td>Ferme la porte, s'il te plaît.</td><td><input type="text" placeholder="a-d"></td></tr>
+                        <tr><td>Quelle belle journée !</td><td><input type="text" placeholder="a-d"></td></tr>
+                        <tr><td>Où habites-tu ?</td><td><input type="text" placeholder="a-d"></td></tr>
+                    </tbody>
+                </table>
+                <p style="font-size:0.85rem; color:var(--degree7-unit1-lesson5-syntaxe-text-light);">
+                    <strong>a.</strong> <span data-i18n="exo2_a">Interrogatif</span> ·
+                    <strong>b.</strong> <span data-i18n="exo2_b">Exclamatif</span> ·
+                    <strong>c.</strong> <span data-i18n="exo2_c">Impératif</span> ·
+                    <strong>d.</strong> <span data-i18n="exo2_d">Déclaratif</span>
+                </p>
+                <button class="degree7-unit1-lesson5-syntaxe-btn-verify" onclick="toggleCorrection('exo2Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo2Key" class="degree7-unit1-lesson5-syntaxe-answer-key"></div>
+                <div class="degree7-unit1-lesson5-syntaxe-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 3 -->
+            <div class="degree7-unit1-lesson5-syntaxe-exercise-card degree7-unit1-lesson5-syntaxe-exercise-col-left">
+                <h3 data-i18n="exo3_title">📌 3. QCM – Choisis la bonne réponse</h3>
+                <p data-i18n="exo3_instruction">Choisis la bonne réponse parmi les propositions.</p>
+                <p><strong>1.</strong> <span data-i18n="exo3_q1">« Quelle joie de te revoir ! » est une phrase :</span></p>
+                <label><input type="radio" name="mcq1" value="a"> <span data-i18n="exo3_q1_a">déclarative</span></label><br>
+                <label><input type="radio" name="mcq1" value="b"> <span data-i18n="exo3_q1_b">exclamative</span></label><br>
+                <label><input type="radio" name="mcq1" value="c"> <span data-i18n="exo3_q1_c">interrogative</span></label>
+                <p style="margin-top:0.6rem;"><strong>2.</strong> <span data-i18n="exo3_q2">Une phrase qui donne un ordre est :</span></p>
+                <label><input type="radio" name="mcq2" value="a"> <span data-i18n="exo3_q2_a">déclarative</span></label><br>
+                <label><input type="radio" name="mcq2" value="b"> <span data-i18n="exo3_q2_b">impérative</span></label><br>
+                <label><input type="radio" name="mcq2" value="c"> <span data-i18n="exo3_q2_c">exclamative</span></label>
+                <p style="margin-top:0.6rem;"><strong>3.</strong> <span data-i18n="exo3_q3">Quelle est la ponctuation d'une phrase interrogative ?</span></p>
+                <label><input type="radio" name="mcq3" value="a"> <span data-i18n="exo3_q3_a">un point</span></label><br>
+                <label><input type="radio" name="mcq3" value="b"> <span data-i18n="exo3_q3_b">un point d'exclamation</span></label><br>
+                <label><input type="radio" name="mcq3" value="c"> <span data-i18n="exo3_q3_c">un point d'interrogation</span></label>
+                <button class="degree7-unit1-lesson5-syntaxe-btn-verify" onclick="toggleCorrection('exo3Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo3Key" class="degree7-unit1-lesson5-syntaxe-answer-key"></div>
+                <div class="degree7-unit1-lesson5-syntaxe-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 4 -->
+            <div class="degree7-unit1-lesson5-syntaxe-exercise-card degree7-unit1-lesson5-syntaxe-exercise-col-right">
+                <h3 data-i18n="exo4_title">📌 4. Transforme en phrase interrogative</h3>
+                <p data-i18n="exo4_instruction">Transforme chaque phrase déclarative en phrase interrogative.</p>
+                <ol type="a">
+                    <li><span data-i18n="exo4_a">Tu aimes le chocolat.</span> → <input type="text" placeholder="..."></li>
+                    <li><span data-i18n="exo4_b">Il fait beau aujourd'hui.</span> → <input type="text" placeholder="..."></li>
+                    <li><span data-i18n="exo4_c">Elle viendra demain.</span> → <input type="text" placeholder="..."></li>
+                </ol>
+                <button class="degree7-unit1-lesson5-syntaxe-btn-verify" onclick="toggleCorrection('exo4Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo4Key" class="degree7-unit1-lesson5-syntaxe-answer-key"></div>
+                <div class="degree7-unit1-lesson5-syntaxe-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 5 -->
+            <div class="degree7-unit1-lesson5-syntaxe-exercise-card degree7-unit1-lesson5-syntaxe-exercise-col-left">
+                <h3 data-i18n="exo5_title">📌 5. Transforme en phrase négative</h3>
+                <p data-i18n="exo5_instruction">Transforme chaque phrase affirmative en phrase négative.</p>
+                <ol type="a">
+                    <li><span data-i18n="exo5_a">Je mange des légumes.</span> → <input type="text" placeholder="..."></li>
+                    <li><span data-i18n="exo5_b">Elle a fini ses devoirs.</span> → <input type="text" placeholder="..."></li>
+                    <li><span data-i18n="exo5_c">Il veut toujours partir.</span> → <input type="text" placeholder="..."></li>
+                    <li><span data-i18n="exo5_d">Nous avons vu quelqu'un.</span> → <input type="text" placeholder="..."></li>
+                </ol>
+                <button class="degree7-unit1-lesson5-syntaxe-btn-verify" onclick="toggleCorrection('exo5Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo5Key" class="degree7-unit1-lesson5-syntaxe-answer-key"></div>
+                <div class="degree7-unit1-lesson5-syntaxe-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex5" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex5" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex5" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 6 -->
+            <div class="degree7-unit1-lesson5-syntaxe-exercise-card degree7-unit1-lesson5-syntaxe-exercise-col-right">
+                <h3 data-i18n="exo6_title">📌 6. Type ET forme</h3>
+                <p data-i18n="exo6_instruction">Indique le type (D, I, E, Imp) et la forme (Aff. ou Nég.) de chaque phrase.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_phrase" class="no-bilingual">Phrase</th>
+                            <th data-i18n="table_type_col" class="no-bilingual">Type</th>
+                            <th data-i18n="table_forme_col" class="no-bilingual">Forme</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Il ne viendra pas.</td><td><input type="text" placeholder="D/I/E/Imp"></td><td><input type="text" placeholder="Aff./Nég."></td></tr>
+                        <tr><td>Ferme la porte !</td><td><input type="text" placeholder="D/I/E/Imp"></td><td><input type="text" placeholder="Aff./Nég."></td></tr>
+                        <tr><td>N'est-il pas gentil ?</td><td><input type="text" placeholder="D/I/E/Imp"></td><td><input type="text" placeholder="Aff./Nég."></td></tr>
+                        <tr><td>Quelle joie !</td><td><input type="text" placeholder="D/I/E/Imp"></td><td><input type="text" placeholder="Aff./Nég."></td></tr>
+                        <tr><td>Je ne veux rien.</td><td><input type="text" placeholder="D/I/E/Imp"></td><td><input type="text" placeholder="Aff./Nég."></td></tr>
+                    </tbody>
+                </table>
+                <button class="degree7-unit1-lesson5-syntaxe-btn-verify" onclick="toggleCorrection('exo6Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo6Key" class="degree7-unit1-lesson5-syntaxe-answer-key"></div>
+                <div class="degree7-unit1-lesson5-syntaxe-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex6" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex6" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex6" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 7 -->
+            <div class="degree7-unit1-lesson5-syntaxe-exercise-card degree7-unit1-lesson5-syntaxe-exercise-col-left">
+                <h3 data-i18n="exo7_title">📌 7. Vrai ou faux ?</h3>
+                <p data-i18n="exo7_instruction">Indique si chaque affirmation est vraie (V) ou fausse (F).</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_statement" class="no-bilingual">Affirmation</th>
+                            <th data-i18n="table_vf" class="no-bilingual">V / F</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td data-i18n="exo7_q1">Une phrase déclarative donne une information.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo7_q2">Une phrase exclamative se termine par un point d'interrogation.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo7_q3">Une phrase peut être à la fois déclarative et négative.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo7_q4">Une phrase interrogative peut être négative.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo7_q5">L'impératif sert à donner un ordre, un conseil ou à interdire.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                    </tbody>
+                </table>
+                <button class="degree7-unit1-lesson5-syntaxe-btn-verify" onclick="toggleCorrection('exo7Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo7Key" class="degree7-unit1-lesson5-syntaxe-answer-key"></div>
+                <div class="degree7-unit1-lesson5-syntaxe-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex7" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex7" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex7" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 8 -->
+            <div class="degree7-unit1-lesson5-syntaxe-exercise-card degree7-unit1-lesson5-syntaxe-exercise-col-right">
+                <h3 data-i18n="exo8_title">📌 8. Ponctuation correcte</h3>
+                <p data-i18n="exo8_instruction">Ajoute la ponctuation qui convient à la fin de chaque phrase (. / ? / !).</p>
+                <ol type="a">
+                    <li><span data-i18n="exo8_a">Le chat dort sur le canapé</span> <input type="text" placeholder=". / ? / !" style="width:60px;display:inline-block;"></li>
+                    <li><span data-i18n="exo8_b">Quel est ton plat préféré</span> <input type="text" placeholder=". / ? / !" style="width:60px;display:inline-block;"></li>
+                    <li><span data-i18n="exo8_c">Comme ce paysage est magnifique</span> <input type="text" placeholder=". / ? / !" style="width:60px;display:inline-block;"></li>
+                    <li><span data-i18n="exo8_d">Range tes jouets</span> <input type="text" placeholder=". / ? / !" style="width:60px;display:inline-block;"></li>
+                    <li><span data-i18n="exo8_e">Où vas-tu</span> <input type="text" placeholder=". / ? / !" style="width:60px;display:inline-block;"></li>
+                    <li><span data-i18n="exo8_f">Ne touche pas à ça</span> <input type="text" placeholder=". / ? / !" style="width:60px;display:inline-block;"></li>
+                </ol>
+                <button class="degree7-unit1-lesson5-syntaxe-btn-verify" onclick="toggleCorrection('exo8Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo8Key" class="degree7-unit1-lesson5-syntaxe-answer-key"></div>
+                <div class="degree7-unit1-lesson5-syntaxe-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex8" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex8" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex8" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 9 -->
+            <div class="degree7-unit1-lesson5-syntaxe-exercise-card degree7-unit1-lesson5-syntaxe-exercise-col-left">
+                <h3 data-i18n="exo9_title">📌 9. Chasse aux erreurs</h3>
+                <p data-i18n="exo9_instruction">Chaque phrase contient une erreur de type ou de ponctuation. Corrige-la.</p>
+                <ol type="a">
+                    <li>Peux-tu fermer la fenêtre. <input type="text" placeholder="Correction"></li>
+                    <li>Comme il fait beau aujourd'hui. <input type="text" placeholder="Correction"></li>
+                    <li>Ferme la porte ? <input type="text" placeholder="Correction"></li>
+                    <li>Tu ne veux pas venir ?  (sens : affirmation) <input type="text" placeholder="Correction"></li>
+                </ol>
+                <button class="degree7-unit1-lesson5-syntaxe-btn-verify" onclick="toggleCorrection('exo9Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo9Key" class="degree7-unit1-lesson5-syntaxe-answer-key"></div>
+                <div class="degree7-unit1-lesson5-syntaxe-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex9" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex9" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex9" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 10 -->
+            <div class="degree7-unit1-lesson5-syntaxe-exercise-card degree7-unit1-lesson5-syntaxe-exercise-col-right">
+                <h3 data-i18n="exo10_title">📌 10. Complète la bulle de la B.D.</h3>
+                <p data-i18n="exo10_instruction">Observe cette image et imagine ce que dit le personnage de la baby-sitter. Écris une phrase <strong>impérative</strong> pour donner un conseil ou un ordre.</p>
+                <div class="degree7-unit1-lesson5-syntaxe-bd-block">
+                    <img src="assets7/degree7/images/unit1/lesson5/image1.png" alt="B.D. baby-sitter" data-i18n="exo10_img_alt">
+                    <div class="degree7-unit1-lesson5-syntaxe-bd-caption" data-i18n="exo10_img_caption">Le personnage de la baby-sitter s'adresse aux enfants.</div>
+                </div>
+                <textarea rows="3" placeholder="La baby-sitter dit : « ... »"></textarea>
+                <button class="degree7-unit1-lesson5-syntaxe-btn-verify" onclick="showExo10Example()" data-i18n="show_example">💡 Voir un exemple de réponse</button>
+                <div id="exo10Key" class="degree7-unit1-lesson5-syntaxe-answer-key"></div>
+                <div class="degree7-unit1-lesson5-syntaxe-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex10" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex10" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex10" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Full width: situations -->
+        <div style="margin-top:2rem;">
+            <div class="degree7-unit1-lesson5-syntaxe-exercise-card">
+                <h3 data-i18n="exo11_title">📌 11. Imagine ce que dit chaque personnage</h3>
+                <p data-i18n="exo11_instruction">Dans chacune des situations suivantes, une personne s'adresse à une autre. Imagine ce qu'elle lui dit, en utilisant le type de phrase indiqué entre parenthèses.</p>
+
+                <div class="degree7-unit1-lesson5-syntaxe-situation-item">
+                    <span class="num">1</span>
+                    <div class="content">
+                        <p data-i18n="sit1">Une maman à son enfant pour l'informer de la visite de sa tante. <em>(Déclaratif)</em></p>
+                        <textarea rows="2" placeholder="La maman dit : « ... »"></textarea>
+                    </div>
+                </div>
+
+                <div class="degree7-unit1-lesson5-syntaxe-situation-item">
+                    <span class="num">2</span>
+                    <div class="content">
+                        <p data-i18n="sit2">Ta grande sœur à ton petit frère pour lui donner des conseils le jour de la rentrée des classes. <em>(Impératif)</em></p>
+                        <textarea rows="2" placeholder="La grande sœur dit : « ... »"></textarea>
+                    </div>
+                </div>
+
+                <div class="degree7-unit1-lesson5-syntaxe-situation-item">
+                    <span class="num">3</span>
+                    <div class="content">
+                        <p data-i18n="sit3">Un petit-fils à sa grand-mère pour la prier de lui raconter quelques-unes de ses histoires. <em>(Interrogatif)</em></p>
+                        <textarea rows="2" placeholder="Le petit-fils dit : « ... »"></textarea>
+                    </div>
+                </div>
+
+                <div class="degree7-unit1-lesson5-syntaxe-situation-item">
+                    <span class="num">4</span>
+                    <div class="content">
+                        <p data-i18n="sit4">Ton père à ton frère pour lui ordonner de ranger ses affaires. <em>(Impératif, forme négative)</em></p>
+                        <textarea rows="2" placeholder="Le père dit : « ... »"></textarea>
+                    </div>
+                </div>
+
+                <div class="degree7-unit1-lesson5-syntaxe-situation-item">
+                    <span class="num">5</span>
+                    <div class="content">
+                        <p data-i18n="sit5">Une maman à sa petite fille pour lui expliquer les règles d'un nouveau jeu. <em>(Déclaratif)</em></p>
+                        <textarea rows="2" placeholder="La maman dit : « ... »"></textarea>
+                    </div>
+                </div>
+
+                <div class="degree7-unit1-lesson5-syntaxe-situation-item">
+                    <span class="num">6</span>
+                    <div class="content">
+                        <p data-i18n="sit6">Une maman au volant de sa voiture à ses enfants pour leur interdire de la déranger. <em>(Impératif, forme négative)</em></p>
+                        <textarea rows="2" placeholder="La maman dit : « ... »"></textarea>
+                    </div>
+                </div>
+
+                <div class="degree7-unit1-lesson5-syntaxe-situation-item">
+                    <span class="num">7</span>
+                    <div class="content">
+                        <p data-i18n="sit7">Un oncle à ses neveux pour leur annoncer le programme du week-end. <em>(Déclaratif)</em></p>
+                        <textarea rows="2" placeholder="L'oncle dit : « ... »"></textarea>
+                    </div>
+                </div>
+
+                <div class="degree7-unit1-lesson5-syntaxe-situation-item">
+                    <span class="num">8</span>
+                    <div class="content">
+                        <p data-i18n="sit8">Ta mère à ton petit frère qui rentre tard de l'école. <em>(Interrogatif, forme négative)</em></p>
+                        <textarea rows="2" placeholder="La mère dit : « ... »"></textarea>
+                    </div>
+                </div>
+
+                <button class="degree7-unit1-lesson5-syntaxe-btn-verify" onclick="showExo11Example()" data-i18n="show_example">💡 Voir un exemple de réponse</button>
+                <div id="exo11Key" class="degree7-unit1-lesson5-syntaxe-answer-key"></div>
+                <div class="degree7-unit1-lesson5-syntaxe-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex11" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex11" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex11" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Score area -->
+        <div class="degree7-unit1-lesson5-syntaxe-score-area" id="scoreArea">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="degree7-unit1-lesson5-syntaxe-score-stats" id="scoreStats">
+                <div class="degree7-unit1-lesson5-syntaxe-score-stat"><span data-i18n="score_correct">Correctes :</span> <span id="scoreCorrect">0</span></div>
+                <div class="degree7-unit1-lesson5-syntaxe-score-stat"><span data-i18n="score_incorrect">Incorrectes :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="degree7-unit1-lesson5-syntaxe-score-stat"><span data-i18n="score_partial">Partielles :</span> <span id="scorePartial">0</span></div>
+                <div class="degree7-unit1-lesson5-syntaxe-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">11</span></div>
+            </div>
+        </div>
+        <div class="degree7-unit1-lesson5-syntaxe-score-actions" style="margin-top:1.2rem;">
+            <button id="saveResultsBtn" class="degree7-unit1-lesson5-syntaxe-btn-verify" style="margin-right:0.5rem;" data-i18n="save_results">💾 Enregistrer mes résultats</button>
+            <button id="printPdfBtn" class="degree7-unit1-lesson5-syntaxe-btn-verify" style="background:#2c4bb8; margin-right:0.5rem;" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+        </div>
+
+        <!-- Footer nav -->
+        <div class="degree7-unit1-lesson5-syntaxe-footer-nav">
+            <a href="degree7unit1lesson4.html" data-i18n="footer_back" class="no-bilingual">← Leçon précédente</a>
+            <a href="degree7unit1lesson6.html" data-i18n="footer_next" class="no-bilingual">Leçon suivante : Le couvert →</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                'lesson_title': "Leçon 5 – Les types et les formes de phrases | Syntaxe",
+                'lesson_short_title': "Les types et les formes de phrases",
+                'ach_year_degree7': "7ème Année Primaire",
+                'ach_module_unit1': "Unité 1 – Les fondements du français",
+                'back_link': "← Retour à l'accueil",
+                'back_revision': "Unité 1",
+                'back_current': "Les types et les formes de phrases",
+                'lesson_badge': "📚 Syntaxe · Leçon 5",
+                'lesson_title': "Les types et les formes de phrases<br>Les quatre types · Les deux formes",
+                'lesson_duration': "⏱️ 45 minutes",
+                'lesson_meta_audio': "🎧 Écoutez le texte puis faites les exercices",
+                'audio_label': "🎧 Écoute du texte",
+                'text_heading': "📖 J'observe",
+                'text_para1': "J'ai douze ans mercredi prochain. (…) Comme l'an dernier, papa m'a demandé :",
+                'text_para2': "– Qu'est-ce qui te ferait plaisir pour ton anniversaire ? Dis-moi ce que tu veux, et je te l'offre.",
+                'text_para3': "Comme l'an dernier, j'ai répondu, sans trop y croire :",
+                'text_para4': "– Un flacon d'eau de toilette Superman. (…)",
+                'text_para5': "– Superman ! a ricané mon père, tu me fais marcher, pas vrai ? Allez, je sais bien ce que tu veux : Scrubble II, le tout nouveau jeu vidéo, c'est ça, hein ? Ne t'en fais pas, tu l'auras !",
+                'text_para6': "Je n'ai pas protesté. A quoi bon ? Papa m'offrira Scrubble II. Parce qu'il meurt d'envie de l'avoir.",
+                'text_author': "— Bernard FRIOT",
+                'consigne_title': "➤ Consigne :",
+                'consigne_text': "Lis attentivement le texte. Observe la ponctuation et les différents messages que le père et le fils veulent transmettre. Repère les phrases qui donnent une information, celles qui posent une question, celles qui expriment une émotion et celles qui donnent un ordre ou un conseil.",
+                'discover_heading': "🔍 Je découvre",
+                'discover_q1': "Qu'est-ce qui t'amuse dans cet extrait ?",
+                'discover_q2': "Qu'est-ce qui, dans les propos du père, montre que c'est lui qui choisit le cadeau ?",
+                'discover_q3': "Les phrases que le père prononce sont-elles du même type ? Justifie ta réponse.",
+                'discover_q4': "Relève dans le texte une phrase où le père demande une information, une autre où il s'étonne et une troisième où il demande à son fils de lui faire part de son souhait.",
+                'rules_heading': "📖 La règle",
+                'rules_types_heading': "1. Les quatre types de phrases",
+                'rules_types_intro': "Selon la nature du message que l'on veut communiquer, on utilise un <strong>type de phrase</strong> différent. Il existe quatre types de phrases.",
+                'badge_decl': "Déclaratif",
+                'badge_interro': "Interrogatif",
+                'badge_exclam': "Exclamatif",
+                'badge_imper': "Impératif",
+                'table_type': "Type de phrase",
+                'table_role': "À quoi ça sert ?",
+                'table_punct': "Ponctuation",
+                'type_decl_name': "Les phrases déclaratives",
+                'type_decl_role': "Donner une information.",
+                'type_decl_punct': "Point (.)",
+                'type_imper_name': "Les phrases impératives",
+                'type_imper_role': "Donner un ordre, un conseil, interdire.",
+                'type_imper_punct': "Point ou point d'exclamation (. ou !)",
+                'type_exclam_name': "Les phrases exclamatives",
+                'type_exclam_role': "Exprimer un sentiment, une émotion.",
+                'type_exclam_punct': "Point d'exclamation (!)",
+                'type_interro_name': "Les phrases interrogatives",
+                'type_interro_role': "Demander une information.",
+                'type_interro_punct': "Point d'interrogation (?)",
+                'exemples_title': "💡 Exemples :",
+                'ex_decl': "<strong>Déclaratif :</strong> « J'ai douze ans mercredi prochain. »",
+                'ex_interro': "<strong>Interrogatif :</strong> « Qu'est-ce qui te ferait plaisir ? »",
+                'ex_exclam': "<strong>Exclamatif :</strong> « Quel plaisir de voir l'enfant paraître ! »",
+                'ex_imper': "<strong>Impératif :</strong> « Tiens-toi droit ! » / « Ne mâche pas la bouche ouverte ! »",
+                'rules_forms_heading': "2. Les deux formes de phrases",
+                'rules_forms_intro': "Quand nous parlons ou écrivons, nous <strong>affirmons</strong> ou nous <strong>nions</strong> des faits, des sentiments… Une phrase, quel que soit son type, est soit <strong>affirmative</strong>, soit <strong>négative</strong>.",
+                'forme_affirm_title': "🔹 La forme affirmative",
+                'forme_affirm_text': "La phrase affirme ce qu'elle dit.",
+                'forme_affirm_ex': "« En famille, l'atmosphère est gaie. »",
+                'forme_neg_title': "🔹 La forme négative",
+                'forme_neg_text': "La phrase nie ce qu'elle dit. Elle se construit avec des adverbes de négation (<em>ne… pas, ne… plus, ne… jamais, ne… rien, ne… personne</em>…).",
+                'forme_neg_ex': "« Les grands-parents ne doivent pas se sentir exclus. »",
+                'astuce_forms_title': "💡 Astuce :",
+                'astuce_forms_text': "Une phrase déclarative, interrogative, exclamative ou impérative peut être soit <strong>affirmative</strong>, soit <strong>négative</strong>. Les deux critères (type et forme) sont indépendants.",
+                'exercises_heading': "✍️ Je m'exerce",
+                'table_phrase': "Phrase",
+                'table_type_col': "Type",
+                'table_letter_col': "Type (a–d)",
+                'table_forme_col': "Forme",
+                'table_statement': "Affirmation",
+                'table_vf': "V / F",
+                'exo1_title': "📌 1. Identifie le type de chaque phrase",
+                'exo1_instruction': "Indique le type de chaque phrase : D (déclaratif), I (interrogatif), E (exclamatif) ou Imp (impératif).",
+                'exo2_title': "📌 2. Associe chaque phrase à son type",
+                'exo2_instruction': "Écris la lettre du type qui correspond à chaque phrase.",
+                'exo2_a': "Interrogatif", 'exo2_b': "Exclamatif", 'exo2_c': "Impératif", 'exo2_d': "Déclaratif",
+                'exo3_title': "📌 3. QCM – Choisis la bonne réponse",
+                'exo3_instruction': "Choisis la bonne réponse parmi les propositions.",
+                'exo3_q1': "« Quelle joie de te revoir ! » est une phrase :",
+                'exo3_q1_a': "déclarative", 'exo3_q1_b': "exclamative", 'exo3_q1_c': "interrogative",
+                'exo3_q2': "Une phrase qui donne un ordre est :",
+                'exo3_q2_a': "déclarative", 'exo3_q2_b': "impérative", 'exo3_q2_c': "exclamative",
+                'exo3_q3': "Quelle est la ponctuation d'une phrase interrogative ?",
+                'exo3_q3_a': "un point", 'exo3_q3_b': "un point d'exclamation", 'exo3_q3_c': "un point d'interrogation",
+                'exo4_title': "📌 4. Transforme en phrase interrogative",
+                'exo4_instruction': "Transforme chaque phrase déclarative en phrase interrogative.",
+                'exo4_a': "Tu aimes le chocolat.", 'exo4_b': "Il fait beau aujourd'hui.", 'exo4_c': "Elle viendra demain.",
+                'exo5_title': "📌 5. Transforme en phrase négative",
+                'exo5_instruction': "Transforme chaque phrase affirmative en phrase négative.",
+                'exo5_a': "Je mange des légumes.", 'exo5_b': "Elle a fini ses devoirs.", 'exo5_c': "Il veut toujours partir.", 'exo5_d': "Nous avons vu quelqu'un.",
+                'exo6_title': "📌 6. Type ET forme",
+                'exo6_instruction': "Indique le type (D, I, E, Imp) et la forme (Aff. ou Nég.) de chaque phrase.",
+                'exo7_title': "📌 7. Vrai ou faux ?",
+                'exo7_instruction': "Indique si chaque affirmation est vraie (V) ou fausse (F).",
+                'exo7_q1': "Une phrase déclarative donne une information.",
+                'exo7_q2': "Une phrase exclamative se termine par un point d'interrogation.",
+                'exo7_q3': "Une phrase peut être à la fois déclarative et négative.",
+                'exo7_q4': "Une phrase interrogative peut être négative.",
+                'exo7_q5': "L'impératif sert à donner un ordre, un conseil ou à interdire.",
+                'exo8_title': "📌 8. Ponctuation correcte",
+                'exo8_instruction': "Ajoute la ponctuation qui convient à la fin de chaque phrase (. / ? / !).",
+                'exo8_a': "Le chat dort sur le canapé", 'exo8_b': "Quel est ton plat préféré", 'exo8_c': "Comme ce paysage est magnifique",
+                'exo8_d': "Range tes jouets", 'exo8_e': "Où vas-tu", 'exo8_f': "Ne touche pas à ça",
+                'exo9_title': "📌 9. Chasse aux erreurs",
+                'exo9_instruction': "Chaque phrase contient une erreur de type ou de ponctuation. Corrige-la.",
+                'exo10_title': "📌 10. Complète la bulle de la B.D.",
+                'exo10_instruction': "Observe cette image et imagine ce que dit le personnage de la baby-sitter. Écris une phrase impérative pour donner un conseil ou un ordre.",
+                'exo10_img_alt': "B.D. baby-sitter",
+                'exo10_img_caption': "Le personnage de la baby-sitter s'adresse aux enfants.",
+                'exo11_title': "📌 11. Imagine ce que dit chaque personnage",
+                'exo11_instruction': "Dans chacune des situations suivantes, une personne s'adresse à une autre. Imagine ce qu'elle lui dit, en utilisant le type de phrase indiqué entre parenthèses.",
+                'sit1': "Une maman à son enfant pour l'informer de la visite de sa tante. (Déclaratif)",
+                'sit2': "Ta grande sœur à ton petit frère pour lui donner des conseils le jour de la rentrée des classes. (Impératif)",
+                'sit3': "Un petit-fils à sa grand-mère pour la prier de lui raconter quelques-unes de ses histoires. (Interrogatif)",
+                'sit4': "Ton père à ton frère pour lui ordonner de ranger ses affaires. (Impératif, forme négative)",
+                'sit5': "Une maman à sa petite fille pour lui expliquer les règles d'un nouveau jeu. (Déclaratif)",
+                'sit6': "Une maman au volant de sa voiture à ses enfants pour leur interdire de la déranger. (Impératif, forme négative)",
+                'sit7': "Un oncle à ses neveux pour leur annoncer le programme du week-end. (Déclaratif)",
+                'sit8': "Ta mère à ton petit frère qui rentre tard de l'école. (Interrogatif, forme négative)",
+                'show_example': "💡 Voir un exemple de réponse",
+                'btn_verify': "🔍 Vérifier",
+                'btn_correction': "🔍 Voir la correction",
+                'footer_back': "← Leçon précédente",
+                'footer_next': "Leçon suivante : Le couvert →",
+                'self_assess_question': "Ma réponse est :",
+                'self_correct': "Correcte", 'self_incorrect': "Incorrecte", 'self_partial': "Partiellement correcte",
+                'score_title': "📊 Votre auto‑évaluation",
+                'score_correct': "Correctes :", 'score_incorrect': "Incorrectes :", 'score_partial': "Partielles :", 'score_unanswered': "Sans réponse :",
+                'save_results': "💾 Enregistrer mes résultats", 'save_success': "Résultats sauvegardés ✓", 'save_error': "Erreur lors de la sauvegarde",
+                'print_pdf': "🖨️ Imprimer / PDF", 'print_with_answers': "Corrigé inclus",
+                'print_site_name': "Educational Dashboard – Français",
+                'print_scholar_year': "7ème Année Primaire", 'print_week': "Unité 1", 'print_area': "Syntaxe",
+                'print_footer_dev': "Développé par Mejri Ziad", 'print_footer_date': "Imprimé le",
+                'print_without_answers': "Sans corrigé",
+                'toast_signin_required': "Connectez-vous pour voir les corrections."
+            },
+            en: {
+                'lesson_title': "Lesson 5 – Sentence types and forms | Syntax",
+                'lesson_short_title': "Sentence types and forms",
+                'ach_year_degree7': "7th Grade Primary",
+                'ach_module_unit1': "Unit 1 – French foundations",
+                'back_link': "← Back to home",
+                'back_revision': "Unit 1",
+                'back_current': "Sentence types and forms",
+                'lesson_badge': "📚 Syntax · Lesson 5",
+                'lesson_title': "Sentence types and forms<br>The four types · The two forms",
+                'lesson_duration': "⏱️ 45 minutes",
+                'lesson_meta_audio': "🎧 Listen to the text then do the exercises",
+                'audio_label': "🎧 Listening to the text",
+                'text_heading': "📖 I observe",
+                'text_para1': "I turn twelve next Wednesday. (…) As last year, Dad asked me:",
+                'text_para2': "– What would make you happy for your birthday? Tell me what you want, and I'll give it to you.",
+                'text_para3': "As last year, I answered, without really believing it:",
+                'text_para4': "– A bottle of Superman cologne. (…)",
+                'text_para5': "– Superman! chuckled my father, you're pulling my leg, right? Come on, I know what you want: Scrubble II, the brand-new video game, that's it, isn't it? Don't worry, you'll get it!",
+                'text_para6': "I didn't protest. What's the point? Dad will give me Scrubble II. Because he's dying to have it.",
+                'text_author': "— Bernard FRIOT",
+                'consigne_title': "➤ Instruction:",
+                'consigne_text': "Read the text carefully. Notice the punctuation and the different messages father and son want to convey. Identify the sentences that give information, those that ask a question, those that express emotion, and those that give an order or advice.",
+                'discover_heading': "🔍 I discover",
+                'discover_q1': "What is funny in this excerpt?",
+                'discover_q2': "What in the father's words shows that he is the one choosing the gift?",
+                'discover_q3': "Are the sentences the father says all of the same type? Justify your answer.",
+                'discover_q4': "Find in the text a sentence where the father asks for information, another where he is surprised, and a third where he asks his son to tell him his wish.",
+                'rules_heading': "📖 The rule",
+                'rules_types_heading': "1. The four sentence types",
+                'rules_types_intro': "Depending on the nature of the message to convey, one uses a different <strong>sentence type</strong>. There are four sentence types.",
+                'badge_decl': "Declarative",
+                'badge_interro': "Interrogative",
+                'badge_exclam': "Exclamative",
+                'badge_imper': "Imperative",
+                'table_type': "Sentence type",
+                'table_role': "What is it for?",
+                'table_punct': "Punctuation",
+                'type_decl_name': "Declarative sentences",
+                'type_decl_role': "Give information.",
+                'type_decl_punct': "Period (.)",
+                'type_imper_name': "Imperative sentences",
+                'type_imper_role': "Give an order, advice, forbid.",
+                'type_imper_punct': "Period or exclamation mark (. or !)",
+                'type_exclam_name': "Exclamative sentences",
+                'type_exclam_role': "Express a feeling, an emotion.",
+                'type_exclam_punct': "Exclamation mark (!)",
+                'type_interro_name': "Interrogative sentences",
+                'type_interro_role': "Ask for information.",
+                'type_interro_punct': "Question mark (?)",
+                'exemples_title': "💡 Examples:",
+                'ex_decl': "<strong>Declarative:</strong> \"I turn twelve next Wednesday.\"",
+                'ex_interro': "<strong>Interrogative:</strong> \"What would make you happy?\"",
+                'ex_exclam': "<strong>Exclamative:</strong> \"What a pleasure to see the child appear!\"",
+                'ex_imper': "<strong>Imperative:</strong> \"Stand up straight!\" / \"Don't chew with your mouth open!\"",
+                'rules_forms_heading': "2. The two sentence forms",
+                'rules_forms_intro': "When we speak or write, we <strong>affirm</strong> or <strong>deny</strong> facts, feelings… A sentence, whatever its type, is either <strong>affirmative</strong> or <strong>negative</strong>.",
+                'forme_affirm_title': "🔹 The affirmative form",
+                'forme_affirm_text': "The sentence affirms what it says.",
+                'forme_affirm_ex': "\"In the family, the atmosphere is cheerful.\"",
+                'forme_neg_title': "🔹 The negative form",
+                'forme_neg_text': "The sentence denies what it says. It is built with negation adverbs (<em>ne… pas, ne… plus, ne… jamais, ne… rien, ne… personne</em>…).",
+                'forme_neg_ex': "\"Grandparents must not feel excluded.\"",
+                'astuce_forms_title': "💡 Tip:",
+                'astuce_forms_text': "A declarative, interrogative, exclamative or imperative sentence can be either <strong>affirmative</strong> or <strong>negative</strong>. The two criteria (type and form) are independent.",
+                'exercises_heading': "✍️ I practise",
+                'table_phrase': "Sentence", 'table_type_col': "Type", 'table_letter_col': "Type (a–d)",
+                'table_forme_col': "Form", 'table_statement': "Statement", 'table_vf': "T / F",
+                'exo1_title': "📌 1. Identify the type of each sentence",
+                'exo1_instruction': "Indicate the type of each sentence: D (declarative), I (interrogative), E (exclamative) or Imp (imperative).",
+                'exo2_title': "📌 2. Match each sentence to its type",
+                'exo2_instruction': "Write the letter of the type corresponding to each sentence.",
+                'exo2_a': "Interrogative", 'exo2_b': "Exclamative", 'exo2_c': "Imperative", 'exo2_d': "Declarative",
+                'exo3_title': "📌 3. MCQ – Choose the correct answer",
+                'exo3_instruction': "Choose the correct answer among the options.",
+                'exo3_q1': "\"What a joy to see you again!\" is a sentence:",
+                'exo3_q1_a': "declarative", 'exo3_q1_b': "exclamative", 'exo3_q1_c': "interrogative",
+                'exo3_q2': "A sentence that gives an order is:",
+                'exo3_q2_a': "declarative", 'exo3_q2_b': "imperative", 'exo3_q2_c': "exclamative",
+                'exo3_q3': "What is the punctuation of an interrogative sentence?",
+                'exo3_q3_a': "a period", 'exo3_q3_b': "an exclamation mark", 'exo3_q3_c': "a question mark",
+                'exo4_title': "📌 4. Transform into an interrogative sentence",
+                'exo4_instruction': "Transform each declarative sentence into an interrogative sentence.",
+                'exo4_a': "You like chocolate.", 'exo4_b': "The weather is nice today.", 'exo4_c': "She will come tomorrow.",
+                'exo5_title': "📌 5. Transform into a negative sentence",
+                'exo5_instruction': "Transform each affirmative sentence into a negative sentence.",
+                'exo5_a': "I eat vegetables.", 'exo5_b': "She finished her homework.", 'exo5_c': "He always wants to leave.", 'exo5_d': "We saw someone.",
+                'exo6_title': "📌 6. Type AND form",
+                'exo6_instruction': "Indicate the type (D, I, E, Imp) and the form (Aff. or Neg.) of each sentence.",
+                'exo7_title': "📌 7. True or false?",
+                'exo7_instruction': "Indicate whether each statement is true (T) or false (F).",
+                'exo7_q1': "A declarative sentence gives information.",
+                'exo7_q2': "An exclamative sentence ends with a question mark.",
+                'exo7_q3': "A sentence can be both declarative and negative.",
+                'exo7_q4': "An interrogative sentence can be negative.",
+                'exo7_q5': "The imperative is used to give an order, advice, or to forbid.",
+                'exo8_title': "📌 8. Correct punctuation",
+                'exo8_instruction': "Add the appropriate punctuation at the end of each sentence (. / ? / !).",
+                'exo8_a': "The cat sleeps on the couch", 'exo8_b': "What is your favourite dish", 'exo8_c': "How magnificent this landscape is",
+                'exo8_d': "Tidy your toys", 'exo8_e': "Where are you going", 'exo8_f': "Don't touch that",
+                'exo9_title': "📌 9. Error hunt",
+                'exo9_instruction': "Each sentence contains an error of type or punctuation. Correct it.",
+                'exo10_title': "📌 10. Complete the comic bubble",
+                'exo10_instruction': "Observe this image and imagine what the baby-sitter character says. Write an imperative sentence to give advice or an order.",
+                'exo10_img_alt': "Comic baby-sitter",
+                'exo10_img_caption': "The baby-sitter character speaks to the children.",
+                'exo11_title': "📌 11. Imagine what each character says",
+                'exo11_instruction': "In each of the following situations, one person speaks to another. Imagine what they say, using the sentence type indicated in brackets.",
+                'sit1': "A mother to her child to inform them of their aunt's visit. (Declarative)",
+                'sit2': "Your older sister to your little brother to give him advice on the first day of school. (Imperative)",
+                'sit3': "A grandson to his grandmother asking her to tell him some of her stories. (Interrogative)",
+                'sit4': "Your father to your brother ordering him to tidy his things. (Imperative, negative form)",
+                'sit5': "A mother to her little daughter explaining the rules of a new game. (Declarative)",
+                'sit6': "A mother driving her car to her children forbidding them to disturb her. (Imperative, negative form)",
+                'sit7': "An uncle to his nephews announcing the weekend programme. (Declarative)",
+                'sit8': "Your mother to your little brother coming home late from school. (Interrogative, negative form)",
+                'show_example': "💡 See an example answer",
+                'btn_verify': "🔍 Check",
+                'btn_correction': "🔍 See the correction",
+                'footer_back': "← Previous lesson",
+                'footer_next': "Next lesson: Table setting →",
+                'self_assess_question': "My answer is:",
+                'self_correct': "Correct", 'self_incorrect': "Incorrect", 'self_partial': "Partially correct",
+                'score_title': "📊 Your self‑assessment",
+                'score_correct': "Correct:", 'score_incorrect': "Incorrect:", 'score_partial': "Partial:", 'score_unanswered': "Unanswered:",
+                'save_results': "💾 Save my results", 'save_success': "Results saved ✓", 'save_error': "Save failed",
+                'print_pdf': "🖨️ Print / PDF", 'print_with_answers': "With answers",
+                'print_site_name': "Educational Dashboard – French",
+                'print_scholar_year': "7th Grade Primary", 'print_week': "Unit 1", 'print_area': "Syntax",
+                'print_footer_dev': "Developed by Mejri Ziad", 'print_footer_date': "Printed on",
+                'print_without_answers': "Without answers",
+                'toast_signin_required': "Sign in to see the corrections."
+            },
+            ar: {
+                'lesson_title': "الدرس 5 – أنواع الجمل وأشكالها | النحو",
+                'lesson_short_title': "أنواع الجمل وأشكالها",
+                'ach_year_degree7': "السنة السابعة ابتدائي",
+                'ach_module_unit1': "الوحدة 1 – أساسيات الفرنسية",
+                'back_link': "← العودة إلى الرئيسية",
+                'back_revision': "الوحدة 1",
+                'back_current': "أنواع الجمل وأشكالها",
+                'lesson_badge': "📚 النحو · الدرس 5",
+                'lesson_title': "أنواع الجمل وأشكالها<br>الأنواع الأربعة · الشكلان",
+                'lesson_duration': "⏱️ 45 دقيقة",
+                'lesson_meta_audio': "🎧 استمع إلى النص ثم قم بالتمارين",
+                'audio_label': "🎧 استماع إلى النص",
+                'text_heading': "📖 ألاحظ",
+                'text_para1': "سأبلغ الثانية عشرة الأربعاء القادم. (…) كما في العام الماضي، سألني أبي:",
+                'text_para2': "– ما الذي سيسعدك في عيد ميلادك؟ قل لي ما تريد، وسأهديه لك.",
+                'text_para3': "كما في العام الماضي، أجبت دون أن أصدق كثيراً:",
+                'text_para4': "– قارورة عطر سوبرمان. (…)",
+                'text_para5': "– سوبرمان! ضحك أبي ساخراً، أنت تمزح معي، أليس كذلك؟ هيا، أعرف ما تريد: Scrubble II، لعبة الفيديو الجديدة، هذا صحيح، أليس كذلك؟ لا تقلق، ستحصل عليها!",
+                'text_para6': "لم أحتج. ما الجدوى؟ سيقدم لي أبي Scrubble II. لأنه يموت شوقاً للحصول عليها.",
+                'text_author': "— برنار فريو",
+                'consigne_title': "➤ التعليمة:",
+                'consigne_text': "اقرأ النص بعناية. لاحظ علامات الترقيم والرسائل المختلفة التي يريد الأب والابن إيصالها. حدد الجمل التي تعطي معلومة، وتلك التي تطرح سؤالاً، وتلك التي تعبر عن انفعال، وتلك التي تعطي أمراً أو نصيحة.",
+                'discover_heading': "🔍 أكتشف",
+                'discover_q1': "ما الذي يضحكك في هذا المقطع؟",
+                'discover_q2': "ما الذي يظهر في كلام الأب أنه هو من يختار الهدية؟",
+                'discover_q3': "هل الجمل التي يقولها الأب من النوع نفسه؟ علل جوابك.",
+                'discover_q4': "استخرج من النص جملة يطلب فيها الأب معلومة، وأخرى يندهش فيها، وثالثة يطلب فيها من ابنه أن يعبر عن أمنيته.",
+                'rules_heading': "📖 القاعدة",
+                'rules_types_heading': "1. أنواع الجمل الأربعة",
+                'rules_types_intro': "حسب طبيعة الرسالة التي نريد إيصالها، نستعمل <strong>نوعاً</strong> مختلفاً من الجمل. توجد أربعة أنواع من الجمل.",
+                'badge_decl': "خبرية",
+                'badge_interro': "استفهامية",
+                'badge_exclam': "تعجبية",
+                'badge_imper': "أمرية",
+                'table_type': "نوع الجملة",
+                'table_role': "لماذا تُستعمل؟",
+                'table_punct': "علامة الترقيم",
+                'type_decl_name': "الجمل الخبرية",
+                'type_decl_role': "إعطاء معلومة.",
+                'type_decl_punct': "نقطة (.)",
+                'type_imper_name': "الجمل الأمرية",
+                'type_imper_role': "إعطاء أمر، نصيحة، أو نهي.",
+                'type_imper_punct': "نقطة أو علامة تعجب (. أو !)",
+                'type_exclam_name': "الجمل التعجبية",
+                'type_exclam_role': "التعبير عن شعور أو انفعال.",
+                'type_exclam_punct': "علامة تعجب (!)",
+                'type_interro_name': "الجمل الاستفهامية",
+                'type_interro_role': "طلب معلومة.",
+                'type_interro_punct': "علامة استفهام (?)",
+                'exemples_title': "💡 أمثلة:",
+                'ex_decl': "<strong>خبرية:</strong> « سأبلغ الثانية عشرة الأربعاء القادم. »",
+                'ex_interro': "<strong>استفهامية:</strong> « ما الذي سيسعدك؟ »",
+                'ex_exclam': "<strong>تعجبية:</strong> « يا لها من متعة أن نرى الطفل يظهر! »",
+                'ex_imper': "<strong>أمرية:</strong> « اعتدل في جلستك! » / « لا تمضغ وفمك مفتوح! »",
+                'rules_forms_heading': "2. شكلان للجمل",
+                'rules_forms_intro': "عندما نتكلم أو نكتب، نُثبت أو ننفي وقائع ومشاعر… الجملة، أيّاً كان نوعها، إما <strong>مثبتة</strong> أو <strong>منفية</strong>.",
+                'forme_affirm_title': "🔹 الشكل المثبت",
+                'forme_affirm_text': "الجملة تُثبت ما تقوله.",
+                'forme_affirm_ex': "« في العائلة، الجو مرِح. »",
+                'forme_neg_title': "🔹 الشكل المنفي",
+                'forme_neg_text': "الجملة تنفي ما تقوله. تُبنى بأدوات النفي (<em>ne… pas, ne… plus, ne… jamais, ne… rien, ne… personne</em>…).",
+                'forme_neg_ex': "« لا يجب أن يشعر الأجداد بالإقصاء. »",
+                'astuce_forms_title': "💡 حيلة:",
+                'astuce_forms_text': "الجملة الخبرية أو الاستفهامية أو التعجبية أو الأمرية يمكن أن تكون <strong>مثبتة</strong> أو <strong>منفية</strong>. المعياران (النوع والشكل) مستقلان.",
+                'exercises_heading': "✍️ أتمرن",
+                'table_phrase': "الجملة", 'table_type_col': "النوع", 'table_letter_col': "النوع (أ–د)",
+                'table_forme_col': "الشكل", 'table_statement': "العبارة", 'table_vf': "ص / خ",
+                'exo1_title': "📌 1. حدد نوع كل جملة",
+                'exo1_instruction': "حدد نوع كل جملة: خ (خبرية)، س (استفهامية)، ت (تعجبية) أو أ (أمرية).",
+                'exo2_title': "📌 2. اربط كل جملة بنوعها",
+                'exo2_instruction': "اكتب حرف النوع المقابل لكل جملة.",
+                'exo2_a': "استفهامية", 'exo2_b': "تعجبية", 'exo2_c': "أمرية", 'exo2_d': "خبرية",
+                'exo3_title': "📌 3. اختيار من متعدد – اختر الجواب الصحيح",
+                'exo3_instruction': "اختر الجواب الصحيح من بين الخيارات.",
+                'exo3_q1': "« يا لها من متعة أن أراك مجدداً! » جملة:",
+                'exo3_q1_a': "خبرية", 'exo3_q1_b': "تعجبية", 'exo3_q1_c': "استفهامية",
+                'exo3_q2': "الجملة التي تعطي أمراً هي:",
+                'exo3_q2_a': "خبرية", 'exo3_q2_b': "أمرية", 'exo3_q2_c': "تعجبية",
+                'exo3_q3': "ما علامة الترقيم في نهاية الجملة الاستفهامية؟",
+                'exo3_q3_a': "نقطة", 'exo3_q3_b': "علامة تعجب", 'exo3_q3_c': "علامة استفهام",
+                'exo4_title': "📌 4. حوّل إلى جملة استفهامية",
+                'exo4_instruction': "حوّل كل جملة خبرية إلى جملة استفهامية.",
+                'exo4_a': "أنت تحب الشوكولاتة.", 'exo4_b': "الجو جميل اليوم.", 'exo4_c': "ستأتي غداً.",
+                'exo5_title': "📌 5. حوّل إلى جملة منفية",
+                'exo5_instruction': "حوّل كل جملة مثبتة إلى جملة منفية.",
+                'exo5_a': "آكل الخضروات.", 'exo5_b': "أنهت واجباتها.", 'exo5_c': "يريد دائماً أن يرحل.", 'exo5_d': "رأينا شخصاً ما.",
+                'exo6_title': "📌 6. النوع والشكل",
+                'exo6_instruction': "حدد النوع (خ، س، ت، أ) والشكل (مثبتة أو منفية) لكل جملة.",
+                'exo7_title': "📌 7. صواب أم خطأ؟",
+                'exo7_instruction': "حدد إن كانت كل عبارة صحيحة (ص) أم خاطئة (خ).",
+                'exo7_q1': "الجملة الخبرية تعطي معلومة.",
+                'exo7_q2': "الجملة التعجبية تنتهي بعلامة استفهام.",
+                'exo7_q3': "يمكن أن تكون الجملة خبرية ومنفية في الوقت نفسه.",
+                'exo7_q4': "يمكن أن تكون الجملة الاستفهامية منفية.",
+                'exo7_q5': "صيغة الأمر تُستعمل لإعطاء أمر أو نصيحة أو للنهي.",
+                'exo8_title': "📌 8. علامة الترقيم الصحيحة",
+                'exo8_instruction': "أضف علامة الترقيم المناسبة في نهاية كل جملة (. / ? / !).",
+                'exo8_a': "القط ينام على الأريكة", 'exo8_b': "ما هو طبقك المفضل", 'exo8_c': "كم هذا المنظر رائع",
+                'exo8_d': "رتب ألعابك", 'exo8_e': "إلى أين تذهب", 'exo8_f': "لا تلمس هذا",
+                'exo9_title': "📌 9. صيد الأخطاء",
+                'exo9_instruction': "كل جملة تحتوي على خطأ في النوع أو الترقيم. صححه.",
+                'exo10_title': "📌 10. أكمل فقاعة القصة المصورة",
+                'exo10_instruction': "لاحظ هذه الصورة وتخيل ما تقوله شخصية الجليسة. اكتب جملة أمرية لإعطاء نصيحة أو أمر.",
+                'exo10_img_alt': "قصة مصورة – الجليسة",
+                'exo10_img_caption': "شخصية الجليسة تخاطب الأطفال.",
+                'exo11_title': "📌 11. تخيّل ما تقوله كل شخصية",
+                'exo11_instruction': "في كل من الحالات التالية، يخاطب شخص شخصاً آخر. تخيل ما يقوله له، باستعمال نوع الجملة المبين بين قوسين.",
+                'sit1': "أم لطفلها لإخباره بزيارة عمته. (خبرية)",
+                'sit2': "أختك الكبرى لأخيك الصغير لتقديم نصائح له في يوم العودة إلى المدرسة. (أمرية)",
+                'sit3': "حفيد لجدته ليطلب منها أن تحكي له بعض قصصها. (استفهامية)",
+                'sit4': "والدك لأخيك ليأمره بترتيب أغراضه. (أمرية، الشكل المنفي)",
+                'sit5': "أم لابنتها الصغيرة لتشرح لها قواعد لعبة جديدة. (خبرية)",
+                'sit6': "أم خلف مقود سيارتها لأطفالها لتنهاهم عن إزعاجها. (أمرية، الشكل المنفي)",
+                'sit7': "عم لأبناء أخيه ليعلن لهم برنامج نهاية الأسبوع. (خبرية)",
+                'sit8': "أمك لأخيك الصغير الذي يعود متأخراً من المدرسة. (استفهامية، الشكل المنفي)",
+                'show_example': "💡 عرض مثال للإجابة",
+                'btn_verify': "🔍 تحقق",
+                'btn_correction': "🔍 الاطلاع على التصحيح",
+                'footer_back': "← الدرس السابق",
+                'footer_next': "الدرس الموالي: أدوات المائدة ←",
+                'self_assess_question': "جوابي هو:",
+                'self_correct': "صحيح", 'self_incorrect': "خاطئ", 'self_partial': "صحيح جزئيًا",
+                'score_title': "📊 تقييمك الذاتي",
+                'score_correct': "صحيح:", 'score_incorrect': "خاطئ:", 'score_partial': "جزئي:", 'score_unanswered': "بدون إجابة:",
+                'save_results': "💾 حفظ نتائجي", 'save_success': "تم حفظ النتائج ✓", 'save_error': "خطأ في الحفظ",
+                'print_pdf': "🖨️ طباعة / PDF", 'print_with_answers': "مع التصحيح",
+                'print_site_name': "لوحة التحكم التعليمية – الفرنسية",
+                'print_scholar_year': "السنة السابعة ابتدائي", 'print_week': "الوحدة 1", 'print_area': "النحو",
+                'print_footer_dev': "طوّر بواسطة ماجري زياد", 'print_footer_date': "طُبع في",
+                'print_without_answers': "بدون تصحيح",
+                'toast_signin_required': "سجّل الدخول لرؤية التصحيحات."
+            }
+        });
+
+        (function() {
+            var container = document.querySelector('.degree7-unit1-lesson5-syntaxe-container');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+        })();
+    </script>
+    <script src="ed-french-ini.js"></script>
+    <script>
+        (function() {
+            const audio = new Audio('assets7/sounds/degree7/unit1/lesson5/types_phrases.mp3');
+            const playBtn = document.getElementById('playBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const speedBtns = document.querySelectorAll('.degree7-unit1-lesson5-syntaxe-speed-btn');
+
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+
+            audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
+            audio.addEventListener('timeupdate', () => {
+                const percent = (audio.currentTime / audio.duration) * 100 || 0;
+                progressFill.style.width = percent + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            });
+            audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) { audio.play().catch(()=>{}); playBtn.textContent = '⏸'; }
+                else { audio.pause(); playBtn.textContent = '▶'; }
+            });
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const seekTime = (clickX / width) * audio.duration;
+                audio.currentTime = seekTime;
+            });
+            speedBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    speedBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    audio.playbackRate = parseFloat(btn.dataset.speed);
+                });
+            });
+
+            // Auth-gated correction
+            window.toggleCorrection = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('visible');
+            };
+
+            // Show example for exo 10 (BD bubble)
+            window.showExo10Example = async function() {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const el = document.getElementById('exo10Key');
+                if (el) {
+                    el.innerHTML = '<strong>Exemple de réponse :</strong><br>« Asseyez-vous calmement et rangez vos jouets, s\'il vous plaît ! »<br><em>(phrase impérative affirmative)</em><br>ou<br>« Ne faites pas de bruit pendant que je prépare le dîner ! »<br><em>(phrase impérative négative)</em>';
+                    el.classList.add('visible');
+                }
+            };
+
+            // Show example for exo 11 (situations)
+            window.showExo11Example = async function() {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const el = document.getElementById('exo11Key');
+                if (el) {
+                    el.innerHTML = '<strong>Exemples de réponses :</strong><br>' +
+                        '1. « Ta tante vient nous voir cet après-midi. » (Déclaratif)<br>' +
+                        '2. « Sois attentif en classe et écoute bien la maîtresse ! » (Impératif)<br>' +
+                        '3. « Mamie, peux-tu me raconter une de tes histoires ? » (Interrogatif)<br>' +
+                        '4. « Ne laisse pas tes affaires traîner ! » (Impératif négatif)<br>' +
+                        '5. « Pour jouer, il faut lancer le dé et avancer son pion. » (Déclaratif)<br>' +
+                        '6. « Ne me dérangez pas pendant que je conduis ! » (Impératif négatif)<br>' +
+                        '7. « Samedi, nous irons au parc et dimanche, nous visiterons le musée. » (Déclaratif)<br>' +
+                        '8. « N\'es-tu pas rentré bien tard aujourd\'hui ? » (Interrogatif négatif)';
+                    el.classList.add('visible');
+                }
+            };
+
+            // Static answer keys
+            document.getElementById('exo1Key').innerHTML = '<strong>Correction :</strong><br>1. Déclaratif<br>2. Interrogatif<br>3. Exclamatif<br>4. Impératif<br>5. Interrogatif';
+            document.getElementById('exo2Key').innerHTML = '<strong>Correction :</strong><br>1. d (Déclaratif)<br>2. c (Impératif)<br>3. b (Exclamatif)<br>4. a (Interrogatif)';
+            document.getElementById('exo3Key').innerHTML = '<strong>Correction :</strong><br>1. b (exclamative)<br>2. b (impérative)<br>3. c (un point d\'interrogation)';
+            document.getElementById('exo4Key').innerHTML = '<strong>Correction :</strong><br>a) Aimes-tu le chocolat ?<br>b) Fait-il beau aujourd\'hui ?<br>c) Viendra-t-elle demain ?';
+            document.getElementById('exo5Key').innerHTML = '<strong>Correction :</strong><br>a) Je ne mange pas de légumes.<br>b) Elle n\'a pas fini ses devoirs.<br>c) Il ne veut jamais partir.<br>d) Nous n\'avons vu personne.';
+            document.getElementById('exo6Key').innerHTML = '<strong>Correction :</strong><br>1. Déclaratif / Négative<br>2. Impératif / Affirmative<br>3. Interrogatif / Négative<br>4. Exclamatif / Affirmative<br>5. Déclaratif / Négative';
+            document.getElementById('exo7Key').innerHTML = '<strong>Correction :</strong><br>1. Vrai<br>2. Faux (point d\'exclamation)<br>3. Vrai<br>4. Vrai<br>5. Vrai';
+            document.getElementById('exo8Key').innerHTML = '<strong>Correction :</strong><br>a) Le chat dort sur le canapé. (.)<br>b) Quel est ton plat préféré ? (?)<br>c) Comme ce paysage est magnifique ! (!)<br>d) Range tes jouets. (.) ou (!)<br>e) Où vas-tu ? (?)<br>f) Ne touche pas à ça ! (!)';
+            document.getElementById('exo9Key').innerHTML = '<strong>Correction :</strong><br>a) Peux-tu fermer la fenêtre ? (interrogatif → point d\'interrogation)<br>b) Comme il fait beau aujourd\'hui ! (exclamatif → point d\'exclamation)<br>c) Ferme la porte ! (impératif → point d\'exclamation ou point)<br>d) Tu veux venir ? (phrase affirmative, pas de négation)';
+
+            // Self-assessment scoring
+            const SELF_GROUPS = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5',
+                                 'self_ex6', 'self_ex7', 'self_ex8', 'self_ex9', 'self_ex10', 'self_ex11'];
+
+            function computeScore() {
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                SELF_GROUPS.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                return { correct, incorrect, partial, unanswered };
+            }
+
+            function updateScore() {
+                const s = computeScore();
+                document.getElementById('scoreCorrect').textContent = s.correct;
+                document.getElementById('scoreIncorrect').textContent = s.incorrect;
+                document.getElementById('scorePartial').textContent = s.partial;
+                document.getElementById('scoreUnanswered').textContent = s.unanswered;
+            }
+
+            document.querySelectorAll('input[type="radio"][name^="self_ex"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+
+            // Save results
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const s = computeScore();
+                const lessonId = 'degree7unit1lesson5';
+                const entry = {
+                    lesson_id: lessonId,
+                    lesson_title: {
+                        fr: App.getTranslation('lesson_short_title', 'fr'),
+                        en: App.getTranslation('lesson_short_title', 'en'),
+                        ar: App.getTranslation('lesson_short_title', 'ar')
+                    },
+                    year: {
+                        fr: App.getTranslation('ach_year_degree7', 'fr'),
+                        en: App.getTranslation('ach_year_degree7', 'en'),
+                        ar: App.getTranslation('ach_year_degree7', 'ar')
+                    },
+                    module: {
+                        fr: App.getTranslation('ach_module_unit1', 'fr'),
+                        en: App.getTranslation('ach_module_unit1', 'en'),
+                        ar: App.getTranslation('ach_module_unit1', 'ar')
+                    },
+                    correct: s.correct,
+                    incorrect: s.incorrect,
+                    partial: s.partial,
+                    unanswered: s.unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles').select('achivement').eq('id', user.id).single();
+                if (fetchError) return;
+                let achivement = profileData?.achivement || {};
+                if (!achivement['ED-French']) achivement['ED-French'] = [];
+                const arr = achivement['ED-French'];
+                const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+                if (existingIdx >= 0) arr[existingIdx] = entry;
+                else arr.push(entry);
+                const { error: updateError } = await App.supabase
+                    .from('profiles').update({ achivement }).eq('id', user.id);
+                if (updateError) App.showToast('save_error', 'error');
+                else {
+                    App.showToast('save_success', 'success');
+                    App.logUserAction('lesson_saved', { lesson: lessonId, correct: s.correct, incorrect: s.incorrect, partial: s.partial });
+                }
+            });
+
+            // Print / PDF
+            document.getElementById('printPdfBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles').select('registration_state').eq('id', user.id).single();
+                    if (!error && profile?.registration_state?.active === true) isRegistered = true;
+                } catch (e) {}
+                const lang = localStorage.getItem('lang') || 'fr';
+                const headerHTML = document.querySelector('.degree7-unit1-lesson5-syntaxe-lesson-header').cloneNode(true);
+                const textCard = document.querySelector('.degree7-unit1-lesson5-syntaxe-text-card').cloneNode(true);
+                const rulesSections = document.querySelectorAll('.degree7-unit1-lesson5-syntaxe-valeurs-section');
+                let rulesHTML = '';
+                rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
+                const exercisesSection = document.querySelector('.degree7-unit1-lesson5-syntaxe-exercises-section').cloneNode(true);
+                exercisesSection.querySelectorAll('input, textarea, .degree7-unit1-lesson5-syntaxe-btn-verify, .degree7-unit1-lesson5-syntaxe-self-assessment').forEach(el => el.remove());
+                if (isRegistered) {
+                    exercisesSection.querySelectorAll('.degree7-unit1-lesson5-syntaxe-answer-key').forEach(key => {
+                        key.style.display = 'block'; key.style.border = 'none';
+                        key.style.padding = '0.5rem 0'; key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    exercisesSection.querySelectorAll('.degree7-unit1-lesson5-syntaxe-answer-key').forEach(el => el.remove());
+                }
+                const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                printWindow.document.write(`<!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8"><title>${App.getTranslation('lesson_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title><style>
+                    body { font-family: 'Georgia', serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; color:#000; }
+                    .print-header { text-align:center; border-bottom:2px solid #4169e1; padding-bottom:1rem; margin-bottom:2rem; }
+                    .print-header .site-name { font-size:1.4rem; font-weight:bold; color:#4169e1; margin:0 0 0.3rem; }
+                    .print-header .meta-line { font-size:0.95rem; color:#444; margin:0.2rem 0; }
+                    .print-header .lesson-name { font-size:1.1rem; font-weight:bold; color:#000; margin-top:0.5rem; }
+                    .print-footer { text-align:center; border-top:1px solid #ccc; padding-top:1rem; margin-top:2rem; font-size:0.85rem; color:#666; }
+                    .degree7-unit1-lesson5-syntaxe-lesson-header { text-align:center; margin-bottom:2rem; }
+                    .degree7-unit1-lesson5-syntaxe-badge { display:inline-block; background:#4169e1; color:#fff; padding:0.3rem 1rem; border-radius:20px; font-size:0.8rem; text-transform:uppercase; }
+                    .degree7-unit1-lesson5-syntaxe-text-card { border-left:4px solid #4169e1; padding:1rem 1.5rem; margin:1.5rem 0; font-style:italic; }
+                    .degree7-unit1-lesson5-syntaxe-valeurs-section { margin:1.5rem 0; }
+                    .degree7-unit1-lesson5-syntaxe-valeur-card { background:#e2e9f7; padding:1rem; margin-bottom:1rem; border-radius:8px; }
+                    .degree7-unit1-lesson5-syntaxe-valeur-card h3 { color:#4169e1; }
+                    .degree7-unit1-lesson5-syntaxe-exercise-card { margin:1.2rem 0; }
+                    table { width:100%; border-collapse:collapse; margin:0.8rem 0; }
+                    th, td { border:1px solid #ccc; padding:0.5rem; text-align:left; }
+                    th { background:#e2e9f7; }
+                    .degree7-unit1-lesson5-syntaxe-answer-key { display:block; margin-top:0.5rem; font-size:0.9rem; color:#444; }
+                    .degree7-unit1-lesson5-syntaxe-types-table th { background:#4169e1; color:#fff; }
+                    @media print { @page { margin:2cm; } }
+                </style></head><body>
+                    <div class="print-header"><div class="site-name">${App.getTranslation('print_site_name', lang)}</div><div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div><div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div></div>
+                    ${breadcrumb.outerHTML}${headerHTML.outerHTML}${textCard.outerHTML}${rulesHTML}${exercisesSection.outerHTML}
+                    <div class="print-footer">${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}</div>
+                </body></html>`);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+        })();
+    </script>
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+</body>
+</html>

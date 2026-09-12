@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_title">Leçon 3 – Conjugaison des verbes irréguliers | Conjugaison</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ===== Degree7 Unit1 Lesson3 – Conjugaison (prefix: degree7-unit1-lesson3-conjugaison-) ===== */
+        /* Palette: Violet / Purple – shades of purple (matching cat-conjugation #8a2be2) */
+        :root {
+            --degree7-unit1-lesson3-conjugaison-bg: #f6f2fb;
+            --degree7-unit1-lesson3-conjugaison-card: #fdfbff;
+            --degree7-unit1-lesson3-conjugaison-text: #221631;
+            --degree7-unit1-lesson3-conjugaison-text-light: #5c4a75;
+            --degree7-unit1-lesson3-conjugaison-heading: #4b1585;
+            --degree7-unit1-lesson3-conjugaison-accent: #7a2bd9;
+            --degree7-unit1-lesson3-conjugaison-accent-hover: #5e1fb0;
+            --degree7-unit1-lesson3-conjugaison-soft: #a97de6;
+            --degree7-unit1-lesson3-conjugaison-light: #ece0f8;
+            --degree7-unit1-lesson3-conjugaison-border: #d8c5f0;
+            --degree7-unit1-lesson3-conjugaison-shadow: 0 1px 3px rgba(122,43,217,0.06), 0 6px 18px rgba(122,43,217,0.05);
+            --degree7-unit1-lesson3-conjugaison-radius: 14px;
+            --degree7-unit1-lesson3-conjugaison-radius-sm: 8px;
+            --degree7-unit1-lesson3-conjugaison-transition: 0.25s ease;
+            --degree7-unit1-lesson3-conjugaison-font: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
+            --degree7-unit1-lesson3-conjugaison-audio-bg: #ede0f8;
+            --degree7-unit1-lesson3-conjugaison-audio-progress: #c9aee6;
+            --degree7-unit1-lesson3-conjugaison-button-bg: #e2d1f3;
+            --degree7-unit1-lesson3-conjugaison-button-hover: #cdb1ec;
+            --degree7-unit1-lesson3-conjugaison-input-bg: #fbf7ff;
+        }
+        body.dark {
+            --degree7-unit1-lesson3-conjugaison-bg: #191224;
+            --degree7-unit1-lesson3-conjugaison-card: #241a34;
+            --degree7-unit1-lesson3-conjugaison-text: #e8ddf7;
+            --degree7-unit1-lesson3-conjugaison-text-light: #b6a1d4;
+            --degree7-unit1-lesson3-conjugaison-heading: #d9baf7;
+            --degree7-unit1-lesson3-conjugaison-accent: #b98cf1;
+            --degree7-unit1-lesson3-conjugaison-accent-hover: #cca8f5;
+            --degree7-unit1-lesson3-conjugaison-soft: #8d63c9;
+            --degree7-unit1-lesson3-conjugaison-light: #2e2145;
+            --degree7-unit1-lesson3-conjugaison-border: #3a2a55;
+            --degree7-unit1-lesson3-conjugaison-shadow: 0 1px 4px rgba(0,0,0,0.4);
+            --degree7-unit1-lesson3-conjugaison-audio-bg: #2c2140;
+            --degree7-unit1-lesson3-conjugaison-audio-progress: #4d3a6d;
+            --degree7-unit1-lesson3-conjugaison-button-bg: #352850;
+            --degree7-unit1-lesson3-conjugaison-button-hover: #453663;
+            --degree7-unit1-lesson3-conjugaison-input-bg: #2c2140;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            font-family: var(--degree7-unit1-lesson3-conjugaison-font);
+            background: var(--degree7-unit1-lesson3-conjugaison-bg);
+            background-image:
+                radial-gradient(circle at 15% 15%, rgba(122,43,217,0.04) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(122,43,217,0.03) 0%, transparent 40%);
+            color: var(--degree7-unit1-lesson3-conjugaison-text);
+            line-height: 1.8;
+            transition: background var(--degree7-unit1-lesson3-conjugaison-transition), color var(--degree7-unit1-lesson3-conjugaison-transition);
+        }
+
+        .back-nav {
+            background: var(--degree7-unit1-lesson3-conjugaison-card);
+            border-bottom: 1px solid var(--degree7-unit1-lesson3-conjugaison-border);
+            padding: 0.5rem 1.5rem;
+        }
+        .back-nav a {
+            font-weight: 600;
+            color: var(--degree7-unit1-lesson3-conjugaison-accent);
+            text-decoration: none;
+        }
+        .back-nav a:hover { text-decoration: underline; }
+
+        .degree7-unit1-lesson3-conjugaison-container { max-width:1060px; margin:0 auto; padding:1.8rem 1.4rem 3rem; }
+
+        .degree7-unit1-lesson3-conjugaison-lesson-header { text-align: center; margin-bottom: 2rem; }
+        .degree7-unit1-lesson3-conjugaison-badge {
+            display:inline-block;
+            background: var(--degree7-unit1-lesson3-conjugaison-accent);
+            color: #fff;
+            padding: 0.3rem 1.1rem;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        .degree7-unit1-lesson3-conjugaison-lesson-header h1 {
+            font-size: 2.1rem;
+            color: var(--degree7-unit1-lesson3-conjugaison-heading);
+            margin: 0.7rem 0 0.4rem;
+            line-height: 1.25;
+            font-weight: 700;
+        }
+        .degree7-unit1-lesson3-conjugaison-lesson-header .degree7-unit1-lesson3-conjugaison-meta {
+            font-size: 0.9rem;
+            color: var(--degree7-unit1-lesson3-conjugaison-text-light);
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .degree7-unit1-lesson3-conjugaison-audio-player {
+            background: var(--degree7-unit1-lesson3-conjugaison-card);
+            border: 1px solid var(--degree7-unit1-lesson3-conjugaison-border);
+            border-radius: var(--degree7-unit1-lesson3-conjugaison-radius);
+            padding: 1rem 1.4rem;
+            margin: 1.5rem 0 2rem;
+            box-shadow: var(--degree7-unit1-lesson3-conjugaison-shadow);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .degree7-unit1-lesson3-conjugaison-play-btn {
+            width: 46px; height: 46px; border-radius: 50%;
+            background: var(--degree7-unit1-lesson3-conjugaison-accent);
+            color: #fff; border: none; font-size: 1.2rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background var(--degree7-unit1-lesson3-conjugaison-transition);
+            flex-shrink: 0;
+        }
+        .degree7-unit1-lesson3-conjugaison-play-btn:hover { background: var(--degree7-unit1-lesson3-conjugaison-accent-hover); }
+        .degree7-unit1-lesson3-conjugaison-progress-area { flex:1; min-width:120px; display:flex; flex-direction:column; gap:0.3rem; }
+        .degree7-unit1-lesson3-conjugaison-progress-bar {
+            width:100%; height:6px; background: var(--degree7-unit1-lesson3-conjugaison-audio-progress);
+            border-radius: 3px; cursor:pointer; position:relative; overflow:hidden;
+        }
+        .degree7-unit1-lesson3-conjugaison-progress-fill {
+            height:100%; background: var(--degree7-unit1-lesson3-conjugaison-accent);
+            border-radius: 3px; width: 0%; transition: width 0.1s linear;
+        }
+        .degree7-unit1-lesson3-conjugaison-time-info {
+            display:flex; justify-content:space-between; font-size:0.75rem;
+            color: var(--degree7-unit1-lesson3-conjugaison-text-light);
+        }
+        .degree7-unit1-lesson3-conjugaison-speed-selector { display:flex; gap:0.3rem; flex-wrap:wrap; }
+        .degree7-unit1-lesson3-conjugaison-speed-btn {
+            border:1px solid var(--degree7-unit1-lesson3-conjugaison-border);
+            background: var(--degree7-unit1-lesson3-conjugaison-button-bg);
+            color: var(--degree7-unit1-lesson3-conjugaison-text);
+            padding:0.3rem 0.6rem; border-radius: 4px;
+            font-size:0.75rem; font-weight:600; cursor:pointer;
+            transition: all var(--degree7-unit1-lesson3-conjugaison-transition);
+        }
+        .degree7-unit1-lesson3-conjugaison-speed-btn.active {
+            background: var(--degree7-unit1-lesson3-conjugaison-accent);
+            color: #fff; border-color: var(--degree7-unit1-lesson3-conjugaison-accent);
+        }
+        .degree7-unit1-lesson3-conjugaison-audio-label {
+            font-weight:700; font-size:0.9rem;
+            color: var(--degree7-unit1-lesson3-conjugaison-heading);
+            white-space:nowrap;
+        }
+        @media (max-width:600px) {
+            .degree7-unit1-lesson3-conjugaison-audio-player { flex-direction: column; align-items: stretch; }
+            .degree7-unit1-lesson3-conjugaison-audio-label { text-align: center; }
+        }
+
+        .degree7-unit1-lesson3-conjugaison-text-card {
+            background: var(--degree7-unit1-lesson3-conjugaison-card);
+            border: 1px solid var(--degree7-unit1-lesson3-conjugaison-border);
+            border-left: 5px solid var(--degree7-unit1-lesson3-conjugaison-accent);
+            border-radius: 0 var(--degree7-unit1-lesson3-conjugaison-radius) var(--degree7-unit1-lesson3-conjugaison-radius) 0;
+            padding: 1.5rem 1.8rem;
+            margin: 1.8rem 0;
+            font-size: 1.05rem;
+            line-height: 1.9;
+            box-shadow: var(--degree7-unit1-lesson3-conjugaison-shadow);
+            position: relative;
+        }
+        .degree7-unit1-lesson3-conjugaison-text-card .degree7-unit1-lesson3-conjugaison-quote-mark {
+            position: absolute; top:-15px; left:14px; font-size:3.5rem;
+            color: var(--degree7-unit1-lesson3-conjugaison-accent); opacity:0.3; line-height:1;
+            font-family: 'Georgia', serif;
+        }
+        .degree7-unit1-lesson3-conjugaison-text-card p { margin-bottom: 0.8rem; }
+        .degree7-unit1-lesson3-conjugaison-text-author {
+            text-align: right;
+            font-style: italic;
+            font-size: 0.9rem;
+            color: var(--degree7-unit1-lesson3-conjugaison-text-light);
+            margin-top: 0.8rem;
+        }
+
+        .degree7-unit1-lesson3-conjugaison-section h2 {
+            font-size: 1.5rem;
+            color: var(--degree7-unit1-lesson3-conjugaison-heading);
+            margin: 2.4rem 0 1rem;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+            position: relative;
+        }
+        .degree7-unit1-lesson3-conjugaison-section h2::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 40%; bottom: 0; height: 3px;
+            background: var(--degree7-unit1-lesson3-conjugaison-accent);
+            border-radius: 2px;
+        }
+
+        .degree7-unit1-lesson3-conjugaison-valeurs-section {
+            background: var(--degree7-unit1-lesson3-conjugaison-card);
+            border: 1px solid var(--degree7-unit1-lesson3-conjugaison-border);
+            border-radius: var(--degree7-unit1-lesson3-conjugaison-radius);
+            padding: 1.6rem 1.8rem;
+            margin: 2rem 0;
+            box-shadow: var(--degree7-unit1-lesson3-conjugaison-shadow);
+        }
+        .degree7-unit1-lesson3-conjugaison-valeurs-section h2 {
+            font-size: 1.5rem;
+            color: var(--degree7-unit1-lesson3-conjugaison-heading);
+            margin-bottom: 1rem;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+            border-bottom: 3px solid var(--degree7-unit1-lesson3-conjugaison-accent);
+        }
+        .degree7-unit1-lesson3-conjugaison-valeur-card {
+            background: var(--degree7-unit1-lesson3-conjugaison-light);
+            border-radius: var(--degree7-unit1-lesson3-conjugaison-radius-sm);
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .degree7-unit1-lesson3-conjugaison-valeur-card h3 {
+            color: var(--degree7-unit1-lesson3-conjugaison-accent);
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+        .degree7-unit1-lesson3-conjugaison-valeur-card p { margin: 0.4rem 0; color: var(--degree7-unit1-lesson3-conjugaison-text); }
+        .degree7-unit1-lesson3-conjugaison-valeur-card ul { list-style: none; padding: 0; }
+        .degree7-unit1-lesson3-conjugaison-valeur-card li {
+            padding: 0.3rem 0 0.3rem 1.4rem;
+            position: relative;
+            color: var(--degree7-unit1-lesson3-conjugaison-text);
+        }
+        .degree7-unit1-lesson3-conjugaison-valeur-card li::before {
+            content: '◆';
+            position: absolute; left: 0;
+            color: var(--degree7-unit1-lesson3-conjugaison-accent);
+            font-size: 0.55rem; top: 0.6rem;
+        }
+
+        /* Verb grid */
+        .degree7-unit1-lesson3-conjugaison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        @media (max-width:700px) {
+            .degree7-unit1-lesson3-conjugaison-grid { grid-template-columns: 1fr; }
+        }
+        .degree7-unit1-lesson3-conjugaison-verb-card {
+            background: var(--degree7-unit1-lesson3-conjugaison-light);
+            border-radius: var(--degree7-unit1-lesson3-conjugaison-radius-sm);
+            padding: 0.9rem 1.1rem;
+        }
+        .degree7-unit1-lesson3-conjugaison-verb-card h4 {
+            color: var(--degree7-unit1-lesson3-conjugaison-accent);
+            font-size: 1.05rem;
+            margin-bottom: 0.4rem;
+        }
+        .degree7-unit1-lesson3-conjugaison-verb-card p {
+            font-size: 0.9rem;
+            color: var(--degree7-unit1-lesson3-conjugaison-text);
+            margin: 0.15rem 0;
+            line-height: 1.6;
+        }
+        .degree7-unit1-lesson3-conjugaison-verb-card .highlight {
+            color: var(--degree7-unit1-lesson3-conjugaison-heading);
+            font-weight: 600;
+        }
+
+        .degree7-unit1-lesson3-conjugaison-note {
+            background: linear-gradient(135deg, rgba(122,43,217,0.06), rgba(122,43,217,0.02));
+            border: 1px dashed var(--degree7-unit1-lesson3-conjugaison-accent);
+            border-radius: var(--degree7-unit1-lesson3-conjugaison-radius-sm);
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+            color: var(--degree7-unit1-lesson3-conjugaison-text);
+        }
+        .degree7-unit1-lesson3-conjugaison-note strong { color: var(--degree7-unit1-lesson3-conjugaison-accent); }
+
+        .degree7-unit1-lesson3-conjugaison-exercises-section {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start;
+        }
+        .degree7-unit1-lesson3-conjugaison-exercises-section h2 {
+            grid-column: 1 / -1;
+            font-size: 1.5rem;
+            color: var(--degree7-unit1-lesson3-conjugaison-heading);
+            margin: 2rem 0 1rem;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+            border-bottom: 3px solid var(--degree7-unit1-lesson3-conjugaison-accent);
+        }
+        .degree7-unit1-lesson3-conjugaison-exercise-card {
+            background: var(--degree7-unit1-lesson3-conjugaison-card);
+            border: 1px solid var(--degree7-unit1-lesson3-conjugaison-border);
+            border-radius: var(--degree7-unit1-lesson3-conjugaison-radius-sm);
+            padding: 1.2rem 1.4rem;
+            margin-bottom: 0;
+            box-shadow: var(--degree7-unit1-lesson3-conjugaison-shadow);
+        }
+        .degree7-unit1-lesson3-conjugaison-exercise-col-left { grid-column: 1 / 2; }
+        .degree7-unit1-lesson3-conjugaison-exercise-col-right { grid-column: 2 / 3; }
+        .degree7-unit1-lesson3-conjugaison-exercise-card h3 {
+            font-size: 1.05rem;
+            color: var(--degree7-unit1-lesson3-conjugaison-accent);
+            margin-bottom: 0.8rem;
+            display: flex; align-items: center; gap: 0.4rem;
+        }
+        .degree7-unit1-lesson3-conjugaison-exercise-card table {
+            width: 100%; border-collapse: collapse; margin: 0.8rem 0;
+        }
+        .degree7-unit1-lesson3-conjugaison-exercise-card th,
+        .degree7-unit1-lesson3-conjugaison-exercise-card td {
+            padding: 0.55rem 0.7rem;
+            border: 1px solid var(--degree7-unit1-lesson3-conjugaison-border);
+            text-align: left; font-size: 0.9rem;
+        }
+        .degree7-unit1-lesson3-conjugaison-exercise-card th {
+            background: var(--degree7-unit1-lesson3-conjugaison-light);
+            font-weight: 700;
+            color: var(--degree7-unit1-lesson3-conjugaison-heading);
+        }
+        .degree7-unit1-lesson3-conjugaison-exercise-card input[type="text"],
+        .degree7-unit1-lesson3-conjugaison-exercise-card textarea {
+            width: 100%; padding: 0.4rem 0.6rem;
+            border: 1px solid var(--degree7-unit1-lesson3-conjugaison-border);
+            border-radius: 4px;
+            background: var(--degree7-unit1-lesson3-conjugaison-input-bg);
+            color: var(--degree7-unit1-lesson3-conjugaison-text);
+            font-family: inherit; font-size: 0.9rem;
+        }
+        .degree7-unit1-lesson3-conjugaison-exercise-card textarea { resize: vertical; }
+        .degree7-unit1-lesson3-conjugaison-exercise-card input:focus,
+        .degree7-unit1-lesson3-conjugaison-exercise-card textarea:focus {
+            outline: none;
+            border-color: var(--degree7-unit1-lesson3-conjugaison-accent);
+        }
+        .degree7-unit1-lesson3-conjugaison-inline-input {
+            width: 130px !important;
+            padding: 0.25rem 0.5rem !important;
+            display: inline-block;
+            margin: 0 0.2rem;
+        }
+        .degree7-unit1-lesson3-conjugaison-btn-verify {
+            background: var(--degree7-unit1-lesson3-conjugaison-accent);
+            color: #fff; border: none; padding: 0.5rem 1.2rem;
+            border-radius: 20px; font-weight: 600; cursor: pointer;
+            transition: background var(--degree7-unit1-lesson3-conjugaison-transition);
+            margin-top: 0.6rem; font-size: 0.85rem;
+        }
+        .degree7-unit1-lesson3-conjugaison-btn-verify:hover { background: var(--degree7-unit1-lesson3-conjugaison-accent-hover); }
+        .degree7-unit1-lesson3-conjugaison-answer-key {
+            display: none; margin-top: 0.8rem; padding: 0.8rem;
+            background: var(--degree7-unit1-lesson3-conjugaison-light);
+            border-radius: 6px; font-size: 0.85rem;
+            color: var(--degree7-unit1-lesson3-conjugaison-text);
+            border: 1px dashed var(--degree7-unit1-lesson3-conjugaison-accent);
+        }
+        .degree7-unit1-lesson3-conjugaison-answer-key.visible { display: block; }
+
+        .degree7-unit1-lesson3-conjugaison-self-assessment {
+            margin-top: 0.8rem; font-size: 0.9rem;
+            display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
+        }
+        .degree7-unit1-lesson3-conjugaison-self-assessment label { cursor: pointer; }
+
+        .degree7-unit1-lesson3-conjugaison-score-area {
+            background: var(--degree7-unit1-lesson3-conjugaison-card);
+            border: 1px solid var(--degree7-unit1-lesson3-conjugaison-border);
+            border-radius: var(--degree7-unit1-lesson3-conjugaison-radius);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: var(--degree7-unit1-lesson3-conjugaison-shadow);
+        }
+        .degree7-unit1-lesson3-conjugaison-score-area h2 {
+            color: var(--degree7-unit1-lesson3-conjugaison-heading);
+            margin-bottom: 1rem;
+        }
+        .degree7-unit1-lesson3-conjugaison-score-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .degree7-unit1-lesson3-conjugaison-score-stat {
+            background: var(--degree7-unit1-lesson3-conjugaison-light);
+            padding: 0.8rem 1.2rem; border-radius: 8px; font-weight: 600;
+        }
+
+        .degree7-unit1-lesson3-conjugaison-footer-nav {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            background: var(--degree7-unit1-lesson3-conjugaison-card);
+            border-top: 1px solid var(--degree7-unit1-lesson3-conjugaison-border);
+            padding: 0.8rem 1.5rem;
+            border-radius: 0 0 var(--degree7-unit1-lesson3-conjugaison-radius) var(--degree7-unit1-lesson3-conjugaison-radius);
+        }
+        .degree7-unit1-lesson3-conjugaison-footer-nav a {
+            font-weight: 600;
+            color: var(--degree7-unit1-lesson3-conjugaison-accent);
+            text-decoration: none;
+        }
+        .degree7-unit1-lesson3-conjugaison-footer-nav a:hover { text-decoration: underline; }
+
+        html[dir="rtl"] body { direction: rtl; }
+        html[dir="rtl"] .degree7-unit1-lesson3-conjugaison-container { text-align: right; }
+        html[dir="rtl"] .degree7-unit1-lesson3-conjugaison-exercise-card th,
+        html[dir="rtl"] .degree7-unit1-lesson3-conjugaison-exercise-card td { text-align: right; }
+
+        @media (max-width:800px) {
+            .degree7-unit1-lesson3-conjugaison-exercises-section { grid-template-columns: 1fr; }
+            .degree7-unit1-lesson3-conjugaison-exercise-col-left,
+            .degree7-unit1-lesson3-conjugaison-exercise-col-right { grid-column: auto; }
+        }
+        @media (max-width:600px) {
+            .degree7-unit1-lesson3-conjugaison-lesson-header h1 { font-size: 1.5rem; }
+            .degree7-unit1-lesson3-conjugaison-container { padding: 1rem 0.8rem 2rem; }
+            .degree7-unit1-lesson3-conjugaison-text-card { padding: 1.4rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div id="toast-container"></div>
+    <button id="signInBtn" style="display:none"></button>
+
+    <nav class="back-nav no-print">
+        <a href="index.html" data-i18n="back_link">← Retour à l'accueil</a>
+    </nav>
+
+    <div id="main-content" class="degree7-unit1-lesson3-conjugaison-container">
+        <!-- Breadcrumb -->
+        <p style="margin-bottom:1.5rem; color:var(--degree7-unit1-lesson3-conjugaison-text-light);">
+            <a href="degree7.html" data-i18n="back_revision">Unité 1</a>
+            › <strong data-i18n="back_current">Conjugaison des verbes irréguliers</strong>
+        </p>
+
+        <div class="degree7-unit1-lesson3-conjugaison-lesson-header">
+            <span class="degree7-unit1-lesson3-conjugaison-badge" data-i18n="lesson_badge">🔄 Conjugaison · Leçon 3</span>
+            <h1 data-i18n="lesson_title">Conjugaison des<br>verbes irréguliers</h1>
+            <div class="degree7-unit1-lesson3-conjugaison-meta">
+                <span data-i18n="lesson_duration">⏱️ 45 minutes</span>
+                <span data-i18n="lesson_meta_audio">🎧 Écoutez le texte puis faites les exercices</span>
+            </div>
+        </div>
+
+        <!-- Audio player -->
+        <div class="degree7-unit1-lesson3-conjugaison-audio-player" id="audioPlayer">
+            <span class="degree7-unit1-lesson3-conjugaison-audio-label" data-i18n="audio_label">🎧 Écoute du texte</span>
+            <button class="degree7-unit1-lesson3-conjugaison-play-btn" id="playBtn" aria-label="Lecture">▶</button>
+            <div class="degree7-unit1-lesson3-conjugaison-progress-area">
+                <div class="degree7-unit1-lesson3-conjugaison-progress-bar" id="progressBar">
+                    <div class="degree7-unit1-lesson3-conjugaison-progress-fill" id="progressFill"></div>
+                </div>
+                <div class="degree7-unit1-lesson3-conjugaison-time-info">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+            <div class="degree7-unit1-lesson3-conjugaison-speed-selector" id="speedSelector">
+                <button class="degree7-unit1-lesson3-conjugaison-speed-btn" data-speed="0.75">0.75x</button>
+                <button class="degree7-unit1-lesson3-conjugaison-speed-btn active" data-speed="1">1x</button>
+                <button class="degree7-unit1-lesson3-conjugaison-speed-btn" data-speed="1.25">1.25x</button>
+                <button class="degree7-unit1-lesson3-conjugaison-speed-btn" data-speed="1.5">1.5x</button>
+            </div>
+        </div>
+
+        <!-- Observation text -->
+        <section class="degree7-unit1-lesson3-conjugaison-section">
+            <h2 data-i18n="text_heading">📖 J'observe</h2>
+            <div class="degree7-unit1-lesson3-conjugaison-text-card">
+                <span class="degree7-unit1-lesson3-conjugaison-quote-mark">“</span>
+                <p data-i18n="text_para1">Chaque matin, je <strong>vais</strong> à l'école avec mon frère. Nous <strong>prenons</strong> le bus et nous <strong>faisons</strong> le trajet ensemble. Quand nous <strong>arrivons</strong>, notre maîtresse nous <strong>dit</strong> bonjour et nous <strong>voyons</strong> nos amis dans la cour.</p>
+                <p data-i18n="text_para2">Hier, nous <strong>sommes partis</strong> plus tôt. Papa nous <strong>a conduits</strong> jusqu'à la grille. Les grands élèves <strong>ont voulu</strong> jouer au ballon, mais nous <strong>avons dû</strong> attendre la cloche. Le directeur <strong>a dit</strong> quelques mots, puis chacun <strong>est allé</strong> en classe.</p>
+                <p data-i18n="text_para3">Aujourd'hui, je <strong>peux</strong> dire que cette journée <strong>a été</strong> magnifique. Nous <strong>avons fait</strong> une sortie au musée, nous <strong>avons vu</strong> de vieux objets, et j'<strong>ai su</strong> beaucoup de choses nouvelles. Ce soir, je <strong>veux</strong> raconter tout cela à mes parents.</p>
+                <div class="degree7-unit1-lesson3-conjugaison-text-author" data-i18n="text_author">— Récit d'une journée d'école</div>
+            </div>
+
+            <div class="degree7-unit1-lesson3-conjugaison-note">
+                <strong data-i18n="consigne_title">➤ Consigne :</strong> <span data-i18n="consigne_text">Relève dans le texte les verbes qui ne suivent pas les règles régulières de la conjugaison. Quels temps sont employés ?</span>
+            </div>
+        </section>
+
+        <!-- Rules -->
+        <section class="degree7-unit1-lesson3-conjugaison-section">
+            <h2 data-i18n="rules_heading">📖 Je découvre – La règle</h2>
+
+            <div class="degree7-unit1-lesson3-conjugaison-valeurs-section">
+                <p data-i18n="rules_intro" style="margin-bottom:1rem;">La plupart des verbes français appartiennent aux <strong>1er groupe</strong> (verbes en <em>-er</em>) et au <strong>2e groupe</strong> (verbes en <em>-ir</em> comme <em>finir</em>). Leur conjugaison suit des règles régulières. Mais certains verbes très fréquents ne suivent <strong>aucun modèle régulier</strong> : on les appelle des <strong>verbes irréguliers</strong> (ou verbes du <strong>3e groupe</strong>). Il faut les <strong>mémoriser</strong> par cœur.</p>
+
+                <div class="degree7-unit1-lesson3-conjugaison-valeur-card">
+                    <h3 data-i18n="rule_why_title">🔹 Pourquoi sont-ils irréguliers ?</h3>
+                    <ul data-i18n="rule_why_list">
+                        <li>Leur <strong>radical change</strong> d'une personne à l'autre : <em>je vais, nous allons, ils vont</em>.</li>
+                        <li>Leurs <strong>terminaisons</strong> ne suivent pas les modèles réguliers : <em>je peux, tu peux, il peut</em>.</li>
+                        <li>Ils sont très <strong>fréquents</strong> : ce sont souvent les verbes les plus utilisés en français.</li>
+                    </ul>
+                </div>
+
+                <div class="degree7-unit1-lesson3-conjugaison-valeur-card">
+                    <h3 data-i18n="rule_aux_title">🔹 Auxiliaire être ou avoir au passé composé ?</h3>
+                    <ul data-i18n="rule_aux_list">
+                        <li><strong>La plupart</strong> des verbes irréguliers se conjuguent avec <strong>avoir</strong> : <em>j'ai pris, tu as fait, il a dit…</em></li>
+                        <li>Les <strong>verbes de mouvement</strong> se conjuguent avec <strong>être</strong> : <em>aller, venir, partir, arriver, entrer, sortir, monter, descendre, naître, mourir</em>.</li>
+                        <li>Les <strong>verbes pronominaux</strong> se conjuguent avec <strong>être</strong> : <em>je me suis levé(e)</em>.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formation tables: irregular verbs -->
+        <section class="degree7-unit1-lesson3-conjugaison-section">
+            <h2 data-i18n="formation_heading">📖 Je mémorise – Les verbes irréguliers essentiels</h2>
+
+            <div class="degree7-unit1-lesson3-conjugaison-valeurs-section">
+                <div class="degree7-unit1-lesson3-conjugaison-grid">
+                    <div class="degree7-unit1-lesson3-conjugaison-verb-card">
+                        <h4>Être</h4>
+                        <p>Présent : je <span class="highlight">suis</span>, tu <span class="highlight">es</span>, il/elle <span class="highlight">est</span>, nous <span class="highlight">sommes</span>, vous <span class="highlight">êtes</span>, ils/elles <span class="highlight">sont</span>.</p>
+                        <p>Passé composé : j'<span class="highlight">ai été</span>, tu <span class="highlight">as été</span>, il <span class="highlight">a été</span>, nous <span class="highlight">avons été</span>, vous <span class="highlight">avez été</span>, ils <span class="highlight">ont été</span>.</p>
+                    </div>
+                    <div class="degree7-unit1-lesson3-conjugaison-verb-card">
+                        <h4>Avoir</h4>
+                        <p>Présent : j'<span class="highlight">ai</span>, tu <span class="highlight">as</span>, il/elle <span class="highlight">a</span>, nous <span class="highlight">avons</span>, vous <span class="highlight">avez</span>, ils/elles <span class="highlight">ont</span>.</p>
+                        <p>Passé composé : j'<span class="highlight">ai eu</span>, tu <span class="highlight">as eu</span>, il <span class="highlight">a eu</span>, nous <span class="highlight">avons eu</span>, vous <span class="highlight">avez eu</span>, ils <span class="highlight">ont eu</span>.</p>
+                    </div>
+                    <div class="degree7-unit1-lesson3-conjugaison-verb-card">
+                        <h4>Aller</h4>
+                        <p>Présent : je <span class="highlight">vais</span>, tu <span class="highlight">vas</span>, il/elle <span class="highlight">va</span>, nous <span class="highlight">allons</span>, vous <span class="highlight">allez</span>, ils/elles <span class="highlight">vont</span>.</p>
+                        <p>Passé composé (être) : je <span class="highlight">suis allé(e)</span>, tu <span class="highlight">es allé(e)</span>, il <span class="highlight">est allé</span>, nous <span class="highlight">sommes allé(e)s</span>, vous <span class="highlight">êtes allé(e)s</span>, ils <span class="highlight">sont allés</span>.</p>
+                    </div>
+                    <div class="degree7-unit1-lesson3-conjugaison-verb-card">
+                        <h4>Faire</h4>
+                        <p>Présent : je <span class="highlight">fais</span>, tu <span class="highlight">fais</span>, il/elle <span class="highlight">fait</span>, nous <span class="highlight">faisons</span>, vous <span class="highlight">faites</span>, ils/elles <span class="highlight">font</span>.</p>
+                        <p>Passé composé : j'<span class="highlight">ai fait</span>, tu <span class="highlight">as fait</span>, il <span class="highlight">a fait</span>, nous <span class="highlight">avons fait</span>, vous <span class="highlight">avez fait</span>, ils <span class="highlight">ont fait</span>.</p>
+                    </div>
+                    <div class="degree7-unit1-lesson3-conjugaison-verb-card">
+                        <h4>Dire</h4>
+                        <p>Présent : je <span class="highlight">dis</span>, tu <span class="highlight">dis</span>, il/elle <span class="highlight">dit</span>, nous <span class="highlight">disons</span>, vous <span class="highlight">dites</span>, ils/elles <span class="highlight">disent</span>.</p>
+                        <p>Passé composé : j'<span class="highlight">ai dit</span>, tu <span class="highlight">as dit</span>, il <span class="highlight">a dit</span>, nous <span class="highlight">avons dit</span>, vous <span class="highlight">avez dit</span>, ils <span class="highlight">ont dit</span>.</p>
+                    </div>
+                    <div class="degree7-unit1-lesson3-conjugaison-verb-card">
+                        <h4>Prendre</h4>
+                        <p>Présent : je <span class="highlight">prends</span>, tu <span class="highlight">prends</span>, il/elle <span class="highlight">prend</span>, nous <span class="highlight">prenons</span>, vous <span class="highlight">prenez</span>, ils/elles <span class="highlight">prennent</span>.</p>
+                        <p>Passé composé : j'<span class="highlight">ai pris</span>, tu <span class="highlight">as pris</span>, il <span class="highlight">a pris</span>, nous <span class="highlight">avons pris</span>, vous <span class="highlight">avez pris</span>, ils <span class="highlight">ont pris</span>.</p>
+                    </div>
+                    <div class="degree7-unit1-lesson3-conjugaison-verb-card">
+                        <h4>Venir</h4>
+                        <p>Présent : je <span class="highlight">viens</span>, tu <span class="highlight">viens</span>, il/elle <span class="highlight">vient</span>, nous <span class="highlight">venons</span>, vous <span class="highlight">venez</span>, ils/elles <span class="highlight">viennent</span>.</p>
+                        <p>Passé composé (être) : je <span class="highlight">suis venu(e)</span>, tu <span class="highlight">es venu(e)</span>, il <span class="highlight">est venu</span>, nous <span class="highlight">sommes venu(e)s</span>, vous <span class="highlight">êtes venu(e)s</span>, ils <span class="highlight">sont venus</span>.</p>
+                    </div>
+                    <div class="degree7-unit1-lesson3-conjugaison-verb-card">
+                        <h4>Voir</h4>
+                        <p>Présent : je <span class="highlight">vois</span>, tu <span class="highlight">vois</span>, il/elle <span class="highlight">voit</span>, nous <span class="highlight">voyons</span>, vous <span class="highlight">voyez</span>, ils/elles <span class="highlight">voient</span>.</p>
+                        <p>Passé composé : j'<span class="highlight">ai vu</span>, tu <span class="highlight">as vu</span>, il <span class="highlight">a vu</span>, nous <span class="highlight">avons vu</span>, vous <span class="highlight">avez vu</span>, ils <span class="highlight">ont vu</span>.</p>
+                    </div>
+                    <div class="degree7-unit1-lesson3-conjugaison-verb-card">
+                        <h4>Pouvoir</h4>
+                        <p>Présent : je <span class="highlight">peux</span>, tu <span class="highlight">peux</span>, il/elle <span class="highlight">peut</span>, nous <span class="highlight">pouvons</span>, vous <span class="highlight">pouvez</span>, ils/elles <span class="highlight">peuvent</span>.</p>
+                        <p>Passé composé : j'<span class="highlight">ai pu</span>, tu <span class="highlight">as pu</span>, il <span class="highlight">a pu</span>, nous <span class="highlight">avons pu</span>, vous <span class="highlight">avez pu</span>, ils <span class="highlight">ont pu</span>.</p>
+                    </div>
+                    <div class="degree7-unit1-lesson3-conjugaison-verb-card">
+                        <h4>Vouloir</h4>
+                        <p>Présent : je <span class="highlight">veux</span>, tu <span class="highlight">veux</span>, il/elle <span class="highlight">veut</span>, nous <span class="highlight">voulons</span>, vous <span class="highlight">voulez</span>, ils/elles <span class="highlight">veulent</span>.</p>
+                        <p>Passé composé : j'<span class="highlight">ai voulu</span>, tu <span class="highlight">as voulu</span>, il <span class="highlight">a voulu</span>, nous <span class="highlight">avons voulu</span>, vous <span class="highlight">avez voulu</span>, ils <span class="highlight">ont voulu</span>.</p>
+                    </div>
+                    <div class="degree7-unit1-lesson3-conjugaison-verb-card">
+                        <h4>Devoir</h4>
+                        <p>Présent : je <span class="highlight">dois</span>, tu <span class="highlight">dois</span>, il/elle <span class="highlight">doit</span>, nous <span class="highlight">devons</span>, vous <span class="highlight">devez</span>, ils/elles <span class="highlight">doivent</span>.</p>
+                        <p>Passé composé : j'<span class="highlight">ai dû</span>, tu <span class="highlight">as dû</span>, il <span class="highlight">a dû</span>, nous <span class="highlight">avons dû</span>, vous <span class="highlight">avez dû</span>, ils <span class="highlight">ont dû</span>.</p>
+                    </div>
+                    <div class="degree7-unit1-lesson3-conjugaison-verb-card">
+                        <h4>Savoir</h4>
+                        <p>Présent : je <span class="highlight">sais</span>, tu <span class="highlight">sais</span>, il/elle <span class="highlight">sait</span>, nous <span class="highlight">savons</span>, vous <span class="highlight">savez</span>, ils/elles <span class="highlight">savent</span>.</p>
+                        <p>Passé composé : j'<span class="highlight">ai su</span>, tu <span class="highlight">as su</span>, il <span class="highlight">a su</span>, nous <span class="highlight">avons su</span>, vous <span class="highlight">avez su</span>, ils <span class="highlight">ont su</span>.</p>
+                    </div>
+                </div>
+
+                <div class="degree7-unit1-lesson3-conjugaison-note">
+                    <strong data-i18n="memo_title">💡 Astuce de mémorisation :</strong> <span data-i18n="memo_text">répétez à voix haute les formes au présent, puis au passé composé. Faites des phrases simples avec chaque verbe pour l'ancrer dans la mémoire. La pratique quotidienne est la clé !</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercises -->
+        <div class="degree7-unit1-lesson3-conjugaison-exercises-section">
+            <h2 data-i18n="exercises_heading">✍️ Je m'exerce</h2>
+
+            <!-- Ex 1 -->
+            <div class="degree7-unit1-lesson3-conjugaison-exercise-card degree7-unit1-lesson3-conjugaison-exercise-col-left">
+                <h3 data-i18n="exo1_title">📌 1. Conjugue au présent</h3>
+                <p data-i18n="exo1_instruction">Conjugue les verbes entre parenthèses au présent de l'indicatif.</p>
+                <p>
+                    1. Je (être) <input type="text" class="degree7-unit1-lesson3-conjugaison-inline-input" data-ans="suis" placeholder="..."> content.<br>
+                    2. Tu (avoir) <input type="text" class="degree7-unit1-lesson3-conjugaison-inline-input" data-ans="as" placeholder="..."> un beau livre.<br>
+                    3. Il (aller) <input type="text" class="degree7-unit1-lesson3-conjugaison-inline-input" data-ans="va" placeholder="..."> à l'école.<br>
+                    4. Nous (faire) <input type="text" class="degree7-unit1-lesson3-conjugaison-inline-input" data-ans="faisons" placeholder="..."> du sport.<br>
+                    5. Vous (dire) <input type="text" class="degree7-unit1-lesson3-conjugaison-inline-input" data-ans="dites" placeholder="..."> la vérité.<br>
+                    6. Ils (pouvoir) <input type="text" class="degree7-unit1-lesson3-conjugaison-inline-input" data-ans="peuvent" placeholder="..."> venir.<br>
+                    7. Je (vouloir) <input type="text" class="degree7-unit1-lesson3-conjugaison-inline-input" data-ans="veux" placeholder="..."> apprendre.<br>
+                    8. Elle (savoir) <input type="text" class="degree7-unit1-lesson3-conjugaison-inline-input" data-ans="sait" placeholder="..."> nager.
+                </p>
+                <button class="degree7-unit1-lesson3-conjugaison-btn-verify" onclick="checkEx(1)" data-i18n="btn_verify">🔍 Vérifier</button>
+                <div id="exo1Key" class="degree7-unit1-lesson3-conjugaison-answer-key"></div>
+                <div class="degree7-unit1-lesson3-conjugaison-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 2 -->
+            <div class="degree7-unit1-lesson3-conjugaison-exercise-card degree7-unit1-lesson3-conjugaison-exercise-col-right">
+                <h3 data-i18n="exo2_title">📌 2. Conjugue au passé composé</h3>
+                <p data-i18n="exo2_instruction">Conjugue les verbes entre parenthèses au passé composé. Attention à l'auxiliaire !</p>
+                <p>
+                    1. Je (aller) <input type="text" class="degree7-unit1-lesson3-conjugaison-inline-input" data-ans="suis allé" placeholder="..."> au marché.<br>
+                    2. Tu (faire) <input type="text" class="degree7-unit1-lesson3-conjugaison-inline-input" data-ans="as fait" placeholder="..."> tes devoirs.<br>
+                    3. Elle (prendre) <input type="text" class="degree7-unit1-lesson3-conjugaison-inline-input" data-ans="a pris" placeholder="..."> son manteau.<br>
+                    4. Nous (être) <input type="text" class="degree7-unit1-lesson3-conjugaison-inline-input" data-ans="avons été" placeholder="..."> en retard.<br>
+                    5. Vous (venir) <input type="text" class="degree7-unit1-lesson3-conjugaison-inline-input" data-ans="êtes venus" placeholder="..."> hier soir.<br>
+                    6. Ils (voir) <input type="text" class="degree7-unit1-lesson3-conjugaison-inline-input" data-ans="ont vu" placeholder="..."> ce film.<br>
+                    7. Elle (devoir) <input type="text" class="degree7-unit1-lesson3-conjugaison-inline-input" data-ans="a dû" placeholder="..."> partir tôt.<br>
+                    8. Je (savoir) <input type="text" class="degree7-unit1-lesson3-conjugaison-inline-input" data-ans="ai su" placeholder="..."> la réponse.
+                </p>
+                <button class="degree7-unit1-lesson3-conjugaison-btn-verify" onclick="checkEx(2)" data-i18n="btn_verify">🔍 Vérifier</button>
+                <div id="exo2Key" class="degree7-unit1-lesson3-conjugaison-answer-key"></div>
+                <div class="degree7-unit1-lesson3-conjugaison-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 3 -->
+            <div class="degree7-unit1-lesson3-conjugaison-exercise-card degree7-unit1-lesson3-conjugaison-exercise-col-left">
+                <h3 data-i18n="exo3_title">📌 3. Complète avec le verbe qui convient</h3>
+                <p data-i18n="exo3_instruction">Complète chaque phrase avec le verbe irrégulier qui convient, conjugué au présent.</p>
+                <p>
+                    1. Je <input type="text" class="degree7-unit1-lesson3-conjugaison-inline-input" data-ans="peux" placeholder="..."> nager très vite. <em>(pouvoir)</em><br>
+                    2. Nous <input type="text" class="degree7-unit1-lesson3-conjugaison-inline-input" data-ans="prenons" placeholder="..."> le train tous les matins. <em>(prendre)</em><br>
+                    3. Elle <input type="text" class="degree7-unit1-lesson3-conjugaison-inline-input" data-ans="vient" placeholder="..."> de Tunis. <em>(venir)</em><br>
+                    4. Vous <input type="text" class="degree7-unit1-lesson3-conjugaison-inline-input" data-ans="voulez" placeholder="..."> du chocolat ? <em>(vouloir)</em><br>
+                    5. Ils <input type="text" class="degree7-unit1-lesson3-conjugaison-inline-input" data-ans="voient" placeholder="..."> bien le tableau. <em>(voir)</em>
+                </p>
+                <button class="degree7-unit1-lesson3-conjugaison-btn-verify" onclick="checkEx(3)" data-i18n="btn_verify">🔍 Vérifier</button>
+                <div id="exo3Key" class="degree7-unit1-lesson3-conjugaison-answer-key"></div>
+                <div class="degree7-unit1-lesson3-conjugaison-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 4 -->
+            <div class="degree7-unit1-lesson3-conjugaison-exercise-card degree7-unit1-lesson3-conjugaison-exercise-col-right">
+                <h3 data-i18n="exo4_title">📌 4. Auxiliaire être ou avoir ?</h3>
+                <p data-i18n="exo4_instruction">Indique pour chaque verbe l'auxiliaire qu'il prend au passé composé : être (E) ou avoir (A).</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_verb" class="no-bilingual">Verbe</th>
+                            <th data-i18n="table_aux" class="no-bilingual">E / A</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>partir</td><td><input type="text" placeholder="E ou A"></td></tr>
+                        <tr><td>faire</td><td><input type="text" placeholder="E ou A"></td></tr>
+                        <tr><td>venir</td><td><input type="text" placeholder="E ou A"></td></tr>
+                        <tr><td>dire</td><td><input type="text" placeholder="E ou A"></td></tr>
+                        <tr><td>naître</td><td><input type="text" placeholder="E ou A"></td></tr>
+                        <tr><td>voir</td><td><input type="text" placeholder="E ou A"></td></tr>
+                        <tr><td>sortir</td><td><input type="text" placeholder="E ou A"></td></tr>
+                        <tr><td>savoir</td><td><input type="text" placeholder="E ou A"></td></tr>
+                    </tbody>
+                </table>
+                <button class="degree7-unit1-lesson3-conjugaison-btn-verify" onclick="toggleCorrection('exo4Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo4Key" class="degree7-unit1-lesson3-conjugaison-answer-key"></div>
+                <div class="degree7-unit1-lesson3-conjugaison-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 5 -->
+            <div class="degree7-unit1-lesson3-conjugaison-exercise-card degree7-unit1-lesson3-conjugaison-exercise-col-left">
+                <h3 data-i18n="exo5_title">📌 5. Choisis la bonne forme</h3>
+                <p data-i18n="exo5_instruction">Sélectionne la forme verbale correcte.</p>
+                <p><strong>1.</strong> Nous ___ au cinéma hier soir.</p>
+                <label><input type="radio" name="mcq1" value="a"> sommes allés</label><br>
+                <label><input type="radio" name="mcq1" value="b"> avons allé</label><br>
+                <label><input type="radio" name="mcq1" value="c"> est allés</label>
+                <p style="margin-top:0.6rem;"><strong>2.</strong> Elle ___ ses devoirs.</p>
+                <label><input type="radio" name="mcq2" value="a"> a fait</label><br>
+                <label><input type="radio" name="mcq2" value="b"> est fait</label><br>
+                <label><input type="radio" name="mcq2" value="c"> a fais</label>
+                <p style="margin-top:0.6rem;"><strong>3.</strong> Ils ___ de Paris.</p>
+                <label><input type="radio" name="mcq3" value="a"> ont venus</label><br>
+                <label><input type="radio" name="mcq3" value="b"> sont venus</label><br>
+                <label><input type="radio" name="mcq3" value="c"> sont venu</label>
+                <p style="margin-top:0.6rem;"><strong>4.</strong> Tu ___ la vérité.</p>
+                <label><input type="radio" name="mcq4" value="a"> as dit</label><br>
+                <label><input type="radio" name="mcq4" value="b"> es dit</label><br>
+                <label><input type="radio" name="mcq4" value="c"> as dis</label>
+                <button class="degree7-unit1-lesson3-conjugaison-btn-verify" onclick="toggleCorrection('exo5Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo5Key" class="degree7-unit1-lesson3-conjugaison-answer-key"></div>
+                <div class="degree7-unit1-lesson3-conjugaison-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex5" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex5" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex5" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 6 -->
+            <div class="degree7-unit1-lesson3-conjugaison-exercise-card degree7-unit1-lesson3-conjugaison-exercise-col-right">
+                <h3 data-i18n="exo6_title">📌 6. Chasse aux erreurs</h3>
+                <p data-i18n="exo6_instruction">Chaque phrase contient une erreur de conjugaison. Corrige-la.</p>
+                <ol type="a">
+                    <li>Il a allé au marché. <input type="text" placeholder="Correction"></li>
+                    <li>Nous avons vus le film. <input type="text" placeholder="Correction"></li>
+                    <li>Elle a prendu son sac. <input type="text" placeholder="Correction"></li>
+                    <li>Vous êtes fait vos devoirs. <input type="text" placeholder="Correction"></li>
+                    <li>Ils ont venus hier. <input type="text" placeholder="Correction"></li>
+                </ol>
+                <button class="degree7-unit1-lesson3-conjugaison-btn-verify" onclick="toggleCorrection('exo6Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo6Key" class="degree7-unit1-lesson3-conjugaison-answer-key"></div>
+                <div class="degree7-unit1-lesson3-conjugaison-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex6" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex6" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex6" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 7 -->
+            <div class="degree7-unit1-lesson3-conjugaison-exercise-card degree7-unit1-lesson3-conjugaison-exercise-col-left">
+                <h3 data-i18n="exo7_title">📌 7. Vrai ou faux ?</h3>
+                <p data-i18n="exo7_instruction">Indique si chaque affirmation est vraie (V) ou fausse (F).</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_statement" class="no-bilingual">Affirmation</th>
+                            <th data-i18n="table_vf" class="no-bilingual">V / F</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td data-i18n="exo7_q1">Le verbe « aller » se conjugue avec l'auxiliaire être au passé composé.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo7_q2">Le verbe « faire » se conjugue avec l'auxiliaire être.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo7_q3">« je peux » vient du verbe « pouvoir ».</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo7_q4">Le passé composé de « prendre » est « j'ai prendu ».</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo7_q5">Les verbes irréguliers suivent des règles fixes.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                    </tbody>
+                </table>
+                <button class="degree7-unit1-lesson3-conjugaison-btn-verify" onclick="toggleCorrection('exo7Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo7Key" class="degree7-unit1-lesson3-conjugaison-answer-key"></div>
+                <div class="degree7-unit1-lesson3-conjugaison-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex7" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex7" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex7" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 8 -->
+            <div class="degree7-unit1-lesson3-conjugaison-exercise-card degree7-unit1-lesson3-conjugaison-exercise-col-right">
+                <h3 data-i18n="exo8_title">📌 8. Complète le tableau de conjugaison</h3>
+                <p data-i18n="exo8_instruction">Complète le tableau avec les formes manquantes.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Verbe</th>
+                            <th>Présent (nous)</th>
+                            <th>Passé composé (ils)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>être</td><td><input type="text" data-ans="sommes" placeholder="..."></td><td><input type="text" data-ans="ont été" placeholder="..."></td></tr>
+                        <tr><td>avoir</td><td><input type="text" data-ans="avons" placeholder="..."></td><td><input type="text" data-ans="ont eu" placeholder="..."></td></tr>
+                        <tr><td>aller</td><td><input type="text" data-ans="allons" placeholder="..."></td><td><input type="text" data-ans="sont allés" placeholder="..."></td></tr>
+                        <tr><td>faire</td><td><input type="text" data-ans="faisons" placeholder="..."></td><td><input type="text" data-ans="ont fait" placeholder="..."></td></tr>
+                        <tr><td>prendre</td><td><input type="text" data-ans="prenons" placeholder="..."></td><td><input type="text" data-ans="ont pris" placeholder="..."></td></tr>
+                        <tr><td>voir</td><td><input type="text" data-ans="voyons" placeholder="..."></td><td><input type="text" data-ans="ont vu" placeholder="..."></td></tr>
+                    </tbody>
+                </table>
+                <button class="degree7-unit1-lesson3-conjugaison-btn-verify" onclick="checkEx(8)" data-i18n="btn_verify">🔍 Vérifier</button>
+                <div id="exo8Key" class="degree7-unit1-lesson3-conjugaison-answer-key"></div>
+                <div class="degree7-unit1-lesson3-conjugaison-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex8" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex8" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex8" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 9 -->
+            <div class="degree7-unit1-lesson3-conjugaison-exercise-card degree7-unit1-lesson3-conjugaison-exercise-col-left">
+                <h3 data-i18n="exo9_title">📌 9. Transforme au passé composé</h3>
+                <p data-i18n="exo9_instruction">Réécris ces phrases au passé composé.</p>
+                <ol type="a">
+                    <li>Je vais à l'école. → <input type="text" placeholder="..."></li>
+                    <li>Elle fait ses devoirs. → <input type="text" placeholder="..."></li>
+                    <li>Nous prenons le bus. → <input type="text" placeholder="..."></li>
+                    <li>Ils viennent chez nous. → <input type="text" placeholder="..."></li>
+                </ol>
+                <button class="degree7-unit1-lesson3-conjugaison-btn-verify" onclick="showExample('exo9Example')" data-i18n="show_example">💡 Voir un exemple</button>
+                <div id="exo9Example" class="degree7-unit1-lesson3-conjugaison-answer-key"></div>
+                <div class="degree7-unit1-lesson3-conjugaison-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex9" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex9" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex9" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 10 -->
+            <div class="degree7-unit1-lesson3-conjugaison-exercise-card degree7-unit1-lesson3-conjugaison-exercise-col-right">
+                <h3 data-i18n="exo10_title">📌 10. Rédige une phrase avec chaque verbe</h3>
+                <p data-i18n="exo10_instruction">Rédige une phrase complète au passé composé avec chacun des verbes suivants.</p>
+                <p>
+                    1. aller : <input type="text" placeholder="..."><br>
+                    2. faire : <input type="text" placeholder="..."><br>
+                    3. prendre : <input type="text" placeholder="..."><br>
+                    4. voir : <input type="text" placeholder="..."><br>
+                    5. vouloir : <input type="text" placeholder="...">
+                </p>
+                <div class="degree7-unit1-lesson3-conjugaison-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex10" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex10" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex10" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree7-unit1-lesson3-conjugaison-btn-verify" onclick="showExample('exo10Example')" data-i18n="show_example">💡 Voir un exemple</button>
+                <div id="exo10Example" class="degree7-unit1-lesson3-conjugaison-answer-key"></div>
+            </div>
+        </div>
+
+        <!-- Production -->
+        <div style="margin-top:2rem;">
+            <div class="degree7-unit1-lesson3-conjugaison-exercise-card">
+                <h3 data-i18n="exo11_title">📌 11. Production personnelle</h3>
+                <p data-i18n="exo11_instruction">Rédige un court paragraphe (5 à 6 phrases) racontant une journée de ta semaine. Utilise au moins <strong>quatre verbes irréguliers</strong> conjugués au présent ou au passé composé. Souligne-les ensuite et indique leur infinitif entre parenthèses.</p>
+                <textarea rows="6" placeholder="Votre paragraphe..."></textarea>
+                <div class="degree7-unit1-lesson3-conjugaison-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex11" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex11" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex11" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree7-unit1-lesson3-conjugaison-btn-verify" onclick="showProductionExample()" data-i18n="show_example">💡 Voir un exemple de réponse</button>
+                <div id="productionExample" class="degree7-unit1-lesson3-conjugaison-answer-key"></div>
+            </div>
+        </div>
+
+        <!-- Score area -->
+        <div class="degree7-unit1-lesson3-conjugaison-score-area" id="scoreArea">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="degree7-unit1-lesson3-conjugaison-score-stats" id="scoreStats">
+                <div class="degree7-unit1-lesson3-conjugaison-score-stat"><span data-i18n="score_correct">Correctes :</span> <span id="scoreCorrect">0</span></div>
+                <div class="degree7-unit1-lesson3-conjugaison-score-stat"><span data-i18n="score_incorrect">Incorrectes :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="degree7-unit1-lesson3-conjugaison-score-stat"><span data-i18n="score_partial">Partielles :</span> <span id="scorePartial">0</span></div>
+                <div class="degree7-unit1-lesson3-conjugaison-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">11</span></div>
+            </div>
+        </div>
+        <div class="degree7-unit1-lesson3-conjugaison-score-actions" style="margin-top:1.2rem;">
+            <button id="saveResultsBtn" class="degree7-unit1-lesson3-conjugaison-btn-verify" style="margin-right:0.5rem;" data-i18n="save_results">💾 Enregistrer mes résultats</button>
+            <button id="printPdfBtn" class="degree7-unit1-lesson3-conjugaison-btn-verify" style="background:#5e1fb0; margin-right:0.5rem;" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+        </div>
+
+        <!-- Footer nav -->
+        <div class="degree7-unit1-lesson3-conjugaison-footer-nav">
+            <a href="degree7.html" data-i18n="footer_back" class="no-bilingual">← Retour au programme</a>
+            <a href="degree7unit1lesson4.html" data-i18n="footer_next" class="no-bilingual">Leçon suivante : Les verbes pronominaux →</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                'lesson_title': "Leçon 3 – Conjugaison des verbes irréguliers | Conjugaison",
+                'lesson_short_title': "Conjugaison des verbes irréguliers",
+                'ach_year_degree7': "7ème Année Primaire",
+                'ach_module_unit1': "Unité 1 – Les fondements du français",
+                'back_link': "← Retour à l'accueil",
+                'back_revision': "Unité 1",
+                'back_current': "Conjugaison des verbes irréguliers",
+                'lesson_badge': "🔄 Conjugaison · Leçon 3",
+                'lesson_title': "Conjugaison des<br>verbes irréguliers",
+                'lesson_duration': "⏱️ 45 minutes",
+                'lesson_meta_audio': "🎧 Écoutez le texte puis faites les exercices",
+                'audio_label': "🎧 Écoute du texte",
+                'text_heading': "📖 J'observe",
+                'text_para1': "Chaque matin, je <strong>vais</strong> à l'école avec mon frère. Nous <strong>prenons</strong> le bus et nous <strong>faisons</strong> le trajet ensemble. Quand nous <strong>arrivons</strong>, notre maîtresse nous <strong>dit</strong> bonjour et nous <strong>voyons</strong> nos amis dans la cour.",
+                'text_para2': "Hier, nous <strong>sommes partis</strong> plus tôt. Papa nous <strong>a conduits</strong> jusqu'à la grille. Les grands élèves <strong>ont voulu</strong> jouer au ballon, mais nous <strong>avons dû</strong> attendre la cloche. Le directeur <strong>a dit</strong> quelques mots, puis chacun <strong>est allé</strong> en classe.",
+                'text_para3': "Aujourd'hui, je <strong>peux</strong> dire que cette journée <strong>a été</strong> magnifique. Nous <strong>avons fait</strong> une sortie au musée, nous <strong>avons vu</strong> de vieux objets, et j'<strong>ai su</strong> beaucoup de choses nouvelles. Ce soir, je <strong>veux</strong> raconter tout cela à mes parents.",
+                'text_author': "— Récit d'une journée d'école",
+                'consigne_title': "➤ Consigne :",
+                'consigne_text': "Relève dans le texte les verbes qui ne suivent pas les règles régulières de la conjugaison. Quels temps sont employés ?",
+                'rules_heading': "📖 Je découvre – La règle",
+                'rules_intro': "La plupart des verbes français appartiennent aux <strong>1er groupe</strong> (verbes en <em>-er</em>) et au <strong>2e groupe</strong> (verbes en <em>-ir</em> comme <em>finir</em>). Leur conjugaison suit des règles régulières. Mais certains verbes très fréquents ne suivent <strong>aucun modèle régulier</strong> : on les appelle des <strong>verbes irréguliers</strong> (ou verbes du <strong>3e groupe</strong>). Il faut les <strong>mémoriser</strong> par cœur.",
+                'rule_why_title': "🔹 Pourquoi sont-ils irréguliers ?",
+                'rule_why_list': "<li>Leur <strong>radical change</strong> d'une personne à l'autre : <em>je vais, nous allons, ils vont</em>.</li><li>Leurs <strong>terminaisons</strong> ne suivent pas les modèles réguliers : <em>je peux, tu peux, il peut</em>.</li><li>Ils sont très <strong>fréquents</strong> : ce sont souvent les verbes les plus utilisés en français.</li>",
+                'rule_aux_title': "🔹 Auxiliaire être ou avoir au passé composé ?",
+                'rule_aux_list': "<li><strong>La plupart</strong> des verbes irréguliers se conjuguent avec <strong>avoir</strong> : <em>j'ai pris, tu as fait, il a dit…</em></li><li>Les <strong>verbes de mouvement</strong> se conjuguent avec <strong>être</strong> : <em>aller, venir, partir, arriver, entrer, sortir, monter, descendre, naître, mourir</em>.</li><li>Les <strong>verbes pronominaux</strong> se conjuguent avec <strong>être</strong> : <em>je me suis levé(e)</em>.</li>",
+                'formation_heading': "📖 Je mémorise – Les verbes irréguliers essentiels",
+                'memo_title': "💡 Astuce de mémorisation :",
+                'memo_text': "répétez à voix haute les formes au présent, puis au passé composé. Faites des phrases simples avec chaque verbe pour l'ancrer dans la mémoire. La pratique quotidienne est la clé !",
+                'exercises_heading': "✍️ Je m'exerce",
+                'exo1_title': "📌 1. Conjugue au présent",
+                'exo1_instruction': "Conjugue les verbes entre parenthèses au présent de l'indicatif.",
+                'exo2_title': "📌 2. Conjugue au passé composé",
+                'exo2_instruction': "Conjugue les verbes entre parenthèses au passé composé. Attention à l'auxiliaire !",
+                'exo3_title': "📌 3. Complète avec le verbe qui convient",
+                'exo3_instruction': "Complète chaque phrase avec le verbe irrégulier qui convient, conjugué au présent.",
+                'exo4_title': "📌 4. Auxiliaire être ou avoir ?",
+                'exo4_instruction': "Indique pour chaque verbe l'auxiliaire qu'il prend au passé composé : être (E) ou avoir (A).",
+                'exo5_title': "📌 5. Choisis la bonne forme",
+                'exo5_instruction': "Sélectionne la forme verbale correcte.",
+                'exo6_title': "📌 6. Chasse aux erreurs",
+                'exo6_instruction': "Chaque phrase contient une erreur de conjugaison. Corrige-la.",
+                'exo7_title': "📌 7. Vrai ou faux ?",
+                'exo7_instruction': "Indique si chaque affirmation est vraie (V) ou fausse (F).",
+                'exo7_q1': "Le verbe « aller » se conjugue avec l'auxiliaire être au passé composé.",
+                'exo7_q2': "Le verbe « faire » se conjugue avec l'auxiliaire être.",
+                'exo7_q3': "« je peux » vient du verbe « pouvoir ».",
+                'exo7_q4': "Le passé composé de « prendre » est « j'ai prendu ».",
+                'exo7_q5': "Les verbes irréguliers suivent des règles fixes.",
+                'exo8_title': "📌 8. Complète le tableau de conjugaison",
+                'exo8_instruction': "Complète le tableau avec les formes manquantes.",
+                'exo9_title': "📌 9. Transforme au passé composé",
+                'exo9_instruction': "Réécris ces phrases au passé composé.",
+                'exo10_title': "📌 10. Rédige une phrase avec chaque verbe",
+                'exo10_instruction': "Rédige une phrase complète au passé composé avec chacun des verbes suivants.",
+                'exo11_title': "📌 11. Production personnelle",
+                'exo11_instruction': "Rédige un court paragraphe (5 à 6 phrases) racontant une journée de ta semaine. Utilise au moins <strong>quatre verbes irréguliers</strong> conjugués au présent ou au passé composé. Souligne-les ensuite et indique leur infinitif entre parenthèses.",
+                'show_example': "💡 Voir un exemple",
+                'btn_verify': "🔍 Vérifier", 'btn_correction': "🔍 Voir la correction",
+                'table_verb': "Verbe", 'table_aux': "E / A",
+                'table_statement': "Affirmation", 'table_vf': "V / F",
+                'footer_back': "← Retour au programme",
+                'footer_next': "Leçon suivante : Les verbes pronominaux →",
+                'self_assess_question': "Ma réponse est :",
+                'self_correct': "Correcte", 'self_incorrect': "Incorrecte", 'self_partial': "Partiellement correcte",
+                'score_title': "📊 Votre auto‑évaluation",
+                'score_correct': "Correctes :", 'score_incorrect': "Incorrectes :", 'score_partial': "Partielles :", 'score_unanswered': "Sans réponse :",
+                'save_results': "💾 Enregistrer mes résultats", 'save_success': "Résultats sauvegardés ✓", 'save_error': "Erreur lors de la sauvegarde",
+                'print_pdf': "🖨️ Imprimer / PDF", 'print_with_answers': "Corrigé inclus",
+                'print_site_name': "Educational Dashboard – Français",
+                'print_scholar_year': "7ème Année Primaire", 'print_week': "Unité 1", 'print_area': "Conjugaison",
+                'print_footer_dev': "Développé par Mejri Ziad", 'print_footer_date': "Imprimé le",
+                'print_without_answers': "Sans corrigé",
+                'toast_signin_required': "Connectez-vous pour voir les corrections."
+            },
+            en: {
+                'lesson_title': "Lesson 3 – Conjugation of Irregular Verbs | Conjugation",
+                'lesson_short_title': "Conjugation of irregular verbs",
+                'ach_year_degree7': "7th Grade Primary",
+                'ach_module_unit1': "Unit 1 – French foundations",
+                'back_link': "← Back to home",
+                'back_revision': "Unit 1",
+                'back_current': "Conjugation of irregular verbs",
+                'lesson_badge': "🔄 Conjugation · Lesson 3",
+                'lesson_title': "Conjugation of<br>irregular verbs",
+                'lesson_duration': "⏱️ 45 minutes",
+                'lesson_meta_audio': "🎧 Listen to the text then do the exercises",
+                'audio_label': "🎧 Listening to the text",
+                'text_heading': "📖 I observe",
+                'text_para1': "Every morning, I <strong>go</strong> to school with my brother. We <strong>take</strong> the bus and we <strong>do</strong> the trip together. When we <strong>arrive</strong>, our teacher <strong>says</strong> hello and we <strong>see</strong> our friends in the yard.",
+                'text_para2': "Yesterday, we <strong>left</strong> earlier. Dad <strong>drove</strong> us to the gate. The older students <strong>wanted</strong> to play ball, but we <strong>had to</strong> wait for the bell. The principal <strong>said</strong> a few words, then everyone <strong>went</strong> to class.",
+                'text_para3': "Today, I <strong>can</strong> say that this day <strong>was</strong> wonderful. We <strong>went</strong> on a trip to the museum, we <strong>saw</strong> old objects, and I <strong>learned</strong> many new things. Tonight, I <strong>want</strong> to tell my parents all about it.",
+                'text_author': "— Tale of a school day",
+                'consigne_title': "➤ Instruction:",
+                'consigne_text': "Find in the text the verbs that do not follow regular conjugation rules. Which tenses are used?",
+                'rules_heading': "📖 I discover – The rule",
+                'rules_intro': "Most French verbs belong to the <strong>1st group</strong> (verbs in <em>-er</em>) and the <strong>2nd group</strong> (verbs in <em>-ir</em> like <em>finir</em>). Their conjugation follows regular rules. But some very frequent verbs do not follow <strong>any regular model</strong>: these are called <strong>irregular verbs</strong> (or <strong>3rd group</strong> verbs). They must be <strong>memorized</strong> by heart.",
+                'rule_why_title': "🔹 Why are they irregular?",
+                'rule_why_list': "<li>Their <strong>stem changes</strong> from person to person: <em>je vais, nous allons, ils vont</em>.</li><li>Their <strong>endings</strong> do not follow regular models: <em>je peux, tu peux, il peut</em>.</li><li>They are very <strong>frequent</strong>: they are often the most used verbs in French.</li>",
+                'rule_aux_title': "🔹 Auxiliary être or avoir in the passé composé?",
+                'rule_aux_list': "<li><strong>Most</strong> irregular verbs are conjugated with <strong>avoir</strong>: <em>j'ai pris, tu as fait, il a dit…</em></li><li><strong>Verbs of movement</strong> are conjugated with <strong>être</strong>: <em>aller, venir, partir, arriver, entrer, sortir, monter, descendre, naître, mourir</em>.</li><li><strong>Pronominal verbs</strong> are conjugated with <strong>être</strong>: <em>je me suis levé(e)</em>.</li>",
+                'formation_heading': "📖 I memorize – Essential irregular verbs",
+                'memo_title': "💡 Memorization tip:",
+                'memo_text': "repeat the present forms aloud, then the passé composé. Make simple sentences with each verb to anchor it in memory. Daily practice is the key!",
+                'exercises_heading': "✍️ I practise",
+                'exo1_title': "📌 1. Conjugate in the present",
+                'exo1_instruction': "Conjugate the verbs in parentheses in the present indicative.",
+                'exo2_title': "📌 2. Conjugate in the passé composé",
+                'exo2_instruction': "Conjugate the verbs in parentheses in the passé composé. Watch out for the auxiliary!",
+                'exo3_title': "📌 3. Complete with the right verb",
+                'exo3_instruction': "Complete each sentence with the appropriate irregular verb, conjugated in the present.",
+                'exo4_title': "📌 4. Auxiliary être or avoir?",
+                'exo4_instruction': "Indicate for each verb the auxiliary it takes in the passé composé: être (E) or avoir (A).",
+                'exo5_title': "📌 5. Choose the correct form",
+                'exo5_instruction': "Select the correct verb form.",
+                'exo6_title': "📌 6. Error hunt",
+                'exo6_instruction': "Each sentence contains a conjugation error. Correct it.",
+                'exo7_title': "📌 7. True or false?",
+                'exo7_instruction': "Indicate whether each statement is true (T) or false (F).",
+                'exo7_q1': "The verb \"aller\" is conjugated with the auxiliary être in the passé composé.",
+                'exo7_q2': "The verb \"faire\" is conjugated with the auxiliary être.",
+                'exo7_q3': "\"je peux\" comes from the verb \"pouvoir\".",
+                'exo7_q4': "The passé composé of \"prendre\" is \"j'ai prendu\".",
+                'exo7_q5': "Irregular verbs follow fixed rules.",
+                'exo8_title': "📌 8. Complete the conjugation table",
+                'exo8_instruction': "Complete the table with the missing forms.",
+                'exo9_title': "📌 9. Transform into the passé composé",
+                'exo9_instruction': "Rewrite these sentences in the passé composé.",
+                'exo10_title': "📌 10. Write a sentence with each verb",
+                'exo10_instruction': "Write a complete sentence in the passé composé with each of the following verbs.",
+                'exo11_title': "📌 11. Personal production",
+                'exo11_instruction': "Write a short paragraph (5 to 6 sentences) about a day in your week. Use at least <strong>four irregular verbs</strong> conjugated in the present or passé composé. Then underline them and give their infinitive in parentheses.",
+                'show_example': "💡 See an example",
+                'btn_verify': "🔍 Check", 'btn_correction': "🔍 See the correction",
+                'table_verb': "Verb", 'table_aux': "E / A",
+                'table_statement': "Statement", 'table_vf': "T / F",
+                'footer_back': "← Back to program",
+                'footer_next': "Next lesson: Pronominal verbs →",
+                'self_assess_question': "My answer is:",
+                'self_correct': "Correct", 'self_incorrect': "Incorrect", 'self_partial': "Partially correct",
+                'score_title': "📊 Your self‑assessment",
+                'score_correct': "Correct:", 'score_incorrect': "Incorrect:", 'score_partial': "Partial:", 'score_unanswered': "Unanswered:",
+                'save_results': "💾 Save my results", 'save_success': "Results saved ✓", 'save_error': "Save failed",
+                'print_pdf': "🖨️ Print / PDF", 'print_with_answers': "With answers",
+                'print_site_name': "Educational Dashboard – French",
+                'print_scholar_year': "7th Grade Primary", 'print_week': "Unit 1", 'print_area': "Conjugation",
+                'print_footer_dev': "Developed by Mejri Ziad", 'print_footer_date': "Printed on",
+                'print_without_answers': "Without answers",
+                'toast_signin_required': "Sign in to see the corrections."
+            },
+            ar: {
+                'lesson_title': "الدرس 3 – تصريف الأفعال الشاذة | التصريف",
+                'lesson_short_title': "تصريف الأفعال الشاذة",
+                'ach_year_degree7': "السنة السابعة ابتدائي",
+                'ach_module_unit1': "الوحدة 1 – أساسيات الفرنسية",
+                'back_link': "← العودة إلى الرئيسية",
+                'back_revision': "الوحدة 1",
+                'back_current': "تصريف الأفعال الشاذة",
+                'lesson_badge': "🔄 التصريف · الدرس 3",
+                'lesson_title': "تصريف<br>الأفعال الشاذة",
+                'lesson_duration': "⏱️ 45 دقيقة",
+                'lesson_meta_audio': "🎧 استمع إلى النص ثم قم بالتمارين",
+                'audio_label': "🎧 استماع إلى النص",
+                'text_heading': "📖 ألاحظ",
+                'text_para1': "كل صباح، <strong>أذهب</strong> إلى المدرسة مع أخي. <strong>نأخذ</strong> الحافلة و<strong>نقوم</strong> بالرحلة معاً. عندما <strong>نصل</strong>، <strong>تقول</strong> لنا معلمتنا صباح الخير و<strong>نرى</strong> أصدقاءنا في الساحة.",
+                'text_para2': "أمس، <strong>رحلنا</strong> أبكر. <strong>أخذنا</strong> أبي حتى البوابة. <strong>أراد</strong> التلاميذ الكبار اللعب بالكرة، لكن <strong>اضطررنا</strong> لانتظار الجرس. <strong>قال</strong> المدير بعض الكلمات، ثم <strong>ذهب</strong> كلٌّ إلى قسمه.",
+                'text_para3': "اليوم، <strong>أستطيع</strong> القول إن هذا اليوم <strong>كان</strong> رائعاً. <strong>قمنا</strong> برحلة إلى المتحف، <strong>رأينا</strong> أشياء قديمة، و<strong>عرفت</strong> أشياء جديدة كثيرة. هذه الليلة، <strong>أريد</strong> أن أروي كل هذا لوالديّ.",
+                'text_author': "— حكاية يوم دراسي",
+                'consigne_title': "➤ التعليمة:",
+                'consigne_text': "استخرج من النص الأفعال التي لا تتبع قواعد التصريف العادية. ما الأزمنة المستعملة؟",
+                'rules_heading': "📖 أكتشف – القاعدة",
+                'rules_intro': "معظم الأفعال الفرنسية تنتمي إلى <strong>المجموعة الأولى</strong> (أفعال تنتهي بـ<em>-er</em>) و<strong>المجموعة الثانية</strong> (أفعال تنتهي بـ<em>-ir</em> مثل <em>finir</em>). تصريفها يتبع قواعد منتظمة. لكن بعض الأفعال الشائعة جداً لا تتبع <strong>أي نموذج منتظم</strong>: تسمى <strong>الأفعال الشاذة</strong> (أو أفعال <strong>المجموعة الثالثة</strong>). يجب <strong>حفظها</strong> عن ظهر قلب.",
+                'rule_why_title': "🔹 لماذا هي شاذة؟",
+                'rule_why_list': "<li><strong>جذرها يتغير</strong> من شخص لآخر: <em>je vais, nous allons, ils vont</em>.</li><li><strong>نهاياتها</strong> لا تتبع النماذج المنتظمة: <em>je peux, tu peux, il peut</em>.</li><li>إنها <strong>شائعة جداً</strong>: غالباً ما تكون أكثر الأفعال استعمالاً في الفرنسية.</li>",
+                'rule_aux_title': "🔹 المساعد être أم avoir في الماضي المركب؟",
+                'rule_aux_list': "<li><strong>معظم</strong> الأفعال الشاذة تُصرّف بـ<strong>avoir</strong>: <em>j'ai pris, tu as fait, il a dit…</em></li><li><strong>أفعال الحركة</strong> تُصرّف بـ<strong>être</strong>: <em>aller, venir, partir, arriver, entrer, sortir, monter, descendre, naître, mourir</em>.</li><li><strong>الأفعال الانعكاسية</strong> تُصرّف بـ<strong>être</strong>: <em>je me suis levé(e)</em>.</li>",
+                'formation_heading': "📖 أحفظ – الأفعال الشاذة الأساسية",
+                'memo_title': "💡 حيلة الحفظ:",
+                'memo_text': "كرّر بصوت عالٍ صيغ المضارع، ثم الماضي المركب. اصنع جملاً بسيطة مع كل فعل لتثبيته في الذاكرة. الممارسة اليومية هي المفتاح!",
+                'exercises_heading': "✍️ أتمرن",
+                'exo1_title': "📌 1. صرّف في المضارع",
+                'exo1_instruction': "صرّف الأفعال بين قوسين في المضارع.",
+                'exo2_title': "📌 2. صرّف في الماضي المركب",
+                'exo2_instruction': "صرّف الأفعال بين قوسين في الماضي المركب. انتبه للمساعد!",
+                'exo3_title': "📌 3. أكمل بالفعل المناسب",
+                'exo3_instruction': "أكمل كل جملة بالفعل الشاذ المناسب، مصرّفاً في المضارع.",
+                'exo4_title': "📌 4. المساعد être أم avoir؟",
+                'exo4_instruction': "حدد لكل فعل المساعد الذي يأخذه في الماضي المركب: être (E) أو avoir (A).",
+                'exo5_title': "📌 5. اختر الصيغة الصحيحة",
+                'exo5_instruction': "اختر الصيغة الفعلية الصحيحة.",
+                'exo6_title': "📌 6. صيد الأخطاء",
+                'exo6_instruction': "كل جملة تحتوي على خطأ في التصريف. صححه.",
+                'exo7_title': "📌 7. صواب أم خطأ؟",
+                'exo7_instruction': "حدد إن كانت كل عبارة صحيحة (ص) أم خاطئة (خ).",
+                'exo7_q1': "الفعل « aller » يُصرّف بالمساعد être في الماضي المركب.",
+                'exo7_q2': "الفعل « faire » يُصرّف بالمساعد être.",
+                'exo7_q3': "« je peux » من الفعل « pouvoir ».",
+                'exo7_q4': "الماضي المركب لـ« prendre » هو « j'ai prendu ».",
+                'exo7_q5': "الأفعال الشاذة تتبع قواعد ثابتة.",
+                'exo8_title': "📌 8. أكمل جدول التصريف",
+                'exo8_instruction': "أكمل الجدول بالصيغ الناقصة.",
+                'exo9_title': "📌 9. حوّل إلى الماضي المركب",
+                'exo9_instruction': "أعد كتابة هذه الجمل في الماضي المركب.",
+                'exo10_title': "📌 10. اكتب جملة مع كل فعل",
+                'exo10_instruction': "اكتب جملة كاملة في الماضي المركب مع كل من الأفعال التالية.",
+                'exo11_title': "📌 11. إنتاج شخصي",
+                'exo11_instruction': "اكتب فقرة قصيرة (5 إلى 6 جمل) تروي فيها يوماً من أسبوعك. استعمل على الأقل <strong>أربعة أفعال شاذة</strong> مصرّفة في المضارع أو الماضي المركب. ضع خطاً تحتها واكتب مصدرها بين قوسين.",
+                'show_example': "💡 عرض مثال",
+                'btn_verify': "🔍 تحقق", 'btn_correction': "🔍 الاطلاع على التصحيح",
+                'table_verb': "الفعل", 'table_aux': "E / A",
+                'table_statement': "العبارة", 'table_vf': "ص / خ",
+                'footer_back': "← العودة إلى البرنامج",
+                'footer_next': "الدرس الموالي: الأفعال الانعكاسية ←",
+                'self_assess_question': "جوابي هو:",
+                'self_correct': "صحيح", 'self_incorrect': "خاطئ", 'self_partial': "صحيح جزئيًا",
+                'score_title': "📊 تقييمك الذاتي",
+                'score_correct': "صحيح:", 'score_incorrect': "خاطئ:", 'score_partial': "جزئي:", 'score_unanswered': "بدون إجابة:",
+                'save_results': "💾 حفظ نتائجي", 'save_success': "تم حفظ النتائج ✓", 'save_error': "خطأ في الحفظ",
+                'print_pdf': "🖨️ طباعة / PDF", 'print_with_answers': "مع التصحيح",
+                'print_site_name': "لوحة التحكم التعليمية – الفرنسية",
+                'print_scholar_year': "السنة السابعة ابتدائي", 'print_week': "الوحدة 1", 'print_area': "التصريف",
+                'print_footer_dev': "طوّر بواسطة ماجري زياد", 'print_footer_date': "طُبع في",
+                'print_without_answers': "بدون تصحيح",
+                'toast_signin_required': "سجّل الدخول لرؤية التصحيحات."
+            }
+        });
+
+        (function() {
+            var container = document.querySelector('.degree7-unit1-lesson3-conjugaison-container');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+        })();
+    </script>
+    <script src="ed-french-ini.js"></script>
+    <script>
+        (function() {
+            const audio = new Audio('assets7/sounds/degree7/unit1/lesson3/verbes_irreguliers.mp3');
+            const playBtn = document.getElementById('playBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const speedBtns = document.querySelectorAll('.degree7-unit1-lesson3-conjugaison-speed-btn');
+
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+
+            audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
+            audio.addEventListener('timeupdate', () => {
+                const percent = (audio.currentTime / audio.duration) * 100 || 0;
+                progressFill.style.width = percent + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            });
+            audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) { audio.play().catch(()=>{}); playBtn.textContent = '⏸'; }
+                else { audio.pause(); playBtn.textContent = '▶'; }
+            });
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const seekTime = (clickX / width) * audio.duration;
+                audio.currentTime = seekTime;
+            });
+            speedBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    speedBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    audio.playbackRate = parseFloat(btn.dataset.speed);
+                });
+            });
+
+            async function requireAuth() {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return false;
+                }
+                return true;
+            }
+
+            // Dynamic fill-in check for each exercise by number
+            window.checkEx = async function(num) {
+                if (!await requireAuth()) return;
+                const keyEl = document.getElementById('exo' + num + 'Key');
+                const exercise = keyEl.closest('.degree7-unit1-lesson3-conjugaison-exercise-card');
+                const inputs = exercise.querySelectorAll('input[data-ans]');
+                let correct = 0, total = inputs.length, html = '<strong>Correction :</strong><br>';
+                inputs.forEach((inp, i) => {
+                    const ok = inp.value.trim().toLowerCase() === inp.dataset.ans.toLowerCase();
+                    if (ok) correct++;
+                    inp.style.borderColor = ok ? '#2e7d32' : '#c62828';
+                    html += `${i+1}. <strong>${inp.dataset.ans}</strong>`;
+                    if (i < total - 1) html += ' · ';
+                });
+                keyEl.innerHTML = html + `<br><em>Score : ${correct} / ${total}</em>`;
+                keyEl.classList.add('visible');
+            };
+
+            window.toggleCorrection = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('visible');
+            };
+
+            window.showExample = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const el = document.getElementById(id);
+                if (!el) return;
+                if (id === 'exo9Example') {
+                    el.innerHTML = '<strong>Exemple de transformation :</strong><br>a) Je <strong>suis allé(e)</strong> à l\'école.<br>b) Elle <strong>a fait</strong> ses devoirs.<br>c) Nous <strong>avons pris</strong> le bus.<br>d) Ils <strong>sont venus</strong> chez nous.';
+                } else if (id === 'exo10Example') {
+                    el.innerHTML = '<strong>Exemples de phrases :</strong><br>1. Hier, je <strong>suis allé</strong> au parc avec ma famille.<br>2. Elle <strong>a fait</strong> un gâteau pour l\'anniversaire.<br>3. Nous <strong>avons pris</strong> le train pour Tunis.<br>4. Ils <strong>ont vu</strong> un beau film au cinéma.<br>5. Ma sœur <strong>a voulu</strong> acheter une nouvelle robe.';
+                }
+                el.classList.add('visible');
+            };
+
+            window.showProductionExample = async function() {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const el = document.getElementById('productionExample');
+                if (el) {
+                    el.innerHTML = '<strong>Exemple de production :</strong><br>Hier matin, je <u>suis allé</u> (aller) à l\'école à pied. À midi, j\'<u>ai pris</u> (prendre) mon déjeuner avec mes amis. L\'après-midi, nous <u>avons fait</u> (faire) un exercice de mathématiques très intéressant. Le soir, je <u>suis revenu</u> (revenir) à la maison et j\'<u>ai vu</u> (voir) mes parents. Ils <u>ont voulu</u> (vouloir) savoir comment s\'était passée ma journée.';
+                    el.classList.add('visible');
+                }
+            };
+
+            // Static answer keys
+            document.getElementById('exo4Key').innerHTML = '<strong>Correction :</strong><br>1. partir → <strong>E</strong><br>2. faire → <strong>A</strong><br>3. venir → <strong>E</strong><br>4. dire → <strong>A</strong><br>5. naître → <strong>E</strong><br>6. voir → <strong>A</strong><br>7. sortir → <strong>E</strong><br>8. savoir → <strong>A</strong>';
+            document.getElementById('exo5Key').innerHTML = '<strong>Correction :</strong><br>1. a (sommes allés)<br>2. a (a fait)<br>3. b (sont venus)<br>4. a (as dit)';
+            document.getElementById('exo6Key').innerHTML = '<strong>Correction :</strong><br>a) Il <strong>est allé</strong> au marché.<br>b) Nous <strong>avons vu</strong> le film.<br>c) Elle <strong>a pris</strong> son sac.<br>d) Vous <strong>avez fait</strong> vos devoirs.<br>e) Ils <strong>sont venus</strong> hier.';
+            document.getElementById('exo7Key').innerHTML = '<strong>Correction :</strong><br>1. Vrai<br>2. Faux (avec avoir)<br>3. Vrai<br>4. Faux (j\'ai pris)<br>5. Faux (ce sont des exceptions)';
+
+            // Self-assessment scoring
+            const SELF_GROUPS = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5',
+                                 'self_ex6', 'self_ex7', 'self_ex8', 'self_ex9', 'self_ex10', 'self_ex11'];
+
+            function computeScore() {
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                SELF_GROUPS.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                return { correct, incorrect, partial, unanswered };
+            }
+
+            function updateScore() {
+                const s = computeScore();
+                document.getElementById('scoreCorrect').textContent = s.correct;
+                document.getElementById('scoreIncorrect').textContent = s.incorrect;
+                document.getElementById('scorePartial').textContent = s.partial;
+                document.getElementById('scoreUnanswered').textContent = s.unanswered;
+            }
+
+            document.querySelectorAll('input[type="radio"][name^="self_ex"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+
+            // Save results
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const s = computeScore();
+                const lessonId = 'degree7unit1lesson3';
+                const entry = {
+                    lesson_id: lessonId,
+                    lesson_title: {
+                        fr: App.getTranslation('lesson_short_title', 'fr'),
+                        en: App.getTranslation('lesson_short_title', 'en'),
+                        ar: App.getTranslation('lesson_short_title', 'ar')
+                    },
+                    year: {
+                        fr: App.getTranslation('ach_year_degree7', 'fr'),
+                        en: App.getTranslation('ach_year_degree7', 'en'),
+                        ar: App.getTranslation('ach_year_degree7', 'ar')
+                    },
+                    module: {
+                        fr: App.getTranslation('ach_module_unit1', 'fr'),
+                        en: App.getTranslation('ach_module_unit1', 'en'),
+                        ar: App.getTranslation('ach_module_unit1', 'ar')
+                    },
+                    correct: s.correct,
+                    incorrect: s.incorrect,
+                    partial: s.partial,
+                    unanswered: s.unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles').select('achivement').eq('id', user.id).single();
+                if (fetchError) return;
+                let achivement = profileData?.achivement || {};
+                if (!achivement['ED-French']) achivement['ED-French'] = [];
+                const arr = achivement['ED-French'];
+                const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+                if (existingIdx >= 0) arr[existingIdx] = entry;
+                else arr.push(entry);
+                const { error: updateError } = await App.supabase
+                    .from('profiles').update({ achivement }).eq('id', user.id);
+                if (updateError) App.showToast('save_error', 'error');
+                else {
+                    App.showToast('save_success', 'success');
+                    App.logUserAction('lesson_saved', { lesson: lessonId, correct: s.correct, incorrect: s.incorrect, partial: s.partial });
+                }
+            });
+
+            // Print / PDF
+            document.getElementById('printPdfBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles').select('registration_state').eq('id', user.id).single();
+                    if (!error && profile?.registration_state?.active === true) isRegistered = true;
+                } catch (e) {}
+                const lang = localStorage.getItem('lang') || 'fr';
+                const headerHTML = document.querySelector('.degree7-unit1-lesson3-conjugaison-lesson-header').cloneNode(true);
+                const textCard = document.querySelector('.degree7-unit1-lesson3-conjugaison-text-card').cloneNode(true);
+                const rulesSections = document.querySelectorAll('.degree7-unit1-lesson3-conjugaison-valeurs-section');
+                let rulesHTML = '';
+                rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
+                const exercisesSection = document.querySelector('.degree7-unit1-lesson3-conjugaison-exercises-section').cloneNode(true);
+                exercisesSection.querySelectorAll('input, textarea, .degree7-unit1-lesson3-conjugaison-btn-verify, .degree7-unit1-lesson3-conjugaison-self-assessment').forEach(el => el.remove());
+                if (isRegistered) {
+                    exercisesSection.querySelectorAll('.degree7-unit1-lesson3-conjugaison-answer-key').forEach(key => {
+                        key.style.display = 'block'; key.style.border = 'none';
+                        key.style.padding = '0.5rem 0'; key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    exercisesSection.querySelectorAll('.degree7-unit1-lesson3-conjugaison-answer-key').forEach(el => el.remove());
+                }
+                const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                printWindow.document.write(`<!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8"><title>${App.getTranslation('lesson_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title><style>
+                    body { font-family: 'Georgia', serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; color:#000; }
+                    .print-header { text-align:center; border-bottom:2px solid #7a2bd9; padding-bottom:1rem; margin-bottom:2rem; }
+                    .print-header .site-name { font-size:1.4rem; font-weight:bold; color:#7a2bd9; margin:0 0 0.3rem; }
+                    .print-header .meta-line { font-size:0.95rem; color:#444; margin:0.2rem 0; }
+                    .print-header .lesson-name { font-size:1.1rem; font-weight:bold; color:#000; margin-top:0.5rem; }
+                    .print-footer { text-align:center; border-top:1px solid #ccc; padding-top:1rem; margin-top:2rem; font-size:0.85rem; color:#666; }
+                    .degree7-unit1-lesson3-conjugaison-lesson-header { text-align:center; margin-bottom:2rem; }
+                    .degree7-unit1-lesson3-conjugaison-badge { display:inline-block; background:#7a2bd9; color:#fff; padding:0.3rem 1rem; border-radius:20px; font-size:0.8rem; text-transform:uppercase; }
+                    .degree7-unit1-lesson3-conjugaison-text-card { border-left:4px solid #7a2bd9; padding:1rem 1.5rem; margin:1.5rem 0; font-style:italic; }
+                    .degree7-unit1-lesson3-conjugaison-valeurs-section { margin:1.5rem 0; }
+                    .degree7-unit1-lesson3-conjugaison-valeur-card { background:#ede0f8; padding:1rem; margin-bottom:1rem; border-radius:8px; }
+                    .degree7-unit1-lesson3-conjugaison-valeur-card h3 { color:#7a2bd9; }
+                    .degree7-unit1-lesson3-conjugaison-exercise-card { margin:1.2rem 0; }
+                    table { width:100%; border-collapse:collapse; margin:0.8rem 0; }
+                    th, td { border:1px solid #ccc; padding:0.5rem; text-align:left; }
+                    th { background:#ede0f8; }
+                    .degree7-unit1-lesson3-conjugaison-answer-key { display:block; margin-top:0.5rem; font-size:0.9rem; color:#444; }
+                    .degree7-unit1-lesson3-conjugaison-verb-card { background:#ede0f8; padding:0.8rem; border-radius:8px; margin-bottom:0.8rem; }
+                    .degree7-unit1-lesson3-conjugaison-verb-card h4 { color:#7a2bd9; }
+                    @media print { @page { margin:2cm; } }
+                </style></head><body>
+                    <div class="print-header"><div class="site-name">${App.getTranslation('print_site_name', lang)}</div><div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div><div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div></div>
+                    ${breadcrumb.outerHTML}${headerHTML.outerHTML}${textCard.outerHTML}${rulesHTML}${exercisesSection.outerHTML}
+                    <div class="print-footer">${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}</div>
+                </body></html>`);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+        })();
+    </script>
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+</body>
+</html>

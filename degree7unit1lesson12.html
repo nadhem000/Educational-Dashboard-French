@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_title">Leçon 12 – Compréhension et analyse de consignes II | Écrit</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ===== Degree7 Unit1 Lesson12 – Écrit (prefix: degree7-unit1-lesson12-ecrit-) ===== */
+        /* Palette: Chocolate / Orange – shades of orange (matching cat-writing #d2691e) */
+        :root {
+            --degree7-unit1-lesson12-ecrit-bg: #fbf5ee;
+            --degree7-unit1-lesson12-ecrit-card: #fffdfa;
+            --degree7-unit1-lesson12-ecrit-text: #2b1c10;
+            --degree7-unit1-lesson12-ecrit-text-light: #6b4a30;
+            --degree7-unit1-lesson12-ecrit-heading: #7a3a15;
+            --degree7-unit1-lesson12-ecrit-accent: #d2691e;
+            --degree7-unit1-lesson12-ecrit-accent-hover: #a9500f;
+            --degree7-unit1-lesson12-ecrit-soft: #e89a5c;
+            --degree7-unit1-lesson12-ecrit-light: #f8e2cd;
+            --degree7-unit1-lesson12-ecrit-border: #e8d2b8;
+            --degree7-unit1-lesson12-ecrit-shadow: 0 1px 3px rgba(210,105,30,0.06), 0 6px 18px rgba(210,105,30,0.05);
+            --degree7-unit1-lesson12-ecrit-radius: 14px;
+            --degree7-unit1-lesson12-ecrit-radius-sm: 8px;
+            --degree7-unit1-lesson12-ecrit-transition: 0.25s ease;
+            --degree7-unit1-lesson12-ecrit-font: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
+            --degree7-unit1-lesson12-ecrit-audio-bg: #f8e2cd;
+            --degree7-unit1-lesson12-ecrit-audio-progress: #dcb890;
+            --degree7-unit1-lesson12-ecrit-button-bg: #f3d9c1;
+            --degree7-unit1-lesson12-ecrit-button-hover: #e8c1a0;
+            --degree7-unit1-lesson12-ecrit-input-bg: #fdf5ec;
+        }
+        body.dark {
+            --degree7-unit1-lesson12-ecrit-bg: #1e1510;
+            --degree7-unit1-lesson12-ecrit-card: #2a1e16;
+            --degree7-unit1-lesson12-ecrit-text: #ede0d3;
+            --degree7-unit1-lesson12-ecrit-text-light: #c0a68b;
+            --degree7-unit1-lesson12-ecrit-heading: #f0c9a5;
+            --degree7-unit1-lesson12-ecrit-accent: #e89a5c;
+            --degree7-unit1-lesson12-ecrit-accent-hover: #f0b07c;
+            --degree7-unit1-lesson12-ecrit-soft: #d9773a;
+            --degree7-unit1-lesson12-ecrit-light: #3a281c;
+            --degree7-unit1-lesson12-ecrit-border: #4a3222;
+            --degree7-unit1-lesson12-ecrit-shadow: 0 1px 4px rgba(0,0,0,0.35);
+            --degree7-unit1-lesson12-ecrit-audio-bg: #35231a;
+            --degree7-unit1-lesson12-ecrit-audio-progress: #5c4430;
+            --degree7-unit1-lesson12-ecrit-button-bg: #402c1e;
+            --degree7-unit1-lesson12-ecrit-button-hover: #523a28;
+            --degree7-unit1-lesson12-ecrit-input-bg: #35231a;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            font-family: var(--degree7-unit1-lesson12-ecrit-font);
+            background: var(--degree7-unit1-lesson12-ecrit-bg);
+            background-image:
+                radial-gradient(circle at 15% 15%, rgba(210,105,30,0.04) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(210,105,30,0.03) 0%, transparent 40%);
+            color: var(--degree7-unit1-lesson12-ecrit-text);
+            line-height: 1.8;
+            transition: background var(--degree7-unit1-lesson12-ecrit-transition), color var(--degree7-unit1-lesson12-ecrit-transition);
+        }
+
+        .back-nav {
+            background: var(--degree7-unit1-lesson12-ecrit-card);
+            border-bottom: 1px solid var(--degree7-unit1-lesson12-ecrit-border);
+            padding: 0.5rem 1.5rem;
+        }
+        .back-nav a {
+            font-weight: 600;
+            color: var(--degree7-unit1-lesson12-ecrit-accent);
+            text-decoration: none;
+        }
+        .back-nav a:hover { text-decoration: underline; }
+
+        .degree7-unit1-lesson12-ecrit-container { max-width:1060px; margin:0 auto; padding:1.8rem 1.4rem 3rem; }
+
+        .degree7-unit1-lesson12-ecrit-lesson-header { text-align: center; margin-bottom: 2rem; }
+        .degree7-unit1-lesson12-ecrit-badge {
+            display:inline-block;
+            background: var(--degree7-unit1-lesson12-ecrit-accent);
+            color: #fff;
+            padding: 0.3rem 1.1rem;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        .degree7-unit1-lesson12-ecrit-lesson-header h1 {
+            font-size: 2.1rem;
+            color: var(--degree7-unit1-lesson12-ecrit-heading);
+            margin: 0.7rem 0 0.4rem;
+            line-height: 1.25;
+            font-weight: 700;
+        }
+        .degree7-unit1-lesson12-ecrit-lesson-header .degree7-unit1-lesson12-ecrit-meta {
+            font-size: 0.9rem;
+            color: var(--degree7-unit1-lesson12-ecrit-text-light);
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .degree7-unit1-lesson12-ecrit-audio-player {
+            background: var(--degree7-unit1-lesson12-ecrit-card);
+            border: 1px solid var(--degree7-unit1-lesson12-ecrit-border);
+            border-radius: var(--degree7-unit1-lesson12-ecrit-radius);
+            padding: 1rem 1.4rem;
+            margin: 1.5rem 0 2rem;
+            box-shadow: var(--degree7-unit1-lesson12-ecrit-shadow);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .degree7-unit1-lesson12-ecrit-play-btn {
+            width: 46px; height: 46px; border-radius: 50%;
+            background: var(--degree7-unit1-lesson12-ecrit-accent);
+            color: #fff; border: none; font-size: 1.2rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background var(--degree7-unit1-lesson12-ecrit-transition);
+            flex-shrink: 0;
+        }
+        .degree7-unit1-lesson12-ecrit-play-btn:hover { background: var(--degree7-unit1-lesson12-ecrit-accent-hover); }
+        .degree7-unit1-lesson12-ecrit-progress-area { flex:1; min-width:120px; display:flex; flex-direction:column; gap:0.3rem; }
+        .degree7-unit1-lesson12-ecrit-progress-bar {
+            width:100%; height:6px; background: var(--degree7-unit1-lesson12-ecrit-audio-progress);
+            border-radius: 3px; cursor:pointer; position:relative; overflow:hidden;
+        }
+        .degree7-unit1-lesson12-ecrit-progress-fill {
+            height:100%; background: var(--degree7-unit1-lesson12-ecrit-accent);
+            border-radius: 3px; width: 0%; transition: width 0.1s linear;
+        }
+        .degree7-unit1-lesson12-ecrit-time-info {
+            display:flex; justify-content:space-between; font-size:0.75rem;
+            color: var(--degree7-unit1-lesson12-ecrit-text-light);
+        }
+        .degree7-unit1-lesson12-ecrit-speed-selector { display:flex; gap:0.3rem; flex-wrap:wrap; }
+        .degree7-unit1-lesson12-ecrit-speed-btn {
+            border:1px solid var(--degree7-unit1-lesson12-ecrit-border);
+            background: var(--degree7-unit1-lesson12-ecrit-button-bg);
+            color: var(--degree7-unit1-lesson12-ecrit-text);
+            padding:0.3rem 0.6rem; border-radius: 4px;
+            font-size:0.75rem; font-weight:600; cursor:pointer;
+            transition: all var(--degree7-unit1-lesson12-ecrit-transition);
+        }
+        .degree7-unit1-lesson12-ecrit-speed-btn.active {
+            background: var(--degree7-unit1-lesson12-ecrit-accent);
+            color: #fff; border-color: var(--degree7-unit1-lesson12-ecrit-accent);
+        }
+        .degree7-unit1-lesson12-ecrit-audio-label {
+            font-weight:700; font-size:0.9rem;
+            color: var(--degree7-unit1-lesson12-ecrit-heading);
+            white-space:nowrap;
+        }
+        @media (max-width:600px) {
+            .degree7-unit1-lesson12-ecrit-audio-player { flex-direction: column; align-items: stretch; }
+            .degree7-unit1-lesson12-ecrit-audio-label { text-align: center; }
+        }
+
+        .degree7-unit1-lesson12-ecrit-text-card {
+            background: var(--degree7-unit1-lesson12-ecrit-card);
+            border: 1px solid var(--degree7-unit1-lesson12-ecrit-border);
+            border-left: 5px solid var(--degree7-unit1-lesson12-ecrit-accent);
+            border-radius: 0 var(--degree7-unit1-lesson12-ecrit-radius) var(--degree7-unit1-lesson12-ecrit-radius) 0;
+            padding: 1.5rem 1.8rem;
+            margin: 1.8rem 0;
+            font-size: 1.02rem;
+            line-height: 1.9;
+            box-shadow: var(--degree7-unit1-lesson12-ecrit-shadow);
+            position: relative;
+        }
+        .degree7-unit1-lesson12-ecrit-text-card .degree7-unit1-lesson12-ecrit-quote-mark {
+            position: absolute; top:-15px; left:14px; font-size:3.5rem;
+            color: var(--degree7-unit1-lesson12-ecrit-accent); opacity:0.3; line-height:1;
+            font-family: 'Georgia', serif;
+        }
+        .degree7-unit1-lesson12-ecrit-text-card p { margin-bottom: 0.8rem; }
+
+        .degree7-unit1-lesson12-ecrit-situation {
+            background: var(--degree7-unit1-lesson12-ecrit-light);
+            border-left: 4px solid var(--degree7-unit1-lesson12-ecrit-accent);
+            border-radius: 0 var(--degree7-unit1-lesson12-ecrit-radius-sm) var(--degree7-unit1-lesson12-ecrit-radius-sm) 0;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .degree7-unit1-lesson12-ecrit-situation h3 {
+            color: var(--degree7-unit1-lesson12-ecrit-accent);
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+        }
+        .degree7-unit1-lesson12-ecrit-situation p { margin: 0.4rem 0; font-size: 0.95rem; }
+        .degree7-unit1-lesson12-ecrit-situation .consigne-line {
+            margin-top: 0.6rem;
+            font-weight: 600;
+            color: var(--degree7-unit1-lesson12-ecrit-heading);
+            font-style: italic;
+        }
+
+        .degree7-unit1-lesson12-ecrit-section h2 {
+            font-size: 1.5rem;
+            color: var(--degree7-unit1-lesson12-ecrit-heading);
+            margin: 2.4rem 0 1rem;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+            position: relative;
+        }
+        .degree7-unit1-lesson12-ecrit-section h2::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 40%; bottom: 0; height: 3px;
+            background: var(--degree7-unit1-lesson12-ecrit-accent);
+            border-radius: 2px;
+        }
+
+        .degree7-unit1-lesson12-ecrit-valeurs-section {
+            background: var(--degree7-unit1-lesson12-ecrit-card);
+            border: 1px solid var(--degree7-unit1-lesson12-ecrit-border);
+            border-radius: var(--degree7-unit1-lesson12-ecrit-radius);
+            padding: 1.6rem 1.8rem;
+            margin: 2rem 0;
+            box-shadow: var(--degree7-unit1-lesson12-ecrit-shadow);
+        }
+        .degree7-unit1-lesson12-ecrit-valeurs-section h2 {
+            font-size: 1.5rem;
+            color: var(--degree7-unit1-lesson12-ecrit-heading);
+            margin-bottom: 1rem;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+            border-bottom: 3px solid var(--degree7-unit1-lesson12-ecrit-accent);
+        }
+        .degree7-unit1-lesson12-ecrit-valeur-card {
+            background: var(--degree7-unit1-lesson12-ecrit-light);
+            border-radius: var(--degree7-unit1-lesson12-ecrit-radius-sm);
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .degree7-unit1-lesson12-ecrit-valeur-card h3 {
+            color: var(--degree7-unit1-lesson12-ecrit-accent);
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+        .degree7-unit1-lesson12-ecrit-valeur-card p { margin: 0.4rem 0; color: var(--degree7-unit1-lesson12-ecrit-text); }
+        .degree7-unit1-lesson12-ecrit-valeur-card ul { list-style: none; padding: 0; }
+        .degree7-unit1-lesson12-ecrit-valeur-card li {
+            padding: 0.3rem 0 0.3rem 1.4rem;
+            position: relative;
+            color: var(--degree7-unit1-lesson12-ecrit-text);
+        }
+        .degree7-unit1-lesson12-ecrit-valeur-card li::before {
+            content: '◆';
+            position: absolute; left: 0;
+            color: var(--degree7-unit1-lesson12-ecrit-accent);
+            font-size: 0.55rem; top: 0.6rem;
+        }
+
+        .degree7-unit1-lesson12-ecrit-checklist-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        .degree7-unit1-lesson12-ecrit-checklist-table th,
+        .degree7-unit1-lesson12-ecrit-checklist-table td {
+            padding: 0.7rem 0.9rem;
+            border: 1px solid var(--degree7-unit1-lesson12-ecrit-border);
+            text-align: left;
+            font-size: 0.92rem;
+            vertical-align: top;
+        }
+        .degree7-unit1-lesson12-ecrit-checklist-table th {
+            background: var(--degree7-unit1-lesson12-ecrit-accent);
+            color: #fff;
+            font-weight: 700;
+        }
+        .degree7-unit1-lesson12-ecrit-checklist-table tr:nth-child(even) td {
+            background: var(--degree7-unit1-lesson12-ecrit-light);
+        }
+
+        .degree7-unit1-lesson12-ecrit-note {
+            background: linear-gradient(135deg, rgba(210,105,30,0.06), rgba(210,105,30,0.02));
+            border: 1px dashed var(--degree7-unit1-lesson12-ecrit-accent);
+            border-radius: var(--degree7-unit1-lesson12-ecrit-radius-sm);
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+            color: var(--degree7-unit1-lesson12-ecrit-text);
+        }
+        .degree7-unit1-lesson12-ecrit-note strong { color: var(--degree7-unit1-lesson12-ecrit-accent); }
+
+        .degree7-unit1-lesson12-ecrit-exercises-section {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start;
+        }
+        .degree7-unit1-lesson12-ecrit-exercises-section h2 {
+            grid-column: 1 / -1;
+            font-size: 1.5rem;
+            color: var(--degree7-unit1-lesson12-ecrit-heading);
+            margin: 2rem 0 1rem;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+            border-bottom: 3px solid var(--degree7-unit1-lesson12-ecrit-accent);
+        }
+        .degree7-unit1-lesson12-ecrit-exercise-card {
+            background: var(--degree7-unit1-lesson12-ecrit-card);
+            border: 1px solid var(--degree7-unit1-lesson12-ecrit-border);
+            border-radius: var(--degree7-unit1-lesson12-ecrit-radius-sm);
+            padding: 1.2rem 1.4rem;
+            margin-bottom: 0;
+            box-shadow: var(--degree7-unit1-lesson12-ecrit-shadow);
+        }
+        .degree7-unit1-lesson12-ecrit-exercise-col-left { grid-column: 1 / 2; }
+        .degree7-unit1-lesson12-ecrit-exercise-col-right { grid-column: 2 / 3; }
+        .degree7-unit1-lesson12-ecrit-exercise-card h3 {
+            font-size: 1.05rem;
+            color: var(--degree7-unit1-lesson12-ecrit-accent);
+            margin-bottom: 0.8rem;
+            display: flex; align-items: center; gap: 0.4rem;
+        }
+        .degree7-unit1-lesson12-ecrit-exercise-card table {
+            width: 100%; border-collapse: collapse; margin: 0.8rem 0;
+        }
+        .degree7-unit1-lesson12-ecrit-exercise-card th,
+        .degree7-unit1-lesson12-ecrit-exercise-card td {
+            padding: 0.55rem 0.7rem;
+            border: 1px solid var(--degree7-unit1-lesson12-ecrit-border);
+            text-align: left; font-size: 0.9rem;
+        }
+        .degree7-unit1-lesson12-ecrit-exercise-card th {
+            background: var(--degree7-unit1-lesson12-ecrit-light);
+            font-weight: 700;
+            color: var(--degree7-unit1-lesson12-ecrit-heading);
+        }
+        .degree7-unit1-lesson12-ecrit-exercise-card input[type="text"],
+        .degree7-unit1-lesson12-ecrit-exercise-card textarea {
+            width: 100%; padding: 0.4rem 0.6rem;
+            border: 1px solid var(--degree7-unit1-lesson12-ecrit-border);
+            border-radius: 4px;
+            background: var(--degree7-unit1-lesson12-ecrit-input-bg);
+            color: var(--degree7-unit1-lesson12-ecrit-text);
+            font-family: inherit; font-size: 0.9rem;
+        }
+        .degree7-unit1-lesson12-ecrit-exercise-card textarea { resize: vertical; }
+        .degree7-unit1-lesson12-ecrit-exercise-card input:focus,
+        .degree7-unit1-lesson12-ecrit-exercise-card textarea:focus {
+            outline: none;
+            border-color: var(--degree7-unit1-lesson12-ecrit-accent);
+        }
+        .degree7-unit1-lesson12-ecrit-inline-input {
+            width: 130px !important;
+            padding: 0.25rem 0.5rem !important;
+            display: inline-block;
+            margin: 0 0.2rem;
+        }
+        .degree7-unit1-lesson12-ecrit-btn-verify {
+            background: var(--degree7-unit1-lesson12-ecrit-accent);
+            color: #fff; border: none; padding: 0.5rem 1.2rem;
+            border-radius: 20px; font-weight: 600; cursor: pointer;
+            transition: background var(--degree7-unit1-lesson12-ecrit-transition);
+            margin-top: 0.6rem; font-size: 0.85rem;
+        }
+        .degree7-unit1-lesson12-ecrit-btn-verify:hover { background: var(--degree7-unit1-lesson12-ecrit-accent-hover); }
+        .degree7-unit1-lesson12-ecrit-answer-key {
+            display: none; margin-top: 0.8rem; padding: 0.8rem;
+            background: var(--degree7-unit1-lesson12-ecrit-light);
+            border-radius: 6px; font-size: 0.85rem;
+            color: var(--degree7-unit1-lesson12-ecrit-text);
+            border: 1px dashed var(--degree7-unit1-lesson12-ecrit-accent);
+        }
+        .degree7-unit1-lesson12-ecrit-answer-key.visible { display: block; }
+
+        .degree7-unit1-lesson12-ecrit-self-assessment {
+            margin-top: 0.8rem; font-size: 0.9rem;
+            display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
+        }
+        .degree7-unit1-lesson12-ecrit-self-assessment label { cursor: pointer; }
+
+        .degree7-unit1-lesson12-ecrit-score-area {
+            background: var(--degree7-unit1-lesson12-ecrit-card);
+            border: 1px solid var(--degree7-unit1-lesson12-ecrit-border);
+            border-radius: var(--degree7-unit1-lesson12-ecrit-radius);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: var(--degree7-unit1-lesson12-ecrit-shadow);
+        }
+        .degree7-unit1-lesson12-ecrit-score-area h2 {
+            color: var(--degree7-unit1-lesson12-ecrit-heading);
+            margin-bottom: 1rem;
+        }
+        .degree7-unit1-lesson12-ecrit-score-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .degree7-unit1-lesson12-ecrit-score-stat {
+            background: var(--degree7-unit1-lesson12-ecrit-light);
+            padding: 0.8rem 1.2rem; border-radius: 8px; font-weight: 600;
+        }
+
+        .degree7-unit1-lesson12-ecrit-footer-nav {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            background: var(--degree7-unit1-lesson12-ecrit-card);
+            border-top: 1px solid var(--degree7-unit1-lesson12-ecrit-border);
+            padding: 0.8rem 1.5rem;
+            border-radius: 0 0 var(--degree7-unit1-lesson12-ecrit-radius) var(--degree7-unit1-lesson12-ecrit-radius);
+        }
+        .degree7-unit1-lesson12-ecrit-footer-nav a {
+            font-weight: 600;
+            color: var(--degree7-unit1-lesson12-ecrit-accent);
+            text-decoration: none;
+        }
+        .degree7-unit1-lesson12-ecrit-footer-nav a:hover { text-decoration: underline; }
+
+        html[dir="rtl"] body { direction: rtl; }
+        html[dir="rtl"] .degree7-unit1-lesson12-ecrit-container { text-align: right; }
+        html[dir="rtl"] .degree7-unit1-lesson12-ecrit-exercise-card th,
+        html[dir="rtl"] .degree7-unit1-lesson12-ecrit-exercise-card td,
+        html[dir="rtl"] .degree7-unit1-lesson12-ecrit-checklist-table th,
+        html[dir="rtl"] .degree7-unit1-lesson12-ecrit-checklist-table td { text-align: right; }
+
+        @media (max-width:800px) {
+            .degree7-unit1-lesson12-ecrit-exercises-section { grid-template-columns: 1fr; }
+            .degree7-unit1-lesson12-ecrit-exercise-col-left,
+            .degree7-unit1-lesson12-ecrit-exercise-col-right { grid-column: auto; }
+        }
+        @media (max-width:600px) {
+            .degree7-unit1-lesson12-ecrit-lesson-header h1 { font-size: 1.5rem; }
+            .degree7-unit1-lesson12-ecrit-container { padding: 1rem 0.8rem 2rem; }
+            .degree7-unit1-lesson12-ecrit-text-card { padding: 1.4rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div id="toast-container"></div>
+    <button id="signInBtn" style="display:none"></button>
+
+    <nav class="back-nav no-print">
+        <a href="index.html" data-i18n="back_link">← Retour à l'accueil</a>
+    </nav>
+
+    <div id="main-content" class="degree7-unit1-lesson12-ecrit-container">
+        <!-- Breadcrumb -->
+        <p style="margin-bottom:1.5rem; color:var(--degree7-unit1-lesson12-ecrit-text-light);">
+            <a href="degree7.html" data-i18n="back_revision">Unité 1</a>
+            › <strong data-i18n="back_current">Compréhension et analyse de consignes II</strong>
+        </p>
+
+        <div class="degree7-unit1-lesson12-ecrit-lesson-header">
+            <span class="degree7-unit1-lesson12-ecrit-badge" data-i18n="lesson_badge">📝 Écrit · Leçon 12</span>
+            <h1 data-i18n="lesson_title">Compréhension et analyse<br>de consignes II</h1>
+            <div class="degree7-unit1-lesson12-ecrit-meta">
+                <span data-i18n="lesson_duration">⏱️ 45 minutes</span>
+                <span data-i18n="lesson_meta_audio">🎧 Écoutez les situations puis faites les exercices</span>
+            </div>
+        </div>
+
+        <!-- Audio player -->
+        <div class="degree7-unit1-lesson12-ecrit-audio-player" id="audioPlayer">
+            <span class="degree7-unit1-lesson12-ecrit-audio-label" data-i18n="audio_label">🎧 Écoute des situations</span>
+            <button class="degree7-unit1-lesson12-ecrit-play-btn" id="playBtn" aria-label="Lecture">▶</button>
+            <div class="degree7-unit1-lesson12-ecrit-progress-area">
+                <div class="degree7-unit1-lesson12-ecrit-progress-bar" id="progressBar">
+                    <div class="degree7-unit1-lesson12-ecrit-progress-fill" id="progressFill"></div>
+                </div>
+                <div class="degree7-unit1-lesson12-ecrit-time-info">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+            <div class="degree7-unit1-lesson12-ecrit-speed-selector" id="speedSelector">
+                <button class="degree7-unit1-lesson12-ecrit-speed-btn" data-speed="0.75">0.75x</button>
+                <button class="degree7-unit1-lesson12-ecrit-speed-btn active" data-speed="1">1x</button>
+                <button class="degree7-unit1-lesson12-ecrit-speed-btn" data-speed="1.25">1.25x</button>
+                <button class="degree7-unit1-lesson12-ecrit-speed-btn" data-speed="1.5">1.5x</button>
+            </div>
+        </div>
+
+        <!-- Observation: 2 situations -->
+        <section class="degree7-unit1-lesson12-ecrit-section">
+            <h2 data-i18n="text_heading">📖 J'observe et je comprends</h2>
+
+            <div class="degree7-unit1-lesson12-ecrit-valeurs-section">
+                <div class="degree7-unit1-lesson12-ecrit-situation">
+                    <h3 data-i18n="sit1_title">Situation 1 – Le concours du meilleur récit</h3>
+                    <p data-i18n="sit1_text">Ton collège organise pour les classes de septième année le concours du meilleur récit. Il s'agit de savoir qui est capable d'écrire le mieux, c'est-à-dire de faire preuve d'imagination, de maîtrise de la langue et d'originalité. Chaque classe lance un défi aux autres. La tienne trouve une astuce : donner le début d'un récit auquel les autres doivent imaginer une suite.</p>
+                    <p data-i18n="sit1_debuts">Deux débuts de récits sont proposés :</p>
+                    <p style="font-style:italic;" data-i18n="sit1_extrait1">➤ « Depuis que nous avons rejoint ces montagnes, il s'est passé beaucoup de choses. Nous avons changé plusieurs fois de tanière, au gré de nos besoins en nourriture. Quatre petits nous sont nés, deux garçons, deux filles. C'est la fin de l'automne, une mauvaise saison pour naître… » — Christian de Montella</p>
+                    <p style="font-style:italic;" data-i18n="sit1_extrait2">➤ « Depuis bien des années, nous habitons là, dans cette ferme, mes quatre fils et moi. Leur père mort, leur sœur mariée, ils se sont serrés tous les quatre autour de moi. Mais voilà qu'aujourd'hui l'un d'eux vient me voir… » — D'après Alphonse Daudet</p>
+                    <p class="consigne-line" data-i18n="sit1_consigne">Choisis l'un de ces deux débuts de récits et écris la consigne qui précise la tâche demandée (imaginer la suite du récit).</p>
+                </div>
+
+                <div class="degree7-unit1-lesson12-ecrit-situation">
+                    <h3 data-i18n="sit2_title">Situation 2 – Le concours d'écriture</h3>
+                    <p data-i18n="sit2_text">Sur le tableau d'affichage de ton école, tu lis l'annonce suivante :</p>
+                    <div style="background:#fff; border:1px dashed var(--degree7-unit1-lesson12-ecrit-accent); border-radius:8px; padding:1rem; margin:0.6rem 0; font-style:normal;">
+                        <p style="text-align:center; font-weight:700; color:var(--degree7-unit1-lesson12-ecrit-heading);" data-i18n="annonce_titre">Septembre 2007 — Concours d'écriture</p>
+                        <p data-i18n="annonce_theme"><strong>Thème :</strong> en famille</p>
+                        <p data-i18n="annonce_public"><strong>Ouvert aux jeunes de 12 à 15 ans</strong></p>
+                        <p data-i18n="annonce_texte">Les textes (poèmes, contes, nouvelles) doivent être écrits en français et ne doivent pas dépasser une page.</p>
+                        <p data-i18n="annonce_cloture"><strong>Clôture :</strong> …</p>
+                        <p data-i18n="annonce_comite">Comité de lecture coordonné par M… et Mme…</p>
+                        <p data-i18n="annonce_prix">Nombreux prix (lecteurs DVD, ordinateurs, dictionnaires…)</p>
+                        <p data-i18n="annonce_publication">Les meilleurs textes feront l'objet d'une publication.</p>
+                        <p style="text-align:right; font-style:italic;" data-i18n="annonce_signature">Les organisateurs</p>
+                    </div>
+                    <p class="consigne-line" data-i18n="sit2_consigne">Tu décides de participer à ce concours. Analyse l'annonce et prépare ta participation.</p>
+                </div>
+            </div>
+
+            <div class="degree7-unit1-lesson12-ecrit-note">
+                <strong data-i18n="comp_heading">🔎 Je comprends la situation :</strong>
+                <ul style="padding-left:1.4rem; margin-top:0.4rem;">
+                    <li data-i18n="comp_q1">Quelle est la tâche demandée dans la situation 1 ?</li>
+                    <li data-i18n="comp_q2">Quels sont les éléments essentiels de l'annonce dans la situation 2 ?</li>
+                    <li data-i18n="comp_q3">Quel est le point commun entre les deux situations ?</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Rules: method -->
+        <section class="degree7-unit1-lesson12-ecrit-section">
+            <h2 data-i18n="rules_heading">📖 La méthode : rédiger une consigne et participer à un concours</h2>
+
+            <div class="degree7-unit1-lesson12-ecrit-valeurs-section">
+                <p data-i18n="rules_intro" style="margin-bottom:1rem;">Après avoir appris à <strong>analyser une consigne</strong> (leçon 11), il s'agit maintenant d'apprendre à <strong>rédiger une consigne</strong> et à <strong>participer à un concours d'écriture</strong>.</p>
+
+                <div class="degree7-unit1-lesson12-ecrit-valeur-card">
+                    <h3 data-i18n="rule1_title">🔹 1. Rédiger une consigne claire</h3>
+                    <p data-i18n="rule1_intro">Une bonne consigne doit contenir :</p>
+                    <ul data-i18n="rule1_list">
+                        <li>Le <strong>verbe d'action</strong> (imaginer, écrire, décrire, raconter, poursuivre…).</li>
+                        <li>Le <strong>type d'écrit</strong> attendu (récit, lettre, dialogue, description…).</li>
+                        <li>Les <strong>contraintes</strong> de temps, de personne, de longueur.</li>
+                        <li>Les <strong>critères de réussite</strong> (imagination, originalité, maîtrise de la langue…).</li>
+                    </ul>
+                </div>
+
+                <div class="degree7-unit1-lesson12-ecrit-valeur-card">
+                    <h3 data-i18n="rule2_title">🔹 2. Analyser une annonce de concours</h3>
+                    <ul data-i18n="rule2_list">
+                        <li><strong>Thème :</strong> le sujet imposé (en famille, l'amitié, la nature…).</li>
+                        <li><strong>Public :</strong> à qui le concours est ouvert (âge, classe).</li>
+                        <li><strong>Type de texte :</strong> poème, conte, nouvelle…</li>
+                        <li><strong>Contraintes :</strong> langue (français), longueur (une page max).</li>
+                        <li><strong>Date de clôture :</strong> la date limite d'envoi.</li>
+                        <li><strong>Prix :</strong> les récompenses prévues.</li>
+                    </ul>
+                </div>
+
+                <div class="degree7-unit1-lesson12-ecrit-valeur-card">
+                    <h3 data-i18n="rule3_title">🔹 3. La démarche de production</h3>
+                    <ul data-i18n="rule3_list">
+                        <li><strong>Je comprends la situation :</strong> je repère le support, le contexte, la consigne.</li>
+                        <li><strong>Je recherche des idées :</strong> circonstances, situation, sentiments, détails.</li>
+                        <li><strong>Je mets de l'ordre dans mes idées :</strong> plan, chronologie, étapes.</li>
+                        <li><strong>Je rédige :</strong> je respecte les contraintes (temps, personne, longueur).</li>
+                        <li><strong>Je relis, je corrige les erreurs, je réécris.</strong></li>
+                    </ul>
+                </div>
+
+                <div class="degree7-unit1-lesson12-ecrit-valeur-card">
+                    <h3 data-i18n="rule4_title">🔹 4. La grille d'auto-évaluation</h3>
+                    <table class="degree7-unit1-lesson12-ecrit-checklist-table">
+                        <thead>
+                            <tr>
+                                <th data-i18n="grille_col_q" class="no-bilingual">Question</th>
+                                <th data-i18n="grille_col_oui" class="no-bilingual">Oui</th>
+                                <th data-i18n="grille_col_plutot_oui" class="no-bilingual">Plutôt oui</th>
+                                <th data-i18n="grille_col_plutot_non" class="no-bilingual">Plutôt non</th>
+                                <th data-i18n="grille_col_non" class="no-bilingual">Non</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td data-i18n="grille_r1">J'ai une idée claire sur les situations d'écrit.</td><td><input type="radio" name="grille1" value="oui"></td><td><input type="radio" name="grille1" value="plutot_oui"></td><td><input type="radio" name="grille1" value="plutot_non"></td><td><input type="radio" name="grille1" value="non"></td></tr>
+                            <tr><td data-i18n="grille_r2">Je comprends ce qu'est une consigne.</td><td><input type="radio" name="grille2" value="oui"></td><td><input type="radio" name="grille2" value="plutot_oui"></td><td><input type="radio" name="grille2" value="plutot_non"></td><td><input type="radio" name="grille2" value="non"></td></tr>
+                            <tr><td data-i18n="grille_r3">Je peux donner des consignes d'écriture.</td><td><input type="radio" name="grille3" value="oui"></td><td><input type="radio" name="grille3" value="plutot_oui"></td><td><input type="radio" name="grille3" value="plutot_non"></td><td><input type="radio" name="grille3" value="non"></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercises -->
+        <div class="degree7-unit1-lesson12-ecrit-exercises-section">
+            <h2 data-i18n="exercises_heading">✍️ Je m'exerce</h2>
+
+            <!-- Ex 1 -->
+            <div class="degree7-unit1-lesson12-ecrit-exercise-card degree7-unit1-lesson12-ecrit-exercise-col-left">
+                <h3 data-i18n="exo1_title">📌 1. Identifier les éléments des deux situations</h3>
+                <p data-i18n="exo1_instruction">Complète le tableau en indiquant le support et la tâche demandée pour chaque situation.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="t_situation" class="no-bilingual">Situation</th>
+                            <th data-i18n="t_support" class="no-bilingual">Support</th>
+                            <th data-i18n="t_tache" class="no-bilingual">Tâche demandée</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Situation 1</td><td><input type="text" placeholder="..."></td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>Situation 2</td><td><input type="text" placeholder="..."></td><td><input type="text" placeholder="..."></td></tr>
+                    </tbody>
+                </table>
+                <button class="degree7-unit1-lesson12-ecrit-btn-verify" onclick="toggleCorrection('exo1Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo1Key" class="degree7-unit1-lesson12-ecrit-answer-key"></div>
+                <div class="degree7-unit1-lesson12-ecrit-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 2 -->
+            <div class="degree7-unit1-lesson12-ecrit-exercise-card degree7-unit1-lesson12-ecrit-exercise-col-right">
+                <h3 data-i18n="exo2_title">📌 2. Les critères d'une bonne consigne</h3>
+                <p data-i18n="exo2_instruction">Coche les éléments qui doivent obligatoirement figurer dans une consigne d'écriture.</p>
+                <div style="display:flex; flex-direction:column; gap:0.3rem; margin:0.5rem 0;">
+                    <label><input type="checkbox" name="c_a"> <span data-i18n="exo2_a">Le verbe d'action (imaginer, écrire, raconter…)</span></label>
+                    <label><input type="checkbox" name="c_b"> <span data-i18n="exo2_b">Le type d'écrit attendu (récit, lettre…)</span></label>
+                    <label><input type="checkbox" name="c_c"> <span data-i18n="exo2_c">La couleur du stylo à utiliser</span></label>
+                    <label><input type="checkbox" name="c_d"> <span data-i18n="exo2_d">Les contraintes (temps, personne, longueur)</span></label>
+                    <label><input type="checkbox" name="c_e"> <span data-i18n="exo2_e">Le nom du professeur</span></label>
+                    <label><input type="checkbox" name="c_f"> <span data-i18n="exo2_f">Les critères de réussite (imagination, originalité…)</span></label>
+                </div>
+                <button class="degree7-unit1-lesson12-ecrit-btn-verify" onclick="toggleCorrection('exo2Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo2Key" class="degree7-unit1-lesson12-ecrit-answer-key"></div>
+                <div class="degree7-unit1-lesson12-ecrit-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 3 -->
+            <div class="degree7-unit1-lesson12-ecrit-exercise-card degree7-unit1-lesson12-ecrit-exercise-col-left">
+                <h3 data-i18n="exo3_title">📌 3. Analyser l'annonce du concours</h3>
+                <p data-i18n="exo3_instruction">Réponds aux questions portant sur la situation 2 (l'annonce du concours).</p>
+                <ol type="a">
+                    <li><span data-i18n="exo3_q1">Quel est le thème du concours ?</span> <input type="text" placeholder="..."></li>
+                    <li><span data-i18n="exo3_q2">À qui le concours est-il ouvert ?</span> <input type="text" placeholder="..."></li>
+                    <li><span data-i18n="exo3_q3">Quels types de textes sont acceptés ?</span> <input type="text" placeholder="..."></li>
+                    <li><span data-i18n="exo3_q4">Quelles sont les contraintes de langue et de longueur ?</span> <input type="text" placeholder="..."></li>
+                    <li><span data-i18n="exo3_q5">Quels sont les prix annoncés ?</span> <input type="text" placeholder="..."></li>
+                </ol>
+                <button class="degree7-unit1-lesson12-ecrit-btn-verify" onclick="toggleCorrection('exo3Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo3Key" class="degree7-unit1-lesson12-ecrit-answer-key"></div>
+                <div class="degree7-unit1-lesson12-ecrit-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 4 -->
+            <div class="degree7-unit1-lesson12-ecrit-exercise-card degree7-unit1-lesson12-ecrit-exercise-col-right">
+                <h3 data-i18n="exo4_title">📌 4. Vrai ou faux ?</h3>
+                <p data-i18n="exo4_instruction">Indique si chaque affirmation est vraie (V) ou fausse (F).</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="t_statement" class="no-bilingual">Affirmation</th>
+                            <th data-i18n="t_vf" class="no-bilingual">V / F</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td data-i18n="exo4_q1">Une consigne doit toujours commencer par un verbe d'action.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo4_q2">Dans un concours, le thème est libre.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo4_q3">Les contraintes de longueur et de langue font partie des règles du concours.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo4_q4">La démarche de production commence par la rédaction.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo4_q5">La relecture et la correction font partie de la démarche d'écriture.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                    </tbody>
+                </table>
+                <button class="degree7-unit1-lesson12-ecrit-btn-verify" onclick="toggleCorrection('exo4Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo4Key" class="degree7-unit1-lesson12-ecrit-answer-key"></div>
+                <div class="degree7-unit1-lesson12-ecrit-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 5 -->
+            <div class="degree7-unit1-lesson12-ecrit-exercise-card degree7-unit1-lesson12-ecrit-exercise-col-left">
+                <h3 data-i18n="exo5_title">📌 5. Rédiger la consigne de la situation 1</h3>
+                <p data-i18n="exo5_instruction">À partir du premier début de récit (Christian de Montella), rédige la consigne qui précise la tâche demandée. Ta consigne doit contenir un verbe d'action, le type d'écrit, une contrainte de temps et de personne.</p>
+                <textarea rows="4" placeholder="Votre consigne..."></textarea>
+                <button class="degree7-unit1-lesson12-ecrit-btn-verify" onclick="showExample('exo5Example')" data-i18n="show_example">💡 Voir un exemple</button>
+                <div id="exo5Example" class="degree7-unit1-lesson12-ecrit-answer-key"></div>
+                <div class="degree7-unit1-lesson12-ecrit-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex5" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex5" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex5" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 6 -->
+            <div class="degree7-unit1-lesson12-ecrit-exercise-card degree7-unit1-lesson12-ecrit-exercise-col-right">
+                <h3 data-i18n="exo6_title">📌 6. Compléter la consigne</h3>
+                <p data-i18n="exo6_instruction">Complète chaque consigne avec le verbe d'action qui convient : <em>imagine, écris, raconte, décris, poursuis</em>.</p>
+                <ol type="a">
+                    <li>... la suite du récit en respectant le temps et la personne. <input type="text" class="degree7-unit1-lesson12-ecrit-inline-input" placeholder="..."></li>
+                    <li>... la première nuit de solitude du chien abandonné. <input type="text" class="degree7-unit1-lesson12-ecrit-inline-input" placeholder="..."></li>
+                    <li>... la journée passée chez tes grands-parents dans une lettre. <input type="text" class="degree7-unit1-lesson12-ecrit-inline-input" placeholder="..."></li>
+                    <li>... le personnage principal de ton récit. <input type="text" class="degree7-unit1-lesson12-ecrit-inline-input" placeholder="..."></li>
+                </ol>
+                <button class="degree7-unit1-lesson12-ecrit-btn-verify" onclick="toggleCorrection('exo6Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo6Key" class="degree7-unit1-lesson12-ecrit-answer-key"></div>
+                <div class="degree7-unit1-lesson12-ecrit-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex6" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex6" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex6" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 7 -->
+            <div class="degree7-unit1-lesson12-ecrit-exercise-card degree7-unit1-lesson12-ecrit-exercise-col-left">
+                <h3 data-i18n="exo7_title">📌 7. Analyser la situation de production</h3>
+                <p data-i18n="exo7_instruction">Lis le sujet de production suivant et réponds aux questions.</p>
+                <div style="background:#fff; border:1px dashed var(--degree7-unit1-lesson12-ecrit-accent); border-radius:8px; padding:0.9rem; margin:0.6rem 0;">
+                    <p data-i18n="prod_sujet"><strong>Sujet :</strong> Certaines familles partent en vacances et abandonnent des animaux (chiens et chats notamment) sans penser au mal qu'elles font à ces pauvres bêtes. Un chien abandonné fait le récit de sa première nuit de solitude à un autre animal abandonné comme lui.</p>
+                    <p style="font-style:italic; font-weight:600;" data-i18n="prod_consigne">Imagine et écris ce qu'il dit.</p>
+                </div>
+                <ol type="a">
+                    <li><span data-i18n="exo7_q1">Qui parle dans ce récit ?</span> <input type="text" placeholder="..."></li>
+                    <li><span data-i18n="exo7_q2">À qui parle-t-il ?</span> <input type="text" placeholder="..."></li>
+                    <li><span data-i18n="exo7_q3">Quel événement raconte-t-il ?</span> <input type="text" placeholder="..."></li>
+                    <li><span data-i18n="exo7_q4">Quelle est la consigne ?</span> <input type="text" placeholder="..."></li>
+                </ol>
+                <button class="degree7-unit1-lesson12-ecrit-btn-verify" onclick="toggleCorrection('exo7Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo7Key" class="degree7-unit1-lesson12-ecrit-answer-key"></div>
+                <div class="degree7-unit1-lesson12-ecrit-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex7" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex7" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex7" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 8 -->
+            <div class="degree7-unit1-lesson12-ecrit-exercise-card degree7-unit1-lesson12-ecrit-exercise-col-right">
+                <h3 data-i18n="exo8_title">📌 8. Classer les éléments de l'annonce</h3>
+                <p data-i18n="exo8_instruction">Classe chaque élément dans la bonne catégorie : thème (T), public (P), contrainte (C) ou prix (Pr).</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="t_element" class="no-bilingual">Élément</th>
+                            <th data-i18n="t_category" class="no-bilingual">T / P / C / Pr</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>« En famille »</td><td><input type="text" placeholder="T/P/C/Pr"></td></tr>
+                        <tr><td>« Jeunes de 12 à 15 ans »</td><td><input type="text" placeholder="T/P/C/Pr"></td></tr>
+                        <tr><td>« Ne pas dépasser une page »</td><td><input type="text" placeholder="T/P/C/Pr"></td></tr>
+                        <tr><td>« Lecteurs DVD, ordinateurs, dictionnaires »</td><td><input type="text" placeholder="T/P/C/Pr"></td></tr>
+                        <tr><td>« Écrits en français »</td><td><input type="text" placeholder="T/P/C/Pr"></td></tr>
+                    </tbody>
+                </table>
+                <button class="degree7-unit1-lesson12-ecrit-btn-verify" onclick="toggleCorrection('exo8Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo8Key" class="degree7-unit1-lesson12-ecrit-answer-key"></div>
+                <div class="degree7-unit1-lesson12-ecrit-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex8" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex8" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex8" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 9 -->
+            <div class="degree7-unit1-lesson12-ecrit-exercise-card degree7-unit1-lesson12-ecrit-exercise-col-left">
+                <h3 data-i18n="exo9_title">📌 9. Compléter la grille de la démarche</h3>
+                <p data-i18n="exo9_instruction">Complète la grille avec les étapes de la démarche de production.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="t_etape" class="no-bilingual">Étape</th>
+                            <th data-i18n="t_action" class="no-bilingual">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1. Je comprends la situation</td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>2. Je recherche des idées</td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>3. Je mets de l'ordre dans ces idées</td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>4. Je rédige</td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>5. Je relis, je corrige, je réécris</td><td><input type="text" placeholder="..."></td></tr>
+                    </tbody>
+                </table>
+                <button class="degree7-unit1-lesson12-ecrit-btn-verify" onclick="toggleCorrection('exo9Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo9Key" class="degree7-unit1-lesson12-ecrit-answer-key"></div>
+                <div class="degree7-unit1-lesson12-ecrit-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex9" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex9" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex9" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+
+            <!-- Ex 10 -->
+            <div class="degree7-unit1-lesson12-ecrit-exercise-card degree7-unit1-lesson12-ecrit-exercise-col-right">
+                <h3 data-i18n="exo10_title">📌 10. Comparer une consigne et une annonce</h3>
+                <p data-i18n="exo10_instruction">Indique si chaque affirmation concerne la consigne (Co) ou l'annonce (A).</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="t_statement" class="no-bilingual">Affirmation</th>
+                            <th data-i18n="t_co_a" class="no-bilingual">Co / A</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Elle précise la tâche à réaliser.</td><td><input type="text" placeholder="Co / A"></td></tr>
+                        <tr><td>Elle indique le thème et le public visé.</td><td><input type="text" placeholder="Co / A"></td></tr>
+                        <tr><td>Elle contient un verbe d'action.</td><td><input type="text" placeholder="Co / A"></td></tr>
+                        <tr><td>Elle précise les prix et la date de clôture.</td><td><input type="text" placeholder="Co / A"></td></tr>
+                        <tr><td>Elle peut être générale ou détaillée.</td><td><input type="text" placeholder="Co / A"></td></tr>
+                    </tbody>
+                </table>
+                <button class="degree7-unit1-lesson12-ecrit-btn-verify" onclick="toggleCorrection('exo10Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo10Key" class="degree7-unit1-lesson12-ecrit-answer-key"></div>
+                <div class="degree7-unit1-lesson12-ecrit-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex10" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex10" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex10" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Production -->
+        <div style="margin-top:2rem;">
+            <div class="degree7-unit1-lesson12-ecrit-exercise-card">
+                <h3 data-i18n="exo11_title">📌 11. Production personnelle</h3>
+                <p data-i18n="exo11_instruction">Choisis l'une des deux situations : soit tu rédiges la consigne d'un début de récit (situation 1), soit tu participes au concours d'écriture en produisant un texte sur le thème « en famille » (situation 2). Ton texte doit comporter au moins 6 phrases et respecter les contraintes.</p>
+                <textarea rows="8" placeholder="Votre texte..."></textarea>
+                <div class="degree7-unit1-lesson12-ecrit-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex11" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex11" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex11" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+                <button class="degree7-unit1-lesson12-ecrit-btn-verify" onclick="showProductionExample()" data-i18n="show_example">💡 Voir un exemple de réponse</button>
+                <div id="productionExample" class="degree7-unit1-lesson12-ecrit-answer-key"></div>
+            </div>
+        </div>
+
+        <!-- Score area -->
+        <div class="degree7-unit1-lesson12-ecrit-score-area" id="scoreArea">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="degree7-unit1-lesson12-ecrit-score-stats" id="scoreStats">
+                <div class="degree7-unit1-lesson12-ecrit-score-stat"><span data-i18n="score_correct">Correctes :</span> <span id="scoreCorrect">0</span></div>
+                <div class="degree7-unit1-lesson12-ecrit-score-stat"><span data-i18n="score_incorrect">Incorrectes :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="degree7-unit1-lesson12-ecrit-score-stat"><span data-i18n="score_partial">Partielles :</span> <span id="scorePartial">0</span></div>
+                <div class="degree7-unit1-lesson12-ecrit-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">11</span></div>
+            </div>
+        </div>
+        <div class="degree7-unit1-lesson12-ecrit-score-actions" style="margin-top:1.2rem;">
+            <button id="saveResultsBtn" class="degree7-unit1-lesson12-ecrit-btn-verify" style="margin-right:0.5rem;" data-i18n="save_results">💾 Enregistrer mes résultats</button>
+            <button id="printPdfBtn" class="degree7-unit1-lesson12-ecrit-btn-verify" style="background:#a9500f; margin-right:0.5rem;" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+        </div>
+
+        <!-- Footer nav -->
+        <div class="degree7-unit1-lesson12-ecrit-footer-nav">
+            <a href="degree7unit1lesson11.html" data-i18n="footer_back" class="no-bilingual">← Leçon précédente : Comprendre des consignes I</a>
+            <a href="degree7unit1lesson13.html" data-i18n="footer_next" class="no-bilingual">Leçon suivante : Récit I – Qui raconte ? →</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                'lesson_title': "Leçon 12 – Compréhension et analyse de consignes II | Écrit",
+                'lesson_short_title': "Compréhension et analyse de consignes II",
+                'ach_year_degree7': "7ème Année Primaire",
+                'ach_module_unit1': "Unité 1 – Les fondements du français",
+                'back_link': "← Retour à l'accueil",
+                'back_revision': "Unité 1",
+                'back_current': "Compréhension et analyse de consignes II",
+                'lesson_badge': "📝 Écrit · Leçon 12",
+                'lesson_title': "Compréhension et analyse<br>de consignes II",
+                'lesson_duration': "⏱️ 45 minutes",
+                'lesson_meta_audio': "🎧 Écoutez les situations puis faites les exercices",
+                'audio_label': "🎧 Écoute des situations",
+                'text_heading': "📖 J'observe et je comprends",
+                'sit1_title': "Situation 1 – Le concours du meilleur récit",
+                'sit1_text': "Ton collège organise pour les classes de septième année le concours du meilleur récit. Il s'agit de savoir qui est capable d'écrire le mieux, c'est-à-dire de faire preuve d'imagination, de maîtrise de la langue et d'originalité. Chaque classe lance un défi aux autres. La tienne trouve une astuce : donner le début d'un récit auquel les autres doivent imaginer une suite.",
+                'sit1_debuts': "Deux débuts de récits sont proposés :",
+                'sit1_extrait1': "➤ « Depuis que nous avons rejoint ces montagnes, il s'est passé beaucoup de choses. Nous avons changé plusieurs fois de tanière, au gré de nos besoins en nourriture. Quatre petits nous sont nés, deux garçons, deux filles. C'est la fin de l'automne, une mauvaise saison pour naître… » — Christian de Montella",
+                'sit1_extrait2': "➤ « Depuis bien des années, nous habitons là, dans cette ferme, mes quatre fils et moi. Leur père mort, leur sœur mariée, ils se sont serrés tous les quatre autour de moi. Mais voilà qu'aujourd'hui l'un d'eux vient me voir… » — D'après Alphonse Daudet",
+                'sit1_consigne': "Choisis l'un de ces deux débuts de récits et écris la consigne qui précise la tâche demandée (imaginer la suite du récit).",
+                'sit2_title': "Situation 2 – Le concours d'écriture",
+                'sit2_text': "Sur le tableau d'affichage de ton école, tu lis l'annonce suivante :",
+                'annonce_titre': "Septembre 2007 — Concours d'écriture",
+                'annonce_theme': "Thème : en famille",
+                'annonce_public': "Ouvert aux jeunes de 12 à 15 ans",
+                'annonce_texte': "Les textes (poèmes, contes, nouvelles) doivent être écrits en français et ne doivent pas dépasser une page.",
+                'annonce_cloture': "Clôture : …",
+                'annonce_comite': "Comité de lecture coordonné par M… et Mme…",
+                'annonce_prix': "Nombreux prix (lecteurs DVD, ordinateurs, dictionnaires…)",
+                'annonce_publication': "Les meilleurs textes feront l'objet d'une publication.",
+                'annonce_signature': "Les organisateurs",
+                'sit2_consigne': "Tu décides de participer à ce concours. Analyse l'annonce et prépare ta participation.",
+                'comp_heading': "🔎 Je comprends la situation :",
+                'comp_q1': "Quelle est la tâche demandée dans la situation 1 ?",
+                'comp_q2': "Quels sont les éléments essentiels de l'annonce dans la situation 2 ?",
+                'comp_q3': "Quel est le point commun entre les deux situations ?",
+                'rules_heading': "📖 La méthode : rédiger une consigne et participer à un concours",
+                'rules_intro': "Après avoir appris à <strong>analyser une consigne</strong> (leçon 11), il s'agit maintenant d'apprendre à <strong>rédiger une consigne</strong> et à <strong>participer à un concours d'écriture</strong>.",
+                'rule1_title': "🔹 1. Rédiger une consigne claire",
+                'rule1_intro': "Une bonne consigne doit contenir :",
+                'rule1_list': "<li>Le <strong>verbe d'action</strong> (imaginer, écrire, décrire, raconter, poursuivre…).</li><li>Le <strong>type d'écrit</strong> attendu (récit, lettre, dialogue, description…).</li><li>Les <strong>contraintes</strong> de temps, de personne, de longueur.</li><li>Les <strong>critères de réussite</strong> (imagination, originalité, maîtrise de la langue…).</li>",
+                'rule2_title': "🔹 2. Analyser une annonce de concours",
+                'rule2_list': "<li><strong>Thème :</strong> le sujet imposé (en famille, l'amitié, la nature…).</li><li><strong>Public :</strong> à qui le concours est ouvert (âge, classe).</li><li><strong>Type de texte :</strong> poème, conte, nouvelle…</li><li><strong>Contraintes :</strong> langue (français), longueur (une page max).</li><li><strong>Date de clôture :</strong> la date limite d'envoi.</li><li><strong>Prix :</strong> les récompenses prévues.</li>",
+                'rule3_title': "🔹 3. La démarche de production",
+                'rule3_list': "<li><strong>Je comprends la situation :</strong> je repère le support, le contexte, la consigne.</li><li><strong>Je recherche des idées :</strong> circonstances, situation, sentiments, détails.</li><li><strong>Je mets de l'ordre dans mes idées :</strong> plan, chronologie, étapes.</li><li><strong>Je rédige :</strong> je respecte les contraintes (temps, personne, longueur).</li><li><strong>Je relis, je corrige les erreurs, je réécris.</strong></li>",
+                'rule4_title': "🔹 4. La grille d'auto-évaluation",
+                'grille_col_q': "Question", 'grille_col_oui': "Oui", 'grille_col_plutot_oui': "Plutôt oui", 'grille_col_plutot_non': "Plutôt non", 'grille_col_non': "Non",
+                'grille_r1': "J'ai une idée claire sur les situations d'écrit.",
+                'grille_r2': "Je comprends ce qu'est une consigne.",
+                'grille_r3': "Je peux donner des consignes d'écriture.",
+                'exercises_heading': "✍️ Je m'exerce",
+                'exo1_title': "📌 1. Identifier les éléments des deux situations",
+                'exo1_instruction': "Complète le tableau en indiquant le support et la tâche demandée pour chaque situation.",
+                't_situation': "Situation", 't_support': "Support", 't_tache': "Tâche demandée",
+                't_statement': "Affirmation", 't_vf': "V / F", 't_element': "Élément", 't_category': "T / P / C / Pr",
+                't_etape': "Étape", 't_action': "Action", 't_co_a': "Co / A",
+                'exo2_title': "📌 2. Les critères d'une bonne consigne",
+                'exo2_instruction': "Coche les éléments qui doivent obligatoirement figurer dans une consigne d'écriture.",
+                'exo2_a': "Le verbe d'action (imaginer, écrire, raconter…)",
+                'exo2_b': "Le type d'écrit attendu (récit, lettre…)",
+                'exo2_c': "La couleur du stylo à utiliser",
+                'exo2_d': "Les contraintes (temps, personne, longueur)",
+                'exo2_e': "Le nom du professeur",
+                'exo2_f': "Les critères de réussite (imagination, originalité…)",
+                'exo3_title': "📌 3. Analyser l'annonce du concours",
+                'exo3_instruction': "Réponds aux questions portant sur la situation 2 (l'annonce du concours).",
+                'exo3_q1': "Quel est le thème du concours ?",
+                'exo3_q2': "À qui le concours est-il ouvert ?",
+                'exo3_q3': "Quels types de textes sont acceptés ?",
+                'exo3_q4': "Quelles sont les contraintes de langue et de longueur ?",
+                'exo3_q5': "Quels sont les prix annoncés ?",
+                'exo4_title': "📌 4. Vrai ou faux ?",
+                'exo4_instruction': "Indique si chaque affirmation est vraie (V) ou fausse (F).",
+                'exo4_q1': "Une consigne doit toujours commencer par un verbe d'action.",
+                'exo4_q2': "Dans un concours, le thème est libre.",
+                'exo4_q3': "Les contraintes de longueur et de langue font partie des règles du concours.",
+                'exo4_q4': "La démarche de production commence par la rédaction.",
+                'exo4_q5': "La relecture et la correction font partie de la démarche d'écriture.",
+                'exo5_title': "📌 5. Rédiger la consigne de la situation 1",
+                'exo5_instruction': "À partir du premier début de récit (Christian de Montella), rédige la consigne qui précise la tâche demandée. Ta consigne doit contenir un verbe d'action, le type d'écrit, une contrainte de temps et de personne.",
+                'exo6_title': "📌 6. Compléter la consigne",
+                'exo6_instruction': "Complète chaque consigne avec le verbe d'action qui convient : imagine, écris, raconte, décris, poursuis.",
+                'exo7_title': "📌 7. Analyser la situation de production",
+                'exo7_instruction': "Lis le sujet de production suivant et réponds aux questions.",
+                'prod_sujet': "Sujet : Certaines familles partent en vacances et abandonnent des animaux (chiens et chats notamment) sans penser au mal qu'elles font à ces pauvres bêtes. Un chien abandonné fait le récit de sa première nuit de solitude à un autre animal abandonné comme lui.",
+                'prod_consigne': "Imagine et écris ce qu'il dit.",
+                'exo7_q1': "Qui parle dans ce récit ?",
+                'exo7_q2': "À qui parle-t-il ?",
+                'exo7_q3': "Quel événement raconte-t-il ?",
+                'exo7_q4': "Quelle est la consigne ?",
+                'exo8_title': "📌 8. Classer les éléments de l'annonce",
+                'exo8_instruction': "Classe chaque élément dans la bonne catégorie : thème (T), public (P), contrainte (C) ou prix (Pr).",
+                'exo9_title': "📌 9. Compléter la grille de la démarche",
+                'exo9_instruction': "Complète la grille avec les étapes de la démarche de production.",
+                'exo10_title': "📌 10. Comparer une consigne et une annonce",
+                'exo10_instruction': "Indique si chaque affirmation concerne la consigne (Co) ou l'annonce (A).",
+                'exo11_title': "📌 11. Production personnelle",
+                'exo11_instruction': "Choisis l'une des deux situations : soit tu rédiges la consigne d'un début de récit (situation 1), soit tu participes au concours d'écriture en produisant un texte sur le thème « en famille » (situation 2). Ton texte doit comporter au moins 6 phrases et respecter les contraintes.",
+                'show_example': "💡 Voir un exemple",
+                'btn_verify': "🔍 Vérifier", 'btn_correction': "🔍 Voir la correction",
+                'footer_back': "← Leçon précédente : Comprendre des consignes I",
+                'footer_next': "Leçon suivante : Récit I – Qui raconte ? →",
+                'self_assess_question': "Ma réponse est :",
+                'self_correct': "Correcte", 'self_incorrect': "Incorrecte", 'self_partial': "Partiellement correcte",
+                'score_title': "📊 Votre auto‑évaluation",
+                'score_correct': "Correctes :", 'score_incorrect': "Incorrectes :", 'score_partial': "Partielles :", 'score_unanswered': "Sans réponse :",
+                'save_results': "💾 Enregistrer mes résultats", 'save_success': "Résultats sauvegardés ✓", 'save_error': "Erreur lors de la sauvegarde",
+                'print_pdf': "🖨️ Imprimer / PDF", 'print_with_answers': "Corrigé inclus",
+                'print_site_name': "Educational Dashboard – Français",
+                'print_scholar_year': "7ème Année Primaire", 'print_week': "Unité 1", 'print_area': "Écrit",
+                'print_footer_dev': "Développé par Mejri Ziad", 'print_footer_date': "Imprimé le",
+                'print_without_answers': "Sans corrigé",
+                'toast_signin_required': "Connectez-vous pour voir les corrections."
+            },
+            en: {
+                'lesson_title': "Lesson 12 – Understanding and Analyzing Instructions II | Writing",
+                'lesson_short_title': "Understanding and analyzing instructions II",
+                'ach_year_degree7': "7th Grade Primary",
+                'ach_module_unit1': "Unit 1 – French foundations",
+                'back_link': "← Back to home",
+                'back_revision': "Unit 1",
+                'back_current': "Understanding and analyzing instructions II",
+                'lesson_badge': "📝 Writing · Lesson 12",
+                'lesson_title': "Understanding and analyzing<br>instructions II",
+                'lesson_duration': "⏱️ 45 minutes",
+                'lesson_meta_audio': "🎧 Listen to the situations then do the exercises",
+                'audio_label': "🎧 Listening to the situations",
+                'text_heading': "📖 I observe and understand",
+                'sit1_title': "Situation 1 – The best story contest",
+                'sit1_text': "Your school organises the best story contest for 7th grade classes. It's about finding out who can write best, that is, show imagination, mastery of the language and originality. Each class challenges the others. Yours finds a trick: give the beginning of a story for the others to imagine a continuation.",
+                'sit1_debuts': "Two story beginnings are proposed:",
+                'sit1_extrait1': "➤ \"Since we joined these mountains, many things have happened. We have changed dens several times, according to our food needs. Four cubs were born to us, two boys, two girls. It's the end of autumn, a bad season to be born…\" — Christian de Montella",
+                'sit1_extrait2': "➤ \"For many years, we have lived there, on this farm, my four sons and I. Their father dead, their sister married, the four of them gathered around me. But now one of them comes to see me…\" — After Alphonse Daudet",
+                'sit1_consigne': "Choose one of these two story beginnings and write the instruction that specifies the required task (imagine the continuation of the story).",
+                'sit2_title': "Situation 2 – The writing contest",
+                'sit2_text': "On your school's notice board, you read the following announcement:",
+                'annonce_titre': "September 2007 — Writing contest",
+                'annonce_theme': "Theme: en famille (with family)",
+                'annonce_public': "Open to young people aged 12 to 15",
+                'annonce_texte': "Texts (poems, tales, short stories) must be written in French and must not exceed one page.",
+                'annonce_cloture': "Closing date: …",
+                'annonce_comite': "Reading committee coordinated by Mr… and Mrs…",
+                'annonce_prix': "Many prizes (DVD players, computers, dictionaries…)",
+                'annonce_publication': "The best texts will be published.",
+                'annonce_signature': "The organisers",
+                'sit2_consigne': "You decide to take part in this contest. Analyse the announcement and prepare your participation.",
+                'comp_heading': "🔎 I understand the situation:",
+                'comp_q1': "What is the task required in situation 1?",
+                'comp_q2': "What are the essential elements of the announcement in situation 2?",
+                'comp_q3': "What is the common point between the two situations?",
+                'rules_heading': "📖 The method: writing an instruction and taking part in a contest",
+                'rules_intro': "After learning to <strong>analyse an instruction</strong> (lesson 11), it is now about learning to <strong>write an instruction</strong> and to <strong>take part in a writing contest</strong>.",
+                'rule1_title': "🔹 1. Writing a clear instruction",
+                'rule1_intro': "A good instruction must contain:",
+                'rule1_list': "<li>The <strong>action verb</strong> (imagine, write, describe, tell, continue…).</li><li>The <strong>type of writing</strong> expected (narrative, letter, dialogue, description…).</li><li>The <strong>constraints</strong> of tense, person, length.</li><li>The <strong>success criteria</strong> (imagination, originality, mastery of the language…).</li>",
+                'rule2_title': "🔹 2. Analysing a contest announcement",
+                'rule2_list': "<li><strong>Theme:</strong> the imposed subject (family, friendship, nature…).</li><li><strong>Audience:</strong> who the contest is open to (age, class).</li><li><strong>Type of text:</strong> poem, tale, short story…</li><li><strong>Constraints:</strong> language (French), length (one page max).</li><li><strong>Closing date:</strong> the deadline for submission.</li><li><strong>Prizes:</strong> the rewards offered.</li>",
+                'rule3_title': "🔹 3. The production process",
+                'rule3_list': "<li><strong>I understand the situation:</strong> I identify the support, the context, the instruction.</li><li><strong>I look for ideas:</strong> circumstances, situation, feelings, details.</li><li><strong>I organise my ideas:</strong> plan, chronology, steps.</li><li><strong>I write:</strong> I respect the constraints (tense, person, length).</li><li><strong>I reread, correct mistakes, rewrite.</strong></li>",
+                'rule4_title': "🔹 4. The self-assessment grid",
+                'grille_col_q': "Question", 'grille_col_oui': "Yes", 'grille_col_plutot_oui': "Rather yes", 'grille_col_plutot_non': "Rather no", 'grille_col_non': "No",
+                'grille_r1': "I have a clear idea about writing situations.",
+                'grille_r2': "I understand what an instruction is.",
+                'grille_r3': "I can give writing instructions.",
+                'exercises_heading': "✍️ I practise",
+                'exo1_title': "📌 1. Identify the elements of the two situations",
+                'exo1_instruction': "Complete the table by indicating the support and the task required for each situation.",
+                't_situation': "Situation", 't_support': "Support", 't_tache': "Task required",
+                't_statement': "Statement", 't_vf': "T / F", 't_element': "Element", 't_category': "T / A / C / Pr",
+                't_etape': "Step", 't_action': "Action", 't_co_a': "I / A",
+                'exo2_title': "📌 2. Criteria for a good instruction",
+                'exo2_instruction': "Tick the elements that must appear in a writing instruction.",
+                'exo2_a': "The action verb (imagine, write, tell…)",
+                'exo2_b': "The type of writing expected (narrative, letter…)",
+                'exo2_c': "The colour of the pen to use",
+                'exo2_d': "The constraints (tense, person, length)",
+                'exo2_e': "The teacher's name",
+                'exo2_f': "The success criteria (imagination, originality…)",
+                'exo3_title': "📌 3. Analyse the contest announcement",
+                'exo3_instruction': "Answer the questions about situation 2 (the contest announcement).",
+                'exo3_q1': "What is the theme of the contest?",
+                'exo3_q2': "Who is the contest open to?",
+                'exo3_q3': "What types of texts are accepted?",
+                'exo3_q4': "What are the language and length constraints?",
+                'exo3_q5': "What prizes are announced?",
+                'exo4_title': "📌 4. True or false?",
+                'exo4_instruction': "Indicate whether each statement is true (T) or false (F).",
+                'exo4_q1': "An instruction must always begin with an action verb.",
+                'exo4_q2': "In a contest, the theme is free.",
+                'exo4_q3': "Length and language constraints are part of the contest rules.",
+                'exo4_q4': "The production process starts with writing.",
+                'exo4_q5': "Rereading and correcting are part of the writing process.",
+                'exo5_title': "📌 5. Write the instruction for situation 1",
+                'exo5_instruction': "Based on the first story beginning (Christian de Montella), write the instruction that specifies the required task. Your instruction must contain an action verb, the type of writing, a tense and person constraint.",
+                'exo6_title': "📌 6. Complete the instruction",
+                'exo6_instruction': "Complete each instruction with the appropriate action verb: imagine, write, tell, describe, continue.",
+                'exo7_title': "📌 7. Analyse the production situation",
+                'exo7_instruction': "Read the following production subject and answer the questions.",
+                'prod_sujet': "Subject: Some families go on vacation and abandon animals (dogs and cats in particular) without thinking of the harm they do to these poor creatures. An abandoned dog tells the story of his first night of loneliness to another abandoned animal like him.",
+                'prod_consigne': "Imagine and write what he says.",
+                'exo7_q1': "Who speaks in this narrative?",
+                'exo7_q2': "To whom does he speak?",
+                'exo7_q3': "What event does he narrate?",
+                'exo7_q4': "What is the instruction?",
+                'exo8_title': "📌 8. Classify the elements of the announcement",
+                'exo8_instruction': "Classify each element in the correct category: theme (T), audience (A), constraint (C) or prize (Pr).",
+                'exo9_title': "📌 9. Complete the process grid",
+                'exo9_instruction': "Complete the grid with the steps of the production process.",
+                'exo10_title': "📌 10. Compare an instruction and an announcement",
+                'exo10_instruction': "Indicate whether each statement concerns the instruction (I) or the announcement (A).",
+                'exo11_title': "📌 11. Personal production",
+                'exo11_instruction': "Choose one of the two situations: either write the instruction for a story beginning (situation 1), or take part in the writing contest by producing a text on the theme \"en famille\" (situation 2). Your text must contain at least 6 sentences and respect the constraints.",
+                'show_example': "💡 See an example",
+                'btn_verify': "🔍 Check", 'btn_correction': "🔍 See the correction",
+                'footer_back': "← Previous lesson: Understanding instructions I",
+                'footer_next': "Next lesson: Narrative I – Who tells the story? →",
+                'self_assess_question': "My answer is:",
+                'self_correct': "Correct", 'self_incorrect': "Incorrect", 'self_partial': "Partially correct",
+                'score_title': "📊 Your self‑assessment",
+                'score_correct': "Correct:", 'score_incorrect': "Incorrect:", 'score_partial': "Partial:", 'score_unanswered': "Unanswered:",
+                'save_results': "💾 Save my results", 'save_success': "Results saved ✓", 'save_error': "Save failed",
+                'print_pdf': "🖨️ Print / PDF", 'print_with_answers': "With answers",
+                'print_site_name': "Educational Dashboard – French",
+                'print_scholar_year': "7th Grade Primary", 'print_week': "Unit 1", 'print_area': "Writing",
+                'print_footer_dev': "Developed by Mejri Ziad", 'print_footer_date': "Printed on",
+                'print_without_answers': "Without answers",
+                'toast_signin_required': "Sign in to see the corrections."
+            },
+            ar: {
+                'lesson_title': "الدرس 12 – فهم وتحليل التعليمات 2 | الكتابة",
+                'lesson_short_title': "فهم وتحليل التعليمات 2",
+                'ach_year_degree7': "السنة السابعة ابتدائي",
+                'ach_module_unit1': "الوحدة 1 – أساسيات الفرنسية",
+                'back_link': "← العودة إلى الرئيسية",
+                'back_revision': "الوحدة 1",
+                'back_current': "فهم وتحليل التعليمات 2",
+                'lesson_badge': "📝 الكتابة · الدرس 12",
+                'lesson_title': "فهم وتحليل<br>التعليمات 2",
+                'lesson_duration': "⏱️ 45 دقيقة",
+                'lesson_meta_audio': "🎧 استمع إلى المواقف ثم قم بالتمارين",
+                'audio_label': "🎧 استماع إلى المواقف",
+                'text_heading': "📖 ألاحظ وأفهم",
+                'sit1_title': "الحالة 1 – مسابقة أفضل قصة",
+                'sit1_text': "تنظم مدرستك مسابقة أفضل قصة لأقسام السنة السابعة. الأمر يتعلق بمعرفة من يستطيع الكتابة بشكل أفضل، أي إظهار الخيال والتحكم في اللغة والأصالة. كل قسم يطلق تحدياً للآخرين. قسمك يجد حيلة: إعطاء بداية قصة على الآخرين تخيل تكملتها.",
+                'sit1_debuts': "يُقترح بدايتان للقصة:",
+                'sit1_extrait1': "➤ « منذ أن وصلنا إلى هذه الجبال، حدثت أشياء كثيرة. غيرنا وكرنا عدة مرات حسب حاجتنا للطعام. وُلدت لنا أربعة صغار، ذكران وأنثيان. إنه نهاية الخريف، موسم سيئ للولادة… » — كريستيان دي مونتيلا",
+                'sit1_extrait2': "➤ « منذ سنوات عديدة، نسكن هناك، في هذه المزرعة، أنا وأبنائي الأربعة. مات أبوهم، وتزوجت أختهم، فالتف الأربعة حولي. لكن الآن أحدهم يأتي لرؤيتي… » — عن ألفونس دودي",
+                'sit1_consigne': "اختر إحدى بدايتي القصة واكتب التعليمة التي تحدد المهمة المطلوبة (تخيل تكملة القصة).",
+                'sit2_title': "الحالة 2 – مسابقة الكتابة",
+                'sit2_text': "على لوحة إعلانات مدرستك، تقرأ الإعلان التالي:",
+                'annonce_titre': "سبتمبر 2007 — مسابقة الكتابة",
+                'annonce_theme': "الموضوع: في العائلة",
+                'annonce_public': "مفتوحة للشباب من 12 إلى 15 سنة",
+                'annonce_texte': "يجب أن تكون النصوص (قصائد، حكايات، قصص قصيرة) مكتوبة بالفرنسية وألا تتجاوز صفحة واحدة.",
+                'annonce_cloture': "الإغلاق: …",
+                'annonce_comite': "لجنة قراءة بتنسيق السيد… والسيدة…",
+                'annonce_prix': "جوائز عديدة (أجهزة DVD، حواسيب، قواميس…)",
+                'annonce_publication': "أفضل النصوص ستكون موضوع نشر.",
+                'annonce_signature': "المنظمون",
+                'sit2_consigne': "تقرر المشاركة في هذه المسابقة. حلل الإعلان وحضر مشاركتك.",
+                'comp_heading': "🔎 أفهم الحالة:",
+                'comp_q1': "ما هي المهمة المطلوبة في الحالة 1؟",
+                'comp_q2': "ما هي العناصر الأساسية في الإعلان في الحالة 2؟",
+                'comp_q3': "ما هي النقطة المشتركة بين الحالتين؟",
+                'rules_heading': "📖 المنهجية: كتابة تعليمة والمشاركة في مسابقة",
+                'rules_intro': "بعد تعلم <strong>تحليل تعليمة</strong> (الدرس 11)، يتعلق الأمر الآن بتعلم <strong>كتابة تعليمة</strong> و<strong>المشاركة في مسابقة كتابة</strong>.",
+                'rule1_title': "🔹 1. كتابة تعليمة واضحة",
+                'rule1_intro': "يجب أن تحتوي التعليمة الجيدة على:",
+                'rule1_list': "<li><strong>فعل العمل</strong> (تخيل، اكتب، صف، احكِ، تابع…).</li><li><strong>نوع الكتابة</strong> المطلوب (سرد، رسالة، حوار، وصف…).</li><li><strong>قيود</strong> الزمن والضمير والطول.</li><li><strong>معايير النجاح</strong> (الخيال، الأصالة، التحكم في اللغة…).</li>",
+                'rule2_title': "🔹 2. تحليل إعلان مسابقة",
+                'rule2_list': "<li><strong>الموضوع:</strong> الموضوع المفروض (في العائلة، الصداقة، الطبيعة…).</li><li><strong>الجمهور:</strong> لمن المسابقة مفتوحة (العمر، القسم).</li><li><strong>نوع النص:</strong> قصيدة، حكاية، قصة قصيرة…</li><li><strong>القيود:</strong> اللغة (الفرنسية)، الطول (صفحة واحدة كحد أقصى).</li><li><strong>تاريخ الإغلاق:</strong> الموعد النهائي للإرسال.</li><li><strong>الجوائز:</strong> المكافآت المقررة.</li>",
+                'rule3_title': "🔹 3. مسار الإنتاج",
+                'rule3_list': "<li><strong>أفهم الحالة:</strong> أحدد الدعم، السياق، التعليمة.</li><li><strong>أبحث عن أفكار:</strong> الظروف، الوضع، المشاعر، التفاصيل.</li><li><strong>أرتب أفكاري:</strong> مخطط، تسلسل زمني، مراحل.</li><li><strong>أكتب:</strong> أحترم القيود (الزمن، الضمير، الطول).</li><li><strong>أعيد القراءة، أصحح الأخطاء، أعيد الكتابة.</strong></li>",
+                'rule4_title': "🔹 4. شبكة التقييم الذاتي",
+                'grille_col_q': "السؤال", 'grille_col_oui': "نعم", 'grille_col_plutot_oui': "نعم نوعاً ما", 'grille_col_plutot_non': "لا نوعاً ما", 'grille_col_non': "لا",
+                'grille_r1': "لدي فكرة واضحة عن حالات الكتابة.",
+                'grille_r2': "أفهم ما هي التعليمة.",
+                'grille_r3': "أستطيع إعطاء تعليمات للكتابة.",
+                'exercises_heading': "✍️ أتمرن",
+                'exo1_title': "📌 1. تحديد عناصر الحالتين",
+                'exo1_instruction': "أكمل الجدول بتحديد الدعم والمهمة المطلوبة لكل حالة.",
+                't_situation': "الحالة", 't_support': "الدعم", 't_tache': "المهمة المطلوبة",
+                't_statement': "العبارة", 't_vf': "ص / خ", 't_element': "العنصر", 't_category': "م / ج / ق / ج",
+                't_etape': "المرحلة", 't_action': "الإجراء", 't_co_a': "ت / إ",
+                'exo2_title': "📌 2. معايير التعليمة الجيدة",
+                'exo2_instruction': "ضع علامة على العناصر التي يجب أن تظهر في تعليمة الكتابة.",
+                'exo2_a': "فعل العمل (تخيل، اكتب، احكِ…)",
+                'exo2_b': "نوع الكتابة المطلوب (سرد، رسالة…)",
+                'exo2_c': "لون القلم المستعمل",
+                'exo2_d': "القيود (الزمن، الضمير، الطول)",
+                'exo2_e': "اسم الأستاذ",
+                'exo2_f': "معايير النجاح (الخيال، الأصالة…)",
+                'exo3_title': "📌 3. تحليل إعلان المسابقة",
+                'exo3_instruction': "أجب عن الأسئلة المتعلقة بالحالة 2 (إعلان المسابقة).",
+                'exo3_q1': "ما هو موضوع المسابقة؟",
+                'exo3_q2': "لمن المسابقة مفتوحة؟",
+                'exo3_q3': "ما أنواع النصوص المقبولة؟",
+                'exo3_q4': "ما هي قيود اللغة والطول؟",
+                'exo3_q5': "ما هي الجوائز المعلنة؟",
+                'exo4_title': "📌 4. صواب أم خطأ؟",
+                'exo4_instruction': "حدد إن كانت كل عبارة صحيحة (ص) أم خاطئة (خ).",
+                'exo4_q1': "يجب أن تبدأ التعليمة دائماً بفعل عمل.",
+                'exo4_q2': "في مسابقة، الموضوع حر.",
+                'exo4_q3': "قيود الطول واللغة جزء من قواعد المسابقة.",
+                'exo4_q4': "يبدأ مسار الإنتاج بالكتابة.",
+                'exo4_q5': "إعادة القراءة والتصحيح جزء من مسار الكتابة.",
+                'exo5_title': "📌 5. كتابة تعليمة الحالة 1",
+                'exo5_instruction': "انطلاقاً من البداية الأولى للقصة (كريستيان دي مونتيلا)، اكتب التعليمة التي تحدد المهمة المطلوبة. يجب أن تحتوي تعليمتك على فعل عمل ونوع الكتابة وقيود الزمن والضمير.",
+                'exo6_title': "📌 6. أكمل التعليمة",
+                'exo6_instruction': "أكمل كل تعليمة بفعل العمل المناسب: تخيل، اكتب، احكِ، صف، تابع.",
+                'exo7_title': "📌 7. تحليل حالة الإنتاج",
+                'exo7_instruction': "اقرأ موضوع الإنتاج التالي وأجب عن الأسئلة.",
+                'prod_sujet': "الموضوع: بعض العائلات تذهب في عطلة وتتخلى عن حيوانات (كلاب وقطط خاصة) دون التفكير في الأذى الذي تسببه لهذه المساكين. يحكي كلب متروك قصة ليلته الأولى من الوحدة لحيوان آخر متروك مثله.",
+                'prod_consigne': "تخيّل واكتب ما يقوله.",
+                'exo7_q1': "من يتحدث في هذا السرد؟",
+                'exo7_q2': "لمن يتحدث؟",
+                'exo7_q3': "ما الحدث الذي يرويه؟",
+                'exo7_q4': "ما هي التعليمة؟",
+                'exo8_title': "📌 8. تصنيف عناصر الإعلان",
+                'exo8_instruction': "صنّف كل عنصر في الفئة المناسبة: موضوع (م)، جمهور (ج)، قيد (ق) أو جائزة (ج).",
+                'exo9_title': "📌 9. أكمل شبكة المسار",
+                'exo9_instruction': "أكمل الشبكة بمراحل مسار الإنتاج.",
+                'exo10_title': "📌 10. مقارنة تعليمة وإعلان",
+                'exo10_instruction': "حدد إن كانت كل عبارة تخص التعليمة (ت) أم الإعلان (إ).",
+                'exo11_title': "📌 11. إنتاج شخصي",
+                'exo11_instruction': "اختر إحدى الحالتين: إما أن تكتب تعليمة بداية قصة (الحالة 1)، أو أن تشارك في مسابقة الكتابة بإنتاج نص حول موضوع «في العائلة» (الحالة 2). يجب أن يحتوي نصك على 6 جمل على الأقل وأن يحترم القيود.",
+                'show_example': "💡 عرض مثال",
+                'btn_verify': "🔍 تحقق", 'btn_correction': "🔍 الاطلاع على التصحيح",
+                'footer_back': "← الدرس السابق: فهم التعليمات 1",
+                'footer_next': "الدرس الموالي: السرد 1 – من يروي؟ ←",
+                'self_assess_question': "جوابي هو:",
+                'self_correct': "صحيح", 'self_incorrect': "خاطئ", 'self_partial': "صحيح جزئيًا",
+                'score_title': "📊 تقييمك الذاتي",
+                'score_correct': "صحيح:", 'score_incorrect': "خاطئ:", 'score_partial': "جزئي:", 'score_unanswered': "بدون إجابة:",
+                'save_results': "💾 حفظ نتائجي", 'save_success': "تم حفظ النتائج ✓", 'save_error': "خطأ في الحفظ",
+                'print_pdf': "🖨️ طباعة / PDF", 'print_with_answers': "مع التصحيح",
+                'print_site_name': "لوحة التحكم التعليمية – الفرنسية",
+                'print_scholar_year': "السنة السابعة ابتدائي", 'print_week': "الوحدة 1", 'print_area': "الكتابة",
+                'print_footer_dev': "طوّر بواسطة ماجري زياد", 'print_footer_date': "طُبع في",
+                'print_without_answers': "بدون تصحيح",
+                'toast_signin_required': "سجّل الدخول لرؤية التصحيحات."
+            }
+        });
+
+        (function() {
+            var container = document.querySelector('.degree7-unit1-lesson12-ecrit-container');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+        })();
+    </script>
+    <script src="ed-french-ini.js"></script>
+    <script>
+        (function() {
+            const audio = new Audio('assets7/sounds/degree7/unit1/lesson12/consignes2.mp3');
+            const playBtn = document.getElementById('playBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const speedBtns = document.querySelectorAll('.degree7-unit1-lesson12-ecrit-speed-btn');
+
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+
+            audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
+            audio.addEventListener('timeupdate', () => {
+                const percent = (audio.currentTime / audio.duration) * 100 || 0;
+                progressFill.style.width = percent + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            });
+            audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) { audio.play().catch(()=>{}); playBtn.textContent = '⏸'; }
+                else { audio.pause(); playBtn.textContent = '▶'; }
+            });
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const seekTime = (clickX / width) * audio.duration;
+                audio.currentTime = seekTime;
+            });
+            speedBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    speedBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    audio.playbackRate = parseFloat(btn.dataset.speed);
+                });
+            });
+
+            async function requireAuth() {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return false;
+                }
+                return true;
+            }
+
+            window.toggleCorrection = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('visible');
+            };
+
+            window.showExample = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const el = document.getElementById(id);
+                if (!el) return;
+                if (id === 'exo5Example') {
+                    el.innerHTML = '<strong>Exemple de consigne :</strong><br>« Poursuis ce récit à la première personne du singulier et au présent. Imagine la suite des événements vécus par la famille de loups dans les montagnes. Ton texte doit faire au moins dix lignes et respecter le ton du début proposé. »';
+                }
+                el.classList.add('visible');
+            };
+
+            window.showProductionExample = async function() {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const el = document.getElementById('productionExample');
+                if (el) {
+                    el.innerHTML = '<strong>Exemple de production (thème : en famille) :</strong><br>Dans ma famille, le dimanche est un jour sacré. Ma mère prépare un grand couscous et l\'odeur envahit toute la maison. Mon père met la table pendant que ma sœur et moi aidons à ranger. À midi, mes grands-parents arrivent avec des pâtisseries. Nous nous asseyons tous ensemble et chacun raconte sa semaine. Les rires fusent et les souvenirs remontent. Après le repas, nous jouons aux cartes et les plus jeunes écoutent les histoires des anciens. Le soir, avant de partir, ma grand-mère nous serre très fort dans ses bras. Ces moments me rappellent que la famille est le plus grand des trésors.';
+                    el.classList.add('visible');
+                }
+            };
+
+            // Static answer keys
+            document.getElementById('exo1Key').innerHTML = '<strong>Correction :</strong><br>Situation 1 → Support : un concours de récit + deux débuts de récits. Tâche : imaginer la suite du récit.<br>Situation 2 → Support : une annonce de concours d\'écriture. Tâche : participer au concours en produisant un texte sur le thème « en famille ».';
+            document.getElementById('exo2Key').innerHTML = '<strong>Correction :</strong><br>Les éléments à cocher sont : <strong>a, b, d, f</strong>.<br>c (couleur du stylo) et e (nom du professeur) ne font pas partie d\'une consigne d\'écriture.';
+            document.getElementById('exo3Key').innerHTML = '<strong>Correction :</strong><br>a) Le thème est « en famille ».<br>b) Le concours est ouvert aux jeunes de 12 à 15 ans.<br>c) Les textes acceptés sont les poèmes, contes et nouvelles.<br>d) Les textes doivent être écrits en français et ne pas dépasser une page.<br>e) Les prix sont des lecteurs DVD, des ordinateurs et des dictionnaires.';
+            document.getElementById('exo4Key').innerHTML = '<strong>Correction :</strong><br>1. Vrai<br>2. Faux (le thème est imposé)<br>3. Vrai<br>4. Faux (elle commence par la compréhension de la situation)<br>5. Vrai';
+            document.getElementById('exo6Key').innerHTML = '<strong>Correction :</strong><br>a) Poursuis<br>b) Raconte<br>c) Raconte / Décris<br>d) Décris';
+            document.getElementById('exo7Key').innerHTML = '<strong>Correction :</strong><br>a) Un chien abandonné (narrateur à la 1re personne).<br>b) À un autre animal abandonné comme lui.<br>c) Sa première nuit de solitude.<br>d) « Imagine et écris ce qu\'il dit. »';
+            document.getElementById('exo8Key').innerHTML = '<strong>Correction :</strong><br>« En famille » → T (thème)<br>« Jeunes de 12 à 15 ans » → P (public)<br>« Ne pas dépasser une page » → C (contrainte)<br>« Lecteurs DVD, ordinateurs, dictionnaires » → Pr (prix)<br>« Écrits en français » → C (contrainte)';
+            document.getElementById('exo9Key').innerHTML = '<strong>Correction (exemples) :</strong><br>1. Je comprends la situation → Je repère le support, le contexte, la consigne.<br>2. Je recherche des idées → Circonstances, situation, sentiments, détails.<br>3. Je mets de l\'ordre dans ces idées → Plan, chronologie.<br>4. Je rédige → Je respecte les contraintes.<br>5. Je relis, je corrige, je réécris → J\'améliore mon texte.';
+            document.getElementById('exo10Key').innerHTML = '<strong>Correction :</strong><br>Elle précise la tâche à réaliser. → Co<br>Elle indique le thème et le public visé. → A<br>Elle contient un verbe d\'action. → Co<br>Elle précise les prix et la date de clôture. → A<br>Elle peut être générale ou détaillée. → Co';
+
+            // Self-assessment scoring
+            const SELF_GROUPS = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5',
+                                 'self_ex6', 'self_ex7', 'self_ex8', 'self_ex9', 'self_ex10', 'self_ex11'];
+
+            function computeScore() {
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                SELF_GROUPS.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                return { correct, incorrect, partial, unanswered };
+            }
+
+            function updateScore() {
+                const s = computeScore();
+                document.getElementById('scoreCorrect').textContent = s.correct;
+                document.getElementById('scoreIncorrect').textContent = s.incorrect;
+                document.getElementById('scorePartial').textContent = s.partial;
+                document.getElementById('scoreUnanswered').textContent = s.unanswered;
+            }
+
+            document.querySelectorAll('input[type="radio"][name^="self_ex"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const s = computeScore();
+                const lessonId = 'degree7unit1lesson12';
+                const entry = {
+                    lesson_id: lessonId,
+                    lesson_title: {
+                        fr: App.getTranslation('lesson_short_title', 'fr'),
+                        en: App.getTranslation('lesson_short_title', 'en'),
+                        ar: App.getTranslation('lesson_short_title', 'ar')
+                    },
+                    year: {
+                        fr: App.getTranslation('ach_year_degree7', 'fr'),
+                        en: App.getTranslation('ach_year_degree7', 'en'),
+                        ar: App.getTranslation('ach_year_degree7', 'ar')
+                    },
+                    module: {
+                        fr: App.getTranslation('ach_module_unit1', 'fr'),
+                        en: App.getTranslation('ach_module_unit1', 'en'),
+                        ar: App.getTranslation('ach_module_unit1', 'ar')
+                    },
+                    correct: s.correct,
+                    incorrect: s.incorrect,
+                    partial: s.partial,
+                    unanswered: s.unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles').select('achivement').eq('id', user.id).single();
+                if (fetchError) return;
+                let achivement = profileData?.achivement || {};
+                if (!achivement['ED-French']) achivement['ED-French'] = [];
+                const arr = achivement['ED-French'];
+                const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+                if (existingIdx >= 0) arr[existingIdx] = entry;
+                else arr.push(entry);
+                const { error: updateError } = await App.supabase
+                    .from('profiles').update({ achivement }).eq('id', user.id);
+                if (updateError) App.showToast('save_error', 'error');
+                else {
+                    App.showToast('save_success', 'success');
+                    App.logUserAction('lesson_saved', { lesson: lessonId, correct: s.correct, incorrect: s.incorrect, partial: s.partial });
+                }
+            });
+
+            document.getElementById('printPdfBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles').select('registration_state').eq('id', user.id).single();
+                    if (!error && profile?.registration_state?.active === true) isRegistered = true;
+                } catch (e) {}
+                const lang = localStorage.getItem('lang') || 'fr';
+                const headerHTML = document.querySelector('.degree7-unit1-lesson12-ecrit-lesson-header').cloneNode(true);
+                const rulesSections = document.querySelectorAll('.degree7-unit1-lesson12-ecrit-valeurs-section');
+                let rulesHTML = '';
+                rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
+                const textSection = document.querySelector('.degree7-unit1-lesson12-ecrit-section').cloneNode(true);
+                const exercisesSection = document.querySelector('.degree7-unit1-lesson12-ecrit-exercises-section').cloneNode(true);
+                exercisesSection.querySelectorAll('input, textarea, .degree7-unit1-lesson12-ecrit-btn-verify, .degree7-unit1-lesson12-ecrit-self-assessment').forEach(el => el.remove());
+                if (isRegistered) {
+                    exercisesSection.querySelectorAll('.degree7-unit1-lesson12-ecrit-answer-key').forEach(key => {
+                        key.style.display = 'block'; key.style.border = 'none';
+                        key.style.padding = '0.5rem 0'; key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    exercisesSection.querySelectorAll('.degree7-unit1-lesson12-ecrit-answer-key').forEach(el => el.remove());
+                }
+                const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                printWindow.document.write(`<!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8"><title>${App.getTranslation('lesson_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title><style>
+                    body { font-family: 'Georgia', serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; color:#000; }
+                    .print-header { text-align:center; border-bottom:2px solid #d2691e; padding-bottom:1rem; margin-bottom:2rem; }
+                    .print-header .site-name { font-size:1.4rem; font-weight:bold; color:#d2691e; margin:0 0 0.3rem; }
+                    .print-header .meta-line { font-size:0.95rem; color:#444; margin:0.2rem 0; }
+                    .print-header .lesson-name { font-size:1.1rem; font-weight:bold; color:#000; margin-top:0.5rem; }
+                    .print-footer { text-align:center; border-top:1px solid #ccc; padding-top:1rem; margin-top:2rem; font-size:0.85rem; color:#666; }
+                    .degree7-unit1-lesson12-ecrit-lesson-header { text-align:center; margin-bottom:2rem; }
+                    .degree7-unit1-lesson12-ecrit-badge { display:inline-block; background:#d2691e; color:#fff; padding:0.3rem 1rem; border-radius:20px; font-size:0.8rem; text-transform:uppercase; }
+                    .degree7-unit1-lesson12-ecrit-valeurs-section { margin:1.5rem 0; }
+                    .degree7-unit1-lesson12-ecrit-valeur-card { background:#f8e2cd; padding:1rem; margin-bottom:1rem; border-radius:8px; }
+                    .degree7-unit1-lesson12-ecrit-valeur-card h3 { color:#d2691e; }
+                    .degree7-unit1-lesson12-ecrit-situation { background:#f8e2cd; padding:1rem; margin:1rem 0; border-left:4px solid #d2691e; border-radius:0 8px 8px 0; }
+                    .degree7-unit1-lesson12-ecrit-situation h3 { color:#d2691e; }
+                    .degree7-unit1-lesson12-ecrit-exercise-card { margin:1.2rem 0; }
+                    table { width:100%; border-collapse:collapse; margin:0.8rem 0; }
+                    th, td { border:1px solid #ccc; padding:0.5rem; text-align:left; }
+                    th { background:#f8e2cd; }
+                    .degree7-unit1-lesson12-ecrit-answer-key { display:block; margin-top:0.5rem; font-size:0.9rem; color:#444; }
+                    .degree7-unit1-lesson12-ecrit-checklist-table th { background:#d2691e; color:#fff; }
+                    @media print { @page { margin:2cm; } }
+                </style></head><body>
+                    <div class="print-header"><div class="site-name">${App.getTranslation('print_site_name', lang)}</div><div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div><div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div></div>
+                    ${breadcrumb.outerHTML}${headerHTML.outerHTML}${textSection.outerHTML}${rulesHTML}${exercisesSection.outerHTML}
+                    <div class="print-footer">${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}</div>
+                </body></html>`);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+        })();
+    </script>
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+</body>
+</html>
