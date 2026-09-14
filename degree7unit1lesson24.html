@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_title">Leçon 24 – Écouter une chanson : Prendre un enfant | Oral</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ===== Degree7 Unit1 Lesson24 – Oral "Studio" (prefix: d7u1l24-oral-) ===== */
+        :root {
+            --d7u1l24-oral-bg: #0e1c1c;
+            --d7u1l24-oral-bg-2: #122424;
+            --d7u1l24-oral-card: #16302f;
+            --d7u1l24-oral-card-2: #1c3a39;
+            --d7u1l24-oral-text: #e6f5f4;
+            --d7u1l24-oral-text-light: #9ec4c2;
+            --d7u1l24-oral-heading: #c8f0ee;
+            --d7u1l24-oral-accent: #00c4b4;
+            --d7u1l24-oral-accent-hover: #00e0ce;
+            --d7u1l24-oral-accent-soft: rgba(0,196,180,0.15);
+            --d7u1l24-oral-border: #234644;
+            --d7u1l24-oral-radius: 20px;
+            --d7u1l24-oral-radius-sm: 12px;
+            --d7u1l24-oral-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3);
+            --d7u1l24-oral-shadow-glow: 0 0 24px rgba(0,196,180,0.25);
+            --d7u1l24-oral-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --d7u1l24-oral-font: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            --d7u1l24-oral-font-display: 'Georgia', 'Times New Roman', serif;
+            /* Colors per section */
+            --d7u1l24-oral-c1: #00c4b4;   /* main song – teal */
+            --d7u1l24-oral-c2: #ab47bc;   /* verses – purple */
+            --d7u1l24-oral-c3: #ffa726;   /* exercise à trous – orange */
+            --d7u1l24-oral-c4: #4a9eff;   /* discussion – blue */
+            --d7u1l24-oral-c5: #66bb6a;   /* sing along – green */
+        }
+        body.light {
+            --d7u1l24-oral-bg: #f0f8f8;
+            --d7u1l24-oral-bg-2: #e5f2f2;
+            --d7u1l24-oral-card: #ffffff;
+            --d7u1l24-oral-card-2: #f7fcfc;
+            --d7u1l24-oral-text: #16302f;
+            --d7u1l24-oral-text-light: #4a6a68;
+            --d7u1l24-oral-heading: #005454;
+            --d7u1l24-oral-border: #c4dcdc;
+            --d7u1l24-oral-shadow: 0 4px 20px rgba(0,84,84,0.10), 0 2px 6px rgba(0,84,84,0.06);
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: var(--d7u1l24-oral-font);
+            background: var(--d7u1l24-oral-bg);
+            background-image:
+                radial-gradient(circle at 15% 10%, rgba(0,196,180,0.10) 0%, transparent 45%),
+                radial-gradient(circle at 85% 90%, rgba(171,71,188,0.06) 0%, transparent 45%);
+            color: var(--d7u1l24-oral-text);
+            line-height: 1.65;
+            transition: background var(--d7u1l24-oral-transition), color var(--d7u1l24-oral-transition);
+            min-height: 100vh;
+        }
+        .back-nav { background: rgba(0,0,0,0.25); backdrop-filter: blur(10px); border-bottom: 1px solid var(--d7u1l24-oral-border); padding: 0.7rem 1.5rem; position: sticky; top: 0; z-index: 100; }
+        body.light .back-nav { background: rgba(255,255,255,0.85); }
+        .back-nav a { font-weight: 600; color: var(--d7u1l24-oral-accent); text-decoration: none; font-size: 0.9rem; }
+        .back-nav a:hover { color: var(--d7u1l24-oral-accent-hover); }
+
+        .d7u1l24-oral-container { max-width: 920px; margin: 0 auto; padding: 2rem 1.4rem 4rem; }
+
+        /* === HERO === */
+        .d7u1l24-oral-hero {
+            text-align: center;
+            padding: 2.5rem 1rem 2rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(160deg, rgba(0,196,180,0.12) 0%, rgba(171,71,188,0.06) 100%);
+            border-radius: var(--d7u1l24-oral-radius);
+            border: 1px solid var(--d7u1l24-oral-border);
+            position: relative;
+            overflow: hidden;
+        }
+        .d7u1l24-oral-hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background:
+                radial-gradient(circle at 30% 0%, rgba(0,196,180,0.15) 0%, transparent 50%),
+                radial-gradient(circle at 70% 100%, rgba(171,71,188,0.10) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .d7u1l24-oral-note-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px; height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--d7u1l24-oral-accent), #008b8b);
+            color: #fff;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 0 0 8px var(--d7u1l24-oral-accent-soft), var(--d7u1l24-oral-shadow-glow);
+            position: relative;
+            animation: d7u1l24-oral-note-pulse 3s ease-in-out infinite;
+        }
+        @keyframes d7u1l24-oral-note-pulse {
+            0%, 100% { box-shadow: 0 0 0 8px rgba(0,196,180,0.15), 0 0 24px rgba(0,196,180,0.25); transform: rotate(-6deg); }
+            50%      { box-shadow: 0 0 0 14px rgba(0,196,180,0.05), 0 0 36px rgba(0,196,180,0.4); transform: rotate(6deg); }
+        }
+        .d7u1l24-oral-hero h1 {
+            font-family: var(--d7u1l24-oral-font-display);
+            font-size: 2rem;
+            color: var(--d7u1l24-oral-heading);
+            margin: 0.4rem 0 0.5rem;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+        .d7u1l24-oral-hero .d7u1l24-oral-sub {
+            font-size: 1rem;
+            color: var(--d7u1l24-oral-text-light);
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        .d7u1l24-oral-hero .d7u1l24-oral-badge {
+            display: inline-block;
+            background: var(--d7u1l24-oral-accent);
+            color: #002020;
+            padding: 0.35rem 1rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        /* === CAPSULE === */
+        .d7u1l24-oral-capsule {
+            background: var(--d7u1l24-oral-card);
+            border: 1px solid var(--d7u1l24-oral-border);
+            border-radius: var(--d7u1l24-oral-radius);
+            padding: 1.4rem 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: var(--d7u1l24-oral-shadow);
+            position: relative;
+            overflow: hidden;
+            transition: all var(--d7u1l24-oral-transition);
+        }
+        .d7u1l24-oral-capsule::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 4px;
+            background: var(--cap-color, var(--d7u1l24-oral-accent));
+        }
+        .d7u1l24-oral-capsule.c1 { --cap-color: var(--d7u1l24-oral-c1); }
+        .d7u1l24-oral-capsule.c2 { --cap-color: var(--d7u1l24-oral-c2); }
+        .d7u1l24-oral-capsule.c3 { --cap-color: var(--d7u1l24-oral-c3); }
+        .d7u1l24-oral-capsule.c4 { --cap-color: var(--d7u1l24-oral-c4); }
+        .d7u1l24-oral-capsule.c5 { --cap-color: var(--d7u1l24-oral-c5); }
+
+        .d7u1l24-oral-capsule-head {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        .d7u1l24-oral-capsule-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 40px; height: 40px;
+            padding: 0 0.7rem;
+            border-radius: 12px;
+            background: var(--cap-color, var(--d7u1l24-oral-accent));
+            color: #002020;
+            font-weight: 800;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            flex-shrink: 0;
+        }
+        .d7u1l24-oral-capsule-title {
+            flex: 1;
+            min-width: 0;
+        }
+        .d7u1l24-oral-capsule-title h3 {
+            font-family: var(--d7u1l24-oral-font-display);
+            font-size: 1.15rem;
+            color: var(--d7u1l24-oral-heading);
+            margin-bottom: 0.15rem;
+            font-weight: 700;
+        }
+        .d7u1l24-oral-capsule-title p {
+            font-size: 0.85rem;
+            color: var(--d7u1l24-oral-text-light);
+        }
+
+        /* === PLAYER === */
+        .d7u1l24-oral-player {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1rem 0 0.8rem;
+            flex-wrap: wrap;
+        }
+        .d7u1l24-oral-play {
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            border: none;
+            background: var(--cap-color, var(--d7u1l24-oral-accent));
+            color: #002020;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all var(--d7u1l24-oral-transition);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+            position: relative;
+        }
+        .d7u1l24-oral-play:hover { transform: scale(1.06); box-shadow: 0 6px 20px rgba(0,0,0,0.35); }
+        .d7u1l24-oral-play.playing::after {
+            content: '';
+            position: absolute; inset: -6px;
+            border-radius: 50%;
+            border: 2px solid var(--cap-color, var(--d7u1l24-oral-accent));
+            animation: d7u1l24-oral-ring 1.4s ease-out infinite;
+        }
+        @keyframes d7u1l24-oral-ring {
+            0%   { transform: scale(1);   opacity: 1; }
+            100% { transform: scale(1.4); opacity: 0; }
+        }
+
+        .d7u1l24-oral-wave-wrap { flex: 1; min-width: 180px; }
+        .d7u1l24-oral-wave {
+            height: 40px;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            margin-bottom: 0.4rem;
+        }
+        .d7u1l24-oral-wave .wbar {
+            flex: 1;
+            background: var(--cap-color, var(--d7u1l24-oral-accent));
+            border-radius: 2px;
+            height: 20%;
+            opacity: 0.35;
+            transition: height 0.15s ease, opacity 0.15s ease;
+        }
+        .d7u1l24-oral-wave.active .wbar {
+            opacity: 0.9;
+            animation: d7u1l24-oral-bar 0.9s ease-in-out infinite;
+        }
+        .d7u1l24-oral-wave .wbar:nth-child(1)  { animation-delay: 0s; }
+        .d7u1l24-oral-wave .wbar:nth-child(2)  { animation-delay: 0.05s; }
+        .d7u1l24-oral-wave .wbar:nth-child(3)  { animation-delay: 0.1s; }
+        .d7u1l24-oral-wave .wbar:nth-child(4)  { animation-delay: 0.15s; }
+        .d7u1l24-oral-wave .wbar:nth-child(5)  { animation-delay: 0.2s; }
+        .d7u1l24-oral-wave .wbar:nth-child(6)  { animation-delay: 0.25s; }
+        .d7u1l24-oral-wave .wbar:nth-child(7)  { animation-delay: 0.3s; }
+        .d7u1l24-oral-wave .wbar:nth-child(8)  { animation-delay: 0.35s; }
+        .d7u1l24-oral-wave .wbar:nth-child(9)  { animation-delay: 0.4s; }
+        .d7u1l24-oral-wave .wbar:nth-child(10) { animation-delay: 0.45s; }
+        .d7u1l24-oral-wave .wbar:nth-child(11) { animation-delay: 0.5s; }
+        .d7u1l24-oral-wave .wbar:nth-child(12) { animation-delay: 0.55s; }
+        .d7u1l24-oral-wave .wbar:nth-child(13) { animation-delay: 0.6s; }
+        .d7u1l24-oral-wave .wbar:nth-child(14) { animation-delay: 0.65s; }
+        .d7u1l24-oral-wave .wbar:nth-child(15) { animation-delay: 0.7s; }
+        .d7u1l24-oral-wave .wbar:nth-child(16) { animation-delay: 0.75s; }
+        .d7u1l24-oral-wave .wbar:nth-child(17) { animation-delay: 0.8s; }
+        .d7u1l24-oral-wave .wbar:nth-child(18) { animation-delay: 0.85s; }
+        .d7u1l24-oral-wave .wbar:nth-child(19) { animation-delay: 0.9s; }
+        .d7u1l24-oral-wave .wbar:nth-child(20) { animation-delay: 0.95s; }
+        @keyframes d7u1l24-oral-bar {
+            0%, 100% { height: 20%; }
+            50%      { height: 95%; }
+        }
+
+        .d7u1l24-oral-progress {
+            width: 100%; height: 5px;
+            background: var(--d7u1l24-oral-border);
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .d7u1l24-oral-progress-fill {
+            height: 100%;
+            background: var(--cap-color, var(--d7u1l24-oral-accent));
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+        .d7u1l24-oral-time {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.72rem;
+            color: var(--d7u1l24-oral-text-light);
+            font-variant-numeric: tabular-nums;
+            margin-top: 0.25rem;
+        }
+
+        .d7u1l24-oral-ctrl-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-top: 0.9rem;
+        }
+        .d7u1l24-oral-speeds { display: flex; gap: 0.3rem; }
+        .d7u1l24-oral-speed {
+            border: 1px solid var(--d7u1l24-oral-border);
+            background: var(--d7u1l24-oral-card-2);
+            color: var(--d7u1l24-oral-text);
+            padding: 0.25rem 0.65rem;
+            border-radius: 8px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all var(--d7u1l24-oral-transition);
+            font-family: inherit;
+        }
+        .d7u1l24-oral-speed.active {
+            background: var(--cap-color, var(--d7u1l24-oral-accent));
+            color: #002020;
+            border-color: var(--cap-color, var(--d7u1l24-oral-accent));
+        }
+        .d7u1l24-oral-transcript-btn {
+            border: 1px dashed var(--d7u1l24-oral-border);
+            background: transparent;
+            color: var(--d7u1l24-oral-text-light);
+            padding: 0.35rem 0.9rem;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--d7u1l24-oral-transition);
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .d7u1l24-oral-transcript-btn:hover {
+            border-style: solid;
+            border-color: var(--cap-color, var(--d7u1l24-oral-accent));
+            color: var(--cap-color, var(--d7u1l24-oral-accent));
+        }
+        .d7u1l24-oral-transcript {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, margin 0.3s ease;
+            margin-top: 0;
+        }
+        .d7u1l24-oral-transcript.open {
+            max-height: 1200px;
+            margin-top: 1rem;
+        }
+
+        /* === SONG STANZAS === */
+        .d7u1l24-oral-song {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .d7u1l24-oral-stanza {
+            background: var(--d7u1l24-oral-card-2);
+            border-left: 3px solid var(--d7u1l24-oral-c2);
+            border-radius: 0 var(--d7u1l24-oral-radius-sm) var(--d7u1l24-oral-radius-sm) 0;
+            padding: 0.9rem 1.2rem;
+            font-family: var(--d7u1l24-oral-font-display);
+            font-size: 0.98rem;
+            line-height: 1.85;
+            position: relative;
+        }
+        .d7u1l24-oral-stanza .stanza-num {
+            position: absolute;
+            left: -14px; top: -8px;
+            background: var(--d7u1l24-oral-c2);
+            color: #002020;
+            width: 26px; height: 26px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--d7u1l24-oral-font);
+            font-size: 0.75rem; font-weight: 800;
+        }
+        .d7u1l24-oral-stanza p { margin: 0; }
+        .d7u1l24-oral-stanza .verse-ref {
+            color: var(--d7u1l24-oral-accent);
+            font-size: 0.7rem;
+            vertical-align: super;
+            cursor: help;
+            font-family: var(--d7u1l24-oral-font);
+        }
+
+        /* === EXERCISE À TROUS === */
+        .d7u1l24-oral-fill {
+            background: linear-gradient(160deg, rgba(255,167,38,0.08) 0%, rgba(0,0,0,0) 60%);
+            border: 1px solid var(--d7u1l24-oral-border);
+            border-radius: var(--d7u1l24-oral-radius);
+            padding: 1.4rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .d7u1l24-oral-fill h3 {
+            font-family: var(--d7u1l24-oral-font-display);
+            font-size: 1.2rem;
+            color: var(--d7u1l24-oral-heading);
+            margin-bottom: 0.7rem;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .d7u1l24-oral-fill p.instruction {
+            font-size: 0.9rem;
+            color: var(--d7u1l24-oral-text-light);
+            margin-bottom: 1rem;
+        }
+        .d7u1l24-oral-fill-line {
+            font-family: var(--d7u1l24-oral-font-display);
+            font-size: 1rem;
+            line-height: 2.4;
+            margin-bottom: 0.4rem;
+        }
+        .d7u1l24-oral-fill-input {
+            display: inline-block;
+            background: var(--d7u1l24-oral-card-2);
+            border: none;
+            border-bottom: 2px dashed var(--d7u1l24-oral-c3);
+            padding: 0.2rem 0.5rem;
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: var(--d7u1l24-oral-text);
+            min-width: 110px;
+            margin: 0 0.2rem;
+            transition: all 0.2s;
+            text-align: center;
+        }
+        .d7u1l24-oral-fill-input:focus {
+            outline: none;
+            border-bottom-style: solid;
+            border-bottom-color: var(--d7u1l24-oral-accent);
+            background: var(--d7u1l24-oral-accent-soft);
+        }
+        .d7u1l24-oral-fill-input.correct {
+            border-bottom-color: #4caf50;
+            background: rgba(76,175,80,0.15);
+            color: #a5d6a7;
+        }
+        .d7u1l24-oral-fill-input.wrong {
+            border-bottom-color: #ef5350;
+            background: rgba(239,83,80,0.15);
+            color: #ef9a9a;
+        }
+
+        /* === DISCUSSION === */
+        .d7u1l24-oral-discuss {
+            background: linear-gradient(160deg, rgba(74,158,255,0.08) 0%, rgba(0,0,0,0) 60%);
+            border: 1px solid var(--d7u1l24-oral-border);
+            border-radius: var(--d7u1l24-oral-radius);
+            padding: 1.4rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .d7u1l24-oral-discuss h3 {
+            font-family: var(--d7u1l24-oral-font-display);
+            font-size: 1.2rem;
+            color: var(--d7u1l24-oral-heading);
+            margin-bottom: 0.9rem;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .d7u1l24-oral-q-item {
+            background: var(--d7u1l24-oral-card-2);
+            border-left: 3px solid var(--d7u1l24-oral-c4);
+            padding: 0.8rem 1.1rem;
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 0.7rem;
+            font-size: 0.95rem;
+        }
+        .d7u1l24-oral-q-item strong {
+            color: var(--d7u1l24-oral-c4);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        /* === GRAMMAR WORK === */
+        .d7u1l24-oral-grammar {
+            background: linear-gradient(160deg, rgba(102,187,106,0.08) 0%, rgba(0,0,0,0) 60%);
+            border: 1px solid var(--d7u1l24-oral-border);
+            border-radius: var(--d7u1l24-oral-radius);
+            padding: 1.4rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .d7u1l24-oral-grammar h3 {
+            font-family: var(--d7u1l24-oral-font-display);
+            font-size: 1.2rem;
+            color: var(--d7u1l24-oral-heading);
+            margin-bottom: 0.7rem;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .d7u1l24-oral-grammar p { font-size: 0.92rem; margin-bottom: 0.7rem; }
+        .d7u1l24-oral-verb-row {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 0.6rem;
+            align-items: center;
+            padding: 0.5rem 0.7rem;
+            background: var(--d7u1l24-oral-card-2);
+            border-radius: 10px;
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+        }
+        .d7u1l24-oral-verb-row .inf {
+            color: var(--d7u1l24-oral-c5);
+            font-weight: 700;
+        }
+        .d7u1l24-oral-verb-row .imp {
+            background: transparent;
+            border: none;
+            border-bottom: 1px dashed var(--d7u1l24-oral-border);
+            padding: 0.2rem 0.4rem;
+            color: var(--d7u1l24-oral-text);
+            font-family: inherit;
+            font-size: 0.9rem;
+            min-width: 120px;
+            text-align: right;
+        }
+        .d7u1l24-oral-verb-row .imp:focus { outline: none; border-bottom-color: var(--d7u1l24-oral-accent); }
+
+        /* === SING ALONG === */
+        .d7u1l24-oral-sing {
+            background: linear-gradient(160deg, rgba(0,196,180,0.15) 0%, rgba(171,71,188,0.10) 100%);
+            border: 1px solid var(--d7u1l24-oral-accent);
+            border-radius: var(--d7u1l24-oral-radius);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        .d7u1l24-oral-sing h3 {
+            font-family: var(--d7u1l24-oral-font-display);
+            font-size: 1.3rem;
+            color: var(--d7u1l24-oral-heading);
+            margin-bottom: 0.7rem;
+        }
+        .d7u1l24-oral-sing p {
+            font-size: 0.95rem;
+            color: var(--d7u1l24-oral-text-light);
+            margin-bottom: 1rem;
+        }
+        .d7u1l24-oral-sing .big-play {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--d7u1l24-oral-accent);
+            color: #002020;
+            border: none;
+            padding: 0.9rem 1.8rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+            box-shadow: 0 6px 20px rgba(0,196,180,0.35);
+            transition: all var(--d7u1l24-oral-transition);
+        }
+        .d7u1l24-oral-sing .big-play:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(0,196,180,0.5);
+        }
+
+        /* === EVAL GRID === */
+        .d7u1l24-oral-eval {
+            background: var(--d7u1l24-oral-card);
+            border: 1px solid var(--d7u1l24-oral-border);
+            border-radius: var(--d7u1l24-oral-radius);
+            padding: 1.4rem 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: var(--d7u1l24-oral-shadow);
+        }
+        .d7u1l24-oral-eval h3 {
+            font-family: var(--d7u1l24-oral-font-display);
+            font-size: 1.2rem;
+            color: var(--d7u1l24-oral-heading);
+            margin-bottom: 1rem;
+        }
+        .d7u1l24-oral-eval-row {
+            display: grid;
+            grid-template-columns: 1fr auto auto auto;
+            gap: 0.8rem;
+            align-items: center;
+            padding: 0.7rem 0;
+            border-bottom: 1px dashed var(--d7u1l24-oral-border);
+        }
+        .d7u1l24-oral-eval-row:last-child { border-bottom: none; }
+        .d7u1l24-oral-eval-row span:first-child {
+            font-size: 0.9rem;
+            color: var(--d7u1l24-oral-text);
+        }
+        .d7u1l24-oral-eval-row label {
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.8rem;
+            color: var(--d7u1l24-oral-text-light);
+            padding: 0.3rem 0.6rem;
+            border-radius: 8px;
+            transition: all 0.15s ease;
+        }
+        .d7u1l24-oral-eval-row label:hover {
+            background: var(--d7u1l24-oral-accent-soft);
+            color: var(--d7u1l24-oral-accent);
+        }
+        .d7u1l24-oral-eval-row input[type="radio"] {
+            accent-color: var(--d7u1l24-oral-accent);
+        }
+
+        /* === BUTTONS === */
+        .d7u1l24-oral-btn {
+            border: none;
+            background: var(--d7u1l24-oral-accent);
+            color: #002020;
+            padding: 0.7rem 1.4rem;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.88rem;
+            transition: all var(--d7u1l24-oral-transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .d7u1l24-oral-btn:hover {
+            background: var(--d7u1l24-oral-accent-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(0,196,180,0.3);
+        }
+        .d7u1l24-oral-btn.secondary {
+            background: transparent;
+            border: 1px solid var(--d7u1l24-oral-border);
+            color: var(--d7u1l24-oral-text);
+        }
+        .d7u1l24-oral-btn.secondary:hover {
+            border-color: var(--d7u1l24-oral-accent);
+            color: var(--d7u1l24-oral-accent);
+            background: var(--d7u1l24-oral-accent-soft);
+            box-shadow: none;
+            transform: none;
+        }
+
+        /* === SCORE === */
+        .d7u1l24-oral-score {
+            background: linear-gradient(160deg, var(--d7u1l24-oral-card-2) 0%, var(--d7u1l24-oral-card) 100%);
+            border: 1px solid var(--d7u1l24-oral-border);
+            border-radius: var(--d7u1l24-oral-radius);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: var(--d7u1l24-oral-shadow);
+        }
+        .d7u1l24-oral-score h3 {
+            font-family: var(--d7u1l24-oral-font-display);
+            font-size: 1.3rem;
+            color: var(--d7u1l24-oral-heading);
+            margin-bottom: 1rem;
+        }
+        .d7u1l24-oral-score-stats {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.2rem;
+        }
+        .d7u1l24-oral-stat {
+            background: var(--d7u1l24-oral-card);
+            border: 1px solid var(--d7u1l24-oral-border);
+            padding: 0.7rem 1.1rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .d7u1l24-oral-stat strong { color: var(--d7u1l24-oral-accent); font-size: 1.1rem; }
+
+        /* === FOOTER === */
+        .d7u1l24-oral-footer {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            padding: 1rem 0;
+        }
+        .d7u1l24-oral-footer a {
+            font-weight: 600;
+            color: var(--d7u1l24-oral-accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .d7u1l24-oral-footer a:hover { color: var(--d7u1l24-oral-accent-hover); }
+
+        /* === END OF UNIT === */
+        .d7u1l24-oral-end {
+            margin-top: 2rem;
+            text-align: center;
+            padding: 1.5rem;
+            border: 2px dashed var(--d7u1l24-oral-accent);
+            border-radius: var(--d7u1l24-oral-radius);
+            background: rgba(0,196,180,0.05);
+        }
+        .d7u1l24-oral-end .emoji { font-size: 2.5rem; display: block; margin-bottom: 0.5rem; }
+        .d7u1l24-oral-end h4 {
+            color: var(--d7u1l24-oral-heading);
+            font-family: var(--d7u1l24-oral-font-display);
+            font-size: 1.15rem;
+            margin-bottom: 0.3rem;
+        }
+        .d7u1l24-oral-end p {
+            color: var(--d7u1l24-oral-text-light);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 640px) {
+            .d7u1l24-oral-hero h1 { font-size: 1.4rem; }
+            .d7u1l24-oral-container { padding: 1rem 0.8rem 3rem; }
+            .d7u1l24-oral-capsule { padding: 1.1rem 1rem; }
+            .d7u1l24-oral-play { width: 52px; height: 52px; font-size: 1.3rem; }
+            .d7u1l24-oral-eval-row { grid-template-columns: 1fr; gap: 0.4rem; }
+            .d7u1l24-oral-fill-input { min-width: 90px; }
+            .d7u1l24-oral-verb-row { grid-template-columns: 1fr; }
+            .d7u1l24-oral-verb-row .imp { text-align: left; width: 100%; }
+        }
+        html[dir="rtl"] .d7u1l24-oral-stanza {
+            border-left: none;
+            border-right: 3px solid var(--d7u1l24-oral-c2);
+            border-radius: var(--d7u1l24-oral-radius-sm) 0 0 var(--d7u1l24-oral-radius-sm);
+        }
+        html[dir="rtl"] .d7u1l24-oral-stanza .stanza-num { left: auto; right: -14px; }
+        html[dir="rtl"] .d7u1l24-oral-q-item {
+            border-left: none;
+            border-right: 3px solid var(--d7u1l24-oral-c4);
+            border-radius: 10px 0 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="toast-container"></div>
+    <button id="signInBtn" style="display:none"></button>
+    <nav class="back-nav no-print">
+        <a href="index.html" data-i18n="back_link">← Retour à l'accueil</a>
+    </nav>
+
+    <div id="main-content" class="d7u1l24-oral-container">
+        <!-- HERO -->
+        <header class="d7u1l24-oral-hero">
+            <div class="d7u1l24-oral-note-badge">🎵</div>
+            <span class="d7u1l24-oral-badge" data-i18n="lesson_badge">🗣️ Oral · Leçon 24</span>
+            <h1 data-i18n="lesson_title">Écouter une chanson<br>« Prendre un enfant » — Yves Duteil</h1>
+            <p class="d7u1l24-oral-sub" data-i18n="lesson_sub">Écoutez, complétez, discutez, chantez. La dernière leçon de l'Unité 1 !</p>
+        </header>
+
+        <!-- CAPSULE 1 – LA CHANSON (VERSION COMPLÈTE) -->
+        <section class="d7u1l24-oral-capsule c1">
+            <div class="d7u1l24-oral-capsule-head">
+                <span class="d7u1l24-oral-capsule-num">01</span>
+                <div class="d7u1l24-oral-capsule-title">
+                    <h3 data-i18n="cap1_title">La chanson – 1ère écoute (livres fermés)</h3>
+                    <p data-i18n="cap1_sub">Fermez les yeux, écoutez. On en parle après.</p>
+                </div>
+            </div>
+
+            <div class="d7u1l24-oral-player">
+                <button class="d7u1l24-oral-play" data-play="song" aria-label="Lecture">▶</button>
+                <div class="d7u1l24-oral-wave-wrap">
+                    <div class="d7u1l24-oral-wave" data-wave="song">
+                        <span class="wbar"></span><span class="wbar"></span><span class="wbar"></span><span class="wbar"></span><span class="wbar"></span>
+                        <span class="wbar"></span><span class="wbar"></span><span class="wbar"></span><span class="wbar"></span><span class="wbar"></span>
+                        <span class="wbar"></span><span class="wbar"></span><span class="wbar"></span><span class="wbar"></span><span class="wbar"></span>
+                        <span class="wbar"></span><span class="wbar"></span><span class="wbar"></span><span class="wbar"></span><span class="wbar"></span>
+                    </div>
+                    <div class="d7u1l24-oral-progress" data-progress="song">
+                        <div class="d7u1l24-oral-progress-fill" data-fill="song"></div>
+                    </div>
+                    <div class="d7u1l24-oral-time">
+                        <span data-time="song">0:00</span>
+                        <span data-dur="song">0:00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d7u1l24-oral-ctrl-row">
+                <div class="d7u1l24-oral-speeds" data-speeds="song">
+                    <button class="d7u1l24-oral-speed" data-speed="0.75">0.75x</button>
+                    <button class="d7u1l24-oral-speed active" data-speed="1">1x</button>
+                    <button class="d7u1l24-oral-speed" data-speed="1.25">1.25x</button>
+                </div>
+            </div>
+
+            <div class="d7u1l24-oral-transcript open" id="transcript-song" style="max-height:none;margin-top:1.2rem;">
+                <div style="font-size:0.85rem;color:var(--d7u1l24-oral-text-light);margin-bottom:0.6rem;" data-i18n="stanza_title">📜 Paroles de la chanson :</div>
+                <div class="d7u1l24-oral-song">
+    <div class="d7u1l24-oral-stanza">
+        <span class="stanza-num">1</span>
+        <p><span data-i18n="stanza1_l1">Prendre un enfant par la main</span><br>
+        <span data-i18n="stanza1_l2">Pour l'emmener vers demain</span><br>
+        <span data-i18n="stanza1_l3">Pour lui donner la confiance en son pas</span><span class="verse-ref" title="il apprend à marcher">¹</span><br>
+        <span data-i18n="stanza1_l4">Prendre un enfant pour un roi</span><br>
+        <span data-i18n="stanza1_l5">Prendre un enfant dans ses bras</span><br>
+        <span data-i18n="stanza1_l6">Et pour la première fois</span><br>
+        <span data-i18n="stanza1_l7">Sécher ses larmes en étouffant de joie</span><span class="verse-ref" title="sans pouvoir retenir sa joie">²</span><br>
+        <span data-i18n="stanza1_l8">Prendre un enfant dans ses bras</span></p>
+    </div>
+    <div class="d7u1l24-oral-stanza">
+        <span class="stanza-num">2</span>
+        <p><span data-i18n="stanza2_l1">Prendre un enfant par le cœur</span><br>
+        <span data-i18n="stanza2_l2">Pour soulager ses malheurs</span><br>
+        <span data-i18n="stanza2_l3">Tout doucement, sans parler, sans pudeur</span><span class="verse-ref" title="honte, gêne">³</span><br>
+        <span data-i18n="stanza2_l4">Prendre un enfant sur son cœur</span><br>
+        <span data-i18n="stanza2_l5">Prendre un enfant dans ses bras</span><br>
+        <span data-i18n="stanza2_l6">Mais pour la première fois</span><br>
+        <span data-i18n="stanza2_l7">Verser des larmes en étouffant sa joie</span><br>
+        <span data-i18n="stanza2_l8">Prendre un enfant contre soi</span></p>
+    </div>
+    <div class="d7u1l24-oral-stanza">
+        <span class="stanza-num">3</span>
+        <p><span data-i18n="stanza3_l1">Prendre un enfant par la main</span><br>
+        <span data-i18n="stanza3_l2">Et lui chanter des refrains</span><br>
+        <span data-i18n="stanza3_l3">Pour qu'il s'endorme à la tombée du jour</span><br>
+        <span data-i18n="stanza3_l4">Prendre un enfant par l'amour</span><br>
+        <span data-i18n="stanza3_l5">Prendre un enfant comme il vient</span><br>
+        <span data-i18n="stanza3_l6">Et consoler ses chagrins</span><br>
+        <span data-i18n="stanza3_l7">Vivre sa vie des années puis soudain</span><br>
+        <span data-i18n="stanza3_l8">Prendre un enfant par la main</span><br>
+        <span data-i18n="stanza3_l9">En regardant tout au bout du chemin</span><span class="verse-ref" title="vers l'avenir">⁴</span><br>
+        <span data-i18n="stanza3_l10">Prendre un enfant pour le sien</span></p>
+    </div>
+</div>
+                <p style="text-align:right;font-style:italic;color:var(--d7u1l24-oral-text-light);font-size:0.85rem;margin-top:0.8rem;">— Yves DUTEIL</p>
+            </div>
+
+            <!-- Notes de vocabulaire -->
+            <div style="margin-top:1.2rem;padding:0.9rem 1.1rem;background:var(--d7u1l24-oral-card-2);border-radius:10px;font-size:0.85rem;color:var(--d7u1l24-oral-text-light);">
+                <strong style="color:var(--d7u1l24-oral-accent);" data-i18n="notes_title">📖 Notes :</strong>
+                <ul style="padding-left:1.2rem;margin-top:0.4rem;">
+                    <li><sup>1</sup> <span data-i18n="note1">il apprend à marcher</span></li>
+                    <li><sup>2</sup> <span data-i18n="note2">sans pouvoir retenir sa joie</span></li>
+                    <li><sup>3</sup> <span data-i18n="note3">honte, gêne</span></li>
+                    <li><sup>4</sup> <span data-i18n="note4">vers l'avenir</span></li>
+                </ul>
+            </div>
+
+            <!-- Questions 1ère écoute -->
+            <div class="d7u1l24-oral-q-item" style="margin-top:1.2rem;">
+                <strong data-i18n="first_listen">🎧 1ère écoute – Questions</strong>
+                <ul style="padding-left:1.2rem;margin-top:0.4rem;">
+                    <li data-i18n="fl1">Quels mots, quelles expressions retiennent ton attention ?</li>
+                    <li data-i18n="fl2">Qu'est-ce que cette chanson évoque pour toi ?</li>
+                    <li data-i18n="fl3">Quels instruments de musique reconnais-tu ?</li>
+                    <li data-i18n="fl4">Connais-tu le chanteur ? Si oui, que sais-tu sur lui ?</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- CAPSULE 2 – EXERCICE À TROUS -->
+        <section class="d7u1l24-oral-capsule c3">
+            <div class="d7u1l24-oral-capsule-head">
+                <span class="d7u1l24-oral-capsule-num">02</span>
+                <div class="d7u1l24-oral-capsule-title">
+                    <h3 data-i18n="cap2_title">J'évalue la qualité de mon écoute</h3>
+                    <p data-i18n="cap2_sub">Avec ton camarade, complète la strophe. Puis vérifie avec la chanson.</p>
+                </div>
+            </div>
+
+            <div class="d7u1l24-oral-player">
+                <button class="d7u1l24-oral-play" data-play="stanza" aria-label="Lecture">▶</button>
+                <div class="d7u1l24-oral-wave-wrap">
+                    <div class="d7u1l24-oral-wave" data-wave="stanza">
+                        <span class="wbar"></span><span class="wbar"></span><span class="wbar"></span><span class="wbar"></span><span class="wbar"></span>
+                        <span class="wbar"></span><span class="wbar"></span><span class="wbar"></span><span class="wbar"></span><span class="wbar"></span>
+                        <span class="wbar"></span><span class="wbar"></span><span class="wbar"></span><span class="wbar"></span><span class="wbar"></span>
+                        <span class="wbar"></span><span class="wbar"></span><span class="wbar"></span><span class="wbar"></span><span class="wbar"></span>
+                    </div>
+                    <div class="d7u1l24-oral-progress" data-progress="stanza">
+                        <div class="d7u1l24-oral-progress-fill" data-fill="stanza"></div>
+                    </div>
+                    <div class="d7u1l24-oral-time">
+                        <span data-time="stanza">0:00</span>
+                        <span data-dur="stanza">0:00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d7u1l24-oral-ctrl-row">
+                <div class="d7u1l24-oral-speeds" data-speeds="stanza">
+                    <button class="d7u1l24-oral-speed" data-speed="0.75">0.75x</button>
+                    <button class="d7u1l24-oral-speed active" data-speed="1">1x</button>
+                    <button class="d7u1l24-oral-speed" data-speed="1.25">1.25x</button>
+                </div>
+                <button class="d7u1l24-oral-transcript-btn" data-toggle="transcript-stanza">
+                    <span>📝</span> <span data-i18n="show_transcript">Afficher les paroles complètes</span>
+                </button>
+            </div>
+
+            <div class="d7u1l24-oral-transcript" id="transcript-stanza">
+                <p style="font-size:0.88rem;color:var(--d7u1l24-oral-text-light);font-style:italic;" data-i18n="transcript_hint">Compare avec les paroles complètes ci-dessus pour vérifier tes réponses.</p>
+            </div>
+
+            <div class="d7u1l24-oral-fill" style="margin-top:1.2rem;">
+                <h3>✏️ <span data-i18n="fill_title">Complète la strophe à trous</span></h3>
+                <p class="instruction" data-i18n="fill_instruction">Écoute la chanson et remplis les blancs. Attention à l'orthographe !</p>
+
+                <div class="d7u1l24-oral-fill-line">
+                    Prendre un enfant par la <input class="d7u1l24-oral-fill-input" data-ans="main" placeholder="..."><br>
+                    Pour l'emmener vers <input class="d7u1l24-oral-fill-input" data-ans="demain" placeholder="..."><br>
+                    Pour lui donner la <input class="d7u1l24-oral-fill-input" data-ans="confiance" placeholder="..."> en son pas<br>
+                    Prendre un enfant pour un <input class="d7u1l24-oral-fill-input" data-ans="roi" placeholder="..."><br>
+                    Prendre un enfant dans ses <input class="d7u1l24-oral-fill-input" data-ans="bras" placeholder="..."><br>
+                    Et pour la première <input class="d7u1l24-oral-fill-input" data-ans="fois" placeholder="..."><br>
+                    Sécher ses <input class="d7u1l24-oral-fill-input" data-ans="larmes" placeholder="..."> en étouffant de joie<br>
+                    Prendre un enfant dans ses <input class="d7u1l24-oral-fill-input" data-ans="bras" placeholder="...">
+                </div>
+
+                <div style="margin-top:1rem;display:flex;gap:0.6rem;flex-wrap:wrap;">
+                    <button class="d7u1l24-oral-btn" onclick="checkFill()">✓ <span data-i18n="btn_check">Vérifier mes réponses</span></button>
+                    <button class="d7u1l24-oral-btn secondary" onclick="resetFill()">↺ <span data-i18n="clear">Effacer</span></button>
+                </div>
+                <div id="fillResult" style="margin-top:0.8rem;font-weight:700;font-size:0.9rem;"></div>
+            </div>
+
+            <div class="d7u1l24-oral-self" style="margin-top:1rem;padding-top:0.8rem;border-top:1px dashed var(--d7u1l24-oral-border);display:flex;flex-wrap:wrap;align-items:center;gap:0.7rem;font-size:0.85rem;color:var(--d7u1l24-oral-text-light);">
+                <span data-i18n="self_assess_question">Mon écoute est :</span>
+                <label><input type="radio" name="self_c2" value="correct" data-i18n="self_correct"> Correcte</label>
+                <label><input type="radio" name="self_c2" value="partial" data-i18n="self_partial"> Partielle</label>
+                <label><input type="radio" name="self_c2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+            </div>
+        </section>
+
+        <!-- CAPSULE 3 – DISCUSSION -->
+        <section class="d7u1l24-oral-capsule c4">
+            <div class="d7u1l24-oral-capsule-head">
+                <span class="d7u1l24-oral-capsule-num">03</span>
+                <div class="d7u1l24-oral-capsule-title">
+                    <h3 data-i18n="cap3_title">Je participe à une discussion sur la chanson</h3>
+                    <p data-i18n="cap3_sub">Écoute les questions puis discute avec ton camarade.</p>
+                </div>
+            </div>
+
+            <div class="d7u1l24-oral-player">
+                <button class="d7u1l24-oral-play" data-play="discussion" aria-label="Lecture">▶</button>
+                <div class="d7u1l24-oral-wave-wrap">
+                    <div class="d7u1l24-oral-wave" data-wave="discussion">
+                        <span class="wbar"></span><span class="wbar"></span><span class="wbar"></span><span class="wbar"></span><span class="wbar"></span>
+                        <span class="wbar"></span><span class="wbar"></span><span class="wbar"></span><span class="wbar"></span><span class="wbar"></span>
+                        <span class="wbar"></span><span class="wbar"></span><span class="wbar"></span><span class="wbar"></span><span class="wbar"></span>
+                        <span class="wbar"></span><span class="wbar"></span><span class="wbar"></span><span class="wbar"></span><span class="wbar"></span>
+                    </div>
+                    <div class="d7u1l24-oral-progress" data-progress="discussion">
+                        <div class="d7u1l24-oral-progress-fill" data-fill="discussion"></div>
+                    </div>
+                    <div class="d7u1l24-oral-time">
+                        <span data-time="discussion">0:00</span>
+                        <span data-dur="discussion">0:00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d7u1l24-oral-ctrl-row">
+                <div class="d7u1l24-oral-speeds" data-speeds="discussion">
+                    <button class="d7u1l24-oral-speed" data-speed="0.75">0.75x</button>
+                    <button class="d7u1l24-oral-speed active" data-speed="1">1x</button>
+                    <button class="d7u1l24-oral-speed" data-speed="1.25">1.25x</button>
+                </div>
+            </div>
+
+            <div class="d7u1l24-oral-discuss" style="margin-top:1.2rem;">
+                <h3>💬 <span data-i18n="discuss_title">Discutons ensemble</span></h3>
+                <div class="d7u1l24-oral-q-item">
+                    <strong data-i18n="q1_label">Question 1</strong>
+                    <span data-i18n="q1">Que nous demande Yves Duteil dans cette chanson ?</span>
+                </div>
+                <div class="d7u1l24-oral-q-item">
+                    <strong data-i18n="q2_label">Question 2</strong>
+                    <span data-i18n="q2">Quelle relation avec l'enfant l'adulte doit-il avoir ?</span>
+                </div>
+                <div class="d7u1l24-oral-q-item">
+                    <strong data-i18n="q3_label">Question 3</strong>
+                    <span data-i18n="q3">D'après toi, à quoi sert la répétition de certaines expressions ?</span>
+                </div>
+            </div>
+
+            <div class="d7u1l24-oral-quiz">
+                <h4 data-i18n="quiz_title">🎧 Vérifie ta compréhension</h4>
+                <div class="d7u1l24-oral-q" data-q="c4q1" data-correct="b">
+                    <p>1. <span data-i18n="c4q1">Que fait l'adulte en prenant l'enfant par la main ?</span></p>
+                    <div class="d7u1l24-oral-opts">
+                        <label class="d7u1l24-oral-opt"><input type="radio" name="c4q1" value="a"> <span data-i18n="c4q1a">Il le gronde.</span></label>
+                        <label class="d7u1l24-oral-opt"><input type="radio" name="c4q1" value="b"> <span data-i18n="c4q1b">Il le guide, lui donne confiance.</span></label>
+                        <label class="d7u1l24-oral-opt"><input type="radio" name="c4q1" value="c"> <span data-i18n="c4q1c">Il l'ignore.</span></label>
+                    </div>
+                </div>
+                <div class="d7u1l24-oral-q" data-q="c4q2" data-correct="a">
+                    <p>2. <span data-i18n="c4q2">La répétition « prendre un enfant… » sert à :</span></p>
+                    <div class="d7u1l24-oral-opts">
+                        <label class="d7u1l24-oral-opt"><input type="radio" name="c4q2" value="a"> <span data-i18n="c4q2a">Insister sur les multiples façons d'aimer un enfant.</span></label>
+                        <label class="d7u1l24-oral-opt"><input type="radio" name="c4q2" value="b"> <span data-i18n="c4q2b">Remplir la chanson.</span></label>
+                        <label class="d7u1l24-oral-opt"><input type="radio" name="c4q2" value="c"> <span data-i18n="c4q2c">Créer une rime uniquement.</span></label>
+                    </div>
+                </div>
+                <button class="d7u1l24-oral-btn" data-check="c4" data-i18n="btn_check">✓ Vérifier mes réponses</button>
+                <div class="d7u1l24-oral-self">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_c4" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_c4" value="partial" data-i18n="self_partial"> Partielle</label>
+                    <label><input type="radio" name="self_c4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                </div>
+            </div>
+        </section>
+
+        <!-- CAPSULE 4 – GRAMMAIRE (INFINITIF / IMPÉRATIF) -->
+        <section class="d7u1l24-oral-capsule c5">
+            <div class="d7u1l24-oral-capsule-head">
+                <span class="d7u1l24-oral-capsule-num">04</span>
+                <div class="d7u1l24-oral-capsule-title">
+                    <h3 data-i18n="cap4_title">Des infinitifs à l'impératif</h3>
+                    <p data-i18n="cap4_sub">Repère les infinitifs de la chanson, puis transforme-les à l'impératif.</p>
+                </div>
+            </div>
+
+            <div class="d7u1l24-oral-grammar" style="margin-top:1rem;">
+                <h3>🔁 <span data-i18n="grammar_title">Infinitif → Impératif</span></h3>
+                <p data-i18n="grammar_instruction">La chanson utilise l'infinitif (« prendre »). Transforme chaque verbe à l'impératif présent (2ᵉ personne du singulier, « tu »). Exemple : <strong>prendre → prends</strong>.</p>
+                <div class="d7u1l24-oral-verb-row">
+                    <span class="inf">Prendre</span>
+                    <input class="imp" data-ans="prends" placeholder="impératif...">
+                </div>
+                <div class="d7u1l24-oral-verb-row">
+                    <span class="inf">Donner</span>
+                    <input class="imp" data-ans="donne" placeholder="impératif...">
+                </div>
+                <div class="d7u1l24-oral-verb-row">
+                    <span class="inf">Sécher</span>
+                    <input class="imp" data-ans="sèche" placeholder="impératif...">
+                </div>
+                <div class="d7u1l24-oral-verb-row">
+                    <span class="inf">Consoler</span>
+                    <input class="imp" data-ans="console" placeholder="impératif...">
+                </div>
+                <div class="d7u1l24-oral-verb-row">
+                    <span class="inf">Chanter</span>
+                    <input class="imp" data-ans="chante" placeholder="impératif...">
+                </div>
+                <div style="margin-top:1rem;">
+                    <button class="d7u1l24-oral-btn" onclick="checkImperatif()">✓ <span data-i18n="btn_check">Vérifier</span></button>
+                </div>
+                <div id="impResult" style="margin-top:0.6rem;font-weight:700;font-size:0.9rem;"></div>
+            </div>
+        </section>
+
+        <!-- CAPSULE 5 – SING ALONG -->
+        <section class="d7u1l24-oral-sing">
+            <span class="d7u1l24-oral-capsule-num" style="background:var(--d7u1l24-oral-accent);margin-bottom:0.8rem;">05</span>
+            <h3>🎤 <span data-i18n="sing_title">Je chante à mon tour</span></h3>
+            <p data-i18n="sing_text">Écoute encore une fois la chanson pour mieux t'en imprégner. Baisse le volume et chantonner avec Yves Duteil…</p>
+            <button class="d7u1l24-oral-sing big-play" data-play="song">
+                <span>🎶</span> <span data-i18n="sing_btn">Chantonner avec Yves Duteil</span>
+            </button>
+            <div class="d7u1l24-oral-self" style="margin-top:1.2rem;justify-content:center;">
+                <span data-i18n="self_assess_question">Mon chant :</span>
+                <label><input type="radio" name="self_c5" value="correct" data-i18n="self_correct"> Réussi</label>
+                <label><input type="radio" name="self_c5" value="partial" data-i18n="self_partial"> À améliorer</label>
+                <label><input type="radio" name="self_c5" value="incorrect" data-i18n="self_incorrect"> Difficile</label>
+            </div>
+        </section>
+
+        <!-- GRILLE D'ÉVALUATION ORALE (texte original préservé) -->
+        <section class="d7u1l24-oral-eval">
+            <h3>📋 <span data-i18n="eval_title">Je m'évalue</span></h3>
+            <div class="d7u1l24-oral-eval-row">
+                <span data-i18n="eval_c1">J'écoute ce que disent les autres</span>
+                <label><input type="radio" name="eval1" value="souvent"> souvent</label>
+                <label><input type="radio" name="eval1" value="quelquefois"> quelquefois</label>
+                <label><input type="radio" name="eval1" value="rarement"> rarement</label>
+            </div>
+            <div class="d7u1l24-oral-eval-row">
+                <span data-i18n="eval_c2">Je demande la parole avant d'intervenir</span>
+                <label><input type="radio" name="eval2" value="souvent"> souvent</label>
+                <label><input type="radio" name="eval2" value="quelquefois"> quelquefois</label>
+                <label><input type="radio" name="eval2" value="rarement"> rarement</label>
+            </div>
+            <div class="d7u1l24-oral-eval-row">
+                <span data-i18n="eval_c3">Je demande des explications quand je ne comprends pas</span>
+                <label><input type="radio" name="eval3" value="souvent"> souvent</label>
+                <label><input type="radio" name="eval3" value="quelquefois"> quelquefois</label>
+                <label><input type="radio" name="eval3" value="rarement"> rarement</label>
+            </div>
+        </section>
+
+        <!-- SCORE -->
+        <section class="d7u1l24-oral-score">
+            <h3>📊 <span data-i18n="score_title">Mon auto-évaluation</span></h3>
+            <div class="d7u1l24-oral-score-stats">
+                <div class="d7u1l24-oral-stat"><span data-i18n="score_correct">Correctes :</span> <strong id="scoreCorrect">0</strong></div>
+                <div class="d7u1l24-oral-stat"><span data-i18n="score_partial">Partielles :</span> <strong id="scorePartial">0</strong></div>
+                <div class="d7u1l24-oral-stat"><span data-i18n="score_incorrect">Incorrectes :</span> <strong id="scoreIncorrect">0</strong></div>
+                <div class="d7u1l24-oral-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <strong id="scoreUnanswered">4</strong></div>
+            </div>
+            <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+                <button id="saveResultsBtn" class="d7u1l24-oral-btn">💾 <span data-i18n="save_results">Enregistrer mes résultats</span></button>
+                <button id="printPdfBtn" class="d7u1l24-oral-btn secondary">🖨️ <span data-i18n="print_pdf">Imprimer / PDF</span></button>
+            </div>
+        </section>
+
+        <!-- END OF UNIT -->
+        <div class="d7u1l24-oral-end">
+            <span class="emoji">🎉</span>
+            <h4 data-i18n="unit_end_title">Fin de l'Unité 1 !</h4>
+            <p data-i18n="unit_end_text">Tu as terminé « Les fondements du français ». Bravo pour ton travail et ta persévérance !</p>
+        </div>
+
+        <!-- FOOTER NAV -->
+        <div class="d7u1l24-oral-footer">
+            <a href="degree7unit1lesson23.html" data-i18n="footer_back">← Leçon précédente</a>
+            <a href="degree7.html" data-i18n="footer_program">Retour au programme</a>
+        </div>
+    </div>
+
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                'lesson_title': "Leçon 24 – Écouter une chanson | Oral",
+                'lesson_short_title': "Écouter une chanson – Prendre un enfant",
+                'ach_year_degree7': "7ème Année Primaire",
+                'ach_module_unit1': "Unité 1 – Les fondements du français",
+                'back_link': "← Retour à l'accueil",
+                'lesson_badge': "🗣️ Oral · Leçon 24",
+                'lesson_sub': "Écoutez, complétez, discutez, chantez. La dernière leçon de l'Unité 1 !",
+				'stanza1_l1': "Prendre un enfant par la main",
+'stanza1_l2': "Pour l'emmener vers demain",
+'stanza1_l3': "Pour lui donner la confiance en son pas",
+'stanza1_l4': "Prendre un enfant pour un roi",
+'stanza1_l5': "Prendre un enfant dans ses bras",
+'stanza1_l6': "Et pour la première fois",
+'stanza1_l7': "Sécher ses larmes en étouffant de joie",
+'stanza1_l8': "Prendre un enfant dans ses bras",
+'stanza2_l1': "Prendre un enfant par le cœur",
+'stanza2_l2': "Pour soulager ses malheurs",
+'stanza2_l3': "Tout doucement, sans parler, sans pudeur",
+'stanza2_l4': "Prendre un enfant sur son cœur",
+'stanza2_l5': "Prendre un enfant dans ses bras",
+'stanza2_l6': "Mais pour la première fois",
+'stanza2_l7': "Verser des larmes en étouffant sa joie",
+'stanza2_l8': "Prendre un enfant contre soi",
+'stanza3_l1': "Prendre un enfant par la main",
+'stanza3_l2': "Et lui chanter des refrains",
+'stanza3_l3': "Pour qu'il s'endorme à la tombée du jour",
+'stanza3_l4': "Prendre un enfant par l'amour",
+'stanza3_l5': "Prendre un enfant comme il vient",
+'stanza3_l6': "Et consoler ses chagrins",
+'stanza3_l7': "Vivre sa vie des années puis soudain",
+'stanza3_l8': "Prendre un enfant par la main",
+'stanza3_l9': "En regardant tout au bout du chemin",
+'stanza3_l10': "Prendre un enfant pour le sien",
+                'cap1_title': "La chanson – 1ère écoute (livres fermés)",
+                'cap1_sub': "Fermez les yeux, écoutez. On en parle après.",
+                'cap2_title': "J'évalue la qualité de mon écoute",
+                'cap2_sub': "Avec ton camarade, complète la strophe. Puis vérifie avec la chanson.",
+                'cap3_title': "Je participe à une discussion sur la chanson",
+                'cap3_sub': "Écoute les questions puis discute avec ton camarade.",
+                'cap4_title': "Des infinitifs à l'impératif",
+                'cap4_sub': "Repère les infinitifs de la chanson, puis transforme-les à l'impératif.",
+                'stanza_title': "📜 Paroles de la chanson :",
+                'notes_title': "📖 Notes :",
+                'note1': "il apprend à marcher",
+                'note2': "sans pouvoir retenir sa joie",
+                'note3': "honte, gêne",
+                'note4': "vers l'avenir",
+                'first_listen': "🎧 1ère écoute – Questions",
+                'fl1': "Quels mots, quelles expressions retiennent ton attention ?",
+                'fl2': "Qu'est-ce que cette chanson évoque pour toi ?",
+                'fl3': "Quels instruments de musique reconnais-tu ?",
+                'fl4': "Connais-tu le chanteur ? Si oui, que sais-tu sur lui ?",
+                'show_transcript': "Afficher les paroles complètes",
+                'hide_transcript': "Masquer les paroles",
+                'transcript_hint': "Compare avec les paroles complètes ci-dessus pour vérifier tes réponses.",
+                'fill_title': "Complète la strophe à trous",
+                'fill_instruction': "Écoute la chanson et remplis les blancs. Attention à l'orthographe !",
+                'btn_check': "Vérifier",
+                'clear': "Effacer",
+                'discuss_title': "Discutons ensemble",
+                'q1_label': "Question 1", 'q1': "Que nous demande Yves Duteil dans cette chanson ?",
+                'q2_label': "Question 2", 'q2': "Quelle relation avec l'enfant l'adulte doit-il avoir ?",
+                'q3_label': "Question 3", 'q3': "D'après toi, à quoi sert la répétition de certaines expressions ?",
+                'quiz_title': "🎧 Vérifie ta compréhension",
+                'c4q1': "Que fait l'adulte en prenant l'enfant par la main ?",
+                'c4q1a': "Il le gronde.", 'c4q1b': "Il le guide, lui donne confiance.", 'c4q1c': "Il l'ignore.",
+                'c4q2': "La répétition « prendre un enfant… » sert à :",
+                'c4q2a': "Insister sur les multiples façons d'aimer un enfant.",
+                'c4q2b': "Remplir la chanson.",
+                'c4q2c': "Créer une rime uniquement.",
+                'grammar_title': "Infinitif → Impératif",
+                'grammar_instruction': "La chanson utilise l'infinitif (« prendre »). Transforme chaque verbe à l'impératif présent (2ᵉ personne du singulier, « tu »). Exemple : prendre → prends.",
+                'sing_title': "Je chante à mon tour",
+                'sing_text': "Écoute encore une fois la chanson pour mieux t'en imprégner. Baisse le volume et chantonner avec Yves Duteil…",
+                'sing_btn': "Chantonner avec Yves Duteil",
+                'eval_title': "Je m'évalue",
+                'eval_c1': "J'écoute ce que disent les autres",
+                'eval_c2': "Je demande la parole avant d'intervenir",
+                'eval_c3': "Je demande des explications quand je ne comprends pas",
+                'self_assess_question': "Ma réponse est :",
+                'self_correct': "Correcte", 'self_partial': "Partielle", 'self_incorrect': "Incorrecte",
+                'score_title': "Mon auto-évaluation",
+                'score_correct': "Correctes :", 'score_partial': "Partielles :", 'score_incorrect': "Incorrectes :", 'score_unanswered': "Sans réponse :",
+                'save_results': "Enregistrer mes résultats", 'save_success': "Résultats sauvegardés ✓", 'save_error': "Erreur lors de la sauvegarde",
+                'print_pdf': "Imprimer / PDF",
+                'print_site_name': "Educational Dashboard – Français",
+                'print_scholar_year': "7ème Année Primaire", 'print_week': "Unité 1", 'print_area': "Oral",
+                'print_footer_dev': "Développé par Mejri Ziad", 'print_footer_date': "Imprimé le",
+                'unit_end_title': "Fin de l'Unité 1 !",
+                'unit_end_text': "Tu as terminé « Les fondements du français ». Bravo pour ton travail et ta persévérance !",
+                'footer_back': "← Leçon précédente",
+                'footer_program': "Retour au programme",
+                'toast_signin_required': "Connectez-vous pour enregistrer vos résultats."
+            },
+            en: {
+                'lesson_title': "Lesson 24 – Listening to a song | Speaking",
+                'lesson_short_title': "Listening to a song – Take a child",
+                'ach_year_degree7': "7th Grade Primary",
+                'ach_module_unit1': "Unit 1 – French foundations",
+                'back_link': "← Back to home",
+                'lesson_badge': "🗣️ Speaking · Lesson 24",
+                'lesson_sub': "Listen, complete, discuss, sing. The last lesson of Unit 1!",
+				'stanza1_l1': "Take a child by the hand",
+'stanza1_l2': "To lead him towards tomorrow",
+'stanza1_l3': "To give him confidence in his step",
+'stanza1_l4': "Take a child for a king",
+'stanza1_l5': "Take a child in your arms",
+'stanza1_l6': "And for the first time",
+'stanza1_l7': "Dry his tears while choking with joy",
+'stanza1_l8': "Take a child in your arms",
+'stanza2_l1': "Take a child by the heart",
+'stanza2_l2': "To relieve his sorrows",
+'stanza2_l3': "Very gently, without speaking, without shame",
+'stanza2_l4': "Take a child to your heart",
+'stanza2_l5': "Take a child in your arms",
+'stanza2_l6': "But for the first time",
+'stanza2_l7': "Shed tears while choking back your joy",
+'stanza2_l8': "Take a child close to you",
+'stanza3_l1': "Take a child by the hand",
+'stanza3_l2': "And sing him refrains",
+'stanza3_l3': "So he falls asleep at nightfall",
+'stanza3_l4': "Take a child through love",
+'stanza3_l5': "Take a child as he comes",
+'stanza3_l6': "And console his sorrows",
+'stanza3_l7': "Live his life for years then suddenly",
+'stanza3_l8': "Take a child by the hand",
+'stanza3_l9': "Looking far down the road",
+'stanza3_l10': "Take a child as your own",
+                'cap1_title': "The song – 1st listening (books closed)",
+                'cap1_sub': "Close your eyes, listen. We'll talk about it after.",
+                'cap2_title': "I evaluate my listening quality",
+                'cap2_sub': "With your classmate, complete the stanza. Then check with the song.",
+                'cap3_title': "I take part in a discussion about the song",
+                'cap3_sub': "Listen to the questions then discuss with your classmate.",
+                'cap4_title': "From infinitives to imperative",
+                'cap4_sub': "Spot the infinitives in the song, then transform them to the imperative.",
+                'stanza_title': "📜 Song lyrics:",
+                'notes_title': "📖 Notes:",
+                'note1': "he learns to walk",
+                'note2': "without being able to hold back his joy",
+                'note3': "shame, embarrassment",
+                'note4': "towards the future",
+                'first_listen': "🎧 1st listening – Questions",
+                'fl1': "Which words, which expressions catch your attention?",
+                'fl2': "What does this song evoke for you?",
+                'fl3': "Which musical instruments do you recognise?",
+                'fl4': "Do you know the singer? If so, what do you know about him?",
+                'show_transcript': "Show full lyrics",
+                'hide_transcript': "Hide lyrics",
+                'transcript_hint': "Compare with the full lyrics above to check your answers.",
+                'fill_title': "Complete the gap stanza",
+                'fill_instruction': "Listen to the song and fill in the blanks. Mind the spelling!",
+                'btn_check': "Check",
+                'clear': "Clear",
+                'discuss_title': "Let's discuss together",
+                'q1_label': "Question 1", 'q1': "What does Yves Duteil ask us in this song?",
+                'q2_label': "Question 2", 'q2': "What relationship with the child should the adult have?",
+                'q3_label': "Question 3", 'q3': "In your opinion, what is the use of repeating certain expressions?",
+                'quiz_title': "🎧 Check your understanding",
+                'c4q1': "What does the adult do by taking the child's hand?",
+                'c4q1a': "He scolds him.", 'c4q1b': "He guides him, gives him confidence.", 'c4q1c': "He ignores him.",
+                'c4q2': "The repetition 'prendre un enfant…' serves to:",
+                'c4q2a': "Emphasize the many ways of loving a child.",
+                'c4q2b': "Fill the song.",
+                'c4q2c': "Create a rhyme only.",
+                'grammar_title': "Infinitive → Imperative",
+                'grammar_instruction': "The song uses the infinitive ('prendre'). Transform each verb to the present imperative (2nd person singular, 'tu'). Example: prendre → prends.",
+                'sing_title': "I sing in my turn",
+                'sing_text': "Listen to the song once more to really absorb it. Lower the volume and hum along with Yves Duteil…",
+                'sing_btn': "Hum along with Yves Duteil",
+                'eval_title': "I evaluate myself",
+                'eval_c1': "I listen to what others say",
+                'eval_c2': "I ask for the floor before speaking",
+                'eval_c3': "I ask for explanations when I don't understand",
+                'self_assess_question': "My answer is:",
+                'self_correct': "Correct", 'self_partial': "Partial", 'self_incorrect': "Incorrect",
+                'score_title': "My self-assessment",
+                'score_correct': "Correct:", 'score_partial': "Partial:", 'score_incorrect': "Incorrect:", 'score_unanswered': "Unanswered:",
+                'save_results': "Save my results", 'save_success': "Results saved ✓", 'save_error': "Save failed",
+                'print_pdf': "Print / PDF",
+                'print_site_name': "Educational Dashboard – French",
+                'print_scholar_year': "7th Grade Primary", 'print_week': "Unit 1", 'print_area': "Speaking",
+                'print_footer_dev': "Developed by Mejri Ziad", 'print_footer_date': "Printed on",
+                'unit_end_title': "End of Unit 1!",
+                'unit_end_text': "You have finished 'French Foundations'. Well done for your work and perseverance!",
+                'footer_back': "← Previous lesson",
+                'footer_program': "Back to program",
+                'toast_signin_required': "Sign in to save your results."
+            },
+            ar: {
+                'lesson_title': "الدرس 24 – الاستماع إلى أغنية | الشفهي",
+                'lesson_short_title': "الاستماع إلى أغنية – خذ طفلاً",
+                'ach_year_degree7': "السنة السابعة ابتدائي",
+                'ach_module_unit1': "الوحدة 1 – أساسيات الفرنسية",
+                'back_link': "← العودة إلى الرئيسية",
+                'lesson_badge': "🗣️ الشفهي · الدرس 24",
+                'lesson_sub': "استمع، أكمل، ناقش، غنِّ. الدرس الأخير من الوحدة الأولى!",
+				'stanza1_l1': "خُذ طفلاً بيده",
+'stanza1_l2': "لتأخذه نحو الغد",
+'stanza1_l3': "لتمنحه الثقة في خطوته",
+'stanza1_l4': "خُذ طفلاً كأنه ملك",
+'stanza1_l5': "خُذ طفلاً بين ذراعيك",
+'stanza1_l6': "وللمرة الأولى",
+'stanza1_l7': "امسح دموعه وفرحك يخنقك",
+'stanza1_l8': "خُذ طفلاً بين ذراعيك",
+'stanza2_l1': "خُذ طفلاً من قلبه",
+'stanza2_l2': "لتخفف أحزانه",
+'stanza2_l3': "بلطف، دون كلام، دون حياء",
+'stanza2_l4': "خُذ طفلاً على قلبك",
+'stanza2_l5': "خُذ طفلاً بين ذراعيك",
+'stanza2_l6': "لكن للمرة الأولى",
+'stanza2_l7': "تذرف دموعاً وأنت تكتم فرحك",
+'stanza2_l8': "خُذ طفلاً إلى صدرك",
+'stanza3_l1': "خُذ طفلاً بيده",
+'stanza3_l2': "وردد له الألحان",
+'stanza3_l3': "حتى ينام عند حلول الليل",
+'stanza3_l4': "خُذ طفلاً بالحب",
+'stanza3_l5': "خُذ طفلاً كما يأتي",
+'stanza3_l6': "وواسِ أحزانه",
+'stanza3_l7': "عش حياته سنوات ثم فجأة",
+'stanza3_l8': "خُذ طفلاً بيده",
+'stanza3_l9': "ناظراً إلى نهاية الطريق",
+'stanza3_l10': "خُذ طفلاً ليكون لك",
+                'cap1_title': "الأغنية – الاستماع الأول (الكتب مغلقة)",
+                'cap1_sub': "أغمض عينيك واستمع. سنتحدث عنها بعد ذلك.",
+                'cap2_title': "أقيّم جودة استماعي",
+                'cap2_sub': "مع زميلك، أكمل المقطع. ثم تحقق مع الأغنية.",
+                'cap3_title': "أشارك في نقاش حول الأغنية",
+                'cap3_sub': "استمع إلى الأسئلة ثم ناقش مع زميلك.",
+                'cap4_title': "من المصدر إلى صيغة الأمر",
+                'cap4_sub': "اكتشف المصادر في الأغنية، ثم حوّلها إلى صيغة الأمر.",
+                'stanza_title': "📜 كلمات الأغنية:",
+                'notes_title': "📖 ملاحظات:",
+                'note1': "يتعلم المشي",
+                'note2': "دون القدرة على كبح فرحته",
+                'note3': "خجل، إحراج",
+                'note4': "نحو المستقبل",
+                'first_listen': "🎧 الاستماع الأول – أسئلة",
+                'fl1': "ما الكلمات والتعبيرات التي تلفت انتباهك؟",
+                'fl2': "ماذا تستحضر لك هذه الأغنية؟",
+                'fl3': "ما الآلات الموسيقية التي تتعرف عليها؟",
+                'fl4': "هل تعرف المغني؟ إن كان نعم، ماذا تعرف عنه؟",
+                'show_transcript': "إظهار الكلمات الكاملة",
+                'hide_transcript': "إخفاء الكلمات",
+                'transcript_hint': "قارن مع الكلمات الكاملة أعلاه للتحقق من إجاباتك.",
+                'fill_title': "أكمل المقطع الناقص",
+                'fill_instruction': "استمع إلى الأغنية واملأ الفراغات. انتبه إلى الإملاء!",
+                'btn_check': "تحقق",
+                'clear': "مسح",
+                'discuss_title': "لنناقش معاً",
+                'q1_label': "السؤال 1", 'q1': "ماذا يطلب منا إيف دوتاي في هذه الأغنية؟",
+                'q2_label': "السؤال 2", 'q2': "ما العلاقة التي يجب أن تكون بين الراشد والطفل؟",
+                'q3_label': "السؤال 3", 'q3': "برأيك، ما فائدة تكرار بعض التعبيرات؟",
+                'quiz_title': "🎧 تحقق من فهمك",
+                'c4q1': "ماذا يفعل الراشد عندما يأخذ الطفل من يده؟",
+                'c4q1a': "يوبخه.", 'c4q1b': "يرشده، يعطيه الثقة.", 'c4q1c': "يتجاهله.",
+                'c4q2': "تكرار «prendre un enfant…» يهدف إلى:",
+                'c4q2a': "التأكيد على الطرق المتعددة لمحبة الطفل.",
+                'c4q2b': "ملء الأغنية.",
+                'c4q2c': "إنشاء قافية فقط.",
+                'grammar_title': "المصدر → صيغة الأمر",
+                'grammar_instruction': "الأغنية تستعمل المصدر («prendre»). حوّل كل فعل إلى صيغة الأمر في الحاضر (الشخص الثاني المفرد، «tu»). مثال: prendre → prends.",
+                'sing_title': "أغني بدوري",
+                'sing_text': "استمع إلى الأغنية مرة أخرى لتتشبع بها. اخفض الصوت وردد مع إيف دوتاي…",
+                'sing_btn': "ردد مع إيف دوتاي",
+                'eval_title': "أقيّم نفسي",
+                'eval_c1': "أستمع إلى ما يقوله الآخرون",
+                'eval_c2': "أطلب الكلمة قبل التدخل",
+                'eval_c3': "أطلب توضيحات عندما لا أفهم",
+                'self_assess_question': "جوابي هو:",
+                'self_correct': "صحيح", 'self_partial': "جزئي", 'self_incorrect': "خاطئ",
+                'score_title': "تقييمي الذاتي",
+                'score_correct': "صحيح:", 'score_partial': "جزئي:", 'score_incorrect': "خاطئ:", 'score_unanswered': "بدون إجابة:",
+                'save_results': "حفظ نتائجي", 'save_success': "تم حفظ النتائج ✓", 'save_error': "خطأ في الحفظ",
+                'print_pdf': "طباعة / PDF",
+                'print_site_name': "لوحة التحكم التعليمية – الفرنسية",
+                'print_scholar_year': "السنة السابعة ابتدائي", 'print_week': "الوحدة 1", 'print_area': "الشفهي",
+                'print_footer_dev': "طوّر بواسطة ماجري زياد", 'print_footer_date': "طُبع في",
+                'unit_end_title': "نهاية الوحدة الأولى!",
+                'unit_end_text': "لقد أكملت «أساسيات الفرنسية». أحسنت على عملك ومثابرتك!",
+                'footer_back': "← الدرس السابق",
+                'footer_program': "العودة إلى البرنامج",
+                'toast_signin_required': "سجّل الدخول لحفظ نتائجك."
+            }
+        });
+        (function() {
+            var container = document.querySelector('.d7u1l24-oral-container');
+            if (container && typeof App.makeBilingual === 'function') App.makeBilingual(container);
+        })();
+    </script>
+    <script src="ed-french-ini.js"></script>
+    <script>
+        (function() {
+            // ===== Multi-audio =====
+            const AUDIO_FILES = {
+                song:       'assets7/sounds/degree7/unit1/lesson24/prendre_un_enfant.mp3',
+                stanza:     'assets7/sounds/degree7/unit1/lesson24/stanza_a_trous.mp3',
+                discussion: 'assets7/sounds/degree7/unit1/lesson24/discussion.mp3'
+            };
+            function fmt(s) { const m=Math.floor(s/60), ss=Math.floor(s%60); return `${m}:${ss<10?'0':''}${ss}`; }
+            Object.keys(AUDIO_FILES).forEach(key => {
+                const audio = new Audio(AUDIO_FILES[key]);
+                const playBtn = document.querySelector(`[data-play="${key}"]`);
+                if (!playBtn) return;
+                // Note: two buttons may share data-play="song" (main + sing along) — handle all
+                const playBtns = document.querySelectorAll(`[data-play="${key}"]`);
+                const progress = document.querySelector(`[data-progress="${key}"]`);
+                const fill = document.querySelector(`[data-fill="${key}"]`);
+                const timeEl = document.querySelector(`[data-time="${key}"]`);
+                const durEl = document.querySelector(`[data-dur="${key}"]`);
+                const wave = document.querySelector(`[data-wave="${key}"]`);
+                const speedBtns = document.querySelectorAll(`[data-speeds="${key}"] .d7u1l24-oral-speed`);
+
+                audio.addEventListener('loadedmetadata', () => { if (durEl) durEl.textContent = fmt(audio.duration); });
+                audio.addEventListener('timeupdate', () => {
+                    if (fill && audio.duration) fill.style.width = ((audio.currentTime/audio.duration)*100) + '%';
+                    if (timeEl) timeEl.textContent = fmt(audio.currentTime);
+                });
+                audio.addEventListener('ended', () => {
+                    playBtns.forEach(b => { b.textContent = '▶'; b.classList.remove('playing'); });
+                    if (wave) wave.classList.remove('active');
+                });
+                playBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        if (audio.paused) {
+                            audio.play().catch(()=>{});
+                            playBtns.forEach(b => { b.textContent = '⏸'; b.classList.add('playing'); });
+                            if (wave) wave.classList.add('active');
+                        } else {
+                            audio.pause();
+                            playBtns.forEach(b => { b.textContent = '▶'; b.classList.remove('playing'); });
+                            if (wave) wave.classList.remove('active');
+                        }
+                    });
+                });
+                if (progress) {
+                    progress.addEventListener('click', (e) => {
+                        const r = progress.getBoundingClientRect();
+                        audio.currentTime = ((e.clientX - r.left) / r.width) * audio.duration;
+                    });
+                }
+                speedBtns.forEach(b => {
+                    b.addEventListener('click', () => {
+                        speedBtns.forEach(o => o.classList.remove('active'));
+                        b.classList.add('active');
+                        audio.playbackRate = parseFloat(b.dataset.speed);
+                    });
+                });
+            });
+
+            // ===== Transcript toggles =====
+            document.querySelectorAll('.d7u1l24-oral-transcript-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const el = document.getElementById(btn.dataset.toggle);
+                    if (!el) return;
+                    const isOpen = el.classList.toggle('open');
+                    const span = btn.querySelector('span:last-child');
+                    const lang = localStorage.getItem('lang') || 'fr';
+                    span.textContent = isOpen
+                        ? App.getTranslation('hide_transcript', lang)
+                        : App.getTranslation('show_transcript', lang);
+                });
+            });
+
+            // ===== Exercise à trous =====
+            window.checkFill = async function() {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) { App.showToast('toast_signin_required','error'); document.getElementById('signInBtn')?.click(); return; }
+                const inputs = document.querySelectorAll('.d7u1l24-oral-fill-input');
+                let correct = 0;
+                inputs.forEach(inp => {
+                    const ok = inp.value.trim().toLowerCase() === inp.dataset.ans.toLowerCase();
+                    inp.classList.toggle('correct', ok);
+                    inp.classList.toggle('wrong', !ok);
+                    if (ok) correct++;
+                });
+                const res = document.getElementById('fillResult');
+                res.style.color = correct === inputs.length ? '#66bb6a' : '#ffa726';
+                res.textContent = `✓ ${correct} / ${inputs.length}`;
+            };
+            window.resetFill = function() {
+                document.querySelectorAll('.d7u1l24-oral-fill-input').forEach(i => {
+                    i.value = ''; i.classList.remove('correct','wrong');
+                });
+                document.getElementById('fillResult').textContent = '';
+            };
+
+            // ===== Impératif =====
+            window.checkImperatif = async function() {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) { App.showToast('toast_signin_required','error'); document.getElementById('signInBtn')?.click(); return; }
+                const inputs = document.querySelectorAll('.d7u1l24-oral-verb-row .imp');
+                let correct = 0;
+                inputs.forEach(inp => {
+                    const ok = inp.value.trim().toLowerCase() === inp.dataset.ans.toLowerCase();
+                    inp.style.borderBottomColor = ok ? '#66bb6a' : '#ef5350';
+                    inp.style.color = ok ? '#a5d6a7' : '#ef9a9a';
+                    if (ok) correct++;
+                });
+                const res = document.getElementById('impResult');
+                res.style.color = correct === inputs.length ? '#66bb6a' : '#ffa726';
+                res.textContent = `✓ ${correct} / ${inputs.length}`;
+            };
+
+            // ===== Quiz checkers =====
+            document.querySelectorAll('[data-check]').forEach(btn => {
+                btn.addEventListener('click', async () => {
+                    const { data: { session } } = await App.supabase.auth.getSession();
+                    if (!session) { App.showToast('toast_signin_required','error'); document.getElementById('signInBtn')?.click(); return; }
+                    const prefix = btn.dataset.check;
+                    const qs = document.querySelectorAll(`[data-q^="${prefix}q"]`);
+                    let correct = 0;
+                    qs.forEach(q => {
+                        const name = q.dataset.q;
+                        const correctVal = q.dataset.correct;
+                        const selected = q.querySelector(`input[name="${name}"]:checked`);
+                        q.querySelectorAll('.d7u1l24-oral-opt').forEach(o => o.classList.remove('correct','wrong'));
+                        q.querySelectorAll('.d7u1l24-oral-opt').forEach(o => {
+                            const inp = o.querySelector('input');
+                            if (inp.value === correctVal) o.classList.add('correct');
+                            else if (selected && selected.value === inp.value) o.classList.add('wrong');
+                        });
+                        if (selected && selected.value === correctVal) correct++;
+                    });
+                    btn.textContent = `✓ ${correct}/${qs.length}`;
+                });
+            });
+
+            // ===== Score =====
+            const SELF_GROUPS = ['self_c2','self_c4','self_c5'];
+            function computeScore() {
+                let c=0,p=0,i=0,u=0;
+                SELF_GROUPS.forEach(n => {
+                    const s = document.querySelector(`input[name="${n}"]:checked`);
+                    if (s) { if (s.value==='correct') c++; else if (s.value==='partial') p++; else if (s.value==='incorrect') i++; }
+                    else u++;
+                });
+                return { correct:c, partial:p, incorrect:i, unanswered:u };
+            }
+            function updateScore() {
+                const s = computeScore();
+                document.getElementById('scoreCorrect').textContent = s.correct;
+                document.getElementById('scorePartial').textContent = s.partial;
+                document.getElementById('scoreIncorrect').textContent = s.incorrect;
+                document.getElementById('scoreUnanswered').textContent = s.unanswered;
+            }
+            document.querySelectorAll('input[type="radio"][name^="self_"]').forEach(r => r.addEventListener('change', updateScore));
+            updateScore();
+
+            // ===== Save =====
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) { App.showToast('toast_signin_required','error'); document.getElementById('signInBtn')?.click(); return; }
+                const s = computeScore();
+                const lessonId = 'degree7unit1lesson24';
+                const entry = {
+                    lesson_id: lessonId,
+                    lesson_title: { fr: App.getTranslation('lesson_short_title','fr'), en: App.getTranslation('lesson_short_title','en'), ar: App.getTranslation('lesson_short_title','ar') },
+                    year: { fr: App.getTranslation('ach_year_degree7','fr'), en: App.getTranslation('ach_year_degree7','en'), ar: App.getTranslation('ach_year_degree7','ar') },
+                    module: { fr: App.getTranslation('ach_module_unit1','fr'), en: App.getTranslation('ach_module_unit1','en'), ar: App.getTranslation('ach_module_unit1','ar') },
+                    correct: s.correct, incorrect: s.incorrect, partial: s.partial, unanswered: s.unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles').select('achivement').eq('id', user.id).single();
+                if (fetchError) return;
+                let ach = profileData?.achivement || {};
+                if (!ach['ED-French']) ach['ED-French'] = [];
+                const arr = ach['ED-French'];
+                const idx = arr.findIndex(e => e.lesson_id === lessonId);
+                if (idx >= 0) arr[idx] = entry; else arr.push(entry);
+                const { error: updateError } = await App.supabase
+                    .from('profiles').update({ achivement: ach }).eq('id', user.id);
+                if (updateError) App.showToast('save_error','error');
+                else { App.showToast('save_success','success'); App.logUserAction('lesson_saved', { lesson: lessonId, correct: s.correct, incorrect: s.incorrect, partial: s.partial }); }
+            });
+
+            // ===== Print =====
+            document.getElementById('printPdfBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) { App.showToast('toast_signin_required','error'); document.getElementById('signInBtn')?.click(); return; }
+                const lang = localStorage.getItem('lang') || 'fr';
+                const content = document.getElementById('main-content').cloneNode(true);
+                content.querySelectorAll('button, .d7u1l24-oral-wave, .d7u1l24-oral-progress, .d7u1l24-oral-ctrl-row, .d7u1l24-oral-self, .d7u1l24-oral-score, .back-nav, input[type="radio"]').forEach(el => el.remove());
+                content.querySelectorAll('.d7u1l24-oral-transcript').forEach(el => { el.classList.add('open'); el.style.maxHeight = 'none'; });
+                content.querySelectorAll('.d7u1l24-oral-fill-input, .d7u1l24-oral-verb-row .imp').forEach(inp => {
+                    const span = document.createElement('span');
+                    span.textContent = '____________';
+                    span.style.cssText = 'display:inline-block;border-bottom:1px dashed #999;padding:0 0.5rem;min-width:100px;';
+                    inp.parentNode.replaceChild(span, inp);
+                });
+                const win = window.open('', '_blank', 'width=800,height=600');
+                win.document.write(`<!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8"><title>${App.getTranslation('lesson_short_title', lang)}</title><style>
+                    body{font-family:Georgia,serif;max-width:800px;margin:2rem auto;padding:0 1rem;color:#000;}
+                    .print-header{text-align:center;border-bottom:2px solid #008b8b;padding-bottom:1rem;margin-bottom:2rem;}
+                    .print-header .site-name{font-size:1.4rem;font-weight:bold;color:#008b8b;}
+                    .print-header .lesson-name{font-size:1.1rem;font-weight:bold;margin-top:0.5rem;}
+                    .print-footer{text-align:center;border-top:1px solid #ccc;padding-top:1rem;margin-top:2rem;font-size:0.85rem;color:#666;}
+                    .d7u1l24-oral-stanza{background:#eaf5f5;border-left:3px solid #ab47bc;padding:0.8rem 1rem;margin:0.6rem 0;border-radius:8px;font-family:Georgia,serif;}
+                    .d7u1l24-oral-q-item{background:#eaf5f5;border-left:3px solid #4a9eff;padding:0.6rem 0.9rem;margin:0.5rem 0;border-radius:0 8px 8px 0;}
+                    .d7u1l24-oral-eval{padding:1rem;margin:1rem 0;border:1px dashed #008b8b;border-radius:10px;}
+                    .d7u1l24-oral-eval-row{display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px dashed #ccc;}
+                    .d7u1l24-oral-grammar{padding:1rem;margin:1rem 0;border:1px dashed #66bb6a;border-radius:10px;}
+                    .d7u1l24-oral-verb-row{display:flex;justify-content:space-between;padding:0.3rem 0;border-bottom:1px dashed #eee;}
+                    h1,h2,h3{color:#005454;}
+                    @media print { @page { margin:2cm; } }
+                </style></head><body>
+                    <div class="print-header"><div class="site-name">${App.getTranslation('print_site_name', lang)}</div><div>${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div><div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div></div>
+                    ${content.innerHTML}
+                    <div class="print-footer">${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}</div>
+                </body></html>`);
+                win.document.close();
+                win.focus();
+                setTimeout(() => { win.print(); win.close(); }, 500);
+            });
+        })();
+    </script>
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+</body>
+</html>

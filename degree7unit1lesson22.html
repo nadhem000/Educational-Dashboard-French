@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_title">Leçon 22 – Au marché | Lecture</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ===== Degree7 Unit1 Lesson22 – Lecture (prefix: degree7-unit1-lesson22-lecture-) ===== */
+        :root {
+            --degree7-unit1-lesson22-lecture-bg: #f2f8f4;
+            --degree7-unit1-lesson22-lecture-card: #fbfefc;
+            --degree7-unit1-lesson22-lecture-text: #16261c;
+            --degree7-unit1-lesson22-lecture-text-light: #4a6a55;
+            --degree7-unit1-lesson22-lecture-heading: #1e5e3a;
+            --degree7-unit1-lesson22-lecture-accent: #2e8b57;
+            --degree7-unit1-lesson22-lecture-accent-hover: #1e5e3a;
+            --degree7-unit1-lesson22-lecture-soft: #6cb68a;
+            --degree7-unit1-lesson22-lecture-light: #e2f0e8;
+            --degree7-unit1-lesson22-lecture-lighter: #eef7f2;
+            --degree7-unit1-lesson22-lecture-border: #cbe0d3;
+            --degree7-unit1-lesson22-lecture-shadow: 0 1px 3px rgba(46,139,87,0.06), 0 6px 18px rgba(30,94,58,0.07);
+            --degree7-unit1-lesson22-lecture-radius: 14px;
+            --degree7-unit1-lesson22-lecture-radius-sm: 8px;
+            --degree7-unit1-lesson22-lecture-transition: 0.25s ease;
+            --degree7-unit1-lesson22-lecture-font: 'Georgia', 'Segoe UI', 'Times New Roman', serif;
+            --degree7-unit1-lesson22-lecture-audio-bg: #dcebe2;
+            --degree7-unit1-lesson22-lecture-audio-progress: #a8cdb8;
+            --degree7-unit1-lesson22-lecture-button-bg: #d5e8dd;
+            --degree7-unit1-lesson22-lecture-button-hover: #bdd9c8;
+            --degree7-unit1-lesson22-lecture-input-bg: #f6fbf8;
+        }
+        body.dark {
+            --degree7-unit1-lesson22-lecture-bg: #0f1a13;
+            --degree7-unit1-lesson22-lecture-card: #182a1e;
+            --degree7-unit1-lesson22-lecture-text: #dceee4;
+            --degree7-unit1-lesson22-lecture-text-light: #96b6a3;
+            --degree7-unit1-lesson22-lecture-heading: #a8e0be;
+            --degree7-unit1-lesson22-lecture-accent: #6cb68a;
+            --degree7-unit1-lesson22-lecture-accent-hover: #8ecfa6;
+            --degree7-unit1-lesson22-lecture-soft: #4d8a68;
+            --degree7-unit1-lesson22-lecture-light: #1e3327;
+            --degree7-unit1-lesson22-lecture-lighter: #1a2b20;
+            --degree7-unit1-lesson22-lecture-border: #2a4233;
+            --degree7-unit1-lesson22-lecture-shadow: 0 1px 4px rgba(0,0,0,0.4);
+            --degree7-unit1-lesson22-lecture-audio-bg: #1e3327;
+            --degree7-unit1-lesson22-lecture-audio-progress: #365a44;
+            --degree7-unit1-lesson22-lecture-button-bg: #243d2d;
+            --degree7-unit1-lesson22-lecture-button-hover: #315540;
+            --degree7-unit1-lesson22-lecture-input-bg: #1c2e22;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: var(--degree7-unit1-lesson22-lecture-font);
+            background: var(--degree7-unit1-lesson22-lecture-bg);
+            background-image:
+                radial-gradient(circle at 12% 18%, rgba(46,139,87,0.06) 0%, transparent 42%),
+                radial-gradient(circle at 88% 82%, rgba(30,94,58,0.05) 0%, transparent 42%);
+            color: var(--degree7-unit1-lesson22-lecture-text);
+            line-height: 1.8;
+            transition: background var(--degree7-unit1-lesson22-lecture-transition), color var(--degree7-unit1-lesson22-lecture-transition);
+        }
+        .back-nav { background: var(--degree7-unit1-lesson22-lecture-card); border-bottom: 1px solid var(--degree7-unit1-lesson22-lecture-border); padding: 0.5rem 1.5rem; }
+        .back-nav a { font-weight: 600; color: var(--degree7-unit1-lesson22-lecture-accent); text-decoration: none; }
+        .back-nav a:hover { text-decoration: underline; }
+        .degree7-unit1-lesson22-lecture-container { max-width:1060px; margin:0 auto; padding:1.8rem 1.4rem 3rem; }
+        .degree7-unit1-lesson22-lecture-lesson-header { text-align: center; margin-bottom: 2rem; }
+        .degree7-unit1-lesson22-lecture-badge {
+            display:inline-block; background: var(--degree7-unit1-lesson22-lecture-accent); color: #fff;
+            padding: 0.3rem 1.1rem; border-radius: 30px; font-size: 0.78rem; font-weight: 700;
+            letter-spacing: 0.06em; text-transform: uppercase;
+        }
+        .degree7-unit1-lesson22-lecture-lesson-header h1 {
+            font-size: 2.1rem; color: var(--degree7-unit1-lesson22-lecture-heading);
+            margin: 0.7rem 0 0.4rem; line-height: 1.25; font-weight: 700;
+        }
+        .degree7-unit1-lesson22-lecture-lesson-header .degree7-unit1-lesson22-lecture-meta {
+            font-size: 0.9rem; color: var(--degree7-unit1-lesson22-lecture-text-light);
+            display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap;
+        }
+        .degree7-unit1-lesson22-lecture-audio-player {
+            background: var(--degree7-unit1-lesson22-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson22-lecture-border);
+            border-radius: var(--degree7-unit1-lesson22-lecture-radius);
+            padding: 1rem 1.4rem; margin: 1.5rem 0 2rem;
+            box-shadow: var(--degree7-unit1-lesson22-lecture-shadow);
+            display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+        }
+        .degree7-unit1-lesson22-lecture-play-btn {
+            width: 46px; height: 46px; border-radius: 50%;
+            background: var(--degree7-unit1-lesson22-lecture-accent);
+            color: #fff; border: none; font-size: 1.2rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background var(--degree7-unit1-lesson22-lecture-transition); flex-shrink: 0;
+        }
+        .degree7-unit1-lesson22-lecture-play-btn:hover { background: var(--degree7-unit1-lesson22-lecture-accent-hover); }
+        .degree7-unit1-lesson22-lecture-progress-area { flex:1; min-width:120px; display:flex; flex-direction:column; gap:0.3rem; }
+        .degree7-unit1-lesson22-lecture-progress-bar {
+            width:100%; height:6px; background: var(--degree7-unit1-lesson22-lecture-audio-progress);
+            border-radius: 3px; cursor:pointer; position:relative; overflow:hidden;
+        }
+        .degree7-unit1-lesson22-lecture-progress-fill {
+            height:100%; background: var(--degree7-unit1-lesson22-lecture-accent);
+            border-radius: 3px; width: 0%; transition: width 0.1s linear;
+        }
+        .degree7-unit1-lesson22-lecture-time-info {
+            display:flex; justify-content:space-between; font-size:0.75rem;
+            color: var(--degree7-unit1-lesson22-lecture-text-light);
+        }
+        .degree7-unit1-lesson22-lecture-speed-selector { display:flex; gap:0.3rem; flex-wrap:wrap; }
+        .degree7-unit1-lesson22-lecture-speed-btn {
+            border:1px solid var(--degree7-unit1-lesson22-lecture-border);
+            background: var(--degree7-unit1-lesson22-lecture-button-bg);
+            color: var(--degree7-unit1-lesson22-lecture-text);
+            padding:0.3rem 0.6rem; border-radius: 4px;
+            font-size:0.75rem; font-weight:600; cursor:pointer;
+            transition: all var(--degree7-unit1-lesson22-lecture-transition);
+        }
+        .degree7-unit1-lesson22-lecture-speed-btn.active {
+            background: var(--degree7-unit1-lesson22-lecture-accent);
+            color: #fff; border-color: var(--degree7-unit1-lesson22-lecture-accent);
+        }
+        .degree7-unit1-lesson22-lecture-audio-label {
+            font-weight:700; font-size:0.9rem;
+            color: var(--degree7-unit1-lesson22-lecture-heading); white-space:nowrap;
+        }
+        @media (max-width:600px) {
+            .degree7-unit1-lesson22-lecture-audio-player { flex-direction: column; align-items: stretch; }
+            .degree7-unit1-lesson22-lecture-audio-label { text-align: center; }
+        }
+        .degree7-unit1-lesson22-lecture-hero-figure {
+            margin: 0 0 1.2rem;
+            border-radius: var(--degree7-unit1-lesson22-lecture-radius);
+            overflow: hidden;
+            box-shadow: var(--degree7-unit1-lesson22-lecture-shadow);
+            border: 1px solid var(--degree7-unit1-lesson22-lecture-border);
+        }
+        .degree7-unit1-lesson22-lecture-hero-img {
+            display: block; width: 100%; max-height: 320px; object-fit: cover;
+        }
+        .degree7-unit1-lesson22-lecture-hero-caption {
+            display: block; padding: 0.5rem 0.9rem;
+            font-size: 0.82rem; color: var(--degree7-unit1-lesson22-lecture-text-light);
+            background: var(--degree7-unit1-lesson22-lecture-lighter);
+            border-top: 1px solid var(--degree7-unit1-lesson22-lecture-border);
+            font-style: italic; text-align: center;
+        }
+        .degree7-unit1-lesson22-lecture-rule-figure { text-align: center; margin: 0 0 0.6rem; }
+        .degree7-unit1-lesson22-lecture-rule-img {
+            display: inline-block; max-width: 140px; max-height: 110px;
+            width: auto; height: auto;
+            border-radius: var(--degree7-unit1-lesson22-lecture-radius-sm);
+            box-shadow: 0 3px 10px rgba(30,94,58,0.12);
+            border: 2px solid var(--degree7-unit1-lesson22-lecture-lighter);
+        }
+        .degree7-unit1-lesson22-lecture-showcase-banner {
+            margin: 0.6rem 0 1rem;
+            border-radius: var(--degree7-unit1-lesson22-lecture-radius);
+            overflow: hidden;
+            box-shadow: var(--degree7-unit1-lesson22-lecture-shadow);
+            border: 1px solid var(--degree7-unit1-lesson22-lecture-border);
+        }
+        .degree7-unit1-lesson22-lecture-showcase-img {
+            display: block; width: 100%; max-height: 220px; object-fit: cover;
+        }
+        .degree7-unit1-lesson22-lecture-prod-figure { text-align: center; margin: 0.4rem 0 0.9rem; }
+        .degree7-unit1-lesson22-lecture-prod-img {
+            display: inline-block; max-width: 100%; max-height: 240px;
+            border-radius: var(--degree7-unit1-lesson22-lecture-radius-sm);
+            box-shadow: var(--degree7-unit1-lesson22-lecture-shadow);
+            border: 1px solid var(--degree7-unit1-lesson22-lecture-border);
+        }
+        .degree7-unit1-lesson22-lecture-prod-caption {
+            display: block; margin-top: 0.4rem;
+            font-size: 0.8rem; color: var(--degree7-unit1-lesson22-lecture-text-light);
+            font-style: italic;
+        }
+        .degree7-unit1-lesson22-lecture-text-card {
+            background: var(--degree7-unit1-lesson22-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson22-lecture-border);
+            border-left: 5px solid var(--degree7-unit1-lesson22-lecture-accent);
+            border-radius: 0 var(--degree7-unit1-lesson22-lecture-radius) var(--degree7-unit1-lesson22-lecture-radius) 0;
+            padding: 1.5rem 1.8rem; margin: 1.8rem 0;
+            font-size: 1.05rem; line-height: 1.9;
+            box-shadow: var(--degree7-unit1-lesson22-lecture-shadow); position: relative;
+        }
+        .degree7-unit1-lesson22-lecture-text-card .degree7-unit1-lesson22-lecture-quote-mark {
+            position: absolute; top:-15px; left:14px; font-size:3.5rem;
+            color: var(--degree7-unit1-lesson22-lecture-accent); opacity:0.3; line-height:1;
+            font-family: 'Georgia', serif;
+        }
+        .degree7-unit1-lesson22-lecture-text-card p { margin-bottom: 0.8rem; }
+        .degree7-unit1-lesson22-lecture-text-card p:last-of-type { margin-bottom: 0; }
+        .degree7-unit1-lesson22-lecture-text-author {
+            text-align: right; font-style: italic; font-size: 0.9rem;
+            color: var(--degree7-unit1-lesson22-lecture-text-light); margin-top: 0.8rem;
+        }
+        .degree7-unit1-lesson22-lecture-hl {
+            background: var(--degree7-unit1-lesson22-lecture-light);
+            color: var(--degree7-unit1-lesson22-lecture-heading);
+            padding: 0 5px; border-radius: 4px; font-weight: 700;
+            border-bottom: 2px solid var(--degree7-unit1-lesson22-lecture-accent);
+            cursor: help;
+        }
+        .degree7-unit1-lesson22-lecture-section h2 {
+            font-size: 1.5rem; color: var(--degree7-unit1-lesson22-lecture-heading);
+            margin: 2.4rem 0 1rem; display: inline-block;
+            padding-bottom: 0.3rem; position: relative;
+        }
+        .degree7-unit1-lesson22-lecture-section h2::after {
+            content: ''; position: absolute;
+            left: 0; right: 40%; bottom: 0; height: 3px;
+            background: var(--degree7-unit1-lesson22-lecture-accent); border-radius: 2px;
+        }
+        .degree7-unit1-lesson22-lecture-valeurs-section {
+            background: var(--degree7-unit1-lesson22-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson22-lecture-border);
+            border-radius: var(--degree7-unit1-lesson22-lecture-radius);
+            padding: 1.6rem 1.8rem; margin: 2rem 0;
+            box-shadow: var(--degree7-unit1-lesson22-lecture-shadow);
+        }
+        .degree7-unit1-lesson22-lecture-valeurs-section h2 {
+            font-size: 1.5rem; color: var(--degree7-unit1-lesson22-lecture-heading);
+            margin-bottom: 1rem; display: inline-block;
+            padding-bottom: 0.3rem;
+            border-bottom: 3px solid var(--degree7-unit1-lesson22-lecture-accent);
+        }
+        .degree7-unit1-lesson22-lecture-valeur-card {
+            background: var(--degree7-unit1-lesson22-lecture-light);
+            border-radius: var(--degree7-unit1-lesson22-lecture-radius-sm);
+            padding: 1rem 1.2rem; margin-bottom: 1rem;
+        }
+        .degree7-unit1-lesson22-lecture-valeur-card h3 {
+            color: var(--degree7-unit1-lesson22-lecture-accent);
+            font-size: 1.1rem; margin-bottom: 0.4rem;
+        }
+        .degree7-unit1-lesson22-lecture-valeur-card p { margin: 0.4rem 0; }
+        .degree7-unit1-lesson22-lecture-valeur-card ul { list-style: none; padding: 0; }
+        .degree7-unit1-lesson22-lecture-valeur-card li {
+            padding: 0.3rem 0 0.3rem 1.4rem; position: relative;
+        }
+        .degree7-unit1-lesson22-lecture-valeur-card li::before {
+            content: '◆'; position: absolute; left: 0;
+            color: var(--degree7-unit1-lesson22-lecture-accent);
+            font-size: 0.55rem; top: 0.6rem;
+        }
+        .degree7-unit1-lesson22-lecture-author-card {
+            background: var(--degree7-unit1-lesson22-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson22-lecture-border);
+            border-radius: var(--degree7-unit1-lesson22-lecture-radius);
+            padding: 1.2rem 1.5rem; margin: 1.2rem 0;
+            box-shadow: var(--degree7-unit1-lesson22-lecture-shadow);
+            display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap;
+        }
+        .degree7-unit1-lesson22-lecture-author-img {
+            width: 110px; height: 110px; border-radius: 50%;
+            object-fit: cover; flex-shrink: 0;
+            border: 3px solid var(--degree7-unit1-lesson22-lecture-light);
+            box-shadow: var(--degree7-unit1-lesson22-lecture-shadow);
+        }
+        .degree7-unit1-lesson22-lecture-author-info { flex: 1; min-width: 200px; }
+        .degree7-unit1-lesson22-lecture-author-info h3 {
+            color: var(--degree7-unit1-lesson22-lecture-heading);
+            font-size: 1.1rem; margin-bottom: 0.3rem;
+        }
+        .degree7-unit1-lesson22-lecture-author-info p {
+            font-size: 0.92rem; color: var(--degree7-unit1-lesson22-lecture-text-light);
+        }
+        .degree7-unit1-lesson22-lecture-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 0.9rem;
+            margin: 1rem 0;
+        }
+        .degree7-unit1-lesson22-lecture-vcard {
+            position: relative;
+            background: var(--degree7-unit1-lesson22-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson22-lecture-border);
+            border-radius: var(--degree7-unit1-lesson22-lecture-radius-sm);
+            padding: 0.9rem 0.9rem 0.9rem 3.2rem;
+            font-size: 0.85rem;
+            transition: all var(--degree7-unit1-lesson22-lecture-transition);
+            overflow: hidden;
+        }
+        .degree7-unit1-lesson22-lecture-vcard:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--degree7-unit1-lesson22-lecture-shadow);
+            border-color: var(--degree7-unit1-lesson22-lecture-accent);
+        }
+        .degree7-unit1-lesson22-lecture-vcard .degree7-unit1-lesson22-lecture-vicon {
+            position: absolute; left: 0; top: 0; bottom: 0;
+            width: 2.5rem;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem;
+            background: var(--degree7-unit1-lesson22-lecture-light);
+            border-right: 1px solid var(--degree7-unit1-lesson22-lecture-border);
+        }
+        .degree7-unit1-lesson22-lecture-vcard .degree7-unit1-lesson22-lecture-vword {
+            display: block; font-weight: 800;
+            color: var(--degree7-unit1-lesson22-lecture-heading);
+            font-size: 0.95rem; margin-bottom: 0.15rem;
+        }
+        .degree7-unit1-lesson22-lecture-vcard .degree7-unit1-lesson22-lecture-vdef {
+            display: block; color: var(--degree7-unit1-lesson22-lecture-text-light);
+            font-size: 0.8rem; line-height: 1.4;
+        }
+        .degree7-unit1-lesson22-lecture-exercises-section {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; align-items: start;
+            margin-top: 2rem;
+        }
+        .degree7-unit1-lesson22-lecture-exercises-section h2 {
+            grid-column: 1 / -1; font-size: 1.5rem;
+            color: var(--degree7-unit1-lesson22-lecture-heading);
+            margin: 0 0 1rem; display: inline-block;
+            padding-bottom: 0.3rem;
+            border-bottom: 3px solid var(--degree7-unit1-lesson22-lecture-accent);
+        }
+        .degree7-unit1-lesson22-lecture-exercise-card {
+            position: relative;
+            background: var(--degree7-unit1-lesson22-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson22-lecture-border);
+            border-radius: var(--degree7-unit1-lesson22-lecture-radius-sm);
+            padding: 1.2rem 1.3rem 1.2rem 3.4rem;
+            box-shadow: var(--degree7-unit1-lesson22-lecture-shadow);
+            transition: all var(--degree7-unit1-lesson22-lecture-transition);
+        }
+        .degree7-unit1-lesson22-lecture-exercise-card:hover {
+            box-shadow: 0 6px 22px rgba(30,94,58,0.10);
+        }
+        .degree7-unit1-lesson22-lecture-exercise-card::before {
+            content: attr(data-num);
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 2.6rem;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(180deg, var(--degree7-unit1-lesson22-lecture-accent) 0%, var(--degree7-unit1-lesson22-lecture-heading) 100%);
+            color: #fff;
+            font-size: 1.05rem; font-weight: 800;
+            font-family: 'Georgia', serif;
+            border-radius: var(--degree7-unit1-lesson22-lecture-radius-sm) 0 0 var(--degree7-unit1-lesson22-lecture-radius-sm);
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            letter-spacing: 0.15em;
+        }
+        .degree7-unit1-lesson22-lecture-exercise-card h3 {
+            font-size: 1.02rem;
+            color: var(--degree7-unit1-lesson22-lecture-accent);
+            margin-bottom: 0.6rem;
+            display: flex; align-items: center; gap: 0.4rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed var(--degree7-unit1-lesson22-lecture-border);
+        }
+        .degree7-unit1-lesson22-lecture-exercise-card table {
+            width: 100%; border-collapse: collapse; margin: 0.8rem 0;
+        }
+        .degree7-unit1-lesson22-lecture-exercise-card th,
+        .degree7-unit1-lesson22-lecture-exercise-card td {
+            padding: 0.55rem 0.7rem;
+            border: 1px solid var(--degree7-unit1-lesson22-lecture-border);
+            text-align: left; font-size: 0.9rem;
+        }
+        .degree7-unit1-lesson22-lecture-exercise-card th {
+            background: var(--degree7-unit1-lesson22-lecture-light);
+            font-weight: 700;
+            color: var(--degree7-unit1-lesson22-lecture-heading);
+        }
+        .degree7-unit1-lesson22-lecture-exercise-card input[type="text"],
+        .degree7-unit1-lesson22-lecture-exercise-card textarea {
+            width: 100%; padding: 0.4rem 0.6rem;
+            border: 1px solid var(--degree7-unit1-lesson22-lecture-border);
+            border-radius: 4px;
+            background: var(--degree7-unit1-lesson22-lecture-input-bg);
+            color: var(--degree7-unit1-lesson22-lecture-text);
+            font-family: inherit; font-size: 0.9rem;
+        }
+        .degree7-unit1-lesson22-lecture-exercise-card textarea { resize: vertical; }
+        .degree7-unit1-lesson22-lecture-exercise-card input:focus,
+        .degree7-unit1-lesson22-lecture-exercise-card textarea:focus {
+            outline: none;
+            border-color: var(--degree7-unit1-lesson22-lecture-accent);
+        }
+        .degree7-unit1-lesson22-lecture-inline-input {
+            width: 120px !important;
+            padding: 0.25rem 0.5rem !important;
+            display: inline-block;
+            margin: 0 0.2rem;
+        }
+        .degree7-unit1-lesson22-lecture-btn-verify {
+            background: var(--degree7-unit1-lesson22-lecture-accent);
+            color: #fff; border: none;
+            padding: 0.5rem 1.2rem; border-radius: 20px;
+            font-weight: 600; cursor: pointer;
+            transition: background var(--degree7-unit1-lesson22-lecture-transition);
+            margin-top: 0.6rem; font-size: 0.85rem;
+        }
+        .degree7-unit1-lesson22-lecture-btn-verify:hover { background: var(--degree7-unit1-lesson22-lecture-accent-hover); }
+        .degree7-unit1-lesson22-lecture-answer-key {
+            display: none; margin-top: 0.8rem; padding: 0.8rem;
+            background: var(--degree7-unit1-lesson22-lecture-lighter);
+            border-radius: 6px; font-size: 0.85rem;
+            color: var(--degree7-unit1-lesson22-lecture-text);
+            border: 1px dashed var(--degree7-unit1-lesson22-lecture-accent);
+        }
+        .degree7-unit1-lesson22-lecture-answer-key.visible { display: block; }
+        .degree7-unit1-lesson22-lecture-self-assessment {
+            margin-top: 0.8rem; font-size: 0.9rem;
+            display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
+        }
+        .degree7-unit1-lesson22-lecture-self-assessment label { cursor: pointer; }
+        .degree7-unit1-lesson22-lecture-exercise-col-left { grid-column: 1 / 2; }
+        .degree7-unit1-lesson22-lecture-exercise-col-right { grid-column: 2 / 3; }
+        .degree7-unit1-lesson22-lecture-note {
+            background: linear-gradient(135deg, rgba(46,139,87,0.07), rgba(30,94,58,0.03));
+            border: 1px dashed var(--degree7-unit1-lesson22-lecture-accent);
+            border-radius: var(--degree7-unit1-lesson22-lecture-radius-sm);
+            padding: 1rem 1.2rem; margin: 1rem 0; font-size: 0.95rem;
+        }
+        .degree7-unit1-lesson22-lecture-note strong { color: var(--degree7-unit1-lesson22-lecture-accent); }
+        .degree7-unit1-lesson22-lecture-situation {
+            display: grid;
+            grid-template-columns: 2.2rem 1fr;
+            gap: 0.7rem;
+            align-items: start;
+            background: var(--degree7-unit1-lesson22-lecture-lighter);
+            border-left: 3px solid var(--degree7-unit1-lesson22-lecture-accent);
+            border-radius: var(--degree7-unit1-lesson22-lecture-radius-sm);
+            padding: 0.7rem 0.9rem;
+            margin-bottom: 0.6rem;
+        }
+        .degree7-unit1-lesson22-lecture-situation .num {
+            width: 26px; height: 26px;
+            background: var(--degree7-unit1-lesson22-lecture-accent);
+            color: #fff; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+        .degree7-unit1-lesson22-lecture-situation .content p {
+            font-size: 0.88rem;
+            margin-bottom: 0.4rem;
+        }
+        .degree7-unit1-lesson22-lecture-situation .content input[type="text"] {
+            width: 100%; padding: 0.35rem 0.5rem;
+            border: 1px solid var(--degree7-unit1-lesson22-lecture-border);
+            border-radius: 4px;
+            background: var(--degree7-unit1-lesson22-lecture-input-bg);
+            color: var(--degree7-unit1-lesson22-lecture-text);
+            font-family: inherit; font-size: 0.85rem;
+        }
+        .degree7-unit1-lesson22-lecture-score-area {
+            background: var(--degree7-unit1-lesson22-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson22-lecture-border);
+            border-radius: var(--degree7-unit1-lesson22-lecture-radius);
+            padding: 1.5rem; margin-top: 2rem;
+            box-shadow: var(--degree7-unit1-lesson22-lecture-shadow);
+        }
+        .degree7-unit1-lesson22-lecture-score-area h2 {
+            color: var(--degree7-unit1-lesson22-lecture-heading); margin-bottom: 1rem;
+        }
+        .degree7-unit1-lesson22-lecture-score-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .degree7-unit1-lesson22-lecture-score-stat {
+            background: var(--degree7-unit1-lesson22-lecture-light);
+            padding: 0.8rem 1.2rem; border-radius: 8px; font-weight: 600;
+        }
+        .degree7-unit1-lesson22-lecture-footer-nav {
+            margin-top: 2rem; display: flex; justify-content: space-between; flex-wrap: wrap;
+            background: var(--degree7-unit1-lesson22-lecture-card);
+            border-top: 1px solid var(--degree7-unit1-lesson22-lecture-border);
+            padding: 0.8rem 1.5rem;
+            border-radius: 0 0 var(--degree7-unit1-lesson22-lecture-radius) var(--degree7-unit1-lesson22-lecture-radius);
+        }
+        .degree7-unit1-lesson22-lecture-footer-nav a {
+            font-weight: 600; color: var(--degree7-unit1-lesson22-lecture-accent); text-decoration: none;
+        }
+        .degree7-unit1-lesson22-lecture-footer-nav a:hover { text-decoration: underline; }
+        html[dir="rtl"] body { direction: rtl; }
+        html[dir="rtl"] .degree7-unit1-lesson22-lecture-container { text-align: right; }
+        html[dir="rtl"] .degree7-unit1-lesson22-lecture-exercise-card th,
+        html[dir="rtl"] .degree7-unit1-lesson22-lecture-exercise-card td { text-align: right; }
+        html[dir="rtl"] .degree7-unit1-lesson22-lecture-exercise-card { padding-left: 1.3rem; padding-right: 3.4rem; }
+        html[dir="rtl"] .degree7-unit1-lesson22-lecture-exercise-card::before {
+            left: auto; right: 0;
+            border-radius: 0 var(--degree7-unit1-lesson22-lecture-radius-sm) var(--degree7-unit1-lesson22-lecture-radius-sm) 0;
+        }
+        html[dir="rtl"] .degree7-unit1-lesson22-lecture-vcard { padding-left: 0.9rem; padding-right: 3.2rem; }
+        html[dir="rtl"] .degree7-unit1-lesson22-lecture-vcard .degree7-unit1-lesson22-lecture-vicon {
+            left: auto; right: 0;
+            border-right: none;
+            border-left: 1px solid var(--degree7-unit1-lesson22-lecture-border);
+        }
+        html[dir="rtl"] .degree7-unit1-lesson22-lecture-situation {
+            border-left: none;
+            border-right: 3px solid var(--degree7-unit1-lesson22-lecture-accent);
+        }
+        @media (max-width:800px) {
+            .degree7-unit1-lesson22-lecture-exercises-section { grid-template-columns: 1fr; }
+            .degree7-unit1-lesson22-lecture-exercise-col-left,
+            .degree7-unit1-lesson22-lecture-exercise-col-right { grid-column: auto; }
+        }
+        @media (max-width:600px) {
+            .degree7-unit1-lesson22-lecture-lesson-header h1 { font-size: 1.5rem; }
+            .degree7-unit1-lesson22-lecture-container { padding: 1rem 0.8rem 2rem; }
+            .degree7-unit1-lesson22-lecture-text-card { padding: 1.4rem 1.2rem; }
+            .degree7-unit1-lesson22-lecture-hero-img { max-height: 200px; }
+            .degree7-unit1-lesson22-lecture-rule-img { max-width: 100px; }
+            .degree7-unit1-lesson22-lecture-showcase-img { max-height: 140px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="toast-container"></div>
+    <button id="signInBtn" style="display:none"></button>
+    <nav class="back-nav no-print">
+        <a href="index.html" data-i18n="back_link">← Retour à l'accueil</a>
+    </nav>
+    <div id="main-content" class="degree7-unit1-lesson22-lecture-container">
+        <p style="margin-bottom:1.5rem; color:var(--degree7-unit1-lesson22-lecture-text-light);">
+            <a href="degree7.html" data-i18n="back_revision">Unité 1</a>
+            › <strong data-i18n="back_current">Au marché</strong>
+        </p>
+        <div class="degree7-unit1-lesson22-lecture-lesson-header">
+            <span class="degree7-unit1-lesson22-lecture-badge" data-i18n="lesson_badge">📖 Lecture · Leçon 22</span>
+            <h1 data-i18n="lesson_title">Au marché<br>Sempé & Goscinny, <em>Joachim a des ennuis</em></h1>
+            <div class="degree7-unit1-lesson22-lecture-meta">
+                <span data-i18n="lesson_duration">⏱️ 45 minutes</span>
+                <span data-i18n="lesson_meta_audio">🎧 Écoutez le texte puis répondez aux questions</span>
+            </div>
+        </div>
+        <div class="degree7-unit1-lesson22-lecture-audio-player" id="audioPlayer">
+            <span class="degree7-unit1-lesson22-lecture-audio-label" data-i18n="audio_label">🎧 Écoute du texte</span>
+            <button class="degree7-unit1-lesson22-lecture-play-btn" id="playBtn" aria-label="Lecture">▶</button>
+            <div class="degree7-unit1-lesson22-lecture-progress-area">
+                <div class="degree7-unit1-lesson22-lecture-progress-bar" id="progressBar">
+                    <div class="degree7-unit1-lesson22-lecture-progress-fill" id="progressFill"></div>
+                </div>
+                <div class="degree7-unit1-lesson22-lecture-time-info">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+            <div class="degree7-unit1-lesson22-lecture-speed-selector" id="speedSelector">
+                <button class="degree7-unit1-lesson22-lecture-speed-btn" data-speed="0.75">0.75x</button>
+                <button class="degree7-unit1-lesson22-lecture-speed-btn active" data-speed="1">1x</button>
+                <button class="degree7-unit1-lesson22-lecture-speed-btn" data-speed="1.25">1.25x</button>
+                <button class="degree7-unit1-lesson22-lecture-speed-btn" data-speed="1.5">1.5x</button>
+            </div>
+        </div>
+        <div class="degree7-unit1-lesson22-lecture-author-card">
+            <img src="assets7/images/degree7/unit1/lesson22/sempe_goscinny.png"
+                 alt="Portrait de Sempé et Goscinny"
+                 class="degree7-unit1-lesson22-lecture-author-img"
+                 data-i18n="author_img_alt"
+                 onerror="this.style.display='none'">
+            <div class="degree7-unit1-lesson22-lecture-author-info">
+                <h3 data-i18n="author_title">👤 Sempé & Goscinny</h3>
+                <p data-i18n="author_bio">Jean-Jacques Sempé et René Goscinny ont créé ensemble le personnage du <em>Petit Nicolas</em>. Leurs histoires drôles et tendres racontent la vie quotidienne d'un enfant et de sa famille.</p>
+            </div>
+        </div>
+        <section class="degree7-unit1-lesson22-lecture-section">
+            <h2 data-i18n="text_heading">📖 J'observe</h2>
+            <figure class="degree7-unit1-lesson22-lecture-hero-figure">
+                <img src="assets7/images/degree7/unit1/lesson22/marche_legumes.png"
+                     alt="Illustration du marché avec des étals de légumes"
+                     class="degree7-unit1-lesson22-lecture-hero-img"
+                     data-i18n="img_hero_alt"
+                     onerror="this.parentElement.style.display='none'">
+                <figcaption class="degree7-unit1-lesson22-lecture-hero-caption" data-i18n="img_hero_caption">
+                    Au marché, Papa et Nicolas découvrent que faire les courses n'est pas si facile…
+                </figcaption>
+            </figure>
+            <div class="degree7-unit1-lesson22-lecture-text-card">
+                <span class="degree7-unit1-lesson22-lecture-quote-mark">“</span>
+                <p data-i18n="text_para1">Après dîner, Papa a fait les comptes avec Maman.<br>– Je me demande où passe l'argent que je te donne, a dit Papa.<br>– Ah ! j'aime bien quand tu me dis ça, a dit Maman, qui pourtant n'avait pas l'air de <span class="degree7-unit1-lesson22-lecture-hl" title="rire, plaisanter">rigoler</span>.</p>
+                <p data-i18n="text_para2">Et puis elle a expliqué à Papa qu'il ne se rendait pas compte de ce que coûtait la nourriture et que s'il allait faire le marché, il comprendrait, et qu'on ne devait pas discuter devant le petit.</p>
+                <p data-i18n="text_para3">Papa a dit que tout ça c'étaient des blagues, que si lui s'occupait d'aller acheter les choses, on ferait des <span class="degree7-unit1-lesson22-lecture-hl" title="réductions de dépenses">économies</span> et on mangerait mieux, et que le petit n'avait qu'à aller se coucher.<br>– Eh bien, puisque c'est comme ça, tu feras les courses, toi qui es si malin, a dit Maman.<br>– Parfaitement, a répondu Papa. Demain, c'est dimanche, et j'irai au marché. Tu verras comme moi je ne me laisse pas faire !</p>
+                <p data-i18n="text_para4">– Chic, j'ai dit, je pourrai y aller, moi aussi ? Et on m'a envoyé me coucher.<br>Le matin, j'ai demandé à Papa si je pouvais l'accompagner et Papa a dit que oui, que c'étaient les hommes qui faisaient le marché aujourd'hui. Moi j'étais drôlement content, parce que j'aime bien sortir avec mon Papa, et le marché, c'est chouette. Il y a du monde et ça crie partout, c'est comme une grande récré qui sentirait bon. Papa m'a dit de prendre le filet à provisions et Maman nous a dit au revoir en rigolant.<br>– Tu peux rire, a dit Papa, tu riras moins quand nous serons revenus avec des bonnes choses que nous aurons payées à des <span class="degree7-unit1-lesson22-lecture-hl" title="prix raisonnables">prix abordables</span>. C'est que nous, les hommes, on ne se laisse pas rouler. Pas vrai, Nicolas ?<br>– Ouais, j'ai dit.</p>
+                <p data-i18n="text_para5">Une fois au marché, ils commencent par la marchande de légumes.<br>– Donnez-moi un kilo de tomates, il a demandé, Papa.<br>La marchande a mis cinq tomates dans le filet à provisions et elle a dit :<br>– Et avec ça, qu'est-ce que je vous mets ?<br>Papa a regardé dans le filet, et puis il a dit :<br>– Comment ? Il n'y a que cinq tomates dans un kilo ?<br>– Et qu'est-ce que vous croyez, a demandé la dame, que pour le prix vous aurez une plantation ? Les maris, quand ça fait le marché, c'est tous du pareil au même.<br>– Les maris, on se laisse moins rouler que nos femmes, voilà tout ! a dit Papa.</p>
+                <p data-i18n="text_para6">Puis c'est le tour du marchand de poissons qui dit en rigolant que ses langoustes sont fraîches et vivantes.<br>– Oui, bon, a dit Papa, à combien la grosse, là, qui remue les pattes ?<br>Le marchand lui a dit le prix et Papa a ouvert des yeux gros comme tout.<br>– Et l'autre, là, la plus petite ? a demandé Papa.<br>Le marchand a dit le prix de nouveau et Papa a dit que c'était incroyable et que c'était une honte.<br>– Dites, a demandé le marchand, c'est des langoustes ou des crevettes que vous voulez acheter ? Parce que ce n'est pas du tout le même prix. Votre femme aurait dû vous prévenir.<br>– Viens, Nicolas, a dit Papa, nous allons chercher autre chose.</p>
+                <p data-i18n="text_para7">Après une série de <span class="degree7-unit1-lesson22-lecture-hl" title="aventures désagréables">mésaventures</span>, Nicolas et son Papa reviennent à la maison avec peu de chose. Comme il n'y a rien à manger, ils sont obligés d'aller au restaurant.</p>
+                <div class="degree7-unit1-lesson22-lecture-text-author" data-i18n="text_author">— SEMPÉ & GOSCINNY, <em>Joachim a des ennuis</em>, Denoël, 1964.</div>
+            </div>
+            <div class="degree7-unit1-lesson22-lecture-note">
+                <strong data-i18n="consigne_title">➤ Consigne :</strong>
+                <span data-i18n="consigne_text">Lis le texte puis réponds aux questions. Observe le comique de la situation : Papa, qui se moquait de Maman, échoue lamentablement au marché.</span>
+            </div>
+            <div class="degree7-unit1-lesson22-lecture-note">
+                <strong data-i18n="vocab_title">📚 Vocabulaire :</strong>
+                <ul style="padding-left:1.2rem; margin-top:0.4rem;">
+                    <li data-i18n="vocab1"><strong>Rigoler</strong> : rire, plaisanter.</li>
+                    <li data-i18n="vocab2"><strong>Faire des économies</strong> : dépenser moins.</li>
+                    <li data-i18n="vocab3"><strong>À un prix abordable</strong> : à un prix raisonnable.</li>
+                    <li data-i18n="vocab4"><strong>Se laisser rouler</strong> : se faire tromper.</li>
+                    <li data-i18n="vocab5"><strong>Mésaventure</strong> : aventure désagréable.</li>
+                </ul>
+            </div>
+        </section>
+        <section class="degree7-unit1-lesson22-lecture-section">
+            <h2 data-i18n="rules_heading">📖 Je lis à haute voix</h2>
+            <div class="degree7-unit1-lesson22-lecture-valeurs-section">
+                <div class="degree7-unit1-lesson22-lecture-valeur-card">
+                    <h3 data-i18n="rule1_title">🎭 1. Jouer les dialogues</h3>
+                    <ul data-i18n="rule1_list">
+                        <li>Je lis les dialogues en changeant de voix pour chaque personnage.</li>
+                        <li>Je marque la <strong>voix assurée</strong> de Papa au début, puis sa <strong>voix déconfite</strong>.</li>
+                        <li>Je marque la <strong>voix ironique</strong> de Maman et des marchands.</li>
+                    </ul>
+                </div>
+                <div class="degree7-unit1-lesson22-lecture-valeur-card">
+                    <h3 data-i18n="rule2_title">😂 2. Le comique de situation</h3>
+                    <ul data-i18n="rule2_list">
+                        <li>Papa se moque de Maman et prétend faire mieux qu'elle.</li>
+                        <li>Mais au marché, il est <strong>maladroit</strong> et <strong>ignorant</strong>.</li>
+                        <li>La chute (aller au restaurant) montre qu'il a <strong>échoué</strong> : c'est drôle.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="degree7-unit1-lesson22-lecture-section">
+            <h2 data-i18n="showcase_heading">🎨 Le lexique du texte</h2>
+            <div class="degree7-unit1-lesson22-lecture-showcase">
+                <div class="degree7-unit1-lesson22-lecture-vcard">
+                    <span class="degree7-unit1-lesson22-lecture-vicon">🛒</span>
+                    <span class="degree7-unit1-lesson22-lecture-vword" data-i18n="card1_word">le marché</span>
+                    <span class="degree7-unit1-lesson22-lecture-vdef" data-i18n="card1_def">lieu où l'on achète des produits frais</span>
+                </div>
+                <div class="degree7-unit1-lesson22-lecture-vcard">
+                    <span class="degree7-unit1-lesson22-lecture-vicon">🧺</span>
+                    <span class="degree7-unit1-lesson22-lecture-vword" data-i18n="card2_word">le filet à provisions</span>
+                    <span class="degree7-unit1-lesson22-lecture-vdef" data-i18n="card2_def">sac à mailles pour les courses</span>
+                </div>
+                <div class="degree7-unit1-lesson22-lecture-vcard">
+                    <span class="degree7-unit1-lesson22-lecture-vicon">🍅</span>
+                    <span class="degree7-unit1-lesson22-lecture-vword" data-i18n="card3_word">un kilo de tomates</span>
+                    <span class="degree7-unit1-lesson22-lecture-vdef" data-i18n="card3_def">unité de poids (1000 g) de tomates</span>
+                </div>
+                <div class="degree7-unit1-lesson22-lecture-vcard">
+                    <span class="degree7-unit1-lesson22-lecture-vicon">🦞</span>
+                    <span class="degree7-unit1-lesson22-lecture-vword" data-i18n="card4_word">la langouste</span>
+                    <span class="degree7-unit1-lesson22-lecture-vdef" data-i18n="card4_def">crustacé de mer, souvent cher</span>
+                </div>
+                <div class="degree7-unit1-lesson22-lecture-vcard">
+                    <span class="degree7-unit1-lesson22-lecture-vicon">🦐</span>
+                    <span class="degree7-unit1-lesson22-lecture-vword" data-i18n="card5_word">la crevette</span>
+                    <span class="degree7-unit1-lesson22-lecture-vdef" data-i18n="card5_def">petit crustacé, moins cher</span>
+                </div>
+                <div class="degree7-unit1-lesson22-lecture-vcard">
+                    <span class="degree7-unit1-lesson22-lecture-vicon">💸</span>
+                    <span class="degree7-unit1-lesson22-lecture-vword" data-i18n="card6_word">un prix abordable</span>
+                    <span class="degree7-unit1-lesson22-lecture-vdef" data-i18n="card6_def">prix raisonnable</span>
+                </div>
+                <div class="degree7-unit1-lesson22-lecture-vcard">
+                    <span class="degree7-unit1-lesson22-lecture-vicon">😤</span>
+                    <span class="degree7-unit1-lesson22-lecture-vword" data-i18n="card7_word">se laisser rouler</span>
+                    <span class="degree7-unit1-lesson22-lecture-vdef" data-i18n="card7_def">se faire tromper</span>
+                </div>
+                <div class="degree7-unit1-lesson22-lecture-vcard">
+                    <span class="degree7-unit1-lesson22-lecture-vicon">😂</span>
+                    <span class="degree7-unit1-lesson22-lecture-vword" data-i18n="card8_word">rigoler</span>
+                    <span class="degree7-unit1-lesson22-lecture-vdef" data-i18n="card8_def">rire, plaisanter</span>
+                </div>
+                <div class="degree7-unit1-lesson22-lecture-vcard">
+                    <span class="degree7-unit1-lesson22-lecture-vicon">💰</span>
+                    <span class="degree7-unit1-lesson22-lecture-vword" data-i18n="card9_word">faire des économies</span>
+                    <span class="degree7-unit1-lesson22-lecture-vdef" data-i18n="card9_def">dépenser moins</span>
+                </div>
+                <div class="degree7-unit1-lesson22-lecture-vcard">
+                    <span class="degree7-unit1-lesson22-lecture-vicon">😅</span>
+                    <span class="degree7-unit1-lesson22-lecture-vword" data-i18n="card10_word">une mésaventure</span>
+                    <span class="degree7-unit1-lesson22-lecture-vdef" data-i18n="card10_def">aventure désagréable</span>
+                </div>
+                <div class="degree7-unit1-lesson22-lecture-vcard">
+                    <span class="degree7-unit1-lesson22-lecture-vicon">🍽️</span>
+                    <span class="degree7-unit1-lesson22-lecture-vword" data-i18n="card11_word">le restaurant</span>
+                    <span class="degree7-unit1-lesson22-lecture-vdef" data-i18n="card11_def">lieu où l'on mange en payant</span>
+                </div>
+                <div class="degree7-unit1-lesson22-lecture-vcard">
+                    <span class="degree7-unit1-lesson22-lecture-vicon">📊</span>
+                    <span class="degree7-unit1-lesson22-lecture-vword" data-i18n="card12_word">faire les comptes</span>
+                    <span class="degree7-unit1-lesson22-lecture-vdef" data-i18n="card12_def">calculer les dépenses et les recettes</span>
+                </div>
+            </div>
+        </section>
+        <div class="degree7-unit1-lesson22-lecture-exercises-section">
+            <h2 data-i18n="exercises_heading">✍️ Je m'exerce</h2>
+            <div class="degree7-unit1-lesson22-lecture-exercise-card degree7-unit1-lesson22-lecture-exercise-col-left" data-num="1">
+                <h3 data-i18n="exo1_title">📌 1. Je découvre le texte</h3>
+                <p data-i18n="exo1_instruction">Réponds aux questions de découverte du texte.</p>
+                <ol type="a">
+                    <li>Qui sont les personnages principaux ? <input type="text" class="degree7-unit1-lesson22-lecture-inline-input" placeholder="..."></li>
+                    <li>Pourquoi Papa décide-t-il d'aller au marché ? <input type="text" class="degree7-unit1-lesson22-lecture-inline-input" placeholder="..."></li>
+                    <li>Comment se termine la sortie au marché ? <input type="text" class="degree7-unit1-lesson22-lecture-inline-input" placeholder="..."></li>
+                </ol>
+                <button class="degree7-unit1-lesson22-lecture-btn-verify" onclick="toggleCorrection('exo1Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo1Key" class="degree7-unit1-lesson22-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson22-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <div class="degree7-unit1-lesson22-lecture-exercise-card degree7-unit1-lesson22-lecture-exercise-col-right" data-num="2">
+                <h3 data-i18n="exo2_title">📌 2. Vrai ou faux ?</h3>
+                <p data-i18n="exo2_instruction">Indique si chaque affirmation est vraie (V) ou fausse (F).</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_statement" class="no-bilingual">Affirmation</th>
+                            <th data-i18n="table_vf" class="no-bilingual">V / F</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td data-i18n="exo2_q1">Maman est contente que Papa critique ses dépenses.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo2_q2">Papa pense faire de meilleures affaires que Maman.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo2_q3">Nicolas accompagne son père au marché.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo2_q4">Papa réussit à acheter des langoustes à bon prix.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo2_q5">La famille finit par aller au restaurant.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                    </tbody>
+                </table>
+                <button class="degree7-unit1-lesson22-lecture-btn-verify" onclick="toggleCorrection('exo2Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo2Key" class="degree7-unit1-lesson22-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson22-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <div class="degree7-unit1-lesson22-lecture-exercise-card degree7-unit1-lesson22-lecture-exercise-col-left" data-num="3">
+                <h3 data-i18n="exo3_title">📌 3. QCM – Compréhension du texte</h3>
+                <p data-i18n="exo3_instruction">Choisis la bonne réponse parmi les trois propositions.</p>
+                <p><strong>1.</strong> <span data-i18n="exo3_q1">Que reproche Papa à Maman au début ?</span></p>
+                <label><input type="radio" name="mcq1" value="a"> <span data-i18n="exo3_q1_a">De mal cuisiner.</span></label><br>
+                <label><input type="radio" name="mcq1" value="b"> <span data-i18n="exo3_q1_b">De dépenser trop d'argent.</span></label><br>
+                <label><input type="radio" name="mcq1" value="c"> <span data-i18n="exo3_q1_c">De ne pas sortir assez.</span></label>
+                <p style="margin-top:0.6rem;"><strong>2.</strong> <span data-i18n="exo3_q2">Que se passe-t-il avec les tomates ?</span></p>
+                <label><input type="radio" name="mcq2" value="a"> <span data-i18n="exo3_q2_a">La marchande lui en donne trop.</span></label><br>
+                <label><input type="radio" name="mcq2" value="b"> <span data-i18n="exo3_q2_b">Il y en a très peu dans un kilo : Papa est surpris.</span></label><br>
+                <label><input type="radio" name="mcq2" value="c"> <span data-i18n="exo3_q2_c">Elles sont pourries.</span></label>
+                <p style="margin-top:0.6rem;"><strong>3.</strong> <span data-i18n="exo3_q3">Pourquoi Papa et Nicolas vont-ils au restaurant ?</span></p>
+                <label><input type="radio" name="mcq3" value="a"> <span data-i18n="exo3_q3_a">Pour fêter leur réussite.</span></label><br>
+                <label><input type="radio" name="mcq3" value="b"> <span data-i18n="exo3_q3_b">Parce qu'ils n'ont rien rapporté du marché.</span></label><br>
+                <label><input type="radio" name="mcq3" value="c"> <span data-i18n="exo3_q3_c">Parce que Maman est fâchée.</span></label>
+                <button class="degree7-unit1-lesson22-lecture-btn-verify" onclick="toggleCorrection('exo3Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo3Key" class="degree7-unit1-lesson22-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson22-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <div class="degree7-unit1-lesson22-lecture-exercise-card degree7-unit1-lesson22-lecture-exercise-col-right" data-num="4">
+                <h3 data-i18n="exo4_title">📌 4. Complète avec les mots du texte</h3>
+                <p data-i18n="exo4_instruction">Complète le texte à trous avec les mots suivants : <em>comptes, marché, tomates, langoustes, restaurant, mésaventures</em>.</p>
+                <p>
+                    <span data-i18n="exo4_t1">Après dîner, Papa a fait les</span>
+                    <input type="text" class="degree7-unit1-lesson22-lecture-inline-input" placeholder="...">
+                    <span data-i18n="exo4_t2">avec Maman. Il décide d'aller au</span>
+                    <input type="text" class="degree7-unit1-lesson22-lecture-inline-input" placeholder="...">
+                    <span data-i18n="exo4_t3">pour faire des économies. Chez la marchande, il demande un kilo de</span>
+                    <input type="text" class="degree7-unit1-lesson22-lecture-inline-input" placeholder="...">
+                    <span data-i18n="exo4_t4">. Puis, chez le poissonnier, il s'intéresse aux</span>
+                    <input type="text" class="degree7-unit1-lesson22-lecture-inline-input" placeholder="...">
+                    <span data-i18n="exo4_t5">, mais elles sont trop chères. Après plusieurs</span>
+                    <input type="text" class="degree7-unit1-lesson22-lecture-inline-input" placeholder="...">
+                    <span data-i18n="exo4_t6">, ils rentrent avec peu de chose. Finalement, ils vont au</span>
+                    <input type="text" class="degree7-unit1-lesson22-lecture-inline-input" placeholder="...">
+                    <span data-i18n="exo4_t7">.</span>
+                </p>
+                <button class="degree7-unit1-lesson22-lecture-btn-verify" onclick="toggleCorrection('exo4Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo4Key" class="degree7-unit1-lesson22-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson22-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <div class="degree7-unit1-lesson22-lecture-exercise-card degree7-unit1-lesson22-lecture-exercise-col-left" data-num="5">
+                <h3 data-i18n="exo5_title">📌 5. Relie chaque mot à sa définition</h3>
+                <p data-i18n="exo5_instruction">Écris la lettre de la définition qui correspond à chaque mot.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_word" class="no-bilingual">Mot</th>
+                            <th data-i18n="table_letter" class="no-bilingual">Définition (a–e)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>rigoler</td><td><input type="text" placeholder="a-e"></td></tr>
+                        <tr><td>faire des économies</td><td><input type="text" placeholder="a-e"></td></tr>
+                        <tr><td>un prix abordable</td><td><input type="text" placeholder="a-e"></td></tr>
+                        <tr><td>se laisser rouler</td><td><input type="text" placeholder="a-e"></td></tr>
+                        <tr><td>une mésaventure</td><td><input type="text" placeholder="a-e"></td></tr>
+                    </tbody>
+                </table>
+                <p style="font-size:0.85rem; color:var(--degree7-unit1-lesson22-lecture-text-light);">
+                    <strong>a.</strong> <span data-i18n="exo5_a">rire, plaisanter</span> ·
+                    <strong>b.</strong> <span data-i18n="exo5_b">dépenser moins</span> ·
+                    <strong>c.</strong> <span data-i18n="exo5_c">prix raisonnable</span> ·
+                    <strong>d.</strong> <span data-i18n="exo5_d">se faire tromper</span> ·
+                    <strong>e.</strong> <span data-i18n="exo5_e">aventure désagréable</span>
+                </p>
+                <button class="degree7-unit1-lesson22-lecture-btn-verify" onclick="toggleCorrection('exo5Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo5Key" class="degree7-unit1-lesson22-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson22-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex5" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex5" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex5" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <div class="degree7-unit1-lesson22-lecture-exercise-card degree7-unit1-lesson22-lecture-exercise-col-right" data-num="6">
+                <h3 data-i18n="exo6_title">📌 6. Le vocabulaire du marché</h3>
+                <p data-i18n="exo6_instruction">Classe ces mots en deux colonnes : <em>produits</em> / <em>personnes</em>.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_produits" class="no-bilingual">Produits</th>
+                            <th data-i18n="table_personnes" class="no-bilingual">Personnes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" placeholder="..."></td>
+                            <td><input type="text" placeholder="..."></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="font-size:0.85rem; color:var(--degree7-unit1-lesson22-lecture-text-light);" data-i18n="exo6_choices">
+                    les tomates · la marchande · les langoustes · le marchand de poissons · les crevettes · le filet à provisions
+                </p>
+                <button class="degree7-unit1-lesson22-lecture-btn-verify" onclick="toggleCorrection('exo6Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo6Key" class="degree7-unit1-lesson22-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson22-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex6" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex6" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex6" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <div class="degree7-unit1-lesson22-lecture-exercise-card degree7-unit1-lesson22-lecture-exercise-col-left" data-num="7">
+                <h3 data-i18n="exo7_title">📌 7. Le langage familier</h3>
+                <p data-i18n="exo7_instruction">Relie chaque expression familière à son équivalent en français standard.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_familier" class="no-bilingual">Familier</th>
+                            <th data-i18n="table_standard" class="no-bilingual">Standard</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>c'est chouette</td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>ça rigole</td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>du pareil au même</td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>une honte</td><td><input type="text" placeholder="..."></td></tr>
+                    </tbody>
+                </table>
+                <p style="font-size:0.85rem; color:var(--degree7-unit1-lesson22-lecture-text-light);" data-i18n="exo7_choices">
+                    <strong>a.</strong> c'est agréable, c'est bien · <strong>b.</strong> c'est identique, c'est la même chose · <strong>c.</strong> c'est scandaleux · <strong>d.</strong> on rit, on plaisante
+                </p>
+                <button class="degree7-unit1-lesson22-lecture-btn-verify" onclick="toggleCorrection('exo7Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo7Key" class="degree7-unit1-lesson22-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson22-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex7" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex7" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex7" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <div class="degree7-unit1-lesson22-lecture-exercise-card degree7-unit1-lesson22-lecture-exercise-col-right" data-num="8">
+                <h3 data-i18n="exo8_title">📌 8. Les unités de mesure</h3>
+                <p data-i18n="exo8_instruction">Complète chaque expression avec l'unité qui convient.</p>
+                <p style="font-size:0.88rem; padding:0.5rem; background:var(--degree7-unit1-lesson22-lecture-light); border-radius:6px;" data-i18n="exo8_choices">
+                    kilo · litre · douzaine · gramme
+                </p>
+                <ol type="a">
+                    <li>Un <input type="text" class="degree7-unit1-lesson22-lecture-inline-input" placeholder="..."> de tomates (1000 g).</li>
+                    <li>Un <input type="text" class="degree7-unit1-lesson22-lecture-inline-input" placeholder="..."> de lait.</li>
+                    <li>Une <input type="text" class="degree7-unit1-lesson22-lecture-inline-input" placeholder="..."> d'œufs (12).</li>
+                    <li>Cent <input type="text" class="degree7-unit1-lesson22-lecture-inline-input" placeholder="..."> de beurre.</li>
+                </ol>
+                <button class="degree7-unit1-lesson22-lecture-btn-verify" onclick="toggleCorrection('exo8Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo8Key" class="degree7-unit1-lesson22-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson22-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex8" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex8" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex8" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <div class="degree7-unit1-lesson22-lecture-exercise-card degree7-unit1-lesson22-lecture-exercise-col-left" data-num="9">
+                <h3 data-i18n="exo9_title">📌 9. Le comique de la situation</h3>
+                <p data-i18n="exo9_instruction">Explique pourquoi ce texte est drôle.</p>
+                <ol type="a">
+                    <li>Quel contraste y a-t-il entre le début et la fin du texte ? <input type="text" class="degree7-unit1-lesson22-lecture-inline-input" placeholder="..."></li>
+                    <li>Pourquoi les marchands se moquent-ils de Papa ? <input type="text" class="degree7-unit1-lesson22-lecture-inline-input" placeholder="..."></li>
+                    <li>Quelle est la chute du texte ? <input type="text" class="degree7-unit1-lesson22-lecture-inline-input" placeholder="..."></li>
+                </ol>
+                <button class="degree7-unit1-lesson22-lecture-btn-verify" onclick="toggleCorrection('exo9Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo9Key" class="degree7-unit1-lesson22-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson22-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex9" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex9" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex9" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <div class="degree7-unit1-lesson22-lecture-exercise-card degree7-unit1-lesson22-lecture-exercise-col-right" data-num="10">
+                <h3 data-i18n="exo10_title">📌 10. J'apprécie le texte</h3>
+                <p data-i18n="exo10_instruction">Complète les énoncés suivants.</p>
+                <ol type="a">
+                    <li>Ce qui m'a fait rire, c'est... <input type="text" class="degree7-unit1-lesson22-lecture-inline-input" placeholder="..."></li>
+                    <li>Ce que je trouve injuste, c'est... <input type="text" class="degree7-unit1-lesson22-lecture-inline-input" placeholder="..."></li>
+                    <li>La morale de cette histoire pourrait être... <input type="text" class="degree7-unit1-lesson22-lecture-inline-input" placeholder="..."></li>
+                </ol>
+                <button class="degree7-unit1-lesson22-lecture-btn-verify" onclick="toggleCorrection('exo10Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo10Key" class="degree7-unit1-lesson22-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson22-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex10" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex10" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex10" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top:2rem;">
+            <div class="degree7-unit1-lesson22-lecture-exercise-card" data-num="11">
+                <h3 data-i18n="exo11_title">📌 11. J'écris à mon tour – Production personnelle</h3>
+                <p data-i18n="exo11_instruction">Le lendemain, Maman apprend que Papa est allé au restaurant avec Nicolas. Imagine ce qu'elle lui dit. Rédige un court dialogue (5 à 6 phrases) sur un ton ironique et amusant.</p>
+                <figure class="degree7-unit1-lesson22-lecture-prod-figure">
+                    <img src="assets7/images/degree7/unit1/lesson22/papa_maman.png"
+                         alt="Illustration de Papa et Maman discutant après le marché"
+                         class="degree7-unit1-lesson22-lecture-prod-img"
+                         data-i18n="img_prod_alt"
+                         onerror="this.parentElement.style.display='none'">
+                    <figcaption class="degree7-unit1-lesson22-lecture-prod-caption" data-i18n="img_prod_caption">
+                        Que va dire Maman quand elle apprendra la mésaventure ?
+                    </figcaption>
+                </figure>
+                <textarea rows="6" placeholder="– Alors, ce marché... ?"></textarea>
+                <button class="degree7-unit1-lesson22-lecture-btn-verify" onclick="showExo11Example()" data-i18n="show_example">💡 Voir un exemple de réponse</button>
+                <div id="exo11Key" class="degree7-unit1-lesson22-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson22-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex11" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex11" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex11" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+        </div>
+        <div class="degree7-unit1-lesson22-lecture-score-area" id="scoreArea">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="degree7-unit1-lesson22-lecture-score-stats" id="scoreStats">
+                <div class="degree7-unit1-lesson22-lecture-score-stat"><span data-i18n="score_correct">Correctes :</span> <span id="scoreCorrect">0</span></div>
+                <div class="degree7-unit1-lesson22-lecture-score-stat"><span data-i18n="score_incorrect">Incorrectes :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="degree7-unit1-lesson22-lecture-score-stat"><span data-i18n="score_partial">Partielles :</span> <span id="scorePartial">0</span></div>
+                <div class="degree7-unit1-lesson22-lecture-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">11</span></div>
+            </div>
+        </div>
+        <div class="degree7-unit1-lesson22-lecture-score-actions" style="margin-top:1.2rem;">
+            <button id="saveResultsBtn" class="degree7-unit1-lesson22-lecture-btn-verify" style="margin-right:0.5rem;" data-i18n="save_results">💾 Enregistrer mes résultats</button>
+            <button id="printPdfBtn" class="degree7-unit1-lesson22-lecture-btn-verify" style="background:#1e5e3a; margin-right:0.5rem;" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+        </div>
+        <div class="degree7-unit1-lesson22-lecture-footer-nav">
+            <a href="degree7unit1lesson21.html" data-i18n="footer_back" class="no-bilingual">← Leçon précédente</a>
+            <a href="degree7unit1lesson23.html" data-i18n="footer_next" class="no-bilingual">Leçon suivante : Se présenter / Présenter quelqu'un →</a>
+        </div>
+    </div>
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                'lesson_title': "Leçon 22 – Au marché | Lecture",
+                'lesson_short_title': "Au marché",
+                'ach_year_degree7': "7ème Année Primaire",
+                'ach_module_unit1': "Unité 1 – Les fondements du français",
+                'back_link': "← Retour à l'accueil",
+                'back_revision': "Unité 1",
+                'back_current': "Au marché",
+                'lesson_badge': "📖 Lecture · Leçon 22",
+                'lesson_title': "Au marché<br>Sempé & Goscinny, <em>Joachim a des ennuis</em>",
+                'lesson_duration': "⏱️ 45 minutes",
+                'lesson_meta_audio': "🎧 Écoutez le texte puis répondez aux questions",
+                'audio_label': "🎧 Écoute du texte",
+                'author_img_alt': "Portrait de Sempé et Goscinny",
+                'author_title': "👤 Sempé & Goscinny",
+                'author_bio': "Jean-Jacques Sempé et René Goscinny ont créé ensemble le personnage du <em>Petit Nicolas</em>. Leurs histoires drôles et tendres racontent la vie quotidienne d'un enfant et de sa famille.",
+                'text_heading': "📖 J'observe",
+                'img_hero_alt': "Illustration du marché avec des étals de légumes",
+                'img_hero_caption': "Au marché, Papa et Nicolas découvrent que faire les courses n'est pas si facile…",
+                'text_author': "— SEMPÉ & GOSCINNY, <em>Joachim a des ennuis</em>, Denoël, 1964.",
+                'consigne_title': "➤ Consigne :",
+                'consigne_text': "Lis le texte puis réponds aux questions. Observe le comique de la situation : Papa, qui se moquait de Maman, échoue lamentablement au marché.",
+                'vocab_title': "📚 Vocabulaire :",
+                'vocab1': "<strong>Rigoler</strong> : rire, plaisanter.",
+                'vocab2': "<strong>Faire des économies</strong> : dépenser moins.",
+                'vocab3': "<strong>À un prix abordable</strong> : à un prix raisonnable.",
+                'vocab4': "<strong>Se laisser rouler</strong> : se faire tromper.",
+                'vocab5': "<strong>Mésaventure</strong> : aventure désagréable.",
+                'rules_heading': "📖 Je lis à haute voix",
+                'rule1_title': "🎭 1. Jouer les dialogues",
+                'rule1_list': "<li>Je lis les dialogues en changeant de voix pour chaque personnage.</li><li>Je marque la <strong>voix assurée</strong> de Papa au début, puis sa <strong>voix déconfite</strong>.</li><li>Je marque la <strong>voix ironique</strong> de Maman et des marchands.</li>",
+                'rule2_title': "😂 2. Le comique de situation",
+                'rule2_list': "<li>Papa se moque de Maman et prétend faire mieux qu'elle.</li><li>Mais au marché, il est <strong>maladroit</strong> et <strong>ignorant</strong>.</li><li>La chute (aller au restaurant) montre qu'il a <strong>échoué</strong> : c'est drôle.</li>",
+                'showcase_heading': "🎨 Le lexique du texte",
+                'card1_word': "le marché", 'card1_def': "lieu où l'on achète des produits frais",
+                'card2_word': "le filet à provisions", 'card2_def': "sac à mailles pour les courses",
+                'card3_word': "un kilo de tomates", 'card3_def': "unité de poids (1000 g) de tomates",
+                'card4_word': "la langouste", 'card4_def': "crustacé de mer, souvent cher",
+                'card5_word': "la crevette", 'card5_def': "petit crustacé, moins cher",
+                'card6_word': "un prix abordable", 'card6_def': "prix raisonnable",
+                'card7_word': "se laisser rouler", 'card7_def': "se faire tromper",
+                'card8_word': "rigoler", 'card8_def': "rire, plaisanter",
+                'card9_word': "faire des économies", 'card9_def': "dépenser moins",
+                'card10_word': "une mésaventure", 'card10_def': "aventure désagréable",
+                'card11_word': "le restaurant", 'card11_def': "lieu où l'on mange en payant",
+                'card12_word': "faire les comptes", 'card12_def': "calculer les dépenses et les recettes",
+                'exercises_heading': "✍️ Je m'exerce",
+                'table_word': "Mot", 'table_letter': "Définition (a–e)",
+                'table_statement': "Affirmation", 'table_vf': "V / F",
+                'table_produits': "Produits", 'table_personnes': "Personnes",
+                'table_familier': "Familier", 'table_standard': "Standard",
+                'btn_correction': "🔍 Voir la correction", 'show_example': "💡 Voir un exemple de réponse",
+                'exo1_title': "📌 1. Je découvre le texte",
+                'exo1_instruction': "Réponds aux questions de découverte du texte.",
+                'exo2_title': "📌 2. Vrai ou faux ?",
+                'exo2_instruction': "Indique si chaque affirmation est vraie (V) ou fausse (F).",
+                'exo2_q1': "Maman est contente que Papa critique ses dépenses.",
+                'exo2_q2': "Papa pense faire de meilleures affaires que Maman.",
+                'exo2_q3': "Nicolas accompagne son père au marché.",
+                'exo2_q4': "Papa réussit à acheter des langoustes à bon prix.",
+                'exo2_q5': "La famille finit par aller au restaurant.",
+                'exo3_title': "📌 3. QCM – Compréhension du texte",
+                'exo3_instruction': "Choisis la bonne réponse parmi les trois propositions.",
+                'exo3_q1': "Que reproche Papa à Maman au début ?",
+                'exo3_q1_a': "De mal cuisiner.", 'exo3_q1_b': "De dépenser trop d'argent.", 'exo3_q1_c': "De ne pas sortir assez.",
+                'exo3_q2': "Que se passe-t-il avec les tomates ?",
+                'exo3_q2_a': "La marchande lui en donne trop.", 'exo3_q2_b': "Il y en a très peu dans un kilo : Papa est surpris.", 'exo3_q2_c': "Elles sont pourries.",
+                'exo3_q3': "Pourquoi Papa et Nicolas vont-ils au restaurant ?",
+                'exo3_q3_a': "Pour fêter leur réussite.", 'exo3_q3_b': "Parce qu'ils n'ont rien rapporté du marché.", 'exo3_q3_c': "Parce que Maman est fâchée.",
+                'exo4_title': "📌 4. Complète avec les mots du texte",
+                'exo4_instruction': "Complète le texte à trous avec les mots suivants : comptes, marché, tomates, langoustes, restaurant, mésaventures.",
+                'exo4_t1': "Après dîner, Papa a fait les", 'exo4_t2': "avec Maman. Il décide d'aller au", 'exo4_t3': "pour faire des économies. Chez la marchande, il demande un kilo de", 'exo4_t4': ". Puis, chez le poissonnier, il s'intéresse aux", 'exo4_t5': ", mais elles sont trop chères. Après plusieurs", 'exo4_t6': ", ils rentrent avec peu de chose. Finalement, ils vont au", 'exo4_t7': ".",
+                'exo5_title': "📌 5. Relie chaque mot à sa définition",
+                'exo5_instruction': "Écris la lettre de la définition qui correspond à chaque mot.",
+                'exo5_a': "rire, plaisanter", 'exo5_b': "dépenser moins", 'exo5_c': "prix raisonnable", 'exo5_d': "se faire tromper", 'exo5_e': "aventure désagréable",
+                'exo6_title': "📌 6. Le vocabulaire du marché",
+                'exo6_instruction': "Classe ces mots en deux colonnes : produits / personnes.",
+                'exo6_choices': "les tomates · la marchande · les langoustes · le marchand de poissons · les crevettes · le filet à provisions",
+                'exo7_title': "📌 7. Le langage familier",
+                'exo7_instruction': "Relie chaque expression familière à son équivalent en français standard.",
+                'exo7_choices': "<strong>a.</strong> c'est agréable, c'est bien · <strong>b.</strong> c'est identique, c'est la même chose · <strong>c.</strong> c'est scandaleux · <strong>d.</strong> on rit, on plaisante",
+                'exo8_title': "📌 8. Les unités de mesure",
+                'exo8_instruction': "Complète chaque expression avec l'unité qui convient.",
+                'exo8_choices': "kilo · litre · douzaine · gramme",
+                'exo9_title': "📌 9. Le comique de la situation",
+                'exo9_instruction': "Explique pourquoi ce texte est drôle.",
+                'exo10_title': "📌 10. J'apprécie le texte",
+                'exo10_instruction': "Complète les énoncés suivants.",
+                'exo11_title': "📌 11. J'écris à mon tour – Production personnelle",
+                'exo11_instruction': "Le lendemain, Maman apprend que Papa est allé au restaurant avec Nicolas. Imagine ce qu'elle lui dit. Rédige un court dialogue (5 à 6 phrases) sur un ton ironique et amusant.",
+                'img_prod_alt': "Illustration de Papa et Maman discutant après le marché",
+                'img_prod_caption': "Que va dire Maman quand elle apprendra la mésaventure ?",
+                'footer_back': "← Leçon précédente", 'footer_next': "Leçon suivante : Se présenter / Présenter quelqu'un →",
+                'self_assess_question': "Ma réponse est :",
+                'self_correct': "Correcte", 'self_incorrect': "Incorrecte", 'self_partial': "Partiellement correcte",
+                'score_title': "📊 Votre auto‑évaluation",
+                'score_correct': "Correctes :", 'score_incorrect': "Incorrectes :", 'score_partial': "Partielles :", 'score_unanswered': "Sans réponse :",
+                'save_results': "💾 Enregistrer mes résultats", 'save_success': "Résultats sauvegardés ✓", 'save_error': "Erreur lors de la sauvegarde",
+                'print_pdf': "🖨️ Imprimer / PDF", 'print_with_answers': "Corrigé inclus",
+                'print_site_name': "Educational Dashboard – Français",
+                'print_scholar_year': "7ème Année Primaire", 'print_week': "Unité 1", 'print_area': "Lecture",
+                'print_footer_dev': "Développé par Mejri Ziad", 'print_footer_date': "Imprimé le",
+                'print_without_answers': "Sans corrigé",
+                'toast_signin_required': "Connectez-vous pour voir les corrections."
+            },
+            en: {
+                'lesson_title': "Lesson 22 – At the Market | Reading",
+                'lesson_short_title': "At the Market",
+                'ach_year_degree7': "7th Grade Primary",
+                'ach_module_unit1': "Unit 1 – French foundations",
+                'back_link': "← Back to home",
+                'back_revision': "Unit 1",
+                'back_current': "At the Market",
+                'lesson_badge': "📖 Reading · Lesson 22",
+                'lesson_title': "At the Market<br>Sempé & Goscinny, <em>Joachim Has Troubles</em>",
+                'lesson_duration': "⏱️ 45 minutes",
+                'lesson_meta_audio': "🎧 Listen to the text then answer the questions",
+                'audio_label': "🎧 Listening to the text",
+                'author_img_alt': "Portrait of Sempé and Goscinny",
+                'author_title': "👤 Sempé & Goscinny",
+                'author_bio': "Jean-Jacques Sempé and René Goscinny created together the character of <em>Little Nicholas</em>. Their funny and tender stories tell the daily life of a child and his family.",
+                'text_heading': "📖 I observe",
+                'img_hero_alt': "Illustration of the market with vegetable stalls",
+                'img_hero_caption': "At the market, Dad and Nicholas discover that shopping isn't so easy…",
+                'text_author': "— SEMPÉ & GOSCINNY, <em>Joachim Has Troubles</em>, Denoël, 1964.",
+                'consigne_title': "➤ Instruction:",
+                'consigne_text': "Read the text then answer the questions. Observe the comic situation: Dad, who mocked Mum, fails miserably at the market.",
+                'vocab_title': "📚 Vocabulary:",
+                'vocab1': "<strong>To joke around</strong>: to laugh, to joke.",
+                'vocab2': "<strong>To save money</strong>: to spend less.",
+                'vocab3': "<strong>At an affordable price</strong>: at a reasonable price.",
+                'vocab4': "<strong>To be taken for a ride</strong>: to be tricked.",
+                'vocab5': "<strong>A misadventure</strong>: an unpleasant adventure.",
+                'rules_heading': "📖 I read aloud",
+                'rule1_title': "🎭 1. Acting the dialogues",
+                'rule1_list': "<li>I read the dialogues changing voice for each character.</li><li>I emphasize Dad's <strong>confident voice</strong> at first, then his <strong>deflated voice</strong>.</li><li>I emphasize the <strong>ironic voice</strong> of Mum and the vendors.</li>",
+                'rule2_title': "😂 2. The comedy of situation",
+                'rule2_list': "<li>Dad mocks Mum and claims to do better than her.</li><li>But at the market, he is <strong>clumsy</strong> and <strong>ignorant</strong>.</li><li>The ending (going to a restaurant) shows he <strong>failed</strong>: it's funny.</li>",
+                'showcase_heading': "🎨 Vocabulary of the text",
+                'card1_word': "the market", 'card1_def': "place where fresh produce is bought",
+                'card2_word': "the string bag", 'card2_def': "mesh bag for shopping",
+                'card3_word': "a kilo of tomatoes", 'card3_def': "unit of weight (1000 g) of tomatoes",
+                'card4_word': "the lobster", 'card4_def': "sea crustacean, often expensive",
+                'card5_word': "the shrimp", 'card5_def': "small crustacean, cheaper",
+                'card6_word': "an affordable price", 'card6_def': "reasonable price",
+                'card7_word': "to be taken for a ride", 'card7_def': "to be tricked",
+                'card8_word': "to joke around", 'card8_def': "to laugh, to joke",
+                'card9_word': "to save money", 'card9_def': "to spend less",
+                'card10_word': "a misadventure", 'card10_def': "unpleasant adventure",
+                'card11_word': "the restaurant", 'card11_def': "place where you eat paying",
+                'card12_word': "to do the accounts", 'card12_def': "to calculate expenses and income",
+                'exercises_heading': "✍️ I practise",
+                'table_word': "Word", 'table_letter': "Definition (a–e)",
+                'table_statement': "Statement", 'table_vf': "T / F",
+                'table_produits': "Products", 'table_personnes': "People",
+                'table_familier': "Informal", 'table_standard': "Standard",
+                'btn_correction': "🔍 See the correction", 'show_example': "💡 See an example answer",
+                'exo1_title': "📌 1. I discover the text",
+                'exo1_instruction': "Answer the discovery questions about the text.",
+                'exo2_title': "📌 2. True or false?",
+                'exo2_instruction': "Indicate whether each statement is true (T) or false (F).",
+                'exo2_q1': "Mum is happy that Dad criticizes her spending.",
+                'exo2_q2': "Dad thinks he will make better deals than Mum.",
+                'exo2_q3': "Nicholas accompanies his father to the market.",
+                'exo2_q4': "Dad succeeds in buying lobsters at a good price.",
+                'exo2_q5': "The family ends up going to a restaurant.",
+                'exo3_title': "📌 3. MCQ – Comprehension of the text",
+                'exo3_instruction': "Choose the correct answer among the three options.",
+                'exo3_q1': "What does Dad reproach Mum with at the beginning?",
+                'exo3_q1_a': "For cooking badly.", 'exo3_q1_b': "For spending too much money.", 'exo3_q1_c': "For not going out enough.",
+                'exo3_q2': "What happens with the tomatoes?",
+                'exo3_q2_a': "The vendor gives him too many.", 'exo3_q2_b': "There are very few in a kilo: Dad is surprised.", 'exo3_q2_c': "They are rotten.",
+                'exo3_q3': "Why do Dad and Nicholas go to a restaurant?",
+                'exo3_q3_a': "To celebrate their success.", 'exo3_q3_b': "Because they brought nothing back from the market.", 'exo3_q3_c': "Because Mum is angry.",
+                'exo4_title': "📌 4. Complete with the text's words",
+                'exo4_instruction': "Complete the gap text with the following words: comptes, marché, tomates, langoustes, restaurant, mésaventures.",
+                'exo4_t1': "After dinner, Dad did the", 'exo4_t2': "with Mum. He decides to go to the", 'exo4_t3': "to save money. At the vegetable vendor's, he asks for a kilo of", 'exo4_t4': ". Then, at the fishmonger's, he is interested in", 'exo4_t5': ", but they are too expensive. After several", 'exo4_t6': ", they come back with little. Finally, they go to the", 'exo4_t7': ".",
+                'exo5_title': "📌 5. Match each word to its definition",
+                'exo5_instruction': "Write the letter of the definition corresponding to each word.",
+                'exo5_a': "to laugh, to joke", 'exo5_b': "to spend less", 'exo5_c': "reasonable price", 'exo5_d': "to be tricked", 'exo5_e': "unpleasant adventure",
+                'exo6_title': "📌 6. Market vocabulary",
+                'exo6_instruction': "Classify these words into two columns: products / people.",
+                'exo6_choices': "the tomatoes · the vegetable vendor · the lobsters · the fishmonger · the shrimps · the string bag",
+                'exo7_title': "📌 7. Informal language",
+                'exo7_instruction': "Match each informal expression to its standard French equivalent.",
+                'exo7_choices': "<strong>a.</strong> it's nice, it's good · <strong>b.</strong> it's identical, it's the same thing · <strong>c.</strong> it's scandalous · <strong>d.</strong> we laugh, we joke",
+                'exo8_title': "📌 8. Units of measurement",
+                'exo8_instruction': "Complete each expression with the right unit.",
+                'exo8_choices': "kilo · litre · dozen · gram",
+                'exo9_title': "📌 9. The comedy of situation",
+                'exo9_instruction': "Explain why this text is funny.",
+                'exo10_title': "📌 10. I appreciate the text",
+                'exo10_instruction': "Complete the following statements.",
+                'exo11_title': "📌 11. I write in turn – Personal production",
+                'exo11_instruction': "The next day, Mum learns that Dad went to a restaurant with Nicholas. Imagine what she says to him. Write a short dialogue (5 to 6 sentences) in an ironic and amusing tone.",
+                'img_prod_alt': "Illustration of Dad and Mum talking after the market",
+                'img_prod_caption': "What will Mum say when she learns about the misadventure?",
+                'footer_back': "← Previous lesson", 'footer_next': "Next lesson: Introduce yourself / Introduce someone →",
+                'self_assess_question': "My answer is:",
+                'self_correct': "Correct", 'self_incorrect': "Incorrect", 'self_partial': "Partially correct",
+                'score_title': "📊 Your self‑assessment",
+                'score_correct': "Correct:", 'score_incorrect': "Incorrect:", 'score_partial': "Partial:", 'score_unanswered': "Unanswered:",
+                'save_results': "💾 Save my results", 'save_success': "Results saved ✓", 'save_error': "Save failed",
+                'print_pdf': "🖨️ Print / PDF", 'print_with_answers': "With answers",
+                'print_site_name': "Educational Dashboard – French",
+                'print_scholar_year': "7th Grade Primary", 'print_week': "Unit 1", 'print_area': "Reading",
+                'print_footer_dev': "Developed by Mejri Ziad", 'print_footer_date': "Printed on",
+                'print_without_answers': "Without answers",
+                'toast_signin_required': "Sign in to see the corrections."
+            },
+            ar: {
+                'lesson_title': "الدرس 22 – في السوق | قراءة",
+                'lesson_short_title': "في السوق",
+                'ach_year_degree7': "السنة السابعة ابتدائي",
+                'ach_module_unit1': "الوحدة 1 – أساسيات الفرنسية",
+                'back_link': "← العودة إلى الرئيسية",
+                'back_revision': "الوحدة 1",
+                'back_current': "في السوق",
+                'lesson_badge': "📖 قراءة · الدرس 22",
+                'lesson_title': "في السوق<br>سامبي وغوسيني، <em>يواكيم يواجه مشاكل</em>",
+                'lesson_duration': "⏱️ 45 دقيقة",
+                'lesson_meta_audio': "🎧 استمع إلى النص ثم أجب عن الأسئلة",
+                'audio_label': "🎧 استماع إلى النص",
+                'author_img_alt': "صورة سامبي وغوسيني",
+                'author_title': "👤 سامبي وغوسيني",
+                'author_bio': "جان-جاك سامبي ورينيه غوسيني ابتكرا معاً شخصية <em>نيكولا الصغير</em>. قصصهما الطريفة والحنونة تحكي الحياة اليومية لطفل وعائلته.",
+                'text_heading': "📖 ألاحظ",
+                'img_hero_alt': "رسم توضيحي للسوق مع بسطات الخضر",
+                'img_hero_caption': "في السوق، يكتشف الأب ونيكولا أن التسوق ليس بالأمر السهل…",
+                'text_author': "— سامبي وغوسيني، <em>يواكيم يواجه مشاكل</em>، دونويل، 1964.",
+                'consigne_title': "➤ التعليمة:",
+                'consigne_text': "اقرأ النص ثم أجب عن الأسئلة. لاحظ الطابع الكوميدي للموقف: الأب الذي سخر من الأم يفشل فشلاً ذريعاً في السوق.",
+                'vocab_title': "📚 المفردات:",
+                'vocab1': "<strong>يمزح، يضحك</strong>: يضحك، يمزح.",
+                'vocab2': "<strong>يوفّر المال</strong>: ينفق أقل.",
+                'vocab3': "<strong>بسعر معقول</strong>: بسعر معقول.",
+                'vocab4': "<strong>يُخدع</strong>: يُغش.",
+                'vocab5': "<strong>مغامرة سيئة</strong>: مغامرة غير سارة.",
+                'rules_heading': "📖 أقرأ بصوت عالٍ",
+                'rule1_title': "🎭 1. تمثيل الحوارات",
+                'rule1_list': "<li>أقرأ الحوارات مغيّراً صوتي لكل شخصية.</li><li>أبرز <strong>صوت الأب الواثق</strong> في البداية، ثم <strong>صوته المنكسر</strong>.</li><li>أبرز <strong>النبرة الساخرة</strong> للأم والبائعين.</li>",
+                'rule2_title': "😂 2. كوميديا الموقف",
+                'rule2_list': "<li>الأب يسخر من الأم ويدّعي أنه سيفعل أفضل منها.</li><li>لكنه في السوق <strong>أخرق</strong> و<strong>جاهل</strong>.</li><li>النهاية (الذهاب إلى مطعم) تُظهر أنه <strong>فشل</strong>: هذا مضحك.</li>",
+                'showcase_heading': "🎨 معجم النص",
+                'card1_word': "السوق", 'card1_def': "مكان تُشترى فيه المنتجات الطازجة",
+                'card2_word': "شبكة المشتريات", 'card2_def': "كيس شبكي للتسوق",
+                'card3_word': "كيلو طماطم", 'card3_def': "وحدة وزن (1000 غ) من الطماطم",
+                'card4_word': "الكركند", 'card4_def': "قشري بحري، غالباً غالي",
+                'card5_word': "الجمبري", 'card5_def': "قشري صغير، أرخص",
+                'card6_word': "سعر معقول", 'card6_def': "سعر معقول",
+                'card7_word': "يُخدع", 'card7_def': "يُغش",
+                'card8_word': "يمزح، يضحك", 'card8_def': "يضحك، يمزح",
+                'card9_word': "يوفّر المال", 'card9_def': "ينفق أقل",
+                'card10_word': "مغامرة سيئة", 'card10_def': "مغامرة غير سارة",
+                'card11_word': "المطعم", 'card11_def': "مكان يأكل فيه المرء مقابل المال",
+                'card12_word': "يحسب الحسابات", 'card12_def': "يحسب النفقات والمداخيل",
+                'exercises_heading': "✍️ أتمرن",
+                'table_word': "الكلمة", 'table_letter': "التعريف (أ–هـ)",
+                'table_statement': "العبارة", 'table_vf': "ص / خ",
+                'table_produits': "منتجات", 'table_personnes': "أشخاص",
+                'table_familier': "عامي", 'table_standard': "فصيح",
+                'btn_correction': "🔍 الاطلاع على التصحيح", 'show_example': "💡 عرض مثال للإجابة",
+                'exo1_title': "📌 1. أكتشف النص",
+                'exo1_instruction': "أجب عن أسئلة اكتشاف النص.",
+                'exo2_title': "📌 2. صواب أم خطأ؟",
+                'exo2_instruction': "حدد إن كانت كل عبارة صحيحة (ص) أم خاطئة (خ).",
+                'exo2_q1': "الأم مسرورة لأن الأب ينتقد نفقاتها.",
+                'exo2_q2': "الأب يعتقد أنه سيعقد صفقات أفضل من الأم.",
+                'exo2_q3': "نيكولا يرافق والده إلى السوق.",
+                'exo2_q4': "الأب ينجح في شراء الكركند بسعر جيد.",
+                'exo2_q5': "تنتهي العائلة بالذهاب إلى مطعم.",
+                'exo3_title': "📌 3. اختيار من متعدد – فهم النص",
+                'exo3_instruction': "اختر الجواب الصحيح من بين الخيارات الثلاثة.",
+                'exo3_q1': "ماذا يلوم الأب الأم في البداية؟",
+                'exo3_q1_a': "على سوء الطبخ.", 'exo3_q1_b': "على الإفراط في الإنفاق.", 'exo3_q1_c': "على عدم الخروج كثيراً.",
+                'exo3_q2': "ماذا يحدث مع الطماطم؟",
+                'exo3_q2_a': "البائعة تعطيه الكثير.", 'exo3_q2_b': "يوجد القليل جداً في الكيلو: الأب مندهش.", 'exo3_q2_c': "إنها فاسدة.",
+                'exo3_q3': "لماذا يذهب الأب ونيكولا إلى مطعم؟",
+                'exo3_q3_a': "للاحتفال بنجاحهم.", 'exo3_q3_b': "لأنهما لم يجلبا شيئاً من السوق.", 'exo3_q3_c': "لأن الأم غاضبة.",
+                'exo4_title': "📌 4. أكمل بكلمات النص",
+                'exo4_instruction': "أكمل النص الناقص بالكلمات التالية: comptes, marché, tomates, langoustes, restaurant, mésaventures.",
+                'exo4_t1': "بعد العشاء، أجرى الأب", 'exo4_t2': "مع الأم. قرر الذهاب إلى", 'exo4_t3': "لتوفير المال. عند بائعة الخضر، طلب كيلو من", 'exo4_t4': ". ثم، عند بائع السمك، اهتم بـ", 'exo4_t5': "، لكنها غالية جداً. بعد عدة", 'exo4_t6': "، عادا بشيء قليل. أخيراً، ذهبا إلى", 'exo4_t7': ".",
+                'exo5_title': "📌 5. اربط كل كلمة بتعريفها",
+                'exo5_instruction': "اكتب حرف التعريف المقابل لكل كلمة.",
+                'exo5_a': "يضحك، يمزح", 'exo5_b': "ينفق أقل", 'exo5_c': "سعر معقول", 'exo5_d': "يُغش", 'exo5_e': "مغامرة غير سارة",
+                'exo6_title': "📌 6. معجم السوق",
+                'exo6_instruction': "صنّف هذه الكلمات في عمودين: منتجات / أشخاص.",
+                'exo6_choices': "الطماطم · البائعة · الكركند · بائع السمك · الجمبري · شبكة المشتريات",
+                'exo7_title': "📌 7. اللغة العامية",
+                'exo7_instruction': "اربط كل تعبير عامي بمكافئه في الفرنسية الفصيحة.",
+                'exo7_choices': "<strong>أ.</strong> إنه لطيف، جيد · <strong>ب.</strong> إنه مطابق، نفس الشيء · <strong>ج.</strong> إنه فضيحة · <strong>د.</strong> نضحك، نمزح",
+                'exo8_title': "📌 8. وحدات القياس",
+                'exo8_instruction': "أكمل كل تعبير بالوحدة المناسبة.",
+                'exo8_choices': "كيلو · لتر · دستة · غرام",
+                'exo9_title': "📌 9. كوميديا الموقف",
+                'exo9_instruction': "اشرح لماذا هذا النص مضحك.",
+                'exo10_title': "📌 10. أقدّر النص",
+                'exo10_instruction': "أكمل العبارات التالية.",
+                'exo11_title': "📌 11. أكتب بدوري – إنتاج شخصي",
+                'exo11_instruction': "في اليوم التالي، تعلم الأم أن الأب ذهب إلى مطعم مع نيكولا. تخيل ما تقوله له. اكتب حواراً قصيراً (5 إلى 6 جمل) بنبرة ساخرة وطريفة.",
+                'img_prod_alt': "رسم توضيحي للأب والأم يتحدثان بعد السوق",
+                'img_prod_caption': "ماذا ستقول الأم عندما تعلم بالمغامرة؟",
+                'footer_back': "← الدرس السابق", 'footer_next': "الدرس الموالي: تقديم النفس / تقديم شخص ←",
+                'self_assess_question': "جوابي هو:",
+                'self_correct': "صحيح", 'self_incorrect': "خاطئ", 'self_partial': "صحيح جزئيًا",
+                'score_title': "📊 تقييمك الذاتي",
+                'score_correct': "صحيح:", 'score_incorrect': "خاطئ:", 'score_partial': "جزئي:", 'score_unanswered': "بدون إجابة:",
+                'save_results': "💾 حفظ نتائجي", 'save_success': "تم حفظ النتائج ✓", 'save_error': "خطأ في الحفظ",
+                'print_pdf': "🖨️ طباعة / PDF", 'print_with_answers': "مع التصحيح",
+                'print_site_name': "لوحة التحكم التعليمية – الفرنسية",
+                'print_scholar_year': "السنة السابعة ابتدائي", 'print_week': "الوحدة 1", 'print_area': "قراءة",
+                'print_footer_dev': "طوّر بواسطة ماجري زياد", 'print_footer_date': "طُبع في",
+                'print_without_answers': "بدون تصحيح",
+                'toast_signin_required': "سجّل الدخول لرؤية التصحيحات."
+            }
+        });
+        (function() {
+            var container = document.querySelector('.degree7-unit1-lesson22-lecture-container');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+        })();
+    </script>
+    <script src="ed-french-ini.js"></script>
+    <script>
+        (function() {
+            const audio = new Audio('assets7/sounds/degree7/unit1/lesson22/au_marche.mp3');
+            const playBtn = document.getElementById('playBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const speedBtns = document.querySelectorAll('.degree7-unit1-lesson22-lecture-speed-btn');
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+            audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
+            audio.addEventListener('timeupdate', () => {
+                const percent = (audio.currentTime / audio.duration) * 100 || 0;
+                progressFill.style.width = percent + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            });
+            audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) { audio.play().catch(()=>{}); playBtn.textContent = '⏸'; }
+                else { audio.pause(); playBtn.textContent = '▶'; }
+            });
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const seekTime = (clickX / width) * audio.duration;
+                audio.currentTime = seekTime;
+            });
+            speedBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    speedBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    audio.playbackRate = parseFloat(btn.dataset.speed);
+                });
+            });
+            window.toggleCorrection = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('visible');
+            };
+            window.showExo11Example = async function() {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const el = document.getElementById('exo11Key');
+                if (el) {
+                    el.innerHTML = '<strong>Exemple de production :</strong><br>– Alors, ce fameux marché ? demanda Maman d\'un air malicieux.<br>– Euh… nous avons fait quelques petites emplettes, répondit Papa en rougissant.<br>– Ah bon ? Et où sont donc ces « bonnes choses à prix abordables » dont tu étais si fier ?<br>– Eh bien… les tomates étaient trop petites, les langoustes trop chères, et… nous avons fini au restaurant.<br>– Au restaurant ! s\'écria Maman en éclatant de rire. Bravo, champion ! La prochaine fois, c\'est moi qui ferai les comptes !';
+                    el.classList.add('visible');
+                }
+            };
+            document.getElementById('exo1Key').innerHTML = '<strong>Correction :</strong><br>a) Papa, Maman, Nicolas (le petit) et les marchands.<br>b) Parce qu\'il critique les dépenses de Maman et prétend qu\'il fera mieux qu\'elle, en faisant des économies.<br>c) Papa et Nicolas rentrent avec peu de chose et vont au restaurant.';
+            document.getElementById('exo2Key').innerHTML = '<strong>Correction :</strong><br>1. Faux (elle n\'a pas l\'air de rigoler)<br>2. Vrai<br>3. Vrai<br>4. Faux (il renonce devant les prix)<br>5. Vrai';
+            document.getElementById('exo3Key').innerHTML = '<strong>Correction :</strong><br>1. b<br>2. b<br>3. b';
+            document.getElementById('exo4Key').innerHTML = '<strong>Correction :</strong><br>comptes – marché – tomates – langoustes – mésaventures – restaurant';
+            document.getElementById('exo5Key').innerHTML = '<strong>Correction :</strong><br>rigoler → a<br>faire des économies → b<br>un prix abordable → c<br>se laisser rouler → d<br>une mésaventure → e';
+            document.getElementById('exo6Key').innerHTML = '<strong>Correction :</strong><br><strong>Produits :</strong> les tomates, les langoustes, les crevettes.<br><strong>Personnes :</strong> la marchande, le marchand de poissons.<br><em>(Le filet à provisions n\'est ni un produit ni une personne : c\'est un objet.)</em>';
+            document.getElementById('exo7Key').innerHTML = '<strong>Correction :</strong><br>c\'est chouette → a<br>ça rigole → d<br>du pareil au même → b<br>une honte → c';
+            document.getElementById('exo8Key').innerHTML = '<strong>Correction :</strong><br>a) kilo<br>b) litre<br>c) douzaine<br>d) grammes';
+            document.getElementById('exo9Key').innerHTML = '<strong>Correction (proposition) :</strong><br>a) Au début, Papa se moque de Maman et se croit supérieur. À la fin, il rentre presque les mains vides et doit aller au restaurant.<br>b) Les marchands se moquent de son ignorance : il ne connaît ni le prix des tomates ni la différence entre langoustes et crevettes.<br>c) La chute : obligés d\'aller au restaurant, ce qui coûte encore plus cher que le marché.';
+            document.getElementById('exo10Key').innerHTML = '<strong>Correction (proposition) :</strong><br>a) Ce qui m\'a fait rire, c\'est la vanité de Papa qui se croit plus malin que tout le monde.<br>b) Ce que je trouve injuste, c\'est que Maman doive toujours tout gérer et que Papa ne reconnaisse pas son échec.<br>c) La morale pourrait être : « Il ne faut pas se moquer des tâches des autres avant de les avoir essayées soi-même. »';
+            const SELF_GROUPS = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5',
+                                 'self_ex6', 'self_ex7', 'self_ex8', 'self_ex9', 'self_ex10', 'self_ex11'];
+            function computeScore() {
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                SELF_GROUPS.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                return { correct, incorrect, partial, unanswered };
+            }
+            function updateScore() {
+                const s = computeScore();
+                document.getElementById('scoreCorrect').textContent = s.correct;
+                document.getElementById('scoreIncorrect').textContent = s.incorrect;
+                document.getElementById('scorePartial').textContent = s.partial;
+                document.getElementById('scoreUnanswered').textContent = s.unanswered;
+            }
+            document.querySelectorAll('input[type="radio"][name^="self_ex"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const s = computeScore();
+                const lessonId = 'degree7unit1lesson22';
+                const entry = {
+                    lesson_id: lessonId,
+                    lesson_title: {
+                        fr: App.getTranslation('lesson_short_title', 'fr'),
+                        en: App.getTranslation('lesson_short_title', 'en'),
+                        ar: App.getTranslation('lesson_short_title', 'ar')
+                    },
+                    year: {
+                        fr: App.getTranslation('ach_year_degree7', 'fr'),
+                        en: App.getTranslation('ach_year_degree7', 'en'),
+                        ar: App.getTranslation('ach_year_degree7', 'ar')
+                    },
+                    module: {
+                        fr: App.getTranslation('ach_module_unit1', 'fr'),
+                        en: App.getTranslation('ach_module_unit1', 'en'),
+                        ar: App.getTranslation('ach_module_unit1', 'ar')
+                    },
+                    correct: s.correct,
+                    incorrect: s.incorrect,
+                    partial: s.partial,
+                    unanswered: s.unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles').select('achivement').eq('id', user.id).single();
+                if (fetchError) return;
+                let achivement = profileData?.achivement || {};
+                if (!achivement['ED-French']) achivement['ED-French'] = [];
+                const arr = achivement['ED-French'];
+                const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+                if (existingIdx >= 0) arr[existingIdx] = entry;
+                else arr.push(entry);
+                const { error: updateError } = await App.supabase
+                    .from('profiles').update({ achivement }).eq('id', user.id);
+                if (updateError) App.showToast('save_error', 'error');
+                else {
+                    App.showToast('save_success', 'success');
+                    App.logUserAction('lesson_saved', { lesson: lessonId, correct: s.correct, incorrect: s.incorrect, partial: s.partial });
+                }
+            });
+            document.getElementById('printPdfBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles').select('registration_state').eq('id', user.id).single();
+                    if (!error && profile?.registration_state?.active === true) isRegistered = true;
+                } catch (e) {}
+                const lang = localStorage.getItem('lang') || 'fr';
+                const headerHTML = document.querySelector('.degree7-unit1-lesson22-lecture-lesson-header').cloneNode(true);
+                const textCard = document.querySelector('.degree7-unit1-lesson22-lecture-text-card').cloneNode(true);
+                const authorCard = document.querySelector('.degree7-unit1-lesson22-lecture-author-card');
+                const authorHTML = authorCard ? authorCard.outerHTML : '';
+                const heroFigure = document.querySelector('.degree7-unit1-lesson22-lecture-hero-figure');
+                const heroHTML = heroFigure ? heroFigure.outerHTML : '';
+                const rulesSections = document.querySelectorAll('.degree7-unit1-lesson22-lecture-valeurs-section');
+                let rulesHTML = '';
+                rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
+                const showcaseGrid = document.querySelector('.degree7-unit1-lesson22-lecture-showcase');
+                const showcaseHTML = showcaseGrid ? showcaseGrid.outerHTML : '';
+                const prodFigure = document.querySelector('.degree7-unit1-lesson22-lecture-prod-figure');
+                const prodHTML = prodFigure ? prodFigure.outerHTML : '';
+                const exercisesSection = document.querySelector('.degree7-unit1-lesson22-lecture-exercises-section').cloneNode(true);
+                exercisesSection.querySelectorAll('input, textarea, .degree7-unit1-lesson22-lecture-btn-verify, .degree7-unit1-lesson22-lecture-self-assessment').forEach(el => el.remove());
+                if (isRegistered) {
+                    exercisesSection.querySelectorAll('.degree7-unit1-lesson22-lecture-answer-key').forEach(key => {
+                        key.style.display = 'block'; key.style.border = 'none';
+                        key.style.padding = '0.5rem 0'; key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    exercisesSection.querySelectorAll('.degree7-unit1-lesson22-lecture-answer-key').forEach(el => el.remove());
+                }
+                const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                printWindow.document.write(`<!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8"><title>${App.getTranslation('lesson_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title><style>
+                    body { font-family: 'Georgia', serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; color:#000; }
+                    .print-header { text-align:center; border-bottom:2px solid #2e8b57; padding-bottom:1rem; margin-bottom:2rem; }
+                    .print-header .site-name { font-size:1.4rem; font-weight:bold; color:#2e8b57; margin:0 0 0.3rem; }
+                    .print-header .meta-line { font-size:0.95rem; color:#444; margin:0.2rem 0; }
+                    .print-header .lesson-name { font-size:1.1rem; font-weight:bold; color:#000; margin-top:0.5rem; }
+                    .print-footer { text-align:center; border-top:1px solid #ccc; padding-top:1rem; margin-top:2rem; font-size:0.85rem; color:#666; }
+                    .degree7-unit1-lesson22-lecture-lesson-header { text-align:center; margin-bottom:2rem; }
+                    .degree7-unit1-lesson22-lecture-badge { display:inline-block; background:#2e8b57; color:#fff; padding:0.3rem 1rem; border-radius:20px; font-size:0.8rem; text-transform:uppercase; }
+                    .degree7-unit1-lesson22-lecture-text-card { border-left:4px solid #2e8b57; padding:1rem 1.5rem; margin:1.5rem 0; }
+                    .degree7-unit1-lesson22-lecture-hl { background:#e2f0e8; color:#1e5e3a; padding:0 4px; border-radius:4px; font-weight:700; border-bottom:2px solid #2e8b57; }
+                    .degree7-unit1-lesson22-lecture-hero-figure { margin:1rem 0; }
+                    .degree7-unit1-lesson22-lecture-hero-img { max-width:100%; max-height:280px; border-radius:8px; }
+                    .degree7-unit1-lesson22-lecture-hero-caption { display:block; font-size:0.85rem; color:#555; font-style:italic; margin-top:0.3rem; text-align:center; }
+                    .degree7-unit1-lesson22-lecture-author-card { border:1px solid #cbe0d3; border-radius:12px; padding:1rem; margin:1rem 0; display:flex; gap:1rem; align-items:center; }
+                    .degree7-unit1-lesson22-lecture-author-img { width:100px; height:100px; border-radius:50%; object-fit:cover; }
+                    .degree7-unit1-lesson22-lecture-author-info h3 { color:#1e5e3a; margin:0 0 0.3rem; }
+                    .degree7-unit1-lesson22-lecture-valeurs-section { margin:1.5rem 0; }
+                    .degree7-unit1-lesson22-lecture-valeur-card { background:#e2f0e8; padding:1rem; margin-bottom:1rem; border-radius:8px; }
+                    .degree7-unit1-lesson22-lecture-valeur-card h3 { color:#2e8b57; }
+                    .degree7-unit1-lesson22-lecture-showcase { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.5rem; }
+                    .degree7-unit1-lesson22-lecture-vcard { background:#eef7f2; padding:0.6rem; border-radius:6px; border:1px solid #cbe0d3; }
+                    .degree7-unit1-lesson22-lecture-vcard .degree7-unit1-lesson22-lecture-vicon { display:none; }
+                    .degree7-unit1-lesson22-lecture-vcard .degree7-unit1-lesson22-lecture-vword { display:block; font-weight:800; color:#1e5e3a; }
+                    .degree7-unit1-lesson22-lecture-vcard .degree7-unit1-lesson22-lecture-vdef { display:block; font-size:0.8rem; color:#555; }
+                    .degree7-unit1-lesson22-lecture-exercise-card { margin:1.2rem 0; border-left:4px solid #2e8b57; padding:0.8rem 1rem; }
+                    .degree7-unit1-lesson22-lecture-exercise-card::before { content:none !important; }
+                    .degree7-unit1-lesson22-lecture-situation { border-left:3px solid #2e8b57; padding:0.5rem 0.7rem; background:#eef7f2; border-radius:6px; margin-bottom:0.4rem; }
+                    .degree7-unit1-lesson22-lecture-prod-figure { text-align:center; margin:0.5rem 0; }
+                    .degree7-unit1-lesson22-lecture-prod-img { max-width:100%; max-height:220px; border-radius:6px; }
+                    .degree7-unit1-lesson22-lecture-prod-caption { display:block; font-size:0.8rem; color:#555; font-style:italic; margin-top:0.3rem; }
+                    table { width:100%; border-collapse:collapse; margin:0.8rem 0; }
+                    th, td { border:1px solid #ccc; padding:0.5rem; text-align:left; }
+                    th { background:#e2f0e8; }
+                    .degree7-unit1-lesson22-lecture-answer-key { display:block; margin-top:0.5rem; font-size:0.9rem; color:#444; }
+                    @media print { @page { margin:2cm; } }
+                </style></head><body>
+                    <div class="print-header"><div class="site-name">${App.getTranslation('print_site_name', lang)}</div><div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div><div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div></div>
+                    ${breadcrumb.outerHTML}${authorHTML}${headerHTML.outerHTML}${heroHTML}${textCard.outerHTML}${rulesHTML}${showcaseHTML}${exercisesSection.outerHTML}${prodHTML}
+                    <div class="print-footer">${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}</div>
+                </body></html>`);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+        })();
+    </script>
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+</body>
+</html>

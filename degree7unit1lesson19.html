@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_title">Leçon 19 – B.D. Aux champs | Lecture</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ===== Degree7 Unit1 Lesson19 – Lecture (prefix: degree7-unit1-lesson19-lecture-) ===== */
+        :root {
+            --degree7-unit1-lesson19-lecture-bg: #f2f8f4;
+            --degree7-unit1-lesson19-lecture-card: #fbfefc;
+            --degree7-unit1-lesson19-lecture-text: #16261c;
+            --degree7-unit1-lesson19-lecture-text-light: #4a6a55;
+            --degree7-unit1-lesson19-lecture-heading: #1e5e3a;
+            --degree7-unit1-lesson19-lecture-accent: #2e8b57;
+            --degree7-unit1-lesson19-lecture-accent-hover: #1e5e3a;
+            --degree7-unit1-lesson19-lecture-soft: #6cb68a;
+            --degree7-unit1-lesson19-lecture-light: #e2f0e8;
+            --degree7-unit1-lesson19-lecture-lighter: #eef7f2;
+            --degree7-unit1-lesson19-lecture-border: #cbe0d3;
+            --degree7-unit1-lesson19-lecture-shadow: 0 1px 3px rgba(46,139,87,0.06), 0 6px 18px rgba(30,94,58,0.07);
+            --degree7-unit1-lesson19-lecture-radius: 14px;
+            --degree7-unit1-lesson19-lecture-radius-sm: 8px;
+            --degree7-unit1-lesson19-lecture-transition: 0.25s ease;
+            --degree7-unit1-lesson19-lecture-font: 'Georgia', 'Segoe UI', 'Times New Roman', serif;
+            --degree7-unit1-lesson19-lecture-audio-bg: #dcebe2;
+            --degree7-unit1-lesson19-lecture-audio-progress: #a8cdb8;
+            --degree7-unit1-lesson19-lecture-button-bg: #d5e8dd;
+            --degree7-unit1-lesson19-lecture-button-hover: #bdd9c8;
+            --degree7-unit1-lesson19-lecture-input-bg: #f6fbf8;
+        }
+        body.dark {
+            --degree7-unit1-lesson19-lecture-bg: #0f1a13;
+            --degree7-unit1-lesson19-lecture-card: #182a1e;
+            --degree7-unit1-lesson19-lecture-text: #dceee4;
+            --degree7-unit1-lesson19-lecture-text-light: #96b6a3;
+            --degree7-unit1-lesson19-lecture-heading: #a8e0be;
+            --degree7-unit1-lesson19-lecture-accent: #6cb68a;
+            --degree7-unit1-lesson19-lecture-accent-hover: #8ecfa6;
+            --degree7-unit1-lesson19-lecture-soft: #4d8a68;
+            --degree7-unit1-lesson19-lecture-light: #1e3327;
+            --degree7-unit1-lesson19-lecture-lighter: #1a2b20;
+            --degree7-unit1-lesson19-lecture-border: #2a4233;
+            --degree7-unit1-lesson19-lecture-shadow: 0 1px 4px rgba(0,0,0,0.4);
+            --degree7-unit1-lesson19-lecture-audio-bg: #1e3327;
+            --degree7-unit1-lesson19-lecture-audio-progress: #365a44;
+            --degree7-unit1-lesson19-lecture-button-bg: #243d2d;
+            --degree7-unit1-lesson19-lecture-button-hover: #315540;
+            --degree7-unit1-lesson19-lecture-input-bg: #1c2e22;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: var(--degree7-unit1-lesson19-lecture-font);
+            background: var(--degree7-unit1-lesson19-lecture-bg);
+            background-image:
+                radial-gradient(circle at 12% 18%, rgba(46,139,87,0.06) 0%, transparent 42%),
+                radial-gradient(circle at 88% 82%, rgba(30,94,58,0.05) 0%, transparent 42%);
+            color: var(--degree7-unit1-lesson19-lecture-text);
+            line-height: 1.8;
+            transition: background var(--degree7-unit1-lesson19-lecture-transition), color var(--degree7-unit1-lesson19-lecture-transition);
+        }
+        .back-nav { background: var(--degree7-unit1-lesson19-lecture-card); border-bottom: 1px solid var(--degree7-unit1-lesson19-lecture-border); padding: 0.5rem 1.5rem; }
+        .back-nav a { font-weight: 600; color: var(--degree7-unit1-lesson19-lecture-accent); text-decoration: none; }
+        .back-nav a:hover { text-decoration: underline; }
+        .degree7-unit1-lesson19-lecture-container { max-width:1060px; margin:0 auto; padding:1.8rem 1.4rem 3rem; }
+        .degree7-unit1-lesson19-lecture-lesson-header { text-align: center; margin-bottom: 2rem; }
+        .degree7-unit1-lesson19-lecture-badge {
+            display:inline-block; background: var(--degree7-unit1-lesson19-lecture-accent); color: #fff;
+            padding: 0.3rem 1.1rem; border-radius: 30px; font-size: 0.78rem; font-weight: 700;
+            letter-spacing: 0.06em; text-transform: uppercase;
+        }
+        .degree7-unit1-lesson19-lecture-lesson-header h1 {
+            font-size: 2.1rem; color: var(--degree7-unit1-lesson19-lecture-heading);
+            margin: 0.7rem 0 0.4rem; line-height: 1.25; font-weight: 700;
+        }
+        .degree7-unit1-lesson19-lecture-lesson-header .degree7-unit1-lesson19-lecture-meta {
+            font-size: 0.9rem; color: var(--degree7-unit1-lesson19-lecture-text-light);
+            display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap;
+        }
+        .degree7-unit1-lesson19-lecture-audio-player {
+            background: var(--degree7-unit1-lesson19-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson19-lecture-border);
+            border-radius: var(--degree7-unit1-lesson19-lecture-radius);
+            padding: 1rem 1.4rem; margin: 1.5rem 0 2rem;
+            box-shadow: var(--degree7-unit1-lesson19-lecture-shadow);
+            display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+        }
+        .degree7-unit1-lesson19-lecture-play-btn {
+            width: 46px; height: 46px; border-radius: 50%;
+            background: var(--degree7-unit1-lesson19-lecture-accent);
+            color: #fff; border: none; font-size: 1.2rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background var(--degree7-unit1-lesson19-lecture-transition); flex-shrink: 0;
+        }
+        .degree7-unit1-lesson19-lecture-play-btn:hover { background: var(--degree7-unit1-lesson19-lecture-accent-hover); }
+        .degree7-unit1-lesson19-lecture-progress-area { flex:1; min-width:120px; display:flex; flex-direction:column; gap:0.3rem; }
+        .degree7-unit1-lesson19-lecture-progress-bar {
+            width:100%; height:6px; background: var(--degree7-unit1-lesson19-lecture-audio-progress);
+            border-radius: 3px; cursor:pointer; position:relative; overflow:hidden;
+        }
+        .degree7-unit1-lesson19-lecture-progress-fill {
+            height:100%; background: var(--degree7-unit1-lesson19-lecture-accent);
+            border-radius: 3px; width: 0%; transition: width 0.1s linear;
+        }
+        .degree7-unit1-lesson19-lecture-time-info {
+            display:flex; justify-content:space-between; font-size:0.75rem;
+            color: var(--degree7-unit1-lesson19-lecture-text-light);
+        }
+        .degree7-unit1-lesson19-lecture-speed-selector { display:flex; gap:0.3rem; flex-wrap:wrap; }
+        .degree7-unit1-lesson19-lecture-speed-btn {
+            border:1px solid var(--degree7-unit1-lesson19-lecture-border);
+            background: var(--degree7-unit1-lesson19-lecture-button-bg);
+            color: var(--degree7-unit1-lesson19-lecture-text);
+            padding:0.3rem 0.6rem; border-radius: 4px;
+            font-size:0.75rem; font-weight:600; cursor:pointer;
+            transition: all var(--degree7-unit1-lesson19-lecture-transition);
+        }
+        .degree7-unit1-lesson19-lecture-speed-btn.active {
+            background: var(--degree7-unit1-lesson19-lecture-accent);
+            color: #fff; border-color: var(--degree7-unit1-lesson19-lecture-accent);
+        }
+        .degree7-unit1-lesson19-lecture-audio-label {
+            font-weight:700; font-size:0.9rem;
+            color: var(--degree7-unit1-lesson19-lecture-heading); white-space:nowrap;
+        }
+        @media (max-width:600px) {
+            .degree7-unit1-lesson19-lecture-audio-player { flex-direction: column; align-items: stretch; }
+            .degree7-unit1-lesson19-lecture-audio-label { text-align: center; }
+        }
+        .degree7-unit1-lesson19-lecture-hero-figure {
+            margin: 0 0 1.2rem;
+            border-radius: var(--degree7-unit1-lesson19-lecture-radius);
+            overflow: hidden;
+            box-shadow: var(--degree7-unit1-lesson19-lecture-shadow);
+            border: 1px solid var(--degree7-unit1-lesson19-lecture-border);
+        }
+        .degree7-unit1-lesson19-lecture-hero-img {
+            display: block; width: 100%; max-height: 420px; object-fit: contain;
+            background: #fff;
+        }
+        .degree7-unit1-lesson19-lecture-hero-caption {
+            display: block; padding: 0.5rem 0.9rem;
+            font-size: 0.82rem; color: var(--degree7-unit1-lesson19-lecture-text-light);
+            background: var(--degree7-unit1-lesson19-lecture-lighter);
+            border-top: 1px solid var(--degree7-unit1-lesson19-lecture-border);
+            font-style: italic; text-align: center;
+        }
+        .degree7-unit1-lesson19-lecture-bd-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 1.2rem 0;
+        }
+        @media (max-width:800px) { .degree7-unit1-lesson19-lecture-bd-grid { grid-template-columns: 1fr; } }
+        .degree7-unit1-lesson19-lecture-bd-page {
+            background: var(--degree7-unit1-lesson19-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson19-lecture-border);
+            border-radius: var(--degree7-unit1-lesson19-lecture-radius-sm);
+            overflow: hidden;
+            box-shadow: var(--degree7-unit1-lesson19-lecture-shadow);
+        }
+        .degree7-unit1-lesson19-lecture-bd-page img {
+            display: block; width: 100%; max-height: 520px; object-fit: contain;
+            background: #fff;
+        }
+        .degree7-unit1-lesson19-lecture-bd-page figcaption {
+            padding: 0.5rem 0.8rem;
+            font-size: 0.8rem;
+            color: var(--degree7-unit1-lesson19-lecture-text-light);
+            background: var(--degree7-unit1-lesson19-lecture-lighter);
+            border-top: 1px solid var(--degree7-unit1-lesson19-lecture-border);
+            font-style: italic;
+            text-align: center;
+        }
+        .degree7-unit1-lesson19-lecture-rule-figure { text-align: center; margin: 0 0 0.6rem; }
+        .degree7-unit1-lesson19-lecture-rule-img {
+            display: inline-block; max-width: 140px; max-height: 110px;
+            width: auto; height: auto;
+            border-radius: var(--degree7-unit1-lesson19-lecture-radius-sm);
+            box-shadow: 0 3px 10px rgba(30,94,58,0.12);
+            border: 2px solid var(--degree7-unit1-lesson19-lecture-lighter);
+        }
+        .degree7-unit1-lesson19-lecture-showcase-banner {
+            margin: 0.6rem 0 1rem;
+            border-radius: var(--degree7-unit1-lesson19-lecture-radius);
+            overflow: hidden;
+            box-shadow: var(--degree7-unit1-lesson19-lecture-shadow);
+            border: 1px solid var(--degree7-unit1-lesson19-lecture-border);
+        }
+        .degree7-unit1-lesson19-lecture-showcase-img {
+            display: block; width: 100%; max-height: 220px; object-fit: cover;
+        }
+        .degree7-unit1-lesson19-lecture-prod-figure { text-align: center; margin: 0.4rem 0 0.9rem; }
+        .degree7-unit1-lesson19-lecture-prod-img {
+            display: inline-block; max-width: 100%; max-height: 240px;
+            border-radius: var(--degree7-unit1-lesson19-lecture-radius-sm);
+            box-shadow: var(--degree7-unit1-lesson19-lecture-shadow);
+            border: 1px solid var(--degree7-unit1-lesson19-lecture-border);
+        }
+        .degree7-unit1-lesson19-lecture-prod-caption {
+            display: block; margin-top: 0.4rem;
+            font-size: 0.8rem; color: var(--degree7-unit1-lesson19-lecture-text-light);
+            font-style: italic;
+        }
+        .degree7-unit1-lesson19-lecture-text-card {
+            background: var(--degree7-unit1-lesson19-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson19-lecture-border);
+            border-left: 5px solid var(--degree7-unit1-lesson19-lecture-accent);
+            border-radius: 0 var(--degree7-unit1-lesson19-lecture-radius) var(--degree7-unit1-lesson19-lecture-radius) 0;
+            padding: 1.5rem 1.8rem; margin: 1.8rem 0;
+            font-size: 1.05rem; line-height: 1.9;
+            box-shadow: var(--degree7-unit1-lesson19-lecture-shadow); position: relative;
+        }
+        .degree7-unit1-lesson19-lecture-text-card .degree7-unit1-lesson19-lecture-quote-mark {
+            position: absolute; top:-15px; left:14px; font-size:3.5rem;
+            color: var(--degree7-unit1-lesson19-lecture-accent); opacity:0.3; line-height:1;
+            font-family: 'Georgia', serif;
+        }
+        .degree7-unit1-lesson19-lecture-text-card p { margin-bottom: 0.8rem; }
+        .degree7-unit1-lesson19-lecture-text-card p:last-of-type { margin-bottom: 0; }
+        .degree7-unit1-lesson19-lecture-text-author {
+            text-align: right; font-style: italic; font-size: 0.9rem;
+            color: var(--degree7-unit1-lesson19-lecture-text-light); margin-top: 0.8rem;
+        }
+        .degree7-unit1-lesson19-lecture-bubble {
+            background: var(--degree7-unit1-lesson19-lecture-lighter);
+            border: 1.5px dashed var(--degree7-unit1-lesson19-lecture-accent);
+            border-radius: 18px;
+            padding: 0.6rem 1rem;
+            margin: 0.5rem 0;
+            font-style: italic;
+            display: inline-block;
+            max-width: 100%;
+        }
+        .degree7-unit1-lesson19-lecture-bubble.narrator {
+            background: var(--degree7-unit1-lesson19-lecture-light);
+            border-style: solid;
+            font-style: normal;
+            font-weight: 600;
+        }
+        .degree7-unit1-lesson19-lecture-hl {
+            background: var(--degree7-unit1-lesson19-lecture-light);
+            color: var(--degree7-unit1-lesson19-lecture-heading);
+            padding: 0 5px; border-radius: 4px; font-weight: 700;
+            border-bottom: 2px solid var(--degree7-unit1-lesson19-lecture-accent);
+            cursor: help;
+        }
+        .degree7-unit1-lesson19-lecture-section h2 {
+            font-size: 1.5rem; color: var(--degree7-unit1-lesson19-lecture-heading);
+            margin: 2.4rem 0 1rem; display: inline-block;
+            padding-bottom: 0.3rem; position: relative;
+        }
+        .degree7-unit1-lesson19-lecture-section h2::after {
+            content: ''; position: absolute;
+            left: 0; right: 40%; bottom: 0; height: 3px;
+            background: var(--degree7-unit1-lesson19-lecture-accent); border-radius: 2px;
+        }
+        .degree7-unit1-lesson19-lecture-valeurs-section {
+            background: var(--degree7-unit1-lesson19-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson19-lecture-border);
+            border-radius: var(--degree7-unit1-lesson19-lecture-radius);
+            padding: 1.6rem 1.8rem; margin: 2rem 0;
+            box-shadow: var(--degree7-unit1-lesson19-lecture-shadow);
+        }
+        .degree7-unit1-lesson19-lecture-valeurs-section h2 {
+            font-size: 1.5rem; color: var(--degree7-unit1-lesson19-lecture-heading);
+            margin-bottom: 1rem; display: inline-block;
+            padding-bottom: 0.3rem;
+            border-bottom: 3px solid var(--degree7-unit1-lesson19-lecture-accent);
+        }
+        .degree7-unit1-lesson19-lecture-valeur-card {
+            background: var(--degree7-unit1-lesson19-lecture-light);
+            border-radius: var(--degree7-unit1-lesson19-lecture-radius-sm);
+            padding: 1rem 1.2rem; margin-bottom: 1rem;
+        }
+        .degree7-unit1-lesson19-lecture-valeur-card h3 {
+            color: var(--degree7-unit1-lesson19-lecture-accent);
+            font-size: 1.1rem; margin-bottom: 0.4rem;
+        }
+        .degree7-unit1-lesson19-lecture-valeur-card p { margin: 0.4rem 0; }
+        .degree7-unit1-lesson19-lecture-valeur-card ul { list-style: none; padding: 0; }
+        .degree7-unit1-lesson19-lecture-valeur-card li {
+            padding: 0.3rem 0 0.3rem 1.4rem; position: relative;
+        }
+        .degree7-unit1-lesson19-lecture-valeur-card li::before {
+            content: '◆'; position: absolute; left: 0;
+            color: var(--degree7-unit1-lesson19-lecture-accent);
+            font-size: 0.55rem; top: 0.6rem;
+        }
+        .degree7-unit1-lesson19-lecture-author-card {
+            background: var(--degree7-unit1-lesson19-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson19-lecture-border);
+            border-radius: var(--degree7-unit1-lesson19-lecture-radius);
+            padding: 1.2rem 1.5rem; margin: 1.2rem 0;
+            box-shadow: var(--degree7-unit1-lesson19-lecture-shadow);
+            display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap;
+        }
+        .degree7-unit1-lesson19-lecture-author-img {
+            width: 110px; height: 110px; border-radius: 50%;
+            object-fit: cover; flex-shrink: 0;
+            border: 3px solid var(--degree7-unit1-lesson19-lecture-light);
+            box-shadow: var(--degree7-unit1-lesson19-lecture-shadow);
+        }
+        .degree7-unit1-lesson19-lecture-author-info { flex: 1; min-width: 200px; }
+        .degree7-unit1-lesson19-lecture-author-info h3 {
+            color: var(--degree7-unit1-lesson19-lecture-heading);
+            font-size: 1.1rem; margin-bottom: 0.3rem;
+        }
+        .degree7-unit1-lesson19-lecture-author-info p {
+            font-size: 0.92rem; color: var(--degree7-unit1-lesson19-lecture-text-light);
+        }
+        .degree7-unit1-lesson19-lecture-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 0.9rem;
+            margin: 1rem 0;
+        }
+        .degree7-unit1-lesson19-lecture-vcard {
+            position: relative;
+            background: var(--degree7-unit1-lesson19-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson19-lecture-border);
+            border-radius: var(--degree7-unit1-lesson19-lecture-radius-sm);
+            padding: 0.9rem 0.9rem 0.9rem 3.2rem;
+            font-size: 0.85rem;
+            transition: all var(--degree7-unit1-lesson19-lecture-transition);
+            overflow: hidden;
+        }
+        .degree7-unit1-lesson19-lecture-vcard:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--degree7-unit1-lesson19-lecture-shadow);
+            border-color: var(--degree7-unit1-lesson19-lecture-accent);
+        }
+        .degree7-unit1-lesson19-lecture-vcard .degree7-unit1-lesson19-lecture-vicon {
+            position: absolute; left: 0; top: 0; bottom: 0;
+            width: 2.5rem;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem;
+            background: var(--degree7-unit1-lesson19-lecture-light);
+            border-right: 1px solid var(--degree7-unit1-lesson19-lecture-border);
+        }
+        .degree7-unit1-lesson19-lecture-vcard .degree7-unit1-lesson19-lecture-vword {
+            display: block; font-weight: 800;
+            color: var(--degree7-unit1-lesson19-lecture-heading);
+            font-size: 0.95rem; margin-bottom: 0.15rem;
+        }
+        .degree7-unit1-lesson19-lecture-vcard .degree7-unit1-lesson19-lecture-vdef {
+            display: block; color: var(--degree7-unit1-lesson19-lecture-text-light);
+            font-size: 0.8rem; line-height: 1.4;
+        }
+        .degree7-unit1-lesson19-lecture-exercises-section {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; align-items: start;
+            margin-top: 2rem;
+        }
+        .degree7-unit1-lesson19-lecture-exercises-section h2 {
+            grid-column: 1 / -1; font-size: 1.5rem;
+            color: var(--degree7-unit1-lesson19-lecture-heading);
+            margin: 0 0 1rem; display: inline-block;
+            padding-bottom: 0.3rem;
+            border-bottom: 3px solid var(--degree7-unit1-lesson19-lecture-accent);
+        }
+        .degree7-unit1-lesson19-lecture-exercise-card {
+            position: relative;
+            background: var(--degree7-unit1-lesson19-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson19-lecture-border);
+            border-radius: var(--degree7-unit1-lesson19-lecture-radius-sm);
+            padding: 1.2rem 1.3rem 1.2rem 3.4rem;
+            box-shadow: var(--degree7-unit1-lesson19-lecture-shadow);
+            transition: all var(--degree7-unit1-lesson19-lecture-transition);
+        }
+        .degree7-unit1-lesson19-lecture-exercise-card:hover {
+            box-shadow: 0 6px 22px rgba(30,94,58,0.10);
+        }
+        .degree7-unit1-lesson19-lecture-exercise-card::before {
+            content: attr(data-num);
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 2.6rem;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(180deg, var(--degree7-unit1-lesson19-lecture-accent) 0%, var(--degree7-unit1-lesson19-lecture-heading) 100%);
+            color: #fff;
+            font-size: 1.05rem; font-weight: 800;
+            font-family: 'Georgia', serif;
+            border-radius: var(--degree7-unit1-lesson19-lecture-radius-sm) 0 0 var(--degree7-unit1-lesson19-lecture-radius-sm);
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            letter-spacing: 0.15em;
+        }
+        .degree7-unit1-lesson19-lecture-exercise-card h3 {
+            font-size: 1.02rem;
+            color: var(--degree7-unit1-lesson19-lecture-accent);
+            margin-bottom: 0.6rem;
+            display: flex; align-items: center; gap: 0.4rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed var(--degree7-unit1-lesson19-lecture-border);
+        }
+        .degree7-unit1-lesson19-lecture-exercise-card table {
+            width: 100%; border-collapse: collapse; margin: 0.8rem 0;
+        }
+        .degree7-unit1-lesson19-lecture-exercise-card th,
+        .degree7-unit1-lesson19-lecture-exercise-card td {
+            padding: 0.55rem 0.7rem;
+            border: 1px solid var(--degree7-unit1-lesson19-lecture-border);
+            text-align: left; font-size: 0.9rem;
+        }
+        .degree7-unit1-lesson19-lecture-exercise-card th {
+            background: var(--degree7-unit1-lesson19-lecture-light);
+            font-weight: 700;
+            color: var(--degree7-unit1-lesson19-lecture-heading);
+        }
+        .degree7-unit1-lesson19-lecture-exercise-card input[type="text"],
+        .degree7-unit1-lesson19-lecture-exercise-card textarea {
+            width: 100%; padding: 0.4rem 0.6rem;
+            border: 1px solid var(--degree7-unit1-lesson19-lecture-border);
+            border-radius: 4px;
+            background: var(--degree7-unit1-lesson19-lecture-input-bg);
+            color: var(--degree7-unit1-lesson19-lecture-text);
+            font-family: inherit; font-size: 0.9rem;
+        }
+        .degree7-unit1-lesson19-lecture-exercise-card textarea { resize: vertical; }
+        .degree7-unit1-lesson19-lecture-exercise-card input:focus,
+        .degree7-unit1-lesson19-lecture-exercise-card textarea:focus {
+            outline: none;
+            border-color: var(--degree7-unit1-lesson19-lecture-accent);
+        }
+        .degree7-unit1-lesson19-lecture-inline-input {
+            width: 120px !important;
+            padding: 0.25rem 0.5rem !important;
+            display: inline-block;
+            margin: 0 0.2rem;
+        }
+        .degree7-unit1-lesson19-lecture-btn-verify {
+            background: var(--degree7-unit1-lesson19-lecture-accent);
+            color: #fff; border: none;
+            padding: 0.5rem 1.2rem; border-radius: 20px;
+            font-weight: 600; cursor: pointer;
+            transition: background var(--degree7-unit1-lesson19-lecture-transition);
+            margin-top: 0.6rem; font-size: 0.85rem;
+        }
+        .degree7-unit1-lesson19-lecture-btn-verify:hover { background: var(--degree7-unit1-lesson19-lecture-accent-hover); }
+        .degree7-unit1-lesson19-lecture-answer-key {
+            display: none; margin-top: 0.8rem; padding: 0.8rem;
+            background: var(--degree7-unit1-lesson19-lecture-lighter);
+            border-radius: 6px; font-size: 0.85rem;
+            color: var(--degree7-unit1-lesson19-lecture-text);
+            border: 1px dashed var(--degree7-unit1-lesson19-lecture-accent);
+        }
+        .degree7-unit1-lesson19-lecture-answer-key.visible { display: block; }
+        .degree7-unit1-lesson19-lecture-self-assessment {
+            margin-top: 0.8rem; font-size: 0.9rem;
+            display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
+        }
+        .degree7-unit1-lesson19-lecture-self-assessment label { cursor: pointer; }
+        .degree7-unit1-lesson19-lecture-exercise-col-left { grid-column: 1 / 2; }
+        .degree7-unit1-lesson19-lecture-exercise-col-right { grid-column: 2 / 3; }
+        .degree7-unit1-lesson19-lecture-note {
+            background: linear-gradient(135deg, rgba(46,139,87,0.07), rgba(30,94,58,0.03));
+            border: 1px dashed var(--degree7-unit1-lesson19-lecture-accent);
+            border-radius: var(--degree7-unit1-lesson19-lecture-radius-sm);
+            padding: 1rem 1.2rem; margin: 1rem 0; font-size: 0.95rem;
+        }
+        .degree7-unit1-lesson19-lecture-note strong { color: var(--degree7-unit1-lesson19-lecture-accent); }
+        .degree7-unit1-lesson19-lecture-situation {
+            display: grid;
+            grid-template-columns: 2.2rem 1fr;
+            gap: 0.7rem;
+            align-items: start;
+            background: var(--degree7-unit1-lesson19-lecture-lighter);
+            border-left: 3px solid var(--degree7-unit1-lesson19-lecture-accent);
+            border-radius: var(--degree7-unit1-lesson19-lecture-radius-sm);
+            padding: 0.7rem 0.9rem;
+            margin-bottom: 0.6rem;
+        }
+        .degree7-unit1-lesson19-lecture-situation .num {
+            width: 26px; height: 26px;
+            background: var(--degree7-unit1-lesson19-lecture-accent);
+            color: #fff; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+        .degree7-unit1-lesson19-lecture-situation .content p {
+            font-size: 0.88rem;
+            margin-bottom: 0.4rem;
+        }
+        .degree7-unit1-lesson19-lecture-situation .content input[type="text"] {
+            width: 100%; padding: 0.35rem 0.5rem;
+            border: 1px solid var(--degree7-unit1-lesson19-lecture-border);
+            border-radius: 4px;
+            background: var(--degree7-unit1-lesson19-lecture-input-bg);
+            color: var(--degree7-unit1-lesson19-lecture-text);
+            font-family: inherit; font-size: 0.85rem;
+        }
+        .degree7-unit1-lesson19-lecture-score-area {
+            background: var(--degree7-unit1-lesson19-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson19-lecture-border);
+            border-radius: var(--degree7-unit1-lesson19-lecture-radius);
+            padding: 1.5rem; margin-top: 2rem;
+            box-shadow: var(--degree7-unit1-lesson19-lecture-shadow);
+        }
+        .degree7-unit1-lesson19-lecture-score-area h2 {
+            color: var(--degree7-unit1-lesson19-lecture-heading); margin-bottom: 1rem;
+        }
+        .degree7-unit1-lesson19-lecture-score-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .degree7-unit1-lesson19-lecture-score-stat {
+            background: var(--degree7-unit1-lesson19-lecture-light);
+            padding: 0.8rem 1.2rem; border-radius: 8px; font-weight: 600;
+        }
+        .degree7-unit1-lesson19-lecture-footer-nav {
+            margin-top: 2rem; display: flex; justify-content: space-between; flex-wrap: wrap;
+            background: var(--degree7-unit1-lesson19-lecture-card);
+            border-top: 1px solid var(--degree7-unit1-lesson19-lecture-border);
+            padding: 0.8rem 1.5rem;
+            border-radius: 0 0 var(--degree7-unit1-lesson19-lecture-radius) var(--degree7-unit1-lesson19-lecture-radius);
+        }
+        .degree7-unit1-lesson19-lecture-footer-nav a {
+            font-weight: 600; color: var(--degree7-unit1-lesson19-lecture-accent); text-decoration: none;
+        }
+        .degree7-unit1-lesson19-lecture-footer-nav a:hover { text-decoration: underline; }
+        html[dir="rtl"] body { direction: rtl; }
+        html[dir="rtl"] .degree7-unit1-lesson19-lecture-container { text-align: right; }
+        html[dir="rtl"] .degree7-unit1-lesson19-lecture-exercise-card th,
+        html[dir="rtl"] .degree7-unit1-lesson19-lecture-exercise-card td { text-align: right; }
+        html[dir="rtl"] .degree7-unit1-lesson19-lecture-exercise-card { padding-left: 1.3rem; padding-right: 3.4rem; }
+        html[dir="rtl"] .degree7-unit1-lesson19-lecture-exercise-card::before {
+            left: auto; right: 0;
+            border-radius: 0 var(--degree7-unit1-lesson19-lecture-radius-sm) var(--degree7-unit1-lesson19-lecture-radius-sm) 0;
+        }
+        html[dir="rtl"] .degree7-unit1-lesson19-lecture-vcard { padding-left: 0.9rem; padding-right: 3.2rem; }
+        html[dir="rtl"] .degree7-unit1-lesson19-lecture-vcard .degree7-unit1-lesson19-lecture-vicon {
+            left: auto; right: 0;
+            border-right: none;
+            border-left: 1px solid var(--degree7-unit1-lesson19-lecture-border);
+        }
+        html[dir="rtl"] .degree7-unit1-lesson19-lecture-situation {
+            border-left: none;
+            border-right: 3px solid var(--degree7-unit1-lesson19-lecture-accent);
+        }
+        @media (max-width:800px) {
+            .degree7-unit1-lesson19-lecture-exercises-section { grid-template-columns: 1fr; }
+            .degree7-unit1-lesson19-lecture-exercise-col-left,
+            .degree7-unit1-lesson19-lecture-exercise-col-right { grid-column: auto; }
+        }
+        @media (max-width:600px) {
+            .degree7-unit1-lesson19-lecture-lesson-header h1 { font-size: 1.5rem; }
+            .degree7-unit1-lesson19-lecture-container { padding: 1rem 0.8rem 2rem; }
+            .degree7-unit1-lesson19-lecture-text-card { padding: 1.4rem 1.2rem; }
+            .degree7-unit1-lesson19-lecture-hero-img { max-height: 260px; }
+            .degree7-unit1-lesson19-lecture-rule-img { max-width: 100px; }
+            .degree7-unit1-lesson19-lecture-showcase-img { max-height: 140px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="toast-container"></div>
+    <button id="signInBtn" style="display:none"></button>
+    <nav class="back-nav no-print">
+        <a href="index.html" data-i18n="back_link">← Retour à l'accueil</a>
+    </nav>
+    <div id="main-content" class="degree7-unit1-lesson19-lecture-container">
+        <!-- Breadcrumb -->
+        <p style="margin-bottom:1.5rem; color:var(--degree7-unit1-lesson19-lecture-text-light);">
+            <a href="degree7.html" data-i18n="back_revision">Unité 1</a>
+            › <strong data-i18n="back_current">B.D. Aux champs</strong>
+        </p>
+        <div class="degree7-unit1-lesson19-lecture-lesson-header">
+            <span class="degree7-unit1-lesson19-lecture-badge" data-i18n="lesson_badge">📖 Lecture · Leçon 19</span>
+            <h1 data-i18n="lesson_title">B.D. Aux champs<br>Maupassant & Paillet</h1>
+            <div class="degree7-unit1-lesson19-lecture-meta">
+                <span data-i18n="lesson_duration">⏱️ 45 minutes</span>
+                <span data-i18n="lesson_meta_audio">🎧 Écoutez la B.D. puis répondez aux questions</span>
+            </div>
+        </div>
+        <!-- Audio player -->
+        <div class="degree7-unit1-lesson19-lecture-audio-player" id="audioPlayer">
+            <span class="degree7-unit1-lesson19-lecture-audio-label" data-i18n="audio_label">🎧 Écoute de la B.D.</span>
+            <button class="degree7-unit1-lesson19-lecture-play-btn" id="playBtn" aria-label="Lecture">▶</button>
+            <div class="degree7-unit1-lesson19-lecture-progress-area">
+                <div class="degree7-unit1-lesson19-lecture-progress-bar" id="progressBar">
+                    <div class="degree7-unit1-lesson19-lecture-progress-fill" id="progressFill"></div>
+                </div>
+                <div class="degree7-unit1-lesson19-lecture-time-info">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+            <div class="degree7-unit1-lesson19-lecture-speed-selector" id="speedSelector">
+                <button class="degree7-unit1-lesson19-lecture-speed-btn" data-speed="0.75">0.75x</button>
+                <button class="degree7-unit1-lesson19-lecture-speed-btn active" data-speed="1">1x</button>
+                <button class="degree7-unit1-lesson19-lecture-speed-btn" data-speed="1.25">1.25x</button>
+                <button class="degree7-unit1-lesson19-lecture-speed-btn" data-speed="1.5">1.5x</button>
+            </div>
+        </div>
+        <!-- Author presentation -->
+        <div class="degree7-unit1-lesson19-lecture-author-card">
+            <img src="assets7/images/degree7/unit1/lesson19/maupassant_paillet.png"
+                 alt="Portrait de Guy de Maupassant et J-H Paillet"
+                 class="degree7-unit1-lesson19-lecture-author-img"
+                 data-i18n="author_img_alt"
+                 onerror="this.style.display='none'">
+            <div class="degree7-unit1-lesson19-lecture-author-info">
+                <h3 data-i18n="author_title">👤 Guy de Maupassant & J-H Paillet</h3>
+                <p data-i18n="author_bio"><strong>Guy de Maupassant</strong> (1850-1893), écrivain français, auteur de nombreuses nouvelles réalistes. <strong>J-H Paillet</strong> a adapté <em>Aux champs</em> en bande dessinée : il a dessiné les vignettes et les personnages.</p>
+            </div>
+        </div>
+        <!-- Text / BD pages -->
+        <section class="degree7-unit1-lesson19-lecture-section">
+            <h2 data-i18n="text_heading">📖 J'observe</h2>
+            <div class="degree7-unit1-lesson19-lecture-note">
+                <strong data-i18n="intro_title">📌 Résumé :</strong>
+                <span data-i18n="intro_text">Un couple aisé, <strong>M. et Mme Henri d'Hubières</strong>, passe en voiture devant deux chaumières. Madame s'attendrit devant une famille de paysans, surtout devant <strong>le tout petit</strong>. Elle revient plusieurs fois, apporte des friandises et de l'argent, puis finit par proposer aux parents d'emmener leur petit garçon. Les parents refusent d'abord avec indignation. Le mari explique alors qu'ils souhaitent <strong>adopter</strong> l'enfant : s'il tourne bien, il sera leur héritier ; sinon, il recevra <strong>20 000 francs</strong> à sa majorité. En échange, les parents recevront une <strong>rente de 100 francs par mois</strong> jusqu'à leur mort.</span>
+            </div>
+            <!-- BD pages grid -->
+            <div class="degree7-unit1-lesson19-lecture-bd-grid">
+                <figure class="degree7-unit1-lesson19-lecture-bd-page">
+                    <img src="assets7/images/degree7/unit1/lesson19/bd_page1.png"
+                         alt="Bande dessinée Aux champs – page 1"
+                         data-i18n="img_bd1_alt"
+                         onerror="this.parentElement.style.display='none'">
+                    <figcaption data-i18n="img_bd1_caption">Planche 1 – La rencontre et la première visite.</figcaption>
+                </figure>
+                <figure class="degree7-unit1-lesson19-lecture-bd-page">
+                    <img src="assets7/images/degree7/unit1/lesson19/bd_page2.png"
+                         alt="Bande dessinée Aux champs – page 2"
+                         data-i18n="img_bd2_alt"
+                         onerror="this.parentElement.style.display='none'">
+                    <figcaption data-i18n="img_bd2_caption">Planche 2 – La proposition d'adoption.</figcaption>
+                </figure>
+            </div>
+            <!-- Transcription -->
+            <div class="degree7-unit1-lesson19-lecture-text-card">
+                <span class="degree7-unit1-lesson19-lecture-quote-mark">“</span>
+                <p data-i18n="trans_heading"><strong>Transcription des bulles :</strong></p>
+                <div class="degree7-unit1-lesson19-lecture-bubble narrator" data-i18n="bubble_n1">Par un après-midi du mois d'août, une légère voiture s'arrêta brusquement devant les deux chaumières.</div>
+                <div class="degree7-unit1-lesson19-lecture-bubble" data-i18n="bubble_1">Oh ! regarde, Henri, ce tas d'enfants ! Sont-ils jolis, comme ça, à <span class="degree7-unit1-lesson19-lecture-hl" title="bouger, remuer, fourmiller">grouiller</span> dans la poussière.</div>
+                <div class="degree7-unit1-lesson19-lecture-bubble" data-i18n="bubble_2">Il faut que je les embrasse !</div>
+                <div class="degree7-unit1-lesson19-lecture-bubble" data-i18n="bubble_3">Oh ! comme je voudrais en avoir un, celui-là, le tout petit.</div>
+                <div class="degree7-unit1-lesson19-lecture-bubble" data-i18n="bubble_4">Ouin !</div>
+                <div class="degree7-unit1-lesson19-lecture-bubble narrator" data-i18n="bubble_n2">Elle revint la semaine suivante, revint encore, fit connaissance avec les parents, reparut tous les jours, les poches pleines de <span class="degree7-unit1-lesson19-lecture-hl" title="petits gâteaux, bonbons">friandises</span> et de sous. Elle s'appelait Mme Henri d'Hubières.</div>
+                <div class="degree7-unit1-lesson19-lecture-bubble narrator" data-i18n="bubble_n3">Un matin.</div>
+                <div class="degree7-unit1-lesson19-lecture-bubble" data-i18n="bubble_5">Mes braves gens, je viens vous trouver parce que je voudrais bien… je voudrais bien emmener avec moi votre… votre petit garçon.</div>
+                <div class="degree7-unit1-lesson19-lecture-bubble" data-i18n="bubble_6">Nous n'avons pas d'enfants ; nous sommes seuls, mon mari et moi… Nous le garderions… voulez-vous ?</div>
+                <div class="degree7-unit1-lesson19-lecture-bubble" data-i18n="bubble_7">Vous voulez nous prendre Charlot ? Ah ! ben non, pour sûr !</div>
+                <div class="degree7-unit1-lesson19-lecture-bubble" data-i18n="bubble_8">Ma femme s'est mal expliquée. Nous voulons l'<span class="degree7-unit1-lesson19-lecture-hl" title="prendre un enfant pour le sien">adopter</span>. S'il tourne bien, il sera notre héritier. Mais s'il ne répondait pas à nos soins, nous lui donnerions, à sa majorité, une somme de vingt mille francs.</div>
+                <div class="degree7-unit1-lesson19-lecture-bubble" data-i18n="bubble_9">Et, comme on a aussi pensé à vous, on vous servira jusqu'à votre mort une <span class="degree7-unit1-lesson19-lecture-hl" title="somme d'argent versée régulièrement">rente</span> de cent francs par mois… Avez-vous bien compris ?</div>
+                <div class="degree7-unit1-lesson19-lecture-text-author" data-i18n="text_author">— Texte de Guy de MAUPASSANT ; dessins de J-H PAILLET.</div>
+            </div>
+            <div class="degree7-unit1-lesson19-lecture-note">
+                <strong data-i18n="consigne_title">➤ Consigne :</strong>
+                <span data-i18n="consigne_text">Lis la B.D. puis réponds aux questions. Observe les costumes des personnages, les gros plans et la manière dont l'histoire est racontée en images.</span>
+            </div>
+            <div class="degree7-unit1-lesson19-lecture-note">
+                <strong data-i18n="vocab_title">📚 Vocabulaire :</strong>
+                <ul style="padding-left:1.2rem; margin-top:0.4rem;">
+                    <li data-i18n="vocab1"><strong>Grouiller</strong> : bouger, remuer, fourmiller.</li>
+                    <li data-i18n="vocab2"><strong>Friandises</strong> : petits gâteaux, bonbons…</li>
+                    <li data-i18n="vocab3"><strong>Adopter</strong> : prendre un enfant pour le sien.</li>
+                    <li data-i18n="vocab4"><strong>Rente</strong> : somme d'argent qu'une personne est tenue de verser régulièrement à une autre personne.</li>
+                </ul>
+            </div>
+        </section>
+        <!-- Reading rules -->
+        <section class="degree7-unit1-lesson19-lecture-section">
+            <h2 data-i18n="rules_heading">📖 Je lis à haute voix</h2>
+            <div class="degree7-unit1-lesson19-lecture-valeurs-section">
+                <div class="degree7-unit1-lesson19-lecture-valeur-card">
+                    <h3 data-i18n="rule1_title">🎭 1. Jouer la B.D.</h3>
+                    <ul data-i18n="rule1_list">
+                        <li>Avec mes camarades, je joue cette B.D. en adoptant le ton qu'il faut :</li>
+                        <li>– pour le <strong>narrateur</strong> (voix neutre et posée),</li>
+                        <li>– pour chacun des <strong>personnages</strong> (voix attendrie de Mme d'Hubières, voix indignée de la mère, voix calme et raisonneuse de M. d'Hubières).</li>
+                    </ul>
+                </div>
+                <div class="degree7-unit1-lesson19-lecture-valeur-card">
+                    <h3 data-i18n="rule2_title">🖼️ 2. Le langage de la B.D.</h3>
+                    <ul data-i18n="rule2_list">
+                        <li>Les <strong>vignettes</strong> (cases) racontent l'histoire en images.</li>
+                        <li>Les <strong>bulles</strong> contiennent les paroles des personnages.</li>
+                        <li>Les <strong>cartouches</strong> (bulles carrées) donnent les indications du narrateur.</li>
+                        <li>Le <strong>gros plan</strong> attire l'attention sur un visage, une émotion.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- Vocabulary showcase -->
+        <section class="degree7-unit1-lesson19-lecture-section">
+            <h2 data-i18n="showcase_heading">🎨 Le lexique de la B.D.</h2>
+            <div class="degree7-unit1-lesson19-lecture-showcase">
+                <div class="degree7-unit1-lesson19-lecture-vcard">
+                    <span class="degree7-unit1-lesson19-lecture-vicon">🏠</span>
+                    <span class="degree7-unit1-lesson19-lecture-vword" data-i18n="card1_word">la chaumière</span>
+                    <span class="degree7-unit1-lesson19-lecture-vdef" data-i18n="card1_def">petite maison de paysan au toit de chaume</span>
+                </div>
+                <div class="degree7-unit1-lesson19-lecture-vcard">
+                    <span class="degree7-unit1-lesson19-lecture-vicon">🚗</span>
+                    <span class="degree7-unit1-lesson19-lecture-vword" data-i18n="card2_word">la voiture</span>
+                    <span class="degree7-unit1-lesson19-lecture-vdef" data-i18n="card2_def">véhicule des gens aisés</span>
+                </div>
+                <div class="degree7-unit1-lesson19-lecture-vcard">
+                    <span class="degree7-unit1-lesson19-lecture-vicon">👨‍👩‍👦</span>
+                    <span class="degree7-unit1-lesson19-lecture-vword" data-i18n="card3_word">les d'Hubières</span>
+                    <span class="degree7-unit1-lesson19-lecture-vdef" data-i18n="card3_def">couple aisé sans enfant</span>
+                </div>
+                <div class="degree7-unit1-lesson19-lecture-vcard">
+                    <span class="degree7-unit1-lesson19-lecture-vicon">👩‍🌾</span>
+                    <span class="degree7-unit1-lesson19-lecture-vword" data-i18n="card4_word">les paysans</span>
+                    <span class="degree7-unit1-lesson19-lecture-vdef" data-i18n="card4_def">famille qui vit de la terre</span>
+                </div>
+                <div class="degree7-unit1-lesson19-lecture-vcard">
+                    <span class="degree7-unit1-lesson19-lecture-vicon">👶</span>
+                    <span class="degree7-unit1-lesson19-lecture-vword" data-i18n="card5_word">le tout petit</span>
+                    <span class="degree7-unit1-lesson19-lecture-vdef" data-i18n="card5_def">le plus jeune enfant de la famille</span>
+                </div>
+                <div class="degree7-unit1-lesson19-lecture-vcard">
+                    <span class="degree7-unit1-lesson19-lecture-vicon">🎁</span>
+                    <span class="degree7-unit1-lesson19-lecture-vword" data-i18n="card6_word">les friandises</span>
+                    <span class="degree7-unit1-lesson19-lecture-vdef" data-i18n="card6_def">petits gâteaux, bonbons</span>
+                </div>
+                <div class="degree7-unit1-lesson19-lecture-vcard">
+                    <span class="degree7-unit1-lesson19-lecture-vicon">💶</span>
+                    <span class="degree7-unit1-lesson19-lecture-vword" data-i18n="card7_word">la rente</span>
+                    <span class="degree7-unit1-lesson19-lecture-vdef" data-i18n="card7_def">somme versée régulièrement</span>
+                </div>
+                <div class="degree7-unit1-lesson19-lecture-vcard">
+                    <span class="degree7-unit1-lesson19-lecture-vicon">📜</span>
+                    <span class="degree7-unit1-lesson19-lecture-vword" data-i18n="card8_word">adopter</span>
+                    <span class="degree7-unit1-lesson19-lecture-vdef" data-i18n="card8_def">prendre un enfant pour le sien</span>
+                </div>
+                <div class="degree7-unit1-lesson19-lecture-vcard">
+                    <span class="degree7-unit1-lesson19-lecture-vicon">💰</span>
+                    <span class="degree7-unit1-lesson19-lecture-vword" data-i18n="card9_word">l'héritier</span>
+                    <span class="degree7-unit1-lesson19-lecture-vdef" data-i18n="card9_def">personne qui reçoit un héritage</span>
+                </div>
+                <div class="degree7-unit1-lesson19-lecture-vcard">
+                    <span class="degree7-unit1-lesson19-lecture-vicon">🏛️</span>
+                    <span class="degree7-unit1-lesson19-lecture-vword" data-i18n="card10_word">l'héritage</span>
+                    <span class="degree7-unit1-lesson19-lecture-vdef" data-i18n="card10_def">biens transmis par succession</span>
+                </div>
+                <div class="degree7-unit1-lesson19-lecture-vcard">
+                    <span class="degree7-unit1-lesson19-lecture-vicon">💬</span>
+                    <span class="degree7-unit1-lesson19-lecture-vword" data-i18n="card11_word">la bulle</span>
+                    <span class="degree7-unit1-lesson19-lecture-vdef" data-i18n="card11_def">espace où sont écrites les paroles</span>
+                </div>
+                <div class="degree7-unit1-lesson19-lecture-vcard">
+                    <span class="degree7-unit1-lesson19-lecture-vicon">🔍</span>
+                    <span class="degree7-unit1-lesson19-lecture-vword" data-i18n="card12_word">le gros plan</span>
+                    <span class="degree7-unit1-lesson19-lecture-vdef" data-i18n="card12_def">cadrage rapproché sur un visage</span>
+                </div>
+            </div>
+        </section>
+        <!-- Exercises -->
+        <div class="degree7-unit1-lesson19-lecture-exercises-section">
+            <h2 data-i18n="exercises_heading">✍️ Je m'exerce</h2>
+            <!-- Ex 1 -->
+            <div class="degree7-unit1-lesson19-lecture-exercise-card degree7-unit1-lesson19-lecture-exercise-col-left" data-num="1">
+                <h3 data-i18n="exo1_title">📌 1. Je découvre la bande dessinée</h3>
+                <p data-i18n="exo1_instruction">Réponds aux questions de découverte de la B.D.</p>
+                <ol type="a">
+                    <li>Où se passe l'action ? <input type="text" class="degree7-unit1-lesson19-lecture-inline-input" placeholder="..."></li>
+                    <li>Quels sont les personnages qui apparaissent dans cette B.D. ? Lequel apparaît le plus souvent ? <input type="text" class="degree7-unit1-lesson19-lecture-inline-input" placeholder="..."></li>
+                    <li>Ce genre de récit est-il plus facile à comprendre ? Pourquoi ? <input type="text" class="degree7-unit1-lesson19-lecture-inline-input" placeholder="..."></li>
+                </ol>
+                <button class="degree7-unit1-lesson19-lecture-btn-verify" onclick="toggleCorrection('exo1Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo1Key" class="degree7-unit1-lesson19-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson19-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 2 -->
+            <div class="degree7-unit1-lesson19-lecture-exercise-card degree7-unit1-lesson19-lecture-exercise-col-right" data-num="2">
+                <h3 data-i18n="exo2_title">📌 2. Vrai ou faux ?</h3>
+                <p data-i18n="exo2_instruction">Indique si chaque affirmation est vraie (V) ou fausse (F).</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_statement" class="no-bilingual">Affirmation</th>
+                            <th data-i18n="table_vf" class="no-bilingual">V / F</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td data-i18n="exo2_q1">Mme d'Hubières s'attendrit devant les enfants des paysans.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo2_q2">Les d'Hubières ont déjà des enfants.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo2_q3">La mère accepte tout de suite la proposition.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo2_q4">M. d'Hubières propose une rente de 100 francs par mois.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo2_q5">L'enfant s'appelle Charlot.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                    </tbody>
+                </table>
+                <button class="degree7-unit1-lesson19-lecture-btn-verify" onclick="toggleCorrection('exo2Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo2Key" class="degree7-unit1-lesson19-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson19-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 3 -->
+            <div class="degree7-unit1-lesson19-lecture-exercise-card degree7-unit1-lesson19-lecture-exercise-col-left" data-num="3">
+                <h3 data-i18n="exo3_title">📌 3. QCM – Compréhension de la B.D.</h3>
+                <p data-i18n="exo3_instruction">Choisis la bonne réponse parmi les trois propositions.</p>
+                <p><strong>1.</strong> <span data-i18n="exo3_q1">Que demande Mme d'Hubières au couple de paysans ?</span></p>
+                <label><input type="radio" name="mcq1" value="a"> <span data-i18n="exo3_q1_a">De leur vendre leur maison.</span></label><br>
+                <label><input type="radio" name="mcq1" value="b"> <span data-i18n="exo3_q1_b">D'emmener leur petit garçon avec elle.</span></label><br>
+                <label><input type="radio" name="mcq1" value="c"> <span data-i18n="exo3_q1_c">De lui donner de l'argent.</span></label>
+                <p style="margin-top:0.6rem;"><strong>2.</strong> <span data-i18n="exo3_q2">Comment la mère réagit-elle d'abord ?</span></p>
+                <label><input type="radio" name="mcq2" value="a"> <span data-i18n="exo3_q2_a">Elle accepte avec joie.</span></label><br>
+                <label><input type="radio" name="mcq2" value="b"> <span data-i18n="exo3_q2_b">Elle refuse avec indignation.</span></label><br>
+                <label><input type="radio" name="mcq2" value="c"> <span data-i18n="exo3_q2_c">Elle ne comprend pas la question.</span></label>
+                <p style="margin-top:0.6rem;"><strong>3.</strong> <span data-i18n="exo3_q3">Pourquoi le dessinateur utilise-t-il le gros plan ?</span></p>
+                <label><input type="radio" name="mcq3" value="a"> <span data-i18n="exo3_q3_a">Pour gagner de la place.</span></label><br>
+                <label><input type="radio" name="mcq3" value="b"> <span data-i18n="exo3_q3_b">Pour montrer les émotions des personnages.</span></label><br>
+                <label><input type="radio" name="mcq3" value="c"> <span data-i18n="exo3_q3_c">Pour faire plus joli.</span></label>
+                <button class="degree7-unit1-lesson19-lecture-btn-verify" onclick="toggleCorrection('exo3Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo3Key" class="degree7-unit1-lesson19-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson19-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 4 -->
+            <div class="degree7-unit1-lesson19-lecture-exercise-card degree7-unit1-lesson19-lecture-exercise-col-right" data-num="4">
+                <h3 data-i18n="exo4_title">📌 4. Complète avec les mots de la B.D.</h3>
+                <p data-i18n="exo4_instruction">Complète le texte à trous avec les mots suivants : <em>chaumières, grouiller, friandises, adopter, héritier, rente</em>.</p>
+                <p>
+                    <span data-i18n="exo4_t1">La voiture s'arrête devant deux</span>
+                    <input type="text" class="degree7-unit1-lesson19-lecture-inline-input" placeholder="...">
+                    <span data-i18n="exo4_t2">. Mme d'Hubières trouve les enfants jolis à</span>
+                    <input type="text" class="degree7-unit1-lesson19-lecture-inline-input" placeholder="...">
+                    <span data-i18n="exo4_t3">dans la poussière. Elle leur apporte des</span>
+                    <input type="text" class="degree7-unit1-lesson19-lecture-inline-input" placeholder="...">
+                    <span data-i18n="exo4_t4">. Les d'Hubières veulent</span>
+                    <input type="text" class="degree7-unit1-lesson19-lecture-inline-input" placeholder="...">
+                    <span data-i18n="exo4_t5">Charlot, qui deviendra leur</span>
+                    <input type="text" class="degree7-unit1-lesson19-lecture-inline-input" placeholder="...">
+                    <span data-i18n="exo4_t6">. En échange, les parents recevront une</span>
+                    <input type="text" class="degree7-unit1-lesson19-lecture-inline-input" placeholder="...">
+                    <span data-i18n="exo4_t7">de cent francs par mois.</span>
+                </p>
+                <button class="degree7-unit1-lesson19-lecture-btn-verify" onclick="toggleCorrection('exo4Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo4Key" class="degree7-unit1-lesson19-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson19-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 5 -->
+            <div class="degree7-unit1-lesson19-lecture-exercise-card degree7-unit1-lesson19-lecture-exercise-col-left" data-num="5">
+                <h3 data-i18n="exo5_title">📌 5. Relie chaque mot à sa définition</h3>
+                <p data-i18n="exo5_instruction">Écris la lettre de la définition qui correspond à chaque mot.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_word" class="no-bilingual">Mot</th>
+                            <th data-i18n="table_letter" class="no-bilingual">Définition (a–d)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>grouiller</td><td><input type="text" placeholder="a-d"></td></tr>
+                        <tr><td>friandises</td><td><input type="text" placeholder="a-d"></td></tr>
+                        <tr><td>adopter</td><td><input type="text" placeholder="a-d"></td></tr>
+                        <tr><td>rente</td><td><input type="text" placeholder="a-d"></td></tr>
+                    </tbody>
+                </table>
+                <p style="font-size:0.85rem; color:var(--degree7-unit1-lesson19-lecture-text-light);">
+                    <strong>a.</strong> <span data-i18n="exo5_a">bouger, remuer, fourmiller</span> ·
+                    <strong>b.</strong> <span data-i18n="exo5_b">petits gâteaux, bonbons</span> ·
+                    <strong>c.</strong> <span data-i18n="exo5_c">prendre un enfant pour le sien</span> ·
+                    <strong>d.</strong> <span data-i18n="exo5_d">somme versée régulièrement</span>
+                </p>
+                <button class="degree7-unit1-lesson19-lecture-btn-verify" onclick="toggleCorrection('exo5Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo5Key" class="degree7-unit1-lesson19-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson19-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex5" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex5" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex5" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 6 -->
+            <div class="degree7-unit1-lesson19-lecture-exercise-card degree7-unit1-lesson19-lecture-exercise-col-right" data-num="6">
+                <h3 data-i18n="exo6_title">📌 6. Le lexique de l'adoption et de l'héritage</h3>
+                <p data-i18n="exo6_instruction">Complète les énoncés avec les mots qui conviennent.</p>
+                <p style="font-size:0.88rem; padding:0.5rem; background:var(--degree7-unit1-lesson19-lecture-light); border-radius:6px;" data-i18n="exo6_words">
+                    adopter un enfant · un enfant adoptif · une famille d'adoption · hériter · héritier · héritage
+                </p>
+                <ol type="a">
+                    <li>Les d'Hubières n'ont pas d'<input type="text" class="degree7-unit1-lesson19-lecture-inline-input" placeholder="...">, ils désirent <input type="text" class="degree7-unit1-lesson19-lecture-inline-input" placeholder="...">.</li>
+                    <li>Les gens de la chaumière voisine acceptent la proposition d'<input type="text" class="degree7-unit1-lesson19-lecture-inline-input" placeholder="...">. Ces derniers auront un enfant <input type="text" class="degree7-unit1-lesson19-lecture-inline-input" placeholder="...">.</li>
+                    <li>Le fils des voisins grandira chez les d'Hubières ; ce sera sa famille <input type="text" class="degree7-unit1-lesson19-lecture-inline-input" placeholder="...">. Il pourra recevoir tous leurs biens en <input type="text" class="degree7-unit1-lesson19-lecture-inline-input" placeholder="...">.</li>
+                </ol>
+                <button class="degree7-unit1-lesson19-lecture-btn-verify" onclick="toggleCorrection('exo6Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo6Key" class="degree7-unit1-lesson19-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson19-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex6" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex6" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex6" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 7 -->
+            <div class="degree7-unit1-lesson19-lecture-exercise-card degree7-unit1-lesson19-lecture-exercise-col-left" data-num="7">
+                <h3 data-i18n="exo7_title">📌 7. Le milieu social</h3>
+                <p data-i18n="exo7_instruction">Observe le costume des personnages et associe chaque personnage à son milieu social.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_person" class="no-bilingual">Personnage</th>
+                            <th data-i18n="table_milieu" class="no-bilingual">Milieu social</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Mme d'Hubières</td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>La mère paysanne</td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>M. d'Hubières</td><td><input type="text" placeholder="..."></td></tr>
+                    </tbody>
+                </table>
+                <p style="font-size:0.85rem; color:var(--degree7-unit1-lesson19-lecture-text-light);" data-i18n="exo7_choices">
+                    <strong>a.</strong> milieu aisé / bourgeois · <strong>b.</strong> milieu paysan / modeste
+                </p>
+                <button class="degree7-unit1-lesson19-lecture-btn-verify" onclick="toggleCorrection('exo7Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo7Key" class="degree7-unit1-lesson19-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson19-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex7" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex7" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex7" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 8 -->
+            <div class="degree7-unit1-lesson19-lecture-exercise-card degree7-unit1-lesson19-lecture-exercise-col-right" data-num="8">
+                <h3 data-i18n="exo8_title">📌 8. Les éléments de la B.D.</h3>
+                <p data-i18n="exo8_instruction">Associe chaque terme de la bande dessinée à sa définition.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_term" class="no-bilingual">Terme</th>
+                            <th data-i18n="table_def" class="no-bilingual">Définition</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>la vignette</td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>la bulle</td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>le cartouche</td><td><input type="text" placeholder="..."></td></tr>
+                        <tr><td>le gros plan</td><td><input type="text" placeholder="..."></td></tr>
+                    </tbody>
+                </table>
+                <p style="font-size:0.85rem; color:var(--degree7-unit1-lesson19-lecture-text-light);" data-i18n="exo8_choices">
+                    <strong>a.</strong> case de la B.D. · <strong>b.</strong> espace des paroles · <strong>c.</strong> bulle carrée du narrateur · <strong>d.</strong> cadrage rapproché
+                </p>
+                <button class="degree7-unit1-lesson19-lecture-btn-verify" onclick="toggleCorrection('exo8Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo8Key" class="degree7-unit1-lesson19-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson19-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex8" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex8" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex8" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 9 -->
+            <div class="degree7-unit1-lesson19-lecture-exercise-card degree7-unit1-lesson19-lecture-exercise-col-left" data-num="9">
+                <h3 data-i18n="exo9_title">📌 9. J'approfondis ma lecture</h3>
+                <p data-i18n="exo9_instruction">Réponds aux questions d'approfondissement.</p>
+                <ol type="a">
+                    <li>Que demande Mme d'Hubières au couple ? Comment la mère réagit-elle ? <input type="text" class="degree7-unit1-lesson19-lecture-inline-input" placeholder="..."></li>
+                    <li>Quand M. d'Hubières intervient-il ? Pourquoi ? <input type="text" class="degree7-unit1-lesson19-lecture-inline-input" placeholder="..."></li>
+                    <li>Quelles sont les vignettes où les personnages apparaissent en gros plan ? <input type="text" class="degree7-unit1-lesson19-lecture-inline-input" placeholder="..."></li>
+                </ol>
+                <button class="degree7-unit1-lesson19-lecture-btn-verify" onclick="toggleCorrection('exo9Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo9Key" class="degree7-unit1-lesson19-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson19-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex9" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex9" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex9" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 10 -->
+            <div class="degree7-unit1-lesson19-lecture-exercise-card degree7-unit1-lesson19-lecture-exercise-col-right" data-num="10">
+                <h3 data-i18n="exo10_title">📌 10. J'apprécie la bande dessinée</h3>
+                <p data-i18n="exo10_instruction">Complète l'un des énoncés suivants.</p>
+                <ol type="a">
+                    <li>Ce qui m'a touché dans cette histoire c'est... <input type="text" class="degree7-unit1-lesson19-lecture-inline-input" placeholder="..."></li>
+                    <li>Ce que j'ai aimé dans cette bande dessinée, c'est... <input type="text" class="degree7-unit1-lesson19-lecture-inline-input" placeholder="..."></li>
+                </ol>
+                <button class="degree7-unit1-lesson19-lecture-btn-verify" onclick="toggleCorrection('exo10Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo10Key" class="degree7-unit1-lesson19-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson19-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex10" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex10" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex10" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+        </div>
+        <!-- Production -->
+        <div style="margin-top:2rem;">
+            <div class="degree7-unit1-lesson19-lecture-exercise-card" data-num="11">
+                <h3 data-i18n="exo11_title">📌 11. J'écris à mon tour – Production personnelle</h3>
+                <p data-i18n="exo11_instruction">Choisis l'une des deux consignes suivantes :</p>
+                <ul style="padding-left:1.2rem; margin:0.5rem 0 0.8rem;">
+                    <li data-i18n="exo11_subject1"><strong>Consigne 1 :</strong> La mère de cet enfant raconte à sa voisine ce qui lui est arrivé. Imagine ce qu'elle lui dit.</li>
+                    <li data-i18n="exo11_subject2"><strong>Consigne 2 :</strong> Remplis une bulle dans laquelle tu imagines la réponse de la mère à M. d'Hubières.</li>
+                </ul>
+                <figure class="degree7-unit1-lesson19-lecture-prod-figure">
+                    <img src="assets7/images/degree7/unit1/lesson19/mere_voisine.png"
+                         alt="Illustration de la mère paysanne discutant avec sa voisine"
+                         class="degree7-unit1-lesson19-lecture-prod-img"
+                         data-i18n="img_prod_alt"
+                         onerror="this.parentElement.style.display='none'">
+                    <figcaption class="degree7-unit1-lesson19-lecture-prod-caption" data-i18n="img_prod_caption">
+                        Que raconte la mère à sa voisine après la visite des d'Hubières ?
+                    </figcaption>
+                </figure>
+                <textarea rows="6" placeholder="Votre texte..."></textarea>
+                <button class="degree7-unit1-lesson19-lecture-btn-verify" onclick="showExo11Example()" data-i18n="show_example">💡 Voir un exemple de réponse</button>
+                <div id="exo11Key" class="degree7-unit1-lesson19-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson19-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex11" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex11" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex11" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+        </div>
+        <!-- Score area -->
+        <div class="degree7-unit1-lesson19-lecture-score-area" id="scoreArea">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="degree7-unit1-lesson19-lecture-score-stats" id="scoreStats">
+                <div class="degree7-unit1-lesson19-lecture-score-stat"><span data-i18n="score_correct">Correctes :</span> <span id="scoreCorrect">0</span></div>
+                <div class="degree7-unit1-lesson19-lecture-score-stat"><span data-i18n="score_incorrect">Incorrectes :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="degree7-unit1-lesson19-lecture-score-stat"><span data-i18n="score_partial">Partielles :</span> <span id="scorePartial">0</span></div>
+                <div class="degree7-unit1-lesson19-lecture-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">11</span></div>
+            </div>
+        </div>
+        <div class="degree7-unit1-lesson19-lecture-score-actions" style="margin-top:1.2rem;">
+            <button id="saveResultsBtn" class="degree7-unit1-lesson19-lecture-btn-verify" style="margin-right:0.5rem;" data-i18n="save_results">💾 Enregistrer mes résultats</button>
+            <button id="printPdfBtn" class="degree7-unit1-lesson19-lecture-btn-verify" style="background:#1e5e3a; margin-right:0.5rem;" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+        </div>
+        <!-- Footer nav -->
+        <div class="degree7-unit1-lesson19-lecture-footer-nav">
+            <a href="degree7unit1lesson18.html" data-i18n="footer_back" class="no-bilingual">← Leçon précédente</a>
+            <a href="degree7unit1lesson20.html" data-i18n="footer_next" class="no-bilingual">Leçon suivante : Le départ (Sempé & Goscinny) →</a>
+        </div>
+    </div>
+    <!-- Scripts -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                'lesson_title': "Leçon 19 – B.D. Aux champs | Lecture",
+                'lesson_short_title': "B.D. Aux champs",
+                'ach_year_degree7': "7ème Année Primaire",
+                'ach_module_unit1': "Unité 1 – Les fondements du français",
+                'back_link': "← Retour à l'accueil",
+                'back_revision': "Unité 1",
+                'back_current': "B.D. Aux champs",
+                'lesson_badge': "📖 Lecture · Leçon 19",
+                'lesson_title': "B.D. Aux champs<br>Maupassant & Paillet",
+                'lesson_duration': "⏱️ 45 minutes",
+                'lesson_meta_audio': "🎧 Écoutez la B.D. puis répondez aux questions",
+                'audio_label': "🎧 Écoute de la B.D.",
+                'author_img_alt': "Portrait de Guy de Maupassant et J-H Paillet",
+                'author_title': "👤 Guy de Maupassant & J-H Paillet",
+                'author_bio': "<strong>Guy de Maupassant</strong> (1850-1893), écrivain français, auteur de nombreuses nouvelles réalistes. <strong>J-H Paillet</strong> a adapté <em>Aux champs</em> en bande dessinée : il a dessiné les vignettes et les personnages.",
+                'text_heading': "📖 J'observe",
+                'intro_title': "📌 Résumé :",
+                'intro_text': "Un couple aisé, <strong>M. et Mme Henri d'Hubières</strong>, passe en voiture devant deux chaumières. Madame s'attendrit devant une famille de paysans, surtout devant <strong>le tout petit</strong>. Elle revient plusieurs fois, apporte des friandises et de l'argent, puis finit par proposer aux parents d'emmener leur petit garçon. Les parents refusent d'abord avec indignation. Le mari explique alors qu'ils souhaitent <strong>adopter</strong> l'enfant : s'il tourne bien, il sera leur héritier ; sinon, il recevra <strong>20 000 francs</strong> à sa majorité. En échange, les parents recevront une <strong>rente de 100 francs par mois</strong> jusqu'à leur mort.",
+                'img_bd1_alt': "Bande dessinée Aux champs – page 1",
+                'img_bd1_caption': "Planche 1 – La rencontre et la première visite.",
+                'img_bd2_alt': "Bande dessinée Aux champs – page 2",
+                'img_bd2_caption': "Planche 2 – La proposition d'adoption.",
+                'trans_heading': "Transcription des bulles :",
+                'bubble_n1': "Par un après-midi du mois d'août, une légère voiture s'arrêta brusquement devant les deux chaumières.",
+                'bubble_1': "Oh ! regarde, Henri, ce tas d'enfants ! Sont-ils jolis, comme ça, à grouiller dans la poussière.",
+                'bubble_2': "Il faut que je les embrasse !",
+                'bubble_3': "Oh ! comme je voudrais en avoir un, celui-là, le tout petit.",
+                'bubble_4': "Ouin !",
+                'bubble_n2': "Elle revint la semaine suivante, revint encore, fit connaissance avec les parents, reparut tous les jours, les poches pleines de friandises et de sous. Elle s'appelait Mme Henri d'Hubières.",
+                'bubble_n3': "Un matin.",
+                'bubble_5': "Mes braves gens, je viens vous trouver parce que je voudrais bien… je voudrais bien emmener avec moi votre… votre petit garçon.",
+                'bubble_6': "Nous n'avons pas d'enfants ; nous sommes seuls, mon mari et moi… Nous le garderions… voulez-vous ?",
+                'bubble_7': "Vous voulez nous prendre Charlot ? Ah ! ben non, pour sûr !",
+                'bubble_8': "Ma femme s'est mal expliquée. Nous voulons l'adopter. S'il tourne bien, il sera notre héritier. Mais s'il ne répondait pas à nos soins, nous lui donnerions, à sa majorité, une somme de vingt mille francs.",
+                'bubble_9': "Et, comme on a aussi pensé à vous, on vous servira jusqu'à votre mort une rente de cent francs par mois… Avez-vous bien compris ?",
+                'text_author': "— Texte de Guy de MAUPASSANT ; dessins de J-H PAILLET.",
+                'consigne_title': "➤ Consigne :",
+                'consigne_text': "Lis la B.D. puis réponds aux questions. Observe les costumes des personnages, les gros plans et la manière dont l'histoire est racontée en images.",
+                'vocab_title': "📚 Vocabulaire :",
+                'vocab1': "<strong>Grouiller</strong> : bouger, remuer, fourmiller.",
+                'vocab2': "<strong>Friandises</strong> : petits gâteaux, bonbons…",
+                'vocab3': "<strong>Adopter</strong> : prendre un enfant pour le sien.",
+                'vocab4': "<strong>Rente</strong> : somme d'argent qu'une personne est tenue de verser régulièrement à une autre personne.",
+                'rules_heading': "📖 Je lis à haute voix",
+                'rule1_title': "🎭 1. Jouer la B.D.",
+                'rule1_list': "<li>Avec mes camarades, je joue cette B.D. en adoptant le ton qu'il faut :</li><li>– pour le <strong>narrateur</strong> (voix neutre et posée),</li><li>– pour chacun des <strong>personnages</strong> (voix attendrie de Mme d'Hubières, voix indignée de la mère, voix calme et raisonneuse de M. d'Hubières).</li>",
+                'rule2_title': "🖼️ 2. Le langage de la B.D.",
+                'rule2_list': "<li>Les <strong>vignettes</strong> (cases) racontent l'histoire en images.</li><li>Les <strong>bulles</strong> contiennent les paroles des personnages.</li><li>Les <strong>cartouches</strong> (bulles carrées) donnent les indications du narrateur.</li><li>Le <strong>gros plan</strong> attire l'attention sur un visage, une émotion.</li>",
+                'showcase_heading': "🎨 Le lexique de la B.D.",
+                'card1_word': "la chaumière", 'card1_def': "petite maison de paysan au toit de chaume",
+                'card2_word': "la voiture", 'card2_def': "véhicule des gens aisés",
+                'card3_word': "les d'Hubières", 'card3_def': "couple aisé sans enfant",
+                'card4_word': "les paysans", 'card4_def': "famille qui vit de la terre",
+                'card5_word': "le tout petit", 'card5_def': "le plus jeune enfant de la famille",
+                'card6_word': "les friandises", 'card6_def': "petits gâteaux, bonbons",
+                'card7_word': "la rente", 'card7_def': "somme versée régulièrement",
+                'card8_word': "adopter", 'card8_def': "prendre un enfant pour le sien",
+                'card9_word': "l'héritier", 'card9_def': "personne qui reçoit un héritage",
+                'card10_word': "l'héritage", 'card10_def': "biens transmis par succession",
+                'card11_word': "la bulle", 'card11_def': "espace où sont écrites les paroles",
+                'card12_word': "le gros plan", 'card12_def': "cadrage rapproché sur un visage",
+                'exercises_heading': "✍️ Je m'exerce",
+                'table_word': "Mot", 'table_letter': "Définition (a–d)",
+                'table_statement': "Affirmation", 'table_vf': "V / F",
+                'table_person': "Personnage", 'table_milieu': "Milieu social",
+                'table_term': "Terme", 'table_def': "Définition",
+                'btn_correction': "🔍 Voir la correction", 'show_example': "💡 Voir un exemple de réponse",
+                'exo1_title': "📌 1. Je découvre la bande dessinée",
+                'exo1_instruction': "Réponds aux questions de découverte de la B.D.",
+                'exo2_title': "📌 2. Vrai ou faux ?",
+                'exo2_instruction': "Indique si chaque affirmation est vraie (V) ou fausse (F).",
+                'exo2_q1': "Mme d'Hubières s'attendrit devant les enfants des paysans.",
+                'exo2_q2': "Les d'Hubières ont déjà des enfants.",
+                'exo2_q3': "La mère accepte tout de suite la proposition.",
+                'exo2_q4': "M. d'Hubières propose une rente de 100 francs par mois.",
+                'exo2_q5': "L'enfant s'appelle Charlot.",
+                'exo3_title': "📌 3. QCM – Compréhension de la B.D.",
+                'exo3_instruction': "Choisis la bonne réponse parmi les trois propositions.",
+                'exo3_q1': "Que demande Mme d'Hubières au couple de paysans ?",
+                'exo3_q1_a': "De leur vendre leur maison.", 'exo3_q1_b': "D'emmener leur petit garçon avec elle.", 'exo3_q1_c': "De lui donner de l'argent.",
+                'exo3_q2': "Comment la mère réagit-elle d'abord ?",
+                'exo3_q2_a': "Elle accepte avec joie.", 'exo3_q2_b': "Elle refuse avec indignation.", 'exo3_q2_c': "Elle ne comprend pas la question.",
+                'exo3_q3': "Pourquoi le dessinateur utilise-t-il le gros plan ?",
+                'exo3_q3_a': "Pour gagner de la place.", 'exo3_q3_b': "Pour montrer les émotions des personnages.", 'exo3_q3_c': "Pour faire plus joli.",
+                'exo4_title': "📌 4. Complète avec les mots de la B.D.",
+                'exo4_instruction': "Complète le texte à trous avec les mots suivants : chaumières, grouiller, friandises, adopter, héritier, rente.",
+                'exo4_t1': "La voiture s'arrête devant deux", 'exo4_t2': ". Mme d'Hubières trouve les enfants jolis à", 'exo4_t3': "dans la poussière. Elle leur apporte des", 'exo4_t4': ". Les d'Hubières veulent", 'exo4_t5': "Charlot, qui deviendra leur", 'exo4_t6': ". En échange, les parents recevront une", 'exo4_t7': "de cent francs par mois.",
+                'exo5_title': "📌 5. Relie chaque mot à sa définition",
+                'exo5_instruction': "Écris la lettre de la définition qui correspond à chaque mot.",
+                'exo5_a': "bouger, remuer, fourmiller", 'exo5_b': "petits gâteaux, bonbons", 'exo5_c': "prendre un enfant pour le sien", 'exo5_d': "somme versée régulièrement",
+                'exo6_title': "📌 6. Le lexique de l'adoption et de l'héritage",
+                'exo6_instruction': "Complète les énoncés avec les mots qui conviennent.",
+                'exo6_words': "adopter un enfant · un enfant adoptif · une famille d'adoption · hériter · héritier · héritage",
+                'exo7_title': "📌 7. Le milieu social",
+                'exo7_instruction': "Observe le costume des personnages et associe chaque personnage à son milieu social.",
+                'exo7_choices': "<strong>a.</strong> milieu aisé / bourgeois · <strong>b.</strong> milieu paysan / modeste",
+                'exo8_title': "📌 8. Les éléments de la B.D.",
+                'exo8_instruction': "Associe chaque terme de la bande dessinée à sa définition.",
+                'exo8_choices': "<strong>a.</strong> case de la B.D. · <strong>b.</strong> espace des paroles · <strong>c.</strong> bulle carrée du narrateur · <strong>d.</strong> cadrage rapproché",
+                'exo9_title': "📌 9. J'approfondis ma lecture",
+                'exo9_instruction': "Réponds aux questions d'approfondissement.",
+                'exo10_title': "📌 10. J'apprécie la bande dessinée",
+                'exo10_instruction': "Complète l'un des énoncés suivants.",
+                'exo11_title': "📌 11. J'écris à mon tour – Production personnelle",
+                'exo11_instruction': "Choisis l'une des deux consignes suivantes :",
+                'exo11_subject1': "<strong>Consigne 1 :</strong> La mère de cet enfant raconte à sa voisine ce qui lui est arrivé. Imagine ce qu'elle lui dit.",
+                'exo11_subject2': "<strong>Consigne 2 :</strong> Remplis une bulle dans laquelle tu imagines la réponse de la mère à M. d'Hubières.",
+                'img_prod_alt': "Illustration de la mère paysanne discutant avec sa voisine",
+                'img_prod_caption': "Que raconte la mère à sa voisine après la visite des d'Hubières ?",
+                'footer_back': "← Leçon précédente", 'footer_next': "Leçon suivante : Le départ (Sempé & Goscinny) →",
+                'self_assess_question': "Ma réponse est :",
+                'self_correct': "Correcte", 'self_incorrect': "Incorrecte", 'self_partial': "Partiellement correcte",
+                'score_title': "📊 Votre auto‑évaluation",
+                'score_correct': "Correctes :", 'score_incorrect': "Incorrectes :", 'score_partial': "Partielles :", 'score_unanswered': "Sans réponse :",
+                'save_results': "💾 Enregistrer mes résultats", 'save_success': "Résultats sauvegardés ✓", 'save_error': "Erreur lors de la sauvegarde",
+                'print_pdf': "🖨️ Imprimer / PDF", 'print_with_answers': "Corrigé inclus",
+                'print_site_name': "Educational Dashboard – Français",
+                'print_scholar_year': "7ème Année Primaire", 'print_week': "Unité 1", 'print_area': "Lecture",
+                'print_footer_dev': "Développé par Mejri Ziad", 'print_footer_date': "Imprimé le",
+                'print_without_answers': "Sans corrigé",
+                'toast_signin_required': "Connectez-vous pour voir les corrections."
+            },
+            en: {
+                'lesson_title': "Lesson 19 – Comic: In the Fields | Reading",
+                'lesson_short_title': "Comic: In the Fields",
+                'ach_year_degree7': "7th Grade Primary",
+                'ach_module_unit1': "Unit 1 – French foundations",
+                'back_link': "← Back to home",
+                'back_revision': "Unit 1",
+                'back_current': "Comic: In the Fields",
+                'lesson_badge': "📖 Reading · Lesson 19",
+                'lesson_title': "Comic: In the Fields<br>Maupassant & Paillet",
+                'lesson_duration': "⏱️ 45 minutes",
+                'lesson_meta_audio': "🎧 Listen to the comic then answer the questions",
+                'audio_label': "🎧 Listening to the comic",
+                'author_img_alt': "Portrait of Guy de Maupassant and J-H Paillet",
+                'author_title': "👤 Guy de Maupassant & J-H Paillet",
+                'author_bio': "<strong>Guy de Maupassant</strong> (1850-1893), French writer, author of many realistic short stories. <strong>J-H Paillet</strong> adapted <em>In the Fields</em> as a comic strip: he drew the panels and the characters.",
+                'text_heading': "📖 I observe",
+                'intro_title': "📌 Summary:",
+                'intro_text': "A wealthy couple, <strong>Mr. and Mrs. Henri d'Hubières</strong>, drives past two thatched cottages. The lady is moved by a peasant family, especially by <strong>the youngest one</strong>. She returns several times, brings sweets and money, then finally offers the parents to take their little boy. The parents first refuse indignantly. The husband then explains that they wish to <strong>adopt</strong> the child: if he turns out well, he will be their heir; otherwise, he will receive <strong>20,000 francs</strong> at his majority. In exchange, the parents will receive an <strong>annuity of 100 francs per month</strong> until their death.",
+                'img_bd1_alt': "Comic In the Fields – page 1",
+                'img_bd1_caption': "Panel 1 – The meeting and the first visit.",
+                'img_bd2_alt': "Comic In the Fields – page 2",
+                'img_bd2_caption': "Panel 2 – The adoption proposal.",
+                'trans_heading': "Transcription of the speech bubbles:",
+                'bubble_n1': "On an August afternoon, a light car stopped suddenly in front of the two thatched cottages.",
+                'bubble_1': "Oh! look, Henri, that bunch of children! Aren't they pretty, swarming in the dust like that.",
+                'bubble_2': "I must kiss them!",
+                'bubble_3': "Oh! how I would love to have one, that one, the youngest.",
+                'bubble_4': "Waaah!",
+                'bubble_n2': "She came back the following week, came back again, got to know the parents, reappeared every day, her pockets full of sweets and coins. Her name was Mrs. Henri d'Hubières.",
+                'bubble_n3': "One morning.",
+                'bubble_5': "My good people, I've come to see you because I would very much like… I would very much like to take with me your… your little boy.",
+                'bubble_6': "We have no children; we are alone, my husband and I… We would keep him… would you like that?",
+                'bubble_7': "You want to take our Charlot? Oh! no, definitely not!",
+                'bubble_8': "My wife explained herself poorly. We want to adopt him. If he turns out well, he will be our heir. But if he did not respond to our care, we would give him, at his majority, a sum of twenty thousand francs.",
+                'bubble_9': "And, as we also thought of you, we will pay you until your death an annuity of one hundred francs per month… Did you understand well?",
+                'text_author': "— Text by Guy de MAUPASSANT; drawings by J-H PAILLET.",
+                'consigne_title': "➤ Instruction:",
+                'consigne_text': "Read the comic then answer the questions. Observe the characters' costumes, the close-ups and how the story is told in images.",
+                'vocab_title': "📚 Vocabulary:",
+                'vocab1': "<strong>To swarm</strong>: to move, to stir, to teem.",
+                'vocab2': "<strong>Sweets</strong>: small cakes, candies…",
+                'vocab3': "<strong>To adopt</strong>: to take a child as one's own.",
+                'vocab4': "<strong>Annuity</strong>: a sum of money that a person is bound to pay regularly to another person.",
+                'rules_heading': "📖 I read aloud",
+                'rule1_title': "🎭 1. Acting the comic",
+                'rule1_list': "<li>With my classmates, I act this comic strip adopting the right tone:</li><li>– for the <strong>narrator</strong> (neutral, calm voice),</li><li>– for each <strong>character</strong> (tender voice of Mrs. d'Hubières, indignant voice of the mother, calm and reasoning voice of Mr. d'Hubières).</li>",
+                'rule2_title': "🖼️ 2. The language of comics",
+                'rule2_list': "<li><strong>Panels</strong> (cases) tell the story in images.</li><li><strong>Speech bubbles</strong> contain the characters' words.</li><li><strong>Caption boxes</strong> (square bubbles) give the narrator's indications.</li><li>The <strong>close-up</strong> draws attention to a face, an emotion.</li>",
+                'showcase_heading': "🎨 Vocabulary of the comic",
+                'card1_word': "the thatched cottage", 'card1_def': "small peasant house with a thatched roof",
+                'card2_word': "the car", 'card2_def': "vehicle of wealthy people",
+                'card3_word': "the d'Hubières", 'card3_def': "wealthy couple without children",
+                'card4_word': "the peasants", 'card4_def': "family living off the land",
+                'card5_word': "the youngest", 'card5_def': "the youngest child in the family",
+                'card6_word': "the sweets", 'card6_def': "small cakes, candies",
+                'card7_word': "the annuity", 'card7_def': "sum paid regularly",
+                'card8_word': "to adopt", 'card8_def': "to take a child as one's own",
+                'card9_word': "the heir", 'card9_def': "person who receives an inheritance",
+                'card10_word': "the inheritance", 'card10_def': "property transmitted by succession",
+                'card11_word': "the speech bubble", 'card11_def': "space where words are written",
+                'card12_word': "the close-up", 'card12_def': "close framing on a face",
+                'exercises_heading': "✍️ I practise",
+                'table_word': "Word", 'table_letter': "Definition (a–d)",
+                'table_statement': "Statement", 'table_vf': "T / F",
+                'table_person': "Character", 'table_milieu': "Social background",
+                'table_term': "Term", 'table_def': "Definition",
+                'btn_correction': "🔍 See the correction", 'show_example': "💡 See an example answer",
+                'exo1_title': "📌 1. I discover the comic",
+                'exo1_instruction': "Answer the discovery questions about the comic.",
+                'exo2_title': "📌 2. True or false?",
+                'exo2_instruction': "Indicate whether each statement is true (T) or false (F).",
+                'exo2_q1': "Mrs. d'Hubières is moved by the peasant children.",
+                'exo2_q2': "The d'Hubières already have children.",
+                'exo2_q3': "The mother immediately accepts the proposal.",
+                'exo2_q4': "Mr. d'Hubières proposes an annuity of 100 francs per month.",
+                'exo2_q5': "The child's name is Charlot.",
+                'exo3_title': "📌 3. MCQ – Comprehension of the comic",
+                'exo3_instruction': "Choose the correct answer among the three options.",
+                'exo3_q1': "What does Mrs. d'Hubières ask the peasant couple?",
+                'exo3_q1_a': "To sell them their house.", 'exo3_q1_b': "To take their little boy with her.", 'exo3_q1_c': "To give her money.",
+                'exo3_q2': "How does the mother react at first?",
+                'exo3_q2_a': "She accepts joyfully.", 'exo3_q2_b': "She refuses indignantly.", 'exo3_q2_c': "She doesn't understand the question.",
+                'exo3_q3': "Why does the illustrator use a close-up?",
+                'exo3_q3_a': "To save space.", 'exo3_q3_b': "To show the characters' emotions.", 'exo3_q3_c': "To make it prettier.",
+                'exo4_title': "📌 4. Complete with the comic's words",
+                'exo4_instruction': "Complete the gap text with the following words: chaumières, grouiller, friandises, adopter, héritier, rente.",
+                'exo4_t1': "The car stops in front of two", 'exo4_t2': ". Mrs. d'Hubières finds the children pretty, swarming", 'exo4_t3': "in the dust. She brings them", 'exo4_t4': ". The d'Hubières want to", 'exo4_t5': "Charlot, who will become their", 'exo4_t6': ". In exchange, the parents will receive an", 'exo4_t7': "of one hundred francs per month.",
+                'exo5_title': "📌 5. Match each word to its definition",
+                'exo5_instruction': "Write the letter of the definition corresponding to each word.",
+                'exo5_a': "to move, to stir, to teem", 'exo5_b': "small cakes, candies", 'exo5_c': "to take a child as one's own", 'exo5_d': "sum paid regularly",
+                'exo6_title': "📌 6. The vocabulary of adoption and inheritance",
+                'exo6_instruction': "Complete the statements with the right words.",
+                'exo6_words': "adopter un enfant · un enfant adoptif · une famille d'adoption · hériter · héritier · héritage",
+                'exo7_title': "📌 7. Social background",
+                'exo7_instruction': "Observe the characters' costumes and match each character to their social background.",
+                'exo7_choices': "<strong>a.</strong> wealthy / bourgeois background · <strong>b.</strong> peasant / modest background",
+                'exo8_title': "📌 8. Elements of the comic",
+                'exo8_instruction': "Match each comic term to its definition.",
+                'exo8_choices': "<strong>a.</strong> comic panel · <strong>b.</strong> space for words · <strong>c.</strong> square narrator bubble · <strong>d.</strong> close framing",
+                'exo9_title': "📌 9. I deepen my reading",
+                'exo9_instruction': "Answer the deepening questions.",
+                'exo10_title': "📌 10. I appreciate the comic",
+                'exo10_instruction': "Complete one of the following statements.",
+                'exo11_title': "📌 11. I write in turn – Personal production",
+                'exo11_instruction': "Choose one of the two following tasks:",
+                'exo11_subject1': "<strong>Task 1:</strong> The mother tells her neighbour what happened to her. Imagine what she says.",
+                'exo11_subject2': "<strong>Task 2:</strong> Fill in a bubble in which you imagine the mother's reply to Mr. d'Hubières.",
+                'img_prod_alt': "Illustration of the peasant mother talking with her neighbour",
+                'img_prod_caption': "What does the mother tell her neighbour after the d'Hubières' visit?",
+                'footer_back': "← Previous lesson", 'footer_next': "Next lesson: The Departure (Sempé & Goscinny) →",
+                'self_assess_question': "My answer is:",
+                'self_correct': "Correct", 'self_incorrect': "Incorrect", 'self_partial': "Partially correct",
+                'score_title': "📊 Your self‑assessment",
+                'score_correct': "Correct:", 'score_incorrect': "Incorrect:", 'score_partial': "Partial:", 'score_unanswered': "Unanswered:",
+                'save_results': "💾 Save my results", 'save_success': "Results saved ✓", 'save_error': "Save failed",
+                'print_pdf': "🖨️ Print / PDF", 'print_with_answers': "With answers",
+                'print_site_name': "Educational Dashboard – French",
+                'print_scholar_year': "7th Grade Primary", 'print_week': "Unit 1", 'print_area': "Reading",
+                'print_footer_dev': "Developed by Mejri Ziad", 'print_footer_date': "Printed on",
+                'print_without_answers': "Without answers",
+                'toast_signin_required': "Sign in to see the corrections."
+            },
+            ar: {
+                'lesson_title': "الدرس 19 – قصة مصورة: في الحقول | قراءة",
+                'lesson_short_title': "قصة مصورة: في الحقول",
+                'ach_year_degree7': "السنة السابعة ابتدائي",
+                'ach_module_unit1': "الوحدة 1 – أساسيات الفرنسية",
+                'back_link': "← العودة إلى الرئيسية",
+                'back_revision': "الوحدة 1",
+                'back_current': "قصة مصورة: في الحقول",
+                'lesson_badge': "📖 قراءة · الدرس 19",
+                'lesson_title': "قصة مصورة: في الحقول<br>موباسان وبايي",
+                'lesson_duration': "⏱️ 45 دقيقة",
+                'lesson_meta_audio': "🎧 استمع إلى القصة المصورة ثم أجب عن الأسئلة",
+                'audio_label': "🎧 استماع إلى القصة المصورة",
+                'author_img_alt': "صورة غي دو موباسان و ج-ه بايي",
+                'author_title': "👤 غي دو موباسان و ج-ه بايي",
+                'author_bio': "<strong>غي دو موباسان</strong> (1850-1893)، كاتب فرنسي، مؤلف العديد من القصص الواقعية. <strong>ج-ه بايي</strong> اقتبس <em>في الحقول</em> كقصة مصورة: رسم الإطارات والشخصيات.",
+                'text_heading': "📖 ألاحظ",
+                'intro_title': "📌 الملخص:",
+                'intro_text': "زوجان ميسوران، <strong>السيد والسيدة هنري دوبيير</strong>، يمران بسيارتهما أمام كوخين. تتأثر السيدة بعائلة فلاحية، خاصة بـ<strong>الصغير</strong>. تعود عدة مرات، تحمل الحلويات والمال، ثم تنتهي بعرض على الوالدين أن يأخذوا طفلهما الصغير. يرفض الوالدان أولاً بامتعاض. ثم يشرح الزوج أنهما يريدان <strong>تبني</strong> الطفل: إن نشأ جيداً سيكون وريثهما؛ وإلا فسيحصل على <strong>20,000 فرنك</strong> عند بلوغه سن الرشد. في المقابل، سيحصل الوالدان على <strong>معاش شهري قدره 100 فرنك</strong> حتى وفاتهما.",
+                'img_bd1_alt': "قصة مصورة في الحقول – الصفحة 1",
+                'img_bd1_caption': "اللوحة 1 – اللقاء والزيارة الأولى.",
+                'img_bd2_alt': "قصة مصورة في الحقول – الصفحة 2",
+                'img_bd2_caption': "اللوحة 2 – عرض التبني.",
+                'trans_heading': "نسخ الفقاعات:",
+                'bubble_n1': "في ظهيرة يوم من شهر أغسطس، توقفت سيارة خفيفة فجأة أمام الكوخين.",
+                'bubble_1': "انظر يا هنري، هذا الكم من الأطفال! كم هم جميلون وهم يتحركون في الغبار.",
+                'bubble_2': "يجب أن أقبّلهم!",
+                'bubble_3': "كم أتمنى أن يكون لدي واحد، ذاك الصغير.",
+                'bubble_4': "واااه!",
+                'bubble_n2': "عادت الأسبوع التالي، وعادت مرة أخرى، وتعرفت على الوالدين، وأصبحت تأتي كل يوم، وجيوبها مليئة بالحلويات والقطع النقدية. كان اسمها السيدة هنري دوبيير.",
+                'bubble_n3': "في صباح أحد الأيام.",
+                'bubble_5': "يا أيها الطيبون، جئت إليكم لأنني أريد… أريد أن آخذ معي… ابنكم الصغير.",
+                'bubble_6': "ليس لدينا أطفال؛ نحن وحيدان، أنا وزوجي… سنحتفظ به… هل تقبلون؟",
+                'bubble_7': "تريدون أن تأخذوا شارلو؟ آه! لا، بالتأكيد لا!",
+                'bubble_8': "زوجتي لم تشرح جيداً. نريد تبنيه. إن نشأ جيداً سيكون وريثنا. وإن لم يستجب لرعايتنا، سنمنحه عند بلوغه سن الرشد مبلغاً قدره عشرون ألف فرنك.",
+                'bubble_9': "وبما أننا فكرنا فيكم أيضاً، سندفع لكم حتى وفاتكم معاشاً شهرياً قدره مئة فرنك… هل فهمتم جيداً؟",
+                'text_author': "— نص غي دو موباسان؛ رسوم ج-ه بايي.",
+                'consigne_title': "➤ التعليمة:",
+                'consigne_text': "اقرأ القصة المصورة ثم أجب عن الأسئلة. لاحظ ملابس الشخصيات، والمشاهد القريبة، والطريقة التي تُروى بها القصة بالصور.",
+                'vocab_title': "📚 المفردات:",
+                'vocab1': "<strong>يتحرك</strong>: يتحرك، يهتز، يعجّ.",
+                'vocab2': "<strong>الحلويات</strong>: كعكات صغيرة، حلويات…",
+                'vocab3': "<strong>يتبنى</strong>: يأخذ طفلاً ليكون له.",
+                'vocab4': "<strong>معاش</strong>: مبلغ مالي يُدفع بانتظام من شخص لآخر.",
+                'rules_heading': "📖 أقرأ بصوت عالٍ",
+                'rule1_title': "🎭 1. تمثيل القصة المصورة",
+                'rule1_list': "<li>مع زملائي، أمثّل هذه القصة المصورة بنبرة مناسبة:</li><li>– للـ<strong>راوي</strong> (صوت محايد وهادئ)،</li><li>– لكل <strong>شخصية</strong> (صوت متحنن للسيدة دوبيير، صوت مستاء للأم، صوت هادئ ومقنع للسيد دوبيير).</li>",
+                'rule2_title': "🖼️ 2. لغة القصة المصورة",
+                'rule2_list': "<li><strong>الإطارات</strong> (الخانات) تروي القصة بالصور.</li><li><strong>الفقاعات</strong> تحتوي على كلام الشخصيات.</li><li><strong>المربعات النصية</strong> (فقاعات مربعة) تعطي إشارات الراوي.</li><li><strong>المشهد القريب</strong> يلفت الانتباه إلى وجه أو انفعال.</li>",
+                'showcase_heading': "🎨 معجم القصة المصورة",
+                'card1_word': "الكوخ", 'card1_def': "بيت فلاحي صغير بسقف قش",
+                'card2_word': "السيارة", 'card2_def': "مركبة الأثرياء",
+                'card3_word': "آل دوبيير", 'card3_def': "زوجان ميسوران بلا أطفال",
+                'card4_word': "الفلاحون", 'card4_def': "عائلة تعيش من الأرض",
+                'card5_word': "الصغير", 'card5_def': "أصغر طفل في العائلة",
+                'card6_word': "الحلويات", 'card6_def': "كعكات صغيرة، حلويات",
+                'card7_word': "المعاش", 'card7_def': "مبلغ يُدفع بانتظام",
+                'card8_word': "يتبنى", 'card8_def': "يأخذ طفلاً ليكون له",
+                'card9_word': "الوريث", 'card9_def': "شخص يتلقى إرثاً",
+                'card10_word': "الإرث", 'card10_def': "أموال تُنقل بالميراث",
+                'card11_word': "الفقاعة", 'card11_def': "مساحة تُكتب فيها الكلمات",
+                'card12_word': "المشهد القريب", 'card12_def': "تأطير قريب على وجه",
+                'exercises_heading': "✍️ أتمرن",
+                'table_word': "الكلمة", 'table_letter': "التعريف (أ–د)",
+                'table_statement': "العبارة", 'table_vf': "ص / خ",
+                'table_person': "الشخصية", 'table_milieu': "الوسط الاجتماعي",
+                'table_term': "المصطلح", 'table_def': "التعريف",
+                'btn_correction': "🔍 الاطلاع على التصحيح", 'show_example': "💡 عرض مثال للإجابة",
+                'exo1_title': "📌 1. أكتشف القصة المصورة",
+                'exo1_instruction': "أجب عن أسئلة اكتشاف القصة المصورة.",
+                'exo2_title': "📌 2. صواب أم خطأ؟",
+                'exo2_instruction': "حدد إن كانت كل عبارة صحيحة (ص) أم خاطئة (خ).",
+                'exo2_q1': "السيدة دوبيير تتأثر بأطفال الفلاحين.",
+                'exo2_q2': "لدى آل دوبيير أطفال بالفعل.",
+                'exo2_q3': "الأم تقبل العرض فوراً.",
+                'exo2_q4': "السيد دوبيير يقترح معاشاً شهرياً قدره 100 فرنك.",
+                'exo2_q5': "اسم الطفل شارلو.",
+                'exo3_title': "📌 3. اختيار من متعدد – فهم القصة المصورة",
+                'exo3_instruction': "اختر الجواب الصحيح من بين الخيارات الثلاثة.",
+                'exo3_q1': "ماذا تطلب السيدة دوبيير من الزوجين الفلاحين؟",
+                'exo3_q1_a': "أن يبيعا لها بيتهما.", 'exo3_q1_b': "أن تأخذ ابنهما الصغير معها.", 'exo3_q1_c': "أن يعطياها مالاً.",
+                'exo3_q2': "كيف تتفاعل الأم في البداية؟",
+                'exo3_q2_a': "تقبل بفرح.", 'exo3_q2_b': "ترفض بامتعاض.", 'exo3_q2_c': "لا تفهم السؤال.",
+                'exo3_q3': "لماذا يستعمل الرسام المشهد القريب؟",
+                'exo3_q3_a': "لتوفير المساحة.", 'exo3_q3_b': "لإظهار انفعالات الشخصيات.", 'exo3_q3_c': "ليكون أجمل.",
+                'exo4_title': "📌 4. أكمل بكلمات القصة المصورة",
+                'exo4_instruction': "أكمل النص الناقص بالكلمات التالية: chaumières, grouiller, friandises, adopter, héritier, rente.",
+                'exo4_t1': "تتوقف السيارة أمام", 'exo4_t2': ". تجد السيدة دوبيير الأطفال جميلين وهم", 'exo4_t3': "في الغبار. تجلب لهم", 'exo4_t4': ". يريد آل دوبيير", 'exo4_t5': "شارلو، الذي سيصبح", 'exo4_t6': ". في المقابل، سيحصل الوالدان على", 'exo4_t7': "قدره مئة فرنك شهرياً.",
+                'exo5_title': "📌 5. اربط كل كلمة بتعريفها",
+                'exo5_instruction': "اكتب حرف التعريف المقابل لكل كلمة.",
+                'exo5_a': "يتحرك، يهتز، يعجّ", 'exo5_b': "كعكات صغيرة، حلويات", 'exo5_c': "يأخذ طفلاً ليكون له", 'exo5_d': "مبلغ يُدفع بانتظام",
+                'exo6_title': "📌 6. معجم التبني والإرث",
+                'exo6_instruction': "أكمل العبارات بالكلمات المناسبة.",
+                'exo6_words': "adopter un enfant · un enfant adoptif · une famille d'adoption · hériter · héritier · héritage",
+                'exo7_title': "📌 7. الوسط الاجتماعي",
+                'exo7_instruction': "لاحظ ملابس الشخصيات واربط كل شخصية بوسطها الاجتماعي.",
+                'exo7_choices': "<strong>أ.</strong> وسط ميسور / برجوازي · <strong>ب.</strong> وسط فلاحي / متواضع",
+                'exo8_title': "📌 8. عناصر القصة المصورة",
+                'exo8_instruction': "اربط كل مصطلح من مصطلحات القصة المصورة بتعريفه.",
+                'exo8_choices': "<strong>أ.</strong> خانة القصة المصورة · <strong>ب.</strong> مساحة الكلام · <strong>ج.</strong> فقاعة مربعة للراوي · <strong>د.</strong> تأطير قريب",
+                'exo9_title': "📌 9. أتعمق في قراءتي",
+                'exo9_instruction': "أجب عن أسئلة التعمق.",
+                'exo10_title': "📌 10. أقدّر القصة المصورة",
+                'exo10_instruction': "أكمل إحدى العبارات التالية.",
+                'exo11_title': "📌 11. أكتب بدوري – إنتاج شخصي",
+                'exo11_instruction': "اختر إحدى المهمتين التاليتين:",
+                'exo11_subject1': "<strong>المهمة 1:</strong> الأم تحكي لجارتها ما حدث لها. تخيل ما تقوله.",
+                'exo11_subject2': "<strong>المهمة 2:</strong> املأ فقاعة تتخيل فيها رد الأم على السيد دوبيير.",
+                'img_prod_alt': "رسم توضيحي للأم الفلاحة تتحدث مع جارتها",
+                'img_prod_caption': "ماذا تحكي الأم لجارتها بعد زيارة آل دوبيير؟",
+                'footer_back': "← الدرس السابق", 'footer_next': "الدرس الموالي: الرحيل (سامبي وغوسيني) ←",
+                'self_assess_question': "جوابي هو:",
+                'self_correct': "صحيح", 'self_incorrect': "خاطئ", 'self_partial': "صحيح جزئيًا",
+                'score_title': "📊 تقييمك الذاتي",
+                'score_correct': "صحيح:", 'score_incorrect': "خاطئ:", 'score_partial': "جزئي:", 'score_unanswered': "بدون إجابة:",
+                'save_results': "💾 حفظ نتائجي", 'save_success': "تم حفظ النتائج ✓", 'save_error': "خطأ في الحفظ",
+                'print_pdf': "🖨️ طباعة / PDF", 'print_with_answers': "مع التصحيح",
+                'print_site_name': "لوحة التحكم التعليمية – الفرنسية",
+                'print_scholar_year': "السنة السابعة ابتدائي", 'print_week': "الوحدة 1", 'print_area': "قراءة",
+                'print_footer_dev': "طوّر بواسطة ماجري زياد", 'print_footer_date': "طُبع في",
+                'print_without_answers': "بدون تصحيح",
+                'toast_signin_required': "سجّل الدخول لرؤية التصحيحات."
+            }
+        });
+        (function() {
+            var container = document.querySelector('.degree7-unit1-lesson19-lecture-container');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+        })();
+    </script>
+    <script src="ed-french-ini.js"></script>
+    <script>
+        (function() {
+            const audio = new Audio('assets7/sounds/degree7/unit1/lesson19/aux_champs.mp3');
+            const playBtn = document.getElementById('playBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const speedBtns = document.querySelectorAll('.degree7-unit1-lesson19-lecture-speed-btn');
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+            audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
+            audio.addEventListener('timeupdate', () => {
+                const percent = (audio.currentTime / audio.duration) * 100 || 0;
+                progressFill.style.width = percent + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            });
+            audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) { audio.play().catch(()=>{}); playBtn.textContent = '⏸'; }
+                else { audio.pause(); playBtn.textContent = '▶'; }
+            });
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const seekTime = (clickX / width) * audio.duration;
+                audio.currentTime = seekTime;
+            });
+            speedBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    speedBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    audio.playbackRate = parseFloat(btn.dataset.speed);
+                });
+            });
+            window.toggleCorrection = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('visible');
+            };
+            window.showExo11Example = async function() {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const el = document.getElementById('exo11Key');
+                if (el) {
+                    el.innerHTML = '<strong>Exemple de production (Consigne 1) :</strong><br>« Tu ne devineras jamais ce qui nous est arrivé, ma voisine ! Une dame très élégante, Mme d\'Hubières, est venue plusieurs fois à la maison. Elle apportait des bonbons aux enfants et nous glissait des pièces. Hier, elle est entrée avec son mari et m\'a proposé d\'<strong>emmener</strong> notre petit Charlot ! J\'ai d\'abord cru qu\'elle se moquait de nous. Mais son mari a parlé d\'<strong>adoption</strong> : il paraît que Charlot deviendrait leur <strong>héritier</strong> et qu\'ils nous verseraient une <strong>rente</strong> chaque mois. Je ne sais pas quoi faire… Charlot est notre chair, mais la misère est si dure ici. »<br><br><strong>Exemple de réponse (Consigne 2) :</strong><br>« Jamais ! Vous n\'emporterez pas mon enfant. Même si nous sommes pauvres, nous l\'aimons plus que tout l\'or du monde. »';
+                    el.classList.add('visible');
+                }
+            };
+            // Static answer keys
+            document.getElementById('exo1Key').innerHTML = '<strong>Correction :</strong><br>a) L\'action se passe devant deux chaumières, à la campagne.<br>b) Personnages : M. et Mme d\'Hubières, les parents paysans, leurs enfants (dont le tout petit / Charlot). Mme d\'Hubières apparaît le plus souvent.<br>c) Oui, la B.D. est plus facile : les images montrent les personnages, leurs expressions et le décor ; les dialogues sont dans les bulles.';
+            document.getElementById('exo2Key').innerHTML = '<strong>Correction :</strong><br>1. Vrai<br>2. Faux<br>3. Faux (elle refuse avec indignation)<br>4. Vrai<br>5. Vrai';
+            document.getElementById('exo3Key').innerHTML = '<strong>Correction :</strong><br>1. b<br>2. b<br>3. b';
+            document.getElementById('exo4Key').innerHTML = '<strong>Correction :</strong><br>chaumières – grouiller – friandises – adopter – héritier – rente';
+            document.getElementById('exo5Key').innerHTML = '<strong>Correction :</strong><br>grouiller → a<br>friandises → b<br>adopter → c<br>rente → d';
+            document.getElementById('exo6Key').innerHTML = '<strong>Correction :</strong><br>a) Les d\'Hubières n\'ont pas d\'<strong>enfant</strong>, ils désirent <strong>adopter un enfant</strong>.<br>b) Les gens de la chaumière voisine acceptent la proposition d\'<strong>adoption</strong>. Ces derniers auront un enfant <strong>adoptif</strong>.<br>c) Le fils des voisins grandira chez les d\'Hubières ; ce sera sa famille <strong>d\'adoption</strong>. Il pourra recevoir tous leurs biens en <strong>héritage</strong>.';
+            document.getElementById('exo7Key').innerHTML = '<strong>Correction :</strong><br>Mme d\'Hubières → a (milieu aisé)<br>La mère paysanne → b (milieu modeste)<br>M. d\'Hubières → a (milieu aisé)';
+            document.getElementById('exo8Key').innerHTML = '<strong>Correction :</strong><br>la vignette → a<br>la bulle → b<br>le cartouche → c<br>le gros plan → d';
+            document.getElementById('exo9Key').innerHTML = '<strong>Correction (proposition) :</strong><br>a) Mme d\'Hubières demande à emmener le petit garçon. La mère refuse vivement : « Vous voulez nous prendre Charlot ? Ah ! ben non, pour sûr ! »<br>b) M. d\'Hubières intervient après le refus indigné de la mère, pour reformuler la proposition de façon plus précise et rassurante (adoption, héritage, rente).<br>c) Les vignettes en gros plan montrent les visages des personnages aux moments clés : Mme d\'Hubières attendrie, la mère indignée, M. d\'Hubières sérieux et persuasif.';
+            document.getElementById('exo10Key').innerHTML = '<strong>Correction (proposition) :</strong><br>a) Ce qui m\'a touché dans cette histoire, c\'est l\'amour des parents pour leur enfant, malgré leur pauvreté.<br>b) Ce que j\'ai aimé dans cette bande dessinée, c\'est la manière dont les dessins montrent les émotions des personnages (la tendresse de Mme d\'Hubières, la colère de la mère, la froideur calculée de M. d\'Hubières).';
+            const SELF_GROUPS = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5',
+                                 'self_ex6', 'self_ex7', 'self_ex8', 'self_ex9', 'self_ex10', 'self_ex11'];
+            function computeScore() {
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                SELF_GROUPS.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                return { correct, incorrect, partial, unanswered };
+            }
+            function updateScore() {
+                const s = computeScore();
+                document.getElementById('scoreCorrect').textContent = s.correct;
+                document.getElementById('scoreIncorrect').textContent = s.incorrect;
+                document.getElementById('scorePartial').textContent = s.partial;
+                document.getElementById('scoreUnanswered').textContent = s.unanswered;
+            }
+            document.querySelectorAll('input[type="radio"][name^="self_ex"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const s = computeScore();
+                const lessonId = 'degree7unit1lesson19';
+                const entry = {
+                    lesson_id: lessonId,
+                    lesson_title: {
+                        fr: App.getTranslation('lesson_short_title', 'fr'),
+                        en: App.getTranslation('lesson_short_title', 'en'),
+                        ar: App.getTranslation('lesson_short_title', 'ar')
+                    },
+                    year: {
+                        fr: App.getTranslation('ach_year_degree7', 'fr'),
+                        en: App.getTranslation('ach_year_degree7', 'en'),
+                        ar: App.getTranslation('ach_year_degree7', 'ar')
+                    },
+                    module: {
+                        fr: App.getTranslation('ach_module_unit1', 'fr'),
+                        en: App.getTranslation('ach_module_unit1', 'en'),
+                        ar: App.getTranslation('ach_module_unit1', 'ar')
+                    },
+                    correct: s.correct,
+                    incorrect: s.incorrect,
+                    partial: s.partial,
+                    unanswered: s.unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles').select('achivement').eq('id', user.id).single();
+                if (fetchError) return;
+                let achivement = profileData?.achivement || {};
+                if (!achivement['ED-French']) achivement['ED-French'] = [];
+                const arr = achivement['ED-French'];
+                const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+                if (existingIdx >= 0) arr[existingIdx] = entry;
+                else arr.push(entry);
+                const { error: updateError } = await App.supabase
+                    .from('profiles').update({ achivement }).eq('id', user.id);
+                if (updateError) App.showToast('save_error', 'error');
+                else {
+                    App.showToast('save_success', 'success');
+                    App.logUserAction('lesson_saved', { lesson: lessonId, correct: s.correct, incorrect: s.incorrect, partial: s.partial });
+                }
+            });
+            document.getElementById('printPdfBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles').select('registration_state').eq('id', user.id).single();
+                    if (!error && profile?.registration_state?.active === true) isRegistered = true;
+                } catch (e) {}
+                const lang = localStorage.getItem('lang') || 'fr';
+                const headerHTML = document.querySelector('.degree7-unit1-lesson19-lecture-lesson-header').cloneNode(true);
+                const textCard = document.querySelector('.degree7-unit1-lesson19-lecture-text-card').cloneNode(true);
+                const authorCard = document.querySelector('.degree7-unit1-lesson19-lecture-author-card');
+                const authorHTML = authorCard ? authorCard.outerHTML : '';
+                const bdGrid = document.querySelector('.degree7-unit1-lesson19-lecture-bd-grid');
+                const bdHTML = bdGrid ? bdGrid.outerHTML : '';
+                const rulesSections = document.querySelectorAll('.degree7-unit1-lesson19-lecture-valeurs-section');
+                let rulesHTML = '';
+                rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
+                const showcaseGrid = document.querySelector('.degree7-unit1-lesson19-lecture-showcase');
+                const showcaseHTML = showcaseGrid ? showcaseGrid.outerHTML : '';
+                const prodFigure = document.querySelector('.degree7-unit1-lesson19-lecture-prod-figure');
+                const prodHTML = prodFigure ? prodFigure.outerHTML : '';
+                const exercisesSection = document.querySelector('.degree7-unit1-lesson19-lecture-exercises-section').cloneNode(true);
+                exercisesSection.querySelectorAll('input, textarea, .degree7-unit1-lesson19-lecture-btn-verify, .degree7-unit1-lesson19-lecture-self-assessment').forEach(el => el.remove());
+                if (isRegistered) {
+                    exercisesSection.querySelectorAll('.degree7-unit1-lesson19-lecture-answer-key').forEach(key => {
+                        key.style.display = 'block'; key.style.border = 'none';
+                        key.style.padding = '0.5rem 0'; key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    exercisesSection.querySelectorAll('.degree7-unit1-lesson19-lecture-answer-key').forEach(el => el.remove());
+                }
+                const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                printWindow.document.write(`<!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8"><title>${App.getTranslation('lesson_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title><style>
+                    body { font-family: 'Georgia', serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; color:#000; }
+                    .print-header { text-align:center; border-bottom:2px solid #2e8b57; padding-bottom:1rem; margin-bottom:2rem; }
+                    .print-header .site-name { font-size:1.4rem; font-weight:bold; color:#2e8b57; margin:0 0 0.3rem; }
+                    .print-header .meta-line { font-size:0.95rem; color:#444; margin:0.2rem 0; }
+                    .print-header .lesson-name { font-size:1.1rem; font-weight:bold; color:#000; margin-top:0.5rem; }
+                    .print-footer { text-align:center; border-top:1px solid #ccc; padding-top:1rem; margin-top:2rem; font-size:0.85rem; color:#666; }
+                    .degree7-unit1-lesson19-lecture-lesson-header { text-align:center; margin-bottom:2rem; }
+                    .degree7-unit1-lesson19-lecture-badge { display:inline-block; background:#2e8b57; color:#fff; padding:0.3rem 1rem; border-radius:20px; font-size:0.8rem; text-transform:uppercase; }
+                    .degree7-unit1-lesson19-lecture-text-card { border-left:4px solid #2e8b57; padding:1rem 1.5rem; margin:1.5rem 0; }
+                    .degree7-unit1-lesson19-lecture-hl { background:#e2f0e8; color:#1e5e3a; padding:0 4px; border-radius:4px; font-weight:700; border-bottom:2px solid #2e8b57; }
+                    .degree7-unit1-lesson19-lecture-bd-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1rem 0; }
+                    .degree7-unit1-lesson19-lecture-bd-page { border:1px solid #cbe0d3; border-radius:8px; overflow:hidden; }
+                    .degree7-unit1-lesson19-lecture-bd-page img { max-width:100%; max-height:420px; display:block; margin:0 auto; }
+                    .degree7-unit1-lesson19-lecture-bd-page figcaption { font-size:0.8rem; color:#555; text-align:center; padding:0.4rem; font-style:italic; }
+                    .degree7-unit1-lesson19-lecture-bubble { background:#eef7f2; border:1px dashed #2e8b57; border-radius:14px; padding:0.5rem 0.9rem; margin:0.4rem 0; font-style:italic; }
+                    .degree7-unit1-lesson19-lecture-bubble.narrator { background:#e2f0e8; border-style:solid; font-weight:600; font-style:normal; }
+                    .degree7-unit1-lesson19-lecture-author-card { border:1px solid #cbe0d3; border-radius:12px; padding:1rem; margin:1rem 0; display:flex; gap:1rem; align-items:center; }
+                    .degree7-unit1-lesson19-lecture-author-img { width:100px; height:100px; border-radius:50%; object-fit:cover; }
+                    .degree7-unit1-lesson19-lecture-author-info h3 { color:#1e5e3a; margin:0 0 0.3rem; }
+                    .degree7-unit1-lesson19-lecture-valeurs-section { margin:1.5rem 0; }
+                    .degree7-unit1-lesson19-lecture-valeur-card { background:#e2f0e8; padding:1rem; margin-bottom:1rem; border-radius:8px; }
+                    .degree7-unit1-lesson19-lecture-valeur-card h3 { color:#2e8b57; }
+                    .degree7-unit1-lesson19-lecture-showcase { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.5rem; }
+                    .degree7-unit1-lesson19-lecture-vcard { background:#eef7f2; padding:0.6rem; border-radius:6px; border:1px solid #cbe0d3; }
+                    .degree7-unit1-lesson19-lecture-vcard .degree7-unit1-lesson19-lecture-vicon { display:none; }
+                    .degree7-unit1-lesson19-lecture-vcard .degree7-unit1-lesson19-lecture-vword { display:block; font-weight:800; color:#1e5e3a; }
+                    .degree7-unit1-lesson19-lecture-vcard .degree7-unit1-lesson19-lecture-vdef { display:block; font-size:0.8rem; color:#555; }
+                    .degree7-unit1-lesson19-lecture-exercise-card { margin:1.2rem 0; border-left:4px solid #2e8b57; padding:0.8rem 1rem; }
+                    .degree7-unit1-lesson19-lecture-exercise-card::before { content:none !important; }
+                    .degree7-unit1-lesson19-lecture-situation { border-left:3px solid #2e8b57; padding:0.5rem 0.7rem; background:#eef7f2; border-radius:6px; margin-bottom:0.4rem; }
+                    .degree7-unit1-lesson19-lecture-prod-figure { text-align:center; margin:0.5rem 0; }
+                    .degree7-unit1-lesson19-lecture-prod-img { max-width:100%; max-height:220px; border-radius:6px; }
+                    .degree7-unit1-lesson19-lecture-prod-caption { display:block; font-size:0.8rem; color:#555; font-style:italic; margin-top:0.3rem; }
+                    table { width:100%; border-collapse:collapse; margin:0.8rem 0; }
+                    th, td { border:1px solid #ccc; padding:0.5rem; text-align:left; }
+                    th { background:#e2f0e8; }
+                    .degree7-unit1-lesson19-lecture-answer-key { display:block; margin-top:0.5rem; font-size:0.9rem; color:#444; }
+                    @media print { @page { margin:2cm; } }
+                </style></head><body>
+                    <div class="print-header"><div class="site-name">${App.getTranslation('print_site_name', lang)}</div><div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div><div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div></div>
+                    ${breadcrumb.outerHTML}${authorHTML}${headerHTML.outerHTML}${bdHTML}${textCard.outerHTML}${rulesHTML}${showcaseHTML}${exercisesSection.outerHTML}${prodHTML}
+                    <div class="print-footer">${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}</div>
+                </body></html>`);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+        })();
+    </script>
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+</body>
+</html>

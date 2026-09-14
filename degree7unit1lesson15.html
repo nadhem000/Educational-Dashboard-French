@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_title">Leçon 15 – Lorsque l'enfant paraît... | Lecture</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ===== Degree7 Unit1 Lesson15 – Lecture (prefix: degree7-unit1-lesson15-lecture-) ===== */
+        /* Palette: Emerald Green – shades of green (matching cat-reading #2e8b57) */
+        :root {
+            --degree7-unit1-lesson15-lecture-bg: #f2f8f4;
+            --degree7-unit1-lesson15-lecture-card: #fbfefc;
+            --degree7-unit1-lesson15-lecture-text: #16261c;
+            --degree7-unit1-lesson15-lecture-text-light: #4a6a55;
+            --degree7-unit1-lesson15-lecture-heading: #1e5e3a;
+            --degree7-unit1-lesson15-lecture-accent: #2e8b57;
+            --degree7-unit1-lesson15-lecture-accent-hover: #1e5e3a;
+            --degree7-unit1-lesson15-lecture-soft: #6cb68a;
+            --degree7-unit1-lesson15-lecture-light: #e2f0e8;
+            --degree7-unit1-lesson15-lecture-lighter: #eef7f2;
+            --degree7-unit1-lesson15-lecture-border: #cbe0d3;
+            --degree7-unit1-lesson15-lecture-shadow: 0 1px 3px rgba(46,139,87,0.06), 0 6px 18px rgba(30,94,58,0.07);
+            --degree7-unit1-lesson15-lecture-radius: 14px;
+            --degree7-unit1-lesson15-lecture-radius-sm: 8px;
+            --degree7-unit1-lesson15-lecture-transition: 0.25s ease;
+            --degree7-unit1-lesson15-lecture-font: 'Georgia', 'Segoe UI', 'Times New Roman', serif;
+            --degree7-unit1-lesson15-lecture-audio-bg: #dcebe2;
+            --degree7-unit1-lesson15-lecture-audio-progress: #a8cdb8;
+            --degree7-unit1-lesson15-lecture-button-bg: #d5e8dd;
+            --degree7-unit1-lesson15-lecture-button-hover: #bdd9c8;
+            --degree7-unit1-lesson15-lecture-input-bg: #f6fbf8;
+        }
+        body.dark {
+            --degree7-unit1-lesson15-lecture-bg: #0f1a13;
+            --degree7-unit1-lesson15-lecture-card: #182a1e;
+            --degree7-unit1-lesson15-lecture-text: #dceee4;
+            --degree7-unit1-lesson15-lecture-text-light: #96b6a3;
+            --degree7-unit1-lesson15-lecture-heading: #a8e0be;
+            --degree7-unit1-lesson15-lecture-accent: #6cb68a;
+            --degree7-unit1-lesson15-lecture-accent-hover: #8ecfa6;
+            --degree7-unit1-lesson15-lecture-soft: #4d8a68;
+            --degree7-unit1-lesson15-lecture-light: #1e3327;
+            --degree7-unit1-lesson15-lecture-lighter: #1a2b20;
+            --degree7-unit1-lesson15-lecture-border: #2a4233;
+            --degree7-unit1-lesson15-lecture-shadow: 0 1px 4px rgba(0,0,0,0.4);
+            --degree7-unit1-lesson15-lecture-audio-bg: #1e3327;
+            --degree7-unit1-lesson15-lecture-audio-progress: #365a44;
+            --degree7-unit1-lesson15-lecture-button-bg: #243d2d;
+            --degree7-unit1-lesson15-lecture-button-hover: #315540;
+            --degree7-unit1-lesson15-lecture-input-bg: #1c2e22;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: var(--degree7-unit1-lesson15-lecture-font);
+            background: var(--degree7-unit1-lesson15-lecture-bg);
+            background-image:
+                radial-gradient(circle at 12% 18%, rgba(46,139,87,0.06) 0%, transparent 42%),
+                radial-gradient(circle at 88% 82%, rgba(30,94,58,0.05) 0%, transparent 42%);
+            color: var(--degree7-unit1-lesson15-lecture-text);
+            line-height: 1.8;
+            transition: background var(--degree7-unit1-lesson15-lecture-transition), color var(--degree7-unit1-lesson15-lecture-transition);
+        }
+        .back-nav { background: var(--degree7-unit1-lesson15-lecture-card); border-bottom: 1px solid var(--degree7-unit1-lesson15-lecture-border); padding: 0.5rem 1.5rem; }
+        .back-nav a { font-weight: 600; color: var(--degree7-unit1-lesson15-lecture-accent); text-decoration: none; }
+        .back-nav a:hover { text-decoration: underline; }
+        .degree7-unit1-lesson15-lecture-container { max-width:1060px; margin:0 auto; padding:1.8rem 1.4rem 3rem; }
+        .degree7-unit1-lesson15-lecture-lesson-header { text-align: center; margin-bottom: 2rem; }
+        .degree7-unit1-lesson15-lecture-badge {
+            display:inline-block; background: var(--degree7-unit1-lesson15-lecture-accent); color: #fff;
+            padding: 0.3rem 1.1rem; border-radius: 30px; font-size: 0.78rem; font-weight: 700;
+            letter-spacing: 0.06em; text-transform: uppercase;
+        }
+        .degree7-unit1-lesson15-lecture-lesson-header h1 {
+            font-size: 2.1rem; color: var(--degree7-unit1-lesson15-lecture-heading);
+            margin: 0.7rem 0 0.4rem; line-height: 1.25; font-weight: 700;
+        }
+        .degree7-unit1-lesson15-lecture-lesson-header .degree7-unit1-lesson15-lecture-meta {
+            font-size: 0.9rem; color: var(--degree7-unit1-lesson15-lecture-text-light);
+            display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap;
+        }
+        /* Audio player */
+        .degree7-unit1-lesson15-lecture-audio-player {
+            background: var(--degree7-unit1-lesson15-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson15-lecture-border);
+            border-radius: var(--degree7-unit1-lesson15-lecture-radius);
+            padding: 1rem 1.4rem; margin: 1.5rem 0 2rem;
+            box-shadow: var(--degree7-unit1-lesson15-lecture-shadow);
+            display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+        }
+        .degree7-unit1-lesson15-lecture-play-btn {
+            width: 46px; height: 46px; border-radius: 50%;
+            background: var(--degree7-unit1-lesson15-lecture-accent);
+            color: #fff; border: none; font-size: 1.2rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background var(--degree7-unit1-lesson15-lecture-transition); flex-shrink: 0;
+        }
+        .degree7-unit1-lesson15-lecture-play-btn:hover { background: var(--degree7-unit1-lesson15-lecture-accent-hover); }
+        .degree7-unit1-lesson15-lecture-progress-area { flex:1; min-width:120px; display:flex; flex-direction:column; gap:0.3rem; }
+        .degree7-unit1-lesson15-lecture-progress-bar {
+            width:100%; height:6px; background: var(--degree7-unit1-lesson15-lecture-audio-progress);
+            border-radius: 3px; cursor:pointer; position:relative; overflow:hidden;
+        }
+        .degree7-unit1-lesson15-lecture-progress-fill {
+            height:100%; background: var(--degree7-unit1-lesson15-lecture-accent);
+            border-radius: 3px; width: 0%; transition: width 0.1s linear;
+        }
+        .degree7-unit1-lesson15-lecture-time-info {
+            display:flex; justify-content:space-between; font-size:0.75rem;
+            color: var(--degree7-unit1-lesson15-lecture-text-light);
+        }
+        .degree7-unit1-lesson15-lecture-speed-selector { display:flex; gap:0.3rem; flex-wrap:wrap; }
+        .degree7-unit1-lesson15-lecture-speed-btn {
+            border:1px solid var(--degree7-unit1-lesson15-lecture-border);
+            background: var(--degree7-unit1-lesson15-lecture-button-bg);
+            color: var(--degree7-unit1-lesson15-lecture-text);
+            padding:0.3rem 0.6rem; border-radius: 4px;
+            font-size:0.75rem; font-weight:600; cursor:pointer;
+            transition: all var(--degree7-unit1-lesson15-lecture-transition);
+        }
+        .degree7-unit1-lesson15-lecture-speed-btn.active {
+            background: var(--degree7-unit1-lesson15-lecture-accent);
+            color: #fff; border-color: var(--degree7-unit1-lesson15-lecture-accent);
+        }
+        .degree7-unit1-lesson15-lecture-audio-label {
+            font-weight:700; font-size:0.9rem;
+            color: var(--degree7-unit1-lesson15-lecture-heading); white-space:nowrap;
+        }
+        @media (max-width:600px) {
+            .degree7-unit1-lesson15-lecture-audio-player { flex-direction: column; align-items: stretch; }
+            .degree7-unit1-lesson15-lecture-audio-label { text-align: center; }
+        }
+        /* Illustrations */
+        .degree7-unit1-lesson15-lecture-hero-figure {
+            margin: 0 0 1.2rem;
+            border-radius: var(--degree7-unit1-lesson15-lecture-radius);
+            overflow: hidden;
+            box-shadow: var(--degree7-unit1-lesson15-lecture-shadow);
+            border: 1px solid var(--degree7-unit1-lesson15-lecture-border);
+        }
+        .degree7-unit1-lesson15-lecture-hero-img {
+            display: block; width: 100%; max-height: 320px; object-fit: cover;
+        }
+        .degree7-unit1-lesson15-lecture-hero-caption {
+            display: block; padding: 0.5rem 0.9rem;
+            font-size: 0.82rem; color: var(--degree7-unit1-lesson15-lecture-text-light);
+            background: var(--degree7-unit1-lesson15-lecture-lighter);
+            border-top: 1px solid var(--degree7-unit1-lesson15-lecture-border);
+            font-style: italic; text-align: center;
+        }
+        .degree7-unit1-lesson15-lecture-rule-figure { text-align: center; margin: 0 0 0.6rem; }
+        .degree7-unit1-lesson15-lecture-rule-img {
+            display: inline-block; max-width: 140px; max-height: 110px;
+            width: auto; height: auto;
+            border-radius: var(--degree7-unit1-lesson15-lecture-radius-sm);
+            box-shadow: 0 3px 10px rgba(30,94,58,0.12);
+            border: 2px solid var(--degree7-unit1-lesson15-lecture-lighter);
+        }
+        .degree7-unit1-lesson15-lecture-showcase-banner {
+            margin: 0.6rem 0 1rem;
+            border-radius: var(--degree7-unit1-lesson15-lecture-radius);
+            overflow: hidden;
+            box-shadow: var(--degree7-unit1-lesson15-lecture-shadow);
+            border: 1px solid var(--degree7-unit1-lesson15-lecture-border);
+        }
+        .degree7-unit1-lesson15-lecture-showcase-img {
+            display: block; width: 100%; max-height: 220px; object-fit: cover;
+        }
+        .degree7-unit1-lesson15-lecture-prod-figure { text-align: center; margin: 0.4rem 0 0.9rem; }
+        .degree7-unit1-lesson15-lecture-prod-img {
+            display: inline-block; max-width: 100%; max-height: 240px;
+            border-radius: var(--degree7-unit1-lesson15-lecture-radius-sm);
+            box-shadow: var(--degree7-unit1-lesson15-lecture-shadow);
+            border: 1px solid var(--degree7-unit1-lesson15-lecture-border);
+        }
+        .degree7-unit1-lesson15-lecture-prod-caption {
+            display: block; margin-top: 0.4rem;
+            font-size: 0.8rem; color: var(--degree7-unit1-lesson15-lecture-text-light);
+            font-style: italic;
+        }
+        /* Text card */
+        .degree7-unit1-lesson15-lecture-text-card {
+            background: var(--degree7-unit1-lesson15-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson15-lecture-border);
+            border-left: 5px solid var(--degree7-unit1-lesson15-lecture-accent);
+            border-radius: 0 var(--degree7-unit1-lesson15-lecture-radius) var(--degree7-unit1-lesson15-lecture-radius) 0;
+            padding: 1.5rem 1.8rem; margin: 1.8rem 0;
+            font-size: 1.05rem; line-height: 1.9;
+            box-shadow: var(--degree7-unit1-lesson15-lecture-shadow); position: relative;
+        }
+        .degree7-unit1-lesson15-lecture-text-card .degree7-unit1-lesson15-lecture-quote-mark {
+            position: absolute; top:-15px; left:14px; font-size:3.5rem;
+            color: var(--degree7-unit1-lesson15-lecture-accent); opacity:0.3; line-height:1;
+            font-family: 'Georgia', serif;
+        }
+        .degree7-unit1-lesson15-lecture-text-card p { margin-bottom: 0.8rem; }
+        .degree7-unit1-lesson15-lecture-text-card p:last-of-type { margin-bottom: 0; }
+        .degree7-unit1-lesson15-lecture-text-author {
+            text-align: right; font-style: italic; font-size: 0.9rem;
+            color: var(--degree7-unit1-lesson15-lecture-text-light); margin-top: 0.8rem;
+        }
+        /* Poem layout */
+        .degree7-unit1-lesson15-lecture-poem {
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            text-align: left;
+            padding-left: 1.5rem;
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+        .degree7-unit1-lesson15-lecture-poem .verse-num {
+            display: inline-block;
+            min-width: 1.6rem;
+            color: var(--degree7-unit1-lesson15-lecture-soft);
+            font-style: normal;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        .degree7-unit1-lesson15-lecture-poem .stanza {
+            margin-bottom: 1rem;
+        }
+        .degree7-unit1-lesson15-lecture-hl {
+            background: var(--degree7-unit1-lesson15-lecture-light);
+            color: var(--degree7-unit1-lesson15-lecture-heading);
+            padding: 0 5px; border-radius: 4px; font-weight: 700;
+            border-bottom: 2px solid var(--degree7-unit1-lesson15-lecture-accent);
+            cursor: help;
+        }
+        /* Section headings */
+        .degree7-unit1-lesson15-lecture-section h2 {
+            font-size: 1.5rem; color: var(--degree7-unit1-lesson15-lecture-heading);
+            margin: 2.4rem 0 1rem; display: inline-block;
+            padding-bottom: 0.3rem; position: relative;
+        }
+        .degree7-unit1-lesson15-lecture-section h2::after {
+            content: ''; position: absolute;
+            left: 0; right: 40%; bottom: 0; height: 3px;
+            background: var(--degree7-unit1-lesson15-lecture-accent); border-radius: 2px;
+        }
+        /* Rules */
+        .degree7-unit1-lesson15-lecture-valeurs-section {
+            background: var(--degree7-unit1-lesson15-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson15-lecture-border);
+            border-radius: var(--degree7-unit1-lesson15-lecture-radius);
+            padding: 1.6rem 1.8rem; margin: 2rem 0;
+            box-shadow: var(--degree7-unit1-lesson15-lecture-shadow);
+        }
+        .degree7-unit1-lesson15-lecture-valeurs-section h2 {
+            font-size: 1.5rem; color: var(--degree7-unit1-lesson15-lecture-heading);
+            margin-bottom: 1rem; display: inline-block;
+            padding-bottom: 0.3rem;
+            border-bottom: 3px solid var(--degree7-unit1-lesson15-lecture-accent);
+        }
+        .degree7-unit1-lesson15-lecture-valeur-card {
+            background: var(--degree7-unit1-lesson15-lecture-light);
+            border-radius: var(--degree7-unit1-lesson15-lecture-radius-sm);
+            padding: 1rem 1.2rem; margin-bottom: 1rem;
+        }
+        .degree7-unit1-lesson15-lecture-valeur-card h3 {
+            color: var(--degree7-unit1-lesson15-lecture-accent);
+            font-size: 1.1rem; margin-bottom: 0.4rem;
+        }
+        .degree7-unit1-lesson15-lecture-valeur-card p { margin: 0.4rem 0; }
+        .degree7-unit1-lesson15-lecture-valeur-card ul { list-style: none; padding: 0; }
+        .degree7-unit1-lesson15-lecture-valeur-card li {
+            padding: 0.3rem 0 0.3rem 1.4rem; position: relative;
+        }
+        .degree7-unit1-lesson15-lecture-valeur-card li::before {
+            content: '◆'; position: absolute; left: 0;
+            color: var(--degree7-unit1-lesson15-lecture-accent);
+            font-size: 0.55rem; top: 0.6rem;
+        }
+        /* Author card */
+        .degree7-unit1-lesson15-lecture-author-card {
+            background: var(--degree7-unit1-lesson15-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson15-lecture-border);
+            border-radius: var(--degree7-unit1-lesson15-lecture-radius);
+            padding: 1.2rem 1.5rem; margin: 1.2rem 0;
+            box-shadow: var(--degree7-unit1-lesson15-lecture-shadow);
+            display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap;
+        }
+        .degree7-unit1-lesson15-lecture-author-img {
+            width: 110px; height: 110px; border-radius: 50%;
+            object-fit: cover; flex-shrink: 0;
+            border: 3px solid var(--degree7-unit1-lesson15-lecture-light);
+            box-shadow: var(--degree7-unit1-lesson15-lecture-shadow);
+        }
+        .degree7-unit1-lesson15-lecture-author-info { flex: 1; min-width: 200px; }
+        .degree7-unit1-lesson15-lecture-author-info h3 {
+            color: var(--degree7-unit1-lesson15-lecture-heading);
+            font-size: 1.1rem; margin-bottom: 0.3rem;
+        }
+        .degree7-unit1-lesson15-lecture-author-info p {
+            font-size: 0.92rem; color: var(--degree7-unit1-lesson15-lecture-text-light);
+        }
+        /* Showcase */
+        .degree7-unit1-lesson15-lecture-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 0.9rem;
+            margin: 1rem 0;
+        }
+        .degree7-unit1-lesson15-lecture-vcard {
+            position: relative;
+            background: var(--degree7-unit1-lesson15-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson15-lecture-border);
+            border-radius: var(--degree7-unit1-lesson15-lecture-radius-sm);
+            padding: 0.9rem 0.9rem 0.9rem 3.2rem;
+            font-size: 0.85rem;
+            transition: all var(--degree7-unit1-lesson15-lecture-transition);
+            overflow: hidden;
+        }
+        .degree7-unit1-lesson15-lecture-vcard:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--degree7-unit1-lesson15-lecture-shadow);
+            border-color: var(--degree7-unit1-lesson15-lecture-accent);
+        }
+        .degree7-unit1-lesson15-lecture-vcard .degree7-unit1-lesson15-lecture-vicon {
+            position: absolute; left: 0; top: 0; bottom: 0;
+            width: 2.5rem;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem;
+            background: var(--degree7-unit1-lesson15-lecture-light);
+            border-right: 1px solid var(--degree7-unit1-lesson15-lecture-border);
+        }
+        .degree7-unit1-lesson15-lecture-vcard .degree7-unit1-lesson15-lecture-vword {
+            display: block; font-weight: 800;
+            color: var(--degree7-unit1-lesson15-lecture-heading);
+            font-size: 0.95rem; margin-bottom: 0.15rem;
+        }
+        .degree7-unit1-lesson15-lecture-vcard .degree7-unit1-lesson15-lecture-vdef {
+            display: block; color: var(--degree7-unit1-lesson15-lecture-text-light);
+            font-size: 0.8rem; line-height: 1.4;
+        }
+        /* Exercise cards */
+        .degree7-unit1-lesson15-lecture-exercises-section {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; align-items: start;
+            margin-top: 2rem;
+        }
+        .degree7-unit1-lesson15-lecture-exercises-section h2 {
+            grid-column: 1 / -1; font-size: 1.5rem;
+            color: var(--degree7-unit1-lesson15-lecture-heading);
+            margin: 0 0 1rem; display: inline-block;
+            padding-bottom: 0.3rem;
+            border-bottom: 3px solid var(--degree7-unit1-lesson15-lecture-accent);
+        }
+        .degree7-unit1-lesson15-lecture-exercise-card {
+            position: relative;
+            background: var(--degree7-unit1-lesson15-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson15-lecture-border);
+            border-radius: var(--degree7-unit1-lesson15-lecture-radius-sm);
+            padding: 1.2rem 1.3rem 1.2rem 3.4rem;
+            box-shadow: var(--degree7-unit1-lesson15-lecture-shadow);
+            transition: all var(--degree7-unit1-lesson15-lecture-transition);
+        }
+        .degree7-unit1-lesson15-lecture-exercise-card:hover {
+            box-shadow: 0 6px 22px rgba(30,94,58,0.10);
+        }
+        .degree7-unit1-lesson15-lecture-exercise-card::before {
+            content: attr(data-num);
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 2.6rem;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(180deg, var(--degree7-unit1-lesson15-lecture-accent) 0%, var(--degree7-unit1-lesson15-lecture-heading) 100%);
+            color: #fff;
+            font-size: 1.05rem; font-weight: 800;
+            font-family: 'Georgia', serif;
+            border-radius: var(--degree7-unit1-lesson15-lecture-radius-sm) 0 0 var(--degree7-unit1-lesson15-lecture-radius-sm);
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            letter-spacing: 0.15em;
+        }
+        .degree7-unit1-lesson15-lecture-exercise-card h3 {
+            font-size: 1.02rem;
+            color: var(--degree7-unit1-lesson15-lecture-accent);
+            margin-bottom: 0.6rem;
+            display: flex; align-items: center; gap: 0.4rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed var(--degree7-unit1-lesson15-lecture-border);
+        }
+        .degree7-unit1-lesson15-lecture-exercise-card table {
+            width: 100%; border-collapse: collapse; margin: 0.8rem 0;
+        }
+        .degree7-unit1-lesson15-lecture-exercise-card th,
+        .degree7-unit1-lesson15-lecture-exercise-card td {
+            padding: 0.55rem 0.7rem;
+            border: 1px solid var(--degree7-unit1-lesson15-lecture-border);
+            text-align: left; font-size: 0.9rem;
+        }
+        .degree7-unit1-lesson15-lecture-exercise-card th {
+            background: var(--degree7-unit1-lesson15-lecture-light);
+            font-weight: 700;
+            color: var(--degree7-unit1-lesson15-lecture-heading);
+        }
+        .degree7-unit1-lesson15-lecture-exercise-card input[type="text"],
+        .degree7-unit1-lesson15-lecture-exercise-card textarea {
+            width: 100%; padding: 0.4rem 0.6rem;
+            border: 1px solid var(--degree7-unit1-lesson15-lecture-border);
+            border-radius: 4px;
+            background: var(--degree7-unit1-lesson15-lecture-input-bg);
+            color: var(--degree7-unit1-lesson15-lecture-text);
+            font-family: inherit; font-size: 0.9rem;
+        }
+        .degree7-unit1-lesson15-lecture-exercise-card textarea { resize: vertical; }
+        .degree7-unit1-lesson15-lecture-exercise-card input:focus,
+        .degree7-unit1-lesson15-lecture-exercise-card textarea:focus {
+            outline: none;
+            border-color: var(--degree7-unit1-lesson15-lecture-accent);
+        }
+        .degree7-unit1-lesson15-lecture-inline-input {
+            width: 120px !important;
+            padding: 0.25rem 0.5rem !important;
+            display: inline-block;
+            margin: 0 0.2rem;
+        }
+        .degree7-unit1-lesson15-lecture-btn-verify {
+            background: var(--degree7-unit1-lesson15-lecture-accent);
+            color: #fff; border: none;
+            padding: 0.5rem 1.2rem; border-radius: 20px;
+            font-weight: 600; cursor: pointer;
+            transition: background var(--degree7-unit1-lesson15-lecture-transition);
+            margin-top: 0.6rem; font-size: 0.85rem;
+        }
+        .degree7-unit1-lesson15-lecture-btn-verify:hover { background: var(--degree7-unit1-lesson15-lecture-accent-hover); }
+        .degree7-unit1-lesson15-lecture-answer-key {
+            display: none; margin-top: 0.8rem; padding: 0.8rem;
+            background: var(--degree7-unit1-lesson15-lecture-lighter);
+            border-radius: 6px; font-size: 0.85rem;
+            color: var(--degree7-unit1-lesson15-lecture-text);
+            border: 1px dashed var(--degree7-unit1-lesson15-lecture-accent);
+        }
+        .degree7-unit1-lesson15-lecture-answer-key.visible { display: block; }
+        .degree7-unit1-lesson15-lecture-self-assessment {
+            margin-top: 0.8rem; font-size: 0.9rem;
+            display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
+        }
+        .degree7-unit1-lesson15-lecture-self-assessment label { cursor: pointer; }
+        .degree7-unit1-lesson15-lecture-exercise-col-left { grid-column: 1 / 2; }
+        .degree7-unit1-lesson15-lecture-exercise-col-right { grid-column: 2 / 3; }
+        /* Note callout */
+        .degree7-unit1-lesson15-lecture-note {
+            background: linear-gradient(135deg, rgba(46,139,87,0.07), rgba(30,94,58,0.03));
+            border: 1px dashed var(--degree7-unit1-lesson15-lecture-accent);
+            border-radius: var(--degree7-unit1-lesson15-lecture-radius-sm);
+            padding: 1rem 1.2rem; margin: 1rem 0; font-size: 0.95rem;
+        }
+        .degree7-unit1-lesson15-lecture-note strong { color: var(--degree7-unit1-lesson15-lecture-accent); }
+        /* Situation cards */
+        .degree7-unit1-lesson15-lecture-situation {
+            display: grid;
+            grid-template-columns: 2.2rem 1fr;
+            gap: 0.7rem;
+            align-items: start;
+            background: var(--degree7-unit1-lesson15-lecture-lighter);
+            border-left: 3px solid var(--degree7-unit1-lesson15-lecture-accent);
+            border-radius: var(--degree7-unit1-lesson15-lecture-radius-sm);
+            padding: 0.7rem 0.9rem;
+            margin-bottom: 0.6rem;
+        }
+        .degree7-unit1-lesson15-lecture-situation .num {
+            width: 26px; height: 26px;
+            background: var(--degree7-unit1-lesson15-lecture-accent);
+            color: #fff; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+        .degree7-unit1-lesson15-lecture-situation .content p {
+            font-size: 0.88rem;
+            margin-bottom: 0.4rem;
+        }
+        .degree7-unit1-lesson15-lecture-situation .content input[type="text"] {
+            width: 100%; padding: 0.35rem 0.5rem;
+            border: 1px solid var(--degree7-unit1-lesson15-lecture-border);
+            border-radius: 4px;
+            background: var(--degree7-unit1-lesson15-lecture-input-bg);
+            color: var(--degree7-unit1-lesson15-lecture-text);
+            font-family: inherit; font-size: 0.85rem;
+        }
+        /* Score area */
+        .degree7-unit1-lesson15-lecture-score-area {
+            background: var(--degree7-unit1-lesson15-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson15-lecture-border);
+            border-radius: var(--degree7-unit1-lesson15-lecture-radius);
+            padding: 1.5rem; margin-top: 2rem;
+            box-shadow: var(--degree7-unit1-lesson15-lecture-shadow);
+        }
+        .degree7-unit1-lesson15-lecture-score-area h2 {
+            color: var(--degree7-unit1-lesson15-lecture-heading); margin-bottom: 1rem;
+        }
+        .degree7-unit1-lesson15-lecture-score-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .degree7-unit1-lesson15-lecture-score-stat {
+            background: var(--degree7-unit1-lesson15-lecture-light);
+            padding: 0.8rem 1.2rem; border-radius: 8px; font-weight: 600;
+        }
+        .degree7-unit1-lesson15-lecture-footer-nav {
+            margin-top: 2rem; display: flex; justify-content: space-between; flex-wrap: wrap;
+            background: var(--degree7-unit1-lesson15-lecture-card);
+            border-top: 1px solid var(--degree7-unit1-lesson15-lecture-border);
+            padding: 0.8rem 1.5rem;
+            border-radius: 0 0 var(--degree7-unit1-lesson15-lecture-radius) var(--degree7-unit1-lesson15-lecture-radius);
+        }
+        .degree7-unit1-lesson15-lecture-footer-nav a {
+            font-weight: 600; color: var(--degree7-unit1-lesson15-lecture-accent); text-decoration: none;
+        }
+        .degree7-unit1-lesson15-lecture-footer-nav a:hover { text-decoration: underline; }
+        html[dir="rtl"] body { direction: rtl; }
+        html[dir="rtl"] .degree7-unit1-lesson15-lecture-container { text-align: right; }
+        html[dir="rtl"] .degree7-unit1-lesson15-lecture-exercise-card th,
+        html[dir="rtl"] .degree7-unit1-lesson15-lecture-exercise-card td { text-align: right; }
+        html[dir="rtl"] .degree7-unit1-lesson15-lecture-exercise-card { padding-left: 1.3rem; padding-right: 3.4rem; }
+        html[dir="rtl"] .degree7-unit1-lesson15-lecture-exercise-card::before {
+            left: auto; right: 0;
+            border-radius: 0 var(--degree7-unit1-lesson15-lecture-radius-sm) var(--degree7-unit1-lesson15-lecture-radius-sm) 0;
+        }
+        html[dir="rtl"] .degree7-unit1-lesson15-lecture-vcard { padding-left: 0.9rem; padding-right: 3.2rem; }
+        html[dir="rtl"] .degree7-unit1-lesson15-lecture-vcard .degree7-unit1-lesson15-lecture-vicon {
+            left: auto; right: 0;
+            border-right: none;
+            border-left: 1px solid var(--degree7-unit1-lesson15-lecture-border);
+        }
+        html[dir="rtl"] .degree7-unit1-lesson15-lecture-situation {
+            border-left: none;
+            border-right: 3px solid var(--degree7-unit1-lesson15-lecture-accent);
+        }
+        @media (max-width:800px) {
+            .degree7-unit1-lesson15-lecture-exercises-section { grid-template-columns: 1fr; }
+            .degree7-unit1-lesson15-lecture-exercise-col-left,
+            .degree7-unit1-lesson15-lecture-exercise-col-right { grid-column: auto; }
+        }
+        @media (max-width:600px) {
+            .degree7-unit1-lesson15-lecture-lesson-header h1 { font-size: 1.5rem; }
+            .degree7-unit1-lesson15-lecture-container { padding: 1rem 0.8rem 2rem; }
+            .degree7-unit1-lesson15-lecture-text-card { padding: 1.4rem 1.2rem; }
+            .degree7-unit1-lesson15-lecture-hero-img { max-height: 200px; }
+            .degree7-unit1-lesson15-lecture-rule-img { max-width: 100px; }
+            .degree7-unit1-lesson15-lecture-showcase-img { max-height: 140px; }
+            .degree7-unit1-lesson15-lecture-poem { font-size: 0.95rem; padding-left: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div id="toast-container"></div>
+    <button id="signInBtn" style="display:none"></button>
+    <nav class="back-nav no-print">
+        <a href="index.html" data-i18n="back_link">← Retour à l'accueil</a>
+    </nav>
+    <div id="main-content" class="degree7-unit1-lesson15-lecture-container">
+        <!-- Breadcrumb -->
+        <p style="margin-bottom:1.5rem; color:var(--degree7-unit1-lesson15-lecture-text-light);">
+            <a href="degree7.html" data-i18n="back_revision">Unité 1</a>
+            › <strong data-i18n="back_current">Lorsque l'enfant paraît...</strong>
+        </p>
+        <div class="degree7-unit1-lesson15-lecture-lesson-header">
+            <span class="degree7-unit1-lesson15-lecture-badge" data-i18n="lesson_badge">📖 Lecture · Leçon 15</span>
+            <h1 data-i18n="lesson_title">Lorsque l'enfant paraît...<br>Victor Hugo, <em>Feuilles d'automne</em></h1>
+            <div class="degree7-unit1-lesson15-lecture-meta">
+                <span data-i18n="lesson_duration">⏱️ 45 minutes</span>
+                <span data-i18n="lesson_meta_audio">🎧 Écoutez le poème puis répondez aux questions</span>
+            </div>
+        </div>
+        <!-- Audio player -->
+        <div class="degree7-unit1-lesson15-lecture-audio-player" id="audioPlayer">
+            <span class="degree7-unit1-lesson15-lecture-audio-label" data-i18n="audio_label">🎧 Écoute du poème</span>
+            <button class="degree7-unit1-lesson15-lecture-play-btn" id="playBtn" aria-label="Lecture">▶</button>
+            <div class="degree7-unit1-lesson15-lecture-progress-area">
+                <div class="degree7-unit1-lesson15-lecture-progress-bar" id="progressBar">
+                    <div class="degree7-unit1-lesson15-lecture-progress-fill" id="progressFill"></div>
+                </div>
+                <div class="degree7-unit1-lesson15-lecture-time-info">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+            <div class="degree7-unit1-lesson15-lecture-speed-selector" id="speedSelector">
+                <button class="degree7-unit1-lesson15-lecture-speed-btn" data-speed="0.75">0.75x</button>
+                <button class="degree7-unit1-lesson15-lecture-speed-btn active" data-speed="1">1x</button>
+                <button class="degree7-unit1-lesson15-lecture-speed-btn" data-speed="1.25">1.25x</button>
+                <button class="degree7-unit1-lesson15-lecture-speed-btn" data-speed="1.5">1.5x</button>
+            </div>
+        </div>
+        <!-- Author presentation -->
+        <div class="degree7-unit1-lesson15-lecture-author-card">
+            <img src="assets7/images/degree7/unit1/lesson15/victor_hugo_portrait.png"
+                 alt="Portrait de Victor Hugo"
+                 class="degree7-unit1-lesson15-lecture-author-img"
+                 data-i18n="author_img_alt"
+                 onerror="this.style.display='none'">
+            <div class="degree7-unit1-lesson15-lecture-author-info">
+                <h3 data-i18n="author_title">👤 Victor Hugo (1802 – 1885)</h3>
+                <p data-i18n="author_bio">L'un des plus grands auteurs français. Parmi ses œuvres les plus connues : <em>Les Misérables</em>, <em>Notre-Dame de Paris</em>, <em>Les Contemplations</em>, <em>Feuilles d'automne</em>.</p>
+            </div>
+        </div>
+        <!-- Text / Poem -->
+        <section class="degree7-unit1-lesson15-lecture-section">
+            <h2 data-i18n="text_heading">📖 J'observe</h2>
+            <figure class="degree7-unit1-lesson15-lecture-hero-figure">
+                <img src="assets7/images/degree7/unit1/lesson15/victor_hugo_enfants.png"
+                     alt="Photographie de Victor Hugo avec deux enfants"
+                     class="degree7-unit1-lesson15-lecture-hero-img"
+                     data-i18n="img_hero_alt"
+                     onerror="this.parentElement.style.display='none'">
+                <figcaption class="degree7-unit1-lesson15-lecture-hero-caption" data-i18n="img_hero_caption">
+                    Victor Hugo entouré de deux enfants — la famille, thème central du poème.
+                </figcaption>
+            </figure>
+            <div class="degree7-unit1-lesson15-lecture-text-card">
+                <span class="degree7-unit1-lesson15-lecture-quote-mark">“</span>
+                <div class="degree7-unit1-lesson15-lecture-poem">
+                    <div class="stanza">
+                        <div><span class="verse-num">1</span>Lorsque l'enfant paraît, le <span class="degree7-unit1-lesson15-lecture-hl" title="groupe de personnes unies par des liens familiaux">cercle de famille</span></div>
+                        <div><span class="verse-num">2</span>Applaudit à grands cris. Son doux regard qui brille</div>
+                        <div><span class="verse-num">3</span>Fait briller tous les yeux,</div>
+                        <div><span class="verse-num">4</span>Et les plus tristes fronts, les plus <span class="degree7-unit1-lesson15-lecture-hl" title="salis, altérés">souillés</span> peut-être,</div>
+                        <div><span class="verse-num">5</span>Se <span class="degree7-unit1-lesson15-lecture-hl" title="deviennent moins soucieux et moins tristes, sourient, rient">dérident</span> soudain à voir l'enfant paraître,</div>
+                        <div><span class="verse-num">6</span>Innocent et joyeux.</div>
+                    </div>
+                    <div class="stanza">
+                        <div><span class="verse-num">7</span>Il est si beau, l'enfant, avec son doux sourire,</div>
+                        <div><span class="verse-num">8</span>Sa douce <span class="degree7-unit1-lesson15-lecture-hl" title="innocence">bonne foi</span>, sa voix qui veut tout dire,</div>
+                        <div><span class="verse-num">9</span>Ses pleurs vite <span class="degree7-unit1-lesson15-lecture-hl" title="calmés">apaisés</span>,</div>
+                        <div><span class="verse-num">10</span>Laissant <span class="degree7-unit1-lesson15-lecture-hl" title="aller au hasard, sans but">errer</span> sa vue étonnée et ravie,</div>
+                        <div><span class="verse-num">11</span>Offrant de toutes parts sa jeune âme à la vie</div>
+                        <div><span class="verse-num">12</span>Et sa bouche aux baisers.</div>
+                    </div>
+                </div>
+                <div class="degree7-unit1-lesson15-lecture-text-author" data-i18n="text_author">— Victor HUGO, <em>Feuilles d'automne</em></div>
+            </div>
+            <div class="degree7-unit1-lesson15-lecture-note">
+                <strong data-i18n="consigne_title">➤ Consigne :</strong>
+                <span data-i18n="consigne_text">Lis silencieusement le poème puis à haute voix. Repère les mots difficiles et observe comment Victor Hugo décrit l'enfant et l'effet qu'il produit sur sa famille.</span>
+            </div>
+            <div class="degree7-unit1-lesson15-lecture-note">
+                <strong data-i18n="vocab_title">📚 Vocabulaire :</strong>
+                <ul style="padding-left:1.2rem; margin-top:0.4rem;">
+                    <li data-i18n="vocab1"><strong>Souillé</strong> : sali, altéré.</li>
+                    <li data-i18n="vocab2"><strong>Se dérider</strong> : devenir moins soucieux et moins triste, sourire, rire.</li>
+                    <li data-i18n="vocab3"><strong>Bonne foi</strong> : innocence.</li>
+                    <li data-i18n="vocab4"><strong>Apaisé</strong> : calmé.</li>
+                    <li data-i18n="vocab5"><strong>Errer</strong> : aller au hasard, sans but.</li>
+                </ul>
+            </div>
+        </section>
+        <!-- Rules / Lecture method -->
+        <section class="degree7-unit1-lesson15-lecture-section">
+            <h2 data-i18n="rules_heading">📖 Je lis à haute voix</h2>
+            <div class="degree7-unit1-lesson15-lecture-valeurs-section">
+                <div class="degree7-unit1-lesson15-lecture-valeur-card">
+                    <h3 data-i18n="rule1_title">🎙️ 1. Préparer sa lecture</h3>
+                    <ul data-i18n="rule1_list">
+                        <li>Je lis le poème silencieusement pour bien comprendre le sens.</li>
+                        <li>Je lis les vignettes (notes) pour préparer et corriger ma lecture.</li>
+                        <li>Je lis le poème à haute voix en respectant les pauses.</li>
+                    </ul>
+                </div>
+                <div class="degree7-unit1-lesson15-lecture-valeur-card">
+                    <h3 data-i18n="rule2_title">🔤 2. Prononcer le « e » muet</h3>
+                    <ul data-i18n="rule2_list">
+                        <li>Je <strong>prononce</strong> le <em>e</em> muet à l'intérieur du vers lorsqu'il est placé entre deux consonnes.</li>
+                        <li>Je <strong>ne prononce pas</strong> le <em>e</em> à la fin du vers.</li>
+                        <li>Je <strong>ne prononce pas</strong> le <em>e</em> quand il est suivi d'une voyelle.</li>
+                    </ul>
+                </div>
+                <div class="degree7-unit1-lesson15-lecture-valeur-card">
+                    <h3 data-i18n="rule3_title">🎭 3. Pour une bonne récitation</h3>
+                    <ul data-i18n="rule3_list">
+                        <li>Marquer les pauses (arrêt bref à chaque virgule, arrêt au point).</li>
+                        <li>Prononcer convenablement chaque mot.</li>
+                        <li>Accompagner sa lecture de gestes expressifs.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="degree7-unit1-lesson15-lecture-author-card">
+                <img src="assets7/images/degree7/unit1/lesson15/jeune_femme_lisant.png"
+                     alt="Peinture d'une jeune femme lisant"
+                     class="degree7-unit1-lesson15-lecture-author-img"
+                     data-i18n="img_lecture_alt"
+                     onerror="this.style.display='none'">
+                <div class="degree7-unit1-lesson15-lecture-author-info">
+                    <h3 data-i18n="lecture_illustration_title">📖 Une lecture expressive</h3>
+                    <p data-i18n="lecture_illustration_text">La lecture à voix haute d'un poème doit transmettre les émotions du texte. Le ton, le rythme et les pauses créent la musicalité des vers.</p>
+                </div>
+            </div>
+        </section>
+        <!-- Vocabulary showcase -->
+        <section class="degree7-unit1-lesson15-lecture-section">
+            <h2 data-i18n="showcase_heading">🎨 Le lexique du poème</h2>
+            <div class="degree7-unit1-lesson15-lecture-showcase">
+                <div class="degree7-unit1-lesson15-lecture-vcard">
+                    <span class="degree7-unit1-lesson15-lecture-vicon">👨‍👩‍👧</span>
+                    <span class="degree7-unit1-lesson15-lecture-vword" data-i18n="card1_word">le cercle de famille</span>
+                    <span class="degree7-unit1-lesson15-lecture-vdef" data-i18n="card1_def">groupe de personnes unies par des liens familiaux</span>
+                </div>
+                <div class="degree7-unit1-lesson15-lecture-vcard">
+                    <span class="degree7-unit1-lesson15-lecture-vicon">✨</span>
+                    <span class="degree7-unit1-lesson15-lecture-vword" data-i18n="card2_word">innocent</span>
+                    <span class="degree7-unit1-lesson15-lecture-vdef" data-i18n="card2_def">qui n'a rien fait de mal, pur</span>
+                </div>
+                <div class="degree7-unit1-lesson15-lecture-vcard">
+                    <span class="degree7-unit1-lesson15-lecture-vicon">😊</span>
+                    <span class="degree7-unit1-lesson15-lecture-vword" data-i18n="card3_word">joyeux</span>
+                    <span class="degree7-unit1-lesson15-lecture-vdef" data-i18n="card3_def">qui éprouve de la joie</span>
+                </div>
+                <div class="degree7-unit1-lesson15-lecture-vcard">
+                    <span class="degree7-unit1-lesson15-lecture-vicon">🌿</span>
+                    <span class="degree7-unit1-lesson15-lecture-vword" data-i18n="card4_word">apaisé</span>
+                    <span class="degree7-unit1-lesson15-lecture-vdef" data-i18n="card4_def">calmé, tranquillisé</span>
+                </div>
+                <div class="degree7-unit1-lesson15-lecture-vcard">
+                    <span class="degree7-unit1-lesson15-lecture-vicon">👀</span>
+                    <span class="degree7-unit1-lesson15-lecture-vword" data-i18n="card5_word">ravie</span>
+                    <span class="degree7-unit1-lesson15-lecture-vdef" data-i18n="card5_def">remplie de joie et d'admiration</span>
+                </div>
+                <div class="degree7-unit1-lesson15-lecture-vcard">
+                    <span class="degree7-unit1-lesson15-lecture-vicon">💫</span>
+                    <span class="degree7-unit1-lesson15-lecture-vword" data-i18n="card6_word">étonnée</span>
+                    <span class="degree7-unit1-lesson15-lecture-vdef" data-i18n="card6_def">surprise, émerveillée</span>
+                </div>
+                <div class="degree7-unit1-lesson15-lecture-vcard">
+                    <span class="degree7-unit1-lesson15-lecture-vicon">👶</span>
+                    <span class="degree7-unit1-lesson15-lecture-vword" data-i18n="card7_word">l'enfant</span>
+                    <span class="degree7-unit1-lesson15-lecture-vdef" data-i18n="card7_def">être humain dans ses premières années</span>
+                </div>
+                <div class="degree7-unit1-lesson15-lecture-vcard">
+                    <span class="degree7-unit1-lesson15-lecture-vicon">💋</span>
+                    <span class="degree7-unit1-lesson15-lecture-vword" data-i18n="card8_word">un baiser</span>
+                    <span class="degree7-unit1-lesson15-lecture-vdef" data-i18n="card8_def">geste tendre posé sur la bouche ou la joue</span>
+                </div>
+                <div class="degree7-unit1-lesson15-lecture-vcard">
+                    <span class="degree7-unit1-lesson15-lecture-vicon">😢</span>
+                    <span class="degree7-unit1-lesson15-lecture-vword" data-i18n="card9_word">les pleurs</span>
+                    <span class="degree7-unit1-lesson15-lecture-vdef" data-i18n="card9_def">larmes versées</span>
+                </div>
+                <div class="degree7-unit1-lesson15-lecture-vcard">
+                    <span class="degree7-unit1-lesson15-lecture-vicon">🌟</span>
+                    <span class="degree7-unit1-lesson15-lecture-vword" data-i18n="card10_word">la vie</span>
+                    <span class="degree7-unit1-lesson15-lecture-vdef" data-i18n="card10_def">état des êtres vivants</span>
+                </div>
+                <div class="degree7-unit1-lesson15-lecture-vcard">
+                    <span class="degree7-unit1-lesson15-lecture-vicon">🎉</span>
+                    <span class="degree7-unit1-lesson15-lecture-vword" data-i18n="card11_word">applaudir</span>
+                    <span class="degree7-unit1-lesson15-lecture-vdef" data-i18n="card11_def">battre des mains en signe de joie</span>
+                </div>
+                <div class="degree7-unit1-lesson15-lecture-vcard">
+                    <span class="degree7-unit1-lesson15-lecture-vicon">👁️</span>
+                    <span class="degree7-unit1-lesson15-lecture-vword" data-i18n="card12_word">le regard</span>
+                    <span class="degree7-unit1-lesson15-lecture-vdef" data-i18n="card12_def">action de regarder, expression des yeux</span>
+                </div>
+            </div>
+        </section>
+        <!-- Exercises -->
+        <div class="degree7-unit1-lesson15-lecture-exercises-section">
+            <h2 data-i18n="exercises_heading">✍️ Je m'exerce</h2>
+            <!-- Ex 1 -->
+            <div class="degree7-unit1-lesson15-lecture-exercise-card degree7-unit1-lesson15-lecture-exercise-col-left" data-num="1">
+                <h3 data-i18n="exo1_title">📌 1. Je découvre le poème</h3>
+                <p data-i18n="exo1_instruction">Réponds aux questions de découverte du poème.</p>
+                <ol type="a">
+                    <li>Combien y a-t-il de vers ? <input type="text" class="degree7-unit1-lesson15-lecture-inline-input" placeholder="..."></li>
+                    <li>Combien y a-t-il de strophes ? <input type="text" class="degree7-unit1-lesson15-lecture-inline-input" placeholder="..."></li>
+                    <li>Sont-ils de même longueur ? Comment sont-ils disposés ? <input type="text" class="degree7-unit1-lesson15-lecture-inline-input" placeholder="..."></li>
+                    <li>Comment finissent-ils ? <input type="text" class="degree7-unit1-lesson15-lecture-inline-input" placeholder="..."></li>
+                    <li>De qui parle-t-on surtout ? <input type="text" class="degree7-unit1-lesson15-lecture-inline-input" placeholder="..."></li>
+                </ol>
+                <button class="degree7-unit1-lesson15-lecture-btn-verify" onclick="toggleCorrection('exo1Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo1Key" class="degree7-unit1-lesson15-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson15-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 2 -->
+            <div class="degree7-unit1-lesson15-lecture-exercise-card degree7-unit1-lesson15-lecture-exercise-col-right" data-num="2">
+                <h3 data-i18n="exo2_title">📌 2. Vrai ou faux ?</h3>
+                <p data-i18n="exo2_instruction">Indique si chaque affirmation est vraie (V) ou fausse (F).</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_statement" class="no-bilingual">Affirmation</th>
+                            <th data-i18n="table_vf" class="no-bilingual">V / F</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td data-i18n="exo2_q1">Le poème comprend 12 vers répartis en 2 strophes.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo2_q2">Les vers sont de longueur différente.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo2_q3">Tous les vers se terminent par une rime.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo2_q4">Le poème parle surtout de l'enfant.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo2_q5">L'auteur est Victor Hugo.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                    </tbody>
+                </table>
+                <button class="degree7-unit1-lesson15-lecture-btn-verify" onclick="toggleCorrection('exo2Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo2Key" class="degree7-unit1-lesson15-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson15-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 3 -->
+            <div class="degree7-unit1-lesson15-lecture-exercise-card degree7-unit1-lesson15-lecture-exercise-col-left" data-num="3">
+                <h3 data-i18n="exo3_title">📌 3. QCM – Compréhension du poème</h3>
+                <p data-i18n="exo3_instruction">Choisis la bonne réponse parmi les trois propositions.</p>
+                <p><strong>1.</strong> <span data-i18n="exo3_q1">Quelle place l'enfant occupe-t-il dans la famille ?</span></p>
+                <label><input type="radio" name="mcq1" value="a"> <span data-i18n="exo3_q1_a">Il est au centre de l'attention et de la joie.</span></label><br>
+                <label><input type="radio" name="mcq1" value="b"> <span data-i18n="exo3_q1_b">Il passe inaperçu.</span></label><br>
+                <label><input type="radio" name="mcq1" value="c"> <span data-i18n="exo3_q1_c">Il est souvent grondé.</span></label>
+                <p style="margin-top:0.6rem;"><strong>2.</strong> <span data-i18n="exo3_q2">Quelles sont les qualités de l'enfant évoquées ?</span></p>
+                <label><input type="radio" name="mcq2" value="a"> <span data-i18n="exo3_q2_a">La force et le courage</span></label><br>
+                <label><input type="radio" name="mcq2" value="b"> <span data-i18n="exo3_q2_b">L'innocence, la joie, la douceur</span></label><br>
+                <label><input type="radio" name="mcq2" value="c"> <span data-i18n="exo3_q2_c">L'intelligence et la malice</span></label>
+                <p style="margin-top:0.6rem;"><strong>3.</strong> <span data-i18n="exo3_q3">Quel est l'effet de l'enfant sur le cercle de famille ?</span></p>
+                <label><input type="radio" name="mcq3" value="a"> <span data-i18n="exo3_q3_a">Il rend les adultes tristes.</span></label><br>
+                <label><input type="radio" name="mcq3" value="b"> <span data-i18n="exo3_q3_b">Il fait briller tous les yeux et dérider les fronts.</span></label><br>
+                <label><input type="radio" name="mcq3" value="c"> <span data-i18n="exo3_q3_c">Il fatigue les parents.</span></label>
+                <button class="degree7-unit1-lesson15-lecture-btn-verify" onclick="toggleCorrection('exo3Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo3Key" class="degree7-unit1-lesson15-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson15-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 4 -->
+            <div class="degree7-unit1-lesson15-lecture-exercise-card degree7-unit1-lesson15-lecture-exercise-col-right" data-num="4">
+                <h3 data-i18n="exo4_title">📌 4. Complète avec les mots du poème</h3>
+                <p data-i18n="exo4_instruction">Complète le texte à trous avec les mots suivants : <em>applaudit, regard, yeux, innocent, joyeux, baisers</em>.</p>
+                <p>
+                    <span data-i18n="exo4_t1">Lorsque l'enfant paraît, le cercle de famille</span>
+                    <input type="text" class="degree7-unit1-lesson15-lecture-inline-input" placeholder="...">
+                    <span data-i18n="exo4_t2">à grands cris. Son doux</span>
+                    <input type="text" class="degree7-unit1-lesson15-lecture-inline-input" placeholder="...">
+                    <span data-i18n="exo4_t3">qui brille fait briller tous les</span>
+                    <input type="text" class="degree7-unit1-lesson15-lecture-inline-input" placeholder="...">
+                    <span data-i18n="exo4_t4">. L'enfant paraît</span>
+                    <input type="text" class="degree7-unit1-lesson15-lecture-inline-input" placeholder="...">
+                    <span data-i18n="exo4_t5">et</span>
+                    <input type="text" class="degree7-unit1-lesson15-lecture-inline-input" placeholder="...">
+                    <span data-i18n="exo4_t6">. Il offre sa bouche aux</span>
+                    <input type="text" class="degree7-unit1-lesson15-lecture-inline-input" placeholder="...">
+                    <span data-i18n="exo4_t7">.</span>
+                </p>
+                <button class="degree7-unit1-lesson15-lecture-btn-verify" onclick="toggleCorrection('exo4Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo4Key" class="degree7-unit1-lesson15-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson15-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 5 -->
+            <div class="degree7-unit1-lesson15-lecture-exercise-card degree7-unit1-lesson15-lecture-exercise-col-left" data-num="5">
+                <h3 data-i18n="exo5_title">📌 5. Relie chaque mot à sa définition</h3>
+                <p data-i18n="exo5_instruction">Écris la lettre de la définition qui correspond à chaque mot.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_word" class="no-bilingual">Mot</th>
+                            <th data-i18n="table_letter" class="no-bilingual">Définition (a–e)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>souillé</td><td><input type="text" placeholder="a-e"></td></tr>
+                        <tr><td>se dérider</td><td><input type="text" placeholder="a-e"></td></tr>
+                        <tr><td>bonne foi</td><td><input type="text" placeholder="a-e"></td></tr>
+                        <tr><td>apaisé</td><td><input type="text" placeholder="a-e"></td></tr>
+                        <tr><td>errer</td><td><input type="text" placeholder="a-e"></td></tr>
+                    </tbody>
+                </table>
+                <p style="font-size:0.85rem; color:var(--degree7-unit1-lesson15-lecture-text-light);">
+                    <strong>a.</strong> <span data-i18n="exo5_a">aller au hasard, sans but</span> ·
+                    <strong>b.</strong> <span data-i18n="exo5_b">devenir moins soucieux, sourire</span> ·
+                    <strong>c.</strong> <span data-i18n="exo5_c">sali, altéré</span> ·
+                    <strong>d.</strong> <span data-i18n="exo5_d">calmé</span> ·
+                    <strong>e.</strong> <span data-i18n="exo5_e">innocence</span>
+                </p>
+                <button class="degree7-unit1-lesson15-lecture-btn-verify" onclick="toggleCorrection('exo5Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo5Key" class="degree7-unit1-lesson15-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson15-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex5" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex5" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex5" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 6 -->
+            <div class="degree7-unit1-lesson15-lecture-exercise-card degree7-unit1-lesson15-lecture-exercise-col-right" data-num="6">
+                <h3 data-i18n="exo6_title">📌 6. À propos du mot « cri »</h3>
+                <p data-i18n="exo6_instruction">Complète chaque énoncé en choisissant l'expression qui convient : <em>cri de joie, cri de surprise, cri de douleur, cri de triomphe</em>.</p>
+                <ol type="a">
+                    <li>On m'assène un coup dans les tibias ; je pousse un <input type="text" class="degree7-unit1-lesson15-lecture-inline-input" placeholder="...">.</li>
+                    <li>Mon petit frère fait son premier pas ; toute la famille pousse un <input type="text" class="degree7-unit1-lesson15-lecture-inline-input" placeholder="...">.</li>
+                    <li>On frappe à la porte. Ma mère ouvre et pousse un <input type="text" class="degree7-unit1-lesson15-lecture-inline-input" placeholder="...">. Mon oncle est de retour après une longue absence.</li>
+                    <li>Ma sœur réussit son examen avec une excellente moyenne. Elle pousse un <input type="text" class="degree7-unit1-lesson15-lecture-inline-input" placeholder="...">.</li>
+                </ol>
+                <p style="font-size:0.85rem; font-style:italic; color:var(--degree7-unit1-lesson15-lecture-text-light);" data-i18n="exo6_note"><strong>Expression à connaître :</strong> « dernier cri » = à la mode. <em>Ex. : voiture, vêtement, montre dernier cri.</em></p>
+                <button class="degree7-unit1-lesson15-lecture-btn-verify" onclick="toggleCorrection('exo6Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo6Key" class="degree7-unit1-lesson15-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson15-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex6" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex6" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex6" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 7 -->
+            <div class="degree7-unit1-lesson15-lecture-exercise-card degree7-unit1-lesson15-lecture-exercise-col-left" data-num="7">
+                <h3 data-i18n="exo7_title">📌 7. À propos de l'adjectif « ravi »</h3>
+                <p data-i18n="exo7_instruction">Complète chaque énoncé avec l'un de ces trois mots : <em>ravir, ravi, ravissant</em>.</p>
+                <ol type="a">
+                    <li>Je suis <input type="text" class="degree7-unit1-lesson15-lecture-inline-input" placeholder="..."> de faire votre connaissance.</li>
+                    <li>Les vêtements que lui choisit sa mère lui vont à <input type="text" class="degree7-unit1-lesson15-lecture-inline-input" placeholder="...">.</li>
+                    <li>Ce spectacle va <input type="text" class="degree7-unit1-lesson15-lecture-inline-input" placeholder="..."> tout le public.</li>
+                    <li>Elle porte une robe <input type="text" class="degree7-unit1-lesson15-lecture-inline-input" placeholder="...">.</li>
+                </ol>
+                <button class="degree7-unit1-lesson15-lecture-btn-verify" onclick="toggleCorrection('exo7Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo7Key" class="degree7-unit1-lesson15-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson15-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex7" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex7" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex7" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 8 -->
+            <div class="degree7-unit1-lesson15-lecture-exercise-card degree7-unit1-lesson15-lecture-exercise-col-right" data-num="8">
+                <h3 data-i18n="exo8_title">📌 8. J'évalue ma lecture</h3>
+                <p data-i18n="exo8_instruction">Coche « Oui » ou « Non » pour chaque critère de lecture à voix haute.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_criteria" class="no-bilingual">Critère</th>
+                            <th data-i18n="table_yes" class="no-bilingual">Oui</th>
+                            <th data-i18n="table_no" class="no-bilingual">Non</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td data-i18n="exo8_q1">Je marque les pauses</td><td><input type="radio" name="eval1" value="oui"></td><td><input type="radio" name="eval1" value="non"></td></tr>
+                        <tr><td data-i18n="exo8_q2">J'articule convenablement les mots</td><td><input type="radio" name="eval2" value="oui"></td><td><input type="radio" name="eval2" value="non"></td></tr>
+                        <tr><td data-i18n="exo8_q3">Je respecte le rythme des vers</td><td><input type="radio" name="eval3" value="oui"></td><td><input type="radio" name="eval3" value="non"></td></tr>
+                        <tr><td data-i18n="exo8_q4">Je prononce correctement le e muet</td><td><input type="radio" name="eval4" value="oui"></td><td><input type="radio" name="eval4" value="non"></td></tr>
+                    </tbody>
+                </table>
+                <button class="degree7-unit1-lesson15-lecture-btn-verify" onclick="toggleCorrection('exo8Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo8Key" class="degree7-unit1-lesson15-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson15-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex8" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex8" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex8" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 9 -->
+            <div class="degree7-unit1-lesson15-lecture-exercise-card degree7-unit1-lesson15-lecture-exercise-col-left" data-num="9">
+                <h3 data-i18n="exo9_title">📌 9. J'enrichis mon vocabulaire – L'arbre généalogique</h3>
+                <p data-i18n="exo9_instruction">Complète ton arbre généalogique avec les mots suivants : <em>arrière-grands-parents, grands-parents, parents, moi</em>.</p>
+                <div class="degree7-unit1-lesson15-lecture-situation">
+                    <span class="num">A</span>
+                    <div class="content">
+                        <p data-i18n="sitA">La génération la plus ancienne de la famille.</p>
+                        <input type="text" placeholder="...">
+                    </div>
+                </div>
+                <div class="degree7-unit1-lesson15-lecture-situation">
+                    <span class="num">B</span>
+                    <div class="content">
+                        <p data-i18n="sitB">Les parents de mes parents.</p>
+                        <input type="text" placeholder="...">
+                    </div>
+                </div>
+                <div class="degree7-unit1-lesson15-lecture-situation">
+                    <span class="num">C</span>
+                    <div class="content">
+                        <p data-i18n="sitC">Mon père et ma mère.</p>
+                        <input type="text" placeholder="...">
+                    </div>
+                </div>
+                <div class="degree7-unit1-lesson15-lecture-situation">
+                    <span class="num">D</span>
+                    <div class="content">
+                        <p data-i18n="sitD">Au centre de mon arbre : c'est moi.</p>
+                        <input type="text" placeholder="...">
+                    </div>
+                </div>
+                <button class="degree7-unit1-lesson15-lecture-btn-verify" onclick="toggleCorrection('exo9Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo9Key" class="degree7-unit1-lesson15-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson15-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex9" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex9" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex9" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 10 -->
+            <div class="degree7-unit1-lesson15-lecture-exercise-card degree7-unit1-lesson15-lecture-exercise-col-right" data-num="10">
+                <h3 data-i18n="exo10_title">📌 10. Reformulation des vers difficiles</h3>
+                <p data-i18n="exo10_instruction">Réponds aux questions pour mieux comprendre les vers 4 et 5 du poème.</p>
+                <p style="font-style:italic; padding:0.5rem; background:var(--degree7-unit1-lesson15-lecture-light); border-radius:6px;">
+                    « Et les plus tristes fronts, les plus souillés peut-être,<br>
+                    Se dérident soudain à voir l'enfant paraître »
+                </p>
+                <ol type="a">
+                    <li>Par quel autre mot peut-on remplacer « fronts » ? <input type="text" class="degree7-unit1-lesson15-lecture-inline-input" placeholder="..."></li>
+                    <li>Quel mot a été évité pour ne pas se répéter ? <input type="text" class="degree7-unit1-lesson15-lecture-inline-input" placeholder="..."></li>
+                    <li>Reformule ces deux vers avec tes propres mots. <input type="text" class="degree7-unit1-lesson15-lecture-inline-input" placeholder="..."></li>
+                </ol>
+                <button class="degree7-unit1-lesson15-lecture-btn-verify" onclick="toggleCorrection('exo10Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo10Key" class="degree7-unit1-lesson15-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson15-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex10" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex10" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex10" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+        </div>
+        <!-- Production -->
+        <div style="margin-top:2rem;">
+            <div class="degree7-unit1-lesson15-lecture-exercise-card" data-num="11">
+                <h3 data-i18n="exo11_title">📌 11. Production personnelle</h3>
+                <p data-i18n="exo11_instruction">Choisis l'un des deux sujets suivants et rédige un court texte (5 à 6 phrases).</p>
+                <ul style="padding-left:1.2rem; margin:0.5rem 0 0.8rem;">
+                    <li data-i18n="exo11_subject1"><strong>Sujet 1 :</strong> Un heureux événement (réussite scolaire, naissance, fiançailles...) a lieu chez toi. Écris un SMS à ton ami(e) pour lui en faire part.</li>
+                    <li data-i18n="exo11_subject2"><strong>Sujet 2 :</strong> Ta petite sœur fait ses premiers pas. Tu envoies une carte à ta grand-mère pour lui annoncer la nouvelle.</li>
+                </ul>
+                <figure class="degree7-unit1-lesson15-lecture-prod-figure">
+                    <img src="assets7/images/degree7/unit1/lesson15/bebe_fleurs.png"
+                         alt="Peinture d'un enfant tenant une fleur"
+                         class="degree7-unit1-lesson15-lecture-prod-img"
+                         data-i18n="img_prod_alt"
+                         onerror="this.parentElement.style.display='none'">
+                    <figcaption class="degree7-unit1-lesson15-lecture-prod-caption" data-i18n="img_prod_caption">
+                        Un heureux événement se partage toujours avec joie.
+                    </figcaption>
+                </figure>
+                <textarea rows="6" placeholder="Votre texte..."></textarea>
+                <button class="degree7-unit1-lesson15-lecture-btn-verify" onclick="showExo11Example()" data-i18n="show_example">💡 Voir un exemple de réponse</button>
+                <div id="exo11Key" class="degree7-unit1-lesson15-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson15-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex11" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex11" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex11" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+        </div>
+        <!-- Score area -->
+        <div class="degree7-unit1-lesson15-lecture-score-area" id="scoreArea">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="degree7-unit1-lesson15-lecture-score-stats" id="scoreStats">
+                <div class="degree7-unit1-lesson15-lecture-score-stat"><span data-i18n="score_correct">Correctes :</span> <span id="scoreCorrect">0</span></div>
+                <div class="degree7-unit1-lesson15-lecture-score-stat"><span data-i18n="score_incorrect">Incorrectes :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="degree7-unit1-lesson15-lecture-score-stat"><span data-i18n="score_partial">Partielles :</span> <span id="scorePartial">0</span></div>
+                <div class="degree7-unit1-lesson15-lecture-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">11</span></div>
+            </div>
+        </div>
+        <div class="degree7-unit1-lesson15-lecture-score-actions" style="margin-top:1.2rem;">
+            <button id="saveResultsBtn" class="degree7-unit1-lesson15-lecture-btn-verify" style="margin-right:0.5rem;" data-i18n="save_results">💾 Enregistrer mes résultats</button>
+            <button id="printPdfBtn" class="degree7-unit1-lesson15-lecture-btn-verify" style="background:#1e5e3a; margin-right:0.5rem;" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+        </div>
+        <!-- Footer nav -->
+        <div class="degree7-unit1-lesson15-lecture-footer-nav">
+            <a href="degree7unit1lesson14.html" data-i18n="footer_back" class="no-bilingual">← Leçon précédente</a>
+            <a href="degree7unit1lesson16.html" data-i18n="footer_next" class="no-bilingual">Leçon suivante : À table (Claude Simon) →</a>
+        </div>
+    </div>
+    <!-- Scripts -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                'lesson_title': "Leçon 15 – Lorsque l'enfant paraît... | Lecture",
+                'lesson_short_title': "Lorsque l'enfant paraît...",
+                'ach_year_degree7': "7ème Année Primaire",
+                'ach_module_unit1': "Unité 1 – Les fondements du français",
+                'back_link': "← Retour à l'accueil",
+                'back_revision': "Unité 1",
+                'back_current': "Lorsque l'enfant paraît...",
+                'lesson_badge': "📖 Lecture · Leçon 15",
+                'lesson_title': "Lorsque l'enfant paraît...<br>Victor Hugo, <em>Feuilles d'automne</em>",
+                'lesson_duration': "⏱️ 45 minutes",
+                'lesson_meta_audio': "🎧 Écoutez le poème puis répondez aux questions",
+                'audio_label': "🎧 Écoute du poème",
+                'author_img_alt': "Portrait de Victor Hugo",
+                'author_title': "👤 Victor Hugo (1802 – 1885)",
+                'author_bio': "L'un des plus grands auteurs français. Parmi ses œuvres les plus connues : <em>Les Misérables</em>, <em>Notre-Dame de Paris</em>, <em>Les Contemplations</em>, <em>Feuilles d'automne</em>.",
+                'text_heading': "📖 J'observe",
+                'img_hero_alt': "Photographie de Victor Hugo avec deux enfants",
+                'img_hero_caption': "Victor Hugo entouré de deux enfants — la famille, thème central du poème.",
+                'text_author': "— Victor HUGO, <em>Feuilles d'automne</em>",
+                'consigne_title': "➤ Consigne :",
+                'consigne_text': "Lis silencieusement le poème puis à haute voix. Repère les mots difficiles et observe comment Victor Hugo décrit l'enfant et l'effet qu'il produit sur sa famille.",
+                'vocab_title': "📚 Vocabulaire :",
+                'vocab1': "<strong>Souillé</strong> : sali, altéré.",
+                'vocab2': "<strong>Se dérider</strong> : devenir moins soucieux et moins triste, sourire, rire.",
+                'vocab3': "<strong>Bonne foi</strong> : innocence.",
+                'vocab4': "<strong>Apaisé</strong> : calmé.",
+                'vocab5': "<strong>Errer</strong> : aller au hasard, sans but.",
+                'rules_heading': "📖 Je lis à haute voix",
+                'rule1_title': "🎙️ 1. Préparer sa lecture",
+                'rule1_list': "<li>Je lis le poème silencieusement pour bien comprendre le sens.</li><li>Je lis les vignettes (notes) pour préparer et corriger ma lecture.</li><li>Je lis le poème à haute voix en respectant les pauses.</li>",
+                'rule2_title': "🔤 2. Prononcer le « e » muet",
+                'rule2_list': "<li>Je <strong>prononce</strong> le <em>e</em> muet à l'intérieur du vers lorsqu'il est placé entre deux consonnes.</li><li>Je <strong>ne prononce pas</strong> le <em>e</em> à la fin du vers.</li><li>Je <strong>ne prononce pas</strong> le <em>e</em> quand il est suivi d'une voyelle.</li>",
+                'rule3_title': "🎭 3. Pour une bonne récitation",
+                'rule3_list': "<li>Marquer les pauses (arrêt bref à chaque virgule, arrêt au point).</li><li>Prononcer convenablement chaque mot.</li><li>Accompagner sa lecture de gestes expressifs.</li>",
+                'img_lecture_alt': "Peinture d'une jeune femme lisant",
+                'lecture_illustration_title': "📖 Une lecture expressive",
+                'lecture_illustration_text': "La lecture à voix haute d'un poème doit transmettre les émotions du texte. Le ton, le rythme et les pauses créent la musicalité des vers.",
+                'showcase_heading': "🎨 Le lexique du poème",
+                'card1_word': "le cercle de famille", 'card1_def': "groupe de personnes unies par des liens familiaux",
+                'card2_word': "innocent", 'card2_def': "qui n'a rien fait de mal, pur",
+                'card3_word': "joyeux", 'card3_def': "qui éprouve de la joie",
+                'card4_word': "apaisé", 'card4_def': "calmé, tranquillisé",
+                'card5_word': "ravie", 'card5_def': "remplie de joie et d'admiration",
+                'card6_word': "étonnée", 'card6_def': "surprise, émerveillée",
+                'card7_word': "l'enfant", 'card7_def': "être humain dans ses premières années",
+                'card8_word': "un baiser", 'card8_def': "geste tendre posé sur la bouche ou la joue",
+                'card9_word': "les pleurs", 'card9_def': "larmes versées",
+                'card10_word': "la vie", 'card10_def': "état des êtres vivants",
+                'card11_word': "applaudir", 'card11_def': "battre des mains en signe de joie",
+                'card12_word': "le regard", 'card12_def': "action de regarder, expression des yeux",
+                'exercises_heading': "✍️ Je m'exerce",
+                'table_word': "Mot", 'table_letter': "Définition (a–e)",
+                'table_statement': "Affirmation", 'table_vf': "V / F",
+                'table_criteria': "Critère", 'table_yes': "Oui", 'table_no': "Non",
+                'btn_correction': "🔍 Voir la correction", 'show_example': "💡 Voir un exemple de réponse",
+                'exo1_title': "📌 1. Je découvre le poème",
+                'exo1_instruction': "Réponds aux questions de découverte du poème.",
+                'exo2_title': "📌 2. Vrai ou faux ?",
+                'exo2_instruction': "Indique si chaque affirmation est vraie (V) ou fausse (F).",
+                'exo2_q1': "Le poème comprend 12 vers répartis en 2 strophes.",
+                'exo2_q2': "Les vers sont de longueur différente.",
+                'exo2_q3': "Tous les vers se terminent par une rime.",
+                'exo2_q4': "Le poème parle surtout de l'enfant.",
+                'exo2_q5': "L'auteur est Victor Hugo.",
+                'exo3_title': "📌 3. QCM – Compréhension du poème",
+                'exo3_instruction': "Choisis la bonne réponse parmi les trois propositions.",
+                'exo3_q1': "Quelle place l'enfant occupe-t-il dans la famille ?",
+                'exo3_q1_a': "Il est au centre de l'attention et de la joie.", 'exo3_q1_b': "Il passe inaperçu.", 'exo3_q1_c': "Il est souvent grondé.",
+                'exo3_q2': "Quelles sont les qualités de l'enfant évoquées ?",
+                'exo3_q2_a': "La force et le courage", 'exo3_q2_b': "L'innocence, la joie, la douceur", 'exo3_q2_c': "L'intelligence et la malice",
+                'exo3_q3': "Quel est l'effet de l'enfant sur le cercle de famille ?",
+                'exo3_q3_a': "Il rend les adultes tristes.", 'exo3_q3_b': "Il fait briller tous les yeux et dérider les fronts.", 'exo3_q3_c': "Il fatigue les parents.",
+                'exo4_title': "📌 4. Complète avec les mots du poème",
+                'exo4_instruction': "Complète le texte à trous avec les mots suivants : applaudit, regard, yeux, innocent, joyeux, baisers.",
+                'exo4_t1': "Lorsque l'enfant paraît, le cercle de famille", 'exo4_t2': "à grands cris. Son doux", 'exo4_t3': "qui brille fait briller tous les", 'exo4_t4': ". L'enfant paraît", 'exo4_t5': "et", 'exo4_t6': ". Il offre sa bouche aux", 'exo4_t7': ".",
+                'exo5_title': "📌 5. Relie chaque mot à sa définition",
+                'exo5_instruction': "Écris la lettre de la définition qui correspond à chaque mot.",
+                'exo5_a': "aller au hasard, sans but", 'exo5_b': "devenir moins soucieux, sourire", 'exo5_c': "sali, altéré", 'exo5_d': "calmé", 'exo5_e': "innocence",
+                'exo6_title': "📌 6. À propos du mot « cri »",
+                'exo6_instruction': "Complète chaque énoncé en choisissant l'expression qui convient : cri de joie, cri de surprise, cri de douleur, cri de triomphe.",
+                'exo6_note': "<strong>Expression à connaître :</strong> « dernier cri » = à la mode. <em>Ex. : voiture, vêtement, montre dernier cri.</em>",
+                'exo7_title': "📌 7. À propos de l'adjectif « ravi »",
+                'exo7_instruction': "Complète chaque énoncé avec l'un de ces trois mots : ravir, ravi, ravissant.",
+                'exo8_title': "📌 8. J'évalue ma lecture",
+                'exo8_instruction': "Coche « Oui » ou « Non » pour chaque critère de lecture à voix haute.",
+                'exo8_q1': "Je marque les pauses", 'exo8_q2': "J'articule convenablement les mots",
+                'exo8_q3': "Je respecte le rythme des vers", 'exo8_q4': "Je prononce correctement le e muet",
+                'exo9_title': "📌 9. J'enrichis mon vocabulaire – L'arbre généalogique",
+                'exo9_instruction': "Complète ton arbre généalogique avec les mots suivants : arrière-grands-parents, grands-parents, parents, moi.",
+                'sitA': "La génération la plus ancienne de la famille.",
+                'sitB': "Les parents de mes parents.",
+                'sitC': "Mon père et ma mère.",
+                'sitD': "Au centre de mon arbre : c'est moi.",
+                'exo10_title': "📌 10. Reformulation des vers difficiles",
+                'exo10_instruction': "Réponds aux questions pour mieux comprendre les vers 4 et 5 du poème.",
+                'exo11_title': "📌 11. Production personnelle",
+                'exo11_instruction': "Choisis l'un des deux sujets suivants et rédige un court texte (5 à 6 phrases).",
+                'exo11_subject1': "<strong>Sujet 1 :</strong> Un heureux événement (réussite scolaire, naissance, fiançailles...) a lieu chez toi. Écris un SMS à ton ami(e) pour lui en faire part.",
+                'exo11_subject2': "<strong>Sujet 2 :</strong> Ta petite sœur fait ses premiers pas. Tu envoies une carte à ta grand-mère pour lui annoncer la nouvelle.",
+                'img_prod_alt': "Peinture d'un enfant tenant une fleur",
+                'img_prod_caption': "Un heureux événement se partage toujours avec joie.",
+                'footer_back': "← Leçon précédente", 'footer_next': "Leçon suivante : À table (Claude Simon) →",
+                'self_assess_question': "Ma réponse est :",
+                'self_correct': "Correcte", 'self_incorrect': "Incorrecte", 'self_partial': "Partiellement correcte",
+                'score_title': "📊 Votre auto‑évaluation",
+                'score_correct': "Correctes :", 'score_incorrect': "Incorrectes :", 'score_partial': "Partielles :", 'score_unanswered': "Sans réponse :",
+                'save_results': "💾 Enregistrer mes résultats", 'save_success': "Résultats sauvegardés ✓", 'save_error': "Erreur lors de la sauvegarde",
+                'print_pdf': "🖨️ Imprimer / PDF", 'print_with_answers': "Corrigé inclus",
+                'print_site_name': "Educational Dashboard – Français",
+                'print_scholar_year': "7ème Année Primaire", 'print_week': "Unité 1", 'print_area': "Lecture",
+                'print_footer_dev': "Développé par Mejri Ziad", 'print_footer_date': "Imprimé le",
+                'print_without_answers': "Sans corrigé",
+                'toast_signin_required': "Connectez-vous pour voir les corrections."
+            },
+            en: {
+                'lesson_title': "Lesson 15 – When the child appears... | Reading",
+                'lesson_short_title': "When the child appears...",
+                'ach_year_degree7': "7th Grade Primary",
+                'ach_module_unit1': "Unit 1 – French foundations",
+                'back_link': "← Back to home",
+                'back_revision': "Unit 1",
+                'back_current': "When the child appears...",
+                'lesson_badge': "📖 Reading · Lesson 15",
+                'lesson_title': "When the child appears...<br>Victor Hugo, <em>Autumn Leaves</em>",
+                'lesson_duration': "⏱️ 45 minutes",
+                'lesson_meta_audio': "🎧 Listen to the poem then answer the questions",
+                'audio_label': "🎧 Listening to the poem",
+                'author_img_alt': "Portrait of Victor Hugo",
+                'author_title': "👤 Victor Hugo (1802 – 1885)",
+                'author_bio': "One of the greatest French authors. Among his best-known works: <em>Les Misérables</em>, <em>Notre-Dame de Paris</em>, <em>Les Contemplations</em>, <em>Autumn Leaves</em>.",
+                'text_heading': "📖 I observe",
+                'img_hero_alt': "Photograph of Victor Hugo with two children",
+                'img_hero_caption': "Victor Hugo surrounded by two children — the family, central theme of the poem.",
+                'text_author': "— Victor HUGO, <em>Autumn Leaves</em>",
+                'consigne_title': "➤ Instruction:",
+                'consigne_text': "Read the poem silently then aloud. Identify difficult words and observe how Victor Hugo describes the child and the effect he has on his family.",
+                'vocab_title': "📚 Vocabulary:",
+                'vocab1': "<strong>Souillé</strong>: soiled, tarnished.",
+                'vocab2': "<strong>Se dérider</strong>: become less worried and less sad, smile, laugh.",
+                'vocab3': "<strong>Bonne foi</strong>: innocence.",
+                'vocab4': "<strong>Apaisé</strong>: calmed.",
+                'vocab5': "<strong>Errer</strong>: wander, go aimlessly.",
+                'rules_heading': "📖 I read aloud",
+                'rule1_title': "🎙️ 1. Preparing your reading",
+                'rule1_list': "<li>I read the poem silently to understand the meaning.</li><li>I read the notes to prepare and correct my reading.</li><li>I read the poem aloud respecting the pauses.</li>",
+                'rule2_title': "🔤 2. Pronouncing the silent 'e'",
+                'rule2_list': "<li>I <strong>pronounce</strong> the silent <em>e</em> inside the verse when it is placed between two consonants.</li><li>I <strong>do not pronounce</strong> the <em>e</em> at the end of the verse.</li><li>I <strong>do not pronounce</strong> the <em>e</em> when it is followed by a vowel.</li>",
+                'rule3_title': "🎭 3. For a good recitation",
+                'rule3_list': "<li>Mark pauses (brief stop at each comma, stop at the period).</li><li>Pronounce each word properly.</li><li>Accompany your reading with expressive gestures.</li>",
+                'img_lecture_alt': "Painting of a young woman reading",
+                'lecture_illustration_title': "📖 An expressive reading",
+                'lecture_illustration_text': "Reading a poem aloud must convey the emotions of the text. Tone, rhythm and pauses create the musicality of the verses.",
+                'showcase_heading': "🎨 The vocabulary of the poem",
+                'card1_word': "the family circle", 'card1_def': "group of people united by family ties",
+                'card2_word': "innocent", 'card2_def': "who has done nothing wrong, pure",
+                'card3_word': "joyful", 'card3_def': "who feels joy",
+                'card4_word': "soothed", 'card4_def': "calmed, reassured",
+                'card5_word': "delighted", 'card5_def': "filled with joy and admiration",
+                'card6_word': "astonished", 'card6_def': "surprised, amazed",
+                'card7_word': "the child", 'card7_def': "human being in its early years",
+                'card8_word': "a kiss", 'card8_def': "tender gesture on the mouth or cheek",
+                'card9_word': "tears", 'card9_def': "shed tears",
+                'card10_word': "life", 'card10_def': "state of living beings",
+                'card11_word': "to applaud", 'card11_def': "clap hands as a sign of joy",
+                'card12_word': "the gaze", 'card12_def': "act of looking, expression of the eyes",
+                'exercises_heading': "✍️ I practise",
+                'table_word': "Word", 'table_letter': "Definition (a–e)",
+                'table_statement': "Statement", 'table_vf': "T / F",
+                'table_criteria': "Criterion", 'table_yes': "Yes", 'table_no': "No",
+                'btn_correction': "🔍 See the correction", 'show_example': "💡 See an example answer",
+                'exo1_title': "📌 1. I discover the poem",
+                'exo1_instruction': "Answer the discovery questions about the poem.",
+                'exo2_title': "📌 2. True or false?",
+                'exo2_instruction': "Indicate whether each statement is true (T) or false (F).",
+                'exo2_q1': "The poem has 12 verses divided into 2 stanzas.",
+                'exo2_q2': "The verses are of different lengths.",
+                'exo2_q3': "All verses end with a rhyme.",
+                'exo2_q4': "The poem is mainly about the child.",
+                'exo2_q5': "The author is Victor Hugo.",
+                'exo3_title': "📌 3. MCQ – Comprehension of the poem",
+                'exo3_instruction': "Choose the correct answer among the three options.",
+                'exo3_q1': "What place does the child occupy in the family?",
+                'exo3_q1_a': "He is the center of attention and joy.", 'exo3_q1_b': "He goes unnoticed.", 'exo3_q1_c': "He is often scolded.",
+                'exo3_q2': "What qualities of the child are mentioned?",
+                'exo3_q2_a': "Strength and courage", 'exo3_q2_b': "Innocence, joy, gentleness", 'exo3_q2_c': "Intelligence and mischief",
+                'exo3_q3': "What is the effect of the child on the family circle?",
+                'exo3_q3_a': "He makes adults sad.", 'exo3_q3_b': "He makes all eyes shine and foreheads relax.", 'exo3_q3_c': "He tires the parents.",
+                'exo4_title': "📌 4. Complete with the poem's words",
+                'exo4_instruction': "Complete the gap text with the following words: applaudit, regard, yeux, innocent, joyeux, baisers.",
+                'exo4_t1': "When the child appears, the family circle", 'exo4_t2': "loudly. His sweet", 'exo4_t3': "that shines makes all", 'exo4_t4': "shine. The child appears", 'exo4_t5': "and", 'exo4_t6': ". He offers his mouth to", 'exo4_t7': ".",
+                'exo5_title': "📌 5. Match each word to its definition",
+                'exo5_instruction': "Write the letter of the definition corresponding to each word.",
+                'exo5_a': "go aimlessly, without goal", 'exo5_b': "become less worried, smile", 'exo5_c': "soiled, tarnished", 'exo5_d': "calmed", 'exo5_e': "innocence",
+                'exo6_title': "📌 6. About the word 'cri' (cry)",
+                'exo6_instruction': "Complete each statement by choosing the appropriate expression: cry of joy, cry of surprise, cry of pain, cry of triumph.",
+                'exo6_note': "<strong>Expression to know:</strong> 'dernier cri' = trendy. <em>E.g.: car, clothing, watch dernier cri.</em>",
+                'exo7_title': "📌 7. About the adjective 'ravi'",
+                'exo7_instruction': "Complete each statement with one of these three words: ravir, ravi, ravissant.",
+                'exo8_title': "📌 8. I evaluate my reading",
+                'exo8_instruction': "Tick 'Yes' or 'No' for each criterion of reading aloud.",
+                'exo8_q1': "I mark the pauses", 'exo8_q2': "I articulate the words properly",
+                'exo8_q3': "I respect the rhythm of the verses", 'exo8_q4': "I pronounce the silent e correctly",
+                'exo9_title': "📌 9. I enrich my vocabulary – The family tree",
+                'exo9_instruction': "Complete your family tree with the following words: great-grandparents, grandparents, parents, me.",
+                'sitA': "The oldest generation of the family.",
+                'sitB': "My parents' parents.",
+                'sitC': "My father and mother.",
+                'sitD': "At the center of my tree: it's me.",
+                'exo10_title': "📌 10. Reformulation of difficult verses",
+                'exo10_instruction': "Answer the questions to better understand verses 4 and 5 of the poem.",
+                'exo11_title': "📌 11. Personal production",
+                'exo11_instruction': "Choose one of the following two topics and write a short text (5 to 6 sentences).",
+                'exo11_subject1': "<strong>Topic 1:</strong> A happy event (school success, birth, engagement...) takes place at your home. Write an SMS to your friend to tell them.",
+                'exo11_subject2': "<strong>Topic 2:</strong> Your little sister takes her first steps. You send a card to your grandmother to announce the news.",
+                'img_prod_alt': "Painting of a child holding a flower",
+                'img_prod_caption': "A happy event is always shared with joy.",
+                'footer_back': "← Previous lesson", 'footer_next': "Next lesson: At the table (Claude Simon) →",
+                'self_assess_question': "My answer is:",
+                'self_correct': "Correct", 'self_incorrect': "Incorrect", 'self_partial': "Partially correct",
+                'score_title': "📊 Your self‑assessment",
+                'score_correct': "Correct:", 'score_incorrect': "Incorrect:", 'score_partial': "Partial:", 'score_unanswered': "Unanswered:",
+                'save_results': "💾 Save my results", 'save_success': "Results saved ✓", 'save_error': "Save failed",
+                'print_pdf': "🖨️ Print / PDF", 'print_with_answers': "With answers",
+                'print_site_name': "Educational Dashboard – French",
+                'print_scholar_year': "7th Grade Primary", 'print_week': "Unit 1", 'print_area': "Reading",
+                'print_footer_dev': "Developed by Mejri Ziad", 'print_footer_date': "Printed on",
+                'print_without_answers': "Without answers",
+                'toast_signin_required': "Sign in to see the corrections."
+            },
+            ar: {
+                'lesson_title': "الدرس 15 – عندما يظهر الطفل... | قراءة",
+                'lesson_short_title': "عندما يظهر الطفل...",
+                'ach_year_degree7': "السنة السابعة ابتدائي",
+                'ach_module_unit1': "الوحدة 1 – أساسيات الفرنسية",
+                'back_link': "← العودة إلى الرئيسية",
+                'back_revision': "الوحدة 1",
+                'back_current': "عندما يظهر الطفل...",
+                'lesson_badge': "📖 قراءة · الدرس 15",
+                'lesson_title': "عندما يظهر الطفل...<br>فيكتور هوغو، <em>أوراق الخريف</em>",
+                'lesson_duration': "⏱️ 45 دقيقة",
+                'lesson_meta_audio': "🎧 استمع إلى القصيدة ثم أجب عن الأسئلة",
+                'audio_label': "🎧 استماع إلى القصيدة",
+                'author_img_alt': "صورة فيكتور هوغو",
+                'author_title': "👤 فيكتور هوغو (1802 – 1885)",
+                'author_bio': "أحد أعظم الكتّاب الفرنسيين. من أشهر أعماله: <em>البؤساء</em>، <em>أحدب نوتردام</em>، <em>تأملات</em>، <em>أوراق الخريف</em>.",
+                'text_heading': "📖 ألاحظ",
+                'img_hero_alt': "صورة فوتوغرافية لفيكتور هوغو مع طفلين",
+                'img_hero_caption': "فيكتور هوغو محاطاً بطفلين — العائلة، الموضوع المركزي للقصيدة.",
+                'text_author': "— فيكتور هوغو، <em>أوراق الخريف</em>",
+                'consigne_title': "➤ التعليمة:",
+                'consigne_text': "اقرأ القصيدة صامتاً ثم بصوت عالٍ. حدد الكلمات الصعبة ولاحظ كيف يصف فيكتور هوغو الطفل والأثر الذي يحدثه في عائلته.",
+                'vocab_title': "📚 المفردات:",
+                'vocab1': "<strong>ملوّث</strong>: متسخ، مشوّه.",
+                'vocab2': "<strong>ينبسط</strong>: يصبح أقل هماً وحزناً، يبتسم، يضحك.",
+                'vocab3': "<strong>حسن النية</strong>: البراءة.",
+                'vocab4': "<strong>هادئ</strong>: مسكَّن.",
+                'vocab5': "<strong>يتجول</strong>: يسير عشوائياً، بلا هدف.",
+                'rules_heading': "📖 أقرأ بصوت عالٍ",
+                'rule1_title': "🎙️ 1. تحضير القراءة",
+                'rule1_list': "<li>أقرأ القصيدة صامتاً لفهم المعنى جيداً.</li><li>أقرأ الملاحظات لتحضير قراءتي وتصحيحها.</li><li>أقرأ القصيدة بصوت عالٍ مع احترام الوقفات.</li>",
+                'rule2_title': "🔤 2. نطق الـ«e» الصامتة",
+                'rule2_list': "<li><strong>أنطق</strong> الـ<em>e</em> الصامتة داخل البيت عندما تكون بين حرفين ساكنين.</li><li><strong>لا أنطق</strong> الـ<em>e</em> في نهاية البيت.</li><li><strong>لا أنطق</strong> الـ<em>e</em> عندما يتبعها حرف علة.</li>",
+                'rule3_title': "🎭 3. من أجل إلقاء جيد",
+                'rule3_list': "<li>تحديد الوقفات (وقفة قصيرة عند كل فاصلة، ووقفة عند النقطة).</li><li>نطق كل كلمة بشكل مناسب.</li><li>مرافقة القراءة بإيماءات معبّرة.</li>",
+                'img_lecture_alt': "لوحة لشابة تقرأ",
+                'lecture_illustration_title': "📖 قراءة معبّرة",
+                'lecture_illustration_text': "القراءة بصوت عالٍ للقصيدة يجب أن تنقل انفعالات النص. النبرة والإيقاع والوقفات تخلق موسيقية الأبيات.",
+                'showcase_heading': "🎨 معجم القصيدة",
+                'card1_word': "دائرة العائلة", 'card1_def': "مجموعة أشخاص تربطهم روابط عائلية",
+                'card2_word': "بريء", 'card2_def': "لم يفعل شيئاً سيئاً، طاهر",
+                'card3_word': "سعيد", 'card3_def': "يشعر بالفرح",
+                'card4_word': "هادئ", 'card4_def': "مسكَّن، مطمئن",
+                'card5_word': "مبتهج", 'card5_def': "مملوء بالفرح والإعجاب",
+                'card6_word': "مندهش", 'card6_def': "متفاجئ، مبهور",
+                'card7_word': "الطفل", 'card7_def': "الكائن البشري في سنواته الأولى",
+                'card8_word': "قبلة", 'card8_def': "لفتة حنونة على الفم أو الخد",
+                'card9_word': "الدموع", 'card9_def': "دموع مسكوبة",
+                'card10_word': "الحياة", 'card10_def': "حالة الكائنات الحية",
+                'card11_word': "يصفق", 'card11_def': "يضرب بيديه علامة على الفرح",
+                'card12_word': "النظرة", 'card12_def': "فعل النظر، تعبير العينين",
+                'exercises_heading': "✍️ أتمرن",
+                'table_word': "الكلمة", 'table_letter': "التعريف (أ–هـ)",
+                'table_statement': "العبارة", 'table_vf': "ص / خ",
+                'table_criteria': "المعيار", 'table_yes': "نعم", 'table_no': "لا",
+                'btn_correction': "🔍 الاطلاع على التصحيح", 'show_example': "💡 عرض مثال للإجابة",
+                'exo1_title': "📌 1. أكتشف القصيدة",
+                'exo1_instruction': "أجب عن أسئلة اكتشاف القصيدة.",
+                'exo2_title': "📌 2. صواب أم خطأ؟",
+                'exo2_instruction': "حدد إن كانت كل عبارة صحيحة (ص) أم خاطئة (خ).",
+                'exo2_q1': "تتضمن القصيدة 12 بيتاً موزعة على مقطعين.",
+                'exo2_q2': "الأبيات مختلفة الطول.",
+                'exo2_q3': "كل الأبيات تنتهي بقافية.",
+                'exo2_q4': "القصيدة تتحدث أساساً عن الطفل.",
+                'exo2_q5': "المؤلف هو فيكتور هوغو.",
+                'exo3_title': "📌 3. اختيار من متعدد – فهم القصيدة",
+                'exo3_instruction': "اختر الجواب الصحيح من بين الخيارات الثلاثة.",
+                'exo3_q1': "ما المكانة التي يحتلها الطفل في العائلة؟",
+                'exo3_q1_a': "هو مركز الاهتمام والفرح.", 'exo3_q1_b': "لا يُلاحظ.", 'exo3_q1_c': "يُوبَّخ كثيراً.",
+                'exo3_q2': "ما هي صفات الطفل المذكورة؟",
+                'exo3_q2_a': "القوة والشجاعة", 'exo3_q2_b': "البراءة والفرح واللطف", 'exo3_q2_c': "الذكاء والخبث",
+                'exo3_q3': "ما هو تأثير الطفل على دائرة العائلة؟",
+                'exo3_q3_a': "يجعل الكبار حزينين.", 'exo3_q3_b': "يجعل كل العيون تلمع وتنبسط الوجوه.", 'exo3_q3_c': "يتعب الوالدين.",
+                'exo4_title': "📌 4. أكمل بكلمات القصيدة",
+                'exo4_instruction': "أكمل النص الناقص بالكلمات التالية: applaudit, regard, yeux, innocent, joyeux, baisers.",
+                'exo4_t1': "عندما يظهر الطفل، دائرة العائلة", 'exo4_t2': "بصيحات عالية. نظره الحلو", 'exo4_t3': "الذي يلمع يجعل كل", 'exo4_t4': "تلمع. يظهر الطفل", 'exo4_t5': "و", 'exo4_t6': ". يقدم فمه إلى", 'exo4_t7': ".",
+                'exo5_title': "📌 5. اربط كل كلمة بتعريفها",
+                'exo5_instruction': "اكتب حرف التعريف المقابل لكل كلمة.",
+                'exo5_a': "يسير عشوائياً، بلا هدف", 'exo5_b': "يصبح أقل هماً، يبتسم", 'exo5_c': "متسخ، مشوّه", 'exo5_d': "مسكَّن", 'exo5_e': "البراءة",
+                'exo6_title': "📌 6. حول كلمة «cri» (صيحة)",
+                'exo6_instruction': "أكمل كل عبارة باختيار التعبير المناسب: صيحة فرح، صيحة مفاجأة، صيحة ألم، صيحة انتصار.",
+                'exo6_note': "<strong>تعبير يجب معرفته:</strong> «dernier cri» = على الموضة. <em>مثال: سيارة، ملابس، ساعة dernier cri.</em>",
+                'exo7_title': "📌 7. حول الصفة «ravi»",
+                'exo7_instruction': "أكمل كل عبارة بإحدى هذه الكلمات الثلاث: ravir, ravi, ravissant.",
+                'exo8_title': "📌 8. أقيّم قراءتي",
+                'exo8_instruction': "ضع علامة «نعم» أو «لا» لكل معيار من معايير القراءة بصوت عالٍ.",
+                'exo8_q1': "أحدد الوقفات", 'exo8_q2': "أنطق الكلمات بشكل مناسب",
+                'exo8_q3': "أحترم إيقاع الأبيات", 'exo8_q4': "أنطق الـ«e» الصامتة بشكل صحيح",
+                'exo9_title': "📌 9. أثرى مفرداتي – شجرة العائلة",
+                'exo9_instruction': "أكمل شجرة عائلتك بالكلمات التالية: الأجداد الأوائل، الأجداد، الوالدان، أنا.",
+                'sitA': "أقدم جيل في العائلة.",
+                'sitB': "والدا والديّ.",
+                'sitC': "أبي وأمي.",
+                'sitD': "في وسط شجرتي: هذا أنا.",
+                'exo10_title': "📌 10. إعادة صياغة الأبيات الصعبة",
+                'exo10_instruction': "أجب عن الأسئلة لفهم البيتين 4 و5 من القصيدة بشكل أفضل.",
+                'exo11_title': "📌 11. إنتاج شخصي",
+                'exo11_instruction': "اختر أحد الموضوعين التاليين واكتب نصاً قصيراً (5 إلى 6 جمل).",
+                'exo11_subject1': "<strong>الموضوع 1:</strong> حدث سعيد (نجاح دراسي، ولادة، خطوبة...) في بيتك. اكتب رسالة SMS لصديقك لإخباره.",
+                'exo11_subject2': "<strong>الموضوع 2:</strong> أختك الصغيرة تخطو خطواتها الأولى. ترسل بطاقة لجدتك لإعلان الخبر.",
+                'img_prod_alt': "لوحة لطفل يحمل زهرة",
+                'img_prod_caption': "الحدث السعيد يُشارَك دائماً بفرح.",
+                'footer_back': "← الدرس السابق", 'footer_next': "الدرس الموالي: على المائدة (كلود سيمون) ←",
+                'self_assess_question': "جوابي هو:",
+                'self_correct': "صحيح", 'self_incorrect': "خاطئ", 'self_partial': "صحيح جزئيًا",
+                'score_title': "📊 تقييمك الذاتي",
+                'score_correct': "صحيح:", 'score_incorrect': "خاطئ:", 'score_partial': "جزئي:", 'score_unanswered': "بدون إجابة:",
+                'save_results': "💾 حفظ نتائجي", 'save_success': "تم حفظ النتائج ✓", 'save_error': "خطأ في الحفظ",
+                'print_pdf': "🖨️ طباعة / PDF", 'print_with_answers': "مع التصحيح",
+                'print_site_name': "لوحة التحكم التعليمية – الفرنسية",
+                'print_scholar_year': "السنة السابعة ابتدائي", 'print_week': "الوحدة 1", 'print_area': "قراءة",
+                'print_footer_dev': "طوّر بواسطة ماجري زياد", 'print_footer_date': "طُبع في",
+                'print_without_answers': "بدون تصحيح",
+                'toast_signin_required': "سجّل الدخول لرؤية التصحيحات."
+            }
+        });
+        (function() {
+            var container = document.querySelector('.degree7-unit1-lesson15-lecture-container');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+        })();
+    </script>
+    <script src="ed-french-ini.js"></script>
+    <script>
+        (function() {
+            const audio = new Audio('assets7/sounds/degree7/unit1/lesson15/lorsque_enfant_parait.mp3');
+            const playBtn = document.getElementById('playBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const speedBtns = document.querySelectorAll('.degree7-unit1-lesson15-lecture-speed-btn');
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+            audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
+            audio.addEventListener('timeupdate', () => {
+                const percent = (audio.currentTime / audio.duration) * 100 || 0;
+                progressFill.style.width = percent + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            });
+            audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) { audio.play().catch(()=>{}); playBtn.textContent = '⏸'; }
+                else { audio.pause(); playBtn.textContent = '▶'; }
+            });
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const seekTime = (clickX / width) * audio.duration;
+                audio.currentTime = seekTime;
+            });
+            speedBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    speedBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    audio.playbackRate = parseFloat(btn.dataset.speed);
+                });
+            });
+            window.toggleCorrection = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('visible');
+            };
+            window.showExo11Example = async function() {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const el = document.getElementById('exo11Key');
+                if (el) {
+                    el.innerHTML = '<strong>Exemple de réponse (Sujet 1) :</strong><br>Salut Yassine ! 🎉 Devine quoi : j\'ai eu mon examen de français avec une super note ! Toute la famille est fière de moi et on fête ça ce soir à la maison. Tu me manques beaucoup, j\'espère te voir bientôt pour te raconter tout en détail. À très vite !<br><br><strong>Exemple de réponse (Sujet 2) :</strong><br>Chère mamie,<br>J\'ai une grande nouvelle à t\'annoncer : ta petite-fille a fait ses premiers pas aujourd\'hui ! Elle s\'est lancée vers moi en souriant, et toute la famille a applaudi. Maman a filmé la scène, nous te la montrerons dimanche. Nous t\'embrassons très fort.<br>Avec tout notre amour.';
+                    el.classList.add('visible');
+                }
+            };
+            // Static answer keys
+            document.getElementById('exo1Key').innerHTML = '<strong>Correction :</strong><br>a) 12 vers<br>b) 2 strophes<br>c) Non, ils sont de longueurs différentes (alexandrins, octosyllabes…). Ils sont disposés en rimes suivies.<br>d) Ils finissent par des rimes (yeux / joyeux ; baisers / apaisés…).<br>e) On parle surtout de l\'enfant.';
+            document.getElementById('exo2Key').innerHTML = '<strong>Correction :</strong><br>1. Vrai<br>2. Vrai<br>3. Vrai<br>4. Vrai<br>5. Vrai';
+            document.getElementById('exo3Key').innerHTML = '<strong>Correction :</strong><br>1. a<br>2. b<br>3. b';
+            document.getElementById('exo4Key').innerHTML = '<strong>Correction :</strong><br>applaudit – regard – yeux – innocent – joyeux – baisers';
+            document.getElementById('exo5Key').innerHTML = '<strong>Correction :</strong><br>souillé → c<br>se dérider → b<br>bonne foi → e<br>apaisé → d<br>errer → a';
+            document.getElementById('exo6Key').innerHTML = '<strong>Correction :</strong><br>a) cri de douleur<br>b) cri de joie<br>c) cri de surprise<br>d) cri de triomphe';
+            document.getElementById('exo7Key').innerHTML = '<strong>Correction :</strong><br>a) ravi<br>b) ravir<br>c) ravir<br>d) ravissante';
+            document.getElementById('exo8Key').innerHTML = '<strong>Correction (exemple) :</strong><br>Toutes les réponses « Oui » sont valorisées. Les réponses « Non » invitent à s\'entraîner à nouveau.';
+            document.getElementById('exo9Key').innerHTML = '<strong>Correction :</strong><br>A. arrière-grands-parents<br>B. grands-parents<br>C. parents<br>D. moi';
+            document.getElementById('exo10Key').innerHTML = '<strong>Correction :</strong><br>a) « fronts » = visages, mines, expressions du visage.<br>b) Le mot « fronts » aurait dû être répété : « les plus tristes fronts, les plus souillés [fronts] peut-être ».<br>c) Exemple de reformulation : « Et même les visages les plus tristes, les plus abîmés peut-être, s\'illuminent soudain en voyant l\'enfant apparaître. »';
+            const SELF_GROUPS = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5',
+                                 'self_ex6', 'self_ex7', 'self_ex8', 'self_ex9', 'self_ex10', 'self_ex11'];
+            function computeScore() {
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                SELF_GROUPS.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                return { correct, incorrect, partial, unanswered };
+            }
+            function updateScore() {
+                const s = computeScore();
+                document.getElementById('scoreCorrect').textContent = s.correct;
+                document.getElementById('scoreIncorrect').textContent = s.incorrect;
+                document.getElementById('scorePartial').textContent = s.partial;
+                document.getElementById('scoreUnanswered').textContent = s.unanswered;
+            }
+            document.querySelectorAll('input[type="radio"][name^="self_ex"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const s = computeScore();
+                const lessonId = 'degree7unit1lesson15';
+                const entry = {
+                    lesson_id: lessonId,
+                    lesson_title: {
+                        fr: App.getTranslation('lesson_short_title', 'fr'),
+                        en: App.getTranslation('lesson_short_title', 'en'),
+                        ar: App.getTranslation('lesson_short_title', 'ar')
+                    },
+                    year: {
+                        fr: App.getTranslation('ach_year_degree7', 'fr'),
+                        en: App.getTranslation('ach_year_degree7', 'en'),
+                        ar: App.getTranslation('ach_year_degree7', 'ar')
+                    },
+                    module: {
+                        fr: App.getTranslation('ach_module_unit1', 'fr'),
+                        en: App.getTranslation('ach_module_unit1', 'en'),
+                        ar: App.getTranslation('ach_module_unit1', 'ar')
+                    },
+                    correct: s.correct,
+                    incorrect: s.incorrect,
+                    partial: s.partial,
+                    unanswered: s.unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles').select('achivement').eq('id', user.id).single();
+                if (fetchError) return;
+                let achivement = profileData?.achivement || {};
+                if (!achivement['ED-French']) achivement['ED-French'] = [];
+                const arr = achivement['ED-French'];
+                const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+                if (existingIdx >= 0) arr[existingIdx] = entry;
+                else arr.push(entry);
+                const { error: updateError } = await App.supabase
+                    .from('profiles').update({ achivement }).eq('id', user.id);
+                if (updateError) App.showToast('save_error', 'error');
+                else {
+                    App.showToast('save_success', 'success');
+                    App.logUserAction('lesson_saved', { lesson: lessonId, correct: s.correct, incorrect: s.incorrect, partial: s.partial });
+                }
+            });
+            document.getElementById('printPdfBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles').select('registration_state').eq('id', user.id).single();
+                    if (!error && profile?.registration_state?.active === true) isRegistered = true;
+                } catch (e) {}
+                const lang = localStorage.getItem('lang') || 'fr';
+                const headerHTML = document.querySelector('.degree7-unit1-lesson15-lecture-lesson-header').cloneNode(true);
+                const textCard = document.querySelector('.degree7-unit1-lesson15-lecture-text-card').cloneNode(true);
+                const authorCard = document.querySelector('.degree7-unit1-lesson15-lecture-author-card');
+                const authorHTML = authorCard ? authorCard.outerHTML : '';
+                const heroFigure = document.querySelector('.degree7-unit1-lesson15-lecture-hero-figure');
+                const heroHTML = heroFigure ? heroFigure.outerHTML : '';
+                const rulesSections = document.querySelectorAll('.degree7-unit1-lesson15-lecture-valeurs-section');
+                let rulesHTML = '';
+                rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
+                const showcaseGrid = document.querySelector('.degree7-unit1-lesson15-lecture-showcase');
+                const showcaseHTML = showcaseGrid ? showcaseGrid.outerHTML : '';
+                const prodFigure = document.querySelector('.degree7-unit1-lesson15-lecture-prod-figure');
+                const prodHTML = prodFigure ? prodFigure.outerHTML : '';
+                const exercisesSection = document.querySelector('.degree7-unit1-lesson15-lecture-exercises-section').cloneNode(true);
+                exercisesSection.querySelectorAll('input, textarea, .degree7-unit1-lesson15-lecture-btn-verify, .degree7-unit1-lesson15-lecture-self-assessment').forEach(el => el.remove());
+                if (isRegistered) {
+                    exercisesSection.querySelectorAll('.degree7-unit1-lesson15-lecture-answer-key').forEach(key => {
+                        key.style.display = 'block'; key.style.border = 'none';
+                        key.style.padding = '0.5rem 0'; key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    exercisesSection.querySelectorAll('.degree7-unit1-lesson15-lecture-answer-key').forEach(el => el.remove());
+                }
+                const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                printWindow.document.write(`<!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8"><title>${App.getTranslation('lesson_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title><style>
+                    body { font-family: 'Georgia', serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; color:#000; }
+                    .print-header { text-align:center; border-bottom:2px solid #2e8b57; padding-bottom:1rem; margin-bottom:2rem; }
+                    .print-header .site-name { font-size:1.4rem; font-weight:bold; color:#2e8b57; margin:0 0 0.3rem; }
+                    .print-header .meta-line { font-size:0.95rem; color:#444; margin:0.2rem 0; }
+                    .print-header .lesson-name { font-size:1.1rem; font-weight:bold; color:#000; margin-top:0.5rem; }
+                    .print-footer { text-align:center; border-top:1px solid #ccc; padding-top:1rem; margin-top:2rem; font-size:0.85rem; color:#666; }
+                    .degree7-unit1-lesson15-lecture-lesson-header { text-align:center; margin-bottom:2rem; }
+                    .degree7-unit1-lesson15-lecture-badge { display:inline-block; background:#2e8b57; color:#fff; padding:0.3rem 1rem; border-radius:20px; font-size:0.8rem; text-transform:uppercase; }
+                    .degree7-unit1-lesson15-lecture-text-card { border-left:4px solid #2e8b57; padding:1rem 1.5rem; margin:1.5rem 0; }
+                    .degree7-unit1-lesson15-lecture-poem { font-style:italic; line-height:1.8; }
+                    .degree7-unit1-lesson15-lecture-hl { background:#e2f0e8; color:#1e5e3a; padding:0 4px; border-radius:4px; font-weight:700; border-bottom:2px solid #2e8b57; }
+                    .degree7-unit1-lesson15-lecture-hero-figure { margin:1rem 0; }
+                    .degree7-unit1-lesson15-lecture-hero-img { max-width:100%; max-height:280px; border-radius:8px; }
+                    .degree7-unit1-lesson15-lecture-hero-caption { display:block; font-size:0.85rem; color:#555; font-style:italic; margin-top:0.3rem; text-align:center; }
+                    .degree7-unit1-lesson15-lecture-author-card { border:1px solid #cbe0d3; border-radius:12px; padding:1rem; margin:1rem 0; display:flex; gap:1rem; align-items:center; }
+                    .degree7-unit1-lesson15-lecture-author-img { width:100px; height:100px; border-radius:50%; object-fit:cover; }
+                    .degree7-unit1-lesson15-lecture-author-info h3 { color:#1e5e3a; margin:0 0 0.3rem; }
+                    .degree7-unit1-lesson15-lecture-valeurs-section { margin:1.5rem 0; }
+                    .degree7-unit1-lesson15-lecture-valeur-card { background:#e2f0e8; padding:1rem; margin-bottom:1rem; border-radius:8px; }
+                    .degree7-unit1-lesson15-lecture-valeur-card h3 { color:#2e8b57; }
+                    .degree7-unit1-lesson15-lecture-showcase { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.5rem; }
+                    .degree7-unit1-lesson15-lecture-vcard { background:#eef7f2; padding:0.6rem; border-radius:6px; border:1px solid #cbe0d3; }
+                    .degree7-unit1-lesson15-lecture-vcard .degree7-unit1-lesson15-lecture-vicon { display:none; }
+                    .degree7-unit1-lesson15-lecture-vcard .degree7-unit1-lesson15-lecture-vword { display:block; font-weight:800; color:#1e5e3a; }
+                    .degree7-unit1-lesson15-lecture-vcard .degree7-unit1-lesson15-lecture-vdef { display:block; font-size:0.8rem; color:#555; }
+                    .degree7-unit1-lesson15-lecture-exercise-card { margin:1.2rem 0; border-left:4px solid #2e8b57; padding:0.8rem 1rem; }
+                    .degree7-unit1-lesson15-lecture-exercise-card::before { content:none !important; }
+                    .degree7-unit1-lesson15-lecture-situation { border-left:3px solid #2e8b57; padding:0.5rem 0.7rem; background:#eef7f2; border-radius:6px; margin-bottom:0.4rem; }
+                    .degree7-unit1-lesson15-lecture-prod-figure { text-align:center; margin:0.5rem 0; }
+                    .degree7-unit1-lesson15-lecture-prod-img { max-width:100%; max-height:220px; border-radius:6px; }
+                    .degree7-unit1-lesson15-lecture-prod-caption { display:block; font-size:0.8rem; color:#555; font-style:italic; margin-top:0.3rem; }
+                    table { width:100%; border-collapse:collapse; margin:0.8rem 0; }
+                    th, td { border:1px solid #ccc; padding:0.5rem; text-align:left; }
+                    th { background:#e2f0e8; }
+                    .degree7-unit1-lesson15-lecture-answer-key { display:block; margin-top:0.5rem; font-size:0.9rem; color:#444; }
+                    @media print { @page { margin:2cm; } }
+                </style></head><body>
+                    <div class="print-header"><div class="site-name">${App.getTranslation('print_site_name', lang)}</div><div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div><div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div></div>
+                    ${breadcrumb.outerHTML}${authorHTML}${headerHTML.outerHTML}${heroHTML}${textCard.outerHTML}${rulesHTML}${showcaseHTML}${exercisesSection.outerHTML}${prodHTML}
+                    <div class="print-footer">${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}</div>
+                </body></html>`);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+        })();
+    </script>
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_title">Leçon 16 – À table | Lecture</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ===== Degree7 Unit1 Lesson16 – Lecture (prefix: degree7-unit1-lesson16-lecture-) ===== */
+        :root {
+            --degree7-unit1-lesson16-lecture-bg: #f2f8f4;
+            --degree7-unit1-lesson16-lecture-card: #fbfefc;
+            --degree7-unit1-lesson16-lecture-text: #16261c;
+            --degree7-unit1-lesson16-lecture-text-light: #4a6a55;
+            --degree7-unit1-lesson16-lecture-heading: #1e5e3a;
+            --degree7-unit1-lesson16-lecture-accent: #2e8b57;
+            --degree7-unit1-lesson16-lecture-accent-hover: #1e5e3a;
+            --degree7-unit1-lesson16-lecture-soft: #6cb68a;
+            --degree7-unit1-lesson16-lecture-light: #e2f0e8;
+            --degree7-unit1-lesson16-lecture-lighter: #eef7f2;
+            --degree7-unit1-lesson16-lecture-border: #cbe0d3;
+            --degree7-unit1-lesson16-lecture-shadow: 0 1px 3px rgba(46,139,87,0.06), 0 6px 18px rgba(30,94,58,0.07);
+            --degree7-unit1-lesson16-lecture-radius: 14px;
+            --degree7-unit1-lesson16-lecture-radius-sm: 8px;
+            --degree7-unit1-lesson16-lecture-transition: 0.25s ease;
+            --degree7-unit1-lesson16-lecture-font: 'Georgia', 'Segoe UI', 'Times New Roman', serif;
+            --degree7-unit1-lesson16-lecture-audio-bg: #dcebe2;
+            --degree7-unit1-lesson16-lecture-audio-progress: #a8cdb8;
+            --degree7-unit1-lesson16-lecture-button-bg: #d5e8dd;
+            --degree7-unit1-lesson16-lecture-button-hover: #bdd9c8;
+            --degree7-unit1-lesson16-lecture-input-bg: #f6fbf8;
+        }
+        body.dark {
+            --degree7-unit1-lesson16-lecture-bg: #0f1a13;
+            --degree7-unit1-lesson16-lecture-card: #182a1e;
+            --degree7-unit1-lesson16-lecture-text: #dceee4;
+            --degree7-unit1-lesson16-lecture-text-light: #96b6a3;
+            --degree7-unit1-lesson16-lecture-heading: #a8e0be;
+            --degree7-unit1-lesson16-lecture-accent: #6cb68a;
+            --degree7-unit1-lesson16-lecture-accent-hover: #8ecfa6;
+            --degree7-unit1-lesson16-lecture-soft: #4d8a68;
+            --degree7-unit1-lesson16-lecture-light: #1e3327;
+            --degree7-unit1-lesson16-lecture-lighter: #1a2b20;
+            --degree7-unit1-lesson16-lecture-border: #2a4233;
+            --degree7-unit1-lesson16-lecture-shadow: 0 1px 4px rgba(0,0,0,0.4);
+            --degree7-unit1-lesson16-lecture-audio-bg: #1e3327;
+            --degree7-unit1-lesson16-lecture-audio-progress: #365a44;
+            --degree7-unit1-lesson16-lecture-button-bg: #243d2d;
+            --degree7-unit1-lesson16-lecture-button-hover: #315540;
+            --degree7-unit1-lesson16-lecture-input-bg: #1c2e22;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: var(--degree7-unit1-lesson16-lecture-font);
+            background: var(--degree7-unit1-lesson16-lecture-bg);
+            background-image:
+                radial-gradient(circle at 12% 18%, rgba(46,139,87,0.06) 0%, transparent 42%),
+                radial-gradient(circle at 88% 82%, rgba(30,94,58,0.05) 0%, transparent 42%);
+            color: var(--degree7-unit1-lesson16-lecture-text);
+            line-height: 1.8;
+            transition: background var(--degree7-unit1-lesson16-lecture-transition), color var(--degree7-unit1-lesson16-lecture-transition);
+        }
+        .back-nav { background: var(--degree7-unit1-lesson16-lecture-card); border-bottom: 1px solid var(--degree7-unit1-lesson16-lecture-border); padding: 0.5rem 1.5rem; }
+        .back-nav a { font-weight: 600; color: var(--degree7-unit1-lesson16-lecture-accent); text-decoration: none; }
+        .back-nav a:hover { text-decoration: underline; }
+        .degree7-unit1-lesson16-lecture-container { max-width:1060px; margin:0 auto; padding:1.8rem 1.4rem 3rem; }
+        .degree7-unit1-lesson16-lecture-lesson-header { text-align: center; margin-bottom: 2rem; }
+        .degree7-unit1-lesson16-lecture-badge {
+            display:inline-block; background: var(--degree7-unit1-lesson16-lecture-accent); color: #fff;
+            padding: 0.3rem 1.1rem; border-radius: 30px; font-size: 0.78rem; font-weight: 700;
+            letter-spacing: 0.06em; text-transform: uppercase;
+        }
+        .degree7-unit1-lesson16-lecture-lesson-header h1 {
+            font-size: 2.1rem; color: var(--degree7-unit1-lesson16-lecture-heading);
+            margin: 0.7rem 0 0.4rem; line-height: 1.25; font-weight: 700;
+        }
+        .degree7-unit1-lesson16-lecture-lesson-header .degree7-unit1-lesson16-lecture-meta {
+            font-size: 0.9rem; color: var(--degree7-unit1-lesson16-lecture-text-light);
+            display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap;
+        }
+        .degree7-unit1-lesson16-lecture-audio-player {
+            background: var(--degree7-unit1-lesson16-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson16-lecture-border);
+            border-radius: var(--degree7-unit1-lesson16-lecture-radius);
+            padding: 1rem 1.4rem; margin: 1.5rem 0 2rem;
+            box-shadow: var(--degree7-unit1-lesson16-lecture-shadow);
+            display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+        }
+        .degree7-unit1-lesson16-lecture-play-btn {
+            width: 46px; height: 46px; border-radius: 50%;
+            background: var(--degree7-unit1-lesson16-lecture-accent);
+            color: #fff; border: none; font-size: 1.2rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background var(--degree7-unit1-lesson16-lecture-transition); flex-shrink: 0;
+        }
+        .degree7-unit1-lesson16-lecture-play-btn:hover { background: var(--degree7-unit1-lesson16-lecture-accent-hover); }
+        .degree7-unit1-lesson16-lecture-progress-area { flex:1; min-width:120px; display:flex; flex-direction:column; gap:0.3rem; }
+        .degree7-unit1-lesson16-lecture-progress-bar {
+            width:100%; height:6px; background: var(--degree7-unit1-lesson16-lecture-audio-progress);
+            border-radius: 3px; cursor:pointer; position:relative; overflow:hidden;
+        }
+        .degree7-unit1-lesson16-lecture-progress-fill {
+            height:100%; background: var(--degree7-unit1-lesson16-lecture-accent);
+            border-radius: 3px; width: 0%; transition: width 0.1s linear;
+        }
+        .degree7-unit1-lesson16-lecture-time-info {
+            display:flex; justify-content:space-between; font-size:0.75rem;
+            color: var(--degree7-unit1-lesson16-lecture-text-light);
+        }
+        .degree7-unit1-lesson16-lecture-speed-selector { display:flex; gap:0.3rem; flex-wrap:wrap; }
+        .degree7-unit1-lesson16-lecture-speed-btn {
+            border:1px solid var(--degree7-unit1-lesson16-lecture-border);
+            background: var(--degree7-unit1-lesson16-lecture-button-bg);
+            color: var(--degree7-unit1-lesson16-lecture-text);
+            padding:0.3rem 0.6rem; border-radius: 4px;
+            font-size:0.75rem; font-weight:600; cursor:pointer;
+            transition: all var(--degree7-unit1-lesson16-lecture-transition);
+        }
+        .degree7-unit1-lesson16-lecture-speed-btn.active {
+            background: var(--degree7-unit1-lesson16-lecture-accent);
+            color: #fff; border-color: var(--degree7-unit1-lesson16-lecture-accent);
+        }
+        .degree7-unit1-lesson16-lecture-audio-label {
+            font-weight:700; font-size:0.9rem;
+            color: var(--degree7-unit1-lesson16-lecture-heading); white-space:nowrap;
+        }
+        @media (max-width:600px) {
+            .degree7-unit1-lesson16-lecture-audio-player { flex-direction: column; align-items: stretch; }
+            .degree7-unit1-lesson16-lecture-audio-label { text-align: center; }
+        }
+        .degree7-unit1-lesson16-lecture-hero-figure {
+            margin: 0 0 1.2rem;
+            border-radius: var(--degree7-unit1-lesson16-lecture-radius);
+            overflow: hidden;
+            box-shadow: var(--degree7-unit1-lesson16-lecture-shadow);
+            border: 1px solid var(--degree7-unit1-lesson16-lecture-border);
+        }
+        .degree7-unit1-lesson16-lecture-hero-img {
+            display: block; width: 100%; max-height: 320px; object-fit: cover;
+        }
+        .degree7-unit1-lesson16-lecture-hero-caption {
+            display: block; padding: 0.5rem 0.9rem;
+            font-size: 0.82rem; color: var(--degree7-unit1-lesson16-lecture-text-light);
+            background: var(--degree7-unit1-lesson16-lecture-lighter);
+            border-top: 1px solid var(--degree7-unit1-lesson16-lecture-border);
+            font-style: italic; text-align: center;
+        }
+        .degree7-unit1-lesson16-lecture-rule-figure { text-align: center; margin: 0 0 0.6rem; }
+        .degree7-unit1-lesson16-lecture-rule-img {
+            display: inline-block; max-width: 140px; max-height: 110px;
+            width: auto; height: auto;
+            border-radius: var(--degree7-unit1-lesson16-lecture-radius-sm);
+            box-shadow: 0 3px 10px rgba(30,94,58,0.12);
+            border: 2px solid var(--degree7-unit1-lesson16-lecture-lighter);
+        }
+        .degree7-unit1-lesson16-lecture-showcase-banner {
+            margin: 0.6rem 0 1rem;
+            border-radius: var(--degree7-unit1-lesson16-lecture-radius);
+            overflow: hidden;
+            box-shadow: var(--degree7-unit1-lesson16-lecture-shadow);
+            border: 1px solid var(--degree7-unit1-lesson16-lecture-border);
+        }
+        .degree7-unit1-lesson16-lecture-showcase-img {
+            display: block; width: 100%; max-height: 220px; object-fit: cover;
+        }
+        .degree7-unit1-lesson16-lecture-prod-figure { text-align: center; margin: 0.4rem 0 0.9rem; }
+        .degree7-unit1-lesson16-lecture-prod-img {
+            display: inline-block; max-width: 100%; max-height: 240px;
+            border-radius: var(--degree7-unit1-lesson16-lecture-radius-sm);
+            box-shadow: var(--degree7-unit1-lesson16-lecture-shadow);
+            border: 1px solid var(--degree7-unit1-lesson16-lecture-border);
+        }
+        .degree7-unit1-lesson16-lecture-prod-caption {
+            display: block; margin-top: 0.4rem;
+            font-size: 0.8rem; color: var(--degree7-unit1-lesson16-lecture-text-light);
+            font-style: italic;
+        }
+        .degree7-unit1-lesson16-lecture-text-card {
+            background: var(--degree7-unit1-lesson16-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson16-lecture-border);
+            border-left: 5px solid var(--degree7-unit1-lesson16-lecture-accent);
+            border-radius: 0 var(--degree7-unit1-lesson16-lecture-radius) var(--degree7-unit1-lesson16-lecture-radius) 0;
+            padding: 1.5rem 1.8rem; margin: 1.8rem 0;
+            font-size: 1.05rem; line-height: 1.9;
+            box-shadow: var(--degree7-unit1-lesson16-lecture-shadow); position: relative;
+        }
+        .degree7-unit1-lesson16-lecture-text-card .degree7-unit1-lesson16-lecture-quote-mark {
+            position: absolute; top:-15px; left:14px; font-size:3.5rem;
+            color: var(--degree7-unit1-lesson16-lecture-accent); opacity:0.3; line-height:1;
+            font-family: 'Georgia', serif;
+        }
+        .degree7-unit1-lesson16-lecture-text-card p { margin-bottom: 0.8rem; }
+        .degree7-unit1-lesson16-lecture-text-card p:last-of-type { margin-bottom: 0; }
+        .degree7-unit1-lesson16-lecture-text-author {
+            text-align: right; font-style: italic; font-size: 0.9rem;
+            color: var(--degree7-unit1-lesson16-lecture-text-light); margin-top: 0.8rem;
+        }
+        .degree7-unit1-lesson16-lecture-hl {
+            background: var(--degree7-unit1-lesson16-lecture-light);
+            color: var(--degree7-unit1-lesson16-lecture-heading);
+            padding: 0 5px; border-radius: 4px; font-weight: 700;
+            border-bottom: 2px solid var(--degree7-unit1-lesson16-lecture-accent);
+            cursor: help;
+        }
+        .degree7-unit1-lesson16-lecture-section h2 {
+            font-size: 1.5rem; color: var(--degree7-unit1-lesson16-lecture-heading);
+            margin: 2.4rem 0 1rem; display: inline-block;
+            padding-bottom: 0.3rem; position: relative;
+        }
+        .degree7-unit1-lesson16-lecture-section h2::after {
+            content: ''; position: absolute;
+            left: 0; right: 40%; bottom: 0; height: 3px;
+            background: var(--degree7-unit1-lesson16-lecture-accent); border-radius: 2px;
+        }
+        .degree7-unit1-lesson16-lecture-valeurs-section {
+            background: var(--degree7-unit1-lesson16-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson16-lecture-border);
+            border-radius: var(--degree7-unit1-lesson16-lecture-radius);
+            padding: 1.6rem 1.8rem; margin: 2rem 0;
+            box-shadow: var(--degree7-unit1-lesson16-lecture-shadow);
+        }
+        .degree7-unit1-lesson16-lecture-valeurs-section h2 {
+            font-size: 1.5rem; color: var(--degree7-unit1-lesson16-lecture-heading);
+            margin-bottom: 1rem; display: inline-block;
+            padding-bottom: 0.3rem;
+            border-bottom: 3px solid var(--degree7-unit1-lesson16-lecture-accent);
+        }
+        .degree7-unit1-lesson16-lecture-valeur-card {
+            background: var(--degree7-unit1-lesson16-lecture-light);
+            border-radius: var(--degree7-unit1-lesson16-lecture-radius-sm);
+            padding: 1rem 1.2rem; margin-bottom: 1rem;
+        }
+        .degree7-unit1-lesson16-lecture-valeur-card h3 {
+            color: var(--degree7-unit1-lesson16-lecture-accent);
+            font-size: 1.1rem; margin-bottom: 0.4rem;
+        }
+        .degree7-unit1-lesson16-lecture-valeur-card p { margin: 0.4rem 0; }
+        .degree7-unit1-lesson16-lecture-valeur-card ul { list-style: none; padding: 0; }
+        .degree7-unit1-lesson16-lecture-valeur-card li {
+            padding: 0.3rem 0 0.3rem 1.4rem; position: relative;
+        }
+        .degree7-unit1-lesson16-lecture-valeur-card li::before {
+            content: '◆'; position: absolute; left: 0;
+            color: var(--degree7-unit1-lesson16-lecture-accent);
+            font-size: 0.55rem; top: 0.6rem;
+        }
+        .degree7-unit1-lesson16-lecture-author-card {
+            background: var(--degree7-unit1-lesson16-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson16-lecture-border);
+            border-radius: var(--degree7-unit1-lesson16-lecture-radius);
+            padding: 1.2rem 1.5rem; margin: 1.2rem 0;
+            box-shadow: var(--degree7-unit1-lesson16-lecture-shadow);
+            display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap;
+        }
+        .degree7-unit1-lesson16-lecture-author-img {
+            width: 110px; height: 110px; border-radius: 50%;
+            object-fit: cover; flex-shrink: 0;
+            border: 3px solid var(--degree7-unit1-lesson16-lecture-light);
+            box-shadow: var(--degree7-unit1-lesson16-lecture-shadow);
+        }
+        .degree7-unit1-lesson16-lecture-author-info { flex: 1; min-width: 200px; }
+        .degree7-unit1-lesson16-lecture-author-info h3 {
+            color: var(--degree7-unit1-lesson16-lecture-heading);
+            font-size: 1.1rem; margin-bottom: 0.3rem;
+        }
+        .degree7-unit1-lesson16-lecture-author-info p {
+            font-size: 0.92rem; color: var(--degree7-unit1-lesson16-lecture-text-light);
+        }
+        .degree7-unit1-lesson16-lecture-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 0.9rem;
+            margin: 1rem 0;
+        }
+        .degree7-unit1-lesson16-lecture-vcard {
+            position: relative;
+            background: var(--degree7-unit1-lesson16-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson16-lecture-border);
+            border-radius: var(--degree7-unit1-lesson16-lecture-radius-sm);
+            padding: 0.9rem 0.9rem 0.9rem 3.2rem;
+            font-size: 0.85rem;
+            transition: all var(--degree7-unit1-lesson16-lecture-transition);
+            overflow: hidden;
+        }
+        .degree7-unit1-lesson16-lecture-vcard:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--degree7-unit1-lesson16-lecture-shadow);
+            border-color: var(--degree7-unit1-lesson16-lecture-accent);
+        }
+        .degree7-unit1-lesson16-lecture-vcard .degree7-unit1-lesson16-lecture-vicon {
+            position: absolute; left: 0; top: 0; bottom: 0;
+            width: 2.5rem;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem;
+            background: var(--degree7-unit1-lesson16-lecture-light);
+            border-right: 1px solid var(--degree7-unit1-lesson16-lecture-border);
+        }
+        .degree7-unit1-lesson16-lecture-vcard .degree7-unit1-lesson16-lecture-vword {
+            display: block; font-weight: 800;
+            color: var(--degree7-unit1-lesson16-lecture-heading);
+            font-size: 0.95rem; margin-bottom: 0.15rem;
+        }
+        .degree7-unit1-lesson16-lecture-vcard .degree7-unit1-lesson16-lecture-vdef {
+            display: block; color: var(--degree7-unit1-lesson16-lecture-text-light);
+            font-size: 0.8rem; line-height: 1.4;
+        }
+        .degree7-unit1-lesson16-lecture-exercises-section {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; align-items: start;
+            margin-top: 2rem;
+        }
+        .degree7-unit1-lesson16-lecture-exercises-section h2 {
+            grid-column: 1 / -1; font-size: 1.5rem;
+            color: var(--degree7-unit1-lesson16-lecture-heading);
+            margin: 0 0 1rem; display: inline-block;
+            padding-bottom: 0.3rem;
+            border-bottom: 3px solid var(--degree7-unit1-lesson16-lecture-accent);
+        }
+        .degree7-unit1-lesson16-lecture-exercise-card {
+            position: relative;
+            background: var(--degree7-unit1-lesson16-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson16-lecture-border);
+            border-radius: var(--degree7-unit1-lesson16-lecture-radius-sm);
+            padding: 1.2rem 1.3rem 1.2rem 3.4rem;
+            box-shadow: var(--degree7-unit1-lesson16-lecture-shadow);
+            transition: all var(--degree7-unit1-lesson16-lecture-transition);
+        }
+        .degree7-unit1-lesson16-lecture-exercise-card:hover {
+            box-shadow: 0 6px 22px rgba(30,94,58,0.10);
+        }
+        .degree7-unit1-lesson16-lecture-exercise-card::before {
+            content: attr(data-num);
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 2.6rem;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(180deg, var(--degree7-unit1-lesson16-lecture-accent) 0%, var(--degree7-unit1-lesson16-lecture-heading) 100%);
+            color: #fff;
+            font-size: 1.05rem; font-weight: 800;
+            font-family: 'Georgia', serif;
+            border-radius: var(--degree7-unit1-lesson16-lecture-radius-sm) 0 0 var(--degree7-unit1-lesson16-lecture-radius-sm);
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            letter-spacing: 0.15em;
+        }
+        .degree7-unit1-lesson16-lecture-exercise-card h3 {
+            font-size: 1.02rem;
+            color: var(--degree7-unit1-lesson16-lecture-accent);
+            margin-bottom: 0.6rem;
+            display: flex; align-items: center; gap: 0.4rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed var(--degree7-unit1-lesson16-lecture-border);
+        }
+        .degree7-unit1-lesson16-lecture-exercise-card table {
+            width: 100%; border-collapse: collapse; margin: 0.8rem 0;
+        }
+        .degree7-unit1-lesson16-lecture-exercise-card th,
+        .degree7-unit1-lesson16-lecture-exercise-card td {
+            padding: 0.55rem 0.7rem;
+            border: 1px solid var(--degree7-unit1-lesson16-lecture-border);
+            text-align: left; font-size: 0.9rem;
+        }
+        .degree7-unit1-lesson16-lecture-exercise-card th {
+            background: var(--degree7-unit1-lesson16-lecture-light);
+            font-weight: 700;
+            color: var(--degree7-unit1-lesson16-lecture-heading);
+        }
+        .degree7-unit1-lesson16-lecture-exercise-card input[type="text"],
+        .degree7-unit1-lesson16-lecture-exercise-card textarea {
+            width: 100%; padding: 0.4rem 0.6rem;
+            border: 1px solid var(--degree7-unit1-lesson16-lecture-border);
+            border-radius: 4px;
+            background: var(--degree7-unit1-lesson16-lecture-input-bg);
+            color: var(--degree7-unit1-lesson16-lecture-text);
+            font-family: inherit; font-size: 0.9rem;
+        }
+        .degree7-unit1-lesson16-lecture-exercise-card textarea { resize: vertical; }
+        .degree7-unit1-lesson16-lecture-exercise-card input:focus,
+        .degree7-unit1-lesson16-lecture-exercise-card textarea:focus {
+            outline: none;
+            border-color: var(--degree7-unit1-lesson16-lecture-accent);
+        }
+        .degree7-unit1-lesson16-lecture-inline-input {
+            width: 120px !important;
+            padding: 0.25rem 0.5rem !important;
+            display: inline-block;
+            margin: 0 0.2rem;
+        }
+        .degree7-unit1-lesson16-lecture-btn-verify {
+            background: var(--degree7-unit1-lesson16-lecture-accent);
+            color: #fff; border: none;
+            padding: 0.5rem 1.2rem; border-radius: 20px;
+            font-weight: 600; cursor: pointer;
+            transition: background var(--degree7-unit1-lesson16-lecture-transition);
+            margin-top: 0.6rem; font-size: 0.85rem;
+        }
+        .degree7-unit1-lesson16-lecture-btn-verify:hover { background: var(--degree7-unit1-lesson16-lecture-accent-hover); }
+        .degree7-unit1-lesson16-lecture-answer-key {
+            display: none; margin-top: 0.8rem; padding: 0.8rem;
+            background: var(--degree7-unit1-lesson16-lecture-lighter);
+            border-radius: 6px; font-size: 0.85rem;
+            color: var(--degree7-unit1-lesson16-lecture-text);
+            border: 1px dashed var(--degree7-unit1-lesson16-lecture-accent);
+        }
+        .degree7-unit1-lesson16-lecture-answer-key.visible { display: block; }
+        .degree7-unit1-lesson16-lecture-self-assessment {
+            margin-top: 0.8rem; font-size: 0.9rem;
+            display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
+        }
+        .degree7-unit1-lesson16-lecture-self-assessment label { cursor: pointer; }
+        .degree7-unit1-lesson16-lecture-exercise-col-left { grid-column: 1 / 2; }
+        .degree7-unit1-lesson16-lecture-exercise-col-right { grid-column: 2 / 3; }
+        .degree7-unit1-lesson16-lecture-note {
+            background: linear-gradient(135deg, rgba(46,139,87,0.07), rgba(30,94,58,0.03));
+            border: 1px dashed var(--degree7-unit1-lesson16-lecture-accent);
+            border-radius: var(--degree7-unit1-lesson16-lecture-radius-sm);
+            padding: 1rem 1.2rem; margin: 1rem 0; font-size: 0.95rem;
+        }
+        .degree7-unit1-lesson16-lecture-note strong { color: var(--degree7-unit1-lesson16-lecture-accent); }
+        .degree7-unit1-lesson16-lecture-situation {
+            display: grid;
+            grid-template-columns: 2.2rem 1fr;
+            gap: 0.7rem;
+            align-items: start;
+            background: var(--degree7-unit1-lesson16-lecture-lighter);
+            border-left: 3px solid var(--degree7-unit1-lesson16-lecture-accent);
+            border-radius: var(--degree7-unit1-lesson16-lecture-radius-sm);
+            padding: 0.7rem 0.9rem;
+            margin-bottom: 0.6rem;
+        }
+        .degree7-unit1-lesson16-lecture-situation .num {
+            width: 26px; height: 26px;
+            background: var(--degree7-unit1-lesson16-lecture-accent);
+            color: #fff; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+        .degree7-unit1-lesson16-lecture-situation .content p {
+            font-size: 0.88rem;
+            margin-bottom: 0.4rem;
+        }
+        .degree7-unit1-lesson16-lecture-situation .content input[type="text"] {
+            width: 100%; padding: 0.35rem 0.5rem;
+            border: 1px solid var(--degree7-unit1-lesson16-lecture-border);
+            border-radius: 4px;
+            background: var(--degree7-unit1-lesson16-lecture-input-bg);
+            color: var(--degree7-unit1-lesson16-lecture-text);
+            font-family: inherit; font-size: 0.85rem;
+        }
+        .degree7-unit1-lesson16-lecture-score-area {
+            background: var(--degree7-unit1-lesson16-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson16-lecture-border);
+            border-radius: var(--degree7-unit1-lesson16-lecture-radius);
+            padding: 1.5rem; margin-top: 2rem;
+            box-shadow: var(--degree7-unit1-lesson16-lecture-shadow);
+        }
+        .degree7-unit1-lesson16-lecture-score-area h2 {
+            color: var(--degree7-unit1-lesson16-lecture-heading); margin-bottom: 1rem;
+        }
+        .degree7-unit1-lesson16-lecture-score-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .degree7-unit1-lesson16-lecture-score-stat {
+            background: var(--degree7-unit1-lesson16-lecture-light);
+            padding: 0.8rem 1.2rem; border-radius: 8px; font-weight: 600;
+        }
+        .degree7-unit1-lesson16-lecture-footer-nav {
+            margin-top: 2rem; display: flex; justify-content: space-between; flex-wrap: wrap;
+            background: var(--degree7-unit1-lesson16-lecture-card);
+            border-top: 1px solid var(--degree7-unit1-lesson16-lecture-border);
+            padding: 0.8rem 1.5rem;
+            border-radius: 0 0 var(--degree7-unit1-lesson16-lecture-radius) var(--degree7-unit1-lesson16-lecture-radius);
+        }
+        .degree7-unit1-lesson16-lecture-footer-nav a {
+            font-weight: 600; color: var(--degree7-unit1-lesson16-lecture-accent); text-decoration: none;
+        }
+        .degree7-unit1-lesson16-lecture-footer-nav a:hover { text-decoration: underline; }
+        html[dir="rtl"] body { direction: rtl; }
+        html[dir="rtl"] .degree7-unit1-lesson16-lecture-container { text-align: right; }
+        html[dir="rtl"] .degree7-unit1-lesson16-lecture-exercise-card th,
+        html[dir="rtl"] .degree7-unit1-lesson16-lecture-exercise-card td { text-align: right; }
+        html[dir="rtl"] .degree7-unit1-lesson16-lecture-exercise-card { padding-left: 1.3rem; padding-right: 3.4rem; }
+        html[dir="rtl"] .degree7-unit1-lesson16-lecture-exercise-card::before {
+            left: auto; right: 0;
+            border-radius: 0 var(--degree7-unit1-lesson16-lecture-radius-sm) var(--degree7-unit1-lesson16-lecture-radius-sm) 0;
+        }
+        html[dir="rtl"] .degree7-unit1-lesson16-lecture-vcard { padding-left: 0.9rem; padding-right: 3.2rem; }
+        html[dir="rtl"] .degree7-unit1-lesson16-lecture-vcard .degree7-unit1-lesson16-lecture-vicon {
+            left: auto; right: 0;
+            border-right: none;
+            border-left: 1px solid var(--degree7-unit1-lesson16-lecture-border);
+        }
+        html[dir="rtl"] .degree7-unit1-lesson16-lecture-situation {
+            border-left: none;
+            border-right: 3px solid var(--degree7-unit1-lesson16-lecture-accent);
+        }
+        @media (max-width:800px) {
+            .degree7-unit1-lesson16-lecture-exercises-section { grid-template-columns: 1fr; }
+            .degree7-unit1-lesson16-lecture-exercise-col-left,
+            .degree7-unit1-lesson16-lecture-exercise-col-right { grid-column: auto; }
+        }
+        @media (max-width:600px) {
+            .degree7-unit1-lesson16-lecture-lesson-header h1 { font-size: 1.5rem; }
+            .degree7-unit1-lesson16-lecture-container { padding: 1rem 0.8rem 2rem; }
+            .degree7-unit1-lesson16-lecture-text-card { padding: 1.4rem 1.2rem; }
+            .degree7-unit1-lesson16-lecture-hero-img { max-height: 200px; }
+            .degree7-unit1-lesson16-lecture-rule-img { max-width: 100px; }
+            .degree7-unit1-lesson16-lecture-showcase-img { max-height: 140px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="toast-container"></div>
+    <button id="signInBtn" style="display:none"></button>
+    <nav class="back-nav no-print">
+        <a href="index.html" data-i18n="back_link">← Retour à l'accueil</a>
+    </nav>
+    <div id="main-content" class="degree7-unit1-lesson16-lecture-container">
+        <!-- Breadcrumb -->
+        <p style="margin-bottom:1.5rem; color:var(--degree7-unit1-lesson16-lecture-text-light);">
+            <a href="degree7.html" data-i18n="back_revision">Unité 1</a>
+            › <strong data-i18n="back_current">À table</strong>
+        </p>
+        <div class="degree7-unit1-lesson16-lecture-lesson-header">
+            <span class="degree7-unit1-lesson16-lecture-badge" data-i18n="lesson_badge">📖 Lecture · Leçon 16</span>
+            <h1 data-i18n="lesson_title">À table<br>Francesca Simon, <em>Anatole est prêt à tout</em></h1>
+            <div class="degree7-unit1-lesson16-lecture-meta">
+                <span data-i18n="lesson_duration">⏱️ 45 minutes</span>
+                <span data-i18n="lesson_meta_audio">🎧 Écoutez le texte puis répondez aux questions</span>
+            </div>
+        </div>
+        <!-- Audio player -->
+        <div class="degree7-unit1-lesson16-lecture-audio-player" id="audioPlayer">
+            <span class="degree7-unit1-lesson16-lecture-audio-label" data-i18n="audio_label">🎧 Écoute du texte</span>
+            <button class="degree7-unit1-lesson16-lecture-play-btn" id="playBtn" aria-label="Lecture">▶</button>
+            <div class="degree7-unit1-lesson16-lecture-progress-area">
+                <div class="degree7-unit1-lesson16-lecture-progress-bar" id="progressBar">
+                    <div class="degree7-unit1-lesson16-lecture-progress-fill" id="progressFill"></div>
+                </div>
+                <div class="degree7-unit1-lesson16-lecture-time-info">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+            <div class="degree7-unit1-lesson16-lecture-speed-selector" id="speedSelector">
+                <button class="degree7-unit1-lesson16-lecture-speed-btn" data-speed="0.75">0.75x</button>
+                <button class="degree7-unit1-lesson16-lecture-speed-btn active" data-speed="1">1x</button>
+                <button class="degree7-unit1-lesson16-lecture-speed-btn" data-speed="1.25">1.25x</button>
+                <button class="degree7-unit1-lesson16-lecture-speed-btn" data-speed="1.5">1.5x</button>
+            </div>
+        </div>
+        <!-- Author presentation -->
+        <div class="degree7-unit1-lesson16-lecture-author-card">
+            <img src="assets7/images/degree7/unit1/lesson16/francesca_simon_portrait.png"
+                 alt="Portrait de Francesca Simon"
+                 class="degree7-unit1-lesson16-lecture-author-img"
+                 data-i18n="author_img_alt"
+                 onerror="this.style.display='none'">
+            <div class="degree7-unit1-lesson16-lecture-author-info">
+                <h3 data-i18n="author_title">👤 Francesca Simon</h3>
+                <p data-i18n="author_bio">Femme écrivain contemporaine d'expression anglaise. Elle a écrit <em>Anatole est prêt à tout</em>, <em>Anatole a toujours le dernier mot</em> et <em>Quand Anatole s'en mêle</em>, récits destinés à la jeunesse.</p>
+            </div>
+        </div>
+        <!-- Text -->
+        <section class="degree7-unit1-lesson16-lecture-section">
+            <h2 data-i18n="text_heading">📖 J'observe</h2>
+            <figure class="degree7-unit1-lesson16-lecture-hero-figure">
+                <img src="assets7/images/degree7/unit1/lesson16/famille_table.png"
+                     alt="Illustration d'une famille à table"
+                     class="degree7-unit1-lesson16-lecture-hero-img"
+                     data-i18n="img_hero_alt"
+                     onerror="this.parentElement.style.display='none'">
+                <figcaption class="degree7-unit1-lesson16-lecture-hero-caption" data-i18n="img_hero_caption">
+                    Le repas en famille — un moment de partage... et parfois de surprises !
+                </figcaption>
+            </figure>
+            <div class="degree7-unit1-lesson16-lecture-note">
+                <strong data-i18n="intro_title">📌 Présentation :</strong>
+                <span data-i18n="intro_text">Anatole est un enfant difficile et turbulent. Son frère Petit Ange est très sage. Un jour, pourtant…</span>
+            </div>
+            <div class="degree7-unit1-lesson16-lecture-text-card">
+                <span class="degree7-unit1-lesson16-lecture-quote-mark">“</span>
+                <p data-i18n="text_para1">La famille se mit à table. Il y avait au menu des spaghettis, et des boulettes de viande accompagnées de petits pois et de carottes. Au lieu de manger avec ses doigts, Anatole utilisa sa fourchette, son couteau et sa cuiller.</p>
+                <p data-i18n="text_para2">Il ne lança pas de petits pois à Petit Ange, ne mâcha pas ses boulettes de viande la bouche ouverte et resta bien droit sur sa chaise.</p>
+                <p data-i18n="text_para3">« Anatole, tiens-toi droit, ordonna papa.<br>– Mais je me tiens droit » répliqua Anatole.</p>
+                <p data-i18n="text_para4">Papa leva les yeux et déclara, surpris :<br>« C'est vrai. »</p>
+                <p data-i18n="text_para5">Petit Ange n'arrivait pas à avaler. Il se demandait pourquoi Anatole ne le <span class="degree7-unit1-lesson16-lecture-hl" title="lancer sur lui">bombardait</span> pas de petits pois. Tout doucement, il en prit un dans sa main.</p>
+                <p data-i18n="text_para6">Puis, profitant d'un moment où personne ne regardait de son côté, il <span class="degree7-unit1-lesson16-lecture-hl" title="envoya, lança">expédia</span> le petit pois sur Anatole.</p>
+                <p data-i18n="text_para7">« Aïe ! fit Anatole.<br>– Anatole, ne commence pas ! » s'écria papa.</p>
+                <p data-i18n="text_para8">Furieux, Anatole prit une grosse poignée de petits pois dans son assiette. Mais il se rappela qu'il avait décidé d'être parfait et s'arrêta net.</p>
+                <p data-i18n="text_para9">Petit Ange <span class="degree7-unit1-lesson16-lecture-hl" title="surveillait avec attention, épiait">guettait</span> sa réaction avec un sourire en coin. Contrairement à son attente, aucun petit pois n'atterrit sur son front.</p>
+                <p data-i18n="text_para10">Petit Ange n'y comprenait plus rien. Pourquoi Anatole ne lui donnait-il pas de coups de pied sous la table, comme il en avait l'habitude ?</p>
+                <p data-i18n="text_para11">Lentement, il avança sa jambe et <span class="degree7-unit1-lesson16-lecture-hl" title="donna un coup violent et bien appliqué">asséna</span> un coup dans les tibias de son frère.</p>
+                <p data-i18n="text_para12">« Ouille ! hurla Anatole.<br>– Anatole, ça suffit ! ordonna papa.</p>
+                <div class="degree7-unit1-lesson16-lecture-text-author" data-i18n="text_author">— Francesca SIMON, <em>Anatole est prêt à tout</em> (Hachette, 2002)</div>
+            </div>
+            <div class="degree7-unit1-lesson16-lecture-note">
+                <strong data-i18n="consigne_title">➤ Consigne :</strong>
+                <span data-i18n="consigne_text">Lis le texte puis réponds aux questions. Observe comment Anatole change de comportement et comment Petit Ange réagit.</span>
+            </div>
+            <div class="degree7-unit1-lesson16-lecture-note">
+                <strong data-i18n="vocab_title">📚 Vocabulaire :</strong>
+                <ul style="padding-left:1.2rem; margin-top:0.4rem;">
+                    <li data-i18n="vocab1"><strong>Bombarder quelqu'un de petits pois</strong> : les lancer sur lui.</li>
+                    <li data-i18n="vocab2"><strong>Expédier</strong> : envoyer, lancer.</li>
+                    <li data-i18n="vocab3"><strong>Guetter</strong> : surveiller avec attention, épier, observer.</li>
+                    <li data-i18n="vocab4"><strong>Asséner un coup</strong> : donner un coup violent et bien appliqué.</li>
+                </ul>
+            </div>
+        </section>
+        <!-- Reading rules -->
+        <section class="degree7-unit1-lesson16-lecture-section">
+            <h2 data-i18n="rules_heading">📖 Je lis à haute voix</h2>
+            <div class="degree7-unit1-lesson16-lecture-valeurs-section">
+                <div class="degree7-unit1-lesson16-lecture-valeur-card">
+                    <h3 data-i18n="rule1_title">🔊 1. Les sons « on », « an » et « en »</h3>
+                    <ul data-i18n="rule1_list">
+                        <li>Lis le passage allant de « Petit Ange n'arrivait pas... » à « ... sur Anatole ».</li>
+                        <li>Articule bien les mots qui contiennent les sons <strong>on</strong>, <strong>an</strong> et <strong>en</strong>.</li>
+                        <li>Exemples : <em>Anatole</em>, <em>n'arrivait</em>, <em>comprenait</em>, <em>entendu</em>, <em>comment</em>…</li>
+                    </ul>
+                </div>
+                <div class="degree7-unit1-lesson16-lecture-valeur-card">
+                    <h3 data-i18n="rule2_title">🎭 2. Pour une bonne lecture</h3>
+                    <ul data-i18n="rule2_list">
+                        <li>Marquer les pauses aux virgules et aux points.</li>
+                        <li>Changer de voix pour chaque personnage (papa, Anatole, Petit Ange).</li>
+                        <li>Accompagner sa lecture de gestes expressifs.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- Vocabulary showcase -->
+        <section class="degree7-unit1-lesson16-lecture-section">
+            <h2 data-i18n="showcase_heading">🎨 Le lexique du texte</h2>
+            <div class="degree7-unit1-lesson16-lecture-showcase">
+                <div class="degree7-unit1-lesson16-lecture-vcard">
+                    <span class="degree7-unit1-lesson16-lecture-vicon">🍝</span>
+                    <span class="degree7-unit1-lesson16-lecture-vword" data-i18n="card1_word">se mettre à table</span>
+                    <span class="degree7-unit1-lesson16-lecture-vdef" data-i18n="card1_def">s'installer pour manger</span>
+                </div>
+                <div class="degree7-unit1-lesson16-lecture-vcard">
+                    <span class="degree7-unit1-lesson16-lecture-vicon">🍽️</span>
+                    <span class="degree7-unit1-lesson16-lecture-vword" data-i18n="card2_word">la fourchette</span>
+                    <span class="degree7-unit1-lesson16-lecture-vdef" data-i18n="card2_def">ustensile à quatre dents</span>
+                </div>
+                <div class="degree7-unit1-lesson16-lecture-vcard">
+                    <span class="degree7-unit1-lesson16-lecture-vicon">🔪</span>
+                    <span class="degree7-unit1-lesson16-lecture-vword" data-i18n="card3_word">le couteau</span>
+                    <span class="degree7-unit1-lesson16-lecture-vdef" data-i18n="card3_def">ustensile pour couper</span>
+                </div>
+                <div class="degree7-unit1-lesson16-lecture-vcard">
+                    <span class="degree7-unit1-lesson16-lecture-vicon">🥄</span>
+                    <span class="degree7-unit1-lesson16-lecture-vword" data-i18n="card4_word">la cuiller</span>
+                    <span class="degree7-unit1-lesson16-lecture-vdef" data-i18n="card4_def">ustensile pour manger liquide</span>
+                </div>
+                <div class="degree7-unit1-lesson16-lecture-vcard">
+                    <span class="degree7-unit1-lesson16-lecture-vicon">🟢</span>
+                    <span class="degree7-unit1-lesson16-lecture-vword" data-i18n="card5_word">les petits pois</span>
+                    <span class="degree7-unit1-lesson16-lecture-vdef" data-i18n="card5_def">légumes ronds et verts</span>
+                </div>
+                <div class="degree7-unit1-lesson16-lecture-vcard">
+                    <span class="degree7-unit1-lesson16-lecture-vicon">🥩</span>
+                    <span class="degree7-unit1-lesson16-lecture-vword" data-i18n="card6_word">les boulettes</span>
+                    <span class="degree7-unit1-lesson16-lecture-vdef" data-i18n="card6_def">petites boules de viande hachée</span>
+                </div>
+                <div class="degree7-unit1-lesson16-lecture-vcard">
+                    <span class="degree7-unit1-lesson16-lecture-vicon">🦵</span>
+                    <span class="degree7-unit1-lesson16-lecture-vword" data-i18n="card7_word">les tibias</span>
+                    <span class="degree7-unit1-lesson16-lecture-vdef" data-i18n="card7_def">os de la partie avant de la jambe</span>
+                </div>
+                <div class="degree7-unit1-lesson16-lecture-vcard">
+                    <span class="degree7-unit1-lesson16-lecture-vicon">😠</span>
+                    <span class="degree7-unit1-lesson16-lecture-vword" data-i18n="card8_word">furieux</span>
+                    <span class="degree7-unit1-lesson16-lecture-vdef" data-i18n="card8_def">très en colère</span>
+                </div>
+                <div class="degree7-unit1-lesson16-lecture-vcard">
+                    <span class="degree7-unit1-lesson16-lecture-vicon">✋</span>
+                    <span class="degree7-unit1-lesson16-lecture-vword" data-i18n="card9_word">s'arrêter net</span>
+                    <span class="degree7-unit1-lesson16-lecture-vdef" data-i18n="card9_def">s'arrêter brusquement</span>
+                </div>
+                <div class="degree7-unit1-lesson16-lecture-vcard">
+                    <span class="degree7-unit1-lesson16-lecture-vicon">👀</span>
+                    <span class="degree7-unit1-lesson16-lecture-vword" data-i18n="card10_word">guetter</span>
+                    <span class="degree7-unit1-lesson16-lecture-vdef" data-i18n="card10_def">observer avec attention</span>
+                </div>
+                <div class="degree7-unit1-lesson16-lecture-vcard">
+                    <span class="degree7-unit1-lesson16-lecture-vicon">🏃</span>
+                    <span class="degree7-unit1-lesson16-lecture-vword" data-i18n="card11_word">expédier</span>
+                    <span class="degree7-unit1-lesson16-lecture-vdef" data-i18n="card11_def">envoyer, lancer rapidement</span>
+                </div>
+                <div class="degree7-unit1-lesson16-lecture-vcard">
+                    <span class="degree7-unit1-lesson16-lecture-vicon">💥</span>
+                    <span class="degree7-unit1-lesson16-lecture-vword" data-i18n="card12_word">asséner un coup</span>
+                    <span class="degree7-unit1-lesson16-lecture-vdef" data-i18n="card12_def">donner un coup violent</span>
+                </div>
+            </div>
+        </section>
+        <!-- Exercises -->
+        <div class="degree7-unit1-lesson16-lecture-exercises-section">
+            <h2 data-i18n="exercises_heading">✍️ Je m'exerce</h2>
+            <!-- Ex 1 -->
+            <div class="degree7-unit1-lesson16-lecture-exercise-card degree7-unit1-lesson16-lecture-exercise-col-left" data-num="1">
+                <h3 data-i18n="exo1_title">📌 1. Je découvre le texte</h3>
+                <p data-i18n="exo1_instruction">Réponds aux questions de découverte du texte.</p>
+                <ol type="a">
+                    <li>Quels sont les personnages présents dans cette scène ? <input type="text" class="degree7-unit1-lesson16-lecture-inline-input" placeholder="..."></li>
+                    <li>Où se passe l'action ? <input type="text" class="degree7-unit1-lesson16-lecture-inline-input" placeholder="..."></li>
+                    <li>Au cours de ce repas, comment Anatole se conduit-il ? <input type="text" class="degree7-unit1-lesson16-lecture-inline-input" placeholder="..."></li>
+                </ol>
+                <button class="degree7-unit1-lesson16-lecture-btn-verify" onclick="toggleCorrection('exo1Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo1Key" class="degree7-unit1-lesson16-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson16-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 2 -->
+            <div class="degree7-unit1-lesson16-lecture-exercise-card degree7-unit1-lesson16-lecture-exercise-col-right" data-num="2">
+                <h3 data-i18n="exo2_title">📌 2. Vrai ou faux ?</h3>
+                <p data-i18n="exo2_instruction">Indique si chaque affirmation est vraie (V) ou fausse (F).</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_statement" class="no-bilingual">Affirmation</th>
+                            <th data-i18n="table_vf" class="no-bilingual">V / F</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td data-i18n="exo2_q1">Anatole est un enfant sage et calme.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo2_q2">Petit Ange est le frère d'Anatole.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo2_q3">Anatole utilise sa fourchette, son couteau et sa cuiller.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo2_q4">C'est papa qui lance le premier petit pois.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo2_q5">Anatole décide d'être parfait ce jour-là.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                    </tbody>
+                </table>
+                <button class="degree7-unit1-lesson16-lecture-btn-verify" onclick="toggleCorrection('exo2Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo2Key" class="degree7-unit1-lesson16-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson16-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 3 -->
+            <div class="degree7-unit1-lesson16-lecture-exercise-card degree7-unit1-lesson16-lecture-exercise-col-left" data-num="3">
+                <h3 data-i18n="exo3_title">📌 3. QCM – Compréhension du texte</h3>
+                <p data-i18n="exo3_instruction">Choisis la bonne réponse parmi les trois propositions.</p>
+                <p><strong>1.</strong> <span data-i18n="exo3_q1">Qu'est-ce qu'Anatole avait l'habitude de faire à table ?</span></p>
+                <label><input type="radio" name="mcq1" value="a"> <span data-i18n="exo3_q1_a">Manger avec ses doigts et lancer des petits pois.</span></label><br>
+                <label><input type="radio" name="mcq1" value="b"> <span data-i18n="exo3_q1_b">Utiliser correctement ses couverts.</span></label><br>
+                <label><input type="radio" name="mcq1" value="c"> <span data-i18n="exo3_q1_c">Rester silencieux.</span></label>
+                <p style="margin-top:0.6rem;"><strong>2.</strong> <span data-i18n="exo3_q2">Ce jour-là, pourquoi Anatole change-t-il de comportement ?</span></p>
+                <label><input type="radio" name="mcq2" value="a"> <span data-i18n="exo3_q2_a">Il est fatigué.</span></label><br>
+                <label><input type="radio" name="mcq2" value="b"> <span data-i18n="exo3_q2_b">Il a décidé d'être parfait.</span></label><br>
+                <label><input type="radio" name="mcq2" value="c"> <span data-i18n="exo3_q2_c">Il a peur de son père.</span></label>
+                <p style="margin-top:0.6rem;"><strong>3.</strong> <span data-i18n="exo3_q3">Qui ne comprend pas le changement d'Anatole et lance un petit pois ?</span></p>
+                <label><input type="radio" name="mcq3" value="a"> <span data-i18n="exo3_q3_a">Papa</span></label><br>
+                <label><input type="radio" name="mcq3" value="b"> <span data-i18n="exo3_q3_b">Petit Ange</span></label><br>
+                <label><input type="radio" name="mcq3" value="c"> <span data-i18n="exo3_q3_c">Maman</span></label>
+                <button class="degree7-unit1-lesson16-lecture-btn-verify" onclick="toggleCorrection('exo3Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo3Key" class="degree7-unit1-lesson16-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson16-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 4 -->
+            <div class="degree7-unit1-lesson16-lecture-exercise-card degree7-unit1-lesson16-lecture-exercise-col-right" data-num="4">
+                <h3 data-i18n="exo4_title">📌 4. Complète avec les mots du texte</h3>
+                <p data-i18n="exo4_instruction">Complète le texte à trous avec les mots suivants : <em>table, fourchette, bouche, droit, parfait, tibias</em>.</p>
+                <p>
+                    <span data-i18n="exo4_t1">La famille se mit à</span>
+                    <input type="text" class="degree7-unit1-lesson16-lecture-inline-input" placeholder="...">
+                    <span data-i18n="exo4_t2">. Anatole utilisa sa</span>
+                    <input type="text" class="degree7-unit1-lesson16-lecture-inline-input" placeholder="...">
+                    <span data-i18n="exo4_t3">, son couteau et sa cuiller. Il ne mâcha pas la</span>
+                    <input type="text" class="degree7-unit1-lesson16-lecture-inline-input" placeholder="...">
+                    <span data-i18n="exo4_t4">ouverte et resta bien</span>
+                    <input type="text" class="degree7-unit1-lesson16-lecture-inline-input" placeholder="...">
+                    <span data-i18n="exo4_t5">sur sa chaise. Il avait décidé d'être</span>
+                    <input type="text" class="degree7-unit1-lesson16-lecture-inline-input" placeholder="...">
+                    <span data-i18n="exo4_t6">. Petit Ange lui donna un coup dans les</span>
+                    <input type="text" class="degree7-unit1-lesson16-lecture-inline-input" placeholder="...">
+                    <span data-i18n="exo4_t7">.</span>
+                </p>
+                <button class="degree7-unit1-lesson16-lecture-btn-verify" onclick="toggleCorrection('exo4Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo4Key" class="degree7-unit1-lesson16-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson16-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 5 -->
+            <div class="degree7-unit1-lesson16-lecture-exercise-card degree7-unit1-lesson16-lecture-exercise-col-left" data-num="5">
+                <h3 data-i18n="exo5_title">📌 5. Relie chaque mot à sa définition</h3>
+                <p data-i18n="exo5_instruction">Écris la lettre de la définition qui correspond à chaque mot.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_word" class="no-bilingual">Mot</th>
+                            <th datai18n="table_letter" class="no-bilingual">Définition (a–d)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>bombarder</td><td><input type="text" placeholder="a-d"></td></tr>
+                        <tr><td>expédier</td><td><input type="text" placeholder="a-d"></td></tr>
+                        <tr><td>guetter</td><td><input type="text" placeholder="a-d"></td></tr>
+                        <tr><td>asséner</td><td><input type="text" placeholder="a-d"></td></tr>
+                    </tbody>
+                </table>
+                <p style="font-size:0.85rem; color:var(--degree7-unit1-lesson16-lecture-text-light);">
+                    <strong>a.</strong> <span data-i18n="exo5_a">envoyer, lancer</span> ·
+                    <strong>b.</strong> <span data-i18n="exo5_b">lancer sur lui (des petits pois)</span> ·
+                    <strong>c.</strong> <span data-i18n="exo5_c">donner un coup violent</span> ·
+                    <strong>d.</strong> <span data-i18n="exo5_d">surveiller avec attention</span>
+                </p>
+                <button class="degree7-unit1-lesson16-lecture-btn-verify" onclick="toggleCorrection('exo5Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo5Key" class="degree7-unit1-lesson16-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson16-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex5" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex5" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex5" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 6 -->
+            <div class="degree7-unit1-lesson16-lecture-exercise-card degree7-unit1-lesson16-lecture-exercise-col-right" data-num="6">
+                <h3 data-i18n="exo6_title">📌 6. Remets ces actions dans l'ordre</h3>
+                <p data-i18n="exo6_instruction">Numérote ces actions de 1 à 4 dans l'ordre logique d'un repas.</p>
+                <div class="degree7-unit1-lesson16-lecture-situation">
+                    <span class="num">A</span>
+                    <div class="content">
+                        <p data-i18n="sitA">Mettre le couvert.</p>
+                        <input type="text" placeholder="Ordre : ...">
+                    </div>
+                </div>
+                <div class="degree7-unit1-lesson16-lecture-situation">
+                    <span class="num">B</span>
+                    <div class="content">
+                        <p data-i18n="sitB">Passer / se mettre à table.</p>
+                        <input type="text" placeholder="Ordre : ...">
+                    </div>
+                </div>
+                <div class="degree7-unit1-lesson16-lecture-situation">
+                    <span class="num">C</span>
+                    <div class="content">
+                        <p data-i18n="sitC">Servir le dîner.</p>
+                        <input type="text" placeholder="Ordre : ...">
+                    </div>
+                </div>
+                <div class="degree7-unit1-lesson16-lecture-situation">
+                    <span class="num">D</span>
+                    <div class="content">
+                        <p data-i18n="sitD">Débarrasser la table.</p>
+                        <input type="text" placeholder="Ordre : ...">
+                    </div>
+                </div>
+                <button class="degree7-unit1-lesson16-lecture-btn-verify" onclick="toggleCorrection('exo6Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo6Key" class="degree7-unit1-lesson16-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson16-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex6" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex6" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex6" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 7 -->
+            <div class="degree7-unit1-lesson16-lecture-exercise-card degree7-unit1-lesson16-lecture-exercise-col-left" data-num="7">
+                <h3 data-i18n="exo7_title">📌 7. Trouve les objets inattendus</h3>
+                <p data-i18n="exo7_instruction">Au moment de mettre le couvert, ta sœur a glissé des objets inattendus. Retrouve-les parmi la liste et écris-les.</p>
+                <p style="padding:0.6rem; background:var(--degree7-unit1-lesson16-lecture-light); border-radius:6px; font-size:0.88rem;" data-i18n="exo7_list">
+                    La nappe, la salière, le mixeur, les fourchettes, la casserole, les serviettes, les couteaux, les cuillers, le presse-orange, la poivrière, les assiettes, les verres...
+                </p>
+                <p style="margin-top:0.6rem;" data-i18n="exo7_instruction2">Objets qui n'ont pas leur place sur la table :</p>
+                <ol type="a">
+                    <li><input type="text" placeholder="..."></li>
+                    <li><input type="text" placeholder="..."></li>
+                    <li><input type="text" placeholder="..."></li>
+                    <li><input type="text" placeholder="..."></li>
+                </ol>
+                <button class="degree7-unit1-lesson16-lecture-btn-verify" onclick="toggleCorrection('exo7Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo7Key" class="degree7-unit1-lesson16-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson16-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex7" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex7" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex7" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 8 -->
+            <div class="degree7-unit1-lesson16-lecture-exercise-card degree7-unit1-lesson16-lecture-exercise-col-right" data-num="8">
+                <h3 data-i18n="exo8_title">📌 8. À faire ou à ne pas faire à table ?</h3>
+                <p data-i18n="exo8_instruction">Indique si chaque action est à faire (AF) ou à ne pas faire (NF) à table.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_action" class="no-bilingual">Action</th>
+                            <th data-i18n="table_af_nf" class="no-bilingual">AF / NF</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td data-i18n="exo8_q1">Se tenir droit</td><td><input type="text" placeholder="AF ou NF"></td></tr>
+                        <tr><td data-i18n="exo8_q2">Manger avec les doigts</td><td><input type="text" placeholder="AF ou NF"></td></tr>
+                        <tr><td data-i18n="exo8_q3">Mâcher la bouche ouverte</td><td><input type="text" placeholder="AF ou NF"></td></tr>
+                        <tr><td data-i18n="exo8_q4">Parler la bouche pleine</td><td><input type="text" placeholder="AF ou NF"></td></tr>
+                        <tr><td data-i18n="exo8_q5">Manger sans faire de bruit</td><td><input type="text" placeholder="AF ou NF"></td></tr>
+                    </tbody>
+                </table>
+                <button class="degree7-unit1-lesson16-lecture-btn-verify" onclick="toggleCorrection('exo8Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo8Key" class="degree7-unit1-lesson16-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson16-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex8" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex8" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex8" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 9 -->
+            <div class="degree7-unit1-lesson16-lecture-exercise-card degree7-unit1-lesson16-lecture-exercise-col-left" data-num="9">
+                <h3 data-i18n="exo9_title">📌 9. Les sons « on », « an » et « en »</h3>
+                <p data-i18n="exo9_instruction">Classe ces mots selon le son que contient la partie soulignée. Écris le mot dans la bonne colonne.</p>
+                <p style="font-size:0.88rem; padding:0.5rem; background:var(--degree7-unit1-lesson16-lecture-light); border-radius:6px;" data-i18n="exo9_words">
+                    Anatole, enfant, sang, banc, comprenait, entendu, comment, longtemps, grand, menton
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_on" class="no-bilingual">Son « on »</th>
+                            <th data-i18n="table_an" class="no-bilingual">Son « an »</th>
+                            <th data-i18n="table_en" class="no-bilingual">Son « en »</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" placeholder="..."></td>
+                            <td><input type="text" placeholder="..."></td>
+                            <td><input type="text" placeholder="..."></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="degree7-unit1-lesson16-lecture-btn-verify" onclick="toggleCorrection('exo9Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo9Key" class="degree7-unit1-lesson16-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson16-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex9" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex9" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex9" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 10 -->
+            <div class="degree7-unit1-lesson16-lecture-exercise-card degree7-unit1-lesson16-lecture-exercise-col-right" data-num="10">
+                <h3 data-i18n="exo10_title">📌 10. J'approfondis ma lecture</h3>
+                <p data-i18n="exo10_instruction">Réponds aux questions d'approfondissement.</p>
+                <ol type="a">
+                    <li>Qu'est-ce qu'Anatole avait l'habitude de faire à table ? <input type="text" class="degree7-unit1-lesson16-lecture-inline-input" placeholder="..."></li>
+                    <li>Le père remarque-t-il le changement ? Comment le sais-tu ? <input type="text" class="degree7-unit1-lesson16-lecture-inline-input" placeholder="..."></li>
+                    <li>Qui ne comprend pas le changement ? Que fait-il alors ? <input type="text" class="degree7-unit1-lesson16-lecture-inline-input" placeholder="..."></li>
+                </ol>
+                <button class="degree7-unit1-lesson16-lecture-btn-verify" onclick="toggleCorrection('exo10Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo10Key" class="degree7-unit1-lesson16-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson16-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex10" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex10" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex10" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+        </div>
+        <!-- Production -->
+        <div style="margin-top:2rem;">
+            <div class="degree7-unit1-lesson16-lecture-exercise-card" data-num="11">
+                <h3 data-i18n="exo11_title">📌 11. J'écris à mon tour – Production personnelle</h3>
+                <p data-i18n="exo11_instruction">Au cours d'un repas en famille, tu assistes à une scène drôle (exemples : quelqu'un qui mange avec les doigts, un steak difficile à découper, un hoquet tenace, du sel au lieu du sucre…). Raconte ce qui se passe en utilisant des expressions comme : <em>au lieu de, s'arrêter net, éclater de rire</em>…</p>
+                <figure class="degree7-unit1-lesson16-lecture-prod-figure">
+                    <img src="assets7/images/degree7/unit1/lesson16/repas_famille.png"
+                         alt="Illustration d'un repas de famille joyeux"
+                         class="degree7-unit1-lesson16-lecture-prod-img"
+                         data-i18n="img_prod_alt"
+                         onerror="this.parentElement.style.display='none'">
+                    <figcaption class="degree7-unit1-lesson16-lecture-prod-caption" data-i18n="img_prod_caption">
+                        Un repas de famille peut devenir une scène très drôle !
+                    </figcaption>
+                </figure>
+                <textarea rows="6" placeholder="Votre texte..."></textarea>
+                <button class="degree7-unit1-lesson16-lecture-btn-verify" onclick="showExo11Example()" data-i18n="show_example">💡 Voir un exemple de réponse</button>
+                <div id="exo11Key" class="degree7-unit1-lesson16-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson16-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex11" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex11" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex11" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+        </div>
+        <!-- Score area -->
+        <div class="degree7-unit1-lesson16-lecture-score-area" id="scoreArea">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="degree7-unit1-lesson16-lecture-score-stats" id="scoreStats">
+                <div class="degree7-unit1-lesson16-lecture-score-stat"><span data-i18n="score_correct">Correctes :</span> <span id="scoreCorrect">0</span></div>
+                <div class="degree7-unit1-lesson16-lecture-score-stat"><span data-i18n="score_incorrect">Incorrectes :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="degree7-unit1-lesson16-lecture-score-stat"><span data-i18n="score_partial">Partielles :</span> <span id="scorePartial">0</span></div>
+                <div class="degree7-unit1-lesson16-lecture-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">11</span></div>
+            </div>
+        </div>
+        <div class="degree7-unit1-lesson16-lecture-score-actions" style="margin-top:1.2rem;">
+            <button id="saveResultsBtn" class="degree7-unit1-lesson16-lecture-btn-verify" style="margin-right:0.5rem;" data-i18n="save_results">💾 Enregistrer mes résultats</button>
+            <button id="printPdfBtn" class="degree7-unit1-lesson16-lecture-btn-verify" style="background:#1e5e3a; margin-right:0.5rem;" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+        </div>
+        <!-- Footer nav -->
+        <div class="degree7-unit1-lesson16-lecture-footer-nav">
+            <a href="degree7unit1lesson15.html" data-i18n="footer_back" class="no-bilingual">← Leçon précédente</a>
+            <a href="degree7unit1lesson17.html" data-i18n="footer_next" class="no-bilingual">Leçon suivante : Le skate-board (Laudec & Cauvin) →</a>
+        </div>
+    </div>
+    <!-- Scripts -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                'lesson_title': "Leçon 16 – À table | Lecture",
+                'lesson_short_title': "À table",
+                'ach_year_degree7': "7ème Année Primaire",
+                'ach_module_unit1': "Unité 1 – Les fondements du français",
+                'back_link': "← Retour à l'accueil",
+                'back_revision': "Unité 1",
+                'back_current': "À table",
+                'lesson_badge': "📖 Lecture · Leçon 16",
+                'lesson_title': "À table<br>Francesca Simon, <em>Anatole est prêt à tout</em>",
+                'lesson_duration': "⏱️ 45 minutes",
+                'lesson_meta_audio': "🎧 Écoutez le texte puis répondez aux questions",
+                'audio_label': "🎧 Écoute du texte",
+                'author_img_alt': "Portrait de Francesca Simon",
+                'author_title': "👤 Francesca Simon",
+                'author_bio': "Femme écrivain contemporaine d'expression anglaise. Elle a écrit <em>Anatole est prêt à tout</em>, <em>Anatole a toujours le dernier mot</em> et <em>Quand Anatole s'en mêle</em>, récits destinés à la jeunesse.",
+                'text_heading': "📖 J'observe",
+                'img_hero_alt': "Illustration d'une famille à table",
+                'img_hero_caption': "Le repas en famille — un moment de partage... et parfois de surprises !",
+                'intro_title': "📌 Présentation :",
+                'intro_text': "Anatole est un enfant difficile et turbulent. Son frère Petit Ange est très sage. Un jour, pourtant…",
+                'text_author': "— Francesca SIMON, <em>Anatole est prêt à tout</em> (Hachette, 2002)",
+                'consigne_title': "➤ Consigne :",
+                'consigne_text': "Lis le texte puis réponds aux questions. Observe comment Anatole change de comportement et comment Petit Ange réagit.",
+                'vocab_title': "📚 Vocabulaire :",
+                'vocab1': "<strong>Bombarder quelqu'un de petits pois</strong> : les lancer sur lui.",
+                'vocab2': "<strong>Expédier</strong> : envoyer, lancer.",
+                'vocab3': "<strong>Guetter</strong> : surveiller avec attention, épier, observer.",
+                'vocab4': "<strong>Asséner un coup</strong> : donner un coup violent et bien appliqué.",
+                'rules_heading': "📖 Je lis à haute voix",
+                'rule1_title': "🔊 1. Les sons « on », « an » et « en »",
+                'rule1_list': "<li>Lis le passage allant de « Petit Ange n'arrivait pas... » à « ... sur Anatole ».</li><li>Articule bien les mots qui contiennent les sons <strong>on</strong>, <strong>an</strong> et <strong>en</strong>.</li><li>Exemples : <em>Anatole</em>, <em>n'arrivait</em>, <em>comprenait</em>, <em>entendu</em>, <em>comment</em>…</li>",
+                'rule2_title': "🎭 2. Pour une bonne lecture",
+                'rule2_list': "<li>Marquer les pauses aux virgules et aux points.</li><li>Changer de voix pour chaque personnage (papa, Anatole, Petit Ange).</li><li>Accompagner sa lecture de gestes expressifs.</li>",
+                'showcase_heading': "🎨 Le lexique du texte",
+                'card1_word': "se mettre à table", 'card1_def': "s'installer pour manger",
+                'card2_word': "la fourchette", 'card2_def': "ustensile à quatre dents",
+                'card3_word': "le couteau", 'card3_def': "ustensile pour couper",
+                'card4_word': "la cuiller", 'card4_def': "ustensile pour manger liquide",
+                'card5_word': "les petits pois", 'card5_def': "légumes ronds et verts",
+                'card6_word': "les boulettes", 'card6_def': "petites boules de viande hachée",
+                'card7_word': "les tibias", 'card7_def': "os de la partie avant de la jambe",
+                'card8_word': "furieux", 'card8_def': "très en colère",
+                'card9_word': "s'arrêter net", 'card9_def': "s'arrêter brusquement",
+                'card10_word': "guetter", 'card10_def': "observer avec attention",
+                'card11_word': "expédier", 'card11_def': "envoyer, lancer rapidement",
+                'card12_word': "asséner un coup", 'card12_def': "donner un coup violent",
+                'exercises_heading': "✍️ Je m'exerce",
+                'table_word': "Mot", 'table_letter': "Définition (a–d)",
+                'table_statement': "Affirmation", 'table_vf': "V / F",
+                'table_action': "Action", 'table_af_nf': "AF / NF",
+                'table_on': "Son « on »", 'table_an': "Son « an »", 'table_en': "Son « en »",
+                'btn_correction': "🔍 Voir la correction", 'show_example': "💡 Voir un exemple de réponse",
+                'exo1_title': "📌 1. Je découvre le texte",
+                'exo1_instruction': "Réponds aux questions de découverte du texte.",
+                'exo2_title': "📌 2. Vrai ou faux ?",
+                'exo2_instruction': "Indique si chaque affirmation est vraie (V) ou fausse (F).",
+                'exo2_q1': "Anatole est un enfant sage et calme.",
+                'exo2_q2': "Petit Ange est le frère d'Anatole.",
+                'exo2_q3': "Anatole utilise sa fourchette, son couteau et sa cuiller.",
+                'exo2_q4': "C'est papa qui lance le premier petit pois.",
+                'exo2_q5': "Anatole décide d'être parfait ce jour-là.",
+                'exo3_title': "📌 3. QCM – Compréhension du texte",
+                'exo3_instruction': "Choisis la bonne réponse parmi les trois propositions.",
+                'exo3_q1': "Qu'est-ce qu'Anatole avait l'habitude de faire à table ?",
+                'exo3_q1_a': "Manger avec ses doigts et lancer des petits pois.", 'exo3_q1_b': "Utiliser correctement ses couverts.", 'exo3_q1_c': "Rester silencieux.",
+                'exo3_q2': "Ce jour-là, pourquoi Anatole change-t-il de comportement ?",
+                'exo3_q2_a': "Il est fatigué.", 'exo3_q2_b': "Il a décidé d'être parfait.", 'exo3_q2_c': "Il a peur de son père.",
+                'exo3_q3': "Qui ne comprend pas le changement d'Anatole et lance un petit pois ?",
+                'exo3_q3_a': "Papa", 'exo3_q3_b': "Petit Ange", 'exo3_q3_c': "Maman",
+                'exo4_title': "📌 4. Complète avec les mots du texte",
+                'exo4_instruction': "Complète le texte à trous avec les mots suivants : table, fourchette, bouche, droit, parfait, tibias.",
+                'exo4_t1': "La famille se mit à", 'exo4_t2': ". Anatole utilisa sa", 'exo4_t3': ", son couteau et sa cuiller. Il ne mâcha pas la", 'exo4_t4': "ouverte et resta bien", 'exo4_t5': "sur sa chaise. Il avait décidé d'être", 'exo4_t6': ". Petit Ange lui donna un coup dans les", 'exo4_t7': ".",
+                'exo5_title': "📌 5. Relie chaque mot à sa définition",
+                'exo5_instruction': "Écris la lettre de la définition qui correspond à chaque mot.",
+                'exo5_a': "envoyer, lancer", 'exo5_b': "lancer sur lui (des petits pois)", 'exo5_c': "donner un coup violent", 'exo5_d': "surveiller avec attention",
+                'exo6_title': "📌 6. Remets ces actions dans l'ordre",
+                'exo6_instruction': "Numérote ces actions de 1 à 4 dans l'ordre logique d'un repas.",
+                'sitA': "Mettre le couvert.", 'sitB': "Passer / se mettre à table.", 'sitC': "Servir le dîner.", 'sitD': "Débarrasser la table.",
+                'exo7_title': "📌 7. Trouve les objets inattendus",
+                'exo7_instruction': "Au moment de mettre le couvert, ta sœur a glissé des objets inattendus. Retrouve-les parmi la liste et écris-les.",
+                'exo7_list': "La nappe, la salière, le mixeur, les fourchettes, la casserole, les serviettes, les couteaux, les cuillers, le presse-orange, la poivrière, les assiettes, les verres...",
+                'exo7_instruction2': "Objets qui n'ont pas leur place sur la table :",
+                'exo8_title': "📌 8. À faire ou à ne pas faire à table ?",
+                'exo8_instruction': "Indique si chaque action est à faire (AF) ou à ne pas faire (NF) à table.",
+                'exo8_q1': "Se tenir droit", 'exo8_q2': "Manger avec les doigts", 'exo8_q3': "Mâcher la bouche ouverte", 'exo8_q4': "Parler la bouche pleine", 'exo8_q5': "Manger sans faire de bruit",
+                'exo9_title': "📌 9. Les sons « on », « an » et « en »",
+                'exo9_instruction': "Classe ces mots selon le son que contient la partie soulignée. Écris le mot dans la bonne colonne.",
+                'exo9_words': "Anatole, enfant, sang, banc, comprenait, entendu, comment, longtemps, grand, menton",
+                'exo10_title': "📌 10. J'approfondis ma lecture",
+                'exo10_instruction': "Réponds aux questions d'approfondissement.",
+                'exo11_title': "📌 11. J'écris à mon tour – Production personnelle",
+                'exo11_instruction': "Au cours d'un repas en famille, tu assistes à une scène drôle (exemples : quelqu'un qui mange avec les doigts, un steak difficile à découper, un hoquet tenace, du sel au lieu du sucre…). Raconte ce qui se passe en utilisant des expressions comme : au lieu de, s'arrêter net, éclater de rire…",
+                'img_prod_alt': "Illustration d'un repas de famille joyeux",
+                'img_prod_caption': "Un repas de famille peut devenir une scène très drôle !",
+                'footer_back': "← Leçon précédente", 'footer_next': "Leçon suivante : Le skate-board (Laudec & Cauvin) →",
+                'self_assess_question': "Ma réponse est :",
+                'self_correct': "Correcte", 'self_incorrect': "Incorrecte", 'self_partial': "Partiellement correcte",
+                'score_title': "📊 Votre auto‑évaluation",
+                'score_correct': "Correctes :", 'score_incorrect': "Incorrectes :", 'score_partial': "Partielles :", 'score_unanswered': "Sans réponse :",
+                'save_results': "💾 Enregistrer mes résultats", 'save_success': "Résultats sauvegardés ✓", 'save_error': "Erreur lors de la sauvegarde",
+                'print_pdf': "🖨️ Imprimer / PDF", 'print_with_answers': "Corrigé inclus",
+                'print_site_name': "Educational Dashboard – Français",
+                'print_scholar_year': "7ème Année Primaire", 'print_week': "Unité 1", 'print_area': "Lecture",
+                'print_footer_dev': "Développé par Mejri Ziad", 'print_footer_date': "Imprimé le",
+                'print_without_answers': "Sans corrigé",
+                'toast_signin_required': "Connectez-vous pour voir les corrections."
+            },
+            en: {
+                'lesson_title': "Lesson 16 – At the table | Reading",
+                'lesson_short_title': "At the table",
+                'ach_year_degree7': "7th Grade Primary",
+                'ach_module_unit1': "Unit 1 – French foundations",
+                'back_link': "← Back to home",
+                'back_revision': "Unit 1",
+                'back_current': "At the table",
+                'lesson_badge': "📖 Reading · Lesson 16",
+                'lesson_title': "At the table<br>Francesca Simon, <em>Anatole is ready for anything</em>",
+                'lesson_duration': "⏱️ 45 minutes",
+                'lesson_meta_audio': "🎧 Listen to the text then answer the questions",
+                'audio_label': "🎧 Listening to the text",
+                'author_img_alt': "Portrait of Francesca Simon",
+                'author_title': "👤 Francesca Simon",
+                'author_bio': "Contemporary English-speaking woman writer. She wrote <em>Anatole is ready for anything</em>, <em>Anatole always has the last word</em> and <em>When Anatole gets involved</em>, stories for young readers.",
+                'text_heading': "📖 I observe",
+                'img_hero_alt': "Illustration of a family at the table",
+                'img_hero_caption': "The family meal — a moment of sharing... and sometimes surprises!",
+                'intro_title': "📌 Presentation:",
+                'intro_text': "Anatole is a difficult and rowdy child. His brother Little Angel is very well behaved. One day, however…",
+                'text_author': "— Francesca SIMON, <em>Anatole is ready for anything</em> (Hachette, 2002)",
+                'consigne_title': "➤ Instruction:",
+                'consigne_text': "Read the text then answer the questions. Observe how Anatole changes his behavior and how Little Angel reacts.",
+                'vocab_title': "📚 Vocabulary:",
+                'vocab1': "<strong>To bombard someone with peas</strong>: to throw them at him.",
+                'vocab2': "<strong>To dispatch</strong>: to send, to throw.",
+                'vocab3': "<strong>To watch</strong>: to observe carefully, to spy on.",
+                'vocab4': "<strong>To deal a blow</strong>: to give a violent and well-aimed blow.",
+                'rules_heading': "📖 I read aloud",
+                'rule1_title': "🔊 1. The sounds 'on', 'an' and 'en'",
+                'rule1_list': "<li>Read the passage from 'Little Angel couldn't swallow...' to '...on Anatole'.</li><li>Articulate well the words containing the sounds <strong>on</strong>, <strong>an</strong> and <strong>en</strong>.</li><li>Examples: <em>Anatole</em>, <em>n'arrivait</em>, <em>comprenait</em>, <em>entendu</em>, <em>comment</em>…</li>",
+                'rule2_title': "🎭 2. For a good reading",
+                'rule2_list': "<li>Mark pauses at commas and periods.</li><li>Change voice for each character (dad, Anatole, Little Angel).</li><li>Accompany your reading with expressive gestures.</li>",
+                'showcase_heading': "🎨 Vocabulary of the text",
+                'card1_word': "to sit at the table", 'card1_def': "to settle to eat",
+                'card2_word': "the fork", 'card2_def': "four-pronged utensil",
+                'card3_word': "the knife", 'card3_def': "utensil for cutting",
+                'card4_word': "the spoon", 'card4_def': "utensil for liquid food",
+                'card5_word': "the peas", 'card5_def': "round green vegetables",
+                'card6_word': "the meatballs", 'card6_def': "small balls of minced meat",
+                'card7_word': "the shins", 'card7_def': "bones of the front of the leg",
+                'card8_word': "furious", 'card8_def': "very angry",
+                'card9_word': "to stop dead", 'card9_def': "to stop suddenly",
+                'card10_word': "to watch", 'card10_def': "to observe carefully",
+                'card11_word': "to dispatch", 'card11_def': "to send, to throw quickly",
+                'card12_word': "to deal a blow", 'card12_def': "to give a violent blow",
+                'exercises_heading': "✍️ I practise",
+                'table_word': "Word", 'table_letter': "Definition (a–d)",
+                'table_statement': "Statement", 'table_vf': "T / F",
+                'table_action': "Action", 'table_af_nf': "AF / NF",
+                'table_on': "Sound 'on'", 'table_an': "Sound 'an'", 'table_en': "Sound 'en'",
+                'btn_correction': "🔍 See the correction", 'show_example': "💡 See an example answer",
+                'exo1_title': "📌 1. I discover the text",
+                'exo1_instruction': "Answer the discovery questions about the text.",
+                'exo2_title': "📌 2. True or false?",
+                'exo2_instruction': "Indicate whether each statement is true (T) or false (F).",
+                'exo2_q1': "Anatole is a well-behaved and calm child.",
+                'exo2_q2': "Little Angel is Anatole's brother.",
+                'exo2_q3': "Anatole uses his fork, knife and spoon.",
+                'exo2_q4': "It's dad who throws the first pea.",
+                'exo2_q5': "Anatole decides to be perfect that day.",
+                'exo3_title': "📌 3. MCQ – Comprehension of the text",
+                'exo3_instruction': "Choose the correct answer among the three options.",
+                'exo3_q1': "What did Anatole usually do at the table?",
+                'exo3_q1_a': "Eat with his fingers and throw peas.", 'exo3_q1_b': "Use his cutlery properly.", 'exo3_q1_c': "Stay silent.",
+                'exo3_q2': "That day, why does Anatole change his behavior?",
+                'exo3_q2_a': "He is tired.", 'exo3_q2_b': "He decided to be perfect.", 'exo3_q2_c': "He is afraid of his father.",
+                'exo3_q3': "Who doesn't understand Anatole's change and throws a pea?",
+                'exo3_q3_a': "Dad", 'exo3_q3_b': "Little Angel", 'exo3_q3_c': "Mum",
+                'exo4_title': "📌 4. Complete with the text's words",
+                'exo4_instruction': "Complete the gap text with the following words: table, fourchette, bouche, droit, parfait, tibias.",
+                'exo4_t1': "The family sat at the", 'exo4_t2': ". Anatole used his", 'exo4_t3': ", his knife and his spoon. He did not chew with his mouth", 'exo4_t4': "open and stayed upright", 'exo4_t5': "on his chair. He had decided to be", 'exo4_t6': ". Little Angel gave him a kick in the", 'exo4_t7': ".",
+                'exo5_title': "📌 5. Match each word to its definition",
+                'exo5_instruction': "Write the letter of the definition corresponding to each word.",
+                'exo5_a': "to send, to throw", 'exo5_b': "to throw at him (peas)", 'exo5_c': "to give a violent blow", 'exo5_d': "to watch carefully",
+                'exo6_title': "📌 6. Put these actions in order",
+                'exo6_instruction': "Number these actions from 1 to 4 in the logical order of a meal.",
+                'sitA': "Set the table.", 'sitB': "Come / sit at the table.", 'sitC': "Serve dinner.", 'sitD': "Clear the table.",
+                'exo7_title': "📌 7. Find the unexpected objects",
+                'exo7_instruction': "When setting the table, your sister slipped in unexpected objects. Find them in the list and write them down.",
+                'exo7_list': "The tablecloth, the salt shaker, the blender, the forks, the saucepan, the napkins, the knives, the spoons, the orange juicer, the pepper shaker, the plates, the glasses...",
+                'exo7_instruction2': "Objects that don't belong on the table:",
+                'exo8_title': "📌 8. To do or not to do at the table?",
+                'exo8_instruction': "Indicate whether each action is to do (TD) or not to do (ND) at the table.",
+                'exo8_q1': "Sit up straight", 'exo8_q2': "Eat with your fingers", 'exo8_q3': "Chew with your mouth open", 'exo8_q4': "Talk with your mouth full", 'exo8_q5': "Eat without making noise",
+                'exo9_title': "📌 9. The sounds 'on', 'an' and 'en'",
+                'exo9_instruction': "Classify these words according to the sound in the underlined part. Write the word in the right column.",
+                'exo9_words': "Anatole, enfant, sang, banc, comprenait, entendu, comment, longtemps, grand, menton",
+                'exo10_title': "📌 10. I deepen my reading",
+                'exo10_instruction': "Answer the deepening questions.",
+                'exo11_title': "📌 11. I write in turn – Personal production",
+                'exo11_instruction': "During a family meal, you witness a funny scene (examples: someone eating with their fingers, a steak hard to cut, a stubborn hiccup, salt instead of sugar…). Tell what happens using expressions like: instead of, stop dead, burst out laughing…",
+                'img_prod_alt': "Illustration of a joyful family meal",
+                'img_prod_caption': "A family meal can become a very funny scene!",
+                'footer_back': "← Previous lesson", 'footer_next': "Next lesson: The skateboard (Laudec & Cauvin) →",
+                'self_assess_question': "My answer is:",
+                'self_correct': "Correct", 'self_incorrect': "Incorrect", 'self_partial': "Partially correct",
+                'score_title': "📊 Your self‑assessment",
+                'score_correct': "Correct:", 'score_incorrect': "Incorrect:", 'score_partial': "Partial:", 'score_unanswered': "Unanswered:",
+                'save_results': "💾 Save my results", 'save_success': "Results saved ✓", 'save_error': "Save failed",
+                'print_pdf': "🖨️ Print / PDF", 'print_with_answers': "With answers",
+                'print_site_name': "Educational Dashboard – French",
+                'print_scholar_year': "7th Grade Primary", 'print_week': "Unit 1", 'print_area': "Reading",
+                'print_footer_dev': "Developed by Mejri Ziad", 'print_footer_date': "Printed on",
+                'print_without_answers': "Without answers",
+                'toast_signin_required': "Sign in to see the corrections."
+            },
+            ar: {
+                'lesson_title': "الدرس 16 – على المائدة | قراءة",
+                'lesson_short_title': "على المائدة",
+                'ach_year_degree7': "السنة السابعة ابتدائي",
+                'ach_module_unit1': "الوحدة 1 – أساسيات الفرنسية",
+                'back_link': "← العودة إلى الرئيسية",
+                'back_revision': "الوحدة 1",
+                'back_current': "على المائدة",
+                'lesson_badge': "📖 قراءة · الدرس 16",
+                'lesson_title': "على المائدة<br>فرانشيسكا سيمون، <em>أناتول مستعد لكل شيء</em>",
+                'lesson_duration': "⏱️ 45 دقيقة",
+                'lesson_meta_audio': "🎧 استمع إلى النص ثم أجب عن الأسئلة",
+                'audio_label': "🎧 استماع إلى النص",
+                'author_img_alt': "صورة فرانشيسكا سيمون",
+                'author_title': "👤 فرانشيسكا سيمون",
+                'author_bio': "كاتبة معاصرة تتحدث الإنجليزية. كتبت <em>أناتول مستعد لكل شيء</em>، <em>أناتول له الكلمة الأخيرة دائماً</em> و<em>عندما يتدخل أناتول</em>، قصص موجهة للشباب.",
+                'text_heading': "📖 ألاحظ",
+                'img_hero_alt': "رسم توضيحي لعائلة على المائدة",
+                'img_hero_caption': "وجبة العائلة — لحظة مشاركة... وأحياناً مفاجآت!",
+                'intro_title': "📌 تقديم:",
+                'intro_text': "أناتول طفل صعب ومشاغب. أخوه الملاك الصغير مؤدب جداً. في أحد الأيام، ومع ذلك…",
+                'text_author': "— فرانشيسكا سيمون، <em>أناتول مستعد لكل شيء</em> (هاشيت، 2002)",
+                'consigne_title': "➤ التعليمة:",
+                'consigne_text': "اقرأ النص ثم أجب عن الأسئلة. لاحظ كيف يغير أناتول سلوكه وكيف يتفاعل الملاك الصغير.",
+                'vocab_title': "📚 المفردات:",
+                'vocab1': "<strong>يقصف شخصاً بالبازلاء</strong>: يرميها عليه.",
+                'vocab2': "<strong>يرسل</strong>: يبعث، يقذف.",
+                'vocab3': "<strong>يراقب</strong>: يراقب باهتمام، يترصد.",
+                'vocab4': "<strong>يسدد ضربة</strong>: يعطي ضربة عنيفة ومحكمة.",
+                'rules_heading': "📖 أقرأ بصوت عالٍ",
+                'rule1_title': "🔊 1. الأصوات «on» و«an» و«en»",
+                'rule1_list': "<li>اقرأ المقطع من «الملاك الصغير لم يستطع البلع...» إلى «...على أناتول».</li><li>انطق جيداً الكلمات التي تحتوي على الأصوات <strong>on</strong> و<strong>an</strong> و<strong>en</strong>.</li><li>أمثلة: <em>Anatole</em>، <em>n'arrivait</em>، <em>comprenait</em>، <em>entendu</em>، <em>comment</em>…</li>",
+                'rule2_title': "🎭 2. من أجل قراءة جيدة",
+                'rule2_list': "<li>تحديد الوقفات عند الفواصل والنقاط.</li><li>تغيير الصوت لكل شخصية (الأب، أناتول، الملاك الصغير).</li><li>مرافقة القراءة بإيماءات معبّرة.</li>",
+                'showcase_heading': "🎨 معجم النص",
+                'card1_word': "يجلس إلى المائدة", 'card1_def': "يجلس للأكل",
+                'card2_word': "الشوكة", 'card2_def': "أداة بأربعة أسنان",
+                'card3_word': "السكين", 'card3_def': "أداة للتقطيع",
+                'card4_word': "الملعقة", 'card4_def': "أداة لأكل السوائل",
+                'card5_word': "البازلاء", 'card5_def': "خضراء مستديرة",
+                'card6_word': "الكرات", 'card6_def': "كرات صغيرة من اللحم المفروم",
+                'card7_word': "الساقان", 'card7_def': "عظام الجزء الأمامي من الرِجل",
+                'card8_word': "غاضب", 'card8_def': "في حالة غضب شديد",
+                'card9_word': "يتوقف فجأة", 'card9_def': "يتوقف بشكل مفاجئ",
+                'card10_word': "يراقب", 'card10_def': "يلاحظ باهتمام",
+                'card11_word': "يرسل", 'card11_def': "يبعث، يقذف بسرعة",
+                'card12_word': "يسدد ضربة", 'card12_def': "يعطي ضربة عنيفة",
+                'exercises_heading': "✍️ أتمرن",
+                'table_word': "الكلمة", 'table_letter': "التعريف (أ–د)",
+                'table_statement': "العبارة", 'table_vf': "ص / خ",
+                'table_action': "الفعل", 'table_af_nf': "يُفعل / لا يُفعل",
+                'table_on': "صوت «on»", 'table_an': "صوت «an»", 'table_en': "صوت «en»",
+                'btn_correction': "🔍 الاطلاع على التصحيح", 'show_example': "💡 عرض مثال للإجابة",
+                'exo1_title': "📌 1. أكتشف النص",
+                'exo1_instruction': "أجب عن أسئلة اكتشاف النص.",
+                'exo2_title': "📌 2. صواب أم خطأ؟",
+                'exo2_instruction': "حدد إن كانت كل عبارة صحيحة (ص) أم خاطئة (خ).",
+                'exo2_q1': "أناتول طفل مؤدب وهادئ.",
+                'exo2_q2': "الملاك الصغير هو أخو أناتول.",
+                'exo2_q3': "أناتول يستعمل شوكته وسكينه وملعقته.",
+                'exo2_q4': "الأب هو من يقذف أول حبة بازلاء.",
+                'exo2_q5': "أناتول قرر أن يكون مثالياً في ذلك اليوم.",
+                'exo3_title': "📌 3. اختيار من متعدد – فهم النص",
+                'exo3_instruction': "اختر الجواب الصحيح من بين الخيارات الثلاثة.",
+                'exo3_q1': "ماذا كان أناتول معتاداً على فعله على المائدة؟",
+                'exo3_q1_a': "الأكل بأصابعه ورمي البازلاء.", 'exo3_q1_b': "استعمال أدوات المائدة بشكل صحيح.", 'exo3_q1_c': "البقاء صامتاً.",
+                'exo3_q2': "في ذلك اليوم، لماذا يغير أناتول سلوكه؟",
+                'exo3_q2_a': "إنه متعب.", 'exo3_q2_b': "قرر أن يكون مثالياً.", 'exo3_q2_c': "يخاف من والده.",
+                'exo3_q3': "من لا يفهم تغير أناتول ويرمي حبة بازلاء؟",
+                'exo3_q3_a': "الأب", 'exo3_q3_b': "الملاك الصغير", 'exo3_q3_c': "الأم",
+                'exo4_title': "📌 4. أكمل بكلمات النص",
+                'exo4_instruction': "أكمل النص الناقص بالكلمات التالية: table, fourchette, bouche, droit, parfait, tibias.",
+                'exo4_t1': "جلست العائلة إلى", 'exo4_t2': ". استعمل أناتول", 'exo4_t3': "، سكينه وملعقته. لم يمضغ فمه", 'exo4_t4': "مفتوحاً وبقي مستقيماً", 'exo4_t5': "على كرسيه. لقد قرر أن يكون", 'exo4_t6': ". أعطاه الملاك الصغير رفسة في", 'exo4_t7': ".",
+                'exo5_title': "📌 5. اربط كل كلمة بتعريفها",
+                'exo5_instruction': "اكتب حرف التعريف المقابل لكل كلمة.",
+                'exo5_a': "يبعث، يقذف", 'exo5_b': "يرمي عليه (البازلاء)", 'exo5_c': "يعطي ضربة عنيفة", 'exo5_d': "يراقب باهتمام",
+                'exo6_title': "📌 6. أعد ترتيب هذه الأفعال",
+                'exo6_instruction': "رقم هذه الأفعال من 1 إلى 4 بالترتيب المنطقي لوجبة.",
+                'sitA': "إعداد المائدة.", 'sitB': "المرور / الجلوس إلى المائدة.", 'sitC': "تقديم العشاء.", 'sitD': "رفع المائدة.",
+                'exo7_title': "📌 7. ابحث عن الأشياء غير المتوقعة",
+                'exo7_instruction': "عند إعداد المائدة، أدخلت أختك أشياء غير متوقعة. ابحث عنها في القائمة واكتبها.",
+                'exo7_list': "مفرش المائدة، الملّاحة، الخلاط، الشوك، الطنجرة، المناديل، السكاكين، الملاعق، عصّارة البرتقال، الفلفلية، الأطباق، الكؤوس...",
+                'exo7_instruction2': "أشياء لا مكان لها على المائدة:",
+                'exo8_title': "📌 8. يُفعل أم لا يُفعل على المائدة؟",
+                'exo8_instruction': "حدد إن كان كل فعل يُفعل (يُف) أم لا يُفعل (لا) على المائدة.",
+                'exo8_q1': "الجلوس مستقيماً", 'exo8_q2': "الأكل بالأصابع", 'exo8_q3': "المضغ والفم مفتوح", 'exo8_q4': "الكلام والفم ممتلئ", 'exo8_q5': "الأكل دون إصدار ضجيج",
+                'exo9_title': "📌 9. الأصوات «on» و«an» و«en»",
+                'exo9_instruction': "صنّف هذه الكلمات حسب الصوت في الجزء المسطّر. اكتب الكلمة في العمود المناسب.",
+                'exo9_words': "Anatole, enfant, sang, banc, comprenait, entendu, comment, longtemps, grand, menton",
+                'exo10_title': "📌 10. أتعمق في قراءتي",
+                'exo10_instruction': "أجب عن أسئلة التعمق.",
+                'exo11_title': "📌 11. أكتب بدوري – إنتاج شخصي",
+                'exo11_instruction': "خلال وجبة عائلية، تشهد مشهداً مضحكاً (أمثلة: شخص يأكل بأصابعه، قطعة لحم صعبة التقطيع، فواق عنيد، ملح بدل السكر…). احكِ ما يحدث باستعمال تعبيرات مثل: بدلاً من، يتوقف فجأة، ينفجر ضاحكاً…",
+                'img_prod_alt': "رسم توضيحي لوجبة عائلية مرحة",
+                'img_prod_caption': "وجبة العائلة قد تصبح مشهداً مضحكاً جداً!",
+                'footer_back': "← الدرس السابق", 'footer_next': "الدرس الموالي: لوح التزلج (لوديك وكوفان) ←",
+                'self_assess_question': "جوابي هو:",
+                'self_correct': "صحيح", 'self_incorrect': "خاطئ", 'self_partial': "صحيح جزئيًا",
+                'score_title': "📊 تقييمك الذاتي",
+                'score_correct': "صحيح:", 'score_incorrect': "خاطئ:", 'score_partial': "جزئي:", 'score_unanswered': "بدون إجابة:",
+                'save_results': "💾 حفظ نتائجي", 'save_success': "تم حفظ النتائج ✓", 'save_error': "خطأ في الحفظ",
+                'print_pdf': "🖨️ طباعة / PDF", 'print_with_answers': "مع التصحيح",
+                'print_site_name': "لوحة التحكم التعليمية – الفرنسية",
+                'print_scholar_year': "السنة السابعة ابتدائي", 'print_week': "الوحدة 1", 'print_area': "قراءة",
+                'print_footer_dev': "طوّر بواسطة ماجري زياد", 'print_footer_date': "طُبع في",
+                'print_without_answers': "بدون تصحيح",
+                'toast_signin_required': "سجّل الدخول لرؤية التصحيحات."
+            }
+        });
+        (function() {
+            var container = document.querySelector('.degree7-unit1-lesson16-lecture-container');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+        })();
+    </script>
+    <script src="ed-french-ini.js"></script>
+    <script>
+        (function() {
+            const audio = new Audio('assets7/sounds/degree7/unit1/lesson16/a_table.mp3');
+            const playBtn = document.getElementById('playBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const speedBtns = document.querySelectorAll('.degree7-unit1-lesson16-lecture-speed-btn');
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+            audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
+            audio.addEventListener('timeupdate', () => {
+                const percent = (audio.currentTime / audio.duration) * 100 || 0;
+                progressFill.style.width = percent + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            });
+            audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) { audio.play().catch(()=>{}); playBtn.textContent = '⏸'; }
+                else { audio.pause(); playBtn.textContent = '▶'; }
+            });
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const seekTime = (clickX / width) * audio.duration;
+                audio.currentTime = seekTime;
+            });
+            speedBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    speedBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    audio.playbackRate = parseFloat(btn.dataset.speed);
+                });
+            });
+            window.toggleCorrection = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('visible');
+            };
+            window.showExo11Example = async function() {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const el = document.getElementById('exo11Key');
+                if (el) {
+                    el.innerHTML = '<strong>Exemple de production :</strong><br>Dimanche dernier, au cours du repas de famille, mon petit cousin a voulu imiter les grands. <strong>Au lieu de</strong> demander poliment le sel, il a saisi la salière et en a versé une énorme quantité sur ses pommes de terre. Devant nos visages étonnés, il a porté une cuillère à sa bouche, puis il <strong>s\'est arrêté net</strong>, les yeux écarquillés. Toute la famille a <strong>éclaté de rire</strong>. Ma grand-mère, généreuse, lui a préparé une nouvelle assiette en souriant. Finalement, ce repas est devenu un souvenir mémorable.';
+                    el.classList.add('visible');
+                }
+            };
+            // Static answer keys
+            document.getElementById('exo1Key').innerHTML = '<strong>Correction :</strong><br>a) Les personnages : Anatole, Petit Ange, papa (et la famille au sens large).<br>b) L\'action se passe à table, pendant le repas familial.<br>c) Anatole se conduit bien : il utilise ses couverts, ne lance pas de petits pois, ne mâche pas la bouche ouverte, reste droit.';
+            document.getElementById('exo2Key').innerHTML = '<strong>Correction :</strong><br>1. Faux (Anatole est turbulent)<br>2. Vrai<br>3. Vrai<br>4. Faux (c\'est Petit Ange)<br>5. Vrai';
+            document.getElementById('exo3Key').innerHTML = '<strong>Correction :</strong><br>1. a<br>2. b<br>3. b';
+            document.getElementById('exo4Key').innerHTML = '<strong>Correction :</strong><br>table – fourchette – bouche – droit – parfait – tibias';
+            document.getElementById('exo5Key').innerHTML = '<strong>Correction :</strong><br>bombarder → b<br>expédier → a<br>guetter → d<br>asséner → c';
+            document.getElementById('exo6Key').innerHTML = '<strong>Correction :</strong><br>A = 1 (Mettre le couvert)<br>B = 2 (Passer / se mettre à table)<br>C = 3 (Servir le dîner)<br>D = 4 (Débarrasser la table)';
+            document.getElementById('exo7Key').innerHTML = '<strong>Correction :</strong><br>Les objets inattendus sont : le mixeur, la casserole, le presse-orange (et éventuellement la casserole). Ces objets ne font pas partie du couvert.';
+            document.getElementById('exo8Key').innerHTML = '<strong>Correction :</strong><br>1. Se tenir droit → AF<br>2. Manger avec les doigts → NF<br>3. Mâcher la bouche ouverte → NF<br>4. Parler la bouche pleine → NF<br>5. Manger sans faire de bruit → AF';
+            document.getElementById('exo9Key').innerHTML = '<strong>Correction (proposition) :</strong><br><strong>Son « on » :</strong> comprenait, longtemps, menton.<br><strong>Son « an » :</strong> enfant, sang, banc, grand.<br><strong>Son « en » :</strong> entendu, comment (le « en » de comment se prononce « an » — accepté). <em>Anatole</em> contient le son « a » et « o » (pas an/en/on).';
+            document.getElementById('exo10Key').innerHTML = '<strong>Correction :</strong><br>a) Anatole avait l\'habitude de manger avec les doigts, de lancer des petits pois à son frère, de mâcher la bouche ouverte et de donner des coups de pied sous la table.<br>b) Oui, le père remarque le changement : il s\'exclame « C\'est vrai » quand Anatole lui dit qu\'il se tient droit.<br>c) Petit Ange ne comprend pas le changement. Il lance un petit pois sur Anatole puis, devant l\'absence de réaction, il lui donne un coup dans les tibias.';
+            const SELF_GROUPS = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5',
+                                 'self_ex6', 'self_ex7', 'self_ex8', 'self_ex9', 'self_ex10', 'self_ex11'];
+            function computeScore() {
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                SELF_GROUPS.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                return { correct, incorrect, partial, unanswered };
+            }
+            function updateScore() {
+                const s = computeScore();
+                document.getElementById('scoreCorrect').textContent = s.correct;
+                document.getElementById('scoreIncorrect').textContent = s.incorrect;
+                document.getElementById('scorePartial').textContent = s.partial;
+                document.getElementById('scoreUnanswered').textContent = s.unanswered;
+            }
+            document.querySelectorAll('input[type="radio"][name^="self_ex"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const s = computeScore();
+                const lessonId = 'degree7unit1lesson16';
+                const entry = {
+                    lesson_id: lessonId,
+                    lesson_title: {
+                        fr: App.getTranslation('lesson_short_title', 'fr'),
+                        en: App.getTranslation('lesson_short_title', 'en'),
+                        ar: App.getTranslation('lesson_short_title', 'ar')
+                    },
+                    year: {
+                        fr: App.getTranslation('ach_year_degree7', 'fr'),
+                        en: App.getTranslation('ach_year_degree7', 'en'),
+                        ar: App.getTranslation('ach_year_degree7', 'ar')
+                    },
+                    module: {
+                        fr: App.getTranslation('ach_module_unit1', 'fr'),
+                        en: App.getTranslation('ach_module_unit1', 'en'),
+                        ar: App.getTranslation('ach_module_unit1', 'ar')
+                    },
+                    correct: s.correct,
+                    incorrect: s.incorrect,
+                    partial: s.partial,
+                    unanswered: s.unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles').select('achivement').eq('id', user.id).single();
+                if (fetchError) return;
+                let achivement = profileData?.achivement || {};
+                if (!achivement['ED-French']) achivement['ED-French'] = [];
+                const arr = achivement['ED-French'];
+                const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+                if (existingIdx >= 0) arr[existingIdx] = entry;
+                else arr.push(entry);
+                const { error: updateError } = await App.supabase
+                    .from('profiles').update({ achivement }).eq('id', user.id);
+                if (updateError) App.showToast('save_error', 'error');
+                else {
+                    App.showToast('save_success', 'success');
+                    App.logUserAction('lesson_saved', { lesson: lessonId, correct: s.correct, incorrect: s.incorrect, partial: s.partial });
+                }
+            });
+            document.getElementById('printPdfBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles').select('registration_state').eq('id', user.id).single();
+                    if (!error && profile?.registration_state?.active === true) isRegistered = true;
+                } catch (e) {}
+                const lang = localStorage.getItem('lang') || 'fr';
+                const headerHTML = document.querySelector('.degree7-unit1-lesson16-lecture-lesson-header').cloneNode(true);
+                const textCard = document.querySelector('.degree7-unit1-lesson16-lecture-text-card').cloneNode(true);
+                const authorCard = document.querySelector('.degree7-unit1-lesson16-lecture-author-card');
+                const authorHTML = authorCard ? authorCard.outerHTML : '';
+                const heroFigure = document.querySelector('.degree7-unit1-lesson16-lecture-hero-figure');
+                const heroHTML = heroFigure ? heroFigure.outerHTML : '';
+                const rulesSections = document.querySelectorAll('.degree7-unit1-lesson16-lecture-valeurs-section');
+                let rulesHTML = '';
+                rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
+                const showcaseGrid = document.querySelector('.degree7-unit1-lesson16-lecture-showcase');
+                const showcaseHTML = showcaseGrid ? showcaseGrid.outerHTML : '';
+                const prodFigure = document.querySelector('.degree7-unit1-lesson16-lecture-prod-figure');
+                const prodHTML = prodFigure ? prodFigure.outerHTML : '';
+                const exercisesSection = document.querySelector('.degree7-unit1-lesson16-lecture-exercises-section').cloneNode(true);
+                exercisesSection.querySelectorAll('input, textarea, .degree7-unit1-lesson16-lecture-btn-verify, .degree7-unit1-lesson16-lecture-self-assessment').forEach(el => el.remove());
+                if (isRegistered) {
+                    exercisesSection.querySelectorAll('.degree7-unit1-lesson16-lecture-answer-key').forEach(key => {
+                        key.style.display = 'block'; key.style.border = 'none';
+                        key.style.padding = '0.5rem 0'; key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    exercisesSection.querySelectorAll('.degree7-unit1-lesson16-lecture-answer-key').forEach(el => el.remove());
+                }
+                const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                printWindow.document.write(`<!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8"><title>${App.getTranslation('lesson_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title><style>
+                    body { font-family: 'Georgia', serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; color:#000; }
+                    .print-header { text-align:center; border-bottom:2px solid #2e8b57; padding-bottom:1rem; margin-bottom:2rem; }
+                    .print-header .site-name { font-size:1.4rem; font-weight:bold; color:#2e8b57; margin:0 0 0.3rem; }
+                    .print-header .meta-line { font-size:0.95rem; color:#444; margin:0.2rem 0; }
+                    .print-header .lesson-name { font-size:1.1rem; font-weight:bold; color:#000; margin-top:0.5rem; }
+                    .print-footer { text-align:center; border-top:1px solid #ccc; padding-top:1rem; margin-top:2rem; font-size:0.85rem; color:#666; }
+                    .degree7-unit1-lesson16-lecture-lesson-header { text-align:center; margin-bottom:2rem; }
+                    .degree7-unit1-lesson16-lecture-badge { display:inline-block; background:#2e8b57; color:#fff; padding:0.3rem 1rem; border-radius:20px; font-size:0.8rem; text-transform:uppercase; }
+                    .degree7-unit1-lesson16-lecture-text-card { border-left:4px solid #2e8b57; padding:1rem 1.5rem; margin:1.5rem 0; }
+                    .degree7-unit1-lesson16-lecture-hl { background:#e2f0e8; color:#1e5e3a; padding:0 4px; border-radius:4px; font-weight:700; border-bottom:2px solid #2e8b57; }
+                    .degree7-unit1-lesson16-lecture-hero-figure { margin:1rem 0; }
+                    .degree7-unit1-lesson16-lecture-hero-img { max-width:100%; max-height:280px; border-radius:8px; }
+                    .degree7-unit1-lesson16-lecture-hero-caption { display:block; font-size:0.85rem; color:#555; font-style:italic; margin-top:0.3rem; text-align:center; }
+                    .degree7-unit1-lesson16-lecture-author-card { border:1px solid #cbe0d3; border-radius:12px; padding:1rem; margin:1rem 0; display:flex; gap:1rem; align-items:center; }
+                    .degree7-unit1-lesson16-lecture-author-img { width:100px; height:100px; border-radius:50%; object-fit:cover; }
+                    .degree7-unit1-lesson16-lecture-author-info h3 { color:#1e5e3a; margin:0 0 0.3rem; }
+                    .degree7-unit1-lesson16-lecture-valeurs-section { margin:1.5rem 0; }
+                    .degree7-unit1-lesson16-lecture-valeur-card { background:#e2f0e8; padding:1rem; margin-bottom:1rem; border-radius:8px; }
+                    .degree7-unit1-lesson16-lecture-valeur-card h3 { color:#2e8b57; }
+                    .degree7-unit1-lesson16-lecture-showcase { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.5rem; }
+                    .degree7-unit1-lesson16-lecture-vcard { background:#eef7f2; padding:0.6rem; border-radius:6px; border:1px solid #cbe0d3; }
+                    .degree7-unit1-lesson16-lecture-vcard .degree7-unit1-lesson16-lecture-vicon { display:none; }
+                    .degree7-unit1-lesson16-lecture-vcard .degree7-unit1-lesson16-lecture-vword { display:block; font-weight:800; color:#1e5e3a; }
+                    .degree7-unit1-lesson16-lecture-vcard .degree7-unit1-lesson16-lecture-vdef { display:block; font-size:0.8rem; color:#555; }
+                    .degree7-unit1-lesson16-lecture-exercise-card { margin:1.2rem 0; border-left:4px solid #2e8b57; padding:0.8rem 1rem; }
+                    .degree7-unit1-lesson16-lecture-exercise-card::before { content:none !important; }
+                    .degree7-unit1-lesson16-lecture-situation { border-left:3px solid #2e8b57; padding:0.5rem 0.7rem; background:#eef7f2; border-radius:6px; margin-bottom:0.4rem; }
+                    .degree7-unit1-lesson16-lecture-prod-figure { text-align:center; margin:0.5rem 0; }
+                    .degree7-unit1-lesson16-lecture-prod-img { max-width:100%; max-height:220px; border-radius:6px; }
+                    .degree7-unit1-lesson16-lecture-prod-caption { display:block; font-size:0.8rem; color:#555; font-style:italic; margin-top:0.3rem; }
+                    table { width:100%; border-collapse:collapse; margin:0.8rem 0; }
+                    th, td { border:1px solid #ccc; padding:0.5rem; text-align:left; }
+                    th { background:#e2f0e8; }
+                    .degree7-unit1-lesson16-lecture-answer-key { display:block; margin-top:0.5rem; font-size:0.9rem; color:#444; }
+                    @media print { @page { margin:2cm; } }
+                </style></head><body>
+                    <div class="print-header"><div class="site-name">${App.getTranslation('print_site_name', lang)}</div><div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div><div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div></div>
+                    ${breadcrumb.outerHTML}${authorHTML}${headerHTML.outerHTML}${heroHTML}${textCard.outerHTML}${rulesHTML}${showcaseHTML}${exercisesSection.outerHTML}${prodHTML}
+                    <div class="print-footer">${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}</div>
+                </body></html>`);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+        })();
+    </script>
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+</body>
+</html>

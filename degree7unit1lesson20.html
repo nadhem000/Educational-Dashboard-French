@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_title">Leçon 20 – Le départ | Lecture</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ===== Degree7 Unit1 Lesson20 – Lecture (prefix: degree7-unit1-lesson20-lecture-) ===== */
+        :root {
+            --degree7-unit1-lesson20-lecture-bg: #f2f8f4;
+            --degree7-unit1-lesson20-lecture-card: #fbfefc;
+            --degree7-unit1-lesson20-lecture-text: #16261c;
+            --degree7-unit1-lesson20-lecture-text-light: #4a6a55;
+            --degree7-unit1-lesson20-lecture-heading: #1e5e3a;
+            --degree7-unit1-lesson20-lecture-accent: #2e8b57;
+            --degree7-unit1-lesson20-lecture-accent-hover: #1e5e3a;
+            --degree7-unit1-lesson20-lecture-soft: #6cb68a;
+            --degree7-unit1-lesson20-lecture-light: #e2f0e8;
+            --degree7-unit1-lesson20-lecture-lighter: #eef7f2;
+            --degree7-unit1-lesson20-lecture-border: #cbe0d3;
+            --degree7-unit1-lesson20-lecture-shadow: 0 1px 3px rgba(46,139,87,0.06), 0 6px 18px rgba(30,94,58,0.07);
+            --degree7-unit1-lesson20-lecture-radius: 14px;
+            --degree7-unit1-lesson20-lecture-radius-sm: 8px;
+            --degree7-unit1-lesson20-lecture-transition: 0.25s ease;
+            --degree7-unit1-lesson20-lecture-font: 'Georgia', 'Segoe UI', 'Times New Roman', serif;
+            --degree7-unit1-lesson20-lecture-audio-bg: #dcebe2;
+            --degree7-unit1-lesson20-lecture-audio-progress: #a8cdb8;
+            --degree7-unit1-lesson20-lecture-button-bg: #d5e8dd;
+            --degree7-unit1-lesson20-lecture-button-hover: #bdd9c8;
+            --degree7-unit1-lesson20-lecture-input-bg: #f6fbf8;
+        }
+        body.dark {
+            --degree7-unit1-lesson20-lecture-bg: #0f1a13;
+            --degree7-unit1-lesson20-lecture-card: #182a1e;
+            --degree7-unit1-lesson20-lecture-text: #dceee4;
+            --degree7-unit1-lesson20-lecture-text-light: #96b6a3;
+            --degree7-unit1-lesson20-lecture-heading: #a8e0be;
+            --degree7-unit1-lesson20-lecture-accent: #6cb68a;
+            --degree7-unit1-lesson20-lecture-accent-hover: #8ecfa6;
+            --degree7-unit1-lesson20-lecture-soft: #4d8a68;
+            --degree7-unit1-lesson20-lecture-light: #1e3327;
+            --degree7-unit1-lesson20-lecture-lighter: #1a2b20;
+            --degree7-unit1-lesson20-lecture-border: #2a4233;
+            --degree7-unit1-lesson20-lecture-shadow: 0 1px 4px rgba(0,0,0,0.4);
+            --degree7-unit1-lesson20-lecture-audio-bg: #1e3327;
+            --degree7-unit1-lesson20-lecture-audio-progress: #365a44;
+            --degree7-unit1-lesson20-lecture-button-bg: #243d2d;
+            --degree7-unit1-lesson20-lecture-button-hover: #315540;
+            --degree7-unit1-lesson20-lecture-input-bg: #1c2e22;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: var(--degree7-unit1-lesson20-lecture-font);
+            background: var(--degree7-unit1-lesson20-lecture-bg);
+            background-image:
+                radial-gradient(circle at 12% 18%, rgba(46,139,87,0.06) 0%, transparent 42%),
+                radial-gradient(circle at 88% 82%, rgba(30,94,58,0.05) 0%, transparent 42%);
+            color: var(--degree7-unit1-lesson20-lecture-text);
+            line-height: 1.8;
+            transition: background var(--degree7-unit1-lesson20-lecture-transition), color var(--degree7-unit1-lesson20-lecture-transition);
+        }
+        .back-nav { background: var(--degree7-unit1-lesson20-lecture-card); border-bottom: 1px solid var(--degree7-unit1-lesson20-lecture-border); padding: 0.5rem 1.5rem; }
+        .back-nav a { font-weight: 600; color: var(--degree7-unit1-lesson20-lecture-accent); text-decoration: none; }
+        .back-nav a:hover { text-decoration: underline; }
+        .degree7-unit1-lesson20-lecture-container { max-width:1060px; margin:0 auto; padding:1.8rem 1.4rem 3rem; }
+        .degree7-unit1-lesson20-lecture-lesson-header { text-align: center; margin-bottom: 2rem; }
+        .degree7-unit1-lesson20-lecture-badge {
+            display:inline-block; background: var(--degree7-unit1-lesson20-lecture-accent); color: #fff;
+            padding: 0.3rem 1.1rem; border-radius: 30px; font-size: 0.78rem; font-weight: 700;
+            letter-spacing: 0.06em; text-transform: uppercase;
+        }
+        .degree7-unit1-lesson20-lecture-lesson-header h1 {
+            font-size: 2.1rem; color: var(--degree7-unit1-lesson20-lecture-heading);
+            margin: 0.7rem 0 0.4rem; line-height: 1.25; font-weight: 700;
+        }
+        .degree7-unit1-lesson20-lecture-lesson-header .degree7-unit1-lesson20-lecture-meta {
+            font-size: 0.9rem; color: var(--degree7-unit1-lesson20-lecture-text-light);
+            display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap;
+        }
+        .degree7-unit1-lesson20-lecture-audio-player {
+            background: var(--degree7-unit1-lesson20-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson20-lecture-border);
+            border-radius: var(--degree7-unit1-lesson20-lecture-radius);
+            padding: 1rem 1.4rem; margin: 1.5rem 0 2rem;
+            box-shadow: var(--degree7-unit1-lesson20-lecture-shadow);
+            display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+        }
+        .degree7-unit1-lesson20-lecture-play-btn {
+            width: 46px; height: 46px; border-radius: 50%;
+            background: var(--degree7-unit1-lesson20-lecture-accent);
+            color: #fff; border: none; font-size: 1.2rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background var(--degree7-unit1-lesson20-lecture-transition); flex-shrink: 0;
+        }
+        .degree7-unit1-lesson20-lecture-play-btn:hover { background: var(--degree7-unit1-lesson20-lecture-accent-hover); }
+        .degree7-unit1-lesson20-lecture-progress-area { flex:1; min-width:120px; display:flex; flex-direction:column; gap:0.3rem; }
+        .degree7-unit1-lesson20-lecture-progress-bar {
+            width:100%; height:6px; background: var(--degree7-unit1-lesson20-lecture-audio-progress);
+            border-radius: 3px; cursor:pointer; position:relative; overflow:hidden;
+        }
+        .degree7-unit1-lesson20-lecture-progress-fill {
+            height:100%; background: var(--degree7-unit1-lesson20-lecture-accent);
+            border-radius: 3px; width: 0%; transition: width 0.1s linear;
+        }
+        .degree7-unit1-lesson20-lecture-time-info {
+            display:flex; justify-content:space-between; font-size:0.75rem;
+            color: var(--degree7-unit1-lesson20-lecture-text-light);
+        }
+        .degree7-unit1-lesson20-lecture-speed-selector { display:flex; gap:0.3rem; flex-wrap:wrap; }
+        .degree7-unit1-lesson20-lecture-speed-btn {
+            border:1px solid var(--degree7-unit1-lesson20-lecture-border);
+            background: var(--degree7-unit1-lesson20-lecture-button-bg);
+            color: var(--degree7-unit1-lesson20-lecture-text);
+            padding:0.3rem 0.6rem; border-radius: 4px;
+            font-size:0.75rem; font-weight:600; cursor:pointer;
+            transition: all var(--degree7-unit1-lesson20-lecture-transition);
+        }
+        .degree7-unit1-lesson20-lecture-speed-btn.active {
+            background: var(--degree7-unit1-lesson20-lecture-accent);
+            color: #fff; border-color: var(--degree7-unit1-lesson20-lecture-accent);
+        }
+        .degree7-unit1-lesson20-lecture-audio-label {
+            font-weight:700; font-size:0.9rem;
+            color: var(--degree7-unit1-lesson20-lecture-heading); white-space:nowrap;
+        }
+        @media (max-width:600px) {
+            .degree7-unit1-lesson20-lecture-audio-player { flex-direction: column; align-items: stretch; }
+            .degree7-unit1-lesson20-lecture-audio-label { text-align: center; }
+        }
+        .degree7-unit1-lesson20-lecture-hero-figure {
+            margin: 0 0 1.2rem;
+            border-radius: var(--degree7-unit1-lesson20-lecture-radius);
+            overflow: hidden;
+            box-shadow: var(--degree7-unit1-lesson20-lecture-shadow);
+            border: 1px solid var(--degree7-unit1-lesson20-lecture-border);
+        }
+        .degree7-unit1-lesson20-lecture-hero-img {
+            display: block; width: 100%; max-height: 320px; object-fit: cover;
+        }
+        .degree7-unit1-lesson20-lecture-hero-caption {
+            display: block; padding: 0.5rem 0.9rem;
+            font-size: 0.82rem; color: var(--degree7-unit1-lesson20-lecture-text-light);
+            background: var(--degree7-unit1-lesson20-lecture-lighter);
+            border-top: 1px solid var(--degree7-unit1-lesson20-lecture-border);
+            font-style: italic; text-align: center;
+        }
+        .degree7-unit1-lesson20-lecture-rule-figure { text-align: center; margin: 0 0 0.6rem; }
+        .degree7-unit1-lesson20-lecture-rule-img {
+            display: inline-block; max-width: 140px; max-height: 110px;
+            width: auto; height: auto;
+            border-radius: var(--degree7-unit1-lesson20-lecture-radius-sm);
+            box-shadow: 0 3px 10px rgba(30,94,58,0.12);
+            border: 2px solid var(--degree7-unit1-lesson20-lecture-lighter);
+        }
+        .degree7-unit1-lesson20-lecture-showcase-banner {
+            margin: 0.6rem 0 1rem;
+            border-radius: var(--degree7-unit1-lesson20-lecture-radius);
+            overflow: hidden;
+            box-shadow: var(--degree7-unit1-lesson20-lecture-shadow);
+            border: 1px solid var(--degree7-unit1-lesson20-lecture-border);
+        }
+        .degree7-unit1-lesson20-lecture-showcase-img {
+            display: block; width: 100%; max-height: 220px; object-fit: cover;
+        }
+        .degree7-unit1-lesson20-lecture-prod-figure { text-align: center; margin: 0.4rem 0 0.9rem; }
+        .degree7-unit1-lesson20-lecture-prod-img {
+            display: inline-block; max-width: 100%; max-height: 240px;
+            border-radius: var(--degree7-unit1-lesson20-lecture-radius-sm);
+            box-shadow: var(--degree7-unit1-lesson20-lecture-shadow);
+            border: 1px solid var(--degree7-unit1-lesson20-lecture-border);
+        }
+        .degree7-unit1-lesson20-lecture-prod-caption {
+            display: block; margin-top: 0.4rem;
+            font-size: 0.8rem; color: var(--degree7-unit1-lesson20-lecture-text-light);
+            font-style: italic;
+        }
+        .degree7-unit1-lesson20-lecture-text-card {
+            background: var(--degree7-unit1-lesson20-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson20-lecture-border);
+            border-left: 5px solid var(--degree7-unit1-lesson20-lecture-accent);
+            border-radius: 0 var(--degree7-unit1-lesson20-lecture-radius) var(--degree7-unit1-lesson20-lecture-radius) 0;
+            padding: 1.5rem 1.8rem; margin: 1.8rem 0;
+            font-size: 1.05rem; line-height: 1.9;
+            box-shadow: var(--degree7-unit1-lesson20-lecture-shadow); position: relative;
+        }
+        .degree7-unit1-lesson20-lecture-text-card .degree7-unit1-lesson20-lecture-quote-mark {
+            position: absolute; top:-15px; left:14px; font-size:3.5rem;
+            color: var(--degree7-unit1-lesson20-lecture-accent); opacity:0.3; line-height:1;
+            font-family: 'Georgia', serif;
+        }
+        .degree7-unit1-lesson20-lecture-text-card p { margin-bottom: 0.8rem; }
+        .degree7-unit1-lesson20-lecture-text-card p:last-of-type { margin-bottom: 0; }
+        .degree7-unit1-lesson20-lecture-text-author {
+            text-align: right; font-style: italic; font-size: 0.9rem;
+            color: var(--degree7-unit1-lesson20-lecture-text-light); margin-top: 0.8rem;
+        }
+        .degree7-unit1-lesson20-lecture-hl {
+            background: var(--degree7-unit1-lesson20-lecture-light);
+            color: var(--degree7-unit1-lesson20-lecture-heading);
+            padding: 0 5px; border-radius: 4px; font-weight: 700;
+            border-bottom: 2px solid var(--degree7-unit1-lesson20-lecture-accent);
+            cursor: help;
+        }
+        .degree7-unit1-lesson20-lecture-section h2 {
+            font-size: 1.5rem; color: var(--degree7-unit1-lesson20-lecture-heading);
+            margin: 2.4rem 0 1rem; display: inline-block;
+            padding-bottom: 0.3rem; position: relative;
+        }
+        .degree7-unit1-lesson20-lecture-section h2::after {
+            content: ''; position: absolute;
+            left: 0; right: 40%; bottom: 0; height: 3px;
+            background: var(--degree7-unit1-lesson20-lecture-accent); border-radius: 2px;
+        }
+        .degree7-unit1-lesson20-lecture-valeurs-section {
+            background: var(--degree7-unit1-lesson20-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson20-lecture-border);
+            border-radius: var(--degree7-unit1-lesson20-lecture-radius);
+            padding: 1.6rem 1.8rem; margin: 2rem 0;
+            box-shadow: var(--degree7-unit1-lesson20-lecture-shadow);
+        }
+        .degree7-unit1-lesson20-lecture-valeurs-section h2 {
+            font-size: 1.5rem; color: var(--degree7-unit1-lesson20-lecture-heading);
+            margin-bottom: 1rem; display: inline-block;
+            padding-bottom: 0.3rem;
+            border-bottom: 3px solid var(--degree7-unit1-lesson20-lecture-accent);
+        }
+        .degree7-unit1-lesson20-lecture-valeur-card {
+            background: var(--degree7-unit1-lesson20-lecture-light);
+            border-radius: var(--degree7-unit1-lesson20-lecture-radius-sm);
+            padding: 1rem 1.2rem; margin-bottom: 1rem;
+        }
+        .degree7-unit1-lesson20-lecture-valeur-card h3 {
+            color: var(--degree7-unit1-lesson20-lecture-accent);
+            font-size: 1.1rem; margin-bottom: 0.4rem;
+        }
+        .degree7-unit1-lesson20-lecture-valeur-card p { margin: 0.4rem 0; }
+        .degree7-unit1-lesson20-lecture-valeur-card ul { list-style: none; padding: 0; }
+        .degree7-unit1-lesson20-lecture-valeur-card li {
+            padding: 0.3rem 0 0.3rem 1.4rem; position: relative;
+        }
+        .degree7-unit1-lesson20-lecture-valeur-card li::before {
+            content: '◆'; position: absolute; left: 0;
+            color: var(--degree7-unit1-lesson20-lecture-accent);
+            font-size: 0.55rem; top: 0.6rem;
+        }
+        .degree7-unit1-lesson20-lecture-author-card {
+            background: var(--degree7-unit1-lesson20-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson20-lecture-border);
+            border-radius: var(--degree7-unit1-lesson20-lecture-radius);
+            padding: 1.2rem 1.5rem; margin: 1.2rem 0;
+            box-shadow: var(--degree7-unit1-lesson20-lecture-shadow);
+            display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap;
+        }
+        .degree7-unit1-lesson20-lecture-author-img {
+            width: 110px; height: 110px; border-radius: 50%;
+            object-fit: cover; flex-shrink: 0;
+            border: 3px solid var(--degree7-unit1-lesson20-lecture-light);
+            box-shadow: var(--degree7-unit1-lesson20-lecture-shadow);
+        }
+        .degree7-unit1-lesson20-lecture-author-info { flex: 1; min-width: 200px; }
+        .degree7-unit1-lesson20-lecture-author-info h3 {
+            color: var(--degree7-unit1-lesson20-lecture-heading);
+            font-size: 1.1rem; margin-bottom: 0.3rem;
+        }
+        .degree7-unit1-lesson20-lecture-author-info p {
+            font-size: 0.92rem; color: var(--degree7-unit1-lesson20-lecture-text-light);
+        }
+        .degree7-unit1-lesson20-lecture-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 0.9rem;
+            margin: 1rem 0;
+        }
+        .degree7-unit1-lesson20-lecture-vcard {
+            position: relative;
+            background: var(--degree7-unit1-lesson20-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson20-lecture-border);
+            border-radius: var(--degree7-unit1-lesson20-lecture-radius-sm);
+            padding: 0.9rem 0.9rem 0.9rem 3.2rem;
+            font-size: 0.85rem;
+            transition: all var(--degree7-unit1-lesson20-lecture-transition);
+            overflow: hidden;
+        }
+        .degree7-unit1-lesson20-lecture-vcard:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--degree7-unit1-lesson20-lecture-shadow);
+            border-color: var(--degree7-unit1-lesson20-lecture-accent);
+        }
+        .degree7-unit1-lesson20-lecture-vcard .degree7-unit1-lesson20-lecture-vicon {
+            position: absolute; left: 0; top: 0; bottom: 0;
+            width: 2.5rem;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem;
+            background: var(--degree7-unit1-lesson20-lecture-light);
+            border-right: 1px solid var(--degree7-unit1-lesson20-lecture-border);
+        }
+        .degree7-unit1-lesson20-lecture-vcard .degree7-unit1-lesson20-lecture-vword {
+            display: block; font-weight: 800;
+            color: var(--degree7-unit1-lesson20-lecture-heading);
+            font-size: 0.95rem; margin-bottom: 0.15rem;
+        }
+        .degree7-unit1-lesson20-lecture-vcard .degree7-unit1-lesson20-lecture-vdef {
+            display: block; color: var(--degree7-unit1-lesson20-lecture-text-light);
+            font-size: 0.8rem; line-height: 1.4;
+        }
+        .degree7-unit1-lesson20-lecture-exercises-section {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; align-items: start;
+            margin-top: 2rem;
+        }
+        .degree7-unit1-lesson20-lecture-exercises-section h2 {
+            grid-column: 1 / -1; font-size: 1.5rem;
+            color: var(--degree7-unit1-lesson20-lecture-heading);
+            margin: 0 0 1rem; display: inline-block;
+            padding-bottom: 0.3rem;
+            border-bottom: 3px solid var(--degree7-unit1-lesson20-lecture-accent);
+        }
+        .degree7-unit1-lesson20-lecture-exercise-card {
+            position: relative;
+            background: var(--degree7-unit1-lesson20-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson20-lecture-border);
+            border-radius: var(--degree7-unit1-lesson20-lecture-radius-sm);
+            padding: 1.2rem 1.3rem 1.2rem 3.4rem;
+            box-shadow: var(--degree7-unit1-lesson20-lecture-shadow);
+            transition: all var(--degree7-unit1-lesson20-lecture-transition);
+        }
+        .degree7-unit1-lesson20-lecture-exercise-card:hover {
+            box-shadow: 0 6px 22px rgba(30,94,58,0.10);
+        }
+        .degree7-unit1-lesson20-lecture-exercise-card::before {
+            content: attr(data-num);
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 2.6rem;
+            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(180deg, var(--degree7-unit1-lesson20-lecture-accent) 0%, var(--degree7-unit1-lesson20-lecture-heading) 100%);
+            color: #fff;
+            font-size: 1.05rem; font-weight: 800;
+            font-family: 'Georgia', serif;
+            border-radius: var(--degree7-unit1-lesson20-lecture-radius-sm) 0 0 var(--degree7-unit1-lesson20-lecture-radius-sm);
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            letter-spacing: 0.15em;
+        }
+        .degree7-unit1-lesson20-lecture-exercise-card h3 {
+            font-size: 1.02rem;
+            color: var(--degree7-unit1-lesson20-lecture-accent);
+            margin-bottom: 0.6rem;
+            display: flex; align-items: center; gap: 0.4rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed var(--degree7-unit1-lesson20-lecture-border);
+        }
+        .degree7-unit1-lesson20-lecture-exercise-card table {
+            width: 100%; border-collapse: collapse; margin: 0.8rem 0;
+        }
+        .degree7-unit1-lesson20-lecture-exercise-card th,
+        .degree7-unit1-lesson20-lecture-exercise-card td {
+            padding: 0.55rem 0.7rem;
+            border: 1px solid var(--degree7-unit1-lesson20-lecture-border);
+            text-align: left; font-size: 0.9rem;
+        }
+        .degree7-unit1-lesson20-lecture-exercise-card th {
+            background: var(--degree7-unit1-lesson20-lecture-light);
+            font-weight: 700;
+            color: var(--degree7-unit1-lesson20-lecture-heading);
+        }
+        .degree7-unit1-lesson20-lecture-exercise-card input[type="text"],
+        .degree7-unit1-lesson20-lecture-exercise-card textarea {
+            width: 100%; padding: 0.4rem 0.6rem;
+            border: 1px solid var(--degree7-unit1-lesson20-lecture-border);
+            border-radius: 4px;
+            background: var(--degree7-unit1-lesson20-lecture-input-bg);
+            color: var(--degree7-unit1-lesson20-lecture-text);
+            font-family: inherit; font-size: 0.9rem;
+        }
+        .degree7-unit1-lesson20-lecture-exercise-card textarea { resize: vertical; }
+        .degree7-unit1-lesson20-lecture-exercise-card input:focus,
+        .degree7-unit1-lesson20-lecture-exercise-card textarea:focus {
+            outline: none;
+            border-color: var(--degree7-unit1-lesson20-lecture-accent);
+        }
+        .degree7-unit1-lesson20-lecture-inline-input {
+            width: 120px !important;
+            padding: 0.25rem 0.5rem !important;
+            display: inline-block;
+            margin: 0 0.2rem;
+        }
+        .degree7-unit1-lesson20-lecture-btn-verify {
+            background: var(--degree7-unit1-lesson20-lecture-accent);
+            color: #fff; border: none;
+            padding: 0.5rem 1.2rem; border-radius: 20px;
+            font-weight: 600; cursor: pointer;
+            transition: background var(--degree7-unit1-lesson20-lecture-transition);
+            margin-top: 0.6rem; font-size: 0.85rem;
+        }
+        .degree7-unit1-lesson20-lecture-btn-verify:hover { background: var(--degree7-unit1-lesson20-lecture-accent-hover); }
+        .degree7-unit1-lesson20-lecture-answer-key {
+            display: none; margin-top: 0.8rem; padding: 0.8rem;
+            background: var(--degree7-unit1-lesson20-lecture-lighter);
+            border-radius: 6px; font-size: 0.85rem;
+            color: var(--degree7-unit1-lesson20-lecture-text);
+            border: 1px dashed var(--degree7-unit1-lesson20-lecture-accent);
+        }
+        .degree7-unit1-lesson20-lecture-answer-key.visible { display: block; }
+        .degree7-unit1-lesson20-lecture-self-assessment {
+            margin-top: 0.8rem; font-size: 0.9rem;
+            display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
+        }
+        .degree7-unit1-lesson20-lecture-self-assessment label { cursor: pointer; }
+        .degree7-unit1-lesson20-lecture-exercise-col-left { grid-column: 1 / 2; }
+        .degree7-unit1-lesson20-lecture-exercise-col-right { grid-column: 2 / 3; }
+        .degree7-unit1-lesson20-lecture-note {
+            background: linear-gradient(135deg, rgba(46,139,87,0.07), rgba(30,94,58,0.03));
+            border: 1px dashed var(--degree7-unit1-lesson20-lecture-accent);
+            border-radius: var(--degree7-unit1-lesson20-lecture-radius-sm);
+            padding: 1rem 1.2rem; margin: 1rem 0; font-size: 0.95rem;
+        }
+        .degree7-unit1-lesson20-lecture-note strong { color: var(--degree7-unit1-lesson20-lecture-accent); }
+        .degree7-unit1-lesson20-lecture-situation {
+            display: grid;
+            grid-template-columns: 2.2rem 1fr;
+            gap: 0.7rem;
+            align-items: start;
+            background: var(--degree7-unit1-lesson20-lecture-lighter);
+            border-left: 3px solid var(--degree7-unit1-lesson20-lecture-accent);
+            border-radius: var(--degree7-unit1-lesson20-lecture-radius-sm);
+            padding: 0.7rem 0.9rem;
+            margin-bottom: 0.6rem;
+        }
+        .degree7-unit1-lesson20-lecture-situation .num {
+            width: 26px; height: 26px;
+            background: var(--degree7-unit1-lesson20-lecture-accent);
+            color: #fff; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+        .degree7-unit1-lesson20-lecture-situation .content p {
+            font-size: 0.88rem;
+            margin-bottom: 0.4rem;
+        }
+        .degree7-unit1-lesson20-lecture-situation .content input[type="text"] {
+            width: 100%; padding: 0.35rem 0.5rem;
+            border: 1px solid var(--degree7-unit1-lesson20-lecture-border);
+            border-radius: 4px;
+            background: var(--degree7-unit1-lesson20-lecture-input-bg);
+            color: var(--degree7-unit1-lesson20-lecture-text);
+            font-family: inherit; font-size: 0.85rem;
+        }
+        .degree7-unit1-lesson20-lecture-score-area {
+            background: var(--degree7-unit1-lesson20-lecture-card);
+            border: 1px solid var(--degree7-unit1-lesson20-lecture-border);
+            border-radius: var(--degree7-unit1-lesson20-lecture-radius);
+            padding: 1.5rem; margin-top: 2rem;
+            box-shadow: var(--degree7-unit1-lesson20-lecture-shadow);
+        }
+        .degree7-unit1-lesson20-lecture-score-area h2 {
+            color: var(--degree7-unit1-lesson20-lecture-heading); margin-bottom: 1rem;
+        }
+        .degree7-unit1-lesson20-lecture-score-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .degree7-unit1-lesson20-lecture-score-stat {
+            background: var(--degree7-unit1-lesson20-lecture-light);
+            padding: 0.8rem 1.2rem; border-radius: 8px; font-weight: 600;
+        }
+        .degree7-unit1-lesson20-lecture-footer-nav {
+            margin-top: 2rem; display: flex; justify-content: space-between; flex-wrap: wrap;
+            background: var(--degree7-unit1-lesson20-lecture-card);
+            border-top: 1px solid var(--degree7-unit1-lesson20-lecture-border);
+            padding: 0.8rem 1.5rem;
+            border-radius: 0 0 var(--degree7-unit1-lesson20-lecture-radius) var(--degree7-unit1-lesson20-lecture-radius);
+        }
+        .degree7-unit1-lesson20-lecture-footer-nav a {
+            font-weight: 600; color: var(--degree7-unit1-lesson20-lecture-accent); text-decoration: none;
+        }
+        .degree7-unit1-lesson20-lecture-footer-nav a:hover { text-decoration: underline; }
+        html[dir="rtl"] body { direction: rtl; }
+        html[dir="rtl"] .degree7-unit1-lesson20-lecture-container { text-align: right; }
+        html[dir="rtl"] .degree7-unit1-lesson20-lecture-exercise-card th,
+        html[dir="rtl"] .degree7-unit1-lesson20-lecture-exercise-card td { text-align: right; }
+        html[dir="rtl"] .degree7-unit1-lesson20-lecture-exercise-card { padding-left: 1.3rem; padding-right: 3.4rem; }
+        html[dir="rtl"] .degree7-unit1-lesson20-lecture-exercise-card::before {
+            left: auto; right: 0;
+            border-radius: 0 var(--degree7-unit1-lesson20-lecture-radius-sm) var(--degree7-unit1-lesson20-lecture-radius-sm) 0;
+        }
+        html[dir="rtl"] .degree7-unit1-lesson20-lecture-vcard { padding-left: 0.9rem; padding-right: 3.2rem; }
+        html[dir="rtl"] .degree7-unit1-lesson20-lecture-vcard .degree7-unit1-lesson20-lecture-vicon {
+            left: auto; right: 0;
+            border-right: none;
+            border-left: 1px solid var(--degree7-unit1-lesson20-lecture-border);
+        }
+        html[dir="rtl"] .degree7-unit1-lesson20-lecture-situation {
+            border-left: none;
+            border-right: 3px solid var(--degree7-unit1-lesson20-lecture-accent);
+        }
+        @media (max-width:800px) {
+            .degree7-unit1-lesson20-lecture-exercises-section { grid-template-columns: 1fr; }
+            .degree7-unit1-lesson20-lecture-exercise-col-left,
+            .degree7-unit1-lesson20-lecture-exercise-col-right { grid-column: auto; }
+        }
+        @media (max-width:600px) {
+            .degree7-unit1-lesson20-lecture-lesson-header h1 { font-size: 1.5rem; }
+            .degree7-unit1-lesson20-lecture-container { padding: 1rem 0.8rem 2rem; }
+            .degree7-unit1-lesson20-lecture-text-card { padding: 1.4rem 1.2rem; }
+            .degree7-unit1-lesson20-lecture-hero-img { max-height: 200px; }
+            .degree7-unit1-lesson20-lecture-rule-img { max-width: 100px; }
+            .degree7-unit1-lesson20-lecture-showcase-img { max-height: 140px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="toast-container"></div>
+    <button id="signInBtn" style="display:none"></button>
+    <nav class="back-nav no-print">
+        <a href="index.html" data-i18n="back_link">← Retour à l'accueil</a>
+    </nav>
+    <div id="main-content" class="degree7-unit1-lesson20-lecture-container">
+        <!-- Breadcrumb -->
+        <p style="margin-bottom:1.5rem; color:var(--degree7-unit1-lesson20-lecture-text-light);">
+            <a href="degree7.html" data-i18n="back_revision">Unité 1</a>
+            › <strong data-i18n="back_current">Le départ</strong>
+        </p>
+        <div class="degree7-unit1-lesson20-lecture-lesson-header">
+            <span class="degree7-unit1-lesson20-lecture-badge" data-i18n="lesson_badge">📖 Lecture · Leçon 20</span>
+            <h1 data-i18n="lesson_title">Le départ<br>Sempé & Goscinny, <em>Les Vacances du petit Nicolas</em></h1>
+            <div class="degree7-unit1-lesson20-lecture-meta">
+                <span data-i18n="lesson_duration">⏱️ 45 minutes</span>
+                <span data-i18n="lesson_meta_audio">🎧 Écoutez le texte puis répondez aux questions</span>
+            </div>
+        </div>
+        <!-- Audio player -->
+        <div class="degree7-unit1-lesson20-lecture-audio-player" id="audioPlayer">
+            <span class="degree7-unit1-lesson20-lecture-audio-label" data-i18n="audio_label">🎧 Écoute du texte</span>
+            <button class="degree7-unit1-lesson20-lecture-play-btn" id="playBtn" aria-label="Lecture">▶</button>
+            <div class="degree7-unit1-lesson20-lecture-progress-area">
+                <div class="degree7-unit1-lesson20-lecture-progress-bar" id="progressBar">
+                    <div class="degree7-unit1-lesson20-lecture-progress-fill" id="progressFill"></div>
+                </div>
+                <div class="degree7-unit1-lesson20-lecture-time-info">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+            <div class="degree7-unit1-lesson20-lecture-speed-selector" id="speedSelector">
+                <button class="degree7-unit1-lesson20-lecture-speed-btn" data-speed="0.75">0.75x</button>
+                <button class="degree7-unit1-lesson20-lecture-speed-btn active" data-speed="1">1x</button>
+                <button class="degree7-unit1-lesson20-lecture-speed-btn" data-speed="1.25">1.25x</button>
+                <button class="degree7-unit1-lesson20-lecture-speed-btn" data-speed="1.5">1.5x</button>
+            </div>
+        </div>
+        <!-- Author presentation -->
+        <div class="degree7-unit1-lesson20-lecture-author-card">
+            <img src="assets7/images/degree7/unit1/lesson20/sempe_goscinny.png"
+                 alt="Portrait de Sempé et Goscinny"
+                 class="degree7-unit1-lesson20-lecture-author-img"
+                 data-i18n="author_img_alt"
+                 onerror="this.style.display='none'">
+            <div class="degree7-unit1-lesson20-lecture-author-info">
+                <h3 data-i18n="author_title">👤 Sempé & Goscinny</h3>
+                <p data-i18n="author_bio"><strong>Jean-Jacques Sempé</strong> (né en 1932) a créé avec son ami <strong>René Goscinny</strong> (1926-1977) le personnage de <em>Nicolas</em>. Goscinny est surtout connu comme le père d'<em>Astérix</em>.</p>
+            </div>
+        </div>
+        <!-- Text -->
+        <section class="degree7-unit1-lesson20-lecture-section">
+            <h2 data-i18n="text_heading">📖 J'observe</h2>
+            <figure class="degree7-unit1-lesson20-lecture-hero-figure">
+                <img src="assets7/images/degree7/unit1/lesson20/depart_valise.png"
+                     alt="Illustration du petit Nicolas préparant sa valise"
+                     class="degree7-unit1-lesson20-lecture-hero-img"
+                     data-i18n="img_hero_alt"
+                     onerror="this.parentElement.style.display='none'">
+                <figcaption class="degree7-unit1-lesson20-lecture-hero-caption" data-i18n="img_hero_caption">
+                    Nicolas part en colonie de vacances — mais ses parents ont l'air bien tristes…
+                </figcaption>
+            </figure>
+            <div class="degree7-unit1-lesson20-lecture-text-card">
+                <span class="degree7-unit1-lesson20-lecture-quote-mark">“</span>
+                <p data-i18n="text_para1">Aujourd'hui, je pars en <span class="degree7-unit1-lesson20-lecture-hl" title="groupement d'enfants en vacances">colonie de vacances</span> et je suis bien content. La seule chose qui m'ennuie, c'est que Papa et Maman ont l'air un peu tristes ; c'est sûrement parce qu'ils ne sont pas habitués à rester seuls pendant les vacances.</p>
+                <p data-i18n="text_para2">Maman m'a aidé à faire la valise, avec les chemisettes, les shorts, les espadrilles, les petites autos, le maillot de bain, les serviettes, la locomotive du train électrique, les œufs durs, les bananes, les sandwiches au saucisson et au fromage, le filet pour les crevettes, le pull à manches longues, les chaussettes et les billes. Bien sûr, on a dû faire quelques paquets parce que la valise n'était pas assez grande, mais ça ira.</p>
+                <p data-i18n="text_para3">Moi, j'avais peur de <span class="degree7-unit1-lesson20-lecture-hl" title="arriver à la gare après le départ du train">rater le train</span>, et après le déjeuner, j'ai demandé à Papa s'il ne valait pas mieux partir tout de suite pour la gare. Mais Papa m'a dit que c'était encore un peu tôt, que le train partait à six heures du soir et que j'avais l'air bien <span class="degree7-unit1-lesson20-lecture-hl" title="qui ne peut pas attendre">impatient</span> de les quitter. Et Maman est partie dans la cuisine avec son mouchoir, en disant qu'elle avait quelque chose dans l'œil.</p>
+                <p data-i18n="text_para4">Je ne sais pas ce qu'ils ont, Papa et Maman, ils ont l'air bien embêtés. Tellement embêtés que je n'ose pas leur dire que ça me fait une grosse boule dans la gorge quand je pense que je ne vais pas les voir pendant un mois. Si je le leur disais, je suis sûr qu'ils se moqueraient de moi et qu'ils me <span class="degree7-unit1-lesson20-lecture-hl" title="adresser des reproches">gronderaient</span>.</p>
+                <div class="degree7-unit1-lesson20-lecture-text-author" data-i18n="text_author">— Jean-Jacques SEMPÉ et René GOSCINNY, <em>Les vacances du petit Nicolas</em>, Denoël, 1962</div>
+            </div>
+            <div class="degree7-unit1-lesson20-lecture-note">
+                <strong data-i18n="consigne_title">➤ Consigne :</strong>
+                <span data-i18n="consigne_text">Lis le texte puis réponds aux questions. Observe la manière dont Nicolas raconte son départ et comprend — ou ne comprend pas — les réactions de ses parents.</span>
+            </div>
+            <div class="degree7-unit1-lesson20-lecture-note">
+                <strong data-i18n="vocab_title">📚 Vocabulaire :</strong>
+                <ul style="padding-left:1.2rem; margin-top:0.4rem;">
+                    <li data-i18n="vocab1"><strong>Colonie de vacances</strong> : groupement d'enfants en vacances.</li>
+                    <li data-i18n="vocab2"><strong>Rater le train</strong> : arriver à la gare après le départ du train.</li>
+                    <li data-i18n="vocab3"><strong>Impatient</strong> : qui ne peut pas attendre.</li>
+                    <li data-i18n="vocab4"><strong>Gronder</strong> : adresser des reproches.</li>
+                </ul>
+            </div>
+        </section>
+        <!-- Reading rules -->
+        <section class="degree7-unit1-lesson20-lecture-section">
+            <h2 data-i18n="rules_heading">📖 Je lis à haute voix une phrase longue</h2>
+            <div class="degree7-unit1-lesson20-lecture-valeurs-section">
+                <div class="degree7-unit1-lesson20-lecture-valeur-card">
+                    <h3 data-i18n="rule1_title">🎙️ 1. Lire une phrase longue</h3>
+                    <ul data-i18n="rule1_list">
+                        <li>Je lis la phrase : « Maman m'a aidé… les billes. »</li>
+                        <li>Je repère les signes de ponctuation.</li>
+                        <li>Je localise les parties les plus longues.</li>
+                        <li>Je respire profondément et je lis.</li>
+                        <li>Je marque une pause là où il y a une virgule.</li>
+                        <li>Je baisse la voix à la fin de la phrase.</li>
+                    </ul>
+                </div>
+                <div class="degree7-unit1-lesson20-lecture-valeur-card">
+                    <h3 data-i18n="rule2_title">🔤 2. Les verbes de perception</h3>
+                    <ul data-i18n="rule2_list">
+                        <li><strong>Voir</strong> : percevoir par les yeux (involontaire).</li>
+                        <li><strong>Regarder</strong> : diriger volontairement son regard.</li>
+                        <li><strong>Écouter</strong> : prêter attention volontairement.</li>
+                        <li><strong>Entendre</strong> : percevoir par l'oreille (involontaire).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- Vocabulary showcase -->
+        <section class="degree7-unit1-lesson20-lecture-section">
+            <h2 data-i18n="showcase_heading">🎨 Le lexique du texte</h2>
+            <div class="degree7-unit1-lesson20-lecture-showcase">
+                <div class="degree7-unit1-lesson20-lecture-vcard">
+                    <span class="degree7-unit1-lesson20-lecture-vicon">🧳</span>
+                    <span class="degree7-unit1-lesson20-lecture-vword" data-i18n="card1_word">la valise</span>
+                    <span class="degree7-unit1-lesson20-lecture-vdef" data-i18n="card1_def">bagage où l'on range ses affaires</span>
+                </div>
+                <div class="degree7-unit1-lesson20-lecture-vcard">
+                    <span class="degree7-unit1-lesson20-lecture-vicon">🏕️</span>
+                    <span class="degree7-unit1-lesson20-lecture-vword" data-i18n="card2_word">la colonie de vacances</span>
+                    <span class="degree7-unit1-lesson20-lecture-vdef" data-i18n="card2_def">séjour organisé pour les enfants</span>
+                </div>
+                <div class="degree7-unit1-lesson20-lecture-vcard">
+                    <span class="degree7-unit1-lesson20-lecture-vicon">🚆</span>
+                    <span class="degree7-unit1-lesson20-lecture-vword" data-i18n="card3_word">la gare</span>
+                    <span class="degree7-unit1-lesson20-lecture-vdef" data-i18n="card3_def">lieu de départ et d'arrivée des trains</span>
+                </div>
+                <div class="degree7-unit1-lesson20-lecture-vcard">
+                    <span class="degree7-unit1-lesson20-lecture-vicon">👕</span>
+                    <span class="degree7-unit1-lesson20-lecture-vword" data-i18n="card4_word">les vêtements</span>
+                    <span class="degree7-unit1-lesson20-lecture-vdef" data-i18n="card4_def">chemisettes, shorts, pull, chaussettes</span>
+                </div>
+                <div class="degree7-unit1-lesson20-lecture-vcard">
+                    <span class="degree7-unit1-lesson20-lecture-vicon">🚂</span>
+                    <span class="degree7-unit1-lesson20-lecture-vword" data-i18n="card5_word">les jouets</span>
+                    <span class="degree7-unit1-lesson20-lecture-vdef" data-i18n="card5_def">petites autos, locomotive, billes</span>
+                </div>
+                <div class="degree7-unit1-lesson20-lecture-vcard">
+                    <span class="degree7-unit1-lesson20-lecture-vicon">🥪</span>
+                    <span class="degree7-unit1-lesson20-lecture-vword" data-i18n="card6_word">la nourriture</span>
+                    <span class="degree7-unit1-lesson20-lecture-vdef" data-i18n="card6_def">œufs durs, bananes, sandwiches</span>
+                </div>
+                <div class="degree7-unit1-lesson20-lecture-vcard">
+                    <span class="degree7-unit1-lesson20-lecture-vicon">😟</span>
+                    <span class="degree7-unit1-lesson20-lecture-vword" data-i18n="card7_word">embêté</span>
+                    <span class="degree7-unit1-lesson20-lecture-vdef" data-i18n="card7_def">tracassé, préoccupé</span>
+                </div>
+                <div class="degree7-unit1-lesson20-lecture-vcard">
+                    <span class="degree7-unit1-lesson20-lecture-vicon">😥</span>
+                    <span class="degree7-unit1-lesson20-lecture-vword" data-i18n="card8_word">une boule dans la gorge</span>
+                    <span class="degree7-unit1-lesson20-lecture-vdef" data-i18n="card8_def">serrement dû à l'émotion</span>
+                </div>
+                <div class="degree7-unit1-lesson20-lecture-vcard">
+                    <span class="degree7-unit1-lesson20-lecture-vicon">😢</span>
+                    <span class="degree7-unit1-lesson20-lecture-vword" data-i18n="card9_word">le mouchoir</span>
+                    <span class="degree7-unit1-lesson20-lecture-vdef" data-i18n="card9_def">objet pour essuyer les larmes</span>
+                </div>
+                <div class="degree7-unit1-lesson20-lecture-vcard">
+                    <span class="degree7-unit1-lesson20-lecture-vicon">🌙</span>
+                    <span class="degree7-unit1-lesson20-lecture-vword" data-i18n="card10_word">midi / minuit</span>
+                    <span class="degree7-unit1-lesson20-lecture-vdef" data-i18n="card10_def">12 heures du jour / de la nuit</span>
+                </div>
+                <div class="degree7-unit1-lesson20-lecture-vcard">
+                    <span class="degree7-unit1-lesson20-lecture-vicon">🕐</span>
+                    <span class="degree7-unit1-lesson20-lecture-vword" data-i18n="card11_word">et quart / et demie</span>
+                    <span class="degree7-unit1-lesson20-lecture-vdef" data-i18n="card11_def">15 / 30 minutes après l'heure</span>
+                </div>
+                <div class="degree7-unit1-lesson20-lecture-vcard">
+                    <span class="degree7-unit1-lesson20-lecture-vicon">🐓</span>
+                    <span class="degree7-unit1-lesson20-lecture-vword" data-i18n="card12_word">le chant du coq</span>
+                    <span class="degree7-unit1-lesson20-lecture-vdef" data-i18n="card12_def">moyen naturel de situer l'heure</span>
+                </div>
+            </div>
+        </section>
+        <!-- Exercises -->
+        <div class="degree7-unit1-lesson20-lecture-exercises-section">
+            <h2 data-i18n="exercises_heading">✍️ Je m'exerce</h2>
+            <!-- Ex 1 -->
+            <div class="degree7-unit1-lesson20-lecture-exercise-card degree7-unit1-lesson20-lecture-exercise-col-left" data-num="1">
+                <h3 data-i18n="exo1_title">📌 1. Je découvre le texte</h3>
+                <p data-i18n="exo1_instruction">Réponds aux questions de découverte du texte.</p>
+                <ol type="a">
+                    <li>Dans la vie de cette famille, il est question d'un événement. Lequel ? <input type="text" class="degree7-unit1-lesson20-lecture-inline-input" placeholder="..."></li>
+                    <li>Comment les parents réagissent-ils face à cet événement ? <input type="text" class="degree7-unit1-lesson20-lecture-inline-input" placeholder="..."></li>
+                    <li>L'enfant comprend-il ces réactions ? <input type="text" class="degree7-unit1-lesson20-lecture-inline-input" placeholder="..."></li>
+                </ol>
+                <button class="degree7-unit1-lesson20-lecture-btn-verify" onclick="toggleCorrection('exo1Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo1Key" class="degree7-unit1-lesson20-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson20-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex1" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex1" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 2 -->
+            <div class="degree7-unit1-lesson20-lecture-exercise-card degree7-unit1-lesson20-lecture-exercise-col-right" data-num="2">
+                <h3 data-i18n="exo2_title">📌 2. Vrai ou faux ?</h3>
+                <p data-i18n="exo2_instruction">Indique si chaque affirmation est vraie (V) ou fausse (F).</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_statement" class="no-bilingual">Affirmation</th>
+                            <th data-i18n="table_vf" class="no-bilingual">V / F</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td data-i18n="exo2_q1">Nicolas part en colonie de vacances.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo2_q2">Nicolas est triste de partir.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo2_q3">Les parents ont l'air tristes.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo2_q4">La valise était assez grande.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                        <tr><td data-i18n="exo2_q5">Le train part à six heures du soir.</td><td><input type="text" placeholder="V ou F"></td></tr>
+                    </tbody>
+                </table>
+                <button class="degree7-unit1-lesson20-lecture-btn-verify" onclick="toggleCorrection('exo2Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo2Key" class="degree7-unit1-lesson20-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson20-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex2" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex2" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 3 -->
+            <div class="degree7-unit1-lesson20-lecture-exercise-card degree7-unit1-lesson20-lecture-exercise-col-left" data-num="3">
+                <h3 data-i18n="exo3_title">📌 3. QCM – Compréhension du texte</h3>
+                <p data-i18n="exo3_instruction">Choisis la bonne réponse parmi les trois propositions.</p>
+                <p><strong>1.</strong> <span data-i18n="exo3_q1">Pourquoi les parents ont-ils l'air tristes ?</span></p>
+                <label><input type="radio" name="mcq1" value="a"> <span data-i18n="exo3_q1_a">Parce qu'ils vont être séparés de leur fils.</span></label><br>
+                <label><input type="radio" name="mcq1" value="b"> <span data-i18n="exo3_q1_b">Parce qu'ils n'aiment pas les vacances.</span></label><br>
+                <label><input type="radio" name="mcq1" value="c"> <span data-i18n="exo3_q1_c">Parce qu'il fait mauvais temps.</span></label>
+                <p style="margin-top:0.6rem;"><strong>2.</strong> <span data-i18n="exo3_q2">Comment Nicolas interprète-t-il la réaction de ses parents ?</span></p>
+                <label><input type="radio" name="mcq2" value="a"> <span data-i18n="exo3_q2_a">Il comprend qu'ils sont tristes de son départ.</span></label><br>
+                <label><input type="radio" name="mcq2" value="b"> <span data-i18n="exo3_q2_b">Il croit qu'ils ne sont pas habitués à rester seuls.</span></label><br>
+                <label><input type="radio" name="mcq2" value="c"> <span data-i18n="exo3_q2_c">Il pense qu'ils sont fâchés contre lui.</span></label>
+                <p style="margin-top:0.6rem;"><strong>3.</strong> <span data-i18n="exo3_q3">Que ressent Nicolas au fond de lui ?</span></p>
+                <label><input type="radio" name="mcq3" value="a"> <span data-i18n="exo3_q3_a">De la colère.</span></label><br>
+                <label><input type="radio" name="mcq3" value="b"> <span data-i18n="exo3_q3_b">Une grosse boule dans la gorge (de l'émotion).</span></label><br>
+                <label><input type="radio" name="mcq3" value="c"> <span data-i18n="exo3_q3_c">De l'indifférence.</span></label>
+                <button class="degree7-unit1-lesson20-lecture-btn-verify" onclick="toggleCorrection('exo3Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo3Key" class="degree7-unit1-lesson20-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson20-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex3" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex3" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 4 -->
+            <div class="degree7-unit1-lesson20-lecture-exercise-card degree7-unit1-lesson20-lecture-exercise-col-right" data-num="4">
+                <h3 data-i18n="exo4_title">📌 4. Les bagages de Nicolas</h3>
+                <p data-i18n="exo4_instruction">Remplace chaque liste par un mot de sens général.</p>
+                <ol type="a">
+                    <li>Des chemisettes, un pull, des shorts → <input type="text" class="degree7-unit1-lesson20-lecture-inline-input" placeholder="..."></li>
+                    <li>De petites autos, des billes, la locomotive du train électrique → <input type="text" class="degree7-unit1-lesson20-lecture-inline-input" placeholder="..."></li>
+                    <li>Des œufs durs, des bananes, des sandwiches → <input type="text" class="degree7-unit1-lesson20-lecture-inline-input" placeholder="..."></li>
+                </ol>
+                <button class="degree7-unit1-lesson20-lecture-btn-verify" onclick="toggleCorrection('exo4Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo4Key" class="degree7-unit1-lesson20-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson20-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex4" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex4" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex4" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 5 -->
+            <div class="degree7-unit1-lesson20-lecture-exercise-card degree7-unit1-lesson20-lecture-exercise-col-left" data-num="5">
+                <h3 data-i18n="exo5_title">📌 5. Relie chaque mot à sa définition</h3>
+                <p data-i18n="exo5_instruction">Écris la lettre de la définition qui correspond à chaque mot.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_word" class="no-bilingual">Mot</th>
+                            <th data-i18n="table_letter" class="no-bilingual">Définition (a–d)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>colonie de vacances</td><td><input type="text" placeholder="a-d"></td></tr>
+                        <tr><td>rater le train</td><td><input type="text" placeholder="a-d"></td></tr>
+                        <tr><td>impatient</td><td><input type="text" placeholder="a-d"></td></tr>
+                        <tr><td>gronder</td><td><input type="text" placeholder="a-d"></td></tr>
+                    </tbody>
+                </table>
+                <p style="font-size:0.85rem; color:var(--degree7-unit1-lesson20-lecture-text-light);">
+                    <strong>a.</strong> <span data-i18n="exo5_a">groupement d'enfants en vacances</span> ·
+                    <strong>b.</strong> <span data-i18n="exo5_b">arriver après le départ du train</span> ·
+                    <strong>c.</strong> <span data-i18n="exo5_c">qui ne peut pas attendre</span> ·
+                    <strong>d.</strong> <span data-i18n="exo5_d">adresser des reproches</span>
+                </p>
+                <button class="degree7-unit1-lesson20-lecture-btn-verify" onclick="toggleCorrection('exo5Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo5Key" class="degree7-unit1-lesson20-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson20-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex5" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex5" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex5" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 6 -->
+            <div class="degree7-unit1-lesson20-lecture-exercise-card degree7-unit1-lesson20-lecture-exercise-col-right" data-num="6">
+                <h3 data-i18n="exo6_title">📌 6. Quelle heure est-il ?</h3>
+                <p data-i18n="exo6_instruction">Écris en toutes lettres l'heure indiquée.</p>
+                <ol type="a">
+                    <li>12h00 → <input type="text" class="degree7-unit1-lesson20-lecture-inline-input" placeholder="..."></li>
+                    <li>0h00 → <input type="text" class="degree7-unit1-lesson20-lecture-inline-input" placeholder="..."></li>
+                    <li>7h15 → <input type="text" class="degree7-unit1-lesson20-lecture-inline-input" placeholder="..."></li>
+                    <li>8h45 → <input type="text" class="degree7-unit1-lesson20-lecture-inline-input" placeholder="..."></li>
+                    <li>6h30 → <input type="text" class="degree7-unit1-lesson20-lecture-inline-input" placeholder="..."></li>
+                </ol>
+                <button class="degree7-unit1-lesson20-lecture-btn-verify" onclick="toggleCorrection('exo6Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo6Key" class="degree7-unit1-lesson20-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson20-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex6" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex6" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex6" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 7 -->
+            <div class="degree7-unit1-lesson20-lecture-exercise-card degree7-unit1-lesson20-lecture-exercise-col-left" data-num="7">
+                <h3 data-i18n="exo7_title">📌 7. Se situer dans le temps</h3>
+                <p data-i18n="exo7_instruction">Classe ces moyens de repérage du temps en deux colonnes : <em>moyens naturels</em> / <em>instruments</em>.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="table_naturel" class="no-bilingual">Moyens naturels</th>
+                            <th datai18n="table_instrument" class="no-bilingual">Instruments</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" placeholder="..."></td>
+                            <td><input type="text" placeholder="..."></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="font-size:0.85rem; color:var(--degree7-unit1-lesson20-lecture-text-light);" data-i18n="exo7_choices">
+                    Les horloges · les montres · le chant du coq · le mouvement du soleil · la forme de l'ombre · les étoiles
+                </p>
+                <button class="degree7-unit1-lesson20-lecture-btn-verify" onclick="toggleCorrection('exo7Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo7Key" class="degree7-unit1-lesson20-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson20-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex7" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex7" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex7" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 8 -->
+            <div class="degree7-unit1-lesson20-lecture-exercise-card degree7-unit1-lesson20-lecture-exercise-col-right" data-num="8">
+                <h3 data-i18n="exo8_title">📌 8. L'expression « avoir l'air »</h3>
+                <p data-i18n="exo8_instruction">Complète chaque phrase avec la construction correcte.</p>
+                <ul style="padding-left:1.2rem; font-size:0.88rem; margin-bottom:0.6rem;">
+                    <li><em>avoir l'air + adjectif</em></li>
+                    <li><em>avoir l'air de + infinitif</em></li>
+                    <li><em>avoir l'air d'un / d'une + nom</em></li>
+                </ul>
+                <ol type="a">
+                    <li>Cet enfant adopté a l'air <input type="text" class="degree7-unit1-lesson20-lecture-inline-input" placeholder="..."> dans sa nouvelle famille.</li>
+                    <li>Cette fillette a l'air de bien <input type="text" class="degree7-unit1-lesson20-lecture-inline-input" placeholder="...">.</li>
+                    <li>Il a l'air d'un petit <input type="text" class="degree7-unit1-lesson20-lecture-inline-input" placeholder="...">.</li>
+                </ol>
+                <button class="degree7-unit1-lesson20-lecture-btn-verify" onclick="toggleCorrection('exo8Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo8Key" class="degree7-unit1-lesson20-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson20-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex8" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex8" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex8" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 9 -->
+            <div class="degree7-unit1-lesson20-lecture-exercise-card degree7-unit1-lesson20-lecture-exercise-col-left" data-num="9">
+                <h3 data-i18n="exo9_title">📌 9. Voir ou regarder ?</h3>
+                <p data-i18n="exo9_instruction">Complète avec l'un des deux verbes, conjugué si besoin.</p>
+                <ol type="a">
+                    <li>Une fillette à son petit frère : « J'entre dans la cuisine et qu'est-ce que je <input type="text" class="degree7-unit1-lesson20-lecture-inline-input" placeholder="..."> ? Un immense gâteau d'anniversaire ! »</li>
+                    <li>Une mère à son fils : « <input type="text" class="degree7-unit1-lesson20-lecture-inline-input" placeholder="...">-moi bien dans les yeux ! Est-ce toi qui as cassé le vase ? »</li>
+                    <li>La grand-maman à sa petite-fille : « Tu n'as pas <input type="text" class="degree7-unit1-lesson20-lecture-inline-input" placeholder="..."> ma canne ? C'est que tu n'as pas bien <input type="text" class="degree7-unit1-lesson20-lecture-inline-input" placeholder="...">. »</li>
+                </ol>
+                <button class="degree7-unit1-lesson20-lecture-btn-verify" onclick="toggleCorrection('exo9Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo9Key" class="degree7-unit1-lesson20-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson20-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex9" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex9" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex9" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+            <!-- Ex 10 -->
+            <div class="degree7-unit1-lesson20-lecture-exercise-card degree7-unit1-lesson20-lecture-exercise-col-right" data-num="10">
+                <h3 data-i18n="exo10_title">📌 10. J'apprécie le texte</h3>
+                <p data-i18n="exo10_instruction">Complète les énoncés suivants.</p>
+                <ol type="a">
+                    <li>Ce qui me touche, c'est que la mère... <input type="text" class="degree7-unit1-lesson20-lecture-inline-input" placeholder="..."></li>
+                    <li>Ce qui me touche, c'est que le père... <input type="text" class="degree7-unit1-lesson20-lecture-inline-input" placeholder="..."></li>
+                    <li>Ce qui me touche, c'est que l'enfant... <input type="text" class="degree7-unit1-lesson20-lecture-inline-input" placeholder="..."></li>
+                </ol>
+                <button class="degree7-unit1-lesson20-lecture-btn-verify" onclick="toggleCorrection('exo10Key')" data-i18n="btn_correction">🔍 Voir la correction</button>
+                <div id="exo10Key" class="degree7-unit1-lesson20-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson20-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex10" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex10" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex10" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+        </div>
+        <!-- Production -->
+        <div style="margin-top:2rem;">
+            <div class="degree7-unit1-lesson20-lecture-exercise-card" data-num="11">
+                <h3 data-i18n="exo11_title">📌 11. J'écris à mon tour – Production personnelle</h3>
+                <p data-i18n="exo11_instruction">Nicolas est maintenant en colonie de vacances. Le soir, il pense à ses parents. Il a l'idée de leur envoyer une carte postale pour leur raconter sa journée. Imagine ce qu'il écrit.</p>
+                <figure class="degree7-unit1-lesson20-lecture-prod-figure">
+                    <img src="assets7/images/degree7/unit1/lesson20/carte_postale.png"
+                         alt="Illustration d'une carte postale de colonie de vacances"
+                         class="degree7-unit1-lesson20-lecture-prod-img"
+                         data-i18n="img_prod_alt"
+                         onerror="this.parentElement.style.display='none'">
+                    <figcaption class="degree7-unit1-lesson20-lecture-prod-caption" data-i18n="img_prod_caption">
+                        Une carte postale de Nicolas à ses parents.
+                    </figcaption>
+                </figure>
+                <textarea rows="6" placeholder="Cher Papa, chère Maman, ..."></textarea>
+                <button class="degree7-unit1-lesson20-lecture-btn-verify" onclick="showExo11Example()" data-i18n="show_example">💡 Voir un exemple de réponse</button>
+                <div id="exo11Key" class="degree7-unit1-lesson20-lecture-answer-key"></div>
+                <div class="degree7-unit1-lesson20-lecture-self-assessment">
+                    <span data-i18n="self_assess_question">Ma réponse est :</span>
+                    <label><input type="radio" name="self_ex11" value="correct" data-i18n="self_correct"> Correcte</label>
+                    <label><input type="radio" name="self_ex11" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+                    <label><input type="radio" name="self_ex11" value="partial" data-i18n="self_partial"> Partiellement correcte</label>
+                </div>
+            </div>
+        </div>
+        <!-- Score area -->
+        <div class="degree7-unit1-lesson20-lecture-score-area" id="scoreArea">
+            <h2 data-i18n="score_title">📊 Votre auto‑évaluation</h2>
+            <div class="degree7-unit1-lesson20-lecture-score-stats" id="scoreStats">
+                <div class="degree7-unit1-lesson20-lecture-score-stat"><span data-i18n="score_correct">Correctes :</span> <span id="scoreCorrect">0</span></div>
+                <div class="degree7-unit1-lesson20-lecture-score-stat"><span data-i18n="score_incorrect">Incorrectes :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="degree7-unit1-lesson20-lecture-score-stat"><span data-i18n="score_partial">Partielles :</span> <span id="scorePartial">0</span></div>
+                <div class="degree7-unit1-lesson20-lecture-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">11</span></div>
+            </div>
+        </div>
+        <div class="degree7-unit1-lesson20-lecture-score-actions" style="margin-top:1.2rem;">
+            <button id="saveResultsBtn" class="degree7-unit1-lesson20-lecture-btn-verify" style="margin-right:0.5rem;" data-i18n="save_results">💾 Enregistrer mes résultats</button>
+            <button id="printPdfBtn" class="degree7-unit1-lesson20-lecture-btn-verify" style="background:#1e5e3a; margin-right:0.5rem;" data-i18n="print_pdf">🖨️ Imprimer / PDF</button>
+        </div>
+        <!-- Footer nav -->
+        <div class="degree7-unit1-lesson20-lecture-footer-nav">
+            <a href="degree7unit1lesson19.html" data-i18n="footer_back" class="no-bilingual">← Leçon précédente</a>
+            <a href="degree7unit1lesson21.html" data-i18n="footer_next" class="no-bilingual">Leçon suivante : Lire/Rire – Chou (Bernard Friot) →</a>
+        </div>
+    </div>
+    <!-- Scripts -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                'lesson_title': "Leçon 20 – Le départ | Lecture",
+                'lesson_short_title': "Le départ",
+                'ach_year_degree7': "7ème Année Primaire",
+                'ach_module_unit1': "Unité 1 – Les fondements du français",
+                'back_link': "← Retour à l'accueil",
+                'back_revision': "Unité 1",
+                'back_current': "Le départ",
+                'lesson_badge': "📖 Lecture · Leçon 20",
+                'lesson_title': "Le départ<br>Sempé & Goscinny, <em>Les Vacances du petit Nicolas</em>",
+                'lesson_duration': "⏱️ 45 minutes",
+                'lesson_meta_audio': "🎧 Écoutez le texte puis répondez aux questions",
+                'audio_label': "🎧 Écoute du texte",
+                'author_img_alt': "Portrait de Sempé et Goscinny",
+                'author_title': "👤 Sempé & Goscinny",
+                'author_bio': "<strong>Jean-Jacques Sempé</strong> (né en 1932) a créé avec son ami <strong>René Goscinny</strong> (1926-1977) le personnage de <em>Nicolas</em>. Goscinny est surtout connu comme le père d'<em>Astérix</em>.",
+                'text_heading': "📖 J'observe",
+                'img_hero_alt': "Illustration du petit Nicolas préparant sa valise",
+                'img_hero_caption': "Nicolas part en colonie de vacances — mais ses parents ont l'air bien tristes…",
+                'text_author': "— Jean-Jacques SEMPÉ et René GOSCINNY, <em>Les vacances du petit Nicolas</em>, Denoël, 1962",
+                'consigne_title': "➤ Consigne :",
+                'consigne_text': "Lis le texte puis réponds aux questions. Observe la manière dont Nicolas raconte son départ et comprend — ou ne comprend pas — les réactions de ses parents.",
+                'vocab_title': "📚 Vocabulaire :",
+                'vocab1': "<strong>Colonie de vacances</strong> : groupement d'enfants en vacances.",
+                'vocab2': "<strong>Rater le train</strong> : arriver à la gare après le départ du train.",
+                'vocab3': "<strong>Impatient</strong> : qui ne peut pas attendre.",
+                'vocab4': "<strong>Gronder</strong> : adresser des reproches.",
+                'rules_heading': "📖 Je lis à haute voix une phrase longue",
+                'rule1_title': "🎙️ 1. Lire une phrase longue",
+                'rule1_list': "<li>Je lis la phrase : « Maman m'a aidé… les billes. »</li><li>Je repère les signes de ponctuation.</li><li>Je localise les parties les plus longues.</li><li>Je respire profondément et je lis.</li><li>Je marque une pause là où il y a une virgule.</li><li>Je baisse la voix à la fin de la phrase.</li>",
+                'rule2_title': "🔤 2. Les verbes de perception",
+                'rule2_list': "<li><strong>Voir</strong> : percevoir par les yeux (involontaire).</li><li><strong>Regarder</strong> : diriger volontairement son regard.</li><li><strong>Écouter</strong> : prêter attention volontairement.</li><li><strong>Entendre</strong> : percevoir par l'oreille (involontaire).</li>",
+                'showcase_heading': "🎨 Le lexique du texte",
+                'card1_word': "la valise", 'card1_def': "bagage où l'on range ses affaires",
+                'card2_word': "la colonie de vacances", 'card2_def': "séjour organisé pour les enfants",
+                'card3_word': "la gare", 'card3_def': "lieu de départ et d'arrivée des trains",
+                'card4_word': "les vêtements", 'card4_def': "chemisettes, shorts, pull, chaussettes",
+                'card5_word': "les jouets", 'card5_def': "petites autos, locomotive, billes",
+                'card6_word': "la nourriture", 'card6_def': "œufs durs, bananes, sandwiches",
+                'card7_word': "embêté", 'card7_def': "tracassé, préoccupé",
+                'card8_word': "une boule dans la gorge", 'card8_def': "serrement dû à l'émotion",
+                'card9_word': "le mouchoir", 'card9_def': "objet pour essuyer les larmes",
+                'card10_word': "midi / minuit", 'card10_def': "12 heures du jour / de la nuit",
+                'card11_word': "et quart / et demie", 'card11_def': "15 / 30 minutes après l'heure",
+                'card12_word': "le chant du coq", 'card12_def': "moyen naturel de situer l'heure",
+                'exercises_heading': "✍️ Je m'exerce",
+                'table_word': "Mot", 'table_letter': "Définition (a–d)",
+                'table_statement': "Affirmation", 'table_vf': "V / F",
+                'table_naturel': "Moyens naturels", 'table_instrument': "Instruments",
+                'btn_correction': "🔍 Voir la correction", 'show_example': "💡 Voir un exemple de réponse",
+                'exo1_title': "📌 1. Je découvre le texte",
+                'exo1_instruction': "Réponds aux questions de découverte du texte.",
+                'exo2_title': "📌 2. Vrai ou faux ?",
+                'exo2_instruction': "Indique si chaque affirmation est vraie (V) ou fausse (F).",
+                'exo2_q1': "Nicolas part en colonie de vacances.",
+                'exo2_q2': "Nicolas est triste de partir.",
+                'exo2_q3': "Les parents ont l'air tristes.",
+                'exo2_q4': "La valise était assez grande.",
+                'exo2_q5': "Le train part à six heures du soir.",
+                'exo3_title': "📌 3. QCM – Compréhension du texte",
+                'exo3_instruction': "Choisis la bonne réponse parmi les trois propositions.",
+                'exo3_q1': "Pourquoi les parents ont-ils l'air tristes ?",
+                'exo3_q1_a': "Parce qu'ils vont être séparés de leur fils.", 'exo3_q1_b': "Parce qu'ils n'aiment pas les vacances.", 'exo3_q1_c': "Parce qu'il fait mauvais temps.",
+                'exo3_q2': "Comment Nicolas interprète-t-il la réaction de ses parents ?",
+                'exo3_q2_a': "Il comprend qu'ils sont tristes de son départ.", 'exo3_q2_b': "Il croit qu'ils ne sont pas habitués à rester seuls.", 'exo3_q2_c': "Il pense qu'ils sont fâchés contre lui.",
+                'exo3_q3': "Que ressent Nicolas au fond de lui ?",
+                'exo3_q3_a': "De la colère.", 'exo3_q3_b': "Une grosse boule dans la gorge (de l'émotion).", 'exo3_q3_c': "De l'indifférence.",
+                'exo4_title': "📌 4. Les bagages de Nicolas",
+                'exo4_instruction': "Remplace chaque liste par un mot de sens général.",
+                'exo5_title': "📌 5. Relie chaque mot à sa définition",
+                'exo5_instruction': "Écris la lettre de la définition qui correspond à chaque mot.",
+                'exo5_a': "groupement d'enfants en vacances", 'exo5_b': "arriver après le départ du train", 'exo5_c': "qui ne peut pas attendre", 'exo5_d': "adresser des reproches",
+                'exo6_title': "📌 6. Quelle heure est-il ?",
+                'exo6_instruction': "Écris en toutes lettres l'heure indiquée.",
+                'exo7_title': "📌 7. Se situer dans le temps",
+                'exo7_instruction': "Classe ces moyens de repérage du temps en deux colonnes : moyens naturels / instruments.",
+                'exo7_choices': "Les horloges · les montres · le chant du coq · le mouvement du soleil · la forme de l'ombre · les étoiles",
+                'exo8_title': "📌 8. L'expression « avoir l'air »",
+                'exo8_instruction': "Complète chaque phrase avec la construction correcte.",
+                'exo9_title': "📌 9. Voir ou regarder ?",
+                'exo9_instruction': "Complète avec l'un des deux verbes, conjugué si besoin.",
+                'exo10_title': "📌 10. J'apprécie le texte",
+                'exo10_instruction': "Complète les énoncés suivants.",
+                'exo11_title': "📌 11. J'écris à mon tour – Production personnelle",
+                'exo11_instruction': "Nicolas est maintenant en colonie de vacances. Le soir, il pense à ses parents. Il a l'idée de leur envoyer une carte postale pour leur raconter sa journée. Imagine ce qu'il écrit.",
+                'img_prod_alt': "Illustration d'une carte postale de colonie de vacances",
+                'img_prod_caption': "Une carte postale de Nicolas à ses parents.",
+                'footer_back': "← Leçon précédente", 'footer_next': "Leçon suivante : Lire/Rire – Chou (Bernard Friot) →",
+                'self_assess_question': "Ma réponse est :",
+                'self_correct': "Correcte", 'self_incorrect': "Incorrecte", 'self_partial': "Partiellement correcte",
+                'score_title': "📊 Votre auto‑évaluation",
+                'score_correct': "Correctes :", 'score_incorrect': "Incorrectes :", 'score_partial': "Partielles :", 'score_unanswered': "Sans réponse :",
+                'save_results': "💾 Enregistrer mes résultats", 'save_success': "Résultats sauvegardés ✓", 'save_error': "Erreur lors de la sauvegarde",
+                'print_pdf': "🖨️ Imprimer / PDF", 'print_with_answers': "Corrigé inclus",
+                'print_site_name': "Educational Dashboard – Français",
+                'print_scholar_year': "7ème Année Primaire", 'print_week': "Unité 1", 'print_area': "Lecture",
+                'print_footer_dev': "Développé par Mejri Ziad", 'print_footer_date': "Imprimé le",
+                'print_without_answers': "Sans corrigé",
+                'toast_signin_required': "Connectez-vous pour voir les corrections."
+            },
+            en: {
+                'lesson_title': "Lesson 20 – The Departure | Reading",
+                'lesson_short_title': "The Departure",
+                'ach_year_degree7': "7th Grade Primary",
+                'ach_module_unit1': "Unit 1 – French foundations",
+                'back_link': "← Back to home",
+                'back_revision': "Unit 1",
+                'back_current': "The Departure",
+                'lesson_badge': "📖 Reading · Lesson 20",
+                'lesson_title': "The Departure<br>Sempé & Goscinny, <em>Nicholas's Holidays</em>",
+                'lesson_duration': "⏱️ 45 minutes",
+                'lesson_meta_audio': "🎧 Listen to the text then answer the questions",
+                'audio_label': "🎧 Listening to the text",
+                'author_img_alt': "Portrait of Sempé and Goscinny",
+                'author_title': "👤 Sempé & Goscinny",
+                'author_bio': "<strong>Jean-Jacques Sempé</strong> (born 1932) created with his friend <strong>René Goscinny</strong> (1926-1977) the character of <em>Nicholas</em>. Goscinny is best known as the father of <em>Asterix</em>.",
+                'text_heading': "📖 I observe",
+                'img_hero_alt': "Illustration of Little Nicholas packing his suitcase",
+                'img_hero_caption': "Nicholas is leaving for summer camp — but his parents look very sad…",
+                'text_author': "— Jean-Jacques SEMPÉ and René GOSCINNY, <em>Nicholas's Holidays</em>, Denoël, 1962",
+                'consigne_title': "➤ Instruction:",
+                'consigne_text': "Read the text then answer the questions. Observe how Nicholas tells his departure and understands — or does not understand — his parents' reactions.",
+                'vocab_title': "📚 Vocabulary:",
+                'vocab1': "<strong>Summer camp</strong>: a group of children on holiday.",
+                'vocab2': "<strong>To miss the train</strong>: to arrive at the station after the train has left.",
+                'vocab3': "<strong>Impatient</strong>: who cannot wait.",
+                'vocab4': "<strong>To scold</strong>: to address reproaches.",
+                'rules_heading': "📖 I read a long sentence aloud",
+                'rule1_title': "🎙️ 1. Reading a long sentence",
+                'rule1_list': "<li>I read the sentence: 'Mum helped me… the marbles.'</li><li>I identify the punctuation marks.</li><li>I locate the longest parts.</li><li>I breathe deeply and read.</li><li>I pause where there is a comma.</li><li>I lower my voice at the end of the sentence.</li>",
+                'rule2_title': "🔤 2. Verbs of perception",
+                'rule2_list': "<li><strong>Voir</strong>: to perceive with the eyes (involuntary).</li><li><strong>Regarder</strong>: to direct one's gaze voluntarily.</li><li><strong>Écouter</strong>: to pay attention voluntarily.</li><li><strong>Entendre</strong>: to perceive with the ear (involuntary).</li>",
+                'showcase_heading': "🎨 Vocabulary of the text",
+                'card1_word': "the suitcase", 'card1_def': "luggage where one packs one's belongings",
+                'card2_word': "summer camp", 'card2_def': "organised stay for children",
+                'card3_word': "the station", 'card3_def': "place of departure and arrival of trains",
+                'card4_word': "clothing", 'card4_def': "shirts, shorts, sweater, socks",
+                'card5_word': "toys", 'card5_def': "small cars, locomotive, marbles",
+                'card6_word': "food", 'card6_def': "hard-boiled eggs, bananas, sandwiches",
+                'card7_word': "bothered", 'card7_def': "worried, preoccupied",
+                'card8_word': "a lump in the throat", 'card8_def': "tightness due to emotion",
+                'card9_word': "the handkerchief", 'card9_def': "object to wipe tears",
+                'card10_word': "noon / midnight", 'card10_def': "12 o'clock of the day / of the night",
+                'card11_word': "quarter past / half past", 'card11_def': "15 / 30 minutes after the hour",
+                'card12_word': "the rooster's crow", 'card12_def': "natural way of telling the time",
+                'exercises_heading': "✍️ I practise",
+                'table_word': "Word", 'table_letter': "Definition (a–d)",
+                'table_statement': "Statement", 'table_vf': "T / F",
+                'table_naturel': "Natural means", 'table_instrument': "Instruments",
+                'btn_correction': "🔍 See the correction", 'show_example': "💡 See an example answer",
+                'exo1_title': "📌 1. I discover the text",
+                'exo1_instruction': "Answer the discovery questions about the text.",
+                'exo2_title': "📌 2. True or false?",
+                'exo2_instruction': "Indicate whether each statement is true (T) or false (F).",
+                'exo2_q1': "Nicholas is leaving for summer camp.",
+                'exo2_q2': "Nicholas is sad to leave.",
+                'exo2_q3': "The parents look sad.",
+                'exo2_q4': "The suitcase was big enough.",
+                'exo2_q5': "The train leaves at six in the evening.",
+                'exo3_title': "📌 3. MCQ – Comprehension of the text",
+                'exo3_instruction': "Choose the correct answer among the three options.",
+                'exo3_q1': "Why do the parents look sad?",
+                'exo3_q1_a': "Because they will be separated from their son.", 'exo3_q1_b': "Because they don't like holidays.", 'exo3_q1_c': "Because the weather is bad.",
+                'exo3_q2': "How does Nicholas interpret his parents' reaction?",
+                'exo3_q2_a': "He understands they are sad about his departure.", 'exo3_q2_b': "He believes they are not used to being alone.", 'exo3_q2_c': "He thinks they are angry with him.",
+                'exo3_q3': "What does Nicholas feel deep down?",
+                'exo3_q3_a': "Anger.", 'exo3_q3_b': "A big lump in his throat (emotion).", 'exo3_q3_c': "Indifference.",
+                'exo4_title': "📌 4. Nicholas's luggage",
+                'exo4_instruction': "Replace each list with a word of general meaning.",
+                'exo5_title': "📌 5. Match each word to its definition",
+                'exo5_instruction': "Write the letter of the definition corresponding to each word.",
+                'exo5_a': "group of children on holiday", 'exo5_b': "to arrive after the train has left", 'exo5_c': "who cannot wait", 'exo5_d': "to address reproaches",
+                'exo6_title': "📌 6. What time is it?",
+                'exo6_instruction': "Write in words the time indicated.",
+                'exo7_title': "📌 7. Situating oneself in time",
+                'exo7_instruction': "Classify these ways of situating time into two columns: natural means / instruments.",
+                'exo7_choices': "Clocks · watches · the rooster's crow · the movement of the sun · the shape of the shadow · the stars",
+                'exo8_title': "📌 8. The expression 'avoir l'air'",
+                'exo8_instruction': "Complete each sentence with the correct construction.",
+                'exo9_title': "📌 9. Voir or regarder?",
+                'exo9_instruction': "Complete with one of the two verbs, conjugated if necessary.",
+                'exo10_title': "📌 10. I appreciate the text",
+                'exo10_instruction': "Complete the following statements.",
+                'exo11_title': "📌 11. I write in turn – Personal production",
+                'exo11_instruction': "Nicholas is now at summer camp. In the evening, he thinks of his parents. He has the idea to send them a postcard to tell them about his day. Imagine what he writes.",
+                'img_prod_alt': "Illustration of a postcard from summer camp",
+                'img_prod_caption': "A postcard from Nicholas to his parents.",
+                'footer_back': "← Previous lesson", 'footer_next': "Next lesson: Read/Laugh – Cabbage (Bernard Friot) →",
+                'self_assess_question': "My answer is:",
+                'self_correct': "Correct", 'self_incorrect': "Incorrect", 'self_partial': "Partially correct",
+                'score_title': "📊 Your self‑assessment",
+                'score_correct': "Correct:", 'score_incorrect': "Incorrect:", 'score_partial': "Partial:", 'score_unanswered': "Unanswered:",
+                'save_results': "💾 Save my results", 'save_success': "Results saved ✓", 'save_error': "Save failed",
+                'print_pdf': "🖨️ Print / PDF", 'print_with_answers': "With answers",
+                'print_site_name': "Educational Dashboard – French",
+                'print_scholar_year': "7th Grade Primary", 'print_week': "Unit 1", 'print_area': "Reading",
+                'print_footer_dev': "Developed by Mejri Ziad", 'print_footer_date': "Printed on",
+                'print_without_answers': "Without answers",
+                'toast_signin_required': "Sign in to see the corrections."
+            },
+            ar: {
+                'lesson_title': "الدرس 20 – الرحيل | قراءة",
+                'lesson_short_title': "الرحيل",
+                'ach_year_degree7': "السنة السابعة ابتدائي",
+                'ach_module_unit1': "الوحدة 1 – أساسيات الفرنسية",
+                'back_link': "← العودة إلى الرئيسية",
+                'back_revision': "الوحدة 1",
+                'back_current': "الرحيل",
+                'lesson_badge': "📖 قراءة · الدرس 20",
+                'lesson_title': "الرحيل<br>سامبي وغوسيني، <em>عطلة نيكولا الصغير</em>",
+                'lesson_duration': "⏱️ 45 دقيقة",
+                'lesson_meta_audio': "🎧 استمع إلى النص ثم أجب عن الأسئلة",
+                'audio_label': "🎧 استماع إلى النص",
+                'author_img_alt': "صورة سامبي وغوسيني",
+                'author_title': "👤 سامبي وغوسيني",
+                'author_bio': "<strong>جان-جاك سامبي</strong> (مواليد 1932) ابتكر مع صديقه <strong>رينيه غوسيني</strong> (1926-1977) شخصية <em>نيكولا</em>. غوسيني معروف خاصة كأب <em>أستيريكس</em>.",
+                'text_heading': "📖 ألاحظ",
+                'img_hero_alt': "رسم توضيحي لنيكولا الصغير يحضّر حقيبته",
+                'img_hero_caption': "نيكولا يغادر إلى مخيم العطلة — لكن والديه يبدوان حزينين جداً…",
+                'text_author': "— جان-جاك سامبي ورينيه غوسيني، <em>عطلة نيكولا الصغير</em>، دونويل، 1962",
+                'consigne_title': "➤ التعليمة:",
+                'consigne_text': "اقرأ النص ثم أجب عن الأسئلة. لاحظ الطريقة التي يحكي بها نيكولا رحيله ويفهم — أو لا يفهم — ردود فعل والديه.",
+                'vocab_title': "📚 المفردات:",
+                'vocab1': "<strong>مخيم العطلة</strong>: مجموعة أطفال في عطلة.",
+                'vocab2': "<strong>يفوّت القطار</strong>: يصل إلى المحطة بعد مغادرة القطار.",
+                'vocab3': "<strong>نفد صبره</strong>: لا يستطيع الانتظار.",
+                'vocab4': "<strong>يوبّخ</strong>: يوجه لوماً.",
+                'rules_heading': "📖 أقرأ جملة طويلة بصوت عالٍ",
+                'rule1_title': "🎙️ 1. قراءة جملة طويلة",
+                'rule1_list': "<li>أقرأ الجملة: «ساعدتني أمي… الكرات.»</li><li>أحدد علامات الترقيم.</li><li>أحدد الأجزاء الأطول.</li><li>أتنفس بعمق وأقرأ.</li><li>أتوقف حيث توجد فاصلة.</li><li>أخفض صوتي في نهاية الجملة.</li>",
+                'rule2_title': "🔤 2. أفعال الإدراك",
+                'rule2_list': "<li><strong>Voir</strong>: يدرك بالعينين (لا إرادي).</li><li><strong>Regarder</strong>: يوجه نظره بإرادة.</li><li><strong>Écouter</strong>: يهتم بإرادة.</li><li><strong>Entendre</strong>: يدرك بالأذن (لا إرادي).</li>",
+                'showcase_heading': "🎨 معجم النص",
+                'card1_word': "الحقيبة", 'card1_def': "أمتعة يُرتب فيها المرء أغراضه",
+                'card2_word': "مخيم العطلة", 'card2_def': "إقامة منظمة للأطفال",
+                'card3_word': "المحطة", 'card3_def': "مكان مغادرة ووصول القطارات",
+                'card4_word': "الملابس", 'card4_def': "قمصان، شورتات، كنزة، جوارب",
+                'card5_word': "اللعب", 'card5_def': "سيارات صغيرة، قاطرة، كرات",
+                'card6_word': "الطعام", 'card6_def': "بيض مسلوق، موز، شطائر",
+                'card7_word': "منزعج", 'card7_def': "قلق، مشغول البال",
+                'card8_word': "غصة في الحلق", 'card8_def': "انقباض بسبب الانفعال",
+                'card9_word': "المنديل", 'card9_def': "أداة لمسح الدموع",
+                'card10_word': "الظهيرة / منتصف الليل", 'card10_def': "الساعة 12 نهاراً / ليلاً",
+                'card11_word': "والربع / والنصف", 'card11_def': "15 / 30 دقيقة بعد الساعة",
+                'card12_word': "صياح الديك", 'card12_def': "وسيلة طبيعية لتحديد الوقت",
+                'exercises_heading': "✍️ أتمرن",
+                'table_word': "الكلمة", 'table_letter': "التعريف (أ–د)",
+                'table_statement': "العبارة", 'table_vf': "ص / خ",
+                'table_naturel': "وسائل طبيعية", 'table_instrument': "أدوات",
+                'btn_correction': "🔍 الاطلاع على التصحيح", 'show_example': "💡 عرض مثال للإجابة",
+                'exo1_title': "📌 1. أكتشف النص",
+                'exo1_instruction': "أجب عن أسئلة اكتشاف النص.",
+                'exo2_title': "📌 2. صواب أم خطأ؟",
+                'exo2_instruction': "حدد إن كانت كل عبارة صحيحة (ص) أم خاطئة (خ).",
+                'exo2_q1': "نيكولا يغادر إلى مخيم العطلة.",
+                'exo2_q2': "نيكولا حزين لمغادرته.",
+                'exo2_q3': "الوالدان يبدوان حزينين.",
+                'exo2_q4': "كانت الحقيبة كبيرة بما يكفي.",
+                'exo2_q5': "القطار يغادر في السادسة مساءً.",
+                'exo3_title': "📌 3. اختيار من متعدد – فهم النص",
+                'exo3_instruction': "اختر الجواب الصحيح من بين الخيارات الثلاثة.",
+                'exo3_q1': "لماذا يبدو الوالدان حزينين؟",
+                'exo3_q1_a': "لأنهما سيفترقان عن ابنهما.", 'exo3_q1_b': "لأنهما لا يحبان العطلة.", 'exo3_q1_c': "لأن الطقس سيئ.",
+                'exo3_q2': "كيف يفسر نيكولا رد فعل والديه؟",
+                'exo3_q2_a': "يفهم أنهما حزينان لرحيله.", 'exo3_q2_b': "يعتقد أنهما غير معتادين على البقاء وحيدين.", 'exo3_q2_c': "يظن أنهما غاضبان منه.",
+                'exo3_q3': "ماذا يشعر نيكولا في أعماقه؟",
+                'exo3_q3_a': "الغضب.", 'exo3_q3_b': "غصة كبيرة في حلقه (انفعال).", 'exo3_q3_c': "اللامبالاة.",
+                'exo4_title': "📌 4. أمتعة نيكولا",
+                'exo4_instruction': "استبدل كل قائمة بكلمة ذات معنى عام.",
+                'exo5_title': "📌 5. اربط كل كلمة بتعريفها",
+                'exo5_instruction': "اكتب حرف التعريف المقابل لكل كلمة.",
+                'exo5_a': "مجموعة أطفال في عطلة", 'exo5_b': "يصل بعد مغادرة القطار", 'exo5_c': "لا يستطيع الانتظار", 'exo5_d': "يوجه لوماً",
+                'exo6_title': "📌 6. كم الساعة؟",
+                'exo6_instruction': "اكتب بالحروف الوقت المشار إليه.",
+                'exo7_title': "📌 7. تحديد الوقت",
+                'exo7_instruction': "صنّف وسائل تحديد الوقت هاته في عمودين: وسائل طبيعية / أدوات.",
+                'exo7_choices': "الساعات · ساعات اليد · صياح الديك · حركة الشمس · شكل الظل · النجوم",
+                'exo8_title': "📌 8. تعبير «avoir l'air»",
+                'exo8_instruction': "أكمل كل جملة بالتركيب الصحيح.",
+                'exo9_title': "📌 9. Voir أم regarder؟",
+                'exo9_instruction': "أكمل بأحد الفعلين، مصرّفاً إن لزم.",
+                'exo10_title': "📌 10. أقدّر النص",
+                'exo10_instruction': "أكمل العبارات التالية.",
+                'exo11_title': "📌 11. أكتب بدوري – إنتاج شخصي",
+                'exo11_instruction': "نيكولا الآن في مخيم العطلة. في المساء، يفكر في والديه. تخطر له فكرة إرسال بطاقة بريدية لهما ليحكي لهما يومه. تخيل ما يكتبه.",
+                'img_prod_alt': "رسم توضيحي لبطاقة بريدية من مخيم العطلة",
+                'img_prod_caption': "بطاقة بريدية من نيكولا إلى والديه.",
+                'footer_back': "← الدرس السابق", 'footer_next': "الدرس الموالي: اقرأ/اضحك – ملفوف (برنار فريو) ←",
+                'self_assess_question': "جوابي هو:",
+                'self_correct': "صحيح", 'self_incorrect': "خاطئ", 'self_partial': "صحيح جزئيًا",
+                'score_title': "📊 تقييمك الذاتي",
+                'score_correct': "صحيح:", 'score_incorrect': "خاطئ:", 'score_partial': "جزئي:", 'score_unanswered': "بدون إجابة:",
+                'save_results': "💾 حفظ نتائجي", 'save_success': "تم حفظ النتائج ✓", 'save_error': "خطأ في الحفظ",
+                'print_pdf': "🖨️ طباعة / PDF", 'print_with_answers': "مع التصحيح",
+                'print_site_name': "لوحة التحكم التعليمية – الفرنسية",
+                'print_scholar_year': "السنة السابعة ابتدائي", 'print_week': "الوحدة 1", 'print_area': "قراءة",
+                'print_footer_dev': "طوّر بواسطة ماجري زياد", 'print_footer_date': "طُبع في",
+                'print_without_answers': "بدون تصحيح",
+                'toast_signin_required': "سجّل الدخول لرؤية التصحيحات."
+            }
+        });
+        (function() {
+            var container = document.querySelector('.degree7-unit1-lesson20-lecture-container');
+            if (container && typeof App.makeBilingual === 'function') {
+                App.makeBilingual(container);
+            }
+        })();
+    </script>
+    <script src="ed-french-ini.js"></script>
+    <script>
+        (function() {
+            const audio = new Audio('assets7/sounds/degree7/unit1/lesson20/le_depart.mp3');
+            const playBtn = document.getElementById('playBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const speedBtns = document.querySelectorAll('.degree7-unit1-lesson20-lecture-speed-btn');
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+            audio.addEventListener('loadedmetadata', () => { durationEl.textContent = formatTime(audio.duration); });
+            audio.addEventListener('timeupdate', () => {
+                const percent = (audio.currentTime / audio.duration) * 100 || 0;
+                progressFill.style.width = percent + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            });
+            audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) { audio.play().catch(()=>{}); playBtn.textContent = '⏸'; }
+                else { audio.pause(); playBtn.textContent = '▶'; }
+            });
+            progressBar.addEventListener('click', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const seekTime = (clickX / width) * audio.duration;
+                audio.currentTime = seekTime;
+            });
+            speedBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    speedBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    audio.playbackRate = parseFloat(btn.dataset.speed);
+                });
+            });
+            window.toggleCorrection = async function(id) {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('visible');
+            };
+            window.showExo11Example = async function() {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const el = document.getElementById('exo11Key');
+                if (el) {
+                    el.innerHTML = '<strong>Exemple de réponse :</strong><br>Cher Papa, chère Maman,<br>Je vous écris de la colonie. Tout se passe très bien ! J\'ai plein de nouveaux copains, on joue au ballon, on se baigne et on fait des veillées le soir. Hier, on a mangé des spaghettis et j\'ai réussi à ne pas en mettre partout sur ma chemise, vous pouvez être fiers de moi ! Mais vous me manquez quand même beaucoup. J\'espère que vous n\'êtes plus tristes. Je vous embrasse très fort.<br>Nicolas<br>P.-S. : Je n\'ai pas perdu mes billes, je les ai bien rangées dans la poche de ma valise !';
+                    el.classList.add('visible');
+                }
+            };
+            // Static answer keys
+            document.getElementById('exo1Key').innerHTML = '<strong>Correction :</strong><br>a) L\'événement : le départ de Nicolas en colonie de vacances.<br>b) Les parents ont l\'air tristes et « embêtés » : la mère pleure dans la cuisine, le père est pensif.<br>c) Non, Nicolas ne comprend pas : il croit que ses parents ne sont pas habitués à rester seuls.';
+            document.getElementById('exo2Key').innerHTML = '<strong>Correction :</strong><br>1. Vrai<br>2. Faux (il est content, même s\'il a une boule dans la gorge)<br>3. Vrai<br>4. Faux (il a fallu faire plusieurs paquets)<br>5. Vrai';
+            document.getElementById('exo3Key').innerHTML = '<strong>Correction :</strong><br>1. a<br>2. b<br>3. b';
+            document.getElementById('exo4Key').innerHTML = '<strong>Correction :</strong><br>a) des vêtements (ou des habits)<br>b) des jouets<br>c) de la nourriture (ou des provisions)';
+            document.getElementById('exo5Key').innerHTML = '<strong>Correction :</strong><br>colonie de vacances → a<br>rater le train → b<br>impatient → c<br>gronder → d';
+            document.getElementById('exo6Key').innerHTML = '<strong>Correction :</strong><br>a) Il est midi.<br>b) Il est minuit.<br>c) Il est sept heures et quart.<br>d) Il est neuf heures moins le quart (ou huit heures quarante-cinq).<br>e) Il est six heures et demie.';
+            document.getElementById('exo7Key').innerHTML = '<strong>Correction :</strong><br><strong>Moyens naturels :</strong> le chant du coq, le mouvement du soleil, la forme de l\'ombre, les étoiles.<br><strong>Instruments :</strong> les horloges, les montres.<br><em>Autres moyens : le sablier, le calendrier, le téléphone portable, l\'ordinateur…</em>';
+            document.getElementById('exo8Key').innerHTML = '<strong>Correction :</strong><br>a) heureux (adjectif)<br>b) s\'amuser (infinitif)<br>c) prince (nom)';
+            document.getElementById('exo9Key').innerHTML = '<strong>Correction :</strong><br>a) vois<br>b) Regarde<br>c) vu… regardé';
+            document.getElementById('exo10Key').innerHTML = '<strong>Correction (proposition) :</strong><br>a) Ce qui me touche, c\'est que la mère cache son émotion en pleurant discrètement dans la cuisine.<br>b) Ce qui me touche, c\'est que le père essaie de rester fort mais se trahit par ses paroles maladroites.<br>c) Ce qui me touche, c\'est que l\'enfant, malgré sa joie, ressent une grosse boule dans la gorge et n\'ose pas l\'avouer.';
+            const SELF_GROUPS = ['self_ex1', 'self_ex2', 'self_ex3', 'self_ex4', 'self_ex5',
+                                 'self_ex6', 'self_ex7', 'self_ex8', 'self_ex9', 'self_ex10', 'self_ex11'];
+            function computeScore() {
+                let correct = 0, incorrect = 0, partial = 0, unanswered = 0;
+                SELF_GROUPS.forEach(name => {
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected) {
+                        if (selected.value === 'correct') correct++;
+                        else if (selected.value === 'incorrect') incorrect++;
+                        else if (selected.value === 'partial') partial++;
+                    } else {
+                        unanswered++;
+                    }
+                });
+                return { correct, incorrect, partial, unanswered };
+            }
+            function updateScore() {
+                const s = computeScore();
+                document.getElementById('scoreCorrect').textContent = s.correct;
+                document.getElementById('scoreIncorrect').textContent = s.incorrect;
+                document.getElementById('scorePartial').textContent = s.partial;
+                document.getElementById('scoreUnanswered').textContent = s.unanswered;
+            }
+            document.querySelectorAll('input[type="radio"][name^="self_ex"]').forEach(radio => {
+                radio.addEventListener('change', updateScore);
+            });
+            updateScore();
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                const s = computeScore();
+                const lessonId = 'degree7unit1lesson20';
+                const entry = {
+                    lesson_id: lessonId,
+                    lesson_title: {
+                        fr: App.getTranslation('lesson_short_title', 'fr'),
+                        en: App.getTranslation('lesson_short_title', 'en'),
+                        ar: App.getTranslation('lesson_short_title', 'ar')
+                    },
+                    year: {
+                        fr: App.getTranslation('ach_year_degree7', 'fr'),
+                        en: App.getTranslation('ach_year_degree7', 'en'),
+                        ar: App.getTranslation('ach_year_degree7', 'ar')
+                    },
+                    module: {
+                        fr: App.getTranslation('ach_module_unit1', 'fr'),
+                        en: App.getTranslation('ach_module_unit1', 'en'),
+                        ar: App.getTranslation('ach_module_unit1', 'ar')
+                    },
+                    correct: s.correct,
+                    incorrect: s.incorrect,
+                    partial: s.partial,
+                    unanswered: s.unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles').select('achivement').eq('id', user.id).single();
+                if (fetchError) return;
+                let achivement = profileData?.achivement || {};
+                if (!achivement['ED-French']) achivement['ED-French'] = [];
+                const arr = achivement['ED-French'];
+                const existingIdx = arr.findIndex(e => e.lesson_id === lessonId);
+                if (existingIdx >= 0) arr[existingIdx] = entry;
+                else arr.push(entry);
+                const { error: updateError } = await App.supabase
+                    .from('profiles').update({ achivement }).eq('id', user.id);
+                if (updateError) App.showToast('save_error', 'error');
+                else {
+                    App.showToast('save_success', 'success');
+                    App.logUserAction('lesson_saved', { lesson: lessonId, correct: s.correct, incorrect: s.incorrect, partial: s.partial });
+                }
+            });
+            document.getElementById('printPdfBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return;
+                }
+                let isRegistered = false;
+                try {
+                    const { data: profile, error } = await App.supabase
+                        .from('profiles').select('registration_state').eq('id', user.id).single();
+                    if (!error && profile?.registration_state?.active === true) isRegistered = true;
+                } catch (e) {}
+                const lang = localStorage.getItem('lang') || 'fr';
+                const headerHTML = document.querySelector('.degree7-unit1-lesson20-lecture-lesson-header').cloneNode(true);
+                const textCard = document.querySelector('.degree7-unit1-lesson20-lecture-text-card').cloneNode(true);
+                const authorCard = document.querySelector('.degree7-unit1-lesson20-lecture-author-card');
+                const authorHTML = authorCard ? authorCard.outerHTML : '';
+                const heroFigure = document.querySelector('.degree7-unit1-lesson20-lecture-hero-figure');
+                const heroHTML = heroFigure ? heroFigure.outerHTML : '';
+                const rulesSections = document.querySelectorAll('.degree7-unit1-lesson20-lecture-valeurs-section');
+                let rulesHTML = '';
+                rulesSections.forEach(s => rulesHTML += s.cloneNode(true).outerHTML);
+                const showcaseGrid = document.querySelector('.degree7-unit1-lesson20-lecture-showcase');
+                const showcaseHTML = showcaseGrid ? showcaseGrid.outerHTML : '';
+                const prodFigure = document.querySelector('.degree7-unit1-lesson20-lecture-prod-figure');
+                const prodHTML = prodFigure ? prodFigure.outerHTML : '';
+                const exercisesSection = document.querySelector('.degree7-unit1-lesson20-lecture-exercises-section').cloneNode(true);
+                exercisesSection.querySelectorAll('input, textarea, .degree7-unit1-lesson20-lecture-btn-verify, .degree7-unit1-lesson20-lecture-self-assessment').forEach(el => el.remove());
+                if (isRegistered) {
+                    exercisesSection.querySelectorAll('.degree7-unit1-lesson20-lecture-answer-key').forEach(key => {
+                        key.style.display = 'block'; key.style.border = 'none';
+                        key.style.padding = '0.5rem 0'; key.style.margin = '0.5rem 0';
+                        key.style.background = 'transparent';
+                    });
+                } else {
+                    exercisesSection.querySelectorAll('.degree7-unit1-lesson20-lecture-answer-key').forEach(el => el.remove());
+                }
+                const breadcrumb = document.querySelector('p[style*="margin-bottom:1.5rem"]').cloneNode(true);
+                const printWindow = window.open('', '_blank', 'width=800,height=600');
+                printWindow.document.write(`<!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8"><title>${App.getTranslation('lesson_short_title', lang)} – ${App.getTranslation(isRegistered ? 'print_with_answers' : 'print_without_answers', lang)}</title><style>
+                    body { font-family: 'Georgia', serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; color:#000; }
+                    .print-header { text-align:center; border-bottom:2px solid #2e8b57; padding-bottom:1rem; margin-bottom:2rem; }
+                    .print-header .site-name { font-size:1.4rem; font-weight:bold; color:#2e8b57; margin:0 0 0.3rem; }
+                    .print-header .meta-line { font-size:0.95rem; color:#444; margin:0.2rem 0; }
+                    .print-header .lesson-name { font-size:1.1rem; font-weight:bold; color:#000; margin-top:0.5rem; }
+                    .print-footer { text-align:center; border-top:1px solid #ccc; padding-top:1rem; margin-top:2rem; font-size:0.85rem; color:#666; }
+                    .degree7-unit1-lesson20-lecture-lesson-header { text-align:center; margin-bottom:2rem; }
+                    .degree7-unit1-lesson20-lecture-badge { display:inline-block; background:#2e8b57; color:#fff; padding:0.3rem 1rem; border-radius:20px; font-size:0.8rem; text-transform:uppercase; }
+                    .degree7-unit1-lesson20-lecture-text-card { border-left:4px solid #2e8b57; padding:1rem 1.5rem; margin:1.5rem 0; }
+                    .degree7-unit1-lesson20-lecture-hl { background:#e2f0e8; color:#1e5e3a; padding:0 4px; border-radius:4px; font-weight:700; border-bottom:2px solid #2e8b57; }
+                    .degree7-unit1-lesson20-lecture-hero-figure { margin:1rem 0; }
+                    .degree7-unit1-lesson20-lecture-hero-img { max-width:100%; max-height:280px; border-radius:8px; }
+                    .degree7-unit1-lesson20-lecture-hero-caption { display:block; font-size:0.85rem; color:#555; font-style:italic; margin-top:0.3rem; text-align:center; }
+                    .degree7-unit1-lesson20-lecture-author-card { border:1px solid #cbe0d3; border-radius:12px; padding:1rem; margin:1rem 0; display:flex; gap:1rem; align-items:center; }
+                    .degree7-unit1-lesson20-lecture-author-img { width:100px; height:100px; border-radius:50%; object-fit:cover; }
+                    .degree7-unit1-lesson20-lecture-author-info h3 { color:#1e5e3a; margin:0 0 0.3rem; }
+                    .degree7-unit1-lesson20-lecture-valeurs-section { margin:1.5rem 0; }
+                    .degree7-unit1-lesson20-lecture-valeur-card { background:#e2f0e8; padding:1rem; margin-bottom:1rem; border-radius:8px; }
+                    .degree7-unit1-lesson20-lecture-valeur-card h3 { color:#2e8b57; }
+                    .degree7-unit1-lesson20-lecture-showcase { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.5rem; }
+                    .degree7-unit1-lesson20-lecture-vcard { background:#eef7f2; padding:0.6rem; border-radius:6px; border:1px solid #cbe0d3; }
+                    .degree7-unit1-lesson20-lecture-vcard .degree7-unit1-lesson20-lecture-vicon { display:none; }
+                    .degree7-unit1-lesson20-lecture-vcard .degree7-unit1-lesson20-lecture-vword { display:block; font-weight:800; color:#1e5e3a; }
+                    .degree7-unit1-lesson20-lecture-vcard .degree7-unit1-lesson20-lecture-vdef { display:block; font-size:0.8rem; color:#555; }
+                    .degree7-unit1-lesson20-lecture-exercise-card { margin:1.2rem 0; border-left:4px solid #2e8b57; padding:0.8rem 1rem; }
+                    .degree7-unit1-lesson20-lecture-exercise-card::before { content:none !important; }
+                    .degree7-unit1-lesson20-lecture-situation { border-left:3px solid #2e8b57; padding:0.5rem 0.7rem; background:#eef7f2; border-radius:6px; margin-bottom:0.4rem; }
+                    .degree7-unit1-lesson20-lecture-prod-figure { text-align:center; margin:0.5rem 0; }
+                    .degree7-unit1-lesson20-lecture-prod-img { max-width:100%; max-height:220px; border-radius:6px; }
+                    .degree7-unit1-lesson20-lecture-prod-caption { display:block; font-size:0.8rem; color:#555; font-style:italic; margin-top:0.3rem; }
+                    table { width:100%; border-collapse:collapse; margin:0.8rem 0; }
+                    th, td { border:1px solid #ccc; padding:0.5rem; text-align:left; }
+                    th { background:#e2f0e8; }
+                    .degree7-unit1-lesson20-lecture-answer-key { display:block; margin-top:0.5rem; font-size:0.9rem; color:#444; }
+                    @media print { @page { margin:2cm; } }
+                </style></head><body>
+                    <div class="print-header"><div class="site-name">${App.getTranslation('print_site_name', lang)}</div><div class="meta-line">${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div><div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div></div>
+                    ${breadcrumb.outerHTML}${authorHTML}${headerHTML.outerHTML}${heroHTML}${textCard.outerHTML}${rulesHTML}${showcaseHTML}${exercisesSection.outerHTML}${prodHTML}
+                    <div class="print-footer">${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}</div>
+                </body></html>`);
+                printWindow.document.close();
+                printWindow.focus();
+                setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+            });
+        })();
+    </script>
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+</body>
+</html>

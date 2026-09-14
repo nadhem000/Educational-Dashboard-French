@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="lesson_title">Leçon 25 – Activités pratiques : Évaluation finale | Activités</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ===== Degree7 Unit1 Lesson25 – Activités pratiques (prefix: d7u1l25-activites-) ===== */
+        :root {
+            --d7u1l25-activites-bg: #f4f2fb;
+            --d7u1l25-activites-card: #fdfcff;
+            --d7u1l25-activites-text: #1e1a30;
+            --d7u1l25-activites-text-light: #5a5075;
+            --d7u1l25-activites-heading: #2e1e5e;
+            --d7u1l25-activites-accent: #6a5acd;
+            --d7u1l25-activites-accent-hover: #4e3fa8;
+            --d7u1l25-activites-soft: #9d8fe6;
+            --d7u1l25-activites-light: #e6e1f8;
+            --d7u1l25-activites-lighter: #f0ecfa;
+            --d7u1l25-activites-border: #d4cbec;
+            --d7u1l25-activites-shadow: 0 1px 3px rgba(106,90,205,0.06), 0 6px 18px rgba(46,30,94,0.07);
+            --d7u1l25-activites-radius: 14px;
+            --d7u1l25-activites-radius-sm: 8px;
+            --d7u1l25-activites-transition: 0.25s ease;
+            --d7u1l25-activites-font: 'Georgia', 'Segoe UI', 'Times New Roman', serif;
+            --d7u1l25-activites-audio-bg: #ded5f5;
+            --d7u1l25-activites-audio-progress: #c0b0ea;
+            --d7u1l25-activites-button-bg: #d8cef0;
+            --d7u1l25-activites-input-bg: #faf8ff;
+            /* Test-specific */
+            --d7u1l25-activites-total: #b8860b;
+        }
+        body.dark {
+            --d7u1l25-activites-bg: #100e1c;
+            --d7u1l25-activites-card: #1a1730;
+            --d7u1l25-activites-text: #e6e0f2;
+            --d7u1l25-activites-text-light: #a397c4;
+            --d7u1l25-activites-heading: #c8b6f0;
+            --d7u1l25-activites-accent: #9d8fe6;
+            --d7u1l25-activites-accent-hover: #b6a9ee;
+            --d7u1l25-activites-soft: #7867c4;
+            --d7u1l25-activites-light: #2a2445;
+            --d7u1l25-activites-lighter: #221e3a;
+            --d7u1l25-activites-border: #382f57;
+            --d7u1l25-activites-shadow: 0 1px 4px rgba(0,0,0,0.4);
+            --d7u1l25-activites-audio-bg: #251f3d;
+            --d7u1l25-activites-audio-progress: #4a3f75;
+            --d7u1l25-activites-button-bg: #2d264a;
+            --d7u1l25-activites-button-hover: #3d345e;
+            --d7u1l25-activites-input-bg: #231e3b;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: var(--d7u1l25-activites-font);
+            background: var(--d7u1l25-activites-bg);
+            background-image:
+                radial-gradient(circle at 12% 18%, rgba(106,90,205,0.06) 0%, transparent 42%),
+                radial-gradient(circle at 88% 82%, rgba(46,30,94,0.05) 0%, transparent 42%);
+            color: var(--d7u1l25-activites-text);
+            line-height: 1.8;
+            transition: background var(--d7u1l25-activites-transition), color var(--d7u1l25-activites-transition);
+        }
+        .back-nav { background: var(--d7u1l25-activites-card); border-bottom: 1px solid var(--d7u1l25-activites-border); padding: 0.5rem 1.5rem; }
+        .back-nav a { font-weight: 600; color: var(--d7u1l25-activites-accent); text-decoration: none; }
+        .back-nav a:hover { text-decoration: underline; }
+        .d7u1l25-activites-container { max-width: 1060px; margin: 0 auto; padding: 1.8rem 1.4rem 3rem; }
+
+        /* Header */
+        .d7u1l25-activites-lesson-header { text-align: center; margin-bottom: 2rem; }
+        .d7u1l25-activites-badge {
+            display: inline-block; background: var(--d7u1l25-activites-accent); color: #fff;
+            padding: 0.3rem 1.1rem; border-radius: 30px; font-size: 0.78rem; font-weight: 700;
+            letter-spacing: 0.06em; text-transform: uppercase;
+        }
+        .d7u1l25-activites-lesson-header h1 {
+            font-size: 2.1rem; color: var(--d7u1l25-activites-heading);
+            margin: 0.7rem 0 0.4rem; line-height: 1.25; font-weight: 700;
+        }
+        .d7u1l25-activites-meta {
+            font-size: 0.9rem; color: var(--d7u1l25-activites-text-light);
+            display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap;
+        }
+
+        /* Exam banner */
+        .d7u1l25-activites-exam-banner {
+            background: linear-gradient(135deg, rgba(184,134,11,0.12), rgba(106,90,205,0.08));
+            border: 1px solid var(--d7u1l25-activites-border);
+            border-left: 5px solid var(--d7u1l25-activites-total);
+            border-radius: 0 var(--d7u1l25-activites-radius) var(--d7u1l25-activites-radius) 0;
+            padding: 1rem 1.4rem;
+            margin: 1.2rem 0 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .d7u1l25-activites-exam-banner .icon { font-size: 1.8rem; }
+        .d7u1l25-activites-exam-banner .info { flex: 1; min-width: 200px; }
+        .d7u1l25-activites-exam-banner h2 {
+            font-size: 1.1rem; color: var(--d7u1l25-activites-heading); margin-bottom: 0.2rem;
+        }
+        .d7u1l25-activites-exam-banner p {
+            font-size: 0.88rem; color: var(--d7u1l25-activites-text-light);
+        }
+        .d7u1l25-activites-total-badge {
+            background: var(--d7u1l25-activites-total);
+            color: #fff;
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        /* Audio player */
+        .d7u1l25-activites-audio-player {
+            background: var(--d7u1l25-activites-card);
+            border: 1px solid var(--d7u1l25-activites-border);
+            border-radius: var(--d7u1l25-activites-radius);
+            padding: 1rem 1.4rem; margin: 1.5rem 0 2rem;
+            box-shadow: var(--d7u1l25-activites-shadow);
+            display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+        }
+        .d7u1l25-activites-play-btn {
+            width: 46px; height: 46px; border-radius: 50%;
+            background: var(--d7u1l25-activites-accent);
+            color: #fff; border: none; font-size: 1.2rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background var(--d7u1l25-activites-transition); flex-shrink: 0;
+        }
+        .d7u1l25-activites-play-btn:hover { background: var(--d7u1l25-activites-accent-hover); }
+        .d7u1l25-activites-progress-area { flex: 1; min-width: 120px; display: flex; flex-direction: column; gap: 0.3rem; }
+        .d7u1l25-activites-progress-bar {
+            width: 100%; height: 6px; background: var(--d7u1l25-activites-audio-progress);
+            border-radius: 3px; cursor: pointer; position: relative; overflow: hidden;
+        }
+        .d7u1l25-activites-progress-fill {
+            height: 100%; background: var(--d7u1l25-activites-accent);
+            border-radius: 3px; width: 0%; transition: width 0.1s linear;
+        }
+        .d7u1l25-activites-time-info {
+            display: flex; justify-content: space-between; font-size: 0.75rem;
+            color: var(--d7u1l25-activites-text-light);
+        }
+        .d7u1l25-activites-speed-selector { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+        .d7u1l25-activites-speed-btn {
+            border: 1px solid var(--d7u1l25-activites-border);
+            background: var(--d7u1l25-activites-button-bg);
+            color: var(--d7u1l25-activites-text);
+            padding: 0.3rem 0.6rem; border-radius: 4px;
+            font-size: 0.75rem; font-weight: 600; cursor: pointer;
+            transition: all var(--d7u1l25-activites-transition);
+        }
+        .d7u1l25-activites-speed-btn.active {
+            background: var(--d7u1l25-activites-accent);
+            color: #fff; border-color: var(--d7u1l25-activites-accent);
+        }
+        .d7u1l25-activites-audio-label {
+            font-weight: 700; font-size: 0.9rem;
+            color: var(--d7u1l25-activites-heading); white-space: nowrap;
+        }
+        @media (max-width: 600px) {
+            .d7u1l25-activites-audio-player { flex-direction: column; align-items: stretch; }
+            .d7u1l25-activites-audio-label { text-align: center; }
+        }
+
+        /* Text card */
+        .d7u1l25-activites-text-card {
+            background: var(--d7u1l25-activites-card);
+            border: 1px solid var(--d7u1l25-activites-border);
+            border-left: 5px solid var(--d7u1l25-activites-accent);
+            border-radius: 0 var(--d7u1l25-activites-radius) var(--d7u1l25-activites-radius) 0;
+            padding: 1.6rem 1.9rem; margin: 1.8rem 0;
+            font-size: 1.05rem; line-height: 1.9;
+            box-shadow: var(--d7u1l25-activites-shadow); position: relative;
+        }
+        .d7u1l25-activites-text-card p { margin-bottom: 0.9rem; }
+        .d7u1l25-activites-text-card p:last-of-type { margin-bottom: 0; }
+        .d7u1l25-activites-text-author {
+            text-align: right; font-style: italic; font-size: 0.9rem;
+            color: var(--d7u1l25-activites-text-light); margin-top: 1rem;
+        }
+        .d7u1l25-activites-dialogue {
+            background: var(--d7u1l25-activites-lighter);
+            border-left: 3px solid var(--d7u1l25-activites-soft);
+            border-radius: 0 6px 6px 0;
+            padding: 0.7rem 1.1rem;
+            margin: 0.6rem 0;
+            font-size: 0.96rem;
+        }
+        .d7u1l25-activites-dialogue p { margin: 0.25rem 0; }
+        .d7u1l25-activites-dialogue .speaker {
+            font-weight: 700; color: var(--d7u1l25-activites-accent);
+            margin-right: 0.4rem;
+        }
+
+        /* Section heading */
+        .d7u1l25-activites-section { margin: 2.4rem 0; }
+        .d7u1l25-activites-section h2 {
+            font-size: 1.5rem; color: var(--d7u1l25-activites-heading);
+            margin-bottom: 1rem; display: inline-flex; align-items: center; gap: 0.5rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 3px solid var(--d7u1l25-activites-accent);
+        }
+        .d7u1l25-activites-section .section-score {
+            background: var(--d7u1l25-activites-light);
+            color: var(--d7u1l25-activites-heading);
+            padding: 0.15rem 0.7rem;
+            border-radius: 14px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            margin-left: 0.4rem;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        /* Question cards */
+        .d7u1l25-activites-question {
+            background: var(--d7u1l25-activites-card);
+            border: 1px solid var(--d7u1l25-activites-border);
+            border-radius: var(--d7u1l25-activites-radius-sm);
+            padding: 1rem 1.2rem;
+            margin-bottom: 0.9rem;
+            box-shadow: var(--d7u1l25-activites-shadow);
+        }
+        .d7u1l25-activites-question .q-num {
+            display: inline-flex;
+            align-items: center; justify-content: center;
+            width: 26px; height: 26px;
+            background: var(--d7u1l25-activites-accent);
+            color: #fff;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            font-weight: 800;
+            font-family: 'Segoe UI', sans-serif;
+            margin-right: 0.5rem;
+        }
+        .d7u1l25-activites-question .q-text {
+            font-size: 0.98rem;
+            font-weight: 600;
+            color: var(--d7u1l25-activites-text);
+        }
+        .d7u1l25-activites-question .q-instruction {
+            font-size: 0.85rem;
+            font-style: italic;
+            color: var(--d7u1l25-activites-text-light);
+            margin: 0.35rem 0 0.6rem 2rem;
+        }
+        .d7u1l25-activites-question input[type="text"],
+        .d7u1l25-activites-question textarea {
+            width: 100%;
+            padding: 0.55rem 0.75rem;
+            border: 1px solid var(--d7u1l25-activites-border);
+            border-radius: 6px;
+            background: var(--d7u1l25-activites-input-bg);
+            color: var(--d7u1l25-activites-text);
+            font-family: inherit;
+            font-size: 0.92rem;
+            margin-top: 0.5rem;
+        }
+        .d7u1l25-activites-question textarea { resize: vertical; }
+        .d7u1l25-activites-question input:focus,
+        .d7u1l25-activites-question textarea:focus {
+            outline: none;
+            border-color: var(--d7u1l25-activites-accent);
+            box-shadow: 0 0 0 3px rgba(106,90,205,0.15);
+        }
+        /* MCQ options */
+        .d7u1l25-activites-opts { display: flex; flex-direction: column; gap: 0.35rem; margin-top: 0.5rem; }
+        .d7u1l25-activites-opt {
+            display: flex; align-items: flex-start; gap: 0.5rem;
+            padding: 0.45rem 0.7rem;
+            border-radius: 6px;
+            background: var(--d7u1l25-activites-lighter);
+            cursor: pointer;
+            font-size: 0.92rem;
+            transition: all 0.15s;
+            border: 1px solid transparent;
+        }
+        .d7u1l25-activites-opt:hover {
+            border-color: var(--d7u1l25-activites-accent);
+            background: rgba(106,90,205,0.08);
+        }
+        .d7u1l25-activites-opt input { margin-top: 0.25rem; accent-color: var(--d7u1l25-activites-accent); }
+        .d7u1l25-activites-opt.correct { background: rgba(46,125,50,0.15); border-color: #2e7d32; }
+        .d7u1l25-activites-opt.wrong   { background: rgba(198,40,40,0.12); border-color: #c62828; }
+
+        /* Answer key */
+        .d7u1l25-activites-key {
+            display: none;
+            margin-top: 0.6rem;
+            padding: 0.7rem 0.9rem;
+            background: var(--d7u1l25-activites-lighter);
+            border: 1px dashed var(--d7u1l25-activites-accent);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--d7u1l25-activites-text);
+        }
+        .d7u1l25-activites-key.visible { display: block; }
+
+        /* Buttons */
+        .d7u1l25-activites-btn {
+            background: var(--d7u1l25-activites-accent);
+            color: #fff; border: none;
+            padding: 0.55rem 1.3rem;
+            border-radius: 20px;
+            font-weight: 600; cursor: pointer;
+            font-family: inherit;
+            font-size: 0.85rem;
+            transition: background var(--d7u1l25-activites-transition);
+            margin-top: 0.6rem;
+            margin-right: 0.4rem;
+        }
+        .d7u1l25-activites-btn:hover { background: var(--d7u1l25-activites-accent-hover); }
+        .d7u1l25-activites-btn.secondary {
+            background: transparent;
+            border: 1px solid var(--d7u1l25-activites-border);
+            color: var(--d7u1l25-activites-text);
+        }
+        .d7u1l25-activites-btn.secondary:hover {
+            border-color: var(--d7u1l25-activites-accent);
+            color: var(--d7u1l25-activites-accent);
+            background: rgba(106,90,205,0.08);
+        }
+
+        /* Self assessment */
+        .d7u1l25-activites-self {
+            margin-top: 0.9rem;
+            display: flex; flex-wrap: wrap; gap: 0.9rem; align-items: center;
+            font-size: 0.88rem;
+            color: var(--d7u1l25-activites-text-light);
+            padding-top: 0.7rem;
+            border-top: 1px dashed var(--d7u1l25-activites-border);
+        }
+        .d7u1l25-activites-self label { cursor: pointer; display: inline-flex; align-items: center; gap: 0.3rem; }
+        .d7u1l25-activites-self input[type="radio"] { accent-color: var(--d7u1l25-activites-accent); }
+
+        /* Score area */
+        .d7u1l25-activites-score-area {
+            background: var(--d7u1l25-activites-card);
+            border: 1px solid var(--d7u1l25-activites-border);
+            border-radius: var(--d7u1l25-activites-radius);
+            padding: 1.5rem; margin-top: 2rem;
+            box-shadow: var(--d7u1l25-activites-shadow);
+        }
+        .d7u1l25-activites-score-area h2 {
+            color: var(--d7u1l25-activites-heading); margin-bottom: 1rem;
+        }
+        .d7u1l25-activites-score-stats { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+        .d7u1l25-activites-score-stat {
+            background: var(--d7u1l25-activites-light);
+            padding: 0.8rem 1.2rem; border-radius: 8px; font-weight: 600;
+            font-size: 0.92rem;
+        }
+        .d7u1l25-activites-score-actions {
+            margin-top: 1.2rem;
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        .d7u1l25-activites-footer-nav {
+            margin-top: 2rem;
+            display: flex; justify-content: space-between; flex-wrap: wrap;
+            background: var(--d7u1l25-activites-card);
+            border-top: 1px solid var(--d7u1l25-activites-border);
+            padding: 0.8rem 1.5rem;
+            border-radius: 0 0 var(--d7u1l25-activites-radius) var(--d7u1l25-activites-radius);
+        }
+        .d7u1l25-activites-footer-nav a {
+            font-weight: 600; color: var(--d7u1l25-activites-accent); text-decoration: none;
+        }
+        .d7u1l25-activites-footer-nav a:hover { text-decoration: underline; }
+
+        /* RTL */
+        html[dir="rtl"] body { direction: rtl; }
+        html[dir="rtl"] .d7u1l25-activites-container { text-align: right; }
+        html[dir="rtl"] .d7u1l25-activites-text-card {
+            border-left: none; border-right: 5px solid var(--d7u1l25-activites-accent);
+            border-radius: var(--d7u1l25-activites-radius) 0 0 var(--d7u1l25-activites-radius);
+        }
+        html[dir="rtl"] .d7u1l25-activites-dialogue {
+            border-left: none; border-right: 3px solid var(--d7u1l25-activites-soft);
+            border-radius: 6px 0 0 6px;
+        }
+        html[dir="rtl"] .d7u1l25-activites-exam-banner {
+            border-left: none; border-right: 5px solid var(--d7u1l25-activites-total);
+            border-radius: var(--d7u1l25-activites-radius) 0 0 var(--d7u1l25-activites-radius);
+        }
+
+        @media (max-width: 640px) {
+            .d7u1l25-activites-lesson-header h1 { font-size: 1.5rem; }
+            .d7u1l25-activites-container { padding: 1rem 0.8rem 2rem; }
+            .d7u1l25-activites-text-card { padding: 1.3rem 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div id="toast-container"></div>
+    <button id="signInBtn" style="display:none"></button>
+    <nav class="back-nav no-print">
+        <a href="index.html" data-i18n="back_link">← Retour à l'accueil</a>
+    </nav>
+
+    <div id="main-content" class="d7u1l25-activites-container">
+        <!-- Breadcrumb -->
+        <p style="margin-bottom:1.5rem; color:var(--d7u1l25-activites-text-light);">
+            <a href="degree7.html" data-i18n="back_revision">Unité 1</a>
+            › <strong data-i18n="back_current">Évaluation finale</strong>
+        </p>
+
+        <!-- Header -->
+        <div class="d7u1l25-activites-lesson-header">
+            <span class="d7u1l25-activites-badge" data-i18n="lesson_badge">🛠️ Activités · Leçon 25</span>
+            <h1 data-i18n="lesson_title">Évaluation finale<br>Activités pratiques</h1>
+            <div class="d7u1l25-activites-meta">
+                <span data-i18n="lesson_duration">⏱️ 60 minutes</span>
+                <span data-i18n="lesson_meta">📝 Test complet : texte + questions + essai</span>
+            </div>
+        </div>
+
+        <!-- Exam banner -->
+        <div class="d7u1l25-activites-exam-banner">
+            <span class="icon">📝</span>
+            <div class="info">
+                <h2 data-i18n="exam_title">Évaluation finale de l'Unité 1</h2>
+                <p data-i18n="exam_text">Lisez attentivement le texte, puis répondez aux questions. L'épreuve comporte trois parties : compréhension, langue et essai.</p>
+            </div>
+            <div class="d7u1l25-activites-total-badge" data-i18n="exam_total">Note : /20</div>
+        </div>
+
+        <!-- Audio player -->
+        <div class="d7u1l25-activites-audio-player" id="audioPlayer">
+            <span class="d7u1l25-activites-audio-label" data-i18n="audio_label">🎧 Écoute du texte</span>
+            <button class="d7u1l25-activites-play-btn" id="playBtn" aria-label="Lecture">▶</button>
+            <div class="d7u1l25-activites-progress-area">
+                <div class="d7u1l25-activites-progress-bar" id="progressBar">
+                    <div class="d7u1l25-activites-progress-fill" id="progressFill"></div>
+                </div>
+                <div class="d7u1l25-activites-time-info">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+            <div class="d7u1l25-activites-speed-selector" id="speedSelector">
+                <button class="d7u1l25-activites-speed-btn" data-speed="0.75">0.75x</button>
+                <button class="d7u1l25-activites-speed-btn active" data-speed="1">1x</button>
+                <button class="d7u1l25-activites-speed-btn" data-speed="1.25">1.25x</button>
+                <button class="d7u1l25-activites-speed-btn" data-speed="1.5">1.5x</button>
+            </div>
+        </div>
+
+        <!-- ====== TEXTE SUPPORT ====== -->
+        <section class="d7u1l25-activites-section">
+            <h2>📄 <span data-i18n="text_heading">Texte support</span></h2>
+            <div class="d7u1l25-activites-text-card">
+                <h3 style="color:var(--d7u1l25-activites-heading); margin-bottom:0.7rem; font-size:1.2rem;" data-i18n="text_title">Le cartable de mon grand-père</h3>
+
+                <p data-i18n="text_p1">Je m'appelle Yassine et j'ai douze ans. Je vis à Sfax avec mes parents et ma petite sœur Ines. Notre famille est modeste mais très unie. Le soir, quand tout le monde est à la maison, nous aimons nous retrouver autour de la table pour partager le dîner et raconter notre journée.</p>
+
+                <p data-i18n="text_p2">Le trésor de notre maison, c'est un vieux cartable en cuir que mon grand-père Slimane a utilisé pendant toutes ses années d'école. Il est usé, décoloré, avec une lanière en partie cassée. Mais pour moi, c'est l'objet le plus précieux du monde. Chaque fois que je le regarde, j'imagine les mains de mon grand-père qui le portaient fièrement sur son dos.</p>
+
+                <p data-i18n="text_p3">Un après-midi, je suis entré dans sa chambre et je lui ai demandé :</p>
+                <div class="d7u1l25-activites-dialogue">
+                    <p><span class="speaker">Moi :</span> <span data-i18n="d1_1">Pépé, pourquoi gardes-tu ce vieux cartable ?</span></p>
+                    <p><span class="speaker" data-i18n="d1_gp">Pépé :</span> <span data-i18n="d1_2">Parce qu'il m'a accompagné pendant les moments les plus difficiles de ma jeunesse.</span></p>
+                    <p><span class="speaker">Moi :</span> <span data-i18n="d1_3">Comment était ton école ?</span></p>
+                    <p><span class="speaker" data-i18n="d1_gp2">Pépé :</span> <span data-i18n="d1_4">Nous marchions plus de cinq kilomètres pour y arriver. Nous n'avions pas beaucoup de livres, mais nous étions heureux d'apprendre.</span></p>
+                </div>
+
+                <p data-i18n="text_p4">Ce jour-là, mon grand-père m'a raconté son histoire. Il m'a expliqué qu'il avait dû quitter l'école très jeune pour aider sa famille aux champs. Pourtant, il a gardé son cartable comme un symbole : celui de la connaissance qu'on n'abandonne jamais vraiment. Il m'a dit :</p>
+                <div class="d7u1l25-activites-dialogue">
+                    <p><span class="speaker" data-i18n="d2_gp">Pépé :</span> <span data-i18n="d2_1">Étudie, mon fils. Chaque page que tu lis aujourd'hui sera une lumière pour ton avenir.</span></p>
+                    <p><span class="speaker">Moi :</span> <span data-i18n="d2_2">Et toi, pépé, tu as regretté d'avoir quitté l'école ?</span></p>
+                    <p><span class="speaker" data-i18n="d2_gp2">Pépé :</span> <span data-i18n="d2_3">Je l'ai regretté chaque jour de ma vie. C'est pour cela que je veux que tu réussisses, toi.</span></p>
+                </div>
+
+                <p data-i18n="text_p5">Depuis ce jour, je porte le cartable de mon grand-père à mon tour, le dimanche seulement, pour ne pas l'abîmer. Ce n'est pas un simple objet : c'est un message. C'est celui de toute une famille qui croit au pouvoir de l'école et de la transmission. Chaque matin, avant de partir, je le regarde et je me rappelle la promesse que j'ai faite à mon pépé : réussir pour honorer sa mémoire.</p>
+
+                <div class="d7u1l25-activites-text-author" data-i18n="text_author">— Texte original, évaluation de l'Unité 1</div>
+            </div>
+        </section>
+
+        <!-- ====== PARTIE 1 – COMPRÉHENSION (5 questions) ====== -->
+        <section class="d7u1l25-activites-section">
+            <h2>🔍 <span data-i18n="part1_heading">Partie 1 – Compréhension du texte</span><span class="section-score" data-i18n="part1_score">/5 pts</span></h2>
+
+            <!-- Q1 MCQ -->
+            <div class="d7u1l25-activites-question" data-q="comp1" data-correct="b">
+                <p><span class="q-num">1</span><span class="q-text" data-i18n="comp1_q">Où habite Yassine ?</span></p>
+                <div class="d7u1l25-activites-opts">
+                    <label class="d7u1l25-activites-opt"><input type="radio" name="comp1" value="a"> <span data-i18n="comp1_a">À Tunis.</span></label>
+                    <label class="d7u1l25-activites-opt"><input type="radio" name="comp1" value="b"> <span data-i18n="comp1_b">À Sfax.</span></label>
+                    <label class="d7u1l25-activites-opt"><input type="radio" name="comp1" value="c"> <span data-i18n="comp1_c">À Paris.</span></label>
+                </div>
+            </div>
+
+            <!-- Q2 MCQ -->
+            <div class="d7u1l25-activites-question" data-q="comp2" data-correct="c">
+                <p><span class="q-num">2</span><span class="q-text" data-i18n="comp2_q">Quel est le trésor de la famille ?</span></p>
+                <div class="d7u1l25-activites-opts">
+                    <label class="d7u1l25-activites-opt"><input type="radio" name="comp2" value="a"> <span data-i18n="comp2_a">Une montre en or.</span></label>
+                    <label class="d7u1l25-activites-opt"><input type="radio" name="comp2" value="b"> <span data-i18n="comp2_b">Un vieux livre.</span></label>
+                    <label class="d7u1l25-activites-opt"><input type="radio" name="comp2" value="c"> <span data-i18n="comp2_c">Un vieux cartable en cuir.</span></label>
+                </div>
+            </div>
+
+            <!-- Q3 open -->
+            <div class="d7u1l25-activites-question">
+                <p><span class="q-num">3</span><span class="q-text" data-i18n="comp3_q">Pourquoi le grand-père a-t-il dû quitter l'école très jeune ?</span></p>
+                <textarea rows="2" placeholder="Votre réponse..."></textarea>
+                <button class="d7u1l25-activites-btn secondary" onclick="toggleKey('key_comp3')">🔍 <span data-i18n="btn_correction">Voir la correction</span></button>
+                <div id="key_comp3" class="d7u1l25-activites-key">
+                    <strong data-i18n="corr_title">Correction :</strong> <span data-i18n="comp3_corr">Il a dû quitter l'école pour aider sa famille aux champs.</span>
+                </div>
+            </div>
+
+            <!-- Q4 open -->
+            <div class="d7u1l25-activites-question">
+                <p><span class="q-num">4</span><span class="q-text" data-i18n="comp4_q">Quelle promesse Yassine a-t-il faite à son grand-père ?</span></p>
+                <textarea rows="2" placeholder="Votre réponse..."></textarea>
+                <button class="d7u1l25-activites-btn secondary" onclick="toggleKey('key_comp4')">🔍 <span data-i18n="btn_correction">Voir la correction</span></button>
+                <div id="key_comp4" class="d7u1l25-activites-key">
+                    <strong data-i18n="corr_title">Correction :</strong> <span data-i18n="comp4_corr">Yassine a promis de réussir pour honorer la mémoire de son grand-père.</span>
+                </div>
+            </div>
+
+            <!-- Q5 open -->
+            <div class="d7u1l25-activites-question">
+                <p><span class="q-num">5</span><span class="q-text" data-i18n="comp5_q">Que symbolise le cartable pour le narrateur ? Explique en une phrase.</span></p>
+                <textarea rows="2" placeholder="Votre réponse..."></textarea>
+                <button class="d7u1l25-activites-btn secondary" onclick="toggleKey('key_comp5')">🔍 <span data-i18n="btn_correction">Voir la correction</span></button>
+                <div id="key_comp5" class="d7u1l25-activites-key">
+                    <strong data-i18n="corr_title">Correction :</strong> <span data-i18n="comp5_corr">Le cartable symbolise le message familial : la transmission du savoir, la persévérance et le respect de la mémoire du grand-père.</span>
+                </div>
+            </div>
+
+            <button class="d7u1l25-activites-btn" onclick="checkMCQPart1()">✓ <span data-i18n="btn_check_mcq">Vérifier les QCM 1 et 2</span></button>
+            <div id="comp_result" style="margin-top:0.6rem; font-weight:700; font-size:0.9rem;"></div>
+
+            <div class="d7u1l25-activites-self">
+                <span data-i18n="self_assess">Mon auto-évaluation (partie 1) :</span>
+                <label><input type="radio" name="self_part1" value="correct" data-i18n="self_correct"> Correcte</label>
+                <label><input type="radio" name="self_part1" value="partial" data-i18n="self_partial"> Partielle</label>
+                <label><input type="radio" name="self_part1" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+            </div>
+        </section>
+
+        <!-- ====== PARTIE 2 – LANGUE (5 questions) ====== -->
+        <section class="d7u1l25-activites-section">
+            <h2>📚 <span data-i18n="part2_heading">Partie 2 – Langue</span><span class="section-score" data-i18n="part2_score">/5 pts</span></h2>
+
+            <!-- L1 Conjugaison -->
+            <div class="d7u1l25-activites-question">
+                <p><span class="q-num">1</span><span class="q-text" data-i18n="lang1_q">Conjugaison – Conjugue les verbes entre parenthèses au temps demandé.</span></p>
+                <p class="q-instruction" data-i18n="lang1_instruction">Passé composé pour les verbes 1 et 2, présent pour le verbe 3.</p>
+                <p style="margin-top:0.5rem;">
+                    a) Hier, mon grand-père m' <input type="text" class="d7u1l25-activites-inline" data-ans="a raconté" placeholder="raconter" style="width:150px; padding:0.3rem; border:1px solid var(--d7u1l25-activites-border); border-radius:5px; background:var(--d7u1l25-activites-input-bg); color:var(--d7u1l25-activites-text); font-family:inherit;"> son histoire.<br>
+                    b) Nous <input type="text" class="d7u1l25-activites-inline" data-ans="sommes allés" placeholder="aller" style="width:150px; padding:0.3rem; border:1px solid var(--d7u1l25-activites-border); border-radius:5px; background:var(--d7u1l25-activites-input-bg); color:var(--d7u1l25-activites-text); font-family:inherit;"> à l'école ensemble.<br>
+                    c) Aujourd'hui, Yassine <input type="text" class="d7u1l25-activites-inline" data-ans="porte" placeholder="porter" style="width:150px; padding:0.3rem; border:1px solid var(--d7u1l25-activites-border); border-radius:5px; background:var(--d7u1l25-activites-input-bg); color:var(--d7u1l25-activites-text); font-family:inherit;"> le cartable de son pépé.
+                </p>
+                <button class="d7u1l25-activites-btn secondary" onclick="checkInline(this, 'key_lang1')">🔍 <span data-i18n="btn_verify">Vérifier</span></button>
+                <div id="key_lang1" class="d7u1l25-activites-key">
+                    <strong data-i18n="corr_title">Correction :</strong><br>
+                    a) m'a raconté<br>b) sommes allés<br>c) porte
+                </div>
+            </div>
+
+            <!-- L2 Orthographe -->
+            <div class="d7u1l25-activites-question" data-mcq="true">
+                <p><span class="q-num">2</span><span class="q-text" data-i18n="lang2_q">Orthographe – Choisis la phrase correctement écrite.</span></p>
+                <div class="d7u1l25-activites-opts">
+                    <label class="d7u1l25-activites-opt"><input type="radio" name="lang2" value="a"> <span data-i18n="lang2_a">Mon grand-père ce souvient de ses années d'école.</span></label>
+                    <label class="d7u1l25-activites-opt"><input type="radio" name="lang2" value="b"> <span data-i18n="lang2_b">Mon grand-père se souvient de ses années d'école.</span></label>
+                    <label class="d7u1l25-activites-opt"><input type="radio" name="lang2" value="c"> <span data-i18n="lang2_c">Mon grand-père ses souvient de ces années d'école.</span></label>
+                </div>
+                <button class="d7u1l25-activites-btn secondary" onclick="checkMCQ('lang2', 'b', 'key_lang2')">🔍 <span data-i18n="btn_correction">Voir la correction</span></button>
+                <div id="key_lang2" class="d7u1l25-activites-key">
+                    <strong data-i18n="corr_title">Correction :</strong> <span data-i18n="lang2_corr">La bonne réponse est b) : « se » est un pronom réfléchi, « ses » est un adjectif possessif.</span>
+                </div>
+            </div>
+
+            <!-- L3 Syntaxe -->
+            <div class="d7u1l25-activites-question" data-mcq="true">
+                <p><span class="q-num">3</span><span class="q-text" data-i18n="lang3_q">Syntaxe – Quelle est la nature de la phrase : « Comme ce cartable est précieux ! » ?</span></p>
+                <div class="d7u1l25-activites-opts">
+                    <label class="d7u1l25-activites-opt"><input type="radio" name="lang3" value="a"> <span data-i18n="lang3_a">Déclarative</span></label>
+                    <label class="d7u1l25-activites-opt"><input type="radio" name="lang3" value="b"> <span data-i18n="lang3_b">Interrogative</span></label>
+                    <label class="d7u1l25-activites-opt"><input type="radio" name="lang3" value="c"> <span data-i18n="lang3_c">Exclamative</span></label>
+                    <label class="d7u1l25-activites-opt"><input type="radio" name="lang3" value="d"> <span data-i18n="lang3_d">Impérative</span></label>
+                </div>
+                <button class="d7u1l25-activites-btn secondary" onclick="checkMCQ('lang3', 'c', 'key_lang3')">🔍 <span data-i18n="btn_correction">Voir la correction</span></button>
+                <div id="key_lang3" class="d7u1l25-activites-key">
+                    <strong data-i18n="corr_title">Correction :</strong> <span data-i18n="lang3_corr">La bonne réponse est c) : phrase exclamative (elle exprime une émotion et se termine par un point d'exclamation).</span>
+                </div>
+            </div>
+
+            <!-- L4 Vocabulaire -->
+            <div class="d7u1l25-activites-question">
+                <p><span class="q-num">4</span><span class="q-text" data-i18n="lang4_q">Vocabulaire – Relie chaque mot à sa définition.</span></p>
+                <p class="q-instruction" data-i18n="lang4_instruction">Écris la lettre correspondante (a, b, c, d).</p>
+                <table style="width:100%; border-collapse:collapse; margin-top:0.5rem; font-size:0.92rem;">
+                    <thead>
+                        <tr>
+                            <th style="text-align:left; padding:0.5rem; border-bottom:1px solid var(--d7u1l25-activites-border);" data-i18n="lang4_col_word">Mot</th>
+                            <th style="text-align:left; padding:0.5rem; border-bottom:1px solid var(--d7u1l25-activites-border);" data-i18n="lang4_col_letter">Lettre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding:0.5rem;" data-i18n="lang4_w1">transmission</td>
+                            <td style="padding:0.5rem;"><input type="text" data-ans="b" placeholder="a-d" style="width:60px; padding:0.3rem; border:1px solid var(--d7u1l25-activites-border); border-radius:5px; background:var(--d7u1l25-activites-input-bg); color:var(--d7u1l25-activites-text); font-family:inherit;"></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.5rem;" data-i18n="lang4_w2">persévérance</td>
+                            <td style="padding:0.5rem;"><input type="text" data-ans="d" placeholder="a-d" style="width:60px; padding:0.3rem; border:1px solid var(--d7u1l25-activites-border); border-radius:5px; background:var(--d7u1l25-activites-input-bg); color:var(--d7u1l25-activites-text); font-family:inherit;"></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.5rem;" data-i18n="lang4_w3">modeste</td>
+                            <td style="padding:0.5rem;"><input type="text" data-ans="a" placeholder="a-d" style="width:60px; padding:0.3rem; border:1px solid var(--d7u1l25-activites-border); border-radius:5px; background:var(--d7u1l25-activites-input-bg); color:var(--d7u1l25-activites-text); font-family:inherit;"></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.5rem;" data-i18n="lang4_w4">symbole</td>
+                            <td style="padding:0.5rem;"><input type="text" data-ans="c" placeholder="a-d" style="width:60px; padding:0.3rem; border:1px solid var(--d7u1l25-activites-border); border-radius:5px; background:var(--d7u1l25-activites-input-bg); color:var(--d7u1l25-activites-text); font-family:inherit;"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="font-size:0.85rem; color:var(--d7u1l25-activites-text-light); margin-top:0.5rem;">
+                    <strong>a.</strong> <span data-i18n="lang4_a">simple, sans richesse ni luxe</span> ·
+                    <strong>b.</strong> <span data-i18n="lang4_b">action de faire passer quelque chose à quelqu'un</span> ·
+                    <strong>c.</strong> <span data-i18n="lang4_c">signe qui représente une idée</span> ·
+                    <strong>d.</strong> <span data-i18n="lang4_d">qualité de celui qui ne renonce pas</span>
+                </p>
+                <button class="d7u1l25-activites-btn secondary" onclick="checkInline(this, 'key_lang4')">🔍 <span data-i18n="btn_verify">Vérifier</span></button>
+                <div id="key_lang4" class="d7u1l25-activites-key">
+                    <strong data-i18n="corr_title">Correction :</strong><br>transmission → b<br>persévérance → d<br>modeste → a<br>symbole → c
+                </div>
+            </div>
+
+            <!-- L5 Conjugaison impératif -->
+            <div class="d7u1l25-activites-question">
+                <p><span class="q-num">5</span><span class="q-text" data-i18n="lang5_q">Conjugaison – Transforme ces phrases à l'impératif présent (2ᵉ personne du singulier).</span></p>
+                <p style="margin-top:0.5rem;">
+                    a) Tu étudies ta leçon. → <input type="text" data-ans="étudie" placeholder="impératif" style="width:120px; padding:0.3rem; border:1px solid var(--d7u1l25-activites-border); border-radius:5px; background:var(--d7u1l25-activites-input-bg); color:var(--d7u1l25-activites-text); font-family:inherit;"> ta leçon.<br>
+                    b) Tu es attentif. → <input type="text" data-ans="sois" placeholder="impératif" style="width:120px; padding:0.3rem; border:1px solid var(--d7u1l25-activites-border); border-radius:5px; background:var(--d7u1l25-activites-input-bg); color:var(--d7u1l25-activites-text); font-family:inherit;"> attentif.<br>
+                    c) Tu ne renonces pas. → Ne <input type="text" data-ans="renonce" placeholder="impératif" style="width:120px; padding:0.3rem; border:1px solid var(--d7u1l25-activites-border); border-radius:5px; background:var(--d7u1l25-activites-input-bg); color:var(--d7u1l25-activites-text); font-family:inherit;"> pas.
+                </p>
+                <button class="d7u1l25-activites-btn secondary" onclick="checkInline(this, 'key_lang5')">🔍 <span data-i18n="btn_verify">Vérifier</span></button>
+                <div id="key_lang5" class="d7u1l25-activites-key">
+                    <strong data-i18n="corr_title">Correction :</strong><br>a) étudie<br>b) sois<br>c) renonce
+                </div>
+            </div>
+
+            <button class="d7u1l25-activites-btn" onclick="checkMCQLangue()">✓ <span data-i18n="btn_check_mcq2">Vérifier les QCM de langue (Q2 et Q3)</span></button>
+            <div id="lang_result" style="margin-top:0.6rem; font-weight:700; font-size:0.9rem;"></div>
+
+            <div class="d7u1l25-activites-self">
+                <span data-i18n="self_assess">Mon auto-évaluation (partie 2) :</span>
+                <label><input type="radio" name="self_part2" value="correct" data-i18n="self_correct"> Correcte</label>
+                <label><input type="radio" name="self_part2" value="partial" data-i18n="self_partial"> Partielle</label>
+                <label><input type="radio" name="self_part2" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+            </div>
+        </section>
+
+        <!-- ====== PARTIE 3 – ESSAI (2 sujets) ====== -->
+        <section class="d7u1l25-activites-section">
+            <h2>✍️ <span data-i18n="part3_heading">Partie 3 – Essai</span><span class="section-score" data-i18n="part3_score">/10 pts</span></h2>
+            <p style="font-size:0.9rem; color:var(--d7u1l25-activites-text-light); margin-bottom:1rem;" data-i18n="part3_instruction">
+                Choisis <strong>un seul sujet</strong> et rédige un texte de 10 à 15 lignes. Soigne ton orthographe, ta ponctuation et ta présentation.
+            </p>
+
+            <!-- Sujet 1 -->
+            <div class="d7u1l25-activites-question">
+                <p><span class="q-num">1</span><span class="q-text" data-i18n="essay1_q">Sujet 1 – Raconte un souvenir marquant que tu as vécu avec un membre de ta famille (grand-parent, parent, frère ou sœur).</span></p>
+                <p class="q-instruction" data-i18n="essay1_help">Utilise l'imparfait et le passé composé. Décris le lieu, les personnages, ce qui s'est passé et ce que tu as ressenti.</p>
+                <textarea rows="8" placeholder="Rédige ton essai ici..."></textarea>
+                <button class="d7u1l25-activites-btn secondary" onclick="toggleKey('key_essay1')">💡 <span data-i18n="show_example">Voir un exemple</span></button>
+                <div id="key_essay1" class="d7u1l25-activites-key">
+                    <strong data-i18n="example_title">Exemple de réponse :</strong>
+                    <p style="margin-top:0.4rem;" data-i18n="essay1_example">Un souvenir qui m'a beaucoup marqué est celui d'un été passé chez ma grand-mère à Nabeul. J'avais huit ans. Chaque matin, nous allions ensemble au marché pour acheter des fruits. Elle me laissait choisir les pêches les plus mûres. Un jour, en rentrant, je suis tombé en portant le panier et toutes les pêches se sont écrasées sur le sol. J'ai eu très peur qu'elle se fâche. Mais au lieu de me gronder, elle a éclaté de rire et m'a serré dans ses bras. Elle m'a dit : « Ce n'est rien, mon petit. L'important, c'est que tu sois en bonne santé. » Depuis ce jour, je comprends mieux ce que signifie la tendresse d'une grand-mère.</p>
+                </div>
+            </div>
+
+            <!-- Sujet 2 -->
+            <div class="d7u1l25-activites-question">
+                <p><span class="q-num">2</span><span class="q-text" data-i18n="essay2_q">Sujet 2 – À ton avis, pourquoi la famille est-elle importante dans la vie d'un enfant ?</span></p>
+                <p class="q-instruction" data-i18n="essay2_help">Donne au moins trois raisons et appuie chaque idée par un exemple concret. Termine par une conclusion personnelle.</p>
+                <textarea rows="8" placeholder="Rédige ton essai ici..."></textarea>
+                <button class="d7u1l25-activites-btn secondary" onclick="toggleKey('key_essay2')">💡 <span data-i18n="show_example">Voir un exemple</span></button>
+                <div id="key_essay2" class="d7u1l25-activites-key">
+                    <strong data-i18n="example_title">Exemple de réponse :</strong>
+                    <p style="margin-top:0.4rem;" data-i18n="essay2_example">La famille est essentielle dans la vie d'un enfant pour plusieurs raisons. D'abord, elle offre un cadre sécurisant : un enfant qui sait qu'il sera toujours accueilli chez lui grandit avec confiance. Par exemple, quand j'ai échoué à un contrôle, ma mère m'a consolé et m'a aidé à comprendre mes erreurs. Ensuite, la famille transmet des valeurs comme le respect, la solidarité et le courage. Mon grand-père, par ses récits, m'a appris à aimer l'école. Enfin, elle donne un sentiment d'appartenance : on n'est jamais seul face aux difficultés. Pour toutes ces raisons, je pense que la famille est le premier pilier de la vie d'un enfant et qu'elle mérite notre reconnaissance.</p>
+                </div>
+            </div>
+
+            <div class="d7u1l25-activites-self">
+                <span data-i18n="self_assess">Mon auto-évaluation (partie 3) :</span>
+                <label><input type="radio" name="self_part3" value="correct" data-i18n="self_correct"> Correcte</label>
+                <label><input type="radio" name="self_part3" value="partial" data-i18n="self_partial"> Partielle</label>
+                <label><input type="radio" name="self_part3" value="incorrect" data-i18n="self_incorrect"> Incorrecte</label>
+            </div>
+        </section>
+
+        <!-- ====== BARÈME ====== -->
+        <section class="d7u1l25-activites-section">
+            <h2>📊 <span data-i18n="bareme_heading">Barème</span></h2>
+            <div class="d7u1l25-activites-text-card" style="border-left-color: var(--d7u1l25-activites-total);">
+                <table style="width:100%; border-collapse:collapse; font-size:0.92rem;">
+                    <thead>
+                        <tr>
+                            <th style="text-align:left; padding:0.5rem; border-bottom:2px solid var(--d7u1l25-activites-accent);" data-i18n="bareme_col1">Partie</th>
+                            <th style="text-align:right; padding:0.5rem; border-bottom:2px solid var(--d7u1l25-activites-accent);" data-i18n="bareme_col2">Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="padding:0.5rem;" data-i18n="bareme_p1">Partie 1 – Compréhension (5 questions)</td><td style="text-align:right; padding:0.5rem;">/5</td></tr>
+                        <tr><td style="padding:0.5rem;" data-i18n="bareme_p2">Partie 2 – Langue (5 questions)</td><td style="text-align:right; padding:0.5rem;">/5</td></tr>
+                        <tr><td style="padding:0.5rem;" data-i18n="bareme_p3">Partie 3 – Essai (1 sujet au choix)</td><td style="text-align:right; padding:0.5rem;">/10</td></tr>
+                        <tr style="border-top:2px solid var(--d7u1l25-activites-accent); font-weight:800;">
+                            <td style="padding:0.5rem;" data-i18n="bareme_total">Total</td>
+                            <td style="text-align:right; padding:0.5rem; color:var(--d7u1l25-activites-total);">/20</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ====== SCORE ====== -->
+        <div class="d7u1l25-activites-score-area">
+            <h2>📊 <span data-i18n="score_title">Votre auto-évaluation globale</span></h2>
+            <div class="d7u1l25-activites-score-stats">
+                <div class="d7u1l25-activites-score-stat"><span data-i18n="score_correct">Correctes :</span> <span id="scoreCorrect">0</span></div>
+                <div class="d7u1l25-activites-score-stat"><span data-i18n="score_incorrect">Incorrectes :</span> <span id="scoreIncorrect">0</span></div>
+                <div class="d7u1l25-activites-score-stat"><span data-i18n="score_partial">Partielles :</span> <span id="scorePartial">0</span></div>
+                <div class="d7u1l25-activites-score-stat"><span data-i18n="score_unanswered">Sans réponse :</span> <span id="scoreUnanswered">3</span></div>
+            </div>
+            <div class="d7u1l25-activites-score-actions">
+                <button id="saveResultsBtn" class="d7u1l25-activites-btn">💾 <span data-i18n="save_results">Enregistrer mes résultats</span></button>
+                <button id="printPdfBtn" class="d7u1l25-activites-btn secondary">🖨️ <span data-i18n="print_pdf">Imprimer / PDF</span></button>
+            </div>
+        </div>
+
+        <!-- ====== END OF UNIT ====== -->
+        <div style="margin-top:2rem; padding:1.5rem; border:2px dashed var(--d7u1l25-activites-accent); border-radius:var(--d7u1l25-activites-radius); text-align:center; background:rgba(106,90,205,0.05);">
+            <span style="font-size:2.5rem; display:block; margin-bottom:0.5rem;">🎓</span>
+            <h4 style="color:var(--d7u1l25-activites-heading); margin-bottom:0.3rem;" data-i18n="unit_end_title">Fin de l'Unité 1 !</h4>
+            <p style="color:var(--d7u1l25-activites-text-light); font-size:0.9rem;" data-i18n="unit_end_text">Tu as terminé les 25 leçons de l'Unité 1 « Les fondements du français ». Félicitations pour ton travail !</p>
+        </div>
+
+        <!-- Footer nav -->
+        <div class="d7u1l25-activites-footer-nav">
+            <a href="degree7unit1lesson24.html" data-i18n="footer_back" class="no-bilingual">← Leçon précédente</a>
+            <a href="degree7.html" data-i18n="footer_program" class="no-bilingual">Retour au programme →</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="i18n.js"></script>
+    <script src="db-utils.js"></script>
+    <script src="offline-sync-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="logging.js"></script>
+    <script>
+        App.addI18nTranslations({
+            fr: {
+                'lesson_title': "Leçon 25 – Activités pratiques : Évaluation finale | Activités",
+                'lesson_short_title': "Évaluation finale de l'Unité 1",
+                'ach_year_degree7': "7ème Année Primaire",
+                'ach_module_unit1': "Unité 1 – Les fondements du français",
+                'back_link': "← Retour à l'accueil",
+                'back_revision': "Unité 1",
+                'back_current': "Évaluation finale",
+                'lesson_badge': "🛠️ Activités · Leçon 25",
+                'lesson_duration': "⏱️ 60 minutes",
+                'lesson_meta': "📝 Test complet : texte + questions + essai",
+                'exam_title': "Évaluation finale de l'Unité 1",
+                'exam_text': "Lisez attentivement le texte, puis répondez aux questions. L'épreuve comporte trois parties : compréhension, langue et essai.",
+                'exam_total': "Note : /20",
+                'audio_label': "🎧 Écoute du texte",
+                'text_heading': "Texte support",
+                'text_title': "Le cartable de mon grand-père",
+                'text_p1': "Je m'appelle Yassine et j'ai douze ans. Je vis à Sfax avec mes parents et ma petite sœur Ines. Notre famille est modeste mais très unie. Le soir, quand tout le monde est à la maison, nous aimons nous retrouver autour de la table pour partager le dîner et raconter notre journée.",
+                'text_p2': "Le trésor de notre maison, c'est un vieux cartable en cuir que mon grand-père Slimane a utilisé pendant toutes ses années d'école. Il est usé, décoloré, avec une lanière en partie cassée. Mais pour moi, c'est l'objet le plus précieux du monde. Chaque fois que je le regarde, j'imagine les mains de mon grand-père qui le portaient fièrement sur son dos.",
+                'text_p3': "Un après-midi, je suis entré dans sa chambre et je lui ai demandé :",
+                'd1_1': "Pépé, pourquoi gardes-tu ce vieux cartable ?",
+                'd1_gp': "Pépé :", 'd1_gp2': "Pépé :",
+                'd1_2': "Parce qu'il m'a accompagné pendant les moments les plus difficiles de ma jeunesse.",
+                'd1_3': "Comment était ton école ?",
+                'd1_4': "Nous marchions plus de cinq kilomètres pour y arriver. Nous n'avions pas beaucoup de livres, mais nous étions heureux d'apprendre.",
+                'text_p4': "Ce jour-là, mon grand-père m'a raconté son histoire. Il m'a expliqué qu'il avait dû quitter l'école très jeune pour aider sa famille aux champs. Pourtant, il a gardé son cartable comme un symbole : celui de la connaissance qu'on n'abandonne jamais vraiment. Il m'a dit :",
+                'd2_gp': "Pépé :", 'd2_gp2': "Pépé :",
+                'd2_1': "Étudie, mon fils. Chaque page que tu lis aujourd'hui sera une lumière pour ton avenir.",
+                'd2_2': "Et toi, pépé, tu as regretté d'avoir quitté l'école ?",
+                'd2_3': "Je l'ai regretté chaque jour de ma vie. C'est pour cela que je veux que tu réussisses, toi.",
+                'text_p5': "Depuis ce jour, je porte le cartable de mon grand-père à mon tour, le dimanche seulement, pour ne pas l'abîmer. Ce n'est pas un simple objet : c'est un message. C'est celui de toute une famille qui croit au pouvoir de l'école et de la transmission. Chaque matin, avant de partir, je le regarde et je me rappelle la promesse que j'ai faite à mon pépé : réussir pour honorer sa mémoire.",
+                'text_author': "— Texte original, évaluation de l'Unité 1",
+                'part1_heading': "Partie 1 – Compréhension du texte",
+                'part1_score': "/5 pts",
+                'comp1_q': "Où habite Yassine ?",
+                'comp1_a': "À Tunis.", 'comp1_b': "À Sfax.", 'comp1_c': "À Paris.",
+                'comp2_q': "Quel est le trésor de la famille ?",
+                'comp2_a': "Une montre en or.", 'comp2_b': "Un vieux livre.", 'comp2_c': "Un vieux cartable en cuir.",
+                'comp3_q': "Pourquoi le grand-père a-t-il dû quitter l'école très jeune ?",
+                'comp3_corr': "Il a dû quitter l'école pour aider sa famille aux champs.",
+                'comp4_q': "Quelle promesse Yassine a-t-il faite à son grand-père ?",
+                'comp4_corr': "Yassine a promis de réussir pour honorer la mémoire de son grand-père.",
+                'comp5_q': "Que symbolise le cartable pour le narrateur ? Explique en une phrase.",
+                'comp5_corr': "Le cartable symbolise le message familial : la transmission du savoir, la persévérance et le respect de la mémoire du grand-père.",
+                'part2_heading': "Partie 2 – Langue",
+                'part2_score': "/5 pts",
+                'lang1_q': "Conjugaison – Conjugue les verbes entre parenthèses au temps demandé.",
+                'lang1_instruction': "Passé composé pour les verbes 1 et 2, présent pour le verbe 3.",
+                'lang2_q': "Orthographe – Choisis la phrase correctement écrite.",
+                'lang2_a': "Mon grand-père ce souvient de ses années d'école.",
+                'lang2_b': "Mon grand-père se souvient de ses années d'école.",
+                'lang2_c': "Mon grand-père ses souvient de ces années d'école.",
+                'lang2_corr': "La bonne réponse est b) : « se » est un pronom réfléchi, « ses » est un adjectif possessif.",
+                'lang3_q': "Syntaxe – Quelle est la nature de la phrase : « Comme ce cartable est précieux ! » ?",
+                'lang3_a': "Déclarative", 'lang3_b': "Interrogative", 'lang3_c': "Exclamative", 'lang3_d': "Impérative",
+                'lang3_corr': "La bonne réponse est c) : phrase exclamative (elle exprime une émotion et se termine par un point d'exclamation).",
+                'lang4_q': "Vocabulaire – Relie chaque mot à sa définition.",
+                'lang4_instruction': "Écris la lettre correspondante (a, b, c, d).",
+                'lang4_col_word': "Mot", 'lang4_col_letter': "Lettre",
+                'lang4_w1': "transmission", 'lang4_w2': "persévérance", 'lang4_w3': "modeste", 'lang4_w4': "symbole",
+                'lang4_a': "simple, sans richesse ni luxe",
+                'lang4_b': "action de faire passer quelque chose à quelqu'un",
+                'lang4_c': "signe qui représente une idée",
+                'lang4_d': "qualité de celui qui ne renonce pas",
+                'lang5_q': "Conjugaison – Transforme ces phrases à l'impératif présent (2ᵉ personne du singulier).",
+                'part3_heading': "Partie 3 – Essai",
+                'part3_score': "/10 pts",
+                'part3_instruction': "Choisis un seul sujet et rédige un texte de 10 à 15 lignes. Soigne ton orthographe, ta ponctuation et ta présentation.",
+                'essay1_q': "Sujet 1 – Raconte un souvenir marquant que tu as vécu avec un membre de ta famille (grand-parent, parent, frère ou sœur).",
+                'essay1_help': "Utilise l'imparfait et le passé composé. Décris le lieu, les personnages, ce qui s'est passé et ce que tu as ressenti.",
+                'essay1_example': "Un souvenir qui m'a beaucoup marqué est celui d'un été passé chez ma grand-mère à Nabeul. J'avais huit ans. Chaque matin, nous allions ensemble au marché pour acheter des fruits. Elle me laissait choisir les pêches les plus mûres. Un jour, en rentrant, je suis tombé en portant le panier et toutes les pêches se sont écrasées sur le sol. J'ai eu très peur qu'elle se fâche. Mais au lieu de me gronder, elle a éclaté de rire et m'a serré dans ses bras. Elle m'a dit : « Ce n'est rien, mon petit. L'important, c'est que tu sois en bonne santé. » Depuis ce jour, je comprends mieux ce que signifie la tendresse d'une grand-mère.",
+                'essay2_q': "Sujet 2 – À ton avis, pourquoi la famille est-elle importante dans la vie d'un enfant ?",
+                'essay2_help': "Donne au moins trois raisons et appuie chaque idée par un exemple concret. Termine par une conclusion personnelle.",
+                'essay2_example': "La famille est essentielle dans la vie d'un enfant pour plusieurs raisons. D'abord, elle offre un cadre sécurisant : un enfant qui sait qu'il sera toujours accueilli chez lui grandit avec confiance. Par exemple, quand j'ai échoué à un contrôle, ma mère m'a consolé et m'a aidé à comprendre mes erreurs. Ensuite, la famille transmet des valeurs comme le respect, la solidarité et le courage. Mon grand-père, par ses récits, m'a appris à aimer l'école. Enfin, elle donne un sentiment d'appartenance : on n'est jamais seul face aux difficultés. Pour toutes ces raisons, je pense que la famille est le premier pilier de la vie d'un enfant et qu'elle mérite notre reconnaissance.",
+                'bareme_heading': "Barème",
+                'bareme_col1': "Partie", 'bareme_col2': "Points",
+                'bareme_p1': "Partie 1 – Compréhension (5 questions)",
+                'bareme_p2': "Partie 2 – Langue (5 questions)",
+                'bareme_p3': "Partie 3 – Essai (1 sujet au choix)",
+                'bareme_total': "Total",
+                'btn_correction': "Voir la correction",
+                'btn_verify': "Vérifier",
+                'btn_check_mcq': "Vérifier les QCM 1 et 2",
+                'btn_check_mcq2': "Vérifier les QCM de langue (Q2 et Q3)",
+                'show_example': "Voir un exemple",
+                'example_title': "Exemple de réponse :",
+                'corr_title': "Correction :",
+                'self_assess': "Mon auto-évaluation :",
+                'self_correct': "Correcte", 'self_partial': "Partielle", 'self_incorrect': "Incorrecte",
+                'score_title': "Votre auto-évaluation globale",
+                'score_correct': "Correctes :", 'score_incorrect': "Incorrectes :", 'score_partial': "Partielles :", 'score_unanswered': "Sans réponse :",
+                'save_results': "Enregistrer mes résultats", 'save_success': "Résultats sauvegardés ✓", 'save_error': "Erreur lors de la sauvegarde",
+                'print_pdf': "Imprimer / PDF",
+                'print_site_name': "Educational Dashboard – Français",
+                'print_scholar_year': "7ème Année Primaire", 'print_week': "Unité 1", 'print_area': "Activités",
+                'print_footer_dev': "Développé par Mejri Ziad", 'print_footer_date': "Imprimé le",
+                'unit_end_title': "Fin de l'Unité 1 !",
+                'unit_end_text': "Tu as terminé les 25 leçons de l'Unité 1 « Les fondements du français ». Félicitations pour ton travail !",
+                'footer_back': "← Leçon précédente",
+                'footer_program': "Retour au programme →",
+                'toast_signin_required': "Connectez-vous pour voir les corrections."
+            },
+            en: {
+                'lesson_title': "Lesson 25 – Practical Activities: Final Assessment | Activities",
+                'lesson_short_title': "Final Assessment of Unit 1",
+                'ach_year_degree7': "7th Grade Primary",
+                'ach_module_unit1': "Unit 1 – French foundations",
+                'back_link': "← Back to home",
+                'back_revision': "Unit 1",
+                'back_current': "Final assessment",
+                'lesson_badge': "🛠️ Activities · Lesson 25",
+                'lesson_duration': "⏱️ 60 minutes",
+                'lesson_meta': "📝 Complete test: text + questions + essay",
+                'exam_title': "Final assessment of Unit 1",
+                'exam_text': "Read the text carefully, then answer the questions. The test has three parts: comprehension, language and essay.",
+                'exam_total': "Mark: /20",
+                'audio_label': "🎧 Listening to the text",
+                'text_heading': "Support text",
+                'text_title': "My grandfather's schoolbag",
+                'text_p1': "My name is Yassine and I am twelve years old. I live in Sfax with my parents and my little sister Ines. Our family is modest but very close. In the evening, when everyone is at home, we like to gather around the table to share dinner and talk about our day.",
+                'text_p2': "The treasure of our house is an old leather schoolbag that my grandfather Slimane used during all his school years. It is worn, faded, with a partly broken strap. But to me, it is the most precious object in the world. Every time I look at it, I imagine my grandfather's hands proudly carrying it on his back.",
+                'text_p3': "One afternoon, I went into his room and asked him:",
+                'd1_1': "Grandpa, why do you keep this old schoolbag?",
+                'd1_gp': "Grandpa:", 'd1_gp2': "Grandpa:",
+                'd1_2': "Because it accompanied me during the most difficult moments of my youth.",
+                'd1_3': "What was your school like?",
+                'd1_4': "We walked more than five kilometres to get there. We didn't have many books, but we were happy to learn.",
+                'text_p4': "That day, my grandfather told me his story. He explained that he had to leave school very young to help his family in the fields. Yet he kept his schoolbag as a symbol: the symbol of knowledge that we never really abandon. He told me:",
+                'd2_gp': "Grandpa:", 'd2_gp2': "Grandpa:",
+                'd2_1': "Study, my son. Every page you read today will be a light for your future.",
+                'd2_2': "And you, Grandpa, did you regret leaving school?",
+                'd2_3': "I regretted it every day of my life. That is why I want you to succeed.",
+                'text_p5': "Since that day, I carry my grandfather's schoolbag in my turn, only on Sundays, so as not to damage it. It is not a simple object: it is a message. It is the message of a whole family that believes in the power of school and transmission. Every morning, before leaving, I look at it and remember the promise I made to my grandpa: to succeed in order to honour his memory.",
+                'text_author': "— Original text, Unit 1 assessment",
+                'part1_heading': "Part 1 – Text comprehension",
+                'part1_score': "/5 pts",
+                'comp1_q': "Where does Yassine live?",
+                'comp1_a': "In Tunis.", 'comp1_b': "In Sfax.", 'comp1_c': "In Paris.",
+                'comp2_q': "What is the family's treasure?",
+                'comp2_a': "A gold watch.", 'comp2_b': "An old book.", 'comp2_c': "An old leather schoolbag.",
+                'comp3_q': "Why did the grandfather have to leave school very young?",
+                'comp3_corr': "He had to leave school to help his family in the fields.",
+                'comp4_q': "What promise did Yassine make to his grandfather?",
+                'comp4_corr': "Yassine promised to succeed in order to honour his grandfather's memory.",
+                'comp5_q': "What does the schoolbag symbolise for the narrator? Explain in one sentence.",
+                'comp5_corr': "The schoolbag symbolises the family message: the transmission of knowledge, perseverance and respect for the grandfather's memory.",
+                'part2_heading': "Part 2 – Language",
+                'part2_score': "/5 pts",
+                'lang1_q': "Conjugation – Conjugate the verbs in brackets in the requested tense.",
+                'lang1_instruction': "Passé composé for verbs 1 and 2, present for verb 3.",
+                'lang2_q': "Spelling – Choose the correctly written sentence.",
+                'lang2_a': "Mon grand-père ce souvient de ses années d'école.",
+                'lang2_b': "Mon grand-père se souvient de ses années d'école.",
+                'lang2_c': "Mon grand-père ses souvient de ces années d'école.",
+                'lang2_corr': "The correct answer is b): 'se' is a reflexive pronoun, 'ses' is a possessive adjective.",
+                'lang3_q': "Syntax – What is the type of the sentence: 'Comme ce cartable est précieux !'?",
+                'lang3_a': "Declarative", 'lang3_b': "Interrogative", 'lang3_c': "Exclamative", 'lang3_d': "Imperative",
+                'lang3_corr': "The correct answer is c): exclamative sentence (it expresses an emotion and ends with an exclamation mark).",
+                'lang4_q': "Vocabulary – Match each word to its definition.",
+                'lang4_instruction': "Write the corresponding letter (a, b, c, d).",
+                'lang4_col_word': "Word", 'lang4_col_letter': "Letter",
+                'lang4_w1': "transmission", 'lang4_w2': "perseverance", 'lang4_w3': "modest", 'lang4_w4': "symbol",
+                'lang4_a': "simple, without wealth or luxury",
+                'lang4_b': "action of passing something on to someone",
+                'lang4_c': "sign that represents an idea",
+                'lang4_d': "quality of one who does not give up",
+                'lang5_q': "Conjugation – Transform these sentences into the present imperative (2nd person singular).",
+                'part3_heading': "Part 3 – Essay",
+                'part3_score': "/10 pts",
+                'part3_instruction': "Choose only one topic and write a text of 10 to 15 lines. Pay attention to spelling, punctuation and presentation.",
+                'essay1_q': "Topic 1 – Tell about a memorable memory you experienced with a family member (grandparent, parent, brother or sister).",
+                'essay1_help': "Use the imperfect and the passé composé. Describe the place, the characters, what happened and what you felt.",
+                'essay1_example': "A memory that deeply marked me is one summer spent at my grandmother's in Nabeul. I was eight. Every morning, we would go together to the market to buy fruit. She let me choose the ripest peaches. One day, on the way back, I fell while carrying the basket and all the peaches crushed on the ground. I was very afraid she would get angry. But instead of scolding me, she burst out laughing and hugged me. She told me: 'It's nothing, my little one. What matters is that you are healthy.' Since that day, I understand better what a grandmother's tenderness means.",
+                'essay2_q': "Topic 2 – In your opinion, why is the family important in a child's life?",
+                'essay2_help': "Give at least three reasons and support each idea with a concrete example. End with a personal conclusion.",
+                'essay2_example': "The family is essential in a child's life for several reasons. First, it offers a secure framework: a child who knows he will always be welcomed at home grows up with confidence. For example, when I failed a test, my mother comforted me and helped me understand my mistakes. Then, the family transmits values such as respect, solidarity and courage. My grandfather, through his stories, taught me to love school. Finally, it gives a sense of belonging: one is never alone facing difficulties. For all these reasons, I believe that the family is the first pillar of a child's life and deserves our gratitude.",
+                'bareme_heading': "Marking scheme",
+                'bareme_col1': "Part", 'bareme_col2': "Points",
+                'bareme_p1': "Part 1 – Comprehension (5 questions)",
+                'bareme_p2': "Part 2 – Language (5 questions)",
+                'bareme_p3': "Part 3 – Essay (1 topic of your choice)",
+                'bareme_total': "Total",
+                'btn_correction': "See the correction",
+                'btn_verify': "Check",
+                'btn_check_mcq': "Check MCQs 1 and 2",
+                'btn_check_mcq2': "Check language MCQs (Q2 and Q3)",
+                'show_example': "See an example",
+                'example_title': "Example answer:",
+                'corr_title': "Correction:",
+                'self_assess': "My self-assessment:",
+                'self_correct': "Correct", 'self_partial': "Partial", 'self_incorrect': "Incorrect",
+                'score_title': "Your overall self-assessment",
+                'score_correct': "Correct:", 'score_incorrect': "Incorrect:", 'score_partial': "Partial:", 'score_unanswered': "Unanswered:",
+                'save_results': "Save my results", 'save_success': "Results saved ✓", 'save_error': "Save failed",
+                'print_pdf': "Print / PDF",
+                'print_site_name': "Educational Dashboard – French",
+                'print_scholar_year': "7th Grade Primary", 'print_week': "Unit 1", 'print_area': "Activities",
+                'print_footer_dev': "Developed by Mejri Ziad", 'print_footer_date': "Printed on",
+                'unit_end_title': "End of Unit 1!",
+                'unit_end_text': "You have completed the 25 lessons of Unit 1 'French Foundations'. Congratulations on your work!",
+                'footer_back': "← Previous lesson",
+                'footer_program': "Back to program →",
+                'toast_signin_required': "Sign in to see the corrections."
+            },
+            ar: {
+                'lesson_title': "الدرس 25 – أنشطة عملية: التقييم النهائي | الأنشطة",
+                'lesson_short_title': "التقييم النهائي للوحدة 1",
+                'ach_year_degree7': "السنة السابعة ابتدائي",
+                'ach_module_unit1': "الوحدة 1 – أساسيات الفرنسية",
+                'back_link': "← العودة إلى الرئيسية",
+                'back_revision': "الوحدة 1",
+                'back_current': "التقييم النهائي",
+                'lesson_badge': "🛠️ الأنشطة · الدرس 25",
+                'lesson_duration': "⏱️ 60 دقيقة",
+                'lesson_meta': "📝 اختبار شامل: نص + أسئلة + مقال",
+                'exam_title': "التقييم النهائي للوحدة 1",
+                'exam_text': "اقرأ النص بعناية، ثم أجب عن الأسئلة. يتضمن الاختبار ثلاثة أجزاء: الفهم، اللغة والمقال.",
+                'exam_total': "العلامة: /20",
+                'audio_label': "🎧 استماع إلى النص",
+                'text_heading': "النص الداعم",
+                'text_title': "محفظة جدي",
+                'text_p1': "اسمي ياسين وعمري اثنتا عشرة سنة. أعيش في صفاقس مع والدي وأختي الصغيرة إيناس. عائلتنا متواضعة لكنها مترابطة جداً. في المساء، عندما يكون الجميع في البيت، نحب أن نجتمع حول المائدة لمشاركة العشاء وحكاية يومنا.",
+                'text_p2': "كنز بيتنا هو محفظة جلدية قديمة استعملها جدي سليمان طوال سنوات دراسته. إنها بالية، باهتة، ولها حزام مكسور جزئياً. لكن بالنسبة لي، إنها أثمن شيء في العالم. كلما نظرت إليها، أتخيل يدي جدي وهما تحملانها بفخر على ظهره.",
+                'text_p3': "في إحدى الأمسيات، دخلت غرفته وسألته:",
+                'd1_1': "جدي، لماذا تحتفظ بهذه المحفظة القديمة؟",
+                'd1_gp': "جدي:", 'd1_gp2': "جدي:",
+                'd1_2': "لأنها رافقتني في أصعب لحظات شبابي.",
+                'd1_3': "كيف كانت مدرستك؟",
+                'd1_4': "كنا نمشي أكثر من خمسة كيلومترات للوصول إليها. لم تكن لدينا كتب كثيرة، لكننا كنا سعداء بالتعلم.",
+                'text_p4': "في ذلك اليوم، حكى لي جدي قصته. شرح لي أنه اضطر لترك المدرسة صغيراً جداً لمساعدة عائلته في الحقول. ومع ذلك، احتفظ بمحفظته كرمز: رمز المعرفة التي لا نتخلى عنها حقاً. قال لي:",
+                'd2_gp': "جدي:", 'd2_gp2': "جدي:",
+                'd2_1': "ادرس يا بني. كل صفحة تقرأها اليوم ستكون نوراً لمستقبلك.",
+                'd2_2': "وأنت يا جدي، هل ندمت على ترك المدرسة؟",
+                'd2_3': "ندمت عليها كل يوم من حياتي. لهذا أريدك أن تنجح أنت.",
+                'text_p5': "منذ ذلك اليوم، أحمل محفظة جدي بدوري، يوم الأحد فقط، حتى لا أتلفها. إنها ليست شيئاً بسيطاً: إنها رسالة. رسالة عائلة كاملة تؤمن بقوة المدرسة والنقل. كل صباح، قبل المغادرة، أنظر إليها وأتذكر الوعد الذي قطعته لجدي: أن أنجح لأكرم ذكراه.",
+                'text_author': "— نص أصلي، تقييم الوحدة 1",
+                'part1_heading': "الجزء 1 – فهم النص",
+                'part1_score': "/5 نقاط",
+                'comp1_q': "أين يعيش ياسين؟",
+                'comp1_a': "في تونس.", 'comp1_b': "في صفاقس.", 'comp1_c': "في باريس.",
+                'comp2_q': "ما هو كنز العائلة؟",
+                'comp2_a': "ساعة ذهبية.", 'comp2_b': "كتاب قديم.", 'comp2_c': "محفظة جلدية قديمة.",
+                'comp3_q': "لماذا اضطر الجد لترك المدرسة صغيراً؟",
+                'comp3_corr': "اضطر لترك المدرسة لمساعدة عائلته في الحقول.",
+                'comp4_q': "ما الوعد الذي قطعه ياسين لجده؟",
+                'comp4_corr': "وعد ياسين بأن ينجح ليكرم ذكرى جده.",
+                'comp5_q': "ماذا ترمز المحفظة بالنسبة للراوي؟ اشرح في جملة واحدة.",
+                'comp5_corr': "ترمز المحفظة إلى رسالة العائلة: نقل المعرفة والمثابرة واحترام ذكرى الجد.",
+                'part2_heading': "الجزء 2 – اللغة",
+                'part2_score': "/5 نقاط",
+                'lang1_q': "التصريف – صرّف الأفعال بين قوسين في الزمن المطلوب.",
+                'lang1_instruction': "الماضي المركب للفعلين 1 و2، المضارع للفعل 3.",
+                'lang2_q': "الإملاء – اختر الجملة المكتوبة بشكل صحيح.",
+                'lang2_a': "Mon grand-père ce souvient de ses années d'école.",
+                'lang2_b': "Mon grand-père se souvient de ses années d'école.",
+                'lang2_c': "Mon grand-père ses souvient de ces années d'école.",
+                'lang2_corr': "الجواب الصحيح هو ب): «se» ضمير انعكاسي، و«ses» صفة ملكية.",
+                'lang3_q': "النحو – ما نوع الجملة: «Comme ce cartable est précieux !»؟",
+                'lang3_a': "خبرية", 'lang3_b': "استفهامية", 'lang3_c': "تعجبية", 'lang3_d': "أمرية",
+                'lang3_corr': "الجواب الصحيح هو ج): جملة تعجبية (تعبر عن انفعال وتنتهي بعلامة تعجب).",
+                'lang4_q': "المفردات – اربط كل كلمة بتعريفها.",
+                'lang4_instruction': "اكتب الحرف المقابل (a, b, c, d).",
+                'lang4_col_word': "الكلمة", 'lang4_col_letter': "الحرف",
+                'lang4_w1': "النقل", 'lang4_w2': "المثابرة", 'lang4_w3': "متواضع", 'lang4_w4': "رمز",
+                'lang4_a': "بسيط، بلا ثراء أو ترف",
+                'lang4_b': "فعل تمرير شيء إلى شخص",
+                'lang4_c': "علامة تمثل فكرة",
+                'lang4_d': "صفة من لا يستسلم",
+                'lang5_q': "التصريف – حوّل هذه الجمل إلى صيغة الأمر في الحاضر (الشخص الثاني المفرد).",
+                'part3_heading': "الجزء 3 – المقال",
+                'part3_score': "/10 نقاط",
+                'part3_instruction': "اختر موضوعاً واحداً واكتب نصاً من 10 إلى 15 سطراً. اعتن بالإملاء وعلامات الترقيم والعرض.",
+                'essay1_q': "الموضوع 1 – احكِ ذكرى مؤثرة عشتها مع أحد أفراد عائلتك (جد، والد، أخ أو أخت).",
+                'essay1_help': "استعمل الماضي الناقص والماضي المركب. صف المكان والشخصيات وما حدث وما شعرت به.",
+                'essay1_example': "ذكرى أثّرت فيّ كثيراً هي صيف قضيته عند جدتي في نابل. كان عمري ثماني سنوات. كل صباح، كنا نذهب معاً إلى السوق لشراء الفواكه. كانت تتركني أختار أنضج الخوخ. في أحد الأيام، وأنا عائد، سقطت وأنا أحمل السلة، فتسحقت كل الخوخ على الأرض. خفت كثيراً من غضبها. لكن بدل أن توبخني، انفجرت ضاحكة واحتضنتني. قالت لي: «لا شيء يا صغيري. المهم أن تكون بصحة جيدة.» منذ ذلك اليوم، أفهم بشكل أفضل معنى حنان الجدة.",
+                'essay2_q': "الموضوع 2 – في رأيك، لماذا العائلة مهمة في حياة الطفل؟",
+                'essay2_help': "اذكر ثلاثة أسباب على الأقل وادعم كل فكرة بمثال ملموس. اختم باستنتاج شخصي.",
+                'essay2_example': "العائلة أساسية في حياة الطفل لعدة أسباب. أولاً، توفر إطاراً آمناً: الطفل الذي يعلم أنه سيكون دائماً موضع ترحيب في بيته يكبر بثقة. مثلاً، عندما فشلت في اختبار، وامتني والدتي وساعدتني على فهم أخطائي. ثانياً، العائلة تنقل القيم مثل الاحترام والتضامن والشجاعة. جدي، من خلال حكاياته، علّمني حب المدرسة. ثالثاً، تمنح شعوراً بالانتماء: لا نكون أبداً وحدنا أمام الصعوبات. لكل هذه الأسباب، أرى أن العائلة هي الركيزة الأولى في حياة الطفل وتستحق امتناننا.",
+                'bareme_heading': "سلم التنقيط",
+                'bareme_col1': "الجزء", 'bareme_col2': "النقاط",
+                'bareme_p1': "الجزء 1 – الفهم (5 أسئلة)",
+                'bareme_p2': "الجزء 2 – اللغة (5 أسئلة)",
+                'bareme_p3': "الجزء 3 – المقال (موضوع واحد)",
+                'bareme_total': "المجموع",
+                'btn_correction': "الاطلاع على التصحيح",
+                'btn_verify': "تحقق",
+                'btn_check_mcq': "تحقق من السؤالين 1 و2",
+                'btn_check_mcq2': "تحقق من سؤالَي اللغة (2 و3)",
+                'show_example': "عرض مثال",
+                'example_title': "مثال على الإجابة:",
+                'corr_title': "التصحيح:",
+                'self_assess': "تقييمي الذاتي:",
+                'self_correct': "صحيح", 'self_partial': "جزئي", 'self_incorrect': "خاطئ",
+                'score_title': "تقييمك الذاتي الشامل",
+                'score_correct': "صحيح:", 'score_incorrect': "خاطئ:", 'score_partial': "جزئي:", 'score_unanswered': "بدون إجابة:",
+                'save_results': "حفظ نتائجي", 'save_success': "تم حفظ النتائج ✓", 'save_error': "خطأ في الحفظ",
+                'print_pdf': "طباعة / PDF",
+                'print_site_name': "لوحة التحكم التعليمية – الفرنسية",
+                'print_scholar_year': "السنة السابعة ابتدائي", 'print_week': "الوحدة 1", 'print_area': "الأنشطة",
+                'print_footer_dev': "طوّر بواسطة ماجري زياد", 'print_footer_date': "طُبع في",
+                'unit_end_title': "نهاية الوحدة 1!",
+                'unit_end_text': "لقد أكملت 25 درساً في الوحدة 1 «أساسيات الفرنسية». تهانينا على عملك!",
+                'footer_back': "← الدرس السابق",
+                'footer_program': "العودة إلى البرنامج ←",
+                'toast_signin_required': "سجّل الدخول لرؤية التصحيحات."
+            }
+        });
+        (function() {
+            var container = document.querySelector('.d7u1l25-activites-container');
+            if (container && typeof App.makeBilingual === 'function') App.makeBilingual(container);
+        })();
+    </script>
+    <script src="ed-french-ini.js"></script>
+    <script>
+        (function() {
+            // ===== Audio =====
+            const audio = new Audio('assets7/sounds/degree7/unit1/lesson25/texte_evaluation.mp3');
+            const playBtn = document.getElementById('playBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const speedBtns = document.querySelectorAll('.d7u1l25-activites-speed-btn');
+            function fmt(s) { const m=Math.floor(s/60), ss=Math.floor(s%60); return `${m}:${ss<10?'0':''}${ss}`; }
+            audio.addEventListener('loadedmetadata', () => { durationEl.textContent = fmt(audio.duration); });
+            audio.addEventListener('timeupdate', () => {
+                const p = (audio.currentTime / (audio.duration || 1)) * 100;
+                progressFill.style.width = p + '%';
+                currentTimeEl.textContent = fmt(audio.currentTime);
+            });
+            audio.addEventListener('ended', () => { playBtn.textContent = '▶'; });
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) { audio.play().catch(()=>{}); playBtn.textContent = '⏸'; }
+                else { audio.pause(); playBtn.textContent = '▶'; }
+            });
+            progressBar.addEventListener('click', (e) => {
+                const r = progressBar.getBoundingClientRect();
+                audio.currentTime = ((e.clientX - r.left) / r.width) * audio.duration;
+            });
+            speedBtns.forEach(b => {
+                b.addEventListener('click', () => {
+                    speedBtns.forEach(o => o.classList.remove('active'));
+                    b.classList.add('active');
+                    audio.playbackRate = parseFloat(b.dataset.speed);
+                });
+            });
+
+            // ===== Auth =====
+            async function requireAuth() {
+                const { data: { session } } = await App.supabase.auth.getSession();
+                if (!session) {
+                    App.showToast('toast_signin_required', 'error');
+                    document.getElementById('signInBtn')?.click();
+                    return false;
+                }
+                return true;
+            }
+
+            // ===== Toggle key =====
+            window.toggleKey = async function(id) {
+                if (!await requireAuth()) return;
+                const el = document.getElementById(id);
+                if (el) el.classList.toggle('visible');
+            };
+
+            // ===== Check inline answers =====
+            window.checkInline = async function(btn, keyId) {
+                if (!await requireAuth()) return;
+                const card = btn.closest('.d7u1l25-activites-question');
+                const inputs = card.querySelectorAll('input[data-ans]');
+                let correct = 0;
+                inputs.forEach(inp => {
+                    const ok = inp.value.trim().toLowerCase() === inp.dataset.ans.toLowerCase();
+                    inp.style.borderColor = ok ? '#2e7d32' : '#c62828';
+                    inp.style.background = ok ? 'rgba(46,125,50,0.08)' : 'rgba(198,40,40,0.08)';
+                    if (ok) correct++;
+                });
+                const key = document.getElementById(keyId);
+                if (key) key.classList.add('visible');
+                btn.textContent = `✓ ${correct}/${inputs.length}`;
+            };
+
+            // ===== Check MCQ =====
+            window.checkMCQ = async function(name, correctVal, keyId) {
+                if (!await requireAuth()) return;
+                const inputs = document.querySelectorAll(`input[name="${name}"]`);
+                inputs.forEach(inp => {
+                    const opt = inp.closest('.d7u1l25-activites-opt');
+                    opt.classList.remove('correct','wrong');
+                    if (inp.value === correctVal) opt.classList.add('correct');
+                    else if (inp.checked) opt.classList.add('wrong');
+                });
+                const key = document.getElementById(keyId);
+                if (key) key.classList.add('visible');
+            };
+
+            // ===== Check MCQ part 1 (Q1 & Q2) =====
+            window.checkMCQPart1 = async function() {
+                if (!await requireAuth()) return;
+                let correct = 0, total = 2;
+                ['comp1','comp2'].forEach((name, idx) => {
+                    const correctVal = ['b','c'][idx];
+                    const inputs = document.querySelectorAll(`input[name="${name}"]`);
+                    inputs.forEach(inp => {
+                        const opt = inp.closest('.d7u1l25-activites-opt');
+                        opt.classList.remove('correct','wrong');
+                        if (inp.value === correctVal) opt.classList.add('correct');
+                        else if (inp.checked) opt.classList.add('wrong');
+                    });
+                    const selected = document.querySelector(`input[name="${name}"]:checked`);
+                    if (selected && selected.value === correctVal) correct++;
+                });
+                const el = document.getElementById('comp_result');
+                el.style.color = correct === total ? '#2e7d32' : '#b8860b';
+                el.textContent = `✓ ${correct}/${total}`;
+            };
+
+            // ===== Check MCQ langue (Q2 & Q3) =====
+            window.checkMCQLangue = async function() {
+                if (!await requireAuth()) return;
+                let correct = 0, total = 2;
+                [{name:'lang2', corr:'b'}, {name:'lang3', corr:'c'}].forEach(item => {
+                    const inputs = document.querySelectorAll(`input[name="${item.name}"]`);
+                    inputs.forEach(inp => {
+                        const opt = inp.closest('.d7u1l25-activites-opt');
+                        opt.classList.remove('correct','wrong');
+                        if (inp.value === item.corr) opt.classList.add('correct');
+                        else if (inp.checked) opt.classList.add('wrong');
+                    });
+                    const selected = document.querySelector(`input[name="${item.name}"]:checked`);
+                    if (selected && selected.value === item.corr) correct++;
+                });
+                const el = document.getElementById('lang_result');
+                el.style.color = correct === total ? '#2e7d32' : '#b8860b';
+                el.textContent = `✓ ${correct}/${total}`;
+            };
+
+            // ===== Score =====
+            const SELF_GROUPS = ['self_part1','self_part2','self_part3'];
+            function computeScore() {
+                let c=0, p=0, i=0, u=0;
+                SELF_GROUPS.forEach(n => {
+                    const s = document.querySelector(`input[name="${n}"]:checked`);
+                    if (s) { if (s.value==='correct') c++; else if (s.value==='partial') p++; else if (s.value==='incorrect') i++; }
+                    else u++;
+                });
+                return { correct: c, incorrect: i, partial: p, unanswered: u };
+            }
+            function updateScore() {
+                const s = computeScore();
+                document.getElementById('scoreCorrect').textContent = s.correct;
+                document.getElementById('scoreIncorrect').textContent = s.incorrect;
+                document.getElementById('scorePartial').textContent = s.partial;
+                document.getElementById('scoreUnanswered').textContent = s.unanswered;
+            }
+            document.querySelectorAll('input[type="radio"][name^="self_part"]').forEach(r => r.addEventListener('change', updateScore));
+            updateScore();
+
+            // ===== Save =====
+            document.getElementById('saveResultsBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) { App.showToast('toast_signin_required', 'error'); document.getElementById('signInBtn')?.click(); return; }
+                const s = computeScore();
+                const lessonId = 'degree7unit1lesson25';
+                const entry = {
+                    lesson_id: lessonId,
+                    lesson_title: { fr: App.getTranslation('lesson_short_title','fr'), en: App.getTranslation('lesson_short_title','en'), ar: App.getTranslation('lesson_short_title','ar') },
+                    year: { fr: App.getTranslation('ach_year_degree7','fr'), en: App.getTranslation('ach_year_degree7','en'), ar: App.getTranslation('ach_year_degree7','ar') },
+                    module: { fr: App.getTranslation('ach_module_unit1','fr'), en: App.getTranslation('ach_module_unit1','en'), ar: App.getTranslation('ach_module_unit1','ar') },
+                    correct: s.correct, incorrect: s.incorrect, partial: s.partial, unanswered: s.unanswered,
+                    updated_at: new Date().toISOString()
+                };
+                const { data: profileData, error: fetchError } = await App.supabase
+                    .from('profiles').select('achivement').eq('id', user.id).single();
+                if (fetchError) return;
+                let ach = profileData?.achivement || {};
+                if (!ach['ED-French']) ach['ED-French'] = [];
+                const arr = ach['ED-French'];
+                const idx = arr.findIndex(e => e.lesson_id === lessonId);
+                if (idx >= 0) arr[idx] = entry; else arr.push(entry);
+                const { error: updateError } = await App.supabase
+                    .from('profiles').update({ achivement: ach }).eq('id', user.id);
+                if (updateError) App.showToast('save_error', 'error');
+                else { App.showToast('save_success', 'success'); App.logUserAction('lesson_saved', { lesson: lessonId, correct: s.correct, incorrect: s.incorrect, partial: s.partial }); }
+            });
+
+            // ===== Print =====
+            document.getElementById('printPdfBtn').addEventListener('click', async function() {
+                const { data: { user } } = await App.supabase.auth.getUser();
+                if (!user) { App.showToast('toast_signin_required', 'error'); document.getElementById('signInBtn')?.click(); return; }
+                const lang = localStorage.getItem('lang') || 'fr';
+                const content = document.getElementById('main-content').cloneNode(true);
+                content.querySelectorAll('button, .d7u1l25-activites-audio-player, .d7u1l25-activites-self, .d7u1l25-activites-score-area, .back-nav').forEach(el => el.remove());
+                content.querySelectorAll('.d7u1l25-activites-key').forEach(el => { el.classList.add('visible'); el.style.display='block'; el.style.border='none'; el.style.padding='0.4rem 0'; el.style.background='transparent'; });
+                const win = window.open('', '_blank', 'width=800,height=600');
+                win.document.write(`<!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8"><title>${App.getTranslation('lesson_short_title', lang)}</title><style>
+                    body{font-family:Georgia,serif;max-width:800px;margin:2rem auto;padding:0 1rem;color:#000;line-height:1.6;}
+                    .print-header{text-align:center;border-bottom:2px solid #6a5acd;padding-bottom:1rem;margin-bottom:2rem;}
+                    .print-header .site-name{font-size:1.4rem;font-weight:bold;color:#6a5acd;}
+                    .print-header .lesson-name{font-size:1.1rem;font-weight:bold;margin-top:0.5rem;}
+                    .print-footer{text-align:center;border-top:1px solid #ccc;padding-top:1rem;margin-top:2rem;font-size:0.85rem;color:#666;}
+                    .d7u1l25-activites-text-card{border-left:4px solid #6a5acd;padding:1rem 1.5rem;margin:1.5rem 0;background:#f6f4fd;}
+                    .d7u1l25-activites-dialogue{background:#f0ecfa;border-left:3px solid #9d8fe6;padding:0.6rem 0.9rem;margin:0.5rem 0;border-radius:0 6px 6px 0;}
+                    .d7u1l25-activites-question{margin:1rem 0;padding:0.8rem;border:1px solid #ccc;border-radius:8px;}
+                    .d7u1l25-activites-key{background:#f0ecfa;padding:0.5rem;border-radius:6px;font-size:0.9rem;}
+                    .d7u1l25-activites-exam-banner{background:#f0ecfa;padding:1rem;border-radius:8px;margin:1rem 0;border-left:4px solid #b8860b;}
+                    table{width:100%;border-collapse:collapse;}
+                    th,td{border:1px solid #ccc;padding:0.4rem;text-align:left;}
+                    h1,h2,h3{color:#2e1e5e;}
+                    @media print { @page { margin:2cm; } }
+                </style></head><body>
+                    <div class="print-header"><div class="site-name">${App.getTranslation('print_site_name', lang)}</div><div>${App.getTranslation('print_scholar_year', lang)} – ${App.getTranslation('print_week', lang)} – ${App.getTranslation('print_area', lang)}</div><div class="lesson-name">${App.getTranslation('lesson_short_title', lang)}</div></div>
+                    ${content.innerHTML}
+                    <div class="print-footer">${App.getTranslation('print_footer_dev', lang)} – ${App.getTranslation('print_footer_date', lang)} ${new Date().toLocaleDateString('fr-FR')}</div>
+                </body></html>`);
+                win.document.close();
+                win.focus();
+                setTimeout(() => { win.print(); win.close(); }, 500);
+            });
+        })();
+    </script>
+    <script>
+        (function() {
+            if (typeof applyTranslations !== 'function') return;
+            const originalApply = applyTranslations;
+            window.applyTranslations = function(lang) {
+                originalApply(lang);
+                setTimeout(() => {
+                    document.querySelectorAll('.no-bilingual').forEach(el => {
+                        const next = el.nextElementSibling;
+                        if (next && next.classList.contains('i18n-bilingual')) {
+                            if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                            next.remove();
+                        }
+                    });
+                }, 0);
+            };
+            setTimeout(() => {
+                document.querySelectorAll('.no-bilingual').forEach(el => {
+                    const next = el.nextElementSibling;
+                    if (next && next.classList.contains('i18n-bilingual')) {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        if (lang !== 'fr') el.innerHTML = next.innerHTML;
+                        next.remove();
+                    }
+                });
+            }, 0);
+        })();
+    </script>
+</body>
+</html>
